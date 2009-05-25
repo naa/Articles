@@ -1,0 +1,5 @@
+Research program
+* Connection between affine Lie algebras and Conformal Field Theory
+* Connection between affine Lie algebras and modular forms
+*** Modular forms <-> Prime numbers?
+***** Affine lie algebras <-> Prime numbers ??
