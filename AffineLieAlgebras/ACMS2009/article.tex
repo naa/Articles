@@ -156,8 +156,6 @@ the main tool for preparation of tables in the book
 \cite{kass1990ala}, but the software used by the authors is not
 available. 
 
-Kac-Peterson formula is less efficient and is not discussed here.
-
 We use new method proposed in the articles
 \cite{lyakhovsky1996rra,lyakhovsky2007dub,ilyin812pbc,kulish4sfa}. The
 idea is to use recurrent relations for anomalous branching
@@ -293,6 +291,18 @@ Then branching coefficients are computed recursively using formula
 (\ref{recurrent-relation}), which gives anomalous branching
 coefficients which are equal to usual branching coefficients for
 weights from main Weyl chamber. 
+
+\subsection{Folding}
+\label{sec:folding}
+
+To facilitate computation of branching coefficients we can use the
+idea similar to one used for computation of weight multiplicities.
+There we were able to fold the star so that all the recurrent
+computation took place in main Weyl chamber. 
+
+We use the formula (\ref{eq:2}). The summation in the first term of
+right-hand side goes through the set of weights $\{\xi+\pi-\omega
+\rho\;|\;\omega\in W\backslash e\}$
 
 \section{Details of implementation}
 \label{sec:details-implementation}
