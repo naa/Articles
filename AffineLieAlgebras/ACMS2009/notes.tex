@@ -1,0 +1,553 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\begin{document}
+\tableofcontents
+\section{String theory}
+\label{sec:string-theory}
+
+Free relativistic particle action is equal to length of trajectory. 
+\begin{equation}
+  \label{eq:1}
+  \begin{split}
+  x^{\mu}(0)=x^{\mu}_0,\; x^{\mu}(1)=x^{\mu}_1\\
+  S=\int_{0}^{1} \sqrt{\left(\frac{dx^{\mu}}{d\tau}^2\right)}d\tau
+\end{split}
+\end{equation}
+There is Poincare invariance $x^{\mu}\to A^{\mu}_{\nu}x^{\nu}+ B^{\mu}$ and reparametrisation invariance $\tau\to f(\tau),\; x^{\mu}(\tau)\to x^{\mu}(f(\tau))$.
+
+String action is the area of world-sheet:
+\begin{equation}
+  \label{eq:2}
+  \begin{split}
+    X^{\mu}(x^1,x^2),\; \mu=1\dots d\\
+    S_N [X^{\mu}(x^1,x^2)]=\int \sqrt{det \frac{\partial X^{\mu}}{\partial x^a}\frac{\partial X^{\mu}}{\partial x^b}} dx^1 dx^2
+  \end{split}
+\end{equation}
+This action is called Nambu action, and it is invariant under Lorenz transformations and reparametrisations. 
+
+Transition amplitude for string is given by following formula:
+\begin{equation}
+  \label{eq:3}
+  A=\int {\cal D}X^{\mu}(x^1,x^2)e^{-S_N[X^{\mu}(x^1,x^2)]}
+\end{equation}
+The problem here is the definition of measure of integration. 
+It is not strictly defined in most cases, so there is nothing unusual here.
+
+We want to change ``integration variable'' in order to fix the arbitrariness connected with reparametrisations of world-sheet.
+
+Obviously our theory should be invariant under reparametrisation:
+\begin{equation}
+  \label{eq:4}
+  \begin{split}
+    x^a \to f^a (x^1,x^2)\\
+    X^{\mu}(x^1,x^2)\to \tilde{X}^{\mu}(x^1,x^2)=X^{\mu}(f^1(x^1,x^2),f^2(x^1,x^2))
+  \end{split}
+\end{equation}
+
+But Nambu action is not invariant. So we will use equivalent Polyakov action, which has following form:
+\begin{equation}
+  \label{eq:5}
+  \begin{split}
+    S_P [g^{ab}(x^1,x^2), X^{\mu}(x^1,x^2)]=\int g^{ab}(x)\partial_a X^{\mu} \partial_b X^{\mu}\sqrt{g} \;d^2 x\\
+    g=\det g_{ab}
+  \end{split}
+\end{equation}
+
+Polyakov and Nambu actions are equivalent in the sense that equations of motion are the same after the exclusion of auxiliary field $g_{ab}$.
+\begin{equation}
+  \label{eq:6}
+  \delta_{X}S_N=0 \Longleftrightarrow \left\{
+      \begin{aligned}
+        \delta_X S_P=0\\
+        \delta_g S_P=0
+      \end{aligned}
+      \right.
+\end{equation}
+Polyakov action is invariant under Lorenz transformations and reparametrisations:
+\begin{equation}
+  \label{eq:7}
+  \begin{split}
+    x^a \to f^a (x^1,x^2)\\
+    X^{\mu}(x^1,x^2)\to \tilde{X}^{\mu}(x^1,x^2)=X^{\mu}(f^1(x^1,x^2),f^2(x^1,x^2))\\
+    g_{ab}(x)\to \tilde{g}_{ab}(x)=\frac{\partial f^{a_1}}{\partial x^{a}}\frac{\partial f^{b_1}}{\partial x^b} g_{a_1 b_1}(x)
+  \end{split}  
+\end{equation}
+
+There is also one additional invariance, which is called conformal or Weyl invariance.
+\begin{equation}
+  \label{eq:8}
+  \begin{split}
+    g_{ab}(x)\to e^{\sigma(x)}g_{ab}(x)\\
+    g\to e^{\sigma} g\\
+    g^{ab}\to e^{-\sigma} g^{ab}\\
+    S_P[e^{\sigma(x)} g_{ab}(x),X^{\mu}] = S_P[g_{ab}(x),X^{\mu}] 
+  \end{split}
+\end{equation}
+
+So we have rather big freedom. For example, any metric on sphere can be obtained from one (constant) metric with reparametrisation and Weyl transformation.
+\begin{equation}
+  \label{eq:9}
+  g_{ab}(x)=[e^{\sigma(x)}\hat{g}_{ab}]^{x^a\to f^a (x)}
+\end{equation}
+For surfaces of higher genus there are discrete families of equivalent metrics.
+
+We could not preserve all the symmetries during quantization. So we choose to save Lorenz invariance and reparametrisation invariance and break conformal invariance. It is so called conformal anomaly.
+
+\begin{equation}
+  \label{eq:10}
+  A=\int {\cal D}X^{\mu}(x^1,x^2)e^{-S_P[g_{ab},X^{\mu}(x^1,x^2)]}
+\end{equation}
+
+It is easy to see that norm is invariant under reparametrisations:
+\begin{equation}
+  \label{eq:11}
+  \begin{split}
+    \|\delta X^{\mu}\|^2 = \int \left(\delta X^{\mu}(x)\right)^2 \sqrt{g} d^2x\\
+    \|\delta g_{ab}\|^2 = \int \delta g_{a_1 b_1}\delta g_{a_2 b_2} g^{a_1 a_2} g^{b_1 b_2} \sqrt{g}\; d^2x
+  \end{split}
+\end{equation}
+
+To investigate what happens top Weyl invariance after quantization let's introduce so called effective action. We integrate out fields $X^{\mu}$ and get following result.
+\begin{equation}
+  \label{eq:12}
+  e^{-S_X^{eff}[g_{ab}]} \overset{def}{=} \int {\cal D}X^{\mu} e^{-S_P [g_{ab},X]}
+\end{equation}
+\begin{equation}
+  \label{eq:13}
+  \begin{split}
+    S^{eff}_X [e^{\sigma(x)} g_{ab}(x) ] = S_X^{eff}[g_{ab}]+\frac{d}{48\pi}W[g,\sigma]\\
+    W[g,\sigma]=\int \left[ \frac{1}{2} g^{ab}\partial_a\sigma \partial_b\sigma+R[g]\sigma+\mu e^{\sigma}\right] \sqrt{g}\; d^2x
+  \end{split}
+\end{equation}
+Here $R$ is scalar curvature of $g_{ab}$, and $\mu$ is a parameter depending on regularisation, for example for proper time regularisation $\mu=\frac{1}{4\pi\epsilon}$. The term $W[g,\sigma]$ is called Liouville's action.
+
+{\bf Notice} $\int R[x] \sqrt{g}d^2x = 4\pi \chi_E$, $\chi_E=2-2h$, $\chi_E$ - Euler characteristic of the surface, $h$ - genus of the surface.
+
+$W[g,\sigma]$  is called conformal anomaly.
+
+Variance of action
+\begin{equation}
+  \label{eq:14}
+  \begin{split}
+    \delta S[g_{ab},X] = -\frac{1}{4\pi} \int  \delta g^{ab} T_{ab} \sqrt{g} \; d^2x\\
+    g_{ab}\to g_{ab}+\delta g_{ab}
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:15}
+  \begin{split}
+    g_{ab} \to e^{\sigma} g_{ab} \xrightarrow[\sigma \ll 1]{} (1+\delta\sigma) g_{ab}\\
+    \delta S [g_{ab},X] = -\frac{1}{4\pi} \int \delta\sigma g^{ab} T_{ab} \sqrt{g}\, d^2 x
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:16}
+    \delta S =0 \Rightarrow g^{ab}T_{ab}=0
+\end{equation}
+We see that Weyl invariance is equivalent to tracelessness of energy-momentum tensor.
+
+After the quantization we have
+\begin{equation}
+  \label{eq:17}
+  g^{ab}\left< T_{ab} \right> = -\frac{d}{12} R[g]
+\end{equation}
+\begin{Def}
+  {\bf Two dimensional conformal field theory} - is the theory that transforms as in (\ref{eq:13}).
+
+  The factor before $W[g,\sigma]$ is called {\it central charge}.
+\end{Def}
+
+!!!!!!!!!
+
+Why it is so? How this definition is connected with another definitions and properties of conformal field theory?
+
+!!!!!!!!!
+
+
+At this moment we have too much freedom in our Feynman integral (\ref{eq:10}). We have diffeomorphisms (\ref{eq:4}) and Weyl transformations (\ref{eq:8}). We will fix the gauge so that the metric is given by the formula 
+\begin{equation}
+  \label{eq:20}
+  g_{ab}=[e^{\phi} \hat{g}_{ab}]^{f^a}
+\end{equation}
+
+Faddeev-Popov ghosts appear as usual after this procedure.
+
+\begin{equation}
+  \label{eq:19}
+  \begin{split}
+    A=\int {\cal D} X^{\mu}(x^1,x^2)e^{-S_P[g_{ab},X^{\mu}(x^1,x^2)]} = \\
+    = \int {\cal D}\phi\; {\cal D}X\; \mathcal{D} B_{ab}\; \mathcal{D} C^a e^{-S_P [e^{\phi}\hat{g}_{ab},X]-
+      S_{gh}[e^{\phi}\hat{g}_{ab},B,C]}
+  \end{split}
+\end{equation}
+Here $B,C$ are ghost fields, $B_{ab}(X)$ is symmetric and traceless tensor. All the functional integrals use metric $e^{\phi}\hat{g}$. 
+\begin{equation}
+  \label{eq:21}
+  S_{gh} = \int g^{ac} B_{ab} \nabla_c C^b \sqrt{g} \, d^2x
+\end{equation}
+We can fix Weyl invariance so that measures of integration over matter fields and ghosts fields in (\ref{eq:19}) don't depend on $\phi$. Then we get conformal anomaly in the exponent:
+\begin{equation}
+  \label{eq:22}
+  A = \int \mathcal{D}_{e^{\phi} \hat{g}} \mathcal{D}_{\hat{g}} X \mathcal{D}_{\hat{g}} B_{ab} \mathcal{D}_{\hat{g}} C^a e^{-S_P [e^{\phi}\hat{g}_{ab},X]-S_{gh}[e^{\phi}\hat{g}_{ab},B,C]+\frac{d-26}{48\pi} W[\hat{g}_{ab},\phi]}
+\end{equation}
+$\frac{d}{48\pi}$ comes from matter fields, and $\frac{-26}{48\pi}$ from ghost fields, since both actions are actions of two-dimensional conformal field theory.
+
+Ordinary bosonic string lives in 26-dimensional space and doesn't interact with Liouville's gravity. Such a string is called ``critical string'' since it can exist only in critical dimension. Other string models are called non-critical strings.
+
+First integration in (\ref{eq:22}) is very inconvenient, since we integrate over $\phi$ with measure depending on $\phi$. This measure $\mathcal{D}_{e^{\phi}\hat{g}}\phi$ corresponds to interval
+\begin{equation}
+  \label{eq:23}
+  \|\delta\phi\|^2_P = \int e^{\phi} (\delta\phi)^2 \sqrt{\hat{g}}\, d^2 x
+\end{equation}
+It is non-linear and is not invariant under the translations $\phi(x)\to \phi(x)+\eta(x)$.
+So for some time this was a problem since nobody knew how to work with such objects.
+
+But David-Distler-Kawai proposed to change action in order to take into account change of measure of integration to normal measure.
+
+They conjectured that the amplitude can be written in the form
+\begin{equation}
+  \label{eq:24}
+  A=\int \mathcal{D}_{\hat{g}}\phi\, \mathcal{D}_{\hat{g}} X\, \mathcal{D}_{\hat{g}} (B,C)\, e^{-S_P[\hat{g},X]-S_{gh}[\hat{g},B,C]-S_L[\hat{g},\phi]}
+\end{equation}
+where the measure $\mathcal{D}_{\hat{g}} \phi$ corresponds to the interval $\|\delta\phi\|^2_{DDK} = \int (\delta\phi)^2 \sqrt{\hat{g}}\, d^2x$ and it is invariant under the translations $\phi\to \phi+\eta$ ($\delta\phi\to \delta\phi$). 
+$S_L$ here is Liouville's action with two undefined for now parameters $Q$ and $b$:
+\begin{equation}
+  \label{eq:25}
+  S_L[\hat{g},\phi] = \frac{1}{8\pi} \int \left[ \frac{1}{2} \hat{g}^{ab} \partial_a \phi \partial_b \phi + QR\phi +\mu e^{2b\phi}\right] \sqrt{\hat{g}} \, d^2x
+\end{equation}
+We choose following normalization:
+\begin{equation}
+  \label{eq:26}
+  \langle \phi(x) \phi(0) \rangle = \log |x|^2
+\end{equation}
+Liouville's term should be invariant under dilation $\hat{g}_{ab}\to e^{\sigma}\hat{g}_{ab}$.
+
+After we put
+\begin{equation}
+  \label{eq:27}
+  Q=\frac{1}{b}+b
+\end{equation}
+Liouville's action becomes conformal, so that
+\begin{equation}
+  \label{eq:28}
+  \begin{split}
+    \int \mathcal{D}_{\hat{g}} \phi e^{-S_L[\hat g,\phi]} = e^{-S_L^{eff}[\hat g]}\\
+    S_L^{eff} [e^{\sigma}\hat{g}]=S_L^{eff}[\hat g] +\frac{C_L}{12} W[\hat g,\sigma]
+  \end{split}
+\end{equation}
+Where
+\begin{equation}
+  \label{eq:29}
+  C_L=1+6 Q^2
+\end{equation}
+
+Then we require total central charge to vanish:
+\begin{equation}
+  \label{eq:30}
+  C_X+C_{gh}+C_L=C_{tot}=0
+\end{equation}
+
+Now the amplitude doesn't depend on $\hat{g}$ and parameters $Q$,$b$ are fixed.
+\begin{equation}
+  \label{eq:18}
+  d+1+6\left(b+\frac{1}{b}\right)^2=26
+\end{equation}
+In some finite area we can assume
+\begin{equation}
+  \label{eq:31}
+  \hat{g}_{ab}=\delta_{ab}
+\end{equation}
+There also could be additional term connected with the topology.
+
+Let's change variables
+\begin{equation}
+  \label{eq:32}
+  \begin{split}
+    x^1+i\, x^2=z\\
+    x^1-i\, x^2=\bar{z}\\
+    (dx^1)^2+(dx^2)^2=dz\,d\bar{z}
+  \end{split}
+\end{equation}
+For fields and terms of the action we have
+\begin{equation}
+  \label{eq:33}
+  \begin{split}
+    C^z=C,\; C^{\bar{z}}=\bar{C}\\
+    B_{zz}=B, \; B_{\bar{z}\bar{z}}=\bar{B}\\
+    S_{gh}=\int d^2z [B\bar{\partial}C+\bar{B}\partial \bar{C}]\\
+    S_P[X]=\int d^2z \bar{\partial}X \partial X\\
+    S_L[\phi] \propto \int d^2z \left[\bar{\partial} \phi \partial \phi+\mu e^{2 b \phi}\right] + \mbox{(topological terms)}
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:34}
+  e^{-S^{eff}[g]}=\int \mathcal{D} X e^{-\int g^{ab}\partial_a X \partial_b X \sqrt{g}\, d^2x} = \int \mathcal{D}_g X e^{-\int X \Delta X\sqrt{g}\, d^2x}
+\end{equation}
+Laplace operator depends on metric
+\begin{equation}
+  \label{eq:35}
+  \Delta = \frac{1}{\sqrt{g}}\partial_a \sqrt{g} g^{ab}\partial_b
+\end{equation}
+
+It is self-conjugate operator.
+
+We can represent field $X$ as combination of eigenfunctions of Laplace operator $X(x)=\sum c_n X_n,\; \Delta X_n = \lambda_n X_n,\; \lambda_n=\lambda_n[g]$. Then we will integrate over all eigenfunctions:
+\begin{equation}
+  \label{eq:36}
+  e^{-S^{eff}[g]}=\left(\prod_{n} \lambda_n\right)^{-\frac{1}{2}}=(\det \Delta)^{-\frac{1}{2}}
+\end{equation}
+Obviously we could not calculate $\lambda_n$, but we can get the determinant.
+\begin{equation}
+  \label{eq:37}
+  S^{eff}[g]=\log \det \Delta=tr \log \Delta
+\end{equation}
+\begin{equation}
+  \label{eq:38}
+  \log\frac{\lambda}{\lambda_0}=\int_0^{\infty}\frac{e^{-\lambda t}-e^{\lambda_0 t}}{t}dt
+\end{equation}
+\begin{equation}
+  \label{eq:39}
+  \delta S^{eff}[g]=tr (\log\Delta -\log\Delta_{g_0})=\delta tr \int_0^{\infty}\frac{e^{-\Delta t}}{t} dt
+\end{equation}
+The last integral diverges, so we need to regularise it. We will use heat kernel regularisation.
+\begin{equation}
+  \label{eq:40}
+  \delta S^{eff}[g]=\delta tr \int_{\epsilon}^{\infty}\frac{e^{-\Delta t}}{t} dt  
+\end{equation}
+As we already mentioned, $\hat{g}_{ab}$ could be put equal to $\rho dz d\bar{z}$ in finite area. Then
+\begin{equation}
+  \label{eq:41}
+  \Delta=\frac{1}{\rho}\bar{\partial}\partial
+\end{equation}
+For variation of effective action we have
+  \begin{multline}
+  \label{eq:42}
+    \delta_{\rho}S^{eff}[g]=\delta_{\rho} tr \int_{\epsilon}^{\infty} e^{-\frac{1}{\rho}\bar{\partial}\partial t}\frac{dt}{t}=\\
+    - tr \int_{\epsilon}^{\infty}\delta_{\Delta}e^{-\Delta t} dt=
+    -tr \int_{\epsilon}^{\infty}\frac{\delta\rho}{\rho}\Delta e^{-\Delta t} dt=\\
+    -tr \int_{\epsilon}^{\infty}\frac{\delta\rho}{\rho}\frac{d}{dt} e^{-\Delta t} dt=-tr \frac{\delta\rho}{\rho}e^{-\Delta \epsilon}
+  \end{multline}
+
+Let's introduce Green function for heat equation
+\begin{equation}
+  \label{eq:43}
+  G(t,x,y)=\sum_n e^{-\lambda_n t}X_n(x) X_n(y)
+\end{equation}
+\begin{equation}
+  \label{eq:44}
+  \begin{split}
+    \frac{\partial G}{\partial t}=\Delta_x G(t,x,y)\\
+    G(o,x,y)=\delta^2 (x-y)\\
+    G(t,x,x)=\frac{1}{4\pi t}+aR+O(t)
+  \end{split}
+\end{equation}
+Then for variation of action we have
+\begin{equation}
+  \label{eq:45}
+  \delta S^{eff}[g]=\int d^2x \frac{\delta\rho}{\rho}\left(\frac{1}{4\pi\epsilon}+aR\right)
+\end{equation}
+
+!!!! !!!! !!!! !!!! 
+Be more elaborate here.
+!!!!!!!
+
+...
+\section{CFT}
+\label{sec:cft}
+
+In Conformal Field Theory 
+\begin{equation}
+  \label{eq:46}
+  g^{ab}\left<T_{ab}\right>=\frac{C}{12}R[g]
+\end{equation}
+$C$ is a central charge.
+
+For flat metric $g_{ab}=\delta_{ab}$ we have
+\begin{equation}
+  \label{eq:47}
+  g^{ab}\langle T_{ab} \rangle=0
+\end{equation}
+Then we put $T_{zz}=T,\quad T_{\bar{z}\bar{z}}=\bar{T},\quad T_{z\bar{z}}=T_{\bar{z}z}$. In flat space from continuity equation $\bar{\partial}T_{zz}+\partial T_{\bar{z}\bar{z}}=0$ we have
+\begin{equation}
+  \label{eq:49}
+  \begin{split}
+    T_{z\bar{z}}=0\\
+    \bar{\partial}T_{zz}=\bar{\partial}T=0,\quad T \mbox{- holomorphic}\\
+    \partial T_{\bar{z}\bar{z}}=\partial \bar{T}=0,\quad \bar{T} \mbox{- antiholomorphic}\\
+  \end{split}
+\end{equation}
+In curved space continuity equation reads $\nabla_a T^{ab}=0$ and we can choose coordinate system where $g_{ab}dx^a dx^b = \rho dz\, d\bar{z}=e^{\sigma}dz\,d\bar{z}$. Then we introduce pseudo energy $T$:
+\begin{equation}
+  \label{eq:50}
+  T_{zz}+\frac{C}{12}t_{zz}=T
+\end{equation}
+where $t_{zz}=(\partial \sigma)^2-2\partial^2 \sigma$. It is easy to check that $\bar{\partial}T=0$ in this case.
+
+For transformations $z\to w(z)$
+\begin{equation}
+  \label{eq:51}
+  \begin{split}
+    T_{zz}\to \left(\frac{dw}{dz}\right)^2 T_{ww}(w(z))\\
+    t\to \left(\frac{dw}{dz}\right)t(w)+2\{w,z\}\\
+    \mbox{where}\; \{w,z\}=\left(\frac{\partial_z^3 w}{\partial_z w}-\frac{3}{2}\left(\frac{\partial_z^2 w}{\partial_z}\right)^2\right)\\
+    T\to \left(\frac{dw}{dz}\right)^2 T(w)+\frac{C}{12}\{w,z\}\\
+  \end{split}
+\end{equation}
+Energy-momentum tensor is the generator of coordinate transformations $x^a\to x^a+\epsilon^a(x)$:
+\begin{equation}
+  \label{eq:52}
+  \delta_{\epsilon}\langle A_1(x_1)\dots A_N(x_N)\rangle = \int d^2x\, \partial_a \epsilon_b(x)\langle T_{ab}(x) A_1(x_1)\dots A_N(x_N)\rangle
+\end{equation}
+
+\begin{equation}
+  \label{eq:53}
+  \begin{split}
+    T_{aa}=0\\
+    \partial_a \epsilon_b+\partial_b \epsilon_a\sim \delta_{ab}\\
+    \epsilon^a=\epsilon x^a \;\mbox{or}\; x^a\to \frac{x^a}{(\vec x)^2}
+  \end{split}
+\end{equation}
+Correlation functions don't change under conformal transformations.
+\begin{equation}
+  \label{eq:54}
+  \delta_{\epsilon}A(x)=\int_{\partial D} dy^a\, \epsilon^b \tilde{T}_{ab}(y)A(x)-\int_{D}d^2y\, \partial^a \epsilon^b(y)T_{ab}(y)A(x)
+\end{equation}
+Where $\tilde{T}_{ab}=\epsilon_{ac}T_{cb}$.
+
+Let
+\begin{equation}
+  \label{eq:55}
+  \begin{split}
+    \partial_a \epsilon_b+\partial_b \epsilon_a\sim \delta_{ab}\\
+    \bar{\partial}\epsilon=0\\
+    z\to z+\epsilon(z,\bar{z})\\
+    \bar{z}\to\bar{z}+\bar{\epsilon}(z,\bar{z})
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:56}
+  \delta_{\epsilon}A(z,\bar{z})=\oint_z du\, \epsilon(u) T(u) A(z,\bar{z})
+\end{equation}
+Substituting $T(z)$ in place of arbitrary operator $A$ we get 
+\begin{equation}
+  \label{eq:57}
+  \delta_{\epsilon}T(z)=\oint_z du\, \epsilon(u)T(u)T(z)
+\end{equation}
+
+If $w(z)=z+\epsilon(z)$ where $\epsilon$ is small, $T$ transforms as following:
+\begin{equation}
+  \label{eq:58}
+  T(z)\to \epsilon T'(z) + 2\epsilon' T(z)+\frac{C}{12}\epsilon'''
+\end{equation}
+\begin{equation}
+  \label{eq:59}
+  \delta_{\epsilon}T(z)=\oint du\, \epsilon(u) T(u) T(z) = \epsilon T'(z) + 2\epsilon' T(z)+\frac{C}{12}\epsilon'''
+\end{equation}
+We suppose that for full set of operators $\{A_j(x)\}$ there exists operator product expansion:
+!!! How can it be proved ????
+\begin{equation}
+  \label{eq:60}
+  A_i(x)A_j(0)=\sum C^k_{ij}(x)A_k(0)
+\end{equation}
+Then for product $T(u)T(z)$ we have
+\begin{equation}
+  \label{eq:61}
+  T(u)T(z)=\sum C_k(u-z) A_k(z)
+\end{equation}
+We can recover the poles from formula (\ref{eq:59}):
+\begin{equation}
+  \label{eq:62}
+  T(u)T(z)=\frac{C}{2(u-z)^4}+\frac{2T(z)}{(u-z)^2}+\frac{T'(z)}{u-z}+\mbox{non-singular terms}
+\end{equation}
+Now introduce the operators $L_n$:
+\begin{equation}
+  \label{eq:63}
+  L_n A(z)\equiv \frac{}{2\pi i}\oint_{C}du\, (u-z)^{n+1}T(u)A(z)
+\end{equation}
+It is possible to show that for $n,m\in \mathbb{Z}$
+\begin{equation}
+  \label{eq:64}
+  [L_n,L_m]=(n-m) L_{n+m}+\frac{C}{12}(n^3-n)\delta_{n,-m}
+\end{equation}
+and $\{L_n\}$ constitute Virasoro algebra. 
+
+All the fields in the theory are sums of multiplets of Virasoro algebra:
+\begin{equation}
+  \label{eq:65}
+  \{A_j\}=\sum [\Phi_{\Delta,A}] %%% It is incorrect, fix this formula
+\end{equation}
+
+There is a primary field in every multiplet:
+\begin{equation}
+  \label{eq:66}
+  \begin{split}
+    \Phi_{\Delta}(z)\underset{z\to w(z)}{\longrightarrow} \left(\frac{dw}{dz}\right)^{\Delta}\Phi_{\Delta}(w(z))\\
+    L_n \Phi=0,\quad n>0\\
+    L_0 \Phi=\Delta \Phi\\
+  \end{split}
+\end{equation}
+All other fields are built of primary fields and are called secondary:
+\begin{equation}
+  \label{eq:67}
+  L_{-n_1}L_{-n_2}\dots \Phi_{\Delta}
+\end{equation}
+
+Correlation functions are expressed as combinations of correlation functions of primary fields.
+
+The only thing that is yet undefined is the set of scaling dimensions of primary fields. So to fix the theory we should define $\Phi_a,\; \Delta_a,\; C^c_{ab}$. Then our theory is solved. If the number of primary fields is finite, such a model is called {\it minimal}.
+
+For example, following fields are Weyl-invariant:
+\begin{equation}
+  \label{eq:68}
+  O_a=\int \Phi_{\Delta}e^{2a\phi}\,d^2x,\quad \mbox{where}\;\Delta+a(Q-a)=1
+\end{equation}
+$O_a$ - is the main observable of string theory with gravitational dimension $\delta_a=-\frac{a}{b}$.
+\begin{equation}
+  \label{eq:69}
+  \int\langle O_{a_1}\dots O_{a_n}\rangle_{\mu} e^{-\mu A}d\mu=\langle O_{a_1}\dots O_{a_n}\rangle_{A}=A^{\sum \delta_k},\quad \delta_k=\frac{a_k}{b}
+\end{equation}
+
+\subsection{Conclusion}
+\label{sec:conclusion}
+
+We can start from arbitrary conformal field theory, find $b$ from equation $C+6\left(b+\frac{1}{b}\right)^2=25$ and obtain some non-critical string theory. But for $d>1$ $b$ becomes complex and this fact leads to unsolved yet problems.
+
+
+\section{Conformal Field Theory}
+\label{sec:conf-field-theory}
+
+
+
+\section{Affine Lie algebras representations}
+\label{sec:affine-lie-algebras}
+
+\subsection{Verma modules}
+\label{sec:verma-modules}
+
+Verma module is a simple thing. It can be easily understood in the framework of induced representations. 
+
+Verma module with highest weight $\lambda$ of algebra $g$ is the space $U(g)\underset{U(b_{+})}{\otimes} D_{\lambda}(b_{+})$, where $\underset{U(b_{+})}{\otimes}$ means that the action of elements of $U(b_{+})$ ``falls through'' left part of tensor product onto the right part.
+
+Here $b_{+}$ is Borel sub-algebra ($x_{+},h$ for $sl(2)$), $D_{\lambda}(b_{+})$ is special representation of $b_{+}$, such that $D(x_{+})=0,\; D(h)=\lambda(h)$.
+$g$ acts on the representation space from the left, it means that we should expand element of $g$ in some base, and then commute all the elements of $b_{+}$ to the right, so that they can act on space $D_{\lambda}(b_{+})$.
+
+
+
+The infinite set of fields (\ref{eq:65}) corresponds to Verma module of algebra, which is Virasoro algebra in the simplest case and semidirect product of Virasoro and Kac-Moody algebra for WZW model. Also it is shown that for Wess-Zumino model the representations of the algebra are in fact the representations of current algebra only, which is Kac-Moody algebra.
+
+Note also, that Viraso algebra belongs to universal enveloping of Kac-Moody algebra.
+
+\subsection{Irreducible representations}
+\label{sec:irred-repr}
+
+
+
+\end{document}
