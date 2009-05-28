@@ -127,6 +127,20 @@ plot_projection:=proc(tt,real_roots,imaginary_root)
          plots[textplot](map(x->[coeff(x,delta)/coeff(imaginary_root,delta),pairing(x,real_roots[1])/2,coeff(x,eps)],[op(tt)]));
      end proc:
 
+get_fan:=proc(weight,algebra,subalgebra,injection,max_grade)
+    local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
+        al:=algebra_roots(algebra);
+        sal:=algebra_roots(subalgebra);
+
+        sal_inj:=inject(sal,al,injection);
+        pr:=projection(positive_roots(algebra,max_grade),sal_inj[1..-2],delta);
+        pr:=select(x->subs(eps=0,x)<>0,pr);
+
+        spr:=inject(positive_roots(subalgebra,max_grade),al,injection);
+        f:=[eps,op(fan(pr,inj_roots(spr),max_grade))];
+        return f;
+    end proc;
+
 branching:=proc(weight,algebra,subalgebra,injection,max_grade)
 local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
     al:=algebra_roots(algebra);
