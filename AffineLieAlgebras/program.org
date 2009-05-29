@@ -3,3 +3,8 @@ Research program
 * Connection between affine Lie algebras and modular forms
 *** Modular forms <-> Prime numbers?
 ***** Affine lie algebras <-> Prime numbers ??
+* Maple Program
+*** Expand to twisted algebras
+***** TODO Check construction of weights according to books of Klimyk and Kac
+***** TODO Introduce positive roots
+*** TODO Try folding of fan
