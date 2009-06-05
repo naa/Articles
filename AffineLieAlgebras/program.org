@@ -5,6 +5,7 @@ Research program
 ***** Affine lie algebras <-> Prime numbers ??
 * Maple Program
 *** Expand to twisted algebras
+*** TODO Compute string functions for $A^{(2)}_2$
 ***** TODO Check construction of weights according to books of Klimyk and Kac
 ***** TODO Introduce positive roots
 *** TODO Try folding of fan
