@@ -1,1 +1,117 @@
-/home/anton/doc/notes/science.org
+science.org
+* General
+*** DONE Call Sergey and ask for address, look up the address in the Internet
+    SCHEDULED: <2009-02-04>
+*** DONE Забрать завтрак :)
+    SCHEDULED: <2009-02-04 Срд>
+* Blogging
+*** DONE Write about it
+***** DONE Publish article about Org mode
+*** DONE Publish photographs
+    SCHEDULED: <2009-02-04 Срд>
+* Computer customization
+*** DONE Emacs customization
+***** DONE Browse-url with w3m
+*** DONE xmonad gmrun
+* DONE Read "[[file:~/books/big/programming/Dreaming%20in%20Code%20-%20Scott%20Rosenberg%20(Crown%20Publishers,%202007).pdf][Dreaming in Code]]"
+  CLOCK: [2009-03-02 Пнд 18:09]--[2009-03-02 Пнд 19:02] =>  0:53
+  CLOCK: [2009-02-01 Вск 23:26]--[2009-02-01 Вск 23:37] =>  0:11
+  CLOCK: [2009-02-01 Вск 23:14]--[2009-02-01 Вск 23:25] =>  0:11
+  CLOCK: [2009-02-01 Вск 22:57]--[2009-02-01 Вск 23:11] =>  0:14
+  CLOCK: [2009-02-01 Вск 22:16]--[2009-02-01 Вск 22:54] =>  0:38
+  CLOCK: [2009-02-01 Вск 12:47]--[2009-02-01 Вск 12:56] =>  0:09
+  CLOCK: [2009-01-31 Сбт 23:24]--[2009-01-31 Сбт 23:58] =>  0:34
+* Science
+*** Useful stuff
+***** Help, notes etc
+******* LaTeX
+********* [[file:~/books/big/science/CompleteBooks/LaTeX/llang.pdf][Lvovsky ]]
+********* [[file:~/books/big/science/CompleteBooks/LaTeX/voron_latex_in_examples.pdf][Latex in examples]]
+*** Affine Lie algebras
+***** Papers
+******* Construction of representations
+********* [[file:~/study/2008/affine-lie-algebras/sigma_paper.pdf][Paper by Vladimir Lyakhovsky from SIGMA]]
+	  [[file:~/study/2008/affine-lie-algebras/new/string-functions-10.tex::section%20Examples][tex file, examples]]
+********* [[file:~/study/2008/affine-lie-algebras/twist_alg_dos_2.pdf][Eugene's diploma on $D_3^{(2)}$]]
+********* [[file:~/study/2008/affine-lie-algebras/new/0812.2124.pdf][Recursive property of branching rules (Lyakhovsky, Kulish, Ilyin)]]
+		    Abstract
+		    It is demonstrated that decompositions of integrable highest weight
+		    modules of a simple Lie algebra with respect to its reductive subalgebra
+		    obey the set of algebraic relations leading to the recursive properties for
+		    the corresponding branching coeﬃcients. These properties are encoded
+		    in the special element Γg⊃a of the formal algebra Ea that describes the
+		    injection and is called the fan. In the simplest case, when a = h (g), the
+		    recursion procedure generates the weight diagram of a module Lg . When
+		    applied to a reduction of highest weight modules the recursion described
+		    by the fan provides a highly eﬀective tool to obtain the explicit values of
+		    branching coeﬃcients.
+
+
+********* [[file:~/study/2008/affine-lie-algebras/S0273-0979-1982-15021-2.pdf][Fast Freudental formula for classical case ]] Patera, Moody et al.
+********* Folders
+*********** [[file:~/study/2008/affine-lie-algebras][Folder with papers]]
+************* Freudental Formula [[file:~/study/2008/affine-lie-algebras/book/img002.jpg][img002.jpg]]  [[file:~/study/2008/affine-lie-algebras/book/img003.jpg][img003.jpg]]
+	      $$mult(\xi)=\frac{2}{(\mu+\rho|\mu+\rho)-(\xi+\rho|\xi+\rho)}\sum_{\alpha\in\Delta^{+}} mult(\alpha) \sum_{k=1}^{\infty}mult(\xi+k\alpha)(\xi+k\alpha|\alpha)$$
+	      It includes roots $\Delta=\left\{k\delta+\alpha|k\in Z,\; \alpha\in \Delta_0\right\}$,
+	      positive roots $\Delta^{+}=\{k\delta+\alpha|k\geq 0,\; \alpha\in \Delta_0^{+}\}\cup \{k\delta+\alpha|k\geq 1,\; \alpha\in \Delta_0\setminus \Delta_0^{+}\}$
+************* Some multiplicities from the [[file:~/study/2008/affine-lie-algebras/book][book]]
+******* Branching rules for affine Lie algebras
+********* TODO [[http://arxiv.org/abs/math-ph/0111020][math-ph/0111020 Branching rules of semi-simple Lie algebras using affine extensions]]
+	  [[file:~/study/2009/AffineLieAlgabras_BranchingRules/Quella_BranchingRulesOfSemiSimpleLieAlgebrasUsingAffineExtensions(math-ph0111020).pdf][On local drive]]
+********* DONE [[http://deepblue.lib.umich.edu/handle/2027.42/31650][The Branching Rules for Affine Lie Algebras on the Web]]
+	  [[file:~/study/2009/AffineLieAlgabras_BranchingRules/Lu_TheBranchingRulesForAffineLieAlgebras(1994).pdf][On local drive]]
+********* DONE [[http://eprints.soton.ac.uk/29525/][Branching rules and weight multiplicities for ...]]
+	  SCHEDULED: <2009-02-04 Срд>
+******* Applications 
+********* String theory
+*********** Morozov
+********* Theta functions: see 133,134 in previous paper
+********* TODO Шафаревич "Основные понятия алгебры" ВИНИТИ 1985
+***** Books
+******* [[file:~/books/big/science/CompleteBooks/KacMoodyAlgebras/Кац,%20"Бесконечномерные%20алгебры%20Ли".djvu][Кац, "Бесконечномерные алгебры Ли"]]
+******* [[file:~/books/big/science/CompleteBooks/KacMoodyAlgebras/Wakimoto%20M.%20Infinite-dimensional%20Lie%20algebras%20(AMS,%202001)(KA)(ISBN%200821826549)(T)(337s)_MAr_.djvu][Wakimoto M. "Infinite-dimensional Lie algebras"]]
+***** Writings on applications in physics
+******* [[file:~/study/2009/AffineLieAlgabras_CFT/notes.tex][notes]]
+********* Write it
+	  CLOCK: [2009-03-01 Вск 18:52]--[2009-03-01 Вск 19:25] =>  0:33
+***** Computations
+******* Files and folders
+	[[file:~/programing/affine_svn][Main folder (SVN-controlled)]]
+	[[file:~/study/programs/affine][Older folder with Kac program and other staff]]
+******* Tasks
+********* DONE Write tests
+********* DONE Fix star construction
+********* Fix special cases
+*********** TODO A1
+*********** TODO G2
+********* TODO Fix Freudental computation
+********* TODO Fast star construction
+********* TODO Fix weights construction for twisted algebras
+******* Branching rules
+********* Some definitions
+********* TODO Write universal procedure for computation of multiplicities of positive roots
+********* TODO Briefly describe injection types (regular and special) and construction of such injections
+	  
+*** General education
+***** DONE Download   
+      [[file:~/books/big/science/CompleteBooks/PopularAndDiverse/Manin_MathAndPhys.djvu][Манин Ю.И.  Математика и физика Знание, 1979]]
+      SCHEDULED: <2009-02-04 Срд>
+***** DONE Окунь про E=mc^2
+*** Foreign institutions
+***** Uppsala string theory group
+******* Letters
+	[[gnus:INBOX#2078][Application for PhD position]]
+******* Files:
+	[[file:~/doc/aspirantura/uppsala.pdf][Announcement]]
+********* Application files
+	  [[file:~/doc/aspirantura][Folder of application files (diplomas, marks, letter, cv)]]		
+*** Conferences
+***** DONE [[http://www.pdmi.ras.ru/EIMI/2009/acsm/app.html][2009: Junior Workshop on Advanced Computer Simulation Methods]]
+******* DONE Prepare a talk
+***** TODO [[http://www.pdmi.ras.ru/EIMI/2009/tmp/index.html][2009: Symposium on Theoretical and Mathematical Physics]]
+***** TODO [[http://elementy.ru/events/428294][XVIII Международный коллоквиум по интегрируемым системам и квантовым симметриям ISQS—18]]
+***** MMCP 2009 
+******* [[http://mmcp2009.jinr.ru/abstracts.asp][Web site]]
+******* [[file:~/doc/conf/2009/MMCP][Folder with documents]]
+******* TODO Submit an abstract
+	 DEADLINE: <2009-05-20 Срд>
