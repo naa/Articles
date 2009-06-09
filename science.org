@@ -65,6 +65,7 @@ science.org
 ***** Wroclav
       [[mailto:borow@ift.uni.wroc.pl][Andrzej Borowiec]]
       [[mailto:anna.pachol@ift.uni.wroc.pl][Anna Pachol]]
+******* TODO Write to Anna
 *** Conferences
 ***** TODO [[http://www.pdmi.ras.ru/EIMI/2009/tmp/index.html][2009: Symposium on Theoretical and Mathematical Physics]]
 ***** TODO [[http://elementy.ru/events/428294][XVIII Международный коллоквиум по интегрируемым системам и квантовым симметриям ISQS—18]]
