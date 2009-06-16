@@ -4,6 +4,7 @@ Research program
 * Connection between affine Lie algebras and modular forms
 *** Modular forms <-> Prime numbers?
 ***** Affine lie algebras <-> Prime numbers ??
+*** TODO Take a look Тюрин А.Н.: "Квантование, классическая и квантовая теория поля и тета-функтсии"
 * Maple Program
 *** Expand to twisted algebras
 *** TODO Compute string functions for $A^{(2)}_2$
