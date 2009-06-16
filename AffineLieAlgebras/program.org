@@ -1,3 +1,4 @@
+;; -*- mode:Org; coding: utf-8; -*-
 program.org
 Research program
 * Connection between affine Lie algebras and Conformal Field Theory
@@ -10,7 +11,7 @@ Research program
 ********* TODO Connection of modular forms and elliptic curves
 ********* TODO Algorithms for prime numbers from elliptic curves
 ***** Affine lie algebras <-> Prime numbers ??
-*** TODO Take a look Тюрин А.Н.: "Квантование, классическая и квантовая теория поля и тета-функтсии"
+*** TODO Take a look п╒я▌я─п╦п╫ п░.п².: "п п╡п╟п╫я┌п╬п╡п╟п╫п╦п╣, п╨п╩п╟я│я│п╦я┤п╣я│п╨п╟я▐ п╦ п╨п╡п╟п╫я┌п╬п╡п╟я▐ я┌п╣п╬я─п╦я▐ п©п╬п╩я▐ п╦ я┌п╣я┌п╟-я└я┐п╫п╨я┌я│п╦п╦"
 * Maple Program
 *** Expand to twisted algebras
 *** TODO Compute string functions for $A^{(2)}_2$
