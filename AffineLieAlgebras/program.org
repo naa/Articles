@@ -3,6 +3,12 @@ Research program
 * Connection between affine Lie algebras and Conformal Field Theory
 * Connection between affine Lie algebras and modular forms
 *** Modular forms <-> Prime numbers?
+***** Take a look О. Н. Василенко "Теоретико-числовые алгоритмы в криптографии"
+******* TODO Write a detailed review/conjecture.
+********* TODO Macdonald paper
+********* TODO Book "Modular forms and affine lie algebras"
+********* TODO Connection of modular forms and elliptic curves
+********* TODO Algorithms for prime numbers from elliptic curves
 ***** Affine lie algebras <-> Prime numbers ??
 * Maple Program
 *** Expand to twisted algebras
@@ -10,4 +16,5 @@ Research program
 ***** TODO Check construction of weights according to books of Klimyk and Kac
 ***** TODO Introduce positive roots
 *** TODO Try folding of fan
+
 
