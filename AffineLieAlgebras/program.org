@@ -4,14 +4,14 @@ Research program
 * Connection between affine Lie algebras and Conformal Field Theory
 * Connection between affine Lie algebras and modular forms
 *** Modular forms <-> Prime numbers?
-***** Take a look О. Н. Василенко "Теоретико-числовые алгоритмы в криптографии"
+***** Take a look п·. п². п▓п╟я│п╦п╩п╣п╫п╨п╬ "п╒п╣п╬я─п╣я┌п╦п╨п╬-я┤п╦я│п╩п╬п╡я▀п╣ п╟п╩пЁп╬я─п╦я┌п╪я▀ п╡ п╨я─п╦п©я┌п╬пЁя─п╟я└п╦п╦"
 ******* TODO Write a detailed review/conjecture.
 ********* TODO Macdonald paper
 ********* TODO Book "Modular forms and affine lie algebras"
 ********* TODO Connection of modular forms and elliptic curves
 ********* TODO Algorithms for prime numbers from elliptic curves
 ***** Affine lie algebras <-> Prime numbers ??
-*** TODO Take a look Тюрин А.Н.: "Квантование, классическая и квантовая теория поля и тета-функтсии"
+*** TODO Take a look п╒я▌я─п╦п╫ п░.п².: "п п╡п╟п╫я┌п╬п╡п╟п╫п╦п╣, п╨п╩п╟я│я│п╦я┤п╣я│п╨п╟я▐ п╦ п╨п╡п╟п╫я┌п╬п╡п╟я▐ я┌п╣п╬я─п╦я▐ п©п╬п╩я▐ пц┌п╣я┌п╟-я└я┐п╫п╨я┌я│п╦п╦"
 * Maple Program
 *** Expand to twisted algebras
 *** TODO Compute string functions for $A^{(2)}_2$
