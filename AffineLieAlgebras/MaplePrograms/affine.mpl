@@ -133,7 +133,9 @@ local r,S,L;
         L:=substring(R,2..2);
         r:=parse(substring(R,3..-1));
         if L='A' then
-            if r mod 2 = 0 then
+            if r = 2 then
+                S:=[2,1];
+            elif r mod 2 = 0 then
                 S:=[seq(2,j=1..(r/2-1)),1,2];
             else
                 S:=[1,seq(2,j=1..(floor(r/2)-2)),1,1];
