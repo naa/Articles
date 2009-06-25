@@ -1,0 +1,912 @@
+%\input{tcilatex}
+
+
+\documentclass{article}
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Created=Fri Jun 19 20:51:42 2009}
+%TCIDATA{LastRevised=Thu Jun 25 14:37:27 2009}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+%\input{tcilatex}
+
+\begin{document}
+
+
+\section{\protect\bigskip Basic definitions and relations.}
+
+\bigskip
+
+Consider the affine Lie algebra $\frak{g}$ with the underlying
+finite-dimensional subalgebra $\overset{\circ }{\frak{g}}$ .
+
+The following notation will be used:
+
+$L^{\mu }$\ \ -- the integrable module of $\frak{g}$ with the highest weight
+$\mu $\ ;
+
+$r$ -- the rank of the algebra $\frak{g}$ ;
+
+$\Delta $ -- the root system; $\Delta ^{+}$ -- the positive root system for $%
+\frak{g}$ ;
+
+$\mathrm{mult}\left( \alpha \right) $ -- the multiplicity of the root $%
+\alpha $ in $\Delta $ ;
+
+$\overset{\circ }{\Delta }$ -- the finite root system of the subalgebra $%
+\overset{\circ }{\frak{g}}$ ;
+
+$\mathcal{N}^{\mu }$ -- the weight diagram of $L^{\mu }$ ;
+
+$W$ -- the corresponding Weyl group;
+
+$C^{\left( 0\right) }$ -- the fundamental Weyl chamber;
+
+$\overline{C_{k}^{\left( 0\right) }}$ -- the intersection of the closure of
+the fundamental Weyl chamber $C^{\left( 0\right) }$\ with the plane with
+fixed level $k=\mathrm{const}$ .
+
+$\rho $\ -- the Weyl vector;
+
+$\epsilon \left( w\right) :=\det \left( w\right) $ , $w \in W$;
+
+$\alpha _{i}$ -- the $i$-th simple root for $\frak{g}$ ; $i=0,\ldots ,r$ ;
+
+$\delta $ -- the imaginary root of $\frak{g}$ ;
+
+$\alpha _{i}^{\vee }$ -- the simple coroot for $\frak{g}$ , $i=0,\ldots ,r$ ;
+
+$\overset{\circ }{\xi }$ -- the finite (classical) part of the weight $\xi
+\in P$ ;
+
+$\lambda =\left( \overset{\circ }{\lambda };k;n\right) $ -- the
+decomposition of an affine weight indicating the finite part $\overset{\circ
+}{\lambda }$, level $k$ and grade $n$\ .
+
+$P$ -- the weight lattice;
+
+$Q$ -- the root lattice;
+
+$M:=$
+
+\noindent $=\left\{
+\begin{array}{c}
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}^{\vee }\text{ for untwisted algebras or }%
+A_{2r}^{\left( 2\right) }, \\
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}\text{ for }A_{r}^{\left( u\geq 2\right) }%
+\text{ and }A\neq A_{2r}^{\left( 2\right) },
+\end{array}
+\right\} ;$
+
+$\mathcal{E}$\ -- the group algebra of the group $P$ ;
+
+$\Theta _{\lambda }:=e^{-\frac{\left| \lambda \right| ^{2}}{2k}\delta
+}\sum\limits_{\alpha \in M}e^{t_{\alpha }\circ \lambda }$ -- the classical
+theta-function;
+
+$A_{\lambda }:=\sum\limits_{s\in \overset{\circ }{W}}\epsilon (s)\Theta
+_{s\circ \lambda }$ ;
+
+$\Psi ^{\left( \mu \right) }:=e^{\frac{\left| \mu +\rho \right| ^{2}}{2k}%
+\delta \ -\ \rho }A_{\mu +\rho }=$
+
+\noindent $=\sum\limits_{w\in W}\epsilon (w)e^{w\circ(\mu +\rho )-\rho }$ --
+the singular weight element for the $\frak{g}$-module $L^{\mu }$;
+
+$m_{\xi }^{\left( \mu \right) }$ -- the multiplicity of the weight $\xi \in
+P $ in the module $L^{\mu }$ ;
+
+$\mathrm{ch}\left( L^{\mu }\right) $ -- the formal character of $L^{\mu }$ ;
+
+$\mathrm{ch}\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ
+(\mu +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha
+}\right) ^{\mathrm{{mult}\left( \alpha \right) }}}=\frac{\Psi ^{\left( \mu
+\right) }}{\Psi ^{\left( 0\right) }}$ -- the Weyl-Kac formula;
+
+$R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
+mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }$ -- the denominator;
+
+$\max (\mu )$ -- the set of maximal weights of $L^{\mu }$ ;
+
+$\sigma _{\xi }^{\mu }\left( q\right) =\sum_{n=0}^{\infty }m_{\left( \xi
+-n\delta \right) }^{\left( \mu \right) }q^{n}$ -- the string function
+through the maximal weight $\xi $ .
+
+We shall use the recurrent property for the string coefficients that was
+found in the paper P.Kulish, V.Lyakhovsky, ''String functions for affinr Lie
+algebras integrable modules'', SIGMA, 4, (2008), 085, (arxiv: 0812.2381)).
+Let $\overline{C_{k;0}^{\left( 0\right) }}$ be the intersection of $%
+\overline{C_{k}^{\left( 0\right) }}$ with the plane $\delta =0$ , that is
+the ''classical'' part of the closure of the affine Weyl chamber at level $k$
+. For the extended string functions $\sigma _{j}^{\mu ,k}$ belonging to the $%
+\overline{C_{k}^{\left( 0\right) }}$ the sets$\Sigma _{k}^{\mu }$ and $\Xi
+_{k}^{\mu }$ were introduced:
+\begin{equation}
+\Sigma _{k}^{\mu }:=\left\{ \sigma _{j}^{\mu ,k}\mid j=1,\ldots ,p_{\max
+}^{\left( \mu \right) }\right\} .  \label{strings-for-mu}
+\end{equation}
+\begin{equation}
+\Xi _{k}^{\mu }:=\left\{ \xi =\pi \circ \zeta \mid \zeta \in \mathcal{Z}%
+_{k}^{\mu }\right\}  \label{maxes-for-mu}
+\end{equation}
+Let $L^{\mu }\left( \frak{g}\right) $ be the integrable highest weight
+module of $\frak{g}$, $\mu =\left( \overset{\circ }{\mu };k;0\right) $, $%
+p_{\max }^{\left( \mu \right) }:=\#\left( \Xi _{k}^{\mu }\right) $\ , $\xi
+_{j}=\left( \overset{\circ }{\xi _{j}};k;n_{j}\right) \in \Xi _{k}^{\mu
+}+n_{j}\delta $ , let $F\Psi \left( \overset{\circ }{\xi _{j}}\right) $ be
+the full folded fan for $\overset{\circ }{\xi _{j}}$ and $\eta _{j,s}\left(
+n\right) =-\sum_{\tilde{w}_{j,s},}\epsilon (\tilde{w}_{j,s})$ where the
+summation is over the elements $\tilde{w}_{j,s}$ of $W$ satisfying the
+equation $w_{\phi \left( \xi ,w\right) }\circ \left( \xi _{j}-\left( \tilde{w%
+}_{j,s}\circ \rho -\rho \right) \right) =\left( \overset{\circ }{\xi _{s}}%
+;k;n_{j}+n\right) ,$ then for the string function coefficients $%
+m_{s,n_{j}+n}^{\left( \mu \right) }$ the following recurrent relation holds:
+\begin{equation}
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\sum_{n=-n_{j}}^{0}\eta
+_{j,s}\left( n\right) m_{s,n_{j}+n}^{\left( \mu \right) }=-\delta _{\xi
+_{j},\mu }.  \label{recursion-prop-string}
+\end{equation}
+Suppose here $\overset{\circ }{\xi _{j}}=\mu $ and $n_{j}\neq 0$\ , then $%
+\xi $ cannot coincide with $\mu $\ and we have
+\begin{equation*}
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\sum_{n=-n_{j}}^{0}\eta
+_{j,s}\left( n\right) m_{s,n_{j}+n}^{\left( \mu \right) }=0.
+\end{equation*}
+We can multiply it by $q^{-n_{j}}$. The corresponding equations for other
+strings $\sigma _{i}^{\mu ,k},i\neq j$\ evidently have zeros in the r.h.s.
+and all of them can be multiplied by $q^{-n_{i}}$\ . Let us perform the
+summation
+\begin{eqnarray*}
+\sum_{n_{j}=1}^{-\infty }\sum_{s=1}^{p_{\max }^{\left( \mu \right)
+}}\sum_{n=-n_{j}}^{0}\eta _{j,s}\left( n\right)
+q^{-n_{j}}m_{s,n_{j}+n}^{\left( \mu \right) } &=&0, \\
+\sum_{n_{i}=0}^{-\infty }\sum_{s=1}^{p_{\max }^{\left( \mu \right)
+}}\sum_{n=-n_{i}}^{0}\eta _{i,s}\left( n\right)
+q^{-n_{i}}m_{s,n_{i}+n}^{\left( \mu \right) } &=&0.
+\end{eqnarray*}
+When $n_{j}=0$ that is $\xi =\mu $\ the recurrent relation degenerates into
+an obvious one
+\begin{equation*}
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\eta _{j,s}\left( 0\right)
+m_{s,0}^{\left( \mu \right) }=-1,
+\end{equation*}
+that can be joint with the first one. Thus the full set of relations is
+\begin{eqnarray*}
+\sum_{n_{j}=0}^{-\infty }\sum_{s=1}^{p_{\max }^{\left( \mu \right)
+}}\sum_{n=-n_{j}}^{0}\eta _{j,s}\left( n\right)
+q^{-n_{j}}m_{s,n_{j}+n}^{\left( \mu \right) } &=&-1, \\
+\sum_{n_{i}=0}^{-\infty }\sum_{s=1}^{p_{\max }^{\left( \mu \right)
+}}\sum_{n=-n_{i}}^{0}\eta _{i,s}\left( n\right)
+q^{-n_{i}}m_{s,n_{i}+n}^{\left( \mu \right) } &=&0.
+\end{eqnarray*}
+The new variable
+\begin{equation*}
+r_{i}=n_{i}+n.
+\end{equation*}
+can have the same limits as $n_{i}$ (due to the properties of $%
+m_{s,n_{j}+n}^{\left( \mu \right) }$):
+\begin{eqnarray*}
+\sum_{r_{j}=0}^{-\infty }\sum_{s=1}^{p_{\max }^{\left( \mu \right)
+}}\sum_{n=-n_{j}}^{0}q^{n}\eta _{j,s}\left( n\right)
+q^{-r_{j}}m_{s,r_{j}}^{\left( \mu \right) } &=&-1, \\
+\sum_{r_{i}=0}^{-\infty }\sum_{s=1}^{p_{\max }^{\left( \mu \right)
+}}\sum_{n=-n_{i}}^{0}q^{n}\eta _{i,s}\left( n\right)
+q^{-r_{i}}m_{s,r_{i}}^{\left( \mu \right) } &=&0.
+\end{eqnarray*}
+thus we get
+\begin{eqnarray*}
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\sum_{n=-n_{j}}^{0}q^{n}\eta
+_{j,s}\left( n\right) \sigma _{s}^{\mu } &=&-1, \\
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\sum_{n=-n_{i}}^{0}q^{n}\eta
+_{i,s}\left( n\right) \sigma _{s}^{\mu } &=&0.
+\end{eqnarray*}
+Now the summation limits for $n$\ can be extended (due to the properties of $%
+\eta _{j,s}\left( n\right) $) and the final system of relations for the
+string functions is obtained
+\begin{eqnarray*}
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\sigma _{s}^{\mu
+}\sum_{n=0}^{\infty }q^{n}\eta _{j,s}\left( n\right) &=&-1, \\
+\sum_{s=1}^{p_{\max }^{\left( \mu \right) }}\sigma _{s}^{\mu
+}\sum_{n=0}^{\infty }q^{n}\eta _{i,s}\left( n\right) &=&0. \\
+i &=&1,2,\ldots ,\widehat{j},\ldots ,p_{\max }^{\left( \mu \right) }
+\end{eqnarray*}
+
+\section{Example}
+
+Consider $\frak{g}=A_{2}^{\left( 2\right) }$.\ The fan of the injection $%
+\frak{h}\rightarrow \frak{g}$ consists of the sets
+\begin{equation*}
+\left\{
+\begin{array}{c}
+\left( -3p,0,-\frac{3}{2}p^{2}+\frac{1}{2}p;+1\right) \\
+\left( -3p-1,0,-\frac{3}{2}p^{2}-\frac{1}{2}p;-1\right)
+\end{array}
+\right\} _{p\in \mathbf{Z}},
+\end{equation*}
+(the last coordinate is the anomalous multiplicity of the fan weights). In
+the level $K=3$\ we have one congruence class comprising two highest weight
+integrable modules, with $\mu =\frac{1}{2}e_{1}$ and $\mu =\frac{3}{2}e_{1}$%
+. Consider the fan glissing (with the parameter $n$) along the strings $%
+\left\{ \sigma _{i}^{\mu }\mid i=1,2\right\} $\ contained in the chamber $%
+\overline{C_{k}^{\left( 0\right) }}$\ . For $i=1$ $\left( \mu =\frac{1}{2}%
+e_{1}\right) $ we get
+\begin{equation*}
+\left\{
+\begin{array}{c}
+\left( 3p+\frac{3}{2},3,\frac{3}{2}p^{2}+\frac{1}{2}p-n;+1\right) \\
+\left( 3p+\frac{1}{2},3,\frac{3}{2}p^{2}-\frac{1}{2}p-n;-1\right)
+\end{array}
+\right\} ,
+\end{equation*}
+and for $i=2$ $\left( \mu =\frac{3}{2}e_{1}\right) $ --
+\begin{equation*}
+\left\{
+\begin{array}{c}
+\left( 3p+\frac{5}{2},3,\frac{3}{2}p^{2}+\frac{1}{2}p-n;+1\right) \\
+\left( 3p+\frac{3}{2},3,\frac{3}{2}p^{2}-\frac{1}{2}p-n;-1\right)
+\end{array}
+\right\} ,
+\end{equation*}
+here $p\in \mathbf{Z,\quad }n\in \mathbf{Z}_{+}\mathbf{.}$\
+
+To get the folded fans in these two positions we are to act by the $W\left(
+A_{2}^{\left( 2\right) }\right) $ group transformations (parameterised by $%
+q\in \mathbf{Z}$ ) on the corresponding shifted unfolded fans. The folded
+sets are presented below (In the square brackets the first row is
+transformed by the pure translations, the second -- by translations with the
+classical reflections.) For the first fan --
+\begin{equation*}
+\widetilde{\widetilde{F\Psi }}_{1}=\left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+\left( 3p+\frac{3}{2}-3q,3,\frac{3}{2}p^{2}+\frac{1}{2}p-n+\frac{3}{2}q-%
+\frac{3}{2}q^{2}+3pq;+1\right) \\
+\left( -3p-\frac{3}{2}-3q,3,\frac{3}{2}p^{2}+\frac{1}{2}p-n-\frac{3}{2}q-%
+\frac{3}{2}q^{2}-3pq;+1\right)
+\end{array}
+\right] \\
+\left[
+\begin{array}{c}
+\left( 3p+\frac{1}{2}-3q,3,\frac{3}{2}p^{2}-\frac{1}{2}p-n+\frac{1}{2}q-%
+\frac{3}{2}q^{2}+3pq;-1\right) \\
+\left( -3p-\frac{1}{2}-3q,3,\frac{3}{2}p^{2}-\frac{1}{2}p-n-\frac{1}{2}q-%
+\frac{3}{2}q^{2}-3pq;-1\right)
+\end{array}
+\right]
+\end{array}
+\right\} .
+\end{equation*}
+and for the second fan
+\begin{equation*}
+\widetilde{\widetilde{F\Psi }}_{2}=\left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+\left( 3p+\frac{5}{2}-3q,3,\frac{3}{2}p^{2}+\frac{1}{2}p-n+\frac{5}{2}q-%
+\frac{3}{2}q^{2}+3pq;+1\right) \\
+\left( -3p-\frac{5}{2}-3q,3,\frac{3}{2}p^{2}+\frac{1}{2}p-n-\frac{5}{2}q-%
+\frac{3}{2}q^{2}+3pq;+1\right)
+\end{array}
+\right] \\
+\left[
+\begin{array}{c}
+\left( 3p+\frac{3}{2}-3q,3,\frac{3}{2}p^{2}-\frac{1}{2}p-n+\frac{3}{2}q-%
+\frac{3}{2}q^{2}+3pq;-1\right) \\
+\left( -3p-\frac{3}{2}-3q,3,\frac{3}{2}p^{2}-\frac{1}{2}p-n-\frac{3}{2}q-%
+\frac{3}{2}q^{2}-3pq;-1\right)
+\end{array}
+\right]
+\end{array}
+\right\}
+\end{equation*}
+We are interested only on the vectors in the $\overline{C_{k}^{\left(
+0\right) }}\cap P.$ Impose the conditions
+\begin{equation*}
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{1}{2}%
+\quad or\quad \frac{3}{2}.
+\end{equation*}
+There are the following solutions:
+\begin{equation*}
+\mathrm{for}\quad \widetilde{\widetilde{F\Psi }}_{1}=\left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{3}{2}%
+\quad =>\quad q=p, \\
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{3}{2}%
+\quad =>\quad q=-p-1,=>\quad \left(
+\begin{array}{c}
+\mathrm{the\quad same\quad vectors,} \\
+\mathrm{to\quad be\quad ignored}
+\end{array}
+\right)
+\end{array}
+\right] \\
+\left[
+\begin{array}{c}
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{1}{2}%
+\quad =>\quad q=p, \\
+\left( \mathrm{no\quad solutions}\right)
+\end{array}
+\right]
+\end{array}
+\right\}
+\end{equation*}
+\begin{equation*}
+\mathrm{for}\quad \widetilde{\widetilde{F\Psi }}_{2}=>\left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+\left( \mathrm{no\quad solutions}\right) \\
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{1}{2}%
+\quad =>\quad q=-p-1,
+\end{array}
+\right] \\
+\left[
+\begin{array}{c}
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{3}{2}%
+\quad =>\quad q=p,=>\left(
+\begin{array}{c}
+\mathrm{the\quad same\quad vectors,} \\
+\mathrm{to\quad be\quad ignored}
+\end{array}
+\right) \\
+\left( \overset{\circ }{\widetilde{\widetilde{f\psi }}}\right) =\frac{3}{2}%
+\quad =>\quad q=-p-1.
+\end{array}
+\right]
+\end{array}
+\right\} .
+\end{equation*}
+
+Notice that both sets can be obtained by applying only the transformations
+from one class of elements in the group $W\left( A_{2}^{\left( 2\right)
+}\right) $ : the pure translations in the first fan and the translations
+with reflections in the second. The subscription ''the same vectors, to be
+ignored'' signify that the solution leads finally to the set of folded
+vectors bequivalent to the second sets in the same square brackets. This
+effect is due to the nontrivial stability subgroup $W_{\xi }\approx Z_{2}$
+corresponding to the fixed solution of the Diafantine equations and the set
+of vectors that are are included in the fan can be considered as obtained by
+applying the representatives of the factor-space $W/W_{\xi }$.
+
+Substituting the solutions of the Diafantine equations into the sets of
+corresponding folded vectors we obtain the two folded fans:
+\begin{equation*}
+F\Psi _{1}=\left\{
+\begin{array}{c}
+\left[ \frac{1}{2},3,3p^{2}-n;-1\right] \\
+\left[ \frac{3}{2},3,3p^{2}+2p-n;+1\right]
+\end{array}
+\right\}
+\end{equation*}
+\begin{equation*}
+F\Psi _{2}=\left\{
+\begin{array}{c}
+\left[ \frac{1}{2},3,3p^{2}+3p-n+1;+1\right] \\
+\left[ \frac{3}{2},3,3p^{2}+p-n;-1\right]
+\end{array}
+\right\}
+\end{equation*}
+These equations lead to the recurrent relation for the string coefficients:
+\begin{equation*}
++\sum_{p}\left( \sigma _{2}^{\frac{3}{2}}\right)
+_{n-3p^{2}-2p}-\sum_{p}\left( \sigma _{1}^{\frac{3}{2}}\right)
+_{n-3p^{2}}=\delta _{n,0};
+\end{equation*}
+\begin{equation*}
+-\sum_{p}\left( \sigma _{2}^{\frac{3}{2}}\right)
+_{n-3p^{2}-p}+\sum_{p}\left( \sigma _{1}^{\frac{3}{2}}\right)
+_{n-3p^{2}-3p-1}=0;
+\end{equation*}
+According to the general algorithm one must extract the $n=0$ equation from
+the first set of relations, multiply both sets by $q^{n}$ , sum over $n$ and
+return the $n=0$ equation. The result is
+\begin{equation*}
++\sum_{n=0}^{\infty }q^{n}\sum_{p}\left( \sigma _{2}^{\frac{3}{2}}\right)
+_{n-3p^{2}-2p}-\sum_{n=0}^{\infty }q^{n}\sum_{p}\left( \sigma _{1}^{\frac{3}{%
+2}}\right) _{n-3p^{2}}=1;
+\end{equation*}
+\begin{equation*}
+-\sum_{n=0}^{\infty }q^{n}\sum_{p}\left( \sigma _{2}^{\frac{3}{2}}\right)
+_{n-3p^{2}-p}+\sum_{n=0}^{\infty }q^{n}\sum_{p}\left( \sigma _{1}^{\frac{3}{2%
+}}\right) _{n-3p^{2}-3p-1}=0;
+\end{equation*}
+Now shift the variable $n$ , in each sum this is performed separately with
+\begin{eqnarray*}
+n &=&k+3p^{2}+2p;\quad n=k+3p^{2}; \\
+n &=&k+3p^{2}+p;\quad n=k+3p^{2}+3p+1;
+\end{eqnarray*}
+Originally in the recurrent relations the summation over $p$ is finite and
+we can chang the order of summations,
+\begin{equation*}
++\sum_{p}q^{3p^{2}+2p}\sum_{n=0}^{\infty }q^{k}\left( \sigma _{2}^{\frac{3}{2%
+}}\right) _{k}-\sum_{p}q^{3p^{2}}\sum_{n=0}^{\infty }q^{k}\left( \sigma
+_{1}^{\frac{3}{2}}\right) _{k}=1;
+\end{equation*}
+\begin{equation*}
+-\sum_{p}q^{3p^{2}+p}\sum_{n=0}^{\infty }q^{k}\left( \sigma _{2}^{\frac{3}{2}%
+}\right) _{k}+\sum_{p}q^{3p^{2}+3p+1}\sum_{n=0}^{\infty }q^{k}\left( \sigma
+_{1}^{\frac{3}{2}}\right) _{k}=0;
+\end{equation*}
+Now remember that our second string starts with zero. To obtain the relation
+for the canonical string functions we must shift the numbers of the
+coefficients for $\sigma _{2}^{\frac{3}{2}}$ by the unity. The final result
+is the following relations for string functions for the representation $%
+L^{\omega _{0}+\omega _{1}}(A_{2}^{\left( 2\right) })$ :
+\begin{equation*}
++\sum_{p}q^{3p^{2}+2p+1}\sigma _{2}-\sum_{p}q^{3p^{2}}\sigma _{1}=1;
+\end{equation*}
+\begin{equation*}
+-\sum_{p}q^{3p^{2}+p+1}\sigma _{2}+\sum_{p}q^{3p^{2}+3p+1}\sigma _{1}=0;
+\end{equation*}
+
+\section{The general treatment. An arbitrary module of $A_{2}^{\left(
+2\right) }$.}
+
+Use the fan presented in the previous section.
+
+For each level we have two congruence classes: ''vector'',
+\begin{equation*}
+\overset{\circ }{\xi }=0,1,\ldots ,\left\{
+\begin{array}{c}
+K\qquad \mathrm{for\quad }K\mathrm{\quad even} \\
+K-\frac{1}{2}\qquad \mathrm{for\quad }K\mathrm{\quad odd}
+\end{array}
+\right. ,
+\end{equation*}
+and ''spinor'',
+\begin{equation*}
+\overset{\circ }{\xi }=\frac{1}{2},\frac{3}{2},\ldots ,\left\{
+\begin{array}{c}
+K-\frac{1}{2}\qquad \mathrm{for\quad }K\mathrm{\quad even} \\
+K\qquad \mathrm{for\quad }K\mathrm{\quad odd}
+\end{array}
+\right. .
+\end{equation*}
+Enumerate the elements in these classes: ''vector'',
+\begin{equation*}
+j_{v}=1,2,\ldots ,\left\{
+\begin{array}{c}
+\frac{K}{2}+1\qquad \mathrm{for\quad }K\mathrm{\quad even} \\
+\frac{K+1}{2}\qquad \mathrm{for\quad }K\mathrm{\quad odd}
+\end{array}
+\right. \quad \mathrm{with}\quad \overset{\circ }{\xi }=j_{v}-1;
+\end{equation*}
+and ''spinor'',
+\begin{equation*}
+j_{s}=1,2,\ldots ,\left\{
+\begin{array}{c}
+\frac{K}{2}\qquad \mathrm{for\quad }K\mathrm{\quad even} \\
+\frac{K+1}{2}\qquad \mathrm{for\quad }K\mathrm{\quad odd}
+\end{array}
+\right. \quad \mathrm{with}\quad \overset{\circ }{\xi }=j_{s}-\frac{1}{2};.
+\end{equation*}
+Consider the fan glissing (with the parameter $n$) along the ''vector''
+string $\sigma _{j_{v}}$,
+\begin{equation*}
+\widetilde{\widetilde{F\Psi }}\left( j_{v}\right) =\left\{
+\begin{array}{c}
+\left( 3p+j_{v},K,\frac{3}{2}p^{2}+\frac{1}{2}p-n;+1\right)  \\
+\left( 3p+j_{v}-1,K,\frac{3}{2}p^{2}-\frac{1}{2}p-n;-1\right)
+\end{array}
+\right\} ,
+\end{equation*}
+(as it was done in the example we write down ''positive'' and ''negative''
+elements separately); and along the ''spinor'' string $\sigma _{j_{v}}$,
+\begin{equation*}
+\widetilde{\widetilde{F\Psi }}\left( j_{s}\right) =\left\{
+\begin{array}{c}
+\left( 3p+j_{s}+\frac{1}{2},K,\frac{3}{2}p^{2}+\frac{1}{2}p-n;+1\right)  \\
+\left( 3p+j_{v}-\frac{1}{2},K,\frac{3}{2}p^{2}-\frac{1}{2}p-n;-1\right)
+\end{array}
+\right\} .
+\end{equation*}
+Applying the Weyl transformations (parameterised with an integer $q$ , the
+translations are performed along the vector $q\widehat{\theta }_{0}$ and the
+same including the classical reflection in the second rows) we get
+\begin{equation*}
+\widetilde{\widetilde{F\Psi }}\left( j_{v}\right) =\left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+\left( 3p+j_{v}-Kq,K,\frac{3}{2}p^{2}+\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}+3pq+qj_{v};+1\right)  \\
+\left( -3p-j_{v}-Kq,K,\frac{3}{2}p^{2}+\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}-3pq-qj_{v};+1\right)
+\end{array}
+\right]  \\
+\left[
+\begin{array}{c}
+\left( 3p+j_{v}-Kq-1,K,\frac{3}{2}p^{2}-\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}+3pq+qj_{v}-q;-1\right)  \\
+\left( -3p-j_{v}-Kq+1,K,\frac{3}{2}p^{2}-\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}-3pq-qj_{v}+q;-1\right)
+\end{array}
+\right]
+\end{array}
+\right\} ,
+\end{equation*}
+and
+\begin{equation*}
+\widetilde{\widetilde{F\Psi }}\left( j_{s}\right) =\left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+\left( 3p+j_{s}-Kq+\frac{1}{2},K,\frac{3}{2}p^{2}+\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}+3pq+qj_{s}+\frac{1}{2}q;+1\right)  \\
+\left( -3p-j_{s}-Kq-\frac{1}{2},K,\frac{3}{2}p^{2}+\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}-3pq-qj_{s}-\frac{1}{2}q;+1\right)
+\end{array}
+\right]  \\
+\left[
+\begin{array}{c}
+\left( 3p+j_{s}-Kq-\frac{1}{2},K,\frac{3}{2}p^{2}-\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}+3pq+qj_{s}-\frac{1}{2}q;-1\right)  \\
+\left( -3p-j_{s}-Kq+\frac{1}{2},K,\frac{3}{2}p^{2}-\frac{1}{2}p-n-\frac{1}{2}%
+Kq^{2}-3pq-qj_{s}+\frac{1}{2}q;-1\right)
+\end{array}
+\right]
+\end{array}
+\right\} ,
+\end{equation*}
+Now let $j_{v}^{\prime }$\ and $j_{s}^{\prime }$ be the numbers of the
+strings obtained via the folded fan shift : let $f\psi \in \widetilde{%
+\widetilde{F\Psi }}\left( j_{v}\right) $ (correspondingly $\in \widetilde{%
+\widetilde{F\Psi }}\left( j_{s}\right) $) and $\xi \in \sigma _{j_{v}}$
+(correspondingly $\in \sigma _{j_{s}}$) then $\xi +f\psi \in \sigma
+_{j_{v}^{\prime }}$\ (correspondingly $\in \sigma _{j_{s}^{\prime }}$). The
+latter means that the following Diafantine conditions are to be fulfilled;
+the conditions are written in the same order as in the previous sets of
+vectors, four for the vector:
+\begin{equation*}
+\mathrm{for}\quad \widetilde{\widetilde{F\Psi }}\left( j_{v}\right) \quad
+\rightarrow \left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+q=\frac{1}{K}\left( 3p+j_{v}-j_{v}^{\prime }+1\right) , \\
+q=\frac{1}{K}\left( -3p-j_{v}-j_{v}^{\prime }+1\right) ,
+\end{array}
+\right]  \\
+\left[
+\begin{array}{c}
+q=\frac{1}{K}\left( 3p+j_{v}-j_{v}^{\prime }\right) , \\
+q=\frac{1}{K}\left( -3p-j_{v}-j_{v}^{\prime }+2\right) ,
+\end{array}
+\right]
+\end{array}
+\right\} ,
+\end{equation*}
+and four for the spinor fans:
+\begin{equation*}
+\mathrm{for}\quad \widetilde{\widetilde{F\Psi }}\left( j_{s}\right) \quad
+\rightarrow \left\{
+\begin{array}{c}
+\left[
+\begin{array}{c}
+q=\frac{1}{K}\left( 3p+j_{s}-j_{s}^{\prime }+1\right) , \\
+q=\frac{1}{K}\left( -3p-j_{s}-j_{s}^{\prime }\right) ,
+\end{array}
+\right]  \\
+\left[
+\begin{array}{c}
+q=\frac{1}{K}\left( 3p+j_{s}-j_{s}^{\prime }\right) , \\
+q=\frac{1}{K}\left( -3p-j_{s}-j_{s}^{\prime }+1\right) ,
+\end{array}
+\right]
+\end{array}
+\right\} .
+\end{equation*}
+Substituting these solutions into the vectors of the corresponding sets $%
+\widetilde{\widetilde{F\Psi }}\left( j_{v}\right) $\ and $\widetilde{%
+\widetilde{F\Psi }}\left( j_{s}\right) $ we obtain the following result: in
+each square brackets the sets in the upper line coincides with the set in
+the lower line. As we have seen in the previous example this means that
+either one of the two conditions has no solutions, or the solutions are
+really duplicated due to the existence of the stability subgroup $W_{\xi
+}\approx Z_{2}$. Whatever the reason is we are to take into account one and
+the only set of solutions, in other words we are to ignore one of the two
+lines. The fans are constructed:
+\begin{multline*}
+F\Psi \left( j_{v}\right) = \\
+=\left\{
+\begin{array}{c}
+\left(
+\begin{array}{c}
+\left( {}\right. j_{v}^{\prime }-1,K, \\
+\frac{3}{2}p^{2}+\frac{1}{2}p-n+\frac{1}{2K}\left(
+9p^{2}+6pj_{v}+j_{v}^{2}-j_{v}^{\prime 2}+2j_{v}^{\prime }-1\right)
+;+1\left. {}\right)
+\end{array}
+\right)  \\
+\left(
+\begin{array}{c}
+\left( {}\right. j_{v}^{\prime }-1,K, \\
+\frac{3}{2}p^{2}-\frac{1}{2}p-n+\frac{1}{2K}\left(
+9p^{2}+6pj_{v}-6p+j_{v}^{2}-j_{v}^{\prime 2}-2j_{v}+2j_{v}^{\prime }\right)
+;-1\left. {}\right)
+\end{array}
+\right)  \\
+j_{v}^{\prime }=1,2,\ldots ,\left\{
+\begin{array}{c}
+\frac{K}{2}+1\qquad \mathrm{for\quad }K\mathrm{\quad even} \\
+\frac{K+1}{2}\qquad \mathrm{for\quad }K\mathrm{\quad odd}
+\end{array}
+\right.
+\end{array}
+\right\} ,
+\end{multline*}
+\begin{multline*}
+F\Psi \left( j_{s}\right) = \\
+=\left\{
+\begin{array}{c}
+\left(
+\begin{array}{c}
+\left( {}\right. j_{s}^{\prime }-\frac{1}{2},K, \\
+\frac{3}{2}p^{2}+\frac{1}{2}p-n+\frac{1}{2K}\left(
+9p^{2}+6pj_{s}+3p+j_{s}^{2}-j_{s}^{\prime 2}+j_{s}+j_{s}^{\prime }\right)
+;+1\left. {}\right)
+\end{array}
+\right)  \\
+\left(
+\begin{array}{c}
+\left( {}\right. j_{s}^{\prime }-\frac{1}{2},K, \\
+\frac{3}{2}p^{2}-\frac{1}{2}p-n+\frac{1}{2K}\left(
+9p^{2}+6pj_{s}-3p+j_{s}^{2}-j_{s}^{\prime 2}-j_{s}+j_{s}^{\prime }\right)
+;-1\left. {}\right)
+\end{array}
+\right)  \\
+j_{s}=1,2,\ldots ,\left\{
+\begin{array}{c}
+\frac{K}{2}\qquad \mathrm{for\quad }K\mathrm{\quad even} \\
+\frac{K+1}{2}\qquad \mathrm{for\quad }K\mathrm{\quad odd}
+\end{array}
+\right.
+\end{array}
+\right\} .
+\end{multline*}
+
+To simplify the expressions let us introduce the following notations:
+
+\begin{eqnarray*}
+V^{+} &=&\frac{1}{2}\left( 3p^{2}+p+\frac{1}{K}\left(
+9p^{2}+6pj_{v}+j_{v}^{2}-j_{v}^{\prime 2}+2j_{v}^{\prime }-1\right) \right) ,
+\\
+V^{-} &=&\frac{1}{2}\left( 3p^{2}-p+\frac{1}{K}\left(
+9p^{2}+6pj_{v}-6p+j_{v}^{2}-j_{v}^{\prime 2}-2j_{v}+2j_{v}^{\prime }\right)
+\right) , \\
+W^{+} &=&\frac{1}{2}\left( 3p^{2}+p+\frac{1}{K}\left(
+9p^{2}+6pj_{s}+3p+j_{s}^{2}-j_{s}^{\prime 2}+j_{s}+j_{s}^{\prime }\right)
+\right) , \\
+W^{-} &=&\frac{1}{2}\left( 3p^{2}-p+\frac{1}{K}\left(
+9p^{2}+6pj_{s}-3p+j_{s}^{2}-j_{s}^{\prime 2}-j_{s}+j_{s}^{\prime }\right)
+\right) .
+\end{eqnarray*}
+Let
+\begin{eqnarray*}
+V\left( p,j_{v},j_{v}^{\prime }\right)  &=&V^{+}-\frac{1}{2}\left( p-\frac{1%
+}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right)  \\
+&=&V^{-}+\frac{1}{2}\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right)
+\right) , \\
+W\left( p,j_{s},j_{s}^{\prime }\right)  &=&W^{+}-\frac{1}{2}\left( p+\frac{1%
+}{K}\left( +3p+j_{s}\right) \right)  \\
+&=&W^{-}+\frac{1}{2}\left( p+\frac{1}{K}\left( +3p+j_{s}\right) \right) .
+\end{eqnarray*}
+In these terms:
+
+\begin{equation*}
+F\Psi \left( j_{v}\right) =\left\{
+\begin{array}{c}
+\left( j_{v}^{\prime }-1,K,V\left( p,j_{v},j_{v}^{\prime }\right) +\frac{1}{2%
+}\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right)
+-n;+1\right)  \\
+\left( j_{v}^{\prime }-1,K,V\left( p,j_{v},j_{v}^{\prime }\right) -\frac{1}{2%
+}\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right)
+-n;-1\right)
+\end{array}
+\right\}
+\end{equation*}
+and
+\begin{equation*}
+F\Psi \left( j_{s}\right) =\left\{
+\begin{array}{c}
+\left( j_{s}^{\prime }-\frac{1}{2},K,W\left( p,j_{s},j_{s}^{\prime }\right) +%
+\frac{1}{2}\left( p+\frac{1}{K}\left( j_{s}+3p\right) \right) -n;+1\right)
+\\
+\left( j_{s}^{\prime }-\frac{1}{2},K,W\left( p,j_{s},j_{s}^{\prime }\right) -%
+\frac{1}{2}\left( p+\frac{1}{K}\left( j_{s}+3p\right) \right) -n;-1\right)
+\end{array}
+\right\} .
+\end{equation*}
+
+Using the folded fans we can write down the recurrent relations for the
+coefficients of the ''vector'' and ''spinor'' strings ($\sigma
+_{j_{v}^{\prime }}^{\mu }$\ when $\mu $\ is in the vector class and $\sigma
+_{j_{s}^{\prime }}^{\mu }$\ for the spinor highest weight):
+\begin{equation*}
+\sum_{jv^{\prime }}\sum_{p=-\infty }^{+\infty }\left( \sigma _{j_{v}^{\prime
+}}^{\mu }\right) _{n-V\left( p,j_{v},j_{v}^{\prime }\right) -\frac{1}{2}%
+\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right)
+}-\sum_{jv^{\prime }}\sum_{p=-\infty }^{+\infty }\left( \sigma
+_{j_{v}^{\prime }}^{\mu }\right) _{n-V\left( p,j_{v},j_{v}^{\prime }\right) +%
+\frac{1}{2}\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right)
+}=\delta _{\mu ,j_{v}},
+\end{equation*}
+\begin{equation*}
+\sum_{js^{\prime }}\sum_{p=-\infty }^{+\infty }\left( \sigma _{j_{s}^{\prime
+}}^{\mu }\right) _{n-W\left( p,j_{s},j_{s}^{\prime }\right) -\frac{1}{2}%
+\left( p+\frac{1}{K}\left( j_{s}+3p\right) \right) }-\sum_{js^{\prime
+}}\sum_{p=-\infty }^{+\infty }\left( \sigma _{j_{s}^{\prime }}^{\mu }\right)
+_{n-W\left( p,j_{v},j_{s}^{\prime }\right) +\frac{1}{2}\left( p+\frac{1}{K}%
+\left( j_{s}+3p\right) \right) }=\delta _{\mu ,j_{s}.}
+\end{equation*}
+Here $\sigma _{j_{v}^{\prime }}^{\mu }$\ and $\sigma _{j_{s}^{\prime }}^{\mu
+}$ are the modified strings, they all start at the zero grade weights and
+have zero coefficients for in the weights greater than the corresponding
+maximal weights of the module.
+
+Multiply the above relations by the $n$-th power of the variable $q$ ,sum
+over $n$:
+\begin{multline*}
+\sum_{n=0}^{\infty }\sum_{jv^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{n}\left( \sigma _{j_{v}^{\prime }}^{\mu }\right) _{n-V\left(
+p,j_{v},j_{v}^{\prime }\right) -\frac{1}{2}\left( p-\frac{1}{K}\left(
+-j_{v}-3p+\frac{1}{2}\right) \right) }- \\
+-\sum_{n=0}^{\infty }\sum_{jv^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{n}\left( \sigma _{j_{v}^{\prime }}^{\mu }\right) _{n-V\left(
+p,j_{v},j_{v}^{\prime }\right) +\frac{1}{2}\left( p-\frac{1}{K}\left(
+-j_{v}-3p+\frac{1}{2}\right) \right) }=\delta _{\mu ,j_{v}},
+\end{multline*}
+\begin{multline*}
+\sum_{n=0}^{\infty }\sum_{js^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{n}\left( \sigma _{j_{s}^{\prime }}^{\mu }\right) _{n-W\left(
+p,j_{s},j_{s}^{\prime }\right) -\frac{1}{2}\left( p+\frac{1}{K}\left(
+j_{s}+3p\right) \right) }- \\
+-\sum_{n=0}^{\infty }\sum_{js^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{n}\left( \sigma _{j_{s}^{\prime }}^{\mu }\right) _{n-W\left(
+p,j_{v},j_{s}^{\prime }\right) +\frac{1}{2}\left( p+\frac{1}{K}\left(
+j_{s}+3p\right) \right) }=\delta _{\mu ,j_{s}.}
+\end{multline*}
+
+For each sum define the new parameter:
+\begin{eqnarray*}
+k &=&n-V\left( p,j_{v},j_{v}^{\prime }\right) -\frac{1}{2}\left( p-\frac{1}{K%
+}\left( -j_{v}-3p+\frac{1}{2}\right) \right) , \\
+k &=&n-V\left( p,j_{v},j_{v}^{\prime }\right) +\frac{1}{2}\left( p-\frac{1}{K%
+}\left( -j_{v}-3p+\frac{1}{2}\right) \right) , \\
+k &=&n-W\left( p,j_{s},j_{s}^{\prime }\right) -\frac{1}{2}\left( p+\frac{1}{K%
+}\left( j_{s}+3p\right) \right) , \\
+k &=&n-W\left( p,j_{v},j_{s}^{\prime }\right) +\frac{1}{2}\left( p+\frac{1}{K%
+}\left( j_{s}+3p\right) \right) .
+\end{eqnarray*}
+Passing to the summation over $k$ it is possible to define for $k$ the
+limits $\left[ 0,\infty \right) $ because $k$\ is a string indice (and
+supposed to be integer) and $\sigma _{k}$\ for the other values are
+definitely zero's.
+\begin{multline*}
+\sum_{k=0}^{\infty }\sum_{jv^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{k+V\left( p,j_{v},j_{v}^{\prime }\right) +\frac{1}{2}\left( p-\frac{1}{K}%
+\left( -j_{v}-3p+\frac{1}{2}\right) \right) }\left( \sigma _{j_{v}^{\prime
+}}^{\mu }\right) _{k}- \\
+-\sum_{k=0}^{\infty }\sum_{jv^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{k+V\left( p,j_{v},j_{v}^{\prime }\right) -\frac{1}{2}\left( p-\frac{1}{K}%
+\left( -j_{v}-3p+\frac{1}{2}\right) \right) }\left( \sigma _{j_{v}^{\prime
+}}^{\mu }\right) _{k}=\delta _{\mu ,j_{v}},
+\end{multline*}
+\begin{multline*}
+\sum_{k=0}^{\infty }\sum_{js^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{k+W\left( p,j_{s},j_{s}^{\prime }\right) +\frac{1}{2}\left( p+\frac{1}{K}%
+\left( j_{s}+3p\right) \right) }\left( \sigma _{j_{s}^{\prime }}^{\mu
+}\right) _{k}- \\
+-\sum_{k=0}^{\infty }\sum_{js^{\prime }}\sum_{p=-\infty }^{+\infty
+}q^{k+W\left( p,j_{v},j_{s}^{\prime }\right) -\frac{1}{2}\left( p+\frac{1}{K}%
+\left( j_{s}+3p\right) \right) }\left( \sigma _{j_{s}^{\prime }}^{\mu
+}\right) _{k}=\delta _{\mu ,j_{s}.}
+\end{multline*}
+Redressing the summations we obtain the relations for the string functions:
+\begin{equation*}
+\sum_{jv^{\prime }}\sigma _{j_{v}^{\prime }}^{\mu }\sum_{p=-\infty
+}^{+\infty }q^{V\left( p,j_{v},j_{v}^{\prime }\right) }\left( q^{\frac{1}{2}%
+\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right) }-q^{-\frac{1%
+}{2}\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}\right) \right) }\right)
+=\delta _{\mu ,j_{v}},
+\end{equation*}
+\begin{equation*}
+\sum_{js^{\prime }}\sigma _{j_{s}^{\prime }}^{\mu }\sum_{p=-\infty
+}^{+\infty }q^{W\left( p,j_{s},j_{s}^{\prime }\right) }\left( q^{\frac{1}{2}%
+\left( p+\frac{1}{K}\left( j_{s}+3p\right) \right) }-q^{-\frac{1}{2}\left( p+%
+\frac{1}{K}\left( j_{s}+3p\right) \right) }\right) =\delta _{\mu ,j_{s}.}
+\end{equation*}
+
+These relations can be modified further by selecting different summands in
+the powers $V\left( p,j_{v},j_{v}^{\prime }\right) $\ and $W\left(
+p,j_{s},j_{s}^{\prime }\right) $\ :
+\begin{eqnarray*}
+V\left( p,j_{v},j_{v}^{\prime }\right)  &=&V\left( p,j_{v}\right) +V\left(
+j_{v},j_{v}^{\prime }\right) ;\quad \left\{
+\begin{array}{c}
+V\left( p,j_{v}\right) =\frac{3}{2}p^{2}+\frac{1}{2K}\left(
+9p^{2}+6pj_{v}-3p\right) ; \\
+V\left( j_{v},j_{v}^{\prime }\right) =\frac{1}{2K}\left(
++j_{v}^{2}-j_{v}^{\prime 2}+2j_{v}^{\prime }-j_{v}-\frac{1}{2}\right) ;
+\end{array}
+\right.  \\
+W\left( p,j_{s},j_{s}^{\prime }\right)  &=&W\left( p,j_{s}\right) +W\left(
+j_{s},j_{s}^{\prime }\right) ;\quad \left\{
+\begin{array}{c}
+W\left( p,j_{s}\right) =\frac{3}{2}p^{2}+\frac{1}{2K}\left(
+9p^{2}+6pj_{s}\right) ; \\
+W\left( j_{s},j_{s}^{\prime }\right) =\frac{1}{2K}\left(
+j_{s}^{2}-j_{s}^{\prime 2}+j_{s}^{\prime }\right) ;
+\end{array}
+\right.
+\end{eqnarray*}
+In these terms we get the following relations:
+
+\begin{equation*}
+\sum_{jv^{\prime }}\sigma _{j_{v}^{\prime }}^{\mu }q^{V\left(
+j_{v},j_{v}^{\prime }\right) }\sum_{p=-\infty }^{+\infty }\left( q^{V\left(
+p,j_{v}\right) +\frac{1}{2}\left( p-\frac{1}{K}\left( -j_{v}-3p+\frac{1}{2}%
+\right) \right) }-q^{V\left( p,j_{v}\right) -\frac{1}{2}\left( p-\frac{1}{K}%
+\left( -j_{v}-3p+\frac{1}{2}\right) \right) }\right) =\delta _{\mu ,j_{v}},
+\end{equation*}
+\begin{equation*}
+\sum_{js^{\prime }}\sigma _{j_{s}^{\prime }}^{\mu }q^{W\left(
+j_{s},j_{s}^{\prime }\right) }\sum_{p=-\infty }^{+\infty }\left( q^{W\left(
+p,j_{s}\right) +\frac{1}{2}\left( p+\frac{1}{K}\left( j_{s}+3p\right)
+\right) }-q^{W\left( p,j_{s}\right) -\frac{1}{2}\left( p+\frac{1}{K}\left(
+j_{s}+3p\right) \right) }\right) =\delta _{\mu ,j_{s}.}
+\end{equation*}
+These relations seems to describe the orthonormalization property of the
+modified string functions $\sum_{jv^{\prime }}\sigma _{j_{v}^{\prime }}^{\mu
+}q^{V\left( j_{v},j_{v}^{\prime }\right) }$\ and $\sum_{js^{\prime }}\sigma
+_{j_{s}^{\prime }}^{\mu }q^{W\left( j_{s},j_{s}^{\prime }\right) }$\ and the
+functions described by the sums of powers of $q$ . In particular, putting $%
+q=e$ we obtain:
+\begin{equation*}
+\sum_{jv^{\prime }}\sigma _{j_{v}^{\prime }}^{\mu }e^{V\left(
+j_{v},j_{v}^{\prime }\right) }\sum_{p=-\infty }^{+\infty }e^{V\left(
+p,j_{v}\right) }sh\left( \frac{1}{2}\left( p-\frac{1}{K}\left( -j_{v}-3p+%
+\frac{1}{2}\right) \right) \right) =\frac{1}{2}\delta _{\mu ,j_{v}},
+\end{equation*}
+\begin{equation*}
+\sum_{js^{\prime }}\sigma _{j_{s}^{\prime }}^{\mu }e^{W\left(
+j_{s},j_{s}^{\prime }\right) }\sum_{p=-\infty }^{+\infty }e^{W\left(
+p,j_{s}\right) }sh\left( \frac{1}{2}\left( p+\frac{1}{K}\left(
+j_{s}+3p\right) \right) \right) =\delta _{\mu ,j_{s}.}
+\end{equation*}
+
+********************************************
+
+\end{document}
