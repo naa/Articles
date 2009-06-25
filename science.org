@@ -49,7 +49,7 @@ science.org
 ********* Fix special cases
 *********** TODO A1
 *********** TODO G2
-*********** TODO $A_2^2$
+*********** DONE $A_2^2$
 ********* TODO Fix Freudental computation
 ********* TODO Fast star construction
 ********* TODO Fix weights construction for twisted algebras
@@ -72,6 +72,13 @@ science.org
 ***** MMCP 2009 
 ******* [[http://mmcp2009.jinr.ru/abstracts.asp][Web site]]
 ******* [[file:~/doc/conf/2009/MMCP][Folder with documents]]
-******* TODO Write for financial support once again
+******* DONE Write for financial support once again
+***** SYMPHYS 2009
+******* [[http://theor.jinr.ru/~symphys/2009/][Web site]]
+******* TODO Write abstract
+	 SCHEDULED: <2009-06-25 Чтв>
+********* TODO Change title
+******* TODO Buy tickets
+******* TODO Book hotel
 
 
