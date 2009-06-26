@@ -59,7 +59,7 @@ science.org
 ********* TODO Write universal procedure for computation of multiplicities of positive roots
 ********* TODO Briefly describe injection types (regular and special) and construction of such injections
 *** General education
-***** TODO Read
+***** DONE Read
       [[file:~/books/big/science/CompleteBooks/PopularAndDiverse/Manin_MathAndPhys.djvu][Манин Ю.И.  Математика и физика Знание, 1979]]
       SCHEDULED: <2009-02-04 Срд>
 *** Foreign institutions
