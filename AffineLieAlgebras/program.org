@@ -19,5 +19,3 @@ Research program
 ***** TODO Introduce positive roots
 *** TODO Try folding of fan
 
-
-Тест русского

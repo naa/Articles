@@ -1,3 +1,4 @@
+;; -*- mode:Org; coding: utf-8; -*-
 science.org
 * Science
 *** Useful stuff
