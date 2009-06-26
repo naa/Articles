@@ -20,3 +20,4 @@ Research program
 *** TODO Try folding of fan
 
 
+Тест русского
