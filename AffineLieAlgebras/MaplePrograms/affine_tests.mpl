@@ -57,3 +57,12 @@ test_string_func:=proc(weight,hweight)
            return map(x->calc_m(weight-x*delta,theStar,iw,fs,rt),[$0..max_grade]);
        end;
 
+
+summary_table:=proc()
+            local j;
+            for j from 1 to 5 do
+                print(A||j);
+                print("roots",algebra_roots(A||j));
+                print("weights",weights(A||j));
+            end do;
+        end proc:
