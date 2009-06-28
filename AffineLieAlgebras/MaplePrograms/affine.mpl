@@ -150,11 +150,21 @@ local r,S,L;
         if L='A' then
             S:=[seq(1,j=1..r+1)];
         elif L='B' then
-            S:=[seq(2,j=1..r-1),1,1];
-        elif L='C' then
             S:=[1,seq(2,j=1..r-1),1];
+        elif L='C' then
+            S:=[seq(2,j=1..r-1),1,1];
         elif L='D' then
-            S:=[1,1,seq(2,j=1..r-3),1,1];
+            S:=[1,seq(2,j=1..r-3),1,1,1];
+        elif L='E' then
+            if r=6 then
+                S:=[1,2,3,2,2,1,1];
+            elif r=7 then
+                S:=[1,2,3,4,2,3,2,1];
+            elif r=8 then
+                S:=[2,3,4,5,6,3,4,2,1];
+            fi;
+        elif L='F' and r=4 then
+            S:=[2,3,4,2,1];
         elif L='G' then
             S:=[2,3,1];
         fi;
@@ -178,7 +188,7 @@ cartan_matrix2:=proc(R)
            local S,coS,r,s;
            S:=algebra_roots(R);
            coS:=algebra_co_roots(R);
-           array([seq([seq(iprod(r,s),s=coS)],r=S)]);
+           array([seq([seq(iprod(r,s),s=S)],r=coS)]);
        end proc;
 
 cartan_matrix:=proc(R)
@@ -189,7 +199,7 @@ cartan_matrix:=proc(R)
            m:=Matrix(nops(al),nops(al));
            for i from 1 to nops(al) do
                for j from 1 to nops(al) do
-                   m[i,j]:=ls[j]/cls[j]*iprod(al[i],al[j]);
+                   m[j,i]:=ls[j]/cls[j]*iprod(al[i],al[j]);
                od;
            od;
            return m;
@@ -556,7 +566,8 @@ fold_weight_strange:=proc(weight0,R,mg)
                 al:=algebra_roots(R);
 
                 for weight in weights do
-                    wg:=t_b_action(convert(zip((x,y)->-x/2/coeff(weight,lambda0)*y,al[1..-2],root_coeffs(weight,R)),`+`),weight);
+                    wg:=t_b_action(convert(zip((x,y)->-x/2/coeff(weight,lambda0)*y,
+                                               al[1..-2],root_coeffs(weight,R)),`+`),weight);
                     if is_in_main_chamber(wg,R) and coeff(wg,delta)>=coeff(weight0,delta) then
                         return subs(eps=0,wg)+eps*coeff(weight0,eps);
                     fi;
