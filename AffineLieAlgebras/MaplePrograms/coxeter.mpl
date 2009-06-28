@@ -109,22 +109,27 @@ end:
   if R='A1' then
     S:=cat('e',i)
   elif L='A' then
-    S:=seq(cat('e',j+1)-cat('e',j),j=i..i+r-1); i:=i+1
+    S:=seq(cat('e',j)-cat('e',j+1),j=i..i+r-1); i:=i+1
   elif L='B' then
-    S:=cat('e',i),seq(cat('e',j+1)-cat('e',j),j=i..i+r-2)
+    S:=seq(cat('e',j)-cat('e',j+1),j=i..i+r-2),cat('e',i+r-1)
   elif L='C' then
-    S:=2*cat('e',i),seq(cat('e',j+1)-cat('e',j),j=i..i+r-2)
+    S:=seq(cat('e',j)-cat('e',j+1),j=i..i+r-2),2*cat('e',i+r-1)
   elif L='D' and r>1 then
-    S:=cat('e',i)+cat('e',i+1),seq(cat('e',j+1)-cat('e',j),j=i..i+r-2)
+    S:=seq(cat('e',j)-cat('e',j+1),j=i..i+r-2),cat('e',i+r-2)+cat('e',i+r-1)
   elif L='E' and r>2 and r<9 then
-    S:=(cat('e',i)-cat('e',i+1)-cat('e',i+2)-cat('e',i+3)-cat('e',i+4)
-      -cat('e',i+5)-cat('e',i+6)+cat('e',i+7))/2,cat('e',i)+cat('e',i+1),
-      seq(cat('e',j+1)-cat('e',j),j=i..i+r-3); i:=i+8-r
+    S:=
+      seq(cat('e',j)-cat('e',j+1),j=i..i+r-3),
+      cat('e',i+r-2)+cat('e',i+r-3),
+      (-cat('e',i)-cat('e',i+1)-cat('e',i+2)-cat('e',i+3)-cat('e',i+4)
+       -cat('e',i+5)-cat('e',i+6)-cat('e',i+7))/2; i:=i+8-r
   elif R='F4' then
-    S:=(-cat('e',i)-cat('e',i+1)-cat('e',i+2)+cat('e',i+3))/2,
-      cat('e',i),cat('e',i+1)-cat('e',i),cat('e',i+2)-cat('e',i+1)
-  elif R='G2' then i:=i+1;
-    S:=cat('e',i)-cat('e',i-1),cat('e',i-1)-2*cat('e',i)+cat('e',i+1)
+    S:=
+      cat('e',i)-cat('e',i+1),
+      cat('e',i+1)-cat('e',i+2),
+      cat('e',i+2),
+      (-cat('e',i)-cat('e',i+1)-cat('e',i+2)+cat('e',i+3))/2
+  elif R='G2' then
+    S:=-2*cat('e',i)+cat('e',i+1)+cat('e',i+2),cat('e',i)-cat('e',i+1)
   elif R='H3' or R='H4' then a:=evalf((1+sqrt(5))/2);
     S:=-a*cat('e',i)+(a-1)*cat('e',i+1)-cat('e',i+2);
     S:=2*cat('e',i),S,2*cat('e',i+2);
@@ -145,7 +150,7 @@ end:
     S:=coxeter['base'](M);
     if S=[] then RETURN(S) fi;
     coS:=coxeter['co_base'](S);
-    S:=array([seq([seq(coxeter['iprod'](r,s),s=coS)],r=S)])
+    S:=array([seq([seq(coxeter['iprod'](r,s),s=S)],r=coS)])
   fi;
   if type(S,'matrix'('integer')) then eval(S)
     else ERROR(`not crystallographic`) fi
