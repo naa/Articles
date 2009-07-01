@@ -1,0 +1,198 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs} \usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{cmap}
+\pagestyle{plain}
+
+\theoremstyle{definition} \newtheorem{Def}{Определение}
+
+\newcommand{\tr}{\hat\triangleright}
+\newcommand{\trc}{\triangleright}
+\newcommand{\adk}{a^{\dagger}_{\kappa}} 
+\newcommand{\ak}{a_{\kappa}}
+\def\bF{\mbox{$\overline{\cal F}$}} 
+\def\F{\mbox{$\cal F$}}
+\begin{document}
+
+\section{Начальные сведения}
+\subsection{Про алгебры Ли}
+\label{sec:Lie}
+
+\begin{Def} {\it Внутренний автоморфизм} - который можно записать в виде $Ad(e^x),\ x\in g$
+\end{Def}
+\begin{Def} {\it Ранг} $g$ - размерность подалгебры Картана
+\end{Def}
+
+Присоединенное действие подалгебры Картана диагонализуемо.
+
+Алгебра раскладывается в прямую сумму собственных подпространств относительно действия подалгебры Картана: $g=h\bigoplus_{\alpha}g_{\alpha},\ g_{\alpha}=\{X:[H.X]=\alpha(H)X\}$
+
+$\alpha\in h^*$ - корень, $g_{\alpha}$ - корневое пространство, $X\in g_{\alpha}$ - корневой вектор
+$\Delta$ - набор всех корней, $\Delta_0$ - с нулем
+
+\begin{Def}
+  $ B(X,Y)=tr_g (ad(X)ad(Y))$
+\end{Def}
+
+$h$ и $h^*$ изоморфны посредством $\left.B\right|_{h\times h}$, $H_{\alpha}\leftrightarrow \alpha:\ B(H_{\alpha},H)=\alpha(H)$
+
+$B(X_{\alpha},X_{-\alpha})=1$
+$s_{\alpha}=\mathbb{C}H_{\alpha}\oplus $
+ 
+Регулярный элемент $H\in h:\ \alpha(H)\neq 0$ для всех $\alpha$.
+
+Возьмем регулярный элемент $H_0$, тогда $\alpha(H_0)$ положительно или отрицательно, соответственно положителен или отрицателен корень $\alpha$.
+
+$\alpha\neq \beta+\gamma \Rightarrow \alpha$ - фундаментальный или простой корень
+
+Число фундаментальных корней $\alpha_i$ равно размерности $h$, то есть рангу $g$
+$B(\alpha_i,\alpha_j)\leq 0$
+
+\begin{Def}
+$a_{ij}=\alpha_j(H_i)=\frac{2\alpha_j(H_{\alpha_i})}{\alpha_i(H_{\alpha_i})}=\frac{2B(\alpha_i,\alpha_j)}{B(\alpha_i,\alpha_i)}$ - матрица Картана, она обладает следующими свойствами:
+\begin{itemize}
+\item $a_{ij}$ - целые
+\item $a_{ii}=2$
+\item $i\neq j \Rightarrow a_{ij}\leq 0$
+\item $a_{ij}=0 \Leftrightarrow a_{ji}=0$
+\end{itemize}
+\end{Def}
+
+$B := B(\alpha_i,\alpha_j)$- положительно определенная симметричная матрица
+$D=\frac{2\delta_{ij}}{B(\alpha_i,\alpha_i)}$ - положительная диагональная матрица
+Тогда $A=DB$
+
+В этом случае матрица Картана называется картановской матрицей конечного типа.
+
+\begin{Def}
+{\it Диаграммы Дынкина}
+\begin{itemize}
+\item $\alpha_1\dots \alpha_l \leftrightarrow \bigcirc$
+\item для каждой пары $i,j$ соединяем $i$-ую и $j$-ую вершины $max(|\alpha_{ij}|,|\alpha_{ji}|)$ линиями
+\item если $i\neq j$ и $\alpha_{ij}\leq -2$,то надо нарисовать стрелку от $j$ к $i$ 
+\end{itemize}
+\end{Def}
+
+\[
+a=
+\left(
+\begin{array}{cc}
+2 & -2 \\
+-1 & 2 \\
+\end{array}
+\right)
+\]
+\[
+\begin{diagram}
+  \node{\bigcirc} 
+  \node{\bigcirc} \arrow{w,t,}{}
+\end{diagram}
+\]
+
+Здесь надо нарисовать диаграммы для всех типов алгебр Ли
+
+Что такое аффинные алгебры
+\subsubsection{Матрица Картана}
+
+\begin{Def}
+  {\bf Матрица Картана} $nxn$, ранг $l$, $a_{ij}: a_{ii}=2, a_{ij}\leq 0, a_{ij}=0\Rightarrow a_{ji}=0$
+\end{Def}
+\begin{Def}
+  {\bf Реализация матрицы $A$}: $h,\Pi,\Pi^{v}$, где $h$ -
+  n-мерное комплексное векторное пространство,
+  $\Pi=\{\alpha_1,\dots,\alpha_n\in h^{*}\}$,
+  $\Pi^{v}=\{\alpha_1^v,\dots \alpha_n^v \in h\}$, $\Pi,\Pi^v$ -
+  линейно независимы, $<\alpha_i^v,\alpha_j>=a_{ij}$, $dim\ h - n=n-l$
+\end{Def}
+\section{Конформная теория поля и аффинные алгебры Ли}
+
+\subsection{Конформная теория поля}
+\label{sec:--CFT-Intro}
+
+Общий вид преобразований 
+\begin{equation}
+  \label{eq:1}
+  g_{\mu\nu}(x)\to g'_{\mu\nu}(x')=\Omega(x)g_{\mu\nu}(x)
+\end{equation}
+Бесконечно малое преобразование
+\begin{eqnarray}
+  \label{eq:2}
+  x'_{\mu}=x_{\mu}+\epsilon_{\mu}\\
+  \partial_{\mu}\epsilon_{\nu}+\partial_{\nu} \epsilon_{\mu}=\frac{2}{d}(\partial\cdot \epsilon)\eta_{\mu\nu}
+\end{eqnarray}
+В плоском двумерном пространстве $\partial_1\epsilon_1=\partial_2\epsilon_2\;;\; \partial_2\epsilon_1=-\partial_1\epsilon_2$, поэтому можно всё переписать так: $z,\bar{z}=x_1\pm ix_2\; ; \;\epsilon(z)=\epsilon_1+i\epsilon_2\;;\; \epsilon(\bar{z})=\epsilon_1-i\epsilon_2$
+Преобразования запишутся как
+\begin{eqnarray}
+  \label{eq:4}
+  z\to f(z)\\
+  \bar{z}\to f(\bar{z})\\
+  ds^2=dz d\bar{z}\to \left|\frac{\partial f}{\partial z}\right|^2 dz d\bar{z}\\
+  \Omega=\left|\frac{\partial f}{\partial z}\right|^2
+\end{eqnarray}
+Генераторы преобразований 
+\begin{eqnarray}
+  \label{eq:5}
+  l_n=-z^{n+1}\partial_z\\
+  \bar{l_n}=-\bar{z}^{n+1}\partial_{\bar{z}}\\
+  \left[l_m,l_n\right]=(m-n)l_{m+n}\\
+  \left[\bar{l}_m,\bar{l}_n\right]=(m-n)\bar{l}_{m+n}\\
+  \left[l_m,\bar{l}_n\right]=0
+\end{eqnarray}
+
+
+          % \begin{diagram}
+          %   \node{H} \arrow{e,t}{\epsilon} \node{k} \node{k}
+          %   \arrow{e,r}{\eta} \arrow{se,r}{\eta\otimes\eta}
+          %   \node{H}\\
+          %   \node{H\otimes H} \arrow{n,r}{\mu}
+          %   \arrow{ne,r}{\epsilon\otimes\epsilon} \node[3]{H\otimes
+          %     H} \arrow{n,r}{\Delta}
+          % \end{diagram}
+          % \]
+\begin{displaymath}
+\begin{diagram}
+  \node{\mbox{Топология}} \arrow{e,t}{} \node{\mbox{Действие WZW}} \\
+  \node{} \arrow[2]{e,t}{\mbox{Токи, конструкция Сугавары}} \node[3]{\mbox{Алгебры Вирасоро на аффинную алгебру}}
+\end{diagram}
+\end{displaymath}
+\begin{list}{Questions}{}
+\item Связь со струнами?
+\item Другие топологии?
+\item В каких случаях возникают более общие алгебры Каца-Муди?
+\end{list}
+\subsection{Топология WZW}
+Действие WZW записывается в терминах отображения $\gamma : \mathbb{R}^2\to G$, где $G$ - компактная простая группа Ли.
+$G$ обладает следующим свойством: $\pi_1(G)=\pi_2(G)=0$, $\pi_3(G)=\mathbb(Z)$
+\begin{Def}
+  {\it Гомотопическая группа} $\pi_n(X)$ -  группа классов эквивалентности отображений $S^n\to X$. Два отображения гомотопически эквивалентны, если одно переводится в другое непрерывной деформацией, 
+т.е. для $f_1,f_2, \exists \phi:S^n\times [0,1]\to G : \phi(x,0)=f_1(x), \phi(x,1)=f_2(x)$
+
+The concept of composition that we want for the n-th homotopy group is the same, except that now the domains
+that we stick together are cubes, and we must glue them along a face. We therefore define the sum of maps
+ $f,g : [0,1]^n → X$ by the formula $(f + g)(t[1], t[2], ... t[n]) = f(2t[1], t[2], ... t[n])$ for t[1] in [0,1/2]
+and $(f + g)(t[1], t[2], ... t[n]) = g(2t[1]-1, t[2], ... t[n]) $for t[1] in [1/2,1]. For the corresponding
+definition in terms of spheres, define the sum $f + g$ of maps $f, g : S^n \to X$ to be $\psi$ composed with $h$, where $\psi$
+is the map from $S^n$ to the wedge sum of two n-spheres that collapses the equator and h is the map from the
+wedge sum of two n-spheres to X that is defined to be f on the first sphere and g on the second.
+
+\end{Def}
+\begin{Def}
+  {\it Группа гомологий}
+\end{Def}
+\begin{list}{Homotopy-Homology}{}
+\item По теореме Гуревича (Hurewicz) гомотопические группы связаны с гомологиями: а именно, если $\pi_k(X)$ нулевые при k меньших n, то $\pi_n(X)=H_n(X)$, либо, если $n=1$, то $\pi_1(X)/[\pi_1(X),\pi_1(X)]=H_1(X)$. 
+\end{list}
+
+   2. Далее, гомологии связаны с когомологиями -- двойственность Пуанкаре, если угодно -- в статье речь     
+*     идет, кажется, о группе Ли, она ориентируема, в этом контексте двойственность Пуанкаре выглядит       
+      особенно просто.                                                                                      
+   3. Ранги целочисленных когомологий совпадают с размерностями вещественных когомологий.                   
+   4. Последние могут быть вычислены с помощью, например, комплекса де Рама (теорема де Рама).              
+   5. А по теории Ходжа (Hodge) в каждом классе когомологий де Рама есть ровно одна гармоническая форма (в  
+      статье, кстати, направильное определение, правильное такое: это форма, которая зануляется оператором  
+      Лапласа).                                                                                             
+
+
+\end{document}
