@@ -106,9 +106,10 @@ end:
 `coxeter/base/simple`:=proc(R) local r,i,j,L,S,a;
   r:=coxeter['rank'](R); i:=args[2];
   if type(R,'indexed') then L:=op(0,R) else L:=substring(R,1..1) fi;
-  if R='A1' then
-    S:=cat('e',i)
-  elif L='A' then
+#  if R='A1' then
+#    S:=cat('e',i)
+#  el
+    if L='A' then
     S:=seq(cat('e',j)-cat('e',j+1),j=i..i+r-1); i:=i+1
   elif L='B' then
     S:=seq(cat('e',j)-cat('e',j+1),j=i..i+r-2),cat('e',i+r-1)
