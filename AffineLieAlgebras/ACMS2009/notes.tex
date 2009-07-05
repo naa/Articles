@@ -2,8 +2,8 @@
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
 \usepackage{ucs}
-%\usepackage[utf8x]{inputenc}
-%\usepackage[russian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
 \usepackage{cmap}
 \usepackage{graphicx}
 \pagestyle{plain}
@@ -514,11 +514,72 @@ $O_a$ - is the main observable of string theory with gravitational dimension $\d
   \label{eq:69}
   \int\langle O_{a_1}\dots O_{a_n}\rangle_{\mu} e^{-\mu A}d\mu=\langle O_{a_1}\dots O_{a_n}\rangle_{A}=A^{\sum \delta_k},\quad \delta_k=\frac{a_k}{b}
 \end{equation}
-
 \subsection{Conclusion}
 \label{sec:conclusion}
 
 We can start from arbitrary conformal field theory, find $b$ from equation $C+6\left(b+\frac{1}{b}\right)^2=25$ and obtain some non-critical string theory. But for $d>1$ $b$ becomes complex and this fact leads to unsolved yet problems.
+
+
+\subsection{Модели Весса-Зумино-Новикова-Виттена}
+\label{sec:WZNW}
+Модели Весса-Зумино-Новикова-Виттена - это простейшие не минимальные модели двумерной конформной теории поля. Алгебра симметрии в них представляют собой полу прямое произведение алгебры Вирасоро и аффинной алгебры Ли.
+
+Эти модели допускают формулировку в терминах действия и лагранжиана, причём вид действия связан с топологией \cite{witten1984nab}. Кроме того, модели связаны с пределом бесконечного числа ароматов фермионов в квантовой теории поля. 
+
+Модели Весса-Зумино-Новикова-Виттена подробно рассматриваются в литературе, материал этого раздела основан на обзоре \cite{Walton:1999xc} и главе 15 книги \cite{difrancesco1997cft}.
+
+Действие моделей Весса-Зумино-Новикова-Виттена записывается в виде
+\begin{equation}
+  \label{eq:2}
+  \begin{split}
+  S(\gamma)= &-\frac{k}{8\pi}\int \mathcal{K} (\gamma^{-1}\partial^{\mu}\gamma,\gamma^{-1}\partial_{\mu}\gamma) d^2x \\
+  &- \frac{k }{24\pi} \int_{B}\epsilon^{ijk} \mathcal{K}\left(
+    \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^i},\left[
+      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^j},
+      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^k}\right]\right) d^3y
+\end{split}
+\end{equation}
+где $\gamma$ - поле на комплексной плоскости со значениями в компактной связной группе Ли $G$ с простой алгеброй $g$, а $\mathcal{K}$ - форма Киллинга алгебры $g$, $\tilde \gamma$ - аналитическое продолжение $\gamma$ на внутренность двумерной сферы, в которую отображается комплексная плоскость.
+
+Уравнения движения имеют вид
+\begin{equation}
+  \label{eq:3}
+  \partial^{\mu}(\gamma^{-1}\partial_{\mu}\gamma)+i\epsilon_{\mu\nu}\partial^{\mu}(\gamma^{-1}\partial^{\nu}\gamma)=0
+\end{equation}
+После перехода к комплексным координатам $z,\bar z$ и введения токов $J=-k\partial_z\gamma\gamma^{-1},\; \bar J=k\gamma^{-1}\partial_{\bar z}\gamma$ уравнения принимают вид
+\begin{equation}
+  \label{eq:4}
+  \partial_{\bar z}J=0,\quad \partial_z \bar J=0
+\end{equation}
+После квантования и разложения токов в ряд Лорана 
+\begin{equation}
+  \label{eq:8}
+  J^a_n(w)=\frac{1}{2\pi i }\oint_{w}dz (z-w)^n J^a(z)  
+\end{equation}
+для компонент токов получаются следующие коммутационные соотношения:
+\begin{equation}
+  \label{eq:5}
+  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}
+\end{equation}
+где индексы $a,b,c$ пробегают генераторы простой алгебры $g$, $f^{abc}$ - структурные константы, а $m,n$-  целые.
+Таким образом, компоненты токов реализуют аффинную алгебру Ли $\hat g$.
+
+Компоненты тензора энергии-импульса строятся из нормально упорядоченных комбинаций компонент токов:
+\begin{equation}
+  \label{eq:6}
+  T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
+\end{equation}
+Это так называемая конструкция Сугавары. 
+
+Коммутационные соотношения компонент токов с генераторами алгебры Вирасоро имеют вид
+\begin{equation}
+  \label{eq:7}
+  \left[L_m,J^a_n\right]=-nJ^a_{m+n}
+\end{equation}
+Полная киральная алгебра модели представляет собой полу-прямое произведение $Vir\ltimes \hat g$
+
+Построение представлений аффинной алгебры Ли требуется для нахождения примарных полей модели Весса-Зумино-Новикова-Виттена. Правила ветвления представлений аффинной алгебры Ли на представления её аффинной подалгебры используются при построении новых моделей конформной теории поля путем факторизации модели Весса-Зумино-Новикова-Виттена по подмодели (так называемая орбифолд-конструкция). 
+
 
 
 \section{Conformal Field Theory}
@@ -549,5 +610,7 @@ Note also, that Viraso algebra belongs to universal enveloping of Kac-Moody alge
 \label{sec:irred-repr}
 
 
+\bibliography{article}{}
+\bibliographystyle{utphys}
 
 \end{document}
