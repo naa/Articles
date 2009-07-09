@@ -702,6 +702,65 @@ So the Sugawara construction is the way to embed Virasoro algebra into the unive
 
 Complete chiral algebra of WZW-model is equal to semidirect product $Vir\ltimes \hat g$
 
+The primary fields are the fields that transforms covariantly with respect to $G(z)\times G(\bar z)$, such as $g(z,\bar z)$. In terms of operator product expansion this property is reformulated as
+\begin{equation}
+  \label{eq:84}
+  \begin{aligned}
+    J^a(z)g(w,\bar w)\sim \frac{-t^a g(w,\bar w)}{(z-w)}\\
+    \bar J^a(z)g(w,\bar w)\sim \frac{ g(w,\bar w)t^a}{(z-w)}
+  \end{aligned}
+\end{equation}
+Any field $\phi_{\lambda,\mu}$ transforming covariantly with respect to some representation specified by $\lambda$ in holomorphic and $\mu$ in antiholomorphic sector, will be a WZW primary field.
+
+In terms of modes this property can be written as
+\begin{equation}
+  \label{eq:93}
+  \begin{aligned}
+    & (J_0^a \phi_{\lambda})=-t^a_{\lambda}\phi_{\lambda}\\
+    & (J^a_n\phi_{\lambda})=0\quad \mbox{for}\; n>0\\
+  \end{aligned}
+\end{equation}
+We can associate the state $\left|\phi_{\lambda}\right>$ to the field $\phi_{\lambda}$
+  \begin{equation}
+    \label{eq:94}
+    \phi_{\lambda}(0)=\left|\phi_{\lambda}\right>
+  \end{equation}
+Then the conditions (\ref{eq:93}) for WZW primary field are
+\begin{equation}
+  \label{eq:95}
+  \begin{aligned}
+    & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>\\
+    & J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
+  \end{aligned}
+\end{equation}
+It is easy to see that the action of the Virasoro generators is
+\begin{equation}
+  \label{eq:96}
+  L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>
+\end{equation}
+Here we used the explicit form of the quadratic Casimir operator eigenvalue.
+
+
+Primary fields live in integrable finite-dimensional representations since infinite-dimensional and non-integrable fields are decoupled from the correlation functions.
+
+All secondary states are of the form
+\begin{equation}
+  \label{eq:97}
+  J^{a_1}_{-n_1}J^{a_2}_{n_2}\dots\left|\phi_{\lambda}\right>
+\end{equation}
+For the correlation functions of primary fields we can obtain Knizhnik-Zamolodchikov equations which follow from global $G\times G$ invariance
+\begin{equation}
+  \label{eq:98}
+  \left(\partial_{z_i}+\frac{1}{k+h^v}\sum_{i\neq j}\frac{\sum_a t^a_i\otimes t^a_j}{z_i-z_k}\right)
+  \left<\phi_1(z_1)\dots \phi_n(z_n)\right>=0
+\end{equation}
+So the theory is completely determined by the representations of affine Lie algebra $\hat{\mathfrak{g}} $.
+
+\subsubsection{Modular invariants}
+\label{sec:modular-invariants}
+
+
+
 \section{Affine Lie algebras representations}
 \label{sec:affine-lie-algebras}
 
