@@ -520,8 +520,50 @@ $O_a$ - is the main observable of string theory with gravitational dimension $\d
 We can start from arbitrary conformal field theory, find $b$ from equation $C+6\left(b+\frac{1}{b}\right)^2=25$ and obtain some non-critical string theory. But for $d>1$ $b$ becomes complex and this fact leads to unsolved yet problems.
 
 
-\subsection{Модели Весса-Зумино-Новикова-Виттена}
+\subsection{Wess-Zumino-Novikov-Witten models}
 \label{sec:WZNW}
+
+Let's start with non-linear $\sigma$-model.
+\begin{equation}
+  \label{eq:48}
+  S_0=\frac{1}{4a^2}\int d^2x\; Tr' (\partial^{\mu}g^{-1}\partial_{\mu}g)
+\end{equation}
+Here $a^2>0$ is a positive parameter, $g(x)\in G$ - field on Lie group $G$, which we will assume to be semi-simple and by $Tr'$ we have denoted representation independent trace of Lie algebra $\mathfrak{g} $
+\begin{equation}
+  \label{eq:70}
+  Tr'=\frac{1}{x_{rep}}Tr
+\end{equation}
+$x_{rep}$ is the Dynkin index of the representation. 
+
+In this model the conformal invariance is lost at the quantum level, as it can be seen along the lines of previous sections.
+!!! Show it by example !!!
+
+Also we can see that holomorphic and antiholomorphic currents aren't conserved individually. The equations of motion are
+\begin{equation}
+  \label{eq:71}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)=0
+\end{equation}
+The currents are
+\begin{equation}
+  \label{eq:currents}
+  J_{\mu}=g^{-1}\partial_{\mu}g
+\end{equation}
+or in the complex coordinates
+\begin{equation}
+  \label{eq:74}
+  \begin{matrix}
+    & \tilde{J}_z=g^{-1}\partial_z g, & \tilde{J}_{\bar{z}}=g^{-1}\partial_{\bar{z}}g\\
+    & \partial_z \tilde{J}_{\bar{z}}+\partial_{\bar{z}}\tilde{J}_z=0 & \\
+  \end{matrix}
+\end{equation}
+The terms of the equation of motion can not be null separately because $\partial_{\mu}(\epsilon^{\mu\nu}J_{\nu})\neq 0$.
+
+So we add WZ-term to the action and redefine the currents in more appropriate way
+\begin{equation}
+  \label{eq:72}
+  J_z=\partial_z g\;g^{-1}, \qquad J_{\bar{z}}=g^{-1}\partial{\bar z}g
+\end{equation}
+
 Модели Весса-Зумино-Новикова-Виттена - это простейшие не минимальные модели двумерной конформной теории поля. Алгебра симметрии в них представляют собой полу прямое произведение алгебры Вирасоро и аффинной алгебры Ли.
 
 Эти модели допускают формулировку в терминах действия и лагранжиана, причём вид действия связан с топологией \cite{witten1984nab}. Кроме того, модели связаны с пределом бесконечного числа ароматов фермионов в квантовой теории поля. 
