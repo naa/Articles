@@ -360,8 +360,12 @@ Be more elaborate here.
 !!!!!!!
 
 ...
-\section{CFT}
+\section{Conformal Field Theory}
 \label{sec:cft}
+
+\subsection{General properties}
+\label{sec:general-properties}
+
 
 In Conformal Field Theory 
 \begin{equation}
@@ -514,8 +518,7 @@ $O_a$ - is the main observable of string theory with gravitational dimension $\d
   \label{eq:69}
   \int\langle O_{a_1}\dots O_{a_n}\rangle_{\mu} e^{-\mu A}d\mu=\langle O_{a_1}\dots O_{a_n}\rangle_{A}=A^{\sum \delta_k},\quad \delta_k=\frac{a_k}{b}
 \end{equation}
-\subsection{Conclusion}
-\label{sec:conclusion}
+\subsection{Connection with string theory}
 
 We can start from arbitrary conformal field theory, find $b$ from equation $C+6\left(b+\frac{1}{b}\right)^2=25$ and obtain some non-critical string theory. But for $d>1$ $b$ becomes complex and this fact leads to unsolved yet problems.
 
@@ -537,7 +540,7 @@ $x_{rep}$ is the Dynkin index of the representation.
 
 In this model the conformal invariance is lost at the quantum level, as it can be seen along the lines of previous sections.
 !!! Show it by example !!!
-
+    
 Also we can see that holomorphic and antiholomorphic currents aren't conserved individually. The equations of motion are
 \begin{equation}
   \label{eq:71}
@@ -564,70 +567,140 @@ So we add WZ-term to the action and redefine the currents in more appropriate wa
   J_z=\partial_z g\;g^{-1}, \qquad J_{\bar{z}}=g^{-1}\partial{\bar z}g
 \end{equation}
 
-Модели Весса-Зумино-Новикова-Виттена - это простейшие не минимальные модели двумерной конформной теории поля. Алгебра симметрии в них представляют собой полу прямое произведение алгебры Вирасоро и аффинной алгебры Ли.
-
-Эти модели допускают формулировку в терминах действия и лагранжиана, причём вид действия связан с топологией \cite{witten1984nab}. Кроме того, модели связаны с пределом бесконечного числа ароматов фермионов в квантовой теории поля. 
-
-Модели Весса-Зумино-Новикова-Виттена подробно рассматриваются в литературе, материал этого раздела основан на обзоре \cite{Walton:1999xc} и главе 15 книги \cite{difrancesco1997cft}.
-
-Действие моделей Весса-Зумино-Новикова-Виттена записывается в виде
+Wess-Zumino term has the following form
 \begin{equation}
-  \label{eq:2}
-  \begin{split}
-  S(\gamma)= &-\frac{k}{8\pi}\int \mathcal{K} (\gamma^{-1}\partial^{\mu}\gamma,\gamma^{-1}\partial_{\mu}\gamma) d^2x \\
-  &- \frac{k }{24\pi} \int_{B}\epsilon^{ijk} \mathcal{K}\left(
-    \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^i},\left[
-      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^j},
-      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^k}\right]\right) d^3y
-\end{split}
+  \label{eq:73}
+\Gamma=  - \frac{i }{24\pi} \int_{B}\epsilon_{ijk} Tr'\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
 \end{equation}
-где $\gamma$ - поле на комплексной плоскости со значениями в компактной связной группе Ли $G$ с простой алгеброй $g$, а $\mathcal{K}$ - форма Киллинга алгебры $g$, $\tilde \gamma$ - аналитическое продолжение $\gamma$ на внутренность двумерной сферы, в которую отображается комплексная плоскость.
 
-Уравнения движения имеют вид
+This term is defined on the three-dimensional manifold $B$ whose boundary is original two-dimensional space. By $\tilde{g}$ we have denoted the extension of the field $g$ to $B$. This extension isn't unique. In a compactified three-dimensional space a compact two-dimensional manifold delimits two three-dimensional manifolds. The difference between this two choices $\Delta\Gamma$ is given by the right hand side of (\ref{eq:73}) with the integration range extended over the whole compact three-dimensional space. Since the latter is topologically equivalent to the three-sphere we have
 \begin{equation}
-  \label{eq:3}
-  \partial^{\mu}(\gamma^{-1}\partial_{\mu}\gamma)+i\epsilon_{\mu\nu}\partial^{\mu}(\gamma^{-1}\partial^{\nu}\gamma)=0
+  \label{eq:75}
+\Delta\Gamma=  - \frac{i }{24\pi} \int_{S^3}\epsilon_{ijk} Tr'\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
 \end{equation}
-После перехода к комплексным координатам $z,\bar z$ и введения токов $J=-k\partial_z\gamma\gamma^{-1},\; \bar J=k\gamma^{-1}\partial_{\bar z}\gamma$ уравнения принимают вид
+$\Delta\Gamma$ is defined modulo $2\pi i$, so the Euclidean functional integral with weight $exp(-\Gamma)$ is well-defined. Clearly, any coupling constant multiplying this term must be an integer. 
+
+We then consider the action
+\begin{equation}
+  \label{eq:76}
+  S=S_0+k\Gamma
+\end{equation}
+where $k$ is an integer. 
+The equation of motion for the full action (\ref{eq:76}) is
+\begin{equation}
+  \label{eq:77}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)+\frac{a^2 ik}{4\pi}\epsilon_{\mu\nu}\partial^{\mu}(g^{-1}\partial^{\nu}g)=0
+\end{equation}
+It can be rewritten using complex coordinates as
+\begin{equation}
+  \label{eq:78}
+  (1+\frac{a^2 k}{4\pi})\partial_z(g^{-1}\partial_{\bar z}g)+(1-\frac{a^2 k}{4\pi})\partial_{\bar z}(g^{-1}\partial_z g)=0
+\end{equation}
+We see that when $a^2=\frac{4\pi}{k}$ we have the desired conservation law
+\begin{equation}
+  \label{eq:79}
+  \partial_z(g^{-1}\partial{\bar z}g)=0
+\end{equation}
+For currents
 \begin{equation}
   \label{eq:4}
   \partial_{\bar z}J=0,\quad \partial_z \bar J=0
 \end{equation}
-После квантования и разложения токов в ряд Лорана 
-\begin{equation}
-  \label{eq:8}
-  J^a_n(w)=\frac{1}{2\pi i }\oint_{w}dz (z-w)^n J^a(z)  
-\end{equation}
-для компонент токов получаются следующие коммутационные соотношения:
-\begin{equation}
-  \label{eq:5}
-  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}
-\end{equation}
-где индексы $a,b,c$ пробегают генераторы простой алгебры $g$, $f^{abc}$ - структурные константы, а $m,n$-  целые.
-Таким образом, компоненты токов реализуют аффинную алгебру Ли $\hat g$.
 
-Компоненты тензора энергии-импульса строятся из нормально упорядоченных комбинаций компонент токов:
+The solution of classical equation is
+\begin{equation}
+  \label{eq:80}
+  g(z,\bar z)=f(z)\bar f(\bar z)
+\end{equation}
+for arbitrary functions $f(z)$ and $\bar f (\bar z)$.
+
+The separate conservation of the currents $J_z,\; J_{\bar z}$ implies the invariance of the action under the transformations
+\begin{equation}
+  \label{eq:81}
+   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)
+\end{equation}
+where $\Omega,\;\bar \Omega \in G$. So we have local $G(z)\times G(\bar z)$ invariance. 
+
+In order to move analysis to quantum level we rescale the currents
+\begin{equation}
+  \label{eq:82}
+  J(z)\equiv -k \partial_zg g^{-1}\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
+\end{equation}
+So the variation of the action under infinitesimal transformation $\Omega=1+\omega,\; \bar \Omega =1+\bar \omega$ is
+\begin{equation}
+  \label{eq:83}
+  \delta_{\omega,\bar\omega}S=\frac{i}{4\pi}\oint dz Tr' (\omega(z)J(z))-\frac{i}{4\pi}\oint d\bar z Tr'(\bar\omega(\bar z)\bar J(\bar z))
+\end{equation}
+Expanding the currents as
+\begin{equation}
+  \label{eq:85}
+  \begin{aligned}
+    J=\sum J^a t^a,\bar J=\sum \bar J^a t^a \\
+    \omega=\sum \omega^a t^a\\
+  \end{aligned}
+\end{equation}
+we get
+\begin{equation}
+  \label{eq:86}
+  \delta_{\omega,\bar \omega}S=-\frac{1}{2\pi i}\oint dz \sum\omega^a J^a+\frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \bar J^a
+\end{equation}
+We can also obtain Ward identities $\delta\left< X\right>=\left<(\delta S)X\right>$
+\begin{equation}
+  \label{eq:87}
+  \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
+  \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+\end{equation}
+Then for the currents we have
+\begin{equation}
+  \label{eq:88}
+  \delta_{\omega}J=[\omega,J]-k\partial_z\omega,\quad \delta_{\omega}J^a=\sum i f_{abc}\omega^b J^c-k\partial_z\omega^a
+\end{equation}
+The operator product expansion for currents has the form
+\begin{equation}
+  \label{eq:89}
+  J^a(z) J^b(w) \sim \frac{k\delta_{ab}}{(z-w)^2}+\sum i f_{abc}\frac{J^c(w)}{(z-w)}
+\end{equation}
+Expanding currents into series we get
+\begin{equation}
+  \label{eq:90}
+  \begin{aligned}
+    J^a(z)=\sum_{n\in \mathbb Z}z^{n-1}J^a_n\\    
+    \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}  
+  \end{aligned}
+\end{equation}
+We see that components of currents realize affine Lie algebra $\hat g$.  
+
+
+Energy-momentum tensor is introduced with Sugawara construction as the sum of normal-ordered products of current components
 \begin{equation}
   \label{eq:6}
   T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
 \end{equation}
-Это так называемая конструкция Сугавары. 
+Here $h^v$ is the dual Coxeter number.
 
-Коммутационные соотношения компонент токов с генераторами алгебры Вирасоро имеют вид
+Energy-momentum tensor can be expanded into modes $L_n$
 \begin{equation}
-  \label{eq:7}
-  \left[L_m,J^a_n\right]=-nJ^a_{m+n}
+  \label{eq:91}
+  L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:J^a_m J^a_{n-m}:
 \end{equation}
-Полная киральная алгебра модели представляет собой полу-прямое произведение $Vir\ltimes \hat g$
+The commutation relations for the modes $L_n$ are
+\begin{equation}
+  \label{eq:92}
+  \begin{aligned}
+    \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+    \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+  \end{aligned}
+\end{equation}
 
-Построение представлений аффинной алгебры Ли требуется для нахождения примарных полей модели Весса-Зумино-Новикова-Виттена. Правила ветвления представлений аффинной алгебры Ли на представления её аффинной подалгебры используются при построении новых моделей конформной теории поля путем факторизации модели Весса-Зумино-Новикова-Виттена по подмодели (так называемая орбифолд-конструкция). 
+So the Sugawara construction is the way to embed Virasoro algebra into the universal enveloping of affine Lie algebra. 
 
-
-
-\section{Conformal Field Theory}
-\label{sec:conf-field-theory}
-
-
+Complete chiral algebra of WZW-model is equal to semidirect product $Vir\ltimes \hat g$
 
 \section{Affine Lie algebras representations}
 \label{sec:affine-lie-algebras}
