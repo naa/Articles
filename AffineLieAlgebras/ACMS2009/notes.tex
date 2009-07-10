@@ -759,8 +759,96 @@ So the theory is completely determined by the representations of affine Lie alge
 \subsubsection{Modular invariants}
 \label{sec:modular-invariants}
 
+In previous section we studied holomorphic and antiholomorphic sectors of the theory separately. But in physically sensible theories this sectors should be entangled. It is required for the theory to be well-defined on the higher genus Riemann surfaces (see \cite{gaberdiel2000icf} and references therein) and also if we want our theory to describe critical behavior \cite{difrancesco1997cft}. In the critical point theory has conformal invariance, holomorphic and antiholomorphic sectors are decoupled, but in the vicinity of critical point there exists some large scale so the sectors should interact.
 
+!!! Expand this argumentation !!!
 
+The necessary constraint for the theory to be well-defined on higher Riemann surfaces, which is also believed to be sufficient, is that the vacuum correlator on the torus is independent of its parametrisation \cite{gaberdiel2000icf}. Conformal theory on the higher genus Riemann surfaces is important for the string theory since this theory describes string interaction.
+
+Two-dimensional torus is described as quotient space of $\mathbb{R}^2\approx \mathbb{C}$ by the relations $z\sim z+w_1$ and $z\sim z+w_2$, where $w_1$ and $w_2$ are not parallel. 
+
+The complex structure of the torus is conformally equivalent to a torus for which the relations are $z\sim z+1$ and $z\sim z+\tau$ where $\tau$ is in the upper half plane of $\mathbb{C}$. It is also easy to see that $\tau$, $T(\tau)=\tau+1$ and $S(\tau)=-\frac{1}{\tau}$ describe conformally equivalent tori. Two maps $T$ and $S$ generate the group $SL(2,\mathbb{Z})/\mathbb{Z}_2$ that consists of matrices of the form
+\begin{equation}
+  \label{eq:99}
+  A=
+  \begin{pmatrix}
+    a & b\\
+    c & d 
+  \end{pmatrix}
+  \quad\mbox{where}\; a,b,c,d\in\mathbb{Z},\quad ad-bc=1,
+\end{equation}
+and matrices $A$ and $-A$ have the same action on $\tau$
+\begin{equation}
+  \label{eq:100}
+  \tau\to A\tau=\frac{a\tau+b}{c\tau+d}
+\end{equation}
+The parameter $\tau$ is called the modular parameter and the group  $SL(2,\mathbb{Z})/\mathbb{Z}_2$ is called the modular group. 
+
+Given a conformal field theory that is defined on the Riemann sphere, the vacuum
+correlator on the torus can be determined as follows. First, we cut the torus along one
+of its non-trivial cycles; the resulting surface is a cylinder (or an annulus) whose shape
+depends on one complex parameter $q$. Since the annulus is a subset of the sphere, the
+conformal field theory on the annulus is determined in terms of the theory on the sphere.
+In particular, the states that can propagate in the annulus are precisely the states of
+the theory as defined on the sphere.
+In order to reobtain the torus from the annulus, we have to glue the two ends of
+the annulus together; in terms of conformal field theory this means that we have to sum
+over a complete set of states. The vacuum correlator on the torus is therefore described
+by a trace over the whole space of states, the partition function of the theory,
+\begin{equation}
+  \label{eq:101}
+  \sum_{(i,j)}Tr_{\mathcal{H}_{(i,j)}}(\mathcal{O}(q,\bar q)),
+\end{equation}
+where $\mathcal{O}(q,\bar q)$ is the operator that describes the propagation of the states along the annulus,
+\begin{equation}
+  \label{eq:102}
+  \mathcal{O}(q,\bar q)=q^{L_0-\frac{c}{24}}\bar q^{\bar L_0-\frac{\bar c}{24}}
+\end{equation}
+The propagator depends on the actual shape of the annulus that is described in terms
+of the complex parameter $q$. For a given torus that is described by $\tau$ , there is a natural
+choice for how to cut the torus into an annulus, and the complex parameter $q$ that is
+associated to this annulus is $q=e^{2\pi i \tau}$. Since the tori that are described by $\tau$ and $A\tau$
+(where $A \in SL(2, \mathbb{Z})$) are equivalent, the vacuum correlator is only well-defined provided
+that (\ref{eq:101}) is invariant under this transformation. This provides strong constraints on
+the spectrum of the theory.
+
+Each of the spaces $\mathcal{H}_{(i,j)}$ is a tensor product of an irreducible representation $\mathcal{H}_j$ of chiral algebra and an irreducible representation $\bar{\mathcal{H}}_{\bar{j}}$ of antichiral algebra. Then the vacuum correlator on the torus (\ref{eq:101}) takes the form
+\begin{equation}
+  \label{eq:103}
+  \sum_{(j,\bar j)}\chi_j(q)\bar \chi_{\bar j}(\bar q)
+\end{equation}
+where $\chi_j$ is the character of the representation $\mathcal{H}_j$,
+\begin{equation}
+  \label{eq:104}
+  \chi_j(\tau)=Tr_{\mathcal{H}_j}(q^{L_0-\frac{c}{24}})\quad \mbox{where}\; q=e^{2\pi i \tau}
+\end{equation}
+Characters transform into one another under modular transformations,
+\begin{equation}
+  \label{eq:107}
+  \chi_j(-\frac{1}{\tau})=\sum_k S_{jk}\chi_k(\tau)\quad \mbox{and}\quad \chi_j(\tau+1)=\sum_kT_{jk}\chi_k(\tau),
+\end{equation}
+where $S$ and $T$ are constant matrices. This fact is proved for a certain class of conformal field theories \cite{gaberdiel2000icf}. 
+
+For WZW-models the representations are determined by highest weights $\hat \lambda, \hat \xi$. Then we can write
+\begin{equation}
+  \label{eq:105}
+  \mathcal{H}=\bigoplus_{\hat \lambda,\hat \xi\in P^{(k)}_{+}}M_{\hat \lambda,\hat \xi} L_{\hat \lambda}\otimes L_{\hat \xi}
+\end{equation}
+The partition function is rewritten as
+\begin{equation}
+  \label{eq:106}
+  Z(\tau)=\sum_{\hat \lambda,\hat \xi\in P^{(k)}_{+}} \chi_{\hat \lambda}(\tau)M_{\hat \lambda\hat\xi}\bar \chi_{\hat \xi}(\bar \tau)
+\end{equation}
+$M_{\hat \lambda\hat\xi}$ can be thought of as the multiplicity of primary field with weights $\hat\lambda,\hat \xi$. It has following properties:$M_{\hat \lambda\hat\xi}\in \mathbb{Z}_+$, it is modular invariant
+\begin{equation}
+  \label{eq:108}
+  \begin{aligned}
+    T^{\dagger}MT=S^{\dagger}MS=M,\\
+    [M,S]=[M,T]=0,
+  \end{aligned}
+\end{equation}
+and $M_{00}=1$ for the uniqueness of vacuum. 
+ 
 \section{Affine Lie algebras representations}
 \label{sec:affine-lie-algebras}
 
