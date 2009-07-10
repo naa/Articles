@@ -308,8 +308,38 @@ weight $\zeta_0$ in main Weyl chamber and $\omega\in W$ such that
 $\zeta=\omega \zeta_0$. So to calculate the multiplicity of $\xi$ we
 sum over the set of weights inside the main Weyl chamber.
 
-The question is if it is possible to introduce the same procedure for
+The question is if it is possible to introduce similar procedure for
 computation of branching coefficients. 
+
+We start with the formula
+\begin{equation}
+  \label{eq:6}
+  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
+    }^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }
+\end{equation}
+In terms of characters it has the following form
+\begin{equation}
+  \label{eq:9}
+  \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} ch L^{\nu}_{\mathfrak{a}}
+\end{equation}
+
+It is well-known (see for example \cite{wakimoto2001idl}, \cite{kac1990idl}) that characters are Weyl-invariant.
+\begin{equation}
+  \label{eq:8}
+  ch(L^{\omega\mu})=ch(L^{\mu})
+\end{equation}
+Also Weyl group of the subalgebra is subgroup of Weyl group of algebra $W_{\mathfrak{a}}\subset W_{\mathfrak{g}}$.
+Using Weyl-Kac character formula
+\begin{equation}
+  \label{eq:11}
+  ch(L^{\mu})=\frac{\sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in \Delta^{+}}(1-e^{\alpha})^{mult(\alpha)}}
+\end{equation}
+the equation \eqref{eq:9} can be rewritten as
+\begin{equation}
+  \label{eq:10}
+  \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=\frac{\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \Psi^{(\nu)}_{\mathfrak{a}}}{R_{\mathfrak{a}}}
+\end{equation}
+where we have introduced the singular weight elements $\Psi^{(\nu)}_{\mathfrak{a}}=\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}$ for $\mathfrak{a}$-modules $L^{\nu}_{\mathfrak{a}}$ and the denominator $R_{\mathfrak{a}}=\prod_{\alpha\in \Delta^{+}_{\mathfrak{a}}}(1-e^{\alpha})^{mult_{\mathfrak{a}}(\alpha)}$. 
 
 
 
