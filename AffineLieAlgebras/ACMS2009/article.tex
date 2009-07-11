@@ -283,7 +283,7 @@ $\frak{g}$ using formula:
 \end{equation}
 \begin{equation}
   \label{fan-defined}
-  \Gamma _{\frak{a}\subset \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+  \Gamma_{\frak{a}\subset \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
       \frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} .
 \end{equation}
 
@@ -348,8 +348,49 @@ where we have introduced the singular weight elements $\Psi^{(\nu)}_{\mathfrak{a
 \end{equation}
 The numbers $k_{\lambda}^{(\mu)}$ are called anomalous branching coefficients and are equal to the multiplicities of the submodules $L^{\nu}_{\mathfrak{a}}$ times the determinants $\epsilon(\omega)$.
 
+Now we can rewrite formula \eqref{eq:10} as
+\begin{equation}
+  \label{eq:13}
+  \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=
+  \frac{\sum_{\lambda\in P_{\mathfrak{a}}}k_{\lambda}^{(\mu)}e^{\lambda+\rho_{\mathfrak{a}}}}{e^{\rho_{\mathfrak{a}}}R_{\mathfrak{a}}}
+\end{equation}
+Here we have multiplied the numerator and the denominator by $e^{\rho_{\mathfrak{a}}}$. Now we multiply both sides of equation by ${e^{\rho_{\mathfrak{a}}}R_{\mathfrak{a}}}$.
+\begin{equation}
+  \label{eq:14}
+   \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})e^{\rho_{\mathfrak{a}}}R_{\mathfrak{a}}=
+  \sum_{\lambda\in P_{\mathfrak{a}}}k_{\lambda}^{(\mu)}e^{\lambda+\rho_{\mathfrak{a}}}
+\end{equation}
+Then left-hand side of equation is anti-invariant under Weyl transformations of group $W_{\mathfrak{a}}$, since the character of $L^{\mu}_{\mathfrak{g}}$ is invariant, projection $\pi_{\mathfrak{a}}$ is orthogonal and $e^{\rho_{\mathfrak{a}}}R_{\mathfrak{a}}$ is anti-invariant ($\omega(e^{\rho_{\mathfrak{a}}}R_{\mathfrak{a}})=\epsilon(\omega)e^{\rho_{\mathfrak{a}}}R_{\mathfrak{a}}$, see \cite{wakimoto2001idl} for the proof). So we have
+\begin{equation}
+  \label{eq:15}
+  \omega\left(\sum_{\lambda\in P_{\mathfrak{a}}}k_{\lambda}^{(\mu)}e^{\lambda+\rho_{\mathfrak{a}}}\right)=
+  \epsilon(\omega)\sum_{\lambda\in P_{\mathfrak{a}}}k_{\lambda}^{(\mu)}e^{\lambda+\rho_{\mathfrak{a}}}
+\end{equation}
+It can be rewritten as
+\begin{equation}
+  \label{eq:16}
+ \sum_{\lambda\in P_{\mathfrak{a}}}k_{\omega^{-1}(\lambda+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}^{(\mu)}e^{\lambda+\rho_{\mathfrak{a}}}=
+  \epsilon(\omega)\sum_{\lambda\in P_{\mathfrak{a}}}k_{\lambda}^{(\mu)}e^{\lambda+\rho_{\mathfrak{a}}}
+\end{equation}
+Then we can equate coefficients of identical exponents
+\begin{equation}
+  \label{eq:17}
+  k_{\lambda}^{(\mu)}=\epsilon(\omega)k_{\omega(\lambda+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}^{(\mu)}
+\end{equation}
+We see that Weyl symmetry gives us all the values of $k_{\lambda}^{(\mu)}$ from the values inside the shifted by $-\rho_{\mathfrak{a}}$ fundamental Weyl chamber $C_{\mathfrak{a}}-\rho_{\mathfrak{a}}$. 
 
+In the paper \cite{ilyin812pbc} following recurrent formula for computation of $k_{\lambda}^{(\mu)}$ was proved
+\begin{equation}
+  \label{recurrent-relation}
+  k_{\lambda }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{w\in W}\epsilon \left( w\right) \delta _{\lambda ,\pi _{\frak{a}}\circ
+\left( w\circ (\mu +\rho )-\rho \right) +\gamma _{0}}+\sum_{\gamma \in
+\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\lambda
++\gamma }^{\left( \mu \right) }\right)   
+\end{equation}
+Here $k_{\lambda}^{(\mu)}$ is computed as the sum over special set $\Gamma _{\frak{a}\subset \frak{g}}$ \eqref{fan-defined}.
 
+Using relation \eqref{eq:17} we can restrict computation to the shifted by $-\rho_{\mathfrak{a}}$ fundamental Weyl chamber $C_{\mathfrak{a}}-\rho_{\mathfrak{a}}$. Then branching coefficients inside the fundamental Weyl chamber are given by anomalous branching coefficients $b_{\lambda}^{(\mu)}=k_{\lambda}^{(\mu)}\;\mbox{for}\;\lambda\in C_{\mathfrak{a}}$ \cite{ilyin812pbc}.
 \section{Details of implementation}
 \label{sec:details-implementation}
 
