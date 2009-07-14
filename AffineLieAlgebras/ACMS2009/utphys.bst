@@ -1,1 +1,1 @@
-/home/anton/study/2009/Articles/AffineLieAlgebras/Bibliography/utphys.bst
+../Bibliography/utphys.bst
