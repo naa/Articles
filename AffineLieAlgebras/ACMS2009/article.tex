@@ -151,12 +151,15 @@ in several software packages, such as Coxeter/Weyl
 Freudenthal formula can be used for affine Lie algebras as well. It was
 the main tool for preparation of tables in the book
 \cite{kass1990ala}, but the software used by the authors is not
-available. 
+available. We introduce our implementation of this algorithm in
+section \ref{sec:details-implementation} and compare it
+(~\ref{sec:applications}) to the alternative
+approach, based on the formula \eqref{eq:2}, which is described below.  
 
-We use new method proposed in the articles
+We are mostly interested in the use of the new method proposed in the papers
 \cite{lyakhovsky1996rra,lyakhovsky2007dub,ilyin812pbc,kulish4sfa}. The
 idea is to use recurrent relations for anomalous branching
-coefficients based upon summation over special
+coefficients based on the summation over the special
 set of vectors $\Gamma_{\frak{a}\subset \frak{g}} $ called ``fan''.
 \begin{equation}
   \label{recurrent-relation}
