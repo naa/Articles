@@ -103,16 +103,13 @@ modular forms and other mathematical subjects, but their main
 applications in physics are in conformal field theory, where they are
 current algebras of WZW-models \cite{Walton:1999xc,witten1984nab}.
 
+Since the affine Lie algebras are infinite-dimensional extensions of simple finite-dimensional Lie algebras, their representation theory is well understood \cite{kac1990idl}, \cite{wakimoto2001idl}, \cite{Wakimoto-Second-Book}. But infinite dimensionality poses a challenge for computational methods.
 
-In this article we will describe computation algorithms for representations of affine Lie algebras by example.
+In this paper we discuss the tasks of construction of representations which is reduced to computation of weight multiplicities and of branching of representation of affine Lie algebra to representation of affine subalgebra.
 
-Theory of affine Lie algebras is based upon the theory of simple Lie
-algebras. Affine Lie algebras are infinite-dimensional, but this
-infinite-dimensionality is ``along one direction''.
+The first task is usually solved using the algorithms based on the recursive Freudenthal formula for weight multiplicities \eqref{eq:1}. The summation is optimized by considering of Weyl symmetry \cite{kass1990ala}, \cite{Moody-Patera}. While these algorithms are reasonably fast, the use of Racah-like recurrent relation \eqref{eq:2} is theoretically more efficient \cite{Nazarov2008}. In practice speed depends upon the realisation. So we describe this alternative approach in section \ref{sec:representations} and show results of practical speed comparisons.
 
-So in computations we limit ourselves with some finite grade. 
-Then the problem is to propose algorithms with lowest growths rate
-with the increase of maximal grade.
+The task of calculation of branching coefficients is usually solved by the reduction to finite-dimensional case \cite{difrancesco1997cft}. In some physical applications this task is greatly simplified by the additional physical constraints, but for general case this approach is rather inconvenient since it is not easily formalisable for machine compuatation. We propose another approach based on recurrent relations for anomalous branching coefficients \cite{ilyin812pbc} in section \ref{sec:branching-rules} and discuss the method to optimize this computation. Then we describe our realisation of mentioned algorithms \ref{sec:details-implementation} and some applications \ref{sec:applications}.
 
 \section{Representations}
 \label{sec:representations}
@@ -123,8 +120,8 @@ is to find weight multiplicities (dimensions of weight subspaces).
 These multiplicities are usually encoded in form of string functions
 and these functions are connected with generic theta-functions and
 modular forms \cite{kac1990idl}. 
-But it is easier to work with multiplicities for automated
-computations.  
+
+It is possible to write general relations for string functions in order to express them as the combination of generic theta-functions \cite{Lyakhovsky-Unwritten-String-equations-with-fans}. But in these paper we limit ourselves to automated computation of weight multiplicities. 
 
 Weight multiplicities are essential for explicit construction of
 module and are also used for calculation of WZW fusion coefficients
