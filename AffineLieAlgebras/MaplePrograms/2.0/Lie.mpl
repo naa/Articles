@@ -6,6 +6,12 @@ define('Vectorspace'
        ,
        'dimension'
       );
+AbstractVectorspace:=proc(dim)
+    module()
+    export dimension;
+        dimension:=dim;
+    end;
+end;
 
 define('Basis'
        ,
@@ -13,6 +19,8 @@ define('Basis'
        'vectorspace',
        'unitnames'
       );
+
+
 define('Vector'
        ,
        'coordinates',
@@ -20,7 +28,7 @@ define('Vector'
       );
 extend('Weight','Vector'
        ,
-       'module',
+       'representation',
        'multilicity'
        );
 extend('Root','Weight');
@@ -41,17 +49,20 @@ extend('SubAlgebra','Algebra'
        ,
        'superGroup'
       );
-define('Module'
+define('Representation'
        ,
        'weights',
        'algebra'
        );
 
-extend('HighestWeightModule','Module'
+extend('HighestWeightRepresentation','Representation'
        ,
        'highestWeight',
        'mainChamber'
       );
+
+
+
 
 anomalous_branching_coefficient:=proc(lambda::weight,
                                       Lmu::HighestWeightModule)

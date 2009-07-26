@@ -59,44 +59,12 @@ science.org
 ********* TODO Write universal procedure for computation of multiplicities of positive roots
 ********* TODO Briefly describe injection types (regular and special) and construction of such injections
 *** General education
-***** DONE Read
-      [[file:~/books/big/science/CompleteBooks/PopularAndDiverse/Manin_MathAndPhys.djvu][Манин Ю.И.  Математика и физика Знание, 1979]]
-      SCHEDULED: <2009-02-04 Срд>
+***** DONE Find the book "Алгебраические основания теоретической физики" on the MIAN web site
+      [[file:~/books/big/science/CompleteBooks/MathPhys/Zharinov_-_Algebraic_and_geometric_foundations_of_mathphys(rus).pdf][file]] 
+******* TODO Read it
 *** Foreign institutions
 ***** Wroclav
       [[mailto:borow@ift.uni.wroc.pl][Andrzej Borowiec]]
       [[mailto:anna.pachol@ift.uni.wroc.pl][Anna Pachol]]
 ******* TODO Write to Anna
 *** Conferences
-***** TODO [[http://www.pdmi.ras.ru/EIMI/2009/tmp/index.html][2009: Symposium on Theoretical and Mathematical Physics]]
-***** TODO [[http://elementy.ru/events/428294][XVIII Международный коллоквиум по интегрируемым системам и квантовым симметриям ISQS—18]]
-***** MMCP 2009 
-******* [[http://mmcp2009.jinr.ru/abstracts.asp][Web site]]
-******* [[file:~/doc/conf/2009/MMCP][Folder with documents]]
-******* DONE Write for financial support once again
-******* [[file:AffineLieAlgebras/MMCP2009][Folder with materials]]
-******* Talk
-********* TODO Write more tests
-********* TODO Write exceptional cases: exceptional Lie algebras, $A_1, A_2^2, B_2 \dots$
-********* TODO Write code for twisted affine Lie algebras
-********* TODO Write Freudenthal implementation
-*********** TODO Compare it to our algorithm
-********* TODO Write code for finite-dimensional Lie algebras
-********* TODO Prepare presentation
-********* TODO Prepare talk
-***** SYMPHYS 2009
-******* [[http://theor.jinr.ru/~symphys/2009/][Web site]]
-******* [[file:AffineLieAlgebras/SYMPHYS2009][Folder with materials]]
-******* DONE Write abstract
-********* DONE Change title
-******* TODO Buy tickets
-******* DONE Book hotel
-******* TODO Talk
-********* TODO Check calculation of branching coefficients
-********* TODO Prove that computation can be held inside main Weyl chamber
-********* TODO Compute examples from Di Francesco section 17
-********* TODO Prepare presentation
-********* TODO Prepare talk
-
-
-

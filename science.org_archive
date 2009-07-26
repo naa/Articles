@@ -45,3 +45,40 @@ Archived entries from file /home/anton/study/2009/Articles/science.org
 
 *** DONE([2009-06-08 Пнд 03:08]) Submit an abstract
      DEADLINE: <2009-05-20 Срд>
+
+*** DONE([2009-07-25 Сбт 16:09]) Read
+    [[file:~/books/big/science/CompleteBooks/PopularAndDiverse/Manin_MathAndPhys.djvu][Манин Ю.И.  Математика и физика Знание, 1979]]
+    SCHEDULED: <2009-02-04 Срд>
+
+*** DONE([2009-07-25 Сбт 16:09]) [[http://www.pdmi.ras.ru/EIMI/2009/tmp/index.html][2009: Symposium on Theoretical and Mathematical Physics]]
+
+*** DONE([2009-07-25 Сбт 16:09]) MMCP 2009
+***** [[http://mmcp2009.jinr.ru/abstracts.asp][Web site]]
+***** [[file:~/doc/conf/2009/MMCP][Folder with documents]]
+***** DONE Write for financial support once again
+***** [[file:AffineLieAlgebras/MMCP2009][Folder with materials]]
+***** Talk
+******* TODO Write more tests
+******* TODO Write exceptional cases: exceptional Lie algebras, $A_1, A_2^2, B_2 \dots$
+******* TODO Write code for twisted affine Lie algebras
+******* TODO Write Freudenthal implementation
+********* TODO Compare it to our algorithm
+******* TODO Write code for finite-dimensional Lie algebras
+******* TODO Prepare presentation
+******* TODO Prepare talk
+
+*** DONE([2009-07-25 Сбт 16:09]) SYMPHYS 2009
+***** [[http://theor.jinr.ru/~symphys/2009/][Web site]]
+***** [[file:AffineLieAlgebras/SYMPHYS2009][Folder with materials]]
+***** DONE Write abstract
+******* DONE Change title
+***** TODO Buy tickets
+***** DONE Book hotel
+***** TODO Talk
+******* TODO Check calculation of branching coefficients
+******* TODO Prove that computation can be held inside main Weyl chamber
+******* TODO Compute examples from Di Francesco section 17
+******* TODO Prepare presentation
+******* TODO Prepare talk
+
+*** DONE([2009-07-25 Сбт 16:09]) [[http://elementy.ru/events/428294][XVIII Международный коллоквиум по интегрируемым системам и квантовым симметриям ISQS—18]]

@@ -11,11 +11,13 @@ Research program
 ********* TODO Connection of modular forms and elliptic curves
 ********* TODO Algorithms for prime numbers from elliptic curves
 ***** Affine lie algebras <-> Prime numbers ??
-*** TODO Take a look Тюрин А.Н.: "Квантование, классическая и квантовая теория поля и тета-функтсии"
+*** TODO Take a look Тюрин А.Н.: "Квантование, классическая и квантовая теория поля и тета-функции"
+*** TODO Read about modular properties of affine lie algebra representations (Wakimoto)
 * Maple Program
 *** Expand to twisted algebras
 *** DONE Compute string functions for $A^{(2)}_2$
 ***** DONE Check construction of weights according to books of Klimyk and Kac
 ***** TODO Introduce positive roots
 *** TODO Try folding of fan
+*** TODO Write general typed framework
 
