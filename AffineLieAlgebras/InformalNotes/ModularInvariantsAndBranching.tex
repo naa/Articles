@@ -110,30 +110,44 @@
 
 \section{Конформные вложения}
 \label{sec:conformal-embeddings}
-Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for enveloping and embedded theory. !!! Provide an explanation !!!
 
-The states for the theory that corresponds to the algebra $\mathfrak{g}$
+Состояния в теории соответствующей алгебре $g$ (с киральной алгеброй $Vir\ltimes \hat g$) имеют вид
 \begin{equation}
-  \label{eq:109}
+  \label{eq:9}
   J^{a_1}_{-n_1}J^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq\dots>0
 \end{equation}
-For sub-algebra $\mathfrak{p}\subset\mathfrak{g}$
+А для подалгебры $\mathfrak{p}\subset\mathfrak{g}$
 \begin{equation}
-  \label{eq:110}
+  \label{eq:10}
   \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\mathcal{P}\lambda\right>
 \end{equation}
-Here $\tilde{J}^{a'_j}_{-n_j}$ are the generators of $\mathfrak{p}$ and $\mathcal{P}$ is the projection of $\mathfrak{g}$ to $\mathfrak{p}$. $\mathfrak{g}$-invariance of vacuum entails its $\mathfrak{p}$-invariance, but it is not the case for energy-momentum tensor. So energy-momentum tensor of bigger theory should consist only of generators of $\hat{\mathfrak{p}}$. Then $T_{\hat{\mathfrak{g}}}=T_{\hat{\mathfrak{p}}}\Rightarrow c(\hat{\mathfrak{g}})=c(\hat{\mathfrak{p}})$. This leads to equation
+Здесь $\tilde{J}^{a'_j}_{-n_j}$ --- генераторы $\mathfrak{p}$, а $\mathcal{P}$ --- проекция $\mathfrak{g}$ на $\mathfrak{p}$. Очевидно, что $\mathfrak{g}$-инвариантность вакуума ведёт к его $\mathfrak{p}$-инвариантности, но нет оснований считать, что проекция сохраняет конформную инвариантность. Это легко увидеть из рассмотрения тензора энергии - импульса. Действительно, в тензоре энергии - импульса в виде Сугавары можно выделить часть, составленную из тех комбинаций генераторов $g$, которые входят в $p$. Но есть ещё и остаток. Из-за него действие генераторов Вирасоро на состояния (\ref{eq:10}) будет выводить из этого набора.
+Таким образом в ситуации общего положения конформная инвариантность нарушается.
+
+Однако есть исключения. Так для представлений уровня 1 simply-laced алгебр тензор энергии - импульса в форме Сугавары состоит только из генераторов Картана. В этом случае он может быть пере-выражен через генераторы подалгебры и конформная инвариантность сохраняется. Тогда $T_{\hat{\mathfrak{g}}_k}=T_{\hat{\mathfrak{p}}_{\tilde k}}\Rightarrow c(\hat{\mathfrak{g}}_k)=c(\hat{\mathfrak{p}}_{\tilde k})$. Это можно переписать в виде равенства
 \begin{equation}
-  \label{eq:111}
+  \label{eq:11}
   \frac{k\;dim\mathfrak{g}}{k+g}=\frac{x_e k\; dim\mathfrak{p}}{x_ek+p}
 \end{equation}
-Here $x_e$ is the embedding index and $g$, $p$ are dual Coxeter numbers of corresponding algebras. !!! Prove and expand !!!
+Где $x_e$ - индекс вложения, а $g$, $p$ - дуальные числа Кокстера соответствующих алгебр и было использовано равенство $\tilde k=x_e k$.
+\begin{equation}
+  \label{eq:12}
+  x_e=\frac{\left|\mathcal{P}\Theta_g\right|^2}{\left| \Theta_p\right|^2},\quad
+  x_e=\sum_{\mu\in P_{+}}b_{\lambda\mu}\frac{x_{\mu}}{x_{\lambda}}
+\end{equation}
+(Здесь $x_{\lambda}$ - индекс представления со старшим весом $\lambda$:
+\begin{equation}
+  \label{eq:13}
+  x_{\lambda}=\frac{dim \left|\lambda\right|(\lambda,\lambda+\rho)}{2 dim g}
+\end{equation})
 
-It can be shown that solutions of equation (\ref{eq:111}) exist only for level 1 $k=1$.
+Вложения, которые удовлетворяют условию (\ref{eq:11}), называются конформными.
 
-There exist only finite number of such embeddings.
+Нетрудно показать, что решения уравнения (\ref{eq:11}) существуют только для уровня $k=1$.
 
-{\bf Examples}
+(Существует конечное число конформных вложений, они классифицированы).
+
+{\bf Примеры}
 \begin{itemize}
 \item $su(2)\subset su(3),\; x_e=4$
 \item $\hat{su}(2)_{10}\subset\hat{sp}(4)_1$
