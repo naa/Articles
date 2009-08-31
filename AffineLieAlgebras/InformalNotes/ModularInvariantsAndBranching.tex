@@ -155,24 +155,70 @@
 \item $\hat{su}(2)_{16}\oplus\hat{su}(3)\subset (\hat{E_8})_1$
 \end{itemize}
 
-Branching $\hat{\lambda}\to \bigoplus_{\hat{\mu}}b_{\hat{\lambda}\hat{\mu}}\hat{\mu}$
-\begin{equation}
-  \label{eq:112}
-  h_{\hat{\lambda}}+n=h_{\hat{\mu}},\quad \frac{(\lambda,\lambda+2\rho)}{2(1+g)}+n=\frac{(\mu,\mu+2\rho)}{2(x_e+p)}
-\end{equation}
-The simple way is to calculate the dimensions of all the representations of simple finite-dimensional Lie algebras $\mathfrak{g},\mathfrak{p}$ and find all the triples $(\lambda,\mu,n)$, satisfying (\ref{eq:112}). Then investigate the representation $L_{\hat{\lambda}}$ of level $n$ as the sum of irreducible representations of $\mathfrak{g}$ and write out all the branching rules of these representations in representations of subalgebra $\mathfrak{p}$. The number of times the representation with highest weight $\mu$ appears in this listing is the required branching coefficient $b_{\hat{\lambda},\hat{\mu}}$.
+\section{Конформные коэффициенты ветвления}
+\label{sec:conformal-branching-rules}
 
-  Then non-diagonal modular invariants are obtained by substitution of character relations. For example, having calculated branching coefficients for $\hat{su}(2)_{28}\subset (\hat{G_2})_1$
+Для ветвления аффинных алгебр $\hat{\lambda}\to \bigoplus_{\hat{\mu}}b_{\hat{\lambda}\hat{\mu}}\hat{\mu}$ существуют разные алгоритмы, однако мы можем существенно сократить работу при рассмотрении конформных вложений.
+
+Во-первых, заметим, что если коэффициент $b_{\hat\lambda\hat\mu}$ отличен от нуля, то конечная часть старшего веса $\mu$ модуля $L_{\hat\mu}$ находится в некотором грейде $n$  бесконечномерного модуля $L_{\hat\lambda}$ уровня 1. Сохранение конформной инвариантности ведет к соотношению для конформных размерностей соответствующих полей
+\begin{equation}
+  \label{eq:14}
+  \Delta_{\hat\lambda}+n=\Delta_{\hat\mu},
+\end{equation}
+которое переписывается в виде
+
+\begin{equation}
+  \label{eq:15}
+  \frac{(\lambda,\lambda+2\rho)}{2(1+g)}+n=\frac{(\mu,\mu+2\rho)}{2(x_e+p)}
+\end{equation}
+
+Используя этот факт можно  легко вычислять правила ветвления. Для этого надо вычислить размерности интегрируемых представлений обеих алгебр  $\mathfrak{g},\mathfrak{p}$ и найти все тройки  $(\lambda,\mu,n)$, удовлетворяющие соотношению (\ref{eq:15}). Затем рассматриваем разложения представления $L_{\hat\lambda}$ в грейде $n$ в сумму неприводимых представлений конечномерной алгебры $\mathfrak{g}$ и выписываем правила ветвления этих представлений на представления подалгебры $\mathfrak{p}$. Коэффициент ветвления $b_{\hat{\lambda},\hat{\mu}}$ --- это сколько раз представление со старшим весом $\mu$ появляется в этом списке.
+
+{\bf Пример}
+
+$\hat{su}(2)_4\subset \hat{su}(3)_1$.
+Список конформных размерностей:
+\begin{equation}
+  \label{eq:16}
+  \begin{aligned}
+    \hat{su}(2)_4&: h_{[4,0]}=0, h_{[3,1]}=\frac{1}{8}, h_{[2,2]}=\frac{1}{3}, h_{[1,3]}=\frac{5}{8}, h_{[0,4]}=1\\
+    \hat{su}(3)_1&: h_{[1,0,0]}=0, h_{[0,1,0]}=h_{[0,0,1]}=\frac{1}{3}    
+  \end{aligned}
+\end{equation}
+Отсюда видно, что
+\begin{equation}
+  \label{eq:17}
+  \begin{aligned}
+    \left[1,0,0\right] &\to c_1 [4,0]_0\oplus c_2 [0,4]_1\\
+    [0,1,0] &\to c_3 [2,2]_0\\
+    [0,0,1] &\to c_4 [2,2]_0
+  \end{aligned}
+\end{equation}
+Где $c_1, c_2, c_3, c_4$ - коэффициенты, которые надо найти, а нижний индекс указывает грейд $n$.
+
+Коэффициенты $c_1, c_3, c_4$ вычисляются из правил ветвления в нулевом грейде. В этом грейде $L_{\hat\lambda}$ содержит только $L_{\lambda}$. Из правил ветвления
+\begin{equation}
+  \label{eq:18}
+  (0,0)\to (0),\quad (1,0)\to (2),\quad (0,1)\to (2)
+\end{equation}
+мы получаем, что $c_1=c_3=c_4=1$. $c_2$ вычисляется из представления грейда 1, содержащего конечномерное представление $(1,1)$ с правилом ветвления
+\begin{equation}
+  \label{eq:19}
+  (1,1)\to (4)\oplus (2)
+\end{equation}
+То есть $c_2$ тоже равен 1.
+
+После нахождения коэффициентов ветвления, недиагональные модулярные инварианты строятся путем подстановки соотношений для характеров. Например, зная коэффициенты ветвления для вложения $\hat{su}(2)_{28}\subset (\hat{G_2})_1$
   \begin{equation}
-    \label{eq:113}
+    \label{eq:20}
     \begin{aligned}
       & [1,0,0]\to [28,0]\oplus [18,10]\oplus [10,18]\oplus [0,28]\\
       & [0,0,1]\to [22,6]\oplus [16,12]\oplus [12,16]\oplus [6,22]\\
     \end{aligned}
   \end{equation}
-we get following modular-invariant partition function
+мы получаем следующую модулярно-инвариантную статсумму:
 \begin{equation}
-  \label{eq:114}
+  \label{eq:21}
   Z=\left|\chi_{[28,0]}+\chi_{[18,10]}+\chi_{[10,18]}+\chi_{[0,28]}\right|^2+\left|\chi_{[22,6]}+\chi_{[16,12]}+\chi_{[12,16]}+\chi_{[6,22]}\right|^2
 \end{equation}
 
