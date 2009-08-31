@@ -1,0 +1,139 @@
+From: VladimirLyakhovsky <Vladimir.Lyakhovsky@pobox.spbu.ru>
+Subject: Re: [(nowhere)] arXiv endorsement request from Anton Nazarov
+To: Anton Nazarov <antonnaz@gmail.com>
+Date: Mon, 11 May 2009 13:28:17 +0400
+Organization: SPbGU
+Reply-To: VladimirLyakhovsky <Vladimir.Lyakhovsky@pobox.spbu.ru>
+
+Dear Anton!
+
+This is the first time that I am in contact with an endorsement
+procedure in arXiv. When we sent our first papers there nobody
+asked us for a recommendation.
+
+From my point of view anybody can try to publish a paper based
+on the other published papers.
+But if my opinion is to be considered I shall formulate it.
+
+Your paper is not prepared properly yet.
+
+First of all (as you have noticed yourself) you have just corrected a
+serious  mistake there. What this must mean? This means that the algorithm
+must be carefully tested again in order to avoid possible confusions.
+
+Secondly the text is very poorly composed. It seems that you were in a
+great hurry when writing it.
+You can very simply spoil your reputation in the arXiv. 
+
+Not to be just declarative below I supply you with some notes (not all!)
+that justify my opinion. 
+
+1.In the Introduction we find no justification of the problem to be solved.
+Why other algorithms are not good enough?
+
+2."There are several recursive algorithms for computation of weight
+multiplicities which are based on different recurrent relations between
+weight multiplicities."
+What are they? Where are the references?
+Well they are found in the next paragraph:
+"Algorithms, based on Freudenthal formula (1) are implemented in several
+software packages, such as Coxeter/Weyl [5], LiE [6], LambdaTensor [7]."
+And what? Are they bad? 
+
+3. in  (2) => \gamma_0 , s(\gamma_0) and \pi are not explained.
+
+4."Weyl group of affine Lie algebra is richer than that of simple finite-
+dimensional Lie algebra. It can be presented as  a semi-direct product
+of the finite
+Weyl group W0 of the simple Lie algebra g0 \in g with infinite abelian
+group trans-
+lations along the roots of g0 which are non-imaginary roots of g:
+W = W0 \timesT."
+ - this is an example of a vulgarization of the notion because almost
+ every assertion
+here can be disputed.
+
+5."The Weyl group orbit of the highest root bounds the weights …"
+-- the orbit is the set of vectors, and how the bounds are imposed
+by the set of vectors?
+
+6."Rich Weyl symmetry" - what is the mathematical meaning of "rich"
+here?
+
+7."It can be shown that it is enough to compute multiplicities of
+the weights
+of the form \lambda=(\lambda^0,k,n) where \lambda^0 is finite part,
+k - level of the representation and n - grade only for finite number
+of \lambda lying in the intersection of main Weyl chamber with the
+subspace of grade zero." 
+-- this phrase cannot be understand, the confusing assertions are
+mixed here with plenty of misprints.
+
+8.Then comes 
+"So all the required information can be encoded in the form of string
+functions" - what does that "so" mean?
+
+9."but our implementation is rather inefficient" - a very strange note,
+if you have invented an inefficient algorithm then what reasons force
+you to publish it?!
+
+10."we haven't done any practical speed comparisons yet" - usually
+the answer is - these are your problems!
+
+11."Branching coeffcients can be computed in  a similar way"
+- similar to what?
+
+12. P_a - is not defined.
+
+13. The meaning of \gamma_0 remains unknown.
+
+14. "… which are equal to usual branching cofficients for weights
+from the main Weyl chamber" - here is the typical example of a
+confusing assertion - what main Weyl chamber do you mean?
+There are two such here!
+
+15. "… the theory of affine
+Lie algebras is based upon the theory of simple finite-dimensional
+Lie algebras" - again the ambiguous assertion. Strictly speaking
+this is not true.
+
+16. "This design choice imposed some performance constraints but
+allowed us
+to keep the code concise by the lack of need of reimplementation
+of algorithms
+for computation of roots, weights and finite Weyl reflection."
+- completely unreadable text - "…of…of…of…for…of…"
+
+17. "… for explicit construction of irreducible highest-weight
+modules." - not all of them!
+
+18. \alpha_1 + \alpha_2 + \alpha_3  -- is not the highest weight
+of your module considered below!
+
+19. "String function coefficients are equal to" - in the text
+them come not the coefficients.
+
+20. (sl3 for complex algebras and su3 for real) - again the
+confusing assertion, does it mean that only one real form can
+be studied?
+
+21. "This implementation is work in progress. … Further study
+is required for better performance of implementation."
+-       despite the poor grammar this means that the proposed
+material is an unfinished study. Then they will tell you to
+finish it first!
+
+22. "Although big performance gain can be achieved…"
+ - completely unclear!
+
+23. I have indicated some absent articles in your text, but
+it must be checked scrupulously by a good spell-check.
+
+I hope you'll perform the necessary tests, complete this work and
+prepare a text that will not do any harm to you future reputation
+as a specialist.
+
+Yours
+           Vladimir Lyakhovsky
+
+
