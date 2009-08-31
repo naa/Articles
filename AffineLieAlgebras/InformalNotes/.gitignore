@@ -1,3 +1,4 @@
+/.gitignore~
 /CFTNotes.aux
 /CFTNotes.bbl
 /CFTNotes.blg
@@ -7,4 +8,23 @@
 /CFTNotes.pdf
 /CFTNotes.tex~
 /CFTNotes.toc
+/ModularInvariantsAndBranching.aux
+/ModularInvariantsAndBranching.bbl
+/ModularInvariantsAndBranching.blg
+/ModularInvariantsAndBranching.dvi
+/ModularInvariantsAndBranching.log
+/ModularInvariantsAndBranching.out
+/ModularInvariantsAndBranching.tex~
+/ModularInvariantsAndBranching.toc
+/_region_.log
+/_region_.pdf
+/_region_.prv
+/_region_.tex
 /auto
+/prv_CFTNotes.fmt
+/prv_CFTNotes.log
+/prv_ModularInvariantsAndBranching.fmt
+/prv_ModularInvariantsAndBranching.log
+/string equations with fans-3.aux
+/string equations with fans-3.dvi
+/string equations with fans-3.log
