@@ -35,6 +35,7 @@ science.org
 *********** Morozov
 ********* Theta functions: see 133,134 in previous paper
 ********* TODO Шафаревич "Основные понятия алгебры" ВИНИТИ 1985
+******* Connections with quantum groups
 ***** Books
 ******* [[file:~/books/big/science/CompleteBooks/KacMoodyAlgebras/Кац,%20"Бесконечномерные%20алгебры%20Ли".djvu][Кац, "Бесконечномерные алгебры Ли"]]
 ******* [[file:~/books/big/science/CompleteBooks/KacMoodyAlgebras/Wakimoto%20M.%20Infinite-dimensional%20Lie%20algebras%20(AMS,%202001)(KA)(ISBN%200821826549)(T)(337s)_MAr_.djvu][Wakimoto M. "Infinite-dimensional Lie algebras"]]
@@ -58,6 +59,10 @@ science.org
 ********* Some definitions
 ********* TODO Write universal procedure for computation of multiplicities of positive roots
 ********* TODO Briefly describe injection types (regular and special) and construction of such injections
+*** Quantum groups and integrable systems
+***** TODO Kulish and related papers on non-commutative spaces
+      [[file:~/science/Kulish_Twist%20Deformations%20of%20Quantum%20Integrable%20Spin%20Chains.pdf][file:~/science/Kulish_Twist Deformations of Quantum Integrable Spin Chains.pdf]]
+      [[http://springerlink.com/content/hx6863380062/][Lecture notes in Physics (Noncommutative Spacetimes)]]
 *** General education
 ***** DONE Find the book "Алгебраические основания теоретической физики" on the MIAN web site
       [[file:~/books/big/science/CompleteBooks/MathPhys/Zharinov_-_Algebraic_and_geometric_foundations_of_mathphys(rus).pdf][file]] 
