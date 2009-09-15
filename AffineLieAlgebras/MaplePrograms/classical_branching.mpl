@@ -1,16 +1,14 @@
-read("affine.mpl"):
+read("coxeter.mpl");
+iprod := (v1,v2) -> coeff(v1,lambda0)*coeff(v2,delta)+coeff(v1,delta)*coeff(v2,lambda0)+coxeter['iprod'](subs({lambda0=0,delta=0,eps=0},v1),subs({lamda0=0,delta=0,eps=0},v2));
+pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
+get_indices:=r->map(x->x[1],[indices(r)]);
 
-projection:=proc(wg,real_roots,img_root)
-    local v,t,res,imaginary_root,weights;
+projection:=proc(wg,real_roots)
+    local v,t,res,weights;
     res:=table();
-    imaginary_root:=img_root;
     weights:=wg;
-    if grade(imaginary_root)=0 then
-        weights:=subs(delta=0,weights);
-        imaginary_root:=imaginary_root+delta;
-    fi;
     for v in weights do
-        t:=convert(map(x->x*pairing(v,x)/2,real_roots),`+`)+delta*grade(v)/grade(imaginary_root)+level(v)*lambda0;
+        t:=convert(map(x->x*pairing(v,x),real_roots),`+`);
         if assigned(res[t]) then
             res[t]:=res[t]+coeff(v,eps);
         else
@@ -21,26 +19,9 @@ projection:=proc(wg,real_roots,img_root)
 end proc:
 
 
-finite_positive_roots:=proc(R) local S;
-                    S:=finite_roots(R);
-                    map(x->-x,coxeter['orbit'](map(x->-x,S),S))
-                end:
-
-
-tA2_positive_roots:=n->[e1+i*delta+eps$i=0..n,2*e1+(2*i+1)*delta+eps$i=0..n/2,-2*e1+(2*i+1)*delta+eps$i=0..n/2,-e1+i*delta+eps$i=1..n,i*delta+eps$i=1..n];
-
-positive_roots:=proc(R,max_grade)
-         local cpr,l,p,r;
-             if R=tA2 then
-                 return tA2_positive_roots(max_grade);
-             fi;
-             if is_twisted(R) then
-                 error("Twisted algebras are unsupported yet");
-             fi;
-             cpr:=finite_positive_roots(R);
-             r:=coxeter['rank'](finite_dimensional_root_system(R));
-             [op(map(x->x+l*delta+eps$l=0..max_grade,cpr)),op(map(x->-x+p*delta+eps$p=1..max_grade,cpr)),p*delta+r*eps$p=1..max_grade];
-         end proc:
+positive_roots:=proc(R)
+             map(x->x+eps,coxeter['pos_roots'](R));
+         end;
 
 mult_inj:=proc(r,roots)
          if assigned(roots[subs(eps=0,r)]) then
@@ -50,46 +31,38 @@ mult_inj:=proc(r,roots)
          fi;
      end proc:
 
-fan_table:=proc(pos_roots,inj_roots,max_grade)
+fan_table:=proc(pos_roots,inj_roots)
 local t,n,t2,res,p,j;
     n:=coeff(pos_roots[1],eps)-mult_inj(pos_roots[1],inj_roots);
     res:=table();
     p:=subs(eps=0,pos_roots[1]);
     if nops(pos_roots)=1 then
         for j from 1 to n do
-            if coeff(j*p,delta)<=max_grade then
                 res[j*p]:=(-1)^(j) * binomial(n,j);
-            fi;
         od;
         return res;
     else
-        t:=fan_table(pos_roots[2..-1],inj_roots,max_grade);
-        t2:=fan_table([pos_roots[1]],inj_roots,max_grade);
+        t:=fan_table(pos_roots[2..-1],inj_roots);
+        t2:=fan_table([pos_roots[1]],inj_roots);
         for x in get_indices(t) do
             for j from 1 to n do
-                if coeff(p*j+x,delta)<=max_grade then
-                    if not(assigned(res[p*j+x])) then res[p*j+x]:=0; fi;
-                    res[p*j+x]:=res[p*j+x]+t[x]*(-1)^(j) * binomial(n,j);
-                fi;
+                if not(assigned(res[p*j+x])) then res[p*j+x]:=0; fi;
+                res[p*j+x]:=res[p*j+x]+t[x]*(-1)^(j) * binomial(n,j);
             od;
-            if coeff(x,delta)<=max_grade then
-                if not(assigned(res[x])) then res[x]:=0; fi;
-                res[x]:=res[x]+t[x];
-            fi;
+            if not(assigned(res[x])) then res[x]:=0; fi;
+            res[x]:=res[x]+t[x];
         od;
         for x in get_indices(t2) do
-            if coeff(x,delta)<=max_grade then
-                if not(assigned(res[x])) then res[x]:=0; fi;
-                res[x]:=res[x]+t2[x];
-            fi;
+            if not(assigned(res[x])) then res[x]:=0; fi;
+            res[x]:=res[x]+t2[x];
         od;
         return res;
     fi;
 end proc:
 
-fan:=proc(pos_roots,inj_roots,max_grade)
+fan:=proc(pos_roots,inj_roots)
     local t;
-    t:=fan_table(pos_roots,inj_roots,max_grade);
+    t:=fan_table(pos_roots,inj_roots);
     map(x->x+t[x]*eps,get_indices(t));
 end proc:
 
@@ -102,10 +75,9 @@ inj_roots:=proc(roots)
         return t;
     end proc:
 
-
 calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
                     local xi0,a;
-                        if coeff(xi,delta)>0 or not is_in_borders(xi) then return 0; fi;
+                        if not is_in_borders(xi) then return 0; fi;
                         xi0:=subs(eps=0,xi);
                         if assigned(res[xi0]) then
                             return res[xi0];
@@ -123,39 +95,117 @@ calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
 
 inject:=(sal,al,injection)->subs({(alpha[i]=al[i])$i=1..nops(al)-1},subs(solve(injection,{e||(i$i=1..(nops(sal)-1))}),sal));
 
-plot_projection:=proc(tt,real_roots,imaginary_root)
-         plots[textplot](map(x->[coeff(x,delta)/coeff(imaginary_root,delta),pairing(x,real_roots[1])/2,coeff(x,eps)],[op(tt)]));
+plot_projection:=proc(tt,real_roots)
+         plots[textplot](map(x->[pairing(x,real_roots[1])/2,pairing(x,real_roots[2])/2,coeff(x,eps)],[op(tt)]));
      end proc:
 
-get_fan:=proc(weight,algebra,subalgebra,injection,max_grade)
+get_fan:=proc(weight,algebra,subalgebra,injection)
     local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
-        al:=algebra_roots(algebra);
-        sal:=algebra_roots(subalgebra);
+        al:=coxeter['base'](algebra);
+        sal:=coxeter['base'](subalgebra);
 
         sal_inj:=inject(sal,al,injection);
-        pr:=projection(positive_roots(algebra,max_grade),sal_inj[1..-2],delta);
+        pr:=projection(positive_roots(algebra),sal_inj);
         pr:=select(x->subs(eps=0,x)<>0,pr);
 
-        spr:=inject(positive_roots(subalgebra,max_grade),al,injection);
-        f:=[eps,op(fan(pr,inj_roots(spr),max_grade))];
+        spr:=inject(positive_roots(subalgebra),al,injection);
+        f:=[eps,op(fan(pr,inj_roots(spr)))];
         return f;
     end proc;
 
-branching:=proc(weight,algebra,subalgebra,injection,max_grade)
+finite_orbit:=proc(v0,R) local S,coS,EPS,is_mem,orb,old,new,u,i,v,parity,u1,j,nparity,pres;
+    S:=coxeter['base'](R); coS:=coxeter['co_base'](S);
+    if type(v0,'set') or type(v0,'list') then orb:=op(v0)
+    else orb:=coxeter['vec2fc'](v0,S)
+    fi;
+    if type([op(S),orb],'list'('polynom'('rational'))) then
+        EPS:=0; is_mem:=(x,y,z)->member(x,y)
+    else
+        EPS:=`coxeter/default`['epsilon'];
+        is_mem:=`coxeter/orbit/f`
+    fi;
+    new:=[orb];
+    nparity:=[seq(-1,i=1..nops(new))];
+    pres:=nparity;
+    while nops(new)>0 do
+        old:=new; new:=[];
+        parity:=nparity;
+        nparity:=[];
+        for j to nops(old) do
+            u:=old[j];
+            for i to nops(S) do
+                v:=iprod(coS[i],u);#coxeter['iprod'](coS[i],u);
+                if v>EPS then
+                    v:=u-v*S[i];
+                    if not is_mem(v,new,EPS) then
+                        new:=[op(new),v];
+                        nparity:=[op(nparity),parity[j]*(-1)];
+                    fi
+                fi
+            od
+        od;
+        orb:=orb,op(new);
+        pres:=[op(pres),op(nparity)];
+    od;
+    return zip((x,y)->x+y*eps,[orb],pres);
+end:
+
+anomalous_points:=proc(weight,R)
+          local rho;
+              rho:=`weyl/rho`(R);
+              return map(x->subs(eps=0,x)-rho-coeff(x,eps)*eps,finite_orbit(weight+rho,R));
+          end proc;
+
+external_border:=proc(points)
+             local p,p1,res,ind,c1,c2;
+             res:=0;
+             for p1 in points do
+                 p:=subs({delta=0,eps=0,lambda0=0},p1);
+                 for ind in indets(p) do
+                     c1:=coeff(p,ind);
+                     c2:=coeff(res,ind);
+                     if c2=0 then
+                         res:=res+[c1,c1]*ind;
+                     elif c1<c2[1] then
+                         res:=subs(ind=0,res)+[c1,c2[2]]*ind;
+                     elif c1>c2[2] then
+                         res:=subs(ind=0,res)+[c2[1],c1]*ind;
+                     fi;
+                 od;
+             od;
+             return res;
+         end proc;
+
+is_in_borders:=proc(p,borders)
+          local ind,c1,c2;
+          for ind in indets(borders) do
+              c1:=coeff(p,ind);
+              c2:=coeff(borders,ind);
+              if c1<c2[1] or c1>c2[2] then
+                  return false;
+              fi;
+          od;
+          return true;
+      end proc;
+
+branching:=proc(weight,algebra,subalgebra,injection)
 local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
-    al:=algebra_roots(algebra);
-    sal:=algebra_roots(subalgebra);
+    al:=coxeter['base'](algebra);
+    sal:=coxeter['base'](subalgebra);
 
     sal_inj:=inject(sal,al,injection);
-    pr:=projection(positive_roots(algebra,max_grade),sal_inj[1..-2],delta);
+    pr:=projection(positive_roots(algebra),sal_inj);
     pr:=select(x->subs(eps=0,x)<>0,pr);
 
-    spr:=inject(positive_roots(subalgebra,max_grade),al,injection);
-    f:=[eps,op(fan(pr,inj_roots(spr),max_grade))];
-
-    wv:=inject(weyl_vector(subalgebra),al,injection);
-    sing:=projection(anomalous_points(weight,algebra,max_grade),sal_inj[1..-2],delta):
+    spr:=inject(positive_roots(subalgebra),al,injection);
+    f:=[eps,op(fan(pr,inj_roots(spr)))];
+    print(f);
+    wv:=inject(`weyl/rho`(subalgebra),al,injection);
+    print(sal_inj);
+    sing:=projection(anomalous_points(weight,algebra),sal_inj[1..-1]):
+    print(sing);
     borders:=external_border(sing);
+    print(borders);
     i_i_b:=rcurry(is_in_borders,borders);
 
     t:=table();
@@ -171,8 +221,8 @@ local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
             mi:=i;
         fi;
     od;
-#    print(sl[mi]);
-    calculate_branching_coefficient(-max_grade*delta+weight,f,sl[mi],sing,t,i_i_b);
+    print(sl[mi]);
+    calculate_branching_coefficient(-weight,f,sl[mi],sing,t,i_i_b);
 
     return t;
 end proc:
