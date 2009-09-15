@@ -8,7 +8,7 @@ projection:=proc(wg,real_roots)
     res:=table();
     weights:=wg;
     for v in weights do
-        t:=convert(map(x->x*pairing(v,x),real_roots),`+`);
+        t:=convert(map(x->x*pairing(v,x)/2,real_roots),`+`);
         if assigned(res[t]) then
             res[t]:=res[t]+coeff(v,eps);
         else
@@ -93,22 +93,29 @@ calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
                         return res[xi0];
                     end proc:
 
-inject:=(sal,al,injection)->subs({(alpha[i]=al[i])$i=1..nops(al)-1},subs(solve(injection,{e||(i$i=1..(nops(sal)-1))}),sal));
+#inject:=(sal,al,injection)->subs({(alpha[i]=al[i])$i=1..nops(al)-1},subs(solve(injection,{e||(i$i=1..(nops(sal)-1))}),sal));
+
+inject:=(weights,subalgebra,injection)->map(x->
+                                            convert(
+                                                zip((y,z)->y*z,
+                                                    coxeter['root_coords'](subs(eps=0,x),subalgebra),
+                                                    injection),
+                                                `+`)+coeff(x,eps)*eps,weights);
 
 plot_projection:=proc(tt,real_roots)
          plots[textplot](map(x->[pairing(x,real_roots[1])/2,pairing(x,real_roots[2])/2,coeff(x,eps)],[op(tt)]));
      end proc:
 
-get_fan:=proc(weight,algebra,subalgebra,injection)
+get_fan:=proc(algebra,subalgebra,injection)
     local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
         al:=coxeter['base'](algebra);
         sal:=coxeter['base'](subalgebra);
 
-        sal_inj:=inject(sal,al,injection);
+        sal_inj:=inject(sal,subalgebra,injection);
         pr:=projection(positive_roots(algebra),sal_inj);
         pr:=select(x->subs(eps=0,x)<>0,pr);
 
-        spr:=inject(positive_roots(subalgebra),al,injection);
+        spr:=inject(positive_roots(subalgebra),subalgebra,injection);
         f:=[eps,op(fan(pr,inj_roots(spr)))];
         return f;
     end proc;
@@ -193,15 +200,14 @@ local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
     al:=coxeter['base'](algebra);
     sal:=coxeter['base'](subalgebra);
 
-    sal_inj:=inject(sal,al,injection);
+    sal_inj:=inject(sal,subalgebra,injection);
     pr:=projection(positive_roots(algebra),sal_inj);
     pr:=select(x->subs(eps=0,x)<>0,pr);
 
-    spr:=inject(positive_roots(subalgebra),al,injection);
+    spr:=inject(positive_roots(subalgebra),subalgebra,injection);
     f:=[eps,op(fan(pr,inj_roots(spr)))];
     print(f);
-    wv:=inject(`weyl/rho`(subalgebra),al,injection);
-    print(sal_inj);
+    wv:=op(inject([`weyl/rho`(subalgebra)],subalgebra,injection));
     sing:=projection(anomalous_points(weight,algebra),sal_inj[1..-1]):
     print(sing);
     borders:=external_border(sing);
@@ -209,7 +215,7 @@ local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
     i_i_b:=rcurry(is_in_borders,borders);
 
     t:=table();
-    t[weight]:=1;
+    t[op(projection([weight],sal_inj))]:=1;
 
 
     sl:=select(x->coeff(x,delta)=0,f);
@@ -221,8 +227,7 @@ local i_i_b,pr,spr,al,sal,sal_inj,t,sing,wv,i,sl,mi,mv;
             mi:=i;
         fi;
     od;
-    print(sl[mi]);
-    calculate_branching_coefficient(-weight,f,sl[mi],sing,t,i_i_b);
+    calculate_branching_coefficient(0,f,sl[mi],sing,t,i_i_b);
 
     return t;
 end proc:
@@ -235,7 +240,7 @@ branching_rules:=proc(hweight,algebra,subalgebra,injection,max_grade)
               res:=table();
               inds:=get_indices(t);
               for dw in dom_weights do
-                  dw1:=inject(dw,al,injection);
+                  dw1:=inject([dw],subalgebra,injection);
                   res[dw]:=sort(
                       convert(map(x->t[x]*q^(-coeff(x,delta)),
                                   select(y->subs({eps=0,delta=0},y)=dw1,inds))
