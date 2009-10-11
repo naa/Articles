@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\begin{document}
+Мы хотим раскладывать представление $L^{\mu}$ алгебры
+$\frak{g}$ на представления подалгебры $\frak{a}$
+\begin{equation}
+  \label{eq:1}
+  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
+    }^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }
+\end{equation}
+Верна следующая формула для характеров:
+\begin{equation}
+  \label{eq:2}
+  \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} ch L^{\nu}_{\mathfrak{a}}
+\end{equation}
+Произведение характеров модулей старшего веса равно характеру тензорного произведения модулей.
+
+Характеры инвариантны относительно группы Вейля.
+\begin{equation}
+  \label{eq:3}
+  ch(L^{\omega\mu})=ch(L^{\mu})
+\end{equation}
+
+Явное выражение для формальных характеров даётся формулой Вейля-Каца:
+\begin{equation}
+  \label{eq:4}
+  ch(L^{\mu})=\frac{\sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}}
+\end{equation}
+Эту формулу также можно записать в виде
+\begin{equation}
+  \label{eq:5}
+  ch(L^{\mu})=\sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho} \left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)^{-1}
+\end{equation}
+Обратный элемент для монома $(1-e^{-\alpha})$ - это бесконечный формальный ряд
+\begin{equation}
+  \label{eq:6}
+  1+e^{-\alpha}+e^{-2\alpha}+e^{-3\alpha}+\dots
+\end{equation}
+
+\end{document}
