@@ -21,3 +21,9 @@ Research program
 *** TODO Try folding of fan
 *** TODO Write general typed framework
 
+* Today 
+  SCHEDULED: <2009-10-12 Пнд>
+*** DONE Пример с B2
+*** TODO Странички сотрудников
+*** TODO Статья ФРТ
+*** DONE Что-то про криптографию

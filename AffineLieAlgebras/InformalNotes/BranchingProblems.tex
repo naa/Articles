@@ -37,12 +37,36 @@ $\frak{g}$ на представления подалгебры $\frak{a}$
 Эту формулу также можно записать в виде
 \begin{equation}
   \label{eq:5}
-  ch(L^{\mu})=\sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho} \left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)^{-1}
+  ch(L^{\mu})=\left( \sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho} \right) \left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)^{-1}
 \end{equation}
 Обратный элемент для монома $(1-e^{-\alpha})$ - это бесконечный формальный ряд
 \begin{equation}
   \label{eq:6}
   1+e^{-\alpha}+e^{-2\alpha}+e^{-3\alpha}+\dots
 \end{equation}
+В работе \cite{ilyin812pbc} рекуррентное соотношение для коэффициентов ветвления выводилось следующим образом.
+Бралось соотношение \eqref{eq:2}, характеры расписывались по формуле Вейля-Каца \eqref{eq:5}.
+\begin{multline}
+  \label{eq:7}
+  \pi_{\mathfrak{a}}\left(\left(\sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho}\right) \left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)^{-1}\right)= \\
+  \sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+\end{multline}
+Затем обе стороны соотношения умножались на $\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)$. Так как умножение на моном коммутирует с проектором, то $\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}$ сокращалось в левой части.
+
+Однако в случае, если $\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)=0$, получить содержательное рекуррентное соотношение не удается, так как обе стороны равенства \eqref{eq:7} умножаются на ноль.
+
+Это происходит в том случае, если среди положительных корней алгебры $\mathfrak{g}$ есть ортогональные корневой системе вложенной подалгебры $\mathfrak{a}$. Обозначим набор таких корней через $\Delta_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$. Решить эту проблему можно если умножать не на $\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}\right)$, а на $\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}\right)$.
+
+Тогда
+\begin{multline}
+  \label{eq:9}
+  \pi_{\mathfrak{a}}\left(\left(\sum_{\omega\in W}\epsilon(\omega)e^{\omega(\mu+\rho)-\rho}\right) \left(\prod_{\alpha\in \Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}\right)^{-1}\right)= \\
+  \sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+\end{multline}
+
+\bibliography{CFTNotes}{}
+\bibliographystyle{utphys}
 
 \end{document}
