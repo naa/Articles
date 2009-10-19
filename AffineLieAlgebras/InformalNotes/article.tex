@@ -174,11 +174,29 @@ denominator.
 \label{sec:proof}
 Proof of the formula.
 
-We start with the Weyl-Kac formula for the character of the module. 
+The decomposition of the representation of the algebra to the representations of the subalgebra can be symbolically written using formal characters and projection operator:
+\begin{equation}
+  \label{eq:3}
+  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
+    }^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }\quad
+  \Longrightarrow\quad
+  \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} ch L^{\nu}_{\mathfrak{a}}
+\end{equation}
+Now using the Weyl-Kac formula for the character of the module
 \begin{equation}
   \label{eq:2}
   ch L^{\mu}=\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}}
 \end{equation}
+we obtain the equality
+\begin{equation}
+  \label{eq:4}
+  \frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}} = 
+  \sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+\end{equation}
+
+It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
+
 Proof of the irreducibility of factor-modules.
 
 \section{Algorithm}
