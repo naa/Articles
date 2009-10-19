@@ -1,0 +1,211 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\begin{document}
+Plan:
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Notation}
+\label{sec:notation}
+
+Consider the affine Lie algebras $\frak{g}$ and $\frak{a}$ with the
+underlying finite-dimensional subalgebras $\overset{\circ }{\frak{g}}$ and $%
+\overset{\circ }{\frak{a}}$ and an injection $\frak{a}\longrightarrow \frak{g%
+}$ such that $\frak{a}$ is a reductive subalgebra $\frak{a\subset g}$ with
+correlated root spaces: $\frak{h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g%
+}}^{\ast }$ and $\frak{h}_{\overset{\circ }{\frak{a}}}^{\ast }\subset \frak{h%
+}_{\overset{\circ }{\frak{g}}}^{\ast }$\ .
+
+We use the following notations adopted from the paper \cite{ilyin812pbc}.
+
+$L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ -- the integrable module
+of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
+-module with the highest weight $\nu $ );
+
+$r$ , $\left( r_{\frak{a}}\right) $ -- the rank of the algebra $\frak{g}$ $%
+\left( \text{resp. }\frak{a}\right) $ ;
+
+$\Delta $ $\left( \Delta _{\frak{a}}\right) $-- the root system; $\Delta
+^{+} $ $\left( \text{resp. }\Delta _{\frak{a}}^{+}\right) $-- the positive
+root system (of $\frak{g}$ and $\frak{a}$ respectively);
+
+$\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
+\alpha \right) \right) $ -- the multiplicity of the root $\alpha$ in $\Delta 
+$ (resp. in $\left( \Delta _{\frak{a}}\right) $);
+
+$\overset{\circ }{\Delta }$ , $\left( \overset{\circ }{\Delta _{\frak{a}}}%
+\right) $ -- the finite root system of the subalgebra $\overset{\circ }{%
+\frak{g}}$ (resp. $\overset{\circ }{\frak{a}}$);
+
+$\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ -- the
+weight diagram of $L^{\mu }$ $\left( \text{resp. }L_{\frak{a}}^{\nu }\right) 
+$ ;
+
+$W$ , $\left( W_{\frak{a}}\right) $-- the corresponding Weyl group;
+
+$C$ , $\left( C_{\frak{a}}\right) $-- the fundamental Weyl chamber;
+
+$\rho $\ , $\left( \rho _{\frak{a}}\right) $\ -- the Weyl vector;
+
+$\epsilon \left( w\right) :=\det \left( w\right) $ ;
+
+$\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ -- the $i
+$-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \text{resp. }\frak{a}%
+\right) $; $i=0,\ldots ,r$ ,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+
+$\delta $ -- the imaginary root of $\frak{g}$ (and of $\frak{a}$ if any);
+
+$\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
+}\right) $-- the basic coroot for $\frak{g}$ $\left( \text{resp. }\frak{a}%
+\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+
+$\overset{\circ }{\xi }$ , $\overset{\circ }{\xi _{\left( \frak{a}\right) }}$
+-- the finite (classical) part of the weight $\xi \in P$ , $\left( \text{%
+resp. }\xi _{\left( \frak{a}\right) }\in P_{\frak{a}}\right) $\ ;
+
+$\lambda =\left( \overset{\circ }{\lambda };k;n\right) $ -- the
+decomposition of an affine weight indicating the finite part $\overset{\circ 
+}{\lambda }$, level $k$ and grade $n$\ .
+
+$P$ $\left( \text{resp. } P_{\frak{a}}\right) $ \ -- the weight lattice;
+
+$M \left( \text{resp. }M_{\frak{a}}\right) :=$
+
+\noindent $=\left\{ 
+\begin{array}{c}
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}^{\vee }\text{ }\left( \text{resp. }%
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{\left( \frak{a}\right) i}^{\vee }\right) 
+\text{for untwisted algebras or }A_{2r}^{\left( 2\right) }, \\ 
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}\text{ }\left( \text{resp. }\sum_{i=1}^{r}%
+\mathbf{Z}\alpha _{\left( \frak{a}\right) i}\right) \text{for }A_{r}^{\left(
+u\geq 2\right) }\text{ and }A\neq A_{2r}^{\left( 2\right) },
+\end{array}
+\right\} ;$
+
+$\mathcal{E}$\ , $\left( \mathcal{E}_{\frak{a}}\right) $-- the group algebra
+of the group $P$ (resp. $P_{\frak{a}} $);
+
+$\Theta _{\lambda }:=e^{-\frac{\left| \lambda \right| ^{2}}{2k}\delta
+}\sum\limits_{\alpha \in M}e^{t_{\alpha }\circ \lambda }$ -- the classical
+theta-function;
+
+$\Theta _{\left( \frak{a}\right) \nu }:=e^{-\frac{\left| \nu \right| ^{2}}{%
+2k_{\frak{a}}}\delta }\sum\limits_{\beta \in M_{\frak{a}}}e^{t_{\beta }\circ
+\nu }$;\newline
+notice that when the injection is considered the level $k_{\frak{a}}$ must
+be correlated with the corresponding rescaling of roots;
+
+$A_{\lambda }:=\sum\limits_{s\in \overset{\circ }{W}}\epsilon (s)\Theta
+_{s\circ \lambda }$ $\left( \text{resp. }A_{\left( \frak{a}\right) \nu
+}:=\sum\limits_{s\in \overset{\circ }{W_{\frak{a}}}}\epsilon (s)\Theta
+_{\left( \frak{a}\right) s\circ \nu }\right) $;
+
+$\Psi ^{\left( \mu \right) }:=e^{\frac{\left| \mu +\rho \right| ^{2}}{2k}%
+\delta \ -\ \rho }A_{\mu +\rho }=e^{\frac{\left| \mu +\rho \right| ^{2}}{2k}%
+\delta \ -\ \rho }\sum\limits_{s\in \overset{\circ }{W}}\epsilon (s)\Theta
+_{s\circ \left( \mu +\rho \right) }=$
+
+\noindent $=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu +\rho )-\rho }$
+-- the singular weight element for the $\frak{g}$-module $L^{\mu }$;
+
+$\Psi _{\left( \frak{a}\right) }^{\left( \nu \right) }:=e^{\frac{\left| \nu
++\rho _{_{\frak{a}}}\right| ^{2}}{2k_{\frak{a}}}\delta \ -\ \rho _{_{\frak{a}%
+}}}A_{\left( \frak{a}\right) \nu +\rho _{_{\frak{a}}}}=e^{\frac{\left| \nu
++\rho _{_{\frak{a}}}\right| ^{2}}{2k_{\frak{a}}}\delta \ -\ \rho _{_{\frak{a}%
+}}}\sum\limits_{s\in \overset{\circ }{W_{\frak{a}}}}\epsilon (s)\Theta
+_{\left( \frak{a}\right) s\circ \left( \nu +\rho _{_{\frak{a}}}\right) }=$
+
+\noindent $=\sum\limits_{w\in W_{\frak{a}}}\epsilon (w)e^{w\circ (\nu +\rho
+_{_{\frak{a}}})-\rho _{_{\frak{a}}}}$ -- the corresponding singular weight
+element for the $\frak{a}$-module $L_{\frak{a}}^{\nu }$;
+
+$\widehat{\Psi ^{\left( \mu \right) }}$ $\left( \widehat{\Psi _{\left( \frak{%
+a}\right) }^{\left( \nu \right) }}\right) $ -- the set of singular weights $%
+\xi \in P$ $\left( \text{resp. }\in P_{\frak{a}}\right) $ for the module $%
+L^{\mu }$ $\left( \text{resp. }L_{\frak{a}}^{\nu }\right) $ with the
+coordinates $\left( \overset{\circ }{\xi },k,n,\epsilon \left( w\left( \xi
+\right) \right) \right) \mid _{\xi =w\left( \xi \right) \circ (\mu +\rho
+)-\rho },$ (resp. $\left( \overset{\circ }{\xi },k,n,\epsilon \left(
+w_{a}\left( \xi \right) \right) \right) \mid _{\xi =w_{a}\left( \xi \right)
+\circ (\nu +\rho _{a})-\rho _{a}}$ ), (this set is similar to $P_{\mathrm{%
+nice}}^{\prime }\left( \mu \right) $ in \cite{Wak1})
+
+$m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
+}\right) $ -- the multiplicity of the weight $\xi \in P$ \ $\left( \text{%
+resp. }\in P_{\frak{a}}\right) $ in the module $L^{\mu }$ , (resp. $\xi \in
+L_{\frak{a}}^{\nu } $);
+
+$ch\left( L^{\mu }\right) $ $\left( \text{resp. }ch\left( L_{\frak{a}}^{\nu
+}\right) \right) $-- the formal character of $L^{\mu }$ $\left( \text{resp. }%
+L_{\frak{a}}^{\nu }\right) $;
+
+$ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
++\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
+\mathrm{{mult}\left( \alpha \right) }}}=\frac{\Psi ^{\left( \mu \right) }}{%
+\Psi ^{\left( 0\right) }}$ -- the Weyl-Kac formula.
+
+$R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
+mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }\quad $
+
+\noindent $\left( \text{resp. }R_{\frak{a}}:=\prod_{\alpha \in \Delta _{%
+\frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}\mathrm{%
+\left( \alpha \right) }}=\Psi _{\frak{a}}^{\left( 0\right) }\right) $-- the
+denominator.
+
+
+\section{Recurrent formula for branching coefficients}
+\label{sec:recurr-form-branch}
+
+\begin{equation}
+  \label{eq:1}
+  k_{\nu}=\sum_{w\in W_a} k_{\rho_a-w(\nu+\rho_a)} + \sum_{w\in W}dim_{w(\mu+\rho)-\rho} \delta_{\nu,w(\mu+\rho)-\rho}
+\end{equation}
+
+\subsection{Proof}
+\label{sec:proof}
+Proof of the formula.
+
+We start with the Weyl-Kac formula for the character of the module. 
+\begin{equation}
+  \label{eq:2}
+  ch L^{\mu}=\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}}
+\end{equation}
+Proof of the irreducibility of factor-modules.
+
+\section{Algorithm}
+\label{sec:algorithm}
+
+
+\section{Examples}
+\label{sec:examples}
+
+\subsection{Finite dimensional Lie algebras}
+\label{sec:finite-dimens-lie}
+
+B2->A1 etc.
+
+\subsection{Affine Lie algebras}
+\label{sec:affine-lie-algebras}
+
+Branching of affine to affine and affine to classical.
+\subsection{Physical applications}
+\label{sec:phys-appl}
+
+Modular invariants of WZW-models, partition functions etc.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\bibliography{CFTNotes}{}
+\bibliographystyle{utphys}
+
+\end{document}
