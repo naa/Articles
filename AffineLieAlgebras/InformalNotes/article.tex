@@ -8,6 +8,11 @@
 \usepackage[pdftex]{graphicx}
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
 \begin{document}
 Plan:
 
@@ -190,12 +195,83 @@ Now using the Weyl-Kac formula for the character of the module
 we obtain the equality
 \begin{equation}
   \label{eq:4}
-  \frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}} = 
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = 
   \sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
   \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
 \end{equation}
 
 It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
+
+\begin{comment}
+  When such a subset does exist?  
+\end{comment}
+
+Now we can multiply the equation (\ref{eq:4}) by the term
+\begin{equation}
+  \label{eq:5}
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)
+\end{equation}
+This term is non-zero. 
+
+Also we can see that 
+\begin{equation}
+  \label{eq:6}
+  \pi_{\mathfrak{a}} (P) \pi_{\mathfrak{a}}(1-e^{-\alpha})=\pi_{\mathfrak{a}}\left(P\cdot (1-e^{-\alpha})\right)
+\end{equation}
+The equation (\ref{eq:4}) takes the form
+\begin{multline}
+  \label{eq:7}
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+\end{multline}
+The right-hand side of this equation can be reorganised as in the paper \cite{ilyin812pbc}. We introduce anomalous branching coefficients $k_{\lambda}$.
+\begin{equation}
+  \label{eq:10}
+  \sum_{\nu \in P_{\frak{a}}}b_{\nu }^{\left( \mu \right) }\Psi _{\left( \frak{%
+        a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\frak{a}}}k_{\lambda
+  }^{\left( \mu \right) }e^{\lambda } 
+\end{equation}
+Also we multiply the equation (\ref{eq:7}) by the denominator of the right-hand side and get
+\begin{multline}
+  \label{eq:12}
+  \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)
+\sum_{\lambda \in P_{\frak{a}}}k_{\lambda
+}^{\left( \mu \right) }e^{\lambda } 
+\end{multline}
+
+Now we should notice that if the set $\Delta_{\bot}$ is non-empty than Weyl reflections which correspond to the positive roots of $\Delta_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. 
+
+\begin{comment}
+  Prove it  
+\end{comment}
+
+Then we can reorganise the summation on the left-hand side of the equation (\ref{eq:12}) in the following way
+\begin{multline}
+  \label{eq:13}
+   \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \;\pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
+   \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \;\pi_{\mathfrak{a}}\left(\sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) 
+\end{multline}
+
+Let's denote the subalgebra with the root space spanned over the set $\Delta_{\bot}$ by $\mathfrak{a}_{\bot}$.
+\begin{comment}
+  Shouldn't we prove that such a subalgebra exists and is tractable?
+\end{comment}
+Then we see that
+\begin{multline}
+  \label{eq:14}
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}} =\\
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) e^{-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\omega(\mu+\rho)-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}=\\
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) e^{\rho_{\mathfrak{a}_{\bot}}-\rho} ch L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
+\end{multline}
+The projection $\pi_{\mathfrak{a}}$ of the character of the highest-weight module $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ is equal to the dimension of the module multiplied by $e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho_{\mathfrak{a}_{\bot}})}$
+  \begin{multline}
+    \label{eq:15}
+    \pi_{\mathfrak{a}}\left(\sum_{\omega\in W/W_{\bot}} \epsilon(\omega) e^{\rho_{\mathfrak{a}_{\bot}}-\rho} ch L^{\omega(\mu+\rho)-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) = \\
+    \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}
+  \end{multline}
+These dimensions of the modules could be easily calculated using Weyl formula.
 
 Proof of the irreducibility of factor-modules.
 
