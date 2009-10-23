@@ -28,12 +28,20 @@ e-mail:antonnaz@gmail.com\\
 \maketitle
 
 \begin{abstract}
-
+  We present the recurrent relation for the branching coefficients of affine Lie algebras. Then we describe the algorithm for the decomposition of  integrable highest weight modules
+of a simple Lie algebra with respect to its reductive subalgebra which is based upon this recurrent relation and present some examples. Also we discuss the appearance of branching coefficients in the physical models.
 \end{abstract}
 
 
 \section{Introduction}
 \label{sec:introduction}
+
+\begin{comment}
+  The problem of computation of the branching coefficients is very important. Why else would we study it??
+  It has major applications in physics of which nobody is aware. Blah-blah-blah.
+\end{comment}
+
+The paper is organised as follows. In the next subsection of the introduction we fix the notation used throughout the paper. Then in section \ref{sec:recurr-form-branch} we derive the central recurrent formula for the anomalous branching coefficients and describe the algorithm for the decomposition integrable highest weight modules of algebra $\mathfrak{g}$ to the modules of reductive subalgebra $\mathfrak{a}$ \ref{sec:algorithm}. In the next section \ref{sec:examples} we present several examples and discuss some applications in the physical models \ref{sec:phys-appl}. We conclude the paper with the review of results and the discussion of possible future developments \ref{sec:conclusion}.
 
 \subsection{Notation}
 \label{sec:notation}
@@ -182,18 +190,47 @@ mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }\quad $
 \left( \alpha \right) }}=\Psi _{\frak{a}}^{\left( 0\right) }\right) $-- the
 denominator.
 
+Character reduction
+\begin{equation}
+  \label{eq:19}
+  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
+    }^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }\quad
+  \Longrightarrow\quad
+  \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} ch L^{\nu}_{\mathfrak{a}}
+\end{equation}
+Numbers $b^{(\mu)}_{\nu}$ are called branching coefficients.
+
+The anomalous branching coefficients $k_{\lambda}$ are defined as follows
+\begin{equation}
+  \label{eq:21}
+  \sum_{\nu \in P_{\frak{a}}}b_{\nu }^{\left( \mu \right) }\Psi _{\left( \frak{%
+        a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\frak{a}}}k_{\lambda
+  }^{\left( \mu \right) }e^{\lambda } 
+\end{equation}
+
+It is important to mention that
+\begin{equation}
+  \label{eq:20}
+  b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in C_{\mathfrak{a}}
+\end{equation}
 
 \section{Recurrent formula for branching coefficients}
 \label{sec:recurr-form-branch}
 
+Here we present the final recurrent relation for the anomalous branching coefficients \eqref{eq:21}. 
 \begin{equation}
-  \label{eq:1}
-  k_{\nu}=\sum_{w\in W_a} k_{\rho_a-w(\nu+\rho_a)} + \sum_{w\in W}dim_{w(\mu+\rho)-\rho} \delta_{\nu,w(\mu+\rho)-\rho}
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+\sum_{\gamma \in
+\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
++\gamma }^{\left( \mu \right) }\right)
 \end{equation}
+The proof of the formula and definitions of $\mathfrak{a}_{\bot},\; W_{\bot},\; s(\gamma),\; \Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ are in the following subsection.
 
-\subsection{Proof}
+In the next section we describe the algorithm for the computation of branching coefficients based upon this formula and then present some example and discuss physical meaning.
+
+\subsection{Proof of the recurrent formula}
 \label{sec:proof}
-Proof of the formula.
 
 The decomposition of the representation of the algebra to the representations of the subalgebra can be symbolically written using formal characters and projection operator:
 \begin{equation}
@@ -357,13 +394,9 @@ From the equality of the coefficients of the equal formal exponents we get
 
 To get the recurrent relation for the anomalous branching coefficients we should use the following procedure, introduced in the paper \cite{ilyin812pbc}.
 
-\begin{comment}
-  Fix this discussion of natural ordering
-\end{comment}
-
-In $\left( \Phi _{\frak{a}\subset \frak{g}}\right) _{n=0}$ let $\gamma
+Let $\gamma
 _{0} $ be the lowest vector with respect to the natural ordering in $%
-\overset{\circ }{\Delta _{\frak{a}}}$ . Decomposing the defining relation 
+\overset{\circ }{\Delta _{\frak{a}}}$ in the lowest grade of $\Phi _{\frak{a}\subset \frak{g}}$. Decomposing the defining relation 
 \begin{equation}
   \label{eq:18}
   \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(
@@ -387,9 +420,8 @@ where the set
 \frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} .
 \label{fan-defined}
 \end{equation}
-\begin{comment}
-  Say something about the end of the proof
-\end{comment}
+
+So we've obtained recurrent relation for the anomalous branching coefficients.  In the next section we describe the algorithm for the computation of branching coefficients using the relation \eqref{recurrent relation}. 
 
 \section{Algorithm}
 \label{sec:algorithm}
@@ -424,15 +456,404 @@ where the set
 \subsection{Embedding of the affine algebra into affine algebra}
 \label{sec:embedd-affine-algebr}
 
-\subsection{Physical applications}
+\section{Physical applications}
 \label{sec:phys-appl}
+
+
+\subsection{Wess-Zumino-Novikov-Witten models}
+\label{sec:WZNW}
+
+Let's start with non-linear $\sigma$-model.
+\begin{equation}
+  \label{eq:48}
+  S_0=\frac{1}{4a^2}\int d^2x\; Tr' (\partial^{\mu}g^{-1}\partial_{\mu}g)
+\end{equation}
+Here $a^2>0$ is a positive parameter, $g(x)\in G$ - field on Lie group $G$, which we will assume to be semi-simple and by $Tr'$ we have denoted representation independent trace of Lie algebra $\mathfrak{g} $
+\begin{equation}
+  \label{eq:70}
+  Tr'=\frac{1}{x_{rep}}Tr
+\end{equation}
+$x_{rep}$ is the Dynkin index of the representation. 
+
+In this model the conformal invariance is lost at the quantum level, as it can be seen along the lines of previous sections.
+!!! Show it by example !!!
+    
+Also we can see that holomorphic and antiholomorphic currents aren't conserved individually. The equations of motion are
+\begin{equation}
+  \label{eq:71}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)=0
+\end{equation}
+The currents are
+\begin{equation}
+  \label{eq:currents}
+  J_{\mu}=g^{-1}\partial_{\mu}g
+\end{equation}
+or in the complex coordinates
+\begin{equation}
+  \label{eq:74}
+  \begin{matrix}
+    & \tilde{J}_z=g^{-1}\partial_z g, & \tilde{J}_{\bar{z}}=g^{-1}\partial_{\bar{z}}g\\
+    & \partial_z \tilde{J}_{\bar{z}}+\partial_{\bar{z}}\tilde{J}_z=0 & \\
+  \end{matrix}
+\end{equation}
+The terms of the equation of motion can not be null separately because $\partial_{\mu}(\epsilon^{\mu\nu}J_{\nu})\neq 0$.
+
+So we add WZ-term to the action and redefine the currents in more appropriate way
+\begin{equation}
+  \label{eq:72}
+  J_z=\partial_z g\;g^{-1}, \qquad J_{\bar{z}}=g^{-1}\partial{\bar z}g
+\end{equation}
+
+Wess-Zumino term has the following form
+\begin{equation}
+  \label{eq:73}
+\Gamma=  - \frac{i }{24\pi} \int_{B}\epsilon_{ijk} Tr'\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+\end{equation}
+
+This term is defined on the three-dimensional manifold $B$ whose boundary is original two-dimensional space. By $\tilde{g}$ we have denoted the extension of the field $g$ to $B$. This extension isn't unique. In a compactified three-dimensional space a compact two-dimensional manifold delimits two three-dimensional manifolds. The difference between this two choices $\Delta\Gamma$ is given by the right hand side of (\ref{eq:73}) with the integration range extended over the whole compact three-dimensional space. Since the latter is topologically equivalent to the three-sphere we have
+\begin{equation}
+  \label{eq:75}
+\Delta\Gamma=  - \frac{i }{24\pi} \int_{S^3}\epsilon_{ijk} Tr'\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+\end{equation}
+$\Delta\Gamma$ is defined modulo $2\pi i$, so the Euclidean functional integral with weight $exp(-\Gamma)$ is well-defined. Clearly, any coupling constant multiplying this term must be an integer. 
+
+We then consider the action
+\begin{equation}
+  \label{eq:76}
+  S=S_0+k\Gamma
+\end{equation}
+where $k$ is an integer. 
+The equation of motion for the full action (\ref{eq:76}) is
+\begin{equation}
+  \label{eq:77}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)+\frac{a^2 ik}{4\pi}\epsilon_{\mu\nu}\partial^{\mu}(g^{-1}\partial^{\nu}g)=0
+\end{equation}
+It can be rewritten using complex coordinates as
+\begin{equation}
+  \label{eq:78}
+  (1+\frac{a^2 k}{4\pi})\partial_z(g^{-1}\partial_{\bar z}g)+(1-\frac{a^2 k}{4\pi})\partial_{\bar z}(g^{-1}\partial_z g)=0
+\end{equation}
+We see that when $a^2=\frac{4\pi}{k}$ we have the desired conservation law
+\begin{equation}
+  \label{eq:79}
+  \partial_z(g^{-1}\partial{\bar z}g)=0
+\end{equation}
+For currents
+\begin{equation}
+  \label{eq:4}
+  \partial_{\bar z}J=0,\quad \partial_z \bar J=0
+\end{equation}
+
+The solution of classical equation is
+\begin{equation}
+  \label{eq:80}
+  g(z,\bar z)=f(z)\bar f(\bar z)
+\end{equation}
+for arbitrary functions $f(z)$ and $\bar f (\bar z)$.
+
+The separate conservation of the currents $J_z,\; J_{\bar z}$ implies the invariance of the action under the transformations
+\begin{equation}
+  \label{eq:81}
+   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)
+\end{equation}
+where $\Omega,\;\bar \Omega \in G$. So we have local $G(z)\times G(\bar z)$ invariance. 
+
+In order to move analysis to quantum level we rescale the currents
+\begin{equation}
+  \label{eq:82}
+  J(z)\equiv -k \partial_zg g^{-1}\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
+\end{equation}
+So the variation of the action under infinitesimal transformation $\Omega=1+\omega,\; \bar \Omega =1+\bar \omega$ is
+\begin{equation}
+  \label{eq:83}
+  \delta_{\omega,\bar\omega}S=\frac{i}{4\pi}\oint dz Tr' (\omega(z)J(z))-\frac{i}{4\pi}\oint d\bar z Tr'(\bar\omega(\bar z)\bar J(\bar z))
+\end{equation}
+Expanding the currents as
+\begin{equation}
+  \label{eq:85}
+  \begin{aligned}
+    J=\sum J^a t^a,\bar J=\sum \bar J^a t^a \\
+    \omega=\sum \omega^a t^a\\
+  \end{aligned}
+\end{equation}
+we get
+\begin{equation}
+  \label{eq:86}
+  \delta_{\omega,\bar \omega}S=-\frac{1}{2\pi i}\oint dz \sum\omega^a J^a+\frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \bar J^a
+\end{equation}
+We can also obtain Ward identities $\delta\left< X\right>=\left<(\delta S)X\right>$
+\begin{equation}
+  \label{eq:87}
+  \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
+  \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+\end{equation}
+Then for the currents we have
+\begin{equation}
+  \label{eq:88}
+  \delta_{\omega}J=[\omega,J]-k\partial_z\omega,\quad \delta_{\omega}J^a=\sum i f_{abc}\omega^b J^c-k\partial_z\omega^a
+\end{equation}
+The operator product expansion for currents has the form
+\begin{equation}
+  \label{eq:89}
+  J^a(z) J^b(w) \sim \frac{k\delta_{ab}}{(z-w)^2}+\sum i f_{abc}\frac{J^c(w)}{(z-w)}
+\end{equation}
+Expanding currents into series we get
+\begin{equation}
+  \label{eq:90}
+  \begin{aligned}
+    J^a(z)=\sum_{n\in \mathbb Z}z^{n-1}J^a_n\\    
+    \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}  
+  \end{aligned}
+\end{equation}
+We see that components of currents realize affine Lie algebra $\hat g$.  
+
+
+Energy-momentum tensor is introduced with Sugawara construction as the sum of normal-ordered products of current components
+\begin{equation}
+  \label{eq:6}
+  T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
+\end{equation}
+Here $h^v$ is the dual Coxeter number.
+
+Energy-momentum tensor can be expanded into modes $L_n$
+\begin{equation}
+  \label{eq:91}
+  L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:J^a_m J^a_{n-m}:
+\end{equation}
+The commutation relations for the modes $L_n$ are
+\begin{equation}
+  \label{eq:92}
+  \begin{aligned}
+    \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+    \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+  \end{aligned}
+\end{equation}
+
+So the Sugawara construction is the way to embed Virasoro algebra into the universal enveloping of affine Lie algebra. 
+
+Complete chiral algebra of WZW-model is equal to semidirect product $Vir\ltimes \hat g$
+
+The primary fields are the fields that transforms covariantly with respect to $G(z)\times G(\bar z)$, such as $g(z,\bar z)$. In terms of operator product expansion this property is reformulated as
+\begin{equation}
+  \label{eq:84}
+  \begin{aligned}
+    J^a(z)g(w,\bar w)\sim \frac{-t^a g(w,\bar w)}{(z-w)}\\
+    \bar J^a(z)g(w,\bar w)\sim \frac{ g(w,\bar w)t^a}{(z-w)}
+  \end{aligned}
+\end{equation}
+Any field $\phi_{\lambda,\mu}$ transforming covariantly with respect to some representation specified by $\lambda$ in holomorphic and $\mu$ in antiholomorphic sector, will be a WZW primary field.
+
+In terms of modes this property can be written as
+\begin{equation}
+  \label{eq:93}
+  \begin{aligned}
+    & (J_0^a \phi_{\lambda})=-t^a_{\lambda}\phi_{\lambda}\\
+    & (J^a_n\phi_{\lambda})=0\quad \mbox{for}\; n>0\\
+  \end{aligned}
+\end{equation}
+We can associate the state $\left|\phi_{\lambda}\right>$ to the field $\phi_{\lambda}$
+  \begin{equation}
+    \label{eq:94}
+    \phi_{\lambda}(0)=\left|\phi_{\lambda}\right>
+  \end{equation}
+Then the conditions (\ref{eq:93}) for WZW primary field are
+\begin{equation}
+  \label{eq:95}
+  \begin{aligned}
+    & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>\\
+    & J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
+  \end{aligned}
+\end{equation}
+It is easy to see that the action of the Virasoro generators is
+\begin{equation}
+  \label{eq:96}
+  L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>
+\end{equation}
+Here we used the explicit form of the quadratic Casimir operator eigenvalue.
+
+
+Primary fields live in integrable finite-dimensional representations since infinite-dimensional and non-integrable fields are decoupled from the correlation functions.
+
+All secondary states are of the form
+\begin{equation}
+  \label{eq:97}
+  J^{a_1}_{-n_1}J^{a_2}_{n_2}\dots\left|\phi_{\lambda}\right>
+\end{equation}
+For the correlation functions of primary fields we can obtain Knizhnik-Zamolodchikov equations which follow from global $G\times G$ invariance
+\begin{equation}
+  \label{eq:98}
+  \left(\partial_{z_i}+\frac{1}{k+h^v}\sum_{i\neq j}\frac{\sum_a t^a_i\otimes t^a_j}{z_i-z_k}\right)
+  \left<\phi_1(z_1)\dots \phi_n(z_n)\right>=0
+\end{equation}
+So the theory is completely determined by the representations of affine Lie algebra $\hat{\mathfrak{g}} $.
+
+\subsubsection{Modular invariants}
+\label{sec:modular-invariants}
+
+In previous section we studied holomorphic and antiholomorphic sectors of the theory separately. But in physically sensible theories this sectors should be entangled. It is required for the theory to be well-defined on the higher genus Riemann surfaces (see \cite{gaberdiel2000icf} and references therein) and also if we want our theory to describe critical behavior \cite{difrancesco1997cft}. In the critical point theory has conformal invariance, holomorphic and antiholomorphic sectors are decoupled, but in the vicinity of critical point there exists some large scale so the sectors should interact.
+
+!!! Expand this argumentation !!!
+
+The necessary constraint for the theory to be well-defined on higher Riemann surfaces, which is also believed to be sufficient, is that the vacuum correlator on the torus is independent of its parametrisation \cite{gaberdiel2000icf}. Conformal theory on the higher genus Riemann surfaces is important for the string theory since this theory describes string interaction.
+
+Two-dimensional torus is described as quotient space of $\mathbb{R}^2\approx \mathbb{C}$ by the relations $z\sim z+w_1$ and $z\sim z+w_2$, where $w_1$ and $w_2$ are not parallel. 
+
+The complex structure of the torus is conformally equivalent to a torus for which the relations are $z\sim z+1$ and $z\sim z+\tau$ where $\tau$ is in the upper half plane of $\mathbb{C}$. It is also easy to see that $\tau$, $T(\tau)=\tau+1$ and $S(\tau)=-\frac{1}{\tau}$ describe conformally equivalent tori. Two maps $T$ and $S$ generate the group $SL(2,\mathbb{Z})/\mathbb{Z}_2$ that consists of matrices of the form
+\begin{equation}
+  \label{eq:99}
+  A=
+  \begin{pmatrix}
+    a & b\\
+    c & d 
+  \end{pmatrix}
+  \quad\mbox{where}\; a,b,c,d\in\mathbb{Z},\quad ad-bc=1,
+\end{equation}
+and matrices $A$ and $-A$ have the same action on $\tau$
+\begin{equation}
+  \label{eq:100}
+  \tau\to A\tau=\frac{a\tau+b}{c\tau+d}
+\end{equation}
+The parameter $\tau$ is called the modular parameter and the group  $SL(2,\mathbb{Z})/\mathbb{Z}_2$ is called the modular group. 
+
+Given a conformal field theory that is defined on the Riemann sphere, the vacuum
+correlator on the torus can be determined as follows. First, we cut the torus along one
+of its non-trivial cycles; the resulting surface is a cylinder (or an annulus) whose shape
+depends on one complex parameter $q$. Since the annulus is a subset of the sphere, the
+conformal field theory on the annulus is determined in terms of the theory on the sphere.
+In particular, the states that can propagate in the annulus are precisely the states of
+the theory as defined on the sphere.
+In order to reobtain the torus from the annulus, we have to glue the two ends of
+the annulus together; in terms of conformal field theory this means that we have to sum
+over a complete set of states. The vacuum correlator on the torus is therefore described
+by a trace over the whole space of states, the partition function of the theory,
+\begin{equation}
+  \label{eq:101}
+  \sum_{(i,j)}Tr_{\mathcal{H}_{(i,j)}}(\mathcal{O}(q,\bar q)),
+\end{equation}
+where $\mathcal{O}(q,\bar q)$ is the operator that describes the propagation of the states along the annulus,
+\begin{equation}
+  \label{eq:102}
+  \mathcal{O}(q,\bar q)=q^{L_0-\frac{c}{24}}\bar q^{\bar L_0-\frac{\bar c}{24}}
+\end{equation}
+The propagator depends on the actual shape of the annulus that is described in terms
+of the complex parameter $q$. For a given torus that is described by $\tau$ , there is a natural
+choice for how to cut the torus into an annulus, and the complex parameter $q$ that is
+associated to this annulus is $q=e^{2\pi i \tau}$. Since the tori that are described by $\tau$ and $A\tau$
+(where $A \in SL(2, \mathbb{Z})$) are equivalent, the vacuum correlator is only well-defined provided
+that (\ref{eq:101}) is invariant under this transformation. This provides strong constraints on
+the spectrum of the theory.
+
+Each of the spaces $\mathcal{H}_{(i,j)}$ is a tensor product of an irreducible representation $\mathcal{H}_j$ of chiral algebra and an irreducible representation $\bar{\mathcal{H}}_{\bar{j}}$ of antichiral algebra. Then the vacuum correlator on the torus (\ref{eq:101}) takes the form
+\begin{equation}
+  \label{eq:103}
+  \sum_{(j,\bar j)}\chi_j(q)\bar \chi_{\bar j}(\bar q)
+\end{equation}
+where $\chi_j$ is the character of the representation $\mathcal{H}_j$,
+\begin{equation}
+  \label{eq:104}
+  \chi_j(\tau)=Tr_{\mathcal{H}_j}(q^{L_0-\frac{c}{24}})\quad \mbox{where}\; q=e^{2\pi i \tau}
+\end{equation}
+Characters transform into one another under modular transformations,
+\begin{equation}
+  \label{eq:107}
+  \chi_j(-\frac{1}{\tau})=\sum_k S_{jk}\chi_k(\tau)\quad \mbox{and}\quad \chi_j(\tau+1)=\sum_kT_{jk}\chi_k(\tau),
+\end{equation}
+where $S$ and $T$ are constant matrices. This fact is proved for a certain class of conformal field theories \cite{gaberdiel2000icf}. 
+
+For WZW-models the representations are determined by highest weights $\hat \lambda, \hat \xi$. Then we can write
+\begin{equation}
+  \label{eq:105}
+  \mathcal{H}=\bigoplus_{\hat \lambda,\hat \xi\in P^{(k)}_{+}}M_{\hat \lambda,\hat \xi} L_{\hat \lambda}\otimes L_{\hat \xi}
+\end{equation}
+The partition function is rewritten as
+\begin{equation}
+  \label{eq:106}
+  Z(\tau)=\sum_{\hat \lambda,\hat \xi\in P^{(k)}_{+}} \chi_{\hat \lambda}(\tau)M_{\hat \lambda\hat\xi}\bar \chi_{\hat \xi}(\bar \tau)
+\end{equation}
+The element of the mass matrix $M_{\hat \lambda\hat\xi}$ can be thought of as the multiplicity of primary field with weights $\hat\lambda,\hat \xi$. It has following properties:$M_{\hat \lambda\hat\xi}\in \mathbb{Z}_+$, it is modular invariant
+\begin{equation}
+  \label{eq:108}
+  \begin{aligned}
+    T^{\dagger}MT=S^{\dagger}MS=M,\\
+    [M,S]=[M,T]=0,
+  \end{aligned}
+\end{equation}
+and $M_{00}=1$ for the uniqueness of vacuum. 
+
+The simplest case of diagonal matrix $M$ corresponds to equal holomorphic and antiholomorphic conformal dimensions. There are several ways to construct non-diagonal modular invariants from diagonal \cite{difrancesco1997cft}:
+\begin{itemize}
+\item Method of outer automorphisms
+\item Conformal embedding into bigger theory
+\item Galois-transpositions
+\end{itemize}
+Here we will discuss conformal embeddings.
+
+\subsubsection{Conformal embeddings}
+\label{sec:conformal-embeddings}
+Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for enveloping and embedded theory. !!! Provide an explanation !!!
+
+The states for the theory that corresponds to the algebra $\mathfrak{g}$
+\begin{equation}
+  \label{eq:109}
+  J^{a_1}_{-n_1}J^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq\dots>0
+\end{equation}
+For sub-algebra $\mathfrak{p}\subset\mathfrak{g}$
+\begin{equation}
+  \label{eq:110}
+  \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\mathcal{P}\lambda\right>
+\end{equation}
+Here $\tilde{J}^{a'_j}_{-n_j}$ are the generators of $\mathfrak{p}$ and $\mathcal{P}$ is the projection of $\mathfrak{g}$ to $\mathfrak{p}$. $\mathfrak{g}$-invariance of vacuum entails its $\mathfrak{p}$-invariance, but it is not the case for energy-momentum tensor. So energy-momentum tensor of bigger theory should consist only of generators of $\hat{\mathfrak{p}}$. Then $T_{\hat{\mathfrak{g}}}=T_{\hat{\mathfrak{p}}}\Rightarrow c(\hat{\mathfrak{g}})=c(\hat{\mathfrak{p}})$. This leads to equation
+\begin{equation}
+  \label{eq:111}
+  \frac{k\;dim\mathfrak{g}}{k+g}=\frac{x_e k\; dim\mathfrak{p}}{x_ek+p}
+\end{equation}
+Here $x_e$ is the embedding index and $g$, $p$ are dual Coxeter numbers of corresponding algebras. !!! Prove and expand !!!
+
+It can be shown that solutions of equation (\ref{eq:111}) exist only for level 1 $k=1$.
+
+There exist only finite number of such embeddings.
+
+{\bf Examples}
+\begin{itemize}
+\item $su(2)\subset su(3),\; x_e=4$
+\item $\hat{su}(2)_{10}\subset\hat{sp}(4)_1$
+\item $\hat{su}(2)_{28}\subset(\hat{G_2})_1$
+\item $\hat{su}(2)_{16}\oplus\hat{su}(3)\subset (\hat{E_8})_1$
+\end{itemize}
+
+Branching $\hat{\lambda}\to \bigoplus_{\hat{\mu}}b_{\hat{\lambda}\hat{\mu}}\hat{\mu}$
+\begin{equation}
+  \label{eq:112}
+  h_{\hat{\lambda}}+n=h_{\hat{\mu}},\quad \frac{(\lambda,\lambda+2\rho)}{2(1+g)}+n=\frac{(\mu,\mu+2\rho)}{2(x_e+p)}
+\end{equation}
+The simple way is to calculate the dimensions of all the representations of simple finite-dimensional Lie algebras $\mathfrak{g},\mathfrak{p}$ and find all the triples $(\lambda,\mu,n)$, satisfying (\ref{eq:112}). Then investigate the representation $L_{\hat{\lambda}}$ of level $n$ as the sum of irreducible representations of $\mathfrak{g}$ and write out all the branching rules of these representations in representations of subalgebra $\mathfrak{p}$. The number of times the representation with highest weight $\mu$ appears in this listing is the required branching coefficient $b_{\hat{\lambda},\hat{\mu}}$.
+
+  Then non-diagonal modular invariants are obtained by substitution of character relations. For example, having calculated branching coefficients for $\hat{su}(2)_{28}\subset (\hat{G_2})_1$
+  \begin{equation}
+    \label{eq:113}
+    \begin{aligned}
+      & [1,0,0]\to [28,0]\oplus [18,10]\oplus [10,18]\oplus [0,28]\\
+      & [0,0,1]\to [22,6]\oplus [16,12]\oplus [12,16]\oplus [6,22]\\
+    \end{aligned}
+  \end{equation}
+we get following modular-invariant partition function
+\begin{equation}
+  \label{eq:114}
+  Z=\left|\chi_{[28,0]}+\chi_{[18,10]}+\chi_{[10,18]}+\chi_{[0,28]}\right|^2+\left|\chi_{[22,6]}+\chi_{[16,12]}+\chi_{[12,16]}+\chi_{[6,22]}\right|^2
+\end{equation}
 
 Modular invariants of WZW-models, partition functions etc.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-\bibliography{CFTNotes}{}
+\bibliography{article}{}
 \bibliographystyle{utphys}
 
 \end{document}
