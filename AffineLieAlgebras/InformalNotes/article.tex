@@ -14,7 +14,23 @@
 {\\\hfill$\scriptstyle\blacksquare$\par}
 
 \begin{document}
-Plan:
+\title{\textbf{{\Large {Recurrent relation for branching coefficients of affine Lie algebras}}}}
+\author{Vladimir Lyakhovsky\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:lyakh1507@nm.ru \\
+[5mm] Anton Nazarov \\
+%EndAName
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:antonnaz@gmail.com\\
+}
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
 
 \section{Introduction}
 \label{sec:introduction}
@@ -142,7 +158,7 @@ coordinates $\left( \overset{\circ }{\xi },k,n,\epsilon \left( w\left( \xi
 )-\rho },$ (resp. $\left( \overset{\circ }{\xi },k,n,\epsilon \left(
 w_{a}\left( \xi \right) \right) \right) \mid _{\xi =w_{a}\left( \xi \right)
 \circ (\nu +\rho _{a})-\rho _{a}}$ ), (this set is similar to $P_{\mathrm{%
-nice}}^{\prime }\left( \mu \right) $ in \cite{Wak1})
+nice}}^{\prime }\left( \mu \right) $ in \cite{wakimoto2001idl})
 
 $m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
 }\right) $ -- the multiplicity of the weight $\xi \in P$ \ $\left( \text{%
@@ -202,8 +218,30 @@ we obtain the equality
 
 It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
 
+Now we should notice that if the set $\Delta_{\bot}$ is non-empty than Weyl reflections which correspond to the positive roots of $\Delta_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. 
+
+Let's denote the subalgebra with the root space spanned over the set $\Delta_{\bot}$ by $\mathfrak{a}_{\bot}$.
+
+Now we should discuss when the subset $\Delta_{\bot}$ is non-empty and the subgroup $W_{\bot}$ and subalgebra $\mathfrak{a}_{\bot}$ are non-trivial.
+
+If $\mathfrak{a}$ is a maximal regular subalgebra of $\mathfrak{g}$ then rank of $\mathfrak{a}$ is equal to the rank of $\mathfrak{g}$ and it is clear that $\Delta_{\bot}$ is empty.
+Then the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the formula (11) from the paper \cite{ilyin812pbc}.
+
+Non-maximal regular embedding of $\mathfrak{a}$ into $\mathfrak{g}$ can be obtained through the chain of maximal embeddings $\mathfrak{a}\subset \mathfrak{p}_1\subset \mathfrak{p}_2\subset\dots \subset \mathfrak{g}$. Also the maximal regular embeddings are constructed by the exclusion of one or two roots from the extended Dynkin diagram of the algebra. Since this process can give us non-connected Dynkin diagrams we can see which roots are orthogonal to the root space of non-maximal regular subalgebra $\mathfrak{a}$. 
+
+Consider for example regular embedding of $A_1\subset B_2$ ($su(2)\subset so(5)$). 
+
+The extended Dynkin diagram of $B_2$ 
+\begin{equation}
+  \label{eq:8}
+  \begin{diagram}
+    \node{\circ}\arrow{e}{}\node{\circ}\arrow{e}{}\node{\circ}\\ \\
+    \node{\circ}\node[2]{\circ}
+  \end{diagram}
+\end{equation}
+We then drop central node and get the embedding $A_1\otimes A_1\subset B_2$. Then $\mathfrak{a}=A_1$ and $\mathfrak{a}_{\bot}=A_1$.
 \begin{comment}
-  When such a subset does exist?  
+  Consider special embeddings
 \end{comment}
 
 Now we can multiply the equation (\ref{eq:4}) by the term
@@ -241,11 +279,10 @@ Also we multiply the equation (\ref{eq:7}) by the denominator of the right-hand 
 }^{\left( \mu \right) }e^{\lambda } 
 \end{multline}
 
-Now we should notice that if the set $\Delta_{\bot}$ is non-empty than Weyl reflections which correspond to the positive roots of $\Delta_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. 
 
-\begin{comment}
-  Prove it  
-\end{comment}
+If the set $\Delta_{\bot}$ is non-empty then Weyl reflections corresponding to the positive roots of $\Delta_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. 
+
+We have denoted the subalgebra with the root space spanned over the set $\Delta_{\bot}$ by $\mathfrak{a}_{\bot}$.
 
 Then we can reorganise the summation on the left-hand side of the equation (\ref{eq:12}) in the following way
 \begin{multline}
@@ -254,10 +291,7 @@ Then we can reorganise the summation on the left-hand side of the equation (\ref
    \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \;\pi_{\mathfrak{a}}\left(\sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) 
 \end{multline}
 
-Let's denote the subalgebra with the root space spanned over the set $\Delta_{\bot}$ by $\mathfrak{a}_{\bot}$.
-\begin{comment}
-  Shouldn't we prove that such a subalgebra exists and is tractable?
-\end{comment}
+
 Then we see that
 \begin{multline}
   \label{eq:14}
