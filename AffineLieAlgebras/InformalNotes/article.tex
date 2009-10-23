@@ -270,11 +270,12 @@ The right-hand side of this equation can be reorganised as in the paper \cite{il
         a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\frak{a}}}k_{\lambda
   }^{\left( \mu \right) }e^{\lambda } 
 \end{equation}
-Also we multiply the equation (\ref{eq:7}) by the denominator of the right-hand side and get
+Also we extract the common denominator of  the right-hand side of the equation (\ref{eq:7})
 \begin{multline}
   \label{eq:12}
-  \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
-  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
+  \frac{\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)}
+  {  \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
 \sum_{\lambda \in P_{\frak{a}}}k_{\lambda
 }^{\left( \mu \right) }e^{\lambda } 
 \end{multline}
@@ -287,8 +288,8 @@ We have denoted the subalgebra with the root space spanned over the set $\Delta_
 Then we can reorganise the summation on the left-hand side of the equation (\ref{eq:12}) in the following way
 \begin{multline}
   \label{eq:13}
-   \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \;\pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
-   \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}  \;\pi_{\mathfrak{a}}\left(\sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) 
+ \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
+ \pi_{\mathfrak{a}}\left(\sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) 
 \end{multline}
 
 
@@ -307,7 +308,82 @@ The projection $\pi_{\mathfrak{a}}$ of the character of the highest-weight modul
   \end{multline}
 These dimensions of the modules could be easily calculated using Weyl formula.
 
-Proof of the irreducibility of factor-modules.
+Thus we have the equality
+\begin{multline}
+  \label{eq:9}
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
+   \frac{\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)}
+   {   \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+\sum_{\lambda \in P_{\frak{a}}}k_{\lambda
+}^{\left( \mu \right) }e^{\lambda } 
+\end{multline}
+
+We can rewrite the fraction on the right-hand side as in the paper \cite{ilyin812pbc}.
+\begin{multline}
+  \label{eq:11}
+    \frac{\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)}
+    {   \prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}=
+    \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})} \left(1-e^{-\alpha}\right)^{mult(\alpha)-mult_{\mathfrak{a}}(\alpha)}=\\
+    = -\sum_{\gamma\in P_{\mathfrak{a}}} s(\gamma)e^{-\gamma}
+\end{multline}
+
+For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
+}\subset \frak{g}}\subset P_{\frak{a}}$ as its carrier: 
+\begin{equation}
+\Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}\mid s\left(
+\gamma \right) \neq 0\right\} ;  \label{phi-d}
+\end{equation}
+\begin{equation}
+\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(
+1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}}_{\frak{a%
+}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset 
+\frak{g}}}s\left( \gamma \right) e^{-\gamma }.  \label{fan-d}
+\end{equation}
+
+So we get the equation
+\begin{multline}
+  \label{eq:16}
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
+  = -\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s\left( \gamma \right) e^{-\gamma }\sum_{\lambda \in P_{\frak{a}}}
+  k_{\lambda }^{\left( \mu \right) }e^{\lambda } \\
+  =-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}}\sum_{\lambda \in P_{\frak{a}}}s\left( \gamma \right) k_{\lambda }^{\left( \mu \right)}e^{\lambda -\gamma }
+\end{multline}
+From the equality of the coefficients of the equal formal exponents we get
+\begin{equation}
+  \label{eq:17}
+   \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+   \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\quad \xi\in P_{\mathfrak{a}}
+\end{equation}
+
+To get the recurrent relation for the anomalous branching coefficients we should use the following procedure, introduced in the paper \cite{ilyin812pbc}.
+
+In $\left( \Phi _{\frak{a}\subset \frak{g}}\right) _{n=0}$ let $\gamma
+_{0} $ be the lowest vector with respect to the natural ordering in $%
+\overset{\circ }{\Delta _{\frak{a}}}$ . Decomposing the defining relation 
+\begin{equation}
+  \label{eq:18}
+  \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(
+    1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}}_{\frak{a%
+      }}\mathrm{\left( \alpha \right) }}=-s\left( \gamma _{0}\right) e^{-\gamma
+    _{0}}-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}\setminus \gamma
+    _{0}}s\left( \gamma \right) e^{-\gamma },  
+\end{equation}
+in (\ref{eq:17}) we obtain
+
+\begin{equation}
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+\sum_{\gamma \in
+\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
++\gamma }^{\left( \mu \right) }\right)   \label{recurrent relation}
+\end{equation}
+where the set 
+\begin{equation}
+\Gamma _{\frak{a}\subset \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+\frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} .
+\label{fan-defined}
+\end{equation}
+
 
 \section{Algorithm}
 \label{sec:algorithm}
