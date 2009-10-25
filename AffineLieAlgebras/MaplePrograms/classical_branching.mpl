@@ -4,7 +4,8 @@ pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
 get_indices:=r->map(x->x[1],[indices(r)]);
 
 projection:=proc(wg,real_roots)
-    local v,t,res,weights;
+    local v,t,res,weights,icm;
+    icm:=linalg[inverse](coxeter['cartan_matrix']([e3-e4,e4]));
     res:=table();
     weights:=wg;
     for v in weights do
@@ -63,7 +64,11 @@ end proc:
 fan:=proc(pos_roots,inj_roots)
     local t;
     t:=fan_table(pos_roots,inj_roots);
-    map(x->x+t[x]*eps,get_indices(t));
+    if assigned(t[0]) then t[0]:=t[0]+1;
+    else
+        t[0]:=1;
+    end;
+    select(x->coeff(x,eps)<>0,map(x->x+t[x]*eps,get_indices(t)));
 end proc:
 
 inj_roots:=proc(roots)

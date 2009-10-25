@@ -1,0 +1,230 @@
+% -*- mode: Noweb; noweb-code-mode: maplev-mode -*-
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+\usepackage{noweb}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\begin{document}
+\section{Prerequisites}
+\label{sec:prerequisites}
+
+Consider the the regular embedding of the subalgebra $B_2$ into the algebra $B_4$.
+We calculate the branching coefficients for the fundamental representation of $B_4$.
+The corresponding Dynkin diagrams are in the figure.
+\begin{figure}[ph]
+  \centering
+%  \includegraphics[width=90mm]{B4_B2_2A1.pdf}
+  \caption{Dynkin diagrams}
+  \label{fig:dynkin}
+\end{figure}
+
+In the orthogonal basis $e_1,\dots,\e_4$ simple roots of $B_4$ are
+\begin{equation}
+  \label{eq:1}
+  (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4)
+\end{equation}
+Positive roots are
+\begin{equation}
+  \label{eq:2}
+  (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,
+    e_2 + e_4,\; e_2,\; e_1 + e_4,\; e_2 + e_3,\; e_1,\; e_1 + e_3,\; e_1 + e_2)
+
+\end{equation}
+Simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
+\begin{equation}
+  \label{eq:3}
+  (e_3-e_4,e_4)
+\end{equation}
+
+The set $\Delta_{\bot}$ is equal to
+\begin{equation}
+  \label{eq:4}
+  \left\{e_1-e_2,e_1+e_2,e_1,e_2\right}
+\end{equation}
+
+We see that this is the set of positive roots of the algebra $\mathfrak{a}_{\bot}=B_2$.
+
+To find the branching coefficients we need to compute the anomalous points of $B_4$, select point lying in the main Weyl chamber of $\mathfrak{a}_{\bot}$ and compute the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.
+
+Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
+
+@
+
+\section{Code}
+\label{sec:code}
+
+We consider the fundamental representation of $B_4$ with the highest weight $\mu$ equal to
+\begin{equation}
+  \label{eq:5}
+  \mu=\frac{1}{2}(e_1+e_2+e_3+e_4)
+\end{equation}
+
+At first we need to read the libraries of functions
+
+<<Some initialisation>>=
+read("coxeter.mpl");
+get_indices:=r->map(x->x[1],[indices(r)]);
+<<Compute roots>>
+plotsetup(X11);
+@
+Then we compute the anomalous points using the modified procedure ``orbit'' from the ``Coxeter/Weyl'' Maple package.
+In order to do it we need to compute simple and positive roots of $B_4$, $\mathfrak{a}_{\bot}$ and the embedded algebra $\mathfrak{a}=B_2$.
+
+<<Compute roots>>=
+wg:=weyl['weights'](B4);
+mu:=wg[-1];
+rho:=`weyl/rho`(B4);
+B4_simple_roots:=coxeter['base'](B4);
+B4_pos_roots:=coxeter['pos_roots'](B4);
+B2_roots:=[e3-e4,e4];
+B2_pos_roots:=select(x->subs({e1=0,e2=0},x)=x,B4_pos_roots);
+
+Abot_roots:=select(x->subs({e1=0,e2=0},x)=0,B4_pos_roots);
+Abot_rho:=1/2*convert(Abot_roots,`+`);
+@
+Then we need to construct the set of anomalous points of the representation $L^{(\mu)}$.
+\begin{equation}
+  \label{eq:6}
+  \left\{\omega(\mu+\rho)-\rho,\; \omega\in W\right\}
+\end{equation}
+
+<<Compute anomalous points>>=
+anom_points:=map(x->x-rho,finite_orbit(mu+rho,B4));
+@
+
+The points are kept in the symbolic form $k_1\cdot e_1+\dots+k_4\cdot e_4+\epsilon(\omega)\cdot \varepsilon$
+
+We need to select those points which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
+It means that scalar product of these points with all the roots from $\Delta_{\bot}$ is non-negative.
+
+<<Select points in the main chamber of Abot>>=
+selected_points:=select(x->
+                        andmap(y->iprod(subs({e3=0,e4=0},x),y)>=0,Abot_roots),
+                        anom_points):
+
+@
+To compute dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules we need to add to each selected point $\rho$, project it onto the root space $\Delta_{\bot}$ and substract $\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula written as the procedure.
+
+
+<<Procedure to compute dimension of module>>=
+dimension:=proc(v,pos_roots) local f,r0;
+    r0:=convert(pos_roots,`+`)/2;
+    f:=[seq(1+coxeter['iprod'](r,v)/coxeter['iprod'](r,r0),r=pos_roots)];
+    convert(f,`*`)
+end;
+
+<<Compute the dimensions of modules>>=
+<<Procedure to compute dimension of module>>
+ppts:=map(x->
+             subs({e1=0,e2=0},subs(eps=0,x))+eps*coeff(x,eps)*dimension(subs({e3=0,e4=0},x+rho)-Abot_rho,Abot_roots),
+            selected_points);
+plots[textplot](map(x->[coeff(x,e4),coeff(x,e3),coeff(x,eps)],ppts));
+@
+
+We have computed the set of points which constitute the first term in the recurrent formula.
+Now we can use the recurrent relation to find the anomalous branching coefficients.
+
+At first we need to construct the set $\Gamma$ and compute $s(\gamma),\; \gamma\in \Gamma$.
+
+In order to do it we need to expand
+\begin{equation}
+  \label{eq:7}
+  \prod_{\alpha\in\pi_{\mathfrak{a}}\left(\Delta^{+}\setminus\Delta_{\bot}\right)} \left(1-e^{-\alpha}\right)^{mult(\alpha)-mult_{\mathfrak{a}}(\alpha)}=
+  \sum_{\gamma\in\Phi}s(\gamma)e^{-\gamma}
+\end{equation}
+<<Construct the fan>>=
+<<Count multiplicities of projected roots>>
+<<Expand roots with multiplicities>>
+@
+We will use Maple [[table]] data type
+
+<<Count multiplicities of projected roots>>=
+mult_table:=table();
+for r in subs({e1=0,e2=0},[op({op(B4_pos_roots)} minus {op(Abot_roots)})]) do
+    if assigned(mult_table[r]) then
+        mult_table[r]:=mult_table[r]+1;
+    else
+	mult_table[r]:=1;
+    end;
+end;
+@
+Then we need to expand the expression \eqref{eq:7}.
+We use procedures [[fan]] and [[inj_roots]].
+<<Expand roots with multiplicities>>=
+mult_inj:=proc(r,roots)
+         if assigned(roots[subs(eps=0,r)]) then
+             return roots[subs(eps=0,r)];
+         else
+             return 0;
+         fi;
+     end proc:
+
+fan_table:=proc(pos_roots,inj_roots)
+local t,n,t2,res,p,j;
+    n:=coeff(pos_roots[1],eps)-mult_inj(pos_roots[1],inj_roots);
+    res:=table();
+    p:=subs(eps=0,pos_roots[1]);
+    if nops(pos_roots)=1 then
+        for j from 1 to n do
+                res[j*p]:=(-1)^(j) * binomial(n,j);
+        od;
+        return res;
+    else
+        t:=fan_table(pos_roots[2..-1],inj_roots);
+        t2:=fan_table([pos_roots[1]],inj_roots);
+        for x in get_indices(t) do
+            for j from 1 to n do
+                if not(assigned(res[p*j+x])) then res[p*j+x]:=0; fi;
+                res[p*j+x]:=res[p*j+x]+t[x]*(-1)^(j) * binomial(n,j);
+            od;
+            if not(assigned(res[x])) then res[x]:=0; fi;
+            res[x]:=res[x]+t[x];
+        od;
+        for x in get_indices(t2) do
+            if not(assigned(res[x])) then res[x]:=0; fi;
+            res[x]:=res[x]+t2[x];
+        od;
+        return res;
+    fi;
+end proc:
+
+fan:=proc(pos_roots,inj_roots)
+    local t;
+    t:=fan_table(pos_roots,inj_roots);
+    if assigned(t[0]) then t[0]:=t[0]+1;
+    else
+        t[0]:=1;
+    end;
+    select(x->coeff(x,eps)<>0,map(x->x+t[x]*eps,get_indices(t)));
+end proc:
+
+inj_roots:=proc(roots)
+        local t;
+        t:=table();
+        for x in roots do
+            t[subs(eps=0,x)]:=1;
+        od;
+        return t;
+    end proc:
+
+pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
+f:=fan(pppr,inj_roots(B2_pos_roots));
+plots[textplot](map(x->[coeff(x,e4),coeff(x,e3),coeff(x,eps)],f));
+@
+Now we have the set $\Gamma$ and $s(\gamma)$.
+<<branchingB4.mpl>>=
+<<Some initialisation>>
+<<Compute anomalous points>>
+<<Select points in the main chamber of Abot>>
+<<Compute the dimensions of modules>>
+<<Construct the fan>>
+<<Use recurrent relation>>
+
+@
+\end{document}

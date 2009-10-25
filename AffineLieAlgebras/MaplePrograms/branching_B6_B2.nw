@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+\usepackage{noweb}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\begin{document}
+Consider the the regular embedding of the subalgebra $B_2$ into the algebra $B_6$.
+The corresponding Dynkin diagrams are in the figure.
+\begin{figure}[ph]
+  \centering
+  \includegraphics[width=90mm]{B6_B2_D4.pdf}
+  \caption{Dynkin diagrams}
+  \label{fig:dynkin}
+\end{figure}
+
+We see, that subalgebra $\mathfrak{a}_{\bot}$ is equal to $D_4$.
+
+To find the branching coefficients we need to compute the anomalous points of $B_6$, select point lying in the main Weyl chamber of $D_4$ and compute the dimensions of corresponding $D_4$-modules.
+
+Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
+
+@
+<<branchingB6.mpl>>=
+<<Some initialisation>>
+<<Compute anomalous points>>
+<<Select points in the main chamber of D4>>
+<<Compute the dimensions of D4-modules>>
+<<Construct the fan>>
+<<Use recurrent relation>>
+@
+
+At first we need to read the libraries of functions
+
+<<Some initialisation>>=
+read("classical_branching.mpl");
+@
+
+Then we compute the anomalous points using the modified procedure ``orbit'' from the ``Coxeter/Weyl'' Maple package.
+
+<<Compute anomalous points>>=
+wg:=weyl['weights'](B6);
+rho:=`weyl/rho`(B6);
+anom_points:=finite_orbit(wg[1]+rho,B6);
+@
+
+We need to select those points which are projected into the main chamber of the embedded algebra $D_4$.
+The root space of $D_4$ is spanned over the first three simple roots and $-\theta$ -- minus highest root of $B_6$.
+
+<<Select points in the main chamber of D4>>=
+B6_roots:=coxeter['base'](B6);
+D4_roots:=[op(B6_roots[1..3]),-coxeter['highest_root'](B6)];
+selected_points:=select(x->
+                        andmap(y->iprod(projection([x],D4_roots)[1],y)>=0,D4_roots),
+                        anom_points):
+
+@
+To compute dimensions of the corresponding $D_4$-modules we need to project each of the selected points onto the root space of $D_4$, then write these projections in the canonical $D_4$ basis and use ``weyl_dim'' procedure from the ``Coxeter/Weyl'' package.
+
+<<Compute the dimensions of D4-modules>>=
+inv_cartan:=linalg[inverse](cartan_matrix(D4));
+D4_can_roots:=coxeter['base'](D4);
+D4_rho:=weyl['rho'](D4);
+map(x->weyl['weyl_dim'](convert(zip(`*`,linalg[multiply](inv_cartan,map(y->iprod(projection([x],D4_roots)[1],y),D4_roots)),D4_can_roots),`+`)-D4_rho,D4)*coeff(x,eps),selected_points);
+@
+
+\end{document}
