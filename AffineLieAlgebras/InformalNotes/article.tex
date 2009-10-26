@@ -37,8 +37,7 @@ of a simple Lie algebra with respect to its reductive subalgebra which is based 
 \label{sec:introduction}
 
 \begin{comment}
-  The problem of computation of the branching coefficients is very important. Why else would we study it??
-  It has major applications in physics of which nobody is aware. Blah-blah-blah.
+  Write here about the problem and possible applications in physics.
 \end{comment}
 
 The paper is organised as follows. In the next subsection of the introduction we fix the notation used throughout the paper. Then in section \ref{sec:recurr-form-branch} we derive the central recurrent formula for the anomalous branching coefficients and describe the algorithm for the decomposition integrable highest weight modules of algebra $\mathfrak{g}$ to the modules of reductive subalgebra $\mathfrak{a}$ \ref{sec:algorithm}. In the next section \ref{sec:examples} we present several examples and discuss some applications in the physical models \ref{sec:phys-appl}. We conclude the paper with the review of results and the discussion of possible future developments \ref{sec:conclusion}.
@@ -269,13 +268,12 @@ Non-maximal regular embedding of $\mathfrak{a}$ into $\mathfrak{g}$ can be obtai
 Consider for example regular embedding of $A_1\subset B_2$ ($su(2)\subset so(5)$). 
 
 The extended Dynkin diagram of $B_2$ 
-\begin{equation}
-  \label{eq:8}
-  \begin{diagram}
-    \node{\circ}\arrow{e}{}\node{\circ}\arrow{e}{}\node{\circ}\\ \\
-    \node{\circ}\node[2]{\circ}
-  \end{diagram}
-\end{equation}
+\begin{figure}[ph]
+  \centering
+  \includegraphics[width=40mm]{B2_A1_diagram.pdf}
+  \caption{Extended Dynkin diagram of $B_2$ and embedding of $A_1$}
+  \label{fig:B2Dynkin}
+\end{figure}
 We then drop central node and get the embedding $A_1\otimes A_1\subset B_2$. Then $\mathfrak{a}=A_1$ and $\mathfrak{a}_{\bot}=A_1$.
 \begin{comment}
   Consider special embeddings
@@ -559,18 +557,25 @@ The dimension of the highest-weight $B_4$-module $L^{(0,1,0,2)}_{B_4}$
 is equal to 2772. It is easy to see, that right-hand side of the
 equation (\ref{eq:24}) gives the same result.
 
+\begin{comment}
+  Another examples?
+\end{comment}
 \subsection{Affine Lie algebras}
 \label{sec:affine-lie-algebras}
-
-\subsection{Embedding of finite-dimensional algebra into affine algebra}
+\begin{comment}
+  What examples should we include here?
+\end{comment}
+\subsubsection{Embedding of finite-dimensional algebra into affine algebra}
 \label{sec:embedd-finite-dimens}
 
-\subsection{Embedding of the affine algebra into affine algebra}
+\subsubsection{Embedding of the affine algebra into affine algebra}
 \label{sec:embedd-affine-algebr}
 
 \section{Physical applications}
 \label{sec:phys-appl}
-
+\begin{comment}
+  Rewrite it in more scientific style or drop this section.
+\end{comment}
 Branching coefficients for the embedding of affine Lie subalgebra into
 affine Lie algebra can be used to construct modular invariant
 partition functions of Wess-Zumino-Novikov-Witten models.
@@ -736,9 +741,17 @@ we get following modular-invariant partition function
 
 Modular invariants of WZW-models, partition functions etc.
 
+\begin{comment}
+  We need some real examples
+\end{comment}
 \section{Conclusion}
 \label{sec:conclusion}
-
+\begin{comment}
+  Write it
+\end{comment}
+\begin{comment}
+  What about acknowledgements? 
+\end{comment}
 \bibliography{article}{}
 \bibliographystyle{utphys}
 

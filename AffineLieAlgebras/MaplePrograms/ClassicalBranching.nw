@@ -1,5 +1,5 @@
 % -*- mode: Noweb; noweb-code-mode: maplev-mode -*-
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
 \usepackage{ucs}
@@ -11,7 +11,7 @@
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
 \begin{document}
-\section{Prerequisites}
+\section{Introduction}
 \label{sec:prerequisites}
 
 Consider the regular embedding of the subalgebra $\mathfrak{a}$ into the algebra $\mathfrak{g}$.
@@ -44,16 +44,25 @@ We also need some auxiliary functions.
 
 <<Aux functions>>=
 get_indices:=r->map(x->x[1],[indices(r)]);
-iprod := (v1,v2) -> coeff(v1,lambda0)*coeff(v2,delta)+coeff(v1,delta)*coeff(v2,lambda0)+coxeter['iprod'](subs({lambda0=0,delta=0,eps=0},v1),subs({lamda0=0,delta=0,eps=0},v2));
+iprod := (v1,v2) -> coeff(v1,lambda0)*coeff(v2,delta)
+                          +coeff(v1,delta)*coeff(v2,lambda0)+
+                          coxeter['iprod'](subs({lambda0=0,delta=0,eps=0},v1),
+                                           subs({lamda0=0,delta=0,eps=0},v2));
 pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
 
 projection:=proc(weights,base)
     local cm;
-    cm:=linalg[inverse](array([seq([seq(iprod(r1,s),s=base)],r1=[seq(2*r/iprod(r,r),r=base)])]));
+    cm:=linalg[inverse](
+            array([seq([seq(iprod(r1,s),s=base)],r1=[seq(2*r/iprod(r,r),r=base)])]));
     if type(weights,'list') then
-        map(x->convert(zip(`*`,convert(linalg[multiply](cm,array(map(y->pairing(x,y),base))),'list'),base),`+`),weights);
+        map(x->convert(zip(`*`,
+                           convert(linalg[multiply](cm,array(map(y->pairing(x,y),base))),'list'),
+                           base)
+                       ,`+`),weights);
     else
-        convert(zip(`*`,convert(linalg[multiply](cm,array(map(y->pairing(weights,y),base))),'list'),base),`+`);
+        convert(zip(`*`,
+                    convert(linalg[multiply](cm,array(map(y->pairing(weights,y),base))),'list'),
+                    base),`+`);
     end;
 end;
 
@@ -87,14 +96,17 @@ and construct $\mathfrak{a}_{\bot}$.
 rho:=`weyl/rho`(algebra_name);
 algebra_simple_roots:=coxeter['base'](algebra_name);
 algebra_pos_roots:=coxeter['pos_roots'](algebra_name);
-#subalgebra_pos_roots:=select(x->projection(x,subalgebra_roots)=x,algebra_pos_roots);
-subalgebra_pos_roots:=map(x->-x,coxeter['orbit'](map(x->-x,subalgebra_roots),subalgebra_roots));
+###subalgebra_pos_roots:=select(x->projection(x,subalgebra_roots)=x,algebra_pos_roots);
+subalgebra_pos_roots:=map(x->-x,
+                          coxeter['orbit'](map(x->-x,subalgebra_roots),
+                                           subalgebra_roots));
 
 Abot_roots:=select(x->projection(x,subalgebra_roots)=0,algebra_pos_roots);
 Abot_rho:=1/2*convert(Abot_roots,`+`);
 
 <<Local variables>>=
-wg, rho, algebra_simple_roots, algebra_pos_roots, subalgebra_pos_roots, Abot_roots, Abot_rho,
+wg, rho, algebra_simple_roots, algebra_pos_roots,
+subalgebra_pos_roots, Abot_roots, Abot_rho,
 @
 
 Then we need to construct the set of anomalous points of the representation $L^{(\mu)}$.
@@ -104,7 +116,8 @@ Then we need to construct the set of anomalous points of the representation $L^{
 \end{equation}
 
 <<Compute anomalous points>>=
-finite_orbit:=proc(v0,R) local S,coS,EPS,is_mem,orb,old,new,u,i,v,parity,u1,j,nparity,pres;
+finite_orbit:=proc(v0,R)
+ local S,coS,EPS,is_mem,orb,old,new,u,i,v,parity,u1,j,nparity,pres;
     S:=coxeter['base'](R); coS:=coxeter['co_base'](S);
     if type(v0,'set') or type(v0,'list') then orb:=op(v0)
     else orb:=coxeter['vec2fc'](v0,S)
@@ -154,7 +167,8 @@ It means that scalar product of these points with all the roots from $\Delta_{\b
 
 <<Select points in the main chamber of Abot>>=
 selected_points:=select(x->
-                        andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots),y)>=0,Abot_roots),
+                        andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots),y)>=0,
+                               Abot_roots),
                         anom_points):
 #print(nops(selected_points));
 <<Local variables>>=
@@ -175,7 +189,10 @@ dimension, ppts,
 <<Compute the dimensions of modules>>=
 <<Procedure to compute dimension of module>>
 ppts:=map(x->
-             projection(subs(eps=0,x),subalgebra_roots)+eps*coeff(x,eps)*dimension(x+rho-projection(x+rho,subalgebra_roots)-Abot_rho,Abot_roots),
+             projection(subs(eps=0,x),subalgebra_roots)+
+                        eps*coeff(x,eps)*
+                        dimension(x+rho-projection(x+rho,subalgebra_roots)
+                        -Abot_rho,Abot_roots),
             selected_points);
 #plots[textplot](map(x->[coeff(x,e4),coeff(x,e3),coeff(x,eps)],ppts));
 @
@@ -199,7 +216,9 @@ We will use Maple [[table]] data type
 
 <<Count multiplicities of projected roots>>=
 mult_table:=table();
-for r in projection([op({op(algebra_pos_roots)} minus {op(Abot_roots)})],subalgebra_roots) do
+for r in projection([op({op(algebra_pos_roots)}
+                    minus {op(Abot_roots)})],subalgebra_roots)
+do
     if assigned(mult_table[r]) then
         mult_table[r]:=mult_table[r]+1;
     else
@@ -288,20 +307,25 @@ Now we can use recurrent formula which we encode as the recurrent procedure
 <<Recurrent procedure>>=
 
 calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
-                    local xi0,a;
-                        if not is_in_borders(xi) then return 0; fi;
-                        xi0:=subs(eps=0,xi);
-                        if assigned(res[xi0]) then
-                            return res[xi0];
-                        fi;
+       local xi0,a;
+           if not is_in_borders(xi) then return 0; fi;
+           xi0:=subs(eps=0,xi);
+           if assigned(res[xi0]) then
+               return res[xi0];
+           fi;
 
-                        res[xi0]:=convert(map(gam->coeff(gam,eps)*calculate_branching_coefficient(xi+subs(eps=0,gam),fan,gamma0,ap,res,is_in_borders),fan),`+`);
-                        if assigned(ap[xi0-subs(eps=0,gamma0)]) then
-                            res[xi0]:=res[xi0]+ap[xi0-subs(eps=0,gamma0)];
-                        end;
-                        res[xi0]:=-1/coeff(gamma0,eps)*res[xi0];
-                        return res[xi0];
-                    end proc:
+           res[xi0]:=convert(
+                         map(gam->coeff(gam,eps)*
+                                  calculate_branching_coefficient(xi+subs(eps=0,gam),
+                                                                  fan,gamma0,ap,res,
+                                                                  is_in_borders),fan)
+                     ,`+`);
+           if assigned(ap[xi0-subs(eps=0,gamma0)]) then
+               res[xi0]:=res[xi0]+ap[xi0-subs(eps=0,gamma0)];
+           end;
+           res[xi0]:=-1/coeff(gamma0,eps)*res[xi0];
+           return res[xi0];
+       end proc:
 
 @
 The call to this function
@@ -361,9 +385,16 @@ calculate_branching_coefficient(-mu0,Gamma,gamma0,sing_table,t,i_i_b);
 @
 At last we need to return pretty-printed result.
 <<Return result>>=
-return map(k->[k,t[k]],select(x->t[x]<>0,select(y->andmap(z->iprod(y,z)>=0,subalgebra_pos_roots),get_indices(t))));
+return map(k->[k,t[k]],
+           select(x->t[x]<>0,
+                  select(y->andmap(z->iprod(y,z)>=0,
+                         subalgebra_pos_roots),
+                  get_indices(t))));
 @
 Here it is.
+
+\section{Examples}
+\label{sec:example}
 
 The example of usage:
 
