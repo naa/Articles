@@ -402,14 +402,13 @@ _{0} $ be the lowest vector with respect to the natural ordering in $%
   \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(
     1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}}_{\frak{a%
       }}\mathrm{\left( \alpha \right) }}=-s\left( \gamma _{0}\right) e^{-\gamma
-    _{0}}-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}\setminus \gamma
-    _{0}}s\left( \gamma \right) e^{-\gamma },  
+    _{0}}-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}\setminus \left\{\gamma_{0}\right\}}s\left( \gamma \right) e^{-\gamma },  
 \end{equation}
 in (\ref{eq:17}) we obtain
 
 \begin{equation}
 k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
 \sum_{\gamma \in
 \Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
 +\gamma }^{\left( \mu \right) }\right)   \label{recurrent relation}
@@ -428,9 +427,8 @@ So we've obtained recurrent relation for the anomalous branching coefficients.  
 \begin{enumerate}
 \item Construct the set of anomalous points of the algebra $\mathfrak{g}$
 \item Calculate the dimensions of the corresponding modules $L_{\mathfrak{a}_{\bot}}$.
-\item Calculate anomalous branching coefficients in the main Weyl chamber of the subalgebra $\mathfrak{a}$
-\item \dots
-\item PROFIT !!!
+\item Calculate anomalous branching coefficients in the main Weyl
+  chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent relation}).
 \end{enumerate}
 
 \section{Examples}
@@ -480,9 +478,86 @@ Anomalous branching coefficient $k^{(1,0)}_{1}=2$, then for anomalous branching 
   k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0}_1 - 3\cdot \delta_{0,0} = 1
 \end{equation}
 So we've computed the branching coefficients.
-\subsubsection{Something high-dimensional}
+\subsubsection{Embedding of $B_2$ into $B_4$}
 \label{sec:someth-high-dimens}
+Consider the the regular embedding of the subalgebra $B_2$ into the algebra $B_4$.
+We calculate the branching coefficients for the fundamental representation of $B_4$.
+The corresponding Dynkin diagrams are in the figure.
+\begin{figure}[ph]
+  \centering
+  \includegraphics[width=60mm]{B4_B2_2A1.pdf}
+  \caption{Dynkin diagrams}
+  \label{fig:dynkin}
+\end{figure}
 
+In the orthogonal basis $e_1,\dots,e_4$ simple roots of $B_4$ are
+\begin{equation}
+  \label{eq:1}
+  (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4)
+\end{equation}
+Positive roots are
+\begin{multline}
+  \label{eq:2}
+  (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,\;\\
+    e_2 + e_4,\; e_2,\; e_1 + e_4,\; e_2 + e_3,\; e_1,\; e_1 + e_3,\; e_1 + e_2)
+\end{multline}
+Simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
+\begin{equation}
+  \label{eq:3}
+  (e_3-e_4,e_4)
+\end{equation}
+
+The set $\Delta_{\bot}$ is equal to
+\begin{equation}
+  \label{eq:4}
+  \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}
+\end{equation}
+
+We see that this is the set of positive roots of the algebra $\mathfrak{a}_{\bot}=B_2$.
+
+To find the branching coefficients we need to compute the anomalous points of $B_4$, select point lying in the main Weyl chamber of $\mathfrak{a}_{\bot}$ and compute the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.
+
+We consider the $B_4$-module with the highest weight $\mu=(0,1,0,2)=2
+e_1 + 2 e_2 + e_3 + e_4$.
+
+The set of the anomalous points $\omega(\mu+\rho)-\rho,\; \omega\in W$
+consists of 384 points. We don't show it here.
+
+We need to select those points $\omega(\mu+\rho)$  which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
+It means that scalar product of these points with all the roots from $\Delta_{\bot}$ is non-negative.
+
+To compute dimensions of the corresponding
+$\mathfrak{a}_{\bot}$-modules we need to project each selected point
+onto the root space $\Delta_{\bot}$ and substract
+$\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula.
+
+We show the result of this procedure on the figure \ref{fig:B4B2anom}.
+\begin{figure}[ph]
+    \includegraphics[width=170mm]{B4_B2_anom_points.pdf}
+  \caption{Anomalous points with the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.}
+  \label{fig:B4B2anom}
+\end{figure}
+
+Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
+
+Using the definition (\ref{fan-defined}) we get the following set of
+the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$
+\begin{figure}[ph]
+  \includegraphics[width=150mm]{B4_B2_fan.pdf}
+  \caption{Fan for $B_2\subset B_4$}
+  \label{fig:B4B2Fan}
+\end{figure}
+We use the recurrent relation (\ref{recurrent relation}) and get
+following branching coefficients:
+\begin{equation}
+  \label{eq:24}
+  \pi_{\mathfrak{a}} \left(ch L^{(0,1,0,2)}_{B_4}\right) = 6 \; ch L^{(0,0)}_{B_2}+ 60
+  \; ch L_{B_2}^{(0,2)}+ 30 \; ch L_{B_2}^{(1,0)}+ 19 \; ch L_{B_2}^{(2,0)}+
+  40 \; ch L_{B_2}^{(1,2)}+ 10 \; ch L_{B_2}^{(2,2)}
+\end{equation}
+The dimension of the highest-weight $B_4$-module $L^{(0,1,0,2)}_{B_4}$
+is equal to 2772. It is easy to see, that right-hand side of the
+equation (\ref{eq:24}) gives the same result.
 
 \subsection{Affine Lie algebras}
 \label{sec:affine-lie-algebras}
