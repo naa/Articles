@@ -283,3 +283,14 @@ maximal_regular_subalgebras:=proc(R)
                     end do;
                     return result;
                 end proc:
+
+
+character:=proc(mu,R)
+    local anom_points, pr,rh,denominator,numerator;
+    rh:=weyl['rho'](R);
+    anom_points:=map(x->x-rh,finite_orbit(mu+rh,R));
+    pr:=coxeter['pos_roots'](R);
+    denominator:=convert(map(x->(1-exp(-x)),pr),`*`);
+    numerator:=convert(map(x->coeff(x,eps)*exp(subs(eps=0,x)),anom_points),`+`):
+    return numerator/denominator;
+end;

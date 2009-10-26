@@ -24,7 +24,7 @@ The corresponding Dynkin diagrams are in the figure.
   \label{fig:dynkin}
 \end{figure}
 
-In the orthogonal basis $e_1,\dots,\e_4$ simple roots of $B_4$ are
+In the orthogonal basis $e_1,\dots,e_4$ simple roots of $B_4$ are
 \begin{equation}
   \label{eq:1}
   (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4)
@@ -32,9 +32,8 @@ In the orthogonal basis $e_1,\dots,\e_4$ simple roots of $B_4$ are
 Positive roots are
 \begin{equation}
   \label{eq:2}
-  (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,
+  (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,\;
     e_2 + e_4,\; e_2,\; e_1 + e_4,\; e_2 + e_3,\; e_1,\; e_1 + e_3,\; e_1 + e_2)
-
 \end{equation}
 Simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
 \begin{equation}
@@ -45,7 +44,7 @@ Simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
 The set $\Delta_{\bot}$ is equal to
 \begin{equation}
   \label{eq:4}
-  \left\{e_1-e_2,e_1+e_2,e_1,e_2\right}
+  \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}
 \end{equation}
 
 We see that this is the set of positive roots of the algebra $\mathfrak{a}_{\bot}=B_2$.
@@ -68,7 +67,7 @@ We consider the fundamental representation of $B_4$ with the highest weight $\mu
 At first we need to read the libraries of functions
 
 <<Some initialisation>>=
-read("coxeter.mpl");
+read("coxeter.mpl"):
 get_indices:=r->map(x->x[1],[indices(r)]);
 <<Compute roots>>
 plotsetup(X11);
@@ -78,6 +77,7 @@ In order to do it we need to compute simple and positive roots of $B_4$, $\mathf
 
 <<Compute roots>>=
 wg:=weyl['weights'](B4);
+#mu:=2*wg[-1]-wg[2];
 mu:=wg[-1];
 rho:=`weyl/rho`(B4);
 B4_simple_roots:=coxeter['base'](B4);
@@ -95,6 +95,45 @@ Then we need to construct the set of anomalous points of the representation $L^{
 \end{equation}
 
 <<Compute anomalous points>>=
+iprod := (v1,v2) -> coeff(v1,lambda0)*coeff(v2,delta)+coeff(v1,delta)*coeff(v2,lambda0)+coxeter['iprod'](subs({lambda0=0,delta=0,eps=0},v1),subs({lamda0=0,delta=0,eps=0},v2));
+pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
+finite_orbit:=proc(v0,R) local S,coS,EPS,is_mem,orb,old,new,u,i,v,parity,u1,j,nparity,pres;
+    S:=coxeter['base'](R); coS:=coxeter['co_base'](S);
+    if type(v0,'set') or type(v0,'list') then orb:=op(v0)
+    else orb:=coxeter['vec2fc'](v0,S)
+    fi;
+    if type([op(S),orb],'list'('polynom'('rational'))) then
+        EPS:=0; is_mem:=(x,y,z)->member(x,y)
+    else
+        EPS:=`coxeter/default`['epsilon'];
+        is_mem:=`coxeter/orbit/f`
+    fi;
+    new:=[orb];
+    nparity:=[seq(-1,i=1..nops(new))];
+    pres:=nparity;
+    while nops(new)>0 do
+        old:=new; new:=[];
+        parity:=nparity;
+        nparity:=[];
+        for j to nops(old) do
+            u:=old[j];
+            for i to nops(S) do
+                v:=iprod(coS[i],u);#coxeter['iprod'](coS[i],u);
+                if v>EPS then
+                    v:=u-v*S[i];
+                    if not is_mem(v,new,EPS) then
+                        new:=[op(new),v];
+                        nparity:=[op(nparity),parity[j]*(-1)];
+                    fi
+                fi
+            od
+        od;
+        orb:=orb,op(new);
+        pres:=[op(pres),op(nparity)];
+    od;
+    return zip((x,y)->x+y*eps,[orb],pres);
+end:
+
 anom_points:=map(x->x-rho,finite_orbit(mu+rho,B4));
 @
 
@@ -105,7 +144,7 @@ It means that scalar product of these points with all the roots from $\Delta_{\b
 
 <<Select points in the main chamber of Abot>>=
 selected_points:=select(x->
-                        andmap(y->iprod(subs({e3=0,e4=0},x),y)>=0,Abot_roots),
+                        andmap(y->iprod(subs({e3=0,e4=0},x+rho),y)>=0,Abot_roots),
                         anom_points):
 
 @
@@ -218,12 +257,95 @@ f:=fan(pppr,inj_roots(B2_pos_roots));
 plots[textplot](map(x->[coeff(x,e4),coeff(x,e3),coeff(x,eps)],f));
 @
 Now we have the set $\Gamma$ and $s(\gamma)$.
+We can also easilly see, that $\gamma_0=-2\cdot e_3-2\cdot e_4$.
+<<Get gamma0>>=
+B2_rho:=convert(B2_pos_roots,`+`)/2;
+gamma0:=f[1];
+for r in f do
+  if iprod(r,B2_rho)<iprod(gamma0,B2_rho) then
+     gamma0:=r;
+  end;
+end;
+@
+Now we can use recurrent formula which we encode as the recurrent procedure
+<<Recurrent procedure>>=
+calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
+                    local xi0,a;
+                        if not is_in_borders(xi) then return 0; fi;
+                        xi0:=subs(eps=0,xi);
+                        if assigned(res[xi0]) then
+                            return res[xi0];
+                        fi;
+                        res[xi0]:=convert(
+                            map(x->coeff(x,eps)*calculate_branching_coefficient(xi+x-gamma0,fan,gamma0,ap,res,is_in_borders),
+                                select(x->subs(eps=0,x)<>subs(eps=0,gamma0),fan)),`+`);
+                        if assigned(ap[xi0]) then
+                            res[xi0]:=res[xi0]+ap[xi0];
+                        end;
+                        res[xi0]:=-1/coeff(gamma0,eps)*res[xi0];
+                        return res[xi0];
+                    end proc:
+@
+The call to this function
+
+<<Use recurrent relation>>=
+
+is_in_borders:=proc(p,borders)
+          local ind,c1,c2;
+          for ind in indets(borders) do
+              c1:=coeff(p,ind);
+              c2:=coeff(borders,ind);
+              if c1<c2[1] or c1>c2[2] then
+                  return false;
+              fi;
+          od;
+          return true;
+      end proc;
+
+external_border:=proc(points)
+             local p,p1,res,ind,c1,c2;
+             res:=0;
+             for p1 in points do
+                 p:=subs({delta=0,eps=0,lambda0=0},p1);
+                 for ind in indets(p) do
+                     c1:=coeff(p,ind);
+                     c2:=coeff(res,ind);
+                     if c2=0 then
+                         res:=res+[c1,c1]*ind;
+                     elif c1<c2[1] then
+                         res:=subs(ind=0,res)+[c1,c2[2]]*ind;
+                     elif c1>c2[2] then
+                         res:=subs(ind=0,res)+[c2[1],c1]*ind;
+                     fi;
+                 od;
+             od;
+             return res;
+         end proc;
+
+borders:=external_border(ppts);
+i_i_b:=rcurry(is_in_borders,borders);
+
+sing_table:=table();
+for v in ppts do
+  sing_table[subs(eps=0,v)]:=coeff(v,eps);
+end;
+
+mu0:=subs({e1=0,e2=0},mu);
+t:=table();
+#t[mu0]:=-sing_table[mu0]/coeff(gamma0,eps);
+calculate_branching_coefficient(-3*mu0,f,gamma0,sing_table,t,i_i_b);
+plots[textplot](map(x->[coeff(x,e4),coeff(x,e3),t[x]],get_indices(t)));
+
+@
+Here it is
 <<branchingB4.mpl>>=
 <<Some initialisation>>
 <<Compute anomalous points>>
 <<Select points in the main chamber of Abot>>
 <<Compute the dimensions of modules>>
 <<Construct the fan>>
+<<Get gamma0>>
+<<Recurrent procedure>>
 <<Use recurrent relation>>
 
 @
