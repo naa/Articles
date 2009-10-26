@@ -571,246 +571,19 @@ equation (\ref{eq:24}) gives the same result.
 \section{Physical applications}
 \label{sec:phys-appl}
 
+Branching coefficients for the embedding of affine Lie subalgebra into
+affine Lie algebra can be used to construct modular invariant
+partition functions of Wess-Zumino-Novikov-Witten models.
 
-\subsection{Wess-Zumino-Novikov-Witten models}
-\label{sec:WZNW}
-
-Let's start with non-linear $\sigma$-model.
-\begin{equation}
-  \label{eq:48}
-  S_0=\frac{1}{4a^2}\int d^2x\; Tr' (\partial^{\mu}g^{-1}\partial_{\mu}g)
-\end{equation}
-Here $a^2>0$ is a positive parameter, $g(x)\in G$ - field on Lie group $G$, which we will assume to be semi-simple and by $Tr'$ we have denoted representation independent trace of Lie algebra $\mathfrak{g} $
-\begin{equation}
-  \label{eq:70}
-  Tr'=\frac{1}{x_{rep}}Tr
-\end{equation}
-$x_{rep}$ is the Dynkin index of the representation. 
-
-In this model the conformal invariance is lost at the quantum level, as it can be seen along the lines of previous sections.
-!!! Show it by example !!!
-    
-Also we can see that holomorphic and antiholomorphic currents aren't conserved individually. The equations of motion are
-\begin{equation}
-  \label{eq:71}
-  \partial^{\mu}(g^{-1}\partial_{\mu}g)=0
-\end{equation}
-The currents are
-\begin{equation}
-  \label{eq:currents}
-  J_{\mu}=g^{-1}\partial_{\mu}g
-\end{equation}
-or in the complex coordinates
-\begin{equation}
-  \label{eq:74}
-  \begin{matrix}
-    & \tilde{J}_z=g^{-1}\partial_z g, & \tilde{J}_{\bar{z}}=g^{-1}\partial_{\bar{z}}g\\
-    & \partial_z \tilde{J}_{\bar{z}}+\partial_{\bar{z}}\tilde{J}_z=0 & \\
-  \end{matrix}
-\end{equation}
-The terms of the equation of motion can not be null separately because $\partial_{\mu}(\epsilon^{\mu\nu}J_{\nu})\neq 0$.
-
-So we add WZ-term to the action and redefine the currents in more appropriate way
-\begin{equation}
-  \label{eq:72}
-  J_z=\partial_z g\;g^{-1}, \qquad J_{\bar{z}}=g^{-1}\partial{\bar z}g
-\end{equation}
-
-Wess-Zumino term has the following form
-\begin{equation}
-  \label{eq:73}
-\Gamma=  - \frac{i }{24\pi} \int_{B}\epsilon_{ijk} Tr'\left(
-    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
-\end{equation}
-
-This term is defined on the three-dimensional manifold $B$ whose boundary is original two-dimensional space. By $\tilde{g}$ we have denoted the extension of the field $g$ to $B$. This extension isn't unique. In a compactified three-dimensional space a compact two-dimensional manifold delimits two three-dimensional manifolds. The difference between this two choices $\Delta\Gamma$ is given by the right hand side of (\ref{eq:73}) with the integration range extended over the whole compact three-dimensional space. Since the latter is topologically equivalent to the three-sphere we have
-\begin{equation}
-  \label{eq:75}
-\Delta\Gamma=  - \frac{i }{24\pi} \int_{S^3}\epsilon_{ijk} Tr'\left(
-    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
-\end{equation}
-$\Delta\Gamma$ is defined modulo $2\pi i$, so the Euclidean functional integral with weight $exp(-\Gamma)$ is well-defined. Clearly, any coupling constant multiplying this term must be an integer. 
-
-We then consider the action
-\begin{equation}
-  \label{eq:76}
-  S=S_0+k\Gamma
-\end{equation}
-where $k$ is an integer. 
-The equation of motion for the full action (\ref{eq:76}) is
-\begin{equation}
-  \label{eq:77}
-  \partial^{\mu}(g^{-1}\partial_{\mu}g)+\frac{a^2 ik}{4\pi}\epsilon_{\mu\nu}\partial^{\mu}(g^{-1}\partial^{\nu}g)=0
-\end{equation}
-It can be rewritten using complex coordinates as
-\begin{equation}
-  \label{eq:78}
-  (1+\frac{a^2 k}{4\pi})\partial_z(g^{-1}\partial_{\bar z}g)+(1-\frac{a^2 k}{4\pi})\partial_{\bar z}(g^{-1}\partial_z g)=0
-\end{equation}
-We see that when $a^2=\frac{4\pi}{k}$ we have the desired conservation law
-\begin{equation}
-  \label{eq:79}
-  \partial_z(g^{-1}\partial{\bar z}g)=0
-\end{equation}
-For currents
-\begin{equation}
-  \label{eq:4}
-  \partial_{\bar z}J=0,\quad \partial_z \bar J=0
-\end{equation}
-
-The solution of classical equation is
-\begin{equation}
-  \label{eq:80}
-  g(z,\bar z)=f(z)\bar f(\bar z)
-\end{equation}
-for arbitrary functions $f(z)$ and $\bar f (\bar z)$.
-
-The separate conservation of the currents $J_z,\; J_{\bar z}$ implies the invariance of the action under the transformations
-\begin{equation}
-  \label{eq:81}
-   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)
-\end{equation}
-where $\Omega,\;\bar \Omega \in G$. So we have local $G(z)\times G(\bar z)$ invariance. 
-
-In order to move analysis to quantum level we rescale the currents
-\begin{equation}
-  \label{eq:82}
-  J(z)\equiv -k \partial_zg g^{-1}\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
-\end{equation}
-So the variation of the action under infinitesimal transformation $\Omega=1+\omega,\; \bar \Omega =1+\bar \omega$ is
-\begin{equation}
-  \label{eq:83}
-  \delta_{\omega,\bar\omega}S=\frac{i}{4\pi}\oint dz Tr' (\omega(z)J(z))-\frac{i}{4\pi}\oint d\bar z Tr'(\bar\omega(\bar z)\bar J(\bar z))
-\end{equation}
-Expanding the currents as
-\begin{equation}
-  \label{eq:85}
-  \begin{aligned}
-    J=\sum J^a t^a,\bar J=\sum \bar J^a t^a \\
-    \omega=\sum \omega^a t^a\\
-  \end{aligned}
-\end{equation}
-we get
-\begin{equation}
-  \label{eq:86}
-  \delta_{\omega,\bar \omega}S=-\frac{1}{2\pi i}\oint dz \sum\omega^a J^a+\frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \bar J^a
-\end{equation}
-We can also obtain Ward identities $\delta\left< X\right>=\left<(\delta S)X\right>$
-\begin{equation}
-  \label{eq:87}
-  \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
-  \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
-\end{equation}
-Then for the currents we have
-\begin{equation}
-  \label{eq:88}
-  \delta_{\omega}J=[\omega,J]-k\partial_z\omega,\quad \delta_{\omega}J^a=\sum i f_{abc}\omega^b J^c-k\partial_z\omega^a
-\end{equation}
-The operator product expansion for currents has the form
-\begin{equation}
-  \label{eq:89}
-  J^a(z) J^b(w) \sim \frac{k\delta_{ab}}{(z-w)^2}+\sum i f_{abc}\frac{J^c(w)}{(z-w)}
-\end{equation}
-Expanding currents into series we get
-\begin{equation}
-  \label{eq:90}
-  \begin{aligned}
-    J^a(z)=\sum_{n\in \mathbb Z}z^{n-1}J^a_n\\    
-    \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}  
-  \end{aligned}
-\end{equation}
-We see that components of currents realize affine Lie algebra $\hat g$.  
-
-
-Energy-momentum tensor is introduced with Sugawara construction as the sum of normal-ordered products of current components
-\begin{equation}
-  \label{eq:6}
-  T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
-\end{equation}
-Here $h^v$ is the dual Coxeter number.
-
-Energy-momentum tensor can be expanded into modes $L_n$
-\begin{equation}
-  \label{eq:91}
-  L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:J^a_m J^a_{n-m}:
-\end{equation}
-The commutation relations for the modes $L_n$ are
-\begin{equation}
-  \label{eq:92}
-  \begin{aligned}
-    \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
-    \left[L_n,J^a_m\right]=-mJ^a_{n+m}
-  \end{aligned}
-\end{equation}
-
-So the Sugawara construction is the way to embed Virasoro algebra into the universal enveloping of affine Lie algebra. 
-
-Complete chiral algebra of WZW-model is equal to semidirect product $Vir\ltimes \hat g$
-
-The primary fields are the fields that transforms covariantly with respect to $G(z)\times G(\bar z)$, such as $g(z,\bar z)$. In terms of operator product expansion this property is reformulated as
-\begin{equation}
-  \label{eq:84}
-  \begin{aligned}
-    J^a(z)g(w,\bar w)\sim \frac{-t^a g(w,\bar w)}{(z-w)}\\
-    \bar J^a(z)g(w,\bar w)\sim \frac{ g(w,\bar w)t^a}{(z-w)}
-  \end{aligned}
-\end{equation}
-Any field $\phi_{\lambda,\mu}$ transforming covariantly with respect to some representation specified by $\lambda$ in holomorphic and $\mu$ in antiholomorphic sector, will be a WZW primary field.
-
-In terms of modes this property can be written as
-\begin{equation}
-  \label{eq:93}
-  \begin{aligned}
-    & (J_0^a \phi_{\lambda})=-t^a_{\lambda}\phi_{\lambda}\\
-    & (J^a_n\phi_{\lambda})=0\quad \mbox{for}\; n>0\\
-  \end{aligned}
-\end{equation}
-We can associate the state $\left|\phi_{\lambda}\right>$ to the field $\phi_{\lambda}$
-  \begin{equation}
-    \label{eq:94}
-    \phi_{\lambda}(0)=\left|\phi_{\lambda}\right>
-  \end{equation}
-Then the conditions (\ref{eq:93}) for WZW primary field are
-\begin{equation}
-  \label{eq:95}
-  \begin{aligned}
-    & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>\\
-    & J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
-  \end{aligned}
-\end{equation}
-It is easy to see that the action of the Virasoro generators is
-\begin{equation}
-  \label{eq:96}
-  L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>
-\end{equation}
-Here we used the explicit form of the quadratic Casimir operator eigenvalue.
-
-
-Primary fields live in integrable finite-dimensional representations since infinite-dimensional and non-integrable fields are decoupled from the correlation functions.
-
-All secondary states are of the form
-\begin{equation}
-  \label{eq:97}
-  J^{a_1}_{-n_1}J^{a_2}_{n_2}\dots\left|\phi_{\lambda}\right>
-\end{equation}
-For the correlation functions of primary fields we can obtain Knizhnik-Zamolodchikov equations which follow from global $G\times G$ invariance
-\begin{equation}
-  \label{eq:98}
-  \left(\partial_{z_i}+\frac{1}{k+h^v}\sum_{i\neq j}\frac{\sum_a t^a_i\otimes t^a_j}{z_i-z_k}\right)
-  \left<\phi_1(z_1)\dots \phi_n(z_n)\right>=0
-\end{equation}
-So the theory is completely determined by the representations of affine Lie algebra $\hat{\mathfrak{g}} $.
-
-\subsubsection{Modular invariants}
-\label{sec:modular-invariants}
-
-In previous section we studied holomorphic and antiholomorphic sectors of the theory separately. But in physically sensible theories this sectors should be entangled. It is required for the theory to be well-defined on the higher genus Riemann surfaces (see \cite{gaberdiel2000icf} and references therein) and also if we want our theory to describe critical behavior \cite{difrancesco1997cft}. In the critical point theory has conformal invariance, holomorphic and antiholomorphic sectors are decoupled, but in the vicinity of critical point there exists some large scale so the sectors should interact.
-
-!!! Expand this argumentation !!!
+ In physically sensible theories holomorphic and antiholomorphic
+ sectors should be entangled. It is required for the theory to be
+ well-defined on the higher genus Riemann surfaces (see
+ \cite{gaberdiel2000icf} and references therein) and also if we want
+ our theory to describe critical behavior \cite{difrancesco1997cft}.
+ In the critical point theory has conformal invariance, holomorphic
+ and antiholomorphic sectors are decoupled, but in the vicinity of
+ critical point there exists some large scale so the sectors should
+ interact \cite{difrancesco1997cft}, 
 
 The necessary constraint for the theory to be well-defined on higher Riemann surfaces, which is also believed to be sufficient, is that the vacuum correlator on the torus is independent of its parametrisation \cite{gaberdiel2000icf}. Conformal theory on the higher genus Riemann surfaces is important for the string theory since this theory describes string interaction.
 
@@ -908,7 +681,7 @@ Here we will discuss conformal embeddings.
 
 \subsubsection{Conformal embeddings}
 \label{sec:conformal-embeddings}
-Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for enveloping and embedded theory. !!! Provide an explanation !!!
+Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for enveloping and embedded theory. 
 
 The states for the theory that corresponds to the algebra $\mathfrak{g}$
 \begin{equation}
@@ -927,7 +700,8 @@ Here $\tilde{J}^{a'_j}_{-n_j}$ are the generators of $\mathfrak{p}$ and $\mathca
 \end{equation}
 Here $x_e$ is the embedding index and $g$, $p$ are dual Coxeter numbers of corresponding algebras. !!! Prove and expand !!!
 
-It can be shown that solutions of equation (\ref{eq:111}) exist only for level 1 $k=1$.
+It can be shown that solutions of equation (\ref{eq:111}) exist only
+for level 1 $k=1$ \cite{difrancesco1997cft}.
 
 There exist only finite number of such embeddings.
 
