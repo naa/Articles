@@ -77,15 +77,6 @@ branching:=proc(mu,subalgebra_roots,algebra_name)
                 <<Use recurrent relation>>
                 <<Return result>>
 end;
-<<Example of use>>
-@
-The example of usage:
-
-<<Example of use>>=
-wg:=weyl['weights'](B4);
-mu:=2*wg[-1]+wg[2];
-branching(mu,[e3,e3-e4],B4);
-
 @
 So at first we need to compute the roots of the algebra
 $\mathfrak{g}$, see which roots are in $\Delta_{\bot}$
@@ -96,7 +87,8 @@ and construct $\mathfrak{a}_{\bot}$.
 rho:=`weyl/rho`(algebra_name);
 algebra_simple_roots:=coxeter['base'](algebra_name);
 algebra_pos_roots:=coxeter['pos_roots'](algebra_name);
-subalgebra_pos_roots:=select(x->projection(x,subalgebra_roots)=x,algebra_pos_roots);
+#subalgebra_pos_roots:=select(x->projection(x,subalgebra_roots)=x,algebra_pos_roots);
+subalgebra_pos_roots:=map(x->-x,coxeter['orbit'](map(x->-x,subalgebra_roots),subalgebra_roots));
 
 Abot_roots:=select(x->projection(x,subalgebra_roots)=0,algebra_pos_roots);
 Abot_rho:=1/2*convert(Abot_roots,`+`);
@@ -371,6 +363,18 @@ At last we need to return pretty-printed result.
 <<Return result>>=
 return map(k->[k,t[k]],select(x->t[x]<>0,select(y->andmap(z->iprod(y,z)>=0,subalgebra_pos_roots),get_indices(t))));
 @
-Here it is
+Here it is.
+
+The example of usage:
+
+<<ClassicalBranchingExample.mpl>>=
+read('ClassicalBranching.mpl'):
+wg:=weyl['weights'](B4);
+mu:=2*wg[-1]+wg[2];
+branching(mu,[e3-e4,e4],B4);
+wg:=weyl['weights'](B2);
+mu:=wg[1];
+branching(mu,[e1+e2],B2);
+
 @
 \end{document}
