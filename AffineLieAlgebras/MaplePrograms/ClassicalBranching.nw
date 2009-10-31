@@ -6,8 +6,8 @@
 \usepackage{noweb}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[russian]{babel}
-\usepackage{cmap}
-\usepackage[pdftex]{graphicx}
+%\usepackage{cmap}
+%\usepackage[pdftex]{graphicx}
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
 \begin{document}
@@ -36,6 +36,7 @@ We consider the representation of $\mathfrak{g}$ with the highest weight $\mu$
 At first we need to read the libraries of functions
 
 <<Some initialisation>>=
+
 read("coxeter.mpl"):
 plotsetup(X11);
 <<Aux functions>>
@@ -71,7 +72,9 @@ Then we compute the anomalous points using the modified procedure ``orbit'' from
 In order to do it we need to compute simple and positive roots of $\mathfrak{g}$, $\mathfrak{a}_{\bot}$ and the embedded algebra $\mathfrak{a}$.
 
 <<ClassicalBranching.mpl>>=
+#!/usr/local/bin/maple
 <<Some initialisation>>
+
 
 branching:=proc(mu,subalgebra_roots,algebra_name)
                 local <<Local variables>>;
@@ -399,6 +402,7 @@ Here it is.
 The example of usage:
 
 <<ClassicalBranchingExample.mpl>>=
+#!/usr/local/bin/maple
 read('ClassicalBranching.mpl'):
 wg:=weyl['weights'](B4);
 mu:=2*wg[-1]+wg[2];
