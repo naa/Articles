@@ -209,9 +209,9 @@ Using the Weyl-Kac formula for the character of the module
 we obtain the equality
 \begin{equation}
   \label{eq:4}
-  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = 
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = 
   \sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
-  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{equation}
 
 It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
@@ -244,7 +244,7 @@ We then drop central node and get the embedding $A_1\oplus A_1\subset B_2$. Then
 We can multiply the equation (\ref{eq:4}) by the term
 \begin{equation}
   \label{eq:5}
-  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
 \end{equation}
 This term is non-zero. 
 
@@ -257,9 +257,9 @@ Also we can see that for any formal polynomial or series $Q$
 The equation (\ref{eq:4}) takes the form
 \begin{multline}
   \label{eq:7}
-  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
-  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{mult_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
-  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{mult_{\mathfrak{a}}(\beta)}}
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{multline}
 The right-hand side of this equation can be reorganised as in the paper \cite{ilyin812pbc}. We introduce the anomalous branching coefficients $k_{\lambda}$.
 \begin{equation}
@@ -271,7 +271,7 @@ The right-hand side of this equation can be reorganised as in the paper \cite{il
 Also we extract the common denominator of  the right-hand side of the equation (\ref{eq:7})
 \begin{multline}
   \label{eq:12}
-  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
   \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
     \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda } 
 \end{multline}
@@ -282,22 +282,22 @@ If the set $\Delta_{\bot}$ is non-empty then the Weyl reflections corresponding 
 We have denoted the subalgebra with the root space spanned over the set $\Delta_{\bot}$ by $\mathfrak{a}_{\bot}$.
 
 Then we can reorganise the summation on the left-hand side of the equation (\ref{eq:12}) in the following way.
-\begin{comment}
-  We consider the factor-group $W/W_{\bot}$ and left conjugate classes.
-  Write it and check factor-group notation
-\end{comment}
+We consider the factor-group $W_{\bot}\backslash W$ and the left conjugate classes. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ we choose the representative $\omega \in \tilde{\omega}$ in such a way that $\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$. Then
 \begin{multline}
   \label{eq:13}
- \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) = \\
- \pi_{\mathfrak{a}}\left(\sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}\right) 
+ \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
+ \pi_{\mathfrak{a}}\left(\sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) 
 \end{multline}
 
-
+We see that the fraction on the right-hand side of the equation looks like the character of some representation. 
+\begin{comment}
+  Write here about $h+a_{\bot}$
+\end{comment}
 Then we see that
 \begin{multline}
   \label{eq:14}
-  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}} =\\
-  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) e^{-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\omega(\mu+\rho)-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{mult(\alpha)}}=\\
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}} =\\
+  \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) e^{-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\omega(\mu+\rho)-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
   \sum_{\omega\in W/W_{\bot}} \epsilon(\omega) e^{\rho_{\mathfrak{a}_{\bot}}-\rho} ch L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
 \end{multline}
 The projection $\pi_{\mathfrak{a}}$ of the character of the highest-weight module $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ is equal to the dimension of the module multiplied by $e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho_{\mathfrak{a}_{\bot}})}$
@@ -319,7 +319,7 @@ Thus we have the equality
 We can rewrite the multiplier of the right-hand side as in the paper \cite{ilyin812pbc}.
 \begin{equation}
   \label{eq:11}
-    \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})} \left(1-e^{-\alpha}\right)^{mult(\alpha)-mult_{\mathfrak{a}}(\alpha)}=
+    \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})} \left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}=
      -\sum_{\gamma\in P_{\mathfrak{a}}} s(\gamma)e^{-\gamma}
 \end{equation}
 
@@ -330,9 +330,7 @@ For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
 \gamma \right) \neq 0\right\} ;  \label{phi-d}
 \end{equation}
 \begin{equation}
-\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(
-1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}}_{\frak{a%
-}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset 
+\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}_{\frak{a}}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset 
 \frak{g}}}s\left( \gamma \right) e^{-\gamma }.  \label{fan-d}
 \end{equation}
 
