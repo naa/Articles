@@ -1,0 +1,148 @@
+% -*- mode: Noweb; noweb-code-mode: maplev-mode -*-
+\documentclass[a4paper,10pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+\usepackage{noweb}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\begin{document}
+@
+
+\section{Introduction}
+\label{sec:introduction}
+
+This program is supposed to be used for the calculation of the branching coefficients for the reduction of the representation of affine Lie algebra to the affine subalgebra.
+
+For now the algebra should be simple and the embedded subalgebra is described by the set of simple roots.
+
+We use the following algorithm, based on the recurrent relation
+\begin{equation}
+  k_{\xi }^{\left( \mu \right) }=
+  -\frac{1}{s\left( \gamma _{0}\right) }
+  \left(
+    \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}
+    \left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)
+    \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+    \sum_{\gamma \in \Gamma _{\frak{a}\subset \frak{g}}} s\left( \gamma +\gamma _{0}\right) k_{\xi+\gamma }^{\left( \mu \right) }
+  \right)
+\label{recurrent relation}
+\end{equation}
+where the set
+\begin{equation}
+\Gamma _{\frak{a}\subset \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+\frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} .
+\label{fan-defined}
+\end{equation}
+and $Phi$ is defined as follows.
+\begin{equation}
+  \label{eq:11}
+    \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})} \left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}=
+     -\sum_{\gamma\in P_{\mathfrak{a}}} s(\gamma)e^{-\gamma}
+\end{equation}
+
+For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
+}\subset \frak{g}}\subset P_{\frak{a}}$ as its carrier:
+\begin{equation}
+\Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}\mid s\left(
+\gamma \right) \neq 0\right\} ;  \label{phi-d}
+\end{equation}
+\begin{equation}
+\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}_{\frak{a}}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset
+\frak{g}}}s\left( \gamma \right) e^{-\gamma }.  \label{fan-d}
+\end{equation}
+
+\subsection{The algorithm}
+\label{sec:algorithm}
+
+\begin{enumerate}
+\item Construct the set $\Delta^{+}$ of the positive roots of the algebra $\mathfrak{g}$.
+\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of the subalgebra $\mathfrak{a}$ and form the set $\Delta_{\bot}$.
+\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous points of the $\mathfrak{g}$-module $L^{(\mu)}$.
+\item Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta_{\bot}$ is non-negative.
+\item For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta_{\bot}$.
+\item Construct the set $\Gamma$ \eqref{fan-defined}.
+\item Calculate anomalous branching coefficients in the main Weyl
+  chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent relation}).
+\end{enumerate}
+
+\section{The code}
+\label{sec:code}
+
+\subsection{Usage example}
+\label{sec:usage-example}
+
+We want to have a function [[branching]], which can be used as follows
+<<Example of usage>>=
+<<Prepare embedding>>
+br_coeffs:=branching(highest_weight,embedded_A1_roots,AffineB2);
+map(x->[x,br_coeffs[x]],get_indices(br_coeffs));
+@
+The preparation is simple --- we should choose the basis of the embedded algebra and the highest weight of the representation.
+
+<<Prepare embedding>>=
+wg:=weights(AffineB2);
+highest_weight:=3*wg[1]+5*wg[2];
+
+al:=simple_roots(AffineB2);
+embedded_A1_roots:=[al[1]+al[2],al[-1]];
+@
+Is the last line correct?
+
+@
+We assume that the roots $\alpha_1\dots \alpha_{r-1}$ are the roots of the corresponding finite-dimensional algebra, and $\alpha_0$ is written as the last component in the list of roots, so that [[al[-1]]]=$\alpha_0$.
+
+The branching procedure is the realisation of the algorithm from the section \ref{sec:algorithm}.
+<<Brancing>>=
+brancing:=proc(highest_weight,subalgebra_roots,algebra_name)
+    local <<Local variables>> k;
+    <<Construct the set of the positive roots of the algebra>>
+    <<Select the orthogonal roots>>
+    <<Construct the set of the anomalous point>>
+    <<Select points in the main chamber of Abot>>
+    <<Compute the dimensions of modules>>
+    <<Construct the fan>>
+    <<Get gamma0>>
+    <<Recurrent procedure>>
+    <<Use recurrent relation>>
+    <<Return result>>
+end;
+
+@
+To construct the set of the positive roots of the algebra we use the procedure [[pos_roots]], implemented in the file [[``affine.mpl'']].
+<<Construct the set of the positive roots of the algebra>>=
+algebra_simple_roots:=algebra_roots(algebra_name);
+algebra_pos_roots:=pos_roots(algebra_name);
+<<Local variables>>=
+algebra_pos_roots, algebra_simple_roots,
+@
+Then we need to select the roots, which are orthogonal
+<<Select the orthogonal roots>>=
+Abot_roots:=select(x->projection(x,subalgebra_roots[1..-2])=0,algebra_pos_roots);
+
+
+@
+<<Supplementary functions>>=
+embedding_level:=proc(embedded_roots,algebra_name)
+              local pa,s;
+              pa:=projection(highest_root(algebra_name),embedded_roots[1..-2]);
+              s:=coxeter['highest_root'](embedded_roots[1..-2]);
+              return iprod(pa,pa)/iprod(s,s);
+          end;
+@
+<<AffineBranching.mpl>>=
+#!/opt/maple11/bin/maple
+<<Initialisation>>
+<<Supplementary functions>>
+<<Branching>>
+@
+<<AffineBranchingExample.mpl>>=
+read("AffineBranching.mpl"):
+<<Example of usage>>
+
+@
+\end{document}

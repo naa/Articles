@@ -72,9 +72,9 @@ local wg,al,i,R,lb,clb;
     R:=finite_dimensional_root_system(R1);
     al:=algebra_roots(R1);
     wg:=weyl['weights'](R);
-    lb:=labels(R1);
+    clb:=co_labels(R1);
     for i to nops(wg) do
-        wg[i]:=wg[i]+lambda0;
+        wg[i]:=wg[i]+clb[i]*lambda0;
     end do;
     wg:=[op(wg),lambda0];
     return wg;
