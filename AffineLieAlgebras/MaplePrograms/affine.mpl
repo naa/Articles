@@ -235,7 +235,7 @@ end proc:
 translations_correct:=proc(w,R,max_grade)
              local al,A,K,C,D,L,low,high,v;
 #                 print(w);
-                 al:=coxeter['base'](finite_dimensional_root_system(R));
+                 al:=coxeter['co_base'](finite_dimensional_root_system(R));
                  A:=Matrix(map(x->map(y->1/2*iprod(x,y)*iprod(w,delta),al),al));
 #                 print(A);
                  K:=Vector(map(x->iprod(w,x),al));
@@ -263,7 +263,7 @@ translations_correct:=proc(w,R,max_grade)
                  od;
 #                 print(low);
 #                 print(high);
-                 res:= translate(w,coxeter['base'](finite_dimensional_root_system(R)),convert(low,list),convert(high,list),1,0,max_grade);
+                 res:= translate(w,coxeter['co_base'](finite_dimensional_root_system(R)),convert(low,list),convert(high,list),1,0,max_grade);
 #                 print(nops(res));
                  return res;
              end proc:

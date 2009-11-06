@@ -97,8 +97,8 @@ Is the last line correct?
 We assume that the roots $\alpha_1\dots \alpha_{r-1}$ are the roots of the corresponding finite-dimensional algebra, and $\alpha_0$ is written as the last component in the list of roots, so that [[al[-1]]]=$\alpha_0$.
 
 The branching procedure is the realisation of the algorithm from the section \ref{sec:algorithm}.
-<<Brancing>>=
-brancing:=proc(highest_weight,subalgebra_roots,algebra_name)
+<<Branching>>=
+branching:=proc(highest_weight,subalgebra_roots,algebra_name)
     local <<Local variables>> k;
     <<Construct the set of the positive roots of the algebra>>
     <<Select the orthogonal roots>>
@@ -111,7 +111,6 @@ brancing:=proc(highest_weight,subalgebra_roots,algebra_name)
     <<Use recurrent relation>>
     <<Return result>>
 end;
-
 @
 To construct the set of the positive roots of the algebra we use the procedure [[pos_roots]], implemented in the file [[``affine.mpl'']].
 <<Construct the set of the positive roots of the algebra>>=
@@ -123,6 +122,9 @@ algebra_pos_roots, algebra_simple_roots,
 Then we need to select the roots, which are orthogonal
 <<Select the orthogonal roots>>=
 Abot_roots:=select(x->projection(x,subalgebra_roots[1..-2])=0,algebra_pos_roots);
+@
+<<Local variables>>=
+Abot_roots,
 
 
 @
@@ -143,6 +145,15 @@ embedding_level:=proc(embedded_roots,algebra_name)
 <<AffineBranchingExample.mpl>>=
 read("AffineBranching.mpl"):
 <<Example of usage>>
-
+@
+Here we show some useful constructs
+<<Some useful constructs>>=
+Grid:= seq(seq(spacecurve([[i,j*2,-8],[i,j*2,6]],
+     colour="LightGray",linestyle=dash),i=-6..0),j=-4..3),
+         seq(seq(spacecurve([[i,-8,j*2],[i,6,j*2]],
+     colour="LightGray",linestyle=dash),i=-6..0),j=-4..3):
+ap:=anomalous_points(wg[1],B2,6);
+thep:=PLOT3D(POINTS(op(map(x->[coeff(x,delta),coeff(x,e1),coeff(x,e2)],select(y->coeff(y,eps)>0,ap))),SYMBOL(CROSS)),POINTS(op(map(x->[coeff(x,delta),coeff(x,e1),coeff(x,e2)],select(y->coeff(y,eps)<0,ap))),SYMBOL(DIAMOND)));
+display([thep,Grid],axes=boxed);
 @
 \end{document}
