@@ -66,6 +66,30 @@ algebra_roots := proc(R1)
             return al;
         end proc;
 
+finite_positive_roots:=proc(R) local S;
+                    S:=finite_roots(R);
+                    map(x->-x,coxeter['orbit'](map(x->-x,S),S))
+                end:
+
+
+tA2_positive_roots:=n->[e1+i*delta+eps$i=0..n,2*e1+(2*i+1)*delta+eps$i=0..n/2,-2*e1+(2*i+1)*delta+eps$i=0..n/2,-e1+i*delta+eps$i=1..n,i*delta+eps$i=1..n];
+
+#Construct the set of the positive roots of the algebra up to some grade
+positive_roots:=proc(R,max_grade)
+         local cpr,l,p,r;
+             if R=tA2 then
+                 return tA2_positive_roots(max_grade);
+             fi;
+             if is_twisted(R) then
+                 error("Twisted algebras are unsupported yet");
+             fi;
+             cpr:=finite_positive_roots(R);
+             r:=coxeter['rank'](finite_dimensional_root_system(R));
+             [op(map(x->x+l*delta+eps$l=0..max_grade,cpr)),op(map(x->-x+p*delta+eps$p=1..max_grade,cpr)),p*delta+r*eps$p=1..max_grade];
+         end proc:
+
+
+
 # weights of algebra, finite first, then lambda_0
 weights:=proc(R1)
 local wg,al,i,R,lb,clb;

@@ -543,16 +543,16 @@ equation (\ref{eq:24}) gives the same result.
 \label{sec:embedd-finite-dimens}
 
 The maximal embeddings of the finite-dimensional Lie algebras into the affine Lie algebras were thoroughly studied and the tables of the branching coefficients are given in the book \cite{kass1990ala}. The task of the study of non-maximal embeddings is then can be reduced to the well-known task of branching of the finite-dimensional Lie algebras.
-Thus here we show the simplest possible example of reduction of affine $\widehat{A_1}$ to $A_1$ in order to demonstrate some traits of our method and show that we eliminate the need of slice-by-slice study discussed in \cite{kass1990ala}.
+Thus here we show the simplest possible example of reduction of affine $\hat{A_1}$ to $A_1$ in order to demonstrate some traits of our method and show that we eliminate the need of slice-by-slice study discussed in \cite{kass1990ala}.
 
-The simple roots for the affine $\widehat{A_1}$ are
+The simple roots for the affine $\hat{A_1}$ are
 \begin{equation}
   \label{eq:2}
   (\alpha,\delta-\alpha)
 \end{equation}
 We consider the embedding with the root $\beta=\delta-\alpha$. 
 
-Positive roots of the $\widehat{A_1}$ are $\alpha,\; \alpha+n\delta,\; n\delta,\; -\alpha+n\delta;\; n=1,2,3,\dots$.
+Positive roots of the $\hat{A_1}$ are $\alpha,\; \alpha+n\delta,\; n\delta,\; -\alpha+n\delta;\; n=1,2,3,\dots$.
 The set of the 
 
 \subsubsection{Embedding of the affine algebra into affine algebra}
@@ -561,20 +561,78 @@ The set of the
 Consider the affine extension of the example \ref{sec:regul-embedd-a_1}. 
 Since this embedding is regular, the level of the representations of the subalgebra is equal to the level of the representation of the algebra. 
 
-The set $\Delta_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\widehat{A_1}$ is the same as in the finite-dimensional case.
+The set $\Delta_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
 
-Consider the level one representation of the algebra $\mathfrak{g}=\widehat{B_2}$ with the highest weight $(1,0,1,0)$, where the first to components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the grade of the weight and the fourth is the level.
+Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0,1,0)$, where the first to components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the grade of the weight and the fourth is the level.
 
 
 The set of the anomalous points of this representation up to sixth grade is depicted in the figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the figure \ref{fig:B2_A1}. 
 
 \begin{figure}[ph]
-  \centering
   \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
-  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\widehat{B_2}$}
+  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{B_2}$}
   \label{fig:affine_B2_anom_point}
 \end{figure}
 
+As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
+The result of this computation up to the twelfth grade is presented at the figure
+\begin{figure}[ph]
+  \centering
+  \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
+  \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \label{fig:AffineB2_A1_anom_proj}
+\end{figure}
+
+Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
+
+Using the definition (\ref{fan-defined}) we get the following set of
+the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$. 
+Here we restricted the computation to the twelfth grade.
+\begin{figure}[ph]
+  \includegraphics[width=150mm]{AffineB2_A1_fan.pdf}
+  \caption{Fan for $\hat{A_1}\subset \hat{B_2}$}
+  \label{fig:B4B2Fan}
+\end{figure}
+
+Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to zero, since we have excluded all the roots of $\Delta_{\bot}$ from the defining relation (\ref{fan-defined}).
+
+Using the recurrent relation for the anomalous branching coefficients we get the following result
+\begin{figure}[ph]
+  \includegraphics[width=150mm]{AffineB2_A1_branching.pdf}
+  \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{B_2}$}
+  \label{fig:AffineB2_A1_branching}
+\end{figure}
+
+Selecting the points inside the main Weyl chamber of the subalgebra $\hat{A_1}$ we get the following results for the branching coefficients up to twelfth grade
+\begin{multline}
+  \label{eq:28}
+  L^{w_1}_{\hat{B_2}\downarrow \hat{A_1}}=2 L_{\hat{A_1}}^{w_1}(0)\oplus 1 L_{\hat{A_1}}^{w_0}(0)\oplus 4 L_{\hat{A_1}}^{w_0}(-1)\oplus\\
+    2 L_{\hat{A_1}}^{w_1}(-1)\oplus 8 L_{\hat{A_1}}^{w_0}(-2)\oplus
+    8 L_{\hat{A_1}}^{w_1}(-2)\oplus 15 L_{\hat{A_1}}^{w_0}(-3)\oplus\\
+    12 L_{\hat{A_1}}^{w_1}(-3)\oplus 26 L_{\hat{A_1}}^{w_1}(-4)\oplus
+    29 L_{\hat{A_1}}^{w_0}(-4)\oplus 51 L_{\hat{A_1}}^{w_0}(-5)\oplus\\
+    42 L_{\hat{A_1}}^{w_1}(-5)\oplus 78 L_{\hat{A_1}}^{w_1}(-6)\oplus
+    85 L_{\hat{A_1}}^{w_0}(-6)\oplus 120 L_{\hat{A_1}}^{w_1}(-7)\oplus\\
+    139 L_{\hat{A_1}}^{w_0}(-7)\oplus 202 L_{\hat{A_1}}^{w_1}(-8)\oplus
+    222 L_{\hat{A_1}}^{w_0}(-8)\oplus 306 L_{\hat{A_1}}^{w_1}(-9)\oplus\\
+    346 L_{\hat{A_1}}^{w_0}(-9)\oplus 530 L_{\hat{A_1}}^{w_0}(-10)\oplus
+    482 L_{\hat{A_1}}^{w_1}(-10)\oplus 714 L_{\hat{A_1}}^{w_1}(-11)\oplus\\
+    797 L_{\hat{A_1}}^{w_0}(-11)\oplus 1080 L_{\hat{A_1}}^{w_1}(-12)\oplus
+    1180 L_{\hat{A_1}}^{w_0}(-12)
+\end{multline}
+This result can be expressed using the power series expansion of the branching functions \cite{kac1990idl}.
+\begin{eqnarray}
+  \label{eq:29}
+  \begin{array}{cc}
+    b^{(w_1)}_{0}= & 1 + 4\,q^{1}+ 8\,q^{2}+ 15\,q^{3}+ 29\,q^{4}+ 51\,q^{5}+ 85\,q^{6}+ 139\,q^{7}+\\
+     &222\,q^{8}+ 346\,q^{9}+ 530\,q^{10}+ 797\,q^{11}+ 1180\,q^{12}+\dots\\
+  \end{array}\\
+  \begin{array}{cc}
+    b^{(w_1)}_{1}= &2+2\,q^{1}+8\,q^{2}+12\,q^{3}+26\,q^{4}+42\,q^{5}+78\,q^{6}+120\,q^{7}+\\
+    & 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots
+  \end{array}
+\end{eqnarray}
+Here the lower index of the branching function denotes the number of the corresponding $\hat{A_1}$ fundamental weight $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 \section{Physical applications}
 \label{sec:phys-appl}
 \begin{comment}
