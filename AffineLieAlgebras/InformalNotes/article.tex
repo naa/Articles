@@ -510,7 +510,7 @@ onto the root space $\Delta_{\bot}$ and substract
 $\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula.
 
 We show the result of this procedure on the figure \ref{fig:B4B2anom}.
-\begin{figure}[ph]
+\begin{figure}[h]
     \includegraphics[width=170mm]{B4_B2_anom_points.pdf}
   \caption{Anomalous points with the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:B4B2anom}
@@ -520,7 +520,7 @@ Then we should construct ``the fan'' and use the recurrent relation for the comp
 
 Using the definition (\ref{fan-defined}) we get the following set of
 the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$
-\begin{figure}[ph]
+\begin{figure}[h]
   \includegraphics[width=150mm]{B4_B2_fan.pdf}
   \caption{Fan for $B_2\subset B_4$}
   \label{fig:B4B2Fan}
@@ -568,7 +568,7 @@ Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ wi
 
 The set of the anomalous points of this representation up to sixth grade is depicted in the figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the figure \ref{fig:B2_A1}. 
 
-\begin{figure}[ph]
+\begin{figure}[h!tb]
   \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
   \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{B_2}$}
   \label{fig:affine_B2_anom_point}
@@ -576,7 +576,7 @@ The set of the anomalous points of this representation up to sixth grade is depi
 
 As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
 The result of this computation up to the twelfth grade is presented at the figure
-\begin{figure}[ph]
+\begin{figure}[h!tb]
   \centering
   \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
   \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
@@ -589,7 +589,8 @@ Using the definition (\ref{fan-defined}) we get the following set of
 the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$. 
 Here we restricted the computation to the twelfth grade.
 \begin{figure}[ph]
-  \includegraphics[width=150mm]{AffineB2_A1_fan.pdf}
+  \centering
+  \includegraphics[width=130mm]{AffineB2_A1_fan.pdf}
   \caption{Fan for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:B4B2Fan}
 \end{figure}
@@ -598,7 +599,8 @@ Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to 
 
 Using the recurrent relation for the anomalous branching coefficients we get the following result
 \begin{figure}[ph]
-  \includegraphics[width=150mm]{AffineB2_A1_branching.pdf}
+  \centering
+  \includegraphics[width=130mm]{AffineB2_A1_branching.pdf}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:AffineB2_A1_branching}
 \end{figure}
@@ -633,14 +635,27 @@ This result can be expressed using the power series expansion of the branching f
   \end{array}
 \end{eqnarray}
 Here the lower index of the branching function denotes the number of the corresponding $\hat{A_1}$ fundamental weight $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
+
+\newpage
 \section{Physical applications}
 \label{sec:phys-appl}
-\begin{comment}
-  Rewrite it in more scientific style or drop this section.
-\end{comment}
+Here we want to discuss possible applications of the described techniques in physical models. 
+
 Branching coefficients for the embedding of affine Lie subalgebra into
 affine Lie algebra can be used to construct modular invariant
-partition functions of Wess-Zumino-Novikov-Witten models.
+partition functions of Wess-Zumino-Novikov-Witten models (\cite{difrancesco1997cft}, \cite{Walton:1999xc}, \cite{walton1989conformal}, \cite{schellekens1986conformal}). 
+
+But for this construction to work the embedding is required to be conformal, which means that the central charge of the subalgebra is equal to the central charge of the algebra.
+\begin{equation}
+  \label{eq:31}
+  c(\mathfrak{a})=c(\mathfrak{g})
+\end{equation}
+
+ The class of the conformal embeddings is rather small, the complete classification is given in the paper \cite{schellekens1986conformal}. 
+The requirement (\ref{eq:31}) allows to reduce the task of the computation of the branching coefficients of affine Lie algebras to the computation of the branching coefficients of the finite-dimensional Lie algebras.
+
+Here we describe this procedure and discuss how the requirement (\ref{eq:31}) can be used to simplify the algorithm \ref{sec:algorithm}.
+
 
  In physically sensible theories holomorphic and antiholomorphic
  sectors should be entangled. It is required for the theory to be
