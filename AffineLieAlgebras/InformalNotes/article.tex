@@ -36,9 +36,17 @@ of a simple Lie algebra with respect to its reductive subalgebra which is based 
 \section{Introduction}
 \label{sec:introduction}
 
-\begin{comment}
-  Write here about the problem and possible applications in physics.
-\end{comment}
+The problem of the reduction of Lie algebra representation to the representations of the subalgebra is studied for several decades and has various applications in physics. In the context of finite-dimensional algebras it is important for the study of great unification models whilst the problem of the branching of the affine Lie algebras emerges in conformal field theory, for example, in the construction of the modular-invariant partition functions \cite{difrancesco1997cft}.
+
+There exist several approaches to the computation of the branching coefficients which use the BGG
+resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in 
+\cite{kac1990idl},\cite{wakimoto2001idl}), the Schure function series \cite{fauser2006new}, the BRST
+cohomology \cite{hwang1994general}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
+combinatorial methods applied in \cite{feigin707principal}. 
+
+Usually only the embedding of the maximal reductive subalgebras is considered since the case of non-maximal subalgebra can be obtained using the chain of maximal subalgebras. In this paper we present the recurrent formula for the branching coefficients which generalises the recurrent relation of the paper \cite{ilyin812pbc} to the case of non-maximal reductive subalgebra. Using this relation we formulate simple explicit algorithm for the computation of the branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
+
+We show that our algorithm can be used in the study of the conformal embeddings where the central charge of the conformal field theory is preserved, but the computation in this case is simplified using physical requirements.
 
 The paper is organised as follows. In the next subsection of the introduction we fix the notation used throughout the paper. Then in section \ref{sec:recurr-form-branch} we derive the central recurrent formula for the anomalous branching coefficients and describe the algorithm for the decomposition integrable highest weight modules of algebra $\mathfrak{g}$ to the modules of reductive subalgebra $\mathfrak{a}$ \ref{sec:algorithm}. In the next section \ref{sec:examples} we present several examples and discuss some applications in the physical models \ref{sec:phys-appl}. We conclude the paper with the review of results and the discussion of possible future developments \ref{sec:conclusion}.
 
@@ -636,7 +644,6 @@ This result can be expressed using the power series expansion of the branching f
 \end{eqnarray}
 Here the lower index of the branching function denotes the number of the corresponding $\hat{A_1}$ fundamental weight $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
-\newpage
 \section{Physical applications}
 \label{sec:phys-appl}
 Here we want to discuss possible applications of the described techniques in physical models. 
@@ -656,113 +663,6 @@ The requirement (\ref{eq:31}) allows to reduce the task of the computation of th
 
 Here we describe this procedure and discuss how the requirement (\ref{eq:31}) can be used to simplify the algorithm \ref{sec:algorithm}.
 
-
- In physically sensible theories holomorphic and antiholomorphic
- sectors should be entangled. It is required for the theory to be
- well-defined on the higher genus Riemann surfaces (see
- \cite{gaberdiel2000icf} and references therein) and also if we want
- our theory to describe critical behavior \cite{difrancesco1997cft}.
- In the critical point theory has conformal invariance, holomorphic
- and antiholomorphic sectors are decoupled, but in the vicinity of
- critical point there exists some large scale so the sectors should
- interact \cite{difrancesco1997cft}, 
-
-The necessary constraint for the theory to be well-defined on higher Riemann surfaces, which is also believed to be sufficient, is that the vacuum correlator on the torus is independent of its parametrisation \cite{gaberdiel2000icf}. Conformal theory on the higher genus Riemann surfaces is important for the string theory since this theory describes string interaction.
-
-Two-dimensional torus is described as quotient space of $\mathbb{R}^2\approx \mathbb{C}$ by the relations $z\sim z+w_1$ and $z\sim z+w_2$, where $w_1$ and $w_2$ are not parallel. 
-
-The complex structure of the torus is conformally equivalent to a torus for which the relations are $z\sim z+1$ and $z\sim z+\tau$ where $\tau$ is in the upper half plane of $\mathbb{C}$. It is also easy to see that $\tau$, $T(\tau)=\tau+1$ and $S(\tau)=-\frac{1}{\tau}$ describe conformally equivalent tori. Two maps $T$ and $S$ generate the group $SL(2,\mathbb{Z})/\mathbb{Z}_2$ that consists of matrices of the form
-\begin{equation}
-  \label{eq:99}
-  A=
-  \begin{pmatrix}
-    a & b\\
-    c & d 
-  \end{pmatrix}
-  \quad\mbox{where}\; a,b,c,d\in\mathbb{Z},\quad ad-bc=1,
-\end{equation}
-and matrices $A$ and $-A$ have the same action on $\tau$
-\begin{equation}
-  \label{eq:100}
-  \tau\to A\tau=\frac{a\tau+b}{c\tau+d}
-\end{equation}
-The parameter $\tau$ is called the modular parameter and the group  $SL(2,\mathbb{Z})/\mathbb{Z}_2$ is called the modular group. 
-
-Given a conformal field theory that is defined on the Riemann sphere, the vacuum
-correlator on the torus can be determined as follows. First, we cut the torus along one
-of its non-trivial cycles; the resulting surface is a cylinder (or an annulus) whose shape
-depends on one complex parameter $q$. Since the annulus is a subset of the sphere, the
-conformal field theory on the annulus is determined in terms of the theory on the sphere.
-In particular, the states that can propagate in the annulus are precisely the states of
-the theory as defined on the sphere.
-In order to reobtain the torus from the annulus, we have to glue the two ends of
-the annulus together; in terms of conformal field theory this means that we have to sum
-over a complete set of states. The vacuum correlator on the torus is therefore described
-by a trace over the whole space of states, the partition function of the theory,
-\begin{equation}
-  \label{eq:101}
-  \sum_{(i,j)}Tr_{\mathcal{H}_{(i,j)}}(\mathcal{O}(q,\bar q)),
-\end{equation}
-where $\mathcal{O}(q,\bar q)$ is the operator that describes the propagation of the states along the annulus,
-\begin{equation}
-  \label{eq:102}
-  \mathcal{O}(q,\bar q)=q^{L_0-\frac{c}{24}}\bar q^{\bar L_0-\frac{\bar c}{24}}
-\end{equation}
-The propagator depends on the actual shape of the annulus that is described in terms
-of the complex parameter $q$. For a given torus that is described by $\tau$ , there is a natural
-choice for how to cut the torus into an annulus, and the complex parameter $q$ that is
-associated to this annulus is $q=e^{2\pi i \tau}$. Since the tori that are described by $\tau$ and $A\tau$
-(where $A \in SL(2, \mathbb{Z})$) are equivalent, the vacuum correlator is only well-defined provided
-that (\ref{eq:101}) is invariant under this transformation. This provides strong constraints on
-the spectrum of the theory.
-
-Each of the spaces $\mathcal{H}_{(i,j)}$ is a tensor product of an irreducible representation $\mathcal{H}_j$ of chiral algebra and an irreducible representation $\bar{\mathcal{H}}_{\bar{j}}$ of antichiral algebra. Then the vacuum correlator on the torus (\ref{eq:101}) takes the form
-\begin{equation}
-  \label{eq:103}
-  \sum_{(j,\bar j)}\chi_j(q)\bar \chi_{\bar j}(\bar q)
-\end{equation}
-where $\chi_j$ is the character of the representation $\mathcal{H}_j$,
-\begin{equation}
-  \label{eq:104}
-  \chi_j(\tau)=Tr_{\mathcal{H}_j}(q^{L_0-\frac{c}{24}})\quad \mbox{where}\; q=e^{2\pi i \tau}
-\end{equation}
-Characters transform into one another under modular transformations,
-\begin{equation}
-  \label{eq:107}
-  \chi_j(-\frac{1}{\tau})=\sum_k S_{jk}\chi_k(\tau)\quad \mbox{and}\quad \chi_j(\tau+1)=\sum_kT_{jk}\chi_k(\tau),
-\end{equation}
-where $S$ and $T$ are constant matrices. This fact is proved for a certain class of conformal field theories \cite{gaberdiel2000icf}. 
-
-For WZW-models the representations are determined by highest weights $\hat \lambda, \hat \xi$. Then we can write
-\begin{equation}
-  \label{eq:105}
-  \mathcal{H}=\bigoplus_{\hat \lambda,\hat \xi\in P^{(k)}_{+}}M_{\hat \lambda,\hat \xi} L_{\hat \lambda}\otimes L_{\hat \xi}
-\end{equation}
-The partition function is rewritten as
-\begin{equation}
-  \label{eq:106}
-  Z(\tau)=\sum_{\hat \lambda,\hat \xi\in P^{(k)}_{+}} \chi_{\hat \lambda}(\tau)M_{\hat \lambda\hat\xi}\bar \chi_{\hat \xi}(\bar \tau)
-\end{equation}
-The element of the mass matrix $M_{\hat \lambda\hat\xi}$ can be thought of as the multiplicity of primary field with weights $\hat\lambda,\hat \xi$. It has following properties:$M_{\hat \lambda\hat\xi}\in \mathbb{Z}_+$, it is modular invariant
-\begin{equation}
-  \label{eq:108}
-  \begin{aligned}
-    T^{\dagger}MT=S^{\dagger}MS=M,\\
-    [M,S]=[M,T]=0,
-  \end{aligned}
-\end{equation}
-and $M_{00}=1$ for the uniqueness of vacuum. 
-
-The simplest case of diagonal matrix $M$ corresponds to equal holomorphic and antiholomorphic conformal dimensions. There are several ways to construct non-diagonal modular invariants from diagonal \cite{difrancesco1997cft}:
-\begin{itemize}
-\item Method of outer automorphisms
-\item Conformal embedding into bigger theory
-\item Galois-transpositions
-\end{itemize}
-Here we will discuss conformal embeddings.
-
-\subsubsection{Conformal embeddings}
-\label{sec:conformal-embeddings}
 Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for enveloping and embedded theory. 
 
 The states for the theory that corresponds to the algebra $\mathfrak{g}$
@@ -784,8 +684,6 @@ Here $x_e$ is the embedding index and $g$, $p$ are dual Coxeter numbers of corre
 
 It can be shown that solutions of equation (\ref{eq:111}) exist only
 for level 1 $k=1$ \cite{difrancesco1997cft}.
-
-There exist only finite number of such embeddings.
 
 {\bf Examples}
 \begin{itemize}
