@@ -245,9 +245,12 @@ The extended Dynkin diagram of $B_2$
   \label{fig:B2Dynkin}
 \end{figure}
 We then drop central node and get the embedding $A_1\oplus A_1\subset B_2$. Then $\mathfrak{a}=A_1$ and $\mathfrak{a}_{\bot}=A_1$.
+
+In the case of special embeddings the set $\Delta_{\bot}$ can be empty as for the special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $su(p)\subset su(p)\oplus su(q)\subset $
 \begin{comment}
-  Consider special embeddings
+  Well, I can't understand how the roots are embedded in the special embeddings. I need some help here.
 \end{comment}
+
 
 We can multiply the equation (\ref{eq:4}) by the term
 \begin{equation}
@@ -547,22 +550,22 @@ equation (\ref{eq:24}) gives the same result.
 
 \subsection{Affine Lie algebras}
 \label{sec:affine-lie-algebras}
-\subsubsection{Embedding of finite-dimensional algebra into affine algebra}
-\label{sec:embedd-finite-dimens}
-
-The maximal embeddings of the finite-dimensional Lie algebras into the affine Lie algebras were thoroughly studied and the tables of the branching coefficients are given in the book \cite{kass1990ala}. The task of the study of non-maximal embeddings is then can be reduced to the well-known task of branching of the finite-dimensional Lie algebras.
-Thus here we show the simplest possible example of reduction of affine $\hat{A_1}$ to $A_1$ in order to demonstrate some traits of our method and show that we eliminate the need of slice-by-slice study discussed in \cite{kass1990ala}.
-
-The simple roots for the affine $\hat{A_1}$ are
-\begin{equation}
-  \label{eq:2}
-  (\alpha,\delta-\alpha)
-\end{equation}
-We consider the embedding with the root $\beta=\delta-\alpha$. 
-
-Positive roots of the $\hat{A_1}$ are $\alpha,\; \alpha+n\delta,\; n\delta,\; -\alpha+n\delta;\; n=1,2,3,\dots$.
-The set of the 
-
+%%  \subsubsection{Embedding of finite-dimensional algebra into affine algebra}
+%%  \label{sec:embedd-finite-dimens}
+%%  
+%%  The maximal embeddings of the finite-dimensional Lie algebras into the affine Lie algebras were thoroughly studied and the tables of the branching coefficients are given in the book \cite{kass1990ala}. The task of the study of non-maximal embeddings is then can be reduced to the well-known task of branching of the finite-dimensional Lie algebras.
+%%  Thus here we show the simplest possible example of reduction of affine $\hat{A_1}$ to $A_1$ in order to demonstrate some traits of our method and show that we eliminate the need of slice-by-slice study discussed in \cite{kass1990ala}.
+%%  
+%%  The simple roots for the affine $\hat{A_1}$ are
+%%  \begin{equation}
+%%    \label{eq:2}
+%%    (\alpha,\delta-\alpha)
+%%  \end{equation}
+%%  We consider the embedding with the root $\beta=\delta-\alpha$. 
+%%  
+%%  Positive roots of the $\hat{A_1}$ are $\alpha,\; \alpha+n\delta,\; n\delta,\; -\alpha+n\delta;\; n=1,2,3,\dots$.
+%%  The set of the 
+%%  
 \subsubsection{Embedding of the affine algebra into affine algebra}
 \label{sec:embedd-affine-algebr}
 
@@ -644,6 +647,7 @@ This result can be expressed using the power series expansion of the branching f
 \end{eqnarray}
 Here the lower index of the branching function denotes the number of the corresponding $\hat{A_1}$ fundamental weight $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
+\newpage
 \section{Physical applications}
 \label{sec:phys-appl}
 Here we want to discuss possible applications of the described techniques in physical models. 
@@ -670,60 +674,64 @@ The states for the theory that corresponds to the algebra $\mathfrak{g}$
   \label{eq:109}
   J^{a_1}_{-n_1}J^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq\dots>0
 \end{equation}
-For sub-algebra $\mathfrak{p}\subset\mathfrak{g}$
+For sub-algebra $\mathfrak{a}\subset\mathfrak{g}$
 \begin{equation}
   \label{eq:110}
-  \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\mathcal{P}\lambda\right>
+  \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\pi_{\mathfrak{a}}(\lambda)\right>
 \end{equation}
-Here $\tilde{J}^{a'_j}_{-n_j}$ are the generators of $\mathfrak{p}$ and $\mathcal{P}$ is the projection of $\mathfrak{g}$ to $\mathfrak{p}$. $\mathfrak{g}$-invariance of vacuum entails its $\mathfrak{p}$-invariance, but it is not the case for energy-momentum tensor. So energy-momentum tensor of bigger theory should consist only of generators of $\hat{\mathfrak{p}}$. Then $T_{\hat{\mathfrak{g}}}=T_{\hat{\mathfrak{p}}}\Rightarrow c(\hat{\mathfrak{g}})=c(\hat{\mathfrak{p}})$. This leads to equation
+Here $\tilde{J}^{a'_j}_{-n_j}$ are the generators of $\mathfrak{a}$ and $\pi_{\mathfrak{a}}$ is the projection of $\mathfrak{g}$ to $\mathfrak{a}$. $\mathfrak{g}$-invariance of vacuum entails its $\mathfrak{a}$-invariance, but it is not the case for energy-momentum tensor. So energy-momentum tensor of bigger theory should consist only of generators of $\mathfrak{a}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to equation
 \begin{equation}
   \label{eq:111}
-  \frac{k\;dim\mathfrak{g}}{k+g}=\frac{x_e k\; dim\mathfrak{p}}{x_ek+p}
+  \frac{k\;\mathrm{dim}\,\mathfrak{g}}{k+g}=\frac{x_e k\; \mathrm{dim}\,\mathfrak{a}}{x_ek+a}
 \end{equation}
-Here $x_e$ is the embedding index and $g$, $p$ are dual Coxeter numbers of corresponding algebras. !!! Prove and expand !!!
+Here $x_e$ is the embedding index and $g$, $a$ are dual Coxeter numbers of corresponding algebras. 
 
 It can be shown that solutions of equation (\ref{eq:111}) exist only
 for level 1 $k=1$ \cite{difrancesco1997cft}.
 
-{\bf Examples}
-\begin{itemize}
-\item $su(2)\subset su(3),\; x_e=4$
-\item $\hat{su}(2)_{10}\subset\hat{sp}(4)_1$
-\item $\hat{su}(2)_{28}\subset(\hat{G_2})_1$
-\item $\hat{su}(2)_{16}\oplus\hat{su}(3)\subset (\hat{E_8})_1$
-\end{itemize}
+If we have modular-invariant partition function for the fields described by the representation of the algebra $\mathfrak{g}$ this modular invariance is preserved by the projection on the subalgebra $\mathfrak{a}$, but we need also the preservation of the conformal invariance. So we should select only those highest-weight modules of the subalgebra $\mathfrak{a}$ for which the relation (\ref{eq:111}) holds.
 
-Branching $\hat{\lambda}\to \bigoplus_{\hat{\mu}}b_{\hat{\lambda}\hat{\mu}}\hat{\mu}$
+Since in the decomposition (\ref{eq:3}) the highest weight $\nu$ of the subalgebra module belongs to some grade $n$ of projected algebra module $\pi_{\mathfrak{a}}\cdot L^{(\mu)}_{\mathfrak{g}}$, from the relation (\ref{eq:111}) one can obtain the following requirement on the conformal dimensions of the corresponding fields
 \begin{equation}
-  \label{eq:112}
-  h_{\hat{\lambda}}+n=h_{\hat{\mu}},\quad \frac{(\lambda,\lambda+2\rho)}{2(1+g)}+n=\frac{(\mu,\mu+2\rho)}{2(x_e+p)}
+  \label{eq:32}
+   \Delta_{\pi_{\mathfrak{a}}\mu}+n=\Delta_{\nu}
 \end{equation}
-The simple way is to calculate the dimensions of all the representations of simple finite-dimensional Lie algebras $\mathfrak{g},\mathfrak{p}$ and find all the triples $(\lambda,\mu,n)$, satisfying (\ref{eq:112}). Then investigate the representation $L_{\hat{\lambda}}$ of level $n$ as the sum of irreducible representations of $\mathfrak{g}$ and write out all the branching rules of these representations in representations of subalgebra $\mathfrak{p}$. The number of times the representation with highest weight $\mu$ appears in this listing is the required branching coefficient $b_{\hat{\lambda},\hat{\mu}}$.
-
-  Then non-diagonal modular invariants are obtained by substitution of character relations. For example, having calculated branching coefficients for $\hat{su}(2)_{28}\subset (\hat{G_2})_1$
-  \begin{equation}
-    \label{eq:113}
-    \begin{aligned}
-      & [1,0,0]\to [28,0]\oplus [18,10]\oplus [10,18]\oplus [0,28]\\
-      & [0,0,1]\to [22,6]\oplus [16,12]\oplus [12,16]\oplus [6,22]\\
-    \end{aligned}
-  \end{equation}
-we get following modular-invariant partition function
+It leads to the relation on the classical parts of the corresponding weights:
 \begin{equation}
-  \label{eq:114}
-  Z=\left|\chi_{[28,0]}+\chi_{[18,10]}+\chi_{[10,18]}+\chi_{[0,28]}\right|^2+\left|\chi_{[22,6]}+\chi_{[16,12]}+\chi_{[12,16]}+\chi_{[6,22]}\right|^2
+  \label{eq:33}
+  \frac{(\overset{\circ }{\mu},\overset{\circ }{\mu}+2\rho)}{2(1+g)}+n=\frac{(\overset{\circ }{\nu},\overset{\circ }{\nu}+2\rho_{\mathfrak{a}})}{2(x_e+a)}
+\end{equation}
+There exits the finite reducibility theorem for the conformal embeddings which states that only finite number of the branching coefficients is non-zero in the case of the conformal embedding $\mathfrak{a}\subset\mathfrak{a}$.
+
+Then after we have found all such weights $\nu$ and the corresponding branching coefficients $b^{(\mu)}_{\nu}$ we can substitute the sums $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi_{\nu}$ over the modified characters $\chi_{\nu}$ of the corresponding $\mathfrak{a}$-modules in place of the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function
+\begin{equation}
+  \label{eq:34}
+   Z(\tau)=\sum_{ \mu\in P^{+}_{\mathfrak{g}}} \chi_{\mu}(\tau)\bar \chi_{\mu}(\bar \tau)
+\end{equation}
+Thus we obtain the non-diagonal modular-invariant  partition function for the theory with the current algebra $\mathfrak{a}$.
+\begin{equation}
+  \label{eq:34}
+   Z_{\mathfrak{a}}(\tau)=\sum_{ \nu,\lambda\in P^{+}_{\mathfrak{a}}} \chi_{\nu}(\tau)M_{\nu\lambda}\bar \chi_{\lambda}(\bar \tau)
 \end{equation}
 
-Modular invariants of WZW-models, partition functions etc.
+
+\subsection{Example}
+\label{sec:example}
+
+Consider the level ten embedding of the affine $\hat A_1$ into the level one affine $\hat C_2$. 
+The relation (\ref{eq:33}) and the finite reducibility theorem greatly simplify the calculation with the algorithm \ref{sec:algorithm}, since we know that there exists only finite number of the non-zero branching coefficients and the maximal grade of this coefficients is restricted.
 
 \begin{comment}
-  We need some real examples
+  Do the calculation, show the restriction on the grade and the final result
+  \begin{equation}
+    \label{eq:35}
+    Z=\left|\chi_{[10,0]}+\chi_{[4,6]}\right|^2+\left|\chi_{[7,3]}+\chi_{[3,7]}\right|^2+\left|\chi_{[6,4]}+\chi_{[0,10]}\right|^2
+  \end{equation}
 \end{comment}
+
 \section{Conclusion}
 \label{sec:conclusion}
-\begin{comment}
-  Write it
-\end{comment}
+We have proved the recurrent relation on the branching coefficients and proposed practical algorithm of the reduction of the representations. Also we have discussed the application of this algorithm to the physical problem of construction of modular-invariant partition functions in the conformal field theory. This method of conformal embeddings is well-known but may be actual in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}. 
 \begin{comment}
   What about acknowledgements? 
 \end{comment}
