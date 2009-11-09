@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[unicode,verbose]{hyperref}
-\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage{pb-diagram}
 \usepackage{ucs}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[russian]{babel}
@@ -597,13 +598,13 @@ The result of this computation up to the twelfth grade is presented at the figur
 Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
 
 Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$. 
+the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineB2A1Fan}.
 Here we restricted the computation to the twelfth grade.
 \begin{figure}[ph]
   \centering
   \includegraphics[width=130mm]{AffineB2_A1_fan.pdf}
   \caption{Fan for $\hat{A_1}\subset \hat{B_2}$}
-  \label{fig:B4B2Fan}
+  \label{fig:AffineB2A1Fan}
 \end{figure}
 
 Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to zero, since we have excluded all the roots of $\Delta_{\bot}$ from the defining relation (\ref{fan-defined}).
@@ -710,7 +711,7 @@ Then after we have found all such weights $\nu$ and the corresponding branching 
 \end{equation}
 Thus we obtain the non-diagonal modular-invariant  partition function for the theory with the current algebra $\mathfrak{a}$.
 \begin{equation}
-  \label{eq:34}
+  \label{eq:36}
    Z_{\mathfrak{a}}(\tau)=\sum_{ \nu,\lambda\in P^{+}_{\mathfrak{a}}} \chi_{\nu}(\tau)M_{\nu\lambda}\bar \chi_{\lambda}(\bar \tau)
 \end{equation}
 

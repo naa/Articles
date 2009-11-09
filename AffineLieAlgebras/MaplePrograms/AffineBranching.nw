@@ -172,76 +172,80 @@ We will use Maple [[table]] data type
 
 <<Count multiplicities of projected roots>>=
 mult_table:=table();
+
 for r in projection1([op({op(algebra_pos_roots)}
-                    minus {op(Abot_roots)})],subalgebra_roots)
-do
-    if assigned(mult_table[r]) then
-        mult_table[r]:=mult_table[r]+1;
-    else
-	mult_table[r]:=1;
+                        minus {op(Abot_roots)})],subalgebra_roots)
+    do
+        print(r);
+        if assigned(mult_table[subs(eps=0,r)]) then
+            mult_table[subs(eps=0,r)]:=mult_table[subs(eps=0,r)]+coeff(r,eps);
+        else
+    	mult_table[subs(eps=0,r)]:=coeff(r,eps);
+        end;
     end;
-end;
+
 @
 Then we need to expand the expression \eqref{eq:7}.
 We use procedures [[fan]] and [[inj_roots]].
 <<Expand roots with multiplicities>>=
-mult_inj:=proc(r,roots)
-         if assigned(roots[subs(eps=0,r)]) then
-             return roots[subs(eps=0,r)];
-         else
-             return 0;
-         fi;
-     end proc:
+     mult_inj:=proc(r,roots)
+             if assigned(roots[subs(eps=0,r)]) then
+                 return roots[subs(eps=0,r)];
+             else
+                 return 0;
+             fi;
+         end proc:
 
-fan_table:=proc(pos_roots,inj_roots)
-local t,n,t2,res,p,j;
-    n:=coeff(pos_roots[1],eps)-mult_inj(pos_roots[1],inj_roots);
-    res:=table();
-    p:=subs(eps=0,pos_roots[1]);
-    if nops(pos_roots)=1 then
-        for j from 1 to n do
-                res[j*p]:=(-1)^(j) * binomial(n,j);
-        od;
-        return res;
-    else
-        t:=fan_table(pos_roots[2..-1],inj_roots);
-        t2:=fan_table([pos_roots[1]],inj_roots);
-        for x in get_indices(t) do
+    fan_table:=proc(pos_roots,inj_roots)
+    local t,n,t2,res,p,j;
+        n:=coeff(pos_roots[1],eps)-mult_inj(pos_roots[1],inj_roots);
+        res:=table();
+        p:=subs(eps=0,pos_roots[1]);
+        if nops(pos_roots)=1 then
             for j from 1 to n do
-                if not(assigned(res[p*j+x])) then res[p*j+x]:=0; fi;
-                res[p*j+x]:=res[p*j+x]+t[x]*(-1)^(j) * binomial(n,j);
+                    res[j*p]:=(-1)^(j) * binomial(n,j);
             od;
-            if not(assigned(res[x])) then res[x]:=0; fi;
-            res[x]:=res[x]+t[x];
-        od;
-        for x in get_indices(t2) do
-            if not(assigned(res[x])) then res[x]:=0; fi;
-            res[x]:=res[x]+t2[x];
-        od;
-        return res;
-    fi;
-end proc:
-
-fan:=proc(pos_roots,inj_roots)
-    local t;
-    t:=fan_table(pos_roots,inj_roots);
-    if assigned(t[0]) then t[0]:=t[0]+1;
-    else
-        t[0]:=1;
-    end;
-    select(x->coeff(x,eps)<>0,map(x->x+t[x]*eps,get_indices(t)));
-end proc:
-
-inj_roots:=proc(roots)
-        local t;
-        t:=table();
-        for x in roots do
-            t[subs(eps=0,x)]:=1;
-        od;
-        return t;
+            return res;
+        else
+            t:=fan_table(pos_roots[2..-1],inj_roots);
+            t2:=fan_table([pos_roots[1]],inj_roots);
+            for x in get_indices(t) do
+                for j from 1 to n do
+                    if not(assigned(res[p*j+x])) then res[p*j+x]:=0; fi;
+                    res[p*j+x]:=res[p*j+x]+t[x]*(-1)^(j) * binomial(n,j);
+                od;
+                if not(assigned(res[x])) then res[x]:=0; fi;
+                res[x]:=res[x]+t[x];
+            od;
+            for x in get_indices(t2) do
+                if not(assigned(res[x])) then res[x]:=0; fi;
+                res[x]:=res[x]+t2[x];
+            od;
+            return res;
+        fi;
     end proc:
 
-pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
+    fan:=proc(pos_roots,inj_roots)
+        local t;
+        t:=fan_table(pos_roots,inj_roots);
+        if assigned(t[0]) then t[0]:=t[0]+1;
+        else
+            t[0]:=1;
+        end;
+        select(x->coeff(x,eps)<>0,map(x->x+t[x]*eps,get_indices(t)));
+    end proc:
+
+    inj_roots:=proc(roots)
+            local t;
+            t:=table();
+            for x in roots do
+                t[subs(eps=0,x)]:=1;
+            od;
+            return t;
+        end proc:
+
+    pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
+
 f:=fan(pppr,inj_roots(subalgebra_pos_roots));
 @
 
