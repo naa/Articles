@@ -76,7 +76,13 @@ For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
 \subsection{Usage example}
 \label{sec:usage-example}
 
+We put an example of usage in the separate file.
 We want to have a function [[branching]], which can be used as follows
+<<AffineBranchingExample.mpl>>=
+#! maple
+read("AffineBranching.mpl"):
+<<Example of usage>>
+@
 <<Example of usage>>=
 <<Prepare embedding>>
 br_coeffs:=branching(highest_weight,embedded_A1_roots,B2,12);
@@ -85,10 +91,10 @@ map(x->[x,br_coeffs[x]],get_indices(br_coeffs));
 The preparation is simple --- we should choose the basis of the embedded algebra and the highest weight of the representation.
 
 <<Prepare embedding>>=
-wg:=weights(AffineB2);
+wg:=weights(B2);
 highest_weight:=3*wg[1]+5*wg[2];
 
-al:=simple_roots(AffineB2);
+al:=algebra_roots(B2);
 embedded_A1_roots:=[al[1]+al[2],al[-1]];
 @
 Is the last line correct?
@@ -120,18 +126,23 @@ To construct the set of the positive roots of the algebra we use the procedure [
 algebra_simple_roots:=algebra_roots(algebra_name);
 algebra_pos_roots:=positive_roots(algebra_name,max_grade);
 rho:=weyl_vector(algebra_name);
-Abot_rho:=1/2*convert(Abot_roots,`+`);
+
+subalgebra_pos_roots:=map(x->-x,
+                          coxeter['orbit'](map(x->-x,subalgebra_roots[1..-2]),
+                                           subalgebra_roots[1..-2]));
+
 <<Local variables>>=
 algebra_pos_roots, algebra_simple_roots,
-subalgebra_pos_roots, Abot_roots, Abot_rho,rho,
+subalgebra_pos_roots, rho,
 @
 Then we need to select the roots, which are orthogonal
 <<Select the orthogonal roots>>=
 Abot_roots:=select(x->affine_projection(x,subalgebra_roots)=0,algebra_pos_roots);
+Abot_rho:=1/2*convert(Abot_roots,`+`);
 print(Abot_roots);
 @
 <<Local variables>>=
-Abot_roots,
+Abot_roots,Abot_rho,
 @
 Level of the embedding is important
 <<Supplementary functions>>=
@@ -161,7 +172,7 @@ end;
 projection1:=proc(weights,roots)
 	map(x->projection(subs(eps=0,x),roots[1..-2])+delta*coeff(x,delta)+eps*coeff(x,eps),weights); end;
 
-affine_projection:=proc(w,base)
+affine_projection:=proc(w,roots)
            if type(w,'list') then
                map(x->projection(subs(eps=0,x),roots[1..-2])+delta*coeff(x,delta)+eps*coeff(x,eps),w);
            else
@@ -296,8 +307,23 @@ We use procedures [[fan]] and [[inj_roots]].
     pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
 
 f:=fan(pppr,inj_roots(subalgebra_pos_roots));
+<<Local variables>>=
+f, fan, inj_roots, fant_table,
 @
+Then we select the lowest root of the set $\Gamma$, which we denote by $\gamma_0$
+<<Get gamma0>>=
+gamma0:=f1[1];
+for r in f1 do
+  if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) and coeff(r,delta)<=coeff(gamma0,delta) then
+     gamma0:=r;
+  end;
+end;
+Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f1));
+<<Local variables>>=
+Gamma, gamma0,
 
+@
+Now we can write recurrent procedure, which computes the branching coefficients using constructed sets $\Psi, \Gamm$.
 <<Recurrent procedure>>=
 calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
        local xi0,a;
@@ -319,6 +345,58 @@ calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
            res[xi0]:=-1/coeff(gamma0,eps)*res[xi0];
            return res[xi0];
        end proc:
+
+@
+The final piece - call the recurrent procedure
+<<Use recurrent relation>>=
+is_in_borders:=proc(p,borders)
+          local ind,c1,c2;
+          for ind in indets(borders) do
+              c1:=coeff(p,ind);
+              c2:=coeff(borders,ind);
+              if c1<c2[1] or c1>c2[2] then
+                  return false;
+              fi;
+          od;
+          return true;
+      end proc;
+
+external_border:=proc(points)
+             local p,p1,res,ind,c1,c2;
+             res:=0;
+             for p1 in points do
+                 p:=subs({eps=0,lambda0=0},p1);
+                 for ind in indets(p) do
+                     c1:=coeff(p,ind);
+                     c2:=coeff(res,ind);
+                     if c2=0 then
+                         res:=res+[c1,c1]*ind;
+                     elif c1<c2[1] then
+                         res:=subs(ind=0,res)+[c1,c2[2]]*ind;
+                     elif c1>c2[2] then
+                         res:=subs(ind=0,res)+[c2[1],c1]*ind;
+                     fi;
+                 od;
+             od;
+             return res;
+         end proc;
+
+borders:=external_border([op(ppts),1*delta,-max_grade*delta]);
+i_i_b:=rcurry(is_in_borders,borders);
+
+sing_table:=table();
+for v in ppts do
+  sing_table[subs(eps=0,v)]:=coeff(v,eps);
+end;
+
+mu0:=affine_projection(highest_weight-max_grade*delta,subalgebra_roots);
+t:=table();
+#calculate_branching_coefficient(-mu0,Gamma,gamma0,sing_table,t,i_i_b);
+
+calculate_branching_coefficient(mu0,Gamma,gamma0,sing_table,t,i_i_b);
+
+<<Return result>>=
+return t;
 @
 We need some initialisation - graphics system, libraries etc
 <<Initialisation>>=
