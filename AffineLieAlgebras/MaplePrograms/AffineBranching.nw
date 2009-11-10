@@ -79,7 +79,7 @@ For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
 We want to have a function [[branching]], which can be used as follows
 <<Example of usage>>=
 <<Prepare embedding>>
-br_coeffs:=branching(highest_weight,embedded_A1_roots,AffineB2);
+br_coeffs:=branching(highest_weight,embedded_A1_roots,B2,12);
 map(x->[x,br_coeffs[x]],get_indices(br_coeffs));
 @
 The preparation is simple --- we should choose the basis of the embedded algebra and the highest weight of the representation.
@@ -113,21 +113,25 @@ branching:=proc(highest_weight,subalgebra_roots,algebra_name,max_grade)
 end;
 @
 To construct the set of the positive roots of the algebra we use the procedure [[positive_roots]], implemented in the file [[``affine.mpl'']].
+\begin{comment}
+  Add here the computation of the subalgebra positive roots
+\end{comment}
 <<Construct the set of the positive roots of the algebra>>=
 algebra_simple_roots:=algebra_roots(algebra_name);
 algebra_pos_roots:=positive_roots(algebra_name,max_grade);
+rho:=weyl_vector(algebra_name);
+Abot_rho:=1/2*convert(Abot_roots,`+`);
 <<Local variables>>=
 algebra_pos_roots, algebra_simple_roots,
+subalgebra_pos_roots, Abot_roots, Abot_rho,rho,
 @
 Then we need to select the roots, which are orthogonal
 <<Select the orthogonal roots>>=
-Abot_roots:=select(x->projection(x,subalgebra_roots[1..-2])=0,algebra_pos_roots);
+Abot_roots:=select(x->affine_projection(x,subalgebra_roots)=0,algebra_pos_roots);
 print(Abot_roots);
 @
 <<Local variables>>=
 Abot_roots,
-
-
 @
 Level of the embedding is important
 <<Supplementary functions>>=
@@ -157,6 +161,14 @@ end;
 projection1:=proc(weights,roots)
 	map(x->projection(subs(eps=0,x),roots[1..-2])+delta*coeff(x,delta)+eps*coeff(x,eps),weights); end;
 
+affine_projection:=proc(w,base)
+           if type(w,'list') then
+               map(x->projection(subs(eps=0,x),roots[1..-2])+delta*coeff(x,delta)+eps*coeff(x,eps),w);
+           else
+               projection(subs(eps=0,w),roots[1..-2])+delta*coeff(w,delta)+eps*coeff(w,eps);
+           end;
+       end;
+
 embedding_level:=proc(embedded_roots,algebra_name)
               local pa,s;
               pa:=projection(highest_root(algebra_name),embedded_roots[1..-2]);
@@ -164,6 +176,43 @@ embedding_level:=proc(embedded_roots,algebra_name)
               return iprod(pa,pa)/iprod(s,s);
           end;
 
+@
+The construction of the set of the anomalous points is simple, since
+we already have the procedure [[anomalous_points]]
+<<Construct the set of the anomalous point>>=
+anom_points:=anomalous_points(highest_weight,algebra_name,max_grade):
+<<Local variables>>=
+anom_points,
+
+@
+Then we select
+select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta_{\bot}$ is non-negative.
+
+<<Select points in the main chamber of Abot>>=
+selected_points:=select(x->
+                        andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots),y)>=0,
+                               Abot_roots),
+                        anom_points):
+#print(nops(selected_points));
+<<Local variables>>=
+selected_points,
+@
+For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta_{\bot}$.
+<<Compute the dimensions of modules>>=
+dimension:=proc(v,pos_roots) local f,r0;
+    r0:=convert(pos_roots,`+`)/2;
+    f:=[seq(1+coxeter['iprod'](r,v)/coxeter['iprod'](r,r0),r=pos_roots)];
+    convert(f,`*`)
+end;
+
+ppts:=map(x->
+             affine_projection(subs(eps=0,x),subalgebra_roots)+eps*coeff(x,eps)*
+                        dimension(projection(x+rho,Abot_roots)-Abot_rho,Abot_roots),
+            selected_points):
+<<Local variables>>=
+ppts, dimension,
+@
+Then we construct the set $\Gamma$ \eqref{fan-defined}.
 <<Construct the fan>>=
 <<Count multiplicities of projected roots>>
 <<Expand roots with multiplicities>>
@@ -173,7 +222,7 @@ We will use Maple [[table]] data type
 <<Count multiplicities of projected roots>>=
 mult_table:=table();
 
-for r in projection1([op({op(algebra_pos_roots)}
+for r in affine_projection([op({op(algebra_pos_roots)}
                         minus {op(Abot_roots)})],subalgebra_roots)
     do
         print(r);
@@ -270,7 +319,6 @@ calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
            res[xi0]:=-1/coeff(gamma0,eps)*res[xi0];
            return res[xi0];
        end proc:
-
 @
 We need some initialisation - graphics system, libraries etc
 <<Initialisation>>=
