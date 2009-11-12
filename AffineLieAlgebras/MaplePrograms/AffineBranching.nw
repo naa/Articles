@@ -124,20 +124,23 @@ To construct the set of the positive roots of the algebra we use the procedure [
 \end{comment}
 <<Construct the set of the positive roots of the algebra>>=
 algebra_simple_roots:=algebra_roots(algebra_name);
+print(algebra_simple_roots);
 algebra_pos_roots:=positive_roots(algebra_name,max_grade);
 rho:=weyl_vector(algebra_name);
-
+print(rho);
+# Next line is incorrect
+# I don't know how to fix it.
 subalgebra_pos_roots:=map(x->-x,
                           coxeter['orbit'](map(x->-x,subalgebra_roots[1..-2]),
                                            subalgebra_roots[1..-2]));
-
+print(subalgebra_pos_roots);
 <<Local variables>>=
 algebra_pos_roots, algebra_simple_roots,
 subalgebra_pos_roots, rho,
 @
 Then we need to select the roots, which are orthogonal
 <<Select the orthogonal roots>>=
-Abot_roots:=select(x->affine_projection(x,subalgebra_roots)=0,algebra_pos_roots);
+Abot_roots:=select(x->affine_projection(subs(eps=0,x),subalgebra_roots)=0,algebra_pos_roots);
 Abot_rho:=1/2*convert(Abot_roots,`+`);
 print(Abot_roots);
 @
