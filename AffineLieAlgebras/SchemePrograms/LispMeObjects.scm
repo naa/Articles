@@ -1,3 +1,30 @@
+ ; LispMeObjects
+ ; http://c2.com/cgi/wiki?LispMeObjects
+ ; written by Don Wells
+ ; Create a new class with (class name super '(slot value)... '(method function)).
+ ; Always use 'object as the super
+ ; class at the very least.
+ ; a function used as a method 
+ ; will take at least one argument 
+ ; self, the object that originally
+ ; received the method.
+ ; Invoke a function by sending the 
+ ; name and arguments to an
+ ; object. (e.g. (send anObject 'add 'sum 10))
+ ; where add is the method and sum and 10
+ ; are arguments)
+ ; Get the value of a slot by sending
+ ; the slot's name.
+ ; (e.g. (send anObject 'sum))
+ ; Set the value of a slot by sending
+ ; the set method defined on object.
+ ; (e.g. (send anObject 'set 'sum 20))
+ ; Always evaluate (clearClasses) before
+ ; doing anything.
+
+ ; an object is (superName (slotname value)... (methodName closure)...)
+ ; a class is (className . object)
+
 (define *classes* '())
 
 
