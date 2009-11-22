@@ -186,37 +186,61 @@
 		(filter (lambda (x) (>= (prod x r) 0)) 
 			(orbit simple-roots simple-roots))))
 
-(define (make-lie-algebra simple-roots)
-  (lambda (tag)
-    (cond
-     ((equal? tag 'simple-roots) simple-roots)
-     ((equal? tag 'rho)
-      (let ((r (rho simple-roots)))
-	r))
-     ((equal? tag 'fundamental-weights)
-      (let ((fw (fundamental-weights simple-roots))) 
-	fw))
-     ((equal? tag 'orbit)
-      (lambda (weight) (orbit (list weight) simple-roots)))
-     ((equal? tag 'orbit-with-eps)
-      (lambda (weight) (orbit-with-eps (list (cons weight 1)) simple-roots))))))
 
-(define (make-highest-weight-module highest-weight lie-algebra)
-  (lambda (tag)
-    (cond 
-     ((equal? tag 'anomalous-points)
-      (let ((ap
-	     (map
-	      (lambda (x) (cons (sub (car x) (lie-algebra 'rho)) (cdr x)))
-	      ((lie-algebra 'orbit-with-eps)
-	       (add highest-weight (lie-algebra 'rho))))))
-	ap))
-     ((equal? tag 'star)
-      (let ((st
-	     (map (lambda (x) (cons (sub (car x) (lie-algebra 'rho)) (cdr x)))
-		  ((lie-algebra 'orbit-with-eps)
-		   (lie-algebra 'rho)))))
-	st)))))
-      
+;;  (define (make-lie-algebra simple-roots)
+;;    (lambda (tag)
+;;      (cond
+;;       ((equal? tag 'simple-roots) simple-roots)
+;;       ((equal? tag 'rho)
+;;        (let ((r (rho simple-roots)))
+;;  	r))
+;;       ((equal? tag 'fundamental-weights)
+;;        (let ((fw (fundamental-weights simple-roots))) 
+;;  	fw))
+;;       ((equal? tag 'orbit)
+;;        (lambda (weight) (orbit (list weight) simple-roots)))
+;;       ((equal? tag 'orbit-with-eps)
+;;        (lambda (weight) (orbit-with-eps (list (cons weight 1)) simple-roots))))))
+;;  
+;;  (define (make-highest-weight-module highest-weight lie-algebra)
+;;    (lambda (tag)
+;;      (cond 
+;;       ((equal? tag 'anomalous-points)
+;;        (let ((ap
+;;  	     (map
+;;  	      (lambda (x) (cons (sub (car x) (lie-algebra 'rho)) (cdr x)))
+;;  	      ((lie-algebra 'orbit-with-eps)
+;;  	       (add highest-weight (lie-algebra 'rho))))))
+;;  	ap))
+;;       ((equal? tag 'star)
+;;        (let ((st
+;;  	     (map (lambda (x) (cons (sub (car x) (lie-algebra 'rho)) (cdr x)))
+;;  		  ((lie-algebra 'orbit-with-eps)
+;;  		   (lie-algebra 'rho)))))
+;;  	st)))))
+;;        
 
+(class 'Simple-Lie-Algebra 'object
+       '(simple-roots '())
+       `(rho ,
+	 (lambda (self)
+	   (rho (send self 'simple-roots))))
+       `(fundamental-weights ,
+	 (lambda (self)
+	   (fundamental-weights (send self 'simple-roots))))
+       `(orbit ,
+	 (lambda (self weights)
+	   (let ((addon 
+		  (filter (lambda (x) (not (element-of-set? x weights)))
+			  (fold-right union-set '() 
+				      (map (lambda (w)
+					     (map (lambda (x) (reflect w x)) (send self 'simple-roots)))
+					   weights)))))
+	     (if (null? addon)
+		 weights
+		 (send self 'orbit (union-set weights addon) ))))))
+	   
+; example:
+; (define *A2* (new 'simple-lie-algebra (list 'simple-roots (simple-roots 'A 2))))
+; (send *A2* 'rho)
 ;(define (anomalous-points 
