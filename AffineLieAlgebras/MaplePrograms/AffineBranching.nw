@@ -1,4 +1,4 @@
-% -*- mode: Noweb; noweb-code-mode: maplev-mode -*-
+% -*- mode: noweb2-mumamo; noweb-code-mode: maplev-mode -*-
 \documentclass[a4paper,10pt]{article}
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
@@ -81,16 +81,16 @@ We want to have a function [[branching]], which can be used as follows
 <<AffineBranchingExample.mpl>>=
 #! maple
 read("AffineBranching.mpl"):
-<<Example of usage>>
+<<Example of usage.mpl>>
 @
-<<Example of usage>>=
-<<Prepare embedding>>
+<<Example of usage.mpl>>=
+<<Prepare embedding.mpl>>
 br_coeffs:=branching(highest_weight,embedded_A1_roots,B2,12);
 map(x->[x,br_coeffs[x]],get_indices(br_coeffs));
 @
 The preparation is simple --- we should choose the basis of the embedded algebra and the highest weight of the representation.
 
-<<Prepare embedding>>=
+<<Prepare embedding.mpl>>=
 wg:=weights(B2);
 highest_weight:=3*wg[1]+5*wg[2];
 
@@ -103,26 +103,26 @@ Is the last line correct?
 We assume that the roots $\alpha_1\dots \alpha_{r-1}$ are the roots of the corresponding finite-dimensional algebra, and $\alpha_0$ is written as the last component in the list of roots, so that [[al[-1]]]=$\alpha_0$.
 
 The branching procedure is the realisation of the algorithm from the section \ref{sec:algorithm}.
-<<Branching>>=
+<<Branching.mpl>>=
 branching:=proc(highest_weight,subalgebra_roots,algebra_name,max_grade)
-    local <<Local variables>> k;
-    <<Construct the set of the positive roots of the algebra>>
-    <<Select the orthogonal roots>>
-    <<Construct the set of the anomalous point>>
-    <<Select points in the main chamber of Abot>>
-    <<Compute the dimensions of modules>>
-    <<Construct the fan>>
-    <<Get gamma0>>
-    <<Recurrent procedure>>
-    <<Use recurrent relation>>
-    <<Return result>>
+    local <<Local variables.mpl>> k;
+    <<Construct the set of the positive roots of the algebra.mpl>>
+    <<Select the orthogonal roots.mpl>>
+    <<Construct the set of the anomalous point.mpl>>
+    <<Select points in the main chamber of Abot.mpl>>
+    <<Compute the dimensions of modules.mpl>>
+    <<Construct the fan.mpl>>
+    <<Get gamma0.mpl>>
+    <<Recurrent procedure.mpl>>
+    <<Use recurrent relation.mpl>>
+    <<Return result.mpl>>
 end;
 @
 To construct the set of the positive roots of the algebra we use the procedure [[positive_roots]], implemented in the file [[``affine.mpl'']].
 \begin{comment}
   Add here the computation of the subalgebra positive roots
 \end{comment}
-<<Construct the set of the positive roots of the algebra>>=
+<<Construct the set of the positive roots of the algebra.mpl>>=
 algebra_simple_roots:=algebra_roots(algebra_name);
 print(algebra_simple_roots);
 algebra_pos_roots:=positive_roots(algebra_name,max_grade);
@@ -134,21 +134,21 @@ subalgebra_pos_roots:=map(x->-x,
                           coxeter['orbit'](map(x->-x,subalgebra_roots[1..-2]),
                                            subalgebra_roots[1..-2]));
 print(subalgebra_pos_roots);
-<<Local variables>>=
+<<Local variables.mpl>>=
 algebra_pos_roots, algebra_simple_roots,
 subalgebra_pos_roots, rho,
 @
 Then we need to select the roots, which are orthogonal
-<<Select the orthogonal roots>>=
+<<Select the orthogonal roots.mpl>>=
 Abot_roots:=select(x->affine_projection(subs(eps=0,x),subalgebra_roots)=0,algebra_pos_roots);
 Abot_rho:=1/2*convert(Abot_roots,`+`);
 print(Abot_roots);
 @
-<<Local variables>>=
+<<Local variables.mpl>>=
 Abot_roots,Abot_rho,
 @
 Level of the embedding is important
-<<Supplementary functions>>=
+<<Supplementary functions.mpl>>=
 get_indices:=r->map(x->x[1],[indices(r)]);
 iprod := (v1,v2) -> coeff(v1,lambda0)*coeff(v2,delta)
                           +coeff(v1,delta)*coeff(v2,lambda0)+
@@ -193,26 +193,26 @@ embedding_level:=proc(embedded_roots,algebra_name)
 @
 The construction of the set of the anomalous points is simple, since
 we already have the procedure [[anomalous_points]]
-<<Construct the set of the anomalous point>>=
+<<Construct the set of the anomalous point.mpl>>=
 anom_points:=anomalous_points(highest_weight,algebra_name,max_grade):
-<<Local variables>>=
+<<Local variables.mpl.mpl>>=
 anom_points,
 
 @
 Then we select
 select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta_{\bot}$ is non-negative.
 
-<<Select points in the main chamber of Abot>>=
+<<Select points in the main chamber of Abot.mpl>>=
 selected_points:=select(x->
                         andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots),y)>=0,
                                Abot_roots),
                         anom_points):
 #print(nops(selected_points));
-<<Local variables>>=
+<<Local variables.mpl>>=
 selected_points,
 @
 For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta_{\bot}$.
-<<Compute the dimensions of modules>>=
+<<Compute the dimensions of modules.mpl>>=
 dimension:=proc(v,pos_roots) local f,r0;
     r0:=convert(pos_roots,`+`)/2;
     f:=[seq(1+coxeter['iprod'](r,v)/coxeter['iprod'](r,r0),r=pos_roots)];
@@ -223,17 +223,17 @@ ppts:=map(x->
              affine_projection(subs(eps=0,x),subalgebra_roots)+eps*coeff(x,eps)*
                         dimension(projection(x+rho,Abot_roots)-Abot_rho,Abot_roots),
             selected_points):
-<<Local variables>>=
+<<Local variables.mpl>>=
 ppts, dimension,
 @
 Then we construct the set $\Gamma$ \eqref{fan-defined}.
-<<Construct the fan>>=
-<<Count multiplicities of projected roots>>
-<<Expand roots with multiplicities>>
+<<Construct the fan.mpl>>=
+<<Count multiplicities of projected roots.mpl>>
+<<Expand roots with multiplicities.mpl>>
 @
 We will use Maple [[table]] data type
 
-<<Count multiplicities of projected roots>>=
+<<Count multiplicities of projected roots.mpl>>=
 mult_table:=table();
 
 for r in affine_projection([op({op(algebra_pos_roots)}
@@ -250,7 +250,7 @@ for r in affine_projection([op({op(algebra_pos_roots)}
 @
 Then we need to expand the expression \eqref{eq:7}.
 We use procedures [[fan]] and [[inj_roots]].
-<<Expand roots with multiplicities>>=
+<<Expand roots with multiplicities.mpl>>=
      mult_inj:=proc(r,roots)
              if assigned(roots[subs(eps=0,r)]) then
                  return roots[subs(eps=0,r)];
@@ -310,11 +310,11 @@ We use procedures [[fan]] and [[inj_roots]].
     pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
 
 f:=fan(pppr,inj_roots(subalgebra_pos_roots));
-<<Local variables>>=
+<<Local variables.mpl>>=
 f, fan, inj_roots, fant_table,
 @
 Then we select the lowest root of the set $\Gamma$, which we denote by $\gamma_0$
-<<Get gamma0>>=
+<<Get gamma0.mpl>>=
 gamma0:=f1[1];
 for r in f1 do
   if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) and coeff(r,delta)<=coeff(gamma0,delta) then
@@ -322,12 +322,12 @@ for r in f1 do
   end;
 end;
 Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f1));
-<<Local variables>>=
+<<Local variables.mpl>>=
 Gamma, gamma0,
 
 @
 Now we can write recurrent procedure, which computes the branching coefficients using constructed sets $\Psi, \Gamm$.
-<<Recurrent procedure>>=
+<<Recurrent procedure.mpl>>=
 calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
        local xi0,a;
            if not is_in_borders(xi) then return 0; fi;
@@ -351,7 +351,7 @@ calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
 
 @
 The final piece - call the recurrent procedure
-<<Use recurrent relation>>=
+<<Use recurrent relation.mpl>>=
 is_in_borders:=proc(p,borders)
           local ind,c1,c2;
           for ind in indets(borders) do
@@ -398,26 +398,27 @@ t:=table();
 
 calculate_branching_coefficient(mu0,Gamma,gamma0,sing_table,t,i_i_b);
 
-<<Return result>>=
+<<Return result.mpl>>=
 return t;
 @
 We need some initialisation - graphics system, libraries etc
-<<Initialisation>>=
+<<Initialisation.mpl>>=
 read("affine.mpl"):
 plotsetup(X11);
 @
 <<AffineBranching.mpl>>=
 #!/opt/maple11/bin/maple
-<<Initialisation>>
-<<Supplementary functions>>
-<<Branching>>
+<<Initialisation.mpl>>
+<<Supplementary functions.mpl>>
+<<Branching.mpl>>
 @
 <<AffineBranchingExample.mpl>>=
 read("AffineBranching.mpl"):
-<<Example of usage>>
+print("Hello!");
+<<Example of usage.mpl>>
 @
 Here we show some useful constructs
-<<Some useful constructs>>=
+<<Some useful constructs.mpl>>=
 Grid:= seq(seq(spacecurve([[i,j*2,-8],[i,j*2,6]],
      colour="LightGray",linestyle=dash),i=-6..0),j=-4..3),
          seq(seq(spacecurve([[i,-8,j*2],[i,6,j*2]],
@@ -585,5 +586,10 @@ map(x->cat(-t[x]," q^{",-coeff(x,delta),"}"),pst);
 
 pst:=sort(select(x->iprod(x,e1+e2)=1,pp1),(x,y)->coeff(x,delta)>coeff(y,delta)):
 map(x->cat(-t[x]," q^{",-coeff(x,delta),"}"),pst);
+@
+
+Temporary computational tools
+<<TemComp.mpl>>=
+<<Some useful constructs.mpl>>
 @
 \end{document}
