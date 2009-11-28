@@ -19,11 +19,11 @@
 \end{abstract}
 \section{Introduction}
 \label{sec:introduction}
-Representation theory of finite-dimensional Lie algebras is central to the study of continuous symmetries in physics. This theory is well-understood and there exist standard courses and textbooks on the subject \cite{carter2005lie}, [humphreys]. Nevertheless some problems of the representation theory require extensive computation and no standard textbook on the computational algorithms is known to the author of this notes. There exists a volume [Belinfante], but it was written in 1970-es and have not been updated since, so its contents are limited to the early approaches and implementations on the old hardware which is unavailable now. Also some progress was made in the computational algorithms of the representation theory since the publication of [Belinfante]. It is important to mention series of papers by Patera et al. (see \cite{moody1982fast} and references therein) and books \cite{kass1990ala}, [Kass-Moody-Slansky on finite dimensional algebras] which introduce new and optimised algorithms although do not discuss the implementation.
+Representation theory of finite-dimensional Lie algebras is central to the study of continuous symmetries in physics. This theory is well-understood and there exist standard courses and textbooks on the subject \cite{carter2005lie}, [humphreys]. Nevertheless some problems of the representation theory require extensive computation and no standard textbook on the computational algorithms is known to the author of this notes. There exists a volume \cite{belinfante1989survey}, but it was written in 1970-es and have not been updated since, so its contents are limited to the early approaches and implementations on the old hardware which is unavailable now. Also some progress was made in the computational algorithms of the representation theory since the publication of \cite{belinfante1989survey}. It is important to mention series of papers by Patera et al. (see \cite{moody1982fast} and references therein) and books \cite{kass1990ala}, \cite{bremner1985tables} which introduce new and optimised algorithms although do not discuss the implementations.
 There exist several solid implementation of the core algorithms. We want to mention Maple package Coxeter/Weyl \cite{stembridge1995mps} and standalone programs LiE \cite{vanleeuwen1994lsp} and LambdaTensor \cite{fischbacher2002ilp}. These programs are solid and rather fast but have not seen any updates in last several years. Also they are not always convenient to use since they lack graphical user interface and interoperability with the popular programming languages and mathematical programs such as Mathematica, Python or Fortran.
 We want to summarise some basic notions and algorithms of representation theory in order to stimulate the emergence of more modern and universal software or at least give some tools to the scientists who by some reasons can not use the existing software.
 
-Our implementation use programming language Scheme and is presented as the Literate program [Knuth]. The choice of the language is due to high portability of its implementations \footnote{There exist Scheme implementations for UNIX, Windows, Linux, Mac OS, Palm OS, Windows CE/Pocket PC/Windows Mobile, Java platform and even micro-controllers, see [some website] for the details}, wide use of Scheme for the teaching [SICP] and personal preferences of the author. 
+Our implementation use programming language Scheme and is presented as the Literate program \cite{knuth1992literate}. The choice of the language is due to high portability of its implementations \footnote{There exist Scheme implementations for UNIX, Windows, Linux, Mac OS, Palm OS, Windows CE/Pocket PC/Windows Mobile, Java platform and even micro-controllers, see [some website] for the details}, wide use of Scheme for the teaching \cite{abelson1996structure} and personal preferences of the author. 
 
 \section{Definitions}
 \label{sec:definitions}
@@ -57,6 +57,28 @@ Now we need to discuss internal structre of Lie algebras, which can be represent
   {\bf Cartan subalgebra $\mathfrak{h}\subset\mathfrak{g}$} - is the maximal commutative subalgebra of $\mathfrak{g}$.
 \end{Def}
 
+\begin{Def}
+  {\bf Ideal} $\mathfrak{e}\subset\mathfrak{g}$: $[\mathfrak{g},\mathfrak{e}]\subset \mathfrak{e}$
+\end{Def}
+
+\begin{Def}
+  $\mathfrak{g}$ is a {\bf simple Lie algebra} if $\mathfrak{g}$ has no proper ideal (except $\mathfrak{g}$ and $\left\{0\right\}$).
+\end{Def}
+
+\begin{Def}
+  A Lie algebra $\mathfrak{g}$ is called {\bf soluble} if $\mathfrak{g}^{(n)}=\left\{0\right\}$, where $\mathfrak{g}^{(n)}=[\mathfrak{g}^{(n-1)},\mathfrak{g}^{(n-1)}]$.
+\end{Def}
+\begin{Def}
+  $\mathfrak{g}$ is semisimple if its maximal soluble ideal $R\subset\mathfrak{g}$ is equal to $\left\{0\right\}$.
+\end{Def}
+Semisimple Lie algebra is a direct sum of simple Lie algebras.
+
+Since Lie algebra is a linear space, it can be specified by a set of generators $J_a\in \mathfrak{g}$ with the commutation relations $[J_a,J_b]=if_{ab}^cJ_c$. $f_{ab}^c$ are called {\bf structure constants}. The number of generators is equal to the dimension of Lie algebra.
+
+\begin{Def}
+  In the {\bf Cartan-Weyl} basis the genrators are constructed as follows.
+  First we choose the genrators $H_i\in \mathfrak{h}$ of the Cartan subalgebra. All these generators commute $[H_i,H_j]=0$ and their representations can be diagonalised simultaneously. 
+\end{Def}
 \appendix
 
 \section{Library}
