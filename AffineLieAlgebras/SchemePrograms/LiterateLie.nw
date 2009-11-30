@@ -9,6 +9,11 @@
 \usepackage[pdftex]{graphicx}
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
 \begin{document}
 @
 \title{Finite dimensional Lie algebras}
@@ -25,8 +30,8 @@ We want to summarise some basic notions and algorithms of representation theory 
 
 Our implementation use programming language Scheme and is presented as the Literate program \cite{knuth1992literate}. The choice of the language is due to high portability of its implementations \footnote{There exist Scheme implementations for UNIX, Windows, Linux, Mac OS, Palm OS, Windows CE/Pocket PC/Windows Mobile, Java platform and even micro-controllers, see [some website] for the details}, wide use of Scheme for the teaching \cite{abelson1996structure} and personal preferences of the author. 
 
-\section{Definitions}
-\label{sec:definitions}
+\section{Lie algebras}
+\label{sec:lie-algebras}
 
 \begin{Def}
   {\bf Lie algebra $\mathfrak{g}$} is a linear space with the bilinear operation
@@ -42,21 +47,14 @@ Our implementation use programming language Scheme and is presented as the Liter
 \end{Def}
 Lie algebras can be finite- or infinite-dimensional. Finite-dimensional Lie algebras are classified.
 
-\begin{Def}
-  {\bf Representation} of Lie algebra $\mathfrak{g}$ on a linear space $L$ is a homomorphism $V:\mathfrak{g}\to Aut L$. It has the property
-  \begin{equation}
-    \label{eq:3}
-    V([g,h])v=V(g)(V(h)v)-V(h)(V(g)v), \;\text{for}\; g,h\in \mathfrak{g};\; v\in L
-  \end{equation}
-\end{Def}
-There exists a classification of finite-dimensional representations of Lie algebras.
-
-Now we need to discuss internal structre of Lie algebras, which can be representated with the code constructs and used for the study of algebra properties.
-
-\begin{Def}
-  {\bf Cartan subalgebra $\mathfrak{h}\subset\mathfrak{g}$} - is the maximal commutative subalgebra of $\mathfrak{g}$.
-\end{Def}
-
+We will represent Lie algebra in the code as the object of class [[lie-algebra]]. We use very simple class system, which is described in the Appendix \ref{sec:object-system}. 
+Lie algebra is a vector space, so we really should create class for the vector space which contains methods for the change of basis. But for now we use only one standard basis for Lie algebras and [[lie-algebra]] is the subclass of the most genral class [[object]].
+<<Lie algebra class .scm>>=
+(class 'lie-algebra 'object
+       <<Lie algebra fields .scm>>
+       <<Lie algebra methods .scm>>)
+@
+We need to add several definitions and describe a structure of Lie algebra in order to discuss fields and methods of [[lie-algebra]] class.
 \begin{Def}
   {\bf Ideal} $\mathfrak{e}\subset\mathfrak{g}$: $[\mathfrak{g},\mathfrak{e}]\subset \mathfrak{e}$
 \end{Def}
@@ -75,10 +73,72 @@ Semisimple Lie algebra is a direct sum of simple Lie algebras.
 
 Since Lie algebra is a linear space, it can be specified by a set of generators $J_a\in \mathfrak{g}$ with the commutation relations $[J_a,J_b]=if_{ab}^cJ_c$. $f_{ab}^c$ are called {\bf structure constants}. The number of generators is equal to the dimension of Lie algebra.
 
+Now we need to discuss internal structre of Lie algebras, which can be representated with the code constructs and used for the study of algebra properties.
+
+\begin{Def}
+  {\bf Cartan subalgebra $\mathfrak{h}\subset\mathfrak{g}$} - is the maximal commutative subalgebra of $\mathfrak{g}$. The dimension of the Cartan subalgebra $\mathfrak{h}$ is called {\bf rank} of Lie algebra $\mathfrak{g}$.
+\end{Def}
+<<Lie algebra methods .scm>>=
+(list 'rank (lambda (self)
+	      <<Compute rank .scm>>))
+(list 'dimension (lambda (self)
+		   <<Compute lie-algebra dimension .scm>>))
+@
+The structure of simple and semisimple Lie algebras can be encoded by the set of simple roots . Since Cartan subalgebra has no (non-zero) roots it is determined by its dimension.
+<<Lie algebra methods .scm>>=
+(list 'cartan-subalgebra (lambda (self)
+			   (make-commutative-algebra (send self 'rank))))
+@
+\begin{comment}
+  Well, I know how to represent simple lie algebra. But what about commutative and semisimple algebras and different direct sums or tensor products?
+\end{comment}
 \begin{Def}
   In the {\bf Cartan-Weyl} basis the genrators are constructed as follows.
-  First we choose the genrators $H_i\in \mathfrak{h}$ of the Cartan subalgebra. All these generators commute $[H_i,H_j]=0$ and their representations can be diagonalised simultaneously. 
+  First we choose the genrators $H_i\in \mathfrak{h}$ of the Cartan subalgebra. All these generators commute $[H_i,H_j]=0$ and their representations can be diagonalised simultaneously. The remaining generators $E_{\alpha}$ are chosen to be a linear combinations of $J_a$ such that
+  \begin{equation}
+    \label{eq:4}
+    [H_i,E_{\alpha}]=\alpha_i E_{\alpha}
+  \end{equation}
+  The vector $\alpha=(\alpha_1,\dots,\alpha_r),\; r=rank(\mathfrak{g})$ is called a {\bf root} and the corresponding operator $E_{\alpha}$ is called {\bf ladder operator}.
 \end{Def}
+The root $\alpha$ maps $H_i$ to the number $\alpha(H_i)=\alpha_i$ hence $\alpha\in \mathfrak{h}^{*}$ - element of the dual to the Cartan subalgebra. The set of all the roos $\alpha$ is denoted by $\Delta=\{\alpha,\; \alpha \text{ - root}\}$. So it is natural for the [[lie-algebra]] class to have a method which lists all the roots.
+<<Lie algebra methods .scm>>=
+(list 'roots (lambda (self)
+	       <<Construct roots .scm>>)) 
+@
+
+<<Construct roots .scm>>=
+
+@
+
+\section{Simple roots}
+\label{sec:simple-roots}
+
+\section{Weyl group}
+\label{sec:weyl-group}
+
+\section{Representations}
+\label{sec:representations}
+
+\begin{Def}
+  {\bf Representation} of Lie algebra $\mathfrak{g}$ on a linear space $L$ is a homomorphism $V:\mathfrak{g}\to Aut L$. It has the property
+  \begin{equation}
+    \label{eq:3}
+    V([g,h])v=V(g)(V(h)v)-V(h)(V(g)v), \;\text{for}\; g,h\in \mathfrak{g};\; v\in L
+  \end{equation}
+\end{Def}
+There exists a classification of finite-dimensional representations of Lie algebras.
+
+
+\section{General outline of the code}
+\label{sec:general-outline-code}
+
+The code goes to several files of which [[library.scm]] is a compatibility layer which consists of auxiliary functions and allows portability between different Scheme implementations on different OS-es and hardware platforms. [[library.scm]] is described in the appendix \ref{sec:library}.
+All the mathematical code which is connected with Lie theory is collected in the file [[lie-algebra.scm]].
+<<lie-algebra.scm>>=
+<<Lie algebra class .scm>>
+
+@
 \appendix
 
 \section{Library}
@@ -165,6 +225,10 @@ We need couple of functions for sets. We represent set as list.
 )
 
 @
+
+\subsection{Object system}
+\label{sec:object-system}
+
 It is natural to represent Lie algebras, root systems and representation as objects, so we need a class system. Since standard Scheme class systems such as TinyCLOS, GOOPS, SOS can not be used on LispMe due to the lack of hygienic macros, we use the minimal class system called LispMeObjects.
 
 Here is the original documentation:
