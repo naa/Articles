@@ -50,9 +50,6 @@ Usually only the embedding of the maximal reductive subalgebras is considered si
 We show that our algorithm can be used in the study of the conformal embeddings where the central charge of the conformal field theory is preserved, but the computation in this case is simplified using physical requirements.
 
 The paper is organised as follows. In the next subsection of the introduction we fix the notation used throughout the paper. Then in Section \ref{sec:recurr-form-branch} we derive the central recurrent formula for the anomalous branching coefficients and describe the algorithm for the decomposition of the integrable highest weight modules of algebra $\mathfrak{g}$ to the modules of a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the next Section \ref{sec:examples} we present several examples and discuss some applications in the physical models (s. \ref{sec:phys-appl}). We conclude the paper with the review of results and discussion of possible future developments (s. \ref{sec:conclusion}).
-\begin{comment}
-  Fix links to the sections
-\end{comment}
 
 \subsection{Notation}
 \label{sec:notation}
@@ -228,19 +225,17 @@ we obtain the equality
   \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{equation}
 
-It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
-\begin{comment}
-  Rewrite it: there are no roots associated with Weyl group element.
+It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta^{+}_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
 
-We should notice that if the set $\Delta_{\bot}$ is non-empty than Weyl reflections which correspond to the positive roots of $\Delta_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. To prove it we should show that for any two positive roots $\alpha,\; \beta\in \Delta_{\bot}$ and corresponding Weyl reflections $\omega_{\alpha},\; \omega_{\beta}\in W_{\bot}$ there exists Weyl reflection $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}\in W_{\bot}$ and the corresponding positive root $\gamma\in \Delta_{\bot}$. Since roots of the subalgebra $\mathfrak{a}$ are invariant under $\omega_{\alpha}, \; \omega_{\beta}$ they are also invariant under the action of $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}$. Then the positive root $\gamma in \Delta^{+}$ which corresponds to $\omega_{\gamma}$ is orthogonal to the root space of $\mathfrak{a}$ and hence $\gamma\in \Delta_{\bot}$. 
-\end{comment}
-Since $W_{\bot}$ is the subgroup of $W$ and the space spanned over the set $\Delta_{\bot}$ is invariant under its action there exists a  subalgebra with the root space spanned over the set $\Delta_{\bot}$ which we denote by $\mathfrak{a}_{\bot}$.
+We should notice that if the set $\Delta^{+}_{\bot}$ is non-empty than Weyl reflections which correspond to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. Consider any two positive roots $\alpha,\; \beta\in \Delta^{+}_{\bot}$ and corresponding Weyl reflections $\omega_{\alpha},\; \omega_{\beta}\in W_{\bot}$.  Since roots of the subalgebra $\mathfrak{a}$ are invariant under $\omega_{\alpha}, \; \omega_{\beta}$ they are also invariant under the action of $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}$. So the subgroup $W_{\bot}$ preserves the root system of the subalgebra $\mathfrak{a}$. 
 
-Now we should discuss when the subset $\Delta_{\bot}$ is non-empty and the subgroup $W_{\bot}$ and subalgebra $\mathfrak{a}_{\bot}$ are non-trivial.
+The action of the Weyl subgroup $W_{\bot}$ on the set $\Delta^{+}_{\bot}$ produce the root system $\Delta_{\bot}$ which is orthogonal to the root system $\Delta_{\mathfrak{a}}$ of the subalgebra $\mathfrak{a}$. This root system can be considered as the root system of some subalgebra $\mathfrak{a}_{\bot}\subset \mathfrak{g}$.
+
+Now we should discuss when the subset $\Delta^{+}_{\bot}$ is non-empty and the subgroup $W_{\bot}$ and subalgebra $\mathfrak{a}_{\bot}$ are non-trivial.
 \begin{comment}
   Rewrite the following paragraph so that the limit is correct. Add the formula from the paper \cite{ilyin812pbc} here or near the recurrent relation (\ref{eq:1}).
 \end{comment}
-If $\mathfrak{a}$ is a maximal regular subalgebra of $\mathfrak{g}$ then rank of $\mathfrak{a}$ is equal to the rank of $\mathfrak{g}$ and it is clear that $\Delta_{\bot}$ is empty.
+If $\mathfrak{a}$ is a maximal regular subalgebra of $\mathfrak{g}$ then rank of $\mathfrak{a}$ is equal to the rank of $\mathfrak{g}$ and it is clear that $\Delta^{+}_{\bot}$ is empty.
 Then the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the formula (11) from the paper \cite{ilyin812pbc}.
 \begin{comment}
   Analyze all the regular embeddings and show when there exist orthogonal roots 
@@ -260,7 +255,7 @@ We then drop central node and get the embedding $A_1\oplus A_1\subset B_2$. Then
 \begin{comment}
   Add the embedding index to the definitions
 \end{comment}
-In the case of special embeddings the set $\Delta_{\bot}$ can be empty as for the special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $su(p)\subset su(p)\oplus su(q)\subset $
+In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $su(p)\subset su(p)\oplus su(q)\subset $
 \begin{comment}
   Add here the example
 \end{comment}
@@ -269,7 +264,7 @@ In the case of special embeddings the set $\Delta_{\bot}$ can be empty as for th
 We can multiply the equation (\ref{eq:4}) by the term
 \begin{equation}
   \label{eq:5}
-  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
 \end{equation}
 This term is non-zero. 
 
@@ -282,8 +277,8 @@ Also we can see that for any formal polynomial or series $Q$
 The equation (\ref{eq:4}) takes the form
 \begin{multline}
   \label{eq:7}
-  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
-  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
+  \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
   \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{multline}
 The right-hand side of this equation can be reorganised as in the paper \cite{ilyin812pbc}. We introduce the anomalous branching coefficients $k_{\lambda}$.
@@ -296,22 +291,22 @@ The right-hand side of this equation can be reorganised as in the paper \cite{il
 Also we extract the common denominator of  the right-hand side of the equation (\ref{eq:7})
 \begin{multline}
   \label{eq:12}
-  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
-  \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
+  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
+  \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta^{+}_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
     \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda } 
 \end{multline}
 
 
-If the set $\Delta_{\bot}$ is non-empty then the Weyl reflections corresponding to the positive roots of $\Delta_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. 
+If the set $\Delta^{+}_{\bot}$ is non-empty then the Weyl reflections corresponding to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. 
 
-We have denoted the subalgebra with the root space spanned over the set $\Delta_{\bot}$ by $\mathfrak{a}_{\bot}$.
+We have denoted the subalgebra with the root space spanned over the set $\Delta^{+}_{\bot}$ by $\mathfrak{a}_{\bot}$.
 
 Then we can reorganise the summation on the left-hand side of the equation (\ref{eq:12}) in the following way.
 We consider the factor-group $W_{\bot}\backslash W$ and the left conjugate classes. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ we choose the representative $\omega \in \tilde{\omega}$ in such a way that $\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$. Then
 \begin{multline}
   \label{eq:13}
- \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
- \pi_{\mathfrak{a}}\left(\sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) 
+ \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
+ \pi_{\mathfrak{a}}\left(\sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) 
 \end{multline}
 
 We see that the fraction on the right-hand side of the equation looks like the character of some representation of the algebra $\mathfrak{a}_{\bot}$. 
@@ -324,8 +319,8 @@ In order to write it explicitly we rewrite $\nu\cdot\omega(\mu+\rho)-\rho$ as
 Since $\nu\cdot \pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}}(\omega(\mu+\rho))$ and $\omega(\mu+\rho)-\pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))$, we get
 \begin{multline}
   \label{eq:14}
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}} =\\
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}} =\\
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} ch L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
 \end{multline}
 The projection $\pi_{\mathfrak{a}}$ of the character of the highest-weight module $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ is equal to the dimension of the module multiplied by the unity of the algebra of formal exponents. So we have
@@ -344,14 +339,14 @@ Thus we have the equality
 \begin{multline}
   \label{eq:9}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
-  \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
+  \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta^{+}_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
   \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda } 
 \end{multline}
 
 We can rewrite the multiplier of the right-hand side as in the paper \cite{ilyin812pbc}.
 \begin{equation}
   \label{eq:11}
-    \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})} \left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}=
+    \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})} \left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}=
      -\sum_{\gamma\in P_{\mathfrak{a}}} s(\gamma)e^{-\gamma}
 \end{equation}
 
@@ -362,7 +357,7 @@ For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
 \gamma \right) \neq 0\right\} ;  \label{phi-d}
 \end{equation}
 \begin{equation}
-\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}_{\frak{a}}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset 
+\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})}\left(1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}_{\frak{a}}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset 
 \frak{g}}}s\left( \gamma \right) e^{-\gamma }.  \label{fan-d}
 \end{equation}
 
@@ -388,7 +383,7 @@ _{0} $ be the lowest vector with respect to the natural ordering in $%
 \overset{\circ }{\Delta _{\frak{a}}}$ in the lowest grade of $\Phi _{\frak{a}\subset \frak{g}}$. Decomposing the defining relation (\ref{fan-d}) 
 \begin{equation}
   \label{eq:18}
-  \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta_{\bot})}\left(
+  \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})}\left(
     1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}}_{\frak{a%
       }}\mathrm{\left( \alpha \right) }}=-s\left( \gamma _{0}\right) e^{-\gamma
     _{0}}-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}\setminus \left\{\gamma_{0}\right\}}s\left( \gamma \right) e^{-\gamma },  
@@ -423,10 +418,10 @@ We use the recurrent relation \eqref{recurrent relation} to formulate the algori
 The algorithm is divided into the following steps.
 \begin{enumerate}
 \item Construct the set $\Delta^{+}$ of the positive roots of the algebra $\mathfrak{g}$.
-\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of the subalgebra $\mathfrak{a}$ and form the set $\Delta_{\bot}$.
+\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of the subalgebra $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
 \item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous points of the $\mathfrak{g}$-module $L^{(\mu)}$.
-\item Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta_{\bot}$ is non-negative.
-\item For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta_{\bot}$.
+\item Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ is non-negative.
+\item For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
 \item Construct the set $\Gamma$ \eqref{fan-defined}.
 \item Calculate anomalous branching coefficients in the main Weyl
   chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent relation}).
@@ -516,7 +511,7 @@ Simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
   (e_3-e_4,e_4)
 \end{equation}
 
-The set $\Delta_{\bot}$ is equal to
+The set $\Delta^{+}_{\bot}$ is equal to
 \begin{equation}
   \label{eq:27}
   \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}
@@ -533,11 +528,11 @@ The set of the anomalous points $\omega(\mu+\rho)-\rho,\; \omega\in W$
 consists of 384 points. We do not show it here.
 
 We need to select those points $\omega(\mu+\rho)$  which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
-It means that scalar product of these points with all the roots from $\Delta_{\bot}$ is non-negative.
+It means that scalar product of these points with all the roots from $\Delta^{+}_{\bot}$ is non-negative.
 
 To compute dimensions of the corresponding
 $\mathfrak{a}_{\bot}$-modules we need to project each selected point
-onto the root space $\Delta_{\bot}$ and substract
+onto the root space $\Delta^{+}_{\bot}$ and substract
 $\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula.
 
 We show the result of this procedure on the Figure \ref{fig:B4B2anom}.
@@ -592,7 +587,7 @@ equation (\ref{eq:24}) gives the same result.
 Consider the affine extension of the example \ref{sec:regul-embedd-a_1}. 
 Since this embedding is regular, the level of the representations of the subalgebra is equal to the level of the representation of the algebra. 
 
-The set $\Delta_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
+The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
 
 Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0,1,0)$, where the first to components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the grade of the weight and the fourth is the level.
 
@@ -626,7 +621,7 @@ Here we restricted the computation to the twelfth grade.
   \label{fig:AffineB2A1Fan}
 \end{figure}
 
-Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to zero, since we have excluded all the roots of $\Delta_{\bot}$ from the defining relation (\ref{fan-defined}).
+Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to zero, since we have excluded all the roots of $\Delta^{+}_{\bot}$ from the defining relation (\ref{fan-defined}).
 
 Using the recurrent relation for the anomalous branching coefficients we get the following result
 \begin{figure}[ph]
@@ -759,7 +754,7 @@ then the simple root of the embedded $A_1$ is equal to
   \label{eq:39}
   \beta=\sqrt{\frac{2}{5}}(3,1)
 \end{equation}
-It is easy to see that the set $\Delta_{\bot}$ of the $C_2$ roots orthogonal to $\beta$ is empty.
+It is easy to see that the set $\Delta^{+}_{\bot}$ of the $C_2$ roots orthogonal to $\beta$ is empty.
 
 Now we proceed the computation of the branching coefficients using the algorithm \ref{sec:algorithm}. 
 On the level 1 there exist three dominant weights with Dynkin labels $[1,0,0], \; [0,1,0],\; [0,0,1]$.
