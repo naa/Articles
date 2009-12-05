@@ -82,6 +82,7 @@ $ (resp. in $\left( \Delta _{\frak{a}}\right) $);
 $\overset{\circ }{\Delta }$ , $\left( \overset{\circ }{\Delta _{\frak{a}}}%
 \right) $ --- the finite root system of the subalgebra $\overset{\circ }{%
 \frak{g}}$ (resp. $\overset{\circ }{\frak{a}}$);
+$\Theta$, $(\Theta_{\mathfrak{a}})$ --- the highest root of the algebra $\mathfrak{g}$ (resp. subalgebra $\mathfrak{a}$);
 
 $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ --- the
 weight diagram of $L^{\mu }$ $\left( \text{resp. }L_{\frak{a}}^{\nu }\right) 
@@ -187,6 +188,8 @@ It is important to mention that
   b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in \bar{C}_{\mathfrak{a}}
 \end{equation}
 
+$x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|}{\left|\Theta_{\mathfrak{a}}\right|}$ --- the embedding index.
+
 \section{Recurrent relation for branching coefficients}
 \label{sec:recurr-form-branch}
 
@@ -232,17 +235,14 @@ We should notice that if the set $\Delta^{+}_{\bot}$ is non-empty than Weyl refl
 The action of the Weyl subgroup $W_{\bot}$ on the set $\Delta^{+}_{\bot}$ produce the root system $\Delta_{\bot}$ which is orthogonal to the root system $\Delta_{\mathfrak{a}}$ of the subalgebra $\mathfrak{a}$. This root system can be considered as the root system of some subalgebra $\mathfrak{a}_{\bot}\subset \mathfrak{g}$.
 
 Now we should discuss when the subset $\Delta^{+}_{\bot}$ is non-empty and the subgroup $W_{\bot}$ and subalgebra $\mathfrak{a}_{\bot}$ are non-trivial.
-\begin{comment}
-  Rewrite the following paragraph so that the limit is correct. Add the formula from the paper \cite{ilyin812pbc} here or near the recurrent relation (\ref{eq:1}).
-\end{comment}
+
 If $\mathfrak{a}$ is a maximal regular subalgebra of $\mathfrak{g}$ then rank of $\mathfrak{a}$ is equal to the rank of $\mathfrak{g}$ and it is clear that $\Delta^{+}_{\bot}$ is empty.
-Then the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the formula (11) from the paper \cite{ilyin812pbc}.
 \begin{comment}
   Analyze all the regular embeddings and show when there exist orthogonal roots 
 \end{comment}
 Non-maximal regular embedding of $\mathfrak{a}$ into $\mathfrak{g}$ can be obtained through the chain of maximal embeddings $\mathfrak{a}\subset \mathfrak{p}_1\subset \mathfrak{p}_2\subset\dots \subset \mathfrak{g}$. Also the maximal regular embeddings are constructed by the exclusion of one or two roots from the extended Dynkin diagram of the algebra. Since this process can give us non-connected Dynkin diagrams we can see which roots are orthogonal to the root space of non-maximal regular subalgebra $\mathfrak{a}$. 
 
-Consider for example regular embedding of $A_1\subset B_2$ ($su(2)\subset so(5)$). 
+Consider for instance regular embedding of $A_1\subset B_2$ ($su(2)\subset so(5)$). 
 
 The extended Dynkin diagram of $B_2$ 
 \begin{figure}[ph]
@@ -252,14 +252,21 @@ The extended Dynkin diagram of $B_2$
   \label{fig:B2Dynkin}
 \end{figure}
 We then drop central node and get the embedding $A_1\oplus A_1\subset B_2$. Then $\mathfrak{a}=A_1$ and $\mathfrak{a}_{\bot}=A_1$.
-\begin{comment}
-  Add the embedding index to the definitions
-\end{comment}
+
 In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $su(p)\subset su(p)\oplus su(q)\subset $
 \begin{comment}
   Add here the example
 \end{comment}
 
+Now we look at the $\mathfrak{a}_{\bot}\oplus\mathfrak{h}$-module with the highest weight $\mu$. For the character of this module we get
+\begin{equation}
+  \label{eq:41}
+  ch L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}= \frac{\sum_{\omega\in W_{\bot}} \epsilon(\omega) e^{\omega(\mu+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}
+\end{equation}
+
+If we consider the projection $\pi_{\mathfrak{a}}(ch\, L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}})$ it will give us the single exponent $e^{\pi_{\mathfrak{a}}\cdot\mu}$ with the multiplicity equal to the dimension of the module $L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, since all the roots of $\mathfrak{a}_{\bot}$ are orthogonal to the root system of $\mathfrak{a}$.
+
+Using this idea we reorganize the expression for the character of $\mathfrak{g}$-module into the sum over $\mathfrak{a}_{\bot}\oplus\mathfrak{h}$-modules in the following way.
 
 We can multiply the equation (\ref{eq:4}) by the term
 \begin{equation}
@@ -330,10 +337,6 @@ The projection $\pi_{\mathfrak{a}}$ of the character of the highest-weight modul
     \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}
   \end{multline}
 These dimensions of the modules could be easily calculated using the Weyl formula.
-\begin{comment}
-  Rewrite it, so that the following paragraph begins the computation
-\end{comment}
-This explicit calculation to get the character of the $\mathfrak{a}_{\bot}$ representation can be thought as the calculation of the character of the $\mathfrak{a}_{\bot}\oplus \mathfrak{h}$-module with the highest weight $\omega(\mu+\rho)$, where $\mathfrak{h}$ is the Cartan subalgebra of $\mathfrak{g}$.
 
 Thus we have the equality
 \begin{multline}
@@ -408,7 +411,17 @@ where the set
 \label{fan-defined}
 \end{equation}
 
-So we have obtained recurrent relation for the anomalous branching coefficients.  In the next section we describe the algorithm for the computation of branching coefficients using the relation \eqref{recurrent relation}. 
+So we have obtained recurrent relation for the anomalous branching coefficients.
+
+If the set $\Delta_{\bot}^{+}$ is empty the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the following formula (11) \eqref{eq:40} from the paper \cite{ilyin812pbc}
+\begin{equation}
+  \label{eq:40}
+  k_{\xi }^{\left( \mu \right) }=-\sum_{\omega\in W\setminus e} \epsilon(\omega)\, k^{(\mu)}_{\xi-\pi_{\mathfrak{a}}\circ (\omega\circ \rho - \rho)} +
+  \sum_{\omega\in W,\; \nu\in W_{\mathfrak{a}}} \epsilon(\omega)\epsilon(\nu)\delta_{\pi_{\mathfrak{a}}\circ (\omega\circ (\mu+\rho)-\rho),\xi+\rho_{\mathfrak{a}}-\nu\circ \rho_{\mathfrak{a}}}
+\end{equation}
+
+
+  In the next section we describe the algorithm for the computation of branching coefficients using the relation \eqref{recurrent relation}. 
 
 \subsection{Algorithm for the recursive computation of the branching coefficients}
 \label{sec:algorithm}
