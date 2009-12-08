@@ -258,10 +258,11 @@ This fact is due to the existence of positive root $e_2=s_{\alpha_2}\cdot s_{\al
 In the language of Weyl groups the task of construction of the root system of $\mathfrak{a}_{\bot}$ is formulated as follows. Given a Weyl group $W$ and a subgroup $W_{\mathfrak{a}}$ find the subgroup $W_{\mathfrak{a}_{\bot}}\subset W$ such that $\omega\, W_{\mathfrak{a}}\,\omega^{-1}=W_{\mathfrak{a}}; \;\text{for}\; \omega\in W_{\mathfrak{a}_{\bot}}$, so we need to find the normalizer of $W_{\mathfrak{a}}$ in $W$. This task can be carried out using the computational methods of finite group theory \cite{stembridge2001computational} but we are unaware of any publication with the exhaustive tables of such a subgroups.
 
 In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}.
-\begin{figure}[ph]
-  \centering
-  \includegraphics[width=120mm]{special_A1_A2_A3.pdf}
-  \caption{Special embedding $A_1\subset A_2\subset A_3$.\\ Grey vectors are the roots of $A_2$, thick black - of $\mathfrak{a}=A_1$, \\dashed black are the orthogonal roots of $A_1$ which is contained in $\mathfrak{a}_{\bot}$ }
+\begin{figure}[bh]
+\noindent  \centering{
+  \includegraphics[width=90mm]{special_A1_A2_A3.pdf}
+  \caption{Special embedding $A_1\subset A_2\subset A_3$. Grey vectors are the roots of $A_2$, thick black - of $\mathfrak{a}=A_1$, dashed black are the orthogonal roots of $A_1$ which is contained in $\mathfrak{a}_{\bot}$ }
+}
   \label{fig:a1a2a3}
 \end{figure}
 
@@ -494,17 +495,14 @@ For the function $s(\gamma)$ and the set $\Gamma$ from the definition (\ref{phi-
   (1,2),\; (2,-1)
 \end{equation}
 Here the second component denotes the value of $s(\gamma)$.
-\begin{comment}
-  It seems that here $\Gamma$ should include only two points. Is it true?
 
-  Think of the pictures more.
-\end{comment}
 Anomalous branching coefficient $k^{(1,0)}_{1}=2$, then for anomalous branching coefficient $k^{(1,0)}_{0}$ the formula (\ref{recurrent relation}) gives us
 \begin{equation}
   \label{eq:23}
   k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1
 \end{equation}
 So we have computed the branching coefficients.
+\newpage
 \subsubsection{Embedding of $B_2$ into $B_4$}
 \label{sec:someth-high-dimens}
 Consider the the regular embedding of the subalgebra $B_2$ into the algebra $B_4$.
@@ -568,7 +566,7 @@ We show the result of this procedure on the Figure \ref{fig:B4B2anom}.
 Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
 
 Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$
+the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:B4B2Fan}.
 \begin{figure}[h]
   \includegraphics[width=150mm]{B4_B2_fan.pdf}
   \caption{Fan for $B_2\subset B_4$}
@@ -705,10 +703,7 @@ The requirement (\ref{eq:31}) allows to reduce the task of the computation of th
 
 Here we describe this procedure and discuss how the requirement (\ref{eq:31}) can be used to simplify the algorithm \ref{sec:algorithm}.
 
-\begin{comment}
-  Change ``enveloping'' into something better.
-\end{comment}
-Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for enveloping and embedded theory. 
+Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for the original and the embedded theory. 
 
 The states for the theory that corresponds to the algebra $\mathfrak{g}$
 \begin{equation}
