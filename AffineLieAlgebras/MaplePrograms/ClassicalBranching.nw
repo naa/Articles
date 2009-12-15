@@ -403,7 +403,7 @@ The example of usage:
 
 <<ClassicalBranchingExample.mpl>>=
 #!/usr/local/bin/maple
-read('ClassicalBranching.mpl'):
+read("ClassicalBranching.mpl"):
 wg:=weyl['weights'](B4);
 mu:=2*wg[-1]+wg[2];
 branching(mu,[e3-e4,e4],B4);
