@@ -85,17 +85,37 @@ read("AffineBranching.mpl"):
 @
 <<Example of usage.mpl>>=
 <<Prepare embedding.mpl>>
-br_coeffs:=branching(highest_weight,embedded_A1_roots,B2,12);
-map(x->[x,br_coeffs[x]],get_indices(br_coeffs));
+br_coeffs:=branching(highest_weight,embedded_A1_roots,embedded_A1_pos_roots,A2,12);
+
+plots[textplot](map(x->[coeff(x[1],delta),2*coeff(x[1],e1),x[2]],map(x->[x,br_coeffs[x]],select(y->coeff(y,delta)<=0 and coeff(y,delta)>=-8,get_indices(br_coeffs)))));
+
+with(plots);
+Grid:= seq(seq(spacecurve([[i,j*2,-6],[i,j*2,6]],
+     colour="LightGray",linestyle=dash),i=-6..0),j=-3..3),
+         seq(seq(spacecurve([[i,-6,j*2],[i,6,j*2]],
+     colour="LightGray",linestyle=dash),i=-6..0),j=-3..3),
+         seq(spacecurve([[0,i,i],[-6,i,i]],
+     colour="LightGray",linestyle=spacedot),i=-6..6),
+         seq(spacecurve([[i,-6,-6],[i,6,6]],
+     colour="LightGray",linestyle=spacedot),i=-6..0):
+ap:=anomalous_points(wg[-1],A2,6);
+thep:=PLOT3D(POINTS(op(map(x->[coeff(x,delta),coeff(x,e1),coeff(x,e2)],select(y->coeff(y,eps)>0,ap))),SYMBOL(CROSS)),POINTS(op(map(x->[coeff(x,delta),coeff(x,e1),coeff(x,e2)],select(y->coeff(y,eps)<0,ap))),SYMBOL(DIAMOND)));
+display([thep,Grid],axes=boxed);
+
+ppts:=map(x->
+             affine_projection(subs(eps=0,x),subalgebra_roots)+eps*coeff(x,eps),
+            ap):
+plots[textplot](map(x->[coeff(x,delta),2*coeff(x,e1),coeff(x,eps)],ppts));
 @
 The preparation is simple --- we should choose the basis of the embedded algebra and the highest weight of the representation.
 
 <<Prepare embedding.mpl>>=
-wg:=weights(B2);
-highest_weight:=3*wg[1]+5*wg[2];
+wg:=weights(A2);
+highest_weight:=wg[-1];
 
-al:=algebra_roots(B2);
-embedded_A1_roots:=[al[1]+al[2],al[-1]];
+al:=algebra_roots(A2);
+embedded_A1_roots:=[(al[1]+al[2])/2,delta-(al[1]+al[2])/2];
+embedded_A1_pos_roots:=subs({e1=e1/2,e2=e3/2},positive_roots(A1,12));
 @
 Is the last line correct?
 
@@ -104,7 +124,7 @@ We assume that the roots $\alpha_1\dots \alpha_{r-1}$ are the roots of the corre
 
 The branching procedure is the realisation of the algorithm from the section \ref{sec:algorithm}.
 <<Branching.mpl>>=
-branching:=proc(highest_weight,subalgebra_roots,algebra_name,max_grade)
+branching:=proc(highest_weight,subalgebra_roots,subalgebra_pos_roots,algebra_name,max_grade)
     local <<Local variables.mpl>> k;
     <<Construct the set of the positive roots of the algebra.mpl>>
     <<Select the orthogonal roots.mpl>>
@@ -124,25 +144,25 @@ To construct the set of the positive roots of the algebra we use the procedure [
 \end{comment}
 <<Construct the set of the positive roots of the algebra.mpl>>=
 algebra_simple_roots:=algebra_roots(algebra_name);
-print(algebra_simple_roots);
+#print(algebra_simple_roots);
 algebra_pos_roots:=positive_roots(algebra_name,max_grade);
 rho:=weyl_vector(algebra_name);
-print(rho);
+#print(rho);
 # Next line is incorrect
 # I don't know how to fix it.
-subalgebra_pos_roots:=map(x->-x,
-                          coxeter['orbit'](map(x->-x,subalgebra_roots[1..-2]),
-                                           subalgebra_roots[1..-2]));
-print(subalgebra_pos_roots);
+#subalgebra_pos_roots:=map(x->-x,
+#                          coxeter['orbit'](map(x->-x,subalgebra_roots[1..-2]),
+#                                           subalgebra_roots[1..-2]));
+#print(subalgebra_pos_roots);
 <<Local variables.mpl>>=
 algebra_pos_roots, algebra_simple_roots,
-subalgebra_pos_roots, rho,
+rho,
 @
 Then we need to select the roots, which are orthogonal
 <<Select the orthogonal roots.mpl>>=
 Abot_roots:=select(x->affine_projection(subs(eps=0,x),subalgebra_roots)=0,algebra_pos_roots);
 Abot_rho:=1/2*convert(Abot_roots,`+`);
-print(Abot_roots);
+#print(Abot_roots);
 @
 <<Local variables.mpl>>=
 Abot_roots,Abot_rho,
@@ -158,6 +178,9 @@ pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
 
 projection:=proc(weights,base)
     local cm;
+    if nops(base)<=0 then
+        return [];
+    fi;
     cm:=linalg[inverse](
             array([seq([seq(iprod(r1,s),s=base)],r1=[seq(2*r/iprod(r,r),r=base)])]));
     if type(weights,'list') then
@@ -194,7 +217,7 @@ embedding_level:=proc(embedded_roots,algebra_name)
 The construction of the set of the anomalous points is simple, since
 we already have the procedure [[anomalous_points]]
 <<Construct the set of the anomalous point.mpl>>=
-anom_points:=anomalous_points(highest_weight,algebra_name,max_grade):
+anom_points:=[op(anomalous_points(highest_weight,algebra_name,max_grade))]:
 <<Local variables.mpl.mpl>>=
 anom_points,
 
@@ -239,7 +262,7 @@ mult_table:=table();
 for r in affine_projection([op({op(algebra_pos_roots)}
                         minus {op(Abot_roots)})],subalgebra_roots)
     do
-        print(r);
+#        print(r);
         if assigned(mult_table[subs(eps=0,r)]) then
             mult_table[subs(eps=0,r)]:=mult_table[subs(eps=0,r)]+coeff(r,eps);
         else
@@ -310,12 +333,15 @@ We use procedures [[fan]] and [[inj_roots]].
     pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
 
 f:=fan(pppr,inj_roots(subalgebra_pos_roots));
+f1:=select(x->coeff(x,delta)<=12,f);
 <<Local variables.mpl>>=
 f, fan, inj_roots, fant_table,
 @
 Then we select the lowest root of the set $\Gamma$, which we denote by $\gamma_0$
 <<Get gamma0.mpl>>=
 gamma0:=f1[1];
+subalgebra_rho:=subs(delta=lambda0,convert(subalgebra_roots,`+`)/2);
+
 for r in f1 do
   if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) and coeff(r,delta)<=coeff(gamma0,delta) then
      gamma0:=r;
@@ -389,7 +415,12 @@ i_i_b:=rcurry(is_in_borders,borders);
 
 sing_table:=table();
 for v in ppts do
-  sing_table[subs(eps=0,v)]:=coeff(v,eps);
+    if assigned(sing_table[subs(eps=0,v)]) then
+        sing_table[subs(eps=0,v)]:=sing_table[subs(eps=0,v)]+coeff(v,eps);
+    else
+
+        sing_table[subs(eps=0,v)]:=coeff(v,eps);
+    fi;
 end;
 
 mu0:=affine_projection(highest_weight-max_grade*delta,subalgebra_roots);
@@ -412,13 +443,9 @@ plotsetup(X11);
 <<Supplementary functions.mpl>>
 <<Branching.mpl>>
 @
-<<AffineBranchingExample.mpl>>=
-read("AffineBranching.mpl"):
-print("Hello!");
-<<Example of usage.mpl>>
-@
 Here we show some useful constructs
 <<Some useful constructs.mpl>>=
+with(plots);
 Grid:= seq(seq(spacecurve([[i,j*2,-8],[i,j*2,6]],
      colour="LightGray",linestyle=dash),i=-6..0),j=-4..3),
          seq(seq(spacecurve([[i,-8,j*2],[i,6,j*2]],
@@ -523,7 +550,6 @@ subalgebra_pos_roots:=subs({e2=-e2},positive_roots(A1,12));
 f:=fan(pppr,inj_roots(subalgebra_pos_roots)):
 f1:=select(x->coeff(x,delta)<=12,f);
 
-subalgebra_rho:=convert(subalgebra_pos_roots,`+`)/2;
 gamma0:=f1[1];
 for r in f1 do
   if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) and coeff(r,delta)<=coeff(gamma0,delta) then

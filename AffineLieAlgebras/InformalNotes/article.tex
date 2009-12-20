@@ -304,7 +304,9 @@ Using the existing classification of maximal special subalgebras \cite{dynkin195
       so(p)\oplus so(q) & \subset so(p+q)& \text{for}\;p\;\text{and}\;q\;\text{odd}\\
   \end{array}
 \end{equation}
-Exceptional Lie algebras and other non-maximal subalgebras require lengthy analysis which is not important for the needs of computation of the branching coefficients.
+It is also possible to study regular subalgebras of this special subalgebras and get new non-maximal special embeddings, such as the special embedding at the Figure \ref{fig:a1a2a3}, with the orthogonal subalgebra obtained by the combination of \eqref{eq:42} and Table \ref{tab:diagrams}.
+
+Exceptional Lie algebras subalgebras require lengthy analysis which is not important for the needs of computation of the branching coefficients.
 
 The construction of the subalgebra $\mathfrak{a}_{\bot}$ is not obvious from the Dynkin diagrams of $\mathfrak{g}$ and $\mathfrak{a}$ but for the needs of calculation of the branching coefficients $b^{(\mu)}_{\nu}$ it is sufficient to select the positive roots $\Delta^{+}_{\bot}=\left\{\alpha\in \Delta^{+}:\alpha\bot \Delta_{\mathfrak{a}}\right\}$ in the set of positive roots of $\mathfrak{g}$.
 
@@ -650,7 +652,7 @@ Since this embedding is regular, the level of the representations of the subalge
 
 The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
 
-Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0,1,0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the grade of the weight and the fourth is the level.
+Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0,1,0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is is the level of the weight and the fourth the grade.
 
 
 The set of the anomalous points of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the Figure \ref{fig:B2_A1}. 
@@ -798,53 +800,105 @@ Thus we obtain the non-diagonal modular-invariant  partition function for the th
 \label{sec:spec-embedd-hata_1s}
 Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ built as the affine extension of the special embedding $su(2)\subset su(3)$ with the embedding index $x_e=4$. The level of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the subalgebra $\tilde{k}=kx_e=4$.
 
-\begin{enumerate}
-\item Construct the set $\Delta^{+}$ of the positive roots of the algebra $\mathfrak{g}$.
-\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of the subalgebra $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
-\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous points of the $\mathfrak{g}$-module $L^{(\mu)}$.
-\item Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ is non-negative.
-\item For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
-\item Construct the set $\Gamma$ \eqref{fan-defined}.
-\item Calculate anomalous branching coefficients in the main Weyl
-  chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent relation}).
-\end{enumerate}
-
 There exist three level one dominant weights $[1,0,0],\;[0,1,0],\;[0,0,1]$ in the weight space of $\hat{A}_2$.
-It is easy to see that the set $\Delta_{\bot}$ is trivial. 
-\subsubsection{Special embedding $\hat{su}(2)\subset \hat{sp}(4)$.}
-\label{sec:spec-embedd-wideh}
+It is easy to see that the set $\Delta_{\bot}$ is empty. 
 
-Consider the level ten embedding of the affine $\hat A_1$ into the level one affine $\hat C_2$. 
-The relation (\ref{eq:33}) and the finite reducibility theorem greatly simplify the calculation with the algorithm \ref{sec:algorithm}, since we know that there exists only finite number of the non-zero branching coefficients and the maximal grade of this coefficients is restricted.
+Here we view the representation with the highest weight
+$w_0=(1,0,0)$ in detail.
 
-This affine embedding is the affine extension of the special embedding $A_1\subset C_2$ with the embedding index equal to 10. The projection of the weights of algebra $C_2$ is calculated using the projection matrix $\mathcal{P}=(3,4)$. The embedding index
+The set of the anomalous points of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration.
+
+\begin{figure}[h!tb]
+  \includegraphics[width=160mm]{AffineA2_A1_anom.pdf}
+  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{A_2}$}
+  \label{fig:affine_A2_anom_point}
+\end{figure}
+
+As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
+The result of this computation up to the twelfth grade is presented at the Figure
+\begin{figure}[h!tb]
+  \centering
+  \includegraphics[width=150mm]{AffineA2_A1_proj_anom.pdf}
+  \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \label{fig:AffineA2_A1_anom_proj}
+\end{figure}
+
+Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
+
+Using the definition (\ref{fan-defined}) we get the following set of
+the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineA2A1Fan}.
+Here we restricted the computation to the twelfth grade.
+\begin{figure}[ph]
+  \centering
+  \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
+  \caption{Fan for $\hat{A_1}\subset \hat{A_2}$}
+  \label{fig:AffineA2A1Fan}
+\end{figure}
+
+Using the recurrent relation for the anomalous branching coefficients we get the following result
+\begin{figure}[ph]
+  \centering
+  \includegraphics[width=130mm]{AffineA2_A1_branching.pdf}
+  \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{A_2}$}
+  \label{fig:AffineA2_A1_branching}
+\end{figure}
+
+We see that only two anomalous branching coefficients inside the main
+Weyl chamber of $\hat{A}_1$ are non-zero and equal to the branching
+coefficients. So the finite reducibility theorem holds and we get
 \begin{equation}
-  \label{eq:37}
-  x_e=\frac{\left|\mathcal{P}\Theta_{\mathfrak{g}}\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}=\frac{k_{\mathfrak{a}}}{k_{\mathfrak{g}}}=10
+  \label{eq:43}
+  L^{[1,0,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[0,4]}\oplus L_{\hat{A_1}}^{[4,0]}
 \end{equation}
-If we consider this embedding in the orthogonal basis where the simple roots of $C_2$ are given by
+
+For the other level one dominant weights of $\hat{A}_2$ we get trivial
+branching rules
+\begin{eqnarray}
+  \label{eq:44}
+   L^{[0,1,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}\\
+   L^{[0,0,1]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}
+\end{eqnarray}
+
+Using this result we can construct modular-invariant partition function
 \begin{equation}
-  \label{eq:38}
-  \alpha_1=(1,-1),\quad \alpha_2=(0,2),
+  \label{eq:45}
+  Z=\left|\chi_{[4,0]}+\chi_{[0,4]}\right|^2+2\chi_{[2,2]}^2
 \end{equation}
-then the simple root of the embedded $A_1$ is equal to
-\begin{equation}
-  \label{eq:39}
-  \beta=\sqrt{\frac{2}{5}}(3,1)
-\end{equation}
-It is easy to see that the set $\Delta^{+}_{\bot}$ of the $C_2$ roots orthogonal to $\beta$ is empty.
 
-Now we proceed the computation of the branching coefficients using the algorithm \ref{sec:algorithm}. 
-On the level 1 there exist three dominant weights with Dynkin labels $[1,0,0], \; [0,1,0],\; [0,0,1]$.
-
-\begin{comment}
-  Do the calculation, show the restriction on the grade and the final result
-  \begin{equation}
-    \label{eq:35}
-    Z=\left|\chi_{[10,0]}+\chi_{[4,6]}\right|^2+\left|\chi_{[7,3]}+\chi_{[3,7]}\right|^2+\left|\chi_{[6,4]}+\chi_{[0,10]}\right|^2
-  \end{equation}
-\end{comment}
-
+%%  \subsubsection{Special embedding $\hat{su}(2)\subset \hat{sp}(4)$.}
+%%  \label{sec:spec-embedd-wideh}
+%%  
+%%  Consider the level ten embedding of the affine $\hat A_1$ into the level one affine $\hat C_2$. 
+%%  The relation (\ref{eq:33}) and the finite reducibility theorem greatly simplify the calculation with the algorithm \ref{sec:algorithm}, since we know that there exists only finite number of the non-zero branching coefficients and the maximal grade of this coefficients is restricted.
+%%  
+%%  This affine embedding is the affine extension of the special embedding $A_1\subset C_2$ with the embedding index equal to 10. The projection of the weights of algebra $C_2$ is calculated using the projection matrix $\mathcal{P}=(3,4)$. The embedding index
+%%  \begin{equation}
+%%    \label{eq:37}
+%%    x_e=\frac{\left|\mathcal{P}\Theta_{\mathfrak{g}}\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}=\frac{k_{\mathfrak{a}}}{k_{\mathfrak{g}}}=10
+%%  \end{equation}
+%%  If we consider this embedding in the orthogonal basis where the simple roots of $C_2$ are given by
+%%  \begin{equation}
+%%    \label{eq:38}
+%%    \alpha_1=(1,-1),\quad \alpha_2=(0,2),
+%%  \end{equation}
+%%  then the simple root of the embedded $A_1$ is equal to
+%%  \begin{equation}
+%%    \label{eq:39}
+%%    \beta=\sqrt{\frac{2}{5}}(3,1)
+%%  \end{equation}
+%%  It is easy to see that the set $\Delta^{+}_{\bot}$ of the $C_2$ roots orthogonal to $\beta$ is empty.
+%%  
+%%  Now we proceed the computation of the branching coefficients using the algorithm \ref{sec:algorithm}. 
+%%  On the level 1 there exist three dominant weights with Dynkin labels $[1,0,0], \; [0,1,0],\; [0,0,1]$.
+%%  
+%%  \begin{comment}
+%%    Do the calculation, show the restriction on the grade and the final result
+%%    \begin{equation}
+%%      \label{eq:35}
+%%      Z=\left|\chi_{[10,0]}+\chi_{[4,6]}\right|^2+\left|\chi_{[7,3]}+\chi_{[3,7]}\right|^2+\left|\chi_{[6,4]}+\chi_{[0,10]}\right|^2
+%%    \end{equation}
+%%  \end{comment}
+%%  
 \section{Conclusion}
 \label{sec:conclusion}
 We have proved the recurrent relation on the branching coefficients and proposed practical algorithm of the reduction of the representations. Also we have discussed the application of this algorithm to the physical problem of construction of modular-invariant partition functions in the conformal field theory. This method of conformal embeddings is well-known but may be actual in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}. 

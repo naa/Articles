@@ -377,8 +377,13 @@ i_i_b:=rcurry(is_in_borders,borders);
 
 sing_table:=table();
 for v in ppts do
-  sing_table[subs(eps=0,v)]:=coeff(v,eps);
+    if assigned(sing_table[subs(eps=0,v)]) then
+        sing_table[subs(eps=0,v)]:=sing_table[subs(eps=0,v)]+coeff(v,eps);
+    else
+        sing_table[subs(eps=0,v)]:=coeff(v,eps);
+    fi;
 end;
+
 
 mu0:=projection(mu,subalgebra_roots);
 t:=table();
