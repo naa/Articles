@@ -9,47 +9,80 @@
 \usepackage[pdftex]{graphicx}
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
-\usepackage{verbatim} 
-%\newenvironment{comment}
-%{\par\noindent{\bf TODO}\\}
-%{\\\hfill$\scriptstyle\blacksquare$\par}
-%
-\begin{document}
-\title{\textbf{{\Large {Recursive algorithm for the computation of branching coefficients of affine Lie algebras with applications in CFT}}}}
-\author{Vladimir Lyakhovsky\\
+
+\begin{document} 
+\thispagestyle{empty}
+
+\begin{center}
+{\Large \bf SAINT-PETERSBURG STATE\\[0.5cm] UNIVERSITY}
+\end{center}
+\vskip 1 cm
+\begin{flushright}
+{\large \bf SPbU-IP-09-0?}
+\end{flushright}
+\hfill {}
+\vskip 1 cm
+\begin{center}
+{\Huge \bf Recursive algorithms, branching coefficients \\ for affine algebras and applications\\[0.5cm]
+}
+\end{center}
+\vskip 1.0 cm
+\begin{center}
+{\Large \bf
+Vladimir Lyakhovsky\\[2mm]
+Anton Nazarov}
+\end{center}
+\vfill
+\begin{center}
+{\large Department of Theoretical Physics\\
+}
+\end{center}
+\vfill
+\begin{center}
+SAINT-PETERSBURG \\
+2009
+\end{center}
+
+\newpage
+
+
+\title{\textbf{{\Large {Recursive algorithms, branching coefficients affine algebras and applications}}}}
+\author{Vladimir Lyakhovsky \thanks{ Supported by 
+ RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
 Theoretical Department, SPb State University,\\
 198904, Sankt-Petersburg, Russia \\
 e-mail:lyakh1507@nm.ru \\
-[5mm] Anton Nazarov \\
-%EndAName
+[5mm] Anton Nazarov \thanks{ Supported by
+the National Project RNP.2.1.1./1575 }\\
 Theoretical Department, SPb State University,\\
 198904, Sankt-Petersburg, Russia \\
-e-mail:antonnaz@gmail.com\\
+e-mail:antonnaz@gmail.com
 }
 \maketitle
 
 \begin{abstract}
-  We present the recurrent relation for the branching coefficients of affine Lie algebras. Then we describe the algorithm for the decomposition of  integrable highest weight modules
-of a simple Lie algebra with respect to its reductive subalgebra which is based upon this recurrent relation and present some examples. Also we discuss the appearance of branching coefficients in the physical models.
+  Recurrent relations for branching coefficients in affine Lie algebras highest weight modules are studied. The decomposition algorithm for  integrable highest weight modules reduction based on the injection fan technique is adopted to the situation where the Weyl denominator becomes singular with respect to a reductive  subalgebra. We study some modifications of the injection fan technique and demonstrate that it is possible to define the "subtracted fans" that play the role similar to the original one. The possible applications of subtracted fans in CFT models are considered. 
 \end{abstract}
+
+
 
 \newpage
 \section{Introduction}
 \label{sec:introduction}
 
-The problem of the reduction of Lie algebra representation to the representations of the subalgebra is studied for several decades and has various applications in physics. In the context of finite-dimensional algebras it is important for the study of great unification models whilst the problem of the branching of the affine Lie algebras emerges in conformal field theory, for example, in the construction of the modular-invariant partition functions \cite{difrancesco1997cft}.
+The problem of reduction of a Lie algebra representation to a  subalgebra is studied for several decades and has various applications in physics. In the context of finite-dimensional algebras it is important for the study of great unification models whilst the branching problem for affine Lie algebras emerges in conformal field theory, for example, in the construction of the modular-invariant partition functions \cite{difrancesco1997cft}.
 
-There exist several approaches to the computation of the branching coefficients which use the BGG
+There exist several approaches to the computation of the branching coefficients. Some of them use the BGG
 resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in 
 \cite{kac1990idl},\cite{wakimoto2001idl}), the Schure function series \cite{fauser2006new}, the BRST
 cohomology \cite{hwang1994general}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
 combinatorial methods applied in \cite{feigin707principal}. 
 
-Usually only the embedding of the maximal reductive subalgebras is considered since the case of non-maximal subalgebra can be obtained using the chain of maximal subalgebras. In this paper we present the recurrent formula for the branching coefficients which generalises the recurrent relation of the paper \cite{ilyin812pbc} to the case of non-maximal reductive subalgebra. Using this relation we formulate simple explicit algorithm for the computation of the branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
+Usually only the embedding of the maximal reductive subalgebras is considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we study the recurrent properties for branching coefficients which generalise the recurrent relations obtained earlier (see the paper \cite{ilyin812pbc}and the references therein) to the cases of non-maximal reductive subalgebras. The result is formulated by an introduction of a new injection fan called "subtracted fan". Using this new tools we formulate simple and explicit algorithm for the computation of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
 
-We show that our algorithm can be used in the study of the conformal embeddings where the central charge of the conformal field theory is preserved, but the computation in this case is simplified using physical requirements.
+We show that our algorithm can be used in a study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified taking into account some  physical limitations.
 
-The paper is organised as follows. In the next subsection of the introduction we fix the notation used throughout the paper. Then in Section \ref{sec:recurr-form-branch} we derive the central recurrent formula for the anomalous branching coefficients and describe the algorithm for the decomposition of the integrable highest weight modules of algebra $\mathfrak{g}$ to the modules of a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the next Section \ref{sec:examples} we present several examples and discuss some applications in the physical models (s. \ref{sec:phys-appl}). We conclude the paper with the review of results and discussion of possible future developments (s. \ref{sec:conclusion}).
+The paper is organised as follows. In the next subsection  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the next Section \ref{sec:examples} we present several examples and discuss some applications in CFT models (s. \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible future developments are discussed (s. \ref{sec:conclusion}).
 
 \subsection{Notation}
 \label{sec:notation}
@@ -190,27 +223,30 @@ It is important to mention that
 
 $x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|}{\left|\Theta_{\mathfrak{a}}\right|}$ --- the embedding index.
 
-\section{Recurrent relation for branching coefficients}
+\section{Recurrent relation for branching coefficients. Singularities and subtractions}
 \label{sec:recurr-form-branch}
 
-We present the final recurrent relation for the anomalous branching coefficients \eqref{eq:21}. 
+Our aim is to demonstrate that despite possible singularities in the Weyl denominator projected to the subalgebra root space injection fan technique can be properly modified. as a result of such modification the generalized recurrent relations for anomalous branching coefficients \eqref{eq:21} will appear in the following form: 
 \begin{equation}
   \label{eq:1}
-k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; {\rm dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
-\sum_{\gamma \in
+  \begin{array}{c}
+      k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; {\rm dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+ \right.\\
+\left.
++\sum_{\gamma \in
 \Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
-+\gamma }^{\left( \mu \right) }\right)   
-\end{equation}
-Here $\mathfrak{a}_{\bot}$ is the subalgebra generated by the roots of $\mathfrak{g}$ orthogonal to the root system of $\mathfrak{a}$, $W_{\bot}$ is the corresponding Weyl group, $\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ is the set of weights in the expansion of the product $\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}$ and $s(\gamma)$ is the coefficient of $e^{\gamma}$ in this expansion.
-The proof of the formula and more formal definitions of $\mathfrak{a}_{\bot},\; W_{\bot},\; s(\gamma),\; \Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ are in the following subsection.
++\gamma }^{\left( \mu \right) }\right)
+  \end{array}
+   \end{equation}
+Here $\mathfrak{a}_{\bot}$ is the subalgebra generated by the roots of $\mathfrak{g}$ orthogonal to the root system of $\mathfrak{a}$, $W_{\bot}$ is the corresponding Weyl group, $\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ is the set of weights in the expansion of the denominator $\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}$ and $s(\gamma)$ is the coefficient of $e^{\gamma}$ in this expansion.
+In the next subsection we study the situation in details and prove the validity of this relation.
 
-In the next section we describe the algorithm for the computation of branching coefficients based upon this formula and then present some example and discuss physical meaning.
+In the next section we  shall describe the  computational algorithm for  branching coefficients based on this formula and present some examples.
 
 \subsection{Proof of the recurrent relation}
 \label{sec:proof}
 
-The decomposition of the representation of the algebra to the representations of the subalgebra can be symbolically written using formal characters and projection operator $\pi_{\mathfrak{a}}$ to the weight subspace:
+The branching of a module can be symbolically written using formal characters and projection operators $\pi_{\mathfrak{a}}$ that bring the roots of $\mathfrak{g}$ to the weight subspace of $\mathfrak{a}$:
 \begin{equation}
   \label{eq:3}
   L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
@@ -218,8 +254,8 @@ The decomposition of the representation of the algebra to the representations of
   \Longrightarrow\quad
   \pi_{\mathfrak{a}}(ch L^{\mu}_{\mathfrak{g}})=\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} ch L^{\nu}_{\mathfrak{a}}
 \end{equation}
-Using the Weyl-Kac formula for the character of the module
-we obtain the equality
+The Weyl-Kac character formula leads to
+the equality
 \begin{equation}
   \label{eq:4}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = 
@@ -227,37 +263,37 @@ we obtain the equality
   \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{equation}
 
-It is important to mention that the projection of some of the positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of these roots by $\Delta^{+}_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
+It is important to keep in mind that the projection of some of positive roots of the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the algebra $\mathfrak{g}$. Let's denote the subset of such roots by $\Delta^{+}_{\bot}=\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:\forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
 
-We should notice that if the set $\Delta^{+}_{\bot}$ is non-empty than Weyl reflections which correspond to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}$ of Weyl group $W$. Consider any two positive roots $\alpha,\; \beta\in \Delta^{+}_{\bot}$ and corresponding Weyl reflections $\omega_{\alpha},\; \omega_{\beta}\in W_{\bot}$.  Since roots of the subalgebra $\mathfrak{a}$ are invariant under $\omega_{\alpha}, \; \omega_{\beta}$ they are also invariant under the action of $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}$. So the subgroup $W_{\bot}$ preserves the root system of the subalgebra $\mathfrak{a}$. 
+Notice that if the set $\Delta^{+}_{\bot}$ is non-empty the Weyl reflections corresponding to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}$ of the Weyl group $W$. Consider any two positive roots $\alpha,\; \beta\in \Delta^{+}_{\bot}$ and the corresponding Weyl reflections $\omega_{\alpha},\; \omega_{\beta}\in W_{\bot}$.  Since roots of the subalgebra $\mathfrak{a}$ are invariant under $\omega_{\alpha}, \; \omega_{\beta}$ they are also invariant under the action of $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}$. So the subgroup $W_{\bot}$ preserves the root system of the subalgebra $\mathfrak{a}$. 
 
-The action of the Weyl subgroup $W_{\bot}$ on the set $\Delta^{+}_{\bot}$ produce the root system $\Delta_{\bot}$ which is orthogonal to the root system $\Delta_{\mathfrak{a}}$ of the subalgebra $\mathfrak{a}$. This root system can be considered as the root system of some subalgebra $\mathfrak{a}_{\bot}\subset \mathfrak{g}$.
+Thus we have obtained the root system $\Delta_{\bot}$ which is orthogonal to the root system $\Delta_{\mathfrak{a}}$ and invariant with respect to  $W_{\bot}$ . This root system can be considered as the root system of a subalgebra $\mathfrak{a}_{\bot}\subset \mathfrak{g}$.
 
-Now we should discuss when the subset $\Delta^{+}_{\bot}$ is non-empty and the subgroup $W_{\bot}$ and subalgebra $\mathfrak{a}_{\bot}$ are non-trivial.
+Now we should find out when the subset $\Delta^{+}_{\bot}$ is non-empty and the subgroup $W_{\bot}$ and subalgebra $\mathfrak{a}_{\bot}$ are non-trivial.
 
-If $\mathfrak{a}$ is a maximal regular subalgebra of $\mathfrak{g}$ then rank of $\mathfrak{a}$ is equal to the rank of $\mathfrak{g}$ and it is clear that $\Delta^{+}_{\bot}$ is empty.
+If $\mathfrak{a}$ is a maximal regular subalgebra of $\mathfrak{g}$ then the rank of $\mathfrak{a}$ is equal to the rank of $\mathfrak{g}$ and it is clear that $\Delta^{+}_{\bot}$ is empty.
 On the other hand 
-non-maximal regular embedding of $\mathfrak{a}$ into $\mathfrak{g}$ can be obtained through the chain of maximal embeddings $\mathfrak{a}\subset \mathfrak{p}_1\subset \mathfrak{p}_2\subset\dots \subset \mathfrak{g}$. Also the maximal regular embeddings are constructed by the exclusion of one or two roots from the extended Dynkin diagram of the algebra. Since this process can give us non-connected Dynkin diagrams we can see which roots are orthogonal to the root space of non-maximal regular subalgebra $\mathfrak{a}$. 
+non-maximal regular embedding of $\mathfrak{a}$ into $\mathfrak{g}$ can be obtained through the chain of maximal embeddings $\mathfrak{a}\subset \mathfrak{p}_1\subset \mathfrak{p}_2\subset\dots \subset \mathfrak{g}$. The maximal regular embeddings are constructed by the exclusion of one or two roots from the extended Dynkin diagram of the algebra. Since this process can give us non-connected Dynkin diagrams we can see which roots are orthogonal to the root space of non-maximal regular subalgebra $\mathfrak{a}$. 
 
-Consider for instance regular embedding of $A_1\subset B_2$.
+Consider for instance regular the embedding of $A_1\subset B_2$.
 
-The extended Dynkin diagram of $B_2$ 
+The extended Dynkin diagram of $B_2$ is presented in the Figure 1.
 \begin{figure}[ph]
   \centering
   \includegraphics[width=50mm]{B2_A1_diagram.pdf}
   \caption{Extended Dynkin diagram of $B_2$ and embedding of $A_1$}
   \label{fig:B2Dynkin}
 \end{figure}
-We then drop central node and get the embedding $A_1\oplus A_1\subset B_2$. Then $\mathfrak{a}=A_1$ and $\mathfrak{a}_{\bot}=A_1$.
+When we drop the central node and get the embedding $A_1\oplus A_1\subset B_2$. Then $\mathfrak{a}=A_1$ and $\mathfrak{a}_{\bot}=A_1$.
 
-Here we give the simple criterion of $\Delta^{+}_{\bot}$'s non-emptiness for the regular embedding $\mathfrak{a}\subset \mathfrak{g}$ for simple $\mathfrak{a}$ and $\mathfrak{g}$. If Dynkin diagram of $\mathfrak{g}$ can be split into the unconnected diagrams of $\mathfrak{a}$ and some other subalgebras $\{\mathfrak{\bar{a}}_j\}$ then the subset $\Delta_{\bot}$ is non-empty, subalgebra $\mathfrak{a}_{\bot}$ is non-trivial and all the $\mathfrak{\bar{a}}_j$ are the subalgebras of $\mathfrak{a}_{\bot}$.
+Here we present the simple criterion of $\Delta^{+}_{\bot}$'s non-emptiness for a regular embedding $\mathfrak{a}\subset \mathfrak{g}$ when both $\mathfrak{a}$ and $\mathfrak{g}$ are simple. If the Dynkin diagram of $\mathfrak{g}$ can be split into the disconnected diagrams of $\mathfrak{a}$ and some other subalgebras $\{\mathfrak{\bar{a}}_j\}$ then the subset $\Delta_{\bot}$ is non-empty, subalgebra $\mathfrak{a}_{\bot}$ is non-trivial and all the $\mathfrak{\bar{a}}_j$ are the subalgebras of $\mathfrak{a}_{\bot}$.
 
-Note that when we study the regular embedding obtained by the dropping of the nodes of the extended Dynkin diagram of the algebra $\mathfrak{g}$ and the subalgebra $\mathfrak{a}$ is one of the connected components, the subalgebra $\mathfrak{a}_{\bot}$ may be broader than the algebra generated by the other connected components. See for example the figure \ref{fig:dynkin} for the embedding of $B_2\subset B_4$. 
-In this case the extended Dynkin diagram of $B_4$ is split by dropping of simple root $\alpha_2=e_2-e_3$ into the diagrams of the subalgebra of interest $\mathfrak{a}=B_2$ and two diagrams of the orthogonal $A_1$ subalgebras. But the subalgebra $\mathfrak{a}_{\bot}$ is equal not to $A_1\oplus A_1$ but to $B_2$. 
-This fact is due to the existence of positive root $e_2=s_{\alpha_2}\cdot s_{\alpha_3}\cdot\alpha_4$ in the root system of $B_4$.
+Note that when we study the regular embedding obtained by dropping the nodes of the extended Dynkin diagram of the algebra $\mathfrak{g}$ and the subalgebra $\mathfrak{a}$ is one of the connected components, the subalgebra $\mathfrak{a}_{\bot}$ may be broader than the algebra generated by the other connected components. See for example the figure \ref{fig:dynkin} for the embedding of $B_2\subset B_4$. 
+In this case the extended Dynkin diagram of $B_4$ is split by dropping the simple root $\alpha_2=e_2-e_3$ into the diagrams of the subalgebra of interest $\mathfrak{a}=B_2$ and two diagrams of the orthogonal $A_1$ subalgebras. But the subalgebra $\mathfrak{a}_{\bot}$ is equal not to $A_1\oplus A_1$ but to $B_2$. 
+This fact is due to the existence of the positive root $e_2=s_{\alpha_2}\cdot s_{\alpha_3}\cdot\alpha_4$ in the root system of $B_4$.
 
 We should analyze the case when the diagram of the subalgebra $\mathfrak{a}_{\bot}$ is not a subdiagram of the extended Dynkin diagram $\mathfrak{g}$ for the simple Lie algebras $\mathfrak{a},\,\mathfrak{g}$ and the regular embedding $\mathfrak{a}\subset \mathfrak{g}$.
- We drop the subdiagram of $\mathfrak{a}$ and the node $\alpha'$ that connects it with all the rest nodes of the diagram of $\mathfrak{g}$ and consider the remaining diagram. This diagram is the diagram of the algebra $\mathfrak{\bar{a}}$ of $\mathrm{rank}(\mathfrak{\bar{a}}) = \mathrm{rank}(\mathfrak{g})-\mathrm{rank}(\mathfrak{a})$. It is clear that $\mathfrak{\bar{a}}\subset \mathfrak{a}_{\bot}$. So the question is if $\mathfrak{a}_{\bot}$ has additional roots, which are not the roots of $\mathfrak{\bar{a}}$ but are the linear combinations of them. It is possible when the set of the angles between the roots of $\mathfrak{\bar{a}}$ does not contain all the angles between the roots of $\mathfrak{a}$, then reflecting the roots of $\mathfrak{a}$ by $s_{\alpha'}$ we the additional roots of $\mathfrak{a}_{\bot}$.
+ We drop the subdiagram of $\mathfrak{a}$ and the node $\alpha'$ that connects it with all the rest nodes of the diagram of $\mathfrak{g}$ and consider the remaining diagram. This diagram is the diagram of the algebra $\mathfrak{\bar{a}}$ of $\mathrm{rank}(\mathfrak{\bar{a}}) = \mathrm{rank}(\mathfrak{g})-\mathrm{rank}(\mathfrak{a})$. It is clear that $\mathfrak{\bar{a}}\subset \mathfrak{a}_{\bot}$. So the question is if $\mathfrak{a}_{\bot}$ has additional roots, which are not the roots of $\mathfrak{\bar{a}}$ but are the linear combinations of them. It is possible when the set of angles between the roots of $\mathfrak{\bar{a}}$ does not contain all the angles between the roots of $\mathfrak{a}$, then reflecting the roots of $\mathfrak{a}$ by $s_{\alpha'}$ we get the additional roots of $\mathfrak{a}_{\bot}$.
 
 All the cases are listed in the table \ref{tab:diagrams}.
 \begin{table}[ph]
@@ -281,10 +317,11 @@ All the cases are listed in the table \ref{tab:diagrams}.
 
 The exceptional Lie algebras require tedious case-by-case analysis.
 
-In the language of Weyl groups the task of construction of the root system of $\mathfrak{a}_{\bot}$ is formulated as follows. Given a Weyl group $W$ and a subgroup $W_{\mathfrak{a}}$ find the subgroup $W_{\mathfrak{a}_{\bot}}\subset W$ such that $\omega\, W_{\mathfrak{a}}\,\omega^{-1}=W_{\mathfrak{a}}; \;\text{for}\; \omega\in W_{\mathfrak{a}_{\bot}}$, so we need to find the normalizer of $W_{\mathfrak{a}}$ in $W$, such that some of the elements of $W_{\mathfrak{a}_{\bot}}$ are the reflections corresponding to the positive roots of $\mathfrak{g}$. This task can be carried out using the computational methods of finite group theory \cite{stembridge2001computational} but we are unaware of any publication with the exhaustive tables of such a subgroups.
+In terms of Weyl groups the task of construction of the root system of $\mathfrak{a}_{\bot}$ is formulated as follows. Given a Weyl group $W$ and a subgroup $W_{\mathfrak{a}}$ find the subgroup $W_{\mathfrak{a}_{\bot}}\subset W$ such that $\omega\, W_{\mathfrak{a}}\,\omega^{-1}=W_{\mathfrak{a}}; \;\text{for}\; \omega\in W_{\mathfrak{a}_{\bot}}$, so we need to find the normalizer of $W_{\mathfrak{a}}$ in $W$, such that some of the elements of $W_{\mathfrak{a}_{\bot}}$ are the reflections corresponding to the positive roots of $\mathfrak{g}$. This task can be carried out using the computational methods of finite group theory \cite{stembridge2001computational} but we are unaware of any publication with the exhaustive tables of such subgroups.
 
 
-In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}.
+In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the 
+special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}.
 \begin{figure}[ph]
 \noindent  \centering{
   \includegraphics[width=120mm]{special_A1_A2_A3.pdf}
@@ -304,9 +341,7 @@ Using the existing classification of maximal special subalgebras \cite{dynkin195
       so(p)\oplus so(q) & \subset so(p+q)& \text{for}\;p\;\text{and}\;q\;\text{odd}\\
   \end{array}
 \end{equation}
-It is also possible to study regular subalgebras of this special subalgebras and get new non-maximal special embeddings, such as the special embedding at the Figure \ref{fig:a1a2a3}, with the orthogonal subalgebra obtained by the combination of \eqref{eq:42} and Table \ref{tab:diagrams}.
-
-Exceptional Lie algebras subalgebras require lengthy analysis which is not important for the needs of computation of the branching coefficients.
+Exceptional Lie algebras and other non-maximal subalgebras require lengthy analysis which is not important for the needs of computation of the branching coefficients.
 
 The construction of the subalgebra $\mathfrak{a}_{\bot}$ is not obvious from the Dynkin diagrams of $\mathfrak{g}$ and $\mathfrak{a}$ but for the needs of calculation of the branching coefficients $b^{(\mu)}_{\nu}$ it is sufficient to select the positive roots $\Delta^{+}_{\bot}=\left\{\alpha\in \Delta^{+}:\alpha\bot \Delta_{\mathfrak{a}}\right\}$ in the set of positive roots of $\mathfrak{g}$.
 
@@ -626,104 +661,6 @@ The dimension of the highest-weight $B_4$-module $L^{(0,1,0,2)}_{B_4}$
 is equal to 2772. It is easy to see, that right-hand side of the
 equation (\ref{eq:24}) gives the same result.
 
-\subsection{Affine Lie algebras}
-\label{sec:affine-lie-algebras}
-%%  \subsubsection{Embedding of finite-dimensional algebra into affine algebra}
-%%  \label{sec:embedd-finite-dimens}
-%%  
-%%  The maximal embeddings of the finite-dimensional Lie algebras into the affine Lie algebras were thoroughly studied and the tables of the branching coefficients are given in the book \cite{kass1990ala}. The task of the study of non-maximal embeddings is then can be reduced to the well-known task of branching of the finite-dimensional Lie algebras.
-%%  Thus here we show the simplest possible example of reduction of affine $\hat{A_1}$ to $A_1$ in order to demonstrate some traits of our method and show that we eliminate the need of slice-by-slice study discussed in \cite{kass1990ala}.
-%%  
-%%  The simple roots for the affine $\hat{A_1}$ are
-%%  \begin{equation}
-%%    \label{eq:2}
-%%    (\alpha,\delta-\alpha)
-%%  \end{equation}
-%%  We consider the embedding with the root $\beta=\delta-\alpha$. 
-%%  
-%%  Positive roots of the $\hat{A_1}$ are $\alpha,\; \alpha+n\delta,\; n\delta,\; -\alpha+n\delta;\; n=1,2,3,\dots$.
-%%  The set of the 
-%%  
-\subsubsection{Embedding of the affine algebra into affine algebra}
-\label{sec:embedd-affine-algebr}
-
-Consider the affine extension of the example \ref{sec:regul-embedd-a_1}. 
-Since this embedding is regular, the level of the representations of the subalgebra is equal to the level of the representation of the algebra. 
-
-The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
-
-Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0,1,0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is is the level of the weight and the fourth the grade.
-
-
-The set of the anomalous points of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the Figure \ref{fig:B2_A1}. 
-
-\begin{figure}[h!tb]
-  \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
-  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{B_2}$}
-  \label{fig:affine_B2_anom_point}
-\end{figure}
-
-As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
-The result of this computation up to the twelfth grade is presented at the Figure
-\begin{figure}[h!tb]
-  \centering
-  \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
-  \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
-  \label{fig:AffineB2_A1_anom_proj}
-\end{figure}
-
-Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
-
-Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineB2A1Fan}.
-Here we restricted the computation to the twelfth grade.
-\begin{figure}[ph]
-  \centering
-  \includegraphics[width=130mm]{AffineB2_A1_fan.pdf}
-  \caption{Fan for $\hat{A_1}\subset \hat{B_2}$}
-  \label{fig:AffineB2A1Fan}
-\end{figure}
-
-Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to zero, since we have excluded all the roots of $\Delta^{+}_{\bot}$ from the defining relation (\ref{fan-defined}).
-
-Using the recurrent relation for the anomalous branching coefficients we get the following result
-\begin{figure}[ph]
-  \centering
-  \includegraphics[width=130mm]{AffineB2_A1_branching.pdf}
-  \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{B_2}$}
-  \label{fig:AffineB2_A1_branching}
-\end{figure}
-
-Selecting the points inside the main Weyl chamber of the subalgebra $\hat{A_1}$ we get the following results for the branching coefficients up to twelfth grade
-\begin{multline}
-  \label{eq:28}
-  L^{w_1}_{\hat{B_2}\downarrow \hat{A_1}}=2 L_{\hat{A_1}}^{w_1}(0)\oplus 1 L_{\hat{A_1}}^{w_0}(0)\oplus 4 L_{\hat{A_1}}^{w_0}(-1)\oplus\\
-    2 L_{\hat{A_1}}^{w_1}(-1)\oplus 8 L_{\hat{A_1}}^{w_0}(-2)\oplus
-    8 L_{\hat{A_1}}^{w_1}(-2)\oplus 15 L_{\hat{A_1}}^{w_0}(-3)\oplus\\
-    12 L_{\hat{A_1}}^{w_1}(-3)\oplus 26 L_{\hat{A_1}}^{w_1}(-4)\oplus
-    29 L_{\hat{A_1}}^{w_0}(-4)\oplus 51 L_{\hat{A_1}}^{w_0}(-5)\oplus\\
-    42 L_{\hat{A_1}}^{w_1}(-5)\oplus 78 L_{\hat{A_1}}^{w_1}(-6)\oplus
-    85 L_{\hat{A_1}}^{w_0}(-6)\oplus 120 L_{\hat{A_1}}^{w_1}(-7)\oplus\\
-    139 L_{\hat{A_1}}^{w_0}(-7)\oplus 202 L_{\hat{A_1}}^{w_1}(-8)\oplus
-    222 L_{\hat{A_1}}^{w_0}(-8)\oplus 306 L_{\hat{A_1}}^{w_1}(-9)\oplus\\
-    346 L_{\hat{A_1}}^{w_0}(-9)\oplus 530 L_{\hat{A_1}}^{w_0}(-10)\oplus
-    482 L_{\hat{A_1}}^{w_1}(-10)\oplus 714 L_{\hat{A_1}}^{w_1}(-11)\oplus\\
-    797 L_{\hat{A_1}}^{w_0}(-11)\oplus 1080 L_{\hat{A_1}}^{w_1}(-12)\oplus
-    1180 L_{\hat{A_1}}^{w_0}(-12)
-\end{multline}
-This result can be expressed using the power series expansion of the branching functions \cite{kac1990idl}.
-\begin{eqnarray}
-  \label{eq:29}
-  \begin{array}{cc}
-    b^{(w_1)}_{0}= & 1 + 4\,q^{1}+ 8\,q^{2}+ 15\,q^{3}+ 29\,q^{4}+ 51\,q^{5}+ 85\,q^{6}+ 139\,q^{7}+\\
-     &222\,q^{8}+ 346\,q^{9}+ 530\,q^{10}+ 797\,q^{11}+ 1180\,q^{12}+\dots\\
-  \end{array}\\
-  \begin{array}{cc}
-    b^{(w_1)}_{1}= &2+2\,q^{1}+8\,q^{2}+12\,q^{3}+26\,q^{4}+42\,q^{5}+78\,q^{6}+120\,q^{7}+\\
-    & 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots
-  \end{array}
-\end{eqnarray}
-Here the lower index of the branching function denotes the number of the corresponding $\hat{A_1}$ fundamental weight $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
 \newpage
 \section{Physical applications}
@@ -800,112 +737,62 @@ Thus we obtain the non-diagonal modular-invariant  partition function for the th
 \label{sec:spec-embedd-hata_1s}
 Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ built as the affine extension of the special embedding $su(2)\subset su(3)$ with the embedding index $x_e=4$. The level of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the subalgebra $\tilde{k}=kx_e=4$.
 
+\begin{enumerate}
+\item Construct the set $\Delta^{+}$ of the positive roots of the algebra $\mathfrak{g}$.
+\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of the subalgebra $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
+\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous points of the $\mathfrak{g}$-module $L^{(\mu)}$.
+\item Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ is non-negative.
+\item For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
+\item Construct the set $\Gamma$ \eqref{fan-defined}.
+\item Calculate anomalous branching coefficients in the main Weyl
+  chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent relation}).
+\end{enumerate}
+
 There exist three level one dominant weights $[1,0,0],\;[0,1,0],\;[0,0,1]$ in the weight space of $\hat{A}_2$.
-It is easy to see that the set $\Delta_{\bot}$ is empty. 
+It is easy to see that the set $\Delta_{\bot}$ is trivial. 
+\subsubsection{Special embedding $\hat{su}(2)\subset \hat{sp}(4)$.}
+\label{sec:spec-embedd-wideh}
 
-Here we view the representation with the highest weight
-$w_0=(1,0,0)$ in detail.
+Consider the level ten embedding of the affine $\hat A_1$ into the level one affine $\hat C_2$. 
+The relation (\ref{eq:33}) and the finite reducibility theorem greatly simplify the calculation with the algorithm \ref{sec:algorithm}, since we know that there exists only finite number of the non-zero branching coefficients and the maximal grade of this coefficients is restricted.
 
-The set of the anomalous points of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration.
-
-\begin{figure}[h!tb]
-  \includegraphics[width=160mm]{AffineA2_A1_anom.pdf}
-  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{A_2}$}
-  \label{fig:affine_A2_anom_point}
-\end{figure}
-
-As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
-The result of this computation up to the twelfth grade is presented at the Figure
-\begin{figure}[h!tb]
-  \centering
-  \includegraphics[width=150mm]{AffineA2_A1_proj_anom.pdf}
-  \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
-  \label{fig:AffineA2_A1_anom_proj}
-\end{figure}
-
-Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
-
-Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineA2A1Fan}.
-Here we restricted the computation to the twelfth grade.
-\begin{figure}[ph]
-  \centering
-  \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
-  \caption{Fan for $\hat{A_1}\subset \hat{A_2}$}
-  \label{fig:AffineA2A1Fan}
-\end{figure}
-
-Using the recurrent relation for the anomalous branching coefficients we get the following result
-\begin{figure}[ph]
-  \centering
-  \includegraphics[width=130mm]{AffineA2_A1_branching.pdf}
-  \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{A_2}$}
-  \label{fig:AffineA2_A1_branching}
-\end{figure}
-
-We see that only two anomalous branching coefficients inside the main
-Weyl chamber of $\hat{A}_1$ are non-zero and equal to the branching
-coefficients. So the finite reducibility theorem holds and we get
+This affine embedding is the affine extension of the special embedding $A_1\subset C_2$ with the embedding index equal to 10. The projection of the weights of algebra $C_2$ is calculated using the projection matrix $\mathcal{P}=(3,4)$. The embedding index
 \begin{equation}
-  \label{eq:43}
-  L^{[1,0,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[0,4]}\oplus L_{\hat{A_1}}^{[4,0]}
+  \label{eq:37}
+  x_e=\frac{\left|\mathcal{P}\Theta_{\mathfrak{g}}\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}=\frac{k_{\mathfrak{a}}}{k_{\mathfrak{g}}}=10
 \end{equation}
-
-For the other level one dominant weights of $\hat{A}_2$ we get trivial
-branching rules
-\begin{eqnarray}
-  \label{eq:44}
-   L^{[0,1,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}\\
-   L^{[0,0,1]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}
-\end{eqnarray}
-
-Using this result we can construct modular-invariant partition function
+If we consider this embedding in the orthogonal basis where the simple roots of $C_2$ are given by
 \begin{equation}
-  \label{eq:45}
-  Z=\left|\chi_{[4,0]}+\chi_{[0,4]}\right|^2+2\chi_{[2,2]}^2
+  \label{eq:38}
+  \alpha_1=(1,-1),\quad \alpha_2=(0,2),
 \end{equation}
+then the simple root of the embedded $A_1$ is equal to
+\begin{equation}
+  \label{eq:39}
+  \beta=\sqrt{\frac{2}{5}}(3,1)
+\end{equation}
+It is easy to see that the set $\Delta^{+}_{\bot}$ of the $C_2$ roots orthogonal to $\beta$ is empty.
 
-%%  \subsubsection{Special embedding $\hat{su}(2)\subset \hat{sp}(4)$.}
-%%  \label{sec:spec-embedd-wideh}
-%%  
-%%  Consider the level ten embedding of the affine $\hat A_1$ into the level one affine $\hat C_2$. 
-%%  The relation (\ref{eq:33}) and the finite reducibility theorem greatly simplify the calculation with the algorithm \ref{sec:algorithm}, since we know that there exists only finite number of the non-zero branching coefficients and the maximal grade of this coefficients is restricted.
-%%  
-%%  This affine embedding is the affine extension of the special embedding $A_1\subset C_2$ with the embedding index equal to 10. The projection of the weights of algebra $C_2$ is calculated using the projection matrix $\mathcal{P}=(3,4)$. The embedding index
-%%  \begin{equation}
-%%    \label{eq:37}
-%%    x_e=\frac{\left|\mathcal{P}\Theta_{\mathfrak{g}}\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}=\frac{k_{\mathfrak{a}}}{k_{\mathfrak{g}}}=10
-%%  \end{equation}
-%%  If we consider this embedding in the orthogonal basis where the simple roots of $C_2$ are given by
-%%  \begin{equation}
-%%    \label{eq:38}
-%%    \alpha_1=(1,-1),\quad \alpha_2=(0,2),
-%%  \end{equation}
-%%  then the simple root of the embedded $A_1$ is equal to
-%%  \begin{equation}
-%%    \label{eq:39}
-%%    \beta=\sqrt{\frac{2}{5}}(3,1)
-%%  \end{equation}
-%%  It is easy to see that the set $\Delta^{+}_{\bot}$ of the $C_2$ roots orthogonal to $\beta$ is empty.
-%%  
-%%  Now we proceed the computation of the branching coefficients using the algorithm \ref{sec:algorithm}. 
-%%  On the level 1 there exist three dominant weights with Dynkin labels $[1,0,0], \; [0,1,0],\; [0,0,1]$.
-%%  
-%%  \begin{comment}
-%%    Do the calculation, show the restriction on the grade and the final result
-%%    \begin{equation}
-%%      \label{eq:35}
-%%      Z=\left|\chi_{[10,0]}+\chi_{[4,6]}\right|^2+\left|\chi_{[7,3]}+\chi_{[3,7]}\right|^2+\left|\chi_{[6,4]}+\chi_{[0,10]}\right|^2
-%%    \end{equation}
-%%  \end{comment}
-%%  
+Now we proceed the computation of the branching coefficients using the algorithm \ref{sec:algorithm}. 
+On the level 1 there exist three dominant weights with Dynkin labels $[1,0,0], \; [0,1,0],\; [0,0,1]$.
+
+Do the calculation, show the restriction on the grade and the final result
+  \begin{equation}
+    \label{eq:35}
+    Z=\left|\chi_{[10,0]}+\chi_{[4,6]}\right|^2+\left|\chi_{[7,3]}+\chi_{[3,7]}\right|^2+\left|\chi_{[6,4]}+\chi_{[0,10]}\right|^2
+  \end{equation}
+
 \section{Conclusion}
 \label{sec:conclusion}
-We have proved the recurrent relation on the branching coefficients and proposed practical algorithm of the reduction of the representations. Also we have discussed the application of this algorithm to the physical problem of construction of modular-invariant partition functions in the conformal field theory. This method of conformal embeddings is well-known but may be actual in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}. 
-\begin{comment}
-  What about acknowledgements? 
-\end{comment}
+We have constructed the recurrent relation for branching coefficients and proposed practical algorithm for the reduction procedure. Also we have discussed the application of this algorithm to the physical problem of construction the modular-invariant partition functions in the conformal field theory. This method of conformal embeddings is well-known but may be actual in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}. 
+
+
+\section{Acknowledgements}
+The work was supported in
+part by RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575.
+
 \bibliography{article}{}
 \bibliographystyle{utphys}
+
 
 \end{document}
