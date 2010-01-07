@@ -15,6 +15,7 @@
 {\par\noindent{\bf TODO}\\}
 {\\\hfill$\scriptstyle\blacksquare$\par}
 
+\newtheorem{statement}{Statement}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
 
 \begin{document}
@@ -383,6 +384,16 @@ In Weyl group terms to construct $\Delta _{\mathfrak{a}_{\bot}} $ means the foll
   For the Weyl group $W_{\mathfrak{a}}$ any element $\omega in W$ such that $\omega\cdot W_{\mathfrak{a}} \cdot \omega = W_{\mathfrak{a}}$ has the form $\omega=r_1^{s_1} r_2^{s_2}\dots r_k^{s_k}$ where $r_1\dots r_k$ are the generators corresponding to the nodes of non-connected component if $\mathfrak{g}=A_n, C_n, D_n$. 
   For $\mathfrak{g}=B_n$ there exist additional elements $\{\omega=r_1^{s_1} r_2^{s_2}\dots r_k^{s_k}\cdot r_{k+1}^{s_{k+1}} r_{k+2}^{s_{k+2}}\}$. 
 \end{comment}
+
+For the series $A_n$ the statement has the following form:
+\begin{statement}
+  Consider subalgebra $\mathfrak{a}$ with the simple roots $\{\alpha_i, i=1\dots k,\; k<n\}$. Then every root $\alpha\bot \beta\in \Delta_{\mathfrak{a}}$ is the linear combination of the simple roots $\alpha_{k+2}\dots \alpha_n$ or equivalently in the language of Weyl groups, for $\forall \omega\in W: \omega\cdot W_{\mathfrak{a}}\cdot \omega=W_{\mathfrak{a}},\; \omega=r_{k+2}^{s_{k+2}}\dots r_n^{s_n}$, where $\{r_i\}$ are the Weyl reflections corresponding to simple roots $\{\alpha_i\}$.
+
+\end{statement}
+  \begin{proof}
+    Assume the opposite. It is clear that it is enough to check that $r_i\cdot \omega\cdot r_i\neq \omega,\; i=1\dots k$.  
+  \end{proof}
+
 
 (In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the
 special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}. {\color{red}(This is for us!)})
