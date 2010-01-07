@@ -47,11 +47,10 @@ Our implementation use programming language Scheme and is presented as the Liter
 \end{Def}
 Lie algebras can be finite- or infinite-dimensional. Finite-dimensional Lie algebras are classified.
 
-We will represent Lie algebra in the code as the object of class [[lie-algebra]]. We use very simple class system, which is described in the Appendix \ref{sec:object-system}. 
+We will represent Lie algebra in the code as the object of class [[lie-algebra]]. We use very simple class system, which is described in the Appendix \ref{sec:object-system}. So [[lie-algebra]] is really an interface, but since our object system doesn't have interfaces we make it an abstract class and concrete classes such as [[semisimple-lie-algebra]] inherit it.
 Lie algebra is a vector space, so we really should create class for the vector space which contains methods for the change of basis. But for now we use only one standard basis for Lie algebras and [[lie-algebra]] is the subclass of the most genral class [[object]].
 <<Lie algebra class .scm>>=
 (class 'lie-algebra 'object
-       <<Lie algebra fields .scm>>
        <<Lie algebra methods .scm>>)
 @
 We need to add several definitions and describe a structure of Lie algebra in order to discuss fields and methods of [[lie-algebra]] class.
@@ -79,19 +78,42 @@ Now we need to discuss internal structre of Lie algebras, which can be represent
   {\bf Cartan subalgebra $\mathfrak{h}\subset\mathfrak{g}$} - is the maximal commutative subalgebra of $\mathfrak{g}$. The dimension of the Cartan subalgebra $\mathfrak{h}$ is called {\bf rank} of Lie algebra $\mathfrak{g}$.
 \end{Def}
 <<Lie algebra methods .scm>>=
-(list 'rank (lambda (self)
-	      <<Compute rank .scm>>))
-(list 'dimension (lambda (self)
-		   <<Compute lie-algebra dimension .scm>>))
+`(rank ,(lambda (self)
+	      (error "Abstract class!")))
+`(dimension ,(lambda (self)
+	      (error "Abstract class!")))
+`(cartan-subalgebra ,(lambda (self) 
+	      (error "Abstract class!")))
+
 @
-The structure of simple and semisimple Lie algebras can be encoded by the set of simple roots . Since Cartan subalgebra has no (non-zero) roots it is determined by its dimension.
-<<Lie algebra methods .scm>>=
-(list 'cartan-subalgebra (lambda (self)
-			   (make-commutative-algebra (send self 'rank))))
+Commutative algebras constitute first concrete class of Lie algebras.
+<<Commutative algebra .scm>>=
+(class 'commutative-algebra 'lie-algebra
+       '(dim 1)
+       `(rank ,(lambda (self) (send self 'dim)))
+       `(dimension ,(lambda (self) (send self 'dim)))
+       `(cartan-subalgebra ,(lambda (self) self)))
+
+;; The constructor
+(define (make-commutative-algebra dim)
+  (new 'commutative-algebra `(dim ,dim)))
 @
 \begin{comment}
-  Well, I know how to represent simple lie algebra. But what about commutative and semisimple algebras and different direct sums or tensor products?
+It can be interesting and useful to add a method which show commutation relatons of the algebra in the symbolic form, but this task is left for the future  
 \end{comment}
+@
+
+\section{Semisimple Lie algebras}
+\label{sec:semis-lie-algebra}
+The structure of simple and semisimple Lie algebras can be encoded by the set of simple roots. 
+<<Semisimple Lie algebra .scm>>=
+(class 'semisimple-lie-algebra 'lie-algebra
+       '(simple-roots ())
+       <<Semisimple Lie algebra methods .scm>>)
+@
+
+\subsection{Root systems}
+\label{sec:root-systems}
 \begin{Def}
   In the {\bf Cartan-Weyl} basis the genrators are constructed as follows.
   First we choose the genrators $H_i\in \mathfrak{h}$ of the Cartan subalgebra. All these generators commute $[H_i,H_j]=0$ and their representations can be diagonalised simultaneously. The remaining generators $E_{\alpha}$ are chosen to be a linear combinations of $J_a$ such that
@@ -102,13 +124,77 @@ The structure of simple and semisimple Lie algebras can be encoded by the set of
   The vector $\alpha=(\alpha_1,\dots,\alpha_r),\; r=rank(\mathfrak{g})$ is called a {\bf root} and the corresponding operator $E_{\alpha}$ is called {\bf ladder operator}.
 \end{Def}
 The root $\alpha$ maps $H_i$ to the number $\alpha(H_i)=\alpha_i$ hence $\alpha\in \mathfrak{h}^{*}$ - element of the dual to the Cartan subalgebra. The set of all the roos $\alpha$ is denoted by $\Delta=\{\alpha,\; \alpha \text{ - root}\}$. So it is natural for the [[lie-algebra]] class to have a method which lists all the roots.
-<<Lie algebra methods .scm>>=
-(list 'roots (lambda (self)
-	       <<Construct roots .scm>>)) 
+<<Semisimple Lie algebra methods .scm>>=
+`(rank ,(lambda (self)
+    (length (send self 'simple-roots))))
+       
+`(cartan-subalgebra ,(lambda (self)
+    (make-commutative-algebra (send self 'rank))))
+<<Root system methods .scm>>
+@
+All the roots are the linear combinations of simple roots with the integral coefficients. There exists discrete group of symmetry called {\bf Weyl group} which can be used to produce all the roots from the set of simple roots. 
+\begin{Def}
+  {\bf Weyl group $W$} of finite-dimension Lie algebra is a finite reflection group of $\mathfrak{h}^*$ generated by the basic reflections corresponding to the simple roots. 
+  Each simple root $\alpha_i$ corresponds to the reflection $r_{i}$ in hyperplane orthogonal to $\alpha$.
+  \begin{equation}
+    \label{eq:5}
+    r_{i}\lambda=\lambda-\frac{(\lambda,\alpha_i)}{(\alpha_i,\alpha_i)}\alpha_i
+  \end{equation}
+  For $w\in W$ there exists several equivalent realizations of the form $w=r_{i_1}\cdot r_{i_2}\dots r_{i_k},\; i_1\dots i_k=1..r$. The expression of the smallest {\it length} is called {\it reduced}. 
+\end{Def}
+We will implement represent Weyl group elements as the lists of numbers of basic reflection
+\begin{equation}
+  \label{eq:6}
+  w=r_{i_1}\cdot r_{i_2}\dots r_{i_k} \leftrightarrow (i_1, i_2,\dots,i_k)
+\end{equation}
+Then we will implement action of Weyl group elements on $\mathfrak{h}^*$ using the recipies from \cite{stembridge2001computational}, \cite{casselman1994machine}, but it will be done in the future. For now we are not implementing abstract construction of Weyl group since it is enough to be able to construct Weyl group orbits of $\mathfrak{h}^*$ elements.
+
+So we need just two following general functions:
+<<Functions for root systems .scm>>=
+(define (co-root r)
+  (div (mul 2 r) (prod r r)))
+
+(define (reflect weight root)
+  (sub weight (mul (prod weight (co-root root)) root)))
+@
+Here {\it co-root} is the element of the dual space $(\mathfrak{h}^*)^*$ which is identified with $\mathfrak{h}^*\approx \mathfrak{h}$ since we have scalar product on $\mathfrak{h}$.
+
+Now we can implement wide range of root system related methods of [[semisimple-lie-algebra]] class
+<<Root system methods .scm>>=
+`(simple-co-roots ,(lambda (self)
+	      (map co-root (send self 'simple-roots))))
+
+`(cartan-matrix
+  ,(lambda (self)
+     (map (lambda (a)
+	    (map (lambda (av) (prod a av)) (send self 'simple-co-roots)))
+	 (send self 'simple-roots))))
+
+`(orbit ,
+  (lambda (self weights)
+    (let ((addon 
+	   (filter (lambda (x) (not (element-of-set? x weights)))
+		   (fold-right union-set '() 
+			       (map (lambda (w)
+				      (map (lambda (x) (reflect w x)) (send self 'simple-roots)))
+				    weights)))))
+      (if (null? addon)
+	  weights
+	  (send self 'orbit (union-set weights addon) )))))
+`(fundamental-weights
+  ,(lambda (self)
+     (map (lambda (x)
+	    (sum (map-n (lambda (y z) (mul y z)) x (send self 'simple-roots))))
+	  (matrix-inverse (send self 'cartan-matrix)))))
+
+`(rho ,(lambda (self)
+	 (sum (send self 'fundamental-weights))))
+
 @
 
 <<Construct roots .scm>>=
-
+`(roots ,(lambda (self)
+	       <<Construct roots .scm>>)) 
 @
 
 \section{Simple roots}
@@ -137,7 +223,9 @@ The code goes to several files of which [[library.scm]] is a compatibility layer
 All the mathematical code which is connected with Lie theory is collected in the file [[lie-algebra.scm]].
 <<lie-algebra.scm>>=
 <<Lie algebra class .scm>>
-
+<<Commutative algebra .scm>>
+<<Semisimple Lie algebra .scm>>
+<<Functions for root systems .scm>>
 @
 \appendix
 
@@ -149,6 +237,7 @@ Also this library can be used to port the code for Lie algebras to other Scheme 
 <<library.scm>>=
 <<Semi-standard Scheme procedures .scm>>
 <<Sets .scm>>
+<<Vector and matrix tools .scm>>
 <<LispMe Objects .scm>>
 @
 
@@ -346,6 +435,76 @@ Instances of classes:
         (apply value (cons self args)))
       (else value))))
 
+
+@
+
+\subsection{Vector and matrix manipulation}
+\label{sec:vect-matr-manip}
+Here we have colleced simple tools for manipulation with vectors and matrices. They are important for the portability, since one of our target Scheme implementations doesn't support full R5RS-Scheme (\cite{R5RS}) and portable Scheme libraries such as SLIB. 
+<<Vector and matrix tools .scm>>=
+<<Vector operations .scm>>
+<<Matrix inverse .scm>>
+@
+We represent vectors with lists since for now we don't want to have object system \ref{sec:object-system} overhead. It can be changed in the future.
+<<Vector operations .scm>>=
+(define (add a b)
+  (map-n + a b))
+
+(define (sum list)
+  (fold-left add (car list) (cdr list)))
+
+(define (sub a b)
+  (map-n - a b))
+
+(define (mul a b)
+  (cond ((and (list? a) (number? b)) (map (lambda (x) (* x b)) a))
+	((and (number? a) (list? b)) (mul b a))
+	((and (number? a) (number? b)) (* a b))
+	(else (error "Can not multiply"))))
+
+(define (div a b)
+  (map (lambda (x) (/ x b)) a))
+  
+(define (prod a b)
+  (fold-left + 0 (map-n * a b)))
+@
+
+For the matrix inverse and determinant we use the implementation with the cofactors extracted from the SLIB. It is not the fastest and should be replaced with the Gaussian elimination.
+<<Matrix inverse .scm>>=
+(define (matrix-cofactor mat i j)
+  (define (butnth n lst)
+    (if (<= n 1)
+	(cdr lst)
+	(cons (car lst)
+	      (butnth (+ -1 n) (cdr lst)))))
+  (define (minor matrix i j)
+    (map (lambda (x)
+	   (butnth j x))
+	 (butnth i mat)))
+  (* (if (odd? (+ i j)) -1 1)
+     (matrix-determinant (minor mat i j))))
+
+(define (matrix-determinant mat)
+  (let ((n (length mat)))
+    (if (eqv? 1 n) (caar mat)
+	(do ((j n (+ -1 j))
+	     (ans 0 (+ ans (* (list-ref (car mat) (+ -1 j))
+			      (matrix-cofactor mat 1 j)))))
+	    ((<= j 0) ans)))))
+
+
+(define (matrix-inverse mat)
+  (let* ((det (matrix-determinant mat))
+	 (rank (length mat)))
+    (and (not (zero? det))
+	 (do ((i rank (+ -1 i))
+	      (inv '() (cons
+			(do ((j rank (+ -1 j))
+			     (row '()
+				  (cons (/ (matrix-cofactor mat j i) det) row)))
+			    ((<= j 0) row))
+			inv)))
+	     ((<= i 0) inv)))))
 
 @
 
