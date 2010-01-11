@@ -429,36 +429,36 @@ with the highest weight $\mu$. For the character of this module we have
   \label{eq:41}
   ch L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}= \frac{\sum_{\omega\in W_{\bot}} \epsilon(\omega) e^{\omega(\mu+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}
 \end{equation}
-If we perform the projection $\pi_{\mathfrak{a}}(ch\, L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}})$ this will give us the single element $e^{\pi_{\mathfrak{a}} \cdot\mu}$ of the formal algebra ${\cal E}\left( \mathfrak{a}\right)$ with the multiplicity equal to the dimension of the module $L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, since all the roots of $\mathfrak{a}_{\bot}$ are orthogonal to  that of $\Delta_{\mathfrak{a}}$.
+The projection $\pi_{\mathfrak{a}}(ch\, L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}})$ gives us the single element $e^{\pi_{\mathfrak{a}} \cdot\mu}$ of the formal algebra ${\cal E}\left( \mathfrak{a}\right)$ with the multiplicity equal to the dimension of the module $L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, since all the roots of $\mathfrak{a}_{\bot}$ are orthogonal to  that of $\Delta_{\mathfrak{a}}$.
 
-Using this property we can reconsider the expression for the $\mathfrak{g}$-module character as the character of the direct sum of $\mathfrak{a}_{\bot}\oplus\mathfrak{h}$-modules.
+Using this property we can reconsider the restriction $ch\, L^{\mu}_{\mathfrak{g}\downarrow \mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, that is the character of the direct sum of $\mathfrak{a}_{\bot}\oplus\mathfrak{h}$-modules.
 Multiply the equation (\ref{eq:4}) by the element
 \begin{equation}
   \label{eq:5}
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
 \end{equation}
 {\color{red}(This term is non-zero.) --This is for us.}
-{\color{blue}Taking into account that for any formal series $Q$ and the polynomial the projection commutes with the multiplication,
+{\color{blue}Taking into account that for any formal series $Q \in {\cal E}$ and the binomial the projection commutes with the multiplication,
 \begin{equation}
   \label{eq:6}
   \pi_{\mathfrak{a}} (Q) \pi_{\mathfrak{a}}(1-e^{-\alpha})=\pi_{\mathfrak{a}}\left(Q\cdot (1-e^{-\alpha})\right),
 \end{equation}
 we can rewrite the 
-the product of (\ref{eq:4}) and (\ref{eq:5}) in the form:}
+product of (\ref{eq:4}) and (\ref{eq:5}) in the form:}
 \begin{multline}
   \label{eq:7}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
   \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{multline}
-The right-hand side of this equation can be reorganised similarly to what was performed in the paper \cite{ilyin812pbc}. Introduce the anomalous branching coefficients $k_{\lambda}$.
+The right-hand side of this equation can be reorganised similarly to what was performed in the paper \cite{ilyin812pbc}, by introducing the anomalous branching coefficients $k_{\lambda}$,
 \begin{equation}
   \label{eq:10}
   \sum_{\nu \in P_{\frak{a}}}b_{\nu }^{\left( \mu \right) }\Psi _{\left( \frak{%
         a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\frak{a}}}k_{\lambda
   }^{\left( \mu \right) }e^{\lambda }
 \end{equation}
-and cancel the denominator in the right-hand side of the equation (\ref{eq:7})
+and simplifying the multiplier:
 \begin{multline}
   \label{eq:12}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
@@ -469,17 +469,16 @@ and cancel the denominator in the right-hand side of the equation (\ref{eq:7})
 
 If the set $\Delta^{+}_{\bot}$ is non-empty then the Weyl reflections corresponding to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}$ of the Weyl group $W$.
 {\color{red} (We have denoted the subalgebra with the root space spanned over the set $\Delta^{+}_{\bot}$ by $\mathfrak{a}_{\bot}$) we are well acquainted with this!}
-
-Then we can reorganise the summation on the left-hand side of the equation (\ref{eq:12}) in the following way.
-We consider the factor-group $W_{\bot}\backslash W$ and the left conjugate classes. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ we choose the representative $\omega \in \tilde{\omega}$ in such a way that $\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$. Then
+Let us reorganise the summation in the left-hand side of (\ref{eq:12}).
+Consider the factor-space $W_{\bot}\backslash W$. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ choose the representative $\omega \in \tilde{\omega}$ such that 
+{\color{red} $\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$. This is a mistake. Such a transformation may not exist. We can only insist on } $\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$,
 \begin{multline}
   \label{eq:13}
  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
  \pi_{\mathfrak{a}}\left(\sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right)
 \end{multline}
-
-We see that the fraction on the right-hand side of the equation looks like the character of some representation of the algebra $\mathfrak{a}_{\bot}$.
-In order to write it explicitly we rewrite $\nu\cdot\omega(\mu+\rho)-\rho$ as
+The fraction in the right-hand side of the equation is similar to the character of some  $\mathfrak{a}_{\bot}$-module.
+Let us rewrite the shifted weights
 \begin{equation}
   \label{eq:30}
   \nu\cdot\omega(\mu+\rho)-\rho=\nu\cdot \bigl(\omega(\mu+\rho)-\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}}+\pi_{\mathfrak{a}}(\omega(\mu+\rho))\bigr)-\rho
@@ -490,62 +489,54 @@ Since $\nu\cdot \pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}}(\omega(\
   \label{eq:14}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}} =\\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} ch L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} {\rm ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
 \end{multline}
-The projection $\pi_{\mathfrak{a}}$ of the character of the highest-weight module $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ is equal to the dimension of the module multiplied by the unity of the algebra of formal exponents. So we have
+The projector $\pi_{\mathfrak{a}}$ transforms the character of the module ${\rm ch}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ into an element equal to the dimension of the module multiplied by the unit element {\color{red}" of the algebra of formal exponents" (for us)}:
   \begin{multline}
     \label{eq:15}
-    \pi_{\mathfrak{a}}\left( \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} ch L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) = \\
+    \pi_{\mathfrak{a}}\left( \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} \mathrm{ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) = \\
     \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}
   \end{multline}
-These dimensions of the modules could be easily calculated using the Weyl formula.
+{\color{red} These dimensions of the modules could be easily calculated using the Weyl formula. (for us)}
 
 Thus we have the equality
 \begin{multline}
   \label{eq:9}
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
   \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta^{+}_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
   \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda }
 \end{multline}
-
-We can rewrite the multiplier of the right-hand side as in the paper \cite{ilyin812pbc}.
+Following the transformations performed in \cite{ilyin812pbc} we rewrite the multiplier in the right-hand side:
 \begin{equation}
   \label{eq:11}
     \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})} \left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}=
      -\sum_{\gamma\in P_{\mathfrak{a}}} s(\gamma)e^{-\gamma}
 \end{equation}
 
-For the coefficient function $s\left( \gamma \right) $ define $\Phi _{\frak{a%
-}\subset \frak{g}}\subset P_{\frak{a}}$ as its carrier:
+For the coefficient function $s\left( \gamma \right) $ define the carrier $\Phi _{\frak{a%
+}\subset \frak{g}}\subset P_{\frak{a}}$:
 \begin{equation}
 \Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}\mid s\left(
 \gamma \right) \neq 0\right\} ;  \label{phi-d}
 \end{equation}
-\begin{equation}
-\prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})}\left(1-e^{-\alpha }\right) ^{\mathrm{{mult}\left( \alpha \right) -{mult}_{\frak{a}}}\mathrm{\left( \alpha \right) }}=-\sum_{\gamma \in \Phi _{\frak{a}\subset
-\frak{g}}}s\left( \gamma \right) e^{-\gamma }.  \label{fan-d}
-\end{equation}
-
-So we get the equation
+In these terms the equation for the formal elements,
 \begin{multline}
   \label{eq:16}
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
   = -\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s\left( \gamma \right) e^{-\gamma }\sum_{\lambda \in P_{\frak{a}}}
   k_{\lambda }^{\left( \mu \right) }e^{\lambda } \\
   =-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}}\sum_{\lambda \in P_{\frak{a}}}s\left( \gamma \right) k_{\lambda }^{\left( \mu \right)}e^{\lambda -\gamma }
 \end{multline}
-From the equality of the coefficients of the equal formal exponents we get
+leads to the following equality 
 \begin{equation}
   \label{eq:17}
-   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) dim\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
    \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\quad \xi\in P_{\mathfrak{a}}
 \end{equation}
 
-To get the recurrent relation for the anomalous branching coefficients we should use the following procedure, introduced in the paper \cite{ilyin812pbc}.
-
-Let $\gamma
-_{0} $ be the lowest vector with respect to the natural ordering in $%
-\overset{\circ }{\Delta _{\frak{a}}}$ in the lowest grade of $\Phi _{\frak{a}\subset \frak{g}}$. Decomposing the defining relation (\ref{fan-d})
+To get the recurrent relations for the anomalous branching coefficients we use the following procedure  (similar to that in \cite{ilyin812pbc}).
+Let $\gamma_{0} $ be the lowest vector with respect to the natural ordering in $%
+\overset{\circ }{\Delta _{\frak{a}}}$ in the lowest grade of $\Phi _{\frak{a}\subset \frak{g}}$ and decompose the defining relation (\ref{eq:11}),
 \begin{equation}
   \label{eq:18}
   \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})}\left(
@@ -553,58 +544,66 @@ _{0} $ be the lowest vector with respect to the natural ordering in $%
       }}\mathrm{\left( \alpha \right) }}=-s\left( \gamma _{0}\right) e^{-\gamma
     _{0}}-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}\setminus \left\{\gamma_{0}\right\}}s\left( \gamma \right) e^{-\gamma },
 \end{equation}
-in (\ref{eq:17}) we obtain
-
-\begin{equation}
+then the equality (\ref{eq:17}) leads to the desired recurrent  relation for the anomalous branching coefficients:
+\begin{multline}
   k_{\xi }^{\left( \mu \right) }=
   -\frac{1}{s\left( \gamma _{0}\right) }
   \left(
     \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}
     \left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)
     \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
+    \right.\\
+    \left. +
     \sum_{\gamma \in \Gamma _{\frak{a}\subset \frak{g}}} s\left( \gamma +\gamma _{0}\right) k_{\xi+\gamma }^{\left( \mu \right) }
   \right)
 \label{recurrent relation}
-\end{equation}
+\end{multline}
 where the set
 \begin{equation}
 \Gamma _{\frak{a}\subset \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
-\frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} .
+\frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} 
 \label{fan-defined}
 \end{equation}
+ was introduced that is called the injection fan.
 
-So we have obtained recurrent relation for the anomalous branching coefficients.
 
-If the set $\Delta_{\bot}^{+}$ is empty the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the following formula (11) \eqref{eq:40} from the paper \cite{ilyin812pbc}
+{\color{red}(If the set $\Delta_{\bot}^{+}$ is empty the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the following formula (11) \eqref{eq:40} from the paper \cite{ilyin812pbc}) This is not true! And the formula presented is not the one that was thus generalized.} 
+{\color{blue} Now let the set $\Delta_{\bot}^{+}$ be empty. There are three different reasons for $\Delta_{\bot}^{+}=0$: i) $\mathrm{dim}\mathfrak{h}_{\mathfrak{a}}=\mathrm{dim}\mathfrak{h}_{\mathfrak{g}}$, ii) $\mathfrak{a}_{\bot}=0$ and iii) $\mathfrak{a}_{\bot}\subset \mathfrak{h}_{\mathfrak{g}}$. Both the first and the second cases can be treated as corresponding to the trivial orthogonal subalgebra: 
+$\mathfrak{a}_{\bot}=0$. In any of these cases instead of the formal characters in the right-hand side of (\ref{eq:13}) we obtain the formal element $e^{ \pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)}$
+In the first two cases (equivalent to $\mathfrak{a}_{\bot}=0$) the projection operator retains its purely geometrical meaning: the vector $\omega(\mu+\rho)$ is projected to the subspace orthogonal to the weight space of $\mathfrak{a}$. It is clear that in any of the three variants the final vector $\pi_{\mathfrak{a}}\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)$ leads to the unit of the formal algebra 
+$\mathcal{E}$. Thus when the set $\Delta_{\bot}^{+}$ is empty we get the more simple recurrent relation: 
 \begin{equation}
-  \label{eq:40}
-  k_{\xi }^{\left( \mu \right) }=-\sum_{\omega\in W\setminus e} \epsilon(\omega)\, k^{(\mu)}_{\xi-\pi_{\mathfrak{a}}\circ (\omega\circ \rho - \rho)} +
-  \sum_{\omega\in W,\; \nu\in W_{\mathfrak{a}}} \epsilon(\omega)\epsilon(\nu)\delta_{\pi_{\mathfrak{a}}\circ (\omega\circ (\mu+\rho)-\rho),\xi+\rho_{\mathfrak{a}}-\nu\circ \rho_{\mathfrak{a}}}
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{w\in W}\epsilon \left( w\right) \delta _{\xi ,\pi _{\frak{a}}\circ
+\left( w\circ (\mu +\rho )-\rho \right) +\gamma _{0}}+\sum_{\gamma \in
+\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
++\gamma }^{\left( \mu \right) }\right)   \label{recurrent relation special}
 \end{equation}
+It coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)). }
 
-
-  In the next section we describe the algorithm for the computation of branching coefficients using the relation \eqref{recurrent relation}.
+  In the next section we describe an algorithm for the computation of branching coefficients based on the relation \eqref{recurrent relation}.
 
 \subsection{Algorithm for the recursive computation of the branching coefficients}
 \label{sec:algorithm}
 
-We use the recurrent relation \eqref{recurrent relation} to formulate the algorithm for recursive computation of the branching coefficients. It is important to mention that the computation of the branching coefficients is organised without the  explicit construction of the module $L^{(\mu)}_{\mathfrak{g}}$ and any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
+We use the recurrent relation \eqref{recurrent relation} to formulate an algorithm for recursive computation of the branching coefficients. It is important to mention that the computation of the branching coefficients is performed without the  explicit construction of the module $L^{(\mu)}_{\mathfrak{g}}$ and any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
 
-The algorithm is divided into the following steps.
+The algorithm contains the following steps.
 \begin{enumerate}
-\item Construct the set $\Delta^{+}$ of the positive roots of the algebra $\mathfrak{g}$.
-\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of the subalgebra $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
-\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous points of the $\mathfrak{g}$-module $L^{(\mu)}$.
-\item Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check if the weight $\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ checking that the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ is non-negative.
-\item For $\lambda=\omega(\mu+\rho),\; \lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
+\item Construct the sets $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ of positive roots for the algebras $\mathfrak{a} \subset \mathfrak{g}$.
+\item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
+\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the $\mathfrak{g}$-module $L^{(\mu)}$.
+\item {\color{red}"Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$."
+ for  lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. The same mistake!} Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ that must be non-negative.
+\item For $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
 \item Construct the set $\Gamma$ \eqref{fan-defined}.
-\item Calculate anomalous branching coefficients in the main Weyl
+\item Calculate the anomalous branching coefficients in the main Weyl
   chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent relation}).
 \end{enumerate}
 
-If we are interested in the branching coefficients for the embedding of the finite-dimensional Lie algebra into the affine Lie algebra we can construct the set of the anomalous points up to required grade and use steps 4-7 of the algorithm for each grade. We can also speed up the algorithm by one-time computation of the representatives of the conjugate classes $W_{\bot}\backslash W$.
+If we are interested in the branching coefficients for the embedding of the finite-dimensional Lie algebra into the affine Lie algebra we can construct the set of the anomalous weights up to the required grade and use the steps 4-7 of the algorithm for each grade. We can also speed up the algorithm by one-time computation of the representatives of the conjugate classes $W_{\bot}\backslash W$.
 
-The next section consists of several examples computed with this algorithm.
+The next section contains several examples computed using this algorithm.
 
 \section{Examples}
 \label{sec:examples}
