@@ -384,8 +384,8 @@ For the algebra $\mathfrak{g}$ from the series $C_r$ the roots in the orthogonal
 
 For the algebra $\mathfrak{g}$ from the series $D_r$ the roots in the orthogonal basis $\{e_i,\; 1\leq i\leq r\}$ are $\Delta=\{\alpha_{\pm i,\pm j}=\pm e_i\pm e_j,\;1\leq i<j\leq r\}$, $\Delta^{+}=\{\alpha_{i,-j},\; \alpha_{ij},\; i<j,\; 1\leq j\leq r\}$ and the set of simple roots consists of $\alpha_{1,-2},\alpha_{2,-3},\dots,\alpha_{r-1,-r},\alpha_{r-1,r}$. So if the regular subalgebra $\mathfrak{a}=A_{r_{\mathfrak{a}}}$ and its simple root system consists of first $r_{\mathfrak{a}}$ simple roots, then $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\; r_{\mathfrak{a}}+1<i<j\leq r\}$ and $\mathfrak{a}_{\bot}=D_{r-r_{\mathfrak{a}}-1}$. Otherwise if $\mathfrak{a}=D_{r_{\mathfrak{a}}}$ and its simple roots are $\alpha_{r-r_{\mathfrak{a}}+1,-r+r_{\mathfrak{a}}-2},\dots,\alpha_{r-1,r},\alpha_{r-1,r}$ we see that $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\; 1<i<j\leq r-r_{\mathfrak{a}}\}$ and $\mathfrak{a}_{\bot}=D_{r-r_{\mathfrak{a}}}$.
 
-(In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the
-special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}. {\color{red}(This is for us!)})
+In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the
+special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}. 
 \begin{figure}[ph]
 \noindent  \centering{
   \includegraphics[width=120mm]{special_A1_A2_A3.pdf}
@@ -405,14 +405,13 @@ Using the existing classification of maximal special subalgebras \cite{dynkin195
       so(p)\oplus so(q) & \subset so(p+q)& \text{for}\;p\;\text{and}\;q\;\text{odd}\\
   \end{array}
 \end{equation}
-{\color{blue} Exceptional Lie algebras and other non-maximal subalgebras will be considered elsewhere.}
+Exceptional Lie algebras and other non-maximal subalgebras will be considered elsewhere.
 
-{\color{blue} Up to this point we considered the problem of $\mathfrak{a}_{\bot}$-construction given $\mathfrak{a}\in\mathfrak{g}$ for regular injections in terms of Dynkin diagrams. When the root systems $ \Delta$ and $\Delta_{\mathfrak{a}}$ are known explicitly all that we need is to select the roots  
+Up to this point we considered the problem of $\mathfrak{a}_{\bot}$-construction given $\mathfrak{a}\in\mathfrak{g}$ for regular injections in terms of Dynkin diagrams. When the root systems $ \Delta$ and $\Delta_{\mathfrak{a}}$ are known explicitly all that we need is to select the roots  
 $\Delta_{\bot}=\left\{\alpha\in \Delta:\alpha\bot \Delta_{\mathfrak{a}}\right\}$ and correspondingly the positive roots
-$\Delta^{+}_{\bot}=\left\{\alpha\in \Delta^{+}:\alpha\bot \Delta_{\mathfrak{a}}\right\}$. }
+$\Delta^{+}_{\bot}=\left\{\alpha\in \Delta^{+}:\alpha\bot \Delta_{\mathfrak{a}}\right\}$. 
 
-Now consider the $\mathfrak{a}_{\bot}\oplus\mathfrak{h}$-module 
-{\color{red} What is $\mathfrak{h}$? If it is the Cartan of $\mathfrak{g}$ then there are too many Cartans! It must be $\mathfrak{h}_{\mathfrak{a}}$.}
+Now consider the $\mathfrak{a}_{\bot}\oplus\mathfrak{h}_{\mathfrak{a}}$-module 
 with the highest weight $\mu$. For the character of this module we have
 \begin{equation}
   \label{eq:41}
@@ -426,14 +425,13 @@ Multiply the equation (\ref{eq:4}) by the element
   \label{eq:5}
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
 \end{equation}
-{\color{red}(This term is non-zero.) --This is for us.}
-{\color{blue}Taking into account that for any formal series $Q \in {\cal E}$ and the binomial the projection commutes with the multiplication,
+Taking into account that for any formal series $Q \in {\cal E}$ and the binomial the projection commutes with the multiplication,
 \begin{equation}
   \label{eq:6}
   \pi_{\mathfrak{a}} (Q) \pi_{\mathfrak{a}}(1-e^{-\alpha})=\pi_{\mathfrak{a}}\left(Q\cdot (1-e^{-\alpha})\right),
 \end{equation}
 we can rewrite the 
-product of (\ref{eq:4}) and (\ref{eq:5}) in the form:}
+product of (\ref{eq:4}) and (\ref{eq:5}) in the form:
 \begin{multline}
   \label{eq:7}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
@@ -457,10 +455,8 @@ and simplifying the multiplier:
 
 
 If the set $\Delta^{+}_{\bot}$ is non-empty then the Weyl reflections corresponding to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}$ of the Weyl group $W$.
-{\color{red} (We have denoted the subalgebra with the root space spanned over the set $\Delta^{+}_{\bot}$ by $\mathfrak{a}_{\bot}$) we are well acquainted with this!}
 Let us reorganise the summation in the left-hand side of (\ref{eq:12}).
-Consider the factor-space $W_{\bot}\backslash W$. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ choose the representative $\omega \in \tilde{\omega}$ such that 
-{\color{red} $\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$. This is a mistake. Such a transformation may not exist. We can only insist on } $\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$,
+Consider the factor-space $W_{\bot}\backslash W$. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ choose the representative $\omega \in \tilde{\omega}$ such that $\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$,
 \begin{multline}
   \label{eq:13}
  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
@@ -480,13 +476,12 @@ Since $\nu\cdot \pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}}(\omega(\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} {\rm ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
 \end{multline}
-The projector $\pi_{\mathfrak{a}}$ transforms the character of the module ${\rm ch}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ into an element equal to the dimension of the module multiplied by the unit element {\color{red}" of the algebra of formal exponents" (for us)}:
+The projector $\pi_{\mathfrak{a}}$ transforms the character of the module ${\rm ch}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ into an element equal to the dimension of the module multiplied by the unit element:
   \begin{multline}
     \label{eq:15}
     \pi_{\mathfrak{a}}\left( \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} \mathrm{ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) = \\
     \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}
   \end{multline}
-{\color{red} These dimensions of the modules could be easily calculated using the Weyl formula. (for us)}
 
 Thus we have the equality
 \begin{multline}
@@ -555,9 +550,7 @@ where the set
 \end{equation}
  was introduced that is called the injection fan.
 
-
-{\color{red}(If the set $\Delta_{\bot}^{+}$ is empty the modules $L_{\mathfrak{a}_{\bot}}$ are trivial, the dimensions are equal to 1 and we get the following formula (11) \eqref{eq:40} from the paper \cite{ilyin812pbc}) This is not true! And the formula presented is not the one that was thus generalized.} 
-{\color{blue} Now let the set $\Delta_{\bot}^{+}$ be empty. There are three different reasons for $\Delta_{\bot}^{+}=0$: i) $\mathrm{dim}\mathfrak{h}_{\mathfrak{a}}=\mathrm{dim}\mathfrak{h}_{\mathfrak{g}}$, ii) $\mathfrak{a}_{\bot}=0$ and iii) $\mathfrak{a}_{\bot}\subset \mathfrak{h}_{\mathfrak{g}}$. Both the first and the second cases can be treated as corresponding to the trivial orthogonal subalgebra: 
+Now let the set $\Delta_{\bot}^{+}$ be empty. There are three different reasons for $\Delta_{\bot}^{+}=0$: i) $\mathrm{dim}\mathfrak{h}_{\mathfrak{a}}=\mathrm{dim}\mathfrak{h}_{\mathfrak{g}}$, ii) $\mathfrak{a}_{\bot}=0$ and iii) $\mathfrak{a}_{\bot}\subset \mathfrak{h}_{\mathfrak{g}}$. Both the first and the second cases can be treated as corresponding to the trivial orthogonal subalgebra: 
 $\mathfrak{a}_{\bot}=0$. In any of these cases instead of the formal characters in the right-hand side of (\ref{eq:13}) we obtain the formal element $e^{ \pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)}$
 In the first two cases (equivalent to $\mathfrak{a}_{\bot}=0$) the projection operator retains its purely geometrical meaning: the vector $\omega(\mu+\rho)$ is projected to the subspace orthogonal to the weight space of $\mathfrak{a}$. It is clear that in any of the three variants the final vector $\pi_{\mathfrak{a}}\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)$ leads to the unit of the formal algebra 
 $\mathcal{E}$. Thus when the set $\Delta_{\bot}^{+}$ is empty we get the more simple recurrent relation: 
@@ -568,7 +561,7 @@ k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 \Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
 +\gamma }^{\left( \mu \right) }\right)   \label{recurrent relation special}
 \end{equation}
-It coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)). }
+It coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)). 
 
   In the next section we describe an algorithm for the computation of branching coefficients based on the relation \eqref{recurrent relation}.
 
@@ -582,8 +575,7 @@ The algorithm contains the following steps.
 \item Construct the sets $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ of positive roots for the algebras $\mathfrak{a} \subset \mathfrak{g}$.
 \item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
 \item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the $\mathfrak{g}$-module $L^{(\mu)}$.
-\item {\color{red}"Select those weights $\lambda=\omega(\mu+\rho)$ which lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$."
- for  lies in the closure of the main Weyl chamber of the algebra $\mathfrak{a}_{\bot}$. The same mistake!} Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ that must be non-negative.
+\item Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ that must be non-negative.
 \item For $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
 \item Construct the set $\Gamma$ \eqref{fan-defined}.
 \item Calculate the anomalous branching coefficients in the main Weyl
