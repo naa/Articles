@@ -343,6 +343,7 @@ All the mathematical code which is connected with Lie theory is collected in the
 <<Semisimple Lie algebra .scm>>
 <<Functions for root systems .scm>>
 <<Simple Lie algebras .scm>>
+<<Representations .scm>>
 @
 \appendix
 
