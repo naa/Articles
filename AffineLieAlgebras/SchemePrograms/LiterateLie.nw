@@ -192,7 +192,9 @@ We have already introduced Weyl group of reflections \ref{weyl-group-def}, now w
 	   (filter (lambda (x) (not (element-of-set? x weights)))
 		   (fold-right union-set '() 
 			       (map (lambda (w)
-				      (map (lambda (x) (reflect w x)) (send self 'simple-roots)))
+				      (map
+				       (lambda (x) (reflect w x))
+				       (send self 'simple-roots)))
 				    weights)))))
       (if (null? addon)
 	  weights
@@ -427,7 +429,8 @@ We need couple of functions for sets. We represent set as list.
 
 (define (union-set set1 set2)
 	(if (null? set1) set2
-		(union-set (cdr set1) (adjoin-set (car set1) set2))
+		(union-set (cdr set1)
+			   (adjoin-set (car set1) set2))
 	)
 )
 
