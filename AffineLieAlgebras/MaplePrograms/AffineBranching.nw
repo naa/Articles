@@ -1,4 +1,3 @@
-% -*- mode: noweb2-mumamo; noweb-code-mode: maplev-mode -*-
 \documentclass[a4paper,10pt]{article}
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}

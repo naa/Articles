@@ -1,4 +1,3 @@
-% -*- mode: Noweb; noweb-code-mode: maplev-mode -*-
 \documentclass[a4paper,10pt]{article}
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
@@ -35,15 +34,15 @@ We consider the representation of $\mathfrak{g}$ with the highest weight $\mu$
 
 At first we need to read the libraries of functions
 
-<<Some initialisation>>=
+<<Some initialisation .mpl>>=
 
 read("coxeter.mpl"):
 plotsetup(X11);
-<<Aux functions>>
+<<Aux functions .mpl>>
 @
 We also need some auxiliary functions.
 
-<<Aux functions>>=
+<<Aux functions .mpl>>=
 get_indices:=r->map(x->x[1],[indices(r)]);
 iprod := (v1,v2) -> coeff(v1,lambda0)*coeff(v2,delta)
                           +coeff(v1,delta)*coeff(v2,lambda0)+
@@ -67,34 +66,43 @@ projection:=proc(weights,base)
     end;
 end;
 
+prettyplot:=proc(points)
+    local pts,txt;
+    with(plots);
+    pts:=PLOT(POINTS(op(map(x->[coeff(x,e3),coeff(x,e4)],select(y->coeff(y,eps)>0,points))),SYMBOL(CROSS)),
+              POINTS(op(map(x->[coeff(x,e3),coeff(x,e4)],select(y->coeff(y,eps)<0,points))),SYMBOL(DIAMOND)));
+    txt:=plots[textplot](map(x->[coeff(x,e3)+1/5,coeff(x,e4)+1/5,coeff(x,eps)],select(y->coeff(y,eps)<>0,points)));
+    return [pts,txt];
+end;
+
 @
 Then we compute the anomalous points using the modified procedure ``orbit'' from the ``Coxeter/Weyl'' Maple package.
 In order to do it we need to compute simple and positive roots of $\mathfrak{g}$, $\mathfrak{a}_{\bot}$ and the embedded algebra $\mathfrak{a}$.
 
 <<ClassicalBranching.mpl>>=
 #!/usr/local/bin/maple
-<<Some initialisation>>
+<<Some initialisation .mpl>>
 
 
 branching:=proc(mu,subalgebra_roots,algebra_name)
-                local <<Local variables>>;
+                local <<Local variables .mpl>>;
                 wg:=weyl['weights'](algebra_name);
-                <<Compute roots>>
-                <<Compute anomalous points>>
-                <<Select points in the main chamber of Abot>>
-                <<Compute the dimensions of modules>>
-                <<Construct the fan>>
-                <<Get gamma0>>
-                <<Recurrent procedure>>
-                <<Use recurrent relation>>
-                <<Return result>>
+                <<Compute roots .mpl>>
+                <<Compute anomalous points .mpl>>
+                <<Select points in the main chamber of Abot .mpl>>
+                <<Compute the dimensions of modules .mpl>>
+                <<Construct the fan .mpl>>
+                <<Get gamma0 .mpl>>
+                <<Recurrent procedure .mpl>>
+                <<Use recurrent relation .mpl>>
+                <<Return result .mpl>>
 end;
 @
 So at first we need to compute the roots of the algebra
 $\mathfrak{g}$, see which roots are in $\Delta_{\bot}$
 and construct $\mathfrak{a}_{\bot}$.
 
-<<Compute roots>>=
+<<Compute roots .mpl>>=
 
 rho:=`weyl/rho`(algebra_name);
 algebra_simple_roots:=coxeter['base'](algebra_name);
@@ -107,7 +115,7 @@ subalgebra_pos_roots:=map(x->-x,
 Abot_roots:=select(x->projection(x,subalgebra_roots)=0,algebra_pos_roots);
 Abot_rho:=1/2*convert(Abot_roots,`+`);
 
-<<Local variables>>=
+<<Local variables .mpl>>=
 wg, rho, algebra_simple_roots, algebra_pos_roots,
 subalgebra_pos_roots, Abot_roots, Abot_rho,
 @
@@ -118,7 +126,7 @@ Then we need to construct the set of anomalous points of the representation $L^{
   \left\{\omega(\mu+\rho)-\rho,\; \omega\in W\right\}
 \end{equation}
 
-<<Compute anomalous points>>=
+<<Compute anomalous points .mpl>>=
 finite_orbit:=proc(v0,R)
  local S,coS,EPS,is_mem,orb,old,new,u,i,v,parity,u1,j,nparity,pres;
     S:=coxeter['base'](R); coS:=coxeter['co_base'](S);
@@ -159,7 +167,7 @@ end:
 
 anom_points:=map(x->x-rho,finite_orbit(mu+rho,algebra_name));
 
-<<Local variables>>=
+<<Local variables .mpl>>=
 anom_points, finite_orbit,
 @
 
@@ -168,29 +176,29 @@ The points are kept in the symbolic form $k_1\cdot e_1+\dots+k_4\cdot e_4+\epsil
 We need to select those points which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
 It means that scalar product of these points with all the roots from $\Delta_{\bot}$ is non-negative.
 
-<<Select points in the main chamber of Abot>>=
+<<Select points in the main chamber of Abot .mpl>>=
 selected_points:=select(x->
                         andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots),y)>=0,
                                Abot_roots),
                         anom_points):
 #print(nops(selected_points));
-<<Local variables>>=
+<<Local variables .mpl>>=
 selected_points,
 @
 To compute dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules we need to add to each selected point $\rho$, project it onto the root space $\Delta_{\bot}$ and substract $\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula written as the procedure.
 
 
-<<Procedure to compute dimension of module>>=
+<<Procedure to compute dimension of module .mpl>>=
 dimension:=proc(v,pos_roots) local f,r0;
     r0:=convert(pos_roots,`+`)/2;
     f:=[seq(1+coxeter['iprod'](r,v)/coxeter['iprod'](r,r0),r=pos_roots)];
     convert(f,`*`)
 end;
-<<Local variables>>=
+<<Local variables .mpl>>=
 dimension, ppts,
 
-<<Compute the dimensions of modules>>=
-<<Procedure to compute dimension of module>>
+<<Compute the dimensions of modules .mpl>>=
+<<Procedure to compute dimension of module .mpl>>
 ppts:=map(x->
              projection(subs(eps=0,x),subalgebra_roots)+
                         eps*coeff(x,eps)*
@@ -211,13 +219,13 @@ In order to do it we need to expand
   \prod_{\alpha\in\pi_{\mathfrak{a}}\left(\Delta^{+}\setminus\Delta_{\bot}\right)} \left(1-e^{-\alpha}\right)^{mult(\alpha)-mult_{\mathfrak{a}}(\alpha)}=
   \sum_{\gamma\in\Phi}s(\gamma)e^{-\gamma}
 \end{equation}
-<<Construct the fan>>=
-<<Count multiplicities of projected roots>>
-<<Expand roots with multiplicities>>
+<<Construct the fan .mpl>>=
+<<Count multiplicities of projected roots .mpl>>
+<<Expand roots with multiplicities .mpl>>
 @
 We will use Maple [[table]] data type
 
-<<Count multiplicities of projected roots>>=
+<<Count multiplicities of projected roots .mpl>>=
 mult_table:=table();
 for r in projection([op({op(algebra_pos_roots)}
                     minus {op(Abot_roots)})],subalgebra_roots)
@@ -231,7 +239,7 @@ end;
 @
 Then we need to expand the expression \eqref{eq:7}.
 We use procedures [[fan]] and [[inj_roots]].
-<<Expand roots with multiplicities>>=
+<<Expand roots with multiplicities .mpl>>=
 mult_inj:=proc(r,roots)
          if assigned(roots[subs(eps=0,r)]) then
              return roots[subs(eps=0,r)];
@@ -290,12 +298,12 @@ inj_roots:=proc(roots)
 
 pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
 f:=fan(pppr,inj_roots(subalgebra_pos_roots));
-<<Local variables>>=
+<<Local variables .mpl>>=
 f, pppr, fan, mult_inj,v, mu0, sing_table
 @
 Now we have the set $\Gamma$ and $s(\gamma)$.
 We can also easilly see, that $\gamma_0=-2\cdot e_3-2\cdot e_4$.
-<<Get gamma0>>=
+<<Get gamma0 .mpl>>=
 subalgebra_rho:=convert(subalgebra_pos_roots,`+`)/2;
 gamma0:=f[1];
 for r in f do
@@ -307,7 +315,7 @@ Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f));
 #plots[textplot](map(x->[coeff(x,e4),coeff(x,e3),coeff(x,eps)],Gamma));
 @
 Now we can use recurrent formula which we encode as the recurrent procedure
-<<Recurrent procedure>>=
+<<Recurrent procedure .mpl>>=
 
 calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
        local xi0,a;
@@ -338,7 +346,7 @@ of the projection of the representation with highest weight $\mu$, but
 it is simplier to consider the cube which containts all the
 projections of the anomalous points.
 
-<<Use recurrent relation>>=
+<<Use recurrent relation .mpl>>=
 
 is_in_borders:=proc(p,borders)
           local ind,c1,c2;
@@ -392,12 +400,14 @@ calculate_branching_coefficient(-mu0,Gamma,gamma0,sing_table,t,i_i_b);
 
 @
 At last we need to return pretty-printed result.
-<<Return result>>=
-return map(k->[k,t[k]],
+<<Return result .mpl>>=
+return [map(x->subs(eps=0,x)-eps*coeff(x,eps)+subs(eps=0,gamma0),ppts),
+        map(x->subs(eps=0,x)-eps*coeff(x,esp),Gamma),
+        map(k->[k,t[k]],
            select(x->t[x]<>0,
                   select(y->andmap(z->iprod(y,z)>=0,
                          subalgebra_pos_roots),
-                  get_indices(t))));
+                  get_indices(t))))];
 @
 Here it is.
 
