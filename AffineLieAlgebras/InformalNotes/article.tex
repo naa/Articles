@@ -1,8 +1,9 @@
 \documentclass[a4paper,12pt]{article}
+\usepackage{ucs}
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{pb-diagram}
-\usepackage{ucs}
+
 %\usepackage[utf8x]{inputenc}
 %\usepackage[russian]{babel}
 \usepackage{cmap}
@@ -803,69 +804,72 @@ Here the lower index of the branching function denotes the number of the corresp
 
 \section{Physical applications}
 \label{sec:phys-appl}
-Here we want to discuss possible applications of the described techniques in physical models.
+(This part must be changed considerably. First it is necessary to restore our notations instead of the Di Francesco notations. Starting with $J^{a_j}_{-n_j}$ which is too archaic! Second but much more important: the example that you had presented refers to the case where the initial injection fan method remains unmodified. Are there any other cases where the modified fan method is necessary? Fourth, you write "we should select only those highest-weight modules of the subalgebra $\mathfrak{a}$ for which the relation (\ref{eq:111}) holds", where does this selection happens and where is it in the example? Fifth, again the notations, it is of no use to indicate the Dynkin indices of the fund. weights ("three level one dominant weights $[1,0,0],\;[0,1,0],\;[0,0,1]$" ) for the reader it is interesting what are they like here; we never place the level indices in the first place as in "with the highest weight $w_0=(1,0,0)$" see the section Notations. In the Figure 12 the irrep is written to be (1,0,1,0) -- very strange! Sixth,
+in all the figures it is difficult to see anything and at the same time there are almost no explanations, even the boxes and dots are not commented. Some other corrections are made directly in the text.)
 
-Branching coefficients for the embedding of affine Lie subalgebra into
+Here we want to discuss possible applications of the described techniques in physical (?) models.
+
+Branching coefficients for an embedding of affine Lie subalgebra into
 affine Lie algebra can be used to construct modular invariant
-partition functions of Wess-Zumino-Novikov-Witten models (\cite{difrancesco1997cft}, \cite{Walton:1999xc}, \cite{walton1989conformal}, \cite{schellekens1986conformal}).
-
-But for this construction to work the embedding is required to be conformal, which means that the central charge of the subalgebra is equal to the central charge of the algebra.
+partition functions for Wess-Zumino-Novikov-Witten models (\cite{difrancesco1997cft}, \cite{Walton:1999xc}, \cite{walton1989conformal}, \cite{schellekens1986conformal}). For the construction to be valid the embedding is required to be conformal, which means that the central charge of the subalgebra is equal to the central charge of the algebra:
 \begin{equation}
   \label{eq:31}
   c(\mathfrak{a})=c(\mathfrak{g})
 \end{equation}
 
- The class of the conformal embeddings is rather small, the complete classification is given in the paper \cite{schellekens1986conformal}.
-The requirement (\ref{eq:31}) allows to reduce the task of the computation of the branching coefficients of affine Lie algebras to the computation of the branching coefficients of the finite-dimensional Lie algebras.
+ The class of conformal embeddings is not rich, the complete classification is given in the paper \cite{schellekens1986conformal}.
+The requirement (\ref{eq:31}) allows to reduce the problem of finding the branching coefficients for affine Lie algebras to the computation of branching coefficients for finite-dimensional Lie algebras.
 
 Here we describe this procedure and discuss how the requirement (\ref{eq:31}) can be used to simplify the algorithm \ref{sec:algorithm}.
 
-Conformal embeddings should preserve conformal invariance, so Sugawara central charge should be the same for the original and the embedded theory.
 
-The states for the theory that corresponds to the algebra $\mathfrak{g}$
+Let $J^{a_j}_{-n_j}$ and $\tilde{J}^{a'_j}_{-n_j}$ be the lowering generators for $\mathfrak{g}$ and of $\mathfrak{a}\subset\mathfrak{g}$ correspondingly. Let $\pi_{\mathfrak{a}}$ be the projection operator of $\pi_{\mathfrak{a}}:\mathfrak{g}\longrightarrow \mathfrak{a}$. In the theory attributed to $\mathfrak{g}$ with the vacuum $\left|\lambda\right>$ the states can be described as 
 \begin{equation}
   \label{eq:109}
-  J^{a_1}_{-n_1}J^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq\dots>0
+  J^{a_1}_{-n_1}J^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq \dots>0.
 \end{equation}
-For sub-algebra $\mathfrak{a}\subset\mathfrak{g}$
+And for the sub-algebra $\mathfrak{a}$ the corresponding states are
 \begin{equation}
   \label{eq:110}
-  \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\pi_{\mathfrak{a}}(\lambda)\right>
+  \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\pi_{\mathfrak{a}}(\lambda)\right>.
 \end{equation}
-Here $\tilde{J}^{a'_j}_{-n_j}$ are the generators of $\mathfrak{a}$ and $\pi_{\mathfrak{a}}$ is the projection of $\mathfrak{g}$ to $\mathfrak{a}$. $\mathfrak{g}$-invariance of vacuum entails its $\mathfrak{a}$-invariance, but it is not the case for energy-momentum tensor. So energy-momentum tensor of bigger theory should consist only of generators of $\mathfrak{a}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to equation
+The $\mathfrak{g}$-invariance of the vacuum entails its $\mathfrak{a}$-invariance, but it is not the case for the energy-momentum tensor. So the energy-momentum tensor of the larger theory should consist only of generators of $\tilde{J}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to the equation
 \begin{equation}
   \label{eq:111}
   \frac{k\;\mathrm{dim}\,\mathfrak{g}}{k+g}=\frac{x_e k\; \mathrm{dim}\,\mathfrak{a}}{x_ek+a}
 \end{equation}
-Here $x_e$ is the embedding index and $g$, $a$ are dual Coxeter numbers of corresponding algebras.
+Here $x_e$ is the embedding index and $g$, $a$ are the dual Coxeter numbers for the  corresponding algebras.
 
-It can be shown that solutions of equation (\ref{eq:111}) exist only
-for level 1 $k=1$ \cite{difrancesco1997cft}.
+It can be demonstrated that the solutions of the equation (\ref{eq:111}) exist only
+for level $k=1$ \cite{difrancesco1997cft}.
 
-If we have modular-invariant partition function for the fields described by the representation of the algebra $\mathfrak{g}$ this modular invariance is preserved by the projection on the subalgebra $\mathfrak{a}$, but we need also the preservation of the conformal invariance. So we should select only those highest-weight modules of the subalgebra $\mathfrak{a}$ for which the relation (\ref{eq:111}) holds.
+If we have modular-invariant partition function for the fields described by a representation of the algebra $\mathfrak{g}$ this modular invariance is preserved by the projection on the subalgebra $\mathfrak{a}$, but we need also the preservation of the conformal invariance. So we should select only those highest-weight modules of the subalgebra $\mathfrak{a}$ for which the relation (\ref{eq:111}) holds.
 
-Since in the decomposition (\ref{eq:3}) the highest weight $\nu$ of the subalgebra module belongs to some grade $n$ of projected algebra module $\pi_{\mathfrak{a}}\cdot L^{(\mu)}_{\mathfrak{g}}$, from the relation (\ref{eq:111}) one can obtain the following requirement on the conformal dimensions of the corresponding fields
+In the decomposition (\ref{eq:3}) let the highest weight $\nu$ of the subalgebra module belong to the grade $n$ of the projected  module $\pi_{\mathfrak{a}}\cdot L^{(\mu)}_{\mathfrak{g}}$.  Then the relation (\ref{eq:111}) implies the following requirement on the conformal dimensions of the corresponding fields
 \begin{equation}
   \label{eq:32}
    \Delta_{\pi_{\mathfrak{a}}\mu}+n=\Delta_{\nu}
 \end{equation}
-It leads to the relation on the classical parts of the corresponding weights:
+It leads to a restriction imposed on the classical parts of the corresponding weights:
 \begin{equation}
   \label{eq:33}
   \frac{(\overset{\circ }{\mu},\overset{\circ }{\mu}+2\rho)}{2(1+g)}+n=\frac{(\overset{\circ }{\nu},\overset{\circ }{\nu}+2\rho_{\mathfrak{a}})}{2(x_e+a)}
 \end{equation}
-There exits the finite reducibility theorem for the conformal embeddings which states that only finite number of the branching coefficients is non-zero in the case of the conformal embedding $\mathfrak{a}\subset\mathfrak{a}$.
+The finite reducibility theorem states that for conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
 
-Then after we have found all such weights $\nu$ and the corresponding branching coefficients $b^{(\mu)}_{\nu}$ we can substitute the sums $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi_{\nu}$ over the modified characters $\chi_{\nu}$ of the corresponding $\mathfrak{a}$-modules in place of the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function
+Then after we have found all such weights $\nu$ and the corresponding branching coefficients $b^{(\mu)}_{\nu}$ we can replace the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function
 \begin{equation}
   \label{eq:34}
    Z(\tau)=\sum_{ \mu\in P^{+}_{\mathfrak{g}}} \chi_{\mu}(\tau)\bar \chi_{\mu}(\bar \tau)
 \end{equation}
-Thus we obtain the non-diagonal modular-invariant  partition function for the theory with the current algebra $\mathfrak{a}$.
+by the decompositions   $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi_{\nu}$ containing the modified characters $\chi_{\nu}$ of the corresponding $\mathfrak{a}$-modules. Thus we obtain the non-diagonal modular-invariant  partition function for the theory with the current algebra $\mathfrak{a}$.
 \begin{equation}
   \label{eq:36}
    Z_{\mathfrak{a}}(\tau)=\sum_{ \nu,\lambda\in P^{+}_{\mathfrak{a}}} \chi_{\nu}(\tau)M_{\nu\lambda}\bar \chi_{\lambda}(\bar \tau)
 \end{equation}
+\begin{comment}
+The problem is also considered in the \cite{coquereaux2008conformal}.  
+\end{comment}
 
 
 \subsection{Example}
@@ -873,15 +877,15 @@ Thus we obtain the non-diagonal modular-invariant  partition function for the th
 
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
 \label{sec:spec-embedd-hata_1s}
-Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ built as the affine extension of the special embedding $su(2)\subset su(3)$ with the embedding index $x_e=4$. The level of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the subalgebra $\tilde{k}=kx_e=4$.
+Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ constructed as the affine extension of the special embedding $su(2)\subset su(3)$ with the embedding index $x_e=4$. The level of the algebra (what is it ?) $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the subalgebra $\tilde{k}=kx_e=4$.
 
 There exist three level one dominant weights $[1,0,0],\;[0,1,0],\;[0,0,1]$ in the weight space of $\hat{A}_2$.
-It is easy to see that the set $\Delta_{\bot}$ is empty.
+It is easy to see that the set $\Delta_{\bot}$ is empty. (Not only this set is empty but the orthogonal algebra is empty!)
 
-Here we view the representation with the highest weight
-$w_0=(1,0,0)$ in detail.
+Let us consider the representation with the highest weight
+$w_0=(1,0,0)$ in details.
 
-The set of the anomalous points of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration.
+The set of the anomalous points of this representation up to the sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration. (Where, how? What are the coordinates, it is very difficult to see anything even in the zero grade!)
 
 \begin{figure}[h!tb]
   \includegraphics[width=160mm]{AffineA2_A1_anom.pdf}
@@ -889,8 +893,8 @@ The set of the anomalous points of this representation up to sixth grade is depi
   \label{fig:affine_A2_anom_point}
 \end{figure}
 
-As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
-The result of this computation up to the twelfth grade is presented at the Figure \ref{fig:AffineA2_A1_anom_proj}
+According to our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules (there are no such subalgebra here!)$L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
+The result of these caculations up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_A1_anom_proj}
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=150mm]{AffineA2_A1_proj_anom.pdf}
@@ -898,11 +902,11 @@ The result of this computation up to the twelfth grade is presented at the Figur
   \label{fig:AffineA2_A1_anom_proj}
 \end{figure}
 
-Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
+Then we construct ``the fan'' and use the recurrent relations to compute the anomalous branching coefficients.
 
 Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:AffineA2A1Fan}.
-Here we restricted the computation to the twelfth grade.
+the weights $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:AffineA2A1Fan}.
+Here we restricted the calculations to the first twelve grades.
 \begin{figure}[p]
   \centering
   \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
@@ -910,7 +914,7 @@ Here we restricted the computation to the twelfth grade.
   \label{fig:AffineA2A1Fan}
 \end{figure}
 
-Using the recurrent relation for the anomalous branching coefficients we get the following result
+Using the recurrent relation for the anomalous branching coefficients we get the result presented in Figure \ref{fig:AffineA2_A1_branching}. (Isn't it obvious that all the zeros there make the picture unreadable?) 
 \begin{figure}[p]
   \centering
   \includegraphics[width=130mm]{AffineA2_A1_branching.pdf}
@@ -918,31 +922,32 @@ Using the recurrent relation for the anomalous branching coefficients we get the
   \label{fig:AffineA2_A1_branching}
 \end{figure}
 
-We see that only two anomalous branching coefficients inside the main
-Weyl chamber of $\hat{A}_1$ are non-zero and equal to the branching
-coefficients. So the finite reducibility theorem holds and we get
+We see that inside the main
+Weyl chamber of $\hat{A}_1$ there are only two non-zero anomalous weights. (Show the Weyl chambers on the Figure.) These are the branching coefficients. So the finite reducibility theorem holds and we get the decomposition
 \begin{equation}
   \label{eq:43}
-  L^{[1,0,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[0,4]}\oplus L_{\hat{A_1}}^{[4,0]}
+  L^{[1,0,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[0,4]}\oplus L_{\hat{A_1}}^{[4,0]}.
 \end{equation}
 
-For the other level one dominant weights of $\hat{A}_2$ we get trivial
-branching rules
+For the other level one dominant weights of $\hat{A}_2$ we get the trivial
+branching 
 \begin{eqnarray}
   \label{eq:44}
-   L^{[0,1,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}\\
-   L^{[0,0,1]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}
+   L^{[0,1,0]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]},\\
+   L^{[0,0,1]}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{[2,2]}.
 \end{eqnarray}
 
-Using this result we can construct modular-invariant partition function
+Using this result the modular-invariant partition function is easily found,
 \begin{equation}
   \label{eq:45}
-  Z=\left|\chi_{[4,0]}+\chi_{[0,4]}\right|^2+2\chi_{[2,2]}^2
+  Z=\left|\chi_{[4,0]}+\chi_{[0,4]}\right|^2+2\chi_{[2,2]}^2.
 \end{equation}
 
 \section{Conclusion}
 \label{sec:conclusion}
-We have constructed the recurrent relation for branching coefficients and proposed practical algorithm for the reduction procedure. Also we have discussed the application of this algorithm to the physical problem of construction the modular-invariant partition functions in the conformal field theory. This method of conformal embeddings is well-known but may be actual in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
+We have proved that the injection fan technique can be used to deal with the nonmaximal subalgebras. It was demonstrated that in such cases in the set of positive roots $\Delta_{\mathfrak{g}}^{+}$ it is necessary to  separate an additional subset $\Delta^{+}_{\bot}$. The injection fan is formed by the weights $\Delta_{\mathfrak{g}}^{+} \setminus  \Delta_{\mathfrak{a}}^{+} \setminus \Delta^{+}_{\bot}$ and the additional role of the subset $\Delta^{+}_{\bot}$ is to modify the anomalous weights of the initial module. This modification reduces to a simple procedure: the anomalous weights are to be substituted by the dimensions of the corresponding ${\mathfrak{a}}_{\bot}$-modules.      
+ 
+We have demonstrated the effectiveness of the proposed generalizations of the injection fan algorithm and discussed its possible application to some physical problems. In particular we considered the construction modular-invariant partition functions in the conformal field theory in the framework of conformal embedding method. This  method is widely used in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
 
 
 \section{Acknowledgements}
