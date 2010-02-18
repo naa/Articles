@@ -17,7 +17,8 @@ pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
 # checks, whether given affine algebra is twisted. So to specify
 # algebra D_3^{(2)} we should use the notation tD3
 is_twisted := proc(R)
-       if substring(R,1..1)='t' then
+
+       if type(R,'string') and substring(R,1..1)='t' then
            return true;
        else return false;
        end if;
@@ -27,9 +28,12 @@ is_twisted := proc(R)
 # For example, it will be root system of A1 if specified algebra is A1
 finite_dimensional_root_system := proc(R)
                         local r,S,L;
+                            if type(R,'list') then
+                                return R[1..-2];
+                            fi;
                             if type(R,'indexed') then
                                 L:=op(0,R)
-                            else
+                            elif type(R,'string') then
                                 L:=substring(R,1..1)
                             fi;
                             if is_twisted(R) then
@@ -151,7 +155,7 @@ end proc;
 # labels
 labels:=proc(R)
 local r,S,L;
-
+    if type(R,'list') then return [seq(1,j=1..nops(R))]; fi;
     if type(R,'indexed') then L:=op(0,R) else L:=substring(R,1..1) fi;
     if is_twisted(R) then
         L:=substring(R,2..2);

@@ -154,13 +154,34 @@ We will implement represent Weyl group elements as the lists of numbers of basic
 \end{equation}
 Then we will implement action of Weyl group elements on $\mathfrak{h}^*$ using the recipies from \cite{stembridge2001computational}, \cite{casselman1994machine}, but it will be done in the future. For now we are not implementing abstract construction of Weyl group since it is enough to be able to construct Weyl group orbits of $\mathfrak{h}^*$ elements.
 
-So we need just two following general functions:
+Also sometimes we need to know the determinant of Weyl group element and we can take it into account using the following version of the [[reflect]] function, called [[reflect-with-eps]].
+
 <<Functions for root systems .scm>>=
 (define (co-root r)
   (div (mul 2 r) (prod r r)))
 
 (define (reflect weight root)
   (sub weight (mul (prod weight (co-root root)) root)))
+
+(define (reflect-with-eps weight root)
+  (if (or (null? (cdr weight))
+	  (pair? (cdr weight)))
+      (let ((v (reflect weight root)))
+	(cons v (if (equal? weight v) 1 -1)))
+      (let ((v (reflect (car weight) root)))
+	(cons v (if (equal? (car weight) v) (cdr weight) (- (cdr weight)))))))
+
+(define (eps weight)
+  (if (or (null? (cdr weight))
+	  (pair? (cdr weight)))
+      1
+      (cdr weight)))
+
+(define (no-eps weight)
+  (if (or (null? (cdr weight))
+	  (pair? (cdr weight)))
+      weight
+      (car weight)))
 @
 Here {\it co-root} $\alpha^{\vee}$ is the element of the dual space $(\mathfrak{h}^*)^*$ which is identified with $\mathfrak{h}^*\approx \mathfrak{h}$ since we have scalar product on $\mathfrak{h}$.
 
@@ -186,8 +207,7 @@ Now we can implement wide range of root system related methods of [[semisimple-l
 @
 We have already introduced Weyl group of reflections \ref{weyl-group-def}, now we implement procedure which constructs the union of Weyl group orbits of the set of weights.
 <<Root system methods .scm>>=
-`(orbit ,
-  (lambda (self weights)
+`(general-orbit , (lambda (self weights reflect)
     (let ((addon 
 	   (filter (lambda (x) (not (element-of-set? x weights)))
 		   (fold-right union-set '() 
@@ -198,7 +218,15 @@ We have already introduced Weyl group of reflections \ref{weyl-group-def}, now w
 				    weights)))))
       (if (null? addon)
 	  weights
-	  (send self 'orbit (union-set weights addon) )))))
+	  (send self 'general-orbit (union-set weights addon) reflect )))))
+
+`(orbit ,
+  (lambda (self weights)
+    (send self 'general-orbit weights reflect)))
+
+`(orbit-with-eps ,
+  (lambda (self weights)
+    (send self 'general-orbit weights reflect-with-eps)))
 @
 \begin{Def}
   {\bf Fundamental weights} form a basis $w_1,\dots,w_r$ dual to the basis of simple co-roots $\alpha_1^{\vee},\dots,\alpha_r^{\vee}$.
@@ -318,9 +346,16 @@ For the finite-dimensional representations we introduce abstract class [[represe
        '(highest-weight ())
        <<Anomalous weights computation .scm>>
        <<Weight multiplicities computation .scm>>)
-`(multiplicity , (lambda (self weight)
 @
 We use the recurrent method of calculation of weight multiplicities described in \cite{lyakhovsky1996rra}, \cite{kulish4sfa}. Weight multiplicities are determined using the set of anomalous points, which is constructed by the code below.
+We use the recurrent relation
+\begin{equation}
+  \label{eq:8}
+  m_{\xi }^{\left( \mu \right) }=-\sum_{w\in W\setminus e}\epsilon (w)m_{\xi
+-\left( w\cdot\rho-\rho \right) }^{\left( \mu \right) }+\sum_{w\in W}\epsilon
+(w)\delta _{\left( w(\mu +\rho )-\rho \right) ,\xi }.  \label{gen-mult-form}
+\end{equation}
+The second term on the right-hand side is constructed with the code:
 <<Anomalous weights computation .scm>>=
        `(anomalous-weights , 
 	 (lambda (self)
@@ -330,9 +365,19 @@ We use the recurrent method of calculation of weight multiplicities described in
 		    (sub x rho))
 		  (send algebra 'orbit (add (send self 'highest-weight) rho))))))
 @
+Then multiplicity of the weight $\xi$ is calculated as the sum over the set $\omega\rho-\rho$, which we call ``star''
 
 <<Weight multiplicities computation .scm>>=
-
+`(multiplicity , (lambda (self weight)
+		   (let ((star <<Construct star .scm>>))
+		     (-
+		      (sum (map (lambda (wg) (* (eps wg) (delta weight wg)))))
+		      (sum (map (lambda (wg)
+				    (* (eps wg)
+				       (send self 'multiplicity (sub weight wg))))
+				  star))))))
+  
+	    
 @
 \section{General outline of the code}
 \label{sec:general-outline-code}
@@ -629,6 +674,14 @@ For the matrix inverse and determinant we use the implementation with the cofact
 
 @
 
+\subsection{Supplementary mathematical functions}
+\label{sec:suppl-math-funct}
+
+<<Supplementary math .scm>>=
+
+(define (delta weight1 weight2)
+  (equal? (no-eps weight1) (no-eps weight2)))
+@ 
 \bibliography{LiterateLie}{}
 \bibliographystyle{utphys}
 

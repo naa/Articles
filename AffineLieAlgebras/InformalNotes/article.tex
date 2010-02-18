@@ -227,7 +227,7 @@ It is important to mention that
   b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in \bar{C}_{\mathfrak{a}}
 \end{equation}
 
-$x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|}{\left|\Theta_{\mathfrak{a}}\right|}$ --- the embedding index.
+$x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}$ --- the embedding index.
 
 \section{Recurrent relation for branching coefficients. Singularities and subtractions}
 \label{sec:recurr-form-branch}
@@ -607,17 +607,17 @@ Let's describe the reduction of fundamental representation of $B_2$ with the hig
   \caption{Regular embedding of $A_1$ into $B_2$}
   \label{fig:B2_A1}
 \end{figure}
-On the Figure \ref{fig:B2_A1} we have also shown the set of points $\omega(\mu+\rho),\; \omega\in W$ of fundamental representation of $B_2$ with the corresponding determinants of Weyl reflections $\epsilon(\omega)$.
-Now we have to factorise the Weyl group $W$ by $W_{\bot}=\left\{\omega_1\right\}$. We get the following set of anomalous points $\omega(\mu+\rho)-\rho,\; \omega\in W_{\bot}\backslash W$:
+On the Figure \ref{fig:B2_A1} we have also shown the set of weights $\omega(\mu+\rho),\; \omega\in W$ of fundamental representation of $B_2$ with the corresponding determinants of Weyl reflections $\epsilon(\omega)$.
+Now we have to factorise the Weyl group $W$ by $W_{\bot}=\left\{\omega_1\right\}$. We get the following set of anomalous weights $\omega(\mu+\rho)-\rho,\; \omega\in W_{\bot}\backslash W$:
 \begin{figure}[ph]
   \noindent\centering{
     \includegraphics[width=90mm]{B2_A1_2.pdf}
   }
-  \caption{Anomalous points and the corresponding $\mathfrak{a}_{\bot}=A_1$-modules}
+  \caption{Anomalous weights and the corresponding $\mathfrak{a}_{\bot}=A_1$-modules}
   \label{fig:B2_A1_2}
 \end{figure}
 We have also depicted the corresponding $\mathfrak{a}_{\bot}=A_1$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
-Then we project these points and dimensions of modules onto the root space of subalgebra $\mathfrak{a}=A_1$ and get the following anomalous points in fundamental weights basis with corresponding multiplicities:
+Then we project these weights and dimensions of modules onto the root space of subalgebra $\mathfrak{a}=A_1$ and get the following anomalous weights in fundamental weights basis with corresponding multiplicities:
 \begin{equation}
   \label{eq:25}
   (1,2),\; (0,-3),\; (-4,3),\; (-5,-2)
@@ -673,33 +673,32 @@ The set $\Delta^{+}_{\bot}$ is equal to
 
 We see that this is the set of positive roots of the algebra $\mathfrak{a}_{\bot}=B_2$.
 
-To find the branching coefficients we need to compute the anomalous points of $B_4$, select point lying in the main Weyl chamber of $\mathfrak{a}_{\bot}$ and compute the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.
+To find the branching coefficients we need to compute the anomalous weights of $B_4$, select weights lying in the main Weyl chamber of $\mathfrak{a}_{\bot}$ and compute the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.
 
 We consider the $B_4$-module with the highest weight $\mu=(0,1,0,2)=2
 e_1 + 2 e_2 + e_3 + e_4$.
 
-The set of the anomalous points $\omega(\mu+\rho)-\rho,\; \omega\in W$
-consists of 384 points. We do not show it here.
+The set of the anomalous weights $\omega(\mu+\rho)-\rho,\; \omega\in W$
+consists of 384 elements. We do not show it here.
 
-We need to select those points $\omega(\mu+\rho)$  which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
-It means that scalar product of these points with all the roots from $\Delta^{+}_{\bot}$ is non-negative.
+We need to select those weights $\omega(\mu+\rho)$  which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
+It means that scalar product of these weights with all the roots from $\Delta^{+}_{\bot}$ is non-negative.
 
 To compute dimensions of the corresponding
-$\mathfrak{a}_{\bot}$-modules we need to project each selected point
+$\mathfrak{a}_{\bot}$-modules we need to project each selected weight
 onto the root space $\Delta^{+}_{\bot}$ and substract
 $\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula.
 
 We show the result of this procedure on the Figure \ref{fig:B4B2anom}.
 \begin{figure}[h!tb]
     \includegraphics[width=150mm]{B4_B2_anom_points.pdf}
-  \caption{Anomalous points with the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.}
+  \caption{Anomalous weights with the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:B4B2anom}
 \end{figure}
 
 Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
 
-Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:B4B2Fan}.
+Using the definition (\ref{fan-defined}) we get the following set $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:B4B2Fan}.
 \begin{figure}[h!tb]
   \includegraphics[width=130mm]{B4_B2_fan.pdf}
   \caption{Fan for $B_2\subset B_4$}
@@ -731,27 +730,26 @@ The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero proje
 Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0,1,0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is is the level of the weight and the fourth the grade.
 
 
-The set of the anomalous points of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the Figure \ref{fig:B2_A1}.
+The set of the anomalous weights of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the Figure \ref{fig:B2_A1}.
 
 \begin{figure}[h!tb]
   \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
-  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{B_2}$}
+  \caption{The anomalous weights of the $(1,0,1,0)$ representation of the algebra $\hat{B_2}$}
   \label{fig:affine_B2_anom_point}
 \end{figure}
 
-As the next step of our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
+As the next step of our algorithm \ref{sec:algorithm} we project the anomalous weights to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
 The result of this computation up to the twelfth grade is presented at the Figure
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
-  \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \caption{Projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:AffineB2_A1_anom_proj}
 \end{figure}
 
 Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
 
-Using the definition (\ref{fan-defined}) we get the following set of
-the points $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineB2A1Fan}.
+Using the definition (\ref{fan-defined}) we get the following $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineB2A1Fan}.
 Here we restricted the computation to the twelfth grade.
 \begin{figure}[ph]
   \centering
@@ -770,7 +768,7 @@ Using the recurrent relation for the anomalous branching coefficients we get the
   \label{fig:AffineB2_A1_branching}
 \end{figure}
 
-Selecting the points inside the main Weyl chamber of the subalgebra $\hat{A_1}$ we get the following results for the branching coefficients up to twelfth grade
+Selecting the elements inside the main Weyl chamber of the subalgebra $\hat{A_1}$ we get the following results for the branching coefficients up to twelfth grade
 \begin{multline}
   \label{eq:28}
   L^{w_1}_{\hat{B_2}\downarrow \hat{A_1}}=2 L_{\hat{A_1}}^{w_1}(0)\oplus 1 L_{\hat{A_1}}^{w_0}(0)\oplus 4 L_{\hat{A_1}}^{w_0}(-1)\oplus\\
@@ -871,8 +869,9 @@ by the decompositions   $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi
 The problem is also considered in the \cite{coquereaux2008conformal}.  
 \end{comment}
 
+For the maximal conformal embedding $\mathfrak{a}\subset\mathfrak{g}$ it is easy to see that $\mathfrak{a}_{\bot}$ is trivial, otherwise it would be non-maximal, since $\mathfrak{a}\subset\mathfrak{a}\oplus\mathfrak{a}_{\bot}\subset\mathfrak{g}$. We can get non-maximal conformal embeddings through the chain of maximal $\mathfrak{a}\subset\mathfrak{g}_1\subset\mathfrak{g}_2$. In this case the representations of $\mathfrak{g}_1,\mathfrak{g}_2$ have to be of level one, due to the equation \eqref{eq:111}. If we limit the consideration by the affine extensions of simple classical Lie algebras, the number of possible non-maximal conformal embeddings is rather small \cite{schellekens1986conformal}. We study the example of $\hat{A}_1\subset \hat{A}_2\subset\hat{A}_{?}$ in the section \ref{sec:non-maxim-conf}.
 
-\subsection{Example}
+\subsection{Examples}
 \label{sec:example}
 
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
@@ -885,20 +884,20 @@ It is easy to see that the set $\Delta_{\bot}$ is empty. (Not only this set is e
 Let us consider the representation with the highest weight
 $w_0=(1,0,0)$ in details.
 
-The set of the anomalous points of this representation up to the sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration. (Where, how? What are the coordinates, it is very difficult to see anything even in the zero grade!)
+The set of the anomalous weights of this representation up to the sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration. (Where, how? What are the coordinates, it is very difficult to see anything even in the zero grade!)
 
 \begin{figure}[h!tb]
   \includegraphics[width=160mm]{AffineA2_A1_anom.pdf}
-  \caption{The anomalous points of the $(1,0,1,0)$ representation of the algebra $\hat{A_2}$}
+  \caption{The anomalous weights of the $(1,0,1,0)$ representation of the algebra $\hat{A_2}$}
   \label{fig:affine_A2_anom_point}
 \end{figure}
 
-According to our algorithm \ref{sec:algorithm} we project the anomalous points to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules (there are no such subalgebra here!)$L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
+According to our algorithm \ref{sec:algorithm} we project the anomalous weights to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules (there are no such subalgebra here!)$L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
 The result of these caculations up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_A1_anom_proj}
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=150mm]{AffineA2_A1_proj_anom.pdf}
-  \caption{Projected anomalous points and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \caption{Projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:AffineA2_A1_anom_proj}
 \end{figure}
 
@@ -942,6 +941,51 @@ Using this result the modular-invariant partition function is easily found,
   \label{eq:45}
   Z=\left|\chi_{[4,0]}+\chi_{[0,4]}\right|^2+2\chi_{[2,2]}^2.
 \end{equation}
+
+\subsubsection{Embedding of semisimple subalgebras}
+\label{sec:embedd-semis-subalg}
+
+Embedding of affine extensions of semisimple subalgebras to affine lie algebras allows additional construction of modular invariants \cite{difrancesco1997cft}, \cite{walton1989conformal}. Consider the conformal embedding constructed as the affine extension  $\mathfrak{a}_{1}\oplus\mathfrak{a}_{2}\subset \mathfrak{g}$ of the embedding of semisimple subalgebra $\overset{\circ}{\mathfrak{a}}_1\oplus\overset{\circ}{\mathfrak{a}}_2$ into simple Lie algebra $\overset{\circ}{\mathfrak{g}}$.
+
+Substituting the branching rules into \eqref{eq:34} we get non-diagonal mass matrix
+\begin{equation}
+  \label{eq:2}
+  M_{\lambda\xi,\mu\eta}
+\end{equation}
+where $\lambda,\mu$ are the highest weights of the representations of $\mathfrak{a}_1$ and $\xi,\eta$ of $\mathfrak{a}_2$. A new $\mathfrak{a}_1$-invariant mass matrix can be found by the contraction of $M_{\lambda\xi,\mu\eta}$ with some known $\mathfrak{a}_2$-invariant mass matrix $M^{(2)}_{\xi\eta}$:
+\begin{equation}
+  \label{eq:35}
+  M^{(1)}_{\lambda\mu}=\sum_{\xi,\eta\in P_{\mathfrak{a}}^{+}}M_{\lambda\xi,\mu\eta}M^{(2)}_{\xi\eta}
+\end{equation}
+
+
+
+Consider the embedding $\widehat{su(2)\oplus su(2)}\subset \hat{su(4)}$, which is the affine extension of the special embedding $su(2)\oplus su(2)\subset su(4)$. Let's construct the special embedding $su(2)\oplus su(2)\subset su(4)$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $su(2)\oplus su(2)$ with the highest weight $(1,1)$.
+
+
+, depicted at the Figure \ref{fig:a1a2a3}. This embedding is characterised by the embedding indexes $(2,2)$ and is conformal, since $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
+
+Four dominant weights of level one have the following coordinates in the orthogonal basis: 
+\begin{equation}
+  \begin{array}{lll}
+     \omega_0 & = & (0,0,0,0;1;0)\\
+     \omega_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0)\\
+     \omega_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0)\\
+     \omega_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0) \\
+  \end{array}
+\end{equation}
+We limit our computation by the fifth grade.
+The set of the anomalous weights of the representation of the algebra $\hat{A}_3$ consists of 192 elements.
+
+
+\subsubsection{Non-maximal conformal embedding}
+\label{sec:non-maxim-conf}
+
+The example of the previous subsection \ref{sec:spec-embedd-hata_1s} has not demonstrated the features of our approach since the orthogonal subalgebra $\mathfrak{a}_{\bot}$ has been empty. 
+
+But we can consider the chain of embeddings $\mathfrak{a}\subset\mathfrak{g}_1\subset\mathfrak{g}_2$. We can use the embedding $\hat{A}_1\subset\hat{A}_2\subset\hat{A}_{?}$. Modular invariant partition function for this case could be obtained in two steps. First one can compute branching coefficients for $\hat{A}_2\subset\hat{A}_{?}$ and get partition function for $\hat{A}_2$ and then substitute the results of the previous section \ref{sec:spec-embedd-hata_1s} into it to get the new partition function for $\hat{A}_1$. 
+
+The algorithm of the section \ref{sec:algorithm} can be used to skip the intermediate computation.
 
 \section{Conclusion}
 \label{sec:conclusion}
