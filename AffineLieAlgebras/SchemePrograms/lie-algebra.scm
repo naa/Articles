@@ -29,8 +29,7 @@
             (map (lambda (a)
        	    (map (lambda (av) (prod a av)) (send self 'simple-co-roots)))
        	 (send self 'simple-roots))))
-       `(orbit ,
-         (lambda (self weights)
+       `(general-orbit , (lambda (self weights reflect)
            (let ((addon 
        	   (filter (lambda (x) (not (element-of-set? x weights)))
        		   (fold-right union-set '() 
@@ -41,7 +40,15 @@
        				    weights)))))
              (if (null? addon)
        	  weights
-       	  (send self 'orbit (union-set weights addon) )))))
+       	  (send self 'general-orbit (union-set weights addon) reflect )))))
+
+       `(orbit ,
+         (lambda (self weights)
+           (send self 'general-orbit weights reflect)))
+
+       `(orbit-with-eps ,
+         (lambda (self weights)
+           (send self 'general-orbit weights reflect-with-eps)))
        `(fundamental-weights
          ,(lambda (self)
             (map (lambda (x)
@@ -61,6 +68,26 @@
 
 (define (reflect weight root)
   (sub weight (mul (prod weight (co-root root)) root)))
+
+(define (reflect-with-eps weight root)
+  (if (or (null? (cdr weight))
+	  (pair? (cdr weight)))
+      (let ((v (reflect weight root)))
+	(cons v (if (equal? weight v) 1 -1)))
+      (let ((v (reflect (car weight) root)))
+	(cons v (if (equal? (car weight) v) (cdr weight) (- (cdr weight)))))))
+
+(define (eps weight)
+  (if (or (null? (cdr weight))
+	  (pair? (cdr weight)))
+      1
+      (cdr weight)))
+
+(define (no-eps weight)
+  (if (or (null? (cdr weight))
+	  (pair? (cdr weight)))
+      weight
+      (car weight)))
 (define (make-simple-lie-algebra series rank)
   (define (simple-roots series rank)
     (cond ((eq? series 'A)
@@ -137,5 +164,13 @@
        	     (map (lambda (x)
        		    (sub x rho))
        		  (send algebra 'orbit (add (send self 'highest-weight) rho))))))
-       )
-`(multiplicity , (lambda (self weight)
+       `(multiplicity , (lambda (self weight)
+       		   (let ((star ))
+       		     (-
+       		      (sum (map (lambda (wg) (* (eps wg) (delta weight wg)))))
+       		      (sum (map (lambda (wg)
+       				    (* (eps wg)
+       				       (send self 'multiplicity (sub weight wg))))
+       				  star))))))
+         
+       	    )
