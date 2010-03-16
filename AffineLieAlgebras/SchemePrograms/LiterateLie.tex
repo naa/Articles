@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,10pt]{article}% ===> this file was generated automatically by noweave --- better not edit it
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
 \usepackage{ucs}
@@ -47,13 +47,13 @@ Our implementation use programming language Scheme and is presented as the Liter
 \end{Def}
 Lie algebras can be finite- or infinite-dimensional. Finite-dimensional Lie algebras are classified.
 
-We will represent Lie algebra in the code as the object of class {\tt{}lie-algebra}. We use very simple class system, which is described in the Appendix \ref{sec:object-system}. So {\tt{}lie-algebra} is really an interface, but since our object system doesn't have interfaces we make it an abstract class and concrete classes such as {\tt{}semisimple-lie-algebra} inherit it.
-Lie algebra is a vector space, so we really should create class for the vector space which contains methods for the change of basis. But for now we use only one standard basis for Lie algebras and {\tt{}lie-algebra} is the subclass of the most genral class {\tt{}object}.
-\nwenddocs{}\nwbegincode{2}\sublabel{NWLitE-LieM-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-LieM-1}}}\moddef{Lie algebra class .scm~{\nwtagstyle{}\subpageref{NWLitE-LieM-1}}}\endmoddef
+We will represent Lie algebra in the code as the object of class {\Tt{}lie-algebra\nwendquote}. We use very simple class system, which is described in the Appendix \ref{sec:object-system}. So {\Tt{}lie-algebra\nwendquote} is really an interface, but since our object system doesn't have interfaces we make it an abstract class and concrete classes such as {\Tt{}semisimple-lie-algebra\nwendquote} inherit it.
+Lie algebra is a vector space, so we really should create class for the vector space which contains methods for the change of basis. But for now we use only one standard basis for Lie algebras and {\Tt{}lie-algebra\nwendquote} is the subclass of the most genral class {\Tt{}object\nwendquote}.
+\nwenddocs{}\nwbegincode{2}\sublabel{NW1VK18x-4dzmez-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-4dzmez-1}}}\moddef{Lie algebra class .scm~{\nwtagstyle{}\subpageref{NW1VK18x-4dzmez-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwenddeflinemarkup
 (class 'lie-algebra 'object
-       \LA{}Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NWLitE-LieO-1}}\RA{})
-\nwused{\\{NWLitE-lieF-1}}\nwendcode{}\nwbegindocs{3}\nwdocspar
-We need to add several definitions and describe a structure of Lie algebra in order to discuss fields and methods of {\tt{}lie-algebra} class.
+       \LA{}Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-4X6QTQ-1}}\RA{})
+\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{3}\nwdocspar
+We need to add several definitions and describe a structure of Lie algebra in order to discuss fields and methods of {\Tt{}lie-algebra\nwendquote} class.
 \begin{Def}
   {\bf Ideal} $\mathfrak{e}\subset\mathfrak{g}$: $[\mathfrak{g},\mathfrak{e}]\subset \mathfrak{e}$
 \end{Def}
@@ -77,7 +77,7 @@ Now we need to discuss internal structre of Lie algebras, which can be represent
 \begin{Def}
   {\bf Cartan subalgebra $\mathfrak{h}\subset\mathfrak{g}$} - is the maximal commutative subalgebra of $\mathfrak{g}$. The dimension of the Cartan subalgebra $\mathfrak{h}$ is called {\bf rank} of Lie algebra $\mathfrak{g}$.
 \end{Def}
-\nwenddocs{}\nwbegincode{4}\sublabel{NWLitE-LieO-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-LieO-1}}}\moddef{Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NWLitE-LieO-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{4}\sublabel{NW1VK18x-4X6QTQ-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-4X6QTQ-1}}}\moddef{Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-4X6QTQ-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-4dzmez-1}}\nwenddeflinemarkup
 `(rank ,(lambda (self)
               (error "Abstract class!")))
 `(dimension ,(lambda (self)
@@ -85,9 +85,9 @@ Now we need to discuss internal structre of Lie algebras, which can be represent
 `(cartan-subalgebra ,(lambda (self) 
               (error "Abstract class!")))
 
-\nwused{\\{NWLitE-LieM-1}}\nwendcode{}\nwbegindocs{5}\nwdocspar
+\nwused{\\{NW1VK18x-4dzmez-1}}\nwendcode{}\nwbegindocs{5}\nwdocspar
 Commutative algebras constitute first concrete class of Lie algebras.
-\nwenddocs{}\nwbegincode{6}\sublabel{NWLitE-ComO-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-ComO-1}}}\moddef{Commutative algebra .scm~{\nwtagstyle{}\subpageref{NWLitE-ComO-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{6}\sublabel{NW1VK18x-I1QOi-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-I1QOi-1}}}\moddef{Commutative algebra .scm~{\nwtagstyle{}\subpageref{NW1VK18x-I1QOi-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwenddeflinemarkup
 (class 'commutative-algebra 'lie-algebra
        '(dim 1)
        `(rank ,(lambda (self) (send self 'dim)))
@@ -97,7 +97,7 @@ Commutative algebras constitute first concrete class of Lie algebras.
 ;; The constructor
 (define (make-commutative-algebra dim)
   (new 'commutative-algebra `(dim ,dim)))
-\nwused{\\{NWLitE-lieF-1}}\nwendcode{}\nwbegindocs{7}\nwdocspar
+\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{7}\nwdocspar
 \begin{comment}
 It can be interesting and useful to add a method which show commutation relatons of the algebra in the symbolic form, but this task is left for the future  
 \end{comment}
@@ -106,15 +106,15 @@ It can be interesting and useful to add a method which show commutation relatons
 \section{Semisimple Lie algebras}
 \label{sec:semis-lie-algebra}
 The structure of simple and semisimple Lie algebras can be encoded by the set of simple roots. 
-\nwenddocs{}\nwbegincode{9}\sublabel{NWLitE-SemR-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-SemR-1}}}\moddef{Semisimple Lie algebra .scm~{\nwtagstyle{}\subpageref{NWLitE-SemR-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{9}\sublabel{NW1VK18x-1QMleH-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1QMleH-1}}}\moddef{Semisimple Lie algebra .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1QMleH-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwenddeflinemarkup
 (class 'semisimple-lie-algebra 'lie-algebra
        '(simple-roots ())
-       \LA{}Semisimple Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NWLitE-SemZ-1}}\RA{})
+       \LA{}Semisimple Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1pDr9o-1}}\RA{})
 ;; The constructor
 (define (make-semisimple-lie-algebra simple-roots)
   (new 'semisimple-lie-algebra `(simple-roots ,simple-roots)))
 
-\nwused{\\{NWLitE-lieF-1}}\nwendcode{}\nwbegindocs{10}\nwdocspar
+\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{10}\nwdocspar
 
 \subsection{Root systems}
 \label{sec:root-systems}
@@ -127,15 +127,15 @@ The structure of simple and semisimple Lie algebras can be encoded by the set of
   \end{equation}
   The vector $\alpha=(\alpha_1,\dots,\alpha_r),\; r=rank(\mathfrak{g})$ is called a {\bf root} and the corresponding operator $E_{\alpha}$ is called {\bf ladder operator}.
 \end{Def}
-The root $\alpha$ maps $H_i$ to the number $\alpha(H_i)=\alpha_i$ hence $\alpha\in \mathfrak{h}^{*}$ - element of the dual to the Cartan subalgebra. The set of all the roos $\alpha$ is denoted by $\Delta=\{\alpha,\; \alpha \text{ - root}\}$. So it is natural for the {\tt{}lie-algebra} class to have a method which lists all the roots.
-\nwenddocs{}\nwbegincode{11}\sublabel{NWLitE-SemZ-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-SemZ-1}}}\moddef{Semisimple Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NWLitE-SemZ-1}}}\endmoddef
+The root $\alpha$ maps $H_i$ to the number $\alpha(H_i)=\alpha_i$ hence $\alpha\in \mathfrak{h}^{*}$ - element of the dual to the Cartan subalgebra. The set of all the roos $\alpha$ is denoted by $\Delta=\{\alpha,\; \alpha \text{ - root}\}$. So it is natural for the {\Tt{}lie-algebra\nwendquote} class to have a method which lists all the roots.
+\nwenddocs{}\nwbegincode{11}\sublabel{NW1VK18x-1pDr9o-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1pDr9o-1}}}\moddef{Semisimple Lie algebra methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1pDr9o-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1QMleH-1}}\nwenddeflinemarkup
 `(rank ,(lambda (self)
     (length (send self 'simple-roots))))
        
 `(cartan-subalgebra ,(lambda (self)
     (make-commutative-algebra (send self 'rank))))
-\LA{}Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}\RA{}
-\nwused{\\{NWLitE-SemR-1}}\nwendcode{}\nwbegindocs{12}\nwdocspar
+\LA{}Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}\RA{}
+\nwused{\\{NW1VK18x-1QMleH-1}}\nwendcode{}\nwbegindocs{12}\nwdocspar
 All the roots are the linear combinations of simple roots with the integral coefficients. There exists discrete group of symmetry called {\bf Weyl group} which can be used to produce all the roots from the set of simple roots. 
 \begin{Def}
   \label{weyl-group-def}
@@ -154,9 +154,9 @@ We will implement represent Weyl group elements as the lists of numbers of basic
 \end{equation}
 Then we will implement action of Weyl group elements on $\mathfrak{h}^*$ using the recipies from \cite{stembridge2001computational}, \cite{casselman1994machine}, but it will be done in the future. For now we are not implementing abstract construction of Weyl group since it is enough to be able to construct Weyl group orbits of $\mathfrak{h}^*$ elements.
 
-Also sometimes we need to know the determinant of Weyl group element and we can take it into account using the following version of the {\tt{}reflect} function, called {\tt{}reflect-with-eps}.
+Also sometimes we need to know the determinant of Weyl group element and we can take it into account using the following version of the {\Tt{}reflect\nwendquote} function, called {\Tt{}reflect-with-eps\nwendquote}.
 
-\nwenddocs{}\nwbegincode{13}\sublabel{NWLitE-FunV-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-FunV-1}}}\moddef{Functions for root systems .scm~{\nwtagstyle{}\subpageref{NWLitE-FunV-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{13}\sublabel{NW1VK18x-10zTlp-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-10zTlp-1}}}\moddef{Functions for root systems .scm~{\nwtagstyle{}\subpageref{NW1VK18x-10zTlp-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwenddeflinemarkup
 (define (co-root r)
   (div (mul 2 r) (prod r r)))
 
@@ -182,14 +182,14 @@ Also sometimes we need to know the determinant of Weyl group element and we can 
           (pair? (cdr weight)))
       weight
       (car weight)))
-\nwused{\\{NWLitE-lieF-1}}\nwendcode{}\nwbegindocs{14}\nwdocspar
+\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{14}\nwdocspar
 Here {\it co-root} $\alpha^{\vee}$ is the element of the dual space $(\mathfrak{h}^*)^*$ which is identified with $\mathfrak{h}^*\approx \mathfrak{h}$ since we have scalar product on $\mathfrak{h}$.
 
-Now we can implement wide range of root system related methods of {\tt{}semisimple-lie-algebra} class
-\nwenddocs{}\nwbegincode{15}\sublabel{NWLitE-RooO-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\endmoddef
+Now we can implement wide range of root system related methods of {\Tt{}semisimple-lie-algebra\nwendquote} class
+\nwenddocs{}\nwbegincode{15}\sublabel{NW1VK18x-1H68wy-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1pDr9o-1}}\nwprevnextdefs{\relax}{NW1VK18x-1H68wy-2}\nwenddeflinemarkup
 `(simple-co-roots ,(lambda (self)
               (map co-root (send self 'simple-roots))))
-\nwalsodefined{\\{NWLitE-RooO-2}\\{NWLitE-RooO-3}\\{NWLitE-RooO-4}\\{NWLitE-RooO-5}\\{NWLitE-RooO-6}}\nwused{\\{NWLitE-SemZ-1}}\nwendcode{}\nwbegindocs{16}\nwdocspar
+\nwalsodefined{\\{NW1VK18x-1H68wy-2}\\{NW1VK18x-1H68wy-3}\\{NW1VK18x-1H68wy-4}\\{NW1VK18x-1H68wy-5}\\{NW1VK18x-1H68wy-6}}\nwused{\\{NW1VK18x-1pDr9o-1}}\nwendcode{}\nwbegindocs{16}\nwdocspar
 \begin{Def}
   {\bf Cartan matrix} with the elements
   \begin{equation}
@@ -198,15 +198,15 @@ Now we can implement wide range of root system related methods of {\tt{}semisimp
   \end{equation}
   completely determines the set of simple roots and is useful for the classification and compact description of Lie algebras.
 \end{Def}
-\nwenddocs{}\nwbegincode{17}\sublabel{NWLitE-RooO-2}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RooO-2}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\plusendmoddef
+\nwenddocs{}\nwbegincode{17}\sublabel{NW1VK18x-1H68wy-2}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-2}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\plusendmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1pDr9o-1}}\nwprevnextdefs{NW1VK18x-1H68wy-1}{NW1VK18x-1H68wy-3}\nwenddeflinemarkup
 `(cartan-matrix
   ,(lambda (self)
      (map (lambda (a)
             (map (lambda (av) (prod a av)) (send self 'simple-co-roots)))
          (send self 'simple-roots))))
-\nwendcode{}\nwbegindocs{18}\nwdocspar
+\nwused{\\{NW1VK18x-1pDr9o-1}}\nwendcode{}\nwbegindocs{18}\nwdocspar
 We have already introduced Weyl group of reflections \ref{weyl-group-def}, now we implement procedure which constructs the union of Weyl group orbits of the set of weights.
-\nwenddocs{}\nwbegincode{19}\sublabel{NWLitE-RooO-3}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RooO-3}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\plusendmoddef
+\nwenddocs{}\nwbegincode{19}\sublabel{NW1VK18x-1H68wy-3}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-3}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\plusendmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1pDr9o-1}}\nwprevnextdefs{NW1VK18x-1H68wy-2}{NW1VK18x-1H68wy-4}\nwenddeflinemarkup
 `(general-orbit , (lambda (self weights reflect)
     (let ((addon 
            (filter (lambda (x) (not (element-of-set? x weights)))
@@ -227,28 +227,28 @@ We have already introduced Weyl group of reflections \ref{weyl-group-def}, now w
 `(orbit-with-eps ,
   (lambda (self weights)
     (send self 'general-orbit weights reflect-with-eps)))
-\nwendcode{}\nwbegindocs{20}\nwdocspar
+\nwused{\\{NW1VK18x-1pDr9o-1}}\nwendcode{}\nwbegindocs{20}\nwdocspar
 \begin{Def}
   {\bf Fundamental weights} form a basis $w_1,\dots,w_r$ dual to the basis of simple co-roots $\alpha_1^{\vee},\dots,\alpha_r^{\vee}$.
 \end{Def}
-\nwenddocs{}\nwbegincode{21}\sublabel{NWLitE-RooO-4}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RooO-4}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\plusendmoddef
+\nwenddocs{}\nwbegincode{21}\sublabel{NW1VK18x-1H68wy-4}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-4}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\plusendmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1pDr9o-1}}\nwprevnextdefs{NW1VK18x-1H68wy-3}{NW1VK18x-1H68wy-5}\nwenddeflinemarkup
 `(fundamental-weights
   ,(lambda (self)
      (map (lambda (x)
             (sum (map-n (lambda (y z) (mul y z)) x (send self 'simple-roots))))
           (matrix-inverse (send self 'cartan-matrix)))))
-\nwendcode{}\nwbegindocs{22}\nwdocspar
+\nwused{\\{NW1VK18x-1pDr9o-1}}\nwendcode{}\nwbegindocs{22}\nwdocspar
 {\bf Weyl vector} $\rho=\sum_i w_i=\frac{1}{2}\sum_{\alpha\in \Delta^{+}}\alpha$.
-\nwenddocs{}\nwbegincode{23}\sublabel{NWLitE-RooO-5}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RooO-5}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\plusendmoddef
+\nwenddocs{}\nwbegincode{23}\sublabel{NW1VK18x-1H68wy-5}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-5}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\plusendmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1pDr9o-1}}\nwprevnextdefs{NW1VK18x-1H68wy-4}{NW1VK18x-1H68wy-6}\nwenddeflinemarkup
 `(rho ,(lambda (self)
          (sum (send self 'fundamental-weights))))
 
-\nwendcode{}\nwbegindocs{24}\nwdocspar
+\nwused{\\{NW1VK18x-1pDr9o-1}}\nwendcode{}\nwbegindocs{24}\nwdocspar
 We can construct the full set of Lie algebra roots using Weyl symmetry.
-\nwenddocs{}\nwbegincode{25}\sublabel{NWLitE-RooO-6}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RooO-6}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NWLitE-RooO-1}}}\plusendmoddef
+\nwenddocs{}\nwbegincode{25}\sublabel{NW1VK18x-1H68wy-6}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-6}}}\moddef{Root system methods .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1H68wy-1}}}\plusendmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-1pDr9o-1}}\nwprevnextdefs{NW1VK18x-1H68wy-5}{\relax}\nwenddeflinemarkup
 `(roots ,(lambda (self)
            (send self 'orbit (send self 'simple-roots))))
-\nwendcode{}\nwbegindocs{26}\nwdocspar
+\nwused{\\{NW1VK18x-1pDr9o-1}}\nwendcode{}\nwbegindocs{26}\nwdocspar
 
 \subsection{Simple Lie algebras}
 \label{sec:simple-lie-algebras}
@@ -256,7 +256,7 @@ We can construct the full set of Lie algebra roots using Weyl symmetry.
 Simple Lie algebras are classified by the use of Dynkin diagrams (which we will draw in the upcoming versions of this program) \cite{carter2005lie}.
 
 Here we explicitly construct simple roots for the classical series of finite-dimensional Lie algebras
-\nwenddocs{}\nwbegincode{27}\sublabel{NWLitE-SimO-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-SimO-1}}}\moddef{Simple Lie algebras .scm~{\nwtagstyle{}\subpageref{NWLitE-SimO-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{27}\sublabel{NW1VK18x-379yCw-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-379yCw-1}}}\moddef{Simple Lie algebras .scm~{\nwtagstyle{}\subpageref{NW1VK18x-379yCw-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwenddeflinemarkup
 (define (make-simple-lie-algebra series rank)
   (define (simple-roots series rank)
     (cond ((eq? series 'A)
@@ -318,7 +318,7 @@ Here we explicitly construct simple roots for the classical series of finite-dim
                        base)))
                ((= i rank) (reverse base))))))
   (make-semisimple-lie-algebra (simple-roots series rank)))
-\nwused{\\{NWLitE-lieF-1}}\nwendcode{}\nwbegindocs{28}\nwdocspar
+\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{28}\nwdocspar
 \section{Representations}
 \label{sec:representations}
 
@@ -331,32 +331,31 @@ Here we explicitly construct simple roots for the classical series of finite-dim
 \end{Def}
 There exists a classification of finite-dimensional representations of Lie algebras.
 
-For the finite-dimensional representations we introduce abstract class {\tt{}representation} and concrete class {\tt{}highest-weight-representation}. Then we can describe  tensor product of two highest weight representations as the object of class {\tt{}representation} (but not of class {\tt{}highest-weight-representation}.
-\nwenddocs{}\nwbegincode{29}\sublabel{NWLitE-RepK-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RepK-1}}}\moddef{Representations .scm~{\nwtagstyle{}\subpageref{NWLitE-RepK-1}}}\endmoddef
+For the finite-dimensional representations we introduce abstract class {\Tt{}representation\nwendquote} and concrete class {\Tt{}highest-weight-representation\nwendquote}. Then we can describe  tensor product of two highest weight representations as the object of class {\Tt{}representation\nwendquote} (but not of class {\Tt{}highest-weight-representation\nwendquote}.
+\nwenddocs{}\nwbegincode{29}\sublabel{NW1VK18x-2w9Axe-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-2w9Axe-1}}}\moddef{Representations .scm~{\nwtagstyle{}\subpageref{NW1VK18x-2w9Axe-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwprevnextdefs{\relax}{NW1VK18x-2w9Axe-2}\nwenddeflinemarkup
 (class 'representation 'object
        `(dim ())
        `(multiplicity , (lambda (self weight)
                           (error "Class is abstract!")))
        '(lie-algebra ())
        )
-\nwalsodefined{\\{NWLitE-RepK-2}}\nwused{\\{NWLitE-lieF-1}}\nwendcode{}\nwbegindocs{30}\nwdocspar
+\nwalsodefined{\\{NW1VK18x-2w9Axe-2}}\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{30}\nwdocspar
 
-\nwenddocs{}\nwbegincode{31}\sublabel{NWLitE-RepK-2}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-RepK-2}}}\moddef{Representations .scm~{\nwtagstyle{}\subpageref{NWLitE-RepK-1}}}\plusendmoddef
+\nwenddocs{}\nwbegincode{31}\sublabel{NW1VK18x-2w9Axe-2}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-2w9Axe-2}}}\moddef{Representations .scm~{\nwtagstyle{}\subpageref{NW1VK18x-2w9Axe-1}}}\plusendmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-3yKaW-1}}\nwprevnextdefs{NW1VK18x-2w9Axe-1}{\relax}\nwenddeflinemarkup
 (class 'highest-weight-representation 'representation
        '(highest-weight ())
-       \LA{}Anomalous weights computation .scm~{\nwtagstyle{}\subpageref{NWLitE-AnoY-1}}\RA{}
-       \LA{}Weight multiplicities computation .scm~{\nwtagstyle{}\subpageref{NWLitE-Weic-1}}\RA{})
-\nwendcode{}\nwbegindocs{32}\nwdocspar
+       \LA{}Anomalous weights computation .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1y2eh2-1}}\RA{}
+       \LA{}Weight multiplicities computation .scm~{\nwtagstyle{}\subpageref{NW1VK18x-46EOV9-1}}\RA{})
+\nwused{\\{NW1VK18x-3yKaW-1}}\nwendcode{}\nwbegindocs{32}\nwdocspar
 We use the recurrent method of calculation of weight multiplicities described in \cite{lyakhovsky1996rra}, \cite{kulish4sfa}. Weight multiplicities are determined using the set of anomalous points, which is constructed by the code below.
 We use the recurrent relation
 \begin{equation}
-  \label{eq:8}
   m_{\xi }^{\left( \mu \right) }=-\sum_{w\in W\setminus e}\epsilon (w)m_{\xi
 -\left( w\cdot\rho-\rho \right) }^{\left( \mu \right) }+\sum_{w\in W}\epsilon
 (w)\delta _{\left( w(\mu +\rho )-\rho \right) ,\xi }.  \label{gen-mult-form}
 \end{equation}
 The second term on the right-hand side is constructed with the code:
-\nwenddocs{}\nwbegincode{33}\sublabel{NWLitE-AnoY-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-AnoY-1}}}\moddef{Anomalous weights computation .scm~{\nwtagstyle{}\subpageref{NWLitE-AnoY-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{33}\sublabel{NW1VK18x-1y2eh2-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1y2eh2-1}}}\moddef{Anomalous weights computation .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1y2eh2-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-2w9Axe-2}}\nwenddeflinemarkup
        `(anomalous-weights , 
          (lambda (self)
            (let* ((algebra (send self 'lie-algebra))
@@ -364,10 +363,10 @@ The second term on the right-hand side is constructed with the code:
              (map (lambda (x)
                     (sub x rho))
                   (send algebra 'orbit (add (send self 'highest-weight) rho))))))
-\nwused{\\{NWLitE-RepK-2}}\nwendcode{}\nwbegindocs{34}\nwdocspar
+\nwused{\\{NW1VK18x-2w9Axe-2}}\nwendcode{}\nwbegindocs{34}\nwdocspar
 Then multiplicity of the weight $\xi$ is calculated as the sum over the set $\omega\rho-\rho$, which we call ``star''
 
-\nwenddocs{}\nwbegincode{35}\sublabel{NWLitE-Weic-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-Weic-1}}}\moddef{Weight multiplicities computation .scm~{\nwtagstyle{}\subpageref{NWLitE-Weic-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{35}\sublabel{NW1VK18x-46EOV9-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-46EOV9-1}}}\moddef{Weight multiplicities computation .scm~{\nwtagstyle{}\subpageref{NW1VK18x-46EOV9-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-2w9Axe-2}}\nwenddeflinemarkup
 `(multiplicity , (lambda (self weight)
                    (let ((star \LA{}Construct star .scm~{\nwtagstyle{}\subpageref{nw@notdef}}\RA{}))
                      (-
@@ -378,19 +377,19 @@ Then multiplicity of the weight $\xi$ is calculated as the sum over the set $\om
                                   star))))))
   
             
-\nwused{\\{NWLitE-RepK-2}}\nwendcode{}\nwbegindocs{36}\nwdocspar
+\nwused{\\{NW1VK18x-2w9Axe-2}}\nwendcode{}\nwbegindocs{36}\nwdocspar
 \section{General outline of the code}
 \label{sec:general-outline-code}
 
-The code goes to several files of which {\tt{}library.scm} is a compatibility layer which consists of auxiliary functions and allows portability between different Scheme implementations on different OS-es and hardware platforms. {\tt{}library.scm} is described in the appendix \ref{sec:library}.
-All the mathematical code which is connected with Lie theory is collected in the file {\tt{}lie-algebra.scm}.
-\nwenddocs{}\nwbegincode{37}\sublabel{NWLitE-lieF-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-lieF-1}}}\moddef{lie-algebra.scm~{\nwtagstyle{}\subpageref{NWLitE-lieF-1}}}\endmoddef\let\nwnotused=\nwoutput{}
-\LA{}Lie algebra class .scm~{\nwtagstyle{}\subpageref{NWLitE-LieM-1}}\RA{}
-\LA{}Commutative algebra .scm~{\nwtagstyle{}\subpageref{NWLitE-ComO-1}}\RA{}
-\LA{}Semisimple Lie algebra .scm~{\nwtagstyle{}\subpageref{NWLitE-SemR-1}}\RA{}
-\LA{}Functions for root systems .scm~{\nwtagstyle{}\subpageref{NWLitE-FunV-1}}\RA{}
-\LA{}Simple Lie algebras .scm~{\nwtagstyle{}\subpageref{NWLitE-SimO-1}}\RA{}
-\LA{}Representations .scm~{\nwtagstyle{}\subpageref{NWLitE-RepK-1}}\RA{}
+The code goes to several files of which {\Tt{}library.scm\nwendquote} is a compatibility layer which consists of auxiliary functions and allows portability between different Scheme implementations on different OS-es and hardware platforms. {\Tt{}library.scm\nwendquote} is described in the appendix \ref{sec:library}.
+All the mathematical code which is connected with Lie theory is collected in the file {\Tt{}lie-algebra.scm\nwendquote}.
+\nwenddocs{}\nwbegincode{37}\sublabel{NW1VK18x-3yKaW-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-3yKaW-1}}}\moddef{lie-algebra.scm~{\nwtagstyle{}\subpageref{NW1VK18x-3yKaW-1}}}\endmoddef\let\nwnotused=\nwoutput{}\nwstartdeflinemarkup\nwenddeflinemarkup
+\LA{}Lie algebra class .scm~{\nwtagstyle{}\subpageref{NW1VK18x-4dzmez-1}}\RA{}
+\LA{}Commutative algebra .scm~{\nwtagstyle{}\subpageref{NW1VK18x-I1QOi-1}}\RA{}
+\LA{}Semisimple Lie algebra .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1QMleH-1}}\RA{}
+\LA{}Functions for root systems .scm~{\nwtagstyle{}\subpageref{NW1VK18x-10zTlp-1}}\RA{}
+\LA{}Simple Lie algebras .scm~{\nwtagstyle{}\subpageref{NW1VK18x-379yCw-1}}\RA{}
+\LA{}Representations .scm~{\nwtagstyle{}\subpageref{NW1VK18x-2w9Axe-1}}\RA{}
 \nwnotused{lie-algebra.scm}\nwendcode{}\nwbegindocs{38}\nwdocspar
 \appendix
 
@@ -399,19 +398,19 @@ All the mathematical code which is connected with Lie theory is collected in the
 Since one of our target implementations of Scheme is LispMe, which is only partially R4RS-compliant, we create compatibility layer of common functions.
 Also this library can be used to port the code for Lie algebras to other Scheme implementations.
 
-\nwenddocs{}\nwbegincode{39}\sublabel{NWLitE-libB-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-libB-1}}}\moddef{library.scm~{\nwtagstyle{}\subpageref{NWLitE-libB-1}}}\endmoddef\let\nwnotused=\nwoutput{}
-\LA{}Semi-standard Scheme procedures .scm~{\nwtagstyle{}\subpageref{NWLitE-Sema-1}}\RA{}
-\LA{}Sets .scm~{\nwtagstyle{}\subpageref{NWLitE-Set9-1}}\RA{}
-\LA{}Vector and matrix tools .scm~{\nwtagstyle{}\subpageref{NWLitE-VecS-1}}\RA{}
-\LA{}LispMe Objects .scm~{\nwtagstyle{}\subpageref{NWLitE-LisJ-1}}\RA{}
+\nwenddocs{}\nwbegincode{39}\sublabel{NW1VK18x-15DMjX-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-15DMjX-1}}}\moddef{library.scm~{\nwtagstyle{}\subpageref{NW1VK18x-15DMjX-1}}}\endmoddef\let\nwnotused=\nwoutput{}\nwstartdeflinemarkup\nwenddeflinemarkup
+\LA{}Semi-standard Scheme procedures .scm~{\nwtagstyle{}\subpageref{NW1VK18x-16zbNk-1}}\RA{}
+\LA{}Sets .scm~{\nwtagstyle{}\subpageref{NW1VK18x-3j9Egk-1}}\RA{}
+\LA{}Vector and matrix tools .scm~{\nwtagstyle{}\subpageref{NW1VK18x-2tcrGt-1}}\RA{}
+\LA{}LispMe Objects .scm~{\nwtagstyle{}\subpageref{NW1VK18x-26RKW4-1}}\RA{}
 \nwnotused{library.scm}\nwendcode{}\nwbegindocs{40}\nwdocspar
 
 \subsection{Commonly used Scheme procedures}
 \label{sec:commonly-used-scheme}
 
 \nwenddocs{}\nwbegindocs{41}\nwdocspar
-Due to the limitations of Palm OS platform functions such as {\tt{}map} or {\tt{}fold-left} in LispMe are in the separate library, which should be loaded by hand. Also function {\tt{}map} accepts only 1-argument function and list, so we add these functions to our library. 
-\nwenddocs{}\nwbegincode{42}\sublabel{NWLitE-Sema-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-Sema-1}}}\moddef{Semi-standard Scheme procedures .scm~{\nwtagstyle{}\subpageref{NWLitE-Sema-1}}}\endmoddef
+Due to the limitations of Palm OS platform functions such as {\Tt{}map\nwendquote} or {\Tt{}fold-left\nwendquote} in LispMe are in the separate library, which should be loaded by hand. Also function {\Tt{}map\nwendquote} accepts only 1-argument function and list, so we add these functions to our library. 
+\nwenddocs{}\nwbegincode{42}\sublabel{NW1VK18x-16zbNk-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-16zbNk-1}}}\moddef{Semi-standard Scheme procedures .scm~{\nwtagstyle{}\subpageref{NW1VK18x-16zbNk-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-15DMjX-1}}\nwenddeflinemarkup
 (define nil ())
 (define true #t)
 (define false #f)
@@ -452,9 +451,9 @@ Due to the limitations of Palm OS platform functions such as {\tt{}map} or {\tt{
   (iter initial sequence))
 
 (define (fold-right op init s) (accumulate op init s))
-\nwused{\\{NWLitE-libB-1}}\nwendcode{}\nwbegindocs{43}\nwdocspar
+\nwused{\\{NW1VK18x-15DMjX-1}}\nwendcode{}\nwbegindocs{43}\nwdocspar
 We need couple of functions for sets. We represent set as list.
-\nwenddocs{}\nwbegincode{44}\sublabel{NWLitE-Set9-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-Set9-1}}}\moddef{Sets .scm~{\nwtagstyle{}\subpageref{NWLitE-Set9-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{44}\sublabel{NW1VK18x-3j9Egk-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-3j9Egk-1}}}\moddef{Sets .scm~{\nwtagstyle{}\subpageref{NW1VK18x-3j9Egk-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-15DMjX-1}}\nwenddeflinemarkup
 (define (element-of-set? x set)
   (cond ((null? set) false)
         ((equal? x (car set)) true)
@@ -479,7 +478,7 @@ We need couple of functions for sets. We represent set as list.
         )
 )
 
-\nwused{\\{NWLitE-libB-1}}\nwendcode{}\nwbegindocs{45}\nwdocspar
+\nwused{\\{NW1VK18x-15DMjX-1}}\nwendcode{}\nwbegindocs{45}\nwdocspar
 
 \subsection{Object system}
 \label{sec:object-system}
@@ -529,7 +528,7 @@ Instances of classes:
 (define <instance-name> (new '<classname> (list '<fieldname> <value>) ...))
 \end{verbatim}
 
-\nwenddocs{}\nwbegincode{46}\sublabel{NWLitE-LisJ-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-LisJ-1}}}\moddef{LispMe Objects .scm~{\nwtagstyle{}\subpageref{NWLitE-LisJ-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{46}\sublabel{NW1VK18x-26RKW4-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-26RKW4-1}}}\moddef{LispMe Objects .scm~{\nwtagstyle{}\subpageref{NW1VK18x-26RKW4-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-15DMjX-1}}\nwenddeflinemarkup
 
 (define *classes* '())
 
@@ -602,17 +601,17 @@ Instances of classes:
       (else value))))
 
 
-\nwused{\\{NWLitE-libB-1}}\nwendcode{}\nwbegindocs{47}\nwdocspar
+\nwused{\\{NW1VK18x-15DMjX-1}}\nwendcode{}\nwbegindocs{47}\nwdocspar
 
 \subsection{Vector and matrix manipulation}
 \label{sec:vect-matr-manip}
 Here we have colleced simple tools for manipulation with vectors and matrices. They are important for the portability, since one of our target Scheme implementations doesn't support full R5RS-Scheme (\cite{R5RS}) and portable Scheme libraries such as SLIB. 
-\nwenddocs{}\nwbegincode{48}\sublabel{NWLitE-VecS-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-VecS-1}}}\moddef{Vector and matrix tools .scm~{\nwtagstyle{}\subpageref{NWLitE-VecS-1}}}\endmoddef
-\LA{}Vector operations .scm~{\nwtagstyle{}\subpageref{NWLitE-VecM-1}}\RA{}
-\LA{}Matrix inverse .scm~{\nwtagstyle{}\subpageref{NWLitE-MatJ-1}}\RA{}
-\nwused{\\{NWLitE-libB-1}}\nwendcode{}\nwbegindocs{49}\nwdocspar
+\nwenddocs{}\nwbegincode{48}\sublabel{NW1VK18x-2tcrGt-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-2tcrGt-1}}}\moddef{Vector and matrix tools .scm~{\nwtagstyle{}\subpageref{NW1VK18x-2tcrGt-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-15DMjX-1}}\nwenddeflinemarkup
+\LA{}Vector operations .scm~{\nwtagstyle{}\subpageref{NW1VK18x-14pT7v-1}}\RA{}
+\LA{}Matrix inverse .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1qnsIb-1}}\RA{}
+\nwused{\\{NW1VK18x-15DMjX-1}}\nwendcode{}\nwbegindocs{49}\nwdocspar
 We represent vectors with lists since for now we don't want to have object system \ref{sec:object-system} overhead. It can be changed in the future.
-\nwenddocs{}\nwbegincode{50}\sublabel{NWLitE-VecM-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-VecM-1}}}\moddef{Vector operations .scm~{\nwtagstyle{}\subpageref{NWLitE-VecM-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{50}\sublabel{NW1VK18x-14pT7v-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-14pT7v-1}}}\moddef{Vector operations .scm~{\nwtagstyle{}\subpageref{NW1VK18x-14pT7v-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-2tcrGt-1}}\nwenddeflinemarkup
 (define (add a b)
   (map-n + a b))
 
@@ -633,10 +632,10 @@ We represent vectors with lists since for now we don't want to have object syste
   
 (define (prod a b)
   (fold-left + 0 (map-n * a b)))
-\nwused{\\{NWLitE-VecS-1}}\nwendcode{}\nwbegindocs{51}\nwdocspar
+\nwused{\\{NW1VK18x-2tcrGt-1}}\nwendcode{}\nwbegindocs{51}\nwdocspar
 
 For the matrix inverse and determinant we use the implementation with the cofactors extracted from the SLIB. It is not the fastest and should be replaced with the Gaussian elimination.
-\nwenddocs{}\nwbegincode{52}\sublabel{NWLitE-MatJ-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-MatJ-1}}}\moddef{Matrix inverse .scm~{\nwtagstyle{}\subpageref{NWLitE-MatJ-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{52}\sublabel{NW1VK18x-1qnsIb-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1qnsIb-1}}}\moddef{Matrix inverse .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1qnsIb-1}}}\endmoddef\nwstartdeflinemarkup\nwusesondefline{\\{NW1VK18x-2tcrGt-1}}\nwenddeflinemarkup
 (define (matrix-cofactor mat i j)
   (define (butnth n lst)
     (if (<= n 1)
@@ -672,38 +671,38 @@ For the matrix inverse and determinant we use the implementation with the cofact
                         inv)))
              ((<= i 0) inv)))))
 
-\nwused{\\{NWLitE-VecS-1}}\nwendcode{}\nwbegindocs{53}\nwdocspar
+\nwused{\\{NW1VK18x-2tcrGt-1}}\nwendcode{}\nwbegindocs{53}\nwdocspar
 
 \subsection{Supplementary mathematical functions}
 \label{sec:suppl-math-funct}
 
-\nwenddocs{}\nwbegincode{54}\sublabel{NWLitE-SupN-1}\nwmargintag{{\nwtagstyle{}\subpageref{NWLitE-SupN-1}}}\moddef{Supplementary math .scm~{\nwtagstyle{}\subpageref{NWLitE-SupN-1}}}\endmoddef
+\nwenddocs{}\nwbegincode{54}\sublabel{NW1VK18x-1tnUC5-1}\nwmargintag{{\nwtagstyle{}\subpageref{NW1VK18x-1tnUC5-1}}}\moddef{Supplementary math .scm~{\nwtagstyle{}\subpageref{NW1VK18x-1tnUC5-1}}}\endmoddef\nwstartdeflinemarkup\nwenddeflinemarkup
 
 (define (delta weight1 weight2)
   (equal? (no-eps weight1) (no-eps weight2)))
-\nwnotused{Supplementary\ math\ .scm}\nwendcode{}
+\nwnotused{Supplementary math .scm}\nwendcode{}
 
-\nwixlogsorted{c}{{Anomalous weights computation .scm}{NWLitE-AnoY-1}{\nwixu{NWLitE-RepK-2}\nwixd{NWLitE-AnoY-1}}}%
-\nwixlogsorted{c}{{Commutative algebra .scm}{NWLitE-ComO-1}{\nwixd{NWLitE-ComO-1}\nwixu{NWLitE-lieF-1}}}%
-\nwixlogsorted{c}{{Construct star .scm}{nw@notdef}{\nwixu{NWLitE-Weic-1}}}%
-\nwixlogsorted{c}{{Functions for root systems .scm}{NWLitE-FunV-1}{\nwixd{NWLitE-FunV-1}\nwixu{NWLitE-lieF-1}}}%
-\nwixlogsorted{c}{{Lie algebra class .scm}{NWLitE-LieM-1}{\nwixd{NWLitE-LieM-1}\nwixu{NWLitE-lieF-1}}}%
-\nwixlogsorted{c}{{Lie algebra methods .scm}{NWLitE-LieO-1}{\nwixu{NWLitE-LieM-1}\nwixd{NWLitE-LieO-1}}}%
-\nwixlogsorted{c}{{LispMe Objects .scm}{NWLitE-LisJ-1}{\nwixu{NWLitE-libB-1}\nwixd{NWLitE-LisJ-1}}}%
-\nwixlogsorted{c}{{Matrix inverse .scm}{NWLitE-MatJ-1}{\nwixu{NWLitE-VecS-1}\nwixd{NWLitE-MatJ-1}}}%
-\nwixlogsorted{c}{{Representations .scm}{NWLitE-RepK-1}{\nwixd{NWLitE-RepK-1}\nwixd{NWLitE-RepK-2}\nwixu{NWLitE-lieF-1}}}%
-\nwixlogsorted{c}{{Root system methods .scm}{NWLitE-RooO-1}{\nwixu{NWLitE-SemZ-1}\nwixd{NWLitE-RooO-1}\nwixd{NWLitE-RooO-2}\nwixd{NWLitE-RooO-3}\nwixd{NWLitE-RooO-4}\nwixd{NWLitE-RooO-5}\nwixd{NWLitE-RooO-6}}}%
-\nwixlogsorted{c}{{Semisimple Lie algebra methods .scm}{NWLitE-SemZ-1}{\nwixu{NWLitE-SemR-1}\nwixd{NWLitE-SemZ-1}}}%
-\nwixlogsorted{c}{{Semisimple Lie algebra .scm}{NWLitE-SemR-1}{\nwixd{NWLitE-SemR-1}\nwixu{NWLitE-lieF-1}}}%
-\nwixlogsorted{c}{{Semi-standard Scheme procedures .scm}{NWLitE-Sema-1}{\nwixu{NWLitE-libB-1}\nwixd{NWLitE-Sema-1}}}%
-\nwixlogsorted{c}{{Sets .scm}{NWLitE-Set9-1}{\nwixu{NWLitE-libB-1}\nwixd{NWLitE-Set9-1}}}%
-\nwixlogsorted{c}{{Simple Lie algebras .scm}{NWLitE-SimO-1}{\nwixd{NWLitE-SimO-1}\nwixu{NWLitE-lieF-1}}}%
-\nwixlogsorted{c}{{Supplementary math .scm}{NWLitE-SupN-1}{\nwixd{NWLitE-SupN-1}}}%
-\nwixlogsorted{c}{{Vector and matrix tools .scm}{NWLitE-VecS-1}{\nwixu{NWLitE-libB-1}\nwixd{NWLitE-VecS-1}}}%
-\nwixlogsorted{c}{{Vector operations .scm}{NWLitE-VecM-1}{\nwixu{NWLitE-VecS-1}\nwixd{NWLitE-VecM-1}}}%
-\nwixlogsorted{c}{{Weight multiplicities computation .scm}{NWLitE-Weic-1}{\nwixu{NWLitE-RepK-2}\nwixd{NWLitE-Weic-1}}}%
-\nwixlogsorted{c}{{library.scm}{NWLitE-libB-1}{\nwixd{NWLitE-libB-1}}}%
-\nwixlogsorted{c}{{lie-algebra.scm}{NWLitE-lieF-1}{\nwixd{NWLitE-lieF-1}}}%
+\nwixlogsorted{c}{{Anomalous weights computation .scm}{NW1VK18x-1y2eh2-1}{\nwixu{NW1VK18x-2w9Axe-2}\nwixd{NW1VK18x-1y2eh2-1}}}%
+\nwixlogsorted{c}{{Commutative algebra .scm}{NW1VK18x-I1QOi-1}{\nwixd{NW1VK18x-I1QOi-1}\nwixu{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{Construct star .scm}{nw@notdef}{\nwixu{NW1VK18x-46EOV9-1}}}%
+\nwixlogsorted{c}{{Functions for root systems .scm}{NW1VK18x-10zTlp-1}{\nwixd{NW1VK18x-10zTlp-1}\nwixu{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{library.scm}{NW1VK18x-15DMjX-1}{\nwixd{NW1VK18x-15DMjX-1}}}%
+\nwixlogsorted{c}{{Lie algebra class .scm}{NW1VK18x-4dzmez-1}{\nwixd{NW1VK18x-4dzmez-1}\nwixu{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{Lie algebra methods .scm}{NW1VK18x-4X6QTQ-1}{\nwixu{NW1VK18x-4dzmez-1}\nwixd{NW1VK18x-4X6QTQ-1}}}%
+\nwixlogsorted{c}{{lie-algebra.scm}{NW1VK18x-3yKaW-1}{\nwixd{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{LispMe Objects .scm}{NW1VK18x-26RKW4-1}{\nwixu{NW1VK18x-15DMjX-1}\nwixd{NW1VK18x-26RKW4-1}}}%
+\nwixlogsorted{c}{{Matrix inverse .scm}{NW1VK18x-1qnsIb-1}{\nwixu{NW1VK18x-2tcrGt-1}\nwixd{NW1VK18x-1qnsIb-1}}}%
+\nwixlogsorted{c}{{Representations .scm}{NW1VK18x-2w9Axe-1}{\nwixd{NW1VK18x-2w9Axe-1}\nwixd{NW1VK18x-2w9Axe-2}\nwixu{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{Root system methods .scm}{NW1VK18x-1H68wy-1}{\nwixu{NW1VK18x-1pDr9o-1}\nwixd{NW1VK18x-1H68wy-1}\nwixd{NW1VK18x-1H68wy-2}\nwixd{NW1VK18x-1H68wy-3}\nwixd{NW1VK18x-1H68wy-4}\nwixd{NW1VK18x-1H68wy-5}\nwixd{NW1VK18x-1H68wy-6}}}%
+\nwixlogsorted{c}{{Semi-standard Scheme procedures .scm}{NW1VK18x-16zbNk-1}{\nwixu{NW1VK18x-15DMjX-1}\nwixd{NW1VK18x-16zbNk-1}}}%
+\nwixlogsorted{c}{{Semisimple Lie algebra .scm}{NW1VK18x-1QMleH-1}{\nwixd{NW1VK18x-1QMleH-1}\nwixu{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{Semisimple Lie algebra methods .scm}{NW1VK18x-1pDr9o-1}{\nwixu{NW1VK18x-1QMleH-1}\nwixd{NW1VK18x-1pDr9o-1}}}%
+\nwixlogsorted{c}{{Sets .scm}{NW1VK18x-3j9Egk-1}{\nwixu{NW1VK18x-15DMjX-1}\nwixd{NW1VK18x-3j9Egk-1}}}%
+\nwixlogsorted{c}{{Simple Lie algebras .scm}{NW1VK18x-379yCw-1}{\nwixd{NW1VK18x-379yCw-1}\nwixu{NW1VK18x-3yKaW-1}}}%
+\nwixlogsorted{c}{{Supplementary math .scm}{NW1VK18x-1tnUC5-1}{\nwixd{NW1VK18x-1tnUC5-1}}}%
+\nwixlogsorted{c}{{Vector and matrix tools .scm}{NW1VK18x-2tcrGt-1}{\nwixu{NW1VK18x-15DMjX-1}\nwixd{NW1VK18x-2tcrGt-1}}}%
+\nwixlogsorted{c}{{Vector operations .scm}{NW1VK18x-14pT7v-1}{\nwixu{NW1VK18x-2tcrGt-1}\nwixd{NW1VK18x-14pT7v-1}}}%
+\nwixlogsorted{c}{{Weight multiplicities computation .scm}{NW1VK18x-46EOV9-1}{\nwixu{NW1VK18x-2w9Axe-2}\nwixd{NW1VK18x-46EOV9-1}}}%
 \nwbegindocs{55}\nwdocspar
 \bibliography{LiterateLie}{}
 \bibliographystyle{utphys}

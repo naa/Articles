@@ -350,7 +350,6 @@ For the finite-dimensional representations we introduce abstract class [[represe
 We use the recurrent method of calculation of weight multiplicities described in \cite{lyakhovsky1996rra}, \cite{kulish4sfa}. Weight multiplicities are determined using the set of anomalous points, which is constructed by the code below.
 We use the recurrent relation
 \begin{equation}
-  \label{eq:8}
   m_{\xi }^{\left( \mu \right) }=-\sum_{w\in W\setminus e}\epsilon (w)m_{\xi
 -\left( w\cdot\rho-\rho \right) }^{\left( \mu \right) }+\sum_{w\in W}\epsilon
 (w)\delta _{\left( w(\mu +\rho )-\rho \right) ,\xi }.  \label{gen-mult-form}
