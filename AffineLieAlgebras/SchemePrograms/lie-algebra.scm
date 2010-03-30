@@ -149,12 +149,14 @@
 		       base)))
 	       ((= i rank) (reverse base))))))
   (make-semisimple-lie-algebra (simple-roots series rank)))
+
 (class 'representation 'object
        `(dim ())
        `(multiplicity , (lambda (self weight)
 			  (error "Class is abstract!")))
        '(lie-algebra ())
        )
+
 (class 'highest-weight-representation 'representation
        '(highest-weight ())
               `(anomalous-weights , 

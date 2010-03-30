@@ -392,8 +392,10 @@ multiplicities := proc (weight,R,md)
     borders:=coeff(t_b_action(-finite_part(weight)/coeff(weight,lambda0),weight),delta);
 #    calc_mult(weight-max_delta*delta,theStar,resTable,anomPoints,[weight]);
 #    calc_mult(weight-max_delta*delta,theStar,resTable,anomPoints,[op(finite_orbit(weight,finite_dimensional_root_system(R)))],R,max_delta);
+#    map(x->calc_mult(x,theStar,resTable,anomPoints,borders,R,max_delta),
+#        map(x->subs(delta=0,x)-max_delta*delta,orbit(weight,R,max_delta)));
     map(x->calc_mult(x,theStar,resTable,anomPoints,borders,R,max_delta),
-        map(x->subs(delta=0,x)-max_delta*delta,orbit(weight,R,max_delta)));
+        repr_weights(weight,R,md));
     return resTable;
 end proc;
 
@@ -709,3 +711,19 @@ to_simple_roots_base:=(w,R)->if type(w,'sequential') then
                             fi;
 
 
+repr_weights:=proc(hweight,R,max_grade)
+         local queue, tab,elem,cfs,v,al;
+         tab:=table();
+         queue:=[hweight];
+         al:=algebra_roots(R);
+         while (nops(queue)>0) do
+             elem:=queue[1];
+             tab[elem]:=1;
+             queue:=queue[2..-1];
+             cfs:=root_coeffs(elem,R);
+             queue:=[op(queue),op(
+                 select(x->(not assigned(tab[x])) and (coeff(x,delta)>=-max_grade),
+                    map(k->elem-al[k],select(j->cfs[j]>0,[$1..nops(cfs)]))))];
+         end;
+         return get_indices(tab);
+     end;

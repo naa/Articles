@@ -31,7 +31,7 @@ projection1:=proc(weights,roots)
     map(x->projection(subs(eps=0,x),roots[1..-2])+delta*coeff(x,delta)+eps*coeff(x,eps),weights); end;
 
 affine_projection:=proc(w,roots)
-           if type(w,'list') then
+           if type(w,'list') or type(w,'set') then
                map(x->projection(subs(eps=0,x),roots[1..-2])+delta*coeff(x,delta)+eps*coeff(x,eps),w);
            else
                projection(subs(eps=0,w),roots[1..-2])+delta*coeff(w,delta)+eps*coeff(w,eps);
@@ -155,13 +155,19 @@ inj_roots:=proc(roots)
         return t;
     end proc:
 
+dimension:=proc(v,pos_roots) local f,r0;
+    r0:=convert(pos_roots,`+`)/2;
+    f:=[seq(1+coxeter['iprod'](r,v)/coxeter['iprod'](r,r0),r=pos_roots)];
+    convert(f,`*`)
+end;
+
 branching:=proc(highest_weight,subalgebra_roots,subalgebra_pos_roots,algebra_name,max_grade)
 local algebra_pos_roots, algebra_simple_roots,
     rho,
     Abot_roots,Abot_rho,
     selected_points,
-    ppts, dimension,
-    f, fan, inj_roots, fant_table,
+    ppts,
+    f, inj_roots,
     Gamma, gamma0,
     k;
     algebra_simple_roots:=algebra_roots(algebra_name);
@@ -184,11 +190,6 @@ local algebra_pos_roots, algebra_simple_roots,
                                    Abot_roots),
                             anom_points):
     #print(nops(selected_points));
-    dimension:=proc(v,pos_roots) local f,r0;
-        r0:=convert(pos_roots,`+`)/2;
-        f:=[seq(1+coxeter['iprod'](r,v)/coxeter['iprod'](r,r0),r=pos_roots)];
-        convert(f,`*`)
-    end;
 
     ppts:=map(x->
               affine_projection(subs(eps=0,x),subalgebra_roots)+eps*coeff(x,eps)*
@@ -209,9 +210,10 @@ local algebra_pos_roots, algebra_simple_roots,
 
 
     pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
-
+    print(pppr);
     f:=fan(pppr,inj_roots(subalgebra_pos_roots));
     f1:=select(x->coeff(x,delta)<=max_grade,f);
+
     gamma0:=f1[1];
     subalgebra_rho:=subs(delta=lambda0,convert(select(x->coeff(x,delta)=0,subalgebra_roots),`+`)/2);
 
@@ -235,13 +237,17 @@ local algebra_pos_roots, algebra_simple_roots,
             sing_table[subs(eps=0,v)]:=coeff(v,eps);
         fi;
     end;
-
+    print(gamma0);
 #    mu0:=affine_projection(-16*(e1-e3)/2-max_grade*delta,subalgebra_roots);
     mu0:=affine_projection(subs(lambda0=0,highest_weight)-max_grade*delta,subalgebra_roots);
     t:=table();
-    #calculate_branching_coefficient(-mu0,Gamma,gamma0,sing_table,t,i_i_b);
+#    calculate_branching_coefficient(-mu0,Gamma,gamma0,sing_table,t,i_i_b);
 
-    calculate_branching_coefficient(mu0,Gamma,gamma0,sing_table,t,i_i_b);
+    pppp:=dominant_weights(subalgebra_roots,embedding_level(subalgebra_roots,algebra_name));
+
+    print(pppp);
+    map(x->calculate_branching_coefficient(subs(lambda0=0,x)-max_grade*delta,Gamma,gamma0,sing_table,t,i_i_b),
+        map(y->subs(eps=0,y),finite_orbit(pppp,finite_dimensional_root_system(subalgebra_roots))));
 
     return [t,sing_table,Gamma,gamma0];
 end;

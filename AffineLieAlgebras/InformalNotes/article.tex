@@ -567,7 +567,7 @@ k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 \end{equation}
 It coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)). 
 
-  In the next section we describe an algorithm for the computation of branching coefficients based on the relation \eqref{recurrent relation}.
+  In the next section we describe an algorithm for the computation of branching coefficients based on the relation \eqref{recurrent-relation}.
 
 \subsection{Algorithm for the recursive computation of the branching coefficients}
 \label{sec:algorithm}
@@ -631,7 +631,7 @@ For the function $s(\gamma)$ and the set $\Gamma$ from the definition (\ref{phi-
 \end{equation}
 Here the second component denotes the value of $s(\gamma)$.
 
-Anomalous branching coefficient $k^{(1,0)}_{1}=2$, then for anomalous branching coefficient $k^{(1,0)}_{0}$ the formula (\ref{recurrent relation}) gives us
+Anomalous branching coefficient $k^{(1,0)}_{1}=2$, then for anomalous branching coefficient $k^{(1,0)}_{0}$ the formula (\ref{recurrent-relation}) gives us
 \begin{equation}
   \label{eq:23}
   k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1
@@ -1013,15 +1013,25 @@ For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we h
 \end{equation}
 
 The set $\Delta^{+}_{\bot}$ is empty. 
+The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+A1-A3_fan}.
+\begin{figure}[h!tb]
+  \includegraphics[width=150mm]{A1+A1-A3_fan.pdf}
+  \caption{Fan for the special embedding $\widehat{su(2)\oplus su(2)}\subset \widehat{su(4)}$}
+  \label{fig:A1+A1-A3_fan}
+\end{figure}
 
 We limit our computation by the fifth grade.
-The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the representation of the algebra $\hat{A}_3$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_1$ is shown at the Figure. We omit similar pictures for $\omega_0, \omega_2,\omega_3$ and include only the branching coefficients for these modules to save the space.
+
+\begin{figure}[h!tb]
+  \includegraphics[width=150mm]{A1+A1-A3_anom.pdf}
+  \caption{Projected anomalous weights $\pi_{\mathfrak{a}}\left(\widehat{\Psi ^{\left( \mu \right) }}\right)$ for $L^{(\omega_1)}_{A_3}$}
+  \label{fig:A1+A1-A3_anom}
+\end{figure}
+
+The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the representation of the algebra $\hat{A}_3$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_1$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. We omit similar pictures for $\omega_0, \omega_2,\omega_3$ and include only the branching coefficients for these modules to save the space.
+
 
 \begin{enumerate}
-\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the $\mathfrak{g}$-module $L^{(\mu)}$.
-\item Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ that must be non-negative.
-\item For $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
-\item Construct the set $\Gamma$ \eqref{fan-defined}.
 \item Calculate the anomalous branching coefficients in the main Weyl
   chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent-relation}).
 \end{enumerate}
