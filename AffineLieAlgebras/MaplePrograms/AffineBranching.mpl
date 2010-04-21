@@ -167,7 +167,7 @@ local algebra_pos_roots, algebra_simple_roots,
     Abot_roots,Abot_rho,
     selected_points,
     ppts,
-    f, inj_roots,
+    f,
     Gamma, gamma0,
     k;
     algebra_simple_roots:=algebra_roots(algebra_name);
@@ -210,20 +210,50 @@ local algebra_pos_roots, algebra_simple_roots,
 
 
     pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
-    print(pppr);
-    f:=fan(pppr,inj_roots(subalgebra_pos_roots));
+
+    tmp:=inj_roots(subalgebra_pos_roots);
+#    f:=fan(pppr,tmp);
+fan1:=[[0,0,0,1],[-1,0,0,-1],
+      [1,-1,0,-1],[-2,-1,0,1],
+      [1,-2,0,1],[-2,-2,0,-1],
+      [-1,-3,0,1],[0,-3,0,-1],
+
+      [2,0,1,1],[1,1,1,-1],
+      [-2,1,1,1],[-3,0,1,-1],
+      [2,-3,1,-1],[1,-4,1,1],
+      [-2,-4,1,-1],[-3,-3,1,1],
+      [0,0,1,1],[-1,0,1,-1],
+      [1,-1,1,-1],[-2,-1,1,1],
+      [1,-2,1,1],[-2,-2,1,-1],
+      [-1,-3,1,1],[0,-3,1,-1],
+
+      [2,0,2,-1],[1,1,2,1],
+      [-2,1,2,-1],[-3,0,2,1],
+      [2,-3,2,1],[1,-4,2,-1],
+      [-2,-4,2,1],[-3,-3,2,-1],
+      [0,0,2,-1],[-1,0,2,1],
+      [1,-1,2,1],[-2,-1,2,-1],
+      [1,-2,2,-1],[-2,-2,2,1],
+      [-1,-3,2,-1],[0,-3,2,1]];
+
+    f:=map(x->-x[1]*beta1-x[2]*beta2+x[3]*delta+x[4]*eps,fan1);
+#    print("nops(f)",nops(f));
+#    print(f);
+#    print(subalgebra_pos_roots);
     f1:=select(x->coeff(x,delta)<=max_grade,f);
 
-    gamma0:=f1[1];
+
     subalgebra_rho:=subs(delta=lambda0,convert(select(x->coeff(x,delta)=0,subalgebra_roots),`+`)/2);
 
-    for r in f1 do
-        if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) and coeff(r,delta)<=coeff(gamma0,delta) then
+    f2:=select(x->coeff(x,delta)=0,f1);
+    gamma0:=f2[1];
+    for r in f2 do
+        if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) then
             gamma0:=r;
         end;
     end;
     Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f1));
-
+    print("Gamma:",nops(Gamma));
     borders:=external_border([op(ppts),1/2*delta,-max_grade*delta]);
     print(borders);
     i_i_b:=rcurry(is_in_borders,borders);
@@ -249,7 +279,7 @@ local algebra_pos_roots, algebra_simple_roots,
     map(x->calculate_branching_coefficient(subs(lambda0=0,x)-max_grade*delta,Gamma,gamma0,sing_table,t,i_i_b),
         map(y->subs(eps=0,y),finite_orbit(pppp,finite_dimensional_root_system(subalgebra_roots))));
 
-    return [t,sing_table,Gamma,gamma0];
+    return [t,sing_table,pppr,Gamma,gamma0];
 end;
 
 projection_with_mults:=proc(weights,subalgebra_roots)
