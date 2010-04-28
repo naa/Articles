@@ -52,7 +52,7 @@ calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
                         if assigned(res[xi0]) then
                             return res[xi0];
                         fi;
-                        print(xi);
+#                        print(xi);
 
                         res[xi0]:=convert(
                             map(gam->coeff(gam,eps)*
@@ -161,7 +161,7 @@ dimension:=proc(v,pos_roots) local f,r0;
     convert(f,`*`)
 end;
 
-branching:=proc(highest_weight,subalgebra_roots,subalgebra_pos_roots,algebra_name,max_grade)
+branching:=proc(highest_weight,subalgebra_roots,subalgebra_pos_roots,algebra_name,max_grade,fan1)
 local algebra_pos_roots, algebra_simple_roots,
     rho,
     Abot_roots,Abot_rho,
@@ -213,30 +213,30 @@ local algebra_pos_roots, algebra_simple_roots,
 
     tmp:=inj_roots(subalgebra_pos_roots);
 #    f:=fan(pppr,tmp);
-fan1:=[[0,0,0,1],[-1,0,0,-1],
-      [1,-1,0,-1],[-2,-1,0,1],
-      [1,-2,0,1],[-2,-2,0,-1],
-      [-1,-3,0,1],[0,-3,0,-1],
-
-      [2,0,1,1],[1,1,1,-1],
-      [-2,1,1,1],[-3,0,1,-1],
-      [2,-3,1,-1],[1,-4,1,1],
-      [-2,-4,1,-1],[-3,-3,1,1],
-      [0,0,1,1],[-1,0,1,-1],
-      [1,-1,1,-1],[-2,-1,1,1],
-      [1,-2,1,1],[-2,-2,1,-1],
-      [-1,-3,1,1],[0,-3,1,-1],
-
-      [2,0,2,-1],[1,1,2,1],
-      [-2,1,2,-1],[-3,0,2,1],
-      [2,-3,2,1],[1,-4,2,-1],
-      [-2,-4,2,1],[-3,-3,2,-1],
-      [0,0,2,-1],[-1,0,2,1],
-      [1,-1,2,1],[-2,-1,2,-1],
-      [1,-2,2,-1],[-2,-2,2,1],
-      [-1,-3,2,-1],[0,-3,2,1]];
-
-    f:=map(x->-x[1]*beta1-x[2]*beta2+x[3]*delta+x[4]*eps,fan1);
+# fan1:=[[0,0,0,1],[-1,0,0,-1],
+#       [1,-1,0,-1],[-2,-1,0,1],
+#       [1,-2,0,1],[-2,-2,0,-1],
+#       [-1,-3,0,1],[0,-3,0,-1],
+#
+#       [2,0,1,1],[1,1,1,-1],
+#       [-2,1,1,1],[-3,0,1,-1],
+#       [2,-3,1,-1],[1,-4,1,1],
+#       [-2,-4,1,-1],[-3,-3,1,1],
+#       [0,0,1,1],[-1,0,1,-1],
+#       [1,-1,1,-1],[-2,-1,1,1],
+#       [1,-2,1,1],[-2,-2,1,-1],
+#       [-1,-3,1,1],[0,-3,1,-1],
+#
+#       [2,0,2,-1],[1,1,2,1],
+#       [-2,1,2,-1],[-3,0,2,1],
+#       [2,-3,2,1],[1,-4,2,-1],
+#       [-2,-4,2,1],[-3,-3,2,-1],
+#       [0,0,2,-1],[-1,0,2,1],
+#       [1,-1,2,1],[-2,-1,2,-1],
+#       [1,-2,2,-1],[-2,-2,2,1],
+#       [-1,-3,2,-1],[0,-3,2,1]];
+#
+    f:=map(x->-x[1]/2*beta1-x[2]/2*beta2-x[3]*delta+x[4]*eps,fan1);
 #    print("nops(f)",nops(f));
 #    print(f);
 #    print(subalgebra_pos_roots);
@@ -253,9 +253,9 @@ fan1:=[[0,0,0,1],[-1,0,0,-1],
         end;
     end;
     Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f1));
-    print("Gamma:",nops(Gamma));
+#    print("Gamma:",nops(Gamma));
     borders:=external_border([op(ppts),1/2*delta,-max_grade*delta]);
-    print(borders);
+#    print(borders);
     i_i_b:=rcurry(is_in_borders,borders);
 
     sing_table:=table();
@@ -267,7 +267,7 @@ fan1:=[[0,0,0,1],[-1,0,0,-1],
             sing_table[subs(eps=0,v)]:=coeff(v,eps);
         fi;
     end;
-    print(gamma0);
+#    print(gamma0);
 #    mu0:=affine_projection(-16*(e1-e3)/2-max_grade*delta,subalgebra_roots);
     mu0:=affine_projection(subs(lambda0=0,highest_weight)-max_grade*delta,subalgebra_roots);
     t:=table();
@@ -275,7 +275,7 @@ fan1:=[[0,0,0,1],[-1,0,0,-1],
 
     pppp:=dominant_weights(subalgebra_roots,embedding_level(subalgebra_roots,algebra_name));
 
-    print(pppp);
+#    print(pppp);
     map(x->calculate_branching_coefficient(subs(lambda0=0,x)-max_grade*delta,Gamma,gamma0,sing_table,t,i_i_b),
         map(y->subs(eps=0,y),finite_orbit(pppp,finite_dimensional_root_system(subalgebra_roots))));
 
@@ -295,3 +295,20 @@ projection_with_mults:=proc(weights,subalgebra_roots)
                     end;
                     map(x->x+eps*mult_table[x],get_indices(mult_table));
                 end proc:
+
+nice_plot:=proc(weights,roots,xd)
+         local Grid, i,j,thep;
+
+         Grid:= seq(seq(plots[spacecurve]([[i,j*2,-10],[i,j*2,10]],
+                                   colour="LightGray",linestyle=dash),i=xd),j=-5..5),
+         seq(seq(plots[spacecurve]([[i,-10,j*2],[i,10,j*2]],
+                            colour="LightGray",linestyle=dash),i=xd),j=-5..5):
+#          seq(plots[spacecurve]([[0,i,i],[-6,i,i]],
+#                         colour="LightGray",linestyle=spacedot),i=-6..6),
+#          seq(plots[spacecurve]([[i,-6,-6],[i,6,6]],
+#                         colour="LightGray",linestyle=spacedot),i=xd):
+
+         thep:=PLOT3D(POINTS(op(map(x->[coeff(x,delta),iprod(x,roots[1]),iprod(x,roots[2])],select(y->coeff(y,eps)>0,weights))),SYMBOL(CROSS)),
+                      POINTS(op(map(x->[coeff(x,delta),iprod(x,roots[1]),iprod(x,roots[2])],select(y->coeff(y,eps)<0,weights))),SYMBOL(DIAMOND)));
+         return [thep,Grid],axes=boxed;
+     end;

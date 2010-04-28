@@ -1,8 +1,8 @@
 read("affine.mpl"):
 
-A3pr:=positive_roots(A3,1);
+A3pr:=positive_roots(A3,6);
 
-A1pr:=positive_roots(A1,1);
+A1pr:=positive_roots(A1,6);
 
 prepare_subtable:=proc(A1pr)
         local subtable, r, fpart, fpart0, grade;
@@ -71,23 +71,33 @@ prepare_funtable:=proc(pretable)
         local funtable, newtable, rg, j, r, elems;
 
             funtable:=table();
+            newtable:=table();
             funtable[[[0,0],0]]:=1;
 
             elems:=get_indices(pretable);
+
             for rg in elems do
+
                 for j from 1 to pretable[rg] do
                     newtable:=table(funtable);
+
                     for r in get_indices(funtable) do
-                        if (r-rg)[-1]>=-1 then
+                        if (r-rg)[-1]>=-6 then
                             if not assigned(newtable[r-rg]) then
                                 newtable[r-rg]:=-funtable[r];
+
                             else
                                 newtable[r-rg]:=newtable[r-rg]-funtable[r];
+
                             end;
                         end;
                     end;
-                    funtable:=newtable;
+                    funtable:=table(newtable);
                 end;
             end;
             return funtable;
         end;
+
+subt:=prepare_subtable(A1pr);
+pret:=prepare_pretable(subt,pm2);
+funt:=prepare_funtable(pret);
