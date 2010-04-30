@@ -803,8 +803,6 @@ Here the lower index of the branching function denotes the number of the corresp
 
 \section{Applications to conformal field theory}
 \label{sec:phys-appl}
-(This part must be changed considerably. First it is necessary to restore our notations instead of the Di Francesco notations. Starting with $J^{a_j}_{-n_j}$ which is too archaic! Second but much more important: the example that you had presented refers to the case where the initial injection fan method remains unmodified. Are there any other cases where the modified fan method is necessary? Fourth, you write "we should select only those highest-weight modules of the subalgebra $\mathfrak{a}$ for which the relation (\ref{eq:111}) holds", where does this selection happens and where is it in the example? Fifth, again the notations, it is of no use to indicate the Dynkin indices of the fund. weights ("three level one dominant weights $[1,0,0],\;[0,1,0],\;[0,0,1]$" ) for the reader it is interesting what are they like here; we never place the level indices in the first place as in "with the highest weight $w_0=(1,0,0)$" see the section Notations. In the Figure 12 the irrep is written to be (1,0,1,0) -- very strange! Sixth,
-in all the figures it is difficult to see anything and at the same time there are almost no explanations, even the boxes and dots are not commented. Some other corrections are made directly in the text.)
 
 Branching coefficients for an embedding of affine Lie subalgebra into
 affine Lie algebra can be used to construct modular invariant
@@ -825,7 +823,7 @@ And for the sub-algebra $\mathfrak{a}$ the corresponding states are
   \label{eq:110}
   \tilde{X}^{a'_1}_{-n_1}\tilde{X}^{a'_2}_{-n_2}\dots\left|\pi_{\mathfrak{a}}(\lambda)\right>.
 \end{equation}
-The $\mathfrak{g}$-invariance of the vacuum entails its $\mathfrak{a}$-invariance, but it is not the case for the energy-momentum tensor. So the energy-momentum tensor of the larger theory should consist only of generators of $\tilde{J}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to the equation
+The $\mathfrak{g}$-invariance of the vacuum entails its $\mathfrak{a}$-invariance, but it is not the case for the energy-momentum tensor. So the energy-momentum tensor of the larger theory should consist only of generators of $\tilde{X}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to the equation
 \begin{equation}
   \label{eq:111}
   \frac{k\;\mathrm{dim}\,\mathfrak{g}}{k+g}=\frac{x_e k\; \mathrm{dim}\,\mathfrak{a}}{x_ek+a}
@@ -864,7 +862,22 @@ by the decompositions   $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi
 \end{equation}
 Recently the problem of the conformal embeddings was considered in the paper \cite{coquereaux2008conformal}.  
 
-For the maximal conformal embedding $\mathfrak{a}\subset\mathfrak{g}$ it is easy to see that $\mathfrak{a}_{\bot}$ is trivial, otherwise it would be non-maximal, since $\mathfrak{a}\subset\mathfrak{a}\oplus\mathfrak{a}_{\bot}\subset\mathfrak{g}$. We can get non-maximal conformal embeddings through the chain of maximal $\mathfrak{a}\subset\mathfrak{g}_1\subset\mathfrak{g}_2$. In this case the representations of $\mathfrak{g}_1,\mathfrak{g}_2$ have to be of level one, due to the equation \eqref{eq:111}. If we limit the consideration by the affine extensions of simple classical Lie algebras, the number of possible non-maximal conformal embeddings is rather small \cite{schellekens1986conformal}. We study the example of $\hat{A}_1\subset \hat{A}_2\subset\hat{A}_{?}$ in the section \ref{sec:non-maxim-conf}.
+It is important to note that the orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$. It can be seen from the following consideration. In the case of the conformal embedding energy-momentum tensors are to be equal
+\begin{equation}
+  \label{eq:46}
+  T_{\mathfrak{a}}(z)=T_{\mathfrak{g}}(z)
+\end{equation}
+The energy-momentum tensor can be expanded into the modes $L_n$
+\begin{equation}
+\label{eq:47}
+  T(z)=\frac{1}{2(k+h^v)}\sum_n z^{-n-1}L_n
+\end{equation}
+The modes are constructed as the combination of normally-ordered products of the generators of $\mathfrak{g}$.
+\begin{equation}
+\label{eq:48}
+  L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:X^a_m X^a_{n-m}:
+\end{equation}
+The substitution of the generators of the algebra $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations of $T_{\mathfrak{a}}$ should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty it is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$, which can not be obtained in the expansion of components of $T_{\mathfrak{a}}$.
 
 \subsection{Examples}
 \label{sec:example}
@@ -881,6 +894,7 @@ Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in de
 The set of the anomalous weights of this representation up to the sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration as the dotted diagonal plane.
 
 \begin{figure}[h!tb]
+  \centering
   \includegraphics[width=180mm]{AffineA2_A1_anom.pdf}
   \caption{The anomalous weights of the $(0,0;1;0)$ representation of the algebra $\hat{A_2}$}
   \label{fig:affine_A2_anom_point}
@@ -899,7 +913,7 @@ Then we construct ``the fan'' and use the recurrent relations to compute the ano
 
 Using the definition (\ref{fan-defined}) we get the following set of
 the weights $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:AffineA2A1Fan}.
-Here we restricted the calculations to the first twelve grades.
+Here we restricted the calculations to the first eight grades.
 \begin{figure}[p]
   \centering
   \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
@@ -1041,18 +1055,12 @@ The anomalous branching coefficients for the module $L^{(\omega_1)}$ are shown a
    \end{array}
  \end{equation}
 
-The branching functions are constant and the finite reducibility theorem holds. 
-
-
-
-\subsubsection{Non-maximal conformal embedding}
-\label{sec:non-maxim-conf}
-
-The example of the previous subsection \ref{sec:spec-embedd-hata_1s} has not demonstrated the features of our approach since the orthogonal subalgebra $\mathfrak{a}_{\bot}$ has been empty. 
-
-But we can consider the chain of embeddings $\mathfrak{a}\subset\mathfrak{g}_1\subset\mathfrak{g}_2$. We can use the embedding $\hat{A}_1\subset\hat{A}_1\oplus\hat{A}_1\subset\hat{A}_{3}$. Modular invariant partition function for this case could be obtained in two steps. First one can compute branching coefficients for $\hat{A}_1\oplus\hat{A}_1\subset\hat{A}_{3}$ and get partition function for $\hat{A}_1\oplus\hat{A_1}$ and then substitute the results of the previous section \ref{sec:spec-embedd-hata_1s} into it to get the new partition function for $\hat{A}_1$. 
-
-The algorithm of the section \ref{sec:algorithm} can be used to skip the intermediate computation.
+Now we can obtain modular invariant partition function for WZW-model with the chiral algebra $\hat{A}_1\oplus \hat{A}_1$.
+\begin{multline}
+  \label{eq:40}
+  Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
+  \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
+\end{multline}
 
 \section{Conclusion}
 \label{sec:conclusion}
