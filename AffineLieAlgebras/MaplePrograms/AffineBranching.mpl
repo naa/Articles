@@ -10,6 +10,7 @@ pairing:=(v1,v2) -> 2*iprod(v1,v2)/iprod(v2,v2);
 
 projection:=proc(weights,base)
 local cm;
+
     if nops(base)<=0 then
         return [];
     fi;
@@ -136,7 +137,7 @@ fan_table:=proc(pos_roots,inj_roots)
         fi;
     end proc:
 
-fan:=proc(pos_roots,inj_roots)
+fan0:=proc(pos_roots,inj_roots)
 local t;
     t:=fan_table(pos_roots,inj_roots);
     if assigned(t[0]) then t[0]:=t[0]+1;
@@ -145,6 +146,36 @@ local t;
     end;
     select(x->coeff(x,eps)<>0,map(x->x+t[x]*eps,get_indices(t)));
 end proc:
+
+fan:=proc(pretable,max_grade)
+local funtable, newtable, rg, j, r, elems;
+
+    funtable:=table();
+    newtable:=table();
+    funtable[0]:=1;
+
+    elems:=get_indices(pretable);
+
+    for rg in elems do
+        for j from 1 to pretable[rg] do
+            newtable:=table(funtable);
+            for r in get_indices(funtable) do
+                if coeff(r+rg,delta)<=max_grade then
+                    if not assigned(newtable[r+rg]) then
+                        newtable[r+rg]:=-funtable[r];
+
+                    else
+                        newtable[r+rg]:=newtable[r+rg]-funtable[r];
+
+                    end;
+                end;
+            end;
+            funtable:=table(newtable);
+        end;
+    end;
+    return select(x->coeff(x,eps)<>0,map(x->x+funtable[x]*eps,get_indices(funtable)));
+end;
+
 
 inj_roots:=proc(roots)
     local t;
@@ -161,7 +192,7 @@ dimension:=proc(v,pos_roots) local f,r0;
     convert(f,`*`)
 end;
 
-branching:=proc(highest_weight,subalgebra_roots,subalgebra_pos_roots,algebra_name,max_grade,fan1)
+branching:=proc(highest_weight,subalgebra_roots,subalgebra_pos_roots,algebra_name,max_grade)
 local algebra_pos_roots, algebra_simple_roots,
     rho,
     Abot_roots,Abot_rho,
@@ -186,7 +217,7 @@ local algebra_pos_roots, algebra_simple_roots,
     #print(Abot_roots);
     anom_points:=[op(anomalous_points(highest_weight,algebra_name,max_grade))]:
     selected_points:=select(x->
-                            andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots),y)>=0,
+                            andmap(y->iprod(x+rho-projection(x+rho,subalgebra_roots[1..-2]),y)>=0,
                                    Abot_roots),
                             anom_points):
     #print(nops(selected_points));
@@ -196,63 +227,37 @@ local algebra_pos_roots, algebra_simple_roots,
               dimension(projection(x+rho,Abot_roots)-Abot_rho,Abot_roots),
               selected_points):
     mult_table:=table();
+    subtable:=inj_roots(subalgebra_pos_roots);
 
     for r in affine_projection([op({op(algebra_pos_roots)}
                                    minus {op(Abot_roots)})],subalgebra_roots)
     do
-        #        print(r);
-        if assigned(mult_table[subs(eps=0,r)]) then
-            mult_table[subs(eps=0,r)]:=mult_table[subs(eps=0,r)]+coeff(r,eps);
+        ind:=subs(eps=0,r);
+        mult:=coeff(r,eps);
+        if assigned(subtable[ind]) and subtable[ind]<>0 then
+            sub:=min(mult,subtable[ind]);
+            mult:=mult-sub;
+            subtable[ind]:=subtable[ind]-sub;
+        end;
+        if assigned(mult_table[ind]) then
+            mult_table[ind]:=mult_table[ind]+mult;
         else
-            mult_table[subs(eps=0,r)]:=coeff(r,eps);
+            mult_table[ind]:=mult;
         end;
     end;
-
-
-    pppr:=map(x->x+eps*mult_table[x],get_indices(mult_table));
-
-    tmp:=inj_roots(subalgebra_pos_roots);
-#    f:=fan(pppr,tmp);
-# fan1:=[[0,0,0,1],[-1,0,0,-1],
-#       [1,-1,0,-1],[-2,-1,0,1],
-#       [1,-2,0,1],[-2,-2,0,-1],
-#       [-1,-3,0,1],[0,-3,0,-1],
-#
-#       [2,0,1,1],[1,1,1,-1],
-#       [-2,1,1,1],[-3,0,1,-1],
-#       [2,-3,1,-1],[1,-4,1,1],
-#       [-2,-4,1,-1],[-3,-3,1,1],
-#       [0,0,1,1],[-1,0,1,-1],
-#       [1,-1,1,-1],[-2,-1,1,1],
-#       [1,-2,1,1],[-2,-2,1,-1],
-#       [-1,-3,1,1],[0,-3,1,-1],
-#
-#       [2,0,2,-1],[1,1,2,1],
-#       [-2,1,2,-1],[-3,0,2,1],
-#       [2,-3,2,1],[1,-4,2,-1],
-#       [-2,-4,2,1],[-3,-3,2,-1],
-#       [0,0,2,-1],[-1,0,2,1],
-#       [1,-1,2,1],[-2,-1,2,-1],
-#       [1,-2,2,-1],[-2,-2,2,1],
-#       [-1,-3,2,-1],[0,-3,2,1]];
-#
-    f:=map(x->-x[1]/2*beta1-x[2]/2*beta2-x[3]*delta+x[4]*eps,fan1);
-#    print("nops(f)",nops(f));
-#    print(f);
-#    print(subalgebra_pos_roots);
-    f1:=select(x->coeff(x,delta)<=max_grade,f);
-
+    f:=fan(mult_table,max_grade);
 
     subalgebra_rho:=subs(delta=lambda0,convert(select(x->coeff(x,delta)=0,subalgebra_roots),`+`)/2);
 
-    f2:=select(x->coeff(x,delta)=0,f1);
+    f2:=select(x->coeff(x,delta)=0,f);
     gamma0:=f2[1];
     for r in f2 do
         if iprod(r,subalgebra_rho)<iprod(gamma0,subalgebra_rho) then
             gamma0:=r;
         end;
     end;
-    Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f1));
+    Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f));
+
 #    print("Gamma:",nops(Gamma));
     borders:=external_border([op(ppts),1/2*delta,-max_grade*delta]);
 #    print(borders);
