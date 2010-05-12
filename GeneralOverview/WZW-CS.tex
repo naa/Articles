@@ -1,0 +1,1019 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage{graphicx}
+\pagestyle{plain}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\title{WZW-модели и теория Черна-Саймонса}
+\author{Антон Назаров\\ antonnaz@gmail.com}
+\begin{document}
+\maketitle
+\begin{abstract}
+WZW-модель - это сигма-модель с дополнительным членом Весса-Зумино, связанным с топологией. Существует связь таких моделей с пределом бесконечного числа цветов в калибровочных теориях. WZW-модели также связаны с моделями топологической теории поля - моделями Черна-Саймонса-Виттена в трех измерениях. Квантовые состояния в теории Черна-Саймонса с уровнем $k$ ($SU(2)_k$) эквивалентны квантовым состояниям WZW-модели, связанной с представлениями уровня $k$ аффинной алгебры Ли $\widehat{su(2)}$.
+\end{abstract}
+
+\section{Конформная инвариантность}
+\label{sec:conformal-invariance}
+
+Откуда берется конформная инвариантность в физике конденсированного состояния и в теории струн?
+
+Конформные преобразования:
+
+    \begin{align} & M_{\mu\nu} \equiv i(x_\mu\partial_\nu-x_\nu\partial_\mu) \,, \\ &P_\mu \equiv-i\partial_\mu \,, \\ &D \equiv-ix_\mu\partial^\mu \,, \\ &K_\mu \equiv i(x^2\partial_\mu-2x_\mu x_\nu\partial^\nu) \,, \end{align} 
+
+Конформная инвариантность тесно связана с масштабной инвариантностью и иногда даже прямо из нее следует. В физике конденсированного состояния масштабная инвариантность имеет место при фазовом переходе (стремление параметра порядка к бесконечности). Флуктуации при фазовом переходе конформно-инвариантны, что позволяет классифицировать фазовые переходы в терминах конформной теории поля \cite{Polyakov:1970xd}, \cite{belavin1984ics}.
+
+В теории струн действие инвариантно относительно репараметризаций мировой поверхности, в том числе конформных преобразований. 
+Однако эта инвариантность не может быть сохранена при квантовании, поэтому возникает конформная аномалия и центральный заряд алгебры Вирасоро.
+
+В двумерной теории поля локальная конформная группа бесконечномерна, хотя глобальная конформная группа конечномерна. Например, в конформной теории поля на сфере Римана глобальные конформные преобразования образуют группу Мебиуса $PSL(2,\mathbb{C})$. Алгебра же инфинитезимальных преобразований в классической теории --- это алгебра Витта, при квантовании возникает конформная аномалия, что соответствует центральному расширению алгебры. Так появляется алгебра Вирасоро.
+
+\subsection{Конформная инвариантность в теории струн}
+\label{sec:conformal-invariance-strings}
+
+Действие свободной релятивистской частицы --- это длина траектории.
+\begin{equation}
+  \label{eq:1}
+  \begin{split}
+  x^{\mu}(0)=x^{\mu}_0,\; x^{\mu}(1)=x^{\mu}_1\\
+  S=\int_{0}^{1} \sqrt{\left(\frac{dx^{\mu}}{d\tau}^2\right)}d\tau
+\end{split}
+\end{equation}
+Оно Пуанкаре-инвариантно $x^{\mu}\to A^{\mu}_{\nu}x^{\nu}+ B^{\mu}$ и не зависит от репараметризаций $\tau\to f(\tau),\; x^{\mu}(\tau)\to x^{\mu}(f(\tau))$.
+
+Аналогично, струнное действие дается площадью мировой поверхности
+\begin{equation}
+  \label{eq:2}
+  \begin{split}
+    X^{\mu}(x^1,x^2),\; \mu=1\dots d\\
+    S_N [X^{\mu}(x^1,x^2)]=\int \sqrt{det \frac{\partial X^{\mu}}{\partial x^a}\frac{\partial X^{\mu}}{\partial x^b}} dx^1 dx^2
+  \end{split}
+\end{equation}
+Такое действие называется действием Намбу. Оно инвариантно относительно преобразований Лоренца и репараметризаций.
+
+Амплитуда перехода для струны дается следующей формулой:
+\begin{equation}
+  \label{eq:3}
+  A=\int {\cal D}X^{\mu}(x^1,x^2)e^{-S_N[X^{\mu}(x^1,x^2)]}
+\end{equation}
+Сложность, как всегда, состоит в определении меры интегрирования. Она плохо определена как и в большинстве случаев, так что теория струн здесь не выделяется.
+
+Мы хотим сделать замену ``переменных интегрирования'', чтобы избавиться от произвола в выборе параметризации мировой поверхности.
+
+Теория должна быть инвариантна относительно репараметризаций:
+\begin{equation}
+  \label{eq:4}
+  \begin{split}
+    x^a \to f^a (x^1,x^2)\\
+    X^{\mu}(x^1,x^2)\to \tilde{X}^{\mu}(x^1,x^2)=X^{\mu}(f^1(x^1,x^2),f^2(x^1,x^2))
+  \end{split}
+\end{equation}
+Но в действии Намбу эта инвариантность не видна, поэтому мы перейдем к эквивалентному действию Полякова:
+\begin{equation}
+  \label{eq:5}
+  \begin{split}
+    S_P [g^{ab}(x^1,x^2), X^{\mu}(x^1,x^2)]=\int g^{ab}(x)\partial_a X^{\mu} \partial_b X^{\mu}\sqrt{g} \;d^2 x\\
+    g=\det g_{ab}
+  \end{split}
+\end{equation}
+
+Действия Полякова и Намбу эквивалентны в том смысле, что уравнения движения совпадают после исключения вспомогательного поля $g_{ab}$.
+\begin{equation}
+  \label{eq:6}
+  \delta_{X}S_N=0 \Longleftrightarrow \left\{
+      \begin{aligned}
+        \delta_X S_P=0\\
+        \delta_g S_P=0
+      \end{aligned}
+      \right.
+\end{equation}
+Действие Полякова инвариантно относительно преобразований Лоренца и репараметризаций мировой поверхности:
+\begin{equation}
+  \label{eq:7}
+  \begin{split}
+    x^a \to f^a (x^1,x^2)\\
+    X^{\mu}(x^1,x^2)\to \tilde{X}^{\mu}(x^1,x^2)=X^{\mu}(f^1(x^1,x^2),f^2(x^1,x^2))\\
+    g_{ab}(x)\to \tilde{g}_{ab}(x)=\frac{\partial f^{a_1}}{\partial x^{a}}\frac{\partial f^{b_1}}{\partial x^b} g_{a_1 b_1}(x)
+  \end{split}  
+\end{equation}
+Кроме того, есть дополнительная симметрия, которая называется вейлевской или конформной инвариантностью:
+\begin{equation}
+  \label{eq:8}
+  \begin{split}
+    g_{ab}(x)\to e^{\sigma(x)}g_{ab}(x)\\
+    g\to e^{\sigma} g\\
+    g^{ab}\to e^{-\sigma} g^{ab}\\
+    S_P[e^{\sigma(x)} g_{ab}(x),X^{\mu}] = S_P[g_{ab}(x),X^{\mu}] 
+  \end{split}
+\end{equation}
+
+То есть у нас довольно большая свобода --- мы можем, например, получить произвольную метрику на сфере из постоянной метрики путем репараметризации и преобразования Вейля
+\begin{equation}
+  \label{eq:9}
+  g_{ab}(x)=[e^{\sigma(x)}\hat{g}_{ab}]^{x^a\to f^a (x)}
+\end{equation}
+Для поверхностей большего рода существуют дискретные семейства эквивалентных метрик.
+
+We could not preserve all the symmetries during quantization. So we choose to save Lorenz invariance and reparametrisation invariance and break conformal invariance. It is so called conformal anomaly.
+
+\begin{equation}
+  \label{eq:10}
+  A=\int {\cal D}X^{\mu}(x^1,x^2)e^{-S_P[g_{ab},X^{\mu}(x^1,x^2)]}
+\end{equation}
+
+It is easy to see that norm is invariant under reparametrisations:
+\begin{equation}
+  \label{eq:11}
+  \begin{split}
+    \|\delta X^{\mu}\|^2 = \int \left(\delta X^{\mu}(x)\right)^2 \sqrt{g} d^2x\\
+    \|\delta g_{ab}\|^2 = \int \delta g_{a_1 b_1}\delta g_{a_2 b_2} g^{a_1 a_2} g^{b_1 b_2} \sqrt{g}\; d^2x
+  \end{split}
+\end{equation}
+
+To investigate what happens top Weyl invariance after quantization let's introduce so called effective action. We integrate out fields $X^{\mu}$ and get following result.
+\begin{equation}
+  \label{eq:12}
+  e^{-S_X^{eff}[g_{ab}]} \overset{def}{=} \int {\cal D}X^{\mu} e^{-S_P [g_{ab},X]}
+\end{equation}
+\begin{equation}
+  \label{eq:13}
+  \begin{split}
+    S^{eff}_X [e^{\sigma(x)} g_{ab}(x) ] = S_X^{eff}[g_{ab}]+\frac{d}{48\pi}W[g,\sigma]\\
+    W[g,\sigma]=\int \left[ \frac{1}{2} g^{ab}\partial_a\sigma \partial_b\sigma+R[g]\sigma+\mu e^{\sigma}\right] \sqrt{g}\; d^2x
+  \end{split}
+\end{equation}
+Here $R$ is scalar curvature of $g_{ab}$, and $\mu$ is a parameter depending on regularisation, for example for proper time regularisation $\mu=\frac{1}{4\pi\epsilon}$. The term $W[g,\sigma]$ is called Liouville's action.
+
+{\bf Notice} $\int R[x] \sqrt{g}d^2x = 4\pi \chi_E$, $\chi_E=2-2h$, $\chi_E$ - Euler characteristic of the surface, $h$ - genus of the surface.
+
+$W[g,\sigma]$  is called conformal anomaly.
+
+Variance of action
+\begin{equation}
+  \label{eq:14}
+  \begin{split}
+    \delta S[g_{ab},X] = -\frac{1}{4\pi} \int  \delta g^{ab} T_{ab} \sqrt{g} \; d^2x\\
+    g_{ab}\to g_{ab}+\delta g_{ab}
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:15}
+  \begin{split}
+    g_{ab} \to e^{\sigma} g_{ab} \xrightarrow[\sigma \ll 1]{} (1+\delta\sigma) g_{ab}\\
+    \delta S [g_{ab},X] = -\frac{1}{4\pi} \int \delta\sigma g^{ab} T_{ab} \sqrt{g}\, d^2 x
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:16}
+    \delta S =0 \Rightarrow g^{ab}T_{ab}=0
+\end{equation}
+We see that Weyl invariance is equivalent to tracelessness of energy-momentum tensor.
+
+After the quantization we have
+\begin{equation}
+  \label{eq:17}
+  g^{ab}\left< T_{ab} \right> = -\frac{d}{12} R[g]
+\end{equation}
+\begin{Def}
+  {\bf Two dimensional conformal field theory} - is the theory that transforms as in (\ref{eq:13}).
+
+  The factor before $W[g,\sigma]$ is called {\it central charge}.
+\end{Def}
+
+
+At this moment we have too much freedom in our Feynman integral (\ref{eq:10}). We have diffeomorphisms (\ref{eq:4}) and Weyl transformations (\ref{eq:8}). We will fix the gauge so that the metric is given by the formula 
+\begin{equation}
+  \label{eq:20}
+  g_{ab}=[e^{\phi} \hat{g}_{ab}]^{f^a}
+\end{equation}
+
+Faddeev-Popov ghosts appear as usual after this procedure.
+
+\begin{equation}
+  \label{eq:19}
+  \begin{split}
+    A=\int {\cal D} X^{\mu}(x^1,x^2)e^{-S_P[g_{ab},X^{\mu}(x^1,x^2)]} = \\
+    = \int {\cal D}\phi\; {\cal D}X\; \mathcal{D} B_{ab}\; \mathcal{D} C^a e^{-S_P [e^{\phi}\hat{g}_{ab},X]-
+      S_{gh}[e^{\phi}\hat{g}_{ab},B,C]}
+  \end{split}
+\end{equation}
+Here $B,C$ are ghost fields, $B_{ab}(X)$ is symmetric and traceless tensor. All the functional integrals use metric $e^{\phi}\hat{g}$. 
+\begin{equation}
+  \label{eq:21}
+  S_{gh} = \int g^{ac} B_{ab} \nabla_c C^b \sqrt{g} \, d^2x
+\end{equation}
+We can fix Weyl invariance so that measures of integration over matter fields and ghosts fields in (\ref{eq:19}) don't depend on $\phi$. Then we get conformal anomaly in the exponent:
+\begin{equation}
+  \label{eq:22}
+  A = \int \mathcal{D}_{e^{\phi} \hat{g}} \mathcal{D}_{\hat{g}} X \mathcal{D}_{\hat{g}} B_{ab} \mathcal{D}_{\hat{g}} C^a e^{-S_P [e^{\phi}\hat{g}_{ab},X]-S_{gh}[e^{\phi}\hat{g}_{ab},B,C]+\frac{d-26}{48\pi} W[\hat{g}_{ab},\phi]}
+\end{equation}
+$\frac{d}{48\pi}$ comes from matter fields, and $\frac{-26}{48\pi}$ from ghost fields, since both actions are actions of two-dimensional conformal field theory.
+
+Ordinary bosonic string lives in 26-dimensional space and doesn't interact with Liouville's gravity. Such a string is called ``critical string'' since it can exist only in critical dimension. Other string models are called non-critical strings.
+
+First integration in (\ref{eq:22}) is very inconvenient, since we integrate over $\phi$ with measure depending on $\phi$. This measure $\mathcal{D}_{e^{\phi}\hat{g}}\phi$ corresponds to interval
+\begin{equation}
+  \label{eq:23}
+  \|\delta\phi\|^2_P = \int e^{\phi} (\delta\phi)^2 \sqrt{\hat{g}}\, d^2 x
+\end{equation}
+It is non-linear and is not invariant under the translations $\phi(x)\to \phi(x)+\eta(x)$.
+So for some time this was a problem since nobody knew how to work with such objects.
+
+But David-Distler-Kawai proposed to change action in order to take into account change of measure of integration to normal measure.
+
+They conjectured that the amplitude can be written in the form
+\begin{equation}
+  \label{eq:24}
+  A=\int \mathcal{D}_{\hat{g}}\phi\, \mathcal{D}_{\hat{g}} X\, \mathcal{D}_{\hat{g}} (B,C)\, e^{-S_P[\hat{g},X]-S_{gh}[\hat{g},B,C]-S_L[\hat{g},\phi]}
+\end{equation}
+where the measure $\mathcal{D}_{\hat{g}} \phi$ corresponds to the interval $\|\delta\phi\|^2_{DDK} = \int (\delta\phi)^2 \sqrt{\hat{g}}\, d^2x$ and it is invariant under the translations $\phi\to \phi+\eta$ ($\delta\phi\to \delta\phi$). 
+$S_L$ here is Liouville's action with two undefined for now parameters $Q$ and $b$:
+\begin{equation}
+  \label{eq:25}
+  S_L[\hat{g},\phi] = \frac{1}{8\pi} \int \left[ \frac{1}{2} \hat{g}^{ab} \partial_a \phi \partial_b \phi + QR\phi +\mu e^{2b\phi}\right] \sqrt{\hat{g}} \, d^2x
+\end{equation}
+We choose following normalization:
+\begin{equation}
+  \label{eq:26}
+  \langle \phi(x) \phi(0) \rangle = \log |x|^2
+\end{equation}
+Liouville's term should be invariant under dilation $\hat{g}_{ab}\to e^{\sigma}\hat{g}_{ab}$.
+
+After we put
+\begin{equation}
+  \label{eq:27}
+  Q=\frac{1}{b}+b
+\end{equation}
+Liouville's action becomes conformal, so that
+\begin{equation}
+  \label{eq:28}
+  \begin{split}
+    \int \mathcal{D}_{\hat{g}} \phi e^{-S_L[\hat g,\phi]} = e^{-S_L^{eff}[\hat g]}\\
+    S_L^{eff} [e^{\sigma}\hat{g}]=S_L^{eff}[\hat g] +\frac{C_L}{12} W[\hat g,\sigma]
+  \end{split}
+\end{equation}
+Where
+\begin{equation}
+  \label{eq:29}
+  C_L=1+6 Q^2
+\end{equation}
+
+Then we require total central charge to vanish:
+\begin{equation}
+  \label{eq:30}
+  C_X+C_{gh}+C_L=C_{tot}=0
+\end{equation}
+
+Now the amplitude doesn't depend on $\hat{g}$ and parameters $Q$,$b$ are fixed.
+\begin{equation}
+  \label{eq:18}
+  d+1+6\left(b+\frac{1}{b}\right)^2=26
+\end{equation}
+In some finite area we can assume
+\begin{equation}
+  \label{eq:31}
+  \hat{g}_{ab}=\delta_{ab}
+\end{equation}
+There also could be additional term connected with the topology.
+
+Let's change variables
+\begin{equation}
+  \label{eq:32}
+  \begin{split}
+    x^1+i\, x^2=z\\
+    x^1-i\, x^2=\bar{z}\\
+    (dx^1)^2+(dx^2)^2=dz\,d\bar{z}
+  \end{split}
+\end{equation}
+For fields and terms of the action we have
+\begin{equation}
+  \label{eq:33}
+  \begin{split}
+    C^z=C,\; C^{\bar{z}}=\bar{C}\\
+    B_{zz}=B, \; B_{\bar{z}\bar{z}}=\bar{B}\\
+    S_{gh}=\int d^2z [B\bar{\partial}C+\bar{B}\partial \bar{C}]\\
+    S_P[X]=\int d^2z \bar{\partial}X \partial X\\
+    S_L[\phi] \propto \int d^2z \left[\bar{\partial} \phi \partial \phi+\mu e^{2 b \phi}\right] + \mbox{(topological terms)}
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:34}
+  e^{-S^{eff}[g]}=\int \mathcal{D} X e^{-\int g^{ab}\partial_a X \partial_b X \sqrt{g}\, d^2x} = \int \mathcal{D}_g X e^{-\int X \Delta X\sqrt{g}\, d^2x}
+\end{equation}
+Laplace operator depends on metric
+\begin{equation}
+  \label{eq:35}
+  \Delta = \frac{1}{\sqrt{g}}\partial_a \sqrt{g} g^{ab}\partial_b
+\end{equation}
+
+It is self-conjugate operator.
+
+We can represent field $X$ as combination of eigenfunctions of Laplace operator $X(x)=\sum c_n X_n,\; \Delta X_n = \lambda_n X_n,\; \lambda_n=\lambda_n[g]$. Then we will integrate over all eigenfunctions:
+\begin{equation}
+  \label{eq:36}
+  e^{-S^{eff}[g]}=\left(\prod_{n} \lambda_n\right)^{-\frac{1}{2}}=(\det \Delta)^{-\frac{1}{2}}
+\end{equation}
+Obviously we could not calculate $\lambda_n$, but we can get the determinant.
+\begin{equation}
+  \label{eq:37}
+  S^{eff}[g]=\log \det \Delta=tr \log \Delta
+\end{equation}
+\begin{equation}
+  \label{eq:38}
+  \log\frac{\lambda}{\lambda_0}=\int_0^{\infty}\frac{e^{-\lambda t}-e^{\lambda_0 t}}{t}dt
+\end{equation}
+\begin{equation}
+  \label{eq:39}
+  \delta S^{eff}[g]=tr (\log\Delta -\log\Delta_{g_0})=\delta tr \int_0^{\infty}\frac{e^{-\Delta t}}{t} dt
+\end{equation}
+The last integral diverges, so we need to regularise it. We will use heat kernel regularisation.
+\begin{equation}
+  \label{eq:40}
+  \delta S^{eff}[g]=\delta tr \int_{\epsilon}^{\infty}\frac{e^{-\Delta t}}{t} dt  
+\end{equation}
+As we already mentioned, $\hat{g}_{ab}$ could be put equal to $\rho dz d\bar{z}$ in finite area. Then
+\begin{equation}
+  \label{eq:41}
+  \Delta=\frac{1}{\rho}\bar{\partial}\partial
+\end{equation}
+For variation of effective action we have
+  \begin{multline}
+  \label{eq:42}
+    \delta_{\rho}S^{eff}[g]=\delta_{\rho} tr \int_{\epsilon}^{\infty} e^{-\frac{1}{\rho}\bar{\partial}\partial t}\frac{dt}{t}=\\
+    - tr \int_{\epsilon}^{\infty}\delta_{\Delta}e^{-\Delta t} dt=
+    -tr \int_{\epsilon}^{\infty}\frac{\delta\rho}{\rho}\Delta e^{-\Delta t} dt=\\
+    -tr \int_{\epsilon}^{\infty}\frac{\delta\rho}{\rho}\frac{d}{dt} e^{-\Delta t} dt=-tr \frac{\delta\rho}{\rho}e^{-\Delta \epsilon}
+  \end{multline}
+
+Let's introduce Green function for heat equation
+\begin{equation}
+  \label{eq:43}
+  G(t,x,y)=\sum_n e^{-\lambda_n t}X_n(x) X_n(y)
+\end{equation}
+\begin{equation}
+  \label{eq:44}
+  \begin{split}
+    \frac{\partial G}{\partial t}=\Delta_x G(t,x,y)\\
+    G(o,x,y)=\delta^2 (x-y)\\
+    G(t,x,x)=\frac{1}{4\pi t}+aR+O(t)
+  \end{split}
+\end{equation}
+Then for variation of action we have
+\begin{equation}
+  \label{eq:45}
+  \delta S^{eff}[g]=\int d^2x \frac{\delta\rho}{\rho}\left(\frac{1}{4\pi\epsilon}+aR\right)
+\end{equation}
+
+
+
+In Conformal Field Theory 
+\begin{equation}
+  \label{eq:46}
+  g^{ab}\left<T_{ab}\right>=\frac{C}{12}R[g]
+\end{equation}
+$C$ is a central charge.
+
+For flat metric $g_{ab}=\delta_{ab}$ we have
+\begin{equation}
+  \label{eq:47}
+  g^{ab}\langle T_{ab} \rangle=0
+\end{equation}
+Then we put $T_{zz}=T,\quad T_{\bar{z}\bar{z}}=\bar{T},\quad T_{z\bar{z}}=T_{\bar{z}z}$. In flat space from continuity equation $\bar{\partial}T_{zz}+\partial T_{\bar{z}\bar{z}}=0$ we have
+\begin{equation}
+  \label{eq:49}
+  \begin{split}
+    T_{z\bar{z}}=0\\
+    \bar{\partial}T_{zz}=\bar{\partial}T=0,\quad T \mbox{- holomorphic}\\
+    \partial T_{\bar{z}\bar{z}}=\partial \bar{T}=0,\quad \bar{T} \mbox{- antiholomorphic}\\
+  \end{split}
+\end{equation}
+In curved space continuity equation reads $\nabla_a T^{ab}=0$ and we can choose coordinate system where $g_{ab}dx^a dx^b = \rho dz\, d\bar{z}=e^{\sigma}dz\,d\bar{z}$. Then we introduce pseudo energy $T$:
+\begin{equation}
+  \label{eq:50}
+  T_{zz}+\frac{C}{12}t_{zz}=T
+\end{equation}
+where $t_{zz}=(\partial \sigma)^2-2\partial^2 \sigma$. It is easy to check that $\bar{\partial}T=0$ in this case.
+
+For transformations $z\to w(z)$
+\begin{equation}
+  \label{eq:51}
+  \begin{split}
+    T_{zz}\to \left(\frac{dw}{dz}\right)^2 T_{ww}(w(z))\\
+    t\to \left(\frac{dw}{dz}\right)t(w)+2\{w,z\}\\
+    \mbox{where}\; \{w,z\}=\left(\frac{\partial_z^3 w}{\partial_z w}-\frac{3}{2}\left(\frac{\partial_z^2 w}{\partial_z}\right)^2\right)\\
+    T\to \left(\frac{dw}{dz}\right)^2 T(w)+\frac{C}{12}\{w,z\}\\
+  \end{split}
+\end{equation}
+Energy-momentum tensor is the generator of coordinate transformations $x^a\to x^a+\epsilon^a(x)$:
+\begin{equation}
+  \label{eq:52}
+  \delta_{\epsilon}\langle A_1(x_1)\dots A_N(x_N)\rangle = \int d^2x\, \partial_a \epsilon_b(x)\langle T_{ab}(x) A_1(x_1)\dots A_N(x_N)\rangle
+\end{equation}
+
+\begin{equation}
+  \label{eq:53}
+  \begin{split}
+    T_{aa}=0\\
+    \partial_a \epsilon_b+\partial_b \epsilon_a\sim \delta_{ab}\\
+    \epsilon^a=\epsilon x^a \;\mbox{or}\; x^a\to \frac{x^a}{(\vec x)^2}
+  \end{split}
+\end{equation}
+Correlation functions don't change under conformal transformations.
+\begin{equation}
+  \label{eq:54}
+  \delta_{\epsilon}A(x)=\int_{\partial D} dy^a\, \epsilon^b \tilde{T}_{ab}(y)A(x)-\int_{D}d^2y\, \partial^a \epsilon^b(y)T_{ab}(y)A(x)
+\end{equation}
+Where $\tilde{T}_{ab}=\epsilon_{ac}T_{cb}$.
+
+Let
+\begin{equation}
+  \label{eq:55}
+  \begin{split}
+    \partial_a \epsilon_b+\partial_b \epsilon_a\sim \delta_{ab}\\
+    \bar{\partial}\epsilon=0\\
+    z\to z+\epsilon(z,\bar{z})\\
+    \bar{z}\to\bar{z}+\bar{\epsilon}(z,\bar{z})
+  \end{split}
+\end{equation}
+\begin{equation}
+  \label{eq:56}
+  \delta_{\epsilon}A(z,\bar{z})=\oint_z du\, \epsilon(u) T(u) A(z,\bar{z})
+\end{equation}
+Substituting $T(z)$ in place of arbitrary operator $A$ we get 
+\begin{equation}
+  \label{eq:57}
+  \delta_{\epsilon}T(z)=\oint_z du\, \epsilon(u)T(u)T(z)
+\end{equation}
+
+If $w(z)=z+\epsilon(z)$ where $\epsilon$ is small, $T$ transforms as following:
+\begin{equation}
+  \label{eq:58}
+  T(z)\to \epsilon T'(z) + 2\epsilon' T(z)+\frac{C}{12}\epsilon'''
+\end{equation}
+\begin{equation}
+  \label{eq:59}
+  \delta_{\epsilon}T(z)=\oint du\, \epsilon(u) T(u) T(z) = \epsilon T'(z) + 2\epsilon' T(z)+\frac{C}{12}\epsilon'''
+\end{equation}
+We suppose that for full set of operators $\{A_j(x)\}$ there exists operator product expansion:
+!!! How can it be proved ????
+\begin{equation}
+  \label{eq:60}
+  A_i(x)A_j(0)=\sum C^k_{ij}(x)A_k(0)
+\end{equation}
+Then for product $T(u)T(z)$ we have
+\begin{equation}
+  \label{eq:61}
+  T(u)T(z)=\sum C_k(u-z) A_k(z)
+\end{equation}
+We can recover the poles from formula (\ref{eq:59}):
+\begin{equation}
+  \label{eq:62}
+  T(u)T(z)=\frac{C}{2(u-z)^4}+\frac{2T(z)}{(u-z)^2}+\frac{T'(z)}{u-z}+\mbox{non-singular terms}
+\end{equation}
+Now introduce the operators $L_n$:
+\begin{equation}
+  \label{eq:63}
+  L_n A(z)\equiv \frac{}{2\pi i}\oint_{C}du\, (u-z)^{n+1}T(u)A(z)
+\end{equation}
+It is possible to show that for $n,m\in \mathbb{Z}$
+\begin{equation}
+  \label{eq:64}
+  [L_n,L_m]=(n-m) L_{n+m}+\frac{C}{12}(n^3-n)\delta_{n,-m}
+\end{equation}
+and $\{L_n\}$ constitute Virasoro algebra. 
+
+All the fields in the theory are sums of multiplets of Virasoro algebra:
+\begin{equation}
+  \label{eq:65}
+  \{A_j\}=\sum [\Phi_{\Delta,A}] %%% It is incorrect, fix this formula
+\end{equation}
+
+There is a primary field in every multiplet:
+\begin{equation}
+  \label{eq:66}
+  \begin{split}
+    \Phi_{\Delta}(z)\underset{z\to w(z)}{\longrightarrow} \left(\frac{dw}{dz}\right)^{\Delta}\Phi_{\Delta}(w(z))\\
+    L_n \Phi=0,\quad n>0\\
+    L_0 \Phi=\Delta \Phi\\
+  \end{split}
+\end{equation}
+All other fields are built of primary fields and are called secondary:
+\begin{equation}
+  \label{eq:67}
+  L_{-n_1}L_{-n_2}\dots \Phi_{\Delta}
+\end{equation}
+
+Correlation functions are expressed as combinations of correlation functions of primary fields.
+
+The only thing that is yet undefined is the set of scaling dimensions of primary fields. So to fix the theory we should define $\Phi_a,\; \Delta_a,\; C^c_{ab}$. Then our theory is solved. If the number of primary fields is finite, such a model is called {\it minimal}.
+
+For example, following fields are Weyl-invariant:
+\begin{equation}
+  \label{eq:68}
+  O_a=\int \Phi_{\Delta}e^{2a\phi}\,d^2x,\quad \mbox{where}\;\Delta+a(Q-a)=1
+\end{equation}
+$O_a$ - is the main observable of string theory with gravitational dimension $\delta_a=-\frac{a}{b}$.
+\begin{equation}
+  \label{eq:69}
+  \int\langle O_{a_1}\dots O_{a_n}\rangle_{\mu} e^{-\mu A}d\mu=\langle O_{a_1}\dots O_{a_n}\rangle_{A}=A^{\sum \delta_k},\quad \delta_k=\frac{a_k}{b}
+\end{equation}
+\subsection{Connection with string theory}
+
+We can start from arbitrary conformal field theory, find $b$ from equation $C+6\left(b+\frac{1}{b}\right)^2=25$ and obtain some non-critical string theory. But for $d>1$ $b$ becomes complex and this fact leads to unsolved yet problems.
+
+\subsection{Глобальная конформная инвариантность и уравнения Книжника-Замолодчикова}
+\label{sec:knizhnik-zamolodchikov}
+
+\subsection{Модулярные преобразования}
+\label{sec:modular}
+
+
+Конформная инвариантность в квантовой и классической теории поля.
+Глобальная конформная инвариантность.
+Уравнения Книжника-Замолодчикова.
+Локальная конформная инвариантность. Бесследовость тензора энергии-импульса.
+Голоморфная факторизация.
+
+\section{Модели Весса-Зумино-Новикова-Виттена}
+\label{sec:WZNW}
+
+Связь WZW-моделей с топологией, обоснование с точки зрения предела калибровочной теории.
+
+Стартуем с нелинейной $\sigma$-модели.
+\begin{equation}
+  \label{eq:48}
+  S_0=\frac{1}{4a^2}\int d^2x\; Tr' (\partial^{\mu}g^{-1}\partial_{\mu}g)
+\end{equation}
+Здесь $a^2>0$ - положительный параметр, $g(x)\in G$ - поле со значениями в группе $G$, которую мы будем считать полупростой, а через $Tr'$ мы обозначили след, не зависящий от выбора представления алгебры Ли $\mathfrak{g} $
+\begin{equation}
+  \label{eq:70}
+  Tr'=\frac{1}{x_{rep}}Tr
+\end{equation}
+$x_{rep}$ - индекс Дынкина представления.
+
+В нелинейной $\sigma$-модели конформная инвариантность теряется на квантовом уровне.
+Голоморфный и антиголоморфный токи не сохраняются по отдельности. Уравнения движения имеют вид    
+\begin{equation}
+  \label{eq:71}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)=0
+\end{equation}
+Токи задаются выражением
+\begin{equation}
+  \label{eq:currents}
+  J_{\mu}=g^{-1}\partial_{\mu}g
+\end{equation}
+или в комплексных координатах
+\begin{equation}
+  \label{eq:74}
+  \begin{matrix}
+    & \tilde{J}_z=g^{-1}\partial_z g, & \tilde{J}_{\bar{z}}=g^{-1}\partial_{\bar{z}}g\\
+    & \partial_z \tilde{J}_{\bar{z}}+\partial_{\bar{z}}\tilde{J}_z=0 & \\
+  \end{matrix}
+\end{equation}
+Члены в уравнении движения не разделяются, так как  $\partial_{\mu}(\epsilon^{\mu\nu}J_{\nu})\neq 0$.
+
+Поэтому мы добавляем член Весса-Зумино к действию и переопределяем токи:
+\begin{equation}
+  \label{eq:72}
+  J_z=\partial_z g\;g^{-1}, \qquad J_{\bar{z}}=g^{-1}\partial{\bar z}g
+\end{equation}
+
+Член Весса-Зумино имеет вид
+\begin{equation}
+  \label{eq:73}
+\Gamma=  - \frac{i }{24\pi} \int_{B}\epsilon_{ijk} Tr'\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+\end{equation}
+
+Он определен на трехмерном многообразии $B$, ограниченном исходным двумерным пространством. 
+Через $\tilde{g}$ мы обозначили продолжение поля  $g$ на $B$. Такое продолжение не единственно. В компактифицированном трехмерном пространстве компактное двумерное многообразие разделяет два трехмерных многообразия. Разность значений члена Весса-Зумино  $\Delta\Gamma$ на этих многообразиях дается правой частью уравнения (\ref{eq:73}) с интегралом, продолженным на все компактное трехмерное пространство. Так как оно топологически эквивалентно три-сфере, получаем
+\begin{equation}
+  \label{eq:75}
+\Delta\Gamma=  - \frac{i }{24\pi} \int_{S^3}\epsilon_{ijk} Tr'\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+\end{equation}
+$\Delta\Gamma$ определен по модулю $2\pi i$, поэтому Евклидов функциональный интеграл с весом  $exp(-\Gamma)$ хорошо определен. Значит константа связи, умножаемая на этот член, должна быть целочисленной.
+
+Теперь мы рассматриваем действи
+\begin{equation}
+  \label{eq:76}
+  S=S_0+k\Gamma
+\end{equation}
+где $k$ - целое.
+Уравнение движения для полного действия (\ref{eq:76}):
+\begin{equation}
+  \label{eq:77}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)+\frac{a^2 ik}{4\pi}\epsilon_{\mu\nu}\partial^{\mu}(g^{-1}\partial^{\nu}g)=0
+\end{equation}
+В комплексных координатах оно записывается в виде
+\begin{equation}
+  \label{eq:78}
+  (1+\frac{a^2 k}{4\pi})\partial_z(g^{-1}\partial_{\bar z}g)+(1-\frac{a^2 k}{4\pi})\partial_{\bar z}(g^{-1}\partial_z g)=0
+\end{equation}
+Видно, что при $a^2=\frac{4\pi}{k}$ у нас имеются интересующие нас законы сохранения
+\begin{equation}
+  \label{eq:79}
+  \partial_z(g^{-1}\partial{\bar z}g)=0
+\end{equation}
+Для токов
+\begin{equation}
+  \label{eq:4}
+  \partial_{\bar z}J=0,\quad \partial_z \bar J=0
+\end{equation}
+
+Решение классического уравнения движения имеет вид
+\begin{equation}
+  \label{eq:80}
+  g(z,\bar z)=f(z)\bar f(\bar z)
+\end{equation}
+при произвольных $f(z)$ и $\bar f (\bar z)$.
+
+Сохранение по отдельности токов $J_z,\; J_{\bar z}$ приводит к инвариантности действия при преобразованиях
+\begin{equation}
+  \label{eq:81}
+   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)
+\end{equation}
+где $\Omega,\;\bar \Omega \in G$. То есть мы получили локальную $G(z)\times G(\bar z)$-инвариантность. 
+
+Для перехода к квантовому случаю мы переопределяем токи
+\begin{equation}
+  \label{eq:82}
+  J(z)\equiv -k \partial_zg g^{-1}\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
+\end{equation}
+Тогда вариация действия при инфинитезимальных преобразованиях $\Omega=1+\omega,\; \bar \Omega =1+\bar \omega$ дается выражением
+\begin{equation}
+  \label{eq:83}
+  \delta_{\omega,\bar\omega}S=\frac{i}{4\pi}\oint dz Tr' (\omega(z)J(z))-\frac{i}{4\pi}\oint d\bar z Tr'(\bar\omega(\bar z)\bar J(\bar z))
+\end{equation}
+Раскладывая токи
+\begin{equation}
+  \label{eq:85}
+  \begin{aligned}
+    J=\sum J^a t^a,\bar J=\sum \bar J^a t^a \\
+    \omega=\sum \omega^a t^a\\
+  \end{aligned}
+\end{equation}
+получаем
+\begin{equation}
+  \label{eq:86}
+  \delta_{\omega,\bar \omega}S=-\frac{1}{2\pi i}\oint dz \sum\omega^a J^a+\frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \bar J^a
+\end{equation}
+Мы также получили тождества Уорда $\delta\left< X\right>=\left<(\delta S)X\right>$
+\begin{equation}
+  \label{eq:87}
+  \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
+  \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+\end{equation}
+Для токов имеем
+\begin{equation}
+  \label{eq:88}
+  \delta_{\omega}J=[\omega,J]-k\partial_z\omega,\quad \delta_{\omega}J^a=\sum i f_{abc}\omega^b J^c-k\partial_z\omega^a
+\end{equation}
+Операторное разложение для токов имеет вид 
+\begin{equation}
+  \label{eq:89}
+  J^a(z) J^b(w) \sim \frac{k\delta_{ab}}{(z-w)^2}+\sum i f_{abc}\frac{J^c(w)}{(z-w)}
+\end{equation}
+Раскладывая токи в ряд, получаем
+\begin{equation}
+  \label{eq:90}
+  \begin{aligned}
+    J^a(z)=\sum_{n\in \mathbb Z}z^{n-1}J^a_n\\    
+    \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}  
+  \end{aligned}
+\end{equation}
+Теперь мы видим, что компоненты токов образуют аффинную алгебру Ли $\hat g$.  
+
+
+Тензор энергии-импульса вводится при помощи конструкции Сугавары как сумма нормально упорядоченных компонент токов
+\begin{equation}
+  \label{eq:6}
+  T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
+\end{equation}
+Здесь $h^v$ - дуальное число Кокстера.
+
+Тензор энергии-импульса можно разложить на моды $L_n$
+\begin{equation}
+  \label{eq:91}
+  L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:J^a_m J^a_{n-m}:
+\end{equation}
+Тогда коммутационные соотношения для мод  $L_n$ имеют вид
+\begin{equation}
+  \label{eq:92}
+  \begin{aligned}
+    \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+    \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+  \end{aligned}
+\end{equation}
+
+Таким образом, конструкция Сугавары --- это способ вложения алгебры Вирасоро в универсальную обертывающую аффинной алгебры Ли $\hat{g}$
+
+Полная киральная алгебра модели Весса-Зумино-Виттена равна полупрямому произведению $Vir\ltimes \hat g$
+
+Примарными называются поля, которые преобразуются ковариантно под действием $G(z)\times G(\bar z)$, как $g(z,\bar z)$. В терминах операторного разложения это свойство переформулируется следующим образом:
+\begin{equation}
+  \label{eq:84}
+  \begin{aligned}
+    J^a(z)g(w,\bar w)\sim \frac{-t^a g(w,\bar w)}{(z-w)}\\
+    \bar J^a(z)g(w,\bar w)\sim \frac{ g(w,\bar w)t^a}{(z-w)}
+  \end{aligned}
+\end{equation}
+Любое поле $\phi_{\lambda,\mu}$, преобразующееся ковариантно по отношению к некоторому представлению, заданному весом  $\lambda$ в голоморфном секторе и весом $\mu$ в антиголоморфном, является примарным полем WZW-модели.
+
+В модах это свойство записывается в виде
+\begin{equation}
+  \label{eq:93}
+  \begin{aligned}
+    & (J_0^a \phi_{\lambda})=-t^a_{\lambda}\phi_{\lambda}\\
+    & (J^a_n\phi_{\lambda})=0\quad \mbox{для}\; n>0\\
+  \end{aligned}
+\end{equation}
+Мы можем сопоставить состояние $\left|\phi_{\lambda}\right>$ полю $\phi_{\lambda}$
+  \begin{equation}
+    \label{eq:94}
+    \phi_{\lambda}(0)=\left|\phi_{\lambda}\right>
+  \end{equation}
+Тогда условия  (\ref{eq:93}) для примарных полей  дают
+\begin{equation}
+  \label{eq:95}
+  \begin{aligned}
+    & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>\\
+    & J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{для}\; n>0 \\
+  \end{aligned}
+\end{equation}
+Легко видеть, что действие генераторов алгебры Вирасоро имеет вид
+\begin{equation}
+  \label{eq:96}
+  L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>
+\end{equation}
+Здесь использовано явное выражение для собственных значений квадратичного оператора Казимира.
+
+Примарные поля живут в интегрируемых конечномерных представлениях, так как бесконечномерные и неинтегрируемые поля отщепляются в корреляционных функциях.
+
+Все вторичные состояния имеют вид
+\begin{equation}
+  \label{eq:97}
+  J^{a_1}_{-n_1}J^{a_2}_{n_2}\dots\left|\phi_{\lambda}\right>
+\end{equation}
+Для корреляционных функций примарных полей можно получить уравнения Книжника-Замолодчикова, которые следуют из глобальной $G\times G$-инвариантности
+\begin{equation}
+  \label{eq:98}
+  \left(\partial_{z_i}+\frac{1}{k+h^v}\sum_{i\neq j}\frac{\sum_a t^a_i\otimes t^a_j}{z_i-z_k}\right)
+  \left<\phi_1(z_1)\dots \phi_n(z_n)\right>=0
+\end{equation}
+Таким образом, теория полностью определяется представлениями аффинной алгебры Ли $\hat{\mathfrak{g}} $.
+
+\subsection{Литература}
+\label{sec:wzw-literature}
+
+Эта часть написана по книге \cite{difrancesco1997cft}, так же стоит отметить обзор \cite{Walton:1999xc}.
+
+\subsection{Калибровочная WZW-модель}
+\label{sec:gauged-wzw}
+
+Добавить сюда действие G-WZW, обсудить связь с coset construction и branching functions.
+
+(Добавить статью Gawedzki в ссылки и перевести оттуда содержательную часть).
+
+Теперь мы знаем, что такое conformal blocks, так что это надо здесь объяснить при обсуждении G-WZW и coset construction.
+
+\section{Теория Черна-Саймонса}
+\label{sec:Chern-Simons}
+
+Теория Черна-Саймонса --- это калибровочная теория, то есть классические полевые конфигурации в теории на $M$ с калибровочной группой $G$ описываются главным $G$-расслоением над $M$. Форму связности главного $G$-расслоения над $M$ обозначим через $A:M\to g$, она принимает значения в $g$. В общем случае связность $A$ определяется на отдельных картах, значения $A$ на разных картах связаны калибровочными преобразованиями. Калибровочные преобразования характеризуются тем, что ковариантная производная $D=d+\frac{1}{2}[A,\cdot]$ преобразуется в присоединенном представлении $G$. 
+
+Тогда действие записывается в виде:
+\begin{equation}
+  \label{eq:1}
+  S=\frac{k}{4\pi}\int_M \mathrm{tr}(A\wedge dA+\frac{2}{3}A\wedge A\wedge A)
+\end{equation}
+
+
+Кривизна связности
+\begin{equation}
+  \label{eq:2}
+  F=DA=dA+A\wedge A\in \Omega^2(M,g)
+\end{equation}
+Уравнение движения
+\begin{equation}
+  \label{eq:3}
+  \frac{\delta S}{\delta A}=0=\frac{k}{2\pi}F
+\end{equation}
+Решениями являются плоские связности, которые определяются голономиями вокруг нестягиваемых циклов на $M$. Плоские связности находятся в однозначном соответствии с классами эквивалентности гомоморфизмов из фундаментальной группы $M$ в калибровочную группу $G$. Также говорят о том, что плоские связности определяются своими голономиями и
+\begin{equation}
+  \label{eq:8}
+  \mbox{критические значения}/\mbox{калибровочным преобразованиям}\leftrightarrow \mathrm{Hom}(\pi_1(M),G)/G
+\end{equation}
+
+Действие зависит только от топологии $M$, метрика нигде явно не появляется. Корреляторы тоже зависят только от топологии. 
+Хотя действие и зависит от калибровки, статсумма в квантовой теории хорошо определена при целом $k$ и напряженность калибровочного поля обнуляется на границах $M$.
+
+Если у $M$ есть граница $N=\partial M$, то есть дополнительные данные, которые описывают выбор тривиализации главного $G$-расслоения на $N$. Такой выбор задает отображение из $N$ в $G$. Динамика этого отображения описывается WZW-моделью на $N$ с уровнем $k$.  
+
+Рассматриваем калибровочное преобразование действия Черна-Саймонса.
+При калибровочном преобразовании $g$ $A$ преобразуется как
+\begin{equation}
+  \label{eq:5}
+  A_{\mu}\to g^* A= g^{-1}A_{\mu}g+g^{-1}\partial_{\mu}g
+\end{equation}
+Для действия Черна-Саймонса имеем
+\begin{equation}
+  \label{eq:7}
+  S(g^* A)=S(A) +\frac{k}{4\pi}\int_{\partial M}\mathrm{Tr} (A\wedge dg \; g^{-1})-2\pi k\int_M g^* \sigma
+\end{equation}
+Здесь 
+
+\begin{equation}
+  \label{eq:4}
+  \sigma=\frac{1}{24\pi^2} \mathrm{Tr} (\mu\wedge\mu\wedge\mu)
+\end{equation}
+где $\mu=X^{-1} dX, X\in G$ - форма Маурера-Картана. 
+
+Получаем добавку в \eqref{eq:7}, определенную на границе. Она выглядит как член Весса-Зумино. Из требования калибровочной инвариантности квантовых корреляторов  получаем квантование $k$, так как функциональный интеграл должен быть однозначно определен. 
+
+\subsection{Квантование}
+\label{sec:quantization}
+
+\subsubsection{Задача квантования}
+\label{sec:task}
+
+При каноническом квантовании теории Черна-Саймонса состояние определяется на каждой двумерной поверхности $\Sigma\subset M$. Как в любой квантовой теории поля, состояния соответствуют лучам в гильбертовом пространстве. Так как мы имеем дело с топологической теорией поля типа Шварца, то у нас нет предопределенного выделенного времени, поэтому $\Sigma$ - произвольная поверхность Коши.
+
+Коразмерность $\Sigma$ равна 1, поэтому можно разрезать $M$ вдоль $\Sigma$ и получить многообразие с границей, на котором классическая динамика описывается WZW-моделью \ref{sec:Chern-Simons}. Виттен показал, что это соответствие сохраняется и в квантовой механике. То есть гильбертово пространство состояний всегда конечномерно и может быть отождествлено с пространством конформных блоков $G$-WZW-модели с уровнем $k$. Конформные блоки - это локально голоморфные и антиголоморфные множители, произведения которых складываются в корреляционные функции двумерной конформной теории поля. 
+
+Например, если $\Sigma=S^2$, то гильбертово пространство одномерно и существует только одно состояние. При $\Sigma=T^2$ состояния соответствуют интегрируемым представлениям уровня $k$  аффинного расширения алгебры Ли $g$. Рассмотрение поверхностей более высокого рода не требуется для решения теории Черна-Саймонса.
+
+\subsubsection{Наблюдаемые}
+\label{sec:observables}
+
+Наблюдаемые в теории Черна-Саймонса - это $n$-точечные функции калибровочно-инвариантных операторов, чаще всего рассматривают петли Вильсона. Петля Вильсона - это голономия вокруг кольца в $M$, вычисленная в некотором представлении $R$ группы $G$. Так как мы будем рассматривать произведения петель Вильсона, то мы можем считать представления неприводимыми.
+\begin{equation}
+  \label{eq:33}
+    \langle W_R(K) \rangle =\text{Tr}_R \, P \, \exp{i \oint_K A}  
+\end{equation}
+Здесь $A$- 1-форма связности, мы берем главное значение интеграла по Коши, $P \exp$ - экспонента, упорядоченная вдоль пути.
+
+Рассмотрим зацепление $L$ в $M$, которое представляет собой набор из $l$ несвязных циклов. Особенно интересна $l$-точечная корреляционная функция, представляющая собой произведение петель Вильсона в фундаментальном представлении $G$ вокруг этих циклов. Эту корреляционную функцию можно нормировать, разделив ее на 0-точечную функцию (статсумму $Z$).
+
+Если $M$ - сфера, то такие нормированные функции пропорциональны известным полиномам (инвариантам) узлов. Например, при $G=U(N)$ теория Черна-Саймонса с уровнем $k$ дает
+\begin{equation}
+  \label{eq:34}
+      \frac{\sin(\pi/(k+N))}{\sin(\pi N/(k+N))}\times\;\mbox{полином HOMFLY}
+\end{equation}
+При $N=2$ полином HOMFLY переходит в полином Джонса. В случае $SO(N)$ получается полином Кауффмана.
+
+\subsubsection{Связь с G/G WZW-моделями}
+\label{sec:gg-wzw}
+
+Задача квантования сводится к вычислению функциональных интегралов вида
+\begin{equation}
+  \label{eq:9}
+  \left< F \right> = \frac{\int \mathcal{D} A F[A] e^{i S(A)}}{\int \mathcal{D} A e^{iS(A)}}
+\end{equation}
+В первую очередь нас интересует производящий функционал (статсумма, partition function)
+\begin{equation}
+  \label{eq:14}
+  Z_{\Sigma\times I}=\int \mathcal{D} A e^{iS(A)}
+\end{equation}
+
+Если многообразие $M$ имеет вид $M=\Sigma\times S^1$, то функциональный интеграл можно строго определить и явно вычислить. В противном случае можно вычислять его по теории возмущений. Как явное вычисление для многообразий специального вида так и вычисление по теории возмущений показывают связь теории Черна-Саймонса с WZW-моделями. Мы начнем с рассмотрения случая $M=\Sigma\times S^1$, где $\Sigma$ - компактная двумерная поверхность. Рассмотрение такого функционального интеграла можно свести к анализу теории Черна-Саймонса на пространстве $\Sigma\times I$, где $I=[0,1]$, с заданными граничными условиями в точках $\{0\}, \{1\}$.
+
+В случае $M=\Sigma\times S^1$ существует такой выбор калибровки, при котором функциональный интеграл имеет гауссову форму. 
+Сначала разделим поле $A$ на компоненты:
+\begin{equation}
+  \label{eq:10}
+  A=A+A_0 dt
+\end{equation}
+Для вычисления функционального интеграла зафиксируем следующую калибровку
+\begin{equation}
+  \label{eq:11}
+  \partial_0 A_0 =0
+\end{equation}
+Это условие устраняет не весь произвол, так как остаются ещё не зависящие от времени калибровочные преобразования. Обозначим через $\gamma$ голономию $A_0$ вокруг $S^1$, то есть
+\begin{equation}
+  \label{eq:12}
+  \gamma=P \exp\left(\oint A_0\right)
+\end{equation}
+При калибровочном преобразовании $h: A_0\to A_0^h\equiv h^{-1} A_0 h+h^{-1}\partial_0 h$ $\gamma$ переходит в сопряженный элемент:
+\begin{equation}
+  \label{eq:13}
+  \gamma\to h^{-1} \gamma h
+\end{equation}
+Мы можем наложить калибровочное условие, потребовав нахождения $\gamma$ в максимальном торе $T\subset G$.
+
+Покажем, как мы можем получить действие калибровочной WZW-модели в результате вычисления функционального интеграла. 
+Действие калибровочной WZW-модели отличается от действия \eqref{eq:76} наличием дополнительного члена, зависящего от калибровочного поля
+\begin{equation}
+  \label{eq:15}
+  S_{/H}(g,A)=-\frac{1}{2\pi}\int_{\Sigma}d^2z (A_z\partial_{\bar z} g g^{-1}-A_{\bar z} g^{-1}\partial_z g+ A_z A_{\bar z} - g^{-1}A_z g A_{\bar z})
+\end{equation}
+Если исходное действие \eqref{eq:76} обладает глобальной инвариантностью относительно группы $G=G_L\times G_R: g\to a g b^{-1}$, то здесь калибровочная группа $H\subset G$ - это достаточно хорошая ее подгруппа, например, $H\subset G_{adj}(g\to a g a^{-1})$. Итоговое действие калибровочной WZW-модели
+\begin{equation}
+  \label{eq:16}
+  S_{G/H}(g,A)=S_{WZW}(g)+S_{/H}(g,A)
+\end{equation}
+При $H=G$
+\begin{equation}
+  \label{eq:17}
+  S_{G/G}(g,A)=-\frac{1}{8\pi}\int_{\Sigma} \mathrm{tr} g^{-1} d_A g * g^{-1} d_a g-i\Gamma(g,A)
+\end{equation}
+\begin{equation}
+  \label{eq:18}
+  \Gamma(g,A)=\frac{1}{12\pi}\int_{M:\partial M=\Sigma}\mathrm{tr}(g^{-1}dg)^3-\frac{1}{4\pi}\int_{\Sigma}\mathrm{tr}\left(A(dg\; g^{-1}+g^{-1} dg)+Ag^{-1} A g\right)
+\end{equation}
+
+Возвращаясь к действию Черна-Саймонса на $\Sigma\times I$, мы фиксируем калибровку \eqref{eq:11} и вводим
+\begin{equation}
+  \label{eq:19}
+  \gamma_t\equiv P\exp\int_0^t A_0=\exp tA_0
+\end{equation}
+При этом $\gamma_0=1,\; \gamma_1=\gamma$ и $A^{(\gamma^{-1})}_0=0$.
+
+Вводим духи Фаддева-Попова, при этом к действию добавляются члены, фиксирующие калибровку:
+\begin{equation}
+  \label{eq:20}
+  \int_{\Sigma\times S^1}\mathrm{tr}(BA_0+\bar{c}D_0c),\quad \mbox{где} \; D_0=\partial_0+A_0
+\end{equation}
+и накладываем условия
+\begin{equation}
+  \label{eq:21}
+  \oint B=\oint c=\oint \bar{c}=0
+\end{equation}
+Мы можем проинтегрировать по $A_t$, тогда $A_0$ останется только как внешнее фиксированное поле, а в интеграле появится множитель $\mathrm{Det}'D_0$. Обозначим оставшиеся компоненты через $B$ и зафиксируем граничные условия:
+\begin{equation}
+  \label{eq:22}
+  B_z|_{\Sigma\times \{0\}}=A_z,\quad B_{\bar{z}}|_{\Sigma\times\{1\}}=A_{\bar z}
+\end{equation}
+Тогда надо добавить граничные члены к действию:
+\begin{equation}
+  \label{eq:23}
+  S_{CS}(A_0,B)\to S_{CS}(A_0,B)-\frac{1}{4\pi}\int_{\Sigma\times \{0\}}B_z B_{\bar z}-\frac{1}{4\pi}\int_{\Sigma\times \{1\}}B_z B_{\bar z}
+\end{equation}
+Тогда нам надо вычислить
+\begin{equation}
+  \label{eq:24}
+  Z_{\Sigma\times S^1}=\int \mathcal{D}A_0\mathcal{D}A \mathrm{Det}'D_0 Z_{\Sigma\times I}[A_0; A_z, A_{\bar z}]\exp\left(\frac{ik}{2\pi}\int_{\Sigma}A_z A_{\bar z}\right) 
+\end{equation}
+Последний член - Кэлеров потенциал, необходимый для голоморфного представления граничных членов \eqref{eq:23}.
+
+На многообразии с границами $\exp iS_{CS}$ не инвариантна относительно произвольных калибровочных преобразований \eqref{eq:7}
+\begin{equation}
+  \label{eq:25}
+  \exp iS_{CS}(A^g)=\Theta(A,g)^k \exp iS_{CS}(A)
+\end{equation}
+\begin{equation}
+  \label{eq:26}
+  \Theta(A,g)=\exp \left(-\frac{i}{12\pi}\int_M(g^{-1}dg)^3+\frac{i}{4\pi}\int_{\partial M} A dg g^{-1}\right)
+\end{equation}
+
+Тогда для амплитуды $Z_{\Sigma\times I}[A_0;A_z,A_{\bar z}]$ при преобразовании $\gamma_t=\exp tA_0$
+\begin{equation}
+  \label{eq:27}
+  Z_{\Sigma\times I}[A_0;A_z,A_{\bar z}^{\gamma}]=Z_{\Sigma\times I}[A_0^{(\gamma_t^{-1})}=0;A_z,A_{\bar z}] C[A_{\bar z},\gamma]
+\end{equation}
+где $C[A_{\bar z},\gamma]$ - коцикл Полякова-Вигманна:
+\begin{equation}
+  \label{eq:28}
+  C[A_{\bar z},\gamma]=\exp iS_{G/G}(\gamma^{-1},A_z=0,A_{\bar z})
+\end{equation}
+
+Нам надо также перейти от меры $\mathcal{D}A_0$ на алгебре Ли к мере Хаара $\mathcal{D}\gamma$ на группе, при этом получается множитель, который сокращает член $Det'$. Имеем:
+\begin{equation}
+  \label{eq:29}
+   Z_{\Sigma\times S^1}=\int \mathcal{D}\gamma\mathcal{D}A Z_{\Sigma\times I}[A_0=0; A_z, A_{\bar z}] C[A_{\bar z},\gamma] \exp\left(\frac{ik}{2\pi}\int_{\Sigma}A_z A_{\bar z}^{\gamma}\right) 
+\end{equation}
+
+Осталось вычислить обычный интеграл $Z_{\Sigma\times I}[A_0;A_z,A_{\bar z}]$, только нужно быть аккуратными с граничными условиями:
+\begin{equation}
+  \label{eq:30}
+  Z_{\Sigma\times I}[A_0;A_z,A_{\bar z}]= N \exp \left( -\frac{ik}{2\pi}\int_{\Sigma\times\{0\}} A_z A_{\bar z}\right)
+\end{equation}
+Подставляя, получаем для функционального интеграла
+\begin{equation}
+  \label{eq:31}
+    Z_{\Sigma\times S^1}\propto\int \mathcal{D}\gamma\mathcal{D}A \exp ik\left(\frac{1}{k}S_{WZW}(\gamma^{-1})-\frac{1}{2\pi}\int_{\Sigma}d^2z (A_{\bar z}\partial_z \gamma \gamma^{-1}+A_zA_{\bar z}-A_z A_{\bar z}^{\gamma})\right)
+\end{equation}
+\begin{equation}
+  \label{eq:32}
+  Z_{\Sigma\times S^1}\propto\int \mathcal{D}\gamma\mathcal{D}A \exp iS_{G/G}(\gamma^{-1},A)
+\end{equation}
+
+При рассмотрении специальных видов поверхности $\Sigma$ (диск, тор) удается перейти к чистой WZW-модели.
+
+\subsection{Литература}
+\label{sec:cs-literature}
+
+Оригинальные результаты по квантованию теории Черна-Саймонса и связь с WZW впервые опубликованы в работе \cite{witten1989quantum}. Существуют записки с лекций Виттена \cite{hu2001lecture}, но они не очень понятные. С более математической точки зрения вопрос о связи конформной теории поля и теории Черна-Саймонса обсуждается в книге \cite{kohno2002conformal}. Теория Черна-Саймонса допускает также геометрическое квантование, чему посвящена диссертация \cite{axelrod1991geometric}. Материал секции \ref{sec:quantization} написан по работе \cite{blau1993derivation}, а разделы \ref{sec:task}, \ref{sec:observables} представляют собой перевод английской статьи в Википедии (\url{http://en.wikipedia.org/wiki/Chern-Simons_theory}).
+
+\bibliography{program,wzw}{}
+\bibliographystyle{utphys}
+
+\end{document}
