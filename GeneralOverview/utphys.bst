@@ -1,1 +1,1 @@
-/home/nazarov/science/Articles/AffineLieAlgebras/Bibliography/utphys.bst
+../AffineLieAlgebras/Bibliography/utphys.bst
