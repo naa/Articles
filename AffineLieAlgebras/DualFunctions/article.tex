@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\newcommand{\go}{\overset{\circ }{\frak{g}}}
+\newcommand{\ao}{\overset{\circ }{\frak{a}}}
+\newcommand{\co}[1]{\overset{\circ }{#1}}
+
+\begin{document}
+\title{\textbf{{\Large {System of dual functions in the reduction of affine Lie algebra representations}}}}
+\author{Vladimir Lyakhovsky \thanks{ Supported by
+ RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:lyakh1507@nm.ru \\
+[5mm] Anton Nazarov \thanks{ Supported by
+the National Project RNP.2.1.1./1575 }\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:antonnaz@gmail.com
+}
+\maketitle
+
+\begin{abstract}
+  Using the recurrent relation for the series expansion of the affine Lie algebra branching functions we construct the dual set of the functions, which can be completely described using Weyl symmetry of affine Lie algebra. Explicit construction of the dual functions can be carried out using the geometric finite automata approach. The task of the explicit construction of the branching functions is then rewritten as the procedure of the inversion of matrix of dual functions. Finally we study the properties of the dual functions under modular and conformal transformations and discuss possible applications in two-dimensional conformal field theory.
+\end{abstract}
+
+\bibliography{article}{}
+\bibliographystyle{utphys}
+
+\end{document}

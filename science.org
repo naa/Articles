@@ -73,3 +73,11 @@ science.org
       [[mailto:anna.pachol@ift.uni.wroc.pl][Anna Pachol]]
 ******* TODO Write to Anna
 *** Conferences
+* Today
+*** DONE Read BPZ to page 21 (conformal blocks)
+    CLOSED: [2010-05-17 Пнд 15:46]
+*** TODO Write the simplest possible physical description of conformal blocks
+*** TODO List papers to mention tomorrow
+***** Рейман, Семенов-Тян-Шанский - "Интегрируемые системы. Теоретико-групповой подход."
+***** Belavin, Polyakov, Zamolodchikov
+*** TODO Write wikipedia article on WZW 
