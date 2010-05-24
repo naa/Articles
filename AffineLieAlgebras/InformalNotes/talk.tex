@@ -1,0 +1,616 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\newcommand{\go}{\overset{\circ }{\frak{g}}}
+\newcommand{\ao}{\overset{\circ }{\frak{a}}}
+\newcommand{\co}[1]{\overset{\circ }{#1}}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{\Large \bf SAINT-PETERSBURG STATE\\[0.5cm] UNIVERSITY}
+\end{center}
+\vskip 1 cm
+\begin{flushright}
+{\large \bf SPbU-IP-09-08}
+\end{flushright}
+\hfill {}
+\vskip 1 cm
+\begin{center}
+{\Huge \bf Recursive algorithms, branching coefficients \\ for affine algebras and applications\\[0.5cm]
+}
+\end{center}
+\vskip 1.0 cm
+\begin{center}
+{\Large \bf
+Vladimir Lyakhovsky\\[2mm]
+Anton Nazarov}
+\end{center}
+\vfill
+\begin{center}
+{\large Department of Theoretical Physics\\
+}
+\end{center}
+\vfill
+\begin{center}
+SAINT-PETERSBURG \\
+2009
+\end{center}
+
+\newpage
+
+\pagenumbering{arabic}
+\title{\textbf{{\Large {Recursive algorithms, branching coefficients affine algebras and applications}}}}
+\author{Vladimir Lyakhovsky \thanks{ Supported by
+ RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:lyakh1507@nm.ru \\
+[5mm] Anton Nazarov \thanks{ Supported by
+the National Project RNP.2.1.1./1575 }\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:antonnaz@gmail.com
+}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\section{Постановка задачи}
+\label{sec:task}
+
+Здравствуйте!
+Сегодня я хочу рассказать о работе ``Рекуррентные алгоритмы, коэффициенты ветвления аффинных алгебр
+Ли и приложения''. В этой работе мы решали следующую задачу.
+
+Даны две аффинные алгебры Ли $\mathfrak{a}\subset \mathfrak{g}$. Неприводимое представление
+$L^{(\mu)}_{\mathfrak{g}}$ алгебры $\mathfrak{g}$ со старшим весом $\mu$ может быть разложено на
+представления подалгебры $\mathfrak{a}$. Наша задача --- придумать практический алгоритм вычисления
+коэффициентов этого разложения. 
+
+Я начну с физической мотивации этой задачи в двумерной конформной теории поля, напомню некоторые
+факты из теории представлений аффинных алгебр Ли, кратко опишу предложенное нами решение проблемы и
+расскажу про физические примеры в нашей статье.
+
+\section{Физическая мотивация}
+\label{sec:physics}
+
+\subsection{Напоминание про двумерную конформную теорию поля}
+\label{sec:CFT}
+
+В теории струн двумерная конформная теория поля описывает динамику на мировой поверхности, а в
+теории критических явлений --- фазовые переходы в двумерных системах.
+
+Двумерная конформная теория поля --- это теория поля, определенная на двумерном пространстве-времени
+и обладающая инвариантностью относительно следующих преобразований:
+\begin{align}
+  \label{eq:1}
+  & M_{\mu\nu} \equiv i(x_\mu\partial_\nu-x_\nu\partial_\mu) \,, \\
+  &P_\mu \equiv-i\partial_\mu \,, \\
+  &D \equiv-ix_\mu\partial^\mu \,, \\
+  &K_\mu \equiv i(x^2\partial_\mu-2x_\mu x_\nu\partial^\nu) \,,
+\end{align}
+
+На двумерной мировой поверхности удобно ввести комплексные координаты $z,\bar{z}$. 
+В этом случае конформная группа --- это набор всех аналитических функций $w(z)$ на плоскости. 
+
+В двумерной конформной теории поля тензор энергии-импульса бесследовый.
+
+Для классической теории алгебра конформных преобразований --- это алгебра Витта, которая порождается
+генераторами $\{L_n, n\in \mathbb{Z}\}$ --- модами разложения оператора энергии-импульса $T$, с
+коммутационными соотношениями
+\begin{equation}
+  \label{eq:2}
+  [L_m,L_n]=(m-n)L_{m+n}
+\end{equation}
+При квантовании возникает конформная аномалия, что соответствует центральному расширению алгебры (то
+есть появлению центрального заряда $c$). В коммутационные соотношения надо добавить член
+$\frac{c}{12}(m^3-m)\delta_{m+n,0}$. В результате получаем алгебру Вирасоро.
+
+Поля теории $\phi(z,\bar z)$ должны преобразовываться определенным образом при конформных преобразованиях.
+Оказывается, что все поля группируются в конформные семейства, в которых есть одно примарное поле
+\begin{equation}
+  \label{eq:3}
+  \begin{split}
+    \phi_{\Delta,\bar \Delta}(z,\bar z)\underset{
+      \genfrac{}{}{0pt}{}{z\to w(z)}
+        {\bar z \to \bar w(\bar z)}
+    }
+    {\longrightarrow} \left(\frac{dw}{dz}\right)^{\Delta}\left(\frac{d\bar w}{d\bar
+        z}\right)^{\bar\Delta}\phi_{\Delta,\bar \Delta}(w(z),\bar w(\bar z))\\
+    L_n \phi=0,\quad n>0\\
+    L_0 \phi=\Delta \phi\\
+  \end{split}
+\end{equation}
+$\Delta, \bar \Delta$ называются конформными размерностями поля.
+Все остальные поля называются вторичными и получаются из примарного действием операторов $L_{-n}$:
+\begin{equation}
+  \label{eq:67}
+  L_{-n_1}L_{-n_2}\dots \phi_{\Delta}
+\end{equation}
+Все поля в теории оказываются суммами мультиплетов алгебры Вирасоро.
+
+При некоторых дополнительных предположениях двумерную конформную теорию можно построить и решить
+полностью, если определен набор примарных полей и аномальных размерностей. 
+
+Существуют различные подходы к аксиоматизации двумерной конформной теории поля. В общем случае нам
+не нужно знать действие, если мы полный знаем набор примарных полей и операторные разложения их
+произведений. 
+
+В том случае, если в теории конечное число примарных полей, такая теория называется минимальной.
+Кроме того, теории классифицируются по значениям центрального заряда $c$. Теории с рациональным
+центральным зарядом называются рациональными. Оказывается, что все такие теории могут быть получены
+факторизацией так называемых моделей Весса-Зумино-Новикова-Виттена.
+
+\subsection{WZW-модели}
+\label{sec:wzw}
+
+WZW-модели обладают дополнительной симметрией. Алгебра токов в них --- это алгебра Каца-Муди
+(аффинная алгебра Ли $\mathfrak{g}$), а полная киральная алгебра --- полупрямое произведение
+$Vir\ltimes \mathfrak{g}$. 
+
+Сейчас я поясню, что все это значит и как строятся такие модели.
+
+Модели Весса-Зумино-Виттена можно строить начиная со следующего действия:
+\begin{equation}
+\label{eq:4}
+  S=S_0+k\Gamma
+\end{equation}
+где $k$ - целое.
+Здесь $S_0$ --- действие нелинейной $\sigma$-модели.
+\begin{equation}
+  \label{eq:5}
+  S_0=\frac{1}{4a^2}\int_{\partial B} d^2x\; Tr (\partial^{\mu}g^{-1}\partial_{\mu}g),
+\end{equation}
+где $a^2>0$ - положительный параметр, $g(x)\in G$ - поле со значениями в группе $G$, которую мы
+будем считать полупростой. 
+
+В нелинейной $\sigma$-модели конформная инвариантность теряется на квантовом уровне.
+Голоморфный и антиголоморфный токи не сохраняются по отдельности.
+Поэтому мы добавляем член Весса-Зумино $\Gamma$ к действию
+\begin{equation}
+  \label{eq:73}
+\Gamma= - \frac{i }{24\pi} \int_{B}\epsilon_{ijk} Tr\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+\end{equation}
+Он определен на трехмерном многообразии $B$, ограниченном исходным двумерным пространством.
+Через $\tilde{g}$ мы обозначили продолжение поля $g$ на $B$. Такое продолжение не единственно. В
+компактифицированном трехмерном пространстве компактное двумерное многообразие разделяет два
+трехмерных многообразия. Разность значений члена Весса-Зумино $\Delta\Gamma$ на этих многообразиях
+дается правой частью уравнения (\ref{eq:73}) с интегралом, продолженным на все компактное трехмерное
+пространство. Так как оно топологически эквивалентно три-сфере, получаем
+\begin{equation}
+  \label{eq:75} \Delta\Gamma= - \frac{i }{24\pi} \int_{S^3}\epsilon_{ijk} Tr'\left( \tilde
+g^{-1}\frac{\partial \tilde g}{\partial y^i} \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+\tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+\end{equation}
+$\Delta\Gamma$ определен по модулю $2\pi i$, поэтому Евклидов функциональный интеграл
+с весом $exp(-\Gamma)$ хорошо определен. Значит константа связи, умножаемая на этот член, должна
+быть целочисленной.
+
+Уравнение движения для полного действия (\ref{eq:4}):
+\begin{equation}
+  \label{eq:77}
+  \partial^{\mu}(g^{-1}\partial_{\mu}g)+\frac{a^2 ik}{4\pi}\epsilon_{\mu\nu}\partial^{\mu}(g^{-1}\partial^{\nu}g)=0
+\end{equation}
+В комплексных координатах оно записывается в виде
+\begin{equation}
+  \label{eq:78}
+  (1+\frac{a^2 k}{4\pi})\partial_z(g^{-1}\partial_{\bar z}g)+(1-\frac{a^2 k}{4\pi})\partial_{\bar z}(g^{-1}\partial_z g)=0
+\end{equation}
+Видно, что при $a^2=\frac{4\pi}{k}$ у нас имеются законы сохранения
+\begin{equation}
+  \label{eq:79}
+  \partial_z(g^{-1}\partial{\bar z}g)=0
+\end{equation}
+Для токов
+\begin{equation}
+  \label{eq:72}
+  J_z=\partial_z g\;g^{-1}, \qquad J_{\bar{z}}=g^{-1}\partial{\bar z}g
+\end{equation}
+
+\begin{equation}
+  \label{eq:100}
+  \partial_{\bar z}J=0,\quad \partial_z \bar J=0
+\end{equation}
+То есть голоморфная и антиголоморфная части отщепляются, что является указанием на наличие
+конформной инвариантности.
+
+Решение классического уравнения движения имеет вид
+\begin{equation}
+  \label{eq:80}
+  g(z,\bar z)=f(z)\bar f(\bar z)
+\end{equation}
+при произвольных $f(z)$ и $\bar f (\bar z)$.
+
+Сохранение по отдельности токов $J_z,\; J_{\bar z}$ приводит к инвариантности действия при преобразованиях
+\begin{equation}
+  \label{eq:81}
+   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)
+\end{equation}
+где $\Omega,\;\bar \Omega \in G$. То есть мы получили локальную $G(z)\times G(\bar z)$-инвариантность.
+
+Для перехода к квантовому случаю мы переопределяем токи
+\begin{equation}
+  \label{eq:82}
+  J(z)\equiv -k \partial_zg g^{-1}\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
+\end{equation}
+Тогда вариация действия при инфинитезимальных преобразованиях $\Omega=1+\omega,\; \bar \Omega =1+\bar \omega$ дается выражением
+\begin{equation}
+  \label{eq:83}
+  \delta_{\omega,\bar\omega}S=\frac{i}{4\pi}\oint dz Tr (\omega(z)J(z))-\frac{i}{4\pi}\oint d\bar z Tr(\bar\omega(\bar z)\bar J(\bar z))
+\end{equation}
+Раскладывая токи
+\begin{equation}
+  \label{eq:85}
+  \begin{aligned}
+    J=\sum J^a t^a,\bar J=\sum \bar J^a t^a \\
+    \omega=\sum \omega^a t^a\\
+  \end{aligned}
+\end{equation}
+получаем
+\begin{equation}
+  \label{eq:86}
+  \delta_{\omega,\bar \omega}S=-\frac{1}{2\pi i}\oint dz \sum\omega^a J^a+\frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \bar J^a
+\end{equation}
+Мы также получили тождества Уорда $\delta\left< X\right>=\left<(\delta S)X\right>$
+\begin{equation}
+  \label{eq:87}
+  \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
+  \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+\end{equation}
+Для токов имеем
+\begin{equation}
+  \label{eq:88}
+  \delta_{\omega}J=[\omega,J]-k\partial_z\omega,\quad \delta_{\omega}J^a=\sum i f_{abc}\omega^b J^c-k\partial_z\omega^a
+\end{equation}
+Операторное разложение для токов имеет вид
+\begin{equation}
+  \label{eq:89}
+  J^a(z) J^b(w) \sim \frac{k\delta_{ab}}{(z-w)^2}+\sum i f_{abc}\frac{J^c(w)}{(z-w)}
+\end{equation}
+Раскладывая токи в ряд, получаем
+\begin{equation}
+  \label{eq:90}
+  \begin{aligned}
+    J^a(z)=\sum_{n\in \mathbb Z}z^{n-1}J^a_n\\
+    \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}
+  \end{aligned}
+\end{equation}
+Теперь мы видим, что компоненты токов образуют аффинную алгебру Ли $\hat g$.
+
+
+Тензор энергии-импульса вводится при помощи конструкции Сугавары как сумма нормально упорядоченных компонент токов
+\begin{equation}
+  \label{eq:102}
+  T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
+\end{equation}
+Здесь $h^v$ - дуальное число Кокстера.
+
+Тензор энергии-импульса можно разложить на моды $L_n$
+\begin{equation}
+  \label{eq:91}
+  L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:J^a_m J^a_{n-m}:
+\end{equation}
+Тогда коммутационные соотношения для мод $L_n$ имеют вид
+\begin{equation}
+  \label{eq:92}
+  \begin{aligned}
+    \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+    \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+  \end{aligned}
+\end{equation}
+
+Таким образом, конструкция Сугавары --- это способ вложения алгебры Вирасоро в универсальную обертывающую аффинной алгебры Ли $\hat{g}$
+
+Полная киральная алгебра модели Весса-Зумино-Виттена равна полупрямому произведению $Vir\ltimes \hat g$
+
+Примарными оказываются поля, которые преобразуются ковариантно под действием $G(z)\times G(\bar z)$,
+как $g(z,\bar z)$. В терминах операторного разложения это свойство переформулируется следующим
+образом:
+\begin{equation}
+  \label{eq:84}
+  \begin{aligned}
+    J^a(z)g(w,\bar w)\sim \frac{-t^a g(w,\bar w)}{(z-w)}\\
+    \bar J^a(z)g(w,\bar w)\sim \frac{ g(w,\bar w)t^a}{(z-w)}
+  \end{aligned}
+\end{equation}
+Любое поле $\phi_{\lambda,\mu}$, преобразующееся ковариантно по отношению к некоторому
+представлению, заданному весом $\lambda$ в голоморфном секторе и весом $\mu$ в антиголоморфном,
+является примарным полем WZW-модели.
+
+В модах это свойство записывается в виде
+\begin{equation}
+  \label{eq:93}
+  \begin{aligned}
+    & (J_0^a \phi_{\lambda})=-t^a_{\lambda}\phi_{\lambda}\\
+    & (J^a_n\phi_{\lambda})=0\quad \mbox{для}\; n>0\\
+  \end{aligned}
+\end{equation}
+Мы можем сопоставить состояние $\left|\phi_{\lambda}\right>$ полю $\phi_{\lambda}$
+  \begin{equation}
+    \label{eq:94}
+    \phi_{\lambda}(0)=\left|\phi_{\lambda}\right>
+  \end{equation}
+Тогда условия (\ref{eq:93}) для примарных полей дают
+\begin{equation}
+  \label{eq:95}
+  \begin{aligned}
+    & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>\\
+    & J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{для}\; n>0 \\
+  \end{aligned}
+\end{equation}
+Легко видеть, что действие генераторов алгебры Вирасоро имеет вид
+\begin{equation}
+  \label{eq:96}
+  L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>
+\end{equation}
+Здесь использовано явное выражение для собственных значений квадратичного оператора Казимира.
+
+Примарные поля живут в интегрируемых конечномерных представлениях, так как бесконечномерные и
+неинтегрируемые поля отщепляются в корреляционных функциях.
+
+Все вторичные состояния имеют вид
+\begin{equation}
+  \label{eq:97}
+  J^{a_1}_{-n_1}J^{a_2}_{n_2}\dots\left|\phi_{\lambda}\right>
+\end{equation}
+
+\subsection{Конформные вложения и модулярно-инвариантные статсуммы}
+\label{sec:modular-invariance}
+
+Если мы изучаем конформную теорию поля на плоскости или на сфере, то мы можем рассматривать
+голоморфный и антиголоморфный сектора независимо. Если говорить о WZW-моделях, то примарные поля
+принадлежат тензорному произведению неприводимых представлений аффинной алгебры.
+
+Если мы говорим о применении конформной теории для описания поведения струн, то теория должна быть
+определена на римановых поверхностях большего рода ($h>0$), чтобы можно было описывать
+взаимодействия струн. Считается, что для этого необходимо (и, возможно, достаточно
+\cite{gaberdiel2000icf}) чтобы теория была определена на торе.
+
+В теории критического поведения конформная инвариантность имеет место только в критической точке,
+где голоморфный и антиголоморфный сектора расцеплены. Но вблизи критической точки эти сектора должны
+быть связаны, и так как мы предполагаем плавный переход к критической точке в пространстве
+параметров, то эта связь должна сохраняться и в критической точке. Физический спектр теории должен
+плавно меняться, когда мы покидаем критическую точку, и связь голоморфного и антиголоморфного
+сектора вдали от критической точки должна приводить к ограничениям на набор состояний в критической
+точке. Этого можно достичь через геометрию, то есть накладывая граничные условия на состояния
+\cite{difrancesco1997cft}. Здесь естественно рассматривать периодические граничные условия, которые
+эквивалентны рассмотрению теории на торе.
+
+Если мы наложили периодические граничные условия с периодами $\omega_1, \omega_2,\; \tau=\omega_2/\omega_1$, то статсумма записывается в виде
+\begin{equation}
+  \label{eq:1}
+  Z(\tau)=Tr \exp 2\pi i (\tau (L_0-c/24)-\bar{\tau} (\bar{L}_0-c/24))
+\end{equation}
+Или, если ввести $q=\exp 2\pi i \tau$
+\begin{equation}
+  \label{eq:2}
+  Z(\tau)=Tr \left (q^{L_0-c/24}\bar{q}^{\bar{L}_0-c/24}\right)
+\end{equation}
+Двумерный тор представляет собой фактор пространство $\mathbb{R}^2\approx \mathbb{C}$ по отношениям эквивалентности $z\sim z+w_1$ and $z\sim z+w_2$, где $w_1$ и $w_2$ не параллельны. 
+
+Разные параметризации тора связаны модулярными преобразованиями, таким образом возникает требование модулярной инвариантности статсуммы.
+
+Комплексная структура такого тора конформно эквивалентна тору, для которого соотношения эквивалентности записываются в виде $z\sim z+1$ и $z\sim z+\tau$, где $\tau$ в верхней полуплоскости $\mathbb{C}$.
+
+Легко видеть, что $\tau$, $T(\tau)=\tau+1$ и $S(\tau)=-\frac{1}{\tau}$ описывают конформно-эквивалентные торы. Отображения $T$ и $S$ порождают группу  $SL(2,\mathbb{Z})/\mathbb{Z}_2$, состоящую из матриц вида
+\begin{equation}
+  \label{eq:99}
+  A=
+  \begin{pmatrix}
+    a & b\\
+    c & d 
+  \end{pmatrix}
+  \quad\mbox{где}\; a,b,c,d\in\mathbb{Z},\quad ad-bc=1,
+\end{equation}
+и матрицы $A$ и $-A$ действуют одинаково на $\tau$
+\begin{equation}
+  \label{eq:100}
+  \tau\to A\tau=\frac{a\tau+b}{c\tau+d}
+\end{equation}
+ $\tau$ называется модулярным параметром, а группа $SL(2,\mathbb{Z})/\mathbb{Z}_2$ --- модулярной группой.
+
+Конформная теория поля задаётся примарными полями $\Phi_a$ с конформными размерностями $\Delta_a$:
+\begin{equation}
+  \label{eq:3}
+  \begin{split}
+    \Phi_{a}(z)\underset{z\to w(z)}{\longrightarrow} \left(\frac{dw}{dz}\right)^{\Delta_a}\Phi_{a}(w(z))\\
+    L_n \Phi_a=0,\quad n>0\\
+    L_0 \Phi_a=\Delta_a \Phi_a\\
+  \end{split}
+\end{equation}
+
+Примарные поля живут в пространствах $\mathcal{H}_{(i,j)}$, которые представляют собой тензорные произведения неприводимого представления  $\mathcal{H}_j$ киральной алгебры и неприводимого представления $\bar{\mathcal{H}}_{\bar{j}}$ антикиральной алгебры. Тогда статсуммы на торе (\ref{eq:2}) может быть переписана в виде  
+\begin{equation}
+  \label{eq:4}
+  \sum_{(j,\bar j)}\chi_j(q)\bar \chi_{\bar j}(\bar q)
+\end{equation}
+где $\chi_j$ --- характер пердставления $\mathcal{H}_j$,
+\begin{equation}
+  \label{eq:5}
+  \chi_j(\tau)=Tr_{\mathcal{H}_j}(q^{L_0-\frac{c}{24}})\quad \mbox{где}\; q=e^{2\pi i \tau}
+\end{equation}
+Характеры переходят друг в друга при модулярных преобразованиях:
+\begin{equation}
+  \label{eq:107}
+  \chi_j\left(-\frac{1}{\tau}\right)=\sum_k S_{jk}\chi_k(\tau)\quad \mbox{и}\quad \chi_j(\tau+1)=\sum_kT_{jk}\chi_k(\tau),
+\end{equation}
+где $S$ и $T$ --- постоянные матрицы. Это верно для большого класса конформных теорий поля \cite{gaberdiel2000icf}. 
+
+Для WZW-моделей представления определяются старшими весами $\hat \lambda, \hat \xi$. Тогда
+\begin{equation}
+  \label{eq:6}
+  \mathcal{H}=\bigoplus_{\hat \lambda,\hat \xi\in P^{(k)}_{+}}M_{\hat \lambda,\hat \xi} L_{\hat \lambda}\otimes L_{\hat \xi}
+\end{equation}
+Статсумма даётся выражением
+\begin{equation}
+  \label{eq:7}
+  Z(\tau)=\sum_{\hat \lambda,\hat \xi\in P^{(k)}_{+}} \chi_{\hat \lambda}(\tau)M_{\hat \lambda\hat\xi}\bar \chi_{\hat \xi}(\bar \tau)
+\end{equation}
+Элементы так называемой матрицы масс $M_{\hat \lambda\hat\xi}$ можно рассматривать как кратности примарных полей с весами $\hat\lambda,\hat \xi$. У них есть следующие свойства: $M_{\hat \lambda\hat\xi}\in \mathbb{Z}_+$, модулярная инвариантность
+\begin{equation}
+  \label{eq:8}
+  \begin{aligned}
+    T^{\dagger}MT=S^{\dagger}MS=M,\\
+    [M,S]=[M,T]=0,
+  \end{aligned}
+\end{equation}
+и $M_{00}=1$ для единственности вакуума.
+
+Простейший случай диагональной матрицы $M$ соответствует равным голоморфным и антиголоморфным конформным размерностям. Есть несколько способов построения недиагональных модулярных инвариантов из диагональных \cite{difrancesco1997cft}:
+\begin{itemize}
+\item Метод внешних автоморфизмов
+\item Конформное вложение в большую теорию
+\item Перестановки Галуа
+\end{itemize}
+Мы будем обсуждать только конформные вложения.
+
+\section{Конформные вложения}
+\label{sec:conformal-embeddings}
+
+Состояния в теории соответствующей алгебре $g$ (с киральной алгеброй $Vir\ltimes \hat g$) имеют вид
+\begin{equation}
+  \label{eq:9}
+  J^{a_1}_{-n_1}J^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq\dots>0
+\end{equation}
+А для подалгебры $\mathfrak{p}\subset\mathfrak{g}$
+\begin{equation}
+  \label{eq:10}
+  \tilde{J}^{a'_1}_{-n_1}\tilde{J}^{a'_2}_{-n_2}\dots\left|\mathcal{P}\lambda\right>
+\end{equation}
+Здесь $\tilde{J}^{a'_j}_{-n_j}$ --- генераторы $\mathfrak{p}$, а $\mathcal{P}$ --- проекция $\mathfrak{g}$ на $\mathfrak{p}$. Очевидно, что $\mathfrak{g}$-инвариантность вакуума ведёт к его $\mathfrak{p}$-инвариантности, но нет оснований считать, что проекция сохраняет конформную инвариантность. Это легко увидеть из рассмотрения тензора энергии - импульса. Действительно, в тензоре энергии - импульса в виде Сугавары можно выделить часть, составленную из тех комбинаций генераторов $g$, которые входят в $p$. Но есть ещё и остаток. Из-за него действие генераторов Вирасоро на состояния (\ref{eq:10}) будет выводить из этого набора.
+Таким образом в ситуации общего положения конформная инвариантность нарушается.
+
+Однако есть исключения. Так для представлений уровня 1 simply-laced алгебр тензор энергии - импульса в форме Сугавары состоит только из генераторов Картана. В этом случае он может быть пере-выражен через генераторы подалгебры и конформная инвариантность сохраняется. Тогда $T_{\hat{\mathfrak{g}}_k}=T_{\hat{\mathfrak{p}}_{\tilde k}}\Rightarrow c(\hat{\mathfrak{g}}_k)=c(\hat{\mathfrak{p}}_{\tilde k})$. Это можно переписать в виде равенства
+\begin{equation}
+  \label{eq:11}
+  \frac{k\;dim\mathfrak{g}}{k+g}=\frac{x_e k\; dim\mathfrak{p}}{x_ek+p}
+\end{equation}
+Где $x_e$ - индекс вложения, а $g$, $p$ - дуальные числа Кокстера соответствующих алгебр и было использовано равенство $\tilde k=x_e k$.
+\begin{equation}
+  \label{eq:12}
+  x_e=\frac{\left|\mathcal{P}\Theta_g\right|^2}{\left| \Theta_p\right|^2},\quad
+  x_e=\sum_{\mu\in P_{+}}b_{\lambda\mu}\frac{x_{\mu}}{x_{\lambda}}
+\end{equation}
+(Здесь $x_{\lambda}$ - индекс представления со старшим весом $\lambda$:
+\begin{equation}
+  \label{eq:13}
+  x_{\lambda}=\frac{dim \left|\lambda\right|(\lambda,\lambda+\rho)}{2 dim g}
+\end{equation})
+
+Вложения, которые удовлетворяют условию (\ref{eq:11}), называются конформными.
+
+Нетрудно показать, что решения уравнения (\ref{eq:11}) существуют только для уровня $k=1$.
+
+(Существует конечное число конформных вложений, они классифицированы).
+
+{\bf Примеры}
+\begin{itemize}
+\item $su(2)\subset su(3),\; x_e=4$
+\item $\hat{su}(2)_{10}\subset\hat{sp}(4)_1$
+\item $\hat{su}(2)_{28}\subset(\hat{G_2})_1$
+\item $\hat{su}(2)_{16}\oplus\hat{su}(3)\subset (\hat{E_8})_1$
+\end{itemize}
+
+\section{Конформные коэффициенты ветвления}
+\label{sec:conformal-branching-rules}
+
+Для ветвления аффинных алгебр $\hat{\lambda}\to \bigoplus_{\hat{\mu}}b_{\hat{\lambda}\hat{\mu}}\hat{\mu}$ существуют разные алгоритмы, однако мы можем существенно сократить работу при рассмотрении конформных вложений.
+
+Во-первых, заметим, что если коэффициент $b_{\hat\lambda\hat\mu}$ отличен от нуля, то конечная часть старшего веса $\mu$ модуля $L_{\hat\mu}$ находится в некотором грейде $n$  бесконечномерного модуля $L_{\hat\lambda}$ уровня 1. Сохранение конформной инвариантности ведет к соотношению для конформных размерностей соответствующих полей
+\begin{equation}
+  \label{eq:14}
+  \Delta_{\hat\lambda}+n=\Delta_{\hat\mu},
+\end{equation}
+которое переписывается в виде
+
+\begin{equation}
+  \label{eq:15}
+  \frac{(\lambda,\lambda+2\rho)}{2(1+g)}+n=\frac{(\mu,\mu+2\rho)}{2(x_e+p)}
+\end{equation}
+
+Используя этот факт можно  легко вычислять правила ветвления. Для этого надо вычислить размерности интегрируемых представлений обеих алгебр  $\mathfrak{g},\mathfrak{p}$ и найти все тройки  $(\lambda,\mu,n)$, удовлетворяющие соотношению (\ref{eq:15}). Затем рассматриваем разложения представления $L_{\hat\lambda}$ в грейде $n$ в сумму неприводимых представлений конечномерной алгебры $\mathfrak{g}$ и выписываем правила ветвления этих представлений на представления подалгебры $\mathfrak{p}$. Коэффициент ветвления $b_{\hat{\lambda},\hat{\mu}}$ --- это сколько раз представление со старшим весом $\mu$ появляется в этом списке.
+
+{\bf Пример}
+
+$\hat{su}(2)_4\subset \hat{su}(3)_1$.
+Список конформных размерностей:
+\begin{equation}
+  \label{eq:16}
+  \begin{aligned}
+    \hat{su}(2)_4&: h_{[4,0]}=0, h_{[3,1]}=\frac{1}{8}, h_{[2,2]}=\frac{1}{3}, h_{[1,3]}=\frac{5}{8}, h_{[0,4]}=1\\
+    \hat{su}(3)_1&: h_{[1,0,0]}=0, h_{[0,1,0]}=h_{[0,0,1]}=\frac{1}{3}    
+  \end{aligned}
+\end{equation}
+Отсюда видно, что
+\begin{equation}
+  \label{eq:17}
+  \begin{aligned}
+    \left[1,0,0\right] &\to c_1 [4,0]_0\oplus c_2 [0,4]_1\\
+    [0,1,0] &\to c_3 [2,2]_0\\
+    [0,0,1] &\to c_4 [2,2]_0
+  \end{aligned}
+\end{equation}
+Где $c_1, c_2, c_3, c_4$ - коэффициенты, которые надо найти, а нижний индекс указывает грейд $n$.
+
+Коэффициенты $c_1, c_3, c_4$ вычисляются из правил ветвления в нулевом грейде. В этом грейде $L_{\hat\lambda}$ содержит только $L_{\lambda}$. Из правил ветвления
+\begin{equation}
+  \label{eq:18}
+  (0,0)\to (0),\quad (1,0)\to (2),\quad (0,1)\to (2)
+\end{equation}
+мы получаем, что $c_1=c_3=c_4=1$. $c_2$ вычисляется из представления грейда 1, содержащего конечномерное представление $(1,1)$ с правилом ветвления
+\begin{equation}
+  \label{eq:19}
+  (1,1)\to (4)\oplus (2)
+\end{equation}
+То есть $c_2$ тоже равен 1.
+
+После нахождения коэффициентов ветвления, недиагональные модулярные инварианты строятся путем подстановки соотношений для характеров. Например, зная коэффициенты ветвления для вложения $\hat{su}(2)_{28}\subset (\hat{G_2})_1$
+  \begin{equation}
+    \label{eq:20}
+    \begin{aligned}
+      & [1,0,0]\to [28,0]\oplus [18,10]\oplus [10,18]\oplus [0,28]\\
+      & [0,0,1]\to [22,6]\oplus [16,12]\oplus [12,16]\oplus [6,22]\\
+    \end{aligned}
+  \end{equation}
+мы получаем следующую модулярно-инвариантную статсумму:
+\begin{equation}
+  \label{eq:21}
+  Z=\left|\chi_{[28,0]}+\chi_{[18,10]}+\chi_{[10,18]}+\chi_{[0,28]}\right|^2+\left|\chi_{[22,6]}+\chi_{[16,12]}+\chi_{[12,16]}+\chi_{[6,22]}\right|^2
+\end{equation}
+
+\section{Рекуррентные соотношения для коэффициентов ветвления}
+\label{sec:branching}
+
+\subsection{Примеры}
+\label{sec:examples}
+
+\section{Заключение. Обсуждение перспектив.}
+\label{sec:conlusion}
+
+
+\end{document}
+
+
