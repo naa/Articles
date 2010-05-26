@@ -862,31 +862,40 @@ The modes are constructed as the combination of normally-ordered products of the
 \end{equation}
 The substitution of the generators of the algebra $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations of $T_{\mathfrak{a}}$ should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty it is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$, which can not be obtained in the expansion of components of $T_{\mathfrak{a}}$.
 
-If we limit the consideration by the affine extensions of simple classical Lie algebras, the number of possible non-maximal conformal embeddings is rather small \cite{schellekens1986conformal}. We study the example of $\hat{A}_1\subset \hat{A}_2\subset\hat{A}_{3}$ in the section \ref{sec:non-maxim-conf}.
+If we limit the consideration by the affine extensions of simple classical Lie algebras, the number of possible non-maximal conformal embeddings is rather small \cite{schellekens1986conformal}.
 
 \subsection{Examples}
 \label{sec:example}
 
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
 \label{sec:spec-embedd-hata_1s}
-Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ constructed as the affine extension of the special embedding $su(2)\subset su(3)$ with the embedding index $x_e=4$. The level of the representations of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the modules of the subalgebra is equal $\tilde{k}=kx_e=4$.
+Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ constructed as the affine extension of the special embedding $A_1\subset A_2$ with the embedding index $x_e=4$. The level of the representations of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the modules of the subalgebra is equal $\tilde{k}=kx_e=4$.
 
 There exist three level one dominant weights in the weight space of $\hat{A}_2$.
-It is easy to see that the set $\Delta_{\bot}$ and the algebra $\mathfrak{a}_{\bot}$ are empty.
+It is easy to see that the set $\Delta_{\bot}$ is empty and the subalgebra $\mathfrak{a}_{\bot}=0$.
 
 Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in details. Here the first two components are the Dynkin indices (coordinates in the fundamental weights basis) of the finite part of the weight.
 
-The set of the anomalous weights of this representation up to the sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration as the dotted diagonal plane.
+The set of the anomalous weights of this representation  is depicted in the Figure \ref{fig:affine_A2_anom_point} up to the sixth grade. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration as the dotted diagonal plane.
 
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=180mm]{AffineA2_A1_anom.pdf}
-  \caption{The anomalous weights of the $(0,0;1;0)$ representation of the algebra $\hat{A_2}$}
+  \caption{The anomalous weights of the module $L^{(0,0;1;0)}_{\hat{A_2}}$}
   \label{fig:affine_A2_anom_point}
 \end{figure}
 
-According to our algorithm \ref{sec:algorithm} we project the anomalous weights to the weight space of the subalgebra $\hat{A_1}$.
-The result of these calculations up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_A1_anom_proj}
+Using the definition (\ref{fan-defined})  we construct ``the fan'' $\Gamma_{\hat A_1\to\hat A_2}$  with the corresponding values of the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}). 
+Here we restricted the calculations to the first eight grades.
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
+  \caption{The fan $\Gamma_{\hat{A_1}\subset \hat{A_2}}$}
+  \label{fig:AffineA2A1Fan}
+\end{figure}
+
+The next step is to project the anomalous weights to $P_{\aht A_1}$.
+The result up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_A1_anom_proj}
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=150mm]{AffineA2_A1_proj_anom.pdf}
@@ -894,17 +903,6 @@ The result of these calculations up to the twelfth grade is presented in the Fig
   \label{fig:AffineA2_A1_anom_proj}
 \end{figure}
 
-Then we construct ``the fan'' and use the recurrent relations to compute the anomalous branching coefficients.
-
-Using the definition (\ref{fan-defined}) we get the following set of
-the weights $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:AffineA2A1Fan}.
-Here we restricted the calculations to the first eight grades.
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
-  \caption{Fan for $\hat{A_1}\subset \hat{A_2}$}
-  \label{fig:AffineA2A1Fan}
-\end{figure}
 
 Using the recurrent relation for the anomalous branching coefficients we get the result presented in Figure \ref{fig:AffineA2_A1_branching}. 
 \begin{figure}[ph]
@@ -917,10 +915,10 @@ Using the recurrent relation for the anomalous branching coefficients we get the
 We see that inside the main Weyl chamber of $\hat{A}_1$, which is dotted at the Figure \ref{fig:AffineA2_A1_branching}, there are only two non-zero anomalous weights. These are the branching coefficients. So the finite reducibility theorem holds and we get the decomposition
 \begin{equation}
   \label{eq:43}
-  L^{(0,0;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(0;4;0)}\oplus L_{\hat{A_1}}^{(4;4;0)]}.
+  L^{(0,0;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(0;4;0)}\oplus L_{\hat{A_1}}^{(4;4;0)}.
 \end{equation}
 
-For the other level one dominant weights of $\hat{A}_2$ we get the trivial
+For the other level one irreducible modules of $\hat{A}_2$ we get the trivial
 branching 
 \begin{eqnarray}
   \label{eq:44}
@@ -928,7 +926,7 @@ branching
    L^{(0,1;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(2;4;0)}.
 \end{eqnarray}
 
-Using this result the modular-invariant partition function is easily found,
+Using these results the modular-invariant partition function is easily found,
 \begin{equation}
   \label{eq:45}
   Z=\left|\chi_{(4;4;0)}+\chi_{(0;4;0)}\right|^2+2\chi_{(2;4;0)}^2.
