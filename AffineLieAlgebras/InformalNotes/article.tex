@@ -35,7 +35,7 @@
 \hfill {}
 \vskip 1 cm
 \begin{center}
-{\Huge \bf Recursive algorithms, branching coefficients \\ for affine algebras and applications\\[0.5cm]
+{\Huge \bf Recursive algorithms, branching coefficients \\ and applications\\[0.5cm]
 }
 \end{center}
 \vskip 1.0 cm
@@ -58,7 +58,7 @@ SAINT-PETERSBURG \\
 \newpage
 
 \pagenumbering{arabic}
-\title{\textbf{{\Large {Recursive algorithms, branching coefficients affine algebras and applications}}}}
+\title{\textbf{{\Large {Recursive algorithms, branching coefficients and applications}}}}
 \author{Vladimir Lyakhovsky \thanks{ Supported by
  RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
 Theoretical Department, SPb State University,\\
@@ -73,25 +73,25 @@ e-mail:antonnaz@gmail.com
 \maketitle
 
 \begin{abstract}
-  Recurrent relations for branching coefficients in affine Lie algebras highest weight modules are studied. The decomposition algorithm for  integrable highest weight modules reduction based on the injection fan technique is adopted to the situation where the Weyl denominator becomes singular with respect to a reductive  subalgebra. We study some modifications of the injection fan technique and demonstrate that it is possible to define the "subtracted fans" that play the role similar to the original one. The possible applications of subtracted fans in CFT models are considered.
+  Recurrent relations for branching coefficients in affine Lie algebras integrable highest weight modules are studied. The decomposition algorithm based on the injection fan technique is adopted to the situation where the Weyl denominator becomes singular with respect to a reductive subalgebra. We study some modifications of the injection fan technique and demonstrate that it is possible to define the "subtracted fans" that play the role similar to the original ones. Possible applications of subtracted fans in CFT models are considered.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:introduction}
 
-The problem of reduction of a Lie algebra representation to a  subalgebra is studied for several decades and has various applications in physics. In the context of finite-dimensional algebras it is important for the study of great unification models whilst the branching problem for affine Lie algebras emerges in conformal field theory, for example, in the construction of the modular-invariant partition functions \cite{difrancesco1997cft}.
+The branching problem for affine Lie algebras emerges in conformal field theory, for example, in the construction of modular-invariant partition functions \cite{difrancesco1997cft}. Recently the problem of the conformal embeddings was considered in the paper \cite{coquereaux2008conformal}.
 
-There exist several approaches to the computation of the branching coefficients. Some of them use the BGG
+There exist several approaches to deal with the branching coefficients. Some of them use the BGG
 resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in
 \cite{kac1990idl},\cite{wakimoto2001idl}), the Schure function series \cite{fauser2006new}, the BRST
 cohomology \cite{hwang1994general}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
 combinatorial methods applied in \cite{feigin707principal}.
 
-Usually only the embedding of the maximal reductive subalgebras is considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we study the recurrent properties for branching coefficients which generalise the recurrent relations obtained earlier (see the paper \cite{ilyin812pbc}and the references therein) to the cases of non-maximal reductive subalgebras. The result is formulated by an introduction of a new injection fan called "subtracted fan". Using this new tools we formulate simple and explicit algorithm for the computation of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
+Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we find the recurrent properties for branching coefficients that generalise the relations obtained earlier (see the paper \cite{ilyin812pbc} and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in terms of new injection fan called "the subtracted fan". Using this new tools we formulate simple and explicit algorithm for computations of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
 
-We show that our algorithm can be used in a study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified by taking into account some  physical limitations.
+We demonstrate that our algorithm can be used in the study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified by taking into account some physical limitations.
 
-The paper is organised as follows. In the next subsection  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the next Section \ref{sec:examples} we present several examples and discuss some applications in CFT models (s. \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible future developments are discussed (s. \ref{sec:conclusion}).
+The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the Section \ref{sec:examples} we present several examples and discuss some applications in CFT models (Section \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible future developments are discussed (Section \ref{sec:conclusion}).
 
 \subsection{Notation}
 \label{sec:notation}
@@ -209,7 +209,7 @@ mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }\quad $
 \left( \alpha \right) }}=\Psi _{\frak{a}}^{\left( 0\right) }\right) $--- the
 denominator.
 
-$  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$ --- the reduction of the module;
+$  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$ --- the module decomposition with respect to $\frak{a}\longrightarrow \frak{g}$;
 
 
 $b^{(\mu)}_{\nu}$ --- the branching coefficients;
@@ -221,9 +221,7 @@ $b^{(\mu)}_{\nu}$ --- the branching coefficients;
   }^{\left( \mu \right) }e^{\lambda }
 \end{equation}
 
- $k_{\lambda}$ --- the anomalous branching coefficients;
-
-It is important to mention that
+ $k_{\lambda}$ --- the anomalous branching coefficients, notice that
 \begin{equation}
   \label{eq:20}
   b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in \bar{C}_{\mathfrak{a}}
@@ -234,10 +232,10 @@ $x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|^2}{\left|\Theta_{\mathfrak{a}}
 \section{Recurrent relation for branching coefficients. Singularities and subtractions}
 \label{sec:recurr-form-branch}
 
-Our aim is to demonstrate that despite possible singularities arriving in the Weyl denominator
-when it is projected to the subalgebra root space injection fan technique can be properly modified.
-The result of such modification is that the generalized recurrent relations for anomalous branching
-coefficients \eqref{eq:21} must be reformulated in the following form:
+Our aim is to demonstrate that despite the zeros arriving in the Weyl denominator
+(when it is projected to the subalgebra root space) the injection fan technique can be properly modified.
+The result of this modification is that the generalized recurrent relations for anomalous branching
+coefficients \eqref{eq:21} is to be formulated in the following form:
 \begin{equation}
   \label{eq:1}
   \begin{array}{c}
@@ -249,7 +247,7 @@ coefficients \eqref{eq:21} must be reformulated in the following form:
 +\gamma }^{\left( \mu \right) }\right)
   \end{array}
    \end{equation}
-Here $\mathfrak{a}_{\bot}$ is the subalgebra described by the roots of $\mathfrak{g}$
+Here $\mathfrak{a}_{\bot}$ is the subalgebra fixed by the roots of $\mathfrak{g}$
 orthogonal to the root subsystem of $\mathfrak{a}$, $W_{\bot}$ is the corresponding Weyl group,
 $\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ is the set of weights in the expansion
 of the denominator $\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}
@@ -257,15 +255,14 @@ of the denominator $\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a
 is the coefficient of $e^{\gamma}$ in this expansion.
 In the next subsection we study the situation in details and prove the validity of this relation.
 
-In the section \ref{sec:algorithm} we  shall describe the  computational algorithm for  branching coefficients
+In the subsection \ref{sec:algorithm} we  shall describe the  computational algorithm for  branching coefficients
 based on this formula and present some examples.
 
 \subsection{Proof of the recurrent relation}
 \label{sec:proof}
 
 Consider the branching of a module $L_{\frak{g}}^{\mu }$ in terms of formal characters and
-projection operators $\pi_{\mathfrak{a}}$ that bring the roots of $\mathfrak{g}$ to the
-weight subspace of $\mathfrak{a}$:
+projection operators $\pi_{\mathfrak{a}}$ that bring the weights of $\mathfrak{g}$ to the weight subspace of $\mathfrak{a}$:
 \begin{equation}
   \label{eq:3}
   L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
@@ -286,7 +283,7 @@ the equality
   {\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{equation}
 
-It is important to keep in mind that the projection of some of positive roots of
+It is important that the projection of some of positive roots of
 the algebra $\mathfrak{g}$ can be equal to zero. These roots are orthogonal to the
 root space of the subalgebra $\mathfrak{a}$ embedded into the root space of the
 algebra $\mathfrak{g}$. Let's denote the subset of such roots by $\Delta^{+}_{\bot}
@@ -321,8 +318,7 @@ from the extended Dynkin diagram of the algebra. Since this process can give us
 non-connected Dynkin diagrams we can see which roots are orthogonal to the root
 space of non-maximal regular subalgebra $\mathfrak{a}$.
 
-Consider for instance regular the embedding of $A_1\subset B_2$.
-
+Consider for instance the regular embedding of $A_1\subset B_2$.
 The extended Dynkin diagram of $B_2$ is presented in the Figure \ref{fig:B2Dynkin}.
 \begin{figure}[ph]
   \centering
@@ -343,12 +339,12 @@ then the subset $\Delta_{\bot}$ is non-empty,
 subalgebra $\mathfrak{a}_{\bot}$ is non-trivial and all the
 $\mathfrak{\bar{a}}_j$ are the subalgebras of $\mathfrak{a}_{\bot}$.
 
-Note that when we study the regular embedding obtained by dropping the nodes
+Notice that when we study the regular embedding obtained by dropping the nodes
 of the extended Dynkin diagram of the algebra $\mathfrak{g}$ and the
 subalgebra $\mathfrak{a}$ is one of the connected components,
 the subalgebra $\mathfrak{a}_{\bot}$ may be larger than the algebra
 generated by the remaining connected components.
-Consider for example the embedding of $B_2\subset B_4$ (the figure \ref{fig:dynkin}).
+Consider for example the embedding of $B_2\subset B_4$ (the Figure \ref{fig:dynkin}).
 In this case by eliminating
 the simple root $\alpha_2=e_2-e_3$ one splits the extended Dynkin diagram of $B_4$
 into the diagrams of the subalgebra $\mathfrak{a}=B_2$ and that of the direct
@@ -357,7 +353,7 @@ $A_1\oplus A_1$ but to $B_2$ (the root system of $B_4$ contains not only $\alpha
 
 Such effects are due to the fact that the subalgebras $\mathfrak{a}$ and $\mathfrak{a}_{\bot}$ must not form a direct sum in $\mathfrak{g}$.  
 Consider the case of such a regular embedding $\mathfrak{a}\subset \mathfrak{g}$ where both algebras are simple and the diagram of the subalgebra $\mathfrak{a}_{\bot}$ is not a subdiagram of the extended Dynkin diagram $\mathfrak{g}$.
- Drop the subdiagram of $\mathfrak{a}$ and the node $\alpha'$ that connects it with all the remaining nodes of the diagram of $\mathfrak{g}$. Consider the remaining diagram. This diagram is the diagram of the algebra $\mathfrak{\bar{a}}$ of $\mathrm{rank}(\mathfrak{\bar{a}}) = \mathrm{rank}(\mathfrak{g})-\mathrm{rank}(\mathfrak{a})$. It is clear that $\mathfrak{\bar{a}}\subset \mathfrak{a}_{\bot}$. So the question is whether $\mathfrak{a}_{\bot}$ has additional roots, which are not the roots of $\mathfrak{\bar{a}}$ but are the linear combinations of them. It is possible when the set of angles between the roots of $\mathfrak{\bar{a}}$ does not contain all the angles between the roots of $\mathfrak{a}$, then reflecting the roots of $\mathfrak{a}$ by $s_{\alpha'}$ we get the additional roots of $\mathfrak{a}_{\bot}$.
+ Drop the subdiagram of $\mathfrak{a}$ and the node $\alpha'$ that connects it with all the remaining nodes of the diagram of $\mathfrak{g}$. Consider the remaining diagram. This diagram is the diagram of the algebra $\mathfrak{\bar{a}}$ of $\mathrm{rank}(\mathfrak{\bar{a}}) = \mathrm{rank}(\mathfrak{g})-\mathrm{rank}(\mathfrak{a})$. It is clear that $\mathfrak{\bar{a}}\subset \mathfrak{a}_{\bot}$. So the question is whether $\mathfrak{a}_{\bot}$ has additional roots, which are not the roots of $\mathfrak{\bar{a}}$ but are the linear combinations of them. The answer is positive  when the set of angles between the roots of $\mathfrak{\bar{a}}$ does not contain all the angles between the roots of $\mathfrak{a}$. Then by reflecting the roots of $\mathfrak{a}$ by $s_{\alpha'}$ we get the additional roots of $\mathfrak{a}_{\bot}$.
 
 All the cases are listed in the table \ref{tab:diagrams}.
 \begin{table}[ph]
@@ -381,8 +377,8 @@ All the cases are listed in the table \ref{tab:diagrams}.
 
 For the algebra $\mathfrak{g}$ from the series $A_r$ the roots in the orthogonal basis $\{e_i,\; 1\leq i\leq r+1\}$ are $\Delta=\{\alpha_{ i j}= e_i- e_j,\; 1\leq i, j\leq r+1\}$, $\Delta^{+}=\{\alpha_{ij},\; i<j\}$ and the set of simple roots consists of $\alpha_{1,2},\alpha_{2,3},\dots,\alpha_{r,r+1}$. So for the regular subalgebra $\mathfrak{a}=A_{r_{\mathfrak{a}}}$ and its simple root system consisting of first $r_{\mathfrak{a}}$ simple roots we get $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{ i j},\; r_{\mathfrak{a}}+1<i,j\leq r+1\}$ and $\mathfrak{a}_{\bot}=A_{r-r_{\mathfrak{a}}-1}$.
 
-For the algebra $\mathfrak{g}$ from the series $B_r$ the roots in the orthogonal basis $\{e_i,\; 1\leq i\leq r\}$ are $\Delta=\{\alpha_{\pm i,\pm j}=\pm e_i\pm e_j,\;i<j;\; \alpha_{\pm j}=\pm e_{ j},\; 1\leq j\leq r\}$, $\Delta^{+}=\{\alpha_{i,-j},\; \alpha_{ij},\; \alpha_j;\; i<j,\; 1\leq j\leq r\}$ and the set of simple roots consists of $\alpha_{1,-2},\alpha_{2,-3},\dots,\alpha_{r-1,-r},\alpha_r$. So if the regular subalgebra $\mathfrak{a}=A_{r_{\mathfrak{a}}}$ and its simple root system consists of first $r_{\mathfrak{a}}$ simple roots, then $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; r_{\mathfrak{a}}+1<i<j\leq r\}$ and $\mathfrak{a}_{\bot}=B_{r-r_{\mathfrak{a}}-1}$. Otherwise if $\mathfrak{a}=B_{r_{\mathfrak{a}}}$ and its simple roots are $\alpha_{r-r_{\mathfrak{a}}+1,-r+r_{\mathfrak{a}}-2},\dots,\alpha_{r-1,r},\alpha_r$ we see that $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; 1<i<j\leq r-r_{\mathfrak{a}}\}$ and $\mathfrak{a}_{\bot}=B_{r-r_{\mathfrak{a}}}$. It is the only case when simple roots of $\mathfrak{a}_{\bot}$ can not be obtained from the extended Dynkin diagram, as can be seen in the Table \ref{tab:diagrams}. 
-There exists the third possibility to get the pair of subalgebras $\mathfrak{a},\mathfrak{a}_{\bot}$ with the regular subalgebra $\mathfrak{a}$ by dropping single node from the extended Dynkin diagram of $B_r$. It can be done by taking as the set of simple roots of $\mathfrak{a}$ the set $\{\alpha_{1,-2},\alpha_{1,2},\alpha_{2,-3},\dots,\alpha_{r_{\mathfrak{a}}-1,-r_{\mathfrak{a}}}\}$. Then $\mathfrak{a}=D_{r_{\mathfrak{a}}}$, $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; r_{\mathfrak{a}}<i<j\leq r\}$ and $\mathfrak{a}_{\bot}=B_{r-r_{\mathfrak{a}}}$.
+For the algebra $\mathfrak{g}$ from the series $B_r$ the roots in the orthogonal basis $\{e_i,\; 1\leq i\leq r\}$ are $\Delta=\{\alpha_{\pm i,\pm j}=\pm e_i\pm e_j,\;i<j;\; \alpha_{\pm j}=\pm e_{ j},\; 1\leq j\leq r\}$, $\Delta^{+}=\{\alpha_{i,-j},\; \alpha_{ij},\; \alpha_j;\; i<j,\; 1\leq j\leq r\}$ and the set of simple roots consists of $\alpha_{1,-2},\alpha_{2,-3},\dots,\alpha_{r-1,-r},\alpha_r$. So if the regular subalgebra $\mathfrak{a}=A_{r_{\mathfrak{a}}}$ and its simple root system consists of first $r_{\mathfrak{a}}$ simple roots, then $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; r_{\mathfrak{a}}+1<i<j\leq r\}$ and $\mathfrak{a}_{\bot}=B_{r-r_{\mathfrak{a}}-1}$. Otherwise if $\mathfrak{a}=B_{r_{\mathfrak{a}}}$ and its simple roots are $\alpha_{r-r_{\mathfrak{a}}+1,-r+r_{\mathfrak{a}}-2},\dots,\alpha_{r-1,r},\alpha_r$ we see that $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; 1<i<j\leq r-r_{\mathfrak{a}}\}$ and $\mathfrak{a}_{\bot}=B_{r-r_{\mathfrak{a}}}$. This is the only case where the simple roots of $\mathfrak{a}_{\bot}$ can not be obtained from the extended Dynkin diagram, as can be seen in the Table \ref{tab:diagrams}.
+There exists the third possibility to get the pair of subalgebras $\mathfrak{a},\mathfrak{a}_{\bot}$ with the regular subalgebra $\mathfrak{a}$ by dropping the single node from the extended Dynkin diagram of $B_r$. This can be done by choosing the set of simple roots of $\mathfrak{a}$ in the form $\{\alpha_{1,-2},\alpha_{1,2},\alpha_{2,-3},\dots,\alpha_{r_{\mathfrak{a}}-1,-r_{\mathfrak{a}}}\}$. Then $\mathfrak{a}=D_{r_{\mathfrak{a}}}$, $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; r_{\mathfrak{a}}<i<j\leq r\}$ and $\mathfrak{a}_{\bot}=B_{r-r_{\mathfrak{a}}}$.
 
 For the algebra $\mathfrak{g}$ from the series $C_r$ the roots in the orthogonal basis $\{e_i,\; 1\leq i\leq r\}$ are $\Delta=\{\alpha_{\pm i,\pm j}=\pm e_i\pm e_j,\;i<j;\; \alpha_{\pm j}=\pm 2e_{ j},\; 1\leq j\leq r\}$, $\Delta^{+}=\{\alpha_{i,-j},\; \alpha_{ij},\; \alpha_j;\; i<j,\; 1\leq j\leq r\}$ and the set of simple roots consists of $\alpha_{1,-2},\alpha_{2,-3},\dots,\alpha_{r-1,-r},\alpha_r$. So if the regular subalgebra $\mathfrak{a}=A_{r_{\mathfrak{a}}}$ and its simple root system consists of first $r_{\mathfrak{a}}$ simple roots, then $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; r_{\mathfrak{a}}+1<i<j\leq r\}$ and $\mathfrak{a}_{\bot}=C_{r-r_{\mathfrak{a}}-1}$. Otherwise if $\mathfrak{a}=C_{r_{\mathfrak{a}}}$ and its simple roots are $\alpha_{r-r_{\mathfrak{a}}+1,-r+r_{\mathfrak{a}}-2},\dots,\alpha_{r-1,r},\alpha_r$ we see that $\Delta_{\mathfrak{a}_{\bot}}=\{\alpha_{\pm i,\pm j},\;\alpha_j,\; 1<i<j\leq r-r_{\mathfrak{a}}\}$ and $\mathfrak{a}_{\bot}=C_{r-r_{\mathfrak{a}}}$.
 
@@ -411,36 +407,36 @@ Using the existing classification of maximal special subalgebras \cite{dynkin195
 \end{equation}
 Exceptional Lie algebras and other non-maximal subalgebras will be considered elsewhere.
 
-Up to this point we considered the problem of $\mathfrak{a}_{\bot}$-construction given $\mathfrak{a}\in\mathfrak{g}$ for regular injections in terms of Dynkin diagrams. When the root systems $ \Delta$ and $\Delta_{\mathfrak{a}}$ are known explicitly all that we need is to select the roots  
+Up to this point we considered the problem of constructing the subalgebra $\mathfrak{a}_{\bot}$ for a given regular injection $\mathfrak{a}\in\mathfrak{g}$  in terms of Dynkin diagrams. When the root systems $ \Delta$ and $\Delta_{\mathfrak{a}}$ are known explicitly all that we need is to select the roots
 $\Delta_{\bot}=\left\{\alpha\in \Delta:\alpha\bot \Delta_{\mathfrak{a}}\right\}$ and correspondingly the positive roots
 $\Delta^{+}_{\bot}=\left\{\alpha\in \Delta^{+}:\alpha\bot \Delta_{\mathfrak{a}}\right\}$. 
 
-Now consider the $\mathfrak{a}_{\bot}\oplus\mathfrak{h}_{\mathfrak{a}}$-module 
-with the highest weight $\mu$. For the character of this module we have
+Now consider the direct sum $\mathfrak{a}_{\bot}\oplus\mathfrak{h}_{\mathfrak{a}}$ and its module $L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$
+with the highest weight $\mu$. The character $ch L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$ can be written as
 \begin{equation}
   \label{eq:41}
-  ch L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}= \frac{\sum_{\omega\in W_{\bot}} \epsilon(\omega) e^{\omega(\mu+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}
+  ch L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}= \frac{\sum_{\omega\in W_{\bot}} \epsilon(\omega) e^{\omega(\mu+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}.
 \end{equation}
-The projection $\pi_{\mathfrak{a}}(ch\, L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}})$ gives us the single element $e^{\pi_{\mathfrak{a}} \cdot\mu}$ of the formal algebra ${\cal E}\left( \mathfrak{a}\right)$ with the multiplicity equal to the dimension of the module $L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, since all the roots of $\mathfrak{a}_{\bot}$ are orthogonal to  that of $\Delta_{\mathfrak{a}}$.
+Its projection $\pi_{\mathfrak{a}}(ch\, L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}})$ is the single element $e^{\pi_{\mathfrak{a}} \cdot\mu}$ of the formal algebra ${\cal E}\left( \mathfrak{a}\right)$ with the multiplicity equal to the dimension of the module $L^{\mu}_{\mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, since all the roots of $\mathfrak{a}_{\bot}$ are orthogonal to  that of $\Delta_{\mathfrak{a}}$.
 
-Using this property we can reconsider the restriction $ch\, L^{\mu}_{\mathfrak{g}\downarrow \mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, that is the character of the direct sum of $\mathfrak{a}_{\bot}\oplus\mathfrak{h}$-modules.
+Using this property we can consider the restriction $ch\, L^{\mu}_{\mathfrak{g}\downarrow \mathfrak{a}_{\bot}\oplus \mathfrak{h}}$, that is the character of the direct sum of $\left( \mathfrak{a}_{\bot}\oplus\mathfrak{h}\right) $-modules.
 Multiply the equation (\ref{eq:4}) by the element
 \begin{equation}
   \label{eq:5}
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
 \end{equation}
-Taking into account that for any formal series $Q \in {\cal E}$ and the binomial the projection commutes with the multiplication,
+Taking into account that the projection commutes with the multiplication,
 \begin{equation}
   \label{eq:6}
   \pi_{\mathfrak{a}} (Q) \pi_{\mathfrak{a}}(1-e^{-\alpha})=\pi_{\mathfrak{a}}\left(Q\cdot (1-e^{-\alpha})\right),
 \end{equation}
-we can rewrite the 
-product of (\ref{eq:4}) and (\ref{eq:5}) in the form:
+we can rewrite the
+product of (\ref{eq:4}) and (\ref{eq:5}):
 \begin{multline}
   \label{eq:7}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
-  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
+  \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}.
 \end{multline}
 The right-hand side of this equation can be reorganised similarly to what was performed in the paper \cite{ilyin812pbc}, by introducing the anomalous branching coefficients $k_{\lambda}$,
 \begin{equation}
@@ -480,21 +476,20 @@ Since $\nu\cdot \pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}}(\omega(\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} {\rm ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
 \end{multline}
-The projector $\pi_{\mathfrak{a}}$ transforms the character of the module ${\rm ch}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ into an element equal to the dimension of the module multiplied by the unit element:
+The projector $\pi_{\mathfrak{a}}$ transforms the character ${\rm ch}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ into the unit element of $\cal{E}$ multiplied by ${\rm dim}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$  :
   \begin{multline}
     \label{eq:15}
     \pi_{\mathfrak{a}}\left( \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} \mathrm{ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) = \\
     \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}
   \end{multline}
-
-Thus we have the equality
+Thus we obtained  the relation
 \begin{multline}
   \label{eq:9}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
   \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta^{+}_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
-  \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda }
+  \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda }.
 \end{multline}
-Following the transformations performed in \cite{ilyin812pbc} we rewrite the multiplier in the right-hand side:
+Let us rewrite the multiplier in the right-hand side:
 \begin{equation}
   \label{eq:11}
     \prod_{\alpha\in \pi_{\mathfrak{a}}\circ (\Delta^{+}\setminus \Delta^{+}_{\bot})} \left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}=
@@ -505,9 +500,9 @@ For the coefficient function $s\left( \gamma \right) $ define the carrier $\Phi 
 }\subset \frak{g}}\subset P_{\frak{a}}$:
 \begin{equation}
 \Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}\mid s\left(
-\gamma \right) \neq 0\right\} ;  \label{phi-d}
+\gamma \right) \neq 0\right\} .  \label{phi-d}
 \end{equation}
-In these terms the equation for the formal elements,
+From the obtained equation for the formal elements,
 \begin{multline}
   \label{eq:16}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
@@ -515,14 +510,14 @@ In these terms the equation for the formal elements,
   k_{\lambda }^{\left( \mu \right) }e^{\lambda } \\
   =-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}}\sum_{\lambda \in P_{\frak{a}}}s\left( \gamma \right) k_{\lambda }^{\left( \mu \right)}e^{\lambda -\gamma }
 \end{multline}
-leads to the following equality 
+we can deduce the following property of the anomalous branching coefficients,
 \begin{equation}
   \label{eq:17}
    \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
-   \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\quad \xi\in P_{\mathfrak{a}}
+   \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\quad \xi\in P_{\mathfrak{a}}.
 \end{equation}
 
-To get the recurrent relations for the anomalous branching coefficients we use the following procedure  (similar to that in \cite{ilyin812pbc}).
+To get the recurrent relations for the coefficients $k^{(\mu)}_{\xi+\gamma}$ we use the following procedure  (similar to that in \cite{ilyin812pbc}).
 Let $\gamma_{0} $ be the lowest vector with respect to the natural ordering in $%
 \co{\Delta _{\frak{a}}}$ in the lowest grade of $\Phi _{\frak{a}\subset \frak{g}}$ and decompose the defining relation (\ref{eq:11}),
 \begin{equation}
@@ -554,36 +549,36 @@ where the set
 \end{equation}
  was introduced that is called the injection fan.
 
-Now let the set $\Delta_{\bot}^{+}$ be empty. There are three different reasons for $\Delta_{\bot}^{+}=0$: i) $\mathrm{dim}\mathfrak{h}_{\mathfrak{a}}=\mathrm{dim}\mathfrak{h}_{\mathfrak{g}}$, ii) $\mathfrak{a}_{\bot}=0$ and iii) $\mathfrak{a}_{\bot}\subset \mathfrak{h}_{\mathfrak{g}}$. Both the first and the second cases can be treated as corresponding to the trivial orthogonal subalgebra: 
-$\mathfrak{a}_{\bot}=0$. In any of these cases instead of the formal characters in the right-hand side of (\ref{eq:13}) we obtain the formal element $e^{ \pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)}$
-In the first two cases (equivalent to $\mathfrak{a}_{\bot}=0$) the projection operator retains its purely geometrical meaning: the vector $\omega(\mu+\rho)$ is projected to the subspace orthogonal to the weight space of $\mathfrak{a}$. It is clear that in any of the three variants the final vector $\pi_{\mathfrak{a}}\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)$ leads to the unit of the formal algebra 
-$\mathcal{E}$. Thus when the set $\Delta_{\bot}^{+}$ is empty we get the more simple recurrent relation: 
+Now consider the case  $\Delta_{\bot}^{+} = 0$. There are three different reasons for $\Delta_{\bot}^{+}$ to be empty: i) $\mathrm{dim}\mathfrak{h}_{\mathfrak{a}}=\mathrm{dim}\mathfrak{h}_{\mathfrak{g}}$, ii) $\mathfrak{a}_{\bot}=0$ and iii) $\mathfrak{a}_{\bot}\subset \mathfrak{h}_{\mathfrak{g}}$. Both the first and the second cases can be treated as corresponding to the trivial orthogonal subalgebra:
+$\mathfrak{a}_{\bot}=0$. In any of these cases instead of the formal characters in the right-hand side of (\ref{eq:13}) we obtain the formal element $e^{ \pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)}$.
+In the first two cases (equivalent to $\mathfrak{a}_{\bot}=0$) the projection operator retains its purely geometrical meaning: the vector $\omega(\mu+\rho)$ is projected to the subspace orthogonal to the weight space of $\mathfrak{a}$. It is clear that in any of the three variants the final vector $\pi_{\mathfrak{a}}\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)$ leads to the unit of the formal algebra
+$\mathcal{E}$. Thus when the set $\Delta_{\bot}^{+}$ is empty the  recurrent relation is simplified:
 \begin{equation}
 k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 \sum_{w\in W}\epsilon \left( w\right) \delta _{\xi ,\pi _{\frak{a}}\circ
 \left( w\circ (\mu +\rho )-\rho \right) +\gamma _{0}}+\sum_{\gamma \in
 \Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
-+\gamma }^{\left( \mu \right) }\right)   \label{recurrent relation special}
++\gamma }^{\left( \mu \right) }\right),  \label{recurrent relation special}
 \end{equation}
-It coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)). 
+the latter coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)).
 
-  In the next section we describe an algorithm for the computation of branching coefficients based on the relation \eqref{recurrent-relation}.
+  In the next section we describe a computation algorithm for branching coefficients based on the relation \eqref{recurrent-relation}.
 
 \subsection{Algorithm for the recursive computation of the branching coefficients}
 \label{sec:algorithm}
 
-We use the recurrent relation \eqref{recurrent-relation} to formulate an algorithm for recursive computation of the branching coefficients. It is important to mention that the computation of the branching coefficients is performed without the  explicit construction of the module $L^{(\mu)}_{\mathfrak{g}}$ and any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
+The recurrent relation \eqref{recurrent-relation} allows us to formulate an algorithm for recursive computation of the branching coefficients. In this algorithm there is no need to  construct the module $L^{(\mu)}_{\mathfrak{g}}$ or any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
 
-The algorithm contains the following steps.
+It contains the following steps:
 \begin{enumerate}
 \item Construct the sets $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ of positive roots for the algebras $\mathfrak{a} \subset \mathfrak{g}$.
 \item Select the positive roots $\alpha\in \Delta^{+}$ which are orthogonal to the root subspace of $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
-\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the $\mathfrak{g}$-module $L^{(\mu)}$.
-\item Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$ that must be non-negative.
-\item For $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
 \item Construct the set $\Gamma$ \eqref{fan-defined}.
+\item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the $\mathfrak{g}$-module $L^{(\mu)}$.
+\item Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$, it must be non-negative.
+\item For $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
 \item Calculate the anomalous branching coefficients in the main Weyl
-  chamber of the subalgebra $\mathfrak{a}$ using recurrent relation (\ref{recurrent-relation}).
+  chamber of the subalgebra $\mathfrak{a}$ using the recurrent relation (\ref{recurrent-relation}).
 \end{enumerate}
 
 If we are interested in the branching coefficients for the embedding of the finite-dimensional Lie algebra into the affine Lie algebra we can construct the set of the anomalous weights up to the required grade and use the steps 4-7 of the algorithm for each grade. We can also speed up the algorithm by one-time computation of the representatives of the conjugate classes $W_{\bot}\backslash W$.
@@ -599,9 +594,9 @@ The next section contains several examples computed using this algorithm.
 \subsubsection{Regular embedding of $A_1$ into $B_2$}
 \label{sec:regul-embedd-a_1}
 
-Consider the regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are drawn as the dashed vectors at the Figure \ref{fig:B2_A1}. We denote the corresponding Weyl reflections by $\omega_1, \omega_2$. Simple root $\beta$ of the embedded $A_1$ is equal to $\alpha_1+2\alpha_2$ and is drawn as grey vector.
+Consider the regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are drawn as the dashed vectors at the Figure \ref{fig:B2_A1}. We denote the corresponding Weyl reflections by $\omega_1, \omega_2$. Simple root $\beta$ of the embedded $A_1$ is equal to $\alpha_1+2\alpha_2$ and is drawn as the grey vector.
 
-Let's describe the reduction of fundamental representation of $B_2$ with the highest weight (in fundamental weight basis) equal to $(1,0)$, which is drawn as the black vector at the Figure \ref{fig:B2_A1}.
+Let's describe the reduction of the fundamental representation of $B_2$ with the highest weight equal to $(1,0)$ (in the fundamental weight basis), it is drawn as the black vector in the Figure \ref{fig:B2_A1}.
 \begin{figure}[ph]
   \noindent\centering{
     \includegraphics[width=90mm]{B2_A1.pdf}
@@ -609,7 +604,7 @@ Let's describe the reduction of fundamental representation of $B_2$ with the hig
   \caption{Regular embedding of $A_1$ into $B_2$}
   \label{fig:B2_A1}
 \end{figure}
-On the Figure \ref{fig:B2_A1} we have also shown the set of weights $\omega(\mu+\rho)-\rho,\; \omega\in W$ of fundamental representation of $B_2$ with the corresponding determinants of Weyl reflections $\epsilon(\omega)$.
+There we have also shown the set of weights $\omega(\mu+\rho)-\rho,\; \omega\in W$ of the fundamental representation of $B_2$ with the corresponding determinants $\epsilon(\omega)$ of Weyl transformations.
 Now we have to factorise the Weyl group $W$ by $W_{\bot}=\left\{\omega_1\right\}$. We get the following set of anomalous weights $\omega(\mu+\rho)-\rho,\; \omega\in W_{\bot}\backslash W$:
 \begin{figure}[ph]
   \noindent\centering{
@@ -624,24 +619,24 @@ Then we project these weights and dimensions of modules onto the root space of s
   \label{eq:25}
   (1,2),\; (0,-3),\; (-4,3),\; (-5,-2)
 \end{equation}
-For the function $s(\gamma)$ and the set $\Gamma$ from the definition (\ref{phi-d},\ref{fan-defined}) we have
+For the function $s(\gamma)$ and the set $\Gamma$ (using the definition (\ref{phi-d},\ref{fan-defined})) we have
 \begin{equation}
   \label{eq:22}
   (1,2),\; (2,-1)
 \end{equation}
 Here the second component denotes the value of $s(\gamma)$.
 
-Anomalous branching coefficient $k^{(1,0)}_{1}=2$, then for anomalous branching coefficient $k^{(1,0)}_{0}$ the formula (\ref{recurrent-relation}) gives us
+As far as the anomalous branching coefficient $k^{(1,0)}_{1}=2$ for the coefficient $k^{(1,0)}_{0}$ the formula (\ref{recurrent-relation}) gives the value
 \begin{equation}
   \label{eq:23}
-  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1
+  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1.
 \end{equation}
-So we have computed the branching coefficients.
+The recurrence property defines the branching.
 
 \subsubsection{Embedding of $B_2$ into $B_4$}
 \label{sec:someth-high-dimens}
-Consider the the regular embedding of the subalgebra $B_2$ into the algebra $B_4$.
-We calculate the branching coefficients for the fundamental representation of $B_4$.
+Consider the regular embedding $B_2 \longrightarrow B_4$.
+We calculate the branching coefficients for the fundamental vector representation of $B_4$.
 The corresponding Dynkin diagrams are in the Figure \ref{fig:dynkin}.
 \begin{figure}[ph]
   \centering
@@ -650,107 +645,83 @@ The corresponding Dynkin diagrams are in the Figure \ref{fig:dynkin}.
   \label{fig:dynkin}
 \end{figure}
 
-In the orthogonal basis $e_1,\dots,e_4$ simple roots of $B_4$ are
+In the orthogonal basis $e_1,\dots,e_4$ the simple roots of $B_4$ are
 \begin{equation}
   \label{eq:8}
   (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4)
 \end{equation}
-Positive roots are
+The positive roots are
 \begin{multline}
   \label{eq:19}
   (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,\;\\
     e_2 + e_4,\; e_2,\; e_1 + e_4,\; e_2 + e_3,\; e_1,\; e_1 + e_3,\; e_1 + e_2)
 \end{multline}
-Simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
+The simple roots of the embedded subalgebra $\mathfrak{a}=B_2$ are
 \begin{equation}
   \label{eq:26}
   (e_3-e_4,e_4)
 \end{equation}
 
-The set $\Delta^{+}_{\bot}$ is equal to
+The set $\Delta^{+}_{\bot}$ contains the roots
 \begin{equation}
   \label{eq:27}
   \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}
 \end{equation}
+and is the set of positive roots for the algebra $\mathfrak{a}_{\bot}=B_2$.
 
-We see that this is the set of positive roots of the algebra $\mathfrak{a}_{\bot}=B_2$.
+Firstly we construct the fan for this injection.
+Using the definition (\ref{fan-defined}) we obtain the set $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:B4B2Fan}.
 
-To find the branching coefficients we need to compute the anomalous weights of $B_4$, select weights lying in the main Weyl chamber of $\mathfrak{a}_{\bot}$ and compute the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.
+To find the branching coefficients we need to compute the anomalous weights of $B_4$, select the weights belonging to $C^{\left( 0 \right)}_{\mathfrak{a}_{\bot}}$ and compute the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules.
 
-We consider the $B_4$-module with the highest weight $\mu=(0,1,0,2)=2
-e_1 + 2 e_2 + e_3 + e_4$.
+Consider the $B_4$-module $L^{\mu}$ with the highest weight $\mu=(0,1,0,2)=2
+e_1 + 2 e_2 + e_3 + e_4$; $dim(L^{(0,1,0,2)})=2772$.
 
-The set of the anomalous weights $\omega(\mu+\rho)-\rho,\; \omega\in W$
-consists of 384 elements. We do not show it here.
+The set of the anomalous weights $\left\{ \omega(\mu+\rho)-\rho,\; \omega\in W\right\}$
+contains of 384 vectors.
 
-We need to select those weights $\omega(\mu+\rho)$  which are projected into the main chamber of the embedded algebra $\mathfrak{a}_{\bot}$.
-It means that scalar product of these weights with all the roots from $\Delta^{+}_{\bot}$ is non-negative.
+We need to select the weights $\psi \in \omega(\mu+\rho)$  with the property $\pi_{\mathfrak{a}_{\bot}} \left(  \psi \right) \in C^{\left( 0 \right)}_{\mathfrak{a}_{\bot}}$.
+It means that the scalar product of these weights with all the roots in $\Delta^{+}_{\bot}$ is non-negative.
 
-To compute dimensions of the corresponding
+To compute the dimensions of the corresponding
 $\mathfrak{a}_{\bot}$-modules we need to project each selected weight
-onto the root space $\Delta^{+}_{\bot}$ and substract
-$\rho_{\mathfrak{a}_{\bot}}$, then use Weyl dimension formula.
+onto the root space $\Delta^{+}_{\bot}$, substract
+$\rho_{\mathfrak{a}_{\bot}}$ and apply the Weyl dimension formula.
 
-We show the result of this procedure on the Figure \ref{fig:B4B2anom}.
+The result of this procedure is shown in the Figure \ref{fig:B4B2anom}.
 \begin{figure}[h!tb]
     \includegraphics[width=150mm]{B4_B2_anom_points.pdf}
-  \caption{Anomalous weights with the dimensions of corresponding $\mathfrak{a}_{\bot}$-modules.}
+  \caption{Anomalous weights with the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:B4B2anom}
 \end{figure}
 
-Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
 
-Using the definition (\ref{fan-defined}) we get the following set $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$, depicted at the Figure \ref{fig:B4B2Fan}.
 \begin{figure}[h!tb]
   \includegraphics[width=130mm]{B4_B2_fan.pdf}
   \caption{Fan for $B_2\subset B_4$}
   \label{fig:B4B2Fan}
 \end{figure}
-We use the recurrent relation (\ref{recurrent-relation}) and get
+Applying the recurrent relation (\ref{recurrent-relation}) we obtain the
 following branching coefficients:
 \begin{equation}
   \label{eq:24}
   \pi_{\mathfrak{a}} \left(ch L^{(0,1,0,2)}_{B_4}\right) = 6 \; ch L^{(0,0)}_{B_2}+ 60
   \; ch L_{B_2}^{(0,2)}+ 30 \; ch L_{B_2}^{(1,0)}+ 19 \; ch L_{B_2}^{(2,0)}+
-  40 \; ch L_{B_2}^{(1,2)}+ 10 \; ch L_{B_2}^{(2,2)}
+  40 \; ch L_{B_2}^{(1,2)}+ 10 \; ch L_{B_2}^{(2,2)}.
 \end{equation}
-The dimension of the highest-weight $B_4$-module $L^{(0,1,0,2)}_{B_4}$
-is equal to 2772. It is easy to see, that right-hand side of the
-equation (\ref{eq:24}) gives the same result.
 
 
 \subsection{Affine Lie algebras}
 \label{sec:affine-lie-algebras}
-\subsubsection{Embedding of the affine algebra into affine algebra}
+\subsubsection{Affine into affine embedding}
 \label{sec:embedd-affine-algebr}
 
 Consider the affine extension of the example \ref{sec:regul-embedd-a_1}.
-Since this embedding is regular, the level of the representations of the subalgebra is equal to the level of the representation of the algebra.
+Since this embedding is regular, the level of the  subalgebra modules is equal to that of the initial module.
 
 The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
 
-Consider the level one representation of the algebra $\mathfrak{g}=\hat{B_2}$ with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
-
-The set of the anomalous weights of this representation up to sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade it looks like in the Figure \ref{fig:B2_A1}.
-
-\begin{figure}[h!tb]
-  \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
-  \caption{The anomalous weights of the $(1,0;1;0)$ representation of the algebra $\hat{B_2}$}
-  \label{fig:affine_B2_anom_point}
-\end{figure}
-
-As the next step of our algorithm \ref{sec:algorithm} we project the anomalous weights to the weight space of the subalgebra $\hat{A_1}$ and calculate the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
-The result of this computation up to the twelfth grade is presented at the Figure
-\begin{figure}[h!tb]
-  \centering
-  \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
-  \caption{Projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
-  \label{fig:AffineB2_A1_anom_proj}
-\end{figure}
-
-Then we should construct ``the fan'' and use the recurrent relation for the computation of anomalous branching coefficients.
-
-Using the definition (\ref{fan-defined}) we get the following $\Gamma$ with the corresponding values $s(\gamma+\gamma_0)$: \ref{fig:AffineB2A1Fan}.
+Using the definition (\ref{fan-defined}) we get the fan $\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$ with the corresponding values $s(\gamma+\gamma_0)$(see the Figure \ref{fig:AffineB2A1Fan}).
 Here we restricted the computation to the twelfth grade.
 \begin{figure}[ph]
   \centering
@@ -759,17 +730,39 @@ Here we restricted the computation to the twelfth grade.
   \label{fig:AffineB2A1Fan}
 \end{figure}
 
-Also we should mention that the lowest vector of the fan $\gamma_0$ is equal to zero, since we have excluded all the roots of $\Delta^{+}_{\bot}$ from the defining relation (\ref{fan-defined}).
 
-Using the recurrent relation for the anomalous branching coefficients we get the following result, presented at the Figure \ref{fig:AffineB2_A1_branching}. Dotted area represents the main Weyl chamber of the algebra $\hat{A}_1$.
+Consider the level one module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
+
+The set of the anomalous weights for this module up to the sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade its form is similar to that in the  Figure \ref{fig:B2_A1}.
+
+\begin{figure}[h!tb]
+  \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
+  \caption{The anomalous weights of the $(1,0;1;0)$ representation of the algebra $\hat{B_2}$}
+  \label{fig:affine_B2_anom_point}
+\end{figure}
+
+Performing the next step of the algorithm \ref{sec:algorithm} we project the anomalous weights to the weight space of the subalgebra $\hat{A_1}$ and find the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
+The result of this computation up to the twelfth grade is presented in the Figure
+\ref{fig:AffineB2_A1_anom_proj}.
+\begin{figure}[h!tb]
+  \centering
+  \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
+  \caption{Projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \label{fig:AffineB2_A1_anom_proj}
+\end{figure}
+
+Notice that here the lowest weight  $\gamma_0$ of the fan  is zero, since we have excluded all the roots of $\Delta^{+}_{\bot}$ from the defining relation (\ref{fan-defined}).
+
 \begin{figure}[ph]
   \centering
-  \includegraphics[width=110mm]{AffineB2_A1_branching.pdf}
+  \includegraphics[width=130mm]{AffineB2_A1_branching.pdf}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:AffineB2_A1_branching}
 \end{figure}
 
-Selecting the elements inside the main Weyl chamber of the subalgebra $\hat{A_1}$ we get for the branching coefficients up to twelfth grade
+Selecting the elements inside the  Weyl chamber
+$\bar{C}^{\left( 0 \right)}_{\hat{A_1}}$
+we get the following results for the branching coefficients up to twelfth grade
 \begin{multline}
   \label{eq:28}
   L^{w_1}_{\hat{B_2}\downarrow \hat{A_1}}=2 L_{\hat{A_1}}^{w_1}(0)\oplus 1 L_{\hat{A_1}}^{w_0}(0)\oplus 4 L_{\hat{A_1}}^{w_0}(-1)\oplus\\
@@ -786,7 +779,7 @@ Selecting the elements inside the main Weyl chamber of the subalgebra $\hat{A_1}
     797 L_{\hat{A_1}}^{w_0}(-11)\oplus 1080 L_{\hat{A_1}}^{w_1}(-12)\oplus
     1180 L_{\hat{A_1}}^{w_0}(-12)
 \end{multline}
-This result can be expressed using the power series expansion of the branching functions \cite{kac1990idl}.
+This result can be presented as the set of branching functions \cite{kac1990idl}.
 \begin{eqnarray}
   \label{eq:29}
   \begin{array}{cc}
@@ -798,10 +791,10 @@ This result can be expressed using the power series expansion of the branching f
     & 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots
   \end{array}
 \end{eqnarray}
-Here the lower index of the branching function denotes the number of the corresponding $\hat{A_1}$ fundamental weight $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
+Here the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
 
-\section{Applications to conformal field theory}
+\section{Applications to the conformal field theory}
 \label{sec:phys-appl}
 
 Branching coefficients for an embedding of affine Lie subalgebra into
@@ -813,7 +806,7 @@ partition functions for Wess-Zumino-Novikov-Witten models of conformal field the
 \end{equation}
 
 
-Let $X^{a_j}_{-n_j}$ and $\tilde{X}^{a'_j}_{-n_j}$ be the lowering generators for $\mathfrak{g}$ and of $\mathfrak{a}\subset\mathfrak{g}$ correspondingly. Let $\pi_{\mathfrak{a}}$ be the projection operator of $\pi_{\mathfrak{a}}:\mathfrak{g}\longrightarrow \mathfrak{a}$. In the theory attributed to $\mathfrak{g}$ with the vacuum $\left|\lambda\right>$ the states can be described as 
+Let $X^{a_j}_{-n_j}$ and $\tilde{X}^{a'_j}_{-n_j}$ be the lowering generators for $\mathfrak{g}$ and for $\mathfrak{a}\subset\mathfrak{g}$ correspondingly. Let $\pi_{\mathfrak{a}}$ be the projection operator of $\pi_{\mathfrak{a}}:\mathfrak{g}\longrightarrow \mathfrak{a}$. In the theory attributed to $\mathfrak{g}$ with the vacuum $\left|\lambda\right>$ the states can be described as
 \begin{equation}
   \label{eq:109}
   X^{a_1}_{-n_1}X^{a_2}_{-n_2}\dots\left|\lambda\right>\quad n_1\geq n_2\geq \dots>0.
@@ -823,7 +816,7 @@ And for the sub-algebra $\mathfrak{a}$ the corresponding states are
   \label{eq:110}
   \tilde{X}^{a'_1}_{-n_1}\tilde{X}^{a'_2}_{-n_2}\dots\left|\pi_{\mathfrak{a}}(\lambda)\right>.
 \end{equation}
-The $\mathfrak{g}$-invariance of the vacuum entails its $\mathfrak{a}$-invariance, but it is not the case for the energy-momentum tensor. So the energy-momentum tensor of the larger theory should consist only of generators of $\tilde{X}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to the equation
+The $\mathfrak{g}$-invariance of the vacuum entails its $\mathfrak{a}$-invariance, but this is not the case for the energy-momentum tensor. So the energy-momentum tensor of the larger theory should consist only of the generators of $\tilde{X}$. Then $T_{\mathfrak{g}}=T_{\mathfrak{a}}\Rightarrow c(\mathfrak{g})=c(\mathfrak{a})$. This leads to the equation
 \begin{equation}
   \label{eq:111}
   \frac{k\;\mathrm{dim}\,\mathfrak{g}}{k+g}=\frac{x_e k\; \mathrm{dim}\,\mathfrak{a}}{x_ek+a}
@@ -831,26 +824,16 @@ The $\mathfrak{g}$-invariance of the vacuum entails its $\mathfrak{a}$-invarianc
 Here $x_e$ is the embedding index and $g$, $a$ are the dual Coxeter numbers for the  corresponding algebras.
 
 It can be demonstrated that the solutions of the equation (\ref{eq:111}) exist only
-for level $k=1$ \cite{difrancesco1997cft}.
+for the level $k=1$ \cite{difrancesco1997cft}.
 
-The class of conformal embeddings is not rich, the complete classification is given in the paper \cite{schellekens1986conformal}.
+The complete classification of conformal embeddings is given in the paper \cite{schellekens1986conformal}.
 The requirement (\ref{eq:31}) allows to reduce the problem of finding the branching coefficients for affine Lie algebras to the computation of branching coefficients for finite-dimensional Lie algebras.
 
-If we have modular-invariant partition function for the fields described by a representation of the algebra $\mathfrak{g}$ this modular invariance is preserved by the projection on the subalgebra $\mathfrak{a}$, but we need also the preservation of the conformal invariance. So we should select only those highest-weight modules of the subalgebra $\mathfrak{a}$ for which the relation (\ref{eq:111}) holds.
+If we have modular-invariant partition function for the fields described by a representation of the algebra $\mathfrak{g}$ this modular invariance is preserved by the projection on the subalgebra $\mathfrak{a}$, but we need also the preservation of the conformal invariance. So we should select only those highest-weight modules of the algebra $\mathfrak{g}$ for which the relation (\ref{eq:111}) holds.
 
-In the decomposition (\ref{eq:3}) let the highest weight $\nu$ of the subalgebra module belong to the grade $n$ of the projected  module $\pi_{\mathfrak{a}}\cdot L^{(\mu)}_{\mathfrak{g}}$.  Then the relation (\ref{eq:111}) implies the following requirement on the conformal dimensions of the corresponding fields
-\begin{equation}
-  \label{eq:32}
-   \Delta_{\pi_{\mathfrak{a}}\mu}+n=\Delta_{\nu}
-\end{equation}
-It leads to a restriction imposed on the classical parts of the corresponding weights:
-\begin{equation}
-  \label{eq:33}
-  \frac{(\co{\mu},\co{\mu}+2\rho)}{2(1+g)}+n=\frac{(\co{\nu},\co{\nu}+2\rho_{\mathfrak{a}})}{2(x_e+a)}
-\end{equation}
-The finite reducibility theorem states that for conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
+This relation and the asymptotics of the branching functions can be used to prove the finite reducibility theorem. It states that for the conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
 
-Then after we have found all such weights $\nu$ and the corresponding branching coefficients $b^{(\mu)}_{\nu}$ we can replace the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function
+Having found all such weights $\nu$ and the corresponding branching coefficients $b^{(\mu)}_{\nu}$ we can replace the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function
 \begin{equation}
   \label{eq:34}
    Z(\tau)=\sum_{ \mu\in P^{+}_{\mathfrak{g}}} \chi_{\mu}(\tau)\bar \chi_{\mu}(\bar \tau)
@@ -860,7 +843,7 @@ by the decompositions   $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi
   \label{eq:36}
    Z_{\mathfrak{a}}(\tau)=\sum_{ \nu,\lambda\in P^{+}_{\mathfrak{a}}} \chi_{\nu}(\tau)M_{\nu\lambda}\bar \chi_{\lambda}(\bar \tau)
 \end{equation}
-Recently the problem of the conformal embeddings was considered in the paper \cite{coquereaux2008conformal}.  
+  
 
 It is important to note that the orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$. It can be seen from the following consideration. In the case of the conformal embedding energy-momentum tensors are to be equal
 \begin{equation}
@@ -879,6 +862,8 @@ The modes are constructed as the combination of normally-ordered products of the
 \end{equation}
 The substitution of the generators of the algebra $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations of $T_{\mathfrak{a}}$ should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty it is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$, which can not be obtained in the expansion of components of $T_{\mathfrak{a}}$.
 
+If we limit the consideration by the affine extensions of simple classical Lie algebras, the number of possible non-maximal conformal embeddings is rather small \cite{schellekens1986conformal}. We study the example of $\hat{A}_1\subset \hat{A}_2\subset\hat{A}_{3}$ in the section \ref{sec:non-maxim-conf}.
+
 \subsection{Examples}
 \label{sec:example}
 
@@ -889,7 +874,7 @@ Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ co
 There exist three level one dominant weights in the weight space of $\hat{A}_2$.
 It is easy to see that the set $\Delta_{\bot}$ and the algebra $\mathfrak{a}_{\bot}$ are empty.
 
-Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in details. Here the first two components are the Dynkin indexes (coordinates in the fundamental weights basis) of the finite part of the weight.
+Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in details. Here the first two components are the Dynkin indices (coordinates in the fundamental weights basis) of the finite part of the weight.
 
 The set of the anomalous weights of this representation up to the sixth grade is depicted in the Figure \ref{fig:affine_A2_anom_point}. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration as the dotted diagonal plane.
 
