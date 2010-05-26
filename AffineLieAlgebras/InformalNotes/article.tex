@@ -599,7 +599,7 @@ The next section contains several examples computed using this algorithm.
 \subsubsection{Regular embedding of $A_1$ into $B_2$}
 \label{sec:regul-embedd-a_1}
 
-Consider the regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are drawn as the dashed vectors at the Figure \ref{fig:B2_A1}. We denote the corresponding Weyl reflections by $\omega_1, \omega_2$. Simple root $\beta$ of the embedded $A_1$ is equal to $\alpha_1+\alpha_2$ and is drawn as grey vector.
+Consider the regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are drawn as the dashed vectors at the Figure \ref{fig:B2_A1}. We denote the corresponding Weyl reflections by $\omega_1, \omega_2$. Simple root $\beta$ of the embedded $A_1$ is equal to $\alpha_1+2\alpha_2$ and is drawn as grey vector.
 
 Let's describe the reduction of fundamental representation of $B_2$ with the highest weight (in fundamental weight basis) equal to $(1,0)$, which is drawn as the black vector at the Figure \ref{fig:B2_A1}.
 \begin{figure}[ph]
@@ -609,7 +609,7 @@ Let's describe the reduction of fundamental representation of $B_2$ with the hig
   \caption{Regular embedding of $A_1$ into $B_2$}
   \label{fig:B2_A1}
 \end{figure}
-On the Figure \ref{fig:B2_A1} we have also shown the set of weights $\omega(\mu+\rho),\; \omega\in W$ of fundamental representation of $B_2$ with the corresponding determinants of Weyl reflections $\epsilon(\omega)$.
+On the Figure \ref{fig:B2_A1} we have also shown the set of weights $\omega(\mu+\rho)-\rho,\; \omega\in W$ of fundamental representation of $B_2$ with the corresponding determinants of Weyl reflections $\epsilon(\omega)$.
 Now we have to factorise the Weyl group $W$ by $W_{\bot}=\left\{\omega_1\right\}$. We get the following set of anomalous weights $\omega(\mu+\rho)-\rho,\; \omega\in W_{\bot}\backslash W$:
 \begin{figure}[ph]
   \noindent\centering{
@@ -959,11 +959,7 @@ Substituting the branching rules into \eqref{eq:34} we get non-diagonal mass mat
   \label{eq:2}
   M_{\lambda\xi,\mu\eta}
 \end{equation}
-where $\lambda,\mu$ are the highest weights of the representations of $\mathfrak{a}_1$ and $\xi,\eta$ of $\mathfrak{a}_2$. A new $\mathfrak{a}_1$-invariant mass matrix can be found by the contraction of $M_{\lambda\xi,\mu\eta}$ with some known $\mathfrak{a}_2$-invariant mass matrix $M^{(2)}_{\xi\eta}$:
-\begin{equation}
-  \label{eq:35}
-  M^{(1)}_{\lambda\mu}=\sum_{\xi,\eta\in P_{\mathfrak{a}}^{+}}M_{\lambda\xi,\mu\eta}M^{(2)}_{\xi\eta}
-\end{equation}
+where $\lambda,\mu$ are the highest weights of the representations of $\mathfrak{a}_1$ and $\xi,\eta$ of $\mathfrak{a}_2$. 
 
 Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where $\mathfrak{a}=\widehat{su(2)}\oplus \widehat{su(2)}$ and $\mathfrak{g}= \widehat{su(4)}$, which is the affine extension of the special embedding $su(2)\oplus su(2)\subset su(4)$. Let's construct the special embedding $su(2)\oplus su(2)\subset su(4)$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $su(2)\oplus su(2)$ with the highest weight $(1,1)$. The weights of this representation are numbered as depicted at the Figure \ref{fig:A_1+A_1_to_A3} and have the following coordinates in the fundamental weights basis: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
 
