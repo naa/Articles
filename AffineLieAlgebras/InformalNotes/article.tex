@@ -361,7 +361,7 @@ All the cases are listed in the table \ref{tab:diagrams}.
 \noindent  \centering{
 \begin{tabular}{|l|l|l|l|}
   \hline
-  $\mathfrak{g}$ & Extended diagram of the algebra $\mathfrak{g}$ & Diagrams of the subalgebras $\mathfrak{a},\; \mathfrak{a}_{\bot}$ \\
+  $\mathfrak{g}$ & Extended diagram of $\mathfrak{g}$ & Diagrams of the subalgebras $\mathfrak{a},\; \mathfrak{a}_{\bot}$ \\
   \hline
   $A_n$ & \includegraphics{A_series_ext_diag.pdf} & \includegraphics{A_series_ext_split.pdf} \\
   \hline
@@ -511,11 +511,11 @@ From the obtained equation for the formal elements,
   =-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}}\sum_{\lambda \in P_{\frak{a}}}s\left( \gamma \right) k_{\lambda }^{\left( \mu \right)}e^{\lambda -\gamma }
 \end{multline}
 we can deduce the following property of the anomalous branching coefficients,
-\begin{equation}
+\begin{multline}
   \label{eq:17}
    \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
-   \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\quad \xi\in P_{\mathfrak{a}}.
-\end{equation}
+   \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\\ \xi\in P_{\mathfrak{a}}.
+\end{multline}
 
 To get the recurrent relations for the coefficients $k^{(\mu)}_{\xi+\gamma}$ we use the following procedure  (similar to that in \cite{ilyin812pbc}).
 Let $\gamma_{0} $ be the lowest vector with respect to the natural ordering in $%
@@ -641,7 +641,7 @@ The corresponding Dynkin diagrams are in the Figure \ref{fig:dynkin}.
 \begin{figure}[ph]
   \centering
   \includegraphics[width=60mm]{B4_B2_2A1.pdf}
-  \caption{Dynkin diagrams}
+  \caption{Dynkin diagrams for the regular embedding $B_2\subset B_4$. Note the dropped node and the roots of $\mathfrak{a}_{\bot}$. }
   \label{fig:dynkin}
 \end{figure}
 
@@ -690,32 +690,34 @@ $\rho_{\mathfrak{a}_{\bot}}$ and apply the Weyl dimension formula.
 
 The result of this procedure is shown in the Figure \ref{fig:B4B2anom}.
 \begin{figure}[h!tb]
-    \includegraphics[width=150mm]{B4_B2_anom_points.pdf}
-  \caption{Anomalous weights with the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules.}
+  \centering
+    \includegraphics[width=100mm]{B4_B2_anom_points.pdf}
+  \caption{Projected weights of $\pi_{B_2}\left(\Psi^{(0,1,0,2)}_{B_4}\right)$ with the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:B4B2anom}
 \end{figure}
 
 
 \begin{figure}[h!tb]
-  \includegraphics[width=130mm]{B4_B2_fan.pdf}
+  \centering
+  \includegraphics[width=80mm]{B4_B2_fan.pdf}
   \caption{The fan for $B_2\subset B_4$}
   \label{fig:B4B2Fan}
 \end{figure}
 Applying the recurrent relation (\ref{recurrent-relation}) we obtain the
 following branching coefficients:
-\begin{equation}
+\begin{multline}
   \label{eq:24}
   \pi_{\mathfrak{a}} \left(ch L^{(0,1,0,2)}_{B_4}\right) = 6 \; ch L^{(0,0)}_{B_2}+ 60
-  \; ch L_{B_2}^{(0,2)}+ 30 \; ch L_{B_2}^{(1,0)}+ 19 \; ch L_{B_2}^{(2,0)}+
+  \; ch L_{B_2}^{(0,2)}+ 30 \; ch L_{B_2}^{(1,0)}+ 19 \; ch L_{B_2}^{(2,0)}+\\
   40 \; ch L_{B_2}^{(1,2)}+ 10 \; ch L_{B_2}^{(2,2)}.
-\end{equation}
+\end{multline}
 
 
 \subsection{Affine into affine embedding}
 \label{sec:embedd-affine-algebr}
 
 Consider the affine extension of the example \ref{sec:regul-embedd-a_1}.
-Since this embedding is regular, the level of the  subalgebra modules is equal to that of the initial module.
+Since this embedding is regular and $x_e=1$, the level of the  subalgebra modules is equal to that of the initial module.
 
 The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
 
@@ -723,7 +725,7 @@ Using the definition (\ref{fan-defined}) we get the fan $\Gamma_{\hat{A_1} \long
 Here we restricted the computation to the twelfth grade.
 \begin{figure}[h!tb]
   \centering
-  \includegraphics[width=130mm]{AffineB2_A1_fan.pdf}
+  \includegraphics[width=135mm]{AffineB2_A1_fan.pdf}
   \caption{The fan for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:AffineB2A1Fan}
 \end{figure}
@@ -734,7 +736,8 @@ Consider the level one module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the
 The set of the anomalous weights for this module up to the sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade its form is similar to that in the  Figure \ref{fig:B2_A1}.
 
 \begin{figure}[h!tb]
-  \includegraphics[width=160mm]{AffineB2_A1_Anom.pdf}
+  \hspace*{-2cm}
+  \includegraphics[width=200mm]{AffineB2_A1_Anom.pdf}
   \caption{The anomalous weights of the $(1,0;1;0)$ representation of the algebra $\hat{B_2}$}
   \label{fig:affine_B2_anom_point}
 \end{figure}
@@ -745,7 +748,7 @@ The result of this computation up to the twelfth grade is presented in the Figur
 \begin{figure}[p]
   \centering
   \includegraphics[width=120mm]{AffineB2_A1_proj_anom.pdf}
-  \caption{The projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \caption{The projected anomalous weights $\pi_{\hat A_1}\left(\Psi^{(1,0;1;0)}_{\hat B_2}\right)$ and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:AffineB2_A1_anom_proj}
 \end{figure}
 
@@ -869,7 +872,7 @@ If we limit the consideration by the affine extensions of simple classical Lie a
 \label{sec:spec-embedd-hata_1s}
 Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ constructed as the affine extension of the special embedding $A_1\subset A_2$ with the embedding index $x_e=4$. The level of the representations of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the modules of the subalgebra is equal $\tilde{k}=kx_e=4$.
 
-There exist three level one dominant weights in the weight space of $\hat{A}_2$.
+There exist three level one fundamental weights in the weight space of $\hat{A}_2$.
 It is easy to see that the set $\Delta_{\bot}$ is empty and the subalgebra $\mathfrak{a}_{\bot}=0$.
 
 Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in details. Here the first two components are the Dynkin indices (coordinates in the fundamental weights basis) of the finite part of the weight.
@@ -877,8 +880,8 @@ Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in de
 The set $\widehat{\Psi^{(\omega_0)}}$  is depicted in the Figure \ref{fig:affine_A2_anom_point} up to the sixth grade. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration as the dotted diagonal plane.
 
 \begin{figure}[h!tb]
-  \centering
-  \includegraphics[width=180mm]{AffineA2_A1_anom.pdf}
+%  \hspace*{-2cm}
+  \includegraphics[width=140mm]{AffineA2_A1_anom.pdf}
   \caption{The anomalous weights of the module $L^{(0,0;1;0)}_{\hat{A_2}}$}
   \label{fig:affine_A2_anom_point}
 \end{figure}
@@ -896,8 +899,8 @@ The next step is to project the anomalous weights to $P_{\hat A_1}$.
 The result up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_A1_anom_proj}
 \begin{figure}[h!tb]
   \centering
-  \includegraphics[width=150mm]{AffineA2_A1_proj_anom.pdf}
-  \caption{Projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
+  \includegraphics[width=130mm]{AffineA2_A1_proj_anom.pdf}
+  \caption{Projected anomalous weights of $L^{(0,0;1;0)}_{\hat{A_2}}$.}
   \label{fig:AffineA2_A1_anom_proj}
 \end{figure}
 
@@ -905,7 +908,7 @@ The result up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_
 Using the recurrent relation for the anomalous branching coefficients we get the result presented in Figure \ref{fig:AffineA2_A1_branching}. 
 \begin{figure}[h!tb]
   \centering
-  \includegraphics[width=110mm]{AffineA2_A1_branching.pdf}
+  \includegraphics[width=130mm]{AffineA2_A1_branching.pdf}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{A_2}$}
   \label{fig:AffineA2_A1_branching}
 \end{figure}
@@ -942,7 +945,7 @@ Substituting the branching rules into \eqref{eq:34} we get non-diagonal mass mat
 \end{equation}
 where $\lambda,\mu$ are the highest weights of the representations of $\mathfrak{a}_1$ and $\xi,\eta$ of $\mathfrak{a}_2$. 
 
-Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where $\mathfrak{a}=\widehat{su(2)}\oplus \widehat{su(2)}$ and $\mathfrak{g}= \widehat{su(4)}$, which is the affine extension of the special embedding $su(2)\oplus su(2)\subset su(4)$. Let's construct the special embedding $su(2)\oplus su(2)\subset su(4)$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $su(2)\oplus su(2)$ with the highest weight $(1,1)$. The weights of this representation are numbered as depicted at the Figure \ref{fig:A_1+A_1_to_A3} and have the following coordinates in the fundamental weights basis: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
+Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where $\mathfrak{a}=\hat A_1\oplus \hat A_1$ and $\mathfrak{g}= \hat A_3$, which is the affine extension of the special embedding $su(2)\oplus su(2)\subset su(4)$. Let's construct the special embedding $su(2)\oplus su(2)\subset su(4)$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $su(2)\oplus su(2)$ with the highest weight $(1,1)$. The weights of this representation are numbered as depicted at the Figure \ref{fig:A_1+A_1_to_A3} and have the following coordinates in the fundamental weights basis: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
 
 \begin{figure}[h!tb]
   \begin{multicols}{2}
@@ -971,8 +974,8 @@ They are depicted at the Figure \ref{fig:A1+A1-A3}.
 
 This embedding is characterised by the embedding indexes $(2,2)$ and is conformal, since $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
 
-We are interested in the reduction of the fundamental representations of $\widehat{su(4)}$.
-Four dominant weights of level one have the following coordinates in the orthogonal basis: 
+We are interested in the reduction of the fundamental modules of $\widehat{su(4)}$.
+Four fundamental weights of level one have the following coordinates in the orthogonal basis: 
 \begin{equation}
   \begin{array}{lll}
      \omega_0 & = & (0,0,0,0;1;0)\\
@@ -982,7 +985,7 @@ Four dominant weights of level one have the following coordinates in the orthogo
   \end{array}
 \end{equation}
 
-These representation could be easily reduced by the method described in \cite{walton1989conformal}, which is based upon the properties of $A_n$-series of Lie algebras, but we use our general method and discuss its features.
+These modules could be easily reduced by the method described in \cite{walton1989conformal}, which is based upon the properties of $A_n$-series of Lie algebras, but we use our general method and discuss its features.
 
 For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we have
 \begin{equation}
@@ -997,26 +1000,28 @@ For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we h
 The set $\Delta^{+}_{\bot}$ is empty. 
 The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+A1-A3_fan}. Coordinates of fan element's finite part are given in the basis of fundamental weights of $su(2)\oplus su(2)$. Element $\gamma$ is shown by cross if  $s(\gamma)=1$ and by diamond if $s(\gamma)=-1$.
 \begin{figure}[h!tb]
-  \includegraphics[width=150mm]{A1+A1-A3_fan.pdf}
-  \caption{Fan for the special embedding $\widehat{su(2)}\oplus\widehat{su(2)}\subset \widehat{su(4)}$}
+  \includegraphics[width=135mm]{A1+A1-A3_fan.pdf}
+  \caption{Fan for the special embedding $\hat A_1\oplus\hat A_1\subset\hat A_3$}
   \label{fig:A1+A1-A3_fan}
 \end{figure}
 
 We limit our computation by the fifth grade.
 \begin{figure}[h!tb]
+  \hspace*{-1cm}
   \includegraphics[width=170mm]{A1+A1-A3_anom.pdf}
-  \caption{Projected anomalous weights for $L^{\omega_1}_{A_3}$}
+  \caption{Projected anomalous weights for $L^{\omega_1}_{\hat A_3}$}
   \label{fig:A1+A1-A3_anom}
 \end{figure}
 
-The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the representation of the algebra $\hat{A}_3$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_2=(0,0,1;1;0)$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. Coordinates of anomalous weight's finite part are given in the basis of fundamental weights of $su(2)\oplus su(2)$. Weight $g$ are shown by cross if the corresponding value $\epsilon(\omega)=1$ and by diamond otherwise.
+The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the module of the algebra $\hat{A}_3$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_2=(0,0,1;1;0)$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. Coordinates of anomalous weight's finite part are given in the basis of fundamental weights of $su(2)\oplus su(2)$. Weight $g$ are shown by cross if the corresponding value $\epsilon(\omega)=1$ and by diamond otherwise.
 
 We omit similar pictures for $\omega_0, \omega_1,\omega_3$ and include only the branching coefficients for these modules to save the space.
 
 The anomalous branching coefficients for the module $L^{(\omega_1)}$ are shown at the Figure  \ref{fig:A1+A1-A3_branching}.
 \begin{figure}[h!tb]
-  \includegraphics[width=180mm]{A1+A1-A3_branching.pdf}
-  \caption{Anomalous branching coefficients for $L^{(0,0,1;1;0)}_{A_3}$}
+%  \hspace*{-1cm}
+  \includegraphics[width=135mm]{A1+A1-A3_branching.pdf}
+  \caption{Anomalous branching coefficients for $L^{(0,0,1;1;0)}_{\hat A_3}$}
   \label{fig:A1+A1-A3_branching}
 \end{figure}
 
