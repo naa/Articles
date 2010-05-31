@@ -70,7 +70,7 @@ Theoretical Department, SPb State University,\\
 198904, Sankt-Petersburg, Russia \\
 e-mail:antonnaz@gmail.com
 }
-\maketitle
+%\maketitle
 
 \begin{abstract}
   Recurrent relations for branching coefficients in affine Lie algebras integrable highest weight modules are studied. The decomposition algorithm based on the injection fan technique is adopted to the situation where the Weyl denominator becomes singular with respect to a reductive subalgebra. We study some modifications of the injection fan technique and demonstrate that it is possible to define the "subtracted fans" that play the role similar to the original ones. Possible applications of subtracted fans in CFT models are considered.
@@ -711,9 +711,7 @@ following branching coefficients:
 \end{equation}
 
 
-\subsection{Affine Lie algebras}
-\label{sec:affine-lie-algebras}
-\subsubsection{Affine into affine embedding}
+\subsection{Affine into affine embedding}
 \label{sec:embedd-affine-algebr}
 
 Consider the affine extension of the example \ref{sec:regul-embedd-a_1}.
@@ -723,7 +721,7 @@ The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero proje
 
 Using the definition (\ref{fan-defined}) we get the fan $\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$ with the corresponding values $s(\gamma+\gamma_0)$(see the Figure \ref{fig:AffineB2A1Fan}).
 Here we restricted the computation to the twelfth grade.
-\begin{figure}[ph]
+\begin{figure}[h!tb]
   \centering
   \includegraphics[width=130mm]{AffineB2_A1_fan.pdf}
   \caption{Fan for $\hat{A_1}\subset \hat{B_2}$}
@@ -744,18 +742,18 @@ The set of the anomalous weights for this module up to the sixth grade is depict
 Performing the next step of the algorithm \ref{sec:algorithm} we project the anomalous weights to the weight space of the subalgebra $\hat{A_1}$ and find the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$.
 The result of this computation up to the twelfth grade is presented in the Figure
 \ref{fig:AffineB2_A1_anom_proj}.
-\begin{figure}[h!tb]
+\begin{figure}[p]
   \centering
-  \includegraphics[width=150mm]{AffineB2_A1_proj_anom.pdf}
+  \includegraphics[width=120mm]{AffineB2_A1_proj_anom.pdf}
   \caption{Projected anomalous weights and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:AffineB2_A1_anom_proj}
 \end{figure}
 
 Notice that here the lowest weight  $\gamma_0$ of the fan  is zero, since we have excluded all the roots of $\Delta^{+}_{\bot}$ from the defining relation (\ref{fan-defined}).
 
-\begin{figure}[ph]
+\begin{figure}[p]
   \centering
-  \includegraphics[width=130mm]{AffineB2_A1_branching.pdf}
+  \includegraphics[width=120mm]{AffineB2_A1_branching.pdf}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:AffineB2_A1_branching}
 \end{figure}
@@ -793,7 +791,7 @@ This result can be presented as the set of branching functions \cite{kac1990idl}
 \end{eqnarray}
 Here the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
-
+%\newpage
 \section{Applications to the conformal field theory}
 \label{sec:phys-appl}
 
@@ -887,7 +885,7 @@ The set of the anomalous weights of this representation  is depicted in the Figu
 
 Using the definition (\ref{fan-defined})  we construct ``the fan'' $\Gamma_{\hat A_1\to\hat A_2}$  with the corresponding values of the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}). 
 Here we restricted the calculations to the first eight grades.
-\begin{figure}[p]
+\begin{figure}[h!tb]
   \centering
   \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
   \caption{The fan $\Gamma_{\hat{A_1}\subset \hat{A_2}}$}
@@ -905,7 +903,7 @@ The result up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_
 
 
 Using the recurrent relation for the anomalous branching coefficients we get the result presented in Figure \ref{fig:AffineA2_A1_branching}. 
-\begin{figure}[ph]
+\begin{figure}[h!tb]
   \centering
   \includegraphics[width=110mm]{AffineA2_A1_branching.pdf}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{A_2}$}
@@ -946,7 +944,7 @@ where $\lambda,\mu$ are the highest weights of the representations of $\mathfrak
 
 Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where $\mathfrak{a}=\widehat{su(2)}\oplus \widehat{su(2)}$ and $\mathfrak{g}= \widehat{su(4)}$, which is the affine extension of the special embedding $su(2)\oplus su(2)\subset su(4)$. Let's construct the special embedding $su(2)\oplus su(2)\subset su(4)$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $su(2)\oplus su(2)$ with the highest weight $(1,1)$. The weights of this representation are numbered as depicted at the Figure \ref{fig:A_1+A_1_to_A3} and have the following coordinates in the fundamental weights basis: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
 
-\begin{figure}[t]
+\begin{figure}[h!tb]
   \begin{multicols}{2}
     \hfill
     \includegraphics[width=50mm]{A_1+A_1_to_A3.pdf}
