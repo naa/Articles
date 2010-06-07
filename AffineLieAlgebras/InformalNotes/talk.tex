@@ -12,10 +12,10 @@
 \usepackage{graphicx}
 \pagestyle{plain}
 
-\usepackage{verbatim} 
-%\newenvironment{comment}
-%{\par\noindent{\bf Для заинтересованных читателей}\\}
-%{\\\setlength{10cm}\\\hfill$\scriptstyle\blacksquare$\par}
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf Для заинтересованных читателей}\\}
+{\\\setlength{10cm}\\\hfill$\scriptstyle\blacksquare$\par}
 
 \newtheorem{statement}{Statement}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
@@ -105,7 +105,7 @@ z)=0$).
 
 Рассмотрим инфинитезимальные преобразования $w(z)=z+\epsilon(z),\quad
 \epsilon(z)=\sum_{-\infty}^{\infty}c_nz^{n+1}$. 
-Тогда для без-спинового поля $\phi(z,\bar z)$ верно следующее: $\phi'(z',\bar z')=\phi(z,\bar z)$,
+Тогда для бесспинового поля $\phi(z,\bar z)$ верно следующее: $\phi'(z',\bar z')=\phi(z,\bar z)$,
 $\delta\phi=-\epsilon(z)\partial\phi-\bar \epsilon(\bar z)\bar \partial \phi=\sum_n(c_n L_n\phi+\bar
 c_n\bar L_n\phi)$, где $L_n=-z^{n+1}\partial_z,\quad \bar L_n=-\bar z^{n+1}\partial_{\bar z}$
 
@@ -325,7 +325,12 @@ $\Delta\Gamma$ определен по модулю $2\pi i$, поэтому Е�
   \label{eq:102}
   T(z)=\frac{1}{2(k+h^v)}\sum_a N(J^a J^a)(z)
 \end{equation}
-Здесь $h^v$ - дуальное число Кокстера. $h^v=\sum_i \alpha_i^v +1=\frac{1}{2}(\Theta,\Theta+2\rho)$
+Здесь $h^v$ - дуальное число Кокстера. $h^v=\sum_i \alpha_i^v +1=\frac{1}{2}(\Theta,\Theta+2\rho)$,
+а нормальное упорядочение вводится следующим образом: 
+\begin{equation}
+  \label{eq:12}
+  N(AB)(w)=\frac{1}{2\pi i}\oint\frac{dz}{z-w}A(z)B(w)
+\end{equation}
 
 Тензор энергии-импульса можно разложить на моды $L_n$
 \begin{equation}
@@ -387,7 +392,7 @@ $\Delta\Gamma$ определен по модулю $2\pi i$, поэтому Е�
   J^{a_1}_{-n_1}J^{a_2}_{n_2}\dots\left|\phi_{\lambda}\right>
 \end{equation}
 
-Легко видеть, что действие генераторов алгебры Вирасоро на примарные поляимеет вид
+Легко видеть, что действие генераторов алгебры Вирасоро на примарные поля имеет вид
 \begin{equation}
   \label{eq:96}
   L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>
@@ -778,7 +783,7 @@ A_1\subset A3$. ($su(2)\oplus su(2)\subset su(4)$).
 
 Набор $\Delta^{+}_{\bot}$ пуст.
 Веер  $\Gamma _{\frak{a}\subset \frak{g}}$ показан на рисунке \ref{fig:A1+A1-A3_fan}. Конечные координаты
-даны в базисе фундаментальных весов $su(2)\oplus su(2)$. Элемент $\gamma$ обозначен крестом, если
+даны в базисе фундаментальных весов $A_1 \oplus A_1$. Элемент $\gamma$ обозначен крестом, если
 $s(\gamma)=1$ и кругом, если $s(\gamma)=-1$.
 \begin{figure}[h!tb]
   \includegraphics[width=150mm]{A1+A1-A3_fan.pdf}
@@ -796,7 +801,7 @@ $s(\gamma)=1$ и кругом, если $s(\gamma)=-1$.
 Множество аномальных весов  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in
   W\right\}$ представления алгебры $\hat{A}_3$ состоит из 192 элементов, их проекции
 $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ показаны на рисунке  \ref{fig:A1+A1-A3_anom}
-для $\mu=\omega_2=(0,0,1;1;0)$.
+для $\mu=\omega_2=(0,1,0;1;0)$.
 
 Аналогичные картинки для $\omega_0, \omega_1,\omega_3$ я не показываю.
 
