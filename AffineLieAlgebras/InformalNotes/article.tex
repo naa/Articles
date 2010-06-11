@@ -386,9 +386,9 @@ For the algebra $\mathfrak{g}$ from the series $D_r$ the roots in the orthogonal
 
 In the case of special embeddings the set $\Delta^{+}_{\bot}$ can be empty as for the
 special embedding of $A_1\subset A_2$ with the embedding index equal to 4, or non-empty for example for the embedding $A_1\subset A_2\subset A_3$ which is depicted at the Figure \ref{fig:a1a2a3}. 
-\begin{figure}[ph]
+\begin{figure}[h]
 \noindent  \centering{
-  \includegraphics[width=120mm]{special_A1_A2_A3.pdf}
+  \includegraphics[width=80mm]{special_A1_A2_A3.pdf}
   \caption{Special embedding $A_1\subset A_2\subset A_3$. Grey vectors are the roots of $A_2$, thick black - of $\mathfrak{a}=A_1$, dashed black are the orthogonal roots of $A_1$ which is contained in $\mathfrak{a}_{\bot}$ }
 }
   \label{fig:a1a2a3}
@@ -699,7 +699,7 @@ The result of this procedure is shown in the Figure \ref{fig:B4B2anom}.
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=80mm,height=80mm]{B4_B2_fan.pdf}
+  \includegraphics[height=80mm]{B4_B2_fan2.pdf}
   \caption{The fan for $B_2\subset B_4$}
   \label{fig:B4B2Fan}
 \end{figure}
@@ -731,14 +731,14 @@ Here we restricted the computation to the twelfth grade.
 \end{figure}
 
 
-Consider the level one module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
+Consider the level 1 module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
 
 The set of the anomalous weights for this module up to the sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade its form is similar to that in the  Figure \ref{fig:B2_A1}.
 
 \begin{figure}[h!tb]
   \hspace*{-2cm}
   \includegraphics[width=200mm]{AffineB2_A1_Anom.pdf}
-  \caption{The anomalous weights of the $(1,0;1;0)$ representation of the algebra $\hat{B_2}$}
+  \caption{The anomalous weights of the $L^{(1,0;1;0)}_{\hat B_2 }$}.
   \label{fig:affine_B2_anom_point}
 \end{figure}
 
@@ -800,7 +800,7 @@ Here the lower index enumerates the branching function according to their highes
 
 Branching coefficients for an embedding of affine Lie subalgebra into
 affine Lie algebra can be used to construct modular invariant
-partition functions for Wess-Zumino-Novikov-Witten models of conformal field theory (\cite{difrancesco1997cft}, \cite{Walton:1999xc}, \cite{walton1989conformal}, \cite{schellekens1986conformal}). In these models currents algebras are affine Lie algebras.  For the construction to be valid the embedding is required to be conformal, which means that the central charge of the subalgebra is equal to the central charge of the algebra:
+partition functions for Wess-Zumino-Novikov-Witten models of conformal field theory (\cite{difrancesco1997cft}, \cite{Walton:1999xc}, \cite{walton1989conformal}, \cite{schellekens1986conformal}). In these models current algebras are affine Lie algebras.  For the construction to be valid the embedding is required to be conformal, which means that the central charge of the subalgebra is equal to the central charge of the algebra:
 \begin{equation}
   \label{eq:31}
   c(\mathfrak{a})=c(\mathfrak{g})
@@ -828,18 +828,22 @@ It can be demonstrated that the solutions of the equation (\ref{eq:111}) exist o
 for the level $k=1$ \cite{difrancesco1997cft}.
 
 The complete classification of conformal embeddings is given in the paper \cite{schellekens1986conformal}.
-The requirement (\ref{eq:31}) allows to reduce the problem of finding the branching coefficients for affine Lie algebras to the computation of branching coefficients for finite-dimensional Lie algebras.
 
 If we have modular-invariant partition function for the fields described by a representation of the algebra $\mathfrak{g}$ this modular invariance is preserved by the projection on the subalgebra $\mathfrak{a}$, but we need also the preservation of the conformal invariance. So we should select only those highest-weight modules of the algebra $\mathfrak{g}$ for which the relation (\ref{eq:111}) holds.
 
-This relation and the asymptotics of the branching functions can be used to prove the finite reducibility theorem. It states that for the conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
+This relation and the asymptotics of the branching functions can be used to prove the finite reducibility theorem \cite{kac1988modular}. It states that for the conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
 
 Having found all such weights $\nu$ and the corresponding branching coefficients $b^{(\mu)}_{\nu}$ we can replace the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function
 \begin{equation}
   \label{eq:34}
    Z(\tau)=\sum_{ \mu\in P^{+}_{\mathfrak{g}}} \chi_{\mu}(\tau)\bar \chi_{\mu}(\bar \tau)
 \end{equation}
-by the decompositions   $\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi_{\nu}$ containing the modified characters $\chi_{\nu}$ of the corresponding $\mathfrak{a}$-modules. Thus we obtain the non-diagonal modular-invariant  partition function for the theory with the current algebra $\mathfrak{a}$.
+by the decompositions
+\begin{equation}
+  \label{eq:32}
+\sum_{\nu \in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu} \chi_{\nu}  
+\end{equation}
+ containing the modified characters $\chi_{\nu}$ of the corresponding $\mathfrak{a}$-modules. Thus we obtain the non-diagonal modular-invariant  partition function for the theory with the current algebra $\mathfrak{a}$.
 \begin{equation}
   \label{eq:36}
    Z_{\mathfrak{a}}(\tau)=\sum_{ \nu,\lambda\in P^{+}_{\mathfrak{a}}} \chi_{\nu}(\tau)M_{\nu\lambda}\bar \chi_{\lambda}(\bar \tau)
@@ -863,8 +867,6 @@ The modes are constructed as the combination of normally-ordered products of the
 \end{equation}
 The substitution of the generators of the algebra $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations of $T_{\mathfrak{a}}$ should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty it is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$, which can not be obtained in the expansion of components of $T_{\mathfrak{a}}$.
 
-If we limit the consideration by the affine extensions of simple classical Lie algebras, the number of possible non-maximal conformal embeddings is rather small \cite{schellekens1986conformal}.
-
 \subsection{Examples}
 \label{sec:example}
 
@@ -872,7 +874,7 @@ If we limit the consideration by the affine extensions of simple classical Lie a
 \label{sec:spec-embedd-hata_1s}
 Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ constructed as the affine extension of the special embedding $A_1\subset A_2$ with the embedding index $x_e=4$. The level of the representations of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the modules of the subalgebra is equal $\tilde{k}=kx_e=4$.
 
-There exist three level one fundamental weights in the weight space of $\hat{A}_2$.
+There exist three level 1 fundamental weights in the weight space of $\hat{A}_2$.
 It is easy to see that the set $\Delta_{\bot}$ is empty and the subalgebra $\mathfrak{a}_{\bot}=0$.
 
 Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in details. Here the first two components are the Dynkin indices (coordinates in the fundamental weights basis) of the finite part of the weight.
@@ -886,7 +888,7 @@ The set $\widehat{\Psi^{(\omega_0)}}$  is depicted in the Figure \ref{fig:affine
   \label{fig:affine_A2_anom_point}
 \end{figure}
 
-Using the definition (\ref{fan-defined})  we construct ``the fan'' $\Gamma_{\hat A_1\to\hat A_2}$  with the corresponding values of the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}). 
+Using the definition (\ref{fan-defined})  we construct the fan $\Gamma_{\hat A_1\to\hat A_2}$  with the corresponding values of the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}). 
 Here we restricted the calculations to the first eight grades.
 \begin{figure}[h!tb]
   \centering
@@ -919,7 +921,7 @@ We see that inside $\bar{C}_{\hat{A}_1}$, which is shown at the Figure \ref{fig:
   L^{(0,0;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(0;4;0)}\oplus L_{\hat{A_1}}^{(4;4;0)}.
 \end{equation}
 
-For the other level one irreducible modules of $\hat{A}_2$ we get the trivial
+For the other level 1 irreducible modules of $\hat{A}_2$ we get the trivial
 branching 
 \begin{eqnarray}
   \label{eq:44}
@@ -936,33 +938,24 @@ Using these results the modular-invariant partition function is easily found,
 \subsubsection{Embedding of semisimple subalgebras}
 \label{sec:embedd-semis-subalg}
 
-Consider the conformal embedding constructed as the affine extension  $\mathfrak{a}_{1}\oplus\mathfrak{a}_{2}\subset \mathfrak{g}$ of the embedding of semisimple subalgebra $\ao_1\oplus\ao_2$ into simple Lie algebra $\go$.
-
-Substituting the branching rules into \eqref{eq:34} we get non-diagonal mass matrix
-\begin{equation}
-  \label{eq:2}
-  M_{\lambda\xi,\mu\eta}
-\end{equation}
-where $\lambda,\mu$ are the highest weights of the representations of $\mathfrak{a}_1$ and $\xi,\eta$ of $\mathfrak{a}_2$. 
-
-Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where $\mathfrak{a}=\hat A_1\oplus \hat A_1$ and $\mathfrak{g}= \hat A_3$, which is the affine extension of the special embedding $su(2)\oplus su(2)\subset su(4)$. Let's construct the special embedding $su(2)\oplus su(2)\subset su(4)$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $su(2)\oplus su(2)$ with the highest weight $(1,1)$. The weights of this representation are numbered as depicted at the Figure \ref{fig:A_1+A_1_to_A3} and have the following coordinates in the fundamental weights basis: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
+Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where $\mathfrak{a}=\hat A_1\oplus \hat A_1$ and $\mathfrak{g}= \hat A_3$, which is the affine extension of the special embedding $A_1\oplus A_1\subset A_3$. Let's construct the special embedding $A_1\oplus A_1\subset A_3$ using the method of \cite{vasilevich1986method}. We start with 4-dimensional representation of $A_1\oplus A_1$ with the highest weight $(1,1)$. The weights of this representation are numbered as depicted at the Figure \ref{fig:A_1+A_1_to_A3} and have the following coordinates in the fundamental weights basis: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
 
 \begin{figure}[h!tb]
   \begin{multicols}{2}
     \hfill
     \includegraphics[width=50mm]{A_1+A_1_to_A3.pdf}
     \hfill
-    \caption{Representation for the special embedding  $su(2)\oplus su(2)\subset su(4)$}
+    \caption{Representation for the special embedding  $A_1\oplus A_1\subset A_3$}
     \label{fig:A_1+A_1_to_A3}
     \hfill
     \includegraphics[width=50mm]{A1+A1-A3.pdf}
     \hfill
-    \caption{Embedded roots for the special embedding  $su(2)\oplus su(2)\subset su(4)$}
+    \caption{Embedded roots for the special embedding  $A_1\oplus A_1\subset A_3$}
     \label{fig:A1+A1-A3}
   \end{multicols}
 \end{figure}
 
-Then for the matrix elements of representation of Cartan subalgebra generators $b_1,b_2$ in Weyl basis we have $d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}{(\alpha_i,\alpha_i)}\right)$ \cite{vasilevich1986method}, so $d(b_1)=\mathrm{diag}(1,-1,1,-1),\; d(b_2)=\mathrm{diag}(1,1,-1,-1)$.  The embedded roots $\alpha_1,\alpha_2$ of $su(2)\oplus su(2)$ in terms of roots $\tilde{\alpha}_i$ of $su(4)$ are
+Then for the matrix elements of representation of Cartan subalgebra generators $b_1,b_2$ in Weyl basis we have $d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}{(\alpha_i,\alpha_i)}\right)$ \cite{vasilevich1986method}, so $d(b_1)=\mathrm{diag}(1,-1,1,-1),\; d(b_2)=\mathrm{diag}(1,1,-1,-1)$.  The embedded roots $\alpha_1,\alpha_2$ of $A_1\oplus A_1$ in terms of roots $\tilde{\alpha}_i$ of $A_3$ are
 \begin{equation}
   \label{eq:37}
   \begin{array}{l}
@@ -975,7 +968,7 @@ They are depicted at the Figure \ref{fig:A1+A1-A3}.
 This embedding is characterised by the embedding indices $(2,2)$ and is conformal, since $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
 
 We are interested in the reduction of the fundamental modules of $\hat A_3$.
-Four fundamental weights of level one have the following coordinates in the orthogonal basis: 
+Four fundamental weights of level 1 have the following coordinates in the orthogonal basis: 
 \begin{equation}
   \begin{array}{lll}
      \omega_0 & = & (0,0,0,0;1;0),\\
@@ -985,43 +978,41 @@ Four fundamental weights of level one have the following coordinates in the orth
   \end{array}
 \end{equation}
 
-These modules could be easily reduced by the method described in \cite{walton1989conformal}, which is based upon the properties of $A_n$-series of Lie algebras, but we use our general method and discuss its features.
-
 For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we have
 \begin{equation}
   \label{eq:38}
   \begin{array}{lll}
     \Delta^{+} &=&\left\{\co{\Delta}^{+}=\{\tilde{\alpha}_1, \tilde{\alpha}_2, \tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2, \tilde{\alpha}_2+\tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2+\tilde{\alpha}_3\};\right.\\
     &\; & \quad\left.\co{\Delta}+n\delta;\;     +n\delta\;\mbox{with multiplicity}\; 3;\; n=1,2,\dots,\right\}\\
-    \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1-n\delta,\pm \alpha_2-n\delta;\; -n\delta\; \mbox{with multiplicity} \; 2;\; n=1,2,\dots\}\\
+    \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1+n\delta,\pm \alpha_2+n\delta;\; +n\delta\; \mbox{with multiplicity} \; 2;\; n=1,2,\dots\}\\
   \end{array}
 \end{equation}
 
 The set $\Delta^{+}_{\bot}$ is empty. 
-The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+A1-A3_fan}. Coordinates of fan element's finite part are given in the basis of fundamental weights of $su(2)\oplus su(2)$. Element $\gamma$ is shown by cross if  $s(\gamma)=1$ and by diamond if $s(\gamma)=-1$.
+The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+A1-A3_fan}. Coordinates of fan element's finite part are given in the basis of fundamental weights of $A_1\oplus A_1$. Element $\gamma$ is shown by cross if  $s(\gamma)=1$ and by diamond if $s(\gamma)=-1$.
 \begin{figure}[h!tb]
   \includegraphics[width=135mm]{A1+A1-A3_fan.pdf}
   \caption{Fan for the special embedding $\hat A_1\oplus\hat A_1\subset\hat A_3$}
   \label{fig:A1+A1-A3_fan}
 \end{figure}
 
-We limit our computation by the fifth grade.
+We limit our calculations by the first 5 grades.
 \begin{figure}[h!tb]
   \hspace*{-1cm}
   \includegraphics[width=170mm]{A1+A1-A3_anom.pdf}
-  \caption{Projected anomalous weights for $L^{\omega_1}_{\hat A_3}$}
+  \caption{Projected anomalous weights for $L^{\omega_2}_{\hat A_3}$}
   \label{fig:A1+A1-A3_anom}
 \end{figure}
 
-The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of the module of the algebra $\hat{A}_3$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_2=(0,0,1;1;0)$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. Coordinates of anomalous weight's finite part are given in the basis of fundamental weights of $su(2)\oplus su(2)$. Weight $g$ are shown by cross if the corresponding value $\epsilon(\omega)=1$ and by diamond otherwise.
+The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of $L^{\omega_2}_{\hat A_3}$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_2=(0,1,0;1;0)$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. Coordinates of anomalous weight's finite part are given in the basis of fundamental weights of $A_1\oplus A_1$. The weights are shown by crosses if the determinant has the value $\epsilon(\omega)=1$ and by diamonds otherwise.
 
-We omit similar pictures for $\omega_0, \omega_1,\omega_3$ and include only the branching coefficients for these modules to save the space.
+The diagrams for  $L^{\omega_0}_{\hat A_3}, L^{\omega_1}_{\hat A_3}, L^{\omega_1}_{\hat A_3}$ are similar to that of $L^{\omega_2}_{\hat A_3}$.
 
-The anomalous branching coefficients for the module $L^{(\omega_1)}$ are shown at the Figure  \ref{fig:A1+A1-A3_branching}.
+The anomalous branching coefficients for the module $L^{(\omega_2)}$ are shown at the Figure  \ref{fig:A1+A1-A3_branching}.
 \begin{figure}[h!tb]
 %  \hspace*{-1cm}
   \includegraphics[width=135mm]{A1+A1-A3_branching.pdf}
-  \caption{Anomalous branching coefficients for $L^{(0,0,1;1;0)}_{\hat A_3}$}
+  \caption{Anomalous branching coefficients for $L^{(0,1,0;1;0)}_{\hat A_3}$}
   \label{fig:A1+A1-A3_branching}
 \end{figure}
 
@@ -1043,13 +1034,17 @@ Now we can obtain modular invariant partition function for WZW-model with the ch
   \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
 \end{multline}
 
+We have chosen this example to illustrate the mechanism of out algorithm. 
+In this case the modules could be reduced by the method described in \cite{walton1989conformal}, which is based upon the properties of $A_n$-series of Lie algebras. We must stress that our method is universal and can be applied for an arbitrary pair of affine Lie algebras $\mathfrak{a}\subset\mathfrak{g}$.
+
+
 \section{Conclusion}
 \label{sec:conclusion}
-We have shown that the injection fan technique can be used to deal with the nonmaximal subalgebras. It was demonstrated that in such cases in the set of positive roots $\Delta_{\mathfrak{g}}^{+}$ it is necessary to  separate an additional subset $\Delta^{+}_{\bot}$. The injection fan is formed by the weights $\Delta_{\mathfrak{g}}^{+} \setminus  \Delta_{\mathfrak{a}}^{+} \setminus \Delta^{+}_{\bot}$ and the additional role of the subset $\Delta^{+}_{\bot}$ is to modify the anomalous weights of the initial module. This modification reduces to a simple procedure: the anomalous weights are to be substituted by the dimensions of the corresponding ${\mathfrak{a}}_{\bot}$-modules.      
+We have shown that the injection fan technique can be used to deal with the nonmaximal subalgebras. It was demonstrated that in such cases in the set of positive roots $\Delta_{\mathfrak{g}}^{+}$ it is necessary to  separate an additional subset $\Delta^{+}_{\bot}$. The injection fan is formed by the weights $\left(\Delta_{\mathfrak{g}}^{+} \setminus  \Delta_{\mathfrak{a}}^{+}\right) \setminus \Delta^{+}_{\bot}$ and the additional role of the subset $\Delta^{+}_{\bot}$ is to modify the anomalous weights of the initial module. This modification reduces to a simple procedure: the anomalous weights are to be substituted by the dimensions of the corresponding ${\mathfrak{a}}_{\bot}$-modules.      
  
-We have demonstrated the effectiveness of the proposed generalizations of the injection fan algorithm and discussed its possible application to some physical problems. In particular we considered the construction modular-invariant partition functions in the conformal field theory in the framework of conformal embedding method. This  method is useful in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
+We have demonstrated the effectiveness of the proposed generalizations of the injection fan algorithm and discussed its possible application to some physical problems. In particular we considered the construction of modular-invariant partition functions in the conformal field theory in the framework of conformal embedding method. This  method is useful in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
 
-The proposed general approach to the reduction problem has the additional applications in the study of the integrable chains. We will consider those in the upcoming publications.
+The proposed general approach to the reduction problem has the additional applications in the study of integrable chains.
 
 \section{Acknowledgements}
 The work was supported in
