@@ -86,7 +86,7 @@ The branching problem for affine Lie algebras emerges in conformal field theory,
 There exist several approaches to deal with the branching coefficients. Some of them use the BGG
 resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in
 \cite{kac1990idl},\cite{wakimoto2001idl}), the Schure function series \cite{fauser2006new}, the BRST
-cohomology \cite{hwang1994general}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
+cohomology \cite{Hwang:1994yr}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
 combinatorial methods applied in \cite{feigin707principal}.
 
 Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we find the recurrent properties for branching coefficients that generalise the relations obtained earlier (see the paper \cite{ilyin812pbc} and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in terms of new injection fan called "the subtracted fan". Using this new tools we formulate simple and explicit algorithm for computations of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
@@ -779,6 +779,11 @@ for the level $k=1$ \cite{difrancesco1997cft}.
 The complete classification of conformal embeddings is given in the paper \cite{schellekens1986conformal}.
 
 The relation (\ref{eq:111}) and the asymptotics of the branching functions can be used to prove the finite reducibility theorem \cite{kac1988modular}. It states that for the conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
+\begin{comment}
+  There exists a classification of modular invariant partition functions for some cases, see . [116, 219, 117, 119, 46] in \cite{Fuchs:2009iz}.
+\end{comment}
+\begin{comment}
+  Formulate this as lemma
 
 It is important to note that the orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$. It can be seen from the following consideration. In the case of the conformal embedding energy-momentum tensors are to be equal (\ref{eq:2}).
 The energy-momentum tensor can be expanded into the modes $L_n$
@@ -792,6 +797,7 @@ The modes are constructed as the combination of normally-ordered products of the
   L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:X^a_m X^a_{n-m}:
 \end{equation}
 The substitution of the generators of the algebra $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations of $T_{\mathfrak{a}}$ should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty it is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$, which can not be obtained in the expansion of components of $T_{\mathfrak{a}}$.
+\end{comment}
 
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
 \label{sec:spec-embedd-hata_1s}
@@ -963,6 +969,15 @@ In this case the modules could be reduced by the method described in \cite{walto
 \subsection{Coset models}
 \label{sec:coset-models}
 
+Another natural setting where the reduction problem for affine Lie algebras appears is the coset construction of rational conformal field theories \cite{Goddard198588}. Coset models are tightly connected with the gauged WZW-models and are actively studied in string theory especially in string models on anti-de-Sitter space \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km,Maldacena:2001ky,Aharony:1999ti}. The characters of the coset model are connected with the branching functions in the following way:
+\begin{equation}
+  \label{eq:31}
+  \chi
+\end{equation}
+The problem of the branching functions construction in coset models was considered in the papers \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}. The results were mostly given in rather cumbersome form and could not be easily used in computations. The method of calculation of the branching coefficients proposed in this text can be used to get power series expansion of the branching functions up to any required degree. In future work we are going to write complete expansion of the branching functions. 
+
+In this section we present the example of the computation of branching functions power series expansion for the embedding $A_1\subset B_2$. 
+
 Consider the affine extension of the example \ref{sec:regul-embedd-a_1}.
 Since this embedding is regular and $x_e=1$, the level of the  subalgebra modules is equal to that of the initial module.
 
@@ -1040,6 +1055,13 @@ This result can be presented as the set of branching functions \cite{kac1990idl}
   \end{array}
 \end{eqnarray}
 Here the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
+
+This expansion can be used to compute the conformal dimensions of the primary fields of $B_2/A_1$ coset model in the following way:
+\begin{equation}
+  \label{eq:35}
+  \Delta_{\mu}=
+\end{equation}
+
 
 \section{Conclusion}
 \label{sec:conclusion}
