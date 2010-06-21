@@ -18,6 +18,7 @@
 {\\\hfill$\scriptstyle\blacksquare$\par}
 
 \newtheorem{statement}{Statement}
+\newtheorem{note}{Note}[section]
 \theoremstyle{definition} \newtheorem{Def}{Definition}
 \newcommand{\go}{\overset{\circ }{\frak{g}}}
 \newcommand{\ao}{\overset{\circ }{\frak{a}}}
@@ -91,9 +92,9 @@ combinatorial methods applied in \cite{feigin707principal}.
 
 Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we find the recurrent properties for branching coefficients that generalise the relations obtained earlier (see the paper \cite{ilyin812pbc} and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in terms of new injection fan called "the subtracted fan". Using this new tools we formulate simple and explicit algorithm for computations of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
 
-We demonstrate that our algorithm can be used in the study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified by taking into account some physical limitations.
+We demonstrate that our algorithm can be used in the study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified by taking into account some physical limitations. In the study of the coset construction of rational conformal field theory the algorithm is useful for the computation of the characters and states.
 
-The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the Section \ref{sec:examples} we present several examples and discuss some applications in CFT models (Section \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible future developments are discussed (Section \ref{sec:conclusion}).
+The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several simple examples for finite-dimensional Lie algebras to illustrate the algorithm. Then we consider the affine Lie algebras with the applications in CFT models (Section \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible future developments are discussed (Section \ref{sec:conclusion}).
 
 \subsection{Notation}
 \label{sec:notation}
@@ -172,7 +173,7 @@ $M \left( \text{resp. }M_{\frak{a}}\right) :=$
 \mathbf{Z}\alpha _{\left( \frak{a}\right) i}\right) \text{for }A_{r}^{\left(
 u\geq 2\right) }\text{ and }A\neq A_{2r}^{\left( 2\right) },
 \end{array}
-\right\} ;$
+\right\} ;$\\
 $\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu +\rho )-\rho }$ --- the singular weight element for the $\frak{g}$-module $L^{\mu }$;
 $\Psi _{\left( \frak{a}\right) }^{\left( \nu \right) }:=\sum\limits_{w\in W_{\frak{a}}}\epsilon (w)e^{w\circ (\nu +\rho
 _{_{\frak{a}}})-\rho _{_{\frak{a}}}}$ --- the corresponding singular weight
@@ -318,13 +319,13 @@ $\mathfrak{a}\subset \mathfrak{p}_1\subset \mathfrak{p}_2\subset\dots \subset \m
 The maximal regular embeddings are constructed by the exclusion of one or two roots
 from the extended Dynkin diagram of the algebra. Since this process can give us
 non-connected Dynkin diagrams we can see which roots are orthogonal to the root
-space of non-maximal regular subalgebra $\mathfrak{a}$.
+space of non-maximal regular subalgebra $\mathfrak{a}$.  The complete classification of the regular subalgebras of affine Lie algebras can be found in the recent paper \cite{JPhysA2008}.
 
 Consider for instance the regular embedding of $A_1\subset B_2$.
 The extended Dynkin diagram of $B_2$ is presented in the Figure \ref{fig:B2Dynkin}.
 \begin{figure}[ph]
   \centering
-  \includegraphics[width=50mm]{B2_A1_diagram.pdf}
+  \includegraphics[width=40mm]{B2_A1_diagram.pdf}
   \caption{Extended Dynkin diagram of $B_2$ and embedding of $A_1$}
   \label{fig:B2Dynkin}
 \end{figure}
@@ -730,7 +731,8 @@ The simplest modular-invariant partition function has the diagonal form:
 \end{equation}
 Here the sum is over the set of the highest weights of integrable modules of WZW-model and $\chi_{\mu}(\tau)$ are the modified characters of these modules. 
 
-The task of the construction of non-diagonal modular invariants is not easy. 
+The task of the construction of non-diagonal modular invariants is not easy, although the complete classification of modular invariants for some models is known [116, 219, 117, 119, 46] in \cite{Fuchs:2009iz}.
+
 Consider the Wess-Zumino-Witten model with the affine Lie algebra $\mathfrak{a}$. Non-diagonal modular invariants for this model can be constructed from the diagonal invariant if there exists affine algebra $\mathfrak{g}$ such that $\mathfrak{a}\subset\mathfrak{g}$. 
 Then we can replace the characters of the $\mathfrak{g}$-modules in the diagonal modular-invariant partition function (\ref{eq:36})
 by the decompositions
@@ -779,13 +781,9 @@ for the level $k=1$ \cite{difrancesco1997cft}.
 The complete classification of conformal embeddings is given in the paper \cite{schellekens1986conformal}.
 
 The relation (\ref{eq:111}) and the asymptotics of the branching functions can be used to prove the finite reducibility theorem \cite{kac1988modular}. It states that for the conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
-\begin{comment}
-  There exists a classification of modular invariant partition functions for some cases, see . [116, 219, 117, 119, 46] in \cite{Fuchs:2009iz}.
-\end{comment}
-\begin{comment}
-  Formulate this as lemma
 
-It is important to note that the orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$. It can be seen from the following consideration. In the case of the conformal embedding energy-momentum tensors are to be equal (\ref{eq:2}).
+\begin{note} The orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$.
+\begin{proof} It can be seen from the following consideration. In the case of the conformal embedding energy-momentum tensors are to be equal (\ref{eq:2}).
 The energy-momentum tensor can be expanded into the modes $L_n$
 \begin{equation}
 \label{eq:47}
@@ -797,8 +795,8 @@ The modes are constructed as the combination of normally-ordered products of the
   L_n=\frac{1}{2(k+h^v)}\sum_a\sum_m:X^a_m X^a_{n-m}:
 \end{equation}
 The substitution of the generators of the algebra $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations of $T_{\mathfrak{a}}$ should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty it is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$, which can not be obtained in the expansion of components of $T_{\mathfrak{a}}$.
-\end{comment}
-
+\end{proof}
+\end{note}
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
 \label{sec:spec-embedd-hata_1s}
 Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ constructed as the affine extension of the special embedding $A_1\subset A_2$ with the embedding index $x_e=4$. The level of the representations of the algebra $\mathfrak{g}=\hat{A}_2$ is equal to one, so the level of the modules of the subalgebra is equal $\tilde{k}=kx_e=4$.
@@ -806,24 +804,24 @@ Consider the embedding of the affine Lie algebra $\hat{A}_1$ into $\hat{A}_2$ co
 There exist three level 1 fundamental weights in the weight space of $\hat{A}_2$.
 It is easy to see that the set $\Delta_{\bot}$ is empty and the subalgebra $\mathfrak{a}_{\bot}=0$.
 
+Using the definition (\ref{fan-defined})  we construct the fan $\Gamma_{\hat A_1\to\hat A_2}$  with the corresponding values of the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}). 
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=135mm]{AffineA2_A1_fan.pdf}
+  \caption{The fan for $\hat{A_1}\subset \hat{A_2}$}
+  \label{fig:AffineA2A1Fan}
+\end{figure}
+
 Let us consider the representation with the highest weight $w_0=(0,0;1;0)$ in details. Here the first two components are the Dynkin indices (coordinates in the fundamental weights basis) of the finite part of the weight.
 
-The set $\widehat{\Psi^{(\omega_0)}}$  is depicted in the Figure \ref{fig:affine_A2_anom_point} up to the sixth grade. We also show the root subspace of the subalgebra $\hat{A}_1$ under consideration as the dotted diagonal plane.
+The set $\widehat{\Psi^{(w_0)}}$  is depicted in the Figure \ref{fig:affine_A2_anom_point} up to the sixth grade. The weights $\omega (w_0+\rho)-\rho$ is shown as cross if $\epsilon(\omega)=1$ and by diamond if $\epsilon(\omega)=-1$. Simple roots of classical subalgebra $A_2$ are shown in grey and grey diagonal plane is the Cartan subalgebra of the embedded algebra $\hat{A}_1$.
 
 \begin{figure}[h!tb]
 %  \hspace*{-2cm}
   \includegraphics[width=140mm]{AffineA2_A1_anom.pdf}
   \caption{The anomalous weights of the module $L^{(0,0;1;0)}_{\hat{A_2}}$}
   \label{fig:affine_A2_anom_point}
-\end{figure}
-
-Using the definition (\ref{fan-defined})  we construct the fan $\Gamma_{\hat A_1\to\hat A_2}$  with the corresponding values of the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}). 
-Here we restricted the calculations to the first eight grades.
-\begin{figure}[h!tb]
-  \centering
-  \includegraphics[width=130mm]{AffineA2_A1_fan.pdf}
-  \caption{The fan $\Gamma_{\hat{A_1}\subset \hat{A_2}}$}
-  \label{fig:AffineA2A1Fan}
 \end{figure}
 
 The next step is to project the anomalous weights to $P_{\hat A_1}$.
@@ -900,10 +898,10 @@ We are interested in the reduction of the fundamental modules of $\hat A_3$.
 Four fundamental weights of level 1 have the following coordinates in the orthogonal basis: 
 \begin{equation}
   \begin{array}{lll}
-     \omega_0 & = & (0,0,0,0;1;0),\\
-     \omega_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0),\\
-     \omega_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0),\\
-     \omega_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0). \\
+     w_0 & = & (0,0,0,0;1;0),\\
+     w_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0),\\
+     w_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0),\\
+     w_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0). \\
   \end{array}
 \end{equation}
 
@@ -918,7 +916,7 @@ For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we h
 \end{equation}
 
 The set $\Delta^{+}_{\bot}$ is empty. 
-The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+A1-A3_fan}. Coordinates of fan element's finite part are given in the basis of fundamental weights of $A_1\oplus A_1$. Element $\gamma$ is shown by cross if  $s(\gamma)=1$ and by diamond if $s(\gamma)=-1$.
+The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+A1-A3_fan}. Coordinates of fan element's finite part are given in the basis of fundamental roots of $A_1\oplus A_1$. Element $\gamma$ is shown by cross if  $s(\gamma)=1$ and by diamond if $s(\gamma)=-1$.
 \begin{figure}[h!tb]
   \includegraphics[width=135mm]{A1+A1-A3_fan.pdf}
   \caption{Fan for the special embedding $\hat A_1\oplus\hat A_1\subset\hat A_3$}
@@ -926,22 +924,24 @@ The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown at the Figure \ref{fig:A1+
 \end{figure}
 
 We limit our calculations by the first 5 grades.
-\begin{figure}[h!tb]
-  \hspace*{-1cm}
-  \includegraphics[width=170mm]{A1+A1-A3_anom.pdf}
-  \caption{Projected anomalous weights for $L^{\omega_2}_{\hat A_3}$}
+%\begin{figure}[h!tb]
+\begin{figure}[p]
+%  \hspace*{-1cm}
+  \includegraphics[width=135mm]{A1+A1-A3_anom.pdf}
+  \caption{Projected anomalous weights for $L^{w_2}_{\hat A_3}$}
   \label{fig:A1+A1-A3_anom}
 \end{figure}
 
-The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of $L^{\omega_2}_{\hat A_3}$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=\omega_2=(0,1,0;1;0)$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. Coordinates of anomalous weight's finite part are given in the basis of fundamental weights of $A_1\oplus A_1$. The weights are shown by crosses if the determinant has the value $\epsilon(\omega)=1$ and by diamonds otherwise.
+The set  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights of $L^{w_2}_{\hat A_3}$ consists of 192 elements and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for $\mu=w_2=(0,1,0;1;0)$ is shown at the Figure \ref{fig:A1+A1-A3_anom}. Coordinates of anomalous weight's finite part are given in the basis of fundamental weights of $A_1\oplus A_1$. The weights are shown by crosses if the determinant has the value $\epsilon(\omega)=1$ and by diamonds otherwise.
 
-The diagrams for  $L^{\omega_0}_{\hat A_3}, L^{\omega_1}_{\hat A_3}, L^{\omega_1}_{\hat A_3}$ are similar to that of $L^{\omega_2}_{\hat A_3}$.
+The diagrams for  $L^{w_0}_{\hat A_3}, L^{w_1}_{\hat A_3}, L^{w_1}_{\hat A_3}$ are similar to that of $L^{w_2}_{\hat A_3}$.
 
-The anomalous branching coefficients for the module $L^{(\omega_2)}$ are shown at the Figure  \ref{fig:A1+A1-A3_branching}.
-\begin{figure}[h!tb]
+The anomalous branching coefficients for the module $L^{(w_2)}$ are shown at the Figure  \ref{fig:A1+A1-A3_branching}. The anomalous branching coefficients in the $C_{\frak{a}}$ are equal to the branching coefficients of $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$ and are shown by the stars in the Figure \ref{fig:A1+A1-A3_branching}.
+%\begin{figure}[h!tb]
+\begin{figure}[p]
 %  \hspace*{-1cm}
-  \includegraphics[width=135mm]{A1+A1-A3_branching.pdf}
-  \caption{Anomalous branching coefficients for $L^{(0,1,0;1;0)}_{\hat A_3}$}
+  \includegraphics[width=135mm,height=85mm]{A1+A1-A3_branching.pdf}
+  \caption{Anomalous branching coefficients for $L^{w_2}_{\hat A_3}$}
   \label{fig:A1+A1-A3_branching}
 \end{figure}
 
@@ -972,9 +972,15 @@ In this case the modules could be reduced by the method described in \cite{walto
 Another natural setting where the reduction problem for affine Lie algebras appears is the coset construction of rational conformal field theories \cite{Goddard198588}. Coset models are tightly connected with the gauged WZW-models and are actively studied in string theory especially in string models on anti-de-Sitter space \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km,Maldacena:2001ky,Aharony:1999ti}. The characters of the coset model are connected with the branching functions in the following way:
 \begin{equation}
   \label{eq:31}
-  \chi
+  \chi^{(\mu)}_{\nu}(\tau)=e^{2\pi i \tau (m_{\mu}-m_{\nu})} b^{(\mu)}_{\nu}(\tau),
 \end{equation}
-The problem of the branching functions construction in coset models was considered in the papers \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}. The results were mostly given in rather cumbersome form and could not be easily used in computations. The method of calculation of the branching coefficients proposed in this text can be used to get power series expansion of the branching functions up to any required degree. In future work we are going to write complete expansion of the branching functions. 
+where
+\begin{equation}
+  \label{eq:46}
+  m_{\mu}=\frac{\left|\mu+\rho\right|^2}{2(k+g)}-\frac{\left|\rho\right|^2}{2g}.
+\end{equation}
+
+The problem of the branching functions construction in the coset models was considered in the papers \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}. The results were mostly given in rather cumbersome form and could not be easily used in computations. The method of calculation of the branching coefficients proposed in this text can be used to get power series expansion of the branching functions up to any required degree. In future work we are going to write complete expansion of the branching functions. 
 
 In this section we present the example of the computation of branching functions power series expansion for the embedding $A_1\subset B_2$. 
 
@@ -985,7 +991,7 @@ The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero proje
 
 Using the definition (\ref{fan-defined}) we get the fan $\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$ with the corresponding values $s(\gamma+\gamma_0)$(see the Figure \ref{fig:AffineB2A1Fan}).
 Here we restricted the computation to the twelfth grade.
-\begin{figure}[h!tb]
+\begin{figure}[h!bt]
   \centering
   \includegraphics[width=135mm]{AffineB2_A1_fan.pdf}
   \caption{The fan for $\hat{A_1}\subset \hat{B_2}$}
@@ -995,12 +1001,12 @@ Here we restricted the computation to the twelfth grade.
 
 Consider the level 1 module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
 
-The set of the anomalous weights for this module up to the sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point} and in each grade its form is similar to that in the  Figure \ref{fig:B2_A1}.
+The set of the anomalous weights for this module up to the sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point}. In the grade 0 it is exactly the set of the anomalous weights for the embedding of the classical Lie algebras $A_1\subset B_2$ depicted in the  Figure \ref{fig:B2_A1}. The weights $\omega (w_1+\rho)-\rho$ is shown as cross if $\epsilon(\omega)=1$ and by circle otherwise. Simple roots of classical subalgebra $B_2$ are shown in grey and grey diagonal plane is the Cartan subalgebra of the embedded algebra $\hat{A}_1$.
 
 \begin{figure}[h!tb]
-  \hspace*{-2cm}
-  \includegraphics[width=200mm]{AffineB2_A1_Anom.pdf}
-  \caption{The anomalous weights of the $L^{(1,0;1;0)}_{\hat B_2 }$}.
+%  \hspace*{-2cm}
+  \includegraphics[width=140mm]{AffineB2_A1_Anom.pdf}
+  \caption{The anomalous weights of the $L^{(1,0;1;0)}_{\hat B_2 }$. The weights of the grade 0 are depicted at the Figure \ref{fig:B2_A1}}.
   \label{fig:affine_B2_anom_point}
 \end{figure}
 
@@ -1054,20 +1060,26 @@ This result can be presented as the set of branching functions \cite{kac1990idl}
     & 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots
   \end{array}
 \end{eqnarray}
-Here the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
+Here the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$, and $q=\exp (2\pi i \tau)$.
 
-This expansion can be used to compute the conformal dimensions of the primary fields of $B_2/A_1$ coset model in the following way:
+Now we can use the equation \eqref{eq:31} to get the expansion of the $B_2/A_1$-coset theory characters:
 \begin{equation}
   \label{eq:35}
-  \Delta_{\mu}=
+  \begin{array}{cc}
+    \chi^{(w_1)}_{1}(q)= & q^{\frac{7}{12}}\left( 2+2\,q^{1}+8\,q^{2}+12\,q^{3}+26\,q^{4}+42\,q^{5}+78\,q^{6}+120\,q^{7}+\right. \\
+    & \left. 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots \right)\\
+    \chi^{(w_1)}_{0}(q) = & q^{\frac{5}{6}}\left(1 + 4\,q^{1}+ 8\,q^{2}+ 15\,q^{3}+ 29\,q^{4}+ 51\,q^{5}+ 85\,q^{6}+ 139\,q^{7}+\right. \\
+    &\left. 222\,q^{8}+ 346\,q^{9}+ 530\,q^{10}+ 797\,q^{11}+ 1180\,q^{12}+\dots\right)
+  \end{array}
 \end{equation}
 
+The folded fan technique \cite{IKL2010}  can be used to get the explicit expression for the branching functions and the corresponding coset conformal field theory characters. This subject will be discussed in the future works. 
 
 \section{Conclusion}
 \label{sec:conclusion}
 We have shown that the injection fan technique can be used to deal with the nonmaximal subalgebras. It was demonstrated that in such cases in the set of positive roots $\Delta_{\mathfrak{g}}^{+}$ it is necessary to  separate an additional subset $\Delta^{+}_{\bot}$. The injection fan is formed by the weights $\left(\Delta_{\mathfrak{g}}^{+} \setminus  \Delta_{\mathfrak{a}}^{+}\right) \setminus \Delta^{+}_{\bot}$ and the additional role of the subset $\Delta^{+}_{\bot}$ is to modify the anomalous weights of the initial module. This modification reduces to a simple procedure: the anomalous weights are to be substituted by the dimensions of the corresponding ${\mathfrak{a}}_{\bot}$-modules.      
  
-We have demonstrated the effectiveness of the proposed generalizations of the injection fan algorithm and discussed its possible application to some physical problems. In particular we considered the construction of modular-invariant partition functions in the conformal field theory in the framework of conformal embedding method. This  method is useful in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
+We have demonstrated the effectiveness of the proposed generalizations of the injection fan algorithm and discussed its possible application to some physical problems. In particular we considered the construction of modular-invariant partition functions in the conformal field theory in the framework of conformal embedding method and the coset construction of the rational conformal field theory. This construction is useful in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
 
 The proposed general approach to the reduction problem has the additional applications in the study of integrable chains.
 
