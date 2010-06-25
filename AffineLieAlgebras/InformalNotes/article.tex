@@ -33,7 +33,7 @@
 \end{center}
 \vskip 1 cm
 \begin{flushright}
-{\large \bf SPbU-IP-09-08}
+{\large \bf SPbU-IP-10-03}
 \end{flushright}
 \hfill {}
 \vskip 1 cm
@@ -55,7 +55,7 @@ Anton Nazarov}
 \vfill
 \begin{center}
 SAINT-PETERSBURG \\
-2009
+2010
 \end{center}
 
 \newpage
@@ -92,9 +92,9 @@ combinatorial methods applied in \cite{feigin707principal}.
 
 Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we find the recurrent properties for branching coefficients that generalise the relations obtained earlier (see the paper \cite{ilyin812pbc} and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in terms of new injection fan called "the subtracted fan". Using this new tools we formulate simple and explicit algorithm for computations of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
 
-We demonstrate that our algorithm can be used in the study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified by taking into account some physical limitations. In the study of the coset construction of rational conformal field theory the algorithm is useful for the computation of the characters and states.
+We demonstrate that our algorithm can be used in the study of conformal embeddings where the central charge of the conformal field theory is preserved, and the computations are simplified by taking into account some physical limitations. In the study of the coset construction of rational conformal field theory the algorithm is useful for the computation of characters and states.
 
-The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several simple examples for finite-dimensional Lie algebras to illustrate the algorithm. Then we consider the affine Lie algebras with the applications in CFT models (Section \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible future developments are discussed (Section \ref{sec:conclusion}).
+The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations used throughout the paper. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules of algebra $\mathfrak{g}$ with respect to a reductive subalgebra $\mathfrak{a}$ (subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several simple examples for finite-dimensional Lie algebras to illustrate the algorithm. Then we consider the affine Lie algebras with the applications in CFT models (Section \ref{sec:phys-appl}). We conclude the paper with a review of obtained results. Possible further developments are discussed (Section \ref{sec:conclusion}).
 
 \subsection{Notation}
 \label{sec:notation}
@@ -145,7 +145,7 @@ $\epsilon \left( w\right) :=\det \left( w\right) $ ;
 
 $\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $i
 $-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \text{resp. }\frak{a}%
-\right) $; $i=0,\ldots ,r$ ,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
 
 $\delta $ --- the imaginary root of $\frak{g}$ (and of $\frak{a}$ if any);
 
@@ -319,7 +319,7 @@ $\mathfrak{a}\subset \mathfrak{p}_1\subset \mathfrak{p}_2\subset\dots \subset \m
 The maximal regular embeddings are constructed by the exclusion of one or two roots
 from the extended Dynkin diagram of the algebra. Since this process can give us
 non-connected Dynkin diagrams we can see which roots are orthogonal to the root
-space of non-maximal regular subalgebra $\mathfrak{a}$.  The complete classification of the regular subalgebras of affine Lie algebras can be found in the recent paper \cite{1751-8121-41-36-365204}.
+space of non-maximal regular subalgebra $\mathfrak{a}$.  The complete classification of the regular subalgebras for affine Lie algebras can be found in the recent paper \cite{1751-8121-41-36-365204}.
 
 Consider for instance the regular embedding of $A_1\subset B_2$.
 The extended Dynkin diagram of $B_2$ is presented in the Figure \ref{fig:B2Dynkin}.
@@ -970,7 +970,7 @@ In this case the modules could be reduced by the method described in \cite{walto
 \subsection{Coset models}
 \label{sec:coset-models}
 
-Another natural setting where the reduction problem for affine Lie algebras appears is the coset construction of rational conformal field theories \cite{Goddard198588}. Coset models are tightly connected with the gauged WZW-models and are actively studied in string theory especially in string models on anti-de-Sitter space \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km,Maldacena:2001ky,Aharony:1999ti}. The characters of the coset model are connected with the branching functions in the following way:
+Another natural setting where the reduction problem for affine Lie algebras appears is the coset construction of rational conformal field theories \cite{Goddard198588}. Coset models are tightly connected with the gauged WZW-models and are actively studied in string theory especially in string models on anti-de-Sitter space \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km,Maldacena:2001ky,Aharony:1999ti}. The characters of the coset model are connected with the branching functions,
 \begin{equation}
   \label{eq:31}
   \chi^{(\mu)}_{\nu}(\tau)=e^{2\pi i \tau (m_{\mu}-m_{\nu})} b^{(\mu)}_{\nu}(\tau),
@@ -981,11 +981,9 @@ where
   m_{\mu}=\frac{\left|\mu+\rho\right|^2}{2(k+g)}-\frac{\left|\rho\right|^2}{2g}.
 \end{equation}
 
-The problem of the branching functions construction in the coset models was considered in the papers \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}. The results were mostly given in rather cumbersome form and could not be easily used in computations. The method of calculation of the branching coefficients proposed in this text can be used to get power series expansion of the branching functions up to any required degree. In future work we are going to write complete expansion of the branching functions. 
+The problem of the branching functions construction in the coset models was considered in the papers \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}. It was shown that the branching functions results in cumbersome calculations. In what follows we shall demonstrate that these calculations can be simplified by applying the injection fan method.
 
-In this section we present the example of the computation of branching functions power series expansion for the embedding $A_1\subset B_2$. 
-
-Consider the affine extension of the example \ref{sec:regul-embedd-a_1}.
+Let us return to the example \ref{sec:regul-embedd-a_1} and consider the affine extension of the injection $A_1 \to  B_2$.
 Since this embedding is regular and $x_e=1$, the level of the  subalgebra modules is equal to that of the initial module.
 
 The set $\Delta^{+}_{\bot}$ of the orthogonal positive roots with the zero projection on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case.
@@ -1000,9 +998,9 @@ Here we restricted the computation to the twelfth grade.
 \end{figure}
 
 
-Consider the level 1 module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
+Consider the level one module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $w_1=(1,0;1;0)$, where the first two components are the coordinates of the classical part in the orthogonal basis $e_1,e_2$, the third is the level of the weight and the fourth is the grade.
 
-The set of the anomalous weights for this module up to the sixth grade is depicted in the Figure \ref{fig:affine_B2_anom_point}. In the grade 0 it is exactly the set of the anomalous weights for the embedding of the classical Lie algebras $A_1\subset B_2$ depicted in the  Figure \ref{fig:B2_A1}. The weights $\omega (w_1+\rho)-\rho$ is shown as cross if $\epsilon(\omega)=1$ and by circle otherwise. Simple roots of classical subalgebra $B_2$ are shown in grey and grey diagonal plane is the Cartan subalgebra of the embedded algebra $\hat{A}_1$.
+The set of the anomalous weights for this module up to the sixth grade is presented in the Figure \ref{fig:affine_B2_anom_point}. In the grade 0 it is exactly the set of the anomalous weights for the embedding of the classical Lie algebras $A_1\subset B_2$ depicted in the  Figure \ref{fig:B2_A1}. The weights $\omega (w_1+\rho)-\rho$ are marked by crosses if $\epsilon(\omega)=1$ and by circles otherwise. Simple roots of classical subalgebra $B_2$ are indicated by grey arrows while the grey diagonal plane is the Cartan subalgebra of the embedded algebra $\hat{A}_1$.
 
 \begin{figure}[h!tb]
 %  \hspace*{-2cm}
@@ -1032,7 +1030,7 @@ Notice that here the lowest weight  $\gamma_0$ of the fan  is zero, since we hav
 
 Selecting the elements inside the  Weyl chamber
 $\bar{C}^{\left( 0 \right)}_{\hat{A_1}}$
-we get the following results for the branching coefficients up to twelfth grade
+we get the branching coefficients up to twelfth grade
 \begin{multline}
   \label{eq:28}
   L^{w_1}_{\hat{B_2}\downarrow \hat{A_1}}=2 L_{\hat{A_1}}^{w_1}(0)\oplus 1 L_{\hat{A_1}}^{w_0}(0)\oplus 4 L_{\hat{A_1}}^{w_0}(-1)\oplus\\
@@ -1061,9 +1059,9 @@ This result can be presented as the set of branching functions \cite{kac1990idl}
     & 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots
   \end{array}
 \end{eqnarray}
-Here the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$, and $q=\exp (2\pi i \tau)$.
+Here $q=\exp (2\pi i \tau)$, the lower index enumerates the branching function according to their highest weights in $P^+_{\hat{A_1}}$, these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
-Now we can use the equation \eqref{eq:31} to get the expansion of the $B_2/A_1$-coset theory characters:
+Now we can use the relation \eqref{eq:31} to get the expansion of the $B_2/A_1$-coset characters:
 \begin{equation}
   \label{eq:35}
   \begin{array}{cc}
@@ -1073,16 +1071,15 @@ Now we can use the equation \eqref{eq:31} to get the expansion of the $B_2/A_1$-
     &\left. 222\,q^{8}+ 346\,q^{9}+ 530\,q^{10}+ 797\,q^{11}+ 1180\,q^{12}+\dots\right)
   \end{array}
 \end{equation}
-
-The folded fan technique \cite{il2010folded} can be used to get the explicit expression for the branching functions and the corresponding coset conformal field theory characters. This subject will be discussed in the future works. 
+Further amelioration of the construction can be achieved using the folded fan technique \cite{il2010folded}. The explicit expression for the branching functions and the corresponding coset characters can be obtained.
 
 \section{Conclusion}
 \label{sec:conclusion}
-We have shown that the injection fan technique can be used to deal with the nonmaximal subalgebras. It was demonstrated that in such cases in the set of positive roots $\Delta_{\mathfrak{g}}^{+}$ it is necessary to  separate an additional subset $\Delta^{+}_{\bot}$. The injection fan is formed by the weights $\left(\Delta_{\mathfrak{g}}^{+} \setminus  \Delta_{\mathfrak{a}}^{+}\right) \setminus \Delta^{+}_{\bot}$ and the additional role of the subset $\Delta^{+}_{\bot}$ is to modify the anomalous weights of the initial module. This modification reduces to a simple procedure: the anomalous weights are to be substituted by the dimensions of the corresponding ${\mathfrak{a}}_{\bot}$-modules.      
+We have shown that the injection fan technique can be used to deal with the nonmaximal subalgebras. It was demonstrated that for such injections it is necessary to extract from the set of positive roots $\Delta_{\mathfrak{g}}^{+}$ the auxiliary subset $\Delta^{+}_{\bot}$. The injection fan is formed by the weights $\left(\Delta_{\mathfrak{g}}^{+} \setminus  \Delta_{\mathfrak{a}}^{+}\right) \setminus \Delta^{+}_{\bot}$ and the role of the subset $\Delta^{+}_{\bot}$ is to modify the set of anomalous weights of the initial module. This modification reduces to a simple procedure: the anomalous weight multiplicities are to be substituted by the dimensions of the corresponding ${\mathfrak{a}}_{\bot}$-modules.      
  
-We have demonstrated the effectiveness of the proposed generalizations of the injection fan algorithm and discussed its possible application to some physical problems. In particular we considered the construction of modular-invariant partition functions in the conformal field theory in the framework of conformal embedding method and the coset construction of the rational conformal field theory. This construction is useful in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
+We have demonstrated the efficiency of the proposed generalizations of the injection fan algorithm. Its possible applications to some physical problems were discussed. In particular we considered the construction of modular-invariant partition functions  in the framework of conformal embedding method and the coset construction of the rational conformal field theory. This construction is useful in the study of WZW-models emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
 
-The proposed general approach to the reduction problem has the additional applications in the study of integrable chains.
+The proposed general approach to the reduction problem also has applications in the study of integrable spin chains.
 
 \section{Acknowledgements}
 The work was supported in
