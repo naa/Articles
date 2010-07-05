@@ -1,8 +1,8 @@
-\documentclass[a4paper,12pt]{article}
-\pdfoutput=1
+\documentclass[12pt]{iopart}
 \usepackage{ucs}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{pb-diagram}
+%\usepackage{amsmath,amssymb,amsthm}
+\usepackage{iopams,amssymb,amsthm}
+%\usepackage{pb-diagram}
 \usepackage{multicol}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[russian]{babel}
@@ -10,75 +10,75 @@
 \usepackage{color}
 %\usepackage[pdftex]{graphicx}
 \usepackage{graphicx}
-\pagestyle{plain}
-\usepackage[unicode,verbose,plainpages=false]{hyperref}
+%\pagestyle{plain}
+%\usepackage[unicode,verbose,plainpages=false]{hyperref}
+\usepackage{hyperref}
 
 %\usepackage{verbatim} 
-\newenvironment{comment}
-{\par\noindent{\bf TODO}\\}
-{\\\hfill$\scriptstyle\blacksquare$\par}
+%\newenvironment{comment}
+%{\par\noindent{\bf TODO}\\}
+%{\\\hfill$\scriptstyle\blacksquare$\par}
 
 \newtheorem{statement}{Statement}
-\newtheorem{note}{Note}[section]
-\theoremstyle{definition} \newtheorem{Def}{Definition}
-\newcommand{\go}{\overset{\circ }{\frak{g}}}
-\newcommand{\ao}{\overset{\circ }{\frak{a}}}
-\newcommand{\co}[1]{\overset{\circ }{#1}}
+\newtheorem{mynote}{Note}[section]
+%\theoremstyle{definition} \newtheorem{Def}{Definition}
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
 
 \begin{document}
-\pagenumbering{alph}
-\thispagestyle{empty}
-
-\begin{center}
-{\Large \bf SAINT-PETERSBURG STATE\\[0.5cm] UNIVERSITY}
-\end{center}
-\vskip 1 cm
-\begin{flushright}
-{\large \bf SPbU-IP-10-03}
-\end{flushright}
-\hfill {}
-\vskip 1 cm
-\begin{center}
-{\Huge \bf Recursive algorithms, branching coefficients \\ and applications\\[0.5cm]
-}
-\end{center}
-\vskip 1.0 cm
-\begin{center}
-{\Large \bf
-Vladimir Lyakhovsky\\[2mm]
-Anton Nazarov}
-\end{center}
-\vfill
-\begin{center}
-{\large Department of Theoretical Physics\\
-}
-\end{center}
-\vfill
-\begin{center}
-SAINT-PETERSBURG \\
-2010
-\end{center}
-
-\newpage
-
-\pagenumbering{arabic}
-\title{\textbf{{\Large {Recursive algorithms, branching coefficients and applications}}}}
-\author{Vladimir Lyakhovsky \thanks{ Supported by
- RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
-Theoretical Department, SPb State University,\\
-198904, Sankt-Petersburg, Russia \\
-e-mail:lyakh1507@nm.ru \\
-[5mm] Anton Nazarov \thanks{ Supported by
-the National Project RNP.2.1.1./1575 }\\
-Theoretical Department, SPb State University,\\
-198904, Sankt-Petersburg, Russia \\
-e-mail:antonnaz@gmail.com
-}
-%\maketitle
+% \pagenumbering{alph}
+% \thispagestyle{empty}
+% 
+% \begin{center}
+% {\Large \bf SAINT-PETERSBURG STATE\\[0.5cm] UNIVERSITY}
+% \end{center}
+% \vskip 1 cm
+% \begin{flushright}
+% {\large \bf SPbU-IP-10-03}
+% \end{flushright}
+% \hfill {}
+% \vskip 1 cm
+% \begin{center}
+% {\Huge \bf Recursive algorithms, branching coefficients \\ and applications\\[0.5cm]
+% }
+% \end{center}
+% \vskip 1.0 cm
+% \begin{center}
+% {\Large \bf
+% Vladimir Lyakhovsky\\[2mm]
+% Anton Nazarov}
+% \end{center}
+% \vfill
+% \begin{center}
+% {\large Department of Theoretical Physics\\
+% }
+% \end{center}
+% \vfill
+% \begin{center}
+% SAINT-PETERSBURG \\
+% 2010
+% \end{center}
+% 
+% \newpage
+% 
+% \pagenumbering{arabic}
+\title{Recursive algorithms, branching coefficients and applications}
+\author{V D Lyakhovsky$^1$ and A A Nazarov$^2$} 
+\address{$^{1,2}$ Theoretical Department, SPb State University,
+198904, Sankt-Petersburg, Russia }
+\eads{$^1$ \mailto{lyakh1507@nm.ru}, $^2$ \mailto{antonnaz@gmail.com}}
+% \thanks{ Supported by
+%  RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
+% 
+% \thanks{ Supported by
+% the National Project RNP.2.1.1./1575 }
 
 \begin{abstract}
   Recurrent relations for branching coefficients in affine Lie algebras integrable highest weight modules are studied. The decomposition algorithm based on the injection fan technique is adopted to the situation where the Weyl denominator becomes singular with respect to a reductive subalgebra. We study some modifications of the injection fan technique and demonstrate that it is possible to define the "subtracted fans" that play the role similar to the original ones. Possible applications of subtracted fans in CFT models are considered.
 \end{abstract}
+\submitto{\JPA}
+%\maketitle
 
 \section{Introduction}
 \label{sec:introduction}
@@ -115,10 +115,10 @@ of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
 -module with the highest weight $\nu $ );
 
 $r$ , $\left( r_{\frak{a}}\right) $ --- the rank of the algebra $\frak{g}$ $%
-\left( \text{resp. }\frak{a}\right) $ ;
+\left( \mbox{resp. }\frak{a}\right) $ ;
 
 $\Delta $ $\left( \Delta _{\frak{a}}\right) $--- the root system; $\Delta
-^{+} $ $\left( \text{resp. }\Delta _{\frak{a}}^{+}\right) $--- the positive
+^{+} $ $\left( \mbox{resp. }\Delta _{\frak{a}}^{+}\right) $--- the positive
 root system (of $\frak{g}$ and $\frak{a}$ respectively);
 
 $\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
@@ -131,7 +131,7 @@ $\co{\Delta}$ , $\left( \co{\Delta _{\frak{a}}}%
 $\Theta$, $(\Theta_{\mathfrak{a}})$ --- the highest root of the algebra $\mathfrak{g}$ (resp. subalgebra $\mathfrak{a}$);
 
 $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ --- the
-weight diagram of $L^{\mu }$ $\left( \text{resp. }L_{\frak{a}}^{\nu }\right)
+weight diagram of $L^{\mu }$ $\left( \mbox{resp. }L_{\frak{a}}^{\nu }\right)
 $ ;
 
 $W$ , $\left( W_{\frak{a}}\right) $--- the corresponding Weyl group;
@@ -145,34 +145,34 @@ $\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- the Weyl vector;
 $\epsilon \left( w\right) :=\det \left( w\right) $ ;
 
 $\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $i
-$-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \text{resp. }\frak{a}%
+$-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \mbox{resp. }\frak{a}%
 \right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
 
 $\delta $ --- the imaginary root of $\frak{g}$ (and of $\frak{a}$ if any);
 
 $\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
-}\right) $--- the basic coroot for $\frak{g}$ $\left( \text{resp. }\frak{a}%
+}\right) $--- the basic coroot for $\frak{g}$ $\left( \mbox{resp. }\frak{a}%
 \right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
 
 $\co{\xi }$ , $\co{\xi _{\left( \frak{a}\right) }}$
---- the finite (classical) part of the weight $\xi \in P$ , $\left( \text{%
+--- the finite (classical) part of the weight $\xi \in P$ , $\left( \mbox{%
 resp. }\xi _{\left( \frak{a}\right) }\in P_{\frak{a}}\right) $;
 
 $\lambda =\left( \co{\lambda };k;n\right) $ --- the
 decomposition of an affine weight indicating the finite part $\co{\lambda }$, level $k$ and grade $n$\ .
 
-$P$ $\left( \text{resp. } P_{\frak{a}}\right) $ \ --- the weight lattice;
+$P$ $\left( \mbox{resp. } P_{\frak{a}}\right) $ \ --- the weight lattice;
 
-$M \left( \text{resp. }M_{\frak{a}}\right) :=$
+$M \left( \mbox{resp. }M_{\frak{a}}\right) :=$
 
 \noindent $=\left\{
 \begin{array}{c}
-\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}^{\vee }\text{ }\left( \text{resp. }%
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}^{\vee }\mbox{ }\left( \mbox{resp. }%
 \sum_{i=1}^{r}\mathbf{Z}\alpha _{\left( \frak{a}\right) i}^{\vee }\right)
-\text{for untwisted algebras or }A_{2r}^{\left( 2\right) }, \\
-\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}\text{ }\left( \text{resp. }\sum_{i=1}^{r}%
-\mathbf{Z}\alpha _{\left( \frak{a}\right) i}\right) \text{for }A_{r}^{\left(
-u\geq 2\right) }\text{ and }A\neq A_{2r}^{\left( 2\right) },
+\mbox{for untwisted algebras or }A_{2r}^{\left( 2\right) }, \\
+\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}\mbox{ }\left( \mbox{resp. }\sum_{i=1}^{r}%
+\mathbf{Z}\alpha _{\left( \frak{a}\right) i}\right) \mbox{for }A_{r}^{\left(
+u\geq 2\right) }\mbox{ and }A\neq A_{2r}^{\left( 2\right) },
 \end{array}
 \right\} ;$\\
 $\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu +\rho )-\rho }$ --- the singular weight element for the $\frak{g}$-module $L^{\mu }$;
@@ -182,8 +182,8 @@ element for the $\frak{a}$-module $L_{\frak{a}}^{\nu }$;
 
 $\widehat{\Psi ^{\left( \mu \right) }}$ $\left( \widehat{\Psi _{\left( \frak{%
 a}\right) }^{\left( \nu \right) }}\right) $ --- the set of singular weights $%
-\xi \in P$ $\left( \text{resp. }\in P_{\frak{a}}\right) $ for the module $%
-L^{\mu }$ $\left( \text{resp. }L_{\frak{a}}^{\nu }\right) $ with the
+\xi \in P$ $\left( \mbox{resp. }\in P_{\frak{a}}\right) $ for the module $%
+L^{\mu }$ $\left( \mbox{resp. }L_{\frak{a}}^{\nu }\right) $ with the
 coordinates $\left( \co{\xi },k,n,\epsilon \left( w\left( \xi
 \right) \right) \right) \mid _{\xi =w\left( \xi \right) \circ (\mu +\rho
 )-\rho },$ (resp. $\left( \co{\xi },k,n,\epsilon \left(
@@ -191,12 +191,12 @@ w_{a}\left( \xi \right) \right) \right) \mid _{\xi =w_{a}\left( \xi \right)
 \circ (\nu +\rho _{a})-\rho _{a}}$ ), 
 
 $m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
-}\right) $ --- the multiplicity of the weight $\xi \in P$ \ $\left( \text{%
+}\right) $ --- the multiplicity of the weight $\xi \in P$ \ $\left( \mbox{%
 resp. }\in P_{\frak{a}}\right) $ in the module $L^{\mu }$ , (resp. $\xi \in
 L_{\frak{a}}^{\nu } $);
 
-$ch\left( L^{\mu }\right) $ $\left( \text{resp. }ch\left( L_{\frak{a}}^{\nu
-}\right) \right) $--- the formal character of $L^{\mu }$ $\left( \text{resp. }%
+$ch\left( L^{\mu }\right) $ $\left( \mbox{resp. }ch\left( L_{\frak{a}}^{\nu
+}\right) \right) $--- the formal character of $L^{\mu }$ $\left( \mbox{resp. }%
 L_{\frak{a}}^{\nu }\right) $;
 
 $ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
@@ -207,7 +207,7 @@ $ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
 $R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
 mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }\quad $
 
-\noindent $\left( \text{resp. }R_{\frak{a}}:=\prod_{\alpha \in \Delta _{%
+\noindent $\left( \mbox{resp. }R_{\frak{a}}:=\prod_{\alpha \in \Delta _{%
 \frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}\mathrm{%
 \left( \alpha \right) }}=\Psi _{\frak{a}}^{\left( 0\right) }\right) $--- the
 denominator.
@@ -238,7 +238,7 @@ $x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|^2}{\left|\Theta_{\mathfrak{a}}
 Our aim is to demonstrate that despite the zeros arriving in the Weyl denominator $R$
 (when it is projected to the $P_{\mathfrak{a}}$) the injection fan technique \cite{ilyin812pbc} can be properly modified.
 The result is the generalized recurrent relation for anomalous branching
-coefficients \eqref{eq:21}:
+coefficients \ref{eq:21}:
 \begin{equation}
   \label{eq:1}
   \begin{array}{c}
@@ -256,7 +256,7 @@ $\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ is the set of weights in the expansi
 of the product $\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}
 (1-e^{-\alpha})^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\alpha)}$ and $s(\gamma)$
 is the multiplicity of $e^{\gamma}$ in this expansion.
-In the next subsection we study the situation in details and prove the relation \eqref{eq:1}.
+In the next subsection we study the situation in details and prove the relation \ref{eq:1}.
 
 \subsection{Proof of the recurrent relation}
 \label{sec:proof}
@@ -338,13 +338,13 @@ Consider the case of such a regular embedding $\mathfrak{a}\subset \mathfrak{g}$
   \hline
   $\mathfrak{g}$ & Extended diagram of $\mathfrak{g}$ & Diagrams of the subalgebras $\mathfrak{a},\; \mathfrak{a}_{\bot}$ \\
   \hline
-  $A_n$ & \includegraphics{A_series_ext_diag.pdf} & \includegraphics{A_series_ext_split.pdf} \\
+  $A_n$ & \includegraphics{A_series_ext_diag.eps} & \includegraphics{A_series_ext_split.eps} \\
   \hline
-  $B_n$ & \includegraphics{B_series_ext_diag.pdf} & \includegraphics{B_series_ext_split.pdf} \\
+  $B_n$ & \includegraphics{B_series_ext_diag.eps} & \includegraphics{B_series_ext_split.eps} \\
   \hline
-  $C_n$ & \includegraphics{C_series_ext_diag.pdf} & \includegraphics{C_series_ext_split.pdf} \\
+  $C_n$ & \includegraphics{C_series_ext_diag.eps} & \includegraphics{C_series_ext_split.eps} \\
   \hline
-  $D_n$ & \includegraphics{D_series_ext_diag.pdf} & \includegraphics{D_series_ext_split.pdf} \\
+  $D_n$ & \includegraphics{D_series_ext_diag.eps} & \includegraphics{D_series_ext_split.eps} \\
   \hline
 \end{tabular}
 \caption{Subalgebras $\mathfrak{a},\; \mathfrak{a}_{\bot}$ for the classical series}}
@@ -359,7 +359,7 @@ Using the existing classification of maximal special subalgebras in classical Li
       so(p)\oplus so(q) & \subset so(pq) &\\
       sp(2p)\oplus sp(2q) & \subset so(4pq)&\\
       sp(2p)\oplus so(q) & \subset sp(2pq)&\\
-      so(p)\oplus so(q) & \subset so(p+q)& \text{for}\;p\;\text{and}\;q\;\text{odd}\\
+      so(p)\oplus so(q) & \subset so(p+q)& \mbox{for}\;p\;\mbox{and}\;q\;\mbox{odd}\\
   \end{array}
 \end{equation}
 Exceptional Lie algebras and other non-maximal subalgebras will be considered elsewhere.
@@ -379,12 +379,12 @@ Multiply the equation (\ref{eq:4}) by the element
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)
 \end{equation}
 and take into account that the projection commutes with the multiplication:
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:7}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
   \pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}_{\mathfrak{g}}(\alpha)} \right)\sum_{\nu\in P^{+}_{\mathfrak{a}}}b^{(\mu)}_{\nu}
   \frac{\sum_{\omega\in W_{\mathfrak{a}}}\epsilon(\omega)e^{\omega(\nu+\rho_{\mathfrak{a}})-\rho_{\mathfrak{a}}}}{\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}.
-\end{multline}
+\end{eqnarray*}
 Similarly to the transformation proposed in \cite{ilyin812pbc} we introduce the anomalous branching coefficients $k_{\lambda}$,
 \begin{equation}
   \label{eq:10}
@@ -393,20 +393,20 @@ Similarly to the transformation proposed in \cite{ilyin812pbc} we introduce the 
   }^{\left( \mu \right) }e^{\lambda }
 \end{equation}
 and simplify the first factor,
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:12}
   \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
   \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta^{+}_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{a}}(\alpha)} \right)
     \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda }
-\end{multline}
+\end{eqnarray*}
 
 If the set $\Delta^{+}_{\bot}$ is non-empty then the Weyl reflections corresponding to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup $W_{\bot}\subset W$.
 Consider the factor-space $W_{\bot}\backslash W$. For the class $\tilde{\omega}\in W_{\bot}\backslash W$ choose the representative $\omega \in \tilde{\omega}$ such that $\pi_{\mathfrak{a}_{\bot}}\omega(\mu+\rho)\in \bar{C}_{\mathfrak{a}_{\bot}}$,
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:13}
  \pi_{\mathfrak{a}}\left(\frac{\sum_{\omega\in W} \epsilon(\omega) e^{\omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right) = \\
  \pi_{\mathfrak{a}}\left(\sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}\right)
-\end{multline}
+\end{eqnarray*}
 The fraction in the right-hand side of the equation looks like the character of some  $\mathfrak{a}_{\bot}$-module.
 Since $\nu\cdot \pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}}(\omega(\mu+\rho))$ and $\omega(\mu+\rho)-\pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))$, we can rewrite the shifted weights
 \begin{equation}
@@ -414,25 +414,25 @@ Since $\nu\cdot \pi_{\mathfrak{a}}(\omega(\mu+\rho))=\pi_{\mathfrak{a}}(\omega(\
   \nu\cdot\omega(\mu+\rho)-\rho=\nu\cdot \bigl(\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}}+\pi_{\mathfrak{a}}(\omega(\mu+\rho))\bigr)-\rho
 \end{equation}
 
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:14}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \frac{\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot \omega(\mu+\rho)-\rho}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}} =\\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho} \frac{e^{\rho_{\mathfrak{a}_{\bot}} }\sum_{\nu\in W_{\bot}}\epsilon(\nu) e^{\nu \cdot (\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}+\rho_{\mathfrak{a}_{\bot}})-\rho_{\mathfrak{a}_{\bot}}}}{\prod_{\alpha\in\Delta^{+}_{\bot}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}}=\\
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} {\rm ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}
-\end{multline}
+\end{eqnarray*}
 The projector $\pi_{\mathfrak{a}}$ sends the character ${\rm ch}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$ to the unit element of $\cal{E}$ multiplied by ${\rm dim}L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$  :
-  \begin{multline}
+  \begin{eqnarray*}
     \label{eq:15}
     \pi_{\mathfrak{a}}\left( \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho))-\rho}e^{\rho_{\mathfrak{a}_{\bot}}} \mathrm{ch} L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) = \\
     \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}
-  \end{multline}
+  \end{eqnarray*}
 Thus we obtain the relation
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:9}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
   \left(\prod_{\alpha\in \pi_{\mathfrak{a}}\left(\Delta^{+}\setminus \Delta^{+}_{\bot}\right)}(1-e^{-\alpha})^{{\rm mult}_{\mathfrak{g}}(\alpha)-{\rm mult}_{\mathfrak{\alpha}}} \right)
   \sum_{\lambda \in P_{\frak{a}}}k_{\lambda}^{\left( \mu \right) }e^{\lambda }.
-\end{multline}
+\end{eqnarray*}
 Let us rewrite the factor in the right-hand side:
 \begin{equation}
   \label{eq:11}
@@ -446,20 +446,20 @@ For the coefficient function $s\left( \gamma \right) $ define the carrier $\Phi 
 \Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}\mid s\left(
 \gamma \right) \neq 0\right\} .  \label{phi-d}
 \end{equation}
-From the relation \eqref{eq:9} the obtained equation for the formal elements,
-\begin{multline}
+From the relation \ref{eq:9} the obtained equation for the formal elements,
+\begin{eqnarray*}
   \label{eq:16}
   \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) e^{\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}=\\
   = -\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s\left( \gamma \right) e^{-\gamma }\sum_{\lambda \in P_{\frak{a}}}
   k_{\lambda }^{\left( \mu \right) }e^{\lambda } =\\
   =-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}}\sum_{\lambda \in P_{\frak{a}}}s\left( \gamma \right) k_{\lambda }^{\left( \mu \right)}e^{\lambda -\gamma }
-\end{multline}
+\end{eqnarray*}
 we can deduce the following property of the anomalous branching coefficients,
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:17}
    \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega) \mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+
    \sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}} s(\gamma)\; k^{(\mu)}_{\xi+\gamma}=0;\\ \xi\in P_{\mathfrak{a}}.
-\end{multline}
+\end{eqnarray*}
 
 To get the recurrent relations for the coefficients $k^{(\mu)}_{\xi+\gamma}$ we use the following procedure  (similar to that in \cite{ilyin812pbc}).
 Let $\gamma_{0} $ be the lowest vector with respect to the natural ordering in $%
@@ -472,7 +472,7 @@ Let $\gamma_{0} $ be the lowest vector with respect to the natural ordering in $
     _{0}}-\sum_{\gamma \in \Phi _{\frak{a}\subset \frak{g}}\setminus \left\{\gamma_{0}\right\}}s\left( \gamma \right) e^{-\gamma },
 \end{equation}
 the equality (\ref{eq:17}) leads to the desired recurrent  relation for the anomalous branching coefficients:
-\begin{multline}
+\begin{eqnarray*}
   k_{\xi }^{\left( \mu \right) }=
   -\frac{1}{s\left( \gamma _{0}\right) }
   \left(
@@ -484,7 +484,7 @@ the equality (\ref{eq:17}) leads to the desired recurrent  relation for the anom
     \sum_{\gamma \in \Gamma _{\frak{a}\subset \frak{g}}} s\left( \gamma +\gamma _{0}\right) k_{\xi+\gamma }^{\left( \mu \right) }
   \right)
 \label{recurrent-relation}
-\end{multline}
+\end{eqnarray*}
 where the set
 \begin{equation}
 \Gamma _{\frak{a}\subset \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
@@ -509,13 +509,13 @@ the latter coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)).
 \subsection{Algorithm for the recursive computation of the branching coefficients}
 \label{sec:algorithm}
 
-The recurrent relation \eqref{recurrent-relation} allows us to formulate an algorithm for recursive computation of the branching coefficients. In this algorithm there is no need to  construct the module $L^{(\mu)}_{\mathfrak{g}}$ or any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
+The recurrent relation \ref{recurrent-relation} allows us to formulate an algorithm for recursive computation of the branching coefficients. In this algorithm there is no need to  construct the module $L^{(\mu)}_{\mathfrak{g}}$ or any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
 
 It contains the following steps:
 \begin{enumerate}
 \item Construct the sets $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ of positive roots for the algebras $\mathfrak{g} \supset \mathfrak{a}$.
 \item Select the positive roots $\alpha\in \Delta^{+}$ orthogonal to the root subspace of $\mathfrak{a}$ and form the set $\Delta^{+}_{\bot}$.
-\item Construct the set $\Gamma$ \eqref{fan-defined}.
+\item Construct the set $\Gamma$ \ref{fan-defined}.
 \item Construct the set $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$ of the anomalous weights for the $\mathfrak{g}$-module $L^{(\mu)}$.
 \item Select the weights $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in \bar{C}_{\mathfrak{a}_{\bot}} \right\}$ Since we have constructed the set $\Delta^{+}_{\bot}$ we can easily check wether the weight $\pi_{\mathfrak{a}_{\bot}}\lambda$ lies in the main Weyl chamber of $\mathfrak{a}_{\bot}$ by computing the scalar product of $\lambda$ with the roots of $\Delta^{+}_{\bot}$.
 \item For $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in \bar{C}_{\mathfrak{a}_{\bot}}$ calculate the dimensions of the corresponding modules $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$ using the Weyl formula with the set $\Delta^{+}_{\bot}$.
@@ -538,7 +538,7 @@ Consider the regular embedding of $A_1\to B_2$. Simple roots $\alpha_1, \alpha_2
 Let's describe the reduction of the fundamental representation of $L^{(1,0)=w_1}_{B_2}$ (the black vector in Figure \ref{fig:B2_A1}).
 \begin{figure}[th]
   \noindent\centering{
-    \includegraphics[width=80mm]{B2_A1.pdf}
+    \includegraphics[width=80mm]{B2_A1.eps}
   }
   \caption{Regular embedding of $A_1$ into $B_2$}
   \label{fig:B2_A1}
@@ -547,7 +547,7 @@ Circles indicate the weights of the singular element $\Psi^{(w_1)}$.
 Now we are to factorise the Weyl group $W$ by $W_{\bot}=\left\{\omega_1\right\}$ and to construct the set $\left\{\omega(\mu+\rho)-\rho,\; \omega\in W_{\bot}\backslash W\right\}$. 
 \begin{figure}[t]
   \noindent\centering{
-    \includegraphics[width=80mm]{B2_A1_2.pdf}
+    \includegraphics[width=80mm]{B2_A1_2.eps}
   }
   \caption{Anomalous weights and the corresponding $\mathfrak{a}_{\bot}=A_1$-modules for the embedding $A_1\subset B_2$}
   \label{fig:B2_A1_2}
@@ -575,7 +575,7 @@ Consider the regular embedding $B_2 \longrightarrow B_4$.
 The corresponding Dynkin diagrams are presented in the Figure \ref{fig:dynkin}.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=50mm]{B4_B2_2A1.pdf}
+  \includegraphics[width=50mm]{B4_B2_2A1.eps}
   \caption{The regular embedding $B_2\subset B_4$ described by dropping the node.}
   \label{fig:dynkin}
 \end{figure}
@@ -585,11 +585,11 @@ In the orthogonal basis $\left\{e_1,\dots,e_4\right\}$ the simple roots and the 
   \label{eq:8}
  S_{B_4}= \{e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4\}
 \end{equation}
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:19}
  \Delta^+_{B_4}=\left\{ (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,\;\right.\\
  \left. e_2 + e_4,\; e_2,\; e_1 + e_4,\; e_2 + e_3,\; e_1,\; e_1 + e_3,\; e_1 + e_2\right\}
-\end{multline}
+\end{eqnarray*}
 Correspondingly for the embedded subalgebra $\mathfrak{a}=B_2$ we have
 \begin{equation}
   \label{eq:26}
@@ -600,17 +600,17 @@ Correspondingly for the embedded subalgebra $\mathfrak{a}=B_2$ we have
  \Delta^{+}_{\bot}= \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}
 \end{equation}
 and is the set of positive roots for the algebra $\mathfrak{a}_{\bot}=B_2$.
-\begin{figure}[p]
+\begin{figure}[t]
   \centering
-    \includegraphics[width=100mm,height=90mm]{B4_B2_anom_points.pdf}
+    \includegraphics[width=100mm,height=90mm]{B4_B2_anom_points.eps}
   \caption{Projected weights $-\frac{1}{s(\gamma_0)}\pi_{B_2}\left(\hat \Psi^{(0,1,0,2)}_{B_4}\right)$ with the dimensions of the corresponding $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:B4B2anom}
 \end{figure}
 
 
-\begin{figure}[p]
+\begin{figure}[b]
   \centering
-  \includegraphics[height=80mm]{B4_B2_fan.pdf}
+  \includegraphics[height=80mm]{B4_B2_fan.eps}
   \caption{The fan for $B_2\subset B_4$}
   \label{fig:B4B2Fan}
 \end{figure}
@@ -635,13 +635,13 @@ $\rho_{\mathfrak{a}_{\bot}}$ and apply the Weyl dimension formula. The result is
 
 Applying the recurrent relation (\ref{recurrent-relation}) we obtain the
 following branching coefficients:
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:24}
   \pi_{\mathfrak{a}} \left(ch L^{(0,1,0,2)}_{B_4}\right) = 6 \; ch L^{(0,0)}_{B_2}+ 60
   \; ch L_{B_2}^{(0,2)}+ 30 \; ch L_{B_2}^{(1,0)}+ 19 \; ch L_{B_2}^{(2,0)}+\\
   40 \; ch L_{B_2}^{(1,2)}+ 10 \; ch L_{B_2}^{(2,2)}.
-\end{multline}
-\newpage
+\end{eqnarray*}
+%\newpage
 \section{Applications to the conformal field theory}
 \label{sec:phys-appl}
 
@@ -712,7 +712,7 @@ The complete classification of conformal embeddings is given in \cite{schelleken
 
 The relation (\ref{eq:111}) and the asymptotics of the branching functions can be used to prove the finite reducibility theorem \cite{kac1988modular}. It states that for the conformal embedding  $\mathfrak{a}\subset\mathfrak{g}$ only finite number of branching coefficients have non-zero values.
 
-\begin{note} The orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$.
+\begin{mynote} The orthogonal subalgebra $\mathfrak{a}_{\bot}$ is always empty for the conformal embeddings $\mathfrak{a}\subset \mathfrak{g}$.
 \begin{proof} 
 Consider the modes expansion of the energy-momentum tensor
 \begin{equation}
@@ -729,7 +729,7 @@ In the case of the conformal embedding energy-momentum tensors are to be equal (
 
 The substitution of the generators of $\mathfrak{a}$  in terms of the generators of $\mathfrak{g}$ into these combinations  should give the energy-momentum tensor $T_{\mathfrak{g}}$. But if the set of the generators $\Delta_{\bot}$ is not empty this is not possible, since $T_{\mathfrak{g}}$ contains the combinations of the generators $X^{\alpha}_n, \; \alpha\in \Delta_{\bot}$.
 \end{proof}
-\end{note}
+\end{mynote}
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
 \label{sec:spec-embedd-hata_1s}
 Consider the case where both $\mathfrak{g}$ and $\mathfrak{a}$ are affine Lie algebras:
@@ -746,7 +746,7 @@ and the function $s(\gamma+\gamma_0)$ (see the Figure \ref{fig:AffineA2A1Fan}).
 
 \begin{figure}[h!bt]
   \centering
-  \includegraphics[width=135mm]{AffineA2_A1_fan.pdf}
+  \includegraphics[width=135mm]{AffineA2_A1_fan.eps}
   \caption{The fan and $s(\gamma+\gamma_0)$ for $\hat{A_1}\longrightarrow \hat{A_2}$}
   \label{fig:AffineA2A1Fan}
 \end{figure}
@@ -764,7 +764,7 @@ the embedded algebra $\hat{A}_1$.
 
 \begin{figure}[h!tb]
 %  \hspace*{-2cm}
-  \includegraphics[width=140mm]{AffineA2_A1_anom.pdf}
+  \includegraphics[width=140mm]{AffineA2_A1_anom.eps}
   \caption{The anomalous weights of the module $L^{(0,0;1;0)}_{\hat{A_2}}$}
   \label{fig:affine_A2_anom_point}
 \end{figure}
@@ -773,7 +773,7 @@ The next step is to project the anomalous weights to $P_{\hat A_1}$.
 The result up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_A1_anom_proj}.
 \begin{figure}[h!tb]
   \centering
-  \includegraphics[width=130mm]{AffineA2_A1_proj_anom.pdf}
+  \includegraphics[width=130mm]{AffineA2_A1_proj_anom.eps}
   \caption{Projected anomalous weights of $L^{(0,0;1;0)}_{\hat{A_2}}$.}
   \label{fig:AffineA2_A1_anom_proj}
 \end{figure}
@@ -782,7 +782,7 @@ The result up to the twelfth grade is presented in the Figure \ref{fig:AffineA2_
 Using the recurrent relation for the anomalous branching coefficients we get the result presented in Figure \ref{fig:AffineA2_A1_branching}. 
 \begin{figure}[h!tb]
   \centering
-  \includegraphics[width=130mm]{AffineA2_A1_branching.pdf}
+  \includegraphics[width=130mm]{AffineA2_A1_branching.eps}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{A_2}$}
   \label{fig:AffineA2_A1_branching}
 \end{figure}
@@ -824,12 +824,12 @@ is presented in Figure \ref{fig:A_1+A_1_to_A3}.
 \begin{figure}[h!tb]
   \begin{multicols}{2}
     \hfill
-    \includegraphics[width=50mm]{A_1+A_1_to_A3.pdf}
+    \includegraphics[width=50mm]{A_1+A_1_to_A3.eps}
     \hfill
     \caption{The special embedding  $A_1\oplus A_1\subset A_3$ is based on this module}
     \label{fig:A_1+A_1_to_A3}
     \hfill
-    \includegraphics[width=50mm]{A1+A1-A3.pdf}
+    \includegraphics[width=50mm]{A1+A1-A3.eps}
     \hfill
     \caption{Embedded roots for the special embedding  $A_1\oplus A_1\subset A_3$}
     \label{fig:A1+A1-A3}
@@ -880,16 +880,16 @@ The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown in the Figure \ref{fig:A1+
 The coordinates of fan element finite part are given in the basis of $A_1\oplus A_1$ fundamental roots.
 The fan elements $\gamma$ are marked by crosses if  $s(\gamma)=1$ and by diamonds if $s(\gamma)=-1$.
 \begin{figure}[h!tb]
-  \includegraphics[width=135mm]{A1+A1-A3_fan.pdf}
+  \includegraphics[width=135mm]{A1+A1-A3_fan.eps}
   \caption{The fan for the special embedding $\hat A_1\oplus\hat A_1\subset\hat A_3$}
   \label{fig:A1+A1-A3_fan}
 \end{figure}
 
 We limit our calculations by the first 5 grades.
-\begin{figure}[h!tb]
+\begin{figure}[t]
 %\begin{figure}[p]
 %  \hspace*{-1cm}
-  \includegraphics[width=135mm]{A1+A1-A3_anom.pdf}
+  \includegraphics[width=135mm]{A1+A1-A3_anom.eps}
   \caption{Projected anomalous weights for $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$}
   \label{fig:A1+A1-A3_anom}
 \end{figure}
@@ -905,10 +905,10 @@ The anomalous branching coefficients for the module $L^{(w_2)}$ are shown in the
 Inside the chamber $\bar{C_{\mathfrak{a}}}$ the anomalous branching coefficients coinside with
 the branching coefficients of $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$
 and are marked by the stars in the Figure \ref{fig:A1+A1-A3_branching}.
-\begin{figure}[h!tb]
+\begin{figure}[b]
 %\begin{figure}[p]
 %  \hspace*{-1cm}
-  \includegraphics[width=135mm,height=85mm]{A1+A1-A3_branching.pdf}
+  \includegraphics[width=135mm,height=85mm]{A1+A1-A3_branching.eps}
   \caption{Anomalous branching coefficients for $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$}
   \label{fig:A1+A1-A3_branching}
 \end{figure}
@@ -926,11 +926,11 @@ we get the following set of branching rules
  \end{equation}
 
 Now we can construct the modular invariant partition function for WZW-model with the chiral algebra $\hat{A}_1\oplus \hat{A}_1$.
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:40}
   Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
   \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
-\end{multline}
+\end{eqnarray*}
 
 By this example we have illustrated the mechanism of our algorithm.
 We want to remind that the proposed method is universal and can be applied to
@@ -970,7 +970,7 @@ with the corresponding values $s(\gamma+\gamma_0)$(see the Figure \ref{fig:Affin
 We restricted the computation to the twelfth grade.
 \begin{figure}[h!bt]
   \centering
-  \includegraphics[width=135mm]{AffineB2_A1_fan.pdf}
+  \includegraphics[width=135mm]{AffineB2_A1_fan.eps}
   \caption{The fan for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:AffineB2A1Fan}
 \end{figure}
@@ -988,7 +988,7 @@ of the embedded algebra $\hat{A}_1$.
 
 \begin{figure}[h!tb]
 %  \hspace*{-2cm}
-  \includegraphics[width=140mm]{AffineB2_A1_Anom.pdf}
+  \includegraphics[width=140mm]{AffineB2_A1_Anom.eps}
   \caption{The anomalous weights of $L^{(1,0;1;0)}_{\hat B_2 }$.
   The weights in the zero grade can be seen in the Figure \ref{fig:B2_A1}}.
   \label{fig:affine_B2_anom_point}
@@ -1000,18 +1000,18 @@ $\mathfrak{a}_{\bot}$-modules $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\r
 The result is presented in the Figure
 \ref{fig:AffineB2_A1_anom_proj} up to the twelfth grade.
 \ref{fig:AffineB2_A1_anom_proj}.
-\begin{figure}[p]
+\begin{figure}[h!tb]
   \centering
-  \includegraphics[width=120mm]{AffineB2_A1_proj_anom.pdf}
+  \includegraphics[width=120mm]{AffineB2_A1_proj_anom.eps}
   \caption{The projected anomalous weights $\pi_{\hat A_1}\left(\Psi^{(1,0;1;0)}_{\hat B_2}\right)$ and the dimensions of $\mathfrak{a}_{\bot}$-modules.}
   \label{fig:AffineB2_A1_anom_proj}
 \end{figure}
 
 Notice that here the lowest weight  $\gamma_0$ of the fan  is zero, since we have excluded all the roots of $\Delta^{+}_{\bot}$ from the defining relation (\ref{fan-defined}).
 
-\begin{figure}[p]
+\begin{figure}[h!bt]
   \centering
-  \includegraphics[width=120mm]{AffineB2_A1_branching.pdf}
+  \includegraphics[width=120mm]{AffineB2_A1_branching.eps}
   \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{B_2}$}
   \label{fig:AffineB2_A1_branching}
 \end{figure}
@@ -1019,7 +1019,7 @@ Notice that here the lowest weight  $\gamma_0$ of the fan  is zero, since we hav
 Selecting the elements inside the  Weyl chamber
 $\bar{C}^{\left( 0 \right)}_{\hat{A_1}}$
 we get the branching coefficients up to the twelfth grade,
-\begin{multline}
+\begin{eqnarray*}
   \label{eq:28}
   L^{w_1}_{\hat{B_2}\downarrow \hat{A_1}}=2 L_{\hat{A_1}}^{w_1}\oplus 1 L_{\hat{A_1}}^{w_0}\oplus 4 L_{\hat{A_1}}^{w_0-\delta}\oplus\\
     2 L_{\hat{A_1}}^{w_1-\delta}\oplus 8 L_{\hat{A_1}}^{w_0-2\delta}\oplus
@@ -1034,7 +1034,7 @@ we get the branching coefficients up to the twelfth grade,
     482 L_{\hat{A_1}}^{w_1-10\delta}\oplus 714 L_{\hat{A_1}}^{w_1-11\delta}\oplus\\
     797 L_{\hat{A_1}}^{w_0-11\delta}\oplus 1080 L_{\hat{A_1}}^{w_1-12\delta}\oplus
     1180 L_{\hat{A_1}}^{w_0-12\delta}
-\end{multline}
+\end{eqnarray*}
 This result can be presented as the set of branching functions \cite{kac1990idl}:
 \begin{eqnarray}
   \label{eq:29}
@@ -1051,7 +1051,7 @@ Here $q=\exp (2\pi i \tau)$, the lower index enumerates the branching functions 
 to their highest weights in $P^+_{\hat{A_1}}$,
 these are the fundamental weights $w_0=\lambda_0=(0,1,0),\; w_1=\alpha/2=(1,1,0)$.
 
-Now we can use the relation \eqref{eq:31} to get the expansion of the $B_2/A_1$-coset characters:
+Now we can use the relation \ref{eq:31} to get the expansion of the $B_2/A_1$-coset characters:
 \begin{equation}
   \label{eq:35}
   \begin{array}{cc}
@@ -1091,6 +1091,6 @@ The work was supported in
 part by RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575.
 
 \bibliography{article}{}
-\bibliographystyle{utphys}
+\bibliographystyle{unsrt}
 
 \end{document}
