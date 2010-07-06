@@ -91,11 +91,25 @@ resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorith
 cohomology \cite{Hwang:1994yr}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
 combinatorial methods applied in \cite{feigin707principal}.
 
-Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra can be obtained using the chain of maximal injections. In this paper we find the recurrent properties for branching coefficients that generalise the relations obtained earlier (see the paper \cite{ilyin812pbc} and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in terms of new injection fan called "the subtracted fan". Using this new tools we formulate simple and explicit algorithm for computations of branching coefficients which is applicable to the non-maximal subalgebras of finite-dimensional and affine Lie algebras.
+Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra
+can be obtained using the chain of maximal injections. In this paper we find the recurrent properties
+for branching coefficients that generalise the relations obtained earlier (see the paper \cite{ilyin812pbc}
+and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in
+terms of the new injection fan called "the subtracted fan". Using this new tools we formulate a simple and
+explicit algorithm for computations of branching coefficients which is applicable to the non-maximal
+subalgebras of finite-dimensional and affine Lie algebras.
 
-We demonstrate that our algorithm can be used in studies of conformal embeddings and coset constructions in rational conformal field theory.
+We demonstrate that our algorithm can be used in studies of conformal embeddings and coset constructions
+in rational conformal field theory.
 
-The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations. In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous branching coefficients and describe the decomposition algorithm for integrable highest weight modules $L_{\mathfrak{g}}$ with respect to a reductive subalgebra $\mathfrak{a}\subset \mathfrak{g}$ (subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several simple examples for finite-dimensional Lie algebras. The affine Lie algebras and their applications in CFT models are considered in Section \ref{sec:phys-appl}. We conclude the paper with a review of obtained results. Possible further developments are discussed (Section \ref{sec:conclusion}).
+The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations.
+In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous
+branching coefficients and describe the decomposition algorithm for integrable highest weight modules
+$L_{\mathfrak{g}}$ with respect to a reductive subalgebra $\mathfrak{a}\subset \mathfrak{g}$
+(subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several
+simple examples for finite-dimensional Lie algebras. The affine Lie algebras and their applications in
+CFT models are considered in Section \ref{sec:phys-appl}.
+Possible further developments are discussed (Section \ref{sec:conclusion}).
 
 \subsection{Notation}
 \label{sec:notation}
@@ -108,7 +122,7 @@ correlated root spaces: $\frak{h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g%
 }}^{\ast }$ and $\frak{h}_{\ao}^{\ast }\subset \frak{h%
 }_{\go}^{\ast }$\ .
 
-We use the following notations adopted from the paper \cite{ilyin812pbc}.
+We use the following notations:
 
 $L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
 of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
@@ -283,19 +297,17 @@ the relation
   {\prod_{\beta\in \Delta_{\mathfrak{a}}^{+}}(1-e^{-\beta})^{\mathrm{mult}_{\mathfrak{a}}(\beta)}}
 \end{equation}
 
-It is important whether there exist the positive roots $\alpha\in \Delta$ such that $\pi_{\mathfrak{a}}\alpha=0$. These roots are orthogonal to $P_{\mathfrak{a}}$. Let's denote the subset of such roots by $\Delta^{+}_{\bot}
+Consider the positive roots $\alpha\in \Delta$ orthogonal to $P_{\mathfrak{a}}$. Denote the subset of such roots by $\Delta^{+}_{\bot}
 =\left\{\alpha\in\Delta_{\mathfrak{g}}^{+}:
 \forall \beta\in \Delta_{\mathfrak{a}}^{+},\; \alpha\bot\beta \right\}$.
-
-Notice that if $\Delta^{+}_{\bot}\neq \emptyset$ the Weyl reflections
-corresponding to the positive roots of $\Delta^{+}_{\bot}$ generate a subgroup
-$W_{\bot}$ of the Weyl group $W$. Consider any two positive roots $\alpha,\;
-\beta\in \Delta^{+}_{\bot}$ and the corresponding Weyl reflections
-$\omega_{\alpha},\; \omega_{\beta}\in W_{\bot}$.  Since roots $\beta\in \Delta_{\mathfrak{a}}$ are invariant with respect to $\omega_{\alpha}, \; \omega_{\beta}$ they
-are also invariant under the action of $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}$.
-So the subgroup $W_{\bot}$ preserves $\Delta_{\mathfrak{a}}$.
-
-Thus we have obtained the system $\Delta_{\bot}$ orthogonal $P_{\mathfrak{a}}$ and invariant with respect to  $W_{\bot}$. It
+Notice that if $\Delta^{+}_{\bot}\neq \emptyset$ the corresponding Weyl reflections
+generate a subgroup $W_{\bot}$ of the group $W$. Consider the roots $\alpha,\;
+\beta\in \Delta^{+}_{\bot}$ and the corresponding reflections
+$\omega_{\alpha},\; \omega_{\beta}\in W_{\bot}$.  Since the roots in $\Delta_{\mathfrak{a}}$
+are invariant with respect to $\omega_{\alpha}, \; \omega_{\beta}$ they
+are also invariant under the product $\omega_{\gamma}=\omega_{\alpha}\cdot \omega_{\beta}$
+and the subgroup $W_{\bot}$ preserves the roots in $\Delta_{\mathfrak{a}}$.
+The system $\Delta_{\bot}$
 can be considered as the root system of a subalgebra $\mathfrak{a}_{\bot}\subset \mathfrak{g}$.
 
 Now we are to find out when the subset $\Delta^{+}_{\bot}$ is non-empty with the non-trivial subgroup $W_{\bot}$ and the subalgebra $\mathfrak{a}_{\bot}$.
@@ -506,7 +518,7 @@ k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 \end{equation}
 the latter coinsides with the one obtained in \cite{ilyin812pbc} (formula (16)).
 
-\subsection{Algorithm for the recursive computation of the branching coefficients}
+\subsection{Algorithm for recursive computation of branching coefficients}
 \label{sec:algorithm}
 
 The recurrent relation \ref{recurrent-relation} allows us to formulate an algorithm for recursive computation of the branching coefficients. In this algorithm there is no need to  construct the module $L^{(\mu)}_{\mathfrak{g}}$ or any of the modules $L^{(\nu)}_{\mathfrak{a}}$.
@@ -810,132 +822,132 @@ Using these results the modular-invariant partition function is easily found,
   Z=\left|\chi_{(4;4;0)}+\chi_{(0;4;0)}\right|^2+2\chi_{(2;4;0)}^2.
 \end{equation}
 
-\subsubsection{Embeddings of semisimple subalgebras}
-\label{sec:embedd-semis-subalg}
-
-Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where
-$\mathfrak{a}=\hat A_1\oplus \hat A_1$ and $\mathfrak{g}= \hat A_3$,
-which is the affine extension of the special embedding $A_1\oplus A_1\subset A_3$.
-To construct this injection we use the method presented in \cite{vasilevich1986method}.
-We start with the 4-dimensional module $L_{A_1\oplus A_1}^{(1,1)}$. Its diagram
-$$\mathcal{N}_{A_1\oplus A_1}^{(1,1)}= \left\{\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)\right\}$$
-is presented in Figure \ref{fig:A_1+A_1_to_A3}.
-
-\begin{figure}[h!tb]
-  \begin{multicols}{2}
-    \hfill
-    \includegraphics[width=50mm]{A_1+A_1_to_A3.eps}
-    \hfill
-    \caption{The special embedding  $A_1\oplus A_1\subset A_3$ is based on this module}
-    \label{fig:A_1+A_1_to_A3}
-    \hfill
-    \includegraphics[width=50mm]{A1+A1-A3.eps}
-    \hfill
-    \caption{Embedded roots for the special embedding  $A_1\oplus A_1\subset A_3$}
-    \label{fig:A1+A1-A3}
-  \end{multicols}
-\end{figure}
-
-For the matrix elements of representation of Cartan subalgebra generators $b_1,b_2$ in
-the Weyl basis we have $d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}
-{(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},
-\frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}
-{(\alpha_i,\alpha_i)}\right)$ \cite{vasilevich1986method},
-thus $d(b_1)=\mathrm{diag}(1,-1,1,-1),\; d(b_2)=\mathrm{diag}(1,1,-1,-1)$.
-The embedded roots $\alpha_1,\alpha_2$ of $A_1\oplus A_1$ in terms of roots $\tilde{\alpha}_i$ of $A_3$ are
-\begin{equation}
-  \label{eq:37}
-  \begin{array}{l}
-     \alpha_1=\frac{1}{2}(\tilde{\alpha}_1+\tilde{\alpha}_3)\\
-     \alpha_2=\frac{1}{2}(\tilde{\alpha}_1+2\tilde{\alpha}_2+\tilde{\alpha}_3)
-  \end{array}
-\end{equation}
-(See Figure \ref{fig:A1+A1-A3}.)
-
-This injection is characterised by the embedding indices $(2,2)$ and is conformal,
-since $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
-
-We are interested in the reduction of the fundamental modules of $\hat A_3$.
-Four fundamental weights of level 1 have the following coordinates in the orthogonal basis: 
-\begin{equation}
-  \begin{array}{lll}
-     w_0 & = & (0,0,0,0;1;0),\\
-     w_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0),\\
-     w_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0),\\
-     w_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0). \\
-  \end{array}
-\end{equation}
-
-For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we have
-\begin{equation}
-  \label{eq:38}
-  \begin{array}{lll}
-    \Delta^{+} &=&\left\{\co{\Delta}^{+}=\{\tilde{\alpha}_1, \tilde{\alpha}_2, \tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2, \tilde{\alpha}_2+\tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2+\tilde{\alpha}_3\};\right.\\
-    &\; & \quad\left.\co{\Delta}+n\delta;\;     +n\delta\;\mbox{with multiplicity}\; 3;\; n=1,2,\dots,\right\}\\
-    \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1+n\delta,\pm \alpha_2+n\delta;\; +n\delta\; \mbox{with multiplicity} \; 2;\; n=1,2,\dots\}\\
-  \end{array}
-\end{equation}
-The set $\Delta^{+}_{\bot}$ is empty.
-The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown in the Figure \ref{fig:A1+A1-A3_fan}.
-The coordinates of fan element finite part are given in the basis of $A_1\oplus A_1$ fundamental roots.
-The fan elements $\gamma$ are marked by crosses if  $s(\gamma)=1$ and by diamonds if $s(\gamma)=-1$.
-\begin{figure}[h!tb]
-  \includegraphics[width=135mm]{A1+A1-A3_fan.eps}
-  \caption{The fan for the special embedding $\hat A_1\oplus\hat A_1\subset\hat A_3$}
-  \label{fig:A1+A1-A3_fan}
-\end{figure}
-
-We limit our calculations by the first 5 grades.
-\begin{figure}[t]
-%\begin{figure}[p]
-%  \hspace*{-1cm}
-  \includegraphics[width=135mm]{A1+A1-A3_anom.eps}
-  \caption{Projected anomalous weights for $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$}
-  \label{fig:A1+A1-A3_anom}
-\end{figure}
-
-The set of anomalous weights $\widehat{\Psi_{\hat A_3}^{(\mu)}}$
-and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for
-$\mu=w_2=(0,1,0;1;0)$ is shown in the Figure \ref{fig:A1+A1-A3_anom}.
-Coordinates of the finite part are given in the basis of fundamental weights of $A_1\oplus A_1$.
-The weights are marked by crosses if $\epsilon(\omega)=1$ and by diamonds otherwise.
-
-
-The anomalous branching coefficients for the module $L^{(w_2)}$ are shown in the Figure  \ref{fig:A1+A1-A3_branching}.
-Inside the chamber $\bar{C_{\mathfrak{a}}}$ the anomalous branching coefficients coinside with
-the branching coefficients of $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$
-and are marked by the stars in the Figure \ref{fig:A1+A1-A3_branching}.
-\begin{figure}[b]
-%\begin{figure}[p]
-%  \hspace*{-1cm}
-  \includegraphics[width=135mm,height=85mm]{A1+A1-A3_branching.eps}
-  \caption{Anomalous branching coefficients for $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$}
-  \label{fig:A1+A1-A3_branching}
-\end{figure}
-
-Treating analogously the modules $L^{w_0}_{\hat A_3}, L^{w_1}_{\hat A_3}, L^{w_3}_{\hat A_3}$
-we get the following set of branching rules
- \begin{equation}
-   \label{eq:39}
-   \begin{array}{ll}
-     L^{(0,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)} \\
-     L^{(1,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\
-     L^{(0,1,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & \left( L_{\hat{A_1}}^{(2;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)}\right) \oplus \left( L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(2;2;0)}\right) \\
-     L^{(0,0,1;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\     
-   \end{array}
- \end{equation}
-
-Now we can construct the modular invariant partition function for WZW-model with the chiral algebra $\hat{A}_1\oplus \hat{A}_1$.
-\begin{eqnarray*}
-  \label{eq:40}
-  Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
-  \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
-\end{eqnarray*}
-
-By this example we have illustrated the mechanism of our algorithm.
-We want to remind that the proposed method is universal and can be applied to
-an arbitrary pair of affine Lie algebras $\mathfrak{a}\subset\mathfrak{g}$.
-
+% \subsubsection{Embeddings of semisimple subalgebras}
+% \label{sec:embedd-semis-subalg}
+% 
+% Consider the embedding $\mathfrak{a}\subset \mathfrak{g}$ where
+% $\mathfrak{a}=\hat A_1\oplus \hat A_1$ and $\mathfrak{g}= \hat A_3$,
+% which is the affine extension of the special embedding $A_1\oplus A_1\subset A_3$.
+% To construct this injection we use the method presented in \cite{vasilevich1986method}.
+% We start with the 4-dimensional module $L_{A_1\oplus A_1}^{(1,1)}$. Its diagram
+% $$\mathcal{N}_{A_1\oplus A_1}^{(1,1)}= \left\{\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)\right\}$$
+% is presented in Figure \ref{fig:A_1+A_1_to_A3}.
+% 
+% \begin{figure}[h!tb]
+%   \begin{multicols}{2}
+%     \hfill
+%     \includegraphics[width=50mm]{A_1+A_1_to_A3.eps}
+%     \hfill
+%     \caption{The special embedding  $A_1\oplus A_1\subset A_3$ is based on this module}
+%     \label{fig:A_1+A_1_to_A3}
+%     \hfill
+%     \includegraphics[width=50mm]{A1+A1-A3.eps}
+%     \hfill
+%     \caption{Embedded roots for the special embedding  $A_1\oplus A_1\subset A_3$}
+%     \label{fig:A1+A1-A3}
+%   \end{multicols}
+% \end{figure}
+% 
+% For the matrix elements of representation of Cartan subalgebra generators $b_1,b_2$ in
+% the Weyl basis we have $d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}
+% {(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},
+% \frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}
+% {(\alpha_i,\alpha_i)}\right)$ \cite{vasilevich1986method},
+% thus $d(b_1)=\mathrm{diag}(1,-1,1,-1),\; d(b_2)=\mathrm{diag}(1,1,-1,-1)$.
+% The embedded roots $\alpha_1,\alpha_2$ of $A_1\oplus A_1$ in terms of roots $\tilde{\alpha}_i$ of $A_3$ are
+% \begin{equation}
+%   \label{eq:37}
+%   \begin{array}{l}
+%      \alpha_1=\frac{1}{2}(\tilde{\alpha}_1+\tilde{\alpha}_3)\\
+%      \alpha_2=\frac{1}{2}(\tilde{\alpha}_1+2\tilde{\alpha}_2+\tilde{\alpha}_3)
+%   \end{array}
+% \end{equation}
+% (See Figure \ref{fig:A1+A1-A3}.)
+% 
+% This injection is characterised by the embedding indices $(2,2)$ and is conformal,
+% since $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
+% 
+% We are interested in the reduction of the fundamental modules of $\hat A_3$.
+% Four fundamental weights of level 1 have the following coordinates in the orthogonal basis: 
+% \begin{equation}
+%   \begin{array}{lll}
+%      w_0 & = & (0,0,0,0;1;0),\\
+%      w_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0),\\
+%      w_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0),\\
+%      w_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0). \\
+%   \end{array}
+% \end{equation}
+% 
+% For the sets of positive roots $\Delta^{+}$ and $\Delta_{\mathfrak{a}}^{+}$ we have
+% \begin{equation}
+%   \label{eq:38}
+%   \begin{array}{lll}
+%     \Delta^{+} &=&\left\{\co{\Delta}^{+}=\{\tilde{\alpha}_1, \tilde{\alpha}_2, \tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2, \tilde{\alpha}_2+\tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2+\tilde{\alpha}_3\};\right.\\
+%     &\; & \quad\left.\co{\Delta}+n\delta;\;     +n\delta\;\mbox{with multiplicity}\; 3;\; n=1,2,\dots,\right\}\\
+%     \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1+n\delta,\pm \alpha_2+n\delta;\; +n\delta\; \mbox{with multiplicity} \; 2;\; n=1,2,\dots\}\\
+%   \end{array}
+% \end{equation}
+% The set $\Delta^{+}_{\bot}$ is empty.
+% The fan $\Gamma _{\frak{a}\subset \frak{g}}$ is shown in the Figure \ref{fig:A1+A1-A3_fan}.
+% The coordinates of fan element finite part are given in the basis of $A_1\oplus A_1$ fundamental roots.
+% The fan elements $\gamma$ are marked by crosses if  $s(\gamma)=1$ and by diamonds if $s(\gamma)=-1$.
+% \begin{figure}[h!tb]
+%   \includegraphics[width=135mm]{A1+A1-A3_fan.eps}
+%   \caption{The fan for the special embedding $\hat A_1\oplus\hat A_1\subset\hat A_3$}
+%   \label{fig:A1+A1-A3_fan}
+% \end{figure}
+% 
+% We limit our calculations by the first 5 grades.
+% \begin{figure}[t]
+% %\begin{figure}[p]
+% %  \hspace*{-1cm}
+%   \includegraphics[width=135mm]{A1+A1-A3_anom.eps}
+%   \caption{Projected anomalous weights for $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$}
+%   \label{fig:A1+A1-A3_anom}
+% \end{figure}
+% 
+% The set of anomalous weights $\widehat{\Psi_{\hat A_3}^{(\mu)}}$
+% and its projection $\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ for
+% $\mu=w_2=(0,1,0;1;0)$ is shown in the Figure \ref{fig:A1+A1-A3_anom}.
+% Coordinates of the finite part are given in the basis of fundamental weights of $A_1\oplus A_1$.
+% The weights are marked by crosses if $\epsilon(\omega)=1$ and by diamonds otherwise.
+% 
+% 
+% The anomalous branching coefficients for the module $L^{(w_2)}$ are shown in the Figure  \ref{fig:A1+A1-A3_branching}.
+% Inside the chamber $\bar{C_{\mathfrak{a}}}$ the anomalous branching coefficients coinside with
+% the branching coefficients of $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$
+% and are marked by the stars in the Figure \ref{fig:A1+A1-A3_branching}.
+% \begin{figure}[b]
+% %\begin{figure}[p]
+% %  \hspace*{-1cm}
+%   \includegraphics[width=135mm,height=85mm]{A1+A1-A3_branching.eps}
+%   \caption{Anomalous branching coefficients for $L^{w_2}_{\hat A_3\downarrow \hat{A_1}\oplus\hat{A_1}}$}
+%   \label{fig:A1+A1-A3_branching}
+% \end{figure}
+% 
+% Treating analogously the modules $L^{w_0}_{\hat A_3}, L^{w_1}_{\hat A_3}, L^{w_3}_{\hat A_3}$
+% we get the following set of branching rules
+%  \begin{equation}
+%    \label{eq:39}
+%    \begin{array}{ll}
+%      L^{(0,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)} \\
+%      L^{(1,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\
+%      L^{(0,1,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & \left( L_{\hat{A_1}}^{(2;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)}\right) \oplus \left( L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(2;2;0)}\right) \\
+%      L^{(0,0,1;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\     
+%    \end{array}
+%  \end{equation}
+% 
+% Now we can construct the modular invariant partition function for WZW-model with the chiral algebra $\hat{A}_1\oplus \hat{A}_1$.
+% \begin{eqnarray*}
+%   \label{eq:40}
+%   Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
+%   \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
+% \end{eqnarray*}
+% 
+% By this example we have illustrated the mechanism of our algorithm.
+% We want to remind that the proposed method is universal and can be applied to
+% an arbitrary pair of affine Lie algebras $\mathfrak{a}\subset\mathfrak{g}$.
+% 
 \subsection{Coset models}
 \label{sec:coset-models}
 
