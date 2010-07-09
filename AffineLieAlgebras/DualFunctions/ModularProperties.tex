@@ -1,0 +1,71 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage[pdftex]{graphicx}
+\pagestyle{plain}
+
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\newcommand{\go}{\overset{\circ }{\frak{g}}}
+\newcommand{\ao}{\overset{\circ }{\frak{a}}}
+\newcommand{\co}[1]{\overset{\circ }{#1}}
+
+\begin{document}
+\title{Modular transformations in representation theory of affine Lie algebras}
+\author{Vladimir Lyakhovsky \thanks{ Supported by
+ RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575 }\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:lyakh1507@nm.ru \\
+[5mm] Anton Nazarov \thanks{ Supported by
+the National Project RNP.2.1.1./1575 }\\
+Theoretical Department, SPb State University,\\
+198904, Sankt-Petersburg, Russia \\
+e-mail:antonnaz@gmail.com
+}
+\maketitle
+
+\begin{abstract}
+  We review the appearance of modular transformation in the representation theory of affine Lie algebras, especially the modular properties of branching and string function.
+\end{abstract}
+\begin{Def}
+  Modular form is the analytic function on the upper half plane which transforms in the following way under the modular transformations
+  \begin{equation}
+    \label{eq:1}
+    A=
+    \begin{pmatrix} a & b\\ c & d
+    \end{pmatrix} \quad\mbox{where}\; a,b,c,d\in\mathbb{Z},\quad ad-bc=1,
+  \end{equation}
+  \begin{equation}
+    \label{eq:2}
+    z\to A z=\frac{az+b}{cz+d}
+  \end{equation}
+\end{Def}
+
+{\bf Questions}
+\begin{itemize}
+\item The modular properties of WZW models are naturally connected with the problem of theory definition on the torus. What can we say about the pure representation theory? What is the analogue of the torus?
+\item What kind of constrains on the stars and fans follow from the modular invariance?
+\item The modular invariance is important in the number theory. What problems of number theory are connected through the modular transformations with the representation theory?
+\item I need to write about the Hecke algebras
+\item How are Hecke algebras connected to the modular forms?
+\item Are there any kind of modular invariance analogues for the finite-dimensional Lie algebras? There exists the lattice.
+\item What become of modular invariance during the quantization? Are there any properties of quantum integrable systems that follow from the modular invariance?
+\end{itemize}
+
+\bibliography{article}{}
+\bibliographystyle{utphys}
+
+\end{document}
