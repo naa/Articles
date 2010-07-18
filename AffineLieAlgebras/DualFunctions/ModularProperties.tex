@@ -56,7 +56,7 @@ e-mail:antonnaz@gmail.com
   \end{equation}
 \end{Def}
 \begin{Def}
-  {\bf Modular form} of weight $k$ is the analytic function $F$ on the upper half plane with infinity ( $F(i\infty)$ is holomorphic) which transforms in the following way under the modular transformations
+  {\bf Modular form} of weight $k$ is the function $F$ on the upper half plane with infinity which transforms in the following way under the modular transformations
   \begin{equation}
     \label{eq:3}
     F(Az)=(cz+d)^k F(z)
@@ -76,9 +76,21 @@ For $k\geq 4$ we have the following example (Eisenstein series):
   \label{eq:5}
   G_k(\Lambda)=\sum_{\lambda\in \Lambda, \lambda\neq 0} \lambda^{-k}
 \end{equation}
-Vector space of weight $k$ modular forms is finite dimensional.
+\begin{comment}
+Eisenstein series are important in the discussion of $\Gamma_n$-modular forms, see later.
+\end{comment}
 
-The quotient of the complex numbers by a lattice is an elliptic curve and every elliptic curve arises in this way. ($y^2=f(x)$, $f$ - cubic polynomial).
+This requirement is not really strong, additional requirement of $F$ being holomorphic function at the upper half-plane with infinity is really powerful. It is well-known that the space of the (holomorphic) modular forms of weight $k$ is finite-dimensional. We discuss it later in the connection with the cusp forms and forms of weight $k$ over $\Gamma(N)$.
+
+\begin{comment}
+The quotient of the complex numbers by a lattice is an elliptic curve and every elliptic curve arises in this way. ($y^2=f(x)$, $f$ - cubic polynomial).  
+\end{comment}
+
+\begin{Def}
+  {\bf Index} of a subgroup $H\subset G$ is the number of cosets of $H$ in $G$, it is denoted by $\left|G:H\right|$.
+\end{Def}.
+
+Let $\Gamma \subset \mathrm{SL}(2,\mathbb{Z})$ be a subgroup of finite index. Given a positive integer $k$, a modular form $F$ for $\Gamma$ of weight $k$ is a holomorphic function on the upper half-plane which transforms as in \eqref{eq:3} and is also holomorphic at the cusps of $\Gamma$. 
 
 For $N\in \mathbb{N},$ define
 \begin{equation}
@@ -86,6 +98,11 @@ For $N\in \mathbb{N},$ define
   \Gamma(N)=\left\{
       \begin{pmatrix} a & b \\ c & d
       \end{pmatrix}
+      \equiv
+      \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{pmatrix} (\text{mod}\; N)
       \right|\left.
         \begin{matrix}
           a,b,c,d\in \mathbb{Z},\quad ad-bc=1\\
@@ -93,7 +110,7 @@ For $N\in \mathbb{N},$ define
         \end{matrix}
       \right\}
   \end{equation}
-The subgroup $\Gamma(N)$ has {\it finite index} (define!) in $\Gamma(1)=SL(2,\mathbb{Z})$. For any $\tau\in \mathbb{C}$ there exists element of $SL(2,\mathbb{Z})$, which transforms it to the fundamental domain.
+The subgroup $\Gamma(N)$ has {\it finite index} in $\Gamma(1)=SL(2,\mathbb{Z})$. For any $\tau\in \mathbb{C}$ there exists element of $SL(2,\mathbb{Z})$, which transforms it to the fundamental domain.
 
 For $A\in SL(2,\mathbb{Z})$ define
 \begin{equation}
@@ -118,7 +135,7 @@ Let $k\in \mathbb{R}$. A complex valued holomorphic function $f$ on the upper ha
 for all $\tau$ in the upper half-plane and $A\in \Gamma$.
 
 
-For the $d$-dimensional lattice $L$ with the non-degenerate form $(\cdot,\cdot)$ we can define theta-functions
+For the $d$-dimensional lattice $L$ with the non-degenerate form $(\cdot,\cdot)$ we can define theta functions
 \begin{equation}
   \label{eq:8}
   \Theta_L (\tau)=\sum_{x\in L}e^{\pi i \tau (x,x)}
@@ -129,8 +146,12 @@ $\Theta_L$ is modular of weight $d/2$.
   How can we link the $d$-dimensional lattice $L$ with the lattice $\Lambda_{\tau}$?
 \end{comment}
 
-Now we can consider the weight lattice of the affine Lie algebra $\mathfrak{g}$.
-Cartan subalgebra:
+Since this construction gives us the modular forms from any lattice it is natural to introduce theta functions on the weight lattice of affine Lie algebra.
+
+The connection between the theta functions and the string/branching functions is revealed in the papers \cite{kac1984infinite,kac1988modular}. Here we briefly describe this connection using the text of the book \cite{kass1990ala} (see pages 212-218).
+
+Now we consider the weight lattice of the affine Lie algebra $\mathfrak{g}$.
+Its Cartan subalgebra has the following decomposition:
 \begin{equation}
   \label{eq:6}
   \mathfrak{h}=\mathbb{C}\Lambda_0\oplus \co{\mathfrak{h}}\oplus \mathbb{C}\delta
@@ -159,7 +180,6 @@ where
 \end{equation}
 (Here $k$ - level of the representation, $g$ - dual Coxeter number).
 
-See Kac, Peterson 1984 for the original proof.
 \section{Questions}
 \label{sec:questions}
 \begin{itemize}
