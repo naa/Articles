@@ -80,6 +80,44 @@ Vector space of weight $k$ modular forms is finite dimensional.
 
 The quotient of the complex numbers by a lattice is an elliptic curve and every elliptic curve arises in this way. ($y^2=f(x)$, $f$ - cubic polynomial).
 
+For $N\in \mathbb{N},$ define
+\begin{equation}
+  \label{eq:12}
+  \Gamma(N)=\left\{
+      \begin{pmatrix} a & b \\ c & d
+      \end{pmatrix}
+      \right|\left.
+        \begin{matrix}
+          a,b,c,d\in \mathbb{Z},\quad ad-bc=1\\
+          a\equiv d\equiv 1\; \text{mod}\; N,\quad b\equiv c\equiv 0\; \text{mod}\; N
+        \end{matrix}
+      \right\}
+  \end{equation}
+The subgroup $\Gamma(N)$ has {\it finite index} (define!) in $\Gamma(1)=SL(2,\mathbb{Z})$. For any $\tau\in \mathbb{C}$ there exists element of $SL(2,\mathbb{Z})$, which transforms it to the fundamental domain.
+
+For $A\in SL(2,\mathbb{Z})$ define
+\begin{equation}
+  \label{eq:13}
+  j(A,\tau)=c\tau+d.
+\end{equation}
+Note that
+\begin{equation}
+  \label{eq:14}
+  j(BA,\tau)=j(B,A\tau)j(A,\tau).
+\end{equation}
+For any subgroup $\Gamma$ of finite index define a {\bf multiplier system} $\chi$ as a mapping
+\begin{equation}
+  \label{eq:15}
+  \chi:\Gamma\to U(1).
+\end{equation}
+Let $k\in \mathbb{R}$. A complex valued holomorphic function $f$ on the upper half-plane of the complex plane is a modular form of weight $k$ with respect to $\Gamma$ if there exists a multiplier system $\chi$ for $\Gamma$ with
+\begin{equation}
+  \label{eq:16}
+  f(\tau)=\chi(A) j(A,\tau)^{-k} f(A\tau),
+\end{equation}
+for all $\tau$ in the upper half-plane and $A\in \Gamma$.
+
+
 For the $d$-dimensional lattice $L$ with the non-degenerate form $(\cdot,\cdot)$ we can define theta-functions
 \begin{equation}
   \label{eq:8}
