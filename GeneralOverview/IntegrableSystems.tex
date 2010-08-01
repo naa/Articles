@@ -2,18 +2,33 @@
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm} \usepackage{pb-diagram}
 \usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage[russian]{babel}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[russian]{babel}
 \usepackage{cmap}
 \usepackage{graphicx}
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
-\begin{document}
-\section{Интегрируемые системы}
-\label{sec:IntSys}
+\newenvironment{comment}
+{\par\noindent{\bf Comment}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
 
-\subsection{Интегируемые системы}
-\label{sec:-}
+\newtheorem{statement}{Statement}
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\newcommand{\go}{\overset{\circ }{\frak{g}}}
+\newcommand{\ao}{\overset{\circ }{\frak{a}}}
+\newcommand{\co}[1]{\overset{\circ }{#1}}
+
+\begin{document}
+
+\title{Introduction to quantum integrable systems and quantum groups}
+
+\begin{abstract}
+  We review quantum integrable systems and discuss the connection with the representation theory of finite-dimensional and affine Lie algebras. Then we consider the quantum groups which are constructed as the deformations of the universal enveloping algebras.
+\end{abstract}
+
+\section{Introduction. Historical overview.}
+\label{sec:intr-hist-overv}
+
 
 Введение в квантовые интегрируемые системы и метод квантовой обратной задачи рассеяния. 
 
