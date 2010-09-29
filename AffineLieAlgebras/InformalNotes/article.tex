@@ -8,8 +8,9 @@
 %\usepackage[russian]{babel}
 \usepackage{cmap}
 \usepackage{color}
-%\usepackage[pdftex]{graphicx}
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+%\usepackage{graphicx}
 %\pagestyle{plain}
 %\usepackage[unicode,verbose,plainpages=false]{hyperref}
 \usepackage{hyperref}
@@ -54,9 +55,9 @@ The branching problem for affine Lie algebras emerges in conformal field theory,
 in the construction of modular-invariant partition functions \cite{difrancesco1997cft}.
 Recently the problem of conformal embeddings was considered in the paper \cite{coquereaux2008conformal}.
 
-There exist several approaches to deal with the branching coefficients. Some of them use the BGG
+There exist several different approaches to deal with the branching coefficients. Some of them use the BGG
 resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in
-\cite{kac1990idl},\cite{wakimoto2001idl}), the Schure function series \cite{fauser2006new}, the BRST
+\cite{kac1990idl},\cite{wakimoto2001idl}), the Schur function series \cite{fauser2006new}, the BRST
 cohomology \cite{Hwang:1994yr}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
 combinatorial methods applied in \cite{feigin707principal}.
 
@@ -89,8 +90,8 @@ underlying finite-dimensional subalgebras $\go$ and $%
 }$ such that $\frak{a}$ is a reductive subalgebra $\frak{a\subset g}$ with
 correlated root spaces: $\frak{h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g%
 }}^{\ast }$ and $\frak{h}_{\ao}^{\ast }\subset \frak{h%
-}_{\go}^{\ast }$\ .
-
+}_{\go}^{\ast }$\ 
+.
 We use the following notations:
 
 $L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
@@ -195,7 +196,7 @@ mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }\quad $;
 \left( \alpha \right) }}=\Psi _{\frak{a}}^{\left( 0\right) }\right) $--- the
 denominator;
 
-$  L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus
+$ L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus
 \limits_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$
  --- the module decomposition with respect to $\frak{a}\longrightarrow \frak{g}$;
 
@@ -822,6 +823,7 @@ The substitution of the generators of $\mathfrak{a}$  in terms of the generators
 \end{mynote}
 \subsubsection{Special embedding $\hat{A}_1\subset\hat{A}_2$}
 \label{sec:spec-embedd-hata_1s}
+
 Consider the case where both $\mathfrak{g}$ and $\mathfrak{a}$ are affine Lie algebras:
 $\hat{A}_1 \longrightarrow \hat{A}_2$ and the injection is the affine extension of the
 special injection $A_1 \longrightarrow A_2$ with the embedding index $x_e=4$.
