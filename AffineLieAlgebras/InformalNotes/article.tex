@@ -8,7 +8,7 @@
 %\usepackage[russian]{babel}
 \usepackage{cmap}
 \usepackage{color}
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \usepackage{epstopdf}
 %\usepackage{graphicx}
 %\pagestyle{plain}
@@ -32,6 +32,10 @@
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
 
 \begin{document}
 
@@ -359,6 +363,55 @@ We are almost ready to state and prove the recurrent relation for the anomalous 
 
 \subsection{Proof of the recurrent relation}
 \label{sec:proof}
+First we prove the lemma
+\begin{lemma}
+Denote by $\mathcal{D}=\rho_{\af_{\bot}}-\pi_{\mathfrak{a}_{\bot}}\rho$ the difference between the Weyl vector of orthogonal subalgebra $\af_{\bot}$ and the projection of the Weyl vector of the algebra $\mathfrak{g}$. Then
+the quotient of the singular weights element $\Psi^{(\mu)}$ by the denominator $R_{\af_{\bot}}$ is given by the formal element corresponding to the modified set of the singular weights of $L_{\af\oplus\mathfrak{h}_d}^{(\pi_{\af\oplus\mathfrak{h}_d}\mu)}$ with the multiplicities given by the dimensions of $\af_{\bot}$-modules.
+\begin{equation*}
+  \frac{\Psi^{(\mu)}_{\mathfrak{g}}}{\prod_{\alpha\in \Delta^{+}_{\bot}}\left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}}=
+    \sum_{u\in W/W_{\bot}}\epsilon(u)e^{\pi_{\af\oplus\mathfrak{h}_d}\left[(u(\mu+\rho)-\rho)\right]+\mathcal{D}}\cdot \mathrm{ch}_{\af_{\bot}}
+      L^{\piab(u(\mu+\rho)-\rho)-\mathcal{D}}
+\end{equation*}
+\begin{proof}
+  Consider $\Psi^{(\mu)}_{\mathfrak{g}}$. It is given by the sum over the Weyl group.
+  \begin{equation*}
+    \Psi^{(\mu)}_{\mathfrak{g}}=\sum_{w\in W}\epsilon(w)e^{w(\mu+\rho)-\rho}
+  \end{equation*}
+  We can divide the summation to the sum over $W_{\bot}$ and sum over all the classes of $W/W_{\bot}$: $w=vu,\; v\in W_{\bot},\; u \in W/W_{\bot}$. We have the following obvious property of the projections:
+  \begin{equation*}
+    \label{eq:5}
+    u(\mu+\rho)=\pia(u(\mu+\rho))+\piab(u(\mu+\rho))+\pi_{(\mathfrak{h}\setminus
+      (\mathfrak{h}_{\af}+\mathfrak{h}_{\af_{\bot}}))^*}(u(\mu+\rho))
+  \end{equation*}
+  Let's denote $\mathfrak{h}\setminus (\mathfrak{h}_{\af}+\mathfrak{h}_{\af_{\bot}})$ by $\mathfrak{h}_d$,
+  $\mathfrak{h}=\mathfrak{h}_{\af}+\mathfrak{h}_{\af_{\bot}}+\mathfrak{h}_d$. Since $\mathfrak{h}_{\af}^*,\mathfrak{h}_d^*$ are invariant under the action of $v\in W_{\bot}$, we have
+  \begin{equation*}
+    \begin{array}{cc}
+      vu(\mu+\rho)-\rho & = v\cdot(\piab(u(\mu+\rho))-\rho_{\afb}+\rho_{\afb})-\rho_{\afb}+\\
+      & \pia(u(\mu+\rho))-\rho+\rho_{\afb}+
+      \pi_{\mathfrak{h}_d^*}(u(\mu+\rho))
+    \end{array}
+  \end{equation*}
+ Only the first term depends on $v$. So
+  \begin{equation*}
+    \begin{array}{cc}
+    \frac{\Psi^{(\mu)}_{\mathfrak{g}}}{\mathrm{R}_{\afb}}= &
+    \sum_{u\in W/W_{\bot}}\epsilon(u)e^{\pia(u(\mu+\rho))-\rho+\rho_{\afb}+\pi_{\mathfrak{h}_d^*}(u(\mu+\rho))}\cdot\\
+
+    &\cdot\frac{
+      \sum_{v\in W_{\bot}}\epsilon(v)e^{v(\piab u(\mu+\rho)-\rho_{\afb}+\rho_{\afb})-\rho_{\afb}}}{\mathrm{R}_{\afb}}
+  \end{array}
+\end{equation*}
+  We can rewrite the r.h.s. as
+  \begin{equation*}
+    \sum_{u\in W/W_{\bot}}\epsilon(u)e^{\pi_{(\af\oplus\mathfrak{h}_d)}\left[u(\mu+\rho)-\rho\right]+\pi_{(\af\oplus \mathfrak{h}_d)}\cdot \rho-\rho+\rho_{\afb}}\cdot
+    \mathrm{ch}_{\afb}L^{\pi_{\afb}u(\mu+\rho)-\rho_{\afb}}.
+  \end{equation*}
+  Since $\pi_{\afb}(u(\mu+\rho)-\rho)-(\rho_{\afb}-\pi_{\afb}\rho)=\pi_{\afb}(u(\mu+\rho)-\rho)-\mathcal{D}$ and $\pi_{(\af\oplus\mathfrak{h}_d)}\rho-\rho=-\pi_{\afb}\rho$ we get the statement of the Lemma.
+
+\end{proof}
+\end{lemma}
+
 \begin{theorem}
   For the anomalous branching coefficients (\ref{eq:21}) holds the recurrent relation
   \begin{equation}
