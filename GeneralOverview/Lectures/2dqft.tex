@@ -366,7 +366,7 @@ $e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$,
   \label{eq:35}
   f(t,h)=t^{\frac{1}{a}}g(y).
 \end{equation}
-Для намагниченности имеем
+Для спонтанной намагниченности имеем
 \begin{equation}
   \label{eq:36}
   M=-\left.\frac{\partial f}{\partial h}\right|_{h=0}=t^{\frac{1-b}{a}}g'(0),
@@ -381,10 +381,29 @@ $e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$,
   \label{eq:38}
   c=-T\left.\frac{\partial^2 f}{\partial T^2}\right|_{h=0}=-\frac{1}{T_c}t^{\frac{1}{a-2}}g''(0)
 \end{equation}
-
+В пределе $t\to 0$ $M\sim h^{\frac{1}{\delta}$, поэтому $g'(y)\sim y^{\frac{1}{\delta}}$ при $y\to \infty$. А значит, если в критической точке намагниченность $M$ конечна и не равна нулю, должно выполняться равенство $1-b-\frac{b}{\delta}=0$. Подставляя выражение для $\delta$ через $b$ в (\ref{eq:36},\ref{eq:37},\ref{eq:38}), мы получаем связь критических индексов
+  \begin{eqnarray}
+    \label{eq:39}
+    \alpha=2-\frac{1}{a}\\
+    \beta=\frac{1-b}{a}\\
+    \gamma=-\frac{1-2b}{a}\\
+    \delta=\frac{b}{1-b}
+  \end{eqnarray}
 \subsection{Процедура Каданова}
 \label{sec:kadanoff-procedure}
-
+Теперь обоснуем гипотезу подобия в модели Изинга при помощи процедуры Каданова и свяжем индексы $a,b$ с $\nu,\eta$.
+Рассмотрим кубическую $d$-мерную модель Изинга.
+\begin{equation}
+  \label{eq:40}
+  H=-J\sum_{\left<ij\right>}\sigma_i \sigma_j-h\sum_i \sigma_i
+\end{equation}
+Разбиваем решетку на блоки со стороной в $r$ ячеек. Будем нумеровать блоки большими латинскими буквами $I,J$ и понимать под записью $i\in I$ перечисление вершин в $I$-том блоке.
+Сумма спинов в блоке принимает значения от $r^{-d}$ до $r^d$. Введем блочный спин
+\begin{equation}
+  \label{eq:41}
+  \Sigma_I=\frac{1}{R}\sum_{i\in I}\sigma_i
+\end{equation}
+$R$ - нормировочный множитель, который выбирается так, чтобы блочный спин мог принимать значения $\pm 1$.
 \section{Лекция 3}
 \label{sec:lecture-3}
 
