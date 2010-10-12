@@ -403,7 +403,64 @@ $e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$,
   \label{eq:41}
   \Sigma_I=\frac{1}{R}\sum_{i\in I}\sigma_i
 \end{equation}
-$R$ - нормировочный множитель, который выбирается так, чтобы блочный спин мог принимать значения $\pm 1$.
+$R$ - нормировочный множитель, который выбирается так, чтобы блочный спин мог принимать значения $\pm 1$. Если бы спины были всегда в одном направлении, то $R$ имел бы значение $r^d$. 
+
+Мы предполагаем, что поведение вблизи критической точки описывается в терминах блочных спинов, так как корреляционная длина $\xi>>r$. Гамильтониан для блочных спинов имеет вид
+\begin{equation}
+  \label{eq:42}
+  H'=-J' \sum_{\left<IJ\right> \Sigma_I \Sigma_J-h' \sum_I \Sigma_I
+\end{equation}
+Так как корреляционная длина для блоков
+\begin{equation}
+  \label{eq:43}
+  \xi'=\frac{\xi}{r},
+\end{equation}
+то из (\ref{eq:31}) для температуры имеем
+\begin{equation}
+  \label{eq:44}
+  t'=r^{\frac{1}{\nu} t.
+\end{equation}
+Суммарная энергия взаимодействия со внешним полем должна оставаться неизменной, то есть
+\begin{equation}
+  \label{eq:45}
+  h\sum_i \sigma_i=h' \sum_I \Sigma_I=\frac{h'}{R}\sum_i \sigma_i\quad\Longrightarrow\quad h'= Rh
+\end{equation}
+Так как общая свободная энергия тоже не должна меняться, то свободная энергия на блок $\sim r^d f$, то есть
+\begin{equation}
+  \label{eq:46}
+  f(t',h')=r^d f(t,h)
+\end{equation}
+или
+\begin{equation}
+  \label{eq:47}
+  f(t,h)=r^{-d} f(r^{\frac{1}{\nu}} t, Rh)
+\end{equation}
+Осталось вычислить $R$ как функцию от $r$, чтобы оправдать гипотезу подобия. Смотрим на парный коррелятор в критической точке
+\begin{multline}
+  \label{eq:48}
+  \Gamma'(\vec n)=\left< \Sigma_I\Sigma_J\right>-\left< \Sigma_I\right>\left<\Sigma_J\right>=\frac{1}{R^2}\sum_{i\in I}\sum_{j\in J}\left(\left<\sigma_i \sigma_j\right>-\left<\sigma_i\right>\left<\sigma_j\right>\right) =\\
+  = \frac{r^{2d}}{R^2}\Gamma(r\vec n)=\frac{R^{-2}r^{2d}}{\left|r\vec n\right|^{d-2+\eta}}=\frac{R^{-2}r^{d+2-\eta}}{\left|\vec n\right|^{d-2+\eta}}
+\end{multline}
+Отсюда
+\begin{equation}
+  \label{eq:49}
+  R=r^{\frac{d+2-\eta}{2}}, \quad h'=r^{\frac{d+2-\eta}{2}}h
+\end{equation}
+Подставляя в (\ref{eq:33}) $r=\lambda^{\frac{1}{d}}$ получаем выражение для скейлинговых параметров $a,b$:
+\begin{eqnarray}
+  \label{eq:50}
+  a=\frac{1}{\nu d}\\
+  b=\frac{d+2-\eta}{2d}
+\end{eqnarray}
+Для критических индексов имеем
+\begin{eqnarray}
+  \label{eq:51}
+  \alpha=2-\nu d\\
+  \beta=\frac{1}{2}\nu (d-2+\eta)\\
+  \gamma=\nu (2-\eta)\\
+  \delta=\frac{d+2-\eta}{d-2+\eta}
+\end{eqnarray}
+
 \section{Лекция 3}
 \label{sec:lecture-3}
 
