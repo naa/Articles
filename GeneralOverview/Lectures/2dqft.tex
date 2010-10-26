@@ -605,7 +605,7 @@ $\beta_i$ называется $\beta$-функцией параметра $u_i$
 \end{equation}
 Эта точка неподвижна относительно преобразований ренормгруппы. В фиксированной точке теория масштабно-инвариантна на квантовом уровне.
 
-\section{Лекция 4. Ренормгруппа в двух измерениях.}
+\section{Лекция 4. Уравнение Каллана-Симанчика. Ренормгруппа в двух измерениях.}
 \label{sec:lecture-4}
 
 Вообще говоря, квантовая теория поля может быть не масштабно-инвариантна из-за наличия размерных параметров на классическом уровне или возникающих при перенормировке. Действие
@@ -613,22 +613,57 @@ $\beta_i$ называется $\beta$-функцией параметра $u_i$
   \label{eq:73}
   S=\int d^dx \mathcal{L}
 \end{equation}
-зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$. Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$. Такое преобразование, в соответствии с предыдущей лекцией,  можно рассматривать как преобразование констант связи $\vec u\to \vec u'$. При наличии масштабной инвариантности $\vec u = \vec u'$. Вариация плотности лагранжиана дается Нётеровским током:
+зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$. Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$. Такое преобразование, в соответствии с предыдущей лекцией,  можно рассматривать как преобразование констант связи $\vec u\to \vec u'$. При наличии масштабной инвариантности $\vec u = \vec u'$. При инфинитезимальных преобразованиях $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током:
 \begin{equation}
   \label{eq:74}
-  \delta_{\omega}\mathcal{L}=\partial_{\mu}J^{\mu}\omega
+  \delta\mathcal{L}=\partial_{\mu}J^{\mu}dl
 \end{equation}
 \begin{equation}
   \label{eq:75}
   J^{\mu}=x_{\nu}T^{\mu\nu}
 \end{equation}
-Здесь $T^{\mu\nu}$ - тензор энергии-импульса. Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. Через $\Theta$ мы обозначили след тензора энергии-импульса. В масштабно-инвариантной теории тензор энергии-импульса бесследовый. 
+Здесь $T^{\mu\nu}$ - тензор энергии-импульса.  Через $\Theta$ мы обозначим след тензора энергии-импульса $\Theta=\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}$. Он задает вариацию действия
+\begin{equation}
+  \label{eq:87}
+  \delta S=dl \int d^d x \Theta(x)
+\end{equation}
+Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В масштабно-инвариантной теории тензор энергии-импульса бесследовый.
+
+В классической теории вид преобразований полей при масштабных преобразованиях легко получаются из анализа размерностей. Напомним, что достаточно иметь одну единицу измерения - длины (или обратной длины). Если теория масштабно-инвариантна, то действие должно быть безразмерным. Канонические (классические) размерности полей легко определить из требования безразмерности слагаемых в функционале действия, если ввести соглашение, определяющее размерность координат или импульсов.
+
+Будем обозначать каноническую размерность произвольно величины $F$ через $d[F]$.
+Положим $d[p]=-d[x]=1$. Тогда $d[d^d x]=-d,\; d[\partial]=1$. Теперь легко найти размерности полей. Например, для модели $\varphi^4$
+\begin{equation}
+  \label{eq:83}
+  S[\varphi]=\int d^d x\left( -\frac{(\partial \varphi)^2}{2}-\frac{\mu \varphi^2}{2}-\frac{u\varphi^4}{24}+h\varphi\right),
+\end{equation}
+рассмотрим первое слагаемое. Оно должно быть безразмерным. При этом его размерность $d[\int d^d x (\partial \varphi)^2]=2d[\varphi]+2-d=0$. Отсюда $d[\varphi]=d/2-1$. Для общего действия
+\begin{equation}
+  \label{eq:84}
+  S[\varphi]=-\int d^d x\left( \frac{(\partial \varphi)^2}{2}+\sum_n u_n \frac{\varphi^n}{n!}\right)
+\end{equation}
+размерности констант связи следующие:
+\begin{equation}
+  \label{eq:85}
+  d[h=-u_1]=d/2+1,\quad d[\mu=u_2]=2,\quad d[g_4]=4-d,\quad d[g_6]=6-2d,\quad d[g_n]=n-\frac{d(n-2)}{2}
+\end{equation}
+При масштабных преобразованиях поля и константы связи ведут себя так:
+\begin{equation}
+  \label{eq:86}
+  \varphi'(x)=s^{-d[\varphi]}\varphi(x/s),\quad u_i'=s^{-d[u_i]}u_i
+\end{equation}
+
 Напомним, что
 \begin{equation}
   \label{eq:76}
   \beta_{i}(\vec u)=\frac{du_i}{d\ln s}
 \end{equation}
-Если в точке $u$ $\beta_i(\vec u)>0$, то $u_i(\ln s)$ растет, $\beta_i (\vec u)<0$ - убывает. В фиксированной точке $u^*$ $\beta_i(\vec u^*)=0$. Пространство действий делится фиксированной точкой на регионы. Константы связи ``заперты'' в одном из этих регионов. Фиксированная точка может достигаться при $\ln s\to \pm \infty$. Если $u(\ln s)\to u^*$ при $\ln s\to +\infty$, то такая точка называется инфракрасной, если $u(\ln s)\to u^*$ при $\ln s\to -\infty$, то ультрафиолетовой. Введем функции $\Phi_i$:
+Параметр ренормгруппы $s$ связан с параметром масштабного преобразования $l$ соотношением $l=\ln s$, при этом
+\begin{equation}
+  \label{eq:79}
+   \beta_{i}(\vec u)=\frac{du_i}{dl}
+\end{equation}
+Если в точке $u$ $\beta_i(\vec u)>0$, то $u_i(l)$ растет, $\beta_i (\vec u)<0$ - убывает. В фиксированной точке $u^*$ $\beta_i(\vec u^*)=0$. Пространство действий делится фиксированной точкой на регионы. Константы связи ``заперты'' в одном из этих регионов. Фиксированная точка может достигаться при $l\to \pm \infty$. Если $u(l)\to u^*$ при $l\to +\infty$, то такая точка называется инфракрасной, если $u(l)\to u^*$ при $l\to -\infty$, то ультрафиолетовой. Введем функции $\Phi_i$:
 \begin{equation}
   \label{eq:77}
   \Phi_i=\frac{\partial \mathcal{L}}{\partial u_i}
@@ -636,9 +671,93 @@ $\beta_i$ называется $\beta$-функцией параметра $u_i$
 Вариация $\delta \mathcal{L}$ дается их линейной комбинацией.
 \begin{equation}
   \label{eq:78}
-  \Theta(x)=\frac{\partial \mathcal{L}}{\partial (\ln s)}=\sum_i \frac{\partial \mathcal{L}}{\partial u_i}\frac{d u_i}{d(\ln s)}=\sum_i\beta_i(\vec u)\Phi_i(\vec u)
+  \Theta(x)=\frac{\partial \mathcal{L}}{\partial l}=\sum_i \frac{\partial \mathcal{L}}{\partial u_i}\frac{d u_i}{dl}=\sum_i\beta_i(\vec u)\Phi_i(\vec u)
 \end{equation}
 $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$, значит в фиксированной точке ренормгруппы есть масштабная инвариантность.
+
+Рассмотрим $N$-точечную корреляционную функцию --- среднее значение некоторого $N$-точечного локального оператора
+\begin{equation}
+  \label{eq:81}
+  \langle X\rangle =\langle A_1 (x_1)\dots A_N (x_N)\rangle
+\end{equation}
+
+Мы хотим получить уравнение для его преобразования под действием ренормгруппы. Такое уравнение называется уравнением Каллана-Симанчика. 
+
+Вариация корреляционных функций при масштабных преобразованиях может описываться двумя способами.
+
+Во-первых, мы можем вычислить вариацию всех полей:
+\begin{multline}
+  \label{eq:82}
+  \delta \langle X\rangle=\delta \langle A_1(x_1)\dots A_N (x_N)\rangle = \delta \int {\cal D}\varphi A_1 \dots A_N e^{-S[\varphi]} = \\
+  \delta \int {\cal D} \varphi\; \left( \sum_k A_1 \dots \delta A_k \dots A_N e^{-S[\varphi]} -A_1\dots A_N e^{-S[\varphi]}\delta S\right)
+\end{multline}
+Вариация $A_k$ дается глобальной дилатацией координат и внутренней вариацией поля в соответствии с его канонической размерностью:
+\begin{equation}
+  \label{eq:88}
+  \delta A_k=dl (x^{\mu}_k\partial^k_{\mu}+d[A_k]) A_k
+\end{equation}
+Вариация действия определяется следом тензора энергии-импульса (\ref{eq:87}). Поэтому
+\begin{equation}
+  \label{eq:89}
+  \delta\langle X\rangle=dl \left(\sum_k (x_k^{\mu}\partial_{\mu}^k+d[A_k])\langle X\rangle-\int d^d y \Theta(y)\right)
+\end{equation}
+
+Другой способ вычисления состоит в вариации полей и действия по константам связи $u_i$:
+\begin{equation}
+  \label{eq:90}
+  \delta\langle X\rangle=dl\sum_i \beta_i(\vec u)\frac{\partial}{\partial u_i}\langle X\rangle,
+\end{equation}
+но
+\begin{equation}
+  \label{eq:91}
+  \frac{\partial}{\partial u_i}\langle X\rangle=\sum_k \langle A_1\dots \frac{\partial A_k}{\partial u_i}\dots A_N\rangle-\int d^d y \langle X \Phi_i(y)\rangle.
+\end{equation}
+Отсюда
+\begin{equation}
+  \label{eq:92}
+  \delta\langle X\rangle=dl \sum_i \sum_k\langle A_1\dots \frac{\partial A_k}{\partial u_i}\dots A_N\rangle-\int d^d y \langle X \Theta(y)\rangle
+\end{equation}
+Сравнивая это уравнение с (\ref{eq:89}) получаем уравнение Каллана-Симанчика:
+\begin{equation}
+  \label{eq:93}
+  \left[ \sum_k\left( x^{\mu}_k \frac{\partial}{\partial x^{\mu}_k}+\Gamma_k(\vec u)\right) -\sum_i \beta_i(\vec u)\frac{\partial }{\partial u_i}\right]\langle X\rangle=0,
+\end{equation}
+где $\Gamma_k$ - аномальная размерность поля $A_k(x_k)$, определяющаяся выражением
+\begin{equation}
+  \label{eq:94}
+  \Gamma_k A_k(x_k)=\left( d[A_k]+\sum_i \beta_i(\vec u) \frac{\partial }{\partial u_i}\right) A_k(x_k).
+\end{equation}
+В частности, для следа тензора энергии-импульса $\Gamma \Theta=2 \Theta$, то есть аномальная размерность равна классической. Это верно и для других компонент тензора энергии-импульса в силу Лоренц-инвариантности.
+
+Реноргрупповой анализ квантовой теории поля в двух измерениях дает следующий результат, известный как $c$-теорема Замолодчикова \cite{zamolodchikov1986irreversibility}.
+
+\begin{theorem}
+  Для любой унитарной квантовой теории поля в двух измерениях существует функция $c(\vec u)$ такая, что
+  \begin{itemize}
+  \item $c(\vec u)$ убывает, как функция параметра ренормгруппы
+    \begin{equation}
+      \label{eq:95}
+      \frac{dc}{dl}\leq 0
+    \end{equation}
+  \item $c(\vec u)$ стационарна в фиксированной точке $\vec u^*$ ренормгруппы, то есть
+    \begin{equation}
+      \label{eq:96}
+      \frac{dc({\vec u^*})}{dl}=0 \Leftrightarrow \beta_i(\vec u^*)=0
+    \end{equation}
+  \item 2-точечные корреляторы в фиксированной точке полностью определяются значением $c=c(\vec u^*)$.
+    Если ввести комплексные координаты $z=x_1+ix_2,\quad \bar z=x_1-ix_2$ и обозначить компоненты тензора энергии импульса через $T=T_{zz}$, $\bar T=T_{\bar z\bar z}$, $\Theta=T_{z\bar z}=T_{\bar z z}=T_{\mu\mu}=0$, то для корреляторов верно следующее выражение
+    \begin{eqnarray}
+      \label{eq:97}
+      \langle T(z,\bar z)T(0,0)\rangle=\frac{c/2}{z^4}\\
+      \langle \bar T(z,\bar z)\bar T(0,0)\rangle=\frac{c/2}{\bar z^4}\\
+      \langle T(z,\bar z) \bar T(0,0)\rangle=0
+    \end{eqnarray}
+    Число $c=\lim_{\vec u\to \vec u^*} c(\vec u)$ называется центральным зарядом. 
+  \end{itemize}
+\end{theorem}
+Для унитарных теорий из этой теоремы следует, что $c_{UV}\geq c_{IR}$.
+
+В фиксированной точке ренормгруппы имеет место масштабная инвариантность. Вместе с трансляционной и лоренц-инвариантностью она порождает конформную инвариантность, то есть инвариантность относительно преобразований, сохраняющих углы.
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
