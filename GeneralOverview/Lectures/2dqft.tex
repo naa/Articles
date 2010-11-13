@@ -8,8 +8,7 @@
 \usepackage{multicol}
 \usepackage{cmap}
 \usepackage{color}
-%\usepackage{graphicx}
-%\usepackage{epstopdf}
+\usepackage{graphicx}
 \pagestyle{plain}
 
 %\usepackage{verbatim} 
@@ -869,6 +868,62 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 \label{sec:lecture-6}
 Суть состоит в сведении вычисления статсуммы в высокотемпературном разложении к решению некоторого рекуррентного соотношения. Это соотношение записывается в матричном виде и его решение дается следом матрицы, который можно вычислить после преобразования Фурье.
 
+Заметим, что суммирование по замкнутым контурам обозначает, что в каждой вершине сходится четное число ребер. Поэтому мы можем перейти от суммирования по замкнутым контурам к суммированию по ``траекториям чернильной точки'' --- замкнутым путям, состоящим из компонент, которые можно нарисовать, не отрывая ручку от бумаги. При этом в случае контура с самопересечениями существует несколько способов нарисовать его. Например, ``восьмерку'' можно представить как два пути, путь без самопересечения и путь с самопересечением (Смотри рисунок \ref{fig:ising-1}).
+\begin{figure}[h!tb]
+  \centering
+    \includegraphics[width=80mm]{ising1}
+  \caption{Переход от контуров к замкнутым путям}
+  \label{fig:ising-1}
+\end{figure}
+Поэтому такие вклады надо брать с множителем $(-1)^{\nu(\Gamma)}$, где $\nu(\Gamma)$ - число самопересечений пути $\Gamma$.
+Статсумма в высокотемпературном разложении \eqref{eq:108} дается выражением
+\begin{equation}
+  \label{eq:113}
+  Z=(\ch K)^M 2^N\sum_c \kappa^{l[c]}.
+\end{equation}
+Обозначим сумму через $\Sigma=\sum_c \kappa^{l[c]}$. Перепишем её через сумму по путям
+\begin{equation}
+  \label{eq:114}
+  \Sigma=\sum_{\Gamma}(-1)^{\nu(\Gamma)} \kappa^{l[\Gamma]}
+\end{equation}
+Воспользуемся следующим утверждением, доказательство которого оставляется в качестве упражнения. Для любой связной замкнутой петли на плоскости с $\nu$ самоперечечениями и полным углом поворота $2\pi(n+1)$ (при ее обходе) верно равенство
+\begin{equation}
+  \label{eq:115}
+  (-1)^{\nu}=(-1)^n.
+\end{equation}
+Сопоставим каждому узлу в пути $\Gamma$ с углом поворота $\varphi$ в нем ($0,\pm \pi/2$) множитель $e^{\frac{i\varphi}{2}}$. Тогда после обхода петли полный множитель будет равен $(-1)^{\nu+1}$. Для несвязного пути, состоящего из $s$ компонент --- $(-1)^{m+s}$, где $m=\sum \nu$. То есть если ввести для пути $\Gamma$ общий множитель $s(\Gamma)$, то $\Sigma$ можно переписать в виде
+\begin{equation}
+  \label{eq:116}
+  \Sigma=\sum_{\Gamma}(-1)^{s(\Gamma)}\prod_{j\in \Gamma} e^{\frac{i\varphi_j}{2}}\kappa^{l[\Gamma]}
+\end{equation}
+Обозначим через $F^{(1)}_l$ сумму по всем однокомпонентным петлям длины $l$, через $F^{(2)}_l$ --- двухкомпонентным и так далее.
+\begin{equation}
+  \label{eq:117}
+  F^{(1)}_l=\sum_{\Gamma:l[\Gamma]=l} \prod_{j\in \Gamma} e^{\frac{i\varphi_j}{2}}.
+\end{equation}
+Тогда $F_l^{(2)}$ можно вычислить через $F^{(1)}$:
+\begin{equation}
+  \label{eq:118}
+  F^{(2)}_l=\frac{1}{2!}\sum_{l_1,l_2:l_1+l_2=l} F^{(1)}_{l_1} F^{(1)}_{l_2}
+\end{equation}
+Аналогично
+\begin{equation}
+  \label{eq:119}
+  F^{(s)}_l=\frac{1}{s!}\sum_{l_1,\dots l_s:l_1+\dots+l_s=l} F^{(1)}_{l_1}\dots F^{(1)}_{l_s}
+\end{equation}
+Теперь мы можем выразить $\Sigma$ через $F^{(1)}$:
+\begin{equation}
+  \label{eq:120}
+  \Sigma=\sum_{s=0}^{\infty}\frac{1}{s!}\sum_{l_1\dots l_s=1}^{\infty} \kappa^{l_1+\dots+l_s}F^{(1)}_{l_1} \dots F^{(1)}_{l_s}=
+  \sum_{s=0}^{\infty}\frac{1}{s!}\left(\sum_{l=1}^{\infty} \kappa^{l}F^{(1)}_{l} \right)^s =\exp\left(-\sum_{l=1}^{\infty} \kappa^l F_l\right)
+\end{equation}
+Петли с числом узлов больше $N$ не дают вклада, так как содержат повторяющиеся ребра и поэтому сократятся (Смотри рисунок \ref{fig:ising-2}).
+\begin{figure}[h!tb]
+  \centering
+  \includegraphics[width=40mm]{ising2}
+  \caption{Сокращение путей с повторяющимися ребрами}
+  \label{fig:ising-2}
+\end{figure}
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
