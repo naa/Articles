@@ -786,7 +786,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
   Z=\sum_{[\sigma]}e^{K\sum_{\left<i,j\right>}(\sigma_i\sigma_j-1+1)}=e^{KM} \sum_{[\sigma]}e^{K\sum_{\left<i,j\right>}(\sigma_i\sigma_j-1)}.
 \end{equation}
 
-\subsection{Низкотемпературное и высокотемпературное разложение. Дуальность Крамерса-Ванье.}
+\subsection{Низкотемпературное и высокотемпературное разложение}
 \label{sec:low-high-temp}
 
 Обозначим выражения, входящие в сумму в последнем уравнении, через $X[\sigma]$:
@@ -924,6 +924,143 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
   \caption{Сокращение путей с повторяющимися ребрами}
   \label{fig:ising-2}
 \end{figure}
+Наша задача свелась к вычислению $F_l$. Рассмотрим произвольную вершину с координатами $(n,m)$. Пронумеруем направления выхода из нее индексом $\nu=1,2,3,4$ против часовой стрелки. Обозначим через $W_l (n,m,\nu|n_0,m_0,\nu_0)$ сумму по всем путям длины $l$, соединяющим вершины $(n_0,m_0)$ и $(n,m)$. Первый шаг пути в направлении $\nu_0$. Учитываются множители $e^{\frac{i\varphi}{2}}$ начиная с узла, следующего за $(n_0,m_0)$ и заканчивая узлом $(n,m)$. Последний шаг пути не должен быть в направлении, противоположном $\nu$. Тогда $F_l$ можно записать как сумму $W_l(n,m,\nu|n,m,\nu)$ по всем вершинам решетки. Каждая петля при этом будет учтена $2l$ раз, так как у нее $l$ возможных вершин начала и два возможных направления.
+\begin{equation}
+  \label{eq:121}
+  F_l=\frac{1}{2l}\sum_{(n,m)\in \mathcal{L}} \sum_{\nu=1,2,3,4} W_l(n,m,\nu|n,m,\nu)
+\end{equation}
+Если мы зафиксируем начальную вершину путей $(n_0,m_0,\nu_0)$, то сумму по путям длины $l+1$ можно выразить через сумму по путям длины $l$. В вершину $(n,m,1)$ пути могут входить с направлений $2,3,4$, то есть последний шаг может быть из вершины $(n-1,m)$ в направлении $1$, из вершины $(n,m-1)$ в направлении $2$ и из вершины $(n,m-1)$ в направлении $4$.
+Аналогично для других направлений. Тогда
+\begin{equation}
+  \label{eq:122}
+\begin{array}{l}
+W_{l+1}(n,m,1)=W_l(n-1,m,1)+e^{-i\pi/4} W_l(n,m-1,2)+e^{i\pi/4}W_l(n,m-1,4)\\
+W_{l+1}(n,m,2)=e^{i\pi/4}W_l(n-1,m,1)+W_l(n,m-1,2)+e^{i\pi/4}W_l(n+1,m,3)\\
+W_{l+1}(n,m,3)=e^{i\pi/4}W_l(n,m-1,2)+W_l(n+1,m,3)+e^{-i\pi/4}W_l(n,m+1,4)\\
+W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
+\end{array}
+\end{equation}
+Эти рекуррентные соотношения можно переписать в матричном виде, если ввести матрицу коэффициентов $\Lambda$:
+\begin{equation}
+  \label{eq:124}
+  W_{l+1}(n,m,\nu)=\sum_{p,q,\mu}\Lambda(n,m,\nu|t,u,\mu) W_l(t,u,\mu)
+\end{equation}
+Если вершины $(t,u)$ и $(n,m)$ не являются соседними, то $\Lambda(n,m,\nu|p,q,\mu)=0$. Матрица $\Lambda$ не зависит от начала пути. $W_{l+1}=\Lambda W_l$, поэтому мы $F_l$ дается следом $l$-той степени $\Lambda$:
+\begin{equation}
+  \label{eq:125}
+  F_l=\frac{1}{2l}\mathrm{Tr} W_l=\frac{1}{2l}\mathrm{Tr} \Lambda^l W_0
+\end{equation}
+Но матрица $W_0=I$ (единичной матрице), поэтому
+\begin{equation}
+  \label{eq:126}
+  F_l=\frac{1}{2l}\mathrm{Tr} \Lambda^l =\frac{1}{2l} \sum_k (\lambda_k)^l,
+\end{equation}
+где $\lambda_k$ - собственные значения матрицы $\Lambda$. Подставим выражение \eqref{eq:126} в формулу \eqref{eq:120}:
+\begin{multline}
+  \label{eq:127}
+  \Sigma=\exp\left(-\sum_{l=0}^{\infty} \frac{\kappa^l}{2l}\mathrm{Tr}\Lambda^l\right)=\exp\left(-\frac{1}{2}\sum_k \sum_{l=0}^{\infty} \frac{(\kappa\lambda_k)^l}{l}\right)=\\
+  \exp\left(\frac{1}{2}\sum_k \ln(1-\kappa\lambda_k)\right)=\prod_k(1-\kappa\lambda_k)^{1/2}=(\det(I-\kappa\Lambda))^{1/2}
+\end{multline}
+Чтобы вычислить детерминант сделаем дискретное преобразование Фурье:
+\begin{equation}
+  \label{eq:128}
+  W_{l}(n,m,\nu)=\sum_{p_1,p_2} \tilde{W}_l(p_1,p_2,\nu) e^{\frac{2\pi i (p_1n+p_2m)}{\sqrt N}}
+\end{equation}
+В импульсном представлении матрица $\Lambda$ будет иметь блочно-диагональный вид
+\begin{equation}
+  \label{eq:129}
+  \Lambda(p_1,p_2,\mu|q_1,q_2,\nu)=\delta_{p,q}\Lambda_p (\mu,\nu),
+\end{equation}
+где
+\begin{equation}
+  \label{eq:130}
+  \Lambda_p(\mu,\nu)=
+  \begin{pmatrix}
+    e^{\frac{2\pi i p_1}{\sqrt N}} & e^{\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & e^{\frac{2\pi i p_2}{\sqrt N}} & e^{-\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 \\
+    0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} & e^{-\frac{2\pi i p_1}{\sqrt N}} & e^{-\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & e^{-\frac{2\pi i p_2}{\sqrt N}}
+  \end{pmatrix}
+\end{equation}
+Матрица $I-\kappa\Lambda$ тоже имеет блочный вид с блоками
+\begin{equation}
+  \label{eq:131}
+  \begin{pmatrix}
+    1-\kappa e^{\frac{2\pi i p_1}{\sqrt N}} & e^{\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & 1-\kappa e^{\frac{2\pi i p_2}{\sqrt N}} & e^{-\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 \\
+    0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} & 1-\kappa e^{-\frac{2\pi i p_1}{\sqrt N}} & e^{-\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & 1- \kappa e^{-\frac{2\pi i p_2}{\sqrt N}}
+  \end{pmatrix}.
+\end{equation}
+В результате вычисления детерминанта получаем
+\begin{eqnarray}
+  \label{eq:132}
+  \Sigma=\prod_{p_1,p_2} D^{1/2}_{p}\\
+  D_p=(1+\kappa^2)^2 -2\kappa (1-\kappa^2)\left( \cos \frac{2\pi p_1}{\sqrt N} +\cos \frac{2\pi p_2}{\sqrt N}\right)
+\end{eqnarray}
+В результате выражение для статсуммы имеет вид
+\begin{equation}
+  \label{eq:133}
+  Z_N=(2\ch^2 K)^N \prod_{p_1,p_2}D_p^{1/2}.
+\end{equation}
+Исследуем критическое поведение. Вычислим для этого удельную свободную энергию:
+\begin{equation}
+  \label{eq:134}
+  f=-T \lim_{N\to \infty}\frac{Z_N}{N}=-T \lim_{N\to \infty} \left(\ln (2\ch^2 K)+\frac{1}{2N}\sum_p \ln D_p\right)
+\end{equation}
+В термодинамическом пределе $N\to \infty$ значения импульса покрывают всю ось, поэтому сумма переходит в интеграл. Мы сделаем замену переменных
+\begin{eqnarray}
+  \label{eq:135}
+  w_1=\frac{2\pi p_1}{\sqrt N}\quad  w_2=\frac{2\pi p_2}{\sqrt N},\quad w_{1,2}\in [0;2\pi]\\
+  dp_1 dp_2=\frac{N}{(2\pi)^2} dw_1 dw_2
+\end{eqnarray}
+Вспомним, что $\kappa=\th K$, поэтому
+\begin{equation}
+  \label{eq:136}
+  -\ln(2\ch^2 K)=\ln\left(\frac{1-\kappa^2}{2}\right)
+\end{equation}
+Нам будет удобно переписать $D_p$  в виде
+\begin{equation}
+  \label{eq:137}
+  D_p=(\kappa^2+2\kappa -1)^2 +4\kappa (1-\kappa^2) \left(\sin^2 \frac{w_1}{2} +\sin^2 \frac{w_2}{2}\right)
+\end{equation}
+Тогда свободная энергия дается интегралом
+\begin{multline}
+  \label{eq:138}
+  f=T\ln\left(\frac{1-\kappa^2}{2}\right)-\\
+  -\frac{T}{8\pi^2}\int_0^{2\pi}\int_0^{2\pi}\ln\left((\kappa^2 +2\kappa-1)^2 +4\kappa (1-\kappa^2)\left(\sin^2 \frac{w_1}{2}+\sin^2\frac{w_2}{2}\right)\right) dw_1 \;dw_2
+\end{multline}
+В критической точке должна быть расходимость. Интеграл может иметь особую точку только при $(\kappa^2 +2\kappa-1)^2 +4\kappa (1-\kappa^2)\left(\sin^2 \frac{w_1}{2}+\sin^2\frac{w_2}{2}\right)=0$. Это выражение имеет минимум при $w_1=w_2=0$. Тогда при $\kappa^2+2\kappa-1=0$ интеграл расходится, что соответствует критической точке.
+\begin{equation}
+  \label{eq:139}
+  \kappa_c=\sqrt 2 -1
+\end{equation}
+В критической точке основной вклад в интеграл дает окрестность $w_1=w_2=0$, введем
+\begin{equation}
+  \label{eq:140}
+  \epsilon=\kappa-\kappa_c
+\end{equation}
+Тогда около критической точки свободная энергия ведет себя как
+\begin{equation}
+  \label{eq:141}
+  f=g(\epsilon)-\frac{T}{8\pi^2}\int_{0}^{2\pi}\int_0^{2\pi}\ln \left( c\epsilon^2 +A(\epsilon)(w_1^2+w_2^2)\right)dw_1\;dw_2.
+\end{equation}
+Здесь $g(\epsilon), A(\epsilon)$ - регулярные функции. Если взять интеграл, то
+\begin{equation}
+  \label{eq:142}
+  f\approx g_1 (\epsilon)+c\epsilon^2 \ln(e)
+\end{equation}
+Тогда для теплоемкости имеем
+\begin{equation}
+  \label{eq:143}
+  c\propto \ln|T-T_c|
+\end{equation}
+То есть мы подтвердили, что критический индекс $\alpha=0$ (см. таблицу \ref{tab:diagrams}). Вычисление других критических индексов также возможно, но сопряжено с техническими трудностями. Мы не будем его проделывать, так как в следующих лекциях мы легко сможем вычислить корреляторы из конформной теории поля.
+\section{Лекция 7. Конформная группа.}
+\label{sec:lecture-7}
+
+Построение Каданова-Вильсона (см. лекцию \ref{sec:kadanoff-procedure}) обосновало нам масштабную инвариантность модели Изинга. Сейчас мы обсудим, какие ограничения накладывает на теорию конформная инвариантность, а затем покажем, что в двух измерениях она следует из масштабной, трансляционной и вращательной инвариантностей.
+
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
