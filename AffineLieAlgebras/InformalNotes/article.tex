@@ -6,10 +6,10 @@
 \usepackage{multicol}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[russian]{babel}
-\usepackage{cmap}
+%\usepackage{cmap}
 \usepackage{color}
 \usepackage{graphicx}
-\usepackage{epstopdf}
+%\usepackage{epstopdf}
 %\usepackage{graphicx}
 %\pagestyle{plain}
 %\usepackage[unicode,verbose,plainpages=false]{hyperref}
@@ -33,19 +33,31 @@
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
 \newcommand{\pia}{\pi_{\mathfrak{a}}}
 \newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\gf}{\mathfrak{g}}
 \newcommand{\af}{\mathfrak{a}}
 \newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
 
 \begin{document}
 
-\title{Recursive algorithms, branching coefficients and applications}
+\title{Recursive algorithms and branching for nonmaximal embeddings}
 \author{V D Lyakhovsky$^1$ and A A Nazarov$^2$}
 \address{$^{1,2}$ Theoretical Department, SPb State University,
 198904, Sankt-Petersburg, Russia }
 \eads{$^1$ \mailto{lyakh1507@nm.ru}, $^2$ \mailto{antonnaz@gmail.com}}
 
 \begin{abstract}
-  Recurrent relations for branching coefficients in affine Lie algebras integrable highest weight modules are studied. The decomposition algorithm based on the injection fan technique is adopted to the situation where the Weyl denominator becomes singular with respect to a reductive subalgebra. We study some modifications of the injection fan technique and demonstrate that it is possible to define the "subtracted fans" that play the role similar to the original ones. Possible applications of subtracted fans in CFT models are considered.
+  Recurrent relations for branching coefficients in affine Lie algebras
+  integrable highest weight modules are studied. The decomposition algorithm
+  based on the injection fan technique is developed for the case of reductive
+  subalgebra. In particular we consider the situations where
+  the Weyl denominator becomes singular with respect to the subalgebra.
+  We study the modifications of the injection fan technique and demonstrate
+  that for any reductive subalgebra it is possible to define the
+  "subtracted fan" -- the tool that describes
+  explicitly the recurrent properties of branching coefficients.
+  Possible applications of subtracted fans in CFT models are considered.
 \end{abstract}
 \ams{17B67, 17B10}
 \submitto{\JPA}
@@ -58,25 +70,46 @@ The branching problem for affine Lie algebras emerges in conformal field theory,
 in the construction of modular-invariant partition functions \cite{difrancesco1997cft}.
 Recently the problem of conformal embeddings was considered in the paper \cite{coquereaux2008conformal}.
 
-There exist several different approaches to deal with the branching coefficients. Some of them use the BGG
+There exist different approaches to deal with the branching coefficients. Some of them use the BGG
 resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in
 \cite{kac1990idl},\cite{wakimoto2001idl}), the Schur function series \cite{fauser2006new}, the BRST
 cohomology \cite{Hwang:1994yr}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
 combinatorial methods applied in \cite{feigin707principal}.
 
-Usually only the maximal reductive subalgebras are considered since the case of non-maximal subalgebra
-can be obtained using the chain of maximal injections. In this paper we find the recurrent properties
-for branching coefficients that generalize the relations obtained earlier (see the paper \cite{ilyin812pbc}
-and the references therein) to the case of non-maximal reductive subalgebra. The result is formulated in
-terms of the new injection fan called "the subtracted fan". Using this new tools we formulate a simple and
-explicit algorithm for computations of branching coefficients which is applicable to the non-maximal
+Usually only the maximal reductive subalgebras $\frak{a} \subset \frak{g} $ are considered since the case of non-maximal subalgebra
+can be obtained using the chain of maximal injections. In this paper we find out that the recurrent properties
+for branching coefficients can be explicitly formulated for an arbitrary reductive subalgebra.
+The principal point is to consider the subalgebra $\af$ together with its
+counterpart $\afb$ "orthogonal" to $\af$ with respect to the Killing form.
+For any reductive $\af$ the subalgebra $\afb \subset \frak{g} $ is a regular and reductive.
+For a highest weight module $L^{\left( \mu \right)}$ and orthogonal pair of subalgebras
+$\left(  \af, \afb \right)$ we consider
+%In the the group algebra $\mathcal{E}\left( \frak{g} \right)$ we consider
+the so called singular element $\Psi^{\left( \mu \right)}$ (the numerator
+in the Weyl character formula
+$ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left( 0\right) }}$, see for example \cite{humphreys1978rth})
+the Weyl denominator $\Psi ^{\left( 0\right) }_{\afb}$ and the projection
+$\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi_{\af}\frac{\Psi ^{\left( \mu \right) }_{\frak{g}}}{\Psi ^{\left( 0\right) }_{\afb}}$.
+We prove that for any highest weight module $L^{\left( \mu \right)}$ and orthogonal pair of subalgebras
+$\left(  \af, \afb \right)$ the element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ has a decomposition with respect to
+the set of Weyl numerators of $\afb$.
+This decomposition provides the possibility to construct the recurrent property for the branching coefficients corresponding
+to the injection $\frak{a} \longrightarrow \frak{g} $.
+This property is formulated in
+terms of a specific element of the group algebra $\mathcal{E}\left( \frak{g} \right)$ called "the subtracted injection fan".
+Using this tool we formulate a simple and
+explicit algorithm for branching coefficients computations applicable for an arbitrary (maximal or non-maximal)
 subalgebras of finite-dimensional and affine Lie algebras.
+In the case of maximal embedding the corresponding fan becomes unsubtracted and the recurrent relations described
+earlier (see the paper \cite{ilyin812pbc}
+and the references therein) are reobtained.
 
 We demonstrate that our algorithm can be used in studies of conformal embeddings and coset constructions
 in rational conformal field theory.
 
-The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the notations.
-In the Section \ref{sec:recurr-form-branch} we derive the subtracted recurrent formula for anomalous
+The paper is organised as follows. In the subsection \ref{sec:notation}  we fix the general notations.
+In the Section \ref{sec:recurr-form-branch} we derive the decomposition formula for
+the subtracted recurrent formula for anomalous
 branching coefficients and describe the decomposition algorithm for integrable highest weight modules
 $L_{\mathfrak{g}}$ with respect to a reductive subalgebra $\mathfrak{a}\subset \mathfrak{g}$
 (subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several
@@ -93,7 +126,7 @@ underlying finite-dimensional subalgebras $\go$ and $%
 }$ such that $\af$ is a reductive subalgebra $\frak{a\subset g}$ with
 correlated root spaces: $\frak{h}_{\af}^{\ast }\subset \frak{h}_{\frak{g%
 }}^{\ast }$ and $\frak{h}_{\ao}^{\ast }\subset \frak{h%
-}_{\go}^{\ast }$\ 
+}_{\go}^{\ast }$\
 .
 We use the following notations:
 
@@ -115,7 +148,6 @@ $ (resp. in $\left( \Delta _{\af}\right) $);
 $\co{\Delta}$ , $\left( \co{\Delta _{\af}}%
 \right)$ --- the finite root system of the subalgebra $\co{%
 \frak{g}}$ (resp. $\co{\af}$);
-$\Theta$, $(\Theta_{\mathfrak{a}})$ --- the highest root of the algebra $\mathfrak{g}$ (resp. subalgebra $\mathfrak{a}$);
 
 $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\af}^{\nu }\right) $ --- the
 weight diagram of $L^{\mu }$ $\left( \mbox{resp. }L_{\af}^{\nu }\right)
@@ -150,32 +182,28 @@ decomposition of an affine weight indicating the finite part $\co{\lambda }$, le
 
 $P$ $\left( \mbox{resp. } P_{\af}\right) $ \ --- the weight lattice;
 
-$M \left( \mbox{resp. }M_{\af}\right) :=$
+%$M \left( \mbox{resp. }M_{\af}\right) :=$
 
-\noindent $=\left\{
-\begin{array}{c}
-\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}^{\vee }\mbox{ }\left( \mbox{resp. }%
-\sum_{i=1}^{r}\mathbf{Z}\alpha _{\left( \af\right) i}^{\vee }\right)
-\mbox{for untwisted algebras or }A_{2r}^{\left( 2\right) }, \\
-\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}\mbox{ }\left( \mbox{resp. }\sum_{i=1}^{r}%
-\mathbf{Z}\alpha _{\left( \af\right) i}\right) \mbox{for }A_{r}^{\left(
-u\geq 2\right) }\mbox{ and }A\neq A_{2r}^{\left( 2\right) },
-\end{array}
-\right\} ;$\\
-$\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu +\rho )-\rho }$ --- the singular weight element for the $\frak{g}$-module $L^{\mu }$;
-$\Psi _{\left( \af\right) }^{\left( \nu \right) }:=\sum\limits_{w\in W_{\af}}\epsilon (w)e^{w\circ (\nu +\rho
-_{_{\af}})-\rho _{_{\af}}}$ --- the corresponding singular weight
-element for the $\af$-module $L_{\af}^{\nu }$;
+%\noindent $=\left\{
+%\begin{array}{c}
+%\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}^{\vee }\mbox{ }\left( \mbox{resp. }%
+%\sum_{i=1}^{r}\mathbf{Z}\alpha _{\left( \af\right) i}^{\vee }\right)
+%\mbox{for untwisted algebras or }A_{2r}^{\left( 2\right) }, \\
+%\sum_{i=1}^{r}\mathbf{Z}\alpha _{i}\mbox{ }\left( \mbox{resp. }\sum_{i=1}^{r}%
+%\mathbf{Z}\alpha _{\left( \af\right) i}\right) \mbox{for }A_{r}^{\left(
+%u\geq 2\right) }\mbox{ and }A\neq A_{2r}^{\left( 2\right) },
+%\end{array}
+%\right\} ;$\\
 
-$\widehat{\Psi ^{\left( \mu \right) }}$ $\left( \widehat{\Psi _{\left( \frak{%
-a}\right) }^{\left( \nu \right) }}\right) $ --- the set of singular weights $%
-\xi \in P$ $\left( \mbox{resp. }\in P_{\af}\right) $ for the module $%
-L^{\mu }$ $\left( \mbox{resp. }L_{\af}^{\nu }\right) $ with the
-coordinates $\left( \co{\xi },k,n,\epsilon \left( w\left( \xi
-\right) \right) \right) \mid _{\xi =w\left( \xi \right) \circ (\mu +\rho
-)-\rho },$ (resp. $\left( \co{\xi },k,n,\epsilon \left(
-w_{a}\left( \xi \right) \right) \right) \mid _{\xi =w_{a}\left( \xi \right)
-\circ (\nu +\rho _{a})-\rho _{a}}$ );
+%$\widehat{\Psi ^{\left( \mu \right) }}$ $\left( \widehat{\Psi _{\left( \frak{%
+%a}\right) }^{\left( \nu \right) }}\right) $ --- the set of singular weights $%
+%\xi \in P$ $\left( \mbox{resp. }\in P_{\af}\right) $ for the module $%
+%L^{\mu }$ $\left( \mbox{resp. }L_{\af}^{\nu }\right) $ with the
+%coordinates $\left( \co{\xi },k,n,\epsilon \left( w\left( \xi
+%\right) \right) \right) \mid _{\xi =w\left( \xi \right) \circ (\mu +\rho
+%)-\rho },$ (resp. $\left( \co{\xi },k,n,\epsilon \left(
+%w_{a}\left( \xi \right) \right) \right) \mid _{\xi =w_{a}\left( \xi \right)
+%\circ (\nu +\rho _{a})-\rho _{a}}$ );
 
 $m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
 }\right) $ --- the multiplicity of the weight $\xi \in P$ \ $\left( \mbox{%
@@ -188,50 +216,69 @@ L_{\af}^{\nu }\right) $;
 
 $ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
 +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
-\mathrm{{mult}\left( \alpha \right) }}}=\frac{\Psi ^{\left( \mu \right) }}{%
-\Psi ^{\left( 0\right) }}$ --- the Weyl-Kac formula;
+\mathrm{{mult}\left( \alpha \right) }}}$ --- the Weyl-Kac formula;
 
 $R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
-mult}\left( \alpha \right) }}=\Psi ^{\left( 0\right) }\quad $;
-
-\noindent $\left( \mbox{resp. }R_{\af}:=\prod_{\alpha \in \Delta _{%
+mult}\left( \alpha \right) }}\quad $
+$\left( \mbox{resp. }R_{\af}:=\prod_{\alpha \in \Delta _{%
 \af}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\af}\mathrm{%
-\left( \alpha \right) }}=\Psi _{\af}^{\left( 0\right) }\right) $--- the
-denominator;
-
-$ L_{\frak{g}\downarrow \af}^{\mu }=\bigoplus
-\limits_{\nu \in P_{\af}^{+}}b_{\nu }^{\left( \mu \right) }L_{\af}^{\nu }$
- --- the module decomposition with respect to $\af\longrightarrow \frak{g}$;
+\left( \alpha \right) }}\right) $--- the
+denominator.
 
 
-$b^{(\mu)}_{\nu}$ --- the branching coefficients,
 
-\begin{equation}
-  \label{eq:21}
-  \sum_{\nu \in \bar{C_{\mathfrak{a}}}}b_{\nu }^{\left( \mu \right) }\Psi _{\left( \frak{%
-        a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\af}}k_{\lambda
-  }^{\left( \mu \right) }e^{\lambda };
-\end{equation}
-
- $k_{\lambda}$ --- the anomalous branching coefficients, notice that
-\begin{equation}
-%  \label{eq:20}
-  b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in \bar{C}_{\mathfrak{a}};
-\label{eq:21-1}
-\end{equation}
-
-$x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}$ --- the embedding index.
-
-\section{Recurrent relation for branching coefficients.}
+\section{Recurrent relations for branching coefficients.}
 \label{sec:recurr-form-branch}
 
-Let $\af\subset \frak{g}$ be a regular subalgebra of $\frak{g.}$
-Applying the Weyl-Kac character formula to the branching rule $\pi _{\af%
-}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu
-)}ch\left( L_{\af}^{\nu }\right) $ we get the relation connecting the
-singular elements $\Psi ^{\left( \mu \right) }$ and $\Psi _{\left( \af%
-\right) }^{\left( \nu \right) }$ :
+Consider the integrable module $L^{\mu }$
+of $\frak{g}$ with the highest weight $\mu $ and
+let $\af\subset \frak{g}$ be a reductive subalgebra of $\frak{g}$.
+With respect to $\af$ the module $L^{\mu }$ is completely reducible,
+\begin{equation*}
+ L_{\frak{g}\downarrow \af}^{\mu }=\bigoplus
+\limits_{\nu \in P_{\af}^{+}}b_{\nu }^{\left( \mu \right) }L_{\af}^{\nu }.
+\end{equation*}
+Using the projection operator $\pi_{\af}$ (to the weight space $\frak{h_a}^*$)
+one can  rewrite this decomposition in terms of formal characters:
+\begin{equation}
+\label{branching1}
+ \pi _{\af}\circ ch\left( L^{\mu }\right)
+ =\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu)}ch\left( L_{\af}^{\nu }\right) .
+\end{equation}
+We are interested in branching coefficients $b^{(\mu)}_{\nu}$.
+
+\subsection{Orthogonal subalgebra and injection fan.}
+\label{subsec:branching-orthog-pair}
+
+In this subsection we shall introduce some simple constructions that will be used
+in our studies of branching and in particular the "orthogonal partner" $\afb$ for a
+reductive subalgebra $\af$  in  $\gf$.
+
+In the Weyl-Kac formula both numerator and denominator  can be considered
+as formal elements containing the singular weights of the Verma modules $V^{\xi}$
+with the highest weights $\xi=\mu$ and $\xi=0$ \cite{humphreys1978rth}.
+We attribute singular numerators to the corresponding integrable modules $L^{\mu }$
+and $L_{\af}^{\nu }$:
+\begin{equation*}
+\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu +\rho )-\rho },
+\end{equation*}
+\begin{equation*}
+\Psi _{ \af}^{\left( \nu \right) }:=
+\sum\limits_{w\in W_{\af}}\epsilon (w)e^{w\circ (\nu +\rho
+_{_{\af}})-\rho _{_{\af}}}.
+\end{equation*}
+and use the Weyl-Kac formula in the form
+\begin{equation}
+\label{Weyl-Kac2}
+ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}
+{\Psi ^{\left( 0 \right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
+\end{equation}
+
+Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
+we get the relation connecting the
+singular elements $\Psi ^{\left( \mu \right) }$ and $\Psi _{ \af}^{\left( \nu \right) }$ :
 \begin{eqnarray}
+\nonumber
 \pi _{\af}\left( \frac{\sum_{w \in W}\epsilon (w )e^{w
 (\mu +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}(1-e^{-\alpha })^{\mathrm{%
 mult}(\alpha )}}\right) &=&\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}%
@@ -239,16 +286,19 @@ mult}(\alpha )}}\right) &=&\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}%
 \af})-\rho _{\af}}}{\prod_{\beta \in \Delta _{\af%
 }^{+}}(1-e^{-\beta })^{\mathrm{mult}_{\af}(\beta )}},  \label{eq:4} \\
 \pi _{\af}\left( \frac{\Psi ^{\left( \mu \right) }}{R}\right)
-&=&\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\left( \frak{%
-a}\right) }^{\left( \nu \right) }}{R_{\af}}.
+&=&\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{ \frak{%
+a}}^{\left( \nu \right) }}{R_{\af}}.
 \end{eqnarray}
-where according to our notations $\Delta _{\af}^{+}$ is the set of
-positive roots of the subalgebra $\af$ (it is convenient to choose them
-from the positive root subspace of $\frak{g}$). Consider the root space $%
-\frak{h}_{\perp \af}^{\ast }$ orthogonal to $\Delta _{\af}$,
+Here $\Delta _{\af}^{+}$ is the set of
+positive roots of the subalgebra $\af$ (without loss of generality we consider
+them as vectors from the positive root space $\frak{h}^{\ast  +}$ of $\frak{g}$).
+
+
+Consider the root subspace
+$\frak{h}_{\perp \af}^{\ast }$ orthogonal to the roots in $\Delta _{\af}$,
 \begin{equation*}
-\frak{h}_{\perp \af}^{\ast }=:\left\{ \eta \in \frak{h}_{\frak{g}%
-}^{\ast }|\forall \alpha \in \Delta _{\af};\alpha \bot \eta \right\} ,
+\frak{h}_{\perp \af}^{\ast }=:\left\{ \eta \in \frak{h}^{\ast }
+|\forall \alpha \in \Delta _{\af};\alpha \bot \eta \right\} ,
 \end{equation*}
 and the roots (correspondingly -- positive roots) of $\frak{g}$ orthogonal
 to $\Delta _{\af}$,
@@ -275,17 +325,18 @@ and consider the subalgebras
 \\
 \widetilde{\af} &:&=\af\oplus \frak{h}_{\perp }.
 \end{eqnarray*}
+Algebras $\af$ and $\af_{\perp }$ form the ''orthogonal pair''
+$\left( \af,\af_{\perp}\right) $
+of subalgebras in $\frak{g}$.
 
-The algebras $\af$ and $\af_{\perp }$ form an ''orthogonal pair''
-of subalgebras in $\frak{g}$. For the Cartan subalgebras we have the
-decomposition
+For the Cartan subalgebras we have the decomposition
 \begin{equation}
 \frak{h}=\frak{\frak{h}_{\af}}\oplus \frak{h}_{\af_{\perp }}\oplus
 \frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\af}}}\oplus \frak{h}_{%
 \af_{\perp }}=\frak{\frak{h}_{\widetilde{\af_{\perp }}}}\oplus
 \frak{h}_{\af}.
 \end{equation}
-For the subalgebras of the orthogonal pair $\left( \af,\af_{\perp
+For the subalgebras of an orthogonal pair $\left( \af,\af_{\perp
 }\right) $ we consider the corresponding Weyl vectors, $\rho _{\af}$
 and $\rho _{\af_{\perp }}$ , and\ form the so called ''defects'' $%
 \mathcal{D}_{\af}$ and $\mathcal{D}_{\af_{\perp }}$ of the
@@ -294,20 +345,21 @@ injection:
 \mathcal{D}_{\af}:=\rho _{\af}-\pi _{\af}\rho ,
 \end{equation}
 \begin{equation}
+\label{defect-perp}
 \mathcal{D}_{\af_{\perp }}:=\rho _{\af_{\perp }}-\pi _{\af%
-_{\perp }}\rho .
+_{\perp }}\circ\rho .
 \end{equation}
 For the highest weight module $L_{\frak{g}}^{\mu }$ consider the singular
-weights $\left( w(\mu +\rho )-\rho \right) \in \widehat{\Psi ^{\left( \mu
-\right) }}$ and their projections to $h_{\widetilde{\af_{\perp }}%
-}^{\ast }$ (additionally shifted by $-\mathcal{D}_{\af_{\perp }}$):
+weights $\left\{\left( w(\mu +\rho )-\rho \right)|w  \in W \right\}$ and
+their projections to $h_{\widetilde{\af_{\perp }}}^{\ast }$ (additionally
+shifted by the defect $-\mathcal{D}_{\af_{\perp }}$):
 \begin{equation*}
 \mu _{\widetilde{\af_{\perp }}}\left( w\right) :=\pi _{\widetilde{\frak{%
-a}_{\perp }}}\left[ w(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp
+a}_{\perp }}}\circ\left[ w(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp
 }},\quad w\in W.
 \end{equation*}
-Among the weights $\mu _{\widetilde{\af_{\perp }}}\left( w\right)
-|_{w\in W}$ choose those located in the fundamental chamber $\overline{C_{%
+Among the weights $\left\{\mu _{\widetilde{\af_{\perp }}}\left( w\right)
+|w\in W\right\}$ choose those located in the fundamental chamber $\overline{C_{%
 \widetilde{\af_{\perp }}}}$ and let $U$ be the set of representatives $%
 u $ for the classes $W/W_{\af_{\perp }}$ such that
 
@@ -318,9 +370,12 @@ U:=\left\{ u\in W|\quad \mu _{\widetilde{\af_{\perp }}}\left( u\right)
 \end{equation}
 For the same set $U$ introduce the weights
 \begin{equation*}
-\mu _{\af}\left( u\right) :=\pi _{\af}\left[ u(\mu +\rho )-\rho %
+\mu _{\af}\left( u\right) :=\pi _{\af}\circ\left[ u(\mu +\rho )-\rho %
 \right] +\mathcal{D}_{\af_{\perp }}.
 \end{equation*}
+To simplify the form of relations we shall now on omit the sign "$\circ$" in projected
+weights.
+
 
 To describe the recurrent properties for branching coefficients $b_{\nu
 }^{(\mu )}$ we shall use the technique elaborated in \cite{ilyin812pbc} one of the
@@ -353,75 +408,98 @@ the lowest vector of $\Phi _{\af\subset \frak{g}}$ . The set
 \end{equation}
 is called the \textit{injection fan}.
 \end{definition}
+In the next subsection we shall see how the injection fan defines the recurrent
+properties of branching coefficients. It must be noticed that the injection fan is
+the universal instrument that depend only on the injection.
 
-The main result is that the Weyl-Kac character formula (in terms of singular
+\subsection{Decomposing the singular element.}
+\label{subsec:decomp-sing-element}
+
+Now we shall prove that the Weyl-Kac character formula (in terms of singular
 elements) describes the particular case of a more general relation:
 
-
 \begin{lemma}
-Let $\af$ and $\af_{\perp }$ be the orthogonal pair of regular
+Let $\left( \af,\afb \right)$ be the orthogonal pair of reductive
 subalgebras in $\frak{g}$, with $\widetilde{\af_{\perp }}=\af%
 _{\perp }\oplus \frak{h}_{\perp }$ and $\widetilde{\af}=\af\oplus
 \frak{h}_{\perp }$ ,
 
-$L_{\frak{g}}^{\mu }$ be the highest weight module with the singular element
-$\Psi _{\frak{g}}^{\mu }$ ,
+$L^{\mu }$ be the highest weight module with the singular element
+$\Psi ^{\left(\mu \right)}$ ,
 
 $R_{\af_{\perp }}$ be the Weyl denominator for $\af_{\perp }$.
 
 Then the element $\pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{%
 \af_{\perp }}}\right) $ can be decomposed into the sum over $u\in U$ (see (\ref{U-def})) of
-the singular elements $e^{\mu _{\af}\left( u\right) }$ with the
+the singular weights $e^{\mu _{\af}\left( u\right) }$ with the
 coefficients $\epsilon (u)\mathrm{\dim }\left( L_{\widetilde{\af_{\perp
 }}}^{\mu _{\widetilde{\af_{\perp }}}\left( u\right) }\right) $:
 \begin{equation}
-\quad \pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af%
-_{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)e^{\mu _{\af}\left(
-u\right) }\mathrm{\dim }\left( L_{\widetilde{\af_{\perp }}}^{\mu _{%
-\widetilde{\af_{\perp }}}\left( u\right) }\right) .
+\quad \pi _{\af}\left( \frac{\Psi^{\mu }}{R_{\af%
+_{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
+\left( L_{\widetilde{\af_{\perp }}}^{\mu _{%
+\widetilde{\af_{\perp }}}\left( u\right) }\right) e^{\mu _{\af}\left( u \right) }.
 \end{equation}
 \end{lemma}
 
 \begin{proof}
-For $u\in $ $U$ \ perform the following decompositions:
+With $u\in U $   and $v\in W_{\afb}$ perform the decomposition
 \begin{equation*}
-u(\mu +\rho )=\pi _{\left( \af\right) }u(\mu +\rho )+\pi _{\left(
-\widetilde{\af_{\perp }}\right) }u(\mu +\rho )
+u(\mu +\rho )=\pi _{\left( \af\right) } u(\mu +\rho )+\pi _{\left(
+\widetilde{\af_{\perp }}\right) } u(\mu +\rho )
 \end{equation*}
-\begin{equation*}
-vu(\mu +\rho )-\rho =\pi _{\left( \af\right) }\left( u(\mu +\rho
-)\right) -\rho +\rho _{\af_{\perp }}+v\left( \pi _{\left( \widetilde{%
+for the singular weight $vu(\mu +\rho )-\rho$:
+\begin{equation}
+\label{sing-decomp-1}
+\begin{array}{lcl}
+vu(\mu +\rho )-\rho &=&\pi _{\left( \af\right) }\left( u(\mu +\rho
+)\right) -\rho +\rho _{\af_{\perp }}+\pi _{\left( \hfb\right) }\rho \\
+&& + \ v\left( \pi _{\left( \widetilde{%
 \af_{\perp }}\right) }u(\mu +\rho )-\rho _{\af_{\perp }}+\rho _{%
-\af_{\perp }}\right) -\rho _{\af_{\perp }}
+\af_{\perp }}\right) -\rho _{\af_{\perp }} -\pi _{\left( \hfb\right) }\rho.
+\end{array}
+\end{equation}
+Use the defect $\mathcal{D}_{\afb}$ (\ref{defect-perp}) to simplify
+the first summand in (\ref{sing-decomp-1}):
+\begin{equation*}
+\begin{array}{r}
+\pi _{\left( \af\right) }\left( u(\mu +\rho )\right) -\rho +\rho _{%
+\mathfrak{a}_{\perp }}+\pi _{\left( \hfb\right) }\rho = \\
+\pi _{\left( \af\right) }\left( u(\mu +\rho )\right) -\pi _{\af}\rho
+-\pi _{\afb}\rho +\rho _{\afb}= \\
+\pi _{\left( \af\right) }\left( u(\mu +\rho )-\rho \right) +%
+\mathcal{D}_{\afb},
+\end{array}
 \end{equation*}
-Use these formulas to decompose the anomalous element $\Psi _{\frak{g}}^{\mu
-}$ of the module $L_{\frak{g}}^{\mu }$ into the linear combination of
+and the second one:
+\begin{equation*}
+\begin{array}{c}
+v\left( \pi _{\left( \widetilde{%
+\af_{\perp }}\right) }u(\mu +\rho )-\rho _{\af_{\perp }}+\rho _{%
+\af_{\perp }}\right) -\rho _{\af_{\perp }}-\pi _{\left( \hfb\right) }\rho=\\
+v\left( \pi _{\left( \widetilde{%
+\afb}\right) }u(\mu +\rho )
+- \mathcal{D}_{\afb} - \pi _{\left( \afb\right) }\rho-\pi _{\left( \hfb\right) }\rho
++\rho _{\afb}\right) -\rho _{\afb}=\\
+v\left( \pi _{\left( \widetilde{%
+\afb}\right) }\left[ u(\mu +\rho )-\rho\right]
+- \mathcal{D}_{\afb}
++\rho _{\afb}\right) -\rho _{\afb}.
+\end{array}
+\end{equation*}
+These expressions provide a kind of a factorization in the anomalous element $\Psi^{\mu
+}$ and we find in it the combination of
 anomalous elements $\Psi _{\widetilde{\af_{\perp }}}^{\eta }$ of the
 subalgebra $\widetilde{\af_{\perp }}$-modules $L_{\widetilde{\af%
 _{\perp }}}^{\eta }$:
 \begin{equation*}
 \begin{array}{l}
-\Psi _{\frak{g}}^{\mu }=\sum_{v\in W_{\af_{\perp }}}\sum_{u\in
-U}\epsilon (v)\epsilon (u)e^{vu(\mu +\rho )-\rho }= \\
-=\sum_{u\in U}\epsilon (u)e^{\pi _{\af}\left( u(\mu +\rho )\right)
--\rho +\rho _{\af_{\perp }}}\sum_{v\in W_{\af_{\perp }}}\epsilon
-(v)e^{v\left( \pi _{\left( \widetilde{\af_{\perp }}\right) }u(\mu +\rho
-)-\rho _{\af_{\perp }}+\rho _{\af_{\perp }}\right) -\rho _{\af%
-_{\perp }}}= \\
-=\sum_{u\in U}\epsilon (u)e^{\pi _{\af}\left( u(\mu +\rho )\right) -\pi
-_{\frak{h}_{\perp }}\rho -\pi _{\af}\rho +\mathcal{D}_{\af_{\perp
-}}}\sum_{v\in W_{\af_{\perp }}}\epsilon (v)e^{v\left( \pi _{\left(
-\widetilde{\af_{\perp }}\right) }u(\mu +\rho )-\rho _{\af_{\perp
-}}+\rho _{\af_{\perp }}\right) -\rho _{\af_{\perp }}}= \\
-=\sum_{u\in U}\epsilon (u)e^{\pi _{\af}\left[ u(\mu +\rho )-\rho \right]
-+\mathcal{D}_{\af_{\perp }}}\sum_{v\in W_{\af_{\perp }}}\epsilon
-(v)e^{v\left( \pi _{\left( \widetilde{\af_{\perp }}\right) }u(\mu +\rho
-)-\rho _{\af_{\perp }}+\rho _{\af_{\perp }}\right) -\pi _{\frak{h}%
-_{\perp }}\rho -\rho _{\af_{\perp }}}= \\
+\Psi^{\mu }=\sum_{u\in U}\sum_{v\in W_{\af_{\perp }}}
+\epsilon (v)\epsilon (u)e^{vu(\mu +\rho )-\rho }= \\
 =\sum_{u\in U}\epsilon (u)e^{\pi _{\af}\left[ u(\mu +\rho )-\rho \right]
 +\mathcal{D}_{\af_{\perp }}}\sum_{v\in W_{\af_{\perp }}}\epsilon
 (v)e^{v\left( \pi _{\left( \widetilde{\af_{\perp }}\right) }\left[
-u(\mu +\rho )-\rho \right] .-\mathcal{D}_{\af_{\perp }}+\rho _{\af%
+u(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp }}+\rho _{\af%
 _{\perp }}\right) -\rho _{\af_{\perp }}}= \\
 =\sum_{u\in U}\;\epsilon (u)e^{\pi _{\left( \af\right) }\left[ u(\mu
 +\rho )-\rho \right] +\mathcal{D}_{\af_{\perp }}}\Psi _{\widetilde{%
@@ -429,10 +507,11 @@ _{\perp }}\right) -\rho _{\af_{\perp }}}= \\
 \left[ u(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp }}}
 \end{array}
 \end{equation*}
+
 Dividing both sides by the Weyl element $R_{\af_{\perp }}=\prod_{\beta
 \in \Delta _{\af_{\perp }}}(1-e^{-\beta })^{\mathrm{mult}(\beta )}$ and
 projecting them to the weight space $h_{\af}^{\ast }$\ we obtain the
-desired relation
+desired relation:
 \begin{eqnarray*}
 \pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}%
 \right)  &=&\sum_{u\in W/W_{\af_{\perp }}}\;\epsilon (u)e^{\pi _{\frak{a%
@@ -449,21 +528,48 @@ e^{\mu _{\af}\left( u\right) }.
 
 
 \begin{remark}
-This relation is a kind of a generalization of the Weyl formula for singular
+This relation can be considered a generalized form of the Weyl formula for singular
 element $\Psi _{\frak{g}}^{\mu }$ : the vectors $\mu _{\af}\left(
-u\right) $ play the role of singular weights while the determinants $%
-\epsilon (u)$ are changed for $\epsilon (u)\mathrm{\dim }\left( L_{%
+u\right) $ play the role of singular weights while instead of the determinants $%
+\epsilon (u)$ we have the products $\epsilon (u)\mathrm{\dim }\left( L_{%
 \widetilde{\af_{\perp }}}^{\mu _{\widetilde{\af_{\perp }}}\left(
 u\right) }\right) .$ In fact when $\frak{a=g}$ both $\af_{\perp }$ and $%
 \frak{h}_{\perp }$ are trivial, $U=W$ , and\ the original Weyl formula is
 easily reobtained.
 \end{remark}
-Now we can state the main theorem which gives us the instrument for the
-recurrent computation of the branching coefficients.
+
+\subsection{Constructing recurrent relations.}
+\label{subsec:Construct-recurrent-rel}
+
+Consider the right-hand side of relation (\ref{eq:4}).
+The numerator there describes the branching in terms of singular elements and
+it is reasonable to expand it as an element of $\mathcal{E}\left( \frak{g} \right)$:
+\begin{equation}
+  \label{eq:21}
+  \sum_{\nu \in \bar{C_{\mathfrak{a}}}}b_{\nu }^{\left( \mu \right) }\Psi _{\left( \frak{%
+        a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\af}}k_{\lambda
+  }^{\left( \mu \right) }e^{\lambda }.
+\end{equation}
+Here the coefficients $k_{\lambda}^{\left( \mu \right) }$ are integer and their signes
+depend on the length (see \cite{humphreys1978rth})  of the Weyl group elements in
+$\Psi _{\left( \frak{a}\right) }^{\left( \nu \right) }$. The important property of
+$k_{\lambda}^{\left( \mu \right) }$'s is that they coinside with the branching coefficients
+for all weights $\nu$ inside the main Weil chamber:
+\begin{equation}
+%  \label{eq:20}
+  b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in \bar{C}_{\mathfrak{a}}.
+\label{eq:21-1}
+\end{equation}
+We call the coefficients $k_{\lambda}$ --- the anomalous branching coefficients
+(see also \cite{ilyin812pbc}).
+
+Now we can state the main theorem which gives us an instrument for the
+recurrent computation of branching coefficients.
+
 \begin{theorem}
-  For the anomalous branching coefficients (\ref{eq:21}) holds the recurrent relation
+  For the anomalous branching coefficients $k^{(\mu)}_{\nu}$ (\ref{eq:21})
+  the following relation holds
   \begin{equation}
-    \label{eq:1}
     \label{recurrent-relation}
     \begin{array}{c}
       k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
@@ -476,27 +582,27 @@ recurrent computation of the branching coefficients.
           +\gamma }^{\left( \mu \right) }\right).
     \end{array}
   \end{equation}
-
- As we have mentioned above (see (\ref{eq:21}) and (\ref
-{eq:21-1})) when $\zeta \in \bar{C}_{\af}$ the coefficients $k_{\zeta
-}^{(\mu )}$ coinside with the branching coefficients thus the
-equation for $k_{\zeta }^{(\mu )}$ serve as recurrent relations for branching coefficients.
+\end{theorem}
 \begin{proof}
-To prove the theorem return to the relation (\ref{eq:4}) and rewrite it for the element $\quad
-\frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}$ ,
-\begin{eqnarray*}
+Redress the relation (\ref{eq:4}) for the element $\quad
+\frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}$ using defenition (\ref{eq:37})
+of the carrier $\Phi _{\af\subset \frak{g}}$ ,
+\begin{equation*}
+\begin{array}{l}
 \pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}%
-\right)  &=&\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot
+\right)=\\[2mm]
+=\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot
 }^{+}}\left( 1-e^{-\pi _{\af}\alpha }\right) ^{\mathrm{mult}(\alpha )-%
 \mathrm{mult}_{\af}(\pi _{\af}\alpha )}\left( \sum_{\nu \in P_{%
 \af}^{+}}b_{\nu }^{(\mu )}\sum_{w \in W_{\af}}\epsilon
-(w )e^{w (\nu +\rho _{\af})-\rho _{\af}}\right) = \\
-&=&-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}s(\gamma )e^{-\gamma
+(w )e^{w (\nu +\rho _{\af})-\rho _{\af}}\right) = \\[5mm]
+=-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}s(\gamma )e^{-\gamma
 }\left( \sum_{\nu \in P_{\af}^{+},w \in W_{\af}}\epsilon
 (w )b_{\nu }^{(\mu )}e^{w (\nu +\rho _{\af})-\rho _{\af%
 }}\right).
-\end{eqnarray*}
-Then decompose the last sum (with respect to the formal basis in $\mathcal{E}$%
+\end{array}
+\end{equation*}
+Then expand the sum in brackets (with respect to the formal basis in $\mathcal{E}$%
 ):
 \begin{equation*}
 \pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}%
@@ -516,9 +622,9 @@ Substitute the expression obtained in the Lemma (in the left-hand side),
 \right] }\dim \left( L_{\widetilde{\af_{\perp }}}^{\mu _{\widetilde{%
 \af_{\perp }}}\left( u\right) }\right)  \\
 &=&-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}\sum_{\lambda \in P_{%
-\af}}s(\gamma )k_{\nu }^{(\mu )}e^{\lambda -\gamma },
+\af}}s(\gamma )k_{\nu }^{(\mu )}e^{\lambda -\gamma }.
 \end{eqnarray*}
-Equate the coefficients of exponents in the last equality to get the following result:
+The immediate consequence of this equality is:
 \begin{equation}
 \sum_{u\in U}\epsilon (u)\dim \left( L_{\widetilde{\af_{\perp }}}^{\mu
 _{\widetilde{\af_{\perp }}}\left( u\right) }\right) \delta _{\xi ,\pi _{%
@@ -529,14 +635,14 @@ _{\widetilde{\af_{\perp }}}\left( u\right) }\right) \delta _{\xi ,\pi _{%
 The obtained formula means that the coefficients $k_{\xi +\gamma }^{(\mu )}$
 for $\gamma \in \Phi _{\af\subset \frak{g}}$ are not independent, they
 are subject to the linear relations and the form of these relations changes
-when the tested weight $\xi $ coinsides with one of \ the ''anomalous
-weights'', $\left\{ \pi _{\af}\left[ u(\mu +\rho )-\rho \right] |u\in
+when the tested weight $\xi $ coinsides with one of \ the ''singular
+weights''  $\left\{ \pi _{\af}\left[ u(\mu +\rho )-\rho \right] |u\in
 U\right\} $ . To conclude the proof we extract the lowest weight $\gamma _{0}\in \Phi _{\frak{a%
 }\subset \frak{g}}$ and pass to the summation over the vectors of the
 injection fan $\Gamma _{\af\subset \frak{g}}$ (see the definition \ref
 {fan-definition}). Thus we get the desired recurrent relation (\ref{recurrent-relation}).
 \end{proof}
-\end{theorem}
+
 \subsection{Embeddings and orthogonal pairs in simple Lie algebras}
 
 In this subsection we discuss some properties of ''orthogonal pairs'' of
@@ -575,7 +681,7 @@ subalgebras of the orthogonal pair,$\ \af$ and $\af_{\bot }$, must
 not form a direct sum in $\frak{g}$ . It can be directly
 checked that when $\frak{g}=B_{r}$ and $\af=B_{r_{\af}}$ the
 orthogonal subalgebra is $\af_{\bot }=B_{r-r_{\af}}$. Consider the
-injection $B_{r_{\af}}\rightarrow B_{r},\quad 1<r_{\af}<r$ . By
+injection $B_{r_{\af}}\rightarrow B_{r},\quad 1<r_{\af}<r$. By
 eliminating the simple root $\alpha _{r_{\af}-1}=e_{r_{\af%
 }-1}-e_{r_{\af}}$ one splits the extended Dynkin diagram of $B_{r}$
 into the disjoint diagrams for $\af=B_{r_{\af}}$ and $D_{r-r_{%
@@ -619,7 +725,7 @@ any of the modules $L^{(\nu)}_{\af}$.
 It contains the following steps:
 
 \begin{enumerate}
-\item  Construct the root subsystem $\Delta _{\af}$ for the embedding $%
+\item  Construct the root system $\Delta _{\af}$ for the embedding $%
 \af\rightarrow \frak{g}$.
 
 \item  Select the positive roots $\alpha \in \Delta ^{+}$ orthogonal to the
@@ -629,7 +735,7 @@ roots in $\Delta _{\af}$ i.e. form the set $\Delta _{\bot }^{+}$.
 {fan-defined}).
 
 \item  Construct the set $\widehat{\Psi ^{(\mu )}}=\left\{ w (\mu +\rho
-)-\rho ;\;w \in W\right\} $ of the anomalous weights for the $\frak{g}$%
+)-\rho ;\;w \in W\right\} $ of singular weights for the $\frak{g}$%
 -module $L^{(\mu )}$.
 
 \item  Select the weights $\left\{ \mu _{\widetilde{\af_{\perp }}%
@@ -651,9 +757,9 @@ chamber $\overline{C_{\af}}$ of the subalgebra $\af$ using the
 recurrent relation (\ref{recurrent-relation}).
 \end{enumerate}
 
-When being interested in the branching coefficients for the embedding of the
-finite-dimensional Lie algebra into the affine Lie algebra we can construct
-the set of the anomalous weights up to the required grade and use the steps
+When being interested in the branching coefficients for the embedding of a
+finite-dimensional Lie algebra into an affine Lie algebra we can construct
+the set of anomalous weights up to a required grade and use the steps
 4-7 of the algorithm for each grade. We can also speed up the algorithm by
 one-time computation of the representatives of the conjugate classes $%
 W/W_{\afb }$.
@@ -878,7 +984,11 @@ and to the equation
   \label{eq:111}
   \frac{k\;\mathrm{dim}\,\mathfrak{g}}{k+g}=\frac{x_e k\; \mathrm{dim}\,\af}{x_ek+a}.
 \end{equation}
-Here $x_e$ is the embedding index and $g$, $a$ are the dual Coxeter numbers for the  corresponding algebras.
+Here $x_e$ is the so called "embedding index":
+$x_e=\frac{\left|\pi_{\mathfrak{a}} \Theta\right|^2}{\left|\Theta_{\mathfrak{a}}\right|^2}$
+with $\Theta$, $\Theta_{\mathfrak{a}}$ being the highest roots of
+$\mathfrak{g}$ and $\mathfrak{a}$
+while $g$  and $a$ are the  corresponding dual Coxeter numbers.
 
 It can be demonstrated that the solutions of the equation (\ref{eq:111}) exist only
 for the level $k=1$ \cite{difrancesco1997cft}.
