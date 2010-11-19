@@ -1061,6 +1061,35 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 
 Построение Каданова-Вильсона (см. лекцию \ref{sec:kadanoff-procedure}) обосновало нам масштабную инвариантность модели Изинга. Сейчас мы обсудим, какие ограничения накладывает на теорию конформная инвариантность, а затем покажем, что в двух измерениях она следует из масштабной, трансляционной и вращательной инвариантностей.
 
+Сперва рассмотрим конформную группу в произвольном числе измерений $d$. Метрический тензор обозначим через $g_{\mu\nu},\; \mu,\nu=1,\dots,d$. Конформными называются преобразования $x\to x'$, сохраняющие метрический тензор с точностью до масштаба:
+\begin{equation}
+  \label{eq:123}
+  g'_{\mu\nu}(x')=\Lambda(x) g_{\mu\nu}(x).
+\end{equation}
+Заметим, что группа Пуанкаре является подгруппой конформной группы с $\Lambda(x)=1$, а также что конформные преобразования сохраняют углы. 
+
+Рассмотрим инфинитезимальные преобразования
+\begin{equation}
+  \label{eq:144}
+  x^{\mu}\to x'^{\mu}=x^{\mu}+\epsilon^{\mu}.
+\end{equation}
+Метрический тензор преобразуется следующим образом:
+\begin{equation}
+  \label{eq:145}
+  g'_{\mu\nu}=\frac{\partial x^{\alpha}}{\partial x'^{\mu}}\frac{\partial x^{\beta}}{\partial x'^{\nu}} g_{\alpha\beta}=(\delta^{\alpha}_{\mu}-\partial_{\mu}\epsilon^{\alpha})(\delta^{\beta}_{\nu}-\partial_{\nu} \epsilon^{\beta})g_{\alpha\beta}=g_{\mu\nu}-(\partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu})
+\end{equation}
+Перепишем условие (\ref{eq:123})в таком виде:
+\begin{equation}
+  \label{eq:146}
+  g'_{\mu\nu}(x')=g_{\mu\nu}(x)-f(x)g_{\mu\nu}(x)
+\end{equation}
+Отсюда вытекает условие на вид преобразований:
+\begin{equation}
+  \label{eq:147}
+  \partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu}=f(x)g_{\mu\nu}(x).
+\end{equation}
+Для простоты рассмотрим преобразования, действующие на плоскую метрику $g_{\mu\nu}(x)=\eta_{\mu\nu}$, кроме того, с учетом приложений к статистической физике, будем работать в евклидовом пространстве, а не в пространстве Минковского. Так что $\eta=\mathrm{diag}(1,1,\dots,1),\quad \eta_{\mu\nu}=\delta_{\mu\nu}$.
+
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
