@@ -1088,7 +1088,27 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
   \label{eq:147}
   \partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu}=f(x)g_{\mu\nu}(x).
 \end{equation}
-Для простоты рассмотрим преобразования, действующие на плоскую метрику $g_{\mu\nu}(x)=\eta_{\mu\nu}$, кроме того, с учетом приложений к статистической физике, будем работать в евклидовом пространстве, а не в пространстве Минковского. Так что $\eta=\mathrm{diag}(1,1,\dots,1),\quad \eta_{\mu\nu}=\delta_{\mu\nu}$.
+Для простоты рассмотрим преобразования, действующие на плоскую метрику $g_{\mu\nu}(x)=\eta_{\mu\nu}$, кроме того, с учетом приложений к статистической физике, будем работать в евклидовом пространстве, а не в пространстве Минковского. Так что $\eta=\mathrm{diag}(1,1,\dots,1),\quad \eta_{\mu\nu}=\delta_{\mu\nu}$. В этом случае условие \eqref{eq:147} перепишется в простом виде
+\begin{equation}
+  \label{eq:148}
+  f(x)=\frac{2}{d}\partial_{\rho}\epsilon^{\rho}.
+\end{equation}
+Теперь подставим $g_{\mu\nu}=\eta_{\mu\nu}$ в уравнение \eqref{eq:147} и продиффернцируем:
+\begin{equation}
+  \label{eq:149}
+  \partial_{\rho} \partial_{\mu}\epsilon_{\nu}+\partial_{\rho}\partial_{\nu}\epsilon_{\mu}=\eta_{\mu\nu}\partial_{\rho} f.
+\end{equation}
+Переставми два раза занчки и скомбинируем три уравнения в одно:
+\begin{equation}
+  \label{eq:150}
+  2\partial_{\mu}\partial_{\nu}\epsilon_{\rho}=\eta_{\mu\rho}\partial_{\nu} f+\eta_{\nu\rho}\partial_{\mu}f-\eta_{\mu\nu}\partial_{\rho}f
+\end{equation}
+Свернем это уравнение с $\eta^{\mu\nu}$ и получим
+\begin{equation}
+  \label{eq:151}
+  2\partial^2 \epsilon_{\rho}=(2-d)\partial_{\rho}f
+\end{equation}
+
 
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
