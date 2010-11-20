@@ -1259,6 +1259,45 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 \end{eqnarray}
 Всего $N(N-3)/2$ вариантов для $N$ точек.
 
+Покажем теперь, как преобразуются поля при конформных преобразованиях. Для этого используем метод индуцированных представлений, который можно легко объяснить на примере алгебры Пуанкаре. Сначала рассматриваем подалгебру, которая оставляет точку $x=0$ неподвижной. Это алгебра группы Лоренца или группы вращений в случае евклидова пространства. На поля в точке $x=0$ она действует своими матричными представлениями:
+\begin{equation}
+  \label{eq:176}
+  L_{\mu\nu}\Phi(0)=S_{\mu\nu}\Phi(0)
+\end{equation}
+Затем мы пользуемся коммутационными соотношениями алгебры Пуанкаре и формулой Хаусдорфа
+\begin{equation}
+  \label{eq:177}
+  e^{-A}B e^{A}=B+[B,A]+\frac{1}{2!}[[B,A],A]+\frac{1}{3!}[[[B,A],A],A]+\dots
+\end{equation}
+чтобы вычислить результат переноса в точку $x$:
+\begin{multline}
+  \label{eq:178}
+  L_{\mu\nu}\Phi(x)=e^{ix^{\rho}P_{\rho}}L_{\mu\nu}e^{-i x^{\rho}P_{\rho}}\Phi(x)=\\
+  (S_{\mu\nu}-x_{\mu}P_{\nu}+x_{\nu}P_{\mu})\Phi(x)=\\
+  i(x_{\mu}\partial_{\nu}-x_{\nu}\partial_{\mu})\Phi(x)+S_{\mu\nu}\Phi(x)
+\end{multline}
+Для полной конформной группы подгруппа стабильности точки $x=0$ порождается поворотами, растяжениями и специальными конформными преобразованиями. Обозначим представление генераторов через $S_{\mu\nu}, \tilde \Delta, k_{\mu}$ соответственно. Они порождают матричное представление усеченной алгебры с коммутационными соотношениями
+\begin{eqnarray}
+  \label{eq:179}
+  \left[\tilde\Delta,S_{\mu\nu}\right]=0\\
+  \left[\tilde \Delta,k_{\mu}\right]=-i k_{\mu}\\
+  \left[k_{\mu},k_{\nu}\right]=0\\
+  \left[k_{\rho},S_{\mu\nu}\right]=i(\eta_{\rho\mu}k_{\nu}-\eta_{\rho\nu}k_{\mu})\\
+  \left[S_{\mu\nu},S_{\rho\sigma}\right]=i(\eta_{\nu\rho}S_{\mu\sigma}+\eta_{\mu\sigma}S_{\nu\rho}-\eta_{\mu\rho}S_{\nu\sigma}-\eta_{\nu\sigma}S_{\mu\rho})
+\end{eqnarray}
+Транляция генераторов дилатации и специальных конформных преобразований дается равенствами
+\begin{eqnarray}
+  \label{eq:180}
+  e^{i x^{\rho}P_{\rho}}D e^{-i x^{\rho}P_{\rho}}=D+x^{\nu}P_{\nu}\\
+  e^{i x^{\rho}P_{\rho}}K_{\mu} e^{-i x^{\rho}P_{\rho}}=K_{\mu}+2x_{\mu}D -2 x^{\nu}L_{\mu\nu}+2x_{\mu}(x^{\nu}P_{\nu})-x^{2 P_{\mu}}
+\end{eqnarray}
+В результате действие этих генераторов на поле имеет вид
+\begin{eqnarray}
+  \label{eq:181}
+  D\Phi(x)=(-ix^{\nu}\partial_{\nu}+\tilde \Delta)\Phi(x)\\
+  K_{\mu}\Phi(x)=(k_{\mu}+2x_{\mu}\tilde\Delta -x^{\nu}S_{\mu\nu}-2ix_{\mu}x^{\nu}\partial_{\nu}+ix^{2} \partial_{\mu})\Phi(x)
+\end{eqnarray}
+
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
