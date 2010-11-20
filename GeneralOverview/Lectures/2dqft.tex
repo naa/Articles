@@ -1098,7 +1098,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
   \label{eq:149}
   \partial_{\rho} \partial_{\mu}\epsilon_{\nu}+\partial_{\rho}\partial_{\nu}\epsilon_{\mu}=\eta_{\mu\nu}\partial_{\rho} f.
 \end{equation}
-Переставми два раза занчки и скомбинируем три уравнения в одно:
+Переставим два раза значки и скомбинируем три уравнения в одно:
 \begin{equation}
   \label{eq:150}
   2\partial_{\mu}\partial_{\nu}\epsilon_{\rho}=\eta_{\mu\rho}\partial_{\nu} f+\eta_{\nu\rho}\partial_{\mu}f-\eta_{\mu\nu}\partial_{\rho}f
@@ -1108,7 +1108,156 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
   \label{eq:151}
   2\partial^2 \epsilon_{\rho}=(2-d)\partial_{\rho}f
 \end{equation}
+Теперь продифференцируем его по $x^{\nu}$ и поменяем значок $\rho$ на $\mu$:
+\begin{equation}
+  \label{eq:152}
+  2\partial^2 \partial_{\nu} \epsilon_{\mu}=(2-d)\partial_{\mu}\partial_{\nu} f
+\end{equation}
+Сравним полученное равенство с результатом применения оператора $\partial^2$ к уравнению \eqref{eq:149}:
+\begin{equation}
+  \label{eq:153}
+  \partial^2 \partial_{\mu}\epsilon_{\nu}+\partial^2 \partial_{\nu}\epsilon_{\mu}=\eta_{\mu\nu}\partial^2 f
+\end{equation}
+Из равенств \eqref{eq:152}, \eqref{eq:153} следует, что
+\begin{equation}
+  \label{eq:154}
+  (2-d)\partial_{\mu}\partial_{\nu}f=\eta_{\mu\nu}\partial^2 f.
+\end{equation}
+Свернув с $\eta^{\mu\nu}$ получим
+\begin{equation}
+  \label{eq:155}
+  (d-1)\partial^2 f =0.
+\end{equation}
+Сразу можно отметить, что при $d=1$ любое гладкое преобразование будет конформным. Рассмотрим случай $d\geq 3$. Функция $f(x)$ должна иметь вид
+\begin{equation}
+  \label{eq:156}
+  f(x)=A+B_{\mu}x^{\mu}.
+\end{equation}
+Тогда из \eqref{eq:148} получаем для $\epsilon$
+\begin{equation}
+  \label{eq:157}
+  \epsilon_{\mu}=a_{\mu}+b_{\mu\nu}x^{\nu} +c_{\mu\nu\rho}x^{\nu}x^{\rho},\quad c_{\mu\nu\rho}=c_{\mu\rho\nu}
+\end{equation}
+Так как равенства \eqref{eq:147}, \eqref{eq:148}, \eqref{eq:150} должны выполняться для любых $x^{\mu}$, то мономы в $\epsilon$ можно рассматривать независимо. На $a_{\mu}$ не возникает никаких ограничений. Этот член соответствует трансляциям. Теперь подставляем линейный член в \eqref{eq:147}, \eqref{eq:148} и получаем условие
+\begin{equation}
+  \label{eq:158}
+  b_{\mu\nu}+b_{\nu\mu}=\frac{2}{d}b^{\lambda}_{\lambda}\eta_{\mu\nu}
+\end{equation}
+То есть $b_{\mu\nu}$ можно записать в виде
+\begin{equation}
+  \label{eq:159}
+  b_{\mu\nu}=\alpha \eta_{\mu\nu} +m_{\mu\nu},\quad m_{\mu\nu}=-m_{\nu\mu}
+\end{equation}
+Первый член соответствует масштабному преобразованию, а второй - повороту. 
+В результате подстановки квадратичного члена $\epsilon$ в \eqref{eq:148}, \eqref{eq:150} получаем следующее условие на $c_{\mu\nu\rho}$:
+\begin{equation}
+  \label{eq:160}
+  c_{\mu\nu\rho}=\eta_{\mu\rho} h_{\nu} +\eta_{\mu\nu}h_{\rho}-\eta_{\nu\rho}h_{\mu}, \quad h_{\mu}=\frac{1}{d} c^{\alpha}_{\alpha\mu}
+\end{equation}
+Ему соответствует преобразование
+\begin{equation}
+  \label{eq:161}
+  x'^{\mu}=x^{\mu}+2 (x^{\nu}h_{\nu})x^{\mu} -h^{\mu} x^{\nu}x_{\nu}
+\end{equation}
+Такое преобразование называется специальным конформным преобразованием.
+Это преобразование можно естественно интерпретировать, если переписать в виде
+\begin{equation}
+  \label{eq:162}
+  \frac{x'^{\mu}}{x'^2}=\frac{x^{\mu}}{x^2}-h^{\mu}.
+\end{equation}
+Видно, что специальное конформное преобразование --- это инверсия, трансляция и обратная инверсия. 
 
+Соответствующие конченые конформные преобразования имеют вид
+\begin{eqnarray}
+  \label{eq:163}
+  x'^{\mu}=x^{\mu}+a^{\mu}&\quad \mbox{--- трансляция}\\
+  x'{\mu}=\alpha x^{\mu} &\quad \mbox{--- растяжение}\\
+  x'^{\mu}=m^{\mu}_{\nu} x^{\nu} &\quad \mbox{--- поворот}\\
+  x'^{\mu}=\frac{x^{\mu}-h^{\mu}x^2}{1-2h_{\mu}x^{\mu}+h^2 x^2}  & \quad \begin{array}{c}\mbox{--- специальное конформное}\\ \mbox{ преобразование}\end{array}
+\end{eqnarray}
+
+Теперь выпишем вид генераторов конформных преобразований для скалярного поля. 
+Напомним, что при произвольном конечном преобразовании скалярное поле преобразуется как
+\begin{equation}
+  \label{eq:164}
+  \Phi'(x')=F(\Phi(x)).
+\end{equation}
+При соответствующем инфинитезимальном преобразовании
+\begin{equation}
+  \label{eq:165}
+  x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
+\end{equation}
+скалярное поле преобразуется так:
+\begin{equation}
+  \label{eq:166}
+  \Phi'(x')=\Phi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
+\end{equation}
+Генератор преобразования определяется следующим равенством:
+\begin{equation}
+  \label{eq:167}
+  \delta_{\omega} \Phi(x)=\Phi'(x)-\Phi(x)\equiv -i\omega_a G_a \Phi(x)
+\end{equation}
+(здесь нет суммирования по $a$). Из \eqref{eq:166} получаем действие генератора на скалярное поле:
+\begin{equation}
+  \label{eq:168}
+  iG_a \Phi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\Phi-\frac{\delta F}{\delta \omega_a}
+\end{equation}
+
+Если мы предположим, что поле $\Phi$ такое поле, которое не меняется при конформных преобразованиях, то есть $F(\Phi)=\Phi$, то мы получим следующий вид для генераторов:
+\begin{eqnarray}
+  \label{eq:169}
+  \mbox{трансляция} & \quad P_{\mu}=-i\partial_{\mu}\\
+  \mbox{поворот} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})\\
+  \mbox{растяжение}& \quad D=-ix^{\mu}\partial_{\mu}\\
+  \begin{array}{r}
+  \mbox{специальное конформное}    \\
+  \mbox{преобразование}
+  \end{array}
+  & \quad K_{\mu}=-i(2x_{\mu}x^{\nu}\partial_{\nu}-x^2\partial_{\mu})
+\end{eqnarray}
+Отсюда легко найти коммутационные соотношения алгебры конформных преобразований в случае $d\geq 3$:
+\begin{eqnarray}
+  \label{eq:170}
+  \left[D,P_{\mu}\right]=i P_{\mu}\\
+  \left[D,K_{\mu}\right]=-i K_{\mu}\\
+  \left[K_{\mu},P_{\nu}\right]=2i (\eta_{\mu\nu}D - L_{\mu\nu})\\
+  \left[K_{\rho},L_{\mu\nu}\right]=i(\eta_{\rho\mu}P_{\nu}-\eta_{\rho\nu}P_{\mu})\\
+ \left[L_{\mu\nu},L_{\rho\sigma}\right]=i(\eta_{\nu\rho}L_{\mu\sigma}+\eta_{\mu\sigma}L_{\nu\rho}-\eta_{\mu\rho}L_{\nu\sigma}-\eta_{\nu\sigma}L_{\mu\rho})
+\end{eqnarray}
+Остальные коммутаторы равны нулю.
+Чтобы понять, о какой алгебре идет речь, переопределим генераторы следующим образом. Введем генераторы $J_{ab}, \; a,b=-1,0,\dots,d, J_{ab}=-J_{ba}$:
+\begin{eqnarray}
+  \label{eq:171}
+  J_{\mu\nu}=L_{\mu\nu}\\
+  J_{-1,0}=D\\
+  J_{-1,\mu}=\frac{1}{2}(P_{\mu}-K_{\mu})\\
+  J_{0,\mu}=\frac{1}{2}(P_{\mu}+K_{\mu})
+\end{eqnarray}
+Коммутационные соотношения для таких генераторов запишутся в виде
+\begin{equation}
+  \label{eq:172}
+  \left[J_{ab},J_{cd}\right]=i(\eta_{ad}J_{bc}+\eta_{bc}J_{ad}-\eta_{ac}J_{bd}-\eta_{bd}J_{ac}),
+\end{equation}
+где $\eta_{ab}=\mathrm{diag}(-1,1,\dots,1)$. Видно, что мы получили алгебру $so(d+1,1)$. В случае пространства Минковского была бы $so(d,2)$.
+\section{Лекция 8. Инварианты. Явный вид конформных преобразований полей в $d\geq 3$.}
+\label{sec:lecture-8}
+Обсудим, какой вид могут иметь простейшие инварианты --- $N$-точечные функции $\Gamma(x_1,\dots,x_N)$. В силу трансляционной инвариантности они могут зависеть только от модуля разности $|\vec x_i-\vec x_j|$.  Масштабная инвариантность может сохраняться только отношениями
+\begin{equation}
+  \label{eq:173}
+  \frac{|\vec x_i-\vec x_j|}{|\vec x_k -\vec x_l|}
+\end{equation}
+Но при специальных конформных преобразованиях
+\begin{equation}
+  \label{eq:174}
+  |\vec x'_i-\vec x'_j|=\frac{|\vec x_i-\vec x_j|}{(1-2(\vec h,vec x_i)+h^2x_i^2)^{1/2} (1-2(\vec h,\vec x_j)+h^2 x_j^2)^{1/2}}
+\end{equation}
+Поэтому не обойтись двумя или тремя точками и простейшие инварианты имеют вид
+\begin{eqnarray}
+  \label{eq:175}
+  \frac{|\vec x_1-\vec x_2||\vec x_3-\vec x_4|}{|\vec x_1-\vec x_3||\vec x_{2}-\vec x_{4}|}\\
+  \frac{|\vec x_1-\vec x_2||\vec x_3-\vec x_4|}{|\vec x_2-\vec x_3||\vec x_{1}-\vec x_{4}|}
+\end{eqnarray}
+Всего $N(N-3)/2$ вариантов для $N$ точек.
 
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
