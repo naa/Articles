@@ -55,7 +55,7 @@
   the Weyl denominator becomes singular with respect to the subalgebra.
   We study the modifications of the injection fan technique and demonstrate
   that for any reductive subalgebra it is possible to define the
-  "subtracted fan" -- the tool that describes
+  injection fan -- the tool that describes
   explicitly the recurrent properties of branching coefficients.
   Possible applications of subtracted fans in CFT models are considered.
 \end{abstract}
@@ -90,19 +90,18 @@ in the Weyl character formula
 $ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left( 0\right) }}$, see for example \cite{humphreys1997introduction})
 the Weyl denominator $\Psi ^{\left( 0\right) }_{\afb}$ and the projection
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi_{\af}\frac{\Psi ^{\left( \mu \right) }_{\frak{g}}}{\Psi ^{\left( 0\right) }_{\afb}}$.
-We prove that for any highest weight module $L^{\left( \mu \right)}$ and orthogonal pair of subalgebras
+We prove that for any highest weight $\hf$-diagonalizable module $L^{\left( \mu \right)}$ and orthogonal pair of subalgebras
 $\left(  \af, \afb \right)$ the element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ has a decomposition with respect to
-the set of Weyl numerators of $\afb$.
+the set of Weyl numerators $\Psi ^{\left( \mu \right) }_{ \afb }$ of $\afb$.
 This decomposition provides the possibility to construct the recurrent property for the branching coefficients corresponding
 to the injection $\frak{a} \longrightarrow \frak{g} $.
 This property is formulated in
-terms of a specific element of the group algebra $\mathcal{E}\left( \frak{g} \right)$ called "the subtracted injection fan".
+terms of a specific element of the group algebra $\mathcal{E}\left( \frak{g} \right)$ called "the injection fan".
 Using this tool we formulate a simple and
 explicit algorithm for branching coefficients computations applicable for an arbitrary (maximal or non-maximal)
 subalgebras of finite-dimensional and affine Lie algebras.
 In the case of maximal embedding the corresponding fan becomes unsubtracted and the recurrent relations described
-earlier (see the paper \cite{ilyin812pbc}
-and the references therein) are reobtained.
+earlier in \cite{ilyin812pbc} are reobtained.
 
 We demonstrate that our algorithm can be used in studies of conformal embeddings and coset constructions
 in rational conformal field theory.
@@ -378,8 +377,8 @@ weights.
 
 
 To describe the recurrent properties for branching coefficients $b_{\nu
-}^{(\mu )}$ we shall use the technique elaborated in \cite{ilyin812pbc} one of the
-main tools of which is the set of weights $\Gamma _{\af\subset \frak{g}%
+}^{(\mu )}$ we shall use the technique elaborated in \cite{ilyin812pbc}. One of the
+main tools is the set of weights $\Gamma _{\af\subset \frak{g}%
 } $ called the injection fan. As far as we consider more general situation
 (where the injection is not maximal) the notion of the injection fan is
 modified:
@@ -515,14 +514,14 @@ desired relation:
 \begin{eqnarray*}
 \pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}%
 \right)  &=&\sum_{u\in W/W_{\af_{\perp }}}\;\epsilon (u)e^{\pi _{\frak{a%
-}}\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\af_{\perp }}}\pi _{%
+}}\left[ u(\mu +\rho )-\rho \right] }\pi _{%
 \af}\left( \frac{\Psi _{\widetilde{\af_{\perp }}}^{\pi _{\left(
 \widetilde{\af_{\perp }}\right) }\left[ u(\mu +\rho )-\rho \right] -%
 \mathcal{D}_{\af_{\perp }}}}{\prod_{\beta \in \Delta _{\af_{\perp
 }}}(1-e^{-\beta })^{\mathrm{mult}(\beta )}}\right)  \\
 &=&\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }\left( L_{\widetilde{\af%
 _{\perp }}}^{\mu _{\widetilde{\af_{\perp }}}\left( u\right) }\right)
-e^{\mu _{\af}\left( u\right) }.
+e^{\pi _{\af}\left[ u(\mu +\rho )-\rho \right] }.
 \end{eqnarray*}
 \end{proof}
 
@@ -573,18 +572,19 @@ recurrent computation of branching coefficients.
     \label{recurrent-relation}
     \begin{array}{c}
       k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-        \sum_{w\in W_{\afb}\backslash W} \epsilon(w)\;
-        {\rm dim}\left(L^{\pi_{\afb}(w(\mu+\rho))-\rho_{\afb}}_{\afb}\right)
-        \delta_{\xi-\gamma_0,\pi_{\af}(w(\mu+\rho)-\rho)}+ \right.\\
+        \sum_{u\in U} \epsilon(u)\;
+        \dim \left( L_{\widetilde{\af_{\perp }}}^{\mu
+        _{\widetilde{\af_{\perp }}}\left( u\right) }\right)
+        \delta_{\xi-\gamma_0,\pi_{\af}(u(\mu+\rho)-\rho)}+ \right.\\
       \left.
         +\sum_{\gamma \in
-          \Gamma _{\af\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
+          \Gamma _{\af \longrightarrow \gf}}s\left( \gamma +\gamma _{0}\right) k_{\xi
           +\gamma }^{\left( \mu \right) }\right).
     \end{array}
   \end{equation}
 \end{theorem}
 \begin{proof}
-Redress the relation (\ref{eq:4}) for the element $\quad
+Redress the relation (\ref{eq:4}) for the element $
 \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}$ using defenition (\ref{eq:37})
 of the carrier $\Phi _{\af\subset \frak{g}}$ ,
 \begin{equation*}
@@ -644,6 +644,7 @@ injection fan $\Gamma _{\af\subset \frak{g}}$ (see the definition \ref
 \end{proof}
 
 \subsection{Embeddings and orthogonal pairs in simple Lie algebras}
+\label{sect-embeddings}
 
 In this subsection we discuss some properties of ''orthogonal pairs'' of
 subalgebras in simple Lie algebras of classical series.
@@ -783,7 +784,11 @@ Consider the regular embedding $A_1\to B_2$. Simple roots $\alpha_1, \alpha_2$ o
   \caption{Regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
     The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector.
     The highest weight of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$ is shown by the black vector.
-    The weights of the singular element $\Psi^{(\omega_1)}$ are indicated by the circles and the corresponding determinants $\epsilon(w)$ are shown.}
+    The superscripts of the highest weights
+  $\af_{\perp }^{\mu_{\af_{\perp }}}\left( u\right)$ are the products $\epsilon(w)\dim\left(L_{\af_{\perp }}^{\mu
+_{\af_{\perp }}\left( u\right) }\right)$
+    The weights of the singular element $\Psi^{(\omega_1)}$ are marked by circles with superscripts indicating
+    the corresponding determinants $\epsilon(w)$.}
   \label{fig:B2_A1}
 
 %\end{figure}
@@ -791,56 +796,100 @@ Consider the regular embedding $A_1\to B_2$. Simple roots $\alpha_1, \alpha_2$ o
   \noindent\centering{
     \includegraphics[width=80mm]{figure2.eps}
   }
-  \caption{Regular embedding $A_1\subset B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
-    The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector.
-    The highest weight of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$ is shown by the black vector.  $\afb=A_1$-modules built on the weights of the singular element $\Psi^{(\omega_1)}$ are shown by dotted lines. The dimensions of these modules and the signs of the corresponding determinants $\epsilon(w)$ are shown near the anomalous weights. Fundamental weight coordinate of $\af=A_1$ is indicated on the weight subspace of $\af$. }
-  \label{fig:B2_A1_2}
+  \caption{Here in addition to the diagram presented above (Figure(\ref{fig:B2_A1}))
+  the weights of $\afb=A_1$-modules $L_{\af_{\perp }}^{\mu_{\af_{\perp }}\left( u\right) }$
+  originating in the points $\pi _{\af}\left[ u(\mu +\rho )-\rho \right] $
+are shown by dotted lines.
+    The superscripts over the highest weights  $\mu_{\af_{\perp }}\left( u\right)$
+    are now the products $\epsilon(u)\dim\left(L_{\af_{\perp }}^{\mu_{\af_{\perp }}\left( u\right) }\right)$.
+    Coordinates along the root $\beta$ are counted in terms of the fundamental weight of $\af$. }
+\label{fig:B2_A1_2}
 \end{figure}
 
-Let's describe the reduction of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$ (the black vector in Figure \ref{fig:B2_A1}).
 
-Circles indicate the weights of the singular element $\Psi^{(\omega_1)}$.
-Now we are to factorise the Weyl group $W$ by $W_{\afb}=\left\{w_1\right\}$
-and to construct the set $\left\{w(\mu+\rho)-\rho,\; w\in W_{\afb}\backslash W\right\}$.
-In the Figure \ref{fig:B2_A1_2} the weights of the corresponding
-$\left(\afb=A_1\right)$-modules
-$L^{\pi_{\afb}(w(\mu+\rho))-\rho_{\afb}}_{\afb}$
-are indicated. Projecting them onto the root space of the subalgebra $\af=A_1$
-we get the anomalous weights and their multiplicities:
-\begin{equation*}
-  \label{eq:25}
-  (1,2),\; (0,-3),\; (-4,3),\; (-5,-2).
-\end{equation*}
-For the set $\Gamma$ (using the definition \ref{fan-definition}) we have
+Let's perform the reduction of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$
+($\omega_1$ -- the black vector in Figure \ref{fig:B2_A1}). The root $\alpha_1$ is orthogonal to $\beta$,
+so we have $\Delta_{\perp}^+ = \left\{ \alpha_1 \right\}$.
+According to the defenition (\ref{fan-definition})
+the fan $\Gamma_{A_1\to B_2}$ consists of two weights:
 \begin{equation*}
   \label{eq:22}
-  \Gamma_{A_1\subset B_2}=\left\{ (1,2),\; (2,-1) \right\}.
+  \Gamma_{A_1\to B_2}=\left\{ (1;2),\; (2;-1) \right\},
 \end{equation*}
-Here the second component denotes the value of $s(\gamma)$.
-Applying this fan inside the $\bar{C}^{(0)}_{\af}$ we get zeros for the weights
-greater than the first anomalous vector $(1)$, here $k^{(1,0)}_1=2$. For the last weight in $\bar{C}^{(0)}_{\af}$ the formula (\ref{recurrent-relation}) gives
+where the second component is the value of the sign function $s(\gamma)$.
+The singular weights  $\left\{ w (\omega_1 +\rho)-\rho ;\;w \in W\right\}$
+are indicated by circles with the superscript $\epsilon\left( w \right)$.
+The space $U$ is the factor $W/W_{\afb}$ where $W_{\afb}=\left\{e,w_1\right\}$.
+This means that the singular weights located above the line generated by $\beta$
+belong to the Weyl chamber $\overline{C_{\widetilde{\af_{\perp }}}}$.
+According to formula (\ref{defect-perp}) in our case $\mathcal{D}_{\af_{\perp }}=0$ and
+$\hf_{\perp }=0$, thus $\left\{ \mu _{\af_{\perp }}\left( w\right)
+=\pi _{\af_{\perp }}\left[ w(\mu +\rho)-\rho \right]\right\}$.
+We have four highest weights of $\af_{\perp }$-modules. In terms of
+$\af_{\perp }$-fundamental weight $\frac{1}{2} \alpha_1$ these highest weights
+$\left\{ \mu _{\af_{\perp }}\left( u\right)
+=\pi _{\af_{\perp }}\left[ u(\mu +\rho)-\rho \right]| u \in U \right\}$
+ are
+$\left\{ \left( 1\right) \left( 2\right) \left( 2\right) \left( 1\right) \right\}$. To
+visualize the procedure we indicate explicitly in Figure (\ref{fig:B2_A1_2}) how the
+corresponding weight diagrams
+$\left\{ \mathcal{N}_{\af_{\perp }}^{\mu _{\af_{\perp }}\left( u\right) }\right\} $
+are attached to the set of $\af$-weights
+$\left\{ \mu _{\af}\left( u\right)\right\} =\left\{\pi _{\af}\left[ u(\mu +\rho )-\rho \right]\right\}
+=\left\{ \left( 1\right) \left( 0\right) \left( -4\right) \left( -5\right) \right\}$.
+In fact we do not need the
+weight diagrams but only the dimensions of the corresponding modules
+$L_{\af_{\perp }}^{\mu_{\af_{\perp }}\left( u\right) }$ multiplied by
+$\epsilon \left( u\right) $. The obtained values are to be placed in $P_{\af}$ at the points
+$\left\{ \left( 1\right) \left( 0\right) \left( -4\right) \left( -5\right) \right\}$ to
+produce the set of singular weights with anomalous multiplicities:
+\begin{equation}
+  \label{eq:25}
+  \left\{(1;2),\; (0;-3),\; (-4;3),\; (-5;-2)\right\}.
+\end{equation}
+According to the defenition (\ref{fan-definition})
+the fan $\Gamma_{A_1\to B_2}$ consists of two weights:
+\begin{equation*}
+  \label{eq:22}
+  \Gamma_{A_1\to B_2}=\left\{ (1;2),\; (2;-1) \right\},
+\end{equation*}
+where the second component of the weight is the value of the sign function $s(\gamma)$.
+
+Applying formula (\ref{recurrent-relation}) with the fan
+$\Gamma_{A_1\to B_2}$ to the set (\ref{eq:25})
+we get zeros for the weights
+greater than the highest anomalous vector $(1;2)$
+and $k^{(1,0)}_1=2$ for the vector $(1;2)$ itself.
+For the anomalous weight (0;-3) on the boundary of $\bar{C}^{(0)}_{\af}$ the recurrent relation gives
 \begin{equation*}
   \label{eq:23}
-  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1.
+  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1,
 \end{equation*}
-The recurrence property defines the branching.
+the branching is completed: $L_{B_2\downarrow A_1}^{\omega_1}=
+2L_{A_1}^{\omega_{\left(A_1\right)1} }
+\bigoplus
+L_{A_1}^{2\omega_{\left(A_1\right)1} }$.
 
-\subsection{Embedding of $B_2$ into $B_4$}
+\subsection{Embedding $B_2$ into $B_4$}
 \label{sec:someth-high-dimens}
 Consider the regular embedding $B_2 \longrightarrow B_4$.
 The corresponding Dynkin diagrams are presented in the Figure \ref{fig:dynkin}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=50mm]{figure3.eps}
-  \caption{The regular embedding $B_2\subset B_4$ described by dropping the node from the Dynkin diagram. Note, that $\afb$ is equal to $B_2$, not to $A_1\oplus A_1$ seen at the diagram.}
+  \caption{The regular embedding $B_2 \longrightarrow B_4$ described by dropping the node from the Dynkin diagram.
+  Remember that here $\afb$ is equal to $B_2$ while the diagram
+  shows only $A_1\oplus A_1$ (see Subsection \ref{sect-embeddings}).}
   \label{fig:dynkin}
 \end{figure}
 
 \begin{figure}[pt]
   \centering
     \includegraphics[width=100mm,height=90mm]{figure4.eps}
-  \caption{Projected singular weights of $-\frac{1}{s(\gamma_0)}\pi_{B_2}\left(\hat \Psi^{(0,1,0,2)}_{B_4}\right)$
-  with the dimensions of the corresponding $\afb=B_2$-modules.}
+  \caption{The weight subspace $P_{\af}$ for $\af=B_2$ with the basis $\left\{e_3,e_4\right\}$.
+  The set of projected singular weights $\left\{\pi _{\af}\left[ u(\mu +\rho )-\rho \right] +\gamma_0 | u \in U \right\}$
+  shifted by $\gamma_0$. Each weight is supplied by the multiplier
+  $\epsilon(u)\dim\left(L_{\af_{\perp }}^{\mu_{\af_{\perp }}\left( u\right) }\right)$.}
   \label{fig:B4B2anom}
 
 %\end{figure}
@@ -848,61 +897,61 @@ The corresponding Dynkin diagrams are presented in the Figure \ref{fig:dynkin}.
 %\begin{figure}[pb]
   \centering
   \includegraphics[height=80mm]{figure5.eps}
-  \caption{The fan $\Gamma_{B_2\subset B_4}$ for $B_2\subset B_4$. The values $s(\gamma+\gamma_0)$ are shown in the corresponding weights $\gamma$.}
+  \caption{The fan $\Gamma$ for $B_2\longrightarrow B_4$ and the values of $s(\gamma+\gamma_0)$ for the weights $\gamma$.}
   \label{fig:B4B2Fan}
 \end{figure}
 
-In the orthogonal basis $\left\{e_1,\dots,e_4\right\}$ the simple roots and the positive roots of $B_4$ are
+In the orthogonal basis $\left\{e_1,\dots,e_4\right\}$ simple roots and positive roots of $B_4$ are
 \begin{equation*}
   \label{eq:8}
- S_{B_4}= \{e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4\}
+ S_{B_4}= \{e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4\},
 \end{equation*}
 \begin{eqnarray*}
   \label{eq:19}
  \Delta^+_{B_4}=\left\{ (e_1 - e_2,\; e_2 - e_3,\; e_3 - e_4,\; e_4,\; e_1 - e_3,\; e_2 - e_4,\; e_3 + e_4,\; e_3,\; e_1 - e_4,\;\right.\\
  \left. e_2 + e_4,\; e_2,\; e_1 + e_4,\; e_2 + e_3,\; e_1,\; e_1 + e_3,\; e_1 + e_2\right\}
 \end{eqnarray*}
-Correspondingly for the embedded subalgebra $\af=B_2$ we have
+The subalgebra $\af=B_2$ is fixed by the simple roots
 \begin{equation*}
   \label{eq:26}
  S_{B_2}=\{e_3-e_4,e_4\}
 \end{equation*}
-and
-\begin{equation*}
+Its orthogonal counterpart $\afb=B_2$ has
+\begin{eqnarray*}
   \label{eq:27}
- \Delta^{+}_{\afb}= \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}
-\end{equation*}
-is the set of positive roots for the algebra $\afb=B_2$.
+  S_{\afb}=\{e_1-e_2,e_2\},\\
+ \Delta^{+}_{\afb}= \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}.
+\end{eqnarray*}
+As far as the set $\Delta^+_{B_4} \setminus \left(\Delta^{+}_{\af} \cup \Delta^{+}_{\afb}\right)$ is fixed the injection
+fan $\Gamma_{B_2 \to B_4}$ can be constructed (using formulas (\ref{eq:6},\ref{eq:37},\ref{fan-defined})).
+As far as for this injection $s\left( \gamma_0\right)=-1$ in the recursion formula we need just the factor
+ $s\left(\gamma + \gamma_0\right)$.
+The result is presented in Figure \ref{fig:B4B2Fan}.
 
-Using the definition (\ref{fan-defined}) we obtain the fan
-$\Gamma_{B_2\subset B_4}$ with the corresponding values $s(\gamma+\gamma_0)$,
-depicted in the Figure \ref{fig:B4B2Fan}.
 
+Consider the $B_4$-module $L^{\mu}$ with the highest weight $\mu=2e_1 + 2 e_2 + e_3 + e_4$; \,
+$\mathrm{dim}(L^{\left[0,1,0,2\right]})=2772$.
+The set of singular weights for $B_4$ contains 384 vectors.
+Here the defect is nontrivial, $\mathcal{D}_{\af_{\perp }}=-2\left( e_1 + e_2 \right)$,
+while $\hf_{\bot}=0$.
+Taking this into account we find among the singular weights
+48 vectors with the property $\left\{ \mu _{\af_{\perp }%
+}\left( u\right) =\pi _{\af_{\perp }}\left[ u(\mu +\rho
+)-\rho \right] -\mathcal{D}_{\af_{\perp }}\in \overline{C_{\af_{\perp }}}\right\} $,
+scalar products of these weights with all the roots in $\Delta^{+}_{\afb}$ are nonnegative.
+The set $U=\left\{ u \right\}$ is thus fixed.
+Compute the dimensions of the corresponding $\afb$-modules with the highest weights
+$ \mu _{\af_{\perp }}\left( u\right)$ (using the Weyl dimension formula) and multiply them
+by $\epsilon\left( u \right)$. The results are shown in the Figure \ref{fig:B4B2anom}.
 
-Consider the $B_4$-module $L^{\mu}$ with the highest weight $\mu=(0,1,0,2)=2
-e_1 + 2 e_2 + e_3 + e_4$; $\mathrm{dim}(L^{(0,1,0,2)})=2772$.
-To find the branching coefficients we need to compute the anomalous weights of
-$L^{\mu}_{B_4}$, select the weights belonging to $\bar{C}^{\left( 0 \right)}_{\afb}$
-and compute the dimensions of the corresponding $\afb$-modules.
-The set of the anomalous weights $\left\{ w(\mu+\rho)-\rho,\; w\in W\right\}$
-contains 384 vectors.
-
-We are to select the weights $\psi \in w(\mu+\rho)$  with the property
-$\pi_{\afb} \left(  \psi \right) \in \bar{C}^{\left( 0 \right)}_{\afb}$.
-It means that the scalar product of these weights with all the roots in $\Delta^{+}_{\afb}$ is nonnegative.
-
-To compute the dimensions of the corresponding
-$\afb$-modules we need to project each selected weight
-onto the root space $\Delta^{+}_{\afb}$, subtract
-$\rho_{\afb}$ and apply the Weyl dimension formula. The result is shown in the Figure \ref{fig:B4B2anom}.
-
-Applying the recurrent relation (\ref{recurrent-relation}) we obtain the
-following branching coefficients:
+Now one can place the fan $\Gamma$ from Figure \ref{fig:B4B2Fan} in the highest of the weights
+presented in Figure \ref{fig:B4B2anom} and start the recursive determination of the branching coefficients
+(using relation (\ref{recurrent-relation})):
 \begin{eqnarray*}
   \label{eq:24}
-  \pi_{\af} \left(ch L^{(0,1,0,2)}_{B_4}\right) = 6 \; ch L^{(0,0)}_{B_2}+ 60
-  \; ch L_{B_2}^{(0,2)}+ 30 \; ch L_{B_2}^{(1,0)}+ 19 \; ch L_{B_2}^{(2,0)}+\\
-  40 \; ch L_{B_2}^{(1,2)}+ 10 \; ch L_{B_2}^{(2,2)}.
+  \pi_{\af} \left(ch L^{\left[0,1,0,2\right]}_{B_4}\right) = 6 \; ch L^{\left[0,0\right]}_{B_2}+ 60
+  \; ch L_{B_2}^{\left[0,2\right]}+ 30 \; ch L_{B_2}^{\left[1,0\right]}+ 19 \; ch L_{B_2}^{\left[2,0\right]}+\\
+  40 \; ch L_{B_2}^{\left[1,2\right]}+ 10 \; ch L_{B_2}^{\left[0,4\right]}.
 \end{eqnarray*}
 %\newpage
 \section{Applications to the conformal field theory}
