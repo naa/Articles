@@ -48,6 +48,74 @@
 \section{Introduction}
 \label{sec:introduction}
 
+We consider the reduction problem for simple Lie algebra modules. We study the reduction of Verma and irreducible finite-dimensional modules of the algebra to the modules of the subalgebra. We discuss the connection of the reduction with the Bernstein-Gelfand-Gelfand resolution. We show that different structures appear in the process of reduction, for example modules of contracted algebra and generalized Verma modules from parabolic category $\mathcal{O}^{\mathfrak{p}}$.
+
+First of all, consider the following example. 
+Let Lie algebra $\gf$ be $so(5)$ and subalgebra $\af\subset \gf$ be $so(3)$. There are different embeddings of $so(3)\to so(5)$. Here we limit ourselves to the regular ones. 
+The root system of the algebra $so(5)$ consists of 8 roots. We denote simple roots by $\alpha_{1}=e_{1}-e_{2}$ and $\alpha_{2}=e_{2}$, where $e_{1},e_{2}$ form standard basis. The set of the positive roots is $\Delta^{+}=\left\{\alpha_{1}, \alpha_{1}+\alpha_{2}, \alpha_{1}+2\alpha_{2}, \alpha_{2}\right\}$. Each of these roots can be taken as the simple root of the subalgebra $so(3)$. At first we consider the subalgebra $so(3)$ with the root space spanned on $\beta=\alpha_{1}+2\alpha_{2}$. Verma module $M^{\mu}$ with the highest weight $\mu=\omega_{1}+2\omega_{2}=2\alpha_{1}+3\alpha_{2}$ is shown at Figure \ref{fig:B2_Verma}.
+\begin{figure}[h!bt]
+  \noindent\centering{
+    \includegraphics[width=120mm]{B2_Verma}
+  }
+  \caption{Regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
+    The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector. Dimensions of weight subspaces of Verma module $M^{(1,2)}$ are shown.}
+  
+  \label{fig:B2_Verma}
+\end{figure}
+
+The branching coefficients are shown at Figure \ref{fig:B2_Verma_Branch2} for the different regular embeddings $so(3)\to so(5)$. Here we can see that the picture depends upon the embedding and looks similar to the Verma modules of some subalgebra.
+\begin{figure}[h!bt]
+  \noindent\centering{
+    \includegraphics[width=120mm]{B2_Verma_Branch2}
+  }
+  \caption{Branching for the Verma modules}
+  
+  \label{fig:B2_Verma_Branch2}
+\end{figure}
+In present paper we interpret this branching coefficients as the dimensions of the weight subspaces of the modules of contracted algebras.
+
+
+The formal character of Verma module is given by the expression
+\begin{equation}
+  \label{eq:17}
+  \mathrm{ch} M^{\mu}=\frac{e^{\mu}}{\prod_{\alpha\in \Delta^{+}} \left(1-e^{-\alpha}\right)}
+\end{equation}
+The denominator $R=\prod_{\alpha\in \Delta^{+}} \left(1-e^{-\alpha}\right)$ can be rewritten as the sum over the Weyl group of the algebra
+\begin{equation}
+  \label{eq:20}
+  R=\sum_{w\in W} \epsilon(w) e^{w\rho-\rho}.
+\end{equation}
+Since we consider the regular embeddings, all the positive roots of the subalgebra $\af$ are in the set of positive roots of the algebra $\gf$, $\Delta^{+}_{\af}\subset \Delta^{+}$. Then we can introduce $\tilde R$ and the carrier of its expansion $\Phi$:
+\begin{equation}
+  \label{eq:21}
+  \tilde R=\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\af}} \left( 1 - e^{-\alpha}\right)=-\sum_{\gamma\in \Phi} s(\gamma) e^{-\gamma}
+\end{equation}
+The ordering of roots in $\Delta _{\af}$ induce the
+natural ordering of the weights in $P_{\af}$. Denote by $\gamma _{0}$
+the lowest vector of $\Phi _{\af\subset \frak{g}}$ . The set
+\begin{equation}
+\Gamma _{\af\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+\af\subset \frak{g}}\right\} \setminus \left\{ 0\right\}
+\label{fan-defined}
+\end{equation}
+is called the \textit{injection fan}.
+
+
+The root of the subalgebra is among the positive roots of the algebra. So  Verma module can be decomposed into the set of Verma modules of the subalgebra:
+\begin{equation}
+  \label{eq:18}
+  \mathrm{ch}M^{\mu}=\sum_{\nu}b^{(\mu)}_{\nu} e^{\nu-\pi_{\af}\nu} \mathrm{ch}M^{\pi_{\af}\nu}_{\af}
+\end{equation}
+Using the equation \eqref{eq:21} we can write the recurrent relation for the branching coefficients $b^{(\mu)}_{\nu}$:
+\begin{equation}
+  \label{eq:19}
+   b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+        \delta_{\xi-\gamma_0,\mu}
+        +\sum_{\gamma \in
+          \Gamma _{\af \rightarrow \gf}}s\left( \gamma +\gamma _{0}\right) b_{\xi
+          +\gamma }^{\left( \mu \right) }\right).
+\end{equation}
+
 \section{Regular subalgebras and generalized Verma modules}
 \label{sec:regul-subalg-gener}
 
@@ -260,6 +328,7 @@ So we define new positive-definite bilinear form $(\cdot,\cdot)_+$ on the root l
   \pi_{\af}(\delta)=\delta.
 \end{equation}
 The orthogonality conditions in the definitions \ref{def-1}, \ref{def-2}, \ref{def-3} are to be understood with the respect to the form $(\cdot,\cdot)_+$. Then Lemma \ref{lemma-1} holds for the affine Lie algebras $\gf, \af$.
+\item Another case that we need to consider is the of $\afb$ built on the non-simple roots.
 \end{enumerate}
 
 \section{Applications}
