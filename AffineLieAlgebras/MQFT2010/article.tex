@@ -3,7 +3,6 @@
 \usepackage{amsmath,amssymb,amsthm}
 %\usepackage{pb-diagram}
 \usepackage{multicol}
-\usepackage{cmap}
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{epstopdf}
@@ -74,8 +73,8 @@ is regular and reductive. For a highest weight integrable module $L^{\left(
 _{\bot }\right) $ we consider the singular element $\Psi ^{\left( \mu
 \right) }$ (the numerator in the Weyl character formula $ch\left( L^{\mu
 }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left( 0\right) }}$, see
-for example \cite{humphreys1997introduction}) the Weyl denominator $R=\Psi _{%
-\frak{a}_{\bot }}^{\left( 0\right) }$ and the projection $\Psi _{\left( 
+for example \cite{humphreys1997introduction}) the Weyl denominator $\Psi _{%
+\frak{a}_{\bot }}^{\left( 0\right) }$ and the projection $\Psi _{\left(
 \frak{a},\frak{a}_{\bot }\right) }^{\left( \mu \right) }=\pi _{\frak{a}}%
 \frac{\Psi _{\frak{g}}^{\left( \mu \right) }}{\Psi _{\frak{a}_{\bot
 }}^{\left( 0\right) }}$. The element $\Psi _{\frak{g}}^{\left( \mu \right) }$
@@ -117,9 +116,7 @@ correlated root spaces: $\frak{h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g%
 }}^{\ast }$ and $\frak{h}_{\stackrel{\circ }{\frak{a}}}^{\ast }\subset \frak{%
 h}_{\stackrel{\circ }{\frak{g}}}^{\ast }$\ . We use the following notations:
 
-$L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
-of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
--module with the highest weight $\nu $ );
+$\frak{g=n}^{-}+\frak{b}+\frak{n}^{+}$ --- the Cartan decomposition;
 
 $r$ , $\left( r_{\frak{a}}\right) $ --- the rank of the algebra $\frak{g}$ $%
 \left( \mathrm{{resp. }\frak{a}}\right) $ ;
@@ -132,13 +129,22 @@ $\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
 \alpha \right) \right) $ --- the multiplicity of the root $\alpha$ in $%
 \Delta $ (resp. in $\left( \Delta _{\frak{a}}\right) $);
 
-$\stackrel{\circ }{\Delta}$ , $\left( \stackrel{\circ }{\Delta _{\frak{a}}}%
-\right)$ --- the finite root system of the subalgebra $\stackrel{\circ }{%
+$S\quad \left( S_{\frak{a}}\right) $ --- the system of simple roots (of $%
+\frak{g}$ and $\frak{a}$ respectively);
+
+$\stackrel{\circ }{\Delta }$ , $\left( \stackrel{\circ }{\Delta _{\frak{a}}}%
+\right) $ --- the finite root system of the subalgebra $\stackrel{\circ }{%
 \frak{g}}$ (resp. $\stackrel{\circ }{\frak{a}}$);
 
-$\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
-the weight diagram of $L^{\mu }$ $\left( \mathrm{{resp. }L_{\frak{a}}^{\nu }}%
-\right) $ ;
+$\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $%
+i$-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \mathrm{{resp.}\frak{a%
+}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+
+$\delta $ --- the imaginary root of $\frak{g}$ (and of $\frak{a}$ if any);
+
+$\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
+}\right) $--- the basic coroot for $\frak{g}$ $\left( \mathrm{{resp.}\frak{a}%
+}\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
 
 $W$ , $\left( W_{\frak{a}}\right) $--- the corresponding Weyl group;
 
@@ -147,24 +153,21 @@ $C$ , $\left( C_{\frak{a}}\right) $--- the fundamental Weyl chamber;
 $\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- the closure of the
 fundamental Weyl chamber;
 
-$\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- the Weyl vector;
-
 $\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
 
-$\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $%
-i $-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \mathrm{{resp. }%
-\frak{a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}%
-}\right) $;
+$\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- the Weyl vector;
 
-$\delta $ --- the imaginary root of $\frak{g}$ (and of $\frak{a}$ if any);
+$L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
+of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
+-module with the highest weight $\nu $ );
 
-$\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
-}\right) $--- the basic coroot for $\frak{g}$ $\left( \mathrm{{resp. }\frak{a%
-}}\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+$\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
+the weight diagram of $L^{\mu }$ $\left( \mathrm{{resp.}L_{\frak{a}}^{\nu }}%
+\right) $ ;
 
 $\stackrel{\circ }{\xi }$ , $\stackrel{\circ }{\xi _{\left( \frak{a}\right) }%
-}$ --- the finite (classical) part of the weight $\xi \in P$ , $\left( 
-\mathrm{{resp. }\xi _{\left( \frak{a}\right) }\in P_{\frak{a}}}\right) $;
+}$ --- the finite (classical) part of the weight $\xi \in P$ , $\left(
+\mathrm{{resp.}\xi _{\left( \frak{a}\right) }\in P_{\frak{a}}}\right) $;
 
 $\lambda =\left( \stackrel{\circ }{\lambda };k;n\right) $ --- the
 decomposition of an affine weight indicating the finite part $\stackrel{%
@@ -225,11 +228,16 @@ W\right\} .
 
 \subsection{Orthogonal subalgebra}
 
-Let us introduce the ''orthogonal partner'' $\frak{a}_{\bot }$ for a
-reductive subalgebra $\frak{a}$ in $\frak{g}$.
+Now we shall show how the branching procedure naturally produces the
+generalized Verma modules.
 
-Consider the root subspace $\frak{h}_{\perp \frak{a}}^{\ast }$ orthogonal to 
-$\frak{a}$, 
+Consider in $\frak{g}$ a reductive subalgebra $\frak{a}$ with the Cartan
+subalgebra $\frak{h}_{\frak{a}}$. For $\frak{a}\hookrightarrow \frak{g}$
+introduce the ''orthogonal partner'' $\frak{a}_{\bot }\hookrightarrow \frak{g%
+}$ .
+
+Firstly consider the root subspace $\frak{h}_{\perp \frak{a}}^{\ast }$
+orthogonal to $\frak{a}$,
 \[
 \frak{h}_{\perp \frak{a}}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast }|\forall
 h\in \frak{h}_{\frak{a}};\eta \left( h\right) =0\right\} , 
@@ -258,8 +266,6 @@ so that $\frak{g}$ has the subalgebras
 \\
 \widetilde{\frak{a}} &:&=\frak{a}\oplus \frak{h}_{\perp }.
 \end{eqnarray*}
-Algebras $\frak{a}$ and $\frak{a}_{\perp }$ form the ''orthogonal pair'' $%
-\left( \frak{a},\frak{a}_{\perp }\right) $ of subalgebras in $\frak{g}$.
 
 For the Cartan subalgebras we have the decomposition 
 \begin{equation}
@@ -268,17 +274,16 @@ For the Cartan subalgebras we have the decomposition
 \frak{a}_{\perp }}=\frak{\frak{h}_{\widetilde{\frak{a}_{\perp }}}}\oplus 
 \frak{h}_{\frak{a}}.
 \end{equation}
-For the subalgebras of an orthogonal pair $\left( \frak{a},\frak{a}_{\perp
-}\right) $ we consider the corresponding Weyl vectors, $\rho _{\frak{a}}$
-and $\rho _{\frak{a}_{\perp }}$ , and\ form the so called ''defects'' $%
-\mathcal{D}_{\frak{a}}$ and $\mathcal{D}_{\frak{a}_{\perp }}$ of the
-injection: 
+For the subalgebras $\frak{a}$ and $\frak{a}_{\perp }$ consider the
+corresponding Weyl vectors, $\rho _{\frak{a}}$ and $\rho _{\frak{a}_{\perp }}
+$ , and\ form the so called ''defects'' $\mathcal{D}_{\frak{a}}$ and $%
+\mathcal{D}_{\frak{a}_{\perp }}$ of the injection:
 \begin{equation}
 \mathcal{D}_{\frak{a}}:=\rho _{\frak{a}}-\pi _{\frak{a}}\rho ,
 \end{equation}
 \begin{equation}
 \mathcal{D}_{\frak{a}_{\perp }}:=\rho _{\frak{a}_{\perp }}-\pi _{\frak{a}%
-_{\perp }}\rho .
+_{\perp }}\rho .  \label{defect ort}
 \end{equation}
 
 For the highest weight $\mu \in P^{+}$ consider the linked weights $\left\{
@@ -290,39 +295,46 @@ defect $-\mathcal{D}_{\frak{a}_{\perp }}$:
 a}_{\perp }}}\left[ w(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp
 }},\quad w\in W. 
 \]
-In the case we do consider here among the weights $\left\{ \mu _{\widetilde{%
-\frak{a}_{\perp }}}\left( w\right) |w\in W\right\} $ one can always choose
-those located in the fundamental chamber $\overline{C_{\widetilde{\frak{a}%
-_{\perp }}}}$. Let $U$ be the set of representatives $u$ for the classes $%
-W/W_{\frak{a}_{\perp }}$ such that
+For $\mu \in P^{+}$ among the weights $\left\{ \mu _{\widetilde{\frak{a}%
+_{\perp }}}\left( w\right) |w\in W\right\} $ one can always choose those
+located in the fundamental chamber $\overline{C_{\widetilde{\frak{a}_{\perp }%
+}}}$. Let $U$ be the set of representatives $u$ for the classes $W/W_{\frak{a%
+}_{\perp }}$ such that
 
 \begin{equation}
 U:=\left\{ u\in W|\quad \mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right)
 \in \overline{C_{\widetilde{\frak{a}_{\perp }}}}\right\} \quad .
 \label{U-def}
 \end{equation}
-For such a set $U$ introduce the weights 
-\[
+Thus we can select the following subsets:
+\begin{equation}
 \mu _{\frak{a}}\left( u\right) :=\pi _{\frak{a}}\left[ u(\mu +\rho )-\rho %
-\right] +\mathcal{D}_{\frak{a}_{\perp }}. 
-\]
+\right] +\mathcal{D}_{\frak{a}_{\perp }},\quad u\in U,  \label{mu-a}
+\end{equation}
+and
+\begin{equation}
+\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) :=\pi _{\widetilde{\frak{%
+a}_{\perp }}}\left[ u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp
+}},\quad u\in U.  \label{mu-a-tilda}
+\end{equation}
 
 Note that the subalgebra $\afb$ is regular by definition since it is built on the roots of the
 algebra $\gf$.
 
-Consider the Weyl-Kac formula for $ch\left( L^{\mu }\right) $ in terms of
-singular elements \cite{humphreys1997introduction}: 
-\begin{equation}
-ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left(
-0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R},  \label{Weyl-Kac2}
-\end{equation}
-where 
+For the modules we are interested in the Weyl-Kac formula for $ch\left( L^{\mu }\right) $ can be
+written in terms of
+singular elements \cite{humphreys1997introduction}
 \[
 \Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu
-+\rho )-\rho }. 
++\rho )-\rho },
 \]
-The same form will be used for the submodules $ch\left( L_{\frak{a}}^{\nu
-}\right) $%
+namely,
+\begin{equation}
+ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left(
+0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.  \label{Weyl-Kac2}
+\end{equation}
+The same is true for the submodules $ch\left( L_{\frak{a}}^{\nu }\right) $
+in (\ref{branching1})
 \[
 ch\left( L_{\frak{a}}^{\nu }\right) =\frac{\Psi _{\frak{a}}^{\left( \nu
 \right) }}{\Psi _{\frak{a}}^{\left( 0\right) }}=\frac{\Psi _{\frak{a}%
@@ -352,39 +364,400 @@ Here $\Delta _{\frak{a}}^{+}$ is the set of positive roots of the subalgebra
 $\frak{a}$ (without loss of generality we consider them as vectors from the
 positive root space $\frak{h}^{\ast +}$ of $\frak{g}$).
 
-To describe the recurrent properties for branching coefficients $b_{\nu
-}^{(\mu )}$ we shall use the technique first proposed in \cite{ilyin812pbc}.
-One of the main tools is the set of weights $\Gamma _{\frak{a}\rightarrow 
-\frak{g}}$ called the injection fan:
+\subsection{Decomposing the singular element.}
 
-\begin{definition}
-\label{fan-definition} For the product 
+\label{subsec:decomp-sing-element}
+
+Now we shall perform a decomposition of the singular element $\Psi ^{\left(
+\mu \right) }$ in terms of singular elements of the orthogonal subalgebra
+modules:
+
+\begin{lemma}
+Let $\frak{a}_{\bot }$ be the orthogonal partner of a reductive subalgebra $%
+\frak{a}\hookrightarrow \frak{g}$ with $\frak{h}=\frak{\frak{h}_{\frak{a}}}%
+\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$, $\widetilde{%
+\frak{a}_{\perp }}=\frak{a}_{\perp }\oplus \frak{h}_{\perp }$ and $%
+\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$.
+
+$L^{\mu }$ be the highest weight integrable module with $\mu \in P^{+}$ and
+
+$\Psi ^{\left( \mu \right) }$\ -- the singular element of $L^{\mu }$.
+
+Then the element $\Psi ^{\left( \mu \right) }$ can be decomposed into the
+sum over $u\in U$ (see (\ref{U-def})) of singular elements $\Psi _{%
+\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left(
+u\right) }$ with the coefficients $\epsilon (u)e^{\mu _{\frak{a}}\left(
+u\right) }$:
+\begin{equation}
+\Psi ^{\left( \mu \right) }=\sum_{u\in U}\;\epsilon (u)e^{\mu _{\frak{a}%
+}\left( u\right) }\Psi _{\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{%
+\frak{a}_{\perp }}}\left( u\right) }.  \label{sing decomp main}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+With $u\in U$ and $v\in W_{\frak{a}_{\bot }}$ perform the decomposition
+\[
+u(\mu +\rho )=\pi _{\left( \frak{a}\right) }u(\mu +\rho )+\pi _{\left(
+\widetilde{\frak{a}_{\perp }}\right) }u(\mu +\rho )
+\]
+for the singular weight $vu(\mu +\rho )-\rho $:
+\begin{equation}
+\begin{array}{lcl}
+vu(\mu +\rho )-\rho  & = & \pi _{\left( \frak{a}\right) }\left( u(\mu +\rho
+)\right) -\rho +\rho _{\frak{a}_{\perp }}+\pi _{\left( \frak{h}_{\bot
+}\right) }\rho  \\
+&  & +\ v\left( \pi _{\left( \widetilde{\frak{a}_{\perp }}\right) }u(\mu
++\rho )-\rho _{\frak{a}_{\perp }}+\rho _{\frak{a}_{\perp }}\right) -\rho _{%
+\frak{a}_{\perp }}-\pi _{\left( \frak{h}_{\bot }\right) }\rho .
+\end{array}
+\label{sing-decomp-1}
+\end{equation}
+Use the defect $\mathcal{D}_{\frak{a}_{\bot }}$ (\ref{defect-perp}) to
+simplify the first summand in (\ref{sing-decomp-1}):
+\[
+\begin{array}{r}
+\pi _{\left( \frak{a}\right) }\left( u(\mu +\rho )\right) -\rho +\rho _{%
+\frak{a}_{\perp }}+\pi _{\left( \frak{h}_{\bot }\right) }\rho = \\
+\pi _{\left( \frak{a}\right) }\left( u(\mu +\rho )\right) -\pi _{\frak{a}%
+}\rho -\pi _{\frak{a}_{\bot }}\rho +\rho _{\frak{a}_{\bot }}= \\
+=\pi _{\left( \frak{a}\right) }\left( u(\mu +\rho )-\rho \right) +\mathcal{D}%
+_{\frak{a}_{\bot }},
+\end{array}
+\]
+and the second one:
+\[
+\begin{array}{c}
+v\left( \pi _{\left( \widetilde{\frak{a}_{\perp }}\right) }u(\mu +\rho
+)-\rho _{\frak{a}_{\perp }}+\rho _{\frak{a}_{\perp }}\right) -\rho _{\frak{a}%
+_{\perp }}-\pi _{\left( \frak{h}_{\bot }\right) }\rho = \\
+v\left( \pi _{\left( \widetilde{\frak{a}_{\bot }}\right) }u(\mu +\rho )-%
+\mathcal{D}_{\frak{a}_{\bot }}-\pi _{\left( \frak{a}_{\bot }\right) }\rho
+-\pi _{\left( \frak{h}_{\bot }\right) }\rho +\rho _{\frak{a}_{\bot }}\right)
+-\rho _{\frak{a}_{\bot }}= \\
+=v\left( \pi _{\left( \widetilde{\frak{a}_{\bot }}\right) }\left[ u(\mu
++\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\bot }}+\rho _{\frak{a}_{\bot
+}}\right) -\rho _{\frak{a}_{\bot }}.
+\end{array}
+\]
+These expressions provide the desired factorization of the singular element $%
+\Psi ^{\mu }$ in terms of singular elements $\Psi _{\widetilde{\frak{a}%
+_{\perp }}}^{\eta }$ of the $\widetilde{\frak{a}_{\perp }}$-modules $L_{%
+\widetilde{\frak{a}_{\perp }}}^{\eta }$:
+\begin{equation}
+\begin{array}{l}
+\Psi ^{\mu }=\sum_{u\in U}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
+(v)\epsilon (u)e^{vu(\mu +\rho )-\rho }= \\
+=\sum_{u\in U}\epsilon (u)e^{\pi _{\frak{a}}\left[ u(\mu +\rho )-\rho \right]
++\mathcal{D}_{\frak{a}_{\perp }}}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
+(v)e^{v\left( \pi _{\left( \widetilde{\frak{a}_{\perp }}\right) }\left[
+u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }}+\rho _{\frak{a}%
+_{\perp }}\right) -\rho _{\frak{a}_{\perp }}}= \\
+=\sum_{u\in U}\;\epsilon (u)\Psi _{\widetilde{\frak{a}_{\perp }}}^{\pi
+_{\left( \widetilde{\frak{a}_{\perp }}\right) }\left[ u(\mu +\rho )-\rho
+\right] -\mathcal{D}_{\frak{a}_{\perp }}}e^{\pi _{\left( \frak{a}\right) }%
+\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}_{\perp }}}.
+\end{array}
+\label{singular main}
+\end{equation}
+\end{proof}
+
+\bigskip
+
+\begin{remark}
+This relation can be considered as a generalized form of the Weyl formula
+for the singular element $\Psi _{\frak{g}}^{\mu }$: the vectors $\mu _{\frak{%
+a}}\left( u\right) $ play the role of singular weights while the alternating
+factors $\epsilon (u)$ are extended to $\epsilon (u)\Psi _{\widetilde{\frak{a%
+}_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }$. In
+fact when $\frak{a=g}$ both $\frak{a}_{\perp }$and $\frak{h}_{\perp }$are
+zeros, $U=W$, and\ the original Weyl formula is reobtained via the
+trivilization of the singular elements: $\epsilon (u)\Psi _{\widetilde{\frak{%
+a}_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right)
+}=\epsilon (u)$. In the opposite limit when $\frak{a=0}$, $\Delta _{\frak{a}%
+_{\perp }}=\Delta _{\frak{g}}$, $\frak{h}_{\perp }^{\ast }=0$, $\widetilde{%
+\frak{a}_{\perp }}=\frak{g}$, $\mathcal{D}_{\frak{a}_{\perp }}=0$, $U=W/W_{%
+\frak{a}_{\perp }}=e$ and $\Psi ^{\mu }$ is again reobtained, now via the
+trivilization of the set of vectors: $\mu _{\frak{a}}\left( e\right) =0$.
+\end{remark}
+
+\begin{remark}
+In [our preprint] the decomposition analogous to (\ref{singular main}) was
+used to construct the recurrent relations for branching coefficients $k_{\xi
+}^{\left( \mu \right) }$ corresponding to the injection $\frak{a}%
+\hookrightarrow \frak{g}$:
+\[
+\begin{array}{c}
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{u\in U}\epsilon (u)\;\dim \left( L_{\widetilde{\frak{a}_{\perp }}%
+}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }\right) \delta _{\xi
+-\gamma _{0},\pi _{\frak{a}}(u(\mu +\rho )-\rho )}+\right.  \\
+\left. +\sum_{\gamma \in \Gamma _{\frak{a}\rightarrow \frak{g}}}s\left(
+\gamma +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right) }\right) .
+\end{array}
+\]
+The recursion is goverened by the set $\Gamma _{\frak{a}\rightarrow \frak{g}}
+$ called the injection fan. The latter is defined the carrier set $\left\{
+\xi \right\} _{\frak{a}\rightarrow \frak{g}}$ for the coefficient function $%
+s(\xi )$
+\[
+\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}:=\left\{ \xi \in P_{%
+\frak{a}}|s(\xi )\neq 0\right\}
+\]
+appearing in the expansion
 \begin{equation}
 \prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot }^{+}}\left( 1-e^{-\pi
 _{\frak{a}}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}_{\frak{a}%
 }(\pi _{\frak{a}}\alpha )}=-\sum_{\gamma \in P_{\frak{a}}}s(\gamma
-)e^{-\gamma }  \label{eq:6}
+)e^{-\gamma };\quad
 \end{equation}
-consider the carrier $\Phi _{\frak{a}\subset \frak{g}}\subset P_{\frak{a}}$
-of the function $s(\gamma )=\det \left( \gamma \right) $ : 
+The weights in $\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}$ are to
+be shifted by $\gamma _{0}$ -- the lowest vector in $\left\{ \xi \right\} $
+-- and the zero element is to be eliminated:
 \begin{equation}
-\Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}|s(\gamma
-)\neq 0\right\}   \label{eq:37}
+\Gamma _{\frak{a}\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in
+\left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
 \end{equation}
-The ordering of roots in $\stackrel{\circ }{\Delta _{\frak{a}}}$ induce the
-natural ordering of the weights in $P_{\frak{a}}$. Denote by $\gamma _{0}$
-the lowest vector of $\Phi _{\frak{a}\subset \frak{g}}$ . The set 
+\end{remark}
+
+\subsection{Weyl like formulas.}
+
+\bigskip By the definition the subalgebra $\widetilde{\frak{a}_{\perp }}$ is
+regular and reductive. Consider its Weyl denominator $R_{\widetilde{\frak{a}%
+_{\perp }}}:=\prod_{\alpha \in \Delta _{\widetilde{\frak{a}_{\perp }}%
+}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}\mathrm{\left(
+\alpha \right) }}$ and the element $R_{J}:=\prod_{\alpha \in \Delta
+^{+}\setminus \Delta _{\widetilde{\frak{a}_{\perp }}}^{+}}\left(
+1-e^{-\alpha }\right) ^{\mathrm{mult}(\alpha )}$ as the factors in $R$: $%
+\quad $%
+\[
+R=R_{J}R_{\widetilde{\frak{a}_{\perp }}}.
+\]
+According to this factorization and the decomposition (\ref{sing decomp main}%
+) the character $ch\left( L^{\mu }\right) $ can be written as
+\begin{eqnarray*}
+\mathrm{ch}\left( L^{\mu }\right) &=&\left( R_{J}\right) ^{-1}\left( R_{%
+\widetilde{\frak{a}_{\perp }}}\right) ^{-1}\Psi ^{\mu }=\left( R_{J}\right)
+^{-1}\sum_{u\in U}\;e^{\mu _{\frak{a}}\left( u\right) }\epsilon (u)\left( R_{%
+\widetilde{\frak{a}_{\perp }}}\right) ^{-1}\Psi _{\widetilde{\frak{a}_{\perp
+}}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) } \\
+&=&\left( R_{J}\right) ^{-1}\sum_{u\in U}\;e^{\mu _{\frak{a}}\left( u\right)
+}\epsilon (u)L_{\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{\frak{a}%
+_{\perp }}}\left( u\right) },
+\end{eqnarray*}
+where $\left\{ L_{\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{\frak{a}%
+_{\perp }}}\left( u\right) }|u\in U\right\} $ is the set of
+finite-dimensional $\widetilde{\frak{a}_{\perp }}$-modules with the highest
+weights $\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) $.
+
+Now remember that the subalgebra $\widetilde{\frak{a}_{\perp }}$ is regular
+and reductive. We are interested in nontrivial subalgebras $\frak{a}$ and
+correspondingly in nontrivial $\widetilde{\frak{a}_{\perp }}$ (the case of a
+trivial orthogonal subalgebra arise when $\frak{a}=\frak{g}$ and was
+considered above (see Remark 1)). This means that $r_{\frak{a}}\geq 1$ and $%
+r_{\widetilde{\frak{a}_{\perp }}}<r$. Due to the fact that any maximal
+regular subalgebra has the Dynkin scheme obtained by one or two node
+subtractions from the extended Dynkin scheme and the extended scheme has at
+most one dependent root (the highest root) the set of roots $\Delta _{%
+\widetilde{\frak{a}_{\perp }}}^{+}$ is always equivalent to the one $\Delta
+_{I}^{+}$ generated\ by some subset $I\subset S$ of simple roots.
+
+It follows that we can (by redefining the set $\Delta ^{+}$) identify $%
+\Delta _{\widetilde{\frak{a}_{\perp }}}^{+}$ with the subset $\Delta _{I}^{+}
+$ \ where $I\subset S$ . This allows us to introduce the elements necessary
+to compose the generalized Verma modules [Lepowsky,Hamphrys]. We have two
+sets of root vectors $\left\{ x_{\xi }\in \frak{g}_{\xi }|\xi \in \Delta
+_{I}^{+}\right\} $ and $\left\{ x_{\eta }\in \frak{g}_{\eta }|\eta \in
+\Delta ^{+}\setminus \Delta _{I}^{+}\right\} $ . They generate nilpotent
+subalgebras of $\frak{n}^{+}$:
+\[
+\frak{n}_{I}^{+}:=\sum_{\xi \in \Delta _{I}^{+}}\frak{g}_{\xi },\quad \frak{u%
+}_{I}^{+}:=\sum_{\eta \in \Delta ^{+}\setminus \Delta _{I}^{+}}\frak{g}%
+_{\eta }.
+\]
+The first subalgebra together with its negative counterpart $\frak{n}_{I}^{-}
+$ generates a simple subalgebra
+\[
+\frak{s}_{I}=\frak{n}_{I}^{-}+\frak{h}_{I}+\frak{n}_{I}^{+}.
+\]
+We enlarge it with the remaining Cartan generators and introduce the
+subalgebra:
+\[
+\frak{l}_{I}=\frak{n}_{I}^{-}+\frak{h}+\frak{n}_{I}^{+}.
+\]
+The semidirect product of subalgebras $\frak{l}_{I}$ and $\frak{u}_{I}^{+}$
+gives a parabolic subalgebra in $\frak{g}$ :
 \begin{equation}
-\Gamma _{\frak{a}\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi
-_{\frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} 
-\label{fan-defined}
+\frak{p}_{I}=\frak{l}_{I}\vartriangleright \frak{u}_{I}^{+},
+\label{paralolic subalg}
 \end{equation}
-is called the \textit{injection fan}.
-\end{definition}
+Its universal enveloping $U\left( \frak{p}_{I}\right) $ is a subalgebra in $%
+U\left( \frak{g}\right) $. According to the obtained structure (\ref
+{paralolic subalg}) the $\frak{l}_{I}$-modules $L_{\widetilde{\frak{a}%
+_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }$ can be
+easily lifted to $\frak{p}_{I}$-modules using the trivial action of the
+nilradical $\frak{u}_{I}^{+}$ . The latter induce $U\left( \frak{g}\right) $%
+-modules in a standard way:
+\[
+M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }=U\left( \frak{g}%
+\right) \otimes _{U\left( \frak{p}_{I}\right) }L_{\widetilde{\frak{a}_{\perp
+}}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }.
+\]
+According to the defenition presented in [Lepowsky] this is a \textit{%
+generalized Verma module} generated by the highest weight $\mu _{\widetilde{%
+\frak{a}_{\perp }}}\left( u\right) $. As $U\left( \frak{u}_{I}^{-}\right) $%
+-module $M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }$ is
+isomorphic to $U\left( \frak{u}_{I}^{-}\right) \otimes $ $L_{\widetilde{%
+\frak{a}_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }$
+and thus its character can be written with the help of Kostant-Heckman
+function \{KostantHeckman1982\} corresponding to the injection of the
+orthogonal subalgebra $\widetilde{\frak{a}_{\perp }}\hookrightarrow \frak{g}$%
+:
+\[
+\mathrm{ch}M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }=%
+\mathcal{KH}_{\widetilde{\frak{a}_{\perp }}\hookrightarrow \frak{g}}\mathrm{%
+ch}L_{\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}%
+}\left( u\right) }.
+\]
+As far as function $\mathcal{KH}_{\widetilde{\frak{a}_{\perp }}%
+\hookrightarrow \frak{g}}$ is generated by the denominator $R_{I}$ the last
+expression can be rewritten in the form
+\[
+\mathrm{ch}M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) }=%
+\frac{1}{R_{I}}\mathrm{ch}L_{\widetilde{\frak{a}_{\perp }}}^{\mu _{%
+\widetilde{\frak{a}_{\perp }}}\left( u\right) }.
+\]
+This means that we have obtained the decomposition of $\mathrm{ch}\left(
+L^{\mu }\right) $ in terms of generalized Verma modules characters:
+\begin{equation}
+\mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;e^{\mu _{\frak{a}}\left(
+u\right) }\epsilon (u)\mathrm{ch}M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}%
+}\left( u\right) }.  \label{char in gen verma mod}
+\end{equation}
 
-It must be noticed that the injection fan is the universal instrument that
-depend only on the injection.
+As it was proved in [Humphrys] (see Proposition 9.6 ) characters of the
+generalized Verma modules $M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left(
+u\right) }$  can be described as a linear combination of ordinary Verma
+modules corresponding to $\frak{g}$:
+\[
+\mathrm{ch}M_{I}^{\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right)
+}=\sum_{w\in W_{\frak{a}_{\perp }}}\epsilon \left( w\right) \mathrm{ch}%
+M^{w\left( \mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) +\rho _{%
+\widetilde{\frak{a}_{\perp }}}\right) -\rho _{\widetilde{\frak{a}_{\perp }}}}
+\]
+Substituting this expression in\ (\ref{char in gen verma mod}) and using the
+definitions (\ref{mu-a},\ref{mu-a-tilda}) and (\ref{defect ort}) we reobtain
+the standard decomposition of the character:
+\[
+\mathrm{ch}\left( L^{\mu }\right) =\sum_{w\in W}\;\epsilon (u)\mathrm{ch}%
+M^{w\left( \mu +\rho \right) -\rho }.
+\]
 
+\bigskip
+
+\bigskip Supplements:
+
+\bigskip $\frak{h}_{\perp \frak{a}}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast
+}|\forall h\in \frak{h}_{\frak{a}};\eta \left( h\right) =0\right\} ,$
+
+$\Delta _{\frak{a}_{\perp }}:=\left\{ \beta \in \Delta _{\frak{g}}|\forall
+h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,$
+
+$\Delta _{\frak{a}_{\perp }}^{+}:=\left\{ \beta ^{+}\in \Delta _{\frak{g}%
+}^{+}|\forall h\in \frak{h}_{\frak{a}};\beta ^{+}\left( h\right) =0\right\}
+. $
+
+$\frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \frak{a}}^{\ast
+}|\forall h\in \frak{h}_{\frak{a}\oplus \frak{a}_{\perp }};\eta \left(
+h\right) =0\right\} $
+
+$\widetilde{\frak{a}_{\perp }}:=\frak{a}_{\perp }\oplus \frak{h}_{\perp };%
+\widetilde{\frak{a}}:=\frak{a}\oplus \frak{h}_{\perp }.$
+
+$\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp
+}}\oplus \frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\frak{a}}}}\oplus
+\frak{h}_{\frak{a}_{\perp }}=\frak{\frak{h}_{\widetilde{\frak{a}_{\perp }}}}%
+\oplus \frak{h}_{\frak{a}}.$
+
+$\mathcal{D}_{\frak{a}_{\perp }}:=\rho _{\frak{a}_{\perp }}-\pi _{\frak{a}%
+_{\perp }}\rho .$
+
+$U=W/W_{\frak{a}_{\perp }};U:=\left\{ u\in W|\quad \mu _{\widetilde{\frak{a}%
+_{\perp }}}\left( u\right) \in \overline{C_{\widetilde{\frak{a}_{\perp }}}}%
+\right\} $
+
+$\mu _{\frak{a}}\left( u\right) :=\pi _{\frak{a}}\left[ u(\mu +\rho )-\rho %
+\right] +\mathcal{D}_{\frak{a}_{\perp }},\quad u\in U,$
+
+$\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) :=\pi _{\widetilde{%
+\frak{a}_{\perp }}}\left[ u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}%
+_{\perp }},\quad u\in U.$
+
+$\Psi ^{\mu }=\sum_{u\in U}\;\epsilon (u)\Psi _{\widetilde{\frak{a}_{\perp }}%
+}^{\pi _{\left( \widetilde{\frak{a}_{\perp }}\right) }\left[ u(\mu +\rho
+)-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }}}e^{\pi _{\left( \frak{a}%
+\right) }\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}_{\perp
+}}}. $
+
+$\Psi ^{\left( \mu \right) }=\sum_{u\in U}\;\epsilon (u)e^{\mu _{\frak{a}%
+}\left( u\right) }\Psi _{\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{%
+\frak{a}_{\perp }}}\left( u\right) }.$
+
+$R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
+mult}\left( \alpha \right) }}\quad $ $\left( \mathrm{resp.}R_{\frak{a}%
+}:=\prod_{\alpha \in \Delta _{\frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{%
+\mathrm{mult}_{\frak{a}}\mathrm{\left( \alpha \right) }}\right) $
+
+Proof of the final result:
+
+$\sum_{u\in U}\;e^{\mu _{\frak{a}}\left( u\right) }\epsilon (u)\sum_{w\in W_{%
+\frak{a}_{\perp }}}\epsilon \left( w\right) \mathrm{ch}M^{w\left( \mu _{%
+\widetilde{\frak{a}_{\perp }}}\left( u\right) +\rho _{\frak{a}_{\perp
+}}\right) -\rho _{\frak{a}_{\perp }}}=$
+
+$=\sum_{u\in U}\sum_{w\in W_{\frak{a}_{\perp }}}\;\epsilon \left( w\right)
+\epsilon (u)e^{\mu _{\frak{a}}\left( u\right) }\mathrm{ch}M^{w\left( \mu _{%
+\widetilde{\frak{a}_{\perp }}}\left( u\right) +\rho _{\frak{a}_{\perp
+}}\right) -\rho _{\frak{a}_{\perp }}}=$
+
+$=\sum_{u\in U}\sum_{w\in W_{\frak{a}_{\perp }}}\;\epsilon \left( w\right)
+\epsilon (u)e^{\mu _{\frak{a}}\left( u\right) }\mathrm{ch}M^{w\left( \mu _{%
+\widetilde{\frak{a}_{\perp }}}\left( u\right) +\rho _{\frak{a}_{\perp
+}}\right) -\rho _{\frak{a}_{\perp }}}$
+
+$w\left( \mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) +\rho _{%
+\widetilde{\frak{a}_{\perp }}}\right) -\rho _{\widetilde{\frak{a}_{\perp }}%
+}=w\left( \pi _{\widetilde{\frak{a}_{\perp }}}\left[ u(\mu +\rho )-\rho %
+\right] -\rho _{\widetilde{\frak{a}_{\perp }}}+\pi _{\widetilde{\frak{a}%
+_{\perp }}}\rho +\rho _{\widetilde{\frak{a}_{\perp }}}\right) -\rho _{%
+\widetilde{\frak{a}_{\perp }}}$
+
+$=w\left( \pi _{\widetilde{\frak{a}_{\perp }}}\left[ u(\mu +\rho )-\rho %
+\right] +\pi _{\widetilde{\frak{a}_{\perp }}}\rho \right) -\rho _{\widetilde{%
+\frak{a}_{\perp }}}=w\left( \pi _{\widetilde{\frak{a}_{\perp }}}\left[ u(\mu
++\rho )\right] \right) -\rho _{\widetilde{\frak{a}_{\perp }}}=$
+
+$=\left( \pi _{\widetilde{\frak{a}_{\perp }}}\left[ wu(\mu +\rho )\right]
+\right) -\rho _{\widetilde{\frak{a}_{\perp }}};$
+
+$e^{\mu _{\frak{a}}\left( u\right) }=e^{\pi _{\frak{a}}\left[ u(\mu +\rho
+)-\rho \right] +\mathcal{D}_{\frak{a}_{\perp }}}=e^{\pi _{\frak{a}}\left[
+wu(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}_{\perp }}}=e^{\pi _{\frak{%
+a}}\left[ wu(\mu +\rho )\right] -\left( \pi _{\frak{a}}\rho +\pi _{%
+\widetilde{\frak{a}_{\perp }}}\rho \right) +\rho _{\widetilde{\frak{a}%
+_{\perp }}}}=$
+
+$=e^{\pi _{\frak{a}}\left[ wu(\mu +\rho )\right] -\rho +\rho _{\widetilde{%
+\frak{a}_{\perp }}}};$
+
+$e^{\left( \pi _{\widetilde{\frak{a}_{\perp }}}\left[ wu(\mu +\rho )\right]
+\right) -\rho _{\widetilde{\frak{a}_{\perp }}}}e^{\pi _{\frak{a}}\left[
+wu(\mu +\rho )\right] -\rho +\rho _{\widetilde{\frak{a}_{\perp }}%
+}}=e^{wu(\mu +\rho )-\rho };$
+
+$\mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right) :=\pi _{\widetilde{%
+\frak{a}_{\perp }}}\left[ u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}%
+_{\perp }}$
 
 \section{Branching for Verma modules}
 \label{sec:branching-verma}
@@ -589,18 +962,18 @@ Using the Bernstein-Gelfand-Gelfand resolution for the subalgebra $\af$ we get t
 
 \end{enumerate}
 
-\section{Applications}
-\label{sec:applications}
-
-\section{Conclusion}
-\label{sec:conclusion}
-
-
-\section{Acknowledgements}
-
-The work was supported in part by RFFI grant N 09-01-00504 and the National
-Project RNP.2.1.1./1575.
-
+% \section{Applications}
+% \label{sec:applications}
+% 
+% \section{Conclusion}
+% \label{sec:conclusion}
+% 
+% 
+% \section{Acknowledgements}
+% 
+% The work was supported in part by RFFI grant N 09-01-00504 and the National
+% Project RNP.2.1.1./1575.
+% 
 \section*{References}
 \bibliography{article}{}
 \bibliographystyle{utphys}
