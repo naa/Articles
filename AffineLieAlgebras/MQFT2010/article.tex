@@ -38,42 +38,356 @@
 \begin{document}
 \title{Nope}
 \author{V D Lyakhovsky$^1$ and A A Nazarov$^2$}
-%\address{$^{1,2}$ Theoretical Department, SPb State University,
-%198904, Sankt-Petersburg, Russia }
-%\eads{$^1$ \mailto{lyakh1507@nm.ru}, $^2$ \mailto{antonnaz@gmail.com}}
 
 \begin{abstract}
 \end{abstract}
 
 \section{Introduction}
+
 \label{sec:introduction}
 
-We consider the reduction problem for simple Lie algebra modules. We study the reduction of Verma and irreducible finite-dimensional modules of the algebra to the modules of the subalgebra. We discuss the connection of the reduction with the Bernstein-Gelfand-Gelfand resolution. We show that different structures appear in the process of reduction, for example modules of contracted algebra and generalized Verma modules from parabolic category $\mathcal{O}^{\mathfrak{p}}$.
+The branching properties of Lie (affine Lie) algebras are highly important for
+applications in quantum field theory. This concernes for example the
+conformal field theory models \cite{difrancesco1997cft},\cite
+{coquereaux2008conformal}.
 
-First of all, consider the following example. 
-Let Lie algebra $\gf$ be $so(5)$ and subalgebra $\af\subset \gf$ be $so(3)$. There are different embeddings of $so(3)\to so(5)$. Here we limit ourselves to the regular ones. 
-The root system of the algebra $so(5)$ consists of 8 roots. We denote simple roots by $\alpha_{1}=e_{1}-e_{2}$ and $\alpha_{2}=e_{2}$, where $e_{1},e_{2}$ form standard basis. The set of the positive roots is $\Delta^{+}=\left\{\alpha_{1}, \alpha_{1}+\alpha_{2}, \alpha_{1}+2\alpha_{2}, \alpha_{2}\right\}$. Each of these roots can be taken as the simple root of the subalgebra $so(3)$. At first we consider the subalgebra $so(3)$ with the root space spanned on $\beta=\alpha_{1}+2\alpha_{2}$. Verma module $M^{\mu}$ with the highest weight $\mu=\omega_{1}+2\omega_{2}=2\alpha_{1}+3\alpha_{2}$ is shown at Figure \ref{fig:B2_Verma}.
-\begin{figure}[h!bt]
-  \noindent\centering{
-    \includegraphics[width=120mm]{B2_Verma}
-  }
-  \caption{Regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
-    The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector. Dimensions of weight subspaces of Verma module $M^{(1,2)}$ are shown.}
-  
-  \label{fig:B2_Verma}
-\end{figure}
+% There are different approaches to deal with the branching coefficients. Some
+% of them use the BGG resolution \cite{bernstein1975differential} (for
+% Kac-Moody algebras the algorithm is described in \cite{kac1990idl},\cite
+% {wakimoto2001idl}).
 
-The branching coefficients are shown at Figure \ref{fig:B2_Verma_Branch2} for the different regular embeddings $so(3)\to so(5)$. Here we can see that the picture depends upon the embedding and looks similar to the Verma modules of some subalgebra.
-\begin{figure}[h!bt]
-  \noindent\centering{
-    \includegraphics[width=120mm]{B2_Verma_Branch2}
-  }
-  \caption{Branching for the Verma modules}
-  
-  \label{fig:B2_Verma_Branch2}
-\end{figure}
-In present paper we interpret this branching coefficients as the dimensions of the weight subspaces of the modules of contracted algebras.
+In this paper we demonstrate that for an arbitrary reductive subalgebra
+branching is directly connected with the BGG resolution and in particular
+exhibits the resolution properties in terms of the $\mathcal{O}^{p}$
+category \cite{lepowsky1977generalization} (the parabolic generalization of the cathegory $%
+\mathcal{O}$ \cite{bernstein1976category}).
 
+To show this we use the recursive approach to branching presented in [our
+preprint] (similar to the one used in \cite{ilyin812pbc} for maximal
+embeddings). We consider the subalgebra $\frak{a}$ together with its
+counterpart $\frak{a}_{\bot }$ ''orthogonal'' to $\frak{a}$ with respect to
+the Killing form and also $\widetilde{\frak{a}_{\perp }}:=\frak{a}_{\perp
+}\oplus \frak{h}_{\perp }$ where $\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus 
+\frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. For any reductive
+algebra $\frak{a}$ the subalgebra $\frak{a}_{\bot }\hookrightarrow \frak{g}$
+is regular and reductive. For a highest weight integrable module $L^{\left(
+\mu \right) }$ and orthogonal pair of subalgebras $\left( \frak{a},\frak{a}%
+_{\bot }\right) $ we consider the singular element $\Psi ^{\left( \mu
+\right) }$ (the numerator in the Weyl character formula $ch\left( L^{\mu
+}\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left( 0\right) }}$, see
+for example \cite{humphreys1997introduction}) the Weyl denominator $R=\Psi _{%
+\frak{a}_{\bot }}^{\left( 0\right) }$ and the projection $\Psi _{\left( 
+\frak{a},\frak{a}_{\bot }\right) }^{\left( \mu \right) }=\pi _{\frak{a}}%
+\frac{\Psi _{\frak{g}}^{\left( \mu \right) }}{\Psi _{\frak{a}_{\bot
+}}^{\left( 0\right) }}$. The element $\Psi _{\frak{g}}^{\left( \mu \right) }$
+can be decomposed with respect to the set of Weyl numerators $\Psi _{\frak{a}%
+_{\bot }}^{\left( \mu \right) }$ of $\frak{a}_{\bot }$. This decomposition
+provides the possibility to construct the set of highest weight modules $L_{%
+\widetilde{\frak{a}_{\perp }}}^{\mu _{\widetilde{\frak{a}_{\perp }}}}$. When
+the injection \ $\frak{a}_{\bot }\hookrightarrow \frak{g}$ \ satisfies the
+''standard parabolic'' conditions these modules give rise to the parabolic
+Verma modules $M_{\left( \widetilde{\frak{a}_{\perp }}\hookrightarrow \frak{g%
+}\right) }^{\mu _{\widetilde{\frak{a}_{\perp }}}}$ so that the initial
+character $ch\left( L^{\mu }\right) $ is finally decomposed into the
+alternating sum of such. On the other hand when the parabolic conditions are
+violated the construction survives and exhibites a decomposition with
+respect to a set of Verma modules $M_{\left( \widetilde{\frak{b}_{\perp }},%
+\frak{g}\right) }^{\mu _{\widetilde{\frak{a}_{\perp }}}}$. In such a
+situation the algebra $\widetilde{\frak{b}_{\perp }}$ is not a subalgebra in 
+$\frak{g}$ but a contraction of $\widetilde{\frak{a}_{\perp }}$.
+
+Some general properties of the proposed decompositions are formulated in
+terms of a specific element $\Gamma _{\frak{a}\rightarrow \frak{g}}$ of the
+group algebra $\mathcal{E}\left( \frak{g}\right) $ called ''the injection
+fan''. Using this tool the simple and explicit algorithm for branching
+coefficients computations applicable for an arbitrary (maximal or
+nonmaximal) subalgebras of finite-dimensional or affine Lie algebras was
+obtained in [our preprint].
+
+Possible further developments are discussed in Section \ref{sec:conclusion}.
+
+\subsection{Notation}
+
+\label{sec:notation}
+
+Consider affine Lie algebras $\frak{g}$ and $\frak{a}$ with the underlying
+finite-dimensional subalgebras $\stackrel{\circ }{\frak{g}}$ and $\stackrel{%
+\circ }{\frak{a}}$ and an injection $\frak{a}\hookrightarrow \frak{g}$ such
+that $\frak{a}$ is a reductive subalgebra $\frak{a\subset g}$ with
+correlated root spaces: $\frak{h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g%
+}}^{\ast }$ and $\frak{h}_{\stackrel{\circ }{\frak{a}}}^{\ast }\subset \frak{%
+h}_{\stackrel{\circ }{\frak{g}}}^{\ast }$\ . We use the following notations:
+
+$L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
+of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
+-module with the highest weight $\nu $ );
+
+$r$ , $\left( r_{\frak{a}}\right) $ --- the rank of the algebra $\frak{g}$ $%
+\left( \mathrm{{resp. }\frak{a}}\right) $ ;
+
+$\Delta $ $\left( \Delta _{\frak{a}}\right) $--- the root system; $\Delta
+^{+} $ $\left( \mathrm{{resp. }\Delta _{\frak{a}}^{+}}\right) $--- the
+positive root system (of $\frak{g}$ and $\frak{a}$ respectively);
+
+$\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
+\alpha \right) \right) $ --- the multiplicity of the root $\alpha$ in $%
+\Delta $ (resp. in $\left( \Delta _{\frak{a}}\right) $);
+
+$\stackrel{\circ }{\Delta}$ , $\left( \stackrel{\circ }{\Delta _{\frak{a}}}%
+\right)$ --- the finite root system of the subalgebra $\stackrel{\circ }{%
+\frak{g}}$ (resp. $\stackrel{\circ }{\frak{a}}$);
+
+$\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
+the weight diagram of $L^{\mu }$ $\left( \mathrm{{resp. }L_{\frak{a}}^{\nu }}%
+\right) $ ;
+
+$W$ , $\left( W_{\frak{a}}\right) $--- the corresponding Weyl group;
+
+$C$ , $\left( C_{\frak{a}}\right) $--- the fundamental Weyl chamber;
+
+$\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- the closure of the
+fundamental Weyl chamber;
+
+$\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- the Weyl vector;
+
+$\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
+
+$\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $%
+i $-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \mathrm{{resp. }%
+\frak{a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}%
+}\right) $;
+
+$\delta $ --- the imaginary root of $\frak{g}$ (and of $\frak{a}$ if any);
+
+$\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
+}\right) $--- the basic coroot for $\frak{g}$ $\left( \mathrm{{resp. }\frak{a%
+}}\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+
+$\stackrel{\circ }{\xi }$ , $\stackrel{\circ }{\xi _{\left( \frak{a}\right) }%
+}$ --- the finite (classical) part of the weight $\xi \in P$ , $\left( 
+\mathrm{{resp. }\xi _{\left( \frak{a}\right) }\in P_{\frak{a}}}\right) $;
+
+$\lambda =\left( \stackrel{\circ }{\lambda };k;n\right) $ --- the
+decomposition of an affine weight indicating the finite part $\stackrel{%
+\circ }{\lambda }$, level $k$ and grade $n$;
+
+$P$ $\left( \mathrm{{resp.}P_{\frak{a}}}\right) $ \ --- the weight lattice;
+
+$P^{+}$ $\left( \mathrm{{resp.}P_{\frak{a}}^{+}}\right) $ \ --- the dominant
+weight lattice;
+
+$m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
+}\right) $ --- the multiplicity of the weight $\xi \in P$ \ $\left( \mathrm{{%
+resp. }\in P_{\frak{a}}}\right) $ in the module $L^{\mu }$ , (resp. $\xi \in
+L_{\frak{a}}^{\nu } $);
+
+$ch\left( L^{\mu }\right) $ $\left( \mathrm{{resp. }ch\left( L_{\frak{a}%
+}^{\nu }\right) }\right) $--- the formal character of $L^{\mu }$ $\left( 
+\mathrm{{resp. }L_{\frak{a}}^{\nu }}\right) $;
+
+$ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
++\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
+\mathrm{{mult}\left( \alpha \right) }}}$ --- the Weyl-Kac formula;
+
+$R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
+mult}\left( \alpha \right) }}\quad $ $\left( \mathrm{resp.}R_{\frak{a}%
+}:=\prod_{\alpha \in \Delta _{\frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{%
+\mathrm{mult}_{\frak{a}}\mathrm{\left( \alpha \right) }}\right) $--- the
+Weyl denominator.
+
+\section{Orthogonal subalgebra and the singular element}
+
+\label{sec:recurr-form-branch}
+
+Consider the highest weight $\mu \in P^{+}$ of an integrable module $L^{\mu
+} $ of $\frak{g}$ and let $\frak{a}\subset \frak{g}$ be a reductive
+subalgebra of $\frak{g}$. Let $L^{\mu }$ be completely reducible with
+respect to $\frak{a}$, 
+\[
+L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
+}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }. 
+\]
+Using the projection operator $\pi _{\frak{a}}$ (to the weight space $\frak{%
+h_{a}}^{\ast }$) one can rewrite this decomposition in terms of formal
+characters: 
+\begin{equation}
+\pi _{\frak{a}}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\frak{a}%
+}^{+}}b_{\nu }^{(\mu )}ch\left( L_{\frak{a}}^{\nu }\right) .
+\label{branching1}
+\end{equation}
+The module $L^{\mu }$ has the BGG-resolution (see [BGG] and [Humphrys]). All
+the members of the filtration sequence are the direct sums of Verma modules
+and all their highest weights $\nu $ are strongly linked to $\mu $: 
+\[
+\left\{ \nu \right\} =\left\{ w\left( \mu +\rho \right) -\rho |w\in
+W\right\} . 
+\]
+
+\subsection{Orthogonal subalgebra}
+
+Let us introduce the ''orthogonal partner'' $\frak{a}_{\bot }$ for a
+reductive subalgebra $\frak{a}$ in $\frak{g}$.
+
+Consider the root subspace $\frak{h}_{\perp \frak{a}}^{\ast }$ orthogonal to 
+$\frak{a}$, 
+\[
+\frak{h}_{\perp \frak{a}}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast }|\forall
+h\in \frak{h}_{\frak{a}};\eta \left( h\right) =0\right\} , 
+\]
+and the roots (correspondingly -- positive roots) of $\frak{g}$ orthogonal
+to $\frak{a}$, 
+\begin{eqnarray*}
+\Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
+h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} , \\
+\Delta _{\frak{a}_{\perp }}^{+} &:&=\left\{ \beta ^{+}\in \Delta _{\frak{g}%
+}^{+}|\forall h\in \frak{h}_{\frak{a}};\beta ^{+}\left( h\right) =0\right\} .
+\end{eqnarray*}
+Let $W_{\frak{a}_{\perp }}$ be the subgroup of $W$ generated by the
+reflections $w_{\beta }$ with the roots $\beta \in \Delta _{\frak{a}_{\perp
+}}^{+}$ . The subsystem $\Delta _{\frak{a}_{\perp }}$ determines the
+subalgebra $\frak{a}_{\perp }$ with the Cartan subalgebra $\frak{h}_{\frak{a}%
+_{\perp }}$. Let 
+\[
+\frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \frak{a}}^{\ast
+}|\forall h\in \frak{h}_{\frak{a}\oplus \frak{a}_{\perp }};\eta \left(
+h\right) =0\right\} 
+\]
+so that $\frak{g}$ has the subalgebras 
+\begin{eqnarray*}
+\widetilde{\frak{a}_{\perp }} &:&=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
+\\
+\widetilde{\frak{a}} &:&=\frak{a}\oplus \frak{h}_{\perp }.
+\end{eqnarray*}
+Algebras $\frak{a}$ and $\frak{a}_{\perp }$ form the ''orthogonal pair'' $%
+\left( \frak{a},\frak{a}_{\perp }\right) $ of subalgebras in $\frak{g}$.
+
+For the Cartan subalgebras we have the decomposition 
+\begin{equation}
+\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus 
+\frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\frak{a}}}}\oplus \frak{h}_{%
+\frak{a}_{\perp }}=\frak{\frak{h}_{\widetilde{\frak{a}_{\perp }}}}\oplus 
+\frak{h}_{\frak{a}}.
+\end{equation}
+For the subalgebras of an orthogonal pair $\left( \frak{a},\frak{a}_{\perp
+}\right) $ we consider the corresponding Weyl vectors, $\rho _{\frak{a}}$
+and $\rho _{\frak{a}_{\perp }}$ , and\ form the so called ''defects'' $%
+\mathcal{D}_{\frak{a}}$ and $\mathcal{D}_{\frak{a}_{\perp }}$ of the
+injection: 
+\begin{equation}
+\mathcal{D}_{\frak{a}}:=\rho _{\frak{a}}-\pi _{\frak{a}}\rho ,
+\end{equation}
+\begin{equation}
+\mathcal{D}_{\frak{a}_{\perp }}:=\rho _{\frak{a}_{\perp }}-\pi _{\frak{a}%
+_{\perp }}\rho .
+\end{equation}
+
+For the highest weight $\mu \in P^{+}$ consider the linked weights $\left\{
+\left( w(\mu +\rho )-\rho \right) |w\in W\right\} $ and their projections to 
+$h_{\widetilde{\frak{a}_{\perp }}}^{\ast }$ additionally shifted by the
+defect $-\mathcal{D}_{\frak{a}_{\perp }}$: 
+\[
+\mu _{\widetilde{\frak{a}_{\perp }}}\left( w\right) :=\pi _{\widetilde{\frak{%
+a}_{\perp }}}\left[ w(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp
+}},\quad w\in W. 
+\]
+In the case we do consider here among the weights $\left\{ \mu _{\widetilde{%
+\frak{a}_{\perp }}}\left( w\right) |w\in W\right\} $ one can always choose
+those located in the fundamental chamber $\overline{C_{\widetilde{\frak{a}%
+_{\perp }}}}$. Let $U$ be the set of representatives $u$ for the classes $%
+W/W_{\frak{a}_{\perp }}$ such that
+
+\begin{equation}
+U:=\left\{ u\in W|\quad \mu _{\widetilde{\frak{a}_{\perp }}}\left( u\right)
+\in \overline{C_{\widetilde{\frak{a}_{\perp }}}}\right\} \quad .
+\label{U-def}
+\end{equation}
+For such a set $U$ introduce the weights 
+\[
+\mu _{\frak{a}}\left( u\right) :=\pi _{\frak{a}}\left[ u(\mu +\rho )-\rho %
+\right] +\mathcal{D}_{\frak{a}_{\perp }}. 
+\]
+
+Note that the subalgebra $\afb$ is regular by definition since it is built on the roots of the
+algebra $\gf$.
+
+Consider the Weyl-Kac formula for $ch\left( L^{\mu }\right) $ in terms of
+singular elements \cite{humphreys1997introduction}: 
+\begin{equation}
+ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left(
+0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R},  \label{Weyl-Kac2}
+\end{equation}
+where 
+\[
+\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu
++\rho )-\rho }. 
+\]
+The same form will be used for the submodules $ch\left( L_{\frak{a}}^{\nu
+}\right) $%
+\[
+ch\left( L_{\frak{a}}^{\nu }\right) =\frac{\Psi _{\frak{a}}^{\left( \nu
+\right) }}{\Psi _{\frak{a}}^{\left( 0\right) }}=\frac{\Psi _{\frak{a}%
+}^{\left( \nu \right) }}{R_{\frak{a}}}, 
+\]
+with 
+\[
+\Psi _{\frak{a}}^{\left( \nu \right) }:=\sum\limits_{w\in W_{\frak{a}%
+}}\epsilon (w)e^{w\circ (\nu +\rho _{_{\frak{a}}})-\rho _{_{\frak{a}}}}. 
+\]
+
+Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
+we get the relation connecting the singular elements $\Psi ^{\left( \mu
+\right) }$ and $\Psi _{\frak{a}}^{\left( \nu \right) }$ : 
+\begin{eqnarray}
+\pi _{\frak{a}}\left( \frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho
+)-\rho }}{\prod_{\alpha \in \Delta ^{+}}(1-e^{-\alpha })^{\mathrm{mult}%
+(\alpha )}}\right) &=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\frac{%
+\sum_{w \in W_{\frak{a}}}\epsilon (w )e^{w (\nu +\rho _{\frak{a}})-\rho _{%
+\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{a}}^{+}}(1-e^{-\beta })^{\mathrm{%
+mult}_{\frak{a}}(\beta )}},  \nonumber  \label{eq:4} \\
+\pi _{\frak{a}}\left( \frac{\Psi ^{\left( \mu \right) }}{R}\right)
+&=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\frak{a}%
+}^{\left( \nu \right) }}{R_{\frak{a}}}.
+\end{eqnarray}
+Here $\Delta _{\frak{a}}^{+}$ is the set of positive roots of the subalgebra 
+$\frak{a}$ (without loss of generality we consider them as vectors from the
+positive root space $\frak{h}^{\ast +}$ of $\frak{g}$).
+
+To describe the recurrent properties for branching coefficients $b_{\nu
+}^{(\mu )}$ we shall use the technique first proposed in \cite{ilyin812pbc}.
+One of the main tools is the set of weights $\Gamma _{\frak{a}\rightarrow 
+\frak{g}}$ called the injection fan:
+
+\begin{definition}
+\label{fan-definition} For the product 
+\begin{equation}
+\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot }^{+}}\left( 1-e^{-\pi
+_{\frak{a}}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}_{\frak{a}%
+}(\pi _{\frak{a}}\alpha )}=-\sum_{\gamma \in P_{\frak{a}}}s(\gamma
+)e^{-\gamma }  \label{eq:6}
+\end{equation}
+consider the carrier $\Phi _{\frak{a}\subset \frak{g}}\subset P_{\frak{a}}$
+of the function $s(\gamma )=\det \left( \gamma \right) $ : 
+\begin{equation}
+\Phi _{\frak{a}\subset \frak{g}}=\left\{ \gamma \in P_{\frak{a}}|s(\gamma
+)\neq 0\right\}   \label{eq:37}
+\end{equation}
+The ordering of roots in $\stackrel{\circ }{\Delta _{\frak{a}}}$ induce the
+natural ordering of the weights in $P_{\frak{a}}$. Denote by $\gamma _{0}$
+the lowest vector of $\Phi _{\frak{a}\subset \frak{g}}$ . The set 
+\begin{equation}
+\Gamma _{\frak{a}\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi
+_{\frak{a}\subset \frak{g}}\right\} \setminus \left\{ 0\right\} 
+\label{fan-defined}
+\end{equation}
+is called the \textit{injection fan}.
+\end{definition}
+
+It must be noticed that the injection fan is the universal instrument that
+depend only on the injection.
+
+
+\section{Branching for Verma modules}
+\label{sec:branching-verma}
 
 The formal character of Verma module is given by the expression
 \begin{equation}
@@ -85,23 +399,7 @@ The denominator $R=\prod_{\alpha\in \Delta^{+}} \left(1-e^{-\alpha}\right)$ can 
   \label{eq:20}
   R=\sum_{w\in W} \epsilon(w) e^{w\rho-\rho}.
 \end{equation}
-Since we consider the regular embeddings, all the positive roots of the subalgebra $\af$ are in the set of positive roots of the algebra $\gf$, $\Delta^{+}_{\af}\subset \Delta^{+}$. Then we can introduce $\tilde R$ and the carrier of its expansion $\Phi$:
-\begin{equation}
-  \label{eq:21}
-  \tilde R=\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\af}} \left( 1 - e^{-\alpha}\right)=-\sum_{\gamma\in \Phi} s(\gamma) e^{-\gamma}
-\end{equation}
-The ordering of roots in $\Delta _{\af}$ induce the
-natural ordering of the weights in $P_{\af}$. Denote by $\gamma _{0}$
-the lowest vector of $\Phi _{\af\subset \frak{g}}$ . The set
-\begin{equation}
-\Gamma _{\af\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
-\af\subset \frak{g}}\right\} \setminus \left\{ 0\right\}
-\label{fan-defined}
-\end{equation}
-is called the \textit{injection fan}.
-
-
-The root of the subalgebra is among the positive roots of the algebra. So  Verma module can be decomposed into the set of Verma modules of the subalgebra:
+If we consider the regular embeddings, all the positive roots of the subalgebra $\af$ are in the set of positive roots of the algebra $\gf$, $\Delta^{+}_{\af}\subset \Delta^{+}$. Verma module can be decomposed into the set of Verma modules of the subalgebra:
 \begin{equation}
   \label{eq:18}
   \mathrm{ch}M^{\mu}=\sum_{\nu}b^{(\mu)}_{\nu} e^{\nu-\pi_{\af}\nu} \mathrm{ch}M^{\pi_{\af}\nu}_{\af}
@@ -116,74 +414,37 @@ Using the equation \eqref{eq:21} we can write the recurrent relation for the bra
           +\gamma }^{\left( \mu \right) }\right).
 \end{equation}
 
+Inside the main Weyl chamber branching coefficients for Verma module coincide with the coefficients
+for reduction of irreducible representations.
+
+Now consider the following example. 
+Let Lie algebra $\gf$ be $so(5)$ and subalgebra $\af\subset \gf$ be $so(3)$. There are different embeddings of $so(3)\to so(5)$. Here we limit ourselves to the regular ones. 
+The root system of the algebra $so(5)$ consists of 8 roots. We denote simple roots by $\alpha_{1}=e_{1}-e_{2}$ and $\alpha_{2}=e_{2}$, where $e_{1},e_{2}$ form standard basis. The set of the positive roots is $\Delta^{+}=\left\{\alpha_{1}, \alpha_{1}+\alpha_{2}, \alpha_{1}+2\alpha_{2}, \alpha_{2}\right\}$. Each of these roots can be taken as the simple root of the subalgebra $so(3)$. At first we consider the subalgebra $so(3)$ with the root space spanned on $\beta=\alpha_{1}+2\alpha_{2}$. Verma module $M^{\mu}$ with the highest weight $\mu=\omega_{1}+2\omega_{2}=2\alpha_{1}+3\alpha_{2}$ is shown at Figure \ref{fig:B2_Verma}.
+\begin{figure}[h!bt]
+  \noindent\centering{
+    \includegraphics[width=120mm]{B2_Verma.pdf}
+  }
+  \caption{Regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
+    The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector. Dimensions of weight subspaces of Verma module $M^{(1,2)}$ are shown.}
+  
+  \label{fig:B2_Verma}
+\end{figure}
+
+The branching coefficients are shown at Figure \ref{fig:B2_Verma_Branch2} for the different regular embeddings $so(3)\to so(5)$. Here we can see that the picture depends upon the embedding and looks similar to the Verma modules of some subalgebra.
+\begin{figure}[h!bt]
+  \noindent\centering{
+    \includegraphics[width=120mm]{B2_Verma_Branch3}
+  }
+  \caption{Branching for the Verma modules}
+  
+  \label{fig:B2_Verma_Branch2}
+\end{figure}
+In present paper we interpret this branching coefficients as the dimensions of the weight subspaces of the modules of contracted algebras.
+
+
+
 \section{Regular subalgebras and generalized Verma modules}
 \label{sec:regul-subalg-gener}
-
-Consider finite-dimensional Lie algebra $\mathfrak{g}$  and its regular reductive subalgebra $\af\subset \mathfrak{g}$. Introduce the following objects.
-\begin{definition}
-  \label{def-1}
-  Denote by $\Delta^{+}_{\afb}=\left\{\alpha\in \Delta^{+}_{\mathfrak{g}}:\forall \beta\in\Delta_{\af} \; \alpha\bot \beta\right\}$ the subset of the positive roots of $\mathfrak{g}$ orthogonal to the root system of $\af$.
-\end{definition}
-
-\begin{definition}
-  \label{def-2}
-  Denote by $W_{\afb}$ the subgroup of the Weyl group $W$ generated by the reflections $w_{\alpha}$ corresponding to the roots $\alpha\in \Delta^{+}_{\afb}$.
-\end{definition}
-\begin{mynote}
-  The subgroup $W_{\afb}$ preserves $\Delta_{\af}$ since it is generated by the reflections in hyperplanes containing $\Delta_{\af}$.
-\end{mynote}
-\begin{definition}
-  \label{def-3}
-  The subsystem $\Delta_{\afb}=\Delta^{+}_{\afb}\cup \left(-\delta^{+}_{\afb}\right)$ determines the subalgebra $\af_{\bot}\subset \mathfrak{g}$.
-\end{definition}
-Let
-\begin{equation*}
-\frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \af}^{\ast
-}|\forall \alpha \in \Delta _{\af}\cup \Delta _{\af_{\perp
-}};\alpha \bot \eta \right\}
-\end{equation*}
-and consider the subalgebras
-\begin{eqnarray*}
-\widetilde{\af_{\perp }} &:&=\af_{\perp }\oplus \frak{h}_{\perp }
-\\
-\widetilde{\af} &:&=\af\oplus \frak{h}_{\perp }.
-\end{eqnarray*}
-Algebras $\af$ and $\af_{\perp }$ form the ''orthogonal pair''
-$\left( \af,\af_{\perp}\right) $
-of subalgebras in $\frak{g}$.
-
-For the Cartan subalgebras we have the decomposition
-\begin{equation}
-\frak{h}=\frak{\frak{h}_{\af}}\oplus \frak{h}_{\af_{\perp }}\oplus
-\frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\af}}}\oplus \frak{h}_{%
-\af_{\perp }}=\frak{\frak{h}_{\widetilde{\af_{\perp }}}}\oplus
-\frak{h}_{\af}.
-\end{equation}
-For the subalgebras of an orthogonal pair $\left( \af,\af_{\perp
-}\right) $ we consider the corresponding Weyl vectors, $\rho _{\af}$
-and $\rho _{\af_{\perp }}$ , and\ form the so called ''defects'' $%
-\mathcal{D}_{\af}$ and $\mathcal{D}_{\af_{\perp }}$ of the
-injection:
-\begin{equation}
-\mathcal{D}_{\af}:=\rho _{\af}-\pi _{\af}\rho ,
-\end{equation}
-\begin{equation}
-\label{defect-perp}
-\mathcal{D}_{\af_{\perp }}:=\rho _{\af_{\perp }}-\pi _{\af%
-_{\perp }}\circ\rho .
-\end{equation}
-\begin{equation}
-U:=\left\{ u\in W|\quad \mu _{\widetilde{\af_{\perp }}}\left( u\right)
-\in \overline{C_{\widetilde{\af_{\perp }}}}\right\} \quad .
-\label{U-def}
-\end{equation}
-For the same set $U$ introduce the weights
-\begin{equation*}
-\mu _{\af}\left( u\right) :=\pi _{\af}\circ\left[ u(\mu +\rho )-\rho %
-\right] +\mathcal{D}_{\af_{\perp }}.
-\end{equation*}
-To simplify the form of relations we shall now on omit the sign "$\circ$" in projected
-weights.
 
 Let us state the following lemma.
 \begin{lemma}
@@ -261,7 +522,7 @@ This lemma can be used to state the recurrent relation for the branching coeffic
 \end{corollary}
 \begin{corollary}
   \label{corollary-2}
-  Since $\af, \afb$ are regular subalgebras the simple root system $\alpha_1,\dots, \alpha_r$ of $\gf$ can be chosen in such a way that simple roots $\beta_1,\dots,\beta_{r_{\afb}}$ of $\afb$ are contained in it. Denote the set of roots $\beta_i$ by $I$. This notation is in the agreement with the book \cite{humphreys2008representations}.
+ If $\af, \afb$ are regular subalgebras the simple root system $\alpha_1,\dots, \alpha_r$ of $\gf$ sometimes can be chosen in such a way that simple roots $\beta_1,\dots,\beta_{r_{\afb}}$ of $\afb$ are contained in it. Denote the set of roots $\beta_i$ by $I$. This notation is in the agreement with the book \cite{humphreys2008representations}.
   \begin{equation*}
     I=\{\beta_1,\dots,\beta_{r_{\afb}}\}\subset \{\alpha_1,\dots,\alpha_r\}
   \end{equation*}
@@ -292,6 +553,12 @@ Now if we multiply the statement (\ref{eq:4}) of the lemma \ref{lemma-1} by $\fr
 So we have recovered the Bernstein-Gelfand-Gelfand resolution \cite{bernstein1975differential} for the parabolic category ${\cal O}^{\pf}$.
 \end{corollary}
 
+Note, that not all the examples of branching lead to the generalized Verma modules. For example,
+consider the embedding $\af_{1}=B_{4}\subset \gf=B_{6}$. As we mentioned in \cite{2010arXiv1007.0318L} the
+orthogonal subalgebra $\afb=B_{2}$. Then consider the regular subalgebra $\af=A_{1}\subset
+\af_{1}\subset \gf$ with the root system spanned over the first long root of $\af_{1}$. Its
+orthogonal subalgebra in $\gf$ contains the root systems of two algebras $B_{2}$. But those two root
+systems cannot be built on the simple roots of $\gf$.
 \section{Generalizations}
 \label{sec:generalizations}
 
@@ -320,15 +587,6 @@ Using the Bernstein-Gelfand-Gelfand resolution for the subalgebra $\af$ we get t
   \sum_{\nu\in P^+_{\af}}b^{(\mu)}_{\nu}\sum_{ w\in W_{\af}} \epsilon(w) \mathrm{ch} M_{\af}^{w(\mu+\rho_{\af})-\rho_{\af}} =  \sum_{u \in W/W_{\afb}} \epsilon(u) \pi_{\af}\left(   \mathrm{ch} M^{(u(\mu+\rho)-\rho)}_{\pf}\right)
 \end{equation}
 
-\item Also we can generalize the whole construction to affine Lie algebras $\gf, \af$, since Weyl character formula and denominator identity have natural analogs in the theory of affine Lie algebras. The only subtle point is in the definition of projection $\pi$ to the subalgebra. The extension of the Killing form from the finite-dimensional simple Lie algebra $\co{\gf}$ to the affine Lie algebra $\gf$ is not positive-definite. For the imaginary root $\delta$ we have $(\delta,\delta)=0$. If we use this form for the projection to the root space of the affine subalgebra $\af$ we end up with $\delta\perp \beta; \beta\in \Delta_{\af}$ or $\pi_{\af}(n\delta)=0$. This is not what we want. 
-
-So we define new positive-definite bilinear form $(\cdot,\cdot)_+$ on the root lattice of $\gf$ by the requirement $(\delta,\delta)_+=1$. This form is only $\co{W}$-invariant. Then we define the projection $\pi_{\af}$ to the root space of the affine subalgebra $\af$ as the extension of the projection to the finite-dimensional subalgebra $\co{\af}$ with the requirement
-\begin{equation}
-  \label{eq:16}
-  \pi_{\af}(\delta)=\delta.
-\end{equation}
-The orthogonality conditions in the definitions \ref{def-1}, \ref{def-2}, \ref{def-3} are to be understood with the respect to the form $(\cdot,\cdot)_+$. Then Lemma \ref{lemma-1} holds for the affine Lie algebras $\gf, \af$.
-\item Another case that we need to consider is the of $\afb$ built on the non-simple roots.
 \end{enumerate}
 
 \section{Applications}
@@ -338,8 +596,12 @@ The orthogonality conditions in the definitions \ref{def-1}, \ref{def-2}, \ref{d
 \label{sec:conclusion}
 
 
+\section{Acknowledgements}
 
+The work was supported in part by RFFI grant N 09-01-00504 and the National
+Project RNP.2.1.1./1575.
+
+\section*{References}
 \bibliography{article}{}
 \bibliographystyle{utphys}
-
 \end{document}
