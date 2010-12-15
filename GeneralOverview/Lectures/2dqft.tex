@@ -1249,7 +1249,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 Но при специальных конформных преобразованиях
 \begin{equation}
   \label{eq:174}
-  |\vec x'_i-\vec x'_j|=\frac{|\vec x_i-\vec x_j|}{(1-2(\vec h,vec x_i)+h^2x_i^2)^{1/2} (1-2(\vec h,\vec x_j)+h^2 x_j^2)^{1/2}}
+  |\vec x'_i-\vec x'_j|=\frac{|\vec x_i-\vec x_j|}{(1-2(\vec h,\vec x_i)+h^2x_i^2)^{1/2} (1-2(\vec h,\vec x_j)+h^2 x_j^2)^{1/2}}
 \end{equation}
 Поэтому не обойтись двумя или тремя точками и простейшие инварианты имеют вид
 \begin{eqnarray}
@@ -1311,7 +1311,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 \begin{eqnarray}
   \label{eq:182}
   x\to x'\\
-  \varphi(x)\to \varphi'(x')=\left|\frac{\partial x'}{\partial x}\right|^{-\Delta/2}\varphi(x)\\
+  \varphi(x)\to \varphi'(x')=\left|\frac{\partial x'}{\partial x}\right|^{-\Delta/d}\varphi(x)\\
   \left|\frac{\partial x'}{\partial x}\right|=\Lambda(x)^{-d/2}    \quad\mbox{--- якобиан преобразования}
 \end{eqnarray}
 Поля, которые так преобразуются, называются {\it квазипримарными}.
@@ -1331,6 +1331,190 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
   \label{eq:184}
   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = \frac{1}{Z} \int \mathcal{D} \Phi \phi_{1}(x_{1})\phi_{2}(x_{2}) e^{-S[\Phi]}
 \end{equation}
+Мы знаем, как преобразуется поле при конформных преобразованиях \eqref{eq:182}, поэтому коррелятор должен вести себя так:
+\begin{equation}
+  \label{eq:185}
+  \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\rangle = \left|\frac{\partial x'_{1}}{\partial x_{1}}\right|^{\frac{\Delta_{1}}{d}}\left| \frac{\partial x'_{2}}{\partial x_{2}}\right|^{\frac{\Delta_{1}}{d}} \langle \phi_{1}(x'_{1})\phi_{2}(x'_{2})\rangle .
+\end{equation}
+Из требования инвариантности коррелятора при поворотах и трансляциях получаем, что коррелятор может зависеть только от модуля разности $\left|x_{1}-x_{2}\right|$:
+\begin{equation}
+  \label{eq:186}
+  \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle = f(\left|x_{1}-x_{2}\right|)
+\end{equation}
+При масштабных преобразованиях $x\to \lambda x$ из \eqref{eq:185} получаем
+\begin{equation}
+  \label{eq:187}
+   \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle=\lambda^{\Delta_{1}+\Delta_{2}}  \langle \phi_{1}(\lambda x_{1}) \phi_{2}(\lambda x_{2})\rangle .
+\end{equation}
+То есть мы видим, что $ \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle$ - однородная функция, $f(x)=\lambda^{\Delta_{1}+\Delta_{2}} f(\lambda x)$. Отсюда
+\begin{equation}
+  \label{eq:188}
+   \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle = \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}.
+\end{equation}
+Однако мы ещё не воспользовались инвариантностью коррелятора относительно специальных конформных преобразований. Подставим явный вид преобразований $\left|x_{1}-x_{2}\right|$ из \eqref{eq:174} и введем обозначение $\gamma_{i}=\left(1-2(h,x_{i})+h^{2}x_{i}^{2}\right)$, тогда
+\begin{equation}
+  \label{eq:189}
+  \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}=\frac{C_{12}(\gamma_{1}\gamma_{2})^{(\Delta_{1}+\Delta_{2})/2}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}} \left|x_{1}-x_{2}\right|}.
+\end{equation}
+Это равенство может выполняться только при $\Delta_{1}=\Delta_{2}$. В итоге для коррелятора
+\begin{equation}
+  \label{eq:190}
+   \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle =
+   \begin{cases}
+     \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{2\Delta_{1}}} & \Delta_{1}=\Delta_{2}\\
+     0 & \Delta_{1}\neq \Delta_{2}
+   \end{cases}
+\end{equation}
+Вспомним, что для парной корреляционной функции мы вводили критический индекс $\eta$: $\Gamma(\vec n)\sim |\vec n|^{2-d-\eta}$. То есть для коррелятора квазипримарых полей
+\begin{equation}
+  \label{eq:191}
+  \eta=2\Delta +2 -d.
+\end{equation}
+
+Аналогичный анализ можно провести для трехточечных функций. Из требований трансляционной и вращательной инвариантности имеем
+\begin{equation}
+  \label{eq:192}
+  \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\phi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}},\quad a+b+c=\Delta_{1}+\Delta_{2}+\Delta_{3}.
+\end{equation}
+Здесь введено обозначение $x_{ij}=|x_{i}-x_{j}|$.
+Из требования инвариантности при специальных конформных преобразованиях получаем
+\begin{equation}
+  \label{eq:193}
+  \frac{C^{abc}_{123}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}}=\frac{C^{abc}_{123}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}}\gamma_{3}^{\Delta_{3}}}\frac{(\gamma_{1}\gamma_{2})^{a/2}(\gamma_{2}\gamma_{3})^{b/2}(\gamma_{1}\gamma_{3})^{c/2}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}}
+\end{equation}
+Это равенство может выполняться только при
+\begin{equation}
+  \label{eq:194}
+  \begin{array}{l}
+    a+c=2\Delta_{1}\\
+    a+b=2\Delta_{2}\\
+    b+c=2\Delta_{3}
+  \end{array}
+\end{equation}
+Отсюда сразу получаем, сто
+\begin{equation}
+  \label{eq:195}
+  \begin{array}{l}
+    a=\Delta_{1}+\Delta_{2}-\Delta_{3}\\
+    b=\Delta_{2}+\Delta_{3}-\Delta_{1}\\
+    c=\Delta_{3}+\Delta_{1}-\Delta_{2}.
+  \end{array}
+\end{equation}
+В итоге для трехточечных функций имеем:
+\begin{equation}
+  \label{eq:196}
+   \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\phi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{\Delta_{1}+\Delta_{2}-\Delta_{3}} x_{23}^{\Delta_{2}+\Delta_{3}-\Delta_{1}}x_{13}^{\Delta_{3}+\Delta_{1}-\Delta_{2}}}.
+\end{equation}
+Из четырех точек уже можно собрать инварианты \eqref{eq:175}, поэтому из требований конформной инвариантности для четырехточечной функции можно написать только
+\begin{equation}
+  \label{eq:197}
+  \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\phi_{3}(x_{3})\phi_{4}(x_{4})\rangle=f\left(\frac{x_{12}x_{34}}{x_{13}x_{24}}; \frac{x_{12}x_{34}}{x_{23}x_{14}}\right) \prod_{i<j}^{4}x_{ij}^{\Delta/3-\Delta_{i}-\Delta_{j}},\quad \Delta=\sum_{i=1}^{4}\Delta_{i}.
+\end{equation}
+
+\subsection{Тождества Уорда}
+\label{sec:ward-identities}
+
+Напомним, о чем идет речь. В произвольной теории поля с полями $\Phi(x)$ инфинитезимальное преобразование может быть записано при помощи генераторов
+\begin{equation}
+  \label{eq:198}
+  \Phi'(x)=\Phi(x)-i\omega_{a} G_{a} \Phi(x)
+\end{equation}
+Вариация действия вычисляется через ток, соответствующий данному преобразовании:
+\begin{equation}
+  \label{eq:199}
+  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L} }{\partial (\partial_{\mu}\Phi)} \partial_{\nu}\Phi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}} - \frac{\partial \mathcal{L} }{\partial (\partial_{\mu} \Phi)}\frac{\delta F}{\delta \omega_{a}}
+\end{equation}
+\begin{equation}
+  \label{eq:200}
+  \delta S =\int d^{d}x \partial_{\mu}j^{\mu}_{a} \omega_{a}
+\end{equation}
+Обозначим через $X$ произведение локальных полей, входящих в коррелятор
+\begin{equation}
+  \label{eq:201}
+  X=\Phi(x_{1})\dots \Phi(x_{n}).
+\end{equation}
+Коррелятор дается функциональным интегралом
+\begin{equation}
+  \label{eq:202}
+  \langle X\rangle = \frac{1}{Z}\int \mathcal{D} \Phi X e^{-S[\Phi]}
+\end{equation}
+Сделаем замену переменных $\Phi\to \Phi'$ в функциональном интеграле. При этом можно предполагать, что ``мера интегрирования'' не меняется $\mathcal{D}\Phi'=\mathcal{D}\Phi$ \cite{difrancesco1997cft}:
+\begin{equation}
+  \label{eq:203}
+  \langle X\rangle = \frac{1}{Z} \int \mathcal{D} \Phi' (X+\delta X)e^{-S[\Phi]-\int d^{d}x \partial_{\mu}j^{\mu}_{a}\omega_{a}(x)}
+\end{equation}
+Раскладываем выражение в ряд до первого порядка по $\omega_{a}(x)$:
+\begin{equation}
+  \label{eq:204}
+  \langle X\rangle=\frac{1}{Z} \left( \int \mathcal{D} \Phi X e^{-S[\Phi]}+\int \mathcal{D} \Phi \delta X e^{-S[\Phi]} -\int \mathcal{D}\Phi \int d^{d}x \partial_{\mu}j^{\mu}_{a}\omega_{a}(x) X e^{-S[\Phi]}\right)
+\end{equation}
+В результате имеем
+\begin{equation}
+  \label{eq:205}
+  \langle \delta X\rangle=\int d^{d}x \partial_{\mu}\langle j^{\mu}_{a}(x) X\rangle \omega_{a}(x)
+\end{equation}
+С другой стороны, мы можем вычислить $\langle\delta X\rangle$ используя \eqref{eq:198}:
+\begin{multline}
+  \label{eq:206}
+  \langle\delta X\rangle=-i\sum_{i=1}^{n}\langle \Phi(x_{1})\dots G_{a} \Phi(x_{i}) \dots \Phi(x_{n})\rangle \omega_{a}(x_{i})=\\
+  -i \int d^{d}x \omega_{a}(x) \sum_{i=1}^{n} \langle \Phi(x_{1}) \dots G_{a} \Phi(x_{i}) \dots \Phi(x_{n})\rangle \delta (x-x_{i})
+\end{multline}
+Окончательно общий вид тождеств Уорда выглядит следующим образом:
+\begin{equation}
+  \label{eq:207}
+  \partial_{\mu}\langle j^{\mu}_{a}\Phi(x_{1}) \dots \Phi(x_{n})\rangle=-i\sum_{i=1}^{n}\delta (x-x_{i}) \langle\Phi(x_{1})\dots G_{a} \Phi(x_{i})\dots \Phi(x_{n})\rangle
+\end{equation}
+Рассмотрим некоторые примеры, которые понадобятся нам для конформной теории. Мы используем полученный нами явный вид генераторов \eqref{eq:169}.
+
+Тождество Уорда для трансляций:
+\begin{equation}
+  \label{eq:208}
+  \partial_{\mu}\langle T^{\mu}_{\nu} X\rangle =-i \sum_{i} \delta(x-x_{i}) \frac{\partial}{\partial x_{i}^{\nu}} \langle X \rangle
+\end{equation}
+Теперь рассмотрим вращения. Если тензор энергии-импульса симметризован (это можно сделать в большинстве случаев), то отвечающий вращениям ток дается выражением
+\begin{equation}
+  \label{eq:209}
+  j^{\mu\nu\rho}=T^{\mu\nu}x^{\rho}-T^{\mu\rho}x^{\nu}.
+\end{equation}
+Тогда тождество Уорда может быть записано в виде
+\begin{equation}
+  \label{eq:210}
+  \partial_{\mu}\langle (T^{\mu\nu}x^{\rho}-T^{\mu\rho}x^{\nu}) X\rangle=\sum_{i }\delta(x-x_{i}) \left( (x^{\nu}_{i}\partial^{\rho}_{i}-x^{\rho}_{i}\partial^{\nu}_{i})\langle X\rangle-i S^{\nu\rho}_{i}\langle X\rangle\right).
+\end{equation}
+Его можно упростить с использованием тождества для трансляций \eqref{eq:208}:
+\begin{equation}
+  \label{eq:211}
+  \langle (T^{\rho\nu}-T^{\nu\rho}) X\rangle=-i \sum_{i} \delta(x-x_{i}) S^{\nu\rho}_{i}\langle X\rangle.
+\end{equation}
+Тензор энергии-импульса в квантовой теории симметричен в корреляционных функциях, если его положение не совпадает с положениями других полей в корреляторе. 
+
+Наконец, для масштабных преобразований ток имеет вид $T^{\mu}_{\nu}x^{\nu}$, действие генератора дается выражением \eqref{eq:181} и тождества Уорда выглядят так:
+\begin{equation}
+  \label{eq:212}
+  \partial_{\mu}\langle T^{\mu}_{\nu} x^{\nu} X\rangle=-\sum_{i} \delta(x-x_{i}) \left( x^{\nu}_{i}\frac{\partial}{\partial x^{\nu}_{i}} \langle X\rangle+\Delta_{i} \langle X\rangle\right) 
+\end{equation}
+Его тоже можно упростить:
+\begin{equation}
+  \label{eq:213}
+  \langle T^{\mu}_{\mu} X \rangle = -i \sum_{i} \delta(x-x_{i}) \Delta_{i}\langle X\rangle
+\end{equation}
+
+\subsection{О бесследовости тензора энергии-импульса.}
+\label{sec:tracelessness}
+
+В некоторых теориях из масштабной, вращательной и трансляционной инвариантности автоматически следует конформная инвариантность. Как мы знаем, конформная инвариантность соответствует бесследовости тензора энергии-импульса. Общего доказательства конформной инвариантности для масштабно-, трансляционно- и вращательно-инвариантных теорий не существует даже для двумерного случая, однако мы можем показать, что вакуумное среднее квадрата следа тензора энергии-импульса в этом случае равно нулю.
+
+Для этого рассмотрим функцию Швингера
+\begin{equation}
+  \label{eq:214}
+  S_{\mu\nu\rho\sigma}=\langle T_{\mu\nu}(x) T_{\rho\sigma}(0)\rangle.
+\end{equation}
+Из симметричности тензора энергии-импульса
+\begin{equation}
+  \label{eq:215}
+  S_{\mu\nu\rho\sigma}=S_{\nu\mu\rho\sigma}=S_{\mu\nu\sigma\rho}=S_{\nu\mu\sigma\rho}
+\end{equation}
+
 
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
