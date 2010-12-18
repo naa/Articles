@@ -1685,6 +1685,84 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 
 \subsection{Тождества Уорда в двумерной конформной теории}
 \label{sec:ward-2d-cft}
+В прошлой лекции мы получили общий вид тождеств Уорда для трансляций, поворотов и масштабных преобразований. Выпишем их здесь.
+\begin{eqnarray}
+  \label{eq:236}
+  \partial_{\mu}\langle T^{\mu}_{\nu} X\rangle = -\sum_{i} \delta(x-x_{i}) \partial_{\nu}^{(i)}\langle X\rangle\\
+  \langle (T^{\mu\nu}-T^{\nu\mu}) X\rangle =i\sum_{i}\delta(x-x_{i}) S^{\mu\nu}_{(i)}\langle X\rangle\\
+  \langle T^{\mu}_{\mu} X\rangle=-\sum_{i}\delta(x-x_{i}) \Delta_{(i)} \langle X\rangle
+\end{eqnarray}
+Прежде чем мы начнем переписывать тождества в комплексных координатах обсудим следующий вспомогательный математический факт: для голоморфных (антиголоморфных) функций можно использовать следующее представление для $\delta$-функции:
+\begin{equation}
+  \label{eq:237}
+  \delta(x)=\frac{1}{\pi} \bar \partial \frac{1}{z} = \frac{1}{\pi}\partial \frac{1}{\bar z}
+\end{equation}
+Заметим, что
+\begin{equation}
+  \label{eq:238}
+  \int_{M} d^{2}x \partial_{\mu}F^{\mu}=\int_{\partial M} d\xi_{\mu} F^{\mu}=\frac{1}{2i} \oint_{\partial M} (-dz F^{\bar z}+d\bar z F^{z})
+\end{equation}
+Для голоморфной функции
+\begin{equation}
+  \label{eq:239}
+  \frac{1}{\pi}\int_{M} d^{2}x \bar \partial\left( \frac{f(z)}{z}\right)=\frac{1}{2\pi i} \int_{\partial M} dz \frac{f(z)}{z}=f(0)=\int_{M} d^{2}x \delta(x) f(z)
+\end{equation}
+Теперь перепишем тождества Уорда \eqref{eq:236} в комплексных координатах:
+\begin{eqnarray}
+  \label{eq:240}
+  2\pi \partial \langle T_{\bar z z } X\rangle +2\pi \bar \partial \langle T_{zz}X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X \rangle\\
+  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
+  2 \langle T_{z\bar z} X 1\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) \Delta_{i} \langle X\rangle\\
+  -2 \langle T_{z\bar z} X 1\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle\\
+\end{eqnarray}
+Если сложить и вычесть два последних равенства и вспомнить определение $h, \bar h$, то получим
+\begin{eqnarray}
+  \label{eq:241}
+  2\pi \langle T_{\bar z z} X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} h_{i} \langle X\rangle\\
+  2\pi \langle T_{z \bar z} X\rangle = -\sum_{i}  \partial \frac{1}{\bar z-\bar w_{i}} \bar h_{i} \langle X\rangle
+\end{eqnarray}
+Введем обозачения
+\begin{eqnarray}
+  \label{eq:242}
+  T=-2\pi T_{zz}\\
+  \bar T = -2 \pi T_{\bar z \bar z},
+\end{eqnarray}
+и подставим уравнения \eqref{eq:241} в первые два уравнения \eqref{eq:240}:
+\begin{eqnarray}
+  \label{eq:243}
+  \bar \partial \left( \langle T X\rangle -\sum_{i} \left( \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X\rangle + \frac{h_{i}}{(z-w_{i})^{2}} \langle X\rangle \right) \right) =0\\
+  \partial \left( \langle \bar T X\rangle -\sum_{i} \left( \frac{1}{\bar z-\bar w_{i}} \partial_{\bar w_{i}} \langle X\rangle + \frac{\bar h_{i}}{(\bar z-\bar w_{i})^{2}} \langle X\rangle \right) \right) =0
+\end{eqnarray}
+То есть выражения в скобках (анти)голоморфны. Следовательно
+\begin{equation}
+  \label{eq:244}
+  \langle T X\rangle =\sum_{i} \left( \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X\rangle + \frac{h_{i}}{(z-w_{i})^{2}} \langle X\rangle \right) +\mbox{регулярные члены}
+\end{equation}
+Это пример операторного разложения, которое мы будем обсуждать далее. 
+
+Заметим, что вариация коррелятора при конформных преобразованиях дается тензором энергии-импульса:
+\begin{equation}
+  \label{eq:245}
+  \delta_{\epsilon}\langle X\rangle =\int_{M} d^{2}x \partial_{\mu} \langle T^{\mu\nu}(x)\epsilon_{\nu}(x) X \rangle
+\end{equation}
+В комплексных координатах она перепишется так:
+\begin{equation}
+  \label{eq:246}
+  \delta_{\epsilon,\bar \epsilon} \langle X\rangle = \frac{1}{2\pi i} \oint_{C} dz \epsilon(z) \langle T(z) X\rangle +\frac{1}{2\pi i} \oint_{C}  d\bar z \bar \epsilon(\bar z) \langle \bar T(\bar z) X\rangle
+\end{equation}
+Здесь интеграл берется по контуру, внутри которого находятся все аргументы $X$.
+Вообще говоря, это выражение для вариации верно для коррелятора любых полей, не только примарных.
+
+Применимость тождеств Уорда основывается на регулярности тензора энергии-импульса. Он должен быть везде хорошо определен. В частности, $T(0)$ должен быть конечен. Кроме того, если вычислить вариацию постоянного поля в точке $z=\infty$:
+\begin{equation}
+  \label{eq:247}
+  \delta_{\epsilon} \langle 1\rangle =-\frac{1}{2\pi i} \oint_{C}dz \epsilon(z) \langle T(z)\rangle =0
+\end{equation}
+где контур обходит точку $\infty$. Для специальных конформных преобразований $\epsilon(z)\sim z^{2}$, поэтому $T(z)\sim z^{-4},\quad z\to \infty$.
+
+\section{Лекция 11. Алгебра локальных полей. Операторное разложение. Алгебра Вирасоро}
+\label{sec:lecture-11}
+
 
 
 \bibliography{2dqft}{}
