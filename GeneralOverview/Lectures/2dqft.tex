@@ -331,8 +331,8 @@ $e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$,
 \noindent  \centering{
 \begin{tabular}{|l|l|l|}
   \hline
-  Критический индекс & Термодинамическая величина & Значение индекса в \\
-  &  & двумерной модели Изинга\\
+  Критический  & Термодинамическая & Значение индекса в \\
+  индекс &  величина  & двумерной модели Изинга\\
   \hline
   $\alpha$ & $C\sim \frac{1}{\left|T-T_c\right|^{\alpha}}$ & $0$\\
   $\beta$ & $M\sim \left|T-T_c\right|^{\beta}$ & $\frac{1}{8}$\\
@@ -1514,6 +1514,177 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
   \label{eq:215}
   S_{\mu\nu\rho\sigma}=S_{\nu\mu\rho\sigma}=S_{\mu\nu\sigma\rho}=S_{\nu\mu\sigma\rho}
 \end{equation}
+Теперь воспользуемся трансляционной инвариантностью:
+\begin{equation}
+  \label{eq:216}
+  S_{\mu\nu\rho\sigma}=\langle T_{\mu\nu}(0)T_{\rho\sigma}(-x)\rangle =\langle T_{\rho\sigma}(-x) T_{\mu\nu}(0)\rangle = S_{\rho\sigma\mu\nu}(-x).
+\end{equation}
+Если в теории сохраняется четность, то $S_{\mu\nu\rho\sigma}(x)=S_{\rho\sigma\mu\nu}(x)$. В силу масштабной инвариантности $T_{\mu\nu}$ имеет скейлинговую размерность 2, так как является плотностью. Следовательно функция Швингера при масштабных преобразованиях ведет себя так:
+\begin{equation}
+  \label{eq:217}
+  S_{\mu\nu\rho\sigma}(\lambda x)=\lambda^{-4} S_{\mu\nu\rho\sigma}(x)
+\end{equation}
+Теперь можно записать общий вид функции Швингера:
+\begin{multline}
+  \label{eq:218}
+  S_{\mu\nu\rho\sigma}(x)=(x^{2})^{-4} \left( A_{1}g_{\mu\nu} g_{\rho\sigma} (x^{2})^{2} + A_{2} (g_{\mu\rho}g_{\nu\sigma}\right. +\\
+  \left. g_{\mu\sigma}g_{\nu\rho}) (x^{2})^{2} +A_{3} (g_{\mu\nu} x_{\rho}x_{\sigma} +g_{\rho\sigma}x_{\mu}x_{\nu})x^{2} +A_{4} x_{\mu}x_{\nu}x_{\rho}x_{\sigma}\right)
+\end{multline}
+Кроме того, у нас имеется закон сохранения $\partial^{\mu} T_{\mu\nu}=0$, поэтому
+\begin{multline}
+  \label{eq:219}
+  \partial^{\mu}  S_{\mu\nu\rho\sigma}(x)=-(x^{2})^{-4} \left( 3(A_{4}+2 A_{3}) x_{\nu}x_{\rho}x_{\sigma}\right. +\\
+  \left. (4 A_{1}+3 A_{3}) g_{\rho\sigma} x_{\nu} x^{2} +(4 A_{2} - A_{3}) (g_{\rho\nu}x_{\sigma}+g_{\nu\sigma}x_{\rho}) x^{2}\right)=0
+\end{multline}
+Это равенство может выполняться для любого $x$ только если все коэффициенты в скобках равны нулю. То есть
+\begin{eqnarray}
+  \label{eq:220}
+  A_{1}=3 A\\
+  A_{2}=-A\\
+  A_{3}=-4 A\\
+  A_{4}=8 A
+\end{eqnarray}
+Окончательно получаем для функции Швингера
+\begin{multline}
+  \label{eq:221}
+  S_{\mu\nu\rho\sigma}(x)=\frac{A}{(x^{2})^{4}} \left( (3g_{\mu\nu} g_{\rho\sigma}-g_{\mu\rho}g_{\nu\sigma}-g_{\mu\sigma}g_{\nu\rho}) (x^{2})^{2} 
+  \right. \\
+  \left.-4 x^{2} (g_{\mu\nu} x_{\rho}x_{\sigma} +g_{\rho\sigma}x_{\mu}x_{\nu}) +8 x_{\mu}x_{\nu}x_{\rho}x_{\sigma}\right)
+\end{multline}
+Теперь прямой подстановкой можно проверить, что
+\begin{equation}
+  \label{eq:222}
+  S^{\mu\sigma}_{\mu\sigma}=\langle T^{\mu}_{\mu}(x) T^{\sigma}_{\sigma}(0)\rangle=0
+\end{equation}
+при любых значениях $x$. В частности $\langle T^{\mu}_{\mu}(0)\rangle=0$, то есть у оператора следа тензора энергии-импульса нулевое матожидание и среднеквадратичное отклонение в основном состоянии.
+
+\section{Лекция 10. Конформная инвариантность в двумерной теории.}
+\label{sec:lecture-10}
+
+В лекции \ref{sec:lecture-7} мы получили общее условие на вид инфинитезимальных конформных преобразований:
+\begin{equation}
+  \label{eq:223}
+  \partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu}=\frac{2}{d} \partial_{\rho}\epsilon^{\rho} \eta_{\mu\nu}.
+\end{equation}
+Теперь у нас $d=2$, $\mu,\nu=0,1$ и $\eta_{\mu\nu}=\delta_{\mu\nu}$, так как мы работаем в евклидовой теории. Расписывая компоненты уравнения \eqref{eq:223}, получаем
+\begin{eqnarray}
+  \label{eq:224}
+  \partial_{0} \epsilon_{1}+ \partial_{1}\epsilon_{0}=0& \Rightarrow & \quad\partial_{0} \epsilon_{1}=- \partial_{1}\epsilon_{0}\\
+  2\partial_{0}\epsilon_{0}=\partial_{0}\epsilon_{0}+\partial_{1}\epsilon_{1}& \Rightarrow& \quad \partial_{0} \epsilon_{0}= \partial_{1}\epsilon_{1}
+\end{eqnarray}
+То есть мы получили уравнения Коши-Римана. Введем комплексные координаты
+\begin{eqnarray}
+  \label{eq:225}
+  z=x_{0}+i x_{1}\\
+  \bar z = x_{0}-i x_{1}\\
+  \partial = \partial_{z}=\frac{1}{2}(\partial_{0}-i\partial_{1}) \\
+  \bar \partial=\partial_{\bar z}=\frac{1}{2} (\partial_{0}+i \partial_{1})\\
+  \epsilon=\epsilon_{0}+i \epsilon_{1}\\
+  \bar \epsilon=\epsilon_{0}-i \epsilon_{1}, 
+\end{eqnarray}
+тогда уравнения \eqref{eq:224} можно переписать в виде
+\begin{eqnarray}
+  \label{eq:226}
+  \partial \epsilon=0\\
+  \bar \partial \bar \epsilon=0.
+\end{eqnarray}
+Решениями будут любые голоморфные и антиголоморфные функции: $\epsilon=\epsilon(z)$ -- голоморфная функция и $\bar \epsilon=\bar \epsilon(\bar z)$ -- антиголоморфная. Таким образом мы видим, что алгебра локальных конформных преобразований в двумерном случае оказывается бесконечномерной алгеброй преобразований
+\begin{eqnarray}
+  \label{eq:227}
+  z\to f(z)\\
+  \bar z \to \bar f(\bar z)
+\end{eqnarray}
+Введем в алгебре конформых преобразований следующий базис:
+\begin{eqnarray}
+  \label{eq:228}
+  z'=z+\epsilon_{n}(z)\\
+  \bar z'=\bar z+\bar \epsilon_{n}(\bar z)\\
+  \epsilon_{n}(z)= -z^{n+1}\\
+  \bar \epsilon_{n}(\bar z)=-\bar z^{n+1}
+\end{eqnarray}
+Тогда соответствующие генераторы будут равны
+\begin{eqnarray}
+  \label{eq:229}
+  l_{n}=-z^{n+1}\partial\\
+  \bar l_{n}=-\bar z^{n+1}\bar \partial 
+\end{eqnarray}
+Легко видеть, что коммутационные соотношения имеют вид
+\begin{eqnarray}
+  \label{eq:230}
+  \left[l_{m},l_{n}\right]=(m-n) l_{m+n}\\
+  \left[\bar l_{m},\bar l_{n}\right]=(m-n) \bar l_{m+n}\\  
+  \left[l_{n},\bar l_{m}\right]=0
+\end{eqnarray}
+Мы видим, что алгебра распадается в прямую сумму $\mathcal{A} \oplus \bar{\mathcal{A}}$, каждая компонента --- это алгебра Витта (Witt algebra). Оказывается удобно продолжить теорию на случай независимых $z,\bar z$. Тогда теория распадется на два независимых сектора. Условие же $z^{*}=\bar z$ можно наложить в самом конце. Такая процедура соответствует комплексному продолжению всех функций от $x_{0},x_{1}$ на $x_{0},x_{1}\in \mathbb{C}^{2}$. Заметим, что вещественная плоскость сохраняется подалгеброй, натянутой на генераторы $l_{n}+\bar l_{n}$ и $i(l_{n}-\bar l_{n})$.
+
+\subsection{Глобальные конформные преобразования}
+\label{sec:global-conformal}
+
+Глобальными называются те преобразования, которые определены на всей сфере Римана $S^{2}=\mathbb{C}^{2}\cup \{\infty\}$. Понятно, что это может быть только при $n\geq -1$. Кроме того, чтобы рассмотреть окрестность точки $z=\infty$ можно сделать преобразование координат $z=-\frac{1}{w}$. Тогда
+\begin{equation}
+  \label{eq:231}
+  l_{n}=-z^{n+1}\partial = - \left(-\frac{1}{w}\right)^{n+1}\left(\frac{\partial z}{\partial w}\right) \partial_{w}=-\left(-\frac{1}{w}\right)^{n-1}\partial_{w}.
+\end{equation}
+Это выражение должно быть хорошо определено при $w\to 0$, то есть $n\leq 1$. Значит глобальные конформные преобразования генерируются $l_{\pm 1},l_{0},\bar l_{\pm 1},\bar l_{0}$. Заметим, что генераторы $l_{-1},\bar l_{-1}$ порождают трансляции, $i(l_{0}-\bar l_{0})$ -- вращения, $l_{0}+\bar l_{0}$ -- масштабные преобразования. Конечные глобальные преобразования имеют вид
+\begin{equation}
+  \label{eq:232}
+  z\to \frac{az+b}{cz+d}, \quad ad-bc=1,\quad a,b,c,d\in \mathbb{C}
+\end{equation}
+(И аналогично для $\bar z$).
+Если собрать коэффициенты $a,b,c,d$ в матрицу $A=
+\begin{pmatrix}
+  a & b\\
+  c & d
+\end{pmatrix}$, то ясно, что мы имеем дело с группой $SL_{2}(\mathbb{C})/Z_{2}\approx SO(3,1)$. Факторизация по $Z_{2}$ соответствует тому, что изменение знака у $a,b,c,d$ разом не меняет преобразования. Эта группа называется также группой проективных конформных преобразований. 
+
+Трансляции, дилатации и вращения в матричном виде записываются следующим образом:
+\begin{eqnarray}
+  \label{eq:233}
+  &\mbox{трансляции} \quad x\to x+a, B=a^{0}+i a^{1},\quad &
+  \begin{pmatrix}
+    1 & B\\
+    0 & 1
+  \end{pmatrix}\\
+  &\mbox{вращения}\quad &
+  \begin{pmatrix}
+    e^{i \Theta/2} & 0\\
+    0 & e^{-i \Theta/2}
+  \end{pmatrix}\\
+  & \mbox{дилатации}\quad &
+  \begin{pmatrix}
+    \lambda & 0\\
+    0 & \lambda^{-1}
+  \end{pmatrix}\\
+  &\begin{array}{r}
+  \mbox{специальные конформные}    \\
+  \mbox{преобразования}
+  \end{array} 
+  \quad
+  C=h_{0}-i h_{1}\quad &
+  \begin{pmatrix}
+    1 & 0\\
+    C & 1
+  \end{pmatrix}
+\end{eqnarray}
+
+Глобальные конформные преобразования образуют группу, локальные же преобразования не обратимы, поэтому по отношению к ним говорят только об алгебре.
+
+Глобальные преобразования полезны для описания физических состояний. Допустим, мы работаем в базисе собственных состояний операторов $l_{0}, \bar l_{0}$, соответствующие собственные значения $h,\bar h$ -- независимые, вещественные, называются конформными весами или голоморфной и антиголоморфной размерностями. Так как $l_{0}+\bar l_{0}$ -- генератор дилатации, то скейлинговая размерность $\Delta=h+\bar h$, а поскольку $i(l_{0}-\bar l_{0})$ порождает вращения, то спин $s=h-\bar h$.
+
+Квазипримарное поле $\phi(z,\bar z)$ \eqref{eq:182} со спином $s$ при преобразованиях $z\to w(z), \bar z\to \bar w(\bar z)$ преобразуется так:
+\begin{equation}
+  \label{eq:234}
+  \phi'(w,\bar w)=\left( \frac{d w}{d z}\right)^{-h}\left( \frac{d \bar w}{d \bar z}\right)^{-\bar h} \phi(z,\bar z)
+\end{equation}
+Вариация квазипримарного поля при инфинитезимальных преобразованиях $w=z+\epsilon, \bar w =\bar z +\bar \epsilon$ имеет вид
+\begin{equation}
+  \label{eq:235}
+  \delta_{\epsilon,\bar \epsilon} \phi=\phi'(z,\bar z)-\phi(z,\bar z)=-(h\phi \partial \epsilon +\epsilon \partial \phi) - (\bar h \phi\bar \partial \bar \epsilon+\bar \epsilon \bar \partial \phi)
+\end{equation}
+Если поле ведет себя так не только при глобальных, но и при локальных преобразованиях, то оно называется {\it примарным}.
+
+\subsection{Тождества Уорда в двумерной конформной теории}
+\label{sec:ward-2d-cft}
 
 
 \bibliography{2dqft}{}
