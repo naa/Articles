@@ -1946,7 +1946,92 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 \section{Лекция 12. Конформный предел модели Изинга}
 \label{sec:lecture-12}
 
+Рассмотрим теорию с центральным зарядом $c=\frac{1}{2}$, $\bar c=c$ и примарными полями с конформными размерностями
+\begin{equation}
+  \label{eq:276}
+  \Phi_{1}: (0,0),\quad \Phi_{2}: \left(\frac{1}{2},\frac{1}{2}\right),\quad \Phi_{3}\left(\frac{1}{16},\frac{1}{16}\right)
+\end{equation}
+Первое из этих полей соответствует единичному оператору. 
 
+В модели Изинга $\sigma$ -- параметр порядка. $\langle\sigma\rangle=0$ при большой температуре и $\langle \sigma\rangle\neq 0$ при малой. Как мы знаем,
+\begin{equation}
+  \label{eq:277}
+  \langle \sigma_{n} \sigma_{0}\rangle\sim e^{-\frac{|n|}{\xi}}
+\end{equation}
+Где $\xi$ --- корреляционная длина. $\xi^{-1}$ можно рассматривать как массу в теопии. В критической точке $\xi$ расходится и теория становится безмассовой.
+\begin{equation}
+  \label{eq:278}
+  \langle\sigma_{n}\sigma_{0}\rangle\sim\frac{1}{|n|^{d-2+\eta}}
+\end{equation}
+Для оператора энергии верно
+\begin{equation}
+  \label{eq:279}
+  \langle \varepsilon_{n} \varepsilon_{0}\rangle \sim \langle\sigma_{n}\sigma_{n+1}\sigma_{0}\sigma_{1}\rangle\sim\frac{1}{|n|^{\frac{2d-2}{\nu}}}
+\end{equation}
+Это выражение не совсем точное, так как при вычислении $\varepsilon_{n}$ надо брать среднее по всем соседям, но сейчас нам это не очень важно. В любом случае коррелятор оператора энергии соответствует цетырехточечной функции. 
+
+Мы знаем (см. Лекции \ref{sec:lecture-2}, \ref{sec:lecture-5}, \ref{sec:lecture-6}) значения критических индексов в модели Изинга --- $\eta=\frac{1}{4}, \nu=1$. Тогда для двухточечной функции
+\begin{equation}
+  \label{eq:280}
+  \langle \sigma_{n} \sigma_{0} \rangle\sim \frac{1}{|n|^{\frac{1}{4}}} \sim\frac{1}{r^{2\Delta_{\sigma}}},
+\end{equation}
+так как мы помним, что двухточечная функция ведет себя как $\langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle=\frac{C_{12}}{r_{12}^{\Delta_{1}+\Delta_{2}}}$. Отсюда $\Delta_{\sigma}=h_{\sigma}+\bar h_{\sigma}=\frac{1}{8}$, $s_{\sigma}=h_{\sigma}-\bar h_{\sigma}=0$, то есть поле $\Phi_{3}$ соответствует спину в модели Изинга. 
+
+Для оператора энергии мы видим, что
+\begin{equation}
+  \label{eq:281}
+  \langle\varepsilon_{n}\varepsilon_{0}\rangle\sim \frac{1}{|n|^{2\Delta_{\varepsilon}}},
+\end{equation}
+$\nu=1$, $d-1/\nu=1=\Delta_{\varepsilon}=h_{\varepsilon}+\bar h_{\varepsilon}$, то есть $h_{\varepsilon}=\frac{1}{2}$ и поле $\Phi_{2}$ соответствует оператору энергии в модели Изинга.
+
+Заметим, что другая простая физическая система с центральным зарядом $(c,\bar c)=\left(\frac{1}{2},\frac{1}{2}\right)$ --- это свободный фермион. Его действие
+\begin{equation}
+  \label{eq:282}
+  S=\frac{1}{2} g \int d^{2}x\Psi^{+}\gamma^{0}\gamma^{\mu}\partial_{\mu}\Psi,
+\end{equation}
+где
+\begin{equation}
+  \label{eq:283}
+  \Psi=
+  \begin{pmatrix}
+    \psi\\ \bar \psi
+  \end{pmatrix}
+\end{equation}
+и для гамма-матриц выполняется
+\begin{equation}
+  \label{eq:284}
+  \gamma^{\mu}\gamma^{n}+\gamma^{\nu}\gamma^{\mu}=2\eta^{\mu\nu},\quad \gamma^{0}=
+  \begin{pmatrix}
+    0 & 1\\
+    1 & 0
+  \end{pmatrix}, \quad
+  \gamma^{1}=
+  \begin{pmatrix}
+    0 & -i\\
+    i & 0
+  \end{pmatrix}
+\end{equation}
+Вводим комплексные координаты \eqref{eq:225} и получаем
+\begin{equation}
+  \label{eq:285}
+  \gamma^{0}(\gamma^{0}\partial_{0}+\gamma^{1}\partial_{1})=2
+  \begin{pmatrix}
+    \bar \partial & 0\\
+    0 & \partial
+  \end{pmatrix}
+\end{equation}
+Тогда действие в компонентах \eqref{eq:283} будет
+\begin{equation}
+  \label{eq:286}
+  S=g\int d^{2}x (\bar \psi \partial \bar \psi + \psi\bar \partial \psi)
+\end{equation}
+Классические уравнения движения
+\begin{eqnarray}
+  \label{eq:287}
+  \partial \bar \psi=0\\
+  \bar \partial \psi=0, 
+\end{eqnarray}
+следовательно $\psi=\psi(x)$ и $\bar \psi=\bar \psi(\bar z)$. 
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
