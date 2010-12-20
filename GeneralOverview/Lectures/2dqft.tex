@@ -4,6 +4,7 @@
 \usepackage{ucs}
 \usepackage[unicode,verbose]{hyperref}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
 \usepackage{pb-diagram}
 \usepackage{multicol}
 \usepackage{cmap}
@@ -734,6 +735,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 
 \begin{theorem}
   Для любой унитарной квантовой теории поля в двух измерениях существует функция $c(\vec u)$ такая, что
+  \label{c-theorem}
   \begin{itemize}
   \item $c(\vec u)$ убывает, как функция параметра ренормгруппы
     \begin{equation}
@@ -1329,27 +1331,27 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 Теперь перейдем к квантовой теории поля. Рассмотрим коррелятор квазипримарных полей.
 \begin{equation}
   \label{eq:184}
-  \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = \frac{1}{Z} \int \mathcal{D} \Phi \phi_{1}(x_{1})\phi_{2}(x_{2}) e^{-S[\Phi]}
+  \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = \frac{1}{Z} \int \mathcal{D} \Phi \varphi_{1}(x_{1})\varphi_{2}(x_{2}) e^{-S[\Phi]}
 \end{equation}
 Мы знаем, как преобразуется поле при конформных преобразованиях \eqref{eq:182}, поэтому коррелятор должен вести себя так:
 \begin{equation}
   \label{eq:185}
-  \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\rangle = \left|\frac{\partial x'_{1}}{\partial x_{1}}\right|^{\frac{\Delta_{1}}{d}}\left| \frac{\partial x'_{2}}{\partial x_{2}}\right|^{\frac{\Delta_{1}}{d}} \langle \phi_{1}(x'_{1})\phi_{2}(x'_{2})\rangle .
+  \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\rangle = \left|\frac{\partial x'_{1}}{\partial x_{1}}\right|^{\frac{\Delta_{1}}{d}}\left| \frac{\partial x'_{2}}{\partial x_{2}}\right|^{\frac{\Delta_{1}}{d}} \langle \varphi_{1}(x'_{1})\varphi_{2}(x'_{2})\rangle .
 \end{equation}
 Из требования инвариантности коррелятора при поворотах и трансляциях получаем, что коррелятор может зависеть только от модуля разности $\left|x_{1}-x_{2}\right|$:
 \begin{equation}
   \label{eq:186}
-  \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle = f(\left|x_{1}-x_{2}\right|)
+  \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = f(\left|x_{1}-x_{2}\right|)
 \end{equation}
 При масштабных преобразованиях $x\to \lambda x$ из \eqref{eq:185} получаем
 \begin{equation}
   \label{eq:187}
-   \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle=\lambda^{\Delta_{1}+\Delta_{2}}  \langle \phi_{1}(\lambda x_{1}) \phi_{2}(\lambda x_{2})\rangle .
+   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle=\lambda^{\Delta_{1}+\Delta_{2}}  \langle \varphi_{1}(\lambda x_{1}) \varphi_{2}(\lambda x_{2})\rangle .
 \end{equation}
-То есть мы видим, что $ \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle$ - однородная функция, $f(x)=\lambda^{\Delta_{1}+\Delta_{2}} f(\lambda x)$. Отсюда
+То есть мы видим, что $ \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle$ - однородная функция, $f(x)=\lambda^{\Delta_{1}+\Delta_{2}} f(\lambda x)$. Отсюда
 \begin{equation}
   \label{eq:188}
-   \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle = \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}.
+   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}.
 \end{equation}
 Однако мы ещё не воспользовались инвариантностью коррелятора относительно специальных конформных преобразований. Подставим явный вид преобразований $\left|x_{1}-x_{2}\right|$ из \eqref{eq:174} и введем обозначение $\gamma_{i}=\left(1-2(h,x_{i})+h^{2}x_{i}^{2}\right)$, тогда
 \begin{equation}
@@ -1359,7 +1361,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 Это равенство может выполняться только при $\Delta_{1}=\Delta_{2}$. В итоге для коррелятора
 \begin{equation}
   \label{eq:190}
-   \langle \phi_{1}(x_{1}) \phi_{2}(x_{2})\rangle =
+   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle =
    \begin{cases}
      \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{2\Delta_{1}}} & \Delta_{1}=\Delta_{2}\\
      0 & \Delta_{1}\neq \Delta_{2}
@@ -1374,7 +1376,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 Аналогичный анализ можно провести для трехточечных функций. Из требований трансляционной и вращательной инвариантности имеем
 \begin{equation}
   \label{eq:192}
-  \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\phi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}},\quad a+b+c=\Delta_{1}+\Delta_{2}+\Delta_{3}.
+  \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}},\quad a+b+c=\Delta_{1}+\Delta_{2}+\Delta_{3}.
 \end{equation}
 Здесь введено обозначение $x_{ij}=|x_{i}-x_{j}|$.
 Из требования инвариантности при специальных конформных преобразованиях получаем
@@ -1403,12 +1405,12 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 В итоге для трехточечных функций имеем:
 \begin{equation}
   \label{eq:196}
-   \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\phi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{\Delta_{1}+\Delta_{2}-\Delta_{3}} x_{23}^{\Delta_{2}+\Delta_{3}-\Delta_{1}}x_{13}^{\Delta_{3}+\Delta_{1}-\Delta_{2}}}.
+   \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{\Delta_{1}+\Delta_{2}-\Delta_{3}} x_{23}^{\Delta_{2}+\Delta_{3}-\Delta_{1}}x_{13}^{\Delta_{3}+\Delta_{1}-\Delta_{2}}}.
 \end{equation}
 Из четырех точек уже можно собрать инварианты \eqref{eq:175}, поэтому из требований конформной инвариантности для четырехточечной функции можно написать только
 \begin{equation}
   \label{eq:197}
-  \langle \phi_{1}(x_{1})\phi_{2}(x_{2})\phi_{3}(x_{3})\phi_{4}(x_{4})\rangle=f\left(\frac{x_{12}x_{34}}{x_{13}x_{24}}; \frac{x_{12}x_{34}}{x_{23}x_{14}}\right) \prod_{i<j}^{4}x_{ij}^{\Delta/3-\Delta_{i}-\Delta_{j}},\quad \Delta=\sum_{i=1}^{4}\Delta_{i}.
+  \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\varphi_{4}(x_{4})\rangle=f\left(\frac{x_{12}x_{34}}{x_{13}x_{24}}; \frac{x_{12}x_{34}}{x_{23}x_{14}}\right) \prod_{i<j}^{4}x_{ij}^{\Delta/3-\Delta_{i}-\Delta_{j}},\quad \Delta=\sum_{i=1}^{4}\Delta_{i}.
 \end{equation}
 
 \subsection{Тождества Уорда}
@@ -1671,15 +1673,15 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 
 Глобальные преобразования полезны для описания физических состояний. Допустим, мы работаем в базисе собственных состояний операторов $l_{0}, \bar l_{0}$, соответствующие собственные значения $h,\bar h$ -- независимые, вещественные, называются конформными весами или голоморфной и антиголоморфной размерностями. Так как $l_{0}+\bar l_{0}$ -- генератор дилатации, то скейлинговая размерность $\Delta=h+\bar h$, а поскольку $i(l_{0}-\bar l_{0})$ порождает вращения, то спин $s=h-\bar h$.
 
-Квазипримарное поле $\phi(z,\bar z)$ \eqref{eq:182} со спином $s$ при преобразованиях $z\to w(z), \bar z\to \bar w(\bar z)$ преобразуется так:
+Квазипримарное поле $\varphi(z,\bar z)$ \eqref{eq:182} со спином $s$ при преобразованиях $z\to w(z), \bar z\to \bar w(\bar z)$ преобразуется так:
 \begin{equation}
   \label{eq:234}
-  \phi'(w,\bar w)=\left( \frac{d w}{d z}\right)^{-h}\left( \frac{d \bar w}{d \bar z}\right)^{-\bar h} \phi(z,\bar z)
+  \varphi'(w,\bar w)=\left( \frac{d w}{d z}\right)^{-h}\left( \frac{d \bar w}{d \bar z}\right)^{-\bar h} \varphi(z,\bar z)
 \end{equation}
 Вариация квазипримарного поля при инфинитезимальных преобразованиях $w=z+\epsilon, \bar w =\bar z +\bar \epsilon$ имеет вид
 \begin{equation}
   \label{eq:235}
-  \delta_{\epsilon,\bar \epsilon} \phi=\phi'(z,\bar z)-\phi(z,\bar z)=-(h\phi \partial \epsilon +\epsilon \partial \phi) - (\bar h \phi\bar \partial \bar \epsilon+\bar \epsilon \bar \partial \phi)
+  \delta_{\epsilon,\bar \epsilon} \varphi=\varphi'(z,\bar z)-\varphi(z,\bar z)=-(h\varphi \partial \epsilon +\epsilon \partial \varphi) - (\bar h \varphi\bar \partial \bar \epsilon+\bar \epsilon \bar \partial \varphi)
 \end{equation}
 Если поле ведет себя так не только при глобальных, но и при локальных преобразованиях, то оно называется {\it примарным}.
 
@@ -1760,9 +1762,189 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 \end{equation}
 где контур обходит точку $\infty$. Для специальных конформных преобразований $\epsilon(z)\sim z^{2}$, поэтому $T(z)\sim z^{-4},\quad z\to \infty$.
 
-\section{Лекция 11. Алгебра локальных полей. Операторное разложение. Алгебра Вирасоро}
+\section{Лекция 11}
 \label{sec:lecture-11}
 
+\subsection{Алгебра локальных полей. Операторное разложение}
+\label{sec:ope}
+
+В набор локальных полей теории входят не только те поля, которые входят в плотность лагранжиана, но и их производные, произведения и так далее.
+Мы предполагаем, что набор локальных полей $A$ является полным, то есть существует некий базис $\{ A_{j}\}$, по которому можно разложить любое поле. Локальные поля образуют линейное пространство.
+
+Кроме того, мы предполагаем, что имеет место операторное разложение
+\begin{equation}
+  \label{eq:248}
+  A_{i}(x)A_{j}(y) =\sum_{k} C^{k}_{ij} (x,y) A_{k}(y),
+\end{equation}
+здесь $C_{ij}^{k}(x,y)$ -- функция. Равенство \eqref{eq:248} надо понимать в смысле корреляционных функций
+\begin{equation}
+  \label{eq:249}
+  \langle A_{i}(x) A_{j}(y) X\rangle = \sum_{k} C^{k}_{ij} (x,y) \langle A_{k}(y) X\rangle.
+\end{equation}
+Тогда набор локальных полей образует алгебру. 
+
+Рассмотрим четырехточечную функцию и воспользуемся операторным разложением \eqref{eq:248}:
+\begin{equation}
+  \label{eq:250}
+  \langle A_{1}(x_{1}) A_{2}(x_{2}) A_{3}(x_{3}) A_{4}(x_{4}) \rangle =\sum_{k,l} C^{k}_{12} (x_{1}-x_{2}) D_{kl}(x_{2}-x_{4}) C^{l}_{34}(x_{3}-x_{4}) 
+\end{equation}
+Здесь мы воспользовались трансляционной инвариантностью, а также ввели обозначение для пропагатора
+\begin{equation}
+  \label{eq:251}
+  \langle A_{i}(x_{i}) A_{j}(x_{j}) \rangle =D_{ij}(x_{i}-x_{j}).
+\end{equation}
+Однако операторным разложением можно воспользоваться и в другом порядке, тогда для четырехточечной функции получим:
+\begin{equation}
+  \label{eq:252}
+  \langle A_{1}(x_{1}) A_{2}(x_{2}) A_{3}(x_{3}) A_{4}(x_{4}) \rangle =\sum_{k,l} C^{k}_{13} (x_{1}-x_{3}) D_{kl}(x_{3}-x_{4}) C^{l}_{24}(x_{2}-x_{4})   
+\end{equation}
+Приравняв правые части уравнений \eqref{eq:252},\eqref{eq:250} можно получить систему уравнений на коэффициенты $C^{k}_{ij}$. Если решить эти уравнения, то в принципе можно вычислять любые корреляторы, если известен набор полей и их конформных размерностей. Такой подход называется конформным бутстрапом. 
+
+Корреляционные функции имеют особенности при совпадении положений полей. Именно характер этих особенностей важен при описании критического поведения (критические индексы и т.п.).
+Для произведения $T$ и примарного поля $\varphi$ с конформными размерностями $h,\bar h$ имеет место операторное разложение \eqref{eq:244}:
+\begin{eqnarray}
+  \label{eq:253}
+  T(z) \varphi(w,\bar w)\sim \frac{h}{(z-w)^{2}} \varphi(w,\bar w)+\frac{1}{z-w} \partial_{w} \varphi(w,\bar w)\\
+  \bar T(\bar z) \varphi(w,\bar w)\sim \frac{\bar h}{(\bar z-\bar w)^{2}} \varphi(w,\bar w)+\frac{1}{\bar z-\bar w} \partial_{\bar w} \varphi(w,\bar w)  
+\end{eqnarray}
+
+\subsection{Свободный бозон}
+\label{sec:free-boson}
+
+В качестве примера конформной теории рассмотрим свободное бозонное поле $\varphi$. Действие имеет вид
+\begin{equation}
+  \label{eq:254}
+  S=\frac{1}{2} g \int d^{2}x \partial_{\mu}\varphi \partial^{\mu}\varphi,
+\end{equation}
+а пропагатор дается равенством
+\begin{equation}
+  \label{eq:255}
+  \langle\varphi(x) \varphi(y)\rangle =-\frac{1}{4\pi g} \ln (x-y)^{2}+\text{const}
+\end{equation}
+В комплексных координатах пропагатор запишется следующим образом:
+\begin{equation}
+  \label{eq:256}
+  \langle \varphi(z,\bar z) \varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \left( \ln(z-w) + \ln(\bar z -\bar w)\right) +\text{const}
+\end{equation}
+Дифференцируя получаем
+\begin{eqnarray}
+  \label{eq:257}
+  \langle\partial_{z} \varphi(z,\bar z) \partial_{w}\varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \frac{1}{(z-w)^{2}}\\
+  \langle\partial_{\bar z} \varphi(z,\bar z) \partial_{\bar w}\varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \frac{1}{(\bar z-\bar w)^{2}}  
+\end{eqnarray}
+То есть имеет место операторное разложение полей $\partial \varphi$:
+\begin{equation}
+  \label{eq:259}
+  \partial \varphi(z) \partial \varphi(w) \sim -\frac{1}{4 \pi g} \frac{1}{(z-w)^{2}}
+\end{equation}
+
+Тензор энергии-импульса:
+\begin{equation}
+  \label{eq:258}
+  T_{\mu\nu}=g \left(\partial_{\mu}\varphi \partial_{\nu} \varphi -\frac{1}{2} \eta_{\mu\nu}\partial_{\rho}\varphi \partial^{\rho} \varphi \right)
+\end{equation}
+После квантования получаем для оператора $T(z)$ следующее выражение:
+\begin{equation}
+  \label{eq:260}
+  T(z) =-2\pi g :\partial \varphi \partial \varphi : =-2\pi g \lim_{w\to z} \left(\partial \varphi(z) \partial \varphi(w) -\langle\partial \varphi(z) \partial \varphi(w)\rangle\right)
+\end{equation}
+Теперь мы можем вычислить операторное разложение тензора энергии-импульса и локального поля $\partial \varphi$:
+\begin{equation}
+  \label{eq:261}
+  T(z)\partial \varphi(w)=-2\pi g :\partial \varphi(z) \partial \varphi(z): \partial \varphi(w) \sim -4\pi g:\partial \varphi(z)  \partial \overbracket{ \varphi(z): \partial \varphi } (w) \sim \frac{\partial \varphi (z)}{(z-w)^{2}}
+\end{equation}
+Для вычисления мы использовали теорему Вика (см. \cite{vasiliev1998}, \cite{difrancesco1997cft}). Раскладывая в ряд по $(z-w)$ получаем окончательно для сингулярной части операторного разложения
+\begin{equation}
+  \label{eq:262}
+  T(z) \partial \varphi(w) \sim \frac{\partial \varphi(w) }{(z-w)^{2}} +\frac{\partial_{w}^{2} \varphi(w)}{z-w}
+\end{equation}
+Теперь мы видим, что поле $\partial \varphi$ -- примарное, с конформной размерностью $h=1$. 
+
+
+Аналогично вычислим операторное разложение $T$  с самим собой.
+\begin{multline}
+  \label{eq:263}
+  T(z) T(w) =4 \pi^{2}g^{2}:\partial \varphi(z) \partial \varphi(z): :\partial \varphi(w)\partial \varphi(w): \\
+  \sim \frac{1/2}{(z-w)^{4}} -\frac{4\pi g:\partial \varphi(z) \partial \varphi(w):}{(z-w)^{2}} \\
+  \sim \frac{1/2}{(z-w)^{4}}+ \frac{2T(w)}{(z-w)^{2}} +\frac{\partial T(w)}{z-w}
+\end{multline}
+
+\subsection{Центральный заряд. Алгебра Вирасоро}
+\label{sec:virasoro}
+
+В силу обсуждения после формулы \eqref{eq:247}, ренормгруппового анализа \ref{c-theorem} и вычисления функции Швингера  \eqref{eq:221} мы имеем следующий общий вид операторного разложения для $T(z)T(w)$:
+\begin{equation}
+  \label{eq:264}
+  T(z)T(w) \sim \frac{c/2}{(z-w)^{4}}+ \frac{2T(w)}{(z-w)^{2}} +\frac{\partial T(w)}{z-w}
+\end{equation}
+Здесь $c$ -- параметр теории, называемый центральным зарядом. Он зависит от физической природы теории и не определяется из соображений конформной инвариантности. В теории свободного бозона $c=1$, для фермиона $c=1/2$. Член $\frac{c/2}{(z-w)^{4}}$ называется аномальным. Если этого члена нет, то $T$--квазипримарное поле c $h=2$. 
+
+Сравнивая выражение \eqref{eq:264} и \eqref{eq:221} мы видим, что константа $A$ в функции Швингера
+\begin{equation}
+  \label{eq:265}
+  A=\frac{c}{4\pi^{2}}
+\end{equation}
+Покажем, как преобразуется тензор энергии-импульса при конформных преобразованиях. Используем формулу \eqref{eq:246}:
+\begin{multline}
+  \label{eq:266}
+  \delta_{\epsilon} T(w) =-\frac{1}{2\pi i} \oint_{C} dz \epsilon(z) T(z) T(w) =-\frac{1}{12} c \partial_{w}^{3}\epsilon(w) -2 T(w) \partial_{w} \epsilon(w) -\epsilon(w) \partial_{w}T(w) 
+\end{multline}
+Соответствующее конечное преобразование $z\to w(z)$ имеет вид
+\begin{eqnarray}
+  \label{eq:267}
+  T\to T'(w) =\left(\frac{dw}{dz}\right)^{-2} \left(T(z) -\frac{c}{12} \left\{ w,z\right\}\right)\\
+  \left\{ w,z\right\}=\frac{\left(\frac{d^{3}w}{dz^{3}}\right) } {\frac{dw}{dz}} -\frac{3}{2}\left(\frac{\frac{d^{2}w}{dz^{2}}}{\frac{dw}{dz}}\right)^{2}
+\end{eqnarray}
+В качестве упражнения предлагаем проверить это выражение обратным переходом к инфинитезимальному преобразованию.
+
+Разложим $T(z)$ в ряд Лорана.
+\begin{eqnarray}
+  \label{eq:268}
+  T(z)=\sum_{n\in \mathbb{z}}z^{-n-2}L_{n}\\
+  T(z)=\sum_{n\in \mathbb{z}}\bar z^{-n-2}\bar L_{n}
+\end{eqnarray}
+При масштабном преобразовании $z\to z/\lambda$ оператор $T(z)\to \lambda^{2}T(z/\lambda)$, соответственно компоненты $L_{-n}\to \lambda^{n}L_{-n}$.
+\begin{equation}
+  \label{eq:269}
+  L_{n}=\oint \frac{dz}{2\pi i} z^{n+1} T(z)
+\end{equation}
+Выведем коммутационные соотношения для операторов $L_{n}$:
+\begin{equation}
+  \label{eq:270}
+  [L_{n},L_{m}]=\left( \oint \frac{dz}{2\pi i}\oint \frac{dw}{2\pi i}-\oint \frac{dw}{2\pi i}\oint \frac{dz}{2\pi i}\right) z^{n+1} T(z)w^{m+1}T(w)
+\end{equation}
+Используем операторное разложение \eqref{eq:264}:
+\begin{multline}
+  \label{eq:271}
+  [L_{n},L_{m}]=\oint \frac{dz}{2\pi i} \oint \frac{dw}{2\pi i} z^{n+1} w^{m+1}\left( \frac{c/2}{(z-w)^{4}} +\frac{2T(w)}{(z-w)^{2}}+\frac{\partial T(w) }{z-w} +\mbox{рег. члены}\right) =\\
+  \oint \frac{dw}{2\pi i} \left(\frac{c}{12} (n+1)n(n-1)w^{n-2}w^{m+1} + 2(n+1)w^{n}w^{m+1}T(w)+w^{n+1}w^{m+1}\partial T(w)\right)
+\end{multline}
+Интегрируем последний член по частям, внеинтегральный член зануляется, а под интегралом остается $(n-m)w^{n+m+1}T(w)$:
+\begin{equation}
+  \label{eq:272}
+    [L_{n},L_{m}]=\oint \frac{dw}{2\pi i} \left(\frac{c}{12} (n+1)n(n-1)w^{m+n-1}+ (n-m)w^{n+m+1}T(w)\right)
+\end{equation}
+Используя определение \eqref{eq:269} и вычисляя вычет подинтегрального выражения при $n=-m$, в итоге получаем коммутационное соотношение
+\begin{equation}
+  \label{eq:273}
+    [L_{n},L_{m}]=(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0}
+\end{equation}
+Это коммутационные соотношения алгебры Вирасоро.
+
+Легко показать, что в результате действия оператора $L_{-n}$ на поле $\varphi$  с конформной размерностью $(h,\bar h)$ получается поле с размерностью $(h-n,\bar h)$. Все поля в теории разбиваются на конформные семейства, соответствующие примарным полям:
+\begin{equation}
+  \label{eq:274}
+  [\varphi]=\{L_{-n_{1}}L_{-n_{2}}\dots L_{-n_{N}}\bar L_{-m_{1}}\dots \bar L_{-m_{M}}\varphi\}
+\end{equation}
+Вычисление корреляторов вторичных полей сводится к корреляторам примарных. Алгебра локальных полей оказывается прямой суммой конформных семейств
+\begin{equation}
+  \label{eq:275}
+  \mathcal{A} =\bigoplus_{\alpha}[\varphi_{\alpha}]
+\end{equation}
+{\it Минимальными} называются теории с конечным числом примарных полей. Чтобы полностью задать такую теорию нужно определить примарные поля и их конформные размерности.
+
+\section{Лекция 12. Конформный предел модели Изинга}
+\label{sec:lecture-12}
 
 
 \bibliography{2dqft}{}
