@@ -2032,6 +2032,108 @@ $\nu=1$, $d-1/\nu=1=\Delta_{\varepsilon}=h_{\varepsilon}+\bar h_{\varepsilon}$, 
   \bar \partial \psi=0, 
 \end{eqnarray}
 следовательно $\psi=\psi(x)$ и $\bar \psi=\bar \psi(\bar z)$. 
+
+Мы хотим вычислить двухточечные корреляционные функции (пропагаторы). Они имеют вид $\langle \psi_i(x)\psi_j(x)\rangle, i,j=1,2$ (в координатах $x_1,x_2$). Для этого перепишем действие в матричном виде
+\begin{equation}
+  \label{eq:288}
+  S=\frac{1}{2}\int d^2x d^2 y \psi_i (x) A_{ij}(x,y) \psi_j(y),
+\end{equation}
+где мы ввели ядро
+\begin{equation}
+  \label{eq:289}
+  A_{ij}(x,y)=g \delta(x-y) (\gamma^0 \gamma^{\mu})_{ij} \partial_{\mu}.
+\end{equation}
+ Корреляторы можно собрать в матрицу $K_{ij}(x,y)=\langle \psi_i(x)\psi_j(y)\rangle$. Если вычислить гауссов функциональный интеграл, то получается, что
+ \begin{equation}
+   \label{eq:290}
+   K_{ij}(x,y)=\left(A^{-1}\right)_{ij}(x,y).
+ \end{equation}
+То есть $K$ удовлетворяет следующему уравнению:
+\begin{equation}
+  \label{eq:291}
+  g \delta (x-y) (\gamma^0 \gamma^{\mu})_{ik} \frac{\partial}{\partial x^{\mu}} K_{kj}(x,y)=\delta(x-y)\delta_{ij}
+\end{equation}
+В наших комплексных координатах это уравнение имеет очень простой вид
+\begin{equation}
+  \label{eq:292}
+  2g
+  \begin{pmatrix}
+    \bar \partial & 0\\
+    0 & \partial
+  \end{pmatrix}
+  \begin{pmatrix}
+    \langle \psi(z,\bar z) \psi(w,\bar w) \rangle & \langle\psi(z,\bar z)\bar \psi(w,\bar w) \rangle \\
+    \langle \bar \psi(z,\bar z) \psi(w,\bar w) \rangle & \langle\bar\psi(z,\bar z)\bar \psi(w,\bar w) \rangle \\    
+  \end{pmatrix}=
+  \frac{1}{\pi}
+  \begin{pmatrix}
+    \bar \partial\frac{1}{z-w} & 0\\
+    0 & \partial \frac{1}{\bar z-\bar w}
+  \end{pmatrix}
+\end{equation}
+Решением этого уравнения будут
+\begin{eqnarray}
+  \label{eq:293}
+  \langle \psi(z,\bar z) \psi(w,\bar w) \rangle=\frac{1}{2\pi g} \frac{1}{z-w}\\
+  \langle\bar\psi(z,\bar z) \bar \psi(w,\bar w) \rangle =\frac{1}{2\pi g} \frac{1}{\bar z-\bar w}\\
+  \langle\psi(z,\bar z) \bar \psi(w,\bar w) \rangle =0
+\end{eqnarray}
+Если их продифференцировать, получаем
+\begin{eqnarray}
+  \label{eq:294}
+  \langle \partial_z \psi(z,\bar z) \psi(w,\bar w) \rangle=-\frac{1}{2\pi g} \frac{1}{(z-w)^2}\\
+  \langle \partial_z \psi(z,\bar z) \partial_w \psi(w,\bar w) \rangle=-\frac{1}{\pi g} \frac{1}{(z-w)^3}
+\end{eqnarray}
+То есть имеет место операторное разложение
+\begin{equation}
+  \label{eq:295}
+  \psi(z)\psi(w)\sim \frac{1}{2\pi g} \frac{1}{z-w}
+\end{equation}
+Для компонент тензора энергии-импульса имеем
+\begin{eqnarray}
+  \label{eq:296}
+  T^{\bar z\bar z} =2g\psi\partial \psi\\
+  T^{ z z} =2g\bar \psi\bar\partial \bar \psi\\
+  T^{ z\bar z} =-2g\psi\bar\partial \psi\neq 0
+\end{eqnarray}
+Однако $T^{z\bar z}$ исчезает на классических траекториях, то есть теория является конформной.
+Вводим привычное обозначение и квантуем:
+\begin{equation}
+  \label{eq:297}
+  T(z)=-2\pi T_{zz}=-\pi g :\psi(z) \partial \psi(z):=-\pi g\lim_{w\to z}(\psi(z)\partial \psi(w) -\langle\psi(z) \partial \psi(w)\rangle)
+\end{equation}
+Используем теорему Вика и вычисляем операторное разложение
+\begin{equation}
+  \label{eq:298}
+  T(z) \psi(w)=-\pi g:\psi(z)\partial \psi(z) :\psi(w) \sim \frac{1}{2}\frac{\partial \psi(z)}{z-w} +\frac{1}{2}\frac{\psi(z)}{(z-w)^2} \sim \frac{\frac{1}{2} \psi(w)}{(z-w)^2} +\frac{\partial \psi(w)}{z-w}
+\end{equation}
+Мы видим, что у фермионного поля $\psi$ конформная размерность $h=\frac{1}{2}$. 
+
+Теперь аналогично вычисляем операторное разложение $T$ с собой:
+\begin{equation}
+  \label{eq:299}
+  T(z)T(w)=\pi^2 g^2 :\psi(z)\partial \psi(z)::\psi(w)\partial \psi(w): \sim \frac{\frac{1}{4}}{(z-w)^4} +\frac{2T(w)}{(z-w)^2} +\frac{\partial T(w)}{z-w}
+\end{equation}
+Мы видим, что центральный заряд в теории свободного фермиона $c=\frac{1}{2}$.
+
+Ненулевые операторные разложения между членами конформных семейств определяются разложениями примарных полей. Поэтому можно писать сразу для семейств
+\begin{equation}
+  \label{eq:300}
+  [\varphi_i][\varphi_j]=\sum_k C_{ijk} [\varphi_k]
+\end{equation}
+В модели Изинга у нас есть три семейства $[1], [\sigma], [\varepsilon]$. Из наличия симметрий ($\sigma\to - \sigma$ и $\varepsilon\to -\varepsilon$ (дуальность Крамерса-Ванье)) имеем:
+\begin{eqnarray}
+  \label{eq:301}
+  \left[\sigma\right]\left[\sigma\right]=1+\left[\varepsilon\right]\\
+  \left[\sigma\right]\left[\varepsilon\right]=\left[\sigma\right]\\
+  \left[\varepsilon\right]\left[\varepsilon\right]=1
+\end{eqnarray}
+Отсюда можно вычислять все корреляционные функции. Например, для четырехточечной функции получается:
+\begin{equation}
+  \label{eq:302}
+  G^{(4)} =\langle \sigma(z_1,\bar z_1)\dots \sigma(z_4,\bar z_4)\rangle = \frac{1}{2} \left|\frac{z_{13}z_{24}}{z_{12} z_{23}z_{34}z_{41}}\right|^{\frac{1}{4}}\left(\left|1+\sqrt{1-x}\right| + \left|1-\sqrt{1-x}\right|\right)
+\end{equation}
+
 \bibliography{2dqft}{}
 \bibliographystyle{utphys}
 
