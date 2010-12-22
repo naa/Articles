@@ -9,7 +9,7 @@
 %\usepackage{cmap}
 \usepackage{color}
 \usepackage{graphicx}
-\usepackage{epstopdf}
+%\usepackage{epstopdf}
 %\usepackage{graphicx}
 %\pagestyle{plain}
 %\usepackage[unicode,verbose,plainpages=false]{hyperref}
@@ -53,11 +53,11 @@
   based on the injection fan technique is developed for the case of an arbitrary
   reductive subalgebra. In particular we consider the situation where
   the Weyl denominator becomes singular with respect to the subalgebra.
-  We demonstrate
+  We study the modifications of the fan technique and demonstrate
   that for any reductive subalgebra it is possible to define the
-  injection fan and the analogue of the Weyl numerator -- the tools that describe
+  injection fan -- the tool that describes
   explicitly the recurrent properties of branching coefficients.
-  Possible applications of the fan technique in CFT models are considered.
+  Possible applications of fan technique in CFT models are considered.
 \end{abstract}
 \ams{17B67, 17B10}
 \submitto{\JPA}
@@ -68,17 +68,17 @@
 
 The branching problem for affine Lie algebras emerges in conformal field theory, for example,
 in the construction of modular-invariant partition functions \cite{difrancesco1997cft}.
-Recently the problem of conformal embeddings was considered in the paper \cite{coquereaux2008conformal}.
+Recently the problem of conformal embeddings was considered in \cite{coquereaux2008conformal}.
 
-There are different approaches to deal with the branching coefficients. Some of them use the BGG
+There are different approaches to deal with branching coefficients. Some of them use the BGG
 resolution \cite{bernstein1975differential} (for Kac-Moody algebras the algorithm is described in
 \cite{kac1990idl},\cite{wakimoto2001idl}), the Schur function series \cite{fauser2006new}, the BRST
-cohomology \cite{Hwang:1994yr}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or the
+cohomology \cite{Hwang:1994yr}, Kac-Peterson formulas \cite{kac1990idl,quella2002branching} or some
 combinatorial methods applied in \cite{feigin707principal}.
 
 In this paper we prove that
-for an arbitrary reductive subalgebra the branching coefficients are subject to
-the recurrent properties that can be explicitly formulated and that there exists
+for an arbitrary reductive subalgebra branching coefficients are subject to
+a set of recurrent properties that can be explicitly formulated and that there exists
 an effective and simple algorithm to solve these recurrent relations step by step.
 The basic idea is similar to the one used in \cite{ilyin812pbc} for maximal embeddings.
 In our case the algorithm is essentially different, new properties of singular weights
@@ -100,14 +100,14 @@ We prove that for any highest weight $\hf$-diagonalizable module $L^{\left( \mu 
 $\left(  \af, \afb \right)$ the element
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ has a decomposition with respect to
 the set of Weyl numerators $\Psi ^{\left( \mu \right) }_{ \afb }$ of $\afb$.
-This decomposition provides the possibility to construct the recurrent property for branching coefficients corresponding
+This decomposition provides the possibility to construct a recurrent property for branching coefficients corresponding
 to the injection $\frak{a} \rightarrow \frak{g} $.
 The property is formulated in
-terms of a specific element $\Gamma_{\af \rightarrow \gf}$ of the group algebra
+terms of the specific element $\Gamma_{\af \rightarrow \gf}$ of the group algebra
 $\mathcal{E}\left( \frak{g} \right)$ called "the injection fan".
 Using this tool we formulate a simple and
 explicit algorithm for branching coefficients computations applicable for an arbitrary (maximal or nonmaximal)
-subalgebras of finite-dimensional or affine Lie algebras.
+subalgebra of finite-dimensional or affine Lie algebra.
 In the case of maximal embedding the corresponding fan is unsubtracted, the singular element
 becomes trivial
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\Psi ^{\left( \mu \right) }_{\left(  \gf\right)}$
@@ -121,16 +121,16 @@ In the Section \ref{sec:recurr-form-branch} we derive the decomposition formula 
 recurrent properties of anomalous branching coefficients and describe the decomposition algorithm
 for integrable highest weight modules
 $L_{\mathfrak{g}}$ with respect to a reductive subalgebra $\mathfrak{a}\subset \mathfrak{g}$
-(subsection \ref{sec:algorithm}). In the Section \ref{sec:finite-dimens-lie} we present several
-simple examples for finite-dimensional Lie algebras. The affine Lie algebras and their applications in
+(subsection \ref{sec:algorithm}). In Section \ref{sec:finite-dimens-lie} we present several
+simple examples for finite-dimensional Lie algebras. Affine Lie algebras and their applications in
 CFT models are considered in Section \ref{sec:phys-appl}.
-The general properties of the proposed algorithm and
-possible further developments are discussed (Section \ref{sec:conclusion}).
+General properties of the proposed algorithm and
+possible further developments are also discussed (Section \ref{sec:conclusion}).
 
 \subsection{Notation}
 \label{sec:notation}
 
-Consider affine Lie algebras $\frak{g}$ and $\af$ with the
+Consider affine Lie algebras $\frak{g}$ and $\af$ with
 underlying finite-dimensional subalgebras $\go$ and $%
 \ao$ and an injection $\af\longrightarrow \frak{g%
 }$ such that $\af$ is a reductive subalgebra $\frak{a\subset g}$ with
@@ -187,8 +187,9 @@ $\co{\xi }$ , $\co{\xi _{\left( \af\right) }}$
 --- the finite (classical) part of the weight $\xi \in P$ , $\left( \mbox{%
 resp. }\xi _{\left( \af\right) }\in P_{\af}\right) $;
 
-$\lambda =\left( \co{\lambda };k;n\right) $ --- the
-decomposition of an affine weight indicating the finite part $\co{\lambda }$, level $k$ and grade $n$;
+$\lambda =\left( \co{\lambda };k;n\right) $ ---
+decomposition of the affine weight $\lambda$ indicating the finite
+part $\co{\lambda }$, the level $k$ and the grade $n$;
 
 $P$ $\left( \mbox{resp. } P_{\af}\right) $ \ --- the weight lattice;
 
@@ -216,7 +217,7 @@ $\left( \mbox{resp. }R_{\af}:=\prod_{\alpha \in \Delta _{%
 \section{Recurrent relations for branching coefficients.}
 \label{sec:recurr-form-branch}
 
-Consider the integrable module $L^{\mu }$
+Consider an integrable module $L^{\mu }$
 of $\frak{g}$ with the highest weight $\mu $ and
 let $\af\subset \frak{g}$ be a reductive subalgebra of $\frak{g}$.
 With respect to $\af$ the module $L^{\mu }$ is completely reducible,
@@ -313,7 +314,7 @@ Algebras $\af$ and $\af_{\perp }$ form the ''orthogonal pair''
 $\left( \af,\af_{\perp}\right) $
 of subalgebras in $\frak{g}$.
 
-For the Cartan subalgebras we have the decomposition
+For the Cartan subalgebra we have the decomposition
 \begin{equation}
 \frak{h}=\frak{\frak{h}_{\af}}\oplus \frak{h}_{\af_{\perp }}\oplus
 \frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\af}}}\oplus \frak{h}_{%
@@ -345,7 +346,7 @@ a}_{\perp }}}\circ\left[ w(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp
 Among the weights $\left\{\mu _{\widetilde{\af_{\perp }}}\left( w\right)
 |w\in W\right\}$ choose those located in the fundamental chamber $\overline{C_{%
 \widetilde{\af_{\perp }}}}$ and let $U$ be the set of representatives $%
-u $ for the classes $W/W_{\af_{\perp }}$ such that
+u $ for classes $W/W_{\af_{\perp }}$ such that
 
 \begin{equation}
 U:=\left\{ u\in W|\quad \mu _{\widetilde{\af_{\perp }}}\left( u\right)
@@ -394,8 +395,7 @@ is called the \textit{injection fan}.
 \end{definition}
 In the next subsection we shall see how the injection fan defines the recurrent
 properties of branching coefficients. It must be noticed that the injection fan is
-the universal instrument that depends only on the injection and doesn't depend on 
-the properties of a module.
+the universal instrument that depends only on the injection.
 
 \subsection{Decomposing the singular element.}
 \label{subsec:decomp-sing-element}
@@ -418,7 +418,7 @@ $R_{\af_{\perp }}$ be the Weyl denominator for $\af_{\perp }$.
 Then the element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
 =\pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}\right) $
 can be decomposed into the sum over $u\in U$ (see (\ref{U-def})) of
-the singular weights $e^{\mu _{\af}\left( u\right) }$ with the
+singular weights $e^{\mu _{\af}\left( u\right) }$ with the
 coefficients $\epsilon (u)\mathrm{\dim }\left( L_{\widetilde{\af_{\perp
 }}}^{\mu _{\widetilde{\af_{\perp }}}\left( u\right) }\right) $:
 \begin{equation}
@@ -430,46 +430,46 @@ _{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
 \end{lemma}
 
 \begin{proof}
-With $u\in U $   and $v\in W_{\afb}$ perform the decomposition
+With $u\in U $   and $v\in W_{\afb}$ apply the decomposition
 \begin{equation*}
-u(\mu +\rho )=\pi _{\left( \af\right) } u(\mu +\rho )+\pi _{\left(
-\widetilde{\af_{\perp }}\right) } u(\mu +\rho )
+u(\mu +\rho )=\pi _{\af } u(\mu +\rho )+\pi _{
+\widetilde{\af_{\perp }} } u(\mu +\rho )
 \end{equation*}
-for the singular weight $vu(\mu +\rho )-\rho$:
+to the singular weight
 \begin{equation}
 \label{sing-decomp-1}
 \begin{array}{lcl}
-vu(\mu +\rho )-\rho &=&\pi _{\left( \af\right) }\left( u(\mu +\rho
-)\right) -\rho +\rho _{\af_{\perp }}+\pi _{\left( \hfb\right) }\rho \\
-&& + \ v\left( \pi _{\left( \widetilde{%
-\af_{\perp }}\right) }u(\mu +\rho )-\rho _{\af_{\perp }}+\rho _{%
-\af_{\perp }}\right) -\rho _{\af_{\perp }} -\pi _{\left( \hfb\right) }\rho.
+vu(\mu +\rho )-\rho &=&\pi _{ \af }\left( u(\mu +\rho
+)\right) -\rho +\rho _{\af_{\perp }}+\pi _{ \hfb }\rho \\
+&& + \ v\left( \pi _{ \widetilde{%
+\af_{\perp }} }u(\mu +\rho )-\rho _{\af_{\perp }}+\rho _{%
+\af_{\perp }}\right) -\rho _{\af_{\perp }} -\pi _{ \hfb }\rho.
 \end{array}
 \end{equation}
 Use the defect $\mathcal{D}_{\afb}$ (\ref{defect-perp}) to simplify
 the first summand in (\ref{sing-decomp-1}):
 \begin{equation*}
 \begin{array}{r}
-\pi _{\left( \af\right) }\left( u(\mu +\rho )\right) -\rho +\rho _{%
-\mathfrak{a}_{\perp }}+\pi _{\left( \hfb\right) }\rho = \\
-\pi _{\left( \af\right) }\left( u(\mu +\rho )\right) -\pi _{\af}\rho
+\pi _{ \af }\left( u(\mu +\rho )\right) -\rho +\rho _{%
+\mathfrak{a}_{\perp }}+\pi _{ \hfb }\rho = \\
+\pi _{ \af }\left( u(\mu +\rho )\right) -\pi _{\af}\rho
 -\pi _{\afb}\rho +\rho _{\afb}= \\
-=\pi _{\left( \af\right) }\left( u(\mu +\rho )-\rho \right) +%
+=\pi _{ \af }\left( u(\mu +\rho )-\rho \right) +%
 \mathcal{D}_{\afb},
 \end{array}
 \end{equation*}
 and the second one:
 \begin{equation*}
 \begin{array}{c}
-v\left( \pi _{\left( \widetilde{%
-\af_{\perp }}\right) }u(\mu +\rho )-\rho _{\af_{\perp }}+\rho _{%
-\af_{\perp }}\right) -\rho _{\af_{\perp }}-\pi _{\left( \hfb\right) }\rho=\\
-v\left( \pi _{\left( \widetilde{%
-\afb}\right) }u(\mu +\rho )
-- \mathcal{D}_{\afb} - \pi _{\left( \afb\right) }\rho-\pi _{\left( \hfb\right) }\rho
+v\left( \pi _{ \widetilde{%
+\af_{\perp }} }u(\mu +\rho )-\rho _{\af_{\perp }}+\rho _{%
+\af_{\perp }}\right) -\rho _{\af_{\perp }}-\pi _{ \hfb }\rho=\\
+v\left( \pi _{ \widetilde{%
+\afb} }u(\mu +\rho )
+- \mathcal{D}_{\afb} - \pi _{ \afb }\rho-\pi _{ \hfb }\rho
 +\rho _{\afb}\right) -\rho _{\afb}=\\
-=v\left( \pi _{\left( \widetilde{%
-\afb}\right) }\left[ u(\mu +\rho )-\rho\right]
+=v\left( \pi _{ \widetilde{%
+\afb} }\left[ u(\mu +\rho )-\rho\right]
 - \mathcal{D}_{\afb}
 +\rho _{\afb}\right) -\rho _{\afb}.
 \end{array}
@@ -485,12 +485,12 @@ _{\perp }}}^{\eta }$:
 \epsilon (v)\epsilon (u)e^{vu(\mu +\rho )-\rho }= \\
 =\sum_{u\in U}\epsilon (u)e^{\pi _{\af}\left[ u(\mu +\rho )-\rho \right]
 +\mathcal{D}_{\af_{\perp }}}\sum_{v\in W_{\af_{\perp }}}\epsilon
-(v)e^{v\left( \pi _{\left( \widetilde{\af_{\perp }}\right) }\left[
+(v)e^{v\left( \pi _{ \widetilde{\af_{\perp }} }\left[
 u(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp }}+\rho _{\af%
 _{\perp }}\right) -\rho _{\af_{\perp }}}= \\
-=\sum_{u\in U}\;\epsilon (u)e^{\pi _{\left( \af\right) }\left[ u(\mu
+=\sum_{u\in U}\;\epsilon (u)e^{\pi _{\af }\left[ u(\mu
 +\rho )-\rho \right] +\mathcal{D}_{\af_{\perp }}}\Psi _{\widetilde{%
-\af_{\perp }}}^{\pi _{\left( \widetilde{\af_{\perp }}\right) }%
+\af_{\perp }}}^{\pi _{ \widetilde{\af_{\perp }} }%
 \left[ u(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp }}}
 \end{array}
 \end{equation*}
@@ -503,8 +503,8 @@ desired relation:
 \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
 &=&\sum_{u\in W/W_{\af_{\perp }}}\;\epsilon (u)e^{\pi _{\frak{a%
 }}\left[ u(\mu +\rho )-\rho \right] }\pi _{%
-\af}\left( \frac{\Psi _{\widetilde{\af_{\perp }}}^{\pi _{\left(
-\widetilde{\af_{\perp }}\right) }\left[ u(\mu +\rho )-\rho \right] -%
+\af}\left( \frac{\Psi _{\widetilde{\af_{\perp }}}^{\pi _{
+\widetilde{\af_{\perp }} }\left[ u(\mu +\rho )-\rho \right] -%
 \mathcal{D}_{\af_{\perp }}}}{\prod_{\beta \in \Delta _{\af_{\perp
 }}}(1-e^{-\beta })^{\mathrm{mult}(\beta )}}\right)  \\
 &=&\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }\left( L_{\widetilde{\af%
@@ -572,7 +572,7 @@ recurrent computation of branching coefficients.
   \end{equation}
 \end{theorem}
 \begin{proof}
-Redress the relation (\ref{eq:4}) for the element $
+Redress relation (\ref{eq:4}) for the element $
 \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}$ using definition (\ref{eq:37})
 for the carrier $\Phi _{\af\subset \frak{g}}$ ,
 \begin{equation*}
@@ -605,7 +605,7 @@ Then expand the sum in brackets (with respect to the formal basis in $\mathcal{E
 }=-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}\sum_{\lambda \in P_{%
 \af}}s(\gamma )k_{\nu }^{(\mu )}e^{\lambda -\gamma }.
 \end{equation*}
-Substitute in the left-hand side the expression obtained in Lemma \ref{lemma},
+Substitute the expression obtained in Lemma \ref{lemma} (in the left-hand side),
 \begin{eqnarray*}
 \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
 &=&\sum_{u\in U}\;\epsilon (u)e^{\pi _{\af}\left( \mu _{\frak{a%
@@ -628,12 +628,12 @@ _{\widetilde{\af_{\perp }}}\left( u\right) }\right) \delta _{\xi ,\pi _{%
 \end{equation}
 The obtained formula means that the coefficients $k_{\xi +\gamma }^{(\mu )}$
 for $\gamma \in \Phi _{\af\subset \frak{g}}$ are not independent, they
-are subject to the linear relations and the form of these relations changes
+are subject to linear relations and the form of these relations changes
 when the tested weight $\xi $ coincides with one of \ the ''singular
 weights''  $\left\{ \pi _{\af}\left[ u(\mu +\rho )-\rho \right] |u\in
 U\right\} $ . To conclude the proof we extract the lowest weight $\gamma _{0}\in \Phi _{\frak{a%
-}\subset \frak{g}}$ and pass to the summation over the vectors of the
-injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see the definition \ref
+}\subset \frak{g}}$ and pass to a summation over the vectors of the
+injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see definition \ref
 {fan-definition}). Thus we get the desired recurrent relation (\ref{recurrent-relation}).
 \end{proof}
 
@@ -643,9 +643,9 @@ injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see the definition \ref
 In this subsection we discuss some properties of ''orthogonal pairs'' of
 subalgebras in simple Lie algebras of classical series.
 
-When both $\frak{g}$ and $\af$ are finite-dimensional all the regular
+When both $\frak{g}$ and $\af$ are finite-dimensional all regular
 embeddings can be obtained by a successive elimination of nodes in the
-extended Dynkin diagram of $\frak{g}$ (and $\Delta _{\bot }^{+}=\emptyset $
+extended Dynkin diagram of $\frak{g}$ (and $\Delta_{\afb }^{+}=\emptyset $
 if $\af$ is maximal). For the classical series $A$, $C$ and $D$ when
 the regular injection $\af\rightarrow \frak{g}$ is thus fixed, the
 Dynkin diagram for $\af_{\bot }$ is obtained from the extended diagram
@@ -686,7 +686,7 @@ the simple roots $\left\{ e_{1}-e_{2},e_{2}-e_{3},\ldots ,e_{r_{\af%
 a}}-1}$. Thus $\Delta _{\af_{\perp }}$ forms the subsystem of the type $%
 B_{r-r_{\af}}$ and the orthogonal pair for the injection $B_{r_{\af%
 }}\rightarrow B_{r}$ is $\left( B_{r_{\af}},B_{r-r_{\af}}\right) $%
-. In the next Section the particular case of such orthogonal pair is
+. In the next Section a particular case of such orthogonal pair is
 presented for the injection $B_{2}\rightarrow B_{4}$ (see Figure \ref
 {fig:dynkin}).
 
@@ -723,10 +723,10 @@ It contains the following steps:
 \item  Construct the root system $\Delta _{\af}$ for the embedding $%
 \af\rightarrow \frak{g}$.
 
-\item  Select the positive roots $\alpha \in \Delta ^{+}$ orthogonal
-to  $\af$, i.e. form the set $\Delta _{\afb }^{+}$.
+\item  Select all positive roots $\alpha \in \Delta ^{+}$ orthogonal
+to  $\af$, i.e. form the set $\Delta_{\afb }^{+}$.
 
-\item  Construct the set $\Gamma _{\af\rightarrow \frak{g}}$. The relation
+\item  Construct the set $\Gamma _{\af\rightarrow \frak{g}}$. Relation
  (\ref{eq:6}) defines the sign function
  $s(\gamma)$ and the set $\Phi_{\af\subset \frak{g}}$ where the lowest weight
  $\gamma_0$ is to be subtracted to get the fan (\ref{fan-defined}):
@@ -740,16 +740,16 @@ to  $\af$, i.e. form the set $\Delta _{\afb }^{+}$.
 \item  Select the weights $\left\{ \mu _{\widetilde{\af_{\perp }}%
 }\left( w\right) =\pi _{\widetilde{\af_{\perp }}}\left[ w(\mu +\rho
 )-\rho \right] -\mathcal{D}_{\af_{\perp }}\in \overline{C_{\widetilde{%
-\af_{\perp }}}}\right\} $. Since the set $\Delta _{\bot }^{+}$ is fixed
+\af_{\perp }}}}\right\} $. Since the set $\Delta_{\afb }^{+}$ is fixed
 we can easily check wether the weight $\mu _{\widetilde{\af_{\perp }}%
 }\left( w\right) $ belongs to the main Weyl chamber $\overline{C_{\widetilde{%
 \af_{\perp }}}}$ (by computing its scalar product with the fundamental
 weights of $\afb^{+}$).
 
 \item  For the weights $\mu _{\widetilde{\af_{\perp }}}\left( w\right) $
-calculate the dimensions of the corresponding modules $\mathrm{\dim }\left(
+calculate dimensions of the corresponding modules, $\mathrm{\dim }\left(
 L_{\widetilde{\af_{\perp }}}^{\mu _{\widetilde{\af_{\perp }}%
-}\left( u\right) }\right) $ using the Weyl dimension formula and construct
+}\left( u\right) }\right) $, using the Weyl dimension formula and construct
 the singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$.
 
 \item  Calculate the anomalous branching coefficients using the
@@ -771,18 +771,22 @@ algorithm.
 \subsection{Regular embedding of $A_1$ into $B_2$}
 \label{sec:regul-embedd-a_1}
 
-Consider the regular embedding $A_1\to B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors in the Figure \ref{fig:B2_A1}. We denote the corresponding Weyl reflections by $w_1, w_2$. The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector.
+Consider the regular embedding $A_1\to B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$
+are presented as dashed vectors in Figure \ref{fig:B2_A1}. We denote the corresponding
+Weyl reflections by $w_1, w_2$. The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is
+grey.
 
 
 \begin{figure}[p]
   \noindent\centering{
     \includegraphics[width=80mm]{figure1.eps}
   }
-  \caption{Regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
-    The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector.
-    The highest weight of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$ is shown by the black vector.
-    The weights of the singular element $\Psi^{(\omega_1)}$ are marked by circles with superscripts indicating
-    the corresponding determinants $\epsilon(w)$.}
+  \caption{Regular embedding of $A_1$ into $B_2$. Simple roots $\alpha_1, \alpha_2$ of $B_2$
+  are presented as dashed vectors.
+  The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is grey.
+  The highest weight of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$ is black.
+  The weights of the singular element $\Psi^{(\omega_1)}$ are marked by circles with
+  superscripts indicating the corresponding determinants $\epsilon(w)$.}
   \label{fig:B2_A1}
 
 %\end{figure}
@@ -802,21 +806,22 @@ are shown by dotted lines.
 
 
 Let's perform the reduction of the fundamental representation $L^{(1,0)=\omega_1}_{B_2}$
-($\omega_1$ -- the black vector in Figure \ref{fig:B2_A1}). The root $\alpha_1$ is orthogonal to $\beta$,
-so we have $\Delta_{\perp}^+ = \left\{ \alpha_1 \right\}$.
-According to the definition (\ref{fan-definition})
-the fan $\Gamma_{A_1\to B_2}$ consists of two weights:
+($\omega_1$ -- the black vector in Figure \ref{fig:B2_A1}) according to the steps of the algorithm.
+The root $\alpha_1$ is orthogonal to $\beta$,
+so we have $\Delta_{\afb}^+ = \left\{ \alpha_1 \right\}$ (step (ii)).
+According to (\ref{fan-definition})
+the fan $\Gamma_{A_1\to B_2}$ (step (iii)) consists of two weights:
 \begin{equation*}
   \label{eq:22}
   \Gamma_{A_1\to B_2}=\left\{ (1;2),\; (2;-1) \right\},
 \end{equation*}
 where the second component is the value of the sign function $s(\gamma)$.
-The singular weights  $\left\{ w (\omega_1 +\rho)-\rho ;\;w \in W\right\}$
+Singular weights  $\left\{ w (\omega_1 +\rho)-\rho ;\;w \in W\right\}$ (step (iv))
 are indicated by circles with the superscript $\epsilon\left( w \right)$.
 The space $U$ is the factor $W/W_{\afb}$ where $W_{\afb}=\left\{e,w_1\right\}$.
-This means that the singular weights located above the line generated by $\beta$
+This means that singular weights located above the $\beta$-line
 belong to the Weyl chamber $\overline{C_{\widetilde{\af_{\perp }}}}$.
-According to formula (\ref{defect-perp}) in our case we have $\mathcal{D}_{\af_{\perp }}=0$ and
+According to formula (\ref{defect-perp}) we have $\mathcal{D}_{\af_{\perp }}=0$ and
 $\hf_{\perp }=0$, thus $\left\{ \mu _{\af_{\perp }}\left( w\right)
 =\pi _{\af_{\perp }}\left[ w(\mu +\rho)-\rho \right]\right\}$.
 We obtain four highest weights for $\af_{\perp }$-modules. In terms of
@@ -824,28 +829,26 @@ $\af_{\perp }$-fundamental weight $\frac{1}{2} \alpha_1$ these highest weights
 $\left\{ \mu _{\af_{\perp }}\left( u\right)
 =\pi _{\af_{\perp }}\left[ u(\mu +\rho)-\rho \right]| u \in U \right\}$
  are
-$\left\{ \left( 1\right) \left( 2\right) \left( 2\right) \left( 1\right) \right\}$. To
-visualize the procedure we indicate explicitly in Figure (\ref{fig:B2_A1_2}) how the
-corresponding weight diagrams
+$\left\{ \left( 1\right) \left( 2\right) \left( 2\right) \left( 1\right) \right\}$ (step v).
+In Figure (\ref{fig:B2_A1_2}) the corresponding weight diagrams
 $\left\{ \mathcal{N}_{\af_{\perp }}^{\mu _{\af_{\perp }}\left( u\right) }\right\} $
 are attached to the set of $\af$-weights
 $\left\{ \mu _{\af}\left( u\right)\right\} =\left\{\pi _{\af}\left[ u(\mu +\rho )-\rho \right]\right\}
 =\left\{ \left( 1\right) \left( 0\right) \left( -4\right) \left( -5\right) \right\}$.
 In fact we do not need the
-weight diagrams but only the dimensions of the corresponding modules
+weight diagrams but only the dimensions of modules
 $L_{\af_{\perp }}^{\mu_{\af_{\perp }}\left( u\right) }$ multiplied by
-$\epsilon \left( u\right) $. The obtained values are to be attributed to the points
+$\epsilon \left( u\right) $ (step vi). Obtained values are to be attributed to the points
 $\left\{ \left( 1\right) \left( 0\right) \left( -4\right) \left( -5\right) \right\}$
-in $P_{\af}$. The corresponding element of ${\cal E}_{\af}$ is
-the singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$
-with the set of weights having anomalous multiplicities:
+in $P_{\af}$. The singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$
+has the set of weights with anomalous multiplicities:
 \begin{equation}
   \label{eq:25}
   \left\{(1;2),\; (0;-3),\; (-4;3),\; (-5;-2)\right\}.
 \end{equation}
 
 Applying formula (\ref{recurrent-relation}) with the fan
-$\Gamma_{A_1\to B_2}$ to the set (\ref{eq:25})
+$\Gamma_{A_1\to B_2}$ to the set (\ref{eq:25}) (step vii)
 we get zeros for the weights
 greater than the highest anomalous vector $(1;2)$
 and $k^{(1,0)}_1=2$ for the vector $(1;2)$ itself.
@@ -865,7 +868,7 @@ Consider the regular embedding $B_2 \rightarrow B_4$.
 The corresponding Dynkin diagrams are presented in the Figure \ref{fig:dynkin}.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=50mm]{figure3.eps}
+  \includegraphics[width=100mm]{figure3.eps}
   \caption{The regular embedding $B_2 \rightarrow B_4$ described by dropping the node from the Dynkin diagram.
   Remember that here $\afb$ is equal to $B_2$ while the diagram
   shows only $A_1\oplus A_1$ (see Subsection \ref{sect-embeddings}).}
@@ -878,7 +881,7 @@ The corresponding Dynkin diagrams are presented in the Figure \ref{fig:dynkin}.
   \caption{The singular element $e^{\gamma_0}\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$
   displayed in the weight subspace $P_{\af}$ for $\af=B_2$ with the basis $\left\{e_3,e_4\right\}$.
   We see the projected singular weights $\left\{\pi _{\af}\left[ u(\mu +\rho )-\rho \right] +\gamma_0 | u \in U \right\}$
-  shifted by $\gamma_0$ and supplied by the multipliers
+  shifted by $\gamma_0$ and supplied by multipliers
   $\epsilon(u)\dim\left(L_{\af_{\perp }}^{\mu_{\af_{\perp }}\left( u\right) }\right)$.}
   \label{fig:B4B2anom}
 
@@ -887,7 +890,7 @@ The corresponding Dynkin diagrams are presented in the Figure \ref{fig:dynkin}.
 %\begin{figure}[pb]
   \centering
   \includegraphics[height=80mm]{figure5.eps}
-  \caption{The fan $\Gamma$ for $B_2\rightarrow B_4$ and the values of $s(\gamma+\gamma_0)$ for the weights $\gamma$.}
+  \caption{The fan $\Gamma$ for $B_2\rightarrow B_4$ with values of $s(\gamma+\gamma_0)$ attributed to each $\gamma \in \Gamma$.}
   \label{fig:B4B2Fan}
 \end{figure}
 
@@ -901,7 +904,7 @@ In the orthonormal basis $\left\{e_1,\dots,e_4\right\}$ simple roots and positiv
 The subalgebra $\af=B_2$ is fixed by the simple roots
 \begin{equation*}
   \label{eq:26}
- S_{B_2}=\{e_3-e_4,e_4\}
+ S_{B_2}=\{e_3-e_4,e_4\}.
 \end{equation*}
 Its orthogonal counterpart $\afb=B_2$ has
 \begin{eqnarray*}
@@ -909,30 +912,27 @@ Its orthogonal counterpart $\afb=B_2$ has
   S_{\afb}=\{e_1-e_2,e_2\},\\
  \Delta^{+}_{\afb}= \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}.
 \end{eqnarray*}
-As far as the set $\Delta^+_{B_4} \setminus  \Delta^{+}_{\afb}$ is fixed the injection
-fan $\Gamma_{B_2 \to B_4}$ can be constructed using Definition \ref{fan-definition}.
-As far as for this injection $s\left( \gamma_0\right)=-1$ in the recursion formula we need just the factor
+As far as the set $\Delta^+_{B_4} \setminus \left(\Delta^{+}_{\af} \cup \Delta^{+}_{\afb}\right)$ is fixed the injection
+fan $\Gamma_{B_2 \to B_4}$ can be constructed (using formulas (\ref{eq:6} -- \ref{fan-defined})).
+As far as for this injection $s\left( \gamma_0\right)=-1$ in the recursion formula we need only the factor
  $s\left(\gamma + \gamma_0\right)$.
 The result is presented in Figure \ref{fig:B4B2Fan}.
 
 
 Consider the $B_4$-module $L^{\mu}$ with the highest weight $\mu=2e_1 + 2 e_2 + e_3 + e_4$; \,
 $\mathrm{dim}(L^{\left[0,1,0,2\right]})=2772$.
-The set of singular weights for $B_4$ contains 384 vectors.
 Here the defect is nontrivial, $\mathcal{D}_{\af_{\perp }}=-2\left( e_1 + e_2 \right)$,
-while $\hf_{\bot}=0$.
-Taking this into account we find among the singular weights
+while $\hf_{\bot}=0$. Among the singular weights there are
 48 vectors with the property $\left\{ \mu _{\af_{\perp }%
 }\left( u\right) =\pi _{\af_{\perp }}\left[ u(\mu +\rho
-)-\rho \right] -\mathcal{D}_{\af_{\perp }}\in \overline{C_{\af_{\perp }}}\right\} $,
-scalar products of these weights with all the roots in $\Delta^{+}_{\afb}$ are nonnegative.
+)-\rho \right] -\mathcal{D}_{\af_{\perp }}\in \overline{C_{\af_{\perp }}}\right\} $.
 The set $U=\left\{ u \right\}$ is thus fixed.
 Compute the dimensions of the corresponding $\afb$-modules with the highest weights
 $ \mu _{\af_{\perp }}\left( u\right)$ (using the Weyl dimension formula) and multiply them
 by $\epsilon\left( u \right)$. The result is the singular element
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ shown in Figure \ref{fig:B4B2anom}.
 
-Now one can place the fan $\Gamma$ from Figure \ref{fig:B4B2Fan} in the highest of the weights
+Now one can place the fan $\Gamma$ (see Figure \ref{fig:B4B2Fan}) in the highest of the weights
 presented in Figure \ref{fig:B4B2anom} and start the recursive determination of the branching coefficients
 (using relation (\ref{recurrent-relation})):
 \begin{eqnarray*}
@@ -942,7 +942,7 @@ presented in Figure \ref{fig:B4B2anom} and start the recursive determination of 
   40 \; ch L_{B_2}^{\left[1,2\right]}+ 10 \; ch L_{B_2}^{\left[0,4\right]}.
 \end{eqnarray*}
 %\newpage
-\section{Applications to the conformal field theory}
+\section{Applications to conformal field theory}
 \label{sec:phys-appl}
 
 \subsection{Conformal embeddings}
@@ -963,10 +963,10 @@ The simplest modular-invariant partition function has the diagonal form:
   \label{eq:34}
    Z(\tau)=\sum_{ \mu\in P^{+}_{\mathfrak{g}}} \chi_{\mu}(\tau)\bar \chi_{\mu}(\bar \tau)
 \end{equation}
-Here the sum is over the set of the highest weights of integrable modules in a WZW-model
+Here the sum is over the set of highest weights for integrable modules in a WZW-model
 and $\chi_{\mu}(\tau)$ are the normalized characters (see \cite{difrancesco1997cft}) of these modules.
 
-To construct the nondiagonal modular invariants is not an easy problem,
+To construct nondiagonal modular invariants is not an easy problem,
 although for some models the complete classification of modular invariants is known \cite{1994hepthGannon,1995JMPGannon}.
 
 Consider the Wess-Zumino-Witten model with the affine Lie algebra $\af$.
@@ -1045,7 +1045,7 @@ Consider the modes expansion of the energy-momentum tensor
 \label{eq:47}
   T(z)=\frac{1}{2(k+h^v)}\sum_n z^{-n-1}L_n.
 \end{equation*}
-The modes $L_n$ are constructed as combinations of normally-ordered products of the generators of $\mathfrak{g}$,
+The modes $L_n$ are constructed as combinations of normally-ordered products of $\gf$-algebra generators,
 \begin{equation*}
 \label{eq:48}
   L_n=\frac{1}{2(k+h^v)}\sum_{\alpha}\sum_m:X^{\alpha}_m X^{\alpha}_{n-m}: \; .
@@ -1053,8 +1053,8 @@ The modes $L_n$ are constructed as combinations of normally-ordered products of 
 In case of a conformal embedding energy-momentum tensors $T_{\mathfrak{g}}(z)$ and $T_{\af}(z)$ are
 equal (see (\ref{eq:2})).
 
-Substituting generators of $\af$  in terms of generators of $\mathfrak{g}$ into these combinations
-we must obtain the energy-momentum tensor $T_{\mathfrak{g}}$.
+In these combinations we are to substitute  $\af$-generators in terms of $\mathfrak{g}$-generators
+and obtain the energy-momentum tensor $T_{\mathfrak{g}}$.
 But if the set of generators attributed to $\Delta_{\afb}$ is not empty this is not possible,
 since $T_{\mathfrak{g}}$ contains generators $X^{\alpha}_n$ for $\alpha\in \Delta_{\afb}$.
 \end{proof}
@@ -1068,16 +1068,19 @@ since $T_{\mathfrak{g}}$ contains generators $X^{\alpha}_n$ for $\alpha\in \Delt
 Consider the case where both $\gf$ and $\af$ are affine Lie algebras:
 $\hat{A}_1 \rightarrow \hat{A}_2$ and the injection is the affine extension of the
 special injection $A_1 \rightarrow A_2$ with the embedding index $x_e=4$.
-As far as the $\gf$-modules to be considered are of level one,
-the $\af$-modules will be of level $\tilde{k}=kx_e=4$.
+As far as $\gf$-modules to be considered are of level one,
+the necessary $\af$-modules will be of level $\tilde{k}=kx_e=4$.
 
 There exist three level one fundamental weights of $\hat{A}_2$.
-It is easy to see that the set $\Delta_{ \afb }$ is empty and the subalgebra $\afb=0$. Then ${\cal D}_{\afb}=0$, $\hf_{\perp}$ is one-dimensional Abelian subalgebra and the dimensions of $\tilde\afb=\afb\oplus \hf_{\perp}$ are equal to 1.
+It is easy to see that the set $\Delta_{ \afb }$ is empty and the subalgebra $\afb=0$.
+Then ${\cal D}_{\afb}=0$, $\hf_{\perp}$ is one-dimensional abelian subalgebra and
+the dimension of $\tilde\afb=\afb\oplus \hf_{\perp}$ is also 1.
 It is convenient to choose the classical root for $\hat{A}_1$ to be
 $\beta=\frac{1}{2}(\alpha_1+\alpha_2)$.
 
-Using Definition (\ref{fan-definition})  we construct the fan $\Gamma_{\hat A_1\to\hat A_2}$.
-In this case $\gamma_0 =0$ and its sign $s\left( 0 \right)=-1$ thus we are to use the
+Using the defining relation (\ref{fan-defined}) we construct the
+fan $\Gamma_{\hat A_1\to\hat A_2}$.
+In this case $\gamma_0 =0$ its sign is minus, $s\left( 0 \right)=-1$, thus we are to use the
 sign function $s(\gamma)$ (see Figure \ref{fig:AffineA2A1Fan}).
 
 
@@ -1101,7 +1104,7 @@ The set $\widehat{\Psi^{(\omega_0)}}$  is displayed in Figure
 \begin{figure}[h!tb]
   \hspace*{-1.5cm}
   \includegraphics[width=180mm]{figure7.eps}
-  \caption{The singular weights of the module $L_{\hat{A_2}}^{\omega_0}=L^{(0,0;1;0)}_{\hat{A_2}}$.
+  \caption{Singular weights of the module $L_{\hat{A_2}}^{\omega_0}=L^{(0,0;1;0)}_{\hat{A_2}}$.
    The classical (grade zero) cross-section of the diagram is shown separately
    in the right part of the figure.
   We use the orthogonal basis with the unit vector equal to $\alpha_1$.
@@ -1149,10 +1152,10 @@ coefficients. Thus we get the decomposition
   \label{eq:43}
   L^{(0,0;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(0;4;0)}\oplus L_{\hat{A_1}}^{(4;4;0)}.
 \end{equation*}
-The finite reducibility theorem holds.
+Notice that the finite reducibility theorem holds.
 
 The same fan $\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ can be used for any other highest weight
-module $L^{\mu}_{\hat{A_2}}$. In particular for the irreducible modules of level one  we get the trivial
+module $L^{\mu}_{\hat{A_2}}$. In particular for irreducible modules of level one  we get the trivial
 branching:
 \begin{equation*}
   \label{eq:44}
@@ -1185,18 +1188,18 @@ with
 The problem of branching functions construction in the coset models was considered
 in  \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}.
 
-Let us return to the example \ref{sec:regul-embedd-a_1} and consider the affine extension of the injection
+Let us return to our example \ref{sec:regul-embedd-a_1} and consider the affine extension of the injection
 $A_1 \rightarrow B_2$.
 Since this embedding is regular and $x_e=1$, the subalgebra modules and the initial module are of the same level.
 The set  of positive roots with zero projection
-on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case
-$\Delta^{+}_{\afb}=\left\{ \alpha_1 \right\}$ and $\afb=A_1$. It is easy to see that $\hf_{\perp}$
-is trivial in this case and also ${\cal D}_{\afb}=0$.
+on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case:
+$\Delta^{+}_{\afb}=\left\{ \alpha_1 \right\}$ and $\afb=A_1$. It is easy to see that here $\hf_{\perp}$
+is trivial and ${\cal D}_{\afb}=0$.
 
-Using the definition (\ref{fan-defined}) we obtain the fan
+Using (\ref{fan-defined}) we obtain the fan
 $\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$.
 Notice that here the lowest weight  $\gamma_0$ of the fan  is zero and $s\left( \gamma_0 \right)=-1$.
-The values of the sign function $s(\gamma)$ for
+Values of the sign function $s(\gamma)$ for
 $ \gamma \in \Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$ are presented in Figure \ref{fig:AffineB2A1Fan}.
 We restricted the computation to the twelfth grade.
 \begin{figure}[h!bt]
@@ -1211,7 +1214,7 @@ We restricted the computation to the twelfth grade.
 
 Consider the level one module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $\omega_1=(1,0;1;0)$,
 where the finite part coordinates are in the orthogonal basis $e_1,e_2$.
-The set of anomalous weights for this module up to the sixth grade is presented in the Figure \ref{fig:affine_B2_anom_point}.
+The set of anomalous weights for this module up to the sixth grade is presented in Figure \ref{fig:affine_B2_anom_point}.
 
 \begin{figure}[h!tb]
 %  \hspace*{-2cm}
@@ -1224,20 +1227,20 @@ of the embedded algebra $\hat{A}_1$.}
   \label{fig:affine_B2_anom_point}
 \end{figure}
 
-According to the algorithm \ref{sec:algorithm} we project the anomalous weights to
+According to the recursive algorithm \ref{sec:algorithm} we project these anomalous weights to
 $P_{\hat{A_1}}$ and find the dimensions of the corresponding
 $\afb$-modules $L^{\pi_{\afb}(w(\mu+\rho))-\rho_{\afb}}_{\afb}$.
 In the grade zero this projection gives exactly the set
 $\Psi ^{\left( \mu \right) }_{\left(  A_1, A_1 \right)}$ for the embedding of
 the classical Lie algebra $A_1\rightarrow B_2$. To see this compare Figure \ref{fig:B2_A1}
-with the Figure \ref{fig:AffineB2_A1_anom_proj}
+with Figure \ref{fig:AffineB2_A1_anom_proj}
 where the singular element $\Psi ^{\left( \mu \right) }_{\left(  \widehat{A_1}, A_1 \right)}$
 for the affine embedding $\hat{A_1}$ is presented up to the twelfth grade.
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=120mm]{figure12.eps}
-  \caption{The singular element $\Psi ^{\left( \omega_1 \right) }_{\left(  \widehat{A_1}, A_1 \right)}$
-  in the basis $\{\beta,\delta\}$. The dimensions of the corresponding $\afb=A_1$-modules
+  \caption{Singular element $\Psi ^{\left( \omega_1 \right) }_{\left(  \widehat{A_1}, A_1 \right)}$
+  in the basis $\{\beta,\delta\}$. Dimensions of the corresponding $\afb=A_1$-modules
   with the signs $\epsilon(u)$ are indicated.}
   \label{fig:AffineB2_A1_anom_proj}
 \end{figure}
@@ -1246,13 +1249,13 @@ for the affine embedding $\hat{A_1}$ is presented up to the twelfth grade.
   \centering
   \includegraphics[width=120mm]{figure13.eps}
   \caption{Anomalous branching coefficients for $\hat{A_1}\rightarrow \hat{B_2}$. The basis $\{\beta,\delta\}$ is used.
-  The boundaries  of the main Weyl chamber $\bar{C}_{\hat{A}_1}$
- are indicated by the black lines. The anomalous branching coefficients
- inside the main Weyl chamber are equal to the branching coefficients of the embedding $\hat{A_1}\rightarrow \hat{B_2}$.}
+ Boundaries  of the main Weyl chamber $\bar{C}_{\hat{A}_1}$
+ are indicated by black lines. Anomalous branching coefficients
+ inside the main Weyl chamber are equal to branching coefficients of the embedding $\hat{A_1}\rightarrow \hat{B_2}$.}
   \label{fig:AffineB2_A1_branching}
 \end{figure}
 
-The multiplicities of the highest weights inside the  Weyl chamber
+Multiplicities of the highest weights inside the  Weyl chamber
 $\bar{C}^{\left( 0 \right)}_{\hat{A_1}}$
 define the following branching coefficients (up to the twelfth grade),
 \begin{eqnarray*}
@@ -1288,7 +1291,7 @@ Here $q=\exp (2\pi i \tau)$ and the lower index enumerates the branching functio
 to their highest weights in $P^+_{\hat{A_1}}$.
 These are the fundamental weights $\omega_0=\lambda_0=(0,1,0),\; \omega_1=\alpha/2=(1,1,0)$.
 
-Now we can use the relation (\ref{eq:31}),
+Now we can return to (\ref{eq:31}),
 \begin{equation*}
   \label{eq:35}
   \begin{array}{cc}
@@ -1298,34 +1301,34 @@ Now we can use the relation (\ref{eq:31}),
     &\left. 222\,q^{8}+ 346\,q^{9}+ 530\,q^{10}+ 797\,q^{11}+ 1180\,q^{12}+\dots\right),
   \end{array}
 \end{equation*}
-and thus obtain the expansion of the $B_2/A_1$-coset characters.
+and finally obtain expansions for the $B_2/A_1$-coset characters.
 
 
 \section{Conclusion}
 \label{sec:conclusion}
-We have demonstrated that the injection fan technique can be used to deal with an arbitrary
-reductive subalgebra (maximal as well as  nonmaximal).
+We have demonstrated that the injection fan technique can be used to deal with arbitrary
+reductive subalgebras (maximal as well as  nonmaximal).
 It was shown that the branching problem for $\af \subset \gf$  is tightly connected with
 the properties of the orthogonal partner $ \af_{\perp
 } $ of $\af$. The subalgebra $\afb$ corresponds to the subset
 $\Delta^{+}_{\afb}$ of positive roots in $\Delta_{\mathfrak{g}}^{+}$ that trivialize
 the Cartan subalgebra $\hf_{\afb}$.
 Both the injection fan and the sets of singular weights for
-the highest weight $\gf$-modules depend substantially on the structure of $\afb$ and its submodules.
+highest weight $\gf$-modules depend substantially on the structure of $\afb$ and its submodules.
 For the fan $\Gamma_{\af\rightarrow \gf}$ this dependence is almost obvious:
 in the element $\Phi_{\af\rightarrow \gf}$ the factors corresponding to the roots
 of $\Delta^{+}_{\afb}$ are eliminated.
 The transformation in the set of projected singular weights is more interesting.
 We have found out that in the new singular element
-$\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ the coefficients depend on the
+$\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ the coefficients depend on
 the $\afb$-submodules (their highest weights $\mu _{\widetilde{\af_{\perp }}}\left( u\right)$
 are fixed by the injection and by the weights of the initial
 element $\Psi^{\mu}$).
 Fortunately no more information on $L^{\mu _{\widetilde{\af_{\perp }}}\left( u\right)}
-_{\afb}$-submodules is necessary than their dimensions.
+_{\left\{ \afb \right\}}$-submodules is necessary than their dimensions.
 In the new singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$
-the weight multiplicities are equal to the dimensions
-$\dim\left(L^{\mu _{\widetilde{\af_{\perp }}}\left( u\right)}_{ \afb }\right)$
+weight multiplicities are equal to dimensions
+$\dim\left(L^{\mu _{\widetilde{\af_{\perp }}}\left( u\right)}_{\left\{ \afb \right\}}\right)$
 of the corresponding $\afb$-modules
 multiplied by the values $\epsilon (u)$. As a result
 the highest weights of $\af$-submodules and their
@@ -1335,7 +1338,7 @@ the set can be redressed to the form of recurrent relations to be solved step by
 
 The efficiency of the obtained algorithm was illustrated in various examples.
 In particular we considered the construction of modular-invariant partition functions
-in the framework of conformal embedding method and the coset construction in the rational conformal field theory.
+in the framework of conformal embedding method and the coset construction in rational conformal field theory.
 This construction is useful in the study of WZW-models
 emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
 
