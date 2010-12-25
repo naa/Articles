@@ -53,9 +53,9 @@
   based on the injection fan technique is developed for the case of an arbitrary
   reductive subalgebra. In particular we consider the situation where
   the Weyl denominator becomes singular with respect to the subalgebra.
-  We study the modifications of the fan technique and demonstrate
+  We demonstrate
   that for any reductive subalgebra it is possible to define the
-  injection fan -- the tool that describes
+  injection fan and the analogue of the Weyl numerator -- the tools that describe
   explicitly the recurrent properties of branching coefficients.
   Possible applications of fan technique in CFT models are considered.
 \end{abstract}
@@ -107,7 +107,7 @@ terms of the specific element $\Gamma_{\af \rightarrow \gf}$ of the group algebr
 $\mathcal{E}\left( \frak{g} \right)$ called "the injection fan".
 Using this tool we formulate a simple and
 explicit algorithm for branching coefficients computations applicable for an arbitrary (maximal or nonmaximal)
-subalgebra of finite-dimensional or affine Lie algebra.
+subalgebras of finite-dimensional or affine Lie algebras.
 In the case of maximal embedding the corresponding fan is unsubtracted, the singular element
 becomes trivial
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\Psi ^{\left( \mu \right) }_{\left(  \gf\right)}$
@@ -633,7 +633,7 @@ when the tested weight $\xi $ coincides with one of \ the ''singular
 weights''  $\left\{ \pi _{\af}\left[ u(\mu +\rho )-\rho \right] |u\in
 U\right\} $ . To conclude the proof we extract the lowest weight $\gamma _{0}\in \Phi _{\frak{a%
 }\subset \frak{g}}$ and pass to a summation over the vectors of the
-injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see definition \ref
+injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see Definition \ref
 {fan-definition}). Thus we get the desired recurrent relation (\ref{recurrent-relation}).
 \end{proof}
 
@@ -809,7 +809,7 @@ Let's perform the reduction of the fundamental representation $L^{(1,0)=\omega_1
 ($\omega_1$ -- the black vector in Figure \ref{fig:B2_A1}) according to the steps of the algorithm.
 The root $\alpha_1$ is orthogonal to $\beta$,
 so we have $\Delta_{\afb}^+ = \left\{ \alpha_1 \right\}$ (step (ii)).
-According to (\ref{fan-definition})
+According to Definition \ref{fan-definition}
 the fan $\Gamma_{A_1\to B_2}$ (step (iii)) consists of two weights:
 \begin{equation*}
   \label{eq:22}
@@ -912,8 +912,8 @@ Its orthogonal counterpart $\afb=B_2$ has
   S_{\afb}=\{e_1-e_2,e_2\},\\
  \Delta^{+}_{\afb}= \left\{e_1-e_2,e_1+e_2,e_1,e_2\right\}.
 \end{eqnarray*}
-As far as the set $\Delta^+_{B_4} \setminus \left(\Delta^{+}_{\af} \cup \Delta^{+}_{\afb}\right)$ is fixed the injection
-fan $\Gamma_{B_2 \to B_4}$ can be constructed (using formulas (\ref{eq:6} -- \ref{fan-defined})).
+As far as the set $\Delta^+_{B_4} \setminus  \Delta^{+}_{\afb}$ is fixed the injection
+fan $\Gamma_{B_2 \to B_4}$ can be constructed using Definition \ref{fan-definition}.
 As far as for this injection $s\left( \gamma_0\right)=-1$ in the recursion formula we need only the factor
  $s\left(\gamma + \gamma_0\right)$.
 The result is presented in Figure \ref{fig:B4B2Fan}.
@@ -1078,9 +1078,8 @@ the dimension of $\tilde\afb=\afb\oplus \hf_{\perp}$ is also 1.
 It is convenient to choose the classical root for $\hat{A}_1$ to be
 $\beta=\frac{1}{2}(\alpha_1+\alpha_2)$.
 
-Using the defining relation (\ref{fan-defined}) we construct the
-fan $\Gamma_{\hat A_1\to\hat A_2}$.
-In this case $\gamma_0 =0$ its sign is minus, $s\left( 0 \right)=-1$, thus we are to use the
+Using Definition (\ref{fan-definition})  we construct the fan $\Gamma_{\hat A_1\to\hat A_2}$.
+In this case $\gamma_0 =0$ and its sign $s\left( 0 \right)=-1$ thus we are to use the
 sign function $s(\gamma)$ (see Figure \ref{fig:AffineA2A1Fan}).
 
 
@@ -1196,7 +1195,7 @@ on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dim
 $\Delta^{+}_{\afb}=\left\{ \alpha_1 \right\}$ and $\afb=A_1$. It is easy to see that here $\hf_{\perp}$
 is trivial and ${\cal D}_{\afb}=0$.
 
-Using (\ref{fan-defined}) we obtain the fan
+Using Definition (\ref{fan-definition}) we obtain the fan
 $\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$.
 Notice that here the lowest weight  $\gamma_0$ of the fan  is zero and $s\left( \gamma_0 \right)=-1$.
 Values of the sign function $s(\gamma)$ for
@@ -1359,4 +1358,3 @@ part by RFFI grant N 09-01-00504 and the National Project RNP.2.1.1./1575.
 
 \end{document}
 
-$\af \subset \gf$
