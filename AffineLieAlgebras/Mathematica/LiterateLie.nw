@@ -35,14 +35,67 @@ This implementation is created as the package for {\it Mathematica}.
 
 Here we recall some notions from the theory of root systems and fix notations. Detailed review is available in the book \cite{humphreys1992reflection}. Then we introduce some data structures (types) for root systems and reflections.
 
-<<Root systems .m>>=
+We hold vectors in the expressions with [[head]] denoting the base.
+<<Data structures .m>>=
+
 
 clear[standardBase];
+
+Unprotect[Dot];
+Dot[x_standardBase,y_standardBase]:=standardBase @@ Dot[List@@x,List@@y]
+
+Unprotect[Plus];
+Plus[x_standardBase,y_standardBase]:=standardBase @@ Plus[List@@x,List@@y]
+
+Unprotect[Times];
+Times[x_,y_standardBase]:=standardBase @@ Times[x,List@@y]
+
+@
+
+For example, vectors in standard orthogonal base have the form 
+<<Vectors .m>>=
+
+v1=standardBase[1,0,1];
+v2=standardBase[1,2,1];
+
+@ 
+We have generalized addition and scalar product ([[Dot]]) to these data structures:
+<<Vectors .m>>=
+
+v1+v2
+
+t[7]= standardBase[2, 2, 2]
+
+@ 
+
+Root systems determine the properties of Coxeter groups. Weyl groups of Lie algebras are Coxeter groups. So we need to construct simple root systems.
+<<Root systems .m>>=
 
 makeSimpleRootSystem[A,rank_Integer]:=standardBase @@@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank},{j,1,rank+1}];
 makeSimpleRootSystem[B,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]];
 makeSimpleRootSystem[C,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]];
 makeSimpleRootSystem[D,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]];
+
+@  
+
+Then we introduce simple reflections (along the hyperplanes orthogonal to simple roots), coroots and Cartan matrix:
+
+<<Root systems .m>>=
+
+reflection[x_standardBase]:=Function[y, y-2*(x.y)/(x.x)*x]
+
+coroot[x_standardBase]:=2*x/(x.x)
+
+cartanMatrix[{x__standardBase}]:=Transpose[Outer[Dot,{x},coroot/@{x}]]
+
+b2=makeSimpleRootSystem[B,2]
+Out[13]= {standardBase[1, -1], standardBase[0, 1]}
+
+cartanMatrix[b2]//MatrixForm
+
+Out[15]//MatrixForm= 2    -1
+
+                     -2   2
 
 @ 
 \section{Lie algebras}
