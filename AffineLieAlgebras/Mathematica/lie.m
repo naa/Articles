@@ -1,30 +1,851 @@
-clear[standardBase]
-
+clear[standardBase];
 makeSimpleRootSystem[A,rank_Integer]:=standardBase @@@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank},{j,1,rank+1}];
 makeSimpleRootSystem[B,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]];
 makeSimpleRootSystem[C,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]];
 makeSimpleRootSystem[D,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]];
-
 Unprotect[Dot];
-Dot[x_standardBase,y_standardBase]:=standardBase @@ Dot[List@@x,List@@y]
-
+Dot[x_standardBase,y_standardBase]:=standardBase @@ Dot[List@@x,List@@y];
 Unprotect[Plus];
-Plus[x_standardBase,y_standardBase]:=standardBase @@ Plus[List@@x,List@@y]
-
+Plus[x_standardBase,y_standardBase]:=standardBase @@ Plus[List@@x,List@@y];
+(* Unprotect[Power]; *)
+(* Power[x_standardBase,y_Integer]:=standardBase @@ Power[List@@x,y]; *)
 Unprotect[Times];
-Times[x_,y_standardBase]:=standardBase @@ Times[x,List@@y]
+Times[x_,y_standardBase]:=standardBase @@ Times[x,List@@y];
+reflection[x_standardBase]:=Function[y, y-2*(x.y)/(x.x)*x];
+coroot[x_standardBase]:=2*x/(x.x);
+cartanMatrix[{x__standardBase}]:=Transpose[Outer[Dot,{x},coroot/@{x}]];
+clear[weylGroupElement];
+revApply[x_,f_]:=f[x];
+weylGroupElement[x__Integer][{y__standardBase}]:=Function[z,Fold[revApply,z,reflection /@ Part[{y},{x}]]];
+fundamentalWeights[{simpleRoots__standardBase}]:=Plus@@(Inverse[cartanMatrix[{simpleRoots}]]*{simpleRoots})
 
-reflection[x_standardBase]:=Function[y, y-2*(x.y)/(x.x)*x]
+rho[{simpleRoots__standardBase}]:=Plus@@fundamentalWeights[simpleRoots]
 
-coroot[x_standardBase]:=2*x/(x.x)
+rho[b2]
 
-cartanMatrix[{x__standardBase}]:=Transpose[Outer[Dot,{x},coroot/@{x}]]
+                      3  1
+Out[98]= standardBase[-, -]
+                      2  2
+
+
+orbit[{simpleRoots__standardBase}][weights__standardBase]:=Module[{total={}},
+       NestWhileList[Function[x,Complement[Union[Flatten[Outer[#1[#2]&,reflection/@{simpleRoots},x]]],total]],
+		     {weights},
+		     Function[y,Module[{t=y=!={}},total=Union[total,y];t]]]]
+
+multiplicity[x_standardBase]:=0
+
+
+orbit[b2][standardBase[1,0]]
+
+Out[129]= {{standardBase[1, 0]}, {standardBase[0, 1]}, {standardBase[0, -1]}, 
+ 
+>    {standardBase[-1, 0]}, {}}
+
+??First
+
+First[expr] gives the first element in expr. 
+
+Attributes[First] = {Protected}
+
+
+
+Information::notfound: Symbol Tail not found.
+
+Last[expr] gives the last element in expr. 
+
+First[expr] gives the first element in expr. 
+
+          
+                         3  1                  1  3                3    1
+Out[123]= {{standardBase[-, -]}, {standardBase[-, -], standardBase[-, -(-)]}, 
+                         2  2                  2  2                2    2
+ 
+                     1   3                1    3
+>    {standardBase[-(-), -], standardBase[-, -(-)]}, 
+                     2   2                2    2
+ 
+                     3   1                  1     3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)]}, 
+                     2   2                  2     2
+ 
+                     3     1
+>    {standardBase[-(-), -(-)]}, {}}
+                     2     2
+
+          
+                         3  1                  1  3                3    1
+Out[122]= {{standardBase[-, -]}, {standardBase[-, -], standardBase[-, -(-)]}, 
+                         2  2                  2  2                2    2
+ 
+                     1   3                1    3
+>    {standardBase[-(-), -], standardBase[-, -(-)]}, 
+                     2   2                2    2
+ 
+                     3   1                  1     3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)]}, 
+                     2   2                  2     2
+ 
+                     3     1
+>    {standardBase[-(-), -(-)]}, {}}
+                     2     2
+
+?SetMinus
+
+Information::notfound: Symbol SetMinus not found.
+
+          
+                         3  1                  1  3                3    1
+Out[120]= {{standardBase[-, -]}, {standardBase[-, -], standardBase[-, -(-)]}, 
+                         2  2                  2  2                2    2
+ 
+                     1   3                1    3                 3  1
+>    {standardBase[-(-), -], standardBase[-, -(-)], standardBase[-, -]}, 
+                     2   2                2    2                 2  2
+ 
+                     3   1                  1     3                 1  3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)], standardBase[-, -], 
+                     2   2                  2     2                 2  2
+ 
+                   3    1                     3     1
+>     standardBase[-, -(-)]}, {standardBase[-(-), -(-)], 
+                   2    2                     2     2
+ 
+                     1   3                1    3                 3  1
+>     standardBase[-(-), -], standardBase[-, -(-)], standardBase[-, -]}, 
+                     2   2                2    2                 2  2
+ 
+                     3   1                  1     3                 1  3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)], standardBase[-, -], 
+                     2   2                  2     2                 2  2
+ 
+                   3    1
+>     standardBase[-, -(-)]}}
+                   2    2
+
+          
+                         3  1                  1  3                3    1
+Out[119]= {{standardBase[-, -]}, {standardBase[-, -], standardBase[-, -(-)]}, 
+                         2  2                  2  2                2    2
+ 
+                     1   3                1    3                 3  1
+>    {standardBase[-(-), -], standardBase[-, -(-)], standardBase[-, -]}, 
+                     2   2                2    2                 2  2
+ 
+                     3   1                  1     3                 1  3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)], standardBase[-, -], 
+                     2   2                  2     2                 2  2
+ 
+                   3    1
+>     standardBase[-, -(-)]}}
+                   2    2
+
+Outer[Apply,reflection/@b2,{rho[b2]}]
+
+            3                                        3
+Out[118]= {{- + standardBase[-standardBase[1, -1] . (-), 
+            2                                        2
+ 
+                               3
+>       standardBase[1, -1] . (-)]}, 
+                               2
+ 
+      3                                            3
+>    {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}
+      2                                            2
+
+Outer[#1[#2]&,reflection/@b2,{rho[b2]}]
+
+                         1  3                  3    1
+Out[117]= {{standardBase[-, -]}, {standardBase[-, -(-)]}}
+                         2  2                  2    2
+
+?Apply
+
+Apply[f, expr] or f @@ expr replaces the head of expr
+      by f. Apply[f, expr, levelspec]
+
+        replaces heads in parts of expr specified by levelspec. 
+
+                         1  3                  3    1
+Out[115]= {{standardBase[-, -]}, {standardBase[-, -(-)]}}
+                         2  2                  2    2
+
+                          1  3                    3    1
+Out[114]= {{{standardBase[-, -]}}, {{standardBase[-, -(-)]}}}
+                          2  2                    2    2
+
+Out[113]= {{{Function[y$, y$ - 
+ 
+         2 standardBase[1, -1] . y$ standardBase[1, -1]                3  1
+>        ----------------------------------------------], standardBase[-, -]}}
+           standardBase[1, -1] . standardBase[1, -1]                   2  2
+ 
+                            2 standardBase[0, 1] . y$ standardBase[0, 1]
+>     , {{Function[y$, y$ - --------------------------------------------], 
+                              standardBase[0, 1] . standardBase[0, 1]
+ 
+                    3  1
+>      standardBase[-, -]}}}
+                    2  2
+
+            3                                        3
+Out[111]= {{- + standardBase[-standardBase[1, -1] . (-), 
+            2                                        2
+ 
+                               3
+>       standardBase[1, -1] . (-)]}, 
+                               2
+ 
+      3                                            3
+>    {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}
+      2                                            2
+
+                             2 standardBase[1, -1] . y$ standardBase[1, -1]
+Out[110]= {Function[y$, y$ - ----------------------------------------------], 
+                               standardBase[1, -1] . standardBase[1, -1]
+ 
+                       2 standardBase[0, 1] . y$ standardBase[0, 1]
+>    Function[y$, y$ - --------------------------------------------]}
+                         standardBase[0, 1] . standardBase[0, 1]
+          
+                         3  1
+Out[109]= {{standardBase[-, -]}, 
+                         2  2
+ 
+       3                                            3
+>    {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+       2                                            2
+ 
+       3                                        3
+>     {- + standardBase[-standardBase[1, -1] . (-), 
+       2                                        2
+ 
+                                3
+>        standardBase[1, -1] . (-)]}}, 
+                                2
+ 
+        3                                            3
+>    {{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+        2                                            2
+ 
+        3                                            3
+>      {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
+        2                                            2
+ 
+        3                                        3
+>     {{- + standardBase[-standardBase[1, -1] . (-), 
+        2                                        2
+ 
+                                 3
+>         standardBase[1, -1] . (-)]}, 
+                                 2
+ 
+        3                                        3
+>      {- + standardBase[-standardBase[1, -1] . (-), 
+        2                                        2
+ 
+                                 3
+>         standardBase[1, -1] . (-)]}}}, 
+                                 2
+ 
+         3                                            3
+>    {{{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+         2                                            2
+ 
+         3                                            3
+>       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
+         2                                            2
+ 
+         3                                            3
+>      {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+         2                                            2
+ 
+         3                                            3
+>       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}}, 
+         2                                            2
+ 
+         3                                        3
+>     {{{- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}, 
+                                  2
+ 
+         3                                        3
+>       {- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}}, 
+                                  2
+ 
+         3                                        3
+>      {{- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}, 
+                                  2
+ 
+         3                                        3
+>       {- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}}}}}
+                                  2
+
+          
+Intersection::normal: 
+   Nonatomic expression expected at position 2 in Intersection[{}, x].
+
+Union::normal: Nonatomic expression expected at position 2 in Union[{}, x].
+
+Intersection::normal: 
+   Nonatomic expression expected at position 2 in 
+    Intersection[Union[{}, x], x].
+
+Union::normal: Nonatomic expression expected at position 2 in Union[{}, x, x].
+
+Intersection::normal: 
+   Nonatomic expression expected at position 2 in 
+    Intersection[Union[{}, x, x], x].
+
+General::stop: Further output of Intersection::normal
+     will be suppressed during this calculation.
+
+Union::normal: Nonatomic expression expected at position 2 in 
+    Union[{}, x, x, x].
+
+General::stop: Further output of Union::normal
+     will be suppressed during this calculation.
+
+                         3  1
+Out[108]= {{standardBase[-, -]}, 
+                         2  2
+ 
+       3                                            3
+>    {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+       2                                            2
+ 
+       3                                        3
+>     {- + standardBase[-standardBase[1, -1] . (-), 
+       2                                        2
+ 
+                                3
+>        standardBase[1, -1] . (-)]}}, 
+                                2
+ 
+        3                                            3
+>    {{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+        2                                            2
+ 
+        3                                            3
+>      {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
+        2                                            2
+ 
+        3                                        3
+>     {{- + standardBase[-standardBase[1, -1] . (-), 
+        2                                        2
+ 
+                                 3
+>         standardBase[1, -1] . (-)]}, 
+                                 2
+ 
+        3                                        3
+>      {- + standardBase[-standardBase[1, -1] . (-), 
+        2                                        2
+ 
+                                 3
+>         standardBase[1, -1] . (-)]}}}, 
+                                 2
+ 
+         3                                            3
+>    {{{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+         2                                            2
+ 
+         3                                            3
+>       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
+         2                                            2
+ 
+         3                                            3
+>      {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
+         2                                            2
+ 
+         3                                            3
+>       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}}, 
+         2                                            2
+ 
+         3                                        3
+>     {{{- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}, 
+                                  2
+ 
+         3                                        3
+>       {- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}}, 
+                                  2
+ 
+         3                                        3
+>      {{- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}, 
+                                  2
+ 
+         3                                        3
+>       {- + standardBase[-standardBase[1, -1] . (-), 
+         2                                        2
+ 
+                                  3
+>          standardBase[1, -1] . (-)]}}}}}
+                                  2
+
+          
+Module::argrx: Module called with 4 arguments; 2 arguments are expected.
+
+Out[107]= Module[{total = {}}, NestWhileList[Function[x, 
+ 
+>      Union[Outer[Apply, reflection /@ b2, x]]], {rho[b2]}, 
+ 
+>     Function[y, Module[{t = Intersection[total, x] =!= x}, 
+ 
+>       total = Union[total, x]; t]]], 1, 3]
+
+Out[106]= $Aborted
+
+Union[{1,2,3}]=!=Union[{2,1,3}]
+
+Out[105]= False
+
+Out[104]= True
+
+Out[103]= False
+
+?Intersection
+
+Intersection[list , list , ...] gives a sorted list of the elements common to
+                 1      2
+     all the list . 
+                 i
+
+?Union
+
+Union[list , list , ...] gives a sorted list of all the distinct elements that
+          1      2
+     appear in any of the list . Union[list]
+                              i
+      gives a sorted version of a list, in which all duplicated elements have
+      been dropped. 
+
+?NestWhile
+
+?NestWhileList
+
+NestWhileList[f, expr, test] generates a list of the results of applying f
+     repeatedly, starting with expr
+     , and continuing until applying test
+       to the result no longer yields True. NestWhileList[f, expr, test, m]
+
+        supplies the most recent m
+         results as arguments for test
+          at each step. NestWhileList[f, expr, test, All]
+
+           supplies all results so far as arguments for test
+            at each step. NestWhileList[f, expr, test, m, max]
+
+             applies f at most max times. 
+
+NestWhile[f, expr, test] starts with expr
+    , then repeatedly applies f until applying test
+       to the result no longer yields True. NestWhile[f, expr, test, m]
+
+        supplies the most recent m
+         results as arguments for test
+          at each step. NestWhile[f, expr, test, All]
+
+           supplies all results so far as arguments for test
+            at each step. NestWhile[f, expr, test, m, max]
+
+             applies f at most max
+               times. NestWhile[f, expr, test, m, max, n]
+
+                applies f an extra n
+                  times. NestWhile[f, expr, test, m, max, -n]
+
+                   returns the result found when f
+                    had been applied n fewer times. 
+
+                      3  1
+Out[95]= standardBase[-, -]
+                      2  2
+
+                      3  1
+Out[94]= standardBase[-, -]
+                      2  2
+
+                      3  1
+Out[92]= standardBase[-, -]
+                      2  2
+
+Out[91]= rho[{standardBase[1, -1], standardBase[0, 1]}]
+
+fundamentalWeights[Sequence@@(makeSimpleRootSystem[D,5])]
+
+Out[89]= {standardBase[1, 0, 0, 0, 0], standardBase[1, 1, 0, 0, 0], 
+ 
+                                               1  1  1  1    1
+>    standardBase[1, 1, 1, 0, 0], standardBase[-, -, -, -, -(-)], 
+                                               2  2  2  2    2
+ 
+                  1  1  1  1  1
+>    standardBase[-, -, -, -, -]}
+                  2  2  2  2  2
+
+                                           1  1
+Out[88]= {standardBase[1, 0], standardBase[-, -]}
+                                           2  2
+
+?Sequence
+
+Sequence[expr , expr , ...] represents a sequence of arguments to be spliced
+             1      2
+    automatically into any function. 
+
+Out[86]= fundamentalWeights[{standardBase[1, -1], standardBase[0, 1]}]
+
+
+Plus@@(Inverse[cartanMatrix[b2]]*b2)
+
+b2
+
+Out[84]= {standardBase[1, -1], standardBase[0, 1]}
+
+                                           1  1
+Out[83]= {standardBase[1, 0], standardBase[-, -]}
+                                           2  2
+
+                                               3
+Out[82]= {standardBase[2, -2], standardBase[0, -]}
+                                               2
+
+                       3    3
+Out[81]= {standardBase[-, -(-)], standardBase[0, 2]}
+                       2    2
+
+Out[80]= {{standardBase[1, -1], standardBase[0, 1]}, 
+ 
+                   1    1
+>    {standardBase[-, -(-)], standardBase[0, 1]}}
+                   2    2
+
+                                             1    1
+Out[74]= {{standardBase[1, -1], standardBase[-, -(-)]}, 
+                                             2    2
+ 
+>    {standardBase[0, 1], standardBase[0, 1]}}
+
+              1
+Out[73]= {{1, -}, {1, 1}}
+              2
+
+FullForm[b2.b2]
+
+{{1,2},{3,4}}.{{1,2},{3,4}}
+
+b2.b2
+
+Out[72]= standardBase[1, 2]
+
+{1,2}^2
+
+Out[70]= {1, 4}
+
+                           2                      2
+Out[69]= standardBase[0, 1]  + standardBase[1, -1]
+
+Out[68]= {{7, 10}, {15, 22}}
+
+Out[67]= 5
+
+??Power
+
+x^y gives x to the power y. 
+
+Attributes[Power] = {Listable, NumericFunction, OneIdentity, Protected}
+ 
+Power /: Default[Power, 2] := 1
+
+x^y gives x to the power y. 
+
+Out[64]//FullForm= 
+ 
+>   Plus[Power[standardBase[0, 1], 2], Power[standardBase[1, -1], 2]]
+
+                           2                      2
+Out[63]= standardBase[0, 1]  + standardBase[1, -1]
+
+weylGroupElement[x__Integer][{y__standardBase}]:=Part[{y},{x}]
+
+weylGroupElement[1,2,1,1,2][b2][standardBase[1,1]]
+
+Out[58]= standardBase[1, 1]
+
+we:=weylGroupElement[1,2,1]
+
+Length[we]
+
+Out[56]= 3
+
+we[b2]
+
+Out[55]= Function[z$, Fold[revApply, z$, 
+ 
+>     reflection /@ {standardBase[1, -1], standardBase[0, 1]}[[{1, 2, 1}]]]]
+
+Out[54]= Function[z$, Fold[revApply, z$, 
+ 
+>     reflection /@ {standardBase[1, -1], standardBase[0, 1]}[[{1, 2, 1}]]]]
+
+reflection[b2[[1]]][standardBase[1,1]]
+
+Out[51]= standardBase[1, 1]
+
+Out[50]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[49]= standardBase[1, 1]
+
+Out[48]= standardBase[1, -1]
+
+Out[47]= standardBase[-1, 1]
+
+Out[45]= standardBase[1, -1][standardBase[0, 1][standardBase[1, -1][
+ 
+>      standardBase[1, 1]]]]
+
+Out[44]= Function[z$, Fold[revApply, z$, 
+ 
+>     {standardBase[1, -1], standardBase[0, 1]}[[{1, 2, 1}]]]]
+
+Out[42]= {standardBase[1, -1], standardBase[0, 1], standardBase[1, -1]}
+
+Part::pspec: Part specification standardBase[0, 1]
+     is neither an integer nor a list of integers.
+
+Out[40]= standardBase[1, -1][[standardBase[0, 1],{1, 2, 1}]]
+
+?Part
+
+expr[[i]] or Part[expr, i] gives the i
+     th
+        part of expr. expr[[-i]]
+
+         counts from the end. expr[[i, j, ...]]
+
+          or Part[expr, i, j, ...]
+           is equivalent to expr[[i]][[j]] ...
+           . expr[[{i , i , ...}]]
+                     1   2
+             gives a list of the parts i
+                                        1
+             , i , ... of expr. expr[[m;;n]]
+                2
+                  gives parts m through n
+                   .expr[[m;;n;;s]] gives parts m through n in steps of s.
+
+
+Out[37]= Part
+
+Part::pspec: Part specification standardBase[0, 1]
+     is neither an integer nor a list of integers.
+
+Out[36]= standardBase[1, -1][[standardBase[0, 1],1,2,1]]
+
+Part::pspec: Part specification standardBase[1, -1]
+     is neither an integer nor a list of integers.
+
+Out[34]= standardBase[0, 1][standardBase[1, -1][1[2[1[standardBase[1, 1]]]]]]
+
+Part::pspec: Part specification standardBase[0, 1]
+     is neither an integer nor a list of integers.
+
+Out[32]= 1[2[1[standardBase[0, 1][standardBase[1, -1][standardBase[1, 1]]]]]]
+
+Out[30]= weylGroupElement[1, 2, 1][{standardBase[1, -1], standardBase[0, 1]}][
+ 
+>    standardBase[1, 1]]
+
+
+b2
+
+Out[29]= {standardBase[1, -1], standardBase[0, 1]}
+
+
+Part[{1,2,3},{1,2,1,1,2,3}]
+
+Out[27]= {1, 2, 1, 1, 2, 3}
+
+Length[weylGroupElement[1,2,3]]
+
+
+
+Apply[{reflection[standardBase[1,0]],reflection[standardBase[0,1]]},standardBase[1,1]]
+
+
+
+Fold[revApply,standardBase[1,1],{reflection[standardBase[1,0]],reflection[standardBase[0,1]]}]
+
+?Part
+
+Composition[Apply,Reverse][x,f]
+
+?Reverse
+
+Reverse[expr] reverses the order of the elements in expr
+    . Reverse[expr, n] reverses elements at level n
+
+       in expr.Reverse[expr, {n , n , ...}]
+                               1   2
+         reverses elements at levels n , n , ... in expr.
+                                      1   2
+
+Reverse::normal: Nonatomic expression expected at position 1 in Reverse[x, f].
+
+Apply::argtu: Apply called with 1 argument; 2 or 3 arguments are expected.
+
+Out[25]= Apply[Reverse[x, f]]
+
+Out[24]= Composition[Apply, Reverse]
+
+?Composition
+
+Composition[f , f , f , ...] represents a composition of the functions f
+             1   2   3                                                  1
+    , f , f , ... . 
+       2   3
+
+System`Compose
+
+Attributes[Compose] = {Protected}
+
+expr[[i]] or Part[expr, i] gives the i
+     th
+        part of expr. expr[[-i]]
+
+         counts from the end. expr[[i, j, ...]]
+
+          or Part[expr, i, j, ...]
+           is equivalent to expr[[i]][[j]] ...
+           . expr[[{i , i , ...}]]
+                     1   2
+             gives a list of the parts i
+                                        1
+             , i , ... of expr. expr[[m;;n]]
+                2
+                  gives parts m through n
+                   .expr[[m;;n;;s]] gives parts m through n in steps of s.
+
+
+Out[20]= standardBase[-1, -1]
+
+Out[19]= {standardBase[1, 1], standardBase[-1, 1], standardBase[-1, -1]}
+
+?@
+
+\[FormalA]        \[FormalQ]        \[FormalCapitalG] \[FormalCapitalW]
+\[FormalB]        \[FormalR]        \[FormalCapitalH] \[FormalCapitalX]
+\[FormalC]        \[FormalS]        \[FormalCapitalI] \[FormalCapitalY]
+\[FormalD]        \[FormalT]        \[FormalCapitalJ] \[FormalCapitalZ]
+\[FormalE]        \[FormalU]        \[FormalCapitalK] b2
+\[FormalF]        \[FormalV]        \[FormalCapitalL] clear
+\[FormalG]        \[FormalW]        \[FormalCapitalM] cm
+\[FormalH]        \[FormalX]        \[FormalCapitalN] coroot
+\[FormalI]        \[FormalY]        \[FormalCapitalO] i
+\[FormalJ]        \[FormalZ]        \[FormalCapitalP] j
+\[FormalK]        \[FormalCapitalA] \[FormalCapitalQ] rank
+\[FormalL]        \[FormalCapitalB] \[FormalCapitalR] reflection
+\[FormalM]        \[FormalCapitalC] \[FormalCapitalS] x
+\[FormalN]        \[FormalCapitalD] \[FormalCapitalT] y
+\[FormalO]        \[FormalCapitalE] \[FormalCapitalU] y$
+\[FormalP]        \[FormalCapitalF] \[FormalCapitalV]
+
+b2         clear      cm         coroot     rank       reflection y$
+
+                            2 standardBase[1, 0] . y$ standardBase[1, 0]
+Out[15]= {Function[y$, y$ - --------------------------------------------], 
+                              standardBase[1, 0] . standardBase[1, 0]
+ 
+                        2 standardBase[0, 1] . y$ standardBase[0, 1]
+>     Function[y$, y$ - --------------------------------------------]}[1, 1]
+                          standardBase[0, 1] . standardBase[0, 1]
+
+Apply[f, expr] or f @@ expr replaces the head of expr
+      by f. Apply[f, expr, levelspec]
+
+        replaces heads in parts of expr specified by levelspec. 
+
+FoldList[f, x, {a, b, ...}] gives {x, f[x, a], f[f[x, a], b], ...}. 
+
+Fold[f, x, list] gives the last element of FoldList[f, x, list]. 
+
+Out[11]= 3
+
+b2=makeSimpleRootSystem[B,2]
+
+Out[2]= {standardBase[1, -1], standardBase[0, 1]}
+
+cm=cartanMatrix[b2]
+
+Out[8]= {{2, -1}, {-2, 2}}
+
+Inverse[cm].cm
+
+Out[9]= {{1, 0}, {0, 1}}
+
+Out[7]= Inverse[cm] . cm
+
+             1
+Out[6]= {{1, -}, {1, 1}}
+             2
+
+Out[5]= MatrixInverse[{{2, -1}, {-2, 2}}]
+
+          1          1   1
+Out[4]= {{-, -1}, {-(-), -}}
+          2          2   2
+
+Out[3]= {{2, -1}, {-2, 2}}
+
+Mathematica 8.0 for Linux x86 (32-bit)
+Copyright 1988-2010 Wolfram Research, Inc.
 
 weights[
 coroot[b2[[2]]]
 
 coroot/@b2
 
+
+b2.b2
+
+                           2                      2
+Out[61]= standardBase[0, 1]  + standardBase[1, -1]
+
+Out[60]= {standardBase[1, -1], standardBase[0, 1]}
+
+Map[f, expr] or f/@expr applies f
+      to each element on the first level in expr
+      . Map[f, expr, levelspec] applies f
+
+         to parts of expr specified by levelspec. 
 
 
 coroot/@makeSimpleRootSystem[D,5]
