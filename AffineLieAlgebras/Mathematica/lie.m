@@ -33,6 +33,275 @@ orbit[{simpleRoots__standardBase}][weights__standardBase]:=Module[{total={}},
 		     {weights},
 		     Function[y,Module[{t=y=!={}},total=Union[total,y];t]]]]
 
+positiveRoots[{simpleRoots__standardBase}]:=Cases[Flatten[orbit[{simpleRoots}][simpleRoots]],x_ /; Dot[x,rho[{simpleRoots}]]>=0]
+
+weightSystem[{simpleRoots__standardBase}][higestWeight_standardBase]:=Module[{minusPosRoots=-positiveRoots[{simpleRoots}]},
+									     NestWhileList[Function[x,Complement[
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@{simpleRoots})]
+										 ,x]],{higestWeight},#=!={}&]]
+
+D18=makeSimpleRootSystem[D,18];
+
+
+Length[positiveRoots[D18]]
+
+[Calculating...]
+
+Out[192]= 56
+
+          
+Out[191]= 56
+
+minusPosRoots=-positiveRoots[b2];
+Map[Function[x,And@@Map[#.x>=0&,b2]],Flatten[Outer[Plus,minusPosRoots,{standardBase[2,0]}]]]
+
+          
+Out[183]= {True, False, True, False}
+
+          
+Out[182]= {{True, True}, {True, False}, {True, True}, {True, False}}
+
+          
+Out[181]= {{True, True}, {True, False}, {True, True}, {True, False}}
+
+          
+Out[176]= {{standardBase[1, -1] . {standardBase[1, 1]} >= 0, 
+ 
+>     standardBase[0, 1] . {standardBase[1, 1]} >= 0}, 
+ 
+>    {standardBase[1, -1] . {standardBase[2, -1]} >= 0, 
+ 
+>     standardBase[0, 1] . {standardBase[2, -1]} >= 0}, 
+ 
+>    {standardBase[1, -1] . {standardBase[1, 0]} >= 0, 
+ 
+>     standardBase[0, 1] . {standardBase[1, 0]} >= 0}, 
+ 
+>    {standardBase[1, -1] . {standardBase[1, -1]} >= 0, 
+ 
+>     standardBase[0, 1] . {standardBase[1, -1]} >= 0}}
+
+          
+Out[175]= {}
+
+          
+Out[174]= {}
+
+          
+Out[173]= {}
+
+          
+Out[172]= {}
+
+          
+Out[171]= {{standardBase[1, 1]}, {standardBase[2, -1]}, {standardBase[1, 0]}, 
+ 
+>    {standardBase[1, -1]}}
+
+Out[170]= {standardBase[-1, 1], standardBase[0, -1], standardBase[-1, 0], 
+ 
+>    standardBase[-1, -1]}
+
+Flatten[weightSystem[b2][standardBase[4,2]]]
+
+Out[189]= {standardBase[4, 2], standardBase[3, 1], standardBase[3, 2], 
+ 
+>    standardBase[3, 3], standardBase[4, 1], standardBase[2, 0], 
+ 
+>    standardBase[2, 1], standardBase[2, 2], standardBase[3, 0], 
+ 
+>    standardBase[4, 0], standardBase[1, 0], standardBase[1, 1], 
+ 
+>    standardBase[3, 1], standardBase[0, 0], standardBase[2, 0], 
+ 
+>    standardBase[2, 1], standardBase[2, 2], standardBase[3, 0], 
+ 
+>    standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+
+Out[188]= {{standardBase[4, 2]}, 
+ 
+>    {standardBase[3, 1], standardBase[3, 2], standardBase[3, 3], 
+ 
+>     standardBase[4, 1]}, {standardBase[2, 0], standardBase[2, 1], 
+ 
+>     standardBase[2, 2], standardBase[3, 0], standardBase[4, 0]}, 
+ 
+>    {standardBase[1, 0], standardBase[1, 1], standardBase[3, 1]}, 
+ 
+>    {standardBase[0, 0], standardBase[2, 0], standardBase[2, 1], 
+ 
+>     standardBase[2, 2], standardBase[3, 0]}, 
+ 
+>    {standardBase[1, 0], standardBase[1, 1]}, {standardBase[0, 0]}, {}}
+
+Out[187]= {{standardBase[2, 2]}, {standardBase[1, 1], standardBase[2, 1]}, 
+ 
+>    {standardBase[0, 0], standardBase[1, 0], standardBase[2, 0]}, 
+ 
+>    {standardBase[1, 1]}, {standardBase[0, 0], standardBase[1, 0]}, {}}
+
+Out[186]= {{standardBase[2, 4]}, {}}
+
+Out[185]= {{standardBase[2, 0]}, {standardBase[1, 0], standardBase[1, 1]}, 
+ 
+>    {standardBase[0, 0]}, {}}
+
+Out[180]= {{standardBase[2, 0]}, {}}
+
+Out[178]= {standardBase[-1, 1], standardBase[0, -1], standardBase[-1, 0], 
+ 
+>    standardBase[-1, -1]}
+
+Out[169]= {standardBase[-1, 1], standardBase[0, -1], standardBase[-1, 0], 
+ 
+>    standardBase[-1, -1]}
+
+Module::argrx: Module called with 3 arguments; 2 arguments are expected.
+
+Out[167]= Module[{minusPosRoots$ = 
+ 
+>      -positiveRoots[{standardBase[1, -1], standardBase[0, 1]}]}, 
+ 
+>    NestWhileList[Function[x$, 
+ 
+>      Complement[Cases[Outer[Plus, minusPosRoots$, x$], 
+ 
+>        And[x$_ /; 
+ 
+>          (#1 . x$ >= 0 & ) {standardBase[1, -1], standardBase[0, 1]}]], x$]]
+ 
+>      , {standardBase[2, 0]}, #1 =!= {} & ], minusPosRoots$]
+
+Out[165]= {{standardBase[2, 0]}, {}}
+
+Out[164]= {{standardBase[1, 0]}, {}}
+
+?Minus
+
+-x is the arithmetic negation of x. 
+
+positiveRoots[makeSimpleRootSystem[B,4]]
+
+Out[156]= {standardBase[1, -1, 0, 0], standardBase[0, 1, -1, 0], 
+ 
+>    standardBase[0, 0, 1, -1], standardBase[0, 0, 0, 1], 
+ 
+>    standardBase[0, 0, 1, 0], standardBase[0, 0, 1, 1], 
+ 
+>    standardBase[0, 1, 0, -1], standardBase[1, 0, -1, 0], 
+ 
+>    standardBase[0, 1, 0, 0], standardBase[0, 1, 0, 1], 
+ 
+>    standardBase[1, 0, 0, -1], standardBase[0, 1, 1, 0], 
+ 
+>    standardBase[1, 0, 0, 0], standardBase[1, 0, 0, 1], 
+ 
+>    standardBase[1, 0, 1, 0], standardBase[1, 1, 0, 0]}
+
+Out[155]= {standardBase[1, -1], standardBase[0, 1], standardBase[1, 0], 
+ 
+>    standardBase[1, 1]}
+
+Apply::level: Level specification standardBase[0, 1]
+     is not of the form n, {n}, or {m, n}.
+
+Out[153]= {}
+
+Apply::level: Level specification standardBase[0, 1]
+     is not of the form n, {n}, or {m, n}.
+
+Out[151]= {}
+
+Apply::level: Level specification standardBase[0, 1]
+     is not of the form n, {n}, or {m, n}.
+
+Out[149]= {}
+
+Cases[Flatten[orbit[b2][Sequence@@(-#&/@b2)]],x_ /; Dot[x,rho[b2]]>=0]
+
+Out[147]= {standardBase[0, 1], standardBase[1, -1], standardBase[1, 0], 
+ 
+>    standardBase[1, 1]}
+
+Out[145]= {}
+
+Out[144]= {}
+
+Out[143]= {}
+
+Out[142]= {{standardBase[-1, 1], standardBase[0, -1]}, 
+ 
+>    {standardBase[-1, -1], standardBase[-1, 0], standardBase[0, 1], 
+ 
+>     standardBase[1, -1]}, {standardBase[1, 0], standardBase[1, 1]}, {}}
+
+
+rho[b2]
+
+                       3  1
+Out[141]= standardBase[-, -]
+                       2  2
+
+Out[140]= {}
+
+?Cases
+
+Cases[{e , e , ...}, pattern] gives a list of the e
+        1   2                                      i
+     that match the pattern. Cases[{e , ...}, pattern -> rhs]
+                                     1
+      gives a list of the values of rhs
+       corresponding to the e  that match the pattern. 
+                             i
+        Cases[expr, pattern, levelspec]
+         gives a list of all parts of expr
+          on levels specified by levelspec
+           that match the pattern. Cases[expr, pattern -> rhs, levelspec]
+
+            gives the values of rhs
+             that match the pattern. Cases[expr, pattern, levelspec, n]
+
+              gives the first n parts in expr that match the pattern. 
+
+Out[137]= Function[]
+
+Out[136]= Filter[#1 . rho[b2] > 0 & , 
+ 
+>    {{standardBase[-1, 1], standardBase[0, -1]}, 
+ 
+>     {standardBase[-1, -1], standardBase[-1, 0], standardBase[0, 1], 
+ 
+>      standardBase[1, -1]}, {standardBase[1, 0], standardBase[1, 1]}, {}}]
+
+
+
+Out[135]= {{standardBase[-1, 1], standardBase[0, -1]}, 
+ 
+>    {standardBase[-1, -1], standardBase[-1, 0], standardBase[0, 1], 
+ 
+>     standardBase[1, -1]}, {standardBase[1, 0], standardBase[1, 1]}, {}}
+
+
+b2
+
+Sequence@@(-#&/@b2)
+
+Out[134]= Sequence[standardBase[-1, 1], standardBase[0, -1]]
+
+Out[132]= {standardBase[-1, 1], standardBase[0, -1]}
+
+Out[131]= orbit[{standardBase[1, -1], standardBase[0, 1]}][{standardBase[-1, 
+ 
+>      1], standardBase[0, -1]}]
+
+Out[130]= orbit[{standardBase[1, -1], standardBase[0, 1]}][{standardBase[-1, 
+ 
+>      1], standardBase[0, -1]}]
+
+positiveRoots[{simpleRoots__standardBase}]:=Flatten[orbit
+
+calcMults[hw_standardBase,{simpleRoots__standardBase}]:=Module[{mults[hw]:=1},
+							       
 multiplicity[x_standardBase]:=0
 
 
