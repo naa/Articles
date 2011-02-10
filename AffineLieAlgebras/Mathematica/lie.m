@@ -17,9 +17,633 @@ cartanMatrix[{x__standardBase}]:=Transpose[Outer[Dot,{x},coroot/@{x}]];
 clear[weylGroupElement];
 revApply[x_,f_]:=f[x];
 weylGroupElement[x__Integer][{y__standardBase}]:=Function[z,Fold[revApply,z,reflection /@ Part[{y},{x}]]];
-fundamentalWeights[{simpleRoots__standardBase}]:=Plus@@(Inverse[cartanMatrix[{simpleRoots}]]*{simpleRoots})
+fundamentalWeights[{simpleRoots__standardBase}]:=Plus@@(Inverse[cartanMatrix[{simpleRoots}]]*{simpleRoots});
+rho[{simpleRoots__standardBase}]:=Plus@@fundamentalWeights[{simpleRoots}];
+toFundamentalChamber[{simpleRoots__standardBase}][vec_standardBase]:=
+    First[NestWhile[Function[v,
+		       reflection[Scan[If[#.v<0,Return[#]]&,{simpleRoots}]][v]],
+	      vec,
+	      Head[#]=!=reflection[Null]&]];
+orbit[{simpleRoots__standardBase}][{weights__standardBase}]:=
+    Module[{total={}},
+	   NestWhileList[
+	       Function[x,
+			Union[Flatten[Map[Function[y,
+						   Map[reflection[#][y]&,Cases[{simpleRoots},z_ /; z.y>0]]],x]]]],
+	       {weights},
+	       Function[y,
+			Module[{t=y=!={}},total=Union[total,y];t]
+		       ]]];
+orbit[{simpleRoots__standardBase}][weight_standardBase]:=orbit[{simpleRoots}][{toFundamentalChamber[{simpleRoots}][weight]}];
+positiveRoots[{simpleRoots__standardBase}]:=Map[-#&,Flatten[orbit[{simpleRoots}][Map[-#&,{simpleRoots}]]]];
+weightSystem[{simpleRoots__standardBase}][higestWeight_standardBase]:=Module[{minusPosRoots=-positiveRoots[{simpleRoots}]},
+									     NestWhileList[Function[x,Complement[
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@{simpleRoots})]
+										 ,x]],{higestWeight},#=!={}&]]
 
-rho[{simpleRoots__standardBase}]:=Plus@@fundamentalWeights[simpleRoots]
+freudenthalMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBase]:=
+    Module[{weights=Rest[Flatten[weightSystem[{simpleRoots}][highestWeight]]],
+	    posroots=positiveRoots[{simpleRoots}],
+	    rh=rho[{simpleRoots}],
+	    mults,
+	    toFC=toFundamentalChamber[{simpleRoots}]},
+	   mults[highestWeight]=1;
+	   Print[weights];
+	   Scan[Function[v,
+			 mults[v]=
+			 2/((highestWeight+rh).(highestWeight+rh)-(v+rh).(v+rh))*
+			 Plus@@
+			     Map[Function[r,
+					  Plus@@Map[mults[toFC[#[[1]]]]*#[[2]]&,
+						    Rest[NestWhileList[{#[[1]]+r,#[[2]]+r.r}&,
+								       {v,v.r},
+								       IntegerQ[mults[toFC[#[[1]]+r]]]&]]]]
+				 ,posroots];
+			 Print[mults[v]];
+			],
+		weights];
+	   mults]
+
+
+
+freudenthal[{simpleRoots__standardBase}][highestWeight_standardBase]:=
+    
+
+Out[135]= {}
+
+NestWhileList[#+1&,1,#+1<1&]
+
+Out[143]= {1}
+
+Out[117]= {1, 2, 3}
+
+Out[116]= {1}
+
+rho[b2]
+
+                       3  1
+Out[173]= standardBase[-, -]
+                       2  2
+
+fundamentalWeights[b2]
+
+                                            1  1
+Out[172]= {standardBase[1, 0], standardBase[-, -]}
+                                            2  2
+
+                                            1  1
+Out[169]= {standardBase[1, 0], standardBase[-, -]}
+                                            2  2
+
+rho[b2]
+                                            1  1
+Out[168]= {standardBase[1, 0], standardBase[-, -]}
+                                            2  2
+
+                              
+Out[167]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[166]= standardBase[1, 0]
+
+mts=freudenthalMultiplicities[b2][standardBase[2,0]]
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+2
+-
+3
+1
+4
+-
+5
+
+Out[11]= mults$91
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+0
+0
+0
+
+Out[4]= mults$81
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{{standardBase[1, 0], 1}}
+{{standardBase[1, 0], 0}}
+{{standardBase[1, 0], 1}}
+{{standardBase[1, 0], 1}, {standardBase[2, 0], 2}}
+2
+-
+3
+{{standardBase[1, 1], 0}, {standardBase[2, 0], 2}}
+{{standardBase[1, 1], 1}}
+{{standardBase[1, 1], 2}}
+{{standardBase[1, 1], 1}}
+1
+{{standardBase[0, 0], 0}, {standardBase[1, -1], 2}}
+{{standardBase[0, 0], 0}}
+{{standardBase[0, 0], 0}, {standardBase[1, 1], 2}}
+{{standardBase[0, 0], 0}}
+4
+-
+5
+
+Out[174]= mults$1121
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{{standardBase[1, 0], 1}}
+{{standardBase[1, 0], 0}}
+{{standardBase[1, 0], 1}}
+{{standardBase[1, 0], 1}, {standardBase[2, 0], 2}}
+4
+-
+5
+{{standardBase[1, 1], 0}, {standardBase[2, 0], 2}}
+{{standardBase[1, 1], 1}}
+{{standardBase[1, 1], 2}}
+{{standardBase[1, 1], 1}}
+1
+{{standardBase[0, 0], 0}, {standardBase[1, -1], 2}}
+{{standardBase[0, 0], 0}}
+{{standardBase[0, 0], 0}, {standardBase[1, 1], 2}}
+{{standardBase[0, 0], 0}}
+1
+
+Out[163]= mults$1097
+
+mts[standardBase[0,0]]
+
+Out[9]= 0
+
+Out[8]= 0
+
+Out[7]= 1
+
+Out[6]= 0
+
+Out[5]= 0
+
+          2
+Out[175]= -
+          3
+
+
+          4
+Out[161]= -
+          5
+
+Out[160]= mults$1075[standardBase[0, 1]]
+
+Out[159]= 1
+
+Out[158]= mults$1075[standardBase[2, 1]]
+
+Out[157]= 1
+
+Out[156]= 1
+
+Out[155]= {HoldPattern[mts] :> mults$1075}
+
+Out[154]= {}
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[1, 0], 1}
+mults$1075[standardBase[2, 1]]
+False
+{standardBase[1, 0], 0}
+mults$1075[standardBase[1, 1]]
+False
+{standardBase[1, 0], 1}
+mults$1075[standardBase[2, 1]]
+False
+{standardBase[1, 0], 1}
+1
+True
+{standardBase[2, 0], 2}
+mults$1075[standardBase[3, 0]]
+False
+4
+-
+5
+{standardBase[1, 1], 0}
+1
+True
+{standardBase[2, 0], 2}
+mults$1075[standardBase[3, 1]]
+False
+{standardBase[1, 1], 1}
+mults$1075[standardBase[2, 1]]
+False
+{standardBase[1, 1], 2}
+mults$1075[standardBase[2, 2]]
+False
+{standardBase[1, 1], 1}
+mults$1075[standardBase[2, 1]]
+False
+1
+{standardBase[0, 0], 0}
+1
+True
+{standardBase[1, -1], 2}
+mults$1075[standardBase[2, 2]]
+False
+{standardBase[0, 0], 0}
+4
+-
+5
+False
+{standardBase[0, 0], 0}
+1
+True
+{standardBase[1, 1], 2}
+mults$1075[standardBase[2, 2]]
+False
+{standardBase[0, 0], 0}
+4
+-
+5
+False
+1
+
+Out[153]= mults$1075
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[1, 0], 1}
+mults$1053[standardBase[2, 1]]
+False
+{standardBase[1, 0], 0}
+mults$1053[standardBase[1, 1]]
+False
+{standardBase[1, 0], 1}
+mults$1053[standardBase[2, 1]]
+False
+{standardBase[1, 0], 1}
+1
+True
+{standardBase[2, 0], 2}
+mults$1053[standardBase[3, 0]]
+False
+          4
+{0, 0, 0, -}
+          5
+{standardBase[1, 1], 0}
+1
+True
+{standardBase[2, 0], 2}
+mults$1053[standardBase[3, 1]]
+False
+{standardBase[1, 1], 1}
+mults$1053[standardBase[2, 1]]
+False
+{standardBase[1, 1], 2}
+mults$1053[standardBase[2, 2]]
+False
+{standardBase[1, 1], 1}
+mults$1053[standardBase[2, 1]]
+False
+{1, 0, 0, 0}
+{standardBase[0, 0], 0}
+{1, 0, 0, 0}
+False
+{standardBase[0, 0], 0}
+          4
+{0, 0, 0, -}
+          5
+False
+{standardBase[0, 0], 0}
+{1, 0, 0, 0}
+False
+{standardBase[0, 0], 0}
+          4
+{0, 0, 0, -}
+          5
+False
+{0, 0, 0, 0}
+
+Out[151]= mults$1053
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+2 positiveRoots
+---------------
+       5
+positiveRoots
+-------------
+      2
+positiveRoots
+-------------
+      4
+
+Out[149]= mults$1043
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[1, 0], 1}
+mults$1027[standardBase[2, 1]]
+False
+{standardBase[1, 0], 0}
+mults$1027[standardBase[1, 1]]
+False
+{0, 0}
+{standardBase[1, 1], 0}
+1
+True
+{standardBase[2, 0], 2}
+mults$1027[standardBase[3, 1]]
+False
+{standardBase[1, 1], 1}
+mults$1027[standardBase[2, 1]]
+False
+{1, 0}
+{standardBase[0, 0], 0}
+{1, 0}
+False
+{standardBase[0, 0], 0}
+{0, 0}
+False
+{0, 0}
+
+Out[147]= mults$1027
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[1, 0], 1}
+mults$1011[standardBase[2, 1]]
+{standardBase[1, 0], 0}
+mults$1011[standardBase[1, 1]]
+{0, 0}
+{standardBase[1, 1], 0}
+1
+{standardBase[2, 0], 2}
+mults$1011[standardBase[3, 1]]
+{standardBase[1, 1], 1}
+mults$1011[standardBase[2, 1]]
+{1, 0}
+{standardBase[0, 0], 0}
+{1, 0}
+{standardBase[0, 0], 0}
+{0, 0}
+{0, 0}
+
+Out[145]= mults$1011
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[1, 0], 1}
+False
+{standardBase[1, 0], 0}
+False
+{0, 0}
+{standardBase[1, 1], 0}
+True
+{standardBase[2, 0], 2}
+False
+{standardBase[1, 1], 1}
+False
+{1, 0}
+{standardBase[0, 0], 0}
+False
+{standardBase[0, 0], 0}
+False
+{0, 0}
+
+Out[142]= mults$995
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[1, 0], 1}
+False
+{standardBase[1, 0], 0}
+False
+{standardBase[1, 1], 0}
+True
+{standardBase[2, 0], 2}
+False
+{standardBase[1, 1], 1}
+False
+{standardBase[0, 0], 0}
+False
+{standardBase[0, 0], 0}
+False
+
+Out[140]= mults$979
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+standardBase[1, 0]
+standardBase[1, -1]
+{standardBase[2, -1], 3}
+False
+standardBase[1, 0]
+standardBase[0, 1]
+{standardBase[1, 1], 1}
+False
+standardBase[1, 1]
+standardBase[1, -1]
+{standardBase[2, 0], 2}
+False
+standardBase[1, 1]
+standardBase[0, 1]
+{standardBase[1, 2], 2}
+False
+standardBase[0, 0]
+standardBase[1, -1]
+{standardBase[1, -1], 2}
+False
+standardBase[0, 0]
+standardBase[0, 1]
+{standardBase[0, 1], 1}
+True
+{standardBase[0, 2], 2}
+False
+
+Out[134]= mults$963
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+standardBase[2, -1]
+{standardBase[2, -1], 3}
+False
+standardBase[1, 1]
+{standardBase[1, 1], 1}
+False
+standardBase[2, 0]
+{standardBase[2, 0], 2}
+False
+standardBase[1, 2]
+{standardBase[1, 2], 2}
+False
+standardBase[1, -1]
+{standardBase[1, -1], 2}
+False
+standardBase[0, 1]
+{standardBase[0, 1], 1}
+True
+{standardBase[0, 2], 2}
+False
+
+Out[132]= mults$947
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[2, -1], 3}
+False
+{standardBase[1, 1], 1}
+False
+{standardBase[2, 0], 2}
+False
+{standardBase[1, 2], 2}
+False
+{standardBase[1, -1], 2}
+False
+{standardBase[0, 1], 1}
+True
+{standardBase[0, 2], 2}
+False
+
+Out[130]= mults$931
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{standardBase[2, -1], 3}
+{standardBase[1, 1], 1}
+{standardBase[2, 0], 2}
+{standardBase[1, 2], 2}
+{standardBase[1, -1], 2}
+{standardBase[0, 1], 1}
+{standardBase[0, 2], 2}
+
+Out[128]= mults$915
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+{{standardBase[2, -1], 3}}
+{{standardBase[1, 1], 1}}
+{{standardBase[2, 0], 2}}
+{{standardBase[1, 2], 2}}
+{{standardBase[1, -1], 2}}
+{{standardBase[0, 1], 1}, {standardBase[0, 2], 2}}
+
+Out[126]= mults$899
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+ 6 mults$889[standardBase[2, 1]]  2 mults$889[standardBase[1, 1]]
+{-------------------------------, -------------------------------}
+                5                                5
+{1, mults$889[standardBase[2, 1]]}
+  1  mults$889[standardBase[2, 1]]
+{{-, -----------------------------}, 
+  2                2
+ 
+         6 mults$889[standardBase[2, 1]]
+     2 + -------------------------------
+                        5
+>   {-----------------------------------, 
+                      4
+ 
+             2 mults$889[standardBase[2, 1]]
+         2 + -------------------------------
+      3                     5
+>    {-, -----------------------------------}}}
+      5                   4
+
+Out[124]= mults$889
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+ 6 mults$879[standardBase[2, -1]]  2 mults$879[standardBase[1, 1]]
+{--------------------------------, -------------------------------}
+                5                                 5
+{1, mults$879[standardBase[1, 2]]}
+ mults$879[standardBase[1, -1]]
+{------------------------------, 
+               2
+ 
+    mults$879[standardBase[0, 1]] + 2 mults$879[standardBase[0, 2]]
+>   ---------------------------------------------------------------}
+                                   4
+
+Out[122]= mults$879
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+ 6 mults$869[standardBase[2, -1]]  2 mults$869[standardBase[1, 1]]
+{--------------------------------, -------------------------------}
+                5                                 5
+{1, mults$869[standardBase[1, 2]]}
+ mults$869[standardBase[1, -1]]
+{------------------------------, 
+               2
+ 
+    mults$869[standardBase[0, 1]] + 2 mults$869[standardBase[0, 2]]
+>   ---------------------------------------------------------------}
+                                   4
+
+Out[115]= mults$869
+
+
+mts[standardBase[0,0]]
+
+           mults$859[standardBase[1, -1]]
+Out[112]= {------------------------------, 
+                         2
+ 
+     mults$859[standardBase[0, 1]] + 2 mults$859[standardBase[0, 2]]
+>    ---------------------------------------------------------------}
+                                    4
+
+           6 mults$859[standardBase[2, -1]]
+Out[111]= {--------------------------------, 
+                          5
+ 
+      2  2 mults$859[standardBase[1, 2]]
+>    {-, -------------------------------}}
+      5                 5
+
+           2 mults$849[standardBase[2, -1]]
+Out[108]= {--------------------------------, 0}
+                          5
+
+           2 mults$839[standardBase[2, -1]]
+Out[105]= {--------------------------------, 0}
+                          5
+
+Out[104]= {0, 0}
+
+Out[103]= {}
+
+{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+
+Out[102]= mults$839
+
+Module[{r=standardBase[0,1],v=standardBase[1,1],mults,toFC=toFundamentalChamber[b2]},
+       mults[standardBase[2,1]]=1;
+       NestWhileList[{#[[1]]+r,#[[2]]+r.r}&,
+		     {v+r,v.r},
+		     Module[{t=mults[toFC[First[#]]]},Print[t];IntegerQ[t]]&
+		    ]]
+
+                                                  1
+mults$836[standardBase[3, 1]]
+
+Out[100]= {{standardBase[1, 2], 1}, {standardBase[1, 3], 2}}
+
+                                             mults$834[standardBase[2, 1]]
+
+Out[99]= {{standardBase[1, 2], 1}}
+
+                                             mults$832[standardBase[1, 1]]
+
+Out[98]= {{standardBase[1, 1], 1}}
+
+weightSystem[b2][standardBase[-5,0]]
+
+Out[61]= {{standardBase[-5, 0]}, {}}
+
+Out[60]= {{standardBase[5, 0]}, {standardBase[4, 0], standardBase[4, 1]}, 
+ 
+>    {standardBase[3, 0], standardBase[3, 1], standardBase[3, 2]}, 
+ 
+>    {standardBase[2, 0], standardBase[2, 1], standardBase[2, 2]}, 
+ 
+>    {standardBase[1, 0], standardBase[1, 1]}, {standardBase[0, 0]}, {}}
+
+
+Timing[Length[positiveRoots[makeSimpleRootSystem[B,64]]]]
+
+Flatten[orbit[{simpleRoots}][simpleRoots]],x_ /; Dot[x,rho[{simpleRoots}]]>=0]
+
+
+Map[-#&,Sequence[1,2,3]]
+Out[54]= Map[-#1 & , 1, 2, 3]
+
+Length[Flatten[orbit[makeSimpleRootSystem[B,8]][standardBase[-1,-1/2,0,0,0,0,0,0]]]]
 
 rho[b2]
 
@@ -27,11 +651,94 @@ rho[b2]
 Out[98]= standardBase[-, -]
                       2  2
 
+b2
 
-orbit[{simpleRoots__standardBase}][weights__standardBase]:=Module[{total={}},
-       NestWhileList[Function[x,Complement[Union[Flatten[Outer[#1[#2]&,reflection/@{simpleRoots},x]]],total]],
-		     {weights},
-		     Function[y,Module[{t=y=!={}},total=Union[total,y];t]]]]
+Out[67]= {standardBase[1, -1], standardBase[0, 1]}
+
+Union[Flatten[Outer[If[#1.#2>0,reflection[#1][#2],Sequence[]]&,
+      b2,
+      b2]]]
+
+
+Print[expr] prints expr as output. 
+
+toFundamentalChamber[b2][standardBase[0,-1]]
+
+Out[63]= standardBase[1, 0]
+
+Out[43]= standardBase[1, 0]
+
+Out[42]= standardBase[1, 1]
+
+Out[38]= Sequence[standardBase[1, 1]]
+
+Out[36]= 
+
+First[reflection[Null][standardBase[1, 1]]]
+
+Out[40]= standardBase[1, 1]
+
+Out[39]= standardBase[1, 1]
+
+Out[32]= standardBase[-1, -1]
+
+Function::flpar: 
+   Parameter specification standardBase[-1, -1] in 
+    Function[standardBase[-1, -1], 
+     reflection[Scan[If[#1 . standardBase[-1, -1] < 0, Return[#1]] & , 
+        {standardBase[1, -1], standardBase[0, 1]}]][standardBase[-1, -1]]]
+     should be a symbol or a list of symbols.
+
+Out[28]= standardBase[-1, -1]
+
+Head[expr] gives the head of expr. 
+
+Head[reflection[Null][1,2,3]]
+
+Out[24]= reflection[Null]
+
+v=standardBase[-1,-1]
+
+Out[17]= standardBase[-1, -1]
+
+reflection[Scan[If[#.v<0,Return[#]]&,b2]][v]
+
+Out[30]= standardBase[-1, 1]
+
+Out[29]= reflection[Null][standardBase[-1, -1]]
+
+Out[22]= reflection[Null]
+
+
+
+
+
+Timing[Length[Map[-#&,Flatten[orbit[makeSimpleRootSystem[B,64]][Sequence @@ Map[-#&,makeSimpleRootSystem[B,64]]]]]]]
+
+Out[15]= {8.15651, 4096}
+
+Out[12]= 1024
+
+Out[7]= {standardBase[1, -1], standardBase[0, 1], standardBase[1, 1], 
+ 
+>    standardBase[1, 0]}
+
+Out[6]= {{standardBase[-1, 1], standardBase[0, -1]}, 
+ 
+>    {standardBase[-1, -1], standardBase[-1, 0]}, {}}
+
+b2
+
+Out[5]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[4]= {{standardBase[1, -1], standardBase[0, 1]}, 
+ 
+>    {standardBase[-1, 1], standardBase[0, -1]}, 
+ 
+>    {standardBase[-1, -1], standardBase[-1, 0]}, {}}
+
+
+Out[8]= $Aborted
 
 positiveRoots[{simpleRoots__standardBase}]:=Cases[Flatten[orbit[{simpleRoots}][simpleRoots]],x_ /; Dot[x,rho[{simpleRoots}]]>=0]
 
@@ -306,6 +1013,12 @@ multiplicity[x_standardBase]:=0
 
 
 orbit[b2][standardBase[1,0]]
+
+Out[65]= {{standardBase[1, 0]}, {}}
+
+Out[10]= {{standardBase[1, 0]}, {}}
+
+Out[2]= orbit[b2][standardBase[1, 0]]
 
 Out[129]= {{standardBase[1, 0]}, {standardBase[0, 1]}, {standardBase[0, -1]}, 
  
@@ -1072,6 +1785,18 @@ b2=makeSimpleRootSystem[B,2]
 
 Out[2]= {standardBase[1, -1], standardBase[0, 1]}
 
+Out[2]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[3]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[64]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[9]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[3]= makeSimpleRootSystem[B, 2]
+
+Out[2]= {standardBase[1, -1], standardBase[0, 1]}
+
 cm=cartanMatrix[b2]
 
 Out[8]= {{2, -1}, {-2, 2}}
@@ -1603,3 +2328,83 @@ Information::notfound: Symbol PositiveInteger not found.
 
 Mathematica 8.0 for Linux x86 (32-bit)
 Copyright 1988-2010 Wolfram Research, Inc.
+
+
+clear[weight[standardBase]]
+
+makeWeight[coords_standardBase]:=Module[{weight},weight[standardBase]=coords;weight]
+
+w=makeWeight[standardBase[1,2,3]]
+
+w2:=makeWeight[standardBase[1,2,3]]
+
+FullForm[Unevaluated[weight$90]]
+
+Out[58]//FullForm= Unevaluated[weight$90]
+
+FullForm[Symbol["aaa$123"]]
+
+
+
+Out[61]= weight?SymbolQ
+
+Out[59]//FullForm= aaa$123
+
+Out[57]//FullForm= aaa
+
+Out[56]= aaa
+
+Symbol::string: String expected at position 1 in Symbol[aaa].
+
+Out[55]= Symbol[aaa]
+
+Out[54]//FullForm= weight$90
+
+Out[53]= Symbol
+
+Out[52]= weight$90[rootSystem]
+
+Out[51]= {HoldPattern[weight$90[standardBase]] :> standardBase[1, 2, 3]}
+
+Out[48]= {HoldPattern[weight$89[rootSystem]] :> {weight$89}, 
+ 
+>    HoldPattern[weight$89[standardBase]] :> standardBase[1, 2, 3]}
+
+Out[47]= {}
+
+Out[46]= {HoldPattern[w] :> weight$89}
+
+Out[45]= {}
+
+Out[42]= weight$89
+
+Out[40]= w$88
+
+w[rootSystem]={w}
+
+Out[43]= {weight$89}
+
+w[rootSystem][[1]][rootSystem][[1]][standardBase]
+
+Out[44]= standardBase[1, 2, 3]
+
+
+Out[15]= standardBase[1, 2, 3]
+
+Out[14]= weight$82
+
+Out[13]= {weight$82}
+
+w[standardBase]
+
+Out[12]= standardBase[1, 2, 3]
+
+makeWeight[rs__weight,coords_standardBase]:=Module[{weight},weight[rootSystem]=rs;weight[standardBase]=coords;weight]
+
+makeWeight[weight,standardBase[1,2,3]]
+
+Out[3]= makeWeight[rs, standardBase[1, 2, 3]]
+
+Out[1]= clear[weight[standardBase]]
+
+weight[rootSystem]
