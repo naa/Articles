@@ -9,15 +9,15 @@
 \usepackage[unicode,verbose]{hyperref}
 
 
-\newtheorem{statement}{Statement}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}{Lemma}
-\newtheorem{mynote}{Note}[section]
+\newtheorem{statement}{Утверждение}
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{lemma}{Лемма}
+\newtheorem{mynote}{Замечание}[section]
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{remark}{Remark}
-\newtheorem{example}{Example}
+\newtheorem{definition}{Определение}
+\newtheorem{remark}{Ремарка}
+\newtheorem{example}{Пример}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
@@ -102,7 +102,7 @@ i$-й (соотв., $j$-й) простой корень алгебры $\frak{g}
 
 
 $\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
-}\right) $-- простой кокорень для $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a}%
+}\right) $-- простой ко-корень для $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a}%
 }\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
 
 $W$ , $\left( W_{\frak{a}}\right) $--- группа Вейля;
@@ -145,49 +145,36 @@ mult}\left( \alpha \right) }}\quad $ (соотв., $R_{\frak{a}}:=\prod_{\alpha 
 
 \label{sec:recurr-form-branch}
 
-In this section we shall show how the recurrent approach to branching
-problem leads naturally to a presentation of a formal character of
-$\frak{g}$-module in terms characters corresponding to a set
-of parabolic (generalized) Verma modules. Consider a reductive
-Lie algebra $\frak{g}$ and its reductive subalgebra $\frak{a}\subset \frak{g}$.
-Let $L^{\mu} $ be the highest weight integrable module of $\frak{g}$, $\mu \in
-P^{+}$. Let $L^{\mu }$ be completely reducible with respect to $\frak{a}$,
+В этом разделе мы покажем, как рекуррентный подход к проблеме ветвления естественным образом приводит к представлению формального характера $\frak{g}$-модуля в виде комбинации характеров, соответствующих параболическим (обобщенным) модулям Верма. Рассмотрим редуктивную алгебру Ли  $\frak{g}$ и ее редуктивную подалгебру $\frak{a}\subset \frak{g}$.
+Пусть  $L^{\mu} $ -- интегрируемый модуль старшего веса алгебры  $\frak{g}$, $\mu \in P^{+}$.  Будем считать  $L^{\mu}$ полностью приводимым по отношению к подалгебре $\frak{a}$,
 \begin{equation*}
 L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
 }^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }.
 \end{equation*}
-Using the projection operator $\pi _{\frak{a}}$ (to the weight space $\frak{%
-h_{a}}^{\ast }$) one can write this decomposition in terms of formal
-characters:
+Это разложение может быть записано в терминах формальных характеров с использованием оператора проекции  $\pi _{\frak{a}}$ (на весовое пространство $\frak{h_{a}}^{\ast }$):
 \begin{equation}
 \pi _{\frak{a}}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\frak{a}%
 }^{+}}b_{\nu }^{(\mu )}ch\left( L_{\frak{a}}^{\nu }\right) .
 \label{branching1}
 \end{equation}
-The module $L^{\mu }$ has the BGG resolution (see \cite
-{bernstein1976category,bernstein1975differential,bernstein1971structure} and
-\cite{humphreys2008representations}). All the members of the filtration
-sequence are the direct sums of Verma modules and all their highest weights $%
-\nu $ are strongly linked to $\mu $:
+Для модуля  $L^{\mu }$ существует БГГ резольвента (см. \cite
+{bernstein1976category,bernstein1975differential,bernstein1971structure} и
+\cite{humphreys2008representations}). Все члены фильтрующей последовательности представляются суммами модулей Верма со старшими весами $\nu$, сильно связанными с $\mu$:
 \begin{equation*}
 \left\{ \nu \right\} =\left\{ w\left( \mu +\rho \right) -\rho |w\in
 W\right\} .
 \end{equation*}
 
-\subsection{Orthogonal subalgebra}
+\subsection{Ортогональная подалгебра}
 
-Let $\frak{h}_{\frak{a}}$ be a Cartan subalgebra of $\mathfrak{g}$. For $%
-\mathfrak{a}\hookrightarrow \frak{g}$ introduce the ''orthogonal partner'' $%
-\mathfrak{a}_{\bot }\hookrightarrow \frak{g}$ .
+Пусть  $\frak{h}_{\frak{a}}$ -- подалгебра Картана в  $\mathfrak{g}$. Для  $\mathfrak{a}\hookrightarrow \frak{g}$ введем ``ортогонального партнера''  $\mathfrak{a}_{\bot }\hookrightarrow \frak{g}$.
 
-Consider the root subspace $\frak{h}_{\perp \frak{a}}^{\ast }$ orthogonal to
-$\frak{a}$,
+Рассмотрим корневое подпространство  $\frak{h}_{\perp \frak{a}}^{\ast }$, ортогональное к $\frak{a}$,
 \begin{equation*}
 \frak{h}_{\perp \frak{a}}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast }|\forall
 h\in \frak{h}_{\frak{a}};\eta \left( h\right) =0\right\} ,
 \end{equation*}
-and the roots (correspondingly -- positive roots) of $\frak{g}$ orthogonal
-to $\frak{a}$,
+и корни  $\frak{g}$ (соответственно, положительные корни)  ортогональные к $\frak{a}$,
 \begin{eqnarray}
 \Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
 h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
@@ -196,105 +183,86 @@ h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
 }^{+}|\forall h\in \frak{h}_{\frak{a}};\beta ^{+}\left( h\right) =0\right\} .
 \notag
 \end{eqnarray}
-Let $W_{\frak{a}_{\perp }}$ be the subgroup of $W$ generated by the
-reflections $w_{\beta }$ with the roots $\beta \in \Delta _{\frak{a}_{\perp
-}}^{+}$. The subsystem $\Delta _{\frak{a}_{\perp }}$ determines the
-subalgebra $\frak{a}_{\perp }$ with the Cartan subalgebra $\frak{h}_{\frak{a}%
-_{\perp }}$. Let
+Обозначим через  $W_{\frak{a}_{\perp }}$ подгруппу  $W$, порожденную отражениями  $w_{\beta }$ с корнями  $\beta \in \Delta_{\frak{a}_{\perp}}^{+}$. Корневая подсистема  $\Delta _{\frak{a}_{\perp }}$ определяет подалгебру  $\frak{a}_{\perp }$, имеющую подалгебру Картана $\frak{h}_{\frak{a}_{\perp }}$. Пусть
 \begin{equation*}
 \frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \frak{a}}^{\ast
 }|\forall h\in \frak{h}_{\frak{a}\oplus \frak{a}_{\perp }};\eta \left(
 h\right) =0\right\}
 \end{equation*}
-so that $\frak{g}$ has the subalgebras
+и у  $\frak{g}$ есть подалгебры
 \begin{eqnarray}
 \widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
 \qquad
 \widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }.
 \end{eqnarray}
-Notice that $\mathfrak{a} \oplus \mathfrak{a}_{\bot}$ in general is not a
-subalgebra in $\mathfrak{g}$.
+Заметим, что  $\mathfrak{a} \oplus \mathfrak{a}_{\bot}$ в общем случае не является подалгеброй в $\mathfrak{g}$.
 
-For the Cartan subalgebras we have the decomposition
+Для подалгебр Картана имеет место разложение
 \begin{equation}
 \frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus
 \frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\frak{a}}}}\oplus \frak{h}_{%
 \frak{a}_{\perp }}=\frak{\frak{h}_{\widetilde{\frak{a}_{\perp }}}}\oplus
 \frak{h}_{\frak{a}}.
 \end{equation}
-For $\frak{a}$ and $\frak{a}_{\perp }$ consider the
-corresponding Weyl vectors, $\rho _{\frak{a}}$ and $\rho _{\frak{a}_{\perp
-}} $. Form the so called ''defects'' $\mathcal{D}_{\frak{a}}$ and $\mathcal{%
-D}_{\frak{a}_{\perp }}$ of the injection:
+Рассмотрим векторы Вейля  $\rho _{\frak{a}}$ и $\rho _{\frak{a}_{\perp}} $, соответствующие  $\frak{a}$ и $\frak{a}_{\perp }$.
+Введем так называемые ``дефекты'' вложения  $\mathcal{D}_{\frak{a}}$ и $\mathcal{D}_{\frak{a}_{\perp }}$:
 \begin{equation}
 \mathcal{D}_{\frak{a}}:=\rho _{\frak{a}}-\pi _{\frak{a}}\rho , \qquad
 \mathcal{D}_{\frak{a}_{\perp }}:=\rho _{\frak{a}_{\perp }}-\pi _{\frak{a}%
 _{\perp }}\rho .  \label{defect ort}
 \end{equation}
-
-For $\mu \in P^{+}$ consider the linked weights $\left\{
-\left( w(\mu +\rho )-\rho \right) |w\in W\right\} $. Consider the projections to
-$h_{\frak{a}_{\perp }}^{\ast }$ additionally shifted by the defect $-%
-\mathcal{D}_{\frak{a}_{\perp }}$:
+Для  $\mu \in P^{+}$ рассмотрим связанные веса  $\left\{\left( w(\mu +\rho )-\rho \right) |w\in W\right\} $ и их проекции на $h_{\frak{a}_{\perp }}^{\ast }$, дополнительно сдвинутые на дефект $-\mathcal{D}_{\frak{a}_{\perp }}$:
 \begin{equation*}
 \mu _{\frak{a}_{\perp }}\left( w\right) :=\pi _{\frak{a}_{\perp }}\left[
 w(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad w\in W.
 \end{equation*}
-Among the weights $\left\{ \mu _{\frak{a}_{\perp
-}}\left( w\right) |w\in W\right\} $ one can always choose those located in
-the fundamental chamber $\overline{C_{\frak{a}_{\perp }}}$. Let $U$ be the
-set of representatives $u$ for the classes $W/W_{\frak{a}_{\perp }}$ such
-that
 
+Среди весов  $\left\{ \mu _{\frak{a}_{\perp
+}}\left( w\right) |w\in W\right\} $ всегда можно выбрать те, которые попадают в фундаментальную камеру $\overline{C_{\frak{a}_{\perp }}}$. Пусть $U$ -- множество представителей $u$ классов  $W/W_{\frak{a}_{\perp }}$, таких что
 \begin{equation}
 U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
 \overline{C_{\frak{a}_{\perp }}}\right\} \quad .  \label{U-def}
 \end{equation}
-Thus we can form the subsets:
+Тогда можно выделить подмножества:
 \begin{equation}
 \mu _{\widetilde{\mathfrak{a}}}\left( u\right) :=\pi _{\widetilde{%
 \mathfrak{a}}}\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}%
 _{\perp }},\quad u\in U,  \label{mu-a}
 \end{equation}
-and
+и
 \begin{equation}
 \mu _{\frak{a}_{\perp }}\left( u\right) :=\pi _{\frak{a}_{\perp }}\left[
 u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad u\in U.
 \label{mu-a-tilda}
 \end{equation}
 
-Notice that the subalgebra $\mathfrak{a}_{\bot}$ is regular by definition
-since it is built on a subset of roots of the algebra $\mathfrak{g}$.
+Заметим, что подалгебра  $\mathfrak{a}_{\bot}$ по определению регулярна, так как она построена на подмножестве корней алгебры $\mathfrak{g}$.
 
-For the modules we are interested in the Weyl-Kac formula for $\mathrm{ch}%
-\left( L^{\mu }\right) $ can be written in terms of singular elements \cite
-{humphreys1997introduction},
+Для интересующих нас модулей формула Вейля-Каца для  $\mathrm{ch}\left( L^{\mu }\right) $ может быть записана через сингулярные элементы \cite{humphreys1997introduction},
 \begin{equation*}
 \Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w(\mu +\rho
 )-\rho },
 \end{equation*}
-namely,
+а именно,
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi
 ^{\left( 0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
 \label{Weyl-Kac2}
 \end{equation}
-The same is true for the submodules $\mathrm{ch}\left( L_{\frak{a}}^{\nu
-}\right) $ in (\ref{branching1})
+То же верно и для подмодулей $\mathrm{ch}\left( L_{\frak{a}}^{\nu
+}\right) $ в формуле (\ref{branching1})
 \begin{equation*}
 \mathrm{ch}\left( L_{\frak{a}}^{\nu }\right) =\frac{\Psi _{\frak{a}}^{\left(
 \nu \right) }}{\Psi _{\frak{a}}^{\left( 0\right) }}=\frac{\Psi _{\frak{a}%
 }^{\left( \nu \right) }}{R_{\frak{a}}},
 \end{equation*}
-with
+где
 \begin{equation*}
 \Psi _{\frak{a}}^{\left( \nu \right) }:=\sum\limits_{w\in W_{\frak{a}%
 }}\epsilon (w)e^{w(\nu +\rho _{_{\frak{a}}})-\rho _{_{\frak{a}}}}.
 \end{equation*}
-
-Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
-we get the relation connecting the singular elements $\Psi ^{\left( \mu
-\right) }$ and $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
+Применяя формулу  (\ref{Weyl-Kac2}) к правилу ветвления  (\ref{branching1}) мы получаем соотношение, связывающее сингулярные элементы $\Psi ^{\left( \mu
+\right) }$ и $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
 \begin{eqnarray}
 \pi _{\frak{a}}\left( \frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho
 )-\rho }}{\prod_{\alpha \in \Delta ^{+}}(1-e^{-\alpha })^{\mathrm{mult}%
@@ -307,28 +275,23 @@ mult}_{\frak{a}}(\beta )}},  \notag  \label{eq:4} \\
 }^{\left( \nu \right) }}{R_{\frak{a}}}.
 \end{eqnarray}
 
-\subsection{Decomposing the singular element.}
+\subsection{Разложение сингулярного элемента.}
 
 \label{subsec:decomp-sing-element}
 
-Now we shall perform a decomposition of the singular element $\Psi ^{\left(
-\mu \right) }$ in terms of singular elements of the orthogonal partner
-modules:
+Теперь мы выполним разложение сингулярного элемента  $\Psi ^{\left(\mu \right) }$ на сингулярные элементы модулей ортогонального партнера:
 
 \begin{lemma}
-Let $\frak{a}_{\bot }$ be the orthogonal partner of a reductive subalgebra $%
-\frak{a}\hookrightarrow \frak{g}$ with $\frak{h}=\frak{\frak{h}_{\frak{a}}}%
-\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$, $\widetilde{%
-\frak{a}_{\perp }}=\frak{a}_{\perp }\oplus \frak{h}_{\perp }$ and $%
+
+Пусть  $\frak{a}_{\bot }$ -- ортогональный партнер редуктивной подалгебры  $\frak{a}\hookrightarrow \frak{g}$ и $\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$, $\widetilde{%
+\frak{a}_{\perp }}=\frak{a}_{\perp }\oplus \frak{h}_{\perp }$, $%
 \widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$.
 
-$L^{\mu }$ be the highest weight integrable module with $\mu \in P^{+}$ and
+Пусть $L^{\mu }$ -- интегрируемый модуль старшего веса  $\mu \in P^{+}$ и 
 
-$\Psi ^{\left( \mu \right) }$\ -- the singular element of $L^{\mu }$.
+$\Psi ^{\left( \mu \right) }$\ -- сингулярный элемент $L^{\mu }$.
 
-Then the element $\Psi ^{\left( \mu \right) }$ can be decomposed into the
-sum over $u\in U$ (see (\ref{U-def})) of singular elements $\Psi _{\frak{a}%
-_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ with the coefficients
+Тогда элемент  $\Psi ^{\left( \mu \right) }$ может быть разложен в сумму по  $u\in U$ (см. (\ref{U-def})) сингулярных элементов $\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ с коэффициентами
 $\epsilon (u)e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }$:
 \begin{equation}
 \Psi ^{\left( \mu \right) }=\sum_{u\in U}\;\epsilon (u)e^{\mu _{\widetilde{%
@@ -339,13 +302,12 @@ _{\perp }}\left( u\right) }.  \label{sing decomp main}
 \end{lemma}
 
 \begin{proof}
-Let
+Пусть
 \[
 u(\mu +\rho )=\pi _{\left( \aft\right) }u(\mu +\rho )+\pi _{\left(
-\frak{a}_{\perp }\right) }u(\mu +\rho )
+\frak{a}_{\perp }\right) }u(\mu +\rho ),
 \]
-with $u\in U$. For any $v\in W_{\frak{a}_{\bot }}$ consider
-the singular weight $vu(\mu +\rho )-\rho $ and perform the decomposition:
+где $u\in U$. Для произвольного  $v\in W_{\frak{a}_{\bot }}$ рассмотрим сингулярный вес  $vu(\mu +\rho )-\rho $ и выполним разложение:
 \begin{equation}
 \begin{array}{lcl}
 vu(\mu +\rho )-\rho  & = & \pi _{\left( \frak{a}\right) }\left( u(\mu +\rho
@@ -357,8 +319,7 @@ vu(\mu +\rho )-\rho  & = & \pi _{\left( \frak{a}\right) }\left( u(\mu +\rho
 \end{array}
 \label{sing-decomp-1}
 \end{equation}
-Use the defect $\mathcal{D}_{\frak{a}_{\bot }}$ (\ref{defect ort}) to
-simplify the first line in (\ref{sing-decomp-1}):
+Используем дефект $\mathcal{D}_{\frak{a}_{\bot }}$ (\ref{defect ort}), чтобы упростить первую строчку в формуле (\ref{sing-decomp-1}):
 \[
 \begin{array}{r}
 \pi _{\left( \aft\right) }\left( u(\mu +\rho )\right) -\rho +\rho _{%
@@ -369,7 +330,7 @@ simplify the first line in (\ref{sing-decomp-1}):
 _{\frak{a}_{\bot }},
 \end{array}
 \]
-and the second one:
+и вторую
 \[
 \begin{array}{c}
 v\left( \pi _{\left( \frak{a}_{\perp }\right) }u(\mu +\rho
@@ -384,10 +345,7 @@ v\left( \pi _{\left( \frak{a}_{\bot }\right) }u(\mu +\rho )-%
 }}\right) -\rho _{\frak{a}_{\bot }}.
 \end{array}
 \]
-This provides the desired decomposition of the singular element $%
-\Psi ^{\mu }$ in terms of singular elements $\Psi _{\frak{a}%
-_{\perp }}^{\eta }$ of the $\frak{a}_{\perp }$-modules $L_{%
-\frak{a}_{\perp }}^{\eta }$:
+В результате получаем требуемое разложение сингулярного элемента $\Psi ^{\mu }$ на сингулярные элементы $\Psi_{\frak{a}_{\perp}}^{\eta}$ модулей $L_{\frak{a}_{\perp }}^{\eta }$ подалгебры $\frak{a}_{\perp }$: 
 \begin{equation}
 \begin{array}{l}
 \Psi ^{\mu }=\sum_{u\in U}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
