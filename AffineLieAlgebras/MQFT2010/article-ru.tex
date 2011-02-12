@@ -421,37 +421,29 @@ _{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
 \subsection{Фомулы Вейля-Верма.}
 
 \begin{statement}
-\bigskip For an orthogonal subalgebra $\frak{a}_{\perp }$ in $\frak{g}$ (an
-orthogonal partner of a reductive $\frak{a}\hookrightarrow \frak{g}$) the
-character of an integrable highest weight module $L^{\mu }$ can be presented
-as a combination (with integral coefficients) of parabolic Verma modules
-distributed by the set of weights $e^{\mu _{\widetilde{\mathfrak{a}}}\left(
+\bigskip
+Для ортогональной подалгебры  $\frak{a}_{\perp }$ в $\frak{g}$ (являющейся ортогональным партнером редуктивной подалгебры $\frak{a}\hookrightarrow \frak{g}$) характера интегрируемого модуля старшего веса  $L^{\mu }$ может быть представлен в виде комбинации (с целочисленными коэффициентами) параболических модулей Верма, распределенных по множеству весов $e^{\mu _{\widetilde{\mathfrak{a}}}\left(
 u\right) }$:
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;\epsilon (u)e^{\mu _{%
 \widetilde{\frak{a}}}\left( u\right) }\mathrm{ch}M_{I}^{\mu _{\frak{a}%
 _{\perp }}\left( u\right) },  \label{gen Weyl-Verma}
 \end{equation}
-where $U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
-\overline{C_{\frak{a}_{\perp }}}\right\} $ and $I$ is such a subset of $S$ that
-$\Delta _{I}^{+}$ is
-equivalent to $\Delta _{\frak{a}_{\perp }}^{+}$.
+где  $U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
+\overline{C_{\frak{a}_{\perp }}}\right\} $ и $I$ -- такое подмножество в  $S$, что $\Delta _{I}^{+}$ эквивалентно $\Delta _{\frak{a}_{\perp }}^{+}$.
 \end{statement}
 
 \bigskip
 \begin{proof}
-By the definition (\ref{delta a ort}) the subalgebra $%
-\mathfrak{a}_{\bot }$ is regular and reductive. Consider its Weyl
-denominator $R_{\frak{a}_{\perp }}:=\prod_{\alpha \in \Delta _{\frak{a}%
+Подалгебра  $\mathfrak{a}_{\bot }$ регулярна и редуктивна по определению  (\ref{delta a ort}). Рассмотрим её знаменатель Вейля   $R_{\frak{a}_{\perp }}:=\prod_{\alpha \in \Delta _{\frak{a}%
 _{\perp }}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}%
-\mathrm{\left( \alpha \right) }}$ and the element $R_{J}:=\prod_{\alpha \in
+\mathrm{\left( \alpha \right) }}$ и элемент  $R_{J}:=\prod_{\alpha \in
 \Delta ^{+}\setminus \Delta _{\frak{a}_{\perp }}^{+}}\left( 1-e^{-\alpha
-}\right) ^{\mathrm{mult}(\alpha )}$ as the factors in $R$: $\quad $%
+}\right) ^{\mathrm{mult}(\alpha )}$ как сомножители в $R$:
 \begin{equation*}
 R=R_{J}R_{\frak{a}_{\perp }}.
 \end{equation*}
-According to this factorization and the decomposition (\ref{sing decomp main}%
-) the character $\mathrm{ch}\left( L^{\mu }\right) $ can be written as
+Согласно этой факторизации и разложению  (\ref{sing decomp main}) характер $\mathrm{ch}\left( L^{\mu }\right) $ можно переписать в виде
 \begin{eqnarray*}
 \mathrm{ch}\left( L^{\mu }\right) &=&\left( R_{J}\right) ^{-1}\left( R_{%
 \frak{a}_{\perp }}\right) ^{-1}\Psi ^{\mu }=\left( R_{J}\right)
@@ -462,84 +454,63 @@ According to this factorization and the decomposition (\ref{sing decomp main}%
 }\left( u\right) }\epsilon (u)\mathrm{ch}\left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp
 }}\left( u\right) }\right),
 \end{eqnarray*}
-where $\left\{ L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left(
-u\right) }|u\in U\right\} $ is the set of finite-dimensional $\frak{a}%
-_{\perp }$-modules with the highest weights $\mu _{\frak{a}_{\perp }}\left(
-u\right) $. We are interested in nontrivial subalgebras $\frak{a}$ and
-correspondingly in nontrivial $\frak{a}_{\perp }$ (the case of a trivial
-orthogonal subalgebra was considered above (see Remark 1)). This means that $r_{\frak{a}}\geq 1$ and $r_{\frak{a}%
-_{\perp }}<r$. Due to the fact that any maximal regular subalgebra has the
-Dynkin scheme obtained by one or two node subtractions from the extended
-Dynkin scheme and the extended scheme has at most one dependent root (the
-highest root) the set of roots $\Delta _{\frak{a}_{\perp }}^{+}$ is always
-equivalent to the one $\Delta _{I}^{+}$ generated\ by some subset $I\subset
-S $ of simple roots.
+где  $\left\{ L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left(
+u\right) }|u\in U\right\} $ -- множество конечномерных $\frak{a}%
+_{\perp }$-модулей со старшими весами   $\mu _{\frak{a}_{\perp }}\left(
+u\right) $. Нас интересуют нетривиальные подалгебры $\frak{a}$ и, соответственно, нетривиальные  $\frak{a}_{\perp }$ (случай тривиальной ортогональной подалгебры рассматривался выше в (см. Замечание 1)). Значит $r_{\frak{a}}\geq 1$ и $r_{\frak{a}%
+_{\perp }}<r$. Так как диаграмма Дынкина для любой регулярной подалгебры получается в результате исключения одной, двух или более вершин из расширенной диаграммы Дынкина алгебры, а расширенная диаграмма содержит не более одного зависимого корня (старший корень), множество корней $\Delta _{\frak{a}_{\perp }}^{+}$ всегда эквивалентно некоторому множеству $\Delta _{I}^{+}$, порожденному набором  простых корней $I\subset S $.
 
-It follows that we can (by redefining the set $\Delta ^{+}$) identify $%
-\Delta _{\frak{a}_{\perp }}^{+}$ with the subset $\Delta _{I}^{+}$ \ where $%
-I\subset S$ . This allows us to introduce the elements necessary to compose
-the generalized Verma modules
-\cite{lepowsky1977generalization,humphreys2008representations}.
-We have two sets of root
-vectors $\left\{ x_{\xi }\in \frak{g}_{\xi }|\xi \in \Delta _{I}^{+}\right\}
-$ and $\left\{ x_{\eta }\in \frak{g}_{\eta }|\eta \in \Delta ^{+}\setminus
-\Delta _{I}^{+}\right\} $ and the corresponding nilpotent subalgebras in $\frak{n}%
+Следовательно мы можем (переопределяя множество  $\Delta ^{+}$) отождествить $\Delta _{\frak{a}_{\perp }}^{+}$ с подмножеством  $\Delta _{I}^{+}$, где $I\subset S$. В результате мы можем определить объекты, необходимые для построения обобщенных модулей Верма \cite{lepowsky1977generalization,humphreys2008representations}. У нас есть два множества корневых векторов $\left\{ x_{\xi }\in \frak{g}_{\xi }|\xi \in \Delta _{I}^{+}\right\}
+$ и $\left\{ x_{\eta }\in \frak{g}_{\eta }|\eta \in \Delta ^{+}\setminus
+\Delta _{I}^{+}\right\} $, и соответствующие нильпотентные подалгбры в  $\frak{n}%
 ^{+}$:
 \begin{equation*}
 \frak{n}_{I}^{+}:=\sum_{\xi \in \Delta _{I}^{+}}\frak{g}_{\xi },\quad
 \frak{u}_{I}^{+}:=\sum_{\eta \in \Delta ^{+}\setminus \Delta _{I}^{+}}\frak{g}%
 _{\eta }.
 \end{equation*}
-The first subalgebra together with its negative counterpart $\frak{n}%
-_{I}^{-} $ generates a simple subalgebra
+Первая подалгебра, вместе со своей отрицательной копией  $\frak{n}%
+_{I}^{-} $ порождает простую подалгебру 
 \begin{equation*}
 \frak{s}_{I}=\frak{n}_{I}^{-}+\frak{h}_{I}+\frak{n}_{I}^{+}.
 \end{equation*}
-We enlarge it with the remaining Cartan generators:
+Мы расширяем ее оставшимися картановскими генераторами:
 \begin{equation*}
 \frak{l}_{I}=\frak{n}_{I}^{-}+\frak{h}+\frak{n}_{I}^{+}.
 \end{equation*}
-The semidirect product of $\frak{l}_{I}$ and $\frak{u}_{I}^{+}$
-gives a parabolic subalgebra $\frak{p}_{I}\hookrightarrow \frak{g}$ :
+Полупрямое произведение  $\frak{l}_{I}$ и $\frak{u}_{I}^{+}$ дает параболическую подалгебры $\frak{p}_{I}\hookrightarrow \frak{g}$ :
 \begin{equation}
 \frak{p}_{I}=\frak{l}_{I}\vartriangleright \frak{u}_{I}^{+}.
 \label{paralolic subalg}
 \end{equation}
-Its universal enveloping $U\left( \frak{p}_{I}\right) $ is a subalgebra in $%
-U\left( \frak{g}\right) $. The $\frak{l}_{I}$-modules $L_{\frak{a}_{\perp }}^{\mu _{%
-\frak{a}_{\perp }}\left( u\right) }$ can be easily lifted to $\frak{p}_{I}$%
--modules using the trivial action of the nilradical $\frak{u}_{I}^{+}$. The
-latter induce $U\left( \frak{g}\right) $-modules in a standard way:
+Ее универсальная обертывающая $U\left( \frak{p}_{I}\right) $ является подалгеброй в  $%
+U\left( \frak{g}\right) $. Модули  $L_{\frak{a}_{\perp }}^{\mu _{%
+\frak{a}_{\perp }}\left( u\right) }$ алгебры  $\frak{l}_{I}$ легко поднимаются до  $\frak{p}_{I}$-модулей при помощи тривиального действия нильрадикала $\frak{u}_{I}^{+}$. Последний стандартным образом индуцирует $U\left( \frak{g}\right) $-модули:
 \begin{equation*}
 M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=U\left( \frak{g}\right)
 \otimes _{U\left( \frak{p}_{I}\right) }L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
 _{\perp }}\left( u\right) }.
 \end{equation*}
 
-These are the \textit{generalized Verma modules}  \cite{lepowsky1977generalization}
-generated by the highest weights $\mu _{\frak{a}%
-_{\perp }}\left( u\right) $. As a $U\left( \frak{u}_{I}^{-}\right) $-module
-each $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ is isomorphic to $%
-U\left( \frak{u}_{I}^{-}\right) \otimes $ $L_{\frak{a}_{\perp }}^{\mu _{%
-\frak{a}_{\perp }}\left( u\right) }$ and thus its character can be written
-in terms of Kostant-Heckman function \cite{KostantHeckman1982} corresponding
-to the injection of the orthogonal partner $\frak{a}_{\perp
+Это  \textit{обобщенные модули Верма}  \cite{lepowsky1977generalization}
+порожденные старшими весами  $\mu _{\frak{a}%
+_{\perp }}\left( u\right) $. Как  $U\left( \frak{u}_{I}^{-}\right) $-модуль каждый  $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ изоморфен  $%
+U\left( \frak{u}_{I}^{-}\right) \otimes L_{\frak{a}_{\perp }}^{\mu _{%
+\frak{a}_{\perp }}\left( u\right) }$ и его характер можно записать при помощи функции Костанта-Хекмана \cite{KostantHeckman1982}, соответствующей вложению ортогонального партнера $\frak{a}_{\perp
 }\hookrightarrow \frak{g}$:
 \begin{equation*}
 \mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\mathcal{KH}_{%
 \frak{a}_{\perp }\hookrightarrow \frak{g}}\mathrm{ch}L_{\frak{a}_{\perp
 }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }.
 \end{equation*}
-The function $\mathcal{KH}_{\frak{a}_{\perp }\hookrightarrow \frak{%
-g}}$ is generated by the denominator $R_{I}$ thus the last expression can be
-written in the form
+Функция  $\mathcal{KH}_{\frak{a}_{\perp }\hookrightarrow \frak{%
+g}}$ генерируется знаменателем  $R_{I}$, так что последнее выражение можно переписать следующим образом
 \begin{equation*}
 \mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\frac{1}{R_{I}}%
 \mathrm{ch}L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }.
 \end{equation*}
-This means that we have obtained the generalized Weyl-Verma character formula
- -- the decomposition of $\mathrm{ch}\left(
-L^{\mu }\right) $ in terms of generalized Verma module characters:
+Значит мы получили обобщенную формулу Вейля-Верма для характеров -- разложение  $\mathrm{ch}\left(
+L^{\mu }\right) $ на характеры обобщенных модулей Верма:
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;e^{\mu _{\aft}\left(
 u\right) }\epsilon (u)\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
