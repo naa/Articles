@@ -35,10 +35,19 @@
 \begin{document}
 
 \title{Рекурсивные свойства ветвления и БГГ резольвента}
-\author{В Д Ляховский$^1$, А А Назаров$^2$\\
-Теоретический отдел,\\ Санкт - Петербургский государственный университет\\
-198904, Санкт - Петербург, Россия\\
-$^1$e-mail: lyakh1507@nm.ru, $^2$ antonnaz@gmail.com}
+\author{В Д Ляховский$^1$, А А Назаров$^{2,3}$\\
+  {\small $^1$ Теоретический отдел,}\\
+  {\small Санкт - Петербургский государственный университет}\\
+  {\small 198904, Санкт - Петербург, Россия}\\
+  {\small e-mail: lyakh1507@nm.ru}\\
+  {\small $^2$ Теоретический отдел,}\\
+  {\small Санкт - Петербургский государственный университет}\\
+  {\small 198904, Санкт - Петербург, Россия}\\
+  {\small $^2$ Лаборатория имени Чебышева,}\\
+  {\small математико-механический факультет,}\\ 
+  {\small Санкт - Петербургский государственный университет}\\
+  {\small 199178, Санкт - Петербург, Россия}\\
+  {\small email: antonnaz@gmail.com}}
 
 \maketitle
 
@@ -364,7 +373,7 @@ _{\left( \frak{a}_{\perp }\right) }\left[ u(\mu +\rho )-\rho
 \end{equation}
 \end{proof}
 
-\bigskip
+%\bigskip
 
 \begin{remark}
 Это соотношение можно рассматривать как обобщенную форму формулы Вейля для сингулярного элемента $\Psi _{\frak{g}}^{\mu }$: векторы $\mu _{%
@@ -421,7 +430,7 @@ _{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
 \subsection{Фомулы Вейля-Верма.}
 
 \begin{statement}
-\bigskip
+%\bigskip
 Для ортогональной подалгебры  $\frak{a}_{\perp }$ в $\frak{g}$ (являющейся ортогональным партнером редуктивной подалгебры $\frak{a}\hookrightarrow \frak{g}$) характера интегрируемого модуля старшего веса  $L^{\mu }$ может быть представлен в виде комбинации (с целочисленными коэффициентами) параболических модулей Верма, распределенных по множеству весов $e^{\mu _{\widetilde{\mathfrak{a}}}\left(
 u\right) }$:
 \begin{equation}
@@ -433,7 +442,7 @@ _{\perp }}\left( u\right) },  \label{gen Weyl-Verma}
 \overline{C_{\frak{a}_{\perp }}}\right\} $ и $I$ -- такое подмножество в  $S$, что $\Delta _{I}^{+}$ эквивалентно $\Delta _{\frak{a}_{\perp }}^{+}$.
 \end{statement}
 
-\bigskip
+%\bigskip
 \begin{proof}
 Подалгебра  $\mathfrak{a}_{\bot }$ регулярна и редуктивна по определению  (\ref{delta a ort}). Рассмотрим её знаменатель Вейля   $R_{\frak{a}_{\perp }}:=\prod_{\alpha \in \Delta _{\frak{a}%
 _{\perp }}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}%
@@ -519,30 +528,17 @@ u\right) }.  \label{char in gen verma mod}
 \end{proof}
 
 \begin{remark}
-Here the generalized Weyl-Verma character formula (called the alternating sum
-formula in \cite{humphreys2008representations}) appears in a special
-form: the weights $\mu _{\aft}$ and the generalized Verma module highest weights
-$\mu _{\afb}$ are separated. The reason is that the
-highest weight of $M_{I}$-module is not equal to the projection of its maximal
-weight to $h^*_{\afb}$ (but must be additionally shifted by the defect).
+Здесь обобщенная формула Вейля-Верма для характеров (называемая формулой переменного суммирования в книге \cite{humphreys2008representations}) имеет специальный вид: веса $\mu _{\aft}$ и старшие веса обобщенных модулей Верма $\mu _{\afb}$ разделены. Причина в том, что старший вес $M_{I}$-модуля не равен проекции его максимального веса на  $h^*_{\afb}$ (а должен быть дополнительно сдвинут на дефект).
 \end{remark}
 
 \begin{example}
-  Consider the generalized Verma modules for the
-  embedding  $A_{1}\hookrightarrow B_{2}$ with the subalgebra $\afb$ attributed to the
-  root $\alpha_{1}$
-  of $B_{2}$. The generalized Verma module $M^{\omega_{1}}_{I}$ with the highest weight
-  $\omega_{1}=e_{1}$ is shown in Figure \ref{fig:B2_Verma_Decomp}.
+  Рассмотрим обобщенные модули Верма для вложения $A_{1}\hookrightarrow B_{2}$, где подалгебра  $\afb$ связана с корнем  $\alpha_{1}$ алгебры  $B_{2}$. Обобщенный модуль Верма $M^{\omega_{1}}_{I}$ со старшим весом   $\omega_{1}=e_{1}$ показан на Рисунке \ref{fig:B2_Verma_Decomp}.
   \begin{figure}[h!bt]
   \noindent\centering{
    \includegraphics[width=120mm]{B2_Gen_Verma_Decomp.pdf}
   }
-  \caption{Generalized Verma modules  for the regular embedding of $A_1$ into $B_2$.
-  Simple roots $\alpha_1, \alpha_2$ of $B_2$ are presented as the dashed vectors.
-    The simple root $\beta = \alpha_1+2\alpha_2$ of $A_1$ is indicated as the grey vector. The
-    decomposition of $L^{\omega_{1}}$ is indicated by
-    the set of contours of the involved generalized Verma
-  modules. Dashed contours correspond to positive $\epsilon(u)$ and dotted to negative.}
+  \caption{Обобщенные модули Верма для регулярного вложения  $A_1$ в $B_2$. 
+    Простые корни $\alpha_1, \alpha_2$ алгебры $B_2$ показаны пунктирными стрелками. Простой корень  $\beta = \alpha_1+2\alpha_2$ алгебры $A_1$ показан серым вектором. Разложение $L^{\omega_{1}}$ представлено набором контуров входящих в него обобщенных модулей Верма. Пунктирные контуры соответствуют положительным значениям  $\epsilon(u)$, а точечные -- отрицательным. }
 
  \label{fig:B2_Verma_Decomp}
 \end{figure}
@@ -550,72 +546,56 @@ weight to $h^*_{\afb}$ (but must be additionally shifted by the defect).
 \end{example}
 
 \begin{remark}
-As it was proved in \cite{humphreys2008representations} (see Proposition 9.6
-) characters of the generalized Verma modules $M_{I}^{\mu _{\frak{a}%
-_{\perp }}\left( u\right) }$ can be described as linear combinations of
-ordinary Verma modules of $\frak{g}$:
+Как доказано, например, в книге  \cite{humphreys2008representations} (см. утверждение 9.6), характеры обобщенных модулей Верма $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ могут также описываться как линейные комбинации обычных модулей Верма алгебры $\frak{g}$:
 \begin{equation*}
 \mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\sum_{w\in W_{%
 \frak{a}_{\perp }}}\epsilon \left( w\right) \mathrm{ch}M^{w\left( \mu _{%
 \frak{a}_{\perp }}\left( u\right) +\rho _{\frak{a}_{\perp }}\right) -\rho _{%
 \frak{a}_{\perp }}}
 \end{equation*}
-Substituting this expression in\ (\ref{char in gen verma mod}) and using the
-definitions (\ref{mu-a},\ref{mu-a-tilda}) and (\ref{defect ort}) we reconstruct
-the standard Weyl-Verma decomposition of the character:
+Подставляя это выражение в формулу (\ref{char in gen verma mod}) и используя определения  (\ref{mu-a},\ref{mu-a-tilda}) и (\ref{defect ort}), мы восстанавливаем стандартное разложение Вейля-Верма для характера:
 \begin{equation*}
 \mathrm{ch}\left( L^{\mu }\right) =\sum_{w\in W}\;\epsilon (u)\mathrm{ch}%
 M^{w\left( \mu +\rho \right) -\rho }.
 \end{equation*}
 \end{remark}
 
-\section{BGG resolution and branching}
-
-In \cite{lepowsky1977generalization} it was demonstrated that for the
-highest weight module $L^{\mu }$ with $\mu \in P^{+}$ the sequence
-
+\section{БГГ резольвента и ветвление}
+В работе \cite{lepowsky1977generalization} показано, что для модуля старшего веса $L^{\mu }$, где $\mu \in P^{+}$, последовательность
 \begin{equation}
 0\rightarrow M_{r}^{I}\overset{\delta _{r}}{\rightarrow }M_{r-1}^{I}\overset{%
 \delta _{r-1}}{\rightarrow }\ldots \overset{\delta _{1}}{\rightarrow }%
 M_{0}^{I}\overset{\varepsilon }{\rightarrow }L^{\mu }\rightarrow 0,
 \label{resolution sequence}
 \end{equation}
-with
+где
 \begin{equation}
 M_{k}^{I}=\bigoplus_{u\in U,\;\mathrm{length}\left( u\right)
 =k}M_{I}^{u\left( \mu +\rho \right) -\rho },\quad M_{0}^{I}=M_{I}^{\mu }
 \label{Verma elements sequence}
 \end{equation}
-(the generalized BGG resolution) is exact and formula (\ref{gen Weyl-Verma}%
-) is a cosequence of this resolution.
+(обобщенная БГГ резольвента), является точной и формула (\ref{gen Weyl-Verma}%
+) следует из этого разложения.
 
 \begin{figure}[h!bt]
  \noindent\centering{
    \includegraphics[width=140mm]{B2_Exact.pdf}}
- \caption{Injection $A_1\hookrightarrow B_2$ (see Figure \ref{fig:B2_Verma_Decomp}).
- The orthogonal partner is $A_1$ corresponding to the root $\alpha_1$.
- The resolution of the simple module $L^{\omega_1}$.
- Presented is the central part of the exact sequence
+ \caption{Вложение $A_1\hookrightarrow B_2$ (см. Рисунок \ref{fig:B2_Verma_Decomp}). Ортогональный партнер -- это подалгебра $A_1$, соответствующая корню $\alpha_1$.
+   Резольвента простого модуля $L^{\omega_1}$. Показана центральная часть точной последовательности
    $0 \to Im(\delta_2) \to \left( e^{\mu _{\widetilde{%
 \frak{a}}}\left( e\right) }\mathrm{ch}M_{I}^{\pi _{\afb}\left[ \omega_1 \right] -%
 \mathcal{D}_{\afb} }=M^{\omega_1}_{I}\right) \to
-   L^{\omega_1}\to 0 $.  Here $\mu _{\widetilde{\frak{a}}}\left( e\right) =\pi _{\aft}\left[ \mu \right] + \mathcal{D}_{\afb}$.
+   L^{\omega_1}\to 0 $.  Здесь $\mu _{\widetilde{\frak{a}}}\left( e\right) =\pi _{\aft}\left[ \mu \right] + \mathcal{D}_{\afb}$.
    }
 \end{figure}
 
 
 \begin{statement}
-
-Let $L^{\mu }$ be the highest weight $\frak{g}$-module with $\mu \in P^{+}$
-,let its regular subalgebra $\mathfrak{a}_{\bot }\hookrightarrow \frak{g}$
-be orthogonal to a reductive subalgebra $\frak{a}\hookrightarrow \frak{g}$.
-Then the decomposition (\ref{sing decomp main}) defines both the generalized
-resolution of $L^{\mu }$ with respect to $\frak{a}_{\perp }$ and the
-branching rules for $L^{\mu }$ with respect to $\frak{a}$ .
+Пусть $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$, и пусть регулярная подалгебра $\mu \in P^{+}$ ортогональна редуктивной подалгебре $\frak{a}\hookrightarrow \frak{g}$. Тогда разложение (\ref{sing decomp main}) определяет как обобщенную резольвенту $L^{\mu }$ по отношению к $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}$ .
 \end{statement}
 
 \begin{proof}
-Put
+Положим
 \begin{equation*}
 \mathrm{ch}M_{I}^{u\left( \mu +\rho \right) -\rho }=e^{\mu _{\widetilde{%
 \frak{a}}}\left( u\right) }\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
@@ -623,60 +603,41 @@ u\right) },\mathrm{ch}M_{I}^{\mu }=e^{\mu _{\widetilde{\frak{a}}}\left(
 e\right) }\mathrm{ch}M_{I}^{\pi _{\frak{a}_{\perp }}\left[ \mu \right] -%
 \mathcal{D}_{\frak{a}_{\perp }}}
 \end{equation*}
-with\ $\mu _{\widetilde{\frak{a}}}\left( u\right) ,\mu _{\frak{a}_{\perp
-}}\left( u\right) $ and $\mathcal{D}_{\frak{a}_{\perp }}$ as in Lemma \ref{Psi-decomp-lemma} and $%
-u\in U$ defined by (\ref{U-def}). This gives the elements of the filtration
-sequence (\ref{resolution sequence}).
+где \ $\mu _{\widetilde{\frak{a}}}\left( u\right) ,\mu _{\frak{a}_{\perp
+}}\left( u\right) $ и $\mathcal{D}_{\frak{a}_{\perp }}$ определены как в Лемме \ref{Psi-decomp-lemma}, а  $%
+u\in U$ определено формулой (\ref{U-def}). Тогда мы получаем элементы фильтрующей последовательности (\ref{resolution sequence}).
 
-Consider the set $\left\{ \mu _{\frak{a}_{\perp }}\left( u\right) |u\in
-U\right\} $ as the highest weights for the simple modules $L_{\frak{a}%
-_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ and evaluate their
-dimensions. Together with
+Рассмотрим множество $\left\{ \mu _{\frak{a}_{\perp }}\left( u\right) |u\in U\right\} $ как множество старших весов простых модулей $L_{\frak{a}%
+_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ и вычислим размерности этих модулей. Вместе с 
 $\left\{ \mu _{\widetilde{\mathfrak{a}}}\left( u\right) |u\in
-U\right\} $ this gives the set of singular weights
+U\right\} $ мы получим набор сингулярных весов
 \begin{equation*}
 \left\{ \epsilon (u)\;
 e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }
 \dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp
 }}\left( u\right) }\right) \right\} .
 \end{equation*}
-The branching $L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu
-\in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$ is
-then fixed by the injection fan $\Gamma _{\frak{a}\rightarrow \frak{g}}$ and
-the relation (\ref{recurrent rel}). The latter gives us the coefficients $k_{\xi
-}^{\left( \mu \right) }$ and thus defines $b_{\nu }^{\left( \mu \right) }$
-due to the property $b_{\nu }^{\left( \mu \right) }=k_{\nu }^{\left( \mu
-\right) }$ for $\nu \in \overline{C_{\frak{a}}}$ .
+Ветвление  $L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu
+\in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$  определяется веером вложения  $\Gamma _{\frak{a}\rightarrow \frak{g}}$ и соотношением (\ref{recurrent rel}), которое дает нам коэффициенты  $k_{\xi
+}^{\left( \mu \right) }$, а значит определяет и  $b_{\nu }^{\left( \mu \right) }$, так как  $b_{\nu }^{\left( \mu \right) }=k_{\nu }^{\left( \mu
+\right) }$ при $\nu \in \overline{C_{\frak{a}}}$ .
 \end{proof}
 
 \begin{corollary}
-
-Let $L^{\mu }$ be the highest weight $\frak{g}$-module with $\mu \in P^{+}$
-and $\frak{a}\hookrightarrow \frak{g}$ -- a reductive subalgebra in $\frak{g}
-$. Let $\frak{a}_{\perp }$, the orthogonal partner for $\frak{a}$, be
-equivalent to $A_{1}$, $\frak{a}_{\perp }\approx $ $A_{1}$, and $\widetilde{%
-\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$ with $\frak{h=\frak{h}_{\frak{a}}%
-}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. Let $L_{%
-\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }=\bigoplus\limits_{\nu \in P_{%
-\widetilde{\frak{a}}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\widetilde{\frak{a%
-}}}^{\nu }$ be the branching of $L^{\mu }$ with respect to $\widetilde{\frak{%
-a}}$. Then the branching coefficients $b_{\nu }^{\left( \mu \right) }$
-define the generalized resolution (\ref{resolution sequence}) of $L^{\mu }$
-with respect to $\frak{a}_{\perp }$.
+Пусть  $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$ и  $\frak{a}\hookrightarrow \frak{g}$ -- редуктивная подалгебры $\frak{g}$. Пусть $\frak{a}_{\perp }$ -- ортогональный партнер для $\frak{a}$, -- эквивалентен  $A_{1}$, $\frak{a}_{\perp }\approx $ $A_{1}$, и $\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$ с $\frak{h=\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. Пусть $L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }=\bigoplus\limits_{\nu \in P_{\widetilde{\frak{a}}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\widetilde{\frak{a}}}^{\nu }$ -- ветвление модуля $L^{\mu }$ относительно подалгебры $\widetilde{\frak{%
+a}}$. Тогда коэффициенты $b_{\nu }^{\left( \mu \right) }$ определяют обобщенную резольвенту (\ref{resolution sequence}) модуля $L^{\mu }$
+по отношению к  $\frak{a}_{\perp }$.
 \end{corollary}
 
 \begin{proof}
-Let $\alpha $ be the simple root of $A_{1}$. Use the Weyl transformations
-to identify it with some simple root of $\frak{g}$, say $\alpha _{1}$.
-Construct the singular element for the module $L_{\frak{g}\downarrow
-\widetilde{\frak{a}}}^{\mu }$, i.e. the $\Psi _{\widetilde{\frak{a}}%
+Пусть $\alpha $ -- простой корень  $A_{1}$. Используем преобразования из группы Вейля чтобы перевести его в некоторый простой корень алгебры $\frak{g}$, например $\alpha _{1}$. Построим сингулярный элемент для модуля  $L_{\frak{g}\downarrow
+\widetilde{\frak{a}}}^{\mu }$, то есть  $\Psi _{\widetilde{\frak{a}}%
 }^{\left( L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }\right)
 }=\sum_{\nu \in P_{\widetilde{\frak{a}}}^{+},b_{\nu }^{\left( \mu \right)
 }>0}b_{\nu }^{\left( \mu \right) }\Psi _{\widetilde{\frak{a}}}^{\left( \nu
-\right) }$ , and decompose it $\Psi _{\widetilde{\frak{a}}}^{\left( L_{\frak{%
+\right) }$, и разложим его $\Psi _{\widetilde{\frak{a}}}^{\left( L_{\frak{%
 g}\downarrow \widetilde{\frak{a}}}^{\mu }\right) }=k_{\xi }^{\left( \mu
-\right) }e^{\xi }$. In our case the representatives $u$ in the
-recurrent relation (\ref{recurrent rel}) are uniquely determined by the weight $\xi $:
+\right) }e^{\xi }$. В нашем случае представители $u$ в рекуррентном соотношении (\ref{recurrent rel}) определяются весом $\xi $ однозначно:
 \begin{equation*}
 \epsilon (u\left( \xi \right) )\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{%
 \frak{a}_{\perp }}\left( u\left( \xi \right) \right) }\right) =-s\left(
@@ -684,7 +645,7 @@ recurrent relation (\ref{recurrent rel}) are uniquely determined by the weight $
 \widetilde{\frak{a}}\rightarrow \frak{g}}}s\left( \gamma +\gamma _{0}\right)
 k_{\xi +\gamma }^{\left( \mu \right) }.
 \end{equation*}
-We have
+Тогда
 \begin{equation*}
 \dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\left(
 \xi \right) \right) }\right) =\left| s\left( \gamma _{0}\right) k_{\xi
@@ -692,66 +653,42 @@ We have
 \rightarrow \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma
 }^{\left( \mu \right) }\right|
 \end{equation*}
-and
+и
 \begin{equation*}
 \mu _{\frak{a}_{\perp }}\left( u\left( \xi \right) \right) =\frac{1}{2}%
 \left( \dim \left( L_{A_{1}}^{\mu \left( \xi \right) }\right) -1\right)
 \alpha _{1}
 \end{equation*}
-The set of generalized Verma modules $e^{\xi +\mathcal{D}%
+Таким образом, множество обобщенных модулей Верма  $e^{\xi +\mathcal{D}%
 _{\frak{a}_{\perp }}}\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
-u\left( \xi \right) \right) }$ is thus fixed:
+u\left( \xi \right) \right) }$ теперь определено:
 \begin{equation*}
 \left\{ e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }\mathrm{ch}%
 M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }|u\in U\right\} .
 \end{equation*}
-Classifying these modules according to the length of $u$
-we get the components (\ref{Verma elements sequence}) of the resolution (\ref{resolution sequence}).
+Упорядочивая эти модули по длине $u$ мы получаем компоненты (\ref{Verma elements sequence}) резольвенты (\ref{resolution sequence}).
 \end{proof}
 
 
 
-\section{Conclusions}
+\section{Заключение}
 
 \label{sec:conclusions}
+В работе \cite{2010arXiv1007.0318L} было показано, что метод веера вложения работает также и для специальных вложений. Надо заметить, что в этом случае разложения Вейля-Верма тоже могут быть получены. Резольвенты, соответствующие специальным подалгебрам, описывают соотношения между проекциями характера начального модуля и обобщенными модулями Верма со старшими весами в подпространстве $h^*$.
 
-In \cite{2010arXiv1007.0318L} it was demonstrated that the injection fan
-recursive mechanism works also for special injections. It must be mentioned
-that in this case the Weyl-Verma decompositions can also be obtained. The
-resolutions corresponding to special subalgebras describe the relations
-between the projections of characters of the initial module and the generalized
-Verma modules with highest weights in the subspace of $h^*$.
+Рассмотрим ситуацию, когда выбор простых корней зафиксирован какими-то внешними факторами (возникающими, например, из требований физических приложений). В этом случае ортогональный партнер не может порождаться только простыми корнями. Элементы   $\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta
+^{+}\setminus \Delta _{I}^{+}}\frak{g}_{\eta }$ не образуют подалгебру в  $%
+\mathfrak{g}$, так как некоторые не простые корни отсутствуют в  $\Delta ^{+}\setminus
+\Delta _{I}^{+}$. Важно отметить, что в этом случае формула Вейля-Верма по-прежнему существует. В ней обобщенные модули Верма соответствуют сжатиями \cite{Doebner1967Melsheimer} алгебры $%
+\frak{n}^{+}$ и соотношения Вейля-Верма описывают разложение пространства представления $L^{\mu}$ в набор обобщенных модулей Верма сжатой алгебры  $U\left(\frak{n}_c^{+}\right)$. Весовые векторы образованы базисом Пуанкаре-Биркгофа-Витта алгебр $U\left(\frak{n}_c^{+}\right)$ и
+$U\left( \mathfrak{a}_{\bot} \right)$. Чтобы рассмотреть такое пространство как  $%
+\mathfrak{g}$-модуль мы должны выполнить деформацию \cite
+{Nijenhuis1966Richardson} алгебры $\frak{n}_c^{+}$ (то есть восстановить первоначальный закон композиции). Пространство сохраняется и после такой деформации генераторы начальной алгебры будут действовать на нем правильным образом.
 
-Consider the situation where the simple roots are prescribed by some
-external factors (originating in physical applications conditions, for
-example). In this case the orthogonal partner cannot be generated by simple
-root vectors only. The elements $\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta
-^{+}\setminus \Delta _{I}^{+}}\frak{g}_{\eta }$ do not form a subalgebra in $%
-\mathfrak{g}$ because some nonsimple roots are lost in $\Delta ^{+}\setminus
-\Delta _{I}^{+}$. It is important to indicate that in this case the
-Weyl-Verma formula still exists. In it the generalized Verma modules
-correspond to the contractions \cite{Doebner1967Melsheimer} of the algebra $%
-\frak{n}^{+}$ and the Weyl-Verma relations describe the decomposition of
-the representation space of $L^{\mu}$ into the set of generalized Verma
-modules of contracted algebra $U\left(\frak{n}_c^{+}\right)$. The weight
-vectors are formed by the PBW-basis of $U\left(\frak{n}_c^{+}\right)$ and of
-$U\left( \mathfrak{a}_{\bot} \right)$. To consider such space as a $%
-\mathfrak{g}$-module we must perform the deformation \cite
-{Nijenhuis1966Richardson} of the algebra $\frak{n}_c^{+}$ (and thus restore the
-initial composition law). The space survives and after such a deformation
-the initial algebra generators will act properly on it.
+\section{Благодарности}
+Авторы выражают свою искреннюю благодарность всем, кто подготовил и организовал III международную конференцию ``Модели квантовой теории поля 2010'', посвященную 70-летию А.Н. Васильева. 
 
-\section{Acknowledgments}
-
-The authors express their sincere gratitude to all those who prepared and
-performed the III International Conference "Models in Quantum Field Theory -
-2010" dedicated to 70-th anniversary of A. N. Vassiliev.
-
-The work was supported in part by the RFFI grant N 09-01-00504 and by the Chebyshev Laboratory
-(Department of Mathematics and Mechanics, Saint-Petersburg State
-University) under the grant 11.G34.31.2006 of the Government of the
-Russian Federation.
-
+Данная работа была частично поддержана грантом РФФИ № 09-01-00504 и лабораторией имени Чебышева (математико-механический факультет СПбГУ) из средств гранта 11.G34.31.2006 правительства Российской Федерации.
 
 \bibliographystyle{plain}
 \bibliography{article-ru}
