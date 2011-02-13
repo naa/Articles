@@ -13,10 +13,9 @@
 \newtheorem{theorem}{Теорема}
 \newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{lemma}{Лемма}
-\newtheorem{mynote}{Замечание}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Определение}
-\newtheorem{remark}{Ремарка}
+\newtheorem{remark}{Замечание}
 \newtheorem{example}{Пример}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
@@ -252,7 +251,7 @@ u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad u\in U.
 \Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w(\mu +\rho
 )-\rho },
 \end{equation*}
-а именно,
+а именно:
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi
 ^{\left( 0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
@@ -391,7 +390,7 @@ _{\left( \frak{a}_{\perp }\right) }\left[ u(\mu +\rho )-\rho
 
 \begin{remark}
 
-В работе \cite{2010arXiv1007.0318L} разложение, аналогичное формуле (\ref{singular main}) было использовано для построения рекуррентных соотношений для коэффициентов ветвления $k_{\xi}^{\left( \mu \right) }$, соответствующих вложению  $\frak{a}\hookrightarrow \frak{g}$:
+В работе \cite{2010arXiv1007.0318L} разложение, аналогичное формуле (\ref{singular main}), было использовано для построения рекуррентных соотношений для коэффициентов ветвления $k_{\xi}^{\left( \mu \right) }$, соответствующих вложению  $\frak{a}\hookrightarrow \frak{g}$:
 \begin{equation}
 \begin{array}{c}
 k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
@@ -418,7 +417,7 @@ _{\frak{a}}(\pi _{\widetilde{\frak{a}}}\alpha )}=-\sum_{\gamma \in P_{%
 \end{equation}
 Веса из множества $\left\{ \xi \right\} _{\widetilde{\frak{a}}\rightarrow \frak{%
 g}}$ сдвигаются на $\gamma _{0}$ -- младший вектор в $\left\{ \xi
-\right\} $ -- и исключается нулевой элемент:
+\right\} $, и исключается нулевой элемент:
 \begin{equation}
 \Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}}=\left\{ \xi -\gamma
 _{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
@@ -431,7 +430,7 @@ _{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
 
 \begin{statement}
 %\bigskip
-Для ортогональной подалгебры  $\frak{a}_{\perp }$ в $\frak{g}$ (являющейся ортогональным партнером редуктивной подалгебры $\frak{a}\hookrightarrow \frak{g}$) характера интегрируемого модуля старшего веса  $L^{\mu }$ может быть представлен в виде комбинации (с целочисленными коэффициентами) параболических модулей Верма, распределенных по множеству весов $e^{\mu _{\widetilde{\mathfrak{a}}}\left(
+Для ортогональной подалгебры  $\frak{a}_{\perp }$ в $\frak{g}$ (являющейся ортогональным партнером редуктивной подалгебры $\frak{a}\hookrightarrow \frak{g}$) характер интегрируемого модуля старшего веса  $L^{\mu }$ может быть представлен в виде комбинации (с целочисленными коэффициентами) характеров параболических модулей Верма, распределенных по множеству весов $e^{\mu _{\widetilde{\mathfrak{a}}}\left(
 u\right) }$:
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;\epsilon (u)e^{\mu _{%
@@ -471,14 +470,14 @@ _{\perp }}<r$. Так как диаграмма Дынкина для любой
 
 Следовательно мы можем (переопределяя множество  $\Delta ^{+}$) отождествить $\Delta _{\frak{a}_{\perp }}^{+}$ с подмножеством  $\Delta _{I}^{+}$, где $I\subset S$. В результате мы можем определить объекты, необходимые для построения обобщенных модулей Верма \cite{lepowsky1977generalization,humphreys2008representations}. У нас есть два множества корневых векторов $\left\{ x_{\xi }\in \frak{g}_{\xi }|\xi \in \Delta _{I}^{+}\right\}
 $ и $\left\{ x_{\eta }\in \frak{g}_{\eta }|\eta \in \Delta ^{+}\setminus
-\Delta _{I}^{+}\right\} $, и соответствующие нильпотентные подалгбры в  $\frak{n}%
+\Delta _{I}^{+}\right\} $, и соответствующие нильпотентные подалгебры в  $\frak{n}%
 ^{+}$:
 \begin{equation*}
 \frak{n}_{I}^{+}:=\sum_{\xi \in \Delta _{I}^{+}}\frak{g}_{\xi },\quad
 \frak{u}_{I}^{+}:=\sum_{\eta \in \Delta ^{+}\setminus \Delta _{I}^{+}}\frak{g}%
 _{\eta }.
 \end{equation*}
-Первая подалгебра, вместе со своей отрицательной копией  $\frak{n}%
+Первая подалгебра вместе со своей отрицательной копией  $\frak{n}%
 _{I}^{-} $ порождает простую подалгебру 
 \begin{equation*}
 \frak{s}_{I}=\frak{n}_{I}^{-}+\frak{h}_{I}+\frak{n}_{I}^{+}.
@@ -487,7 +486,7 @@ _{I}^{-} $ порождает простую подалгебру
 \begin{equation*}
 \frak{l}_{I}=\frak{n}_{I}^{-}+\frak{h}+\frak{n}_{I}^{+}.
 \end{equation*}
-Полупрямое произведение  $\frak{l}_{I}$ и $\frak{u}_{I}^{+}$ дает параболическую подалгебры $\frak{p}_{I}\hookrightarrow \frak{g}$ :
+Полупрямое произведение  $\frak{l}_{I}$ и $\frak{u}_{I}^{+}$ дает параболическую подалгебру $\frak{p}_{I}\hookrightarrow \frak{g}$ :
 \begin{equation}
 \frak{p}_{I}=\frak{l}_{I}\vartriangleright \frak{u}_{I}^{+}.
 \label{paralolic subalg}
@@ -501,7 +500,7 @@ M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=U\left( \frak{g}\right)
 _{\perp }}\left( u\right) }.
 \end{equation*}
 
-Это  \textit{обобщенные модули Верма}  \cite{lepowsky1977generalization}
+Это  \textit{обобщенные модули Верма}  \cite{lepowsky1977generalization},
 порожденные старшими весами  $\mu _{\frak{a}%
 _{\perp }}\left( u\right) $. Как  $U\left( \frak{u}_{I}^{-}\right) $-модуль каждый  $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ изоморфен  $%
 U\left( \frak{u}_{I}^{-}\right) \otimes L_{\frak{a}_{\perp }}^{\mu _{%
@@ -591,7 +590,7 @@ M_{k}^{I}=\bigoplus_{u\in U,\;\mathrm{length}\left( u\right)
 
 
 \begin{statement}
-Пусть $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$, и пусть регулярная подалгебра $\mu \in P^{+}$ ортогональна редуктивной подалгебре $\frak{a}\hookrightarrow \frak{g}$. Тогда разложение (\ref{sing decomp main}) определяет как обобщенную резольвенту $L^{\mu }$ по отношению к $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}$ .
+Пусть $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$, и пусть регулярная подалгебра $\mu \in P^{+}$ ортогональна редуктивной подалгебре $\frak{a}\hookrightarrow \frak{g}$. Тогда разложение (\ref{sing decomp main}) определяет как обобщенную резольвенту $L^{\mu }$ по отношению к $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к подалгебре $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}$ .
 \end{statement}
 
 \begin{proof}
@@ -624,7 +623,7 @@ e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }
 \end{proof}
 
 \begin{corollary}
-Пусть  $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$ и  $\frak{a}\hookrightarrow \frak{g}$ -- редуктивная подалгебры $\frak{g}$. Пусть $\frak{a}_{\perp }$ -- ортогональный партнер для $\frak{a}$, -- эквивалентен  $A_{1}$, $\frak{a}_{\perp }\approx $ $A_{1}$, и $\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$ с $\frak{h=\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. Пусть $L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }=\bigoplus\limits_{\nu \in P_{\widetilde{\frak{a}}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\widetilde{\frak{a}}}^{\nu }$ -- ветвление модуля $L^{\mu }$ относительно подалгебры $\widetilde{\frak{%
+Пусть  $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$ и  $\frak{a}\hookrightarrow \frak{g}$ -- редуктивная подалгебра $\frak{g}$. Пусть $\frak{a}_{\perp }$ -- ортогональный партнер для $\frak{a}$, -- эквивалентен  $A_{1}$, $\frak{a}_{\perp }\approx $ $A_{1}$, и $\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$ с $\frak{h=\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. Пусть $L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }=\bigoplus\limits_{\nu \in P_{\widetilde{\frak{a}}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\widetilde{\frak{a}}}^{\nu }$ -- ветвление модуля $L^{\mu }$ относительно подалгебры $\widetilde{\frak{%
 a}}$. Тогда коэффициенты $b_{\nu }^{\left( \mu \right) }$ определяют обобщенную резольвенту (\ref{resolution sequence}) модуля $L^{\mu }$
 по отношению к  $\frak{a}_{\perp }$.
 \end{corollary}
@@ -666,7 +665,7 @@ u\left( \xi \right) \right) }$ теперь определено:
 \left\{ e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }\mathrm{ch}%
 M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }|u\in U\right\} .
 \end{equation*}
-Упорядочивая эти модули по длине $u$ мы получаем компоненты (\ref{Verma elements sequence}) резольвенты (\ref{resolution sequence}).
+Упорядочивая эти модули по длине $u$, мы получаем компоненты (\ref{Verma elements sequence}) резольвенты (\ref{resolution sequence}).
 \end{proof}
 
 
@@ -674,7 +673,7 @@ M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }|u\in U\right\} .
 \section{Заключение}
 
 \label{sec:conclusions}
-В работе \cite{2010arXiv1007.0318L} было показано, что метод веера вложения работает также и для специальных вложений. Надо заметить, что в этом случае разложения Вейля-Верма тоже могут быть получены. Резольвенты, соответствующие специальным подалгебрам, описывают соотношения между проекциями характера начального модуля и обобщенными модулями Верма со старшими весами в подпространстве $h^*$.
+В работе \cite{2010arXiv1007.0318L} было показано, что метод веера вложения работает также и для специальных вложений. Надо заметить, что  разложения Вейля-Верма также могут быть получены в этом случае. Резольвенты, соответствующие специальным подалгебрам, описывают соотношения между проекциями характера начального модуля и обобщенными модулями Верма со старшими весами в подпространстве $h^*$.
 
 Рассмотрим ситуацию, когда выбор простых корней зафиксирован какими-то внешними факторами (возникающими, например, из требований физических приложений). В этом случае ортогональный партнер не может порождаться только простыми корнями. Элементы   $\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta
 ^{+}\setminus \Delta _{I}^{+}}\frak{g}_{\eta }$ не образуют подалгебру в  $%
