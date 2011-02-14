@@ -1,3 +1,8 @@
+ExpandNCM[(h : NonCommutativeMultiply)[a___, b_Plus, c___]] :=  Distribute[h[a, b, c], Plus, h, Plus, ExpandNCM[h[##]] &];
+ExpandNCM[a_] := ExpandAll[a];
+ExpandNCM[(a + b) ** (a + b) ** (a + b)];
+keys = DownValues[#,Sort->False][[All,1,1,1]]&;
+
 clear[standardBase];
 makeSimpleRootSystem[A,rank_Integer]:=standardBase @@@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank},{j,1,rank+1}];
 makeSimpleRootSystem[B,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]];
@@ -25,51 +30,501 @@ toFundamentalChamber[{simpleRoots__standardBase}][vec_standardBase]:=
 	      vec,
 	      Head[#]=!=reflection[Null]&]];
 orbit[{simpleRoots__standardBase}][{weights__standardBase}]:=
-    Module[{total={}},
-	   NestWhileList[
-	       Function[x,
-			Union[Flatten[Map[Function[y,
-						   Map[reflection[#][y]&,Cases[{simpleRoots},z_ /; z.y>0]]],x]]]],
-	       {weights},
-	       Function[y,
-			Module[{t=y=!={}},total=Union[total,y];t]
-		       ]]];
+    NestWhileList[
+	Function[x,
+		 Union[Flatten[Map[Function[y,
+					    Map[reflection[#][y]&,Cases[{simpleRoots},z_ /; z.y>0]]],x]]]],
+	{weights},
+	#=!={}&]
+
 orbit[{simpleRoots__standardBase}][weight_standardBase]:=orbit[{simpleRoots}][{toFundamentalChamber[{simpleRoots}][weight]}];
 positiveRoots[{simpleRoots__standardBase}]:=Map[-#&,Flatten[orbit[{simpleRoots}][Map[-#&,{simpleRoots}]]]];
 weightSystem[{simpleRoots__standardBase}][higestWeight_standardBase]:=Module[{minusPosRoots=-positiveRoots[{simpleRoots}]},
 									     NestWhileList[Function[x,Complement[
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@{simpleRoots})]
-										 ,x]],{higestWeight},#=!={}&]]
-
+										 ,x]],{higestWeight},#=!={}&]];
 freudenthalMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBase]:=
-    Module[{weights=Rest[Flatten[weightSystem[{simpleRoots}][highestWeight]]],
+    Module[{rh=rho[{simpleRoots}],weights,mults,c,insideQ,
 	    posroots=positiveRoots[{simpleRoots}],
-	    rh=rho[{simpleRoots}],
-	    mults,
 	    toFC=toFundamentalChamber[{simpleRoots}]},
+	   weights=Sort[ Rest[Flatten[weightSystem[{simpleRoots}][highestWeight]]], #1.rh>#2.rh&];
+	   c:=(#+rh).(#+rh)&;
 	   mults[highestWeight]=1;
-	   Print[weights];
+	   insideQ:=IntegerQ[mults[toFC[#]]]&;
 	   Scan[Function[v,
 			 mults[v]=
-			 2/((highestWeight+rh).(highestWeight+rh)-(v+rh).(v+rh))*
+			 2/(c[highestWeight]-c[v])*
 			 Plus@@
 			     Map[Function[r,
 					  Plus@@Map[mults[toFC[#[[1]]]]*#[[2]]&,
-						    Rest[NestWhileList[{#[[1]]+r,#[[2]]+r.r}&,
+						    Rest[NestWhileList[({#[[1]]+r,#[[2]]+r.r})&,
 								       {v,v.r},
-								       IntegerQ[mults[toFC[#[[1]]+r]]]&]]]]
-				 ,posroots];
-			 Print[mults[v]];
-			],
+								       insideQ[#[[1]]+r]&]]]]
+				 ,posroots]],
+		weights];
+	   mults];
+orbitWithEps[{simpleRoots__standardBase}][weight_standardBase]:=Flatten[Drop[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[{simpleRoots}][weight]],-1],1];
+racahMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBase]:=
+    Module[{rh=rho[{simpleRoots}],weights,mults,c,insideQ,
+	    fan,
+	    toFC=toFundamentalChamber[{simpleRoots}]},
+	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[{simpleRoots}][rh]]];
+	   weights=Sort[ Rest[Flatten[weightSystem[{simpleRoots}][highestWeight]]], #1.rh>#2.rh&];
+	   mults[highestWeight]=1;
+	   insideQ:=IntegerQ[mults[toFC[#]]]&;
+	   Scan[Function[v,
+			 mults[v]=
+			 Plus@@(fan /. {x_standardBase,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
 		weights];
 	   mults]
 
+{{standardBase[1,0],2},{standardBase[0,1],2}} /. {x_standardBase,e_Integer} /; x[[1]]>0 :> e*mults[toFC[v+x]]
 
+Out[26]= {2 mults[toFC[v + standardBase[1, 0]]], {standardBase[0, 1], 2}}
+
+Out[25]= {2 mults[toFC[v + standardBase[1, 0]]], 
+ 
+>    2 mults[toFC[v + standardBase[0, 1]]]}
+
+mts2=freudenthalMultiplicities[b2][standardBase[100,0]]
+
+Timing[freudenthalMultiplicities[b2][standardBase[100,0]]]
+
+Out[91]= {74.3446, mults$250}
+
+mts2[standardBase[0,0]]
+
+Out[90]= 51
+
+Out[89]= mults$248
+
+mts2[standardBase[0,0]]
+
+Out[88]= 51
+
+Out[87]= mults$246
+
+Timing[racahMultiplicities[b2][standardBase[100,0]]]
+
+Out[92]= {4.53228, mults$252}
+
+Timing[racahMultiplicities[b2][standardBase[200,0]]]
+
+
+Out[85]= {18.1491, mults$242}
+
+Timing[freudenthalMultiplicities[b2][standardBase[200,0]]]
+
+Out[86]= $Aborted
+
+mts2[standardBase[0,0]]
+
+Out[84]= 101
+
+Out[83]= mults$240
+
+standardBase[1, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[1, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{0, -1, 0, 0, 0, 0, 0}
+1
+standardBase[0, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 0, 0, 0, 0, 0}
+2
+
+Out[70]= mults$226
+
+standardBase[1, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+-1
+standardBase[1, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{0, 1, 0, 0, 0, 0, 0}
+1
+standardBase[0, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{1, -1, 0, 0, 0, 0, 0}
+0
+
+Out[68]= mults$224
+
+mts2[standardBase[1,0]]
+
+Out[66]= 1
+
+Out[65]= 0
+
+standardBase[1, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+standardBase[1, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{0, 1, 0, 0, 0, 0, 0}
+standardBase[0, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{1, -1, 0, 0, 0, 0, 0}
+
+Out[64]= mults$222
+
+standardBase[1, 1]
+               1  3                      3    1
+{{standardBase[-, -], -1}, {standardBase[-, -(-)], -1}, 
+               2  2                      2    2
+ 
+                    1   3                     1    3
+>   {standardBase[-(-), -], 1}, {standardBase[-, -(-)], 1}, 
+                    2   2                     2    2
+ 
+                    3   1                        1     3
+>   {standardBase[-(-), -], -1}, {standardBase[-(-), -(-)], -1}, 
+                    2   2                        2     2
+ 
+                    3     1
+>   {standardBase[-(-), -(-)], 1}}
+                    2     2
+{0, 0, 0, 0, 0, 0, 0}
+standardBase[1, 0]
+               1  3                      3    1
+{{standardBase[-, -], -1}, {standardBase[-, -(-)], -1}, 
+               2  2                      2    2
+ 
+                    1   3                     1    3
+>   {standardBase[-(-), -], 1}, {standardBase[-, -(-)], 1}, 
+                    2   2                     2    2
+ 
+                    3   1                        1     3
+>   {standardBase[-(-), -], -1}, {standardBase[-(-), -(-)], -1}, 
+                    2   2                        2     2
+ 
+                    3     1
+>   {standardBase[-(-), -(-)], 1}}
+                    2     2
+{0, 0, 0, 0, 0, 0, 0}
+standardBase[0, 0]
+               1  3                      3    1
+{{standardBase[-, -], -1}, {standardBase[-, -(-)], -1}, 
+               2  2                      2    2
+ 
+                    1   3                     1    3
+>   {standardBase[-(-), -], 1}, {standardBase[-, -(-)], 1}, 
+                    2   2                     2    2
+ 
+                    3   1                        1     3
+>   {standardBase[-(-), -], -1}, {standardBase[-(-), -(-)], -1}, 
+                    2   2                        2     2
+ 
+                    3     1
+>   {standardBase[-(-), -(-)], 1}}
+                    2     2
+{0, 0, 0, 0, 0, 0, 0}
+
+Out[62]= mults$220
+
+standardBase[1, 1]
+                1  3                      3    1
+{{{standardBase[-, -], -1}, {standardBase[-, -(-)], -1}}, 
+                2  2                      2    2
+ 
+                     1   3                     1    3
+>   {{standardBase[-(-), -], 1}, {standardBase[-, -(-)], 1}}, 
+                     2   2                     2    2
+ 
+                     3   1                        1     3
+>   {{standardBase[-(-), -], -1}, {standardBase[-(-), -(-)], -1}}, 
+                     2   2                        2     2
+ 
+                     3     1
+>   {{standardBase[-(-), -(-)], 1}}}
+                     2     2
+{{0, 0}, {0, 0}, {0, 0}, {0}}
+
+Thread::tdlen: Objects of unequal length in {0, 0} + {0, 0} + {0, 0} + {0}
+     cannot be combined.
+
+Thread::tdlen: Objects of unequal length in {0} + {0, 0} cannot be combined.
+standardBase[1, 0]
+                1  3                      3    1
+{{{standardBase[-, -], -1}, {standardBase[-, -(-)], -1}}, 
+                2  2                      2    2
+ 
+                     1   3                     1    3
+>   {{standardBase[-(-), -], 1}, {standardBase[-, -(-)], 1}}, 
+                     2   2                     2    2
+ 
+                     3   1                        1     3
+>   {{standardBase[-(-), -], -1}, {standardBase[-(-), -(-)], -1}}, 
+                     2   2                        2     2
+ 
+                     3     1
+>   {{standardBase[-(-), -(-)], 1}}}
+                     2     2
+{{0, 0}, {0, 0}, {0, 0}, {0}}
+
+Thread::tdlen: Objects of unequal length in {0, 0} + {0, 0} + {0, 0} + {0}
+     cannot be combined.
+
+General::stop: Further output of Thread::tdlen
+     will be suppressed during this calculation.
+standardBase[0, 0]
+                1  3                      3    1
+{{{standardBase[-, -], -1}, {standardBase[-, -(-)], -1}}, 
+                2  2                      2    2
+ 
+                     1   3                     1    3
+>   {{standardBase[-(-), -], 1}, {standardBase[-, -(-)], 1}}, 
+                     2   2                     2    2
+ 
+                     3   1                        1     3
+>   {{standardBase[-(-), -], -1}, {standardBase[-(-), -(-)], -1}}, 
+                     2   2                        2     2
+ 
+                     3     1
+>   {{standardBase[-(-), -(-)], 1}}}
+                     2     2
+{{0, 0}, {0, 0}, {0, 0}, {0}}
+
+Out[60]= mults$218
+
+standardBase[1, 1]
+{{0, 0}, {0, 0}, {0, 0}, {0}}
+
+Thread::tdlen: Objects of unequal length in {0, 0} + {0, 0} + {0, 0} + {0}
+     cannot be combined.
+
+Thread::tdlen: Objects of unequal length in {0} + {0, 0} cannot be combined.
+standardBase[1, 0]
+{{0, 0}, {0, 0}, {0, 0}, {0}}
+
+Thread::tdlen: Objects of unequal length in {0, 0} + {0, 0} + {0, 0} + {0}
+     cannot be combined.
+
+General::stop: Further output of Thread::tdlen
+     will be suppressed during this calculation.
+standardBase[0, 0]
+{{0, 0}, {0, 0}, {0, 0}, {0}}
+
+Out[58]= mults$216
+
+Thread::tdlen: Objects of unequal length in {0, 0} + {0, 0} + {0, 0} + {0}
+     cannot be combined.
+
+Thread::tdlen: Objects of unequal length in {0} + {0, 0} cannot be combined.
+
+Thread::tdlen: Objects of unequal length in {0, 0} + {0, 0} + {0, 0} + {0}
+     cannot be combined.
+
+General::stop: Further output of Thread::tdlen
+     will be suppressed during this calculation.
+
+Out[52]= mults$210
+
+mts2[standardBase[1,0]]
+
+Out[50]= 0
+
+Out[49]= 0
+
+             3  5
+standardBase[-, -]
+             2  2
+             5  1
+standardBase[-, -]
+             2  2
+             1  5
+standardBase[-, -]
+             2  2
+             3    1
+standardBase[-, -(-)]
+             2    2
+               1   3
+standardBase[-(-), -]
+               2   2
+             1    1
+standardBase[-, -(-)]
+             2    2
+               1   1
+standardBase[-(-), -]
+               2   2
+             3  3
+standardBase[-, -]
+             2  2
+             5    1
+standardBase[-, -(-)]
+             2    2
+             1  3
+standardBase[-, -]
+             2  2
+             3    3
+standardBase[-, -(-)]
+             2    2
+               1   1
+standardBase[-(-), -]
+               2   2
+             1    3
+standardBase[-, -(-)]
+             2    2
+               1     1
+standardBase[-(-), -(-)]
+               2     2
+             1  3
+standardBase[-, -]
+             2  2
+             3    1
+standardBase[-, -(-)]
+             2    2
+               1   3
+standardBase[-(-), -]
+               2   2
+             1    3
+standardBase[-, -(-)]
+             2    2
+               3   1
+standardBase[-(-), -]
+               2   2
+               1     3
+standardBase[-(-), -(-)]
+               2     2
+               3     1
+standardBase[-(-), -(-)]
+               2     2
+
+Out[48]= mults$208
+
+mts2[1,0]
+
+Scan::argtu: Scan called with 1 argument; 2 or 3 arguments are expected.
+
+Out[17]= mults$99[1, 0]
+
+MapIndexed[g,{{1,2},{3,4}},1]
+
+Out[5]= {g[{1, 2}, {1}], g[{3, 4}, {2}]}
+
+Out[4]= {g[{g[1, {1, 1}], g[2, {1, 2}]}, {1}], 
+ 
+>    g[{g[3, {2, 1}], g[4, {2, 2}]}, {2}]}
+
+Out[3]= {g[{g[1, {1, 1}], g[2, {1, 2}]}, {1}], 
+ 
+>    g[{g[3, {2, 1}], g[4, {2, 2}]}, {2}]}
+
+Out[2]= {{{{1, {1, 1}}, {2, {1, 2}}}, {1}}, {{{3, {2, 1}}, {4, {2, 2}}}, {2}}}
+
+Out[1]= {{{1, 2}, {1}}, {{3, 4}, {2}}}
+
+orbit[b2][rho[b2]]
+
+                        3  1                  1  3                3    1
+Out[36]= {{standardBase[-, -]}, {standardBase[-, -], standardBase[-, -(-)]}, 
+                        2  2                  2  2                2    2
+ 
+                     1   3                1    3
+>    {standardBase[-(-), -], standardBase[-, -(-)]}, 
+                     2   2                2    2
+ 
+                     3   1                  1     3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)]}, 
+                     2   2                  2     2
+ 
+                     3     1
+>    {standardBase[-(-), -(-)]}, {}}
+                     2     2
+
+                        3  1
+Out[34]= {{standardBase[-, -]}}
+                        2  2
+
+b2
+
+Out[33]= {standardBase[1, -1], standardBase[0, 1]}
+
+                        3  1
+Out[32]= {{standardBase[-, -]}}
+                        2  2
+
+                           
+Syntax::sntxf: "b2 \                          " cannot be followed by 
+                                        3  1 \
+                Out[32]= {{standardBase[-
+    ", -]}} \".
+
+                        3  1                  1  3                3    1
+Out[76]= {{standardBase[-, -]}, {standardBase[-, -], standardBase[-, -(-)]}, 
+                        2  2                  2  2                2    2
+ 
+                     1   3                1    3
+>    {standardBase[-(-), -], standardBase[-, -(-)]}, 
+                     2   2                2    2
+ 
+                     3   1                  1     3
+>    {standardBase[-(-), -], standardBase[-(-), -(-)]}, 
+                     2   2                  2     2
+ 
+                     3     1
+>    {standardBase[-(-), -(-)]}, {}}
+                     2     2
 
 freudenthal[{simpleRoots__standardBase}][highestWeight_standardBase]:=
     
-
-Out[135]= {}
 
 NestWhileList[#+1&,1,#+1<1&]
 
@@ -105,522 +560,7883 @@ Out[167]= {standardBase[1, -1], standardBase[0, 1]}
 
 Out[166]= standardBase[1, 0]
 
-mts=freudenthalMultiplicities[b2][standardBase[2,0]]
+rho[b2]
 
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
+                      3  1
+Out[47]= standardBase[-, -]
+                      2  2
+
+Sort[ Rest[Flatten[weightSystem[b2][standardBase[2,0]]]], #1.rho[b2]>#2.rho[b2]&]
+
+Out[48]= {standardBase[1, 1], standardBase[1, 0], standardBase[0, 0]}
+
+mts=freudenthalMultiplicities[b2][standardBase[44,0]]
+
+Timing[racahMultiplicities[b2][standardBase[54,0]]]
+
+
+mts3:=racahMultiplicities[b2][standardBase[54,0]]
+
+mts3[standardBase[1,0]]
+
+Out[77]= 27
+
+Out[76]= 28
+
+Out[73]= {1.41609, mults$230}
+
+standardBase[53, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[53, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{0, -1, 0, 0, 0, 0, 0}
+1
+standardBase[52, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[52, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[51, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[52, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 0, 0, 0, 0, 0}
 2
--
-3
+standardBase[51, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-4
--
-5
-
-Out[11]= mults$91
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-0
-0
-0
-
-Out[4]= mults$81
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{{standardBase[1, 0], 1}}
-{{standardBase[1, 0], 0}}
-{{standardBase[1, 0], 1}}
-{{standardBase[1, 0], 1}, {standardBase[2, 0], 2}}
+standardBase[50, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[51, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
 2
--
+standardBase[50, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[51, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -2, 1, 1, -1, 0, 0}
+2
+standardBase[49, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[50, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[49, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[50, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[48, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[49, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[50, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 1, 1, -1, -1, 1}
 3
-{{standardBase[1, 1], 0}, {standardBase[2, 0], 2}}
-{{standardBase[1, 1], 1}}
-{{standardBase[1, 1], 2}}
-{{standardBase[1, 1], 1}}
+standardBase[48, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-{{standardBase[0, 0], 0}, {standardBase[1, -1], 2}}
-{{standardBase[0, 0], 0}}
-{{standardBase[0, 0], 0}, {standardBase[1, 1], 2}}
-{{standardBase[0, 0], 0}}
+standardBase[49, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[47, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[48, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[49, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[47, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[48, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[49, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -3, 2, 2, -2, -1, 1}
+3
+standardBase[46, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[47, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[48, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[46, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[47, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[48, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[45, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[46, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[47, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[48, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 2, 2, -2, -2, 2}
 4
--
-5
-
-Out[174]= mults$1121
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{{standardBase[1, 0], 1}}
-{{standardBase[1, 0], 0}}
-{{standardBase[1, 0], 1}}
-{{standardBase[1, 0], 1}, {standardBase[2, 0], 2}}
+standardBase[45, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[46, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[47, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[44, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[45, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[46, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[47, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
 4
--
-5
-{{standardBase[1, 1], 0}, {standardBase[2, 0], 2}}
-{{standardBase[1, 1], 1}}
-{{standardBase[1, 1], 2}}
-{{standardBase[1, 1], 1}}
+standardBase[44, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-{{standardBase[0, 0], 0}, {standardBase[1, -1], 2}}
-{{standardBase[0, 0], 0}}
-{{standardBase[0, 0], 0}, {standardBase[1, 1], 2}}
-{{standardBase[0, 0], 0}}
-1
-
-Out[163]= mults$1097
-
-mts[standardBase[0,0]]
-
-Out[9]= 0
-
-Out[8]= 0
-
-Out[7]= 1
-
-Out[6]= 0
-
-Out[5]= 0
-
-          2
-Out[175]= -
-          3
-
-
-          4
-Out[161]= -
-          5
-
-Out[160]= mults$1075[standardBase[0, 1]]
-
-Out[159]= 1
-
-Out[158]= mults$1075[standardBase[2, 1]]
-
-Out[157]= 1
-
-Out[156]= 1
-
-Out[155]= {HoldPattern[mts] :> mults$1075}
-
-Out[154]= {}
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[1, 0], 1}
-mults$1075[standardBase[2, 1]]
-False
-{standardBase[1, 0], 0}
-mults$1075[standardBase[1, 1]]
-False
-{standardBase[1, 0], 1}
-mults$1075[standardBase[2, 1]]
-False
-{standardBase[1, 0], 1}
-1
-True
-{standardBase[2, 0], 2}
-mults$1075[standardBase[3, 0]]
-False
+standardBase[45, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[46, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[47, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -4, 3, 3, -3, -2, 2}
 4
--
-5
-{standardBase[1, 1], 0}
+standardBase[43, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
 1
-True
-{standardBase[2, 0], 2}
-mults$1075[standardBase[3, 1]]
-False
-{standardBase[1, 1], 1}
-mults$1075[standardBase[2, 1]]
-False
-{standardBase[1, 1], 2}
-mults$1075[standardBase[2, 2]]
-False
-{standardBase[1, 1], 1}
-mults$1075[standardBase[2, 1]]
-False
-1
-{standardBase[0, 0], 0}
-1
-True
-{standardBase[1, -1], 2}
-mults$1075[standardBase[2, 2]]
-False
-{standardBase[0, 0], 0}
+standardBase[44, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[45, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[46, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
 4
--
-5
-False
-{standardBase[0, 0], 0}
+standardBase[43, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-True
-{standardBase[1, 1], 2}
-mults$1075[standardBase[2, 2]]
-False
-{standardBase[0, 0], 0}
+standardBase[44, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[45, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[46, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
 4
--
+standardBase[42, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[43, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[44, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[45, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[46, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 3, 3, -3, -3, 3}
 5
-False
+standardBase[42, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-
-Out[153]= mults$1075
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[1, 0], 1}
-mults$1053[standardBase[2, 1]]
-False
-{standardBase[1, 0], 0}
-mults$1053[standardBase[1, 1]]
-False
-{standardBase[1, 0], 1}
-mults$1053[standardBase[2, 1]]
-False
-{standardBase[1, 0], 1}
+standardBase[43, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[44, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[45, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[41, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
 1
-True
-{standardBase[2, 0], 2}
-mults$1053[standardBase[3, 0]]
-False
-          4
-{0, 0, 0, -}
-          5
-{standardBase[1, 1], 0}
+standardBase[42, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[43, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[44, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[45, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[41, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-True
-{standardBase[2, 0], 2}
-mults$1053[standardBase[3, 1]]
-False
-{standardBase[1, 1], 1}
-mults$1053[standardBase[2, 1]]
-False
-{standardBase[1, 1], 2}
-mults$1053[standardBase[2, 2]]
-False
-{standardBase[1, 1], 1}
-mults$1053[standardBase[2, 1]]
-False
-{1, 0, 0, 0}
-{standardBase[0, 0], 0}
-{1, 0, 0, 0}
-False
-{standardBase[0, 0], 0}
-          4
-{0, 0, 0, -}
-          5
-False
-{standardBase[0, 0], 0}
-{1, 0, 0, 0}
-False
-{standardBase[0, 0], 0}
-          4
-{0, 0, 0, -}
-          5
-False
-{0, 0, 0, 0}
-
-Out[151]= mults$1053
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-2 positiveRoots
----------------
-       5
-positiveRoots
--------------
-      2
-positiveRoots
--------------
-      4
-
-Out[149]= mults$1043
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[1, 0], 1}
-mults$1027[standardBase[2, 1]]
-False
-{standardBase[1, 0], 0}
-mults$1027[standardBase[1, 1]]
-False
-{0, 0}
-{standardBase[1, 1], 0}
+standardBase[42, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[43, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[44, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[45, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -5, 4, 4, -4, -3, 3}
+5
+standardBase[40, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
 1
-True
-{standardBase[2, 0], 2}
-mults$1027[standardBase[3, 1]]
-False
-{standardBase[1, 1], 1}
-mults$1027[standardBase[2, 1]]
-False
-{1, 0}
-{standardBase[0, 0], 0}
-{1, 0}
-False
-{standardBase[0, 0], 0}
-{0, 0}
-False
-{0, 0}
-
-Out[147]= mults$1027
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[1, 0], 1}
-mults$1011[standardBase[2, 1]]
-{standardBase[1, 0], 0}
-mults$1011[standardBase[1, 1]]
-{0, 0}
-{standardBase[1, 1], 0}
+standardBase[41, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[42, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[43, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[44, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[40, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
 1
-{standardBase[2, 0], 2}
-mults$1011[standardBase[3, 1]]
-{standardBase[1, 1], 1}
-mults$1011[standardBase[2, 1]]
-{1, 0}
-{standardBase[0, 0], 0}
-{1, 0}
-{standardBase[0, 0], 0}
-{0, 0}
-{0, 0}
-
-Out[145]= mults$1011
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[1, 0], 1}
-False
-{standardBase[1, 0], 0}
-False
-{0, 0}
-{standardBase[1, 1], 0}
-True
-{standardBase[2, 0], 2}
-False
-{standardBase[1, 1], 1}
-False
-{1, 0}
-{standardBase[0, 0], 0}
-False
-{standardBase[0, 0], 0}
-False
-{0, 0}
-
-Out[142]= mults$995
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[1, 0], 1}
-False
-{standardBase[1, 0], 0}
-False
-{standardBase[1, 1], 0}
-True
-{standardBase[2, 0], 2}
-False
-{standardBase[1, 1], 1}
-False
-{standardBase[0, 0], 0}
-False
-{standardBase[0, 0], 0}
-False
-
-Out[140]= mults$979
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-standardBase[1, 0]
-standardBase[1, -1]
-{standardBase[2, -1], 3}
-False
-standardBase[1, 0]
-standardBase[0, 1]
-{standardBase[1, 1], 1}
-False
-standardBase[1, 1]
-standardBase[1, -1]
-{standardBase[2, 0], 2}
-False
-standardBase[1, 1]
-standardBase[0, 1]
-{standardBase[1, 2], 2}
-False
-standardBase[0, 0]
-standardBase[1, -1]
-{standardBase[1, -1], 2}
-False
-standardBase[0, 0]
-standardBase[0, 1]
-{standardBase[0, 1], 1}
-True
-{standardBase[0, 2], 2}
-False
-
-Out[134]= mults$963
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-standardBase[2, -1]
-{standardBase[2, -1], 3}
-False
-standardBase[1, 1]
-{standardBase[1, 1], 1}
-False
+standardBase[41, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[42, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[43, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[44, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[39, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[40, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[41, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[42, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[43, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[44, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 4, 4, -4, -4, 4}
+6
+standardBase[39, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[40, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[41, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[42, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[43, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[38, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[39, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[40, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[41, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[42, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[43, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[38, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[39, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[40, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[41, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[42, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[43, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -6, 5, 5, -5, -4, 4}
+6
+standardBase[37, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[38, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[39, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[40, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[41, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[42, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[37, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[38, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[39, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[40, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[41, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[42, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[36, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[37, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[38, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[39, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[40, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[41, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[42, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 5, 5, -5, -5, 5}
+7
+standardBase[36, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[37, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[38, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[39, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[40, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[41, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[35, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[36, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[37, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[38, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[39, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[40, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[41, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[35, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[36, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[37, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[38, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[39, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[40, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[41, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -7, 6, 6, -6, -5, 5}
+7
+standardBase[34, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[35, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[36, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[37, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[38, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[39, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[40, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[34, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[35, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[36, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[37, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[38, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[39, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[40, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[33, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[34, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[35, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[36, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[37, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[38, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[39, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[40, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 6, 6, -6, -6, 6}
+8
+standardBase[33, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[34, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[35, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[36, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[37, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[38, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[39, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[32, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[33, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[34, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[35, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[36, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[37, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[38, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[39, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[32, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[33, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[34, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[35, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[36, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[37, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[38, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[39, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -8, 7, 7, -7, -6, 6}
+8
+standardBase[31, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[32, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[33, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[34, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[35, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[36, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[37, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[38, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[31, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[32, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[33, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[34, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[35, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[36, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[37, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[38, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[30, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[31, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[32, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[33, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[34, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[35, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[36, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[37, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[38, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 7, 7, -7, -7, 7}
+9
+standardBase[30, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[31, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[32, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[33, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[34, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[35, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[36, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[37, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[29, 25]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[30, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[31, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[32, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[33, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[34, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[35, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[36, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[37, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[29, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[30, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[31, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[32, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[33, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[34, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[35, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[36, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[37, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -9, 8, 8, -8, -7, 7}
+9
+standardBase[28, 26]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[29, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[30, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[31, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[32, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[33, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[34, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[35, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[36, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[28, 25]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[29, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[30, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[31, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[32, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[33, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[34, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[35, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[36, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[27, 27]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, 0, 0, 0, 0, 0, 0}
+1
+standardBase[28, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[29, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[30, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[31, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[32, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[33, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[34, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[35, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[36, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 8, 8, -8, -8, 8}
+10
+standardBase[27, 26]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-1, -1, 1, 0, 0, 0, 0}
+1
+standardBase[28, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[29, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[30, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[31, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[32, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[33, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[34, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[35, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[27, 25]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[28, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[29, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[30, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[31, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[32, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[33, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[34, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[35, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[27, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[28, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[29, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[30, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[31, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[32, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[33, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[34, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[35, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -10, 9, 9, -9, -8, 8}
+10
+standardBase[26, 26]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -1, 1, 0, 0, 0, 0}
+2
+standardBase[27, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[28, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[29, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[30, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[31, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[32, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[33, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[34, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[26, 25]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-2, -2, 2, 1, -1, 0, 0}
+2
+standardBase[27, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[28, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[29, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[30, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[31, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[32, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[33, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[34, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[26, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[27, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[28, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[29, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[30, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[31, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[32, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[33, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[34, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 9, 9, -9, -9, 9}
+11
+standardBase[26, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[27, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[28, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[29, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[30, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[31, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[32, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[33, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[25, 25]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -2, 2, 1, -1, -1, 1}
+3
+standardBase[26, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[27, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[28, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[29, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[30, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[31, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[32, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[33, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[25, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-3, -3, 3, 2, -2, -1, 1}
+3
+standardBase[26, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[27, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[28, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[29, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[30, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[31, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[32, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[33, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -11, 10, 10, -10, -9, 9}
+11
+standardBase[25, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[26, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[27, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[28, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[29, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[30, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[31, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[32, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[25, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[26, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[27, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[28, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[29, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[30, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[31, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[32, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[24, 24]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -3, 3, 2, -2, -2, 2}
+4
+standardBase[25, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[26, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[27, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[28, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[29, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[30, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[31, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[32, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 10, 10, -10, -10, 10}
+12
+standardBase[24, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-4, -4, 4, 3, -3, -2, 2}
+4
+standardBase[25, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[26, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[27, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[28, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[29, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[30, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[31, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[24, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[25, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[26, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[27, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[28, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[29, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[30, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[31, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[24, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[25, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[26, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[27, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[28, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[29, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[30, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[31, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -12, 11, 11, -11, -10, 10}
+12
+standardBase[23, 23]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -4, 4, 3, -3, -3, 3}
+5
+standardBase[24, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[25, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[26, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[27, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[28, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[29, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[30, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[23, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-5, -5, 5, 4, -4, -3, 3}
+5
+standardBase[24, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[25, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[26, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[27, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[28, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[29, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[30, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[23, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[24, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[25, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[26, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[27, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[28, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[29, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[30, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 11, 11, -11, -11, 11}
+13
+standardBase[23, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[24, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[25, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[26, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[27, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[28, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[29, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[22, 22]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -5, 5, 4, -4, -4, 4}
+6
+standardBase[23, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[24, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[25, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[26, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[27, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[28, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[29, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[22, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-6, -6, 6, 5, -5, -4, 4}
+6
+standardBase[23, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[24, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[25, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[26, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[27, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[28, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[29, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -13, 12, 12, -12, -11, 11}
+13
+standardBase[22, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[23, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[24, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[25, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[26, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[27, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[28, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[22, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[23, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[24, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[25, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[26, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[27, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[28, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[21, 21]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -6, 6, 5, -5, -5, 5}
+7
+standardBase[22, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[23, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[24, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[25, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[26, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[27, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[28, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 12, 12, -12, -12, 12}
+14
+standardBase[21, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-7, -7, 7, 6, -6, -5, 5}
+7
+standardBase[22, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[23, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[24, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[25, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[26, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[27, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[21, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[22, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[23, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[24, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[25, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[26, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[27, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[21, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[22, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[23, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[24, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[25, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[26, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[27, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -14, 13, 13, -13, -12, 12}
+14
+standardBase[20, 20]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -7, 7, 6, -6, -6, 6}
+8
+standardBase[21, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[22, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[23, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[24, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[25, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[26, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[20, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-8, -8, 8, 7, -7, -6, 6}
+8
+standardBase[21, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[22, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[23, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[24, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[25, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[26, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[20, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[21, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[22, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[23, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[24, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[25, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[26, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 13, 13, -13, -13, 13}
+15
+standardBase[20, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[21, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[22, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[23, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[24, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[25, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[19, 19]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -8, 8, 7, -7, -7, 7}
+9
+standardBase[20, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[21, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[22, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[23, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[24, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[25, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[19, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-9, -9, 9, 8, -8, -7, 7}
+9
+standardBase[20, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[21, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[22, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[23, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[24, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[25, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -15, 14, 14, -14, -13, 13}
+15
+standardBase[19, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[20, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[21, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[22, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[23, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[24, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[19, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[20, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[21, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[22, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[23, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[24, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[18, 18]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -9, 9, 8, -8, -8, 8}
+10
+standardBase[19, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[20, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[21, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[22, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[23, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[24, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 14, 14, -14, -14, 14}
+16
+standardBase[18, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-10, -10, 10, 9, -9, -8, 8}
+10
+standardBase[19, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[20, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[21, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[22, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[23, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[18, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[19, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[20, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[21, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[22, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[23, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[18, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[19, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[20, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[21, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[22, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[23, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -16, 15, 15, -15, -14, 14}
+16
+standardBase[17, 17]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -10, 10, 9, -9, -9, 9}
+11
+standardBase[18, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[19, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[20, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[21, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[22, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[17, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-11, -11, 11, 10, -10, -9, 9}
+11
+standardBase[18, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[19, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[20, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[21, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[22, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[17, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[18, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[19, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[20, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[21, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[22, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 15, 15, -15, -15, 15}
+17
+standardBase[17, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[18, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[19, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[20, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[21, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[16, 16]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -11, 11, 10, -10, -10, 10}
+12
+standardBase[17, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[18, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[19, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[20, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[21, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[16, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-12, -12, 12, 11, -11, -10, 10}
+12
+standardBase[17, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[18, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[19, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[20, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[21, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -17, 16, 16, -16, -15, 15}
+17
+standardBase[16, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[17, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[18, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[19, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[20, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[16, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[17, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[18, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[19, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[20, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[15, 15]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -12, 12, 11, -11, -11, 11}
+13
+standardBase[16, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[17, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[18, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[19, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[20, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 16, 16, -16, -16, 16}
+18
+standardBase[15, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-13, -13, 13, 12, -12, -11, 11}
+13
+standardBase[16, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[17, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[18, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[19, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[15, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[16, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[17, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[18, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[19, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[15, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[16, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[17, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[18, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[19, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -18, 17, 17, -17, -16, 16}
+18
+standardBase[14, 14]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -13, 13, 12, -12, -12, 12}
+14
+standardBase[15, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[16, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[17, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[18, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[14, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-14, -14, 14, 13, -13, -12, 12}
+14
+standardBase[15, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[16, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[17, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[18, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[14, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[15, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[16, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[17, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[18, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 17, 17, -17, -17, 17}
+19
+standardBase[14, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[15, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[16, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[17, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[13, 13]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -14, 14, 13, -13, -13, 13}
+15
+standardBase[14, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[15, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[16, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[17, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[13, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-15, -15, 15, 14, -14, -13, 13}
+15
+standardBase[14, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[15, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[16, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[17, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -19, 18, 18, -18, -17, 17}
+19
+standardBase[13, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[14, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[15, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[16, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[13, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[14, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[15, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[16, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[12, 12]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -15, 15, 14, -14, -14, 14}
+16
+standardBase[13, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[14, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[15, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[16, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 18, 18, -18, -18, 18}
+20
+standardBase[12, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-16, -16, 16, 15, -15, -14, 14}
+16
+standardBase[13, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[14, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[15, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[12, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[13, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[14, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[15, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[12, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[13, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[14, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[15, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -20, 19, 19, -19, -18, 18}
+20
+standardBase[11, 11]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -16, 16, 15, -15, -15, 15}
+17
+standardBase[12, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[13, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[14, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[11, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-17, -17, 17, 16, -16, -15, 15}
+17
+standardBase[12, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[13, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[14, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[11, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[12, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[13, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[14, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 19, 19, -19, -19, 19}
+21
+standardBase[11, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[12, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[13, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[10, 10]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -17, 17, 16, -16, -16, 16}
+18
+standardBase[11, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[12, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[13, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[10, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-18, -18, 18, 17, -17, -16, 16}
+18
+standardBase[11, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[12, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[13, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -21, 20, 20, -20, -19, 19}
+21
+standardBase[10, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[11, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[12, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[10, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[11, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[12, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 21, 20, -20, -19, 19}
+21
+standardBase[9, 9]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -18, 18, 17, -17, -17, 17}
+19
+standardBase[10, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[11, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[12, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 20, 20, -20, -20, 20}
+22
+standardBase[9, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-19, -19, 19, 18, -18, -17, 17}
+19
+standardBase[10, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[11, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 21, 20, -20, -19, 19}
+21
+standardBase[9, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[10, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[11, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -21, 21, 20, -20, -20, 20}
+22
+standardBase[9, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[10, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 21, 20, -20, -19, 19}
+21
+standardBase[11, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -22, 21, 21, -21, -20, 20}
+22
+standardBase[8, 8]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -19, 19, 18, -18, -18, 18}
+20
+standardBase[9, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[10, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -21, 21, 20, -20, -20, 20}
+22
+standardBase[8, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-20, -20, 20, 19, -19, -18, 18}
+20
+standardBase[9, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 21, 20, -20, -19, 19}
+21
+standardBase[10, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -22, 22, 21, -21, -20, 20}
+22
+standardBase[8, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[9, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -21, 21, 20, -20, -20, 20}
+22
+standardBase[10, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -22, 21, 21, -21, -21, 21}
+23
+standardBase[8, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 21, 20, -20, -19, 19}
+21
+standardBase[9, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -22, 22, 21, -21, -20, 20}
+22
+standardBase[7, 7]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -20, 20, 19, -19, -19, 19}
+21
+standardBase[8, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -21, 21, 20, -20, -20, 20}
+22
+standardBase[9, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -22, 22, 21, -21, -21, 21}
+23
+standardBase[7, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-21, -21, 21, 20, -20, -19, 19}
+21
+standardBase[8, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -22, 22, 21, -21, -20, 20}
+22
+standardBase[9, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -23, 22, 22, -22, -21, 21}
+23
+standardBase[7, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -21, 21, 20, -20, -20, 20}
+22
+standardBase[8, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -22, 22, 21, -21, -21, 21}
+23
+standardBase[7, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -22, 22, 21, -21, -20, 20}
+22
+standardBase[8, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -23, 23, 22, -22, -21, 21}
+23
+standardBase[6, 6]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -21, 21, 20, -20, -20, 20}
+22
+standardBase[7, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -22, 22, 21, -21, -21, 21}
+23
+standardBase[8, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -23, 22, 22, -22, -22, 22}
+24
+standardBase[6, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-22, -22, 22, 21, -21, -20, 20}
+22
+standardBase[7, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -23, 23, 22, -22, -21, 21}
+23
+standardBase[6, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -22, 22, 21, -21, -21, 21}
+23
+standardBase[7, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -23, 23, 22, -22, -22, 22}
+24
+standardBase[6, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -23, 23, 22, -22, -21, 21}
+23
+standardBase[7, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -24, 23, 23, -23, -22, 22}
+24
+standardBase[5, 5]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -22, 22, 21, -21, -21, 21}
+23
+standardBase[6, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -23, 23, 22, -22, -22, 22}
+24
+standardBase[5, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-23, -23, 23, 22, -22, -21, 21}
+23
+standardBase[6, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -24, 24, 23, -23, -22, 22}
+24
+standardBase[5, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -23, 23, 22, -22, -22, 22}
+24
+standardBase[6, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -24, 23, 23, -23, -23, 23}
+25
+standardBase[5, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -24, 24, 23, -23, -22, 22}
+24
+standardBase[4, 4]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -23, 23, 22, -22, -22, 22}
+24
+standardBase[5, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -24, 24, 23, -23, -23, 23}
+25
+standardBase[4, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -24, 24, 23, -23, -22, 22}
+24
+standardBase[5, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-24, -25, 24, 24, -24, -23, 23}
+25
+standardBase[4, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -24, 24, 23, -23, -23, 23}
+25
+standardBase[4, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -25, 25, 24, -24, -23, 23}
+25
+standardBase[3, 3]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -24, 24, 23, -23, -23, 23}
+25
+standardBase[4, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -25, 24, 24, -24, -24, 24}
+26
+standardBase[3, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -25, 25, 24, -24, -23, 23}
+25
+standardBase[3, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-26, -25, 25, 24, -24, -24, 24}
+26
+standardBase[3, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-25, -26, 25, 25, -25, -24, 24}
+26
+standardBase[2, 2]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-26, -25, 25, 24, -24, -24, 24}
+26
+standardBase[2, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-26, -26, 26, 25, -25, -24, 24}
+26
 standardBase[2, 0]
-{standardBase[2, 0], 2}
-False
-standardBase[1, 2]
-{standardBase[1, 2], 2}
-False
-standardBase[1, -1]
-{standardBase[1, -1], 2}
-False
-standardBase[0, 1]
-{standardBase[0, 1], 1}
-True
-{standardBase[0, 2], 2}
-False
-
-Out[132]= mults$947
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[2, -1], 3}
-False
-{standardBase[1, 1], 1}
-False
-{standardBase[2, 0], 2}
-False
-{standardBase[1, 2], 2}
-False
-{standardBase[1, -1], 2}
-False
-{standardBase[0, 1], 1}
-True
-{standardBase[0, 2], 2}
-False
-
-Out[130]= mults$931
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{standardBase[2, -1], 3}
-{standardBase[1, 1], 1}
-{standardBase[2, 0], 2}
-{standardBase[1, 2], 2}
-{standardBase[1, -1], 2}
-{standardBase[0, 1], 1}
-{standardBase[0, 2], 2}
-
-Out[128]= mults$915
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-{{standardBase[2, -1], 3}}
-{{standardBase[1, 1], 1}}
-{{standardBase[2, 0], 2}}
-{{standardBase[1, 2], 2}}
-{{standardBase[1, -1], 2}}
-{{standardBase[0, 1], 1}, {standardBase[0, 2], 2}}
-
-Out[126]= mults$899
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
- 6 mults$889[standardBase[2, 1]]  2 mults$889[standardBase[1, 1]]
-{-------------------------------, -------------------------------}
-                5                                5
-{1, mults$889[standardBase[2, 1]]}
-  1  mults$889[standardBase[2, 1]]
-{{-, -----------------------------}, 
-  2                2
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
  
-         6 mults$889[standardBase[2, 1]]
-     2 + -------------------------------
-                        5
->   {-----------------------------------, 
-                      4
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
  
-             2 mults$889[standardBase[2, 1]]
-         2 + -------------------------------
-      3                     5
->    {-, -----------------------------------}}}
-      5                   4
-
-Out[124]= mults$889
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
- 6 mults$879[standardBase[2, -1]]  2 mults$879[standardBase[1, 1]]
-{--------------------------------, -------------------------------}
-                5                                 5
-{1, mults$879[standardBase[1, 2]]}
- mults$879[standardBase[1, -1]]
-{------------------------------, 
-               2
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
  
-    mults$879[standardBase[0, 1]] + 2 mults$879[standardBase[0, 2]]
->   ---------------------------------------------------------------}
-                                   4
-
-Out[122]= mults$879
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
- 6 mults$869[standardBase[2, -1]]  2 mults$869[standardBase[1, 1]]
-{--------------------------------, -------------------------------}
-                5                                 5
-{1, mults$869[standardBase[1, 2]]}
- mults$869[standardBase[1, -1]]
-{------------------------------, 
-               2
+>   {standardBase[3, 1], 1}}
+{-26, -26, 25, 25, -25, -25, 25}
+27
+standardBase[1, 1]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
  
-    mults$869[standardBase[0, 1]] + 2 mults$869[standardBase[0, 2]]
->   ---------------------------------------------------------------}
-                                   4
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-27, -26, 26, 25, -25, -25, 25}
+27
+standardBase[1, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-26, -27, 26, 26, -26, -25, 25}
+27
+standardBase[0, 0]
+{{standardBase[1, -1], -1}, {standardBase[0, 1], -1}, 
+ 
+>   {standardBase[2, -1], 1}, {standardBase[1, 2], 1}, 
+ 
+>   {standardBase[3, 0], -1}, {standardBase[2, 2], -1}, 
+ 
+>   {standardBase[3, 1], 1}}
+{-27, -27, 26, 26, -26, -26, 26}
+28
 
-Out[115]= mults$869
+Out[71]= {2.68417, mults$228}
 
+Out[75]= {12.5328, mults$564}
 
 mts[standardBase[0,0]]
 
-           mults$859[standardBase[1, -1]]
-Out[112]= {------------------------------, 
-                         2
- 
-     mults$859[standardBase[0, 1]] + 2 mults$859[standardBase[0, 2]]
->    ---------------------------------------------------------------}
-                                    4
+Out[72]= 3
 
-           6 mults$859[standardBase[2, -1]]
-Out[111]= {--------------------------------, 
-                          5
- 
-      2  2 mults$859[standardBase[1, 2]]
->    {-, -------------------------------}}
-      5                 5
+1
+1
+1
+1
+2
+2
+2
+3
 
-           2 mults$849[standardBase[2, -1]]
-Out[108]= {--------------------------------, 0}
-                          5
+                                                                        
+Out[71]= 72
 
-           2 mults$839[standardBase[2, -1]]
-Out[105]= {--------------------------------, 0}
-                          5
-
-Out[104]= {0, 0}
-
-Out[103]= {}
-
-{standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-
-Out[102]= mults$839
-
-Module[{r=standardBase[0,1],v=standardBase[1,1],mults,toFC=toFundamentalChamber[b2]},
-       mults[standardBase[2,1]]=1;
-       NestWhileList[{#[[1]]+r,#[[2]]+r.r}&,
-		     {v+r,v.r},
-		     Module[{t=mults[toFC[First[#]]]},Print[t];IntegerQ[t]]&
-		    ]]
-
-                                                  1
-mults$836[standardBase[3, 1]]
-
-Out[100]= {{standardBase[1, 2], 1}, {standardBase[1, 3], 2}}
-
-                                             mults$834[standardBase[2, 1]]
-
-Out[99]= {{standardBase[1, 2], 1}}
-
-                                             mults$832[standardBase[1, 1]]
-
-Out[98]= {{standardBase[1, 1], 1}}
+Out[70]= mults$544
 
 weightSystem[b2][standardBase[-5,0]]
 
@@ -762,130 +8578,6 @@ Out[191]= 56
 minusPosRoots=-positiveRoots[b2];
 Map[Function[x,And@@Map[#.x>=0&,b2]],Flatten[Outer[Plus,minusPosRoots,{standardBase[2,0]}]]]
 
-          
-Out[183]= {True, False, True, False}
-
-          
-Out[182]= {{True, True}, {True, False}, {True, True}, {True, False}}
-
-          
-Out[181]= {{True, True}, {True, False}, {True, True}, {True, False}}
-
-          
-Out[176]= {{standardBase[1, -1] . {standardBase[1, 1]} >= 0, 
- 
->     standardBase[0, 1] . {standardBase[1, 1]} >= 0}, 
- 
->    {standardBase[1, -1] . {standardBase[2, -1]} >= 0, 
- 
->     standardBase[0, 1] . {standardBase[2, -1]} >= 0}, 
- 
->    {standardBase[1, -1] . {standardBase[1, 0]} >= 0, 
- 
->     standardBase[0, 1] . {standardBase[1, 0]} >= 0}, 
- 
->    {standardBase[1, -1] . {standardBase[1, -1]} >= 0, 
- 
->     standardBase[0, 1] . {standardBase[1, -1]} >= 0}}
-
-          
-Out[175]= {}
-
-          
-Out[174]= {}
-
-          
-Out[173]= {}
-
-          
-Out[172]= {}
-
-          
-Out[171]= {{standardBase[1, 1]}, {standardBase[2, -1]}, {standardBase[1, 0]}, 
- 
->    {standardBase[1, -1]}}
-
-Out[170]= {standardBase[-1, 1], standardBase[0, -1], standardBase[-1, 0], 
- 
->    standardBase[-1, -1]}
-
-Flatten[weightSystem[b2][standardBase[4,2]]]
-
-Out[189]= {standardBase[4, 2], standardBase[3, 1], standardBase[3, 2], 
- 
->    standardBase[3, 3], standardBase[4, 1], standardBase[2, 0], 
- 
->    standardBase[2, 1], standardBase[2, 2], standardBase[3, 0], 
- 
->    standardBase[4, 0], standardBase[1, 0], standardBase[1, 1], 
- 
->    standardBase[3, 1], standardBase[0, 0], standardBase[2, 0], 
- 
->    standardBase[2, 1], standardBase[2, 2], standardBase[3, 0], 
- 
->    standardBase[1, 0], standardBase[1, 1], standardBase[0, 0]}
-
-Out[188]= {{standardBase[4, 2]}, 
- 
->    {standardBase[3, 1], standardBase[3, 2], standardBase[3, 3], 
- 
->     standardBase[4, 1]}, {standardBase[2, 0], standardBase[2, 1], 
- 
->     standardBase[2, 2], standardBase[3, 0], standardBase[4, 0]}, 
- 
->    {standardBase[1, 0], standardBase[1, 1], standardBase[3, 1]}, 
- 
->    {standardBase[0, 0], standardBase[2, 0], standardBase[2, 1], 
- 
->     standardBase[2, 2], standardBase[3, 0]}, 
- 
->    {standardBase[1, 0], standardBase[1, 1]}, {standardBase[0, 0]}, {}}
-
-Out[187]= {{standardBase[2, 2]}, {standardBase[1, 1], standardBase[2, 1]}, 
- 
->    {standardBase[0, 0], standardBase[1, 0], standardBase[2, 0]}, 
- 
->    {standardBase[1, 1]}, {standardBase[0, 0], standardBase[1, 0]}, {}}
-
-Out[186]= {{standardBase[2, 4]}, {}}
-
-Out[185]= {{standardBase[2, 0]}, {standardBase[1, 0], standardBase[1, 1]}, 
- 
->    {standardBase[0, 0]}, {}}
-
-Out[180]= {{standardBase[2, 0]}, {}}
-
-Out[178]= {standardBase[-1, 1], standardBase[0, -1], standardBase[-1, 0], 
- 
->    standardBase[-1, -1]}
-
-Out[169]= {standardBase[-1, 1], standardBase[0, -1], standardBase[-1, 0], 
- 
->    standardBase[-1, -1]}
-
-Module::argrx: Module called with 3 arguments; 2 arguments are expected.
-
-Out[167]= Module[{minusPosRoots$ = 
- 
->      -positiveRoots[{standardBase[1, -1], standardBase[0, 1]}]}, 
- 
->    NestWhileList[Function[x$, 
- 
->      Complement[Cases[Outer[Plus, minusPosRoots$, x$], 
- 
->        And[x$_ /; 
- 
->          (#1 . x$ >= 0 & ) {standardBase[1, -1], standardBase[0, 1]}]], x$]]
- 
->      , {standardBase[2, 0]}, #1 =!= {} & ], minusPosRoots$]
-
-Out[165]= {{standardBase[2, 0]}, {}}
-
-Out[164]= {{standardBase[1, 0]}, {}}
-
-?Minus
-
--x is the arithmetic negation of x. 
 
 positiveRoots[makeSimpleRootSystem[B,4]]
 
@@ -1147,254 +8839,6 @@ Out[117]= {{standardBase[-, -]}, {standardBase[-, -(-)]}}
 Apply[f, expr] or f @@ expr replaces the head of expr
       by f. Apply[f, expr, levelspec]
 
-        replaces heads in parts of expr specified by levelspec. 
-
-                         1  3                  3    1
-Out[115]= {{standardBase[-, -]}, {standardBase[-, -(-)]}}
-                         2  2                  2    2
-
-                          1  3                    3    1
-Out[114]= {{{standardBase[-, -]}}, {{standardBase[-, -(-)]}}}
-                          2  2                    2    2
-
-Out[113]= {{{Function[y$, y$ - 
- 
-         2 standardBase[1, -1] . y$ standardBase[1, -1]                3  1
->        ----------------------------------------------], standardBase[-, -]}}
-           standardBase[1, -1] . standardBase[1, -1]                   2  2
- 
-                            2 standardBase[0, 1] . y$ standardBase[0, 1]
->     , {{Function[y$, y$ - --------------------------------------------], 
-                              standardBase[0, 1] . standardBase[0, 1]
- 
-                    3  1
->      standardBase[-, -]}}}
-                    2  2
-
-            3                                        3
-Out[111]= {{- + standardBase[-standardBase[1, -1] . (-), 
-            2                                        2
- 
-                               3
->       standardBase[1, -1] . (-)]}, 
-                               2
- 
-      3                                            3
->    {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}
-      2                                            2
-
-                             2 standardBase[1, -1] . y$ standardBase[1, -1]
-Out[110]= {Function[y$, y$ - ----------------------------------------------], 
-                               standardBase[1, -1] . standardBase[1, -1]
- 
-                       2 standardBase[0, 1] . y$ standardBase[0, 1]
->    Function[y$, y$ - --------------------------------------------]}
-                         standardBase[0, 1] . standardBase[0, 1]
-          
-                         3  1
-Out[109]= {{standardBase[-, -]}, 
-                         2  2
- 
-       3                                            3
->    {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-       2                                            2
- 
-       3                                        3
->     {- + standardBase[-standardBase[1, -1] . (-), 
-       2                                        2
- 
-                                3
->        standardBase[1, -1] . (-)]}}, 
-                                2
- 
-        3                                            3
->    {{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-        2                                            2
- 
-        3                                            3
->      {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
-        2                                            2
- 
-        3                                        3
->     {{- + standardBase[-standardBase[1, -1] . (-), 
-        2                                        2
- 
-                                 3
->         standardBase[1, -1] . (-)]}, 
-                                 2
- 
-        3                                        3
->      {- + standardBase[-standardBase[1, -1] . (-), 
-        2                                        2
- 
-                                 3
->         standardBase[1, -1] . (-)]}}}, 
-                                 2
- 
-         3                                            3
->    {{{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-         2                                            2
- 
-         3                                            3
->       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
-         2                                            2
- 
-         3                                            3
->      {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-         2                                            2
- 
-         3                                            3
->       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}}, 
-         2                                            2
- 
-         3                                        3
->     {{{- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}, 
-                                  2
- 
-         3                                        3
->       {- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}}, 
-                                  2
- 
-         3                                        3
->      {{- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}, 
-                                  2
- 
-         3                                        3
->       {- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}}}}}
-                                  2
-
-          
-Intersection::normal: 
-   Nonatomic expression expected at position 2 in Intersection[{}, x].
-
-Union::normal: Nonatomic expression expected at position 2 in Union[{}, x].
-
-Intersection::normal: 
-   Nonatomic expression expected at position 2 in 
-    Intersection[Union[{}, x], x].
-
-Union::normal: Nonatomic expression expected at position 2 in Union[{}, x, x].
-
-Intersection::normal: 
-   Nonatomic expression expected at position 2 in 
-    Intersection[Union[{}, x, x], x].
-
-General::stop: Further output of Intersection::normal
-     will be suppressed during this calculation.
-
-Union::normal: Nonatomic expression expected at position 2 in 
-    Union[{}, x, x, x].
-
-General::stop: Further output of Union::normal
-     will be suppressed during this calculation.
-
-                         3  1
-Out[108]= {{standardBase[-, -]}, 
-                         2  2
- 
-       3                                            3
->    {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-       2                                            2
- 
-       3                                        3
->     {- + standardBase[-standardBase[1, -1] . (-), 
-       2                                        2
- 
-                                3
->        standardBase[1, -1] . (-)]}}, 
-                                2
- 
-        3                                            3
->    {{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-        2                                            2
- 
-        3                                            3
->      {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
-        2                                            2
- 
-        3                                        3
->     {{- + standardBase[-standardBase[1, -1] . (-), 
-        2                                        2
- 
-                                 3
->         standardBase[1, -1] . (-)]}, 
-                                 2
- 
-        3                                        3
->      {- + standardBase[-standardBase[1, -1] . (-), 
-        2                                        2
- 
-                                 3
->         standardBase[1, -1] . (-)]}}}, 
-                                 2
- 
-         3                                            3
->    {{{{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-         2                                            2
- 
-         3                                            3
->       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}, 
-         2                                            2
- 
-         3                                            3
->      {{- + standardBase[0, -2 standardBase[0, 1] . (-)]}, 
-         2                                            2
- 
-         3                                            3
->       {- + standardBase[0, -2 standardBase[0, 1] . (-)]}}}, 
-         2                                            2
- 
-         3                                        3
->     {{{- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}, 
-                                  2
- 
-         3                                        3
->       {- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}}, 
-                                  2
- 
-         3                                        3
->      {{- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}, 
-                                  2
- 
-         3                                        3
->       {- + standardBase[-standardBase[1, -1] . (-), 
-         2                                        2
- 
-                                  3
->          standardBase[1, -1] . (-)]}}}}}
-                                  2
-
-          
-Module::argrx: Module called with 4 arguments; 2 arguments are expected.
-
 Out[107]= Module[{total = {}}, NestWhileList[Function[x, 
  
 >      Union[Outer[Apply, reflection /@ b2, x]]], {rho[b2]}, 
@@ -1419,65 +8863,6 @@ Intersection[list , list , ...] gives a sorted list of the elements common to
                  1      2
      all the list . 
                  i
-
-?Union
-
-Union[list , list , ...] gives a sorted list of all the distinct elements that
-          1      2
-     appear in any of the list . Union[list]
-                              i
-      gives a sorted version of a list, in which all duplicated elements have
-      been dropped. 
-
-?NestWhile
-
-?NestWhileList
-
-NestWhileList[f, expr, test] generates a list of the results of applying f
-     repeatedly, starting with expr
-     , and continuing until applying test
-       to the result no longer yields True. NestWhileList[f, expr, test, m]
-
-        supplies the most recent m
-         results as arguments for test
-          at each step. NestWhileList[f, expr, test, All]
-
-           supplies all results so far as arguments for test
-            at each step. NestWhileList[f, expr, test, m, max]
-
-             applies f at most max times. 
-
-NestWhile[f, expr, test] starts with expr
-    , then repeatedly applies f until applying test
-       to the result no longer yields True. NestWhile[f, expr, test, m]
-
-        supplies the most recent m
-         results as arguments for test
-          at each step. NestWhile[f, expr, test, All]
-
-           supplies all results so far as arguments for test
-            at each step. NestWhile[f, expr, test, m, max]
-
-             applies f at most max
-               times. NestWhile[f, expr, test, m, max, n]
-
-                applies f an extra n
-                  times. NestWhile[f, expr, test, m, max, -n]
-
-                   returns the result found when f
-                    had been applied n fewer times. 
-
-                      3  1
-Out[95]= standardBase[-, -]
-                      2  2
-
-                      3  1
-Out[94]= standardBase[-, -]
-                      2  2
-
-                      3  1
-Out[92]= standardBase[-, -]
-                      2  2
 
 Out[91]= rho[{standardBase[1, -1], standardBase[0, 1]}]
 
@@ -1600,68 +8985,6 @@ Out[54]= Function[z$, Fold[revApply, z$,
 
 reflection[b2[[1]]][standardBase[1,1]]
 
-Out[51]= standardBase[1, 1]
-
-Out[50]= {standardBase[1, -1], standardBase[0, 1]}
-
-Out[49]= standardBase[1, 1]
-
-Out[48]= standardBase[1, -1]
-
-Out[47]= standardBase[-1, 1]
-
-Out[45]= standardBase[1, -1][standardBase[0, 1][standardBase[1, -1][
- 
->      standardBase[1, 1]]]]
-
-Out[44]= Function[z$, Fold[revApply, z$, 
- 
->     {standardBase[1, -1], standardBase[0, 1]}[[{1, 2, 1}]]]]
-
-Out[42]= {standardBase[1, -1], standardBase[0, 1], standardBase[1, -1]}
-
-Part::pspec: Part specification standardBase[0, 1]
-     is neither an integer nor a list of integers.
-
-Out[40]= standardBase[1, -1][[standardBase[0, 1],{1, 2, 1}]]
-
-?Part
-
-expr[[i]] or Part[expr, i] gives the i
-     th
-        part of expr. expr[[-i]]
-
-         counts from the end. expr[[i, j, ...]]
-
-          or Part[expr, i, j, ...]
-           is equivalent to expr[[i]][[j]] ...
-           . expr[[{i , i , ...}]]
-                     1   2
-             gives a list of the parts i
-                                        1
-             , i , ... of expr. expr[[m;;n]]
-                2
-                  gives parts m through n
-                   .expr[[m;;n;;s]] gives parts m through n in steps of s.
-
-
-Out[37]= Part
-
-Part::pspec: Part specification standardBase[0, 1]
-     is neither an integer nor a list of integers.
-
-Out[36]= standardBase[1, -1][[standardBase[0, 1],1,2,1]]
-
-Part::pspec: Part specification standardBase[1, -1]
-     is neither an integer nor a list of integers.
-
-Out[34]= standardBase[0, 1][standardBase[1, -1][1[2[1[standardBase[1, 1]]]]]]
-
-Part::pspec: Part specification standardBase[0, 1]
-     is neither an integer nor a list of integers.
-
-Out[32]= 1[2[1[standardBase[0, 1][standardBase[1, -1][standardBase[1, 1]]]]]]
-
 Out[30]= weylGroupElement[1, 2, 1][{standardBase[1, -1], standardBase[0, 1]}][
  
 >    standardBase[1, 1]]
@@ -1782,6 +9105,12 @@ Fold[f, x, list] gives the last element of FoldList[f, x, list].
 Out[11]= 3
 
 b2=makeSimpleRootSystem[B,2]
+
+Out[9]= {standardBase[1, -1], standardBase[0, 1]}
+
+Out[7]= makeSimpleRootSystem[B, 2]
+
+Out[6]= {standardBase[1, -1], standardBase[0, 1]}
 
 Out[2]= {standardBase[1, -1], standardBase[0, 1]}
 
