@@ -38,6 +38,17 @@ makeFiniteWeight[{coordinates__?NumberQ}]:=Module[{uniq=finiteWeight[Unique[]]},
 
 Expect["Dimension equals to length",3,makeFiniteWeight[{1,2,3}][dimension]]
 
+finiteWeight/:Print[x_finiteWeight]:=Print[x,x[standardBase]]
+
+
+(*
+
+Print[makeFiniteWeight[{1,2,3}]]
+
+finiteWeight[$114]{1, 2, 3}
+
+*)
+
 finiteWeight/:x_finiteWeight . y_finiteWeight/;x[dimension]==y[dimension]:=x[standardBase].y[standardBase]
 
 Expect["Scalar product for vectors from weigth space of finite-dimensional Lie algebras",10,makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1}]]
@@ -126,21 +137,32 @@ ExpandNCM[a_] := ExpandAll[a];
 ExpandNCM[(a + b) ** (a + b) ** (a + b)];
 keys = DownValues[#,Sort->False][[All,1,1,1]]&;
 
+makeFiniteWeight/@Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,3},{j,1,3+1}]
 
+makeRootSystem[{roots__finiteWeight}]:=Module[{rs=finiteRootSystem[Unique[]]},
+					      rs[simpleRoots]={roots};
+					      rs[rank]=Length[{roots}];
+					      rs]
 
-makeSimpleRootSystem[A,rank_Integer]:=standardBase @@@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank},{j,1,rank+1}];
-makeSimpleRootSystem[B,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]];
-makeSimpleRootSystem[C,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]];
-makeSimpleRootSystem[D,rank_Integer]:=standardBase @@@ Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]];
-Unprotect[Dot];
-Dot[x_standardBase,y_standardBase]:=standardBase @@ Dot[List@@x,List@@y];
-Unprotect[Plus];
-Plus[x_standardBase,y_standardBase]:=standardBase @@ Plus[List@@x,List@@y];
-(* Unprotect[Power]; *)
-(* Power[x_standardBase,y_Integer]:=standardBase @@ Power[List@@x,y]; *)
-Unprotect[Times];
-Times[x_,y_standardBase]:=standardBase @@ Times[x,List@@y];
-reflection[x_standardBase]:=Function[y, y-2*(x.y)/(x.x)*x];
+makeRootSystem[{roots__List}]:=Module[{rs=finiteRootSystem[Unique[]]},
+					      rs[simpleRoots]=makeFiniteWeight/@{roots};
+					      rs[rank]=Length[{roots}];
+					      rs]
+
+makeSimpleRootSystem[A,r_Integer]:=makeRootSystem[makeFiniteWeight /@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,r},{j,1,r+1}]];
+makeSimpleRootSystem[B,rank_Integer]:=makeRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]]];
+makeSimpleRootSystem[C,rank_Integer]:=makeRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]]];
+makeSimpleRootSystem[D,rank_Integer]:=makeRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]]];
+
+Expect["B2:",True,makeSimpleRootSystem[B,2][simpleRoots][[1]]==makeFiniteWeight[{1,-1}]]
+
+Expect["B2: rank",2,makeSimpleRootSystem[B,2][rank]]
+
+reflection[x_finiteWeight]:=Function[y, y-2*(x.y)/(x.x)*x];
+reflection[x_affineWeight]:=Function[y, y-2*(x.y)/(x.x)*x];
+
+Expect["Reflection for finite weights", True,reflection[makeFiniteWeight[{1,0}]][makeFiniteWeight[{1,1}]]==makeFiniteWeight[{-1,1}]]
+
 coroot[x_standardBase]:=2*x/(x.x);
 cartanMatrix[{x__standardBase}]:=Transpose[Outer[Dot,{x},coroot/@{x}]];
 clear[weylGroupElement];
