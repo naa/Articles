@@ -172,11 +172,7 @@ clear[weylGroupElement];
 
 revApply[x_,f_]:=f[x];
 
-t[s]={1,2,3}
-
-t[s][0]=1
-
-Print[makeSimpleRootSystem[B,2][simpleRoot][2]]
+(* Print[makeSimpleRootSystem[B,2][simpleRoot][2]] *)
 
 rootSystemQ[rs_]:=MatchQ[rs,x_finiteRootSystem|x_affineRootSystem]
 
@@ -188,8 +184,9 @@ Expect["Weyl reflection s1 s2 s1 in algebra B2",True,
        weylGroupElement[1,2,1][makeSimpleRootSystem[B,2]][makeFiniteWeight[{1,0}]]==
        makeFiniteWeight[{-1,0}]]
 
-fundamentalWeights[rs_finiteRootSystem]:=Plus@@(Inverse[cartanMatrix[rs[simpleRoots]]]*rs[simpleRoots]);
+fundamentalWeights[rs_finiteRootSystem]:=Plus@@(Inverse[cartanMatrix[rs]]*rs[simpleRoots]);
 
+(*
 Print/@fundamentalWeights[makeSimpleRootSystem[B,2]]
 
 finiteWeight[$166]{1, 0}
@@ -200,8 +197,12 @@ finiteWeight[$167]{-, -}
 Out[86]= {Null, Null}
 
 Out[85]= {finiteWeight[$159], finiteWeight[$160]}
+*)
+
 
 rho[rs_finiteRootSystem]:=Plus@@fundamentalWeights[rs];
+
+Print[rho[makeSimpleRootSystem[B,2]]]
 
 Expect["Weyl vector for B2",True,makeFiniteWeight[{3/2,1/2}]==rho[makeSimpleRootSystem[B,2]]]
 
@@ -209,9 +210,21 @@ toFundamentalChamber[rs_finiteRootSystem][vec_finiteWeight]:=
     First[NestWhile[Function[v,
 		       reflection[Scan[If[#.v<0,Return[#]]&,rs[simpleRoots]]][v]],
 	      vec,
-	      Head[#]=!=reflection[Null]&]];
+	      Head[#]=!=reflection[Null]&]]
 
-Print[toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,0}]]]
+Print[toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,1/2}]]]
+
+                      1
+finiteWeight[$174]{1, -}
+                      2
+
+finiteWeight[$164]{1, 0}
+
+Out[71]= finiteWeight[$156]
+
+Out[69]= toFundamentalChamber[finiteRootSystem[$147]][finiteWeight[$148]]
+
+toFundamentalChamber[finiteRootSystem[$143]][finiteWeight[$144]]
 
 finiteWeight[$211]{1, 0}
 
@@ -221,15 +234,33 @@ Out[93]= toFundamentalChamber[makeFiniteRootSystem[B, 2]][finiteWeight[$186]]
 
 Out[91]= toFundamentalChamber[makeFiniteRootSystem[B, 2]][finiteWeight[$185]]
 
-orbit[{simpleRoots__standardBase}][{weights__standardBase}]:=
+orbit[rs_finiteRootSystem][{weights__finiteWeight}]:=
     NestWhileList[
 	Function[x,
 		 Union[Flatten[Map[Function[y,
-					    Map[reflection[#][y]&,Cases[{simpleRoots},z_ /; z.y>0]]],x]]]],
+					    Map[reflection[#][y]&,Cases[rs[simpleRoots],z_ /; z.y>0]]],x]],SameTest->(#1==#2&)]],
 	{weights},
 	#=!={}&];
-orbit[{simpleRoots__standardBase}][weight_standardBase]:=orbit[{simpleRoots}][{toFundamentalChamber[{simpleRoots}][weight]}];
-positiveRoots[{simpleRoots__standardBase}]:=Map[-#&,Flatten[orbit[{simpleRoots}][Map[-#&,{simpleRoots}]]]];
+orbit[rs_finiteRootSystem][weight_finiteWeight]:=orbit[rs][{toFundamentalChamber[rs][weight]}];
+
+positiveRoots[rs_finiteRootSystem]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]]]]]
+
+Map[Print,orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]],2]
+
+
+Print/@positiveRoots[makeSimpleRootSystem[B,2]]
+
+Map[Print,orbit[makeSimpleRootSystem[B, 2]][rho[makeSimpleRootSystem[B, 2]]],2]
+
+
+Out[91]= {{finiteWeight[$342]}, {finiteWeight[$344], finiteWeight[$346]}, 
+ 
+>    {finiteWeight[$348], finiteWeight[$350]}, 
+ 
+>    {finiteWeight[$352], finiteWeight[$354]}, 
+ 
+>    {finiteWeight[$356], finiteWeight[$358]}, {}}
+
 weightSystem[{simpleRoots__standardBase}][higestWeight_standardBase]:=Module[{minusPosRoots=-positiveRoots[{simpleRoots}]},
 									     NestWhileList[Function[x,Complement[
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@{simpleRoots})]
