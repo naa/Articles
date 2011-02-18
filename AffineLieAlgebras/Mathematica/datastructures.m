@@ -201,12 +201,26 @@ Out[86]= {Null, Null}
 
 Out[85]= {finiteWeight[$159], finiteWeight[$160]}
 
-rho[{simpleRoots__standardBase}]:=Plus@@fundamentalWeights[{simpleRoots}];
-toFundamentalChamber[{simpleRoots__standardBase}][vec_standardBase]:=
+rho[rs_finiteRootSystem]:=Plus@@fundamentalWeights[rs];
+
+Expect["Weyl vector for B2",True,makeFiniteWeight[{3/2,1/2}]==rho[makeSimpleRootSystem[B,2]]]
+
+toFundamentalChamber[rs_finiteRootSystem][vec_finiteWeight]:=
     First[NestWhile[Function[v,
-		       reflection[Scan[If[#.v<0,Return[#]]&,{simpleRoots}]][v]],
+		       reflection[Scan[If[#.v<0,Return[#]]&,rs[simpleRoots]]][v]],
 	      vec,
 	      Head[#]=!=reflection[Null]&]];
+
+Print[toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,0}]]]
+
+finiteWeight[$211]{1, 0}
+
+Out[97]= finiteWeight[$203]
+
+Out[93]= toFundamentalChamber[makeFiniteRootSystem[B, 2]][finiteWeight[$186]]
+
+Out[91]= toFundamentalChamber[makeFiniteRootSystem[B, 2]][finiteWeight[$185]]
+
 orbit[{simpleRoots__standardBase}][{weights__standardBase}]:=
     NestWhileList[
 	Function[x,
