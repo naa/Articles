@@ -137,22 +137,19 @@ ExpandNCM[a_] := ExpandAll[a];
 ExpandNCM[(a + b) ** (a + b) ** (a + b)];
 keys = DownValues[#,Sort->False][[All,1,1,1]]&;
 
-makeFiniteWeight/@Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,3},{j,1,3+1}]
-
-makeRootSystem[{roots__finiteWeight}]:=Module[{rs=finiteRootSystem[Unique[]]},
+makeFiniteRootSystem[{roots__finiteWeight}]:=Module[{rs=finiteRootSystem[Unique[]]},
 					      rs[simpleRoots]={roots};
 					      rs[rank]=Length[{roots}];
+					      rs[simpleRoot][n_Integer]:=rs[simpleRoots][[n]];
 					      rs]
 
-makeRootSystem[{roots__List}]:=Module[{rs=finiteRootSystem[Unique[]]},
-					      rs[simpleRoots]=makeFiniteWeight/@{roots};
-					      rs[rank]=Length[{roots}];
-					      rs]
+makeFiniteRootSystem[{roots__List}]:=makeFiniteRootSystem[makeFiniteWeight/@{roots}]
 
-makeSimpleRootSystem[A,r_Integer]:=makeRootSystem[makeFiniteWeight /@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,r},{j,1,r+1}]];
-makeSimpleRootSystem[B,rank_Integer]:=makeRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]]];
-makeSimpleRootSystem[C,rank_Integer]:=makeRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]]];
-makeSimpleRootSystem[D,rank_Integer]:=makeRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]]];
+makeSimpleRootSystem[A,1]:=makeFiniteRootSystem[{{1}}];
+makeSimpleRootSystem[A,r_Integer]:=makeFiniteRootSystem[makeFiniteWeight /@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,r},{j,1,r+1}]];
+makeSimpleRootSystem[B,rank_Integer]:=makeFiniteRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],1]]];
+makeSimpleRootSystem[C,rank_Integer]:=makeFiniteRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]]];
+makeSimpleRootSystem[D,rank_Integer]:=makeFiniteRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]]];
 
 Expect["B2:",True,makeSimpleRootSystem[B,2][simpleRoots][[1]]==makeFiniteWeight[{1,-1}]]
 
@@ -163,12 +160,47 @@ reflection[x_affineWeight]:=Function[y, y-2*(x.y)/(x.x)*x];
 
 Expect["Reflection for finite weights", True,reflection[makeFiniteWeight[{1,0}]][makeFiniteWeight[{1,1}]]==makeFiniteWeight[{-1,1}]]
 
-coroot[x_standardBase]:=2*x/(x.x);
-cartanMatrix[{x__standardBase}]:=Transpose[Outer[Dot,{x},coroot/@{x}]];
+coroot[x_finiteWeight]:=2*x/(x.x);
+
+Expect["Co root of [1,0]", True, coroot[makeFiniteWeight[{1,0}]]==makeFiniteWeight[{2,0}]]
+
+cartanMatrix[rs_finiteRootSystem]:=Transpose[Outer[Dot,rs[simpleRoots],coroot/@rs[simpleRoots]]];
+
+Expect["Cartan matrix of B2",{{2, -1}, {-2, 2}},cartanMatrix[makeSimpleRootSystem[B,2]]]
+
 clear[weylGroupElement];
+
 revApply[x_,f_]:=f[x];
-weylGroupElement[x__Integer][{y__standardBase}]:=Function[z,Fold[revApply,z,reflection /@ Part[{y},{x}]]];
-fundamentalWeights[{simpleRoots__standardBase}]:=Plus@@(Inverse[cartanMatrix[{simpleRoots}]]*{simpleRoots});
+
+t[s]={1,2,3}
+
+t[s][0]=1
+
+Print[makeSimpleRootSystem[B,2][simpleRoot][2]]
+
+rootSystemQ[rs_]:=MatchQ[rs,x_finiteRootSystem|x_affineRootSystem]
+
+Expect["Predicate for finite and affine root systems",True,rootSystemQ[makeSimpleRootSystem[B,2]]]
+
+weylGroupElement[x__Integer][rs_?rootSystemQ]:=Function[z,Fold[revApply,z,reflection /@ rs[simpleRoot]/@{x}]];
+
+Expect["Weyl reflection s1 s2 s1 in algebra B2",True,
+       weylGroupElement[1,2,1][makeSimpleRootSystem[B,2]][makeFiniteWeight[{1,0}]]==
+       makeFiniteWeight[{-1,0}]]
+
+fundamentalWeights[rs_finiteRootSystem]:=Plus@@(Inverse[cartanMatrix[rs[simpleRoots]]]*rs[simpleRoots]);
+
+Print/@fundamentalWeights[makeSimpleRootSystem[B,2]]
+
+finiteWeight[$166]{1, 0}
+                   1  1
+finiteWeight[$167]{-, -}
+                   2  2
+
+Out[86]= {Null, Null}
+
+Out[85]= {finiteWeight[$159], finiteWeight[$160]}
+
 rho[{simpleRoots__standardBase}]:=Plus@@fundamentalWeights[{simpleRoots}];
 toFundamentalChamber[{simpleRoots__standardBase}][vec_standardBase]:=
     First[NestWhile[Function[v,
@@ -222,5 +254,15 @@ racahMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBase]:=
 			 Plus@@(fan /. {x_standardBase,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
 		weights];
 	   mults]
+
+
+makeUntwistedAffineRootSystem[fs_finiteRootSystem]:=Module[{rs=affineRootSystem[Unique[]],ar},
+							   rs[finiteRootSystem]=fs;
+							   ar=makeAffineWeight[#,1,0]&/@fs[simpleRoots];
+							   rs[simpleRoots]=Append[ar,makeAffineWeight[-highestRoot[fs],1,1]];
+							   rs[simpleRoot][0]=rs[[-1]];
+							   rs[simpleRoot][n_Integer]:=rs[simpleRoots][[n]];
+							   rs]
+
 
 
