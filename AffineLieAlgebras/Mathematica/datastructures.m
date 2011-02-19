@@ -30,6 +30,11 @@ If[
     ]
 ]
 
+(* finiteWeight[dimension,coordinates] *)
+
+finiteWeight/:x_finiteWeight[dimension]:=x[[1]];
+finiteWeight/:x_finiteWeight[standardBase]:=x[[2]];
+
 
 makeFiniteWeight[{coordinates__?NumberQ}]:=Module[{uniq=finiteWeight[Unique[]]},
 				      uniq[dimension]=Length[{coordinates}];
@@ -252,6 +257,8 @@ Print/@positiveRoots[makeSimpleRootSystem[B,2]]
 
 Map[Print,orbit[makeSimpleRootSystem[B, 2]][rho[makeSimpleRootSystem[B, 2]]],2]
 
+SubValues[finiteWeight]
+
 
 Out[91]= {{finiteWeight[$342]}, {finiteWeight[$344], finiteWeight[$346]}, 
  
@@ -260,6 +267,10 @@ Out[91]= {{finiteWeight[$342]}, {finiteWeight[$344], finiteWeight[$346]},
 >    {finiteWeight[$352], finiteWeight[$354]}, 
  
 >    {finiteWeight[$356], finiteWeight[$358]}, {}}
+
+Clear[finiteWeight[$99]]
+
+Print[finiteWeight[$99]]
 
 weightSystem[{simpleRoots__standardBase}][higestWeight_standardBase]:=Module[{minusPosRoots=-positiveRoots[{simpleRoots}]},
 									     NestWhileList[Function[x,Complement[
