@@ -16,9 +16,7 @@
    
    *)
 
-clear[finiteWeight,affineWeight,dimension,standardBase,simpleRootBase,level,grade];
-
-clear[Expect];
+Clear[finiteWeight,affineWeight,dimension,standardBase,simpleRootBase,level,grade,Expect];
 
 Expect[ description_, val_, expr_ ] := 
 If[
@@ -35,24 +33,9 @@ If[
 finiteWeight/:x_finiteWeight[dimension]:=x[[1]];
 finiteWeight/:x_finiteWeight[standardBase]:=x[[2]];
 
-
-makeFiniteWeight[{coordinates__?NumberQ}]:=Module[{uniq=finiteWeight[Unique[]]},
-				      uniq[dimension]=Length[{coordinates}];
-				      uniq[standardBase]={coordinates};
-				      uniq]
+makeFiniteWeight[{coordinates__?NumberQ}]:=finiteWeight @@ {Length[{coordinates}],{coordinates}}
 
 Expect["Dimension equals to length",3,makeFiniteWeight[{1,2,3}][dimension]]
-
-finiteWeight/:Print[x_finiteWeight]:=Print[x,x[standardBase]]
-
-
-(*
-
-Print[makeFiniteWeight[{1,2,3}]]
-
-finiteWeight[$114]{1, 2, 3}
-
-*)
 
 finiteWeight/:x_finiteWeight . y_finiteWeight/;x[dimension]==y[dimension]:=x[standardBase].y[standardBase]
 
@@ -60,16 +43,16 @@ Expect["Scalar product for vectors from weigth space of finite-dimensional Lie a
 
 
 Expect["Scalar product for vectors from different spaces are left unevaluated",True,
-       MatchQ[makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1,2}],finiteWeight[x_] . finiteWeight[y_]]]
+       MatchQ[makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1,2}],x_finiteWeight . y_finiteWeight]]
 
 finiteWeight/:x_finiteWeight+y_finiteWeight/;x[dimension]==y[dimension]:=makeFiniteWeight[x[standardBase]+y[standardBase]]
 
 Expect["Plus for finite-dimensional weights",{2,4,6},(makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{1,2,3}])[standardBase]]
 
 Expect["Plus product for vectors from different spaces are left unevaluated",True,
-       MatchQ[makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{3,2,1,2}],finiteWeight[x_] + finiteWeight[y_]]]
+       MatchQ[makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{3,2,1,2}],x_finiteWeight + y_finiteWeight]]
 
-finiteWeight/:finiteWeight[x_]==finiteWeight[y_]:=finiteWeight[x][standardBase]==finiteWeight[y][standardBase]
+finiteWeight/:x_finiteWeight==y_finiteWeight:=x[standardBase]==y[standardBase]
 
 Expect["Equal for finite weights compares standard base representations", False,makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,3,2}]]
 
@@ -83,12 +66,12 @@ Expect["Multiplication by scalar", True,makeFiniteWeight[{1,2,3}]*2==makeFiniteW
 
 Expect["Multiplication by scalar", True,2*makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{2,4,6}]]
 
-makeAffineWeight[fw:finiteWeight[u_Symbol],lev_?NumberQ,gr_?NumberQ]:=Module[{res=affineWeight[Unique[]]},
-											res[dimension]=fw[dimension];
-											res[level]=lev;
-											res[grade]=gr;
-											res[finitePart]=fw;
-											res]
+makeAffineWeight[fw_finiteWeight,lev_?NumberQ,gr_?NumberQ]:=affineWeight[fw[dimension],fw,lev,gr]
+
+affineWeight/:x_affineWeight[dimension]:=x[[1]];
+affineWeight/:x_affineWeight[finitePart]:=x[[2]];
+affineWeight/:x_affineWeight[level]:=x[[3]];
+affineWeight/:x_affineWeight[grade]:=x[[4]];
 
 Expect["Affine weight has the same real dimension as the finite-dimensional part, since we hold level and grade separetely",
        True,makeAffineWeight[makeFiniteWeight[{1,2,3,4,5}],1,2][dimension]==Length[{1,2,3,4,5}]]
@@ -117,7 +100,7 @@ Expect["Plus for affine weights",{2,4,6},(makeAffineWeight[makeFiniteWeight[{1,2
 Expect["Plus for affine weights",4,(makeAffineWeight[makeFiniteWeight[{1,2,3}],1,2]+ makeAffineWeight[makeFiniteWeight[{1,2,3}],3,1])[level]]
 
 Expect["We compare dimensions of vectors before sum calculation, the expression is left unevaluated in case of dimension mismatch ",
-       True,MatchQ[makeAffineWeight[makeFiniteWeight[{1,2}],1,2] + makeAffineWeight[ makeFiniteWeight[{3,2,1}],2,1], affineWeight[x_] + affineWeight[y_]]]
+       True,MatchQ[makeAffineWeight[makeFiniteWeight[{1,2}],1,2] + makeAffineWeight[ makeFiniteWeight[{3,2,1}],2,1], x_affineWeight + y_affineWeight]]
 
 affineWeight/:x_affineWeight.y_affineWeight/;x[dimension]==y[dimension]:= 
     x[finitePart].y[finitePart] + 
@@ -129,8 +112,7 @@ Expect["Scalar product for vectors from weigth space of affine Lie algebras",20,
        makeAffineWeight[makeFiniteWeight[{3,2,1}],3,4]]
 
 Expect["We compare dimensions of vectors before product calculation, the expression is left unevaluated in case of dimension mismatch ",
-       True,MatchQ[makeAffineWeight[makeFiniteWeight[{1,2}],1,2]. makeAffineWeight[ makeFiniteWeight[{3,2,1}],2,1], affineWeight[x_] . affineWeight[y_]]]
-
+       True,MatchQ[makeAffineWeight[makeFiniteWeight[{1,2}],1,2]. makeAffineWeight[ makeFiniteWeight[{3,2,1}],2,1], x_affineWeight . y_affineWeight]]
 
 affineWeight/:x_?NumberQ*y_affineWeight:=makeAffineWeight[x*y[finitePart],x*y[level],x*y[grade]]
 
@@ -142,11 +124,11 @@ ExpandNCM[a_] := ExpandAll[a];
 ExpandNCM[(a + b) ** (a + b) ** (a + b)];
 keys = DownValues[#,Sort->False][[All,1,1,1]]&;
 
-makeFiniteRootSystem[{roots__finiteWeight}]:=Module[{rs=finiteRootSystem[Unique[]]},
-					      rs[simpleRoots]={roots};
-					      rs[rank]=Length[{roots}];
-					      rs[simpleRoot][n_Integer]:=rs[simpleRoots][[n]];
-					      rs]
+makeFiniteRootSystem[{roots__finiteWeight}]:=finiteRootSystem[Length[{roots}],{roots}]
+
+finiteRootSystem/:x_finiteRootSystem[rank]:=x[[1]];
+finiteRootSystem/:x_finiteRootSystem[simpleRoots]:=x[[2]];
+finiteRootSystem/:x_finiteRootSystem[simpleRoot][n_Integer]:=x[[2]][[n]];
 
 makeFiniteRootSystem[{roots__List}]:=makeFiniteRootSystem[makeFiniteWeight/@{roots}]
 
@@ -209,6 +191,10 @@ rho[rs_finiteRootSystem]:=Plus@@fundamentalWeights[rs];
 
 Print[rho[makeSimpleRootSystem[B,2]]]
 
+                 3  1
+finiteWeight[2, {-, -}]
+                 2  2
+
 Expect["Weyl vector for B2",True,makeFiniteWeight[{3/2,1/2}]==rho[makeSimpleRootSystem[B,2]]]
 
 toFundamentalChamber[rs_finiteRootSystem][vec_finiteWeight]:=
@@ -217,27 +203,7 @@ toFundamentalChamber[rs_finiteRootSystem][vec_finiteWeight]:=
 	      vec,
 	      Head[#]=!=reflection[Null]&]]
 
-Print[toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,1/2}]]]
-
-                      1
-finiteWeight[$174]{1, -}
-                      2
-
-finiteWeight[$164]{1, 0}
-
-Out[71]= finiteWeight[$156]
-
-Out[69]= toFundamentalChamber[finiteRootSystem[$147]][finiteWeight[$148]]
-
-toFundamentalChamber[finiteRootSystem[$143]][finiteWeight[$144]]
-
-finiteWeight[$211]{1, 0}
-
-Out[97]= finiteWeight[$203]
-
-Out[93]= toFundamentalChamber[makeFiniteRootSystem[B, 2]][finiteWeight[$186]]
-
-Out[91]= toFundamentalChamber[makeFiniteRootSystem[B, 2]][finiteWeight[$185]]
+Expect["To fundamental chamber",True,makeFiniteWeight[{1,1/2}]==toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,1/2}]]]
 
 orbit[rs_finiteRootSystem][{weights__finiteWeight}]:=
     NestWhileList[
@@ -250,8 +216,7 @@ orbit[rs_finiteRootSystem][weight_finiteWeight]:=orbit[rs][{toFundamentalChamber
 
 positiveRoots[rs_finiteRootSystem]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]]]]]
 
-Map[Print,orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]],2]
-
+orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]]
 
 Print/@positiveRoots[makeSimpleRootSystem[B,2]]
 
@@ -259,28 +224,28 @@ Map[Print,orbit[makeSimpleRootSystem[B, 2]][rho[makeSimpleRootSystem[B, 2]]],2]
 
 SubValues[finiteWeight]
 
-
-Out[91]= {{finiteWeight[$342]}, {finiteWeight[$344], finiteWeight[$346]}, 
- 
->    {finiteWeight[$348], finiteWeight[$350]}, 
- 
->    {finiteWeight[$352], finiteWeight[$354]}, 
- 
->    {finiteWeight[$356], finiteWeight[$358]}, {}}
-
-Clear[finiteWeight[$99]]
-
-Print[finiteWeight[$99]]
-
-weightSystem[{simpleRoots__standardBase}][higestWeight_standardBase]:=Module[{minusPosRoots=-positiveRoots[{simpleRoots}]},
+weightSystem[rs_finiteRootSystem][higestWeight_finiteWeight]:=Module[{minusPosRoots=-positiveRoots[rs]},
 									     NestWhileList[Function[x,Complement[
-										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@{simpleRoots})]
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@rs[simpleRoots])]
 										 ,x]],{higestWeight},#=!={}&]];
-freudenthalMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBase]:=
-    Module[{rh=rho[{simpleRoots}],weights,mults,c,insideQ,
-	    posroots=positiveRoots[{simpleRoots}],
-	    toFC=toFundamentalChamber[{simpleRoots}]},
-	   weights=SortBy[ Rest[Flatten[weightSystem[{simpleRoots}][highestWeight]]], -#.rh&];
+
+weightSystem[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,2}]]
+
+Out[88]= {{finiteWeight[2, {2, 2}]}, 
+ 
+>    {finiteWeight[2, {1, 1}], finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {0, 0}], finiteWeight[2, {1, 0}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {1, 1}]}, 
+ 
+>    {finiteWeight[2, {0, 0}], finiteWeight[2, {1, 0}]}, {}}
+
+freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
+    Module[{rh=rho[rs],weights,mults,c,insideQ,
+	    posroots=positiveRoots[rs],
+	    toFC=toFundamentalChamber[rs]},
+	   weights=SortBy[ Rest[Flatten[weightSystem[rs][highestWeight]]], -#.rh&];
 	   c:=(#+rh).(#+rh)&;
 	   mults[highestWeight]=1;
 	   insideQ:=IntegerQ[mults[toFC[#]]]&;
@@ -296,21 +261,95 @@ freudenthalMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBas
 				 ,posroots]],
 		weights];
 	   mults];
-orbitWithEps[{simpleRoots__standardBase}][weight_standardBase]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[{simpleRoots}][weight]]],1];
-racahMultiplicities[{simpleRoots__standardBase}][highestWeight_standardBase]:=
-    Module[{rh=rho[{simpleRoots}],weights,mults,c,insideQ,
+
+freudenthalMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]]
+
+Out[94]= mults$98
+
+Out[90]= mults$96
+
+Out[94][finiteWeight[2, {0, 0}]]
+
+Out[96]= 6
+
+Out[95]= 1
+
+Out[93]= 1
+
+Out[92]= 1
+
+Out[91]= {finiteWeight[2, {1, 0}], finiteWeight[2, {0, 0}]}
+
+orbitWithEps[rs_finiteRootSystem][weight_finiteWeight]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]]],1];
+
+racahMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
+    Module[{rh=rho[rs],weights,mults,c,insideQ,
 	    fan,
-	    toFC=toFundamentalChamber[{simpleRoots}]},
-	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[{simpleRoots}][rh]]];
-	   weights=Sort[ Rest[Flatten[weightSystem[{simpleRoots}][highestWeight]]], #1.rh>#2.rh&];
+	    toFC=toFundamentalChamber[rs]},
+	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
+	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight]]], #1.rh>#2.rh&];
 	   mults[highestWeight]=1;
 	   insideQ:=IntegerQ[mults[toFC[#]]]&;
 	   Scan[Function[v,
 			 mults[v]=
-			 Plus@@(fan /. {x_standardBase,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
+			 Plus@@(fan /. {x_finiteWeight,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
 		weights];
 	   mults]
 
+racahMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]]
+
+Out[111]= mults$102
+
+Out[99]= mults$100
+
+(Out[111][#]&) /@ keys[Out[111]]
+
+Out[112]= {4, 2, 2, 6, 1, 2, 3, 1, 4, 1, 5, 4, 1, 2, 3, 3, 1, 5, 1, 3, 2}
+
+Out[105]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Out[104]= {finiteWeight[2, {5, 3}], finiteWeight[2, {4, 1}], 
+ 
+>    finiteWeight[2, {0, 0}], finiteWeight[2, {5, 4}], 
+ 
+>    finiteWeight[2, {2, 2}], finiteWeight[2, {1, 0}], 
+ 
+>    finiteWeight[2, {3, 2}], finiteWeight[2, {4, 0}], 
+ 
+>    finiteWeight[2, {4, 4}], finiteWeight[2, {5, 5}], 
+ 
+>    finiteWeight[2, {5, 2}], finiteWeight[2, {3, 0}], 
+ 
+>    finiteWeight[2, {4, 3}], finiteWeight[2, {3, 1}], 
+ 
+>    finiteWeight[2, {1, 1}], finiteWeight[2, {3, 3}], 
+ 
+>    finiteWeight[2, {5, 0}], finiteWeight[2, {2, 0}], 
+ 
+>    finiteWeight[2, {5, 1}], finiteWeight[2, {2, 1}], 
+ 
+>    finiteWeight[2, {4, 2}]}
+
+Out[103]= 0
+
+Out[102]= mults$100[finiteWeight[2, {4, 5}]]
+
+Out[101]= 1
+
+Out[100]= 0
+
+
+b2=makeSimpleRootSystem[B,2];
+rh=rho[b2];
+rs=b2;
+
+fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
+
+fan
+
+Out[108]= orbitWithEps[finiteRootSystem[2, 
+ 
+>      {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}]][]
 
 makeUntwistedAffineRootSystem[fs_finiteRootSystem]:=Module[{rs=affineRootSystem[Unique[]],ar},
 							   rs[finiteRootSystem]=fs;
