@@ -229,17 +229,7 @@ weightSystem[rs_finiteRootSystem][higestWeight_finiteWeight]:=Module[{minusPosRo
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@rs[simpleRoots])]
 										 ,x]],{higestWeight},#=!={}&]];
 
-weightSystem[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,2}]]
-
-Out[88]= {{finiteWeight[2, {2, 2}]}, 
- 
->    {finiteWeight[2, {1, 1}], finiteWeight[2, {2, 1}]}, 
- 
->    {finiteWeight[2, {0, 0}], finiteWeight[2, {1, 0}], 
- 
->     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {1, 1}]}, 
- 
->    {finiteWeight[2, {0, 0}], finiteWeight[2, {1, 0}]}, {}}
+(* weightSystem[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,2}]] *)
 
 freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
     Module[{rh=rho[rs],weights,mults,c,insideQ,
@@ -262,23 +252,7 @@ freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
 		weights];
 	   mults];
 
-freudenthalMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]]
-
-Out[94]= mults$98
-
-Out[90]= mults$96
-
-Out[94][finiteWeight[2, {0, 0}]]
-
-Out[96]= 6
-
-Out[95]= 1
-
-Out[93]= 1
-
-Out[92]= 1
-
-Out[91]= {finiteWeight[2, {1, 0}], finiteWeight[2, {0, 0}]}
+(* freudenthalMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]] *)
 
 orbitWithEps[rs_finiteRootSystem][weight_finiteWeight]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]]],1];
 
@@ -296,60 +270,13 @@ racahMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
 		weights];
 	   mults]
 
-racahMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]]
+(* racahMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]] *)
 
-Out[111]= mults$102
-
-Out[99]= mults$100
-
-(Out[111][#]&) /@ keys[Out[111]]
-
-Out[112]= {4, 2, 2, 6, 1, 2, 3, 1, 4, 1, 5, 4, 1, 2, 3, 3, 1, 5, 1, 3, 2}
-
-Out[105]= {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-
-Out[104]= {finiteWeight[2, {5, 3}], finiteWeight[2, {4, 1}], 
- 
->    finiteWeight[2, {0, 0}], finiteWeight[2, {5, 4}], 
- 
->    finiteWeight[2, {2, 2}], finiteWeight[2, {1, 0}], 
- 
->    finiteWeight[2, {3, 2}], finiteWeight[2, {4, 0}], 
- 
->    finiteWeight[2, {4, 4}], finiteWeight[2, {5, 5}], 
- 
->    finiteWeight[2, {5, 2}], finiteWeight[2, {3, 0}], 
- 
->    finiteWeight[2, {4, 3}], finiteWeight[2, {3, 1}], 
- 
->    finiteWeight[2, {1, 1}], finiteWeight[2, {3, 3}], 
- 
->    finiteWeight[2, {5, 0}], finiteWeight[2, {2, 0}], 
- 
->    finiteWeight[2, {5, 1}], finiteWeight[2, {2, 1}], 
- 
->    finiteWeight[2, {4, 2}]}
-
-Out[103]= 0
-
-Out[102]= mults$100[finiteWeight[2, {4, 5}]]
-
-Out[101]= 1
-
-Out[100]= 0
-
-
-b2=makeSimpleRootSystem[B,2];
+(* b2=makeSimpleRootSystem[B,2];
 rh=rho[b2];
-rs=b2;
+rs=b2; 
 
-fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
-
-fan
-
-Out[108]= orbitWithEps[finiteRootSystem[2, 
- 
->      {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}]][]
+fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]]; *)
 
 higestRoot[rs_finiteRootSystem]:=toFundamentalChamber[rs][rs[simpleRoot][Ordering[(#.#&)/@rs[simpleRoots],-1][[1]]]]
 
@@ -359,77 +286,7 @@ makeAffineExtension[fs_finiteRootSystem]:=affineRootSystem[fs[rank],fs,makeAffin
 
 Append[makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoots],makeAffineExtension[makeSimpleRootSystem[B,2]][[3]]]
 
-makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoot][0]
-
-Out[185]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
-
-Out[184]= 1111
-
-Out[183]= 1111
-
-Part::partw: Part 4 of {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
-     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
-     affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]} does not exist.
-
-Out[180]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}[[4]]
-
-Out[176]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
-
-Out[175]= affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]
-
-Out[174]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
-
-Out[173]= affineWeight[2, finiteWeight[2, {1, -1}], 0, 0]
-
-Out[171]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}[1]
-
-Out[170]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}
-
-Out[168]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}
-
-Out[167]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}
-
-Out[165]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
-
-Out[164]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
-
-Out[163]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}
-
-Out[162]= affineRootSystem[2, finiteRootSystem[2, 
- 
->     {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}], 
- 
->    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
- 
->    {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]
-
-Out[161]= affineRootSystem[1, finiteRootSystem[1, {finiteWeight[1, {1}]}], 
- 
->    affineWeight[1, finiteWeight[1, {-1}], 0, 1], 
- 
->    {affineWeight[1, finiteWeight[1, {1}], 0, 0]}]
+(* makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoot][0] *)
 
 affineRootSystem/:rs_affineRootSystem[rank]:=rs[[1]]
 
@@ -437,66 +294,12 @@ affineRootSystem/:rs_affineRootSystem[finiteRootSystem]:=rs[[2]]
 
 affineRootSystem/:rs_affineRootSystem[realRoots]:=rs[[4]]
 
-affineRootSystem/:rs_affineRootSystem[simpleRoots]:=Append[rs[[4]],rs[[3]]]
+affineRootSystem/:rs_affineRootSystem[imaginaryRoot]:=rs[[3]]
+
+affineRootSystem/:rs_affineRootSystem[simpleRoots]:=Prepend[rs[[4]],rs[[3]]]Out[302]= {1, 1, 1}
 
 affineRootSystem/:rs_affineRootSystem[simpleRoot][0]:=rs[[3]];
-affineRootSystem/:rs_affineRootSystem[simpleRoot][n_?NumberQ]/;n<=rs[rank]:=rs[simpleRoots][[n]];
-
-Length[{1,2,3}]
-
-Out[178]= 3
-
-Out[147]= {1, 1, 2, 3}
-
-Out[144]= {1, {1, 2, 3}}
-
-makeAffineExtension[rs][[4]]
-
-Out[159]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}
-
-Part::partw: Part 4 of finiteRootSystem[2, 
-     {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}] does not exist.
-
-Out[158]= finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
- 
->      finiteWeight[2, {0, 1}]}][[4]]
-
-makeAffineExtension[rs][simpleRoots]
-
-Out[157]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
-
-Out[156]= affineRootSystem[2, finiteRootSystem[2, 
- 
->     {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}], 
- 
->    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
- 
->    {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]
-
-Out[151]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1][1]
-
-Out[149]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1][2]
-
-Out[141]= affineRootSystem[2, finiteRootSystem[2, 
- 
->     {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}], 
- 
->    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
- 
->    {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]
-
-Out[139]= makeAffineExtension[finiteRootSystem[2, 
- 
->     {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}]]
-
-
-
+affineRootSystem/:rs_affineRootSystem[simpleRoot][n_?NumberQ]/;n<=rs[rank]:=rs[simpleRoots][[n]];Out[293]= {1, 1, 2}
 
 toFundamentalChamber[rs_affineRootSystem][vec_affineWeight]:=
     First[NestWhile[Function[v,
@@ -504,72 +307,53 @@ toFundamentalChamber[rs_affineRootSystem][vec_affineWeight]:=
 	      vec,
 	      Head[#]=!=reflection[Null]&]]
 
-marks[rs_affineRootSystem]:=Inverse[cartanMatrix[rs[finiteRootSystem]]].(-2*#.rs[simpleRoot][0]/(#.#)&)/@rs[realRoots]
+marks[rs_affineRootSystem]:=Prepend[Inverse[cartanMatrix[rs[finiteRootSystem]]].(-2*#.rs[simpleRoot][0]/(#.#)&)/@rs[realRoots],1]
 
-(#.rs[simpleRoot][0]&)/@rs[realRoots]
+comarks[rs_affineRootSystem]:=marks[rs]*Map[#.#/2&,rs[simpleRoots]]
 
-rs[simpleRoot][0]
+b2a=makeAffineExtension[makeSimpleRootSystem[B,2]]
 
-makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoot][0]
+fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#1,#2,0]&,
+					     Transpose[{Prepend[fundamentalWeights[rs[finitePart]],
+								0*rs[finitePart][simpleRoot][[1]]],
+							comarks[rs]}]]
 
-Out[198]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
+(* fundamentalWeights[b2a] *)
 
-Out[196]= {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}
+orbit[rs_affineRootSystem][{weights__affineWeight},gradelimit_?NumberQ]:=
+			   NestWhileList[
+			       Function[x,
+					Union[Flatten[
+					    Map[Function[y,
+							 Map[reflection[#][y]&,
+							     Cases[rs[simpleRoots],z_ /; And[z.y>0,Abs[reflection[z][y][grade]]<gradelimit]]
+							    ]],
+						x]],
+					      SameTest->(#1==#2&)]],
+			       {weights},
+			       #=!={}&]
 
-Out[193]= affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]
+orbitWithEps[rs_affineRootSystem][weight_affineWeight,gradelimit_?NumberQ]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][{weight},gradelimit]]],1]
 
-labels[makeAffineExtension[makeSimpleRootSystem[B,4]]]
+positiveRoots[rs_affineRootSystem,gradelimit_?NumberQ]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]],gradelimit]]]
 
-Out[206]= {1, 2, 2, 2}
+weightSystem[rs_affineRootSystem][higestWeight_affineWeight,gradelimit_?NumberQ]:=Module[{minusPosRoots=-positiveRoots[rs,gradelimit]},
+									     NestWhileList[Function[x,Complement[
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And[Abs[y[grade]]<gradelimit,And@@(#.y>=0&/@rs[simpleRoots])]]
+										 ,x]],{higestWeight},#=!={}&]]
 
-Out[205]= {1, 1, 1, 1}
 
-Out[204]= {1, 2}
-
-Out[202]= {0, 2}
-
-Out[200]= {0, -1}
-
-Out[197]= {0, -1}
-
-Out[191]= affineWeight[2 . affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
- 
->    finiteWeight[2, {-1, -1}] . 
- 
->     affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
- 
->    0 . affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
- 
->    1 . affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]]
-
-Out[189]= affineWeight[2 . {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}[0], 
- 
->    finiteWeight[2, {-1, -1}] . 
- 
->     {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}[0], 
- 
->    0 . {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}[0], 
- 
->    1 . {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
- 
->       affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}[0]]
-
-fundamentalWeights[rs_affineRootSystem]
-
+racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?NumberQ]:=
+    Module[{rh=rho[rs],weights,mults,c,insideQ,
+	    fan,
+	    toFC=toFundamentalChamber[rs]},
+	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
+	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight]]], #1.rh>#2.rh&];
+	   mults[highestWeight]=1;
+	   insideQ:=IntegerQ[mults[toFC[#]]]&;
+	   Scan[Function[v,
+			 mults[v]=
+			 Plus@@(fan /. {x_finiteWeight,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
+		weights];
+	   mults]
 
