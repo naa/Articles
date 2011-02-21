@@ -55,9 +55,47 @@
 
 Representation theory of finite, affine and extended affine Lie algebras is of central importance for different areas of mathematical and theoretical physics. Simple Lie algebras appear as the symmetries of classical and quantum systems, e.g. of gauge quantum field theories. Tensor product decomposition problem for simple Lie algebras appears in classification of particles, branching problem -- in the study of symmetry breaking, for example in great unification models. 
 
-Major role of representation theory for the study of quantum and classical integrable systems is well known. Here, for example, tensor product decomposition is required for the computation of spectra and eigenstates of Hamiltonian. Quantum deformation of simple Lie algebras appears naturally in the study of integrable systems. It is possible to introduce $q$-analogues of multiplicities and branching coefficients. If $q$ is not root of unity category of $U_{q}(\gf)$-modules is equivalent to the non-deformed case.  Since Weyl character formula is preserved by $q$-deformation in this case, recurrent approach is applicable. 
+Example.
 
-Affine Lie algebras, WZW and coset models. 
+Major role of representation theory for the study of quantum and classical integrable systems is well known. Here, for example, tensor product decomposition is required for the computation of spectra and eigenstates of Hamiltonian. Quantum deformation of simple Lie algebras appears naturally in the study of integrable systems. It is possible to introduce $q$-analogues of multiplicities and branching coefficients. 
+
+Definition.
+
+Example.
+
+Affine Lie algebras, WZW and coset models. Denominator identity 
 
 Extended affine Lie algebras currently attract a lot of attention. These algebras has applications in supergravity 
+
+Reference.
+
+Multiplicities, branching and tensor product problems are essentially different faces of the same problem. One possible solution is recurrent computation from corresponding generalization of Weyl character formula. Such a solution is applicable in many cases. For example if $q$ is not root of unity category of $U_{q}(\gf)$-modules is equivalent to the non-deformed case.  Since Weyl character formula is preserved by $q$-deformation in this case, recurrent approach is applicable to quantum groups. etc.
+
+General recurrent relations for branching coefficients of non-maximal embeddings were proposed in [1007]. It [1102] it was shown that these relations demonstrate the connection of branching problem with BGG resolution. Also it was noticed, that weight multiplicities and tensor product decomposition coefficients can be obtained in the special cases of Lie algebra embeddings ($\hf\subset\gf$ and $\gf\subset\gf\otimes\gf$ correspondingly).
+
+Example.
+
+In this paper we present {\it Mathematica} package for computations in representation theory of affine Lie algebras. 
+
+Main features:
+\begin{itemize}
+\item Root systems, fundamental weights, Weyl reflections for finite dimensional and affine semi-simple Lie algebras.
+\item Recurrent calculation of weight multiplicities and branching coefficients for irreducible representations.
+\item Construction of closed algebraic expressions for string and branching functions for low-rank affine Lie algebras.
+\end{itemize}
+
+Methods and algorithms.
+For (1) we use fairly standard algorithms. For simple finite-dimensional Lie algebras these algorithms were already implemented in several software packages (\cite{vanleeuwen1994lsp}, \cite{stembridge2001computational}, \cite{fischbacher2002ilp}, \cite{simplie}). We have made them available to the users of popular computer algebra system {\it Mathematica}. Flexibility of {\it Mathematica} language has allowed us to represent Weyl group elements in the form convenient for simplification with rules []. 
+
+There exists well-known fast recursive formula for recurrent computation of weight multiplicities of Freudenthal \cite{moody1982fast}. It is used in most software packages (\cite{vanleeuwen1994lsp}, \cite{stembridge2001computational}, \cite{fischbacher2002ilp}). We present our own implementation. Also we present another recurrent computation routine based on general approach to branching [1007]. In case of finite-dimensional Lie algebras this procedure is equivalent to Racah formula, which is faster for weight multiplicities in case of low rank algebras and big representations. (See the table with run times). 
+
+Branching and tensor-product decomposition is carried out by the same recurrent process, which is implemented for arbitrary pair of algebra $\gf$ and subalgebra $\af$. 
+
+For tensor product decompositions it is sometimes possible to give close algebraic answer for arbitrary tensor powers (see [Lyakhovsky, Postnova]). This formulae are also included in our package.
+
+
+\bibliography{bibliography}{}
+\bibliographystyle{utphys}
+
+
 \end{document}

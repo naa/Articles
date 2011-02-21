@@ -60,6 +60,7 @@ Expect["Equal for finite weights compares standard base representations", True,m
 
 Expect["Equal for finite weights compares standard base representations", False,makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,2,3,4}]]
 
+finiteWeight/:0*y_finiteWeight:=makeFiniteWeight[0*y[standardBase]];
 finiteWeight/:x_?NumberQ*y_finiteWeight:=makeFiniteWeight[x*y[standardBase]]
 
 Expect["Multiplication by scalar", True,makeFiniteWeight[{1,2,3}]*2==makeFiniteWeight[{2,4,6}]]
@@ -296,10 +297,10 @@ affineRootSystem/:rs_affineRootSystem[realRoots]:=rs[[4]]
 
 affineRootSystem/:rs_affineRootSystem[imaginaryRoot]:=rs[[3]]
 
-affineRootSystem/:rs_affineRootSystem[simpleRoots]:=Prepend[rs[[4]],rs[[3]]]Out[302]= {1, 1, 1}
+affineRootSystem/:rs_affineRootSystem[simpleRoots]:=Prepend[rs[[4]],rs[[3]]]
 
 affineRootSystem/:rs_affineRootSystem[simpleRoot][0]:=rs[[3]];
-affineRootSystem/:rs_affineRootSystem[simpleRoot][n_?NumberQ]/;n<=rs[rank]:=rs[simpleRoots][[n]];Out[293]= {1, 1, 2}
+affineRootSystem/:rs_affineRootSystem[simpleRoot][n_?NumberQ]/;n<=rs[rank]:=rs[simpleRoots][[n]];
 
 toFundamentalChamber[rs_affineRootSystem][vec_affineWeight]:=
     First[NestWhile[Function[v,
@@ -313,10 +314,13 @@ comarks[rs_affineRootSystem]:=marks[rs]*Map[#.#/2&,rs[simpleRoots]]
 
 b2a=makeAffineExtension[makeSimpleRootSystem[B,2]]
 
-fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#1,#2,0]&,
-					     Transpose[{Prepend[fundamentalWeights[rs[finitePart]],
-								0*rs[finitePart][simpleRoot][[1]]],
+
+fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
+					     Transpose[{Prepend[fundamentalWeights[rs[finiteRootSystem]],
+								0*rs[finiteRootSystem][simpleRoot][1]],
 							comarks[rs]}]]
+
+rho[rs_affineRootSystem]:=Plus@@fundamentalWeights[rs]
 
 (* fundamentalWeights[b2a] *)
 
@@ -347,8 +351,8 @@ racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?
     Module[{rh=rho[rs],weights,mults,c,insideQ,
 	    fan,
 	    toFC=toFundamentalChamber[rs]},
-	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
-	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight]]], #1.rh>#2.rh&];
+	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh,gradelimit]]];
+	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight,gradelimit]]], #1.rh>#2.rh&];
 	   mults[highestWeight]=1;
 	   insideQ:=IntegerQ[mults[toFC[#]]]&;
 	   Scan[Function[v,
