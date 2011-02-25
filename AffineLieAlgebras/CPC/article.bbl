@@ -1,0 +1,26 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{vanleeuwen1994lsp}
+M.~Van~Leeuwen, ``{LiE, a software package for Lie group computations},'' {\em
+  Euromath Bull} {\bf 1} (1994) no.~2, 83--94.
+  \url{http://www-math.univ-poitiers.fr/~maavl/LiE/}.
+
+\bibitem{stembridge2001computational}
+J.~Stembridge, ``{Computational aspects of root systems, Coxeter groups, and
+  Weyl characters, Interaction of combinatorics and representation theory, MSJ
+  Mem., vol. 11},'' {\em Math. Soc. Japan, Tokyo} (2001)  1--38.
+
+\bibitem{fischbacher2002ilp}
+T.~Fischbacher, ``{Introducing LambdaTensor1. 0-A package for explicit symbolic
+  and numeric Lie algebra and Lie group calculations},''
+  \href{http://arxiv.org/abs/hep-th/0208218}{{\tt hep-th/0208218}}.
+
+\bibitem{simplie}
+T.~Nutma, ``Simplie.''
+\newblock \url{http://code.google.com/p/simplie/}.
+
+\bibitem{moody1982fast}
+R.~Moody and J.~Patera, ``{Fast recursion formula for weight multiplicities},''
+  {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 7} (1982) no.~1, .
+
+\end{thebibliography}\endgroup

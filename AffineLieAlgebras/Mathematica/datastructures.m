@@ -18,6 +18,7 @@
 
 Clear[finiteWeight,affineWeight,dimension,standardBase,simpleRootBase,level,grade,Expect];
 
+Expect::"usage"="Expect[comment,value,expression] is used for unit tests. If expression != value it throws exception.";
 Expect[ description_, val_, expr_ ] := 
 If[
     val != expr,
@@ -28,23 +29,28 @@ If[
     ]
 ]
 
+standardBase::"usage"="standardBase[coordinates] represents weight vector in standard (Bourbaki) coordinates. E.g. simple roots for B2 are standardBase[1,-1] and standardBase[0,1]"
+
 (* finiteWeight[dimension,coordinates] *)
+finiteWeight::"usage"="finiteWeight[dimension_?NomberQ,coordinates_standardBase] represents vector in weight space of finite-dimensional Lie algebra.\n finiteWeight[dimension] returns dimension of the space, where weight vector is embedded (i.e. for sl_n it is n+1.\n finiteWeight[standardBase] returns standard base coordinates of weight of finite-dimensional Lie algebra";
 
 finiteWeight/:x_finiteWeight[dimension]:=x[[1]];
 finiteWeight/:x_finiteWeight[standardBase]:=x[[2]];
 
+makeFiniteWeight::"usage"="makeFiniteWeight[{coordinates__?NumberQ}] creates finiteWeight with given coordinates in standard base"
 makeFiniteWeight[{coordinates__?NumberQ}]:=finiteWeight @@ {Length[{coordinates}],{coordinates}}
 
 Expect["Dimension equals to length",3,makeFiniteWeight[{1,2,3}][dimension]]
 
+Dot::"usage"=Dot::"usage" <> "\n It is defined for weights of finite and affine Lie algebras";
 finiteWeight/:x_finiteWeight . y_finiteWeight/;x[dimension]==y[dimension]:=x[standardBase].y[standardBase]
 
 Expect["Scalar product for vectors from weigth space of finite-dimensional Lie algebras",10,makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1}]]
 
-
 Expect["Scalar product for vectors from different spaces are left unevaluated",True,
        MatchQ[makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1,2}],x_finiteWeight . y_finiteWeight]]
 
+Plus::"usage"=Plus::"usage" <> "\n It is defined for weights of finite and affine Lie algebras";
 finiteWeight/:x_finiteWeight+y_finiteWeight/;x[dimension]==y[dimension]:=makeFiniteWeight[x[standardBase]+y[standardBase]]
 
 Expect["Plus for finite-dimensional weights",{2,4,6},(makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{1,2,3}])[standardBase]]
@@ -52,6 +58,7 @@ Expect["Plus for finite-dimensional weights",{2,4,6},(makeFiniteWeight[{1,2,3}]+
 Expect["Plus product for vectors from different spaces are left unevaluated",True,
        MatchQ[makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{3,2,1,2}],x_finiteWeight + y_finiteWeight]]
 
+Equal::"usage"=Equal::"usage" <> "\n It is defined for weights of finite and affine Lie algebras";
 finiteWeight/:x_finiteWeight==y_finiteWeight:=x[standardBase]==y[standardBase]
 
 Expect["Equal for finite weights compares standard base representations", False,makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,3,2}]]
@@ -206,14 +213,28 @@ toFundamentalChamber[rs_finiteRootSystem][vec_finiteWeight]:=
 
 Expect["To fundamental chamber",True,makeFiniteWeight[{1,1/2}]==toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,1/2}]]]
 
-orbit[rs_finiteRootSystem][{weights__finiteWeight}]:=
-    NestWhileList[
+Expect["We can use this and other functions for mapping",True,
+       Map[toFundamentalChamber[makeSimpleRootSystem[B,2]],{makeFiniteWeight[{-1,-1}],makeFiniteWeight[{-2,-1}]}]==
+       {makeFiniteWeight[{1, 1}], makeFiniteWeight[{2, 1}]}]
+
+
+partialOrbit::"usage"="partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}] constructs Weyl partial orbit of given set of weights. \n It starts with the list of weights and reflects them away from main Weyl chamber.\n So for w in fundamental chamber it gives the whole orbit."
+partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}]:=
+    Most[NestWhileList[
 	Function[x,
 		 Union[Flatten[Map[Function[y,
 					    Map[reflection[#][y]&,Cases[rs[simpleRoots],z_ /; z.y>0]]],x]],SameTest->(#1==#2&)]],
 	{weights},
-	#=!={}&];
-orbit[rs_finiteRootSystem][weight_finiteWeight]:=orbit[rs][{toFundamentalChamber[rs][weight]}];
+	#=!={}&]];
+
+
+
+orbit[rs_finiteRootSystem][weight_finiteWeight]:=partialOrbit[rs][{toFundamentalChamber[rs][weight]}];
+orbit[rs_finiteRootSystem][{weights__finiteWeight}]:=partialOrbit[rs][toFundamentalChamber[rs] /@ {weights}];
+
+
+
+
 
 positiveRoots[rs_finiteRootSystem]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]]]]]
 
