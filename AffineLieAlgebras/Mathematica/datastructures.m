@@ -29,29 +29,44 @@ If[
     ]
 ]
 
-standardBase::"usage"="standardBase[coordinates] represents weight vector in standard (Bourbaki) coordinates. E.g. simple roots for B2 are standardBase[1,-1] and standardBase[0,1]"
+standardBase::"usage"=
+    "standardBase[coordinates] represents weight vector in standard (Bourbaki) coordinates.\
+    E.g. simple roots for B2 are standardBase[1,-1] and standardBase[0,1]"
 
 (* finiteWeight[dimension,coordinates] *)
-finiteWeight::"usage"="finiteWeight[dimension_?NomberQ,coordinates_standardBase] represents vector in weight space of finite-dimensional Lie algebra.\n finiteWeight[dimension] returns dimension of the space, where weight vector is embedded (i.e. for sl_n it is n+1.\n finiteWeight[standardBase] returns standard base coordinates of weight of finite-dimensional Lie algebra";
+
+finiteWeight::"usage"=
+    "finiteWeight[dimension_?NumberQ,coordinates_standardBase] represents\ 
+    vector in weight space of finite-dimensional Lie algebra.\n 
+    finiteWeight[dimension] returns dimension of the space, where weight vector is embedded\ 
+    (i.e. for sl_n it is n+1).\n 
+     finiteWeight[standardBase] returns standard base coordinates of weight of finite-dimensional Lie algebra";
 
 finiteWeight/:x_finiteWeight[dimension]:=x[[1]];
 finiteWeight/:x_finiteWeight[standardBase]:=x[[2]];
 
-makeFiniteWeight::"usage"="makeFiniteWeight[{coordinates__?NumberQ}] creates finiteWeight with given coordinates in standard base"
+makeFiniteWeight::"usage"=
+    "makeFiniteWeight[{coordinates__?NumberQ}] creates finiteWeight with given coordinates in standard base"
+
 makeFiniteWeight[{coordinates__?NumberQ}]:=finiteWeight @@ {Length[{coordinates}],{coordinates}}
 
 Expect["Dimension equals to length",3,makeFiniteWeight[{1,2,3}][dimension]]
 
 Dot::"usage"=Dot::"usage" <> "\n It is defined for weights of finite and affine Lie algebras";
+
 finiteWeight/:x_finiteWeight . y_finiteWeight/;x[dimension]==y[dimension]:=x[standardBase].y[standardBase]
 
-Expect["Scalar product for vectors from weigth space of finite-dimensional Lie algebras",10,makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1}]]
+Expect["Scalar product for vectors from weigth space of finite-dimensional Lie algebras",
+       10,makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1}]]
 
 Expect["Scalar product for vectors from different spaces are left unevaluated",True,
-       MatchQ[makeFiniteWeight[{1,2,3}].makeFiniteWeight[{3,2,1,2}],x_finiteWeight . y_finiteWeight]]
+       MatchQ[makeFiniteWeight[{1,2,3}].
+	      makeFiniteWeight[{3,2,1,2}],x_finiteWeight . y_finiteWeight]]
 
 Plus::"usage"=Plus::"usage" <> "\n It is defined for weights of finite and affine Lie algebras";
-finiteWeight/:x_finiteWeight+y_finiteWeight/;x[dimension]==y[dimension]:=makeFiniteWeight[x[standardBase]+y[standardBase]]
+
+finiteWeight/:x_finiteWeight+y_finiteWeight/;x[dimension]==y[dimension]:=
+    makeFiniteWeight[x[standardBase]+y[standardBase]]
 
 Expect["Plus for finite-dimensional weights",{2,4,6},(makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{1,2,3}])[standardBase]]
 
@@ -59,22 +74,45 @@ Expect["Plus product for vectors from different spaces are left unevaluated",Tru
        MatchQ[makeFiniteWeight[{1,2,3}]+makeFiniteWeight[{3,2,1,2}],x_finiteWeight + y_finiteWeight]]
 
 Equal::"usage"=Equal::"usage" <> "\n It is defined for weights of finite and affine Lie algebras";
+
 finiteWeight/:x_finiteWeight==y_finiteWeight:=x[standardBase]==y[standardBase]
 
-Expect["Equal for finite weights compares standard base representations", False,makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,3,2}]]
+Expect["Equal for finite weights compares standard base representations", 
+       False,
+       makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,3,2}]]
 
-Expect["Equal for finite weights compares standard base representations", True,makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,2,3}]]
+Expect["Equal for finite weights compares standard base representations", 
+       True,
+       makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,2,3}]]
 
-Expect["Equal for finite weights compares standard base representations", False,makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,2,3,4}]]
+Expect["Equal for finite weights compares standard base representations", 
+       False,
+       makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{1,2,3,4}]]
+
+
+Times::"usage"=Times::"usage"<>"\n\n Mutliplication by numbers is defined for the elements of weight space of affine and finite-dimensional Lie algebras.\ 
+    \n For example makeFiniteWeight[{1,2,3}]*2==makeFiniteWeight[{2,4,6}]]";
 
 finiteWeight/:0*y_finiteWeight:=makeFiniteWeight[0*y[standardBase]];
-finiteWeight/:x_?NumberQ*y_finiteWeight:=makeFiniteWeight[x*y[standardBase]]
+
+finiteWeight/:x_?NumberQ*y_finiteWeight:=makeFiniteWeight[x*y[standardBase]];
 
 Expect["Multiplication by scalar", True,makeFiniteWeight[{1,2,3}]*2==makeFiniteWeight[{2,4,6}]]
 
 Expect["Multiplication by scalar", True,2*makeFiniteWeight[{1,2,3}]==makeFiniteWeight[{2,4,6}]]
 
-makeAffineWeight[fw_finiteWeight,lev_?NumberQ,gr_?NumberQ]:=affineWeight[fw[dimension],fw,lev,gr]
+
+affineWeight::"usage"=
+    "affineWeight[dimension_?NumberQ,fw_finiteWeigt,level_?NumberQ, grade_?NumberQ] represents\ 
+    vector in weight space of affine Lie algebra.\n 
+    affineWeight[dimension] returns dimension of the space of real roots, where finite weight vector is embedded\ 
+    (i.e. for sl_n it is n+1).\n 
+    affineWeight[finitePart] returns finite part of weight as finiteWeight structure\n
+    affineWeight[level] returns level of affine weight\n
+    affineWeight[grade] returns grade of affine weight"
+
+makeAffineWeight::"usage"= 
+    "makeAffineWeight[fw_finiteWeight,level_?NumberQ,grade_?NumberQ] creates affine weight with the given finite part fw, level and grade"
 
 affineWeight/:x_affineWeight[dimension]:=x[[1]];
 affineWeight/:x_affineWeight[finitePart]:=x[[2]];
@@ -130,8 +168,17 @@ Expect["Multiplication by scalar", True,makeAffineWeight[makeFiniteWeight[{1,2,3
 ExpandNCM[(h : NonCommutativeMultiply)[a___, b_Plus, c___]] :=  Distribute[h[a, b, c], Plus, h, Plus, ExpandNCM[h[##]] &];
 ExpandNCM[a_] := ExpandAll[a];
 ExpandNCM[(a + b) ** (a + b) ** (a + b)];
+
+keys::"usage"="keys[hashtable] gives all the keys in hashtable";
 keys = DownValues[#,Sort->False][[All,1,1,1]]&;
 
+
+finiteRootSystem::"usage"=
+    "finiteRootSystem[rank_Integer,{roots_finiteWeight}] represents root system of finite-dimensional Lie algebra.\n
+    finiteRootSystem[rank] returns rank of the root system\n
+    finiteRootSystem[simpleRoots] returns unsorted list of simple roots in the root system.\n
+    finiteRootSystem[simpleRoot][n_Integer] returns n'th simple root"
+    
 makeFiniteRootSystem[{roots__finiteWeight}]:=finiteRootSystem[Length[{roots}],{roots}]
 
 finiteRootSystem/:x_finiteRootSystem[rank]:=x[[1]];
