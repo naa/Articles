@@ -23,7 +23,7 @@ Expect[ description_, val_, expr_ ] :=
 If[
     val != expr,
     Throw[
-        StringJoin[ "GOT UNEXPECTED VALUE ", ToString[expr], 
+        StringJoin[ ToString[description],": GOT UNEXPECTED VALUE ", ToString[expr], 
         " INSTEAD OF ", ToString[val] ]
         , "assertion exception"
     ]
@@ -46,7 +46,7 @@ finiteWeight/:x_finiteWeight[dimension]:=x[[1]];
 finiteWeight/:x_finiteWeight[standardBase]:=x[[2]];
 
 makeFiniteWeight::"usage"=
-    "makeFiniteWeight[{coordinates__?NumberQ}] creates finiteWeight with given coordinates in standard base"
+    "makeFiniteWeight[{coordinates__?NumberQ}] creates finiteWeight with given coordinates in standard base";
 
 makeFiniteWeight[{coordinates__?NumberQ}]:=finiteWeight @@ {Length[{coordinates}],{coordinates}}
 
@@ -109,20 +109,22 @@ affineWeight::"usage"=
     (i.e. for sl_n it is n+1).\n 
     affineWeight[finitePart] returns finite part of weight as finiteWeight structure\n
     affineWeight[level] returns level of affine weight\n
-    affineWeight[grade] returns grade of affine weight"
-
-makeAffineWeight::"usage"= 
-    "makeAffineWeight[fw_finiteWeight,level_?NumberQ,grade_?NumberQ] creates affine weight with the given finite part fw, level and grade"
-
+    affineWeight[grade] returns grade of affine weight";
 affineWeight/:x_affineWeight[dimension]:=x[[1]];
 affineWeight/:x_affineWeight[finitePart]:=x[[2]];
 affineWeight/:x_affineWeight[level]:=x[[3]];
 affineWeight/:x_affineWeight[grade]:=x[[4]];
 
+makeAffineWeight::"usage"= 
+    "makeAffineWeight[fw_finiteWeight,level_?NumberQ,grade_?NumberQ] creates affine weight with the given finite part fw, level and grade\n
+    makeAffineWeight[{fw__?NumberQ},level_?NumberQ,grade_?NumberQ] creates affine weight with the given finite part fw, level and grade
+    ";
+makeAffineWeight[fp_finiteWeight,lev_?NumberQ,gr_?NumberQ]:=affineWeight[fp[dimension],fp,lev,gr];
+makeAffineWeight[{fp__?NumberQ},lev_?NumberQ,gr_?NumberQ]:=makeAffineWeight[makeFiniteWeight[{fp}],lev,gr]
+
+
 Expect["Affine weight has the same real dimension as the finite-dimensional part, since we hold level and grade separetely",
        True,makeAffineWeight[makeFiniteWeight[{1,2,3,4,5}],1,2][dimension]==Length[{1,2,3,4,5}]]
-
-makeAffineWeight[{fp__?NumberQ},lev_?NumberQ,gr_?NumberQ]:=makeAffineWeight[makeFiniteWeight[{fp}],lev,gr]
 
 Expect["Shortened constructor",
        True,makeAffineWeight[{1,2,3,4,5},1,2][dimension]==Length[{1,2,3,4,5}]]
@@ -178,7 +180,12 @@ finiteRootSystem::"usage"=
     finiteRootSystem[rank] returns rank of the root system\n
     finiteRootSystem[simpleRoots] returns unsorted list of simple roots in the root system.\n
     finiteRootSystem[simpleRoot][n_Integer] returns n'th simple root"
-    
+
+makeFiniteRootSystem::"usage"=
+    "makeFiniteRootSystem[{roots__finiteWeight}] creates finiteRootSystem structure from the List of simple roots\n
+    makeFiniteRootSystem[{roots__finiteWeight}] creates  finiteRootSystem structure from the List of simple roots\n
+    given as the lists of coordinates";
+
 makeFiniteRootSystem[{roots__finiteWeight}]:=finiteRootSystem[Length[{roots}],{roots}]
 
 finiteRootSystem/:x_finiteRootSystem[rank]:=x[[1]];
@@ -186,6 +193,10 @@ finiteRootSystem/:x_finiteRootSystem[simpleRoots]:=x[[2]];
 finiteRootSystem/:x_finiteRootSystem[simpleRoot][n_Integer]:=x[[2]][[n]];
 
 makeFiniteRootSystem[{roots__List}]:=makeFiniteRootSystem[makeFiniteWeight/@{roots}]
+
+makeSimpleRootSystem::"usage"=
+    "makeSimpleRootSystem[series, rank] creates root system of the algebra from given series with given rank.\n
+    Exceptional Lie algebras are not supported yet";
 
 makeSimpleRootSystem[A,1]:=makeFiniteRootSystem[{{1}}];
 makeSimpleRootSystem[A,r_Integer]:=makeFiniteRootSystem[makeFiniteWeight /@ Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,r},{j,1,r+1}]];
@@ -197,35 +208,58 @@ Expect["B2:",True,makeSimpleRootSystem[B,2][simpleRoots][[1]]==makeFiniteWeight[
 
 Expect["B2: rank",2,makeSimpleRootSystem[B,2][rank]]
 
-reflection[x_finiteWeight]:=Function[y, y-2*(x.y)/(x.x)*x];
-reflection[x_affineWeight]:=Function[y, y-2*(x.y)/(x.x)*x];
+weightQ::"usage"=
+    "Weight predicate"
+
+weightQ[x_finiteWeight]=True;
+weightQ[x_affineWeight]=True;
+weightQ[_]=False;
+
+reflection::"usage"=
+    "reflection[x_finiteWeight] represents reflection in the hyperplane, orthogonal to the given root x\n
+    reflection[x_affineWeight] represents affine reflection in the hyperplane, orthogonal to the given root x\n
+    reflection[x][y] reflects y in the hyperplane, orthogonal to x"
+
+reflection[x_?weightQ]:=Function[y, y-2*(x.y)/(x.x)*x];
 
 Expect["Reflection for finite weights", True,reflection[makeFiniteWeight[{1,0}]][makeFiniteWeight[{1,1}]]==makeFiniteWeight[{-1,1}]]
 
-coroot[x_finiteWeight]:=2*x/(x.x);
+coroot::"usage"="returns coroot of given root"
+    
+coroot[x_?weightQ]:=2*x/(x.x);
 
 Expect["Co root of [1,0]", True, coroot[makeFiniteWeight[{1,0}]]==makeFiniteWeight[{2,0}]]
 
-cartanMatrix[rs_finiteRootSystem]:=Transpose[Outer[Dot,rs[simpleRoots],coroot/@rs[simpleRoots]]];
+Expect["Co root of affine [1,0]", True, coroot[makeAffineWeight[{1,0},1,0]]==makeAffineWeight[{2,0},2,0]]
+
+cartanMatrix::"usage"=
+    "cartanMatrix[rs_?rootSystemQ] returns Cartan matrix of root system rs";
+cartanMatrix[rs_?rootSystemQ]:=Transpose[Outer[Dot,rs[simpleRoots],coroot/@rs[simpleRoots]]];
 
 Expect["Cartan matrix of B2",{{2, -1}, {-2, 2}},cartanMatrix[makeSimpleRootSystem[B,2]]]
-
-clear[weylGroupElement];
 
 revApply[x_,f_]:=f[x];
 
 (* Print[makeSimpleRootSystem[B,2][simpleRoot][2]] *)
 
+rootSystemQ::"usage"=
+    "Predicate for root system data structures";
 rootSystemQ[rs_]:=MatchQ[rs,x_finiteRootSystem|x_affineRootSystem]
 
 Expect["Predicate for finite and affine root systems",True,rootSystemQ[makeSimpleRootSystem[B,2]]]
 
+weylGroupElement::"usage"=
+    "weylGroupElement[x__Integer][rs_?rootSystemQ] represents element of Weyl group composed of basic reflecetions x \n
+    of root system rs. Example: weylGroupElement[1,2,1][makeSimpleRootSystem[B,2]] = s1 s2 s1";
+clear[weylGroupElement];
 weylGroupElement[x__Integer][rs_?rootSystemQ]:=Function[z,Fold[revApply,z,reflection /@ rs[simpleRoot]/@{x}]];
 
 Expect["Weyl reflection s1 s2 s1 in algebra B2",True,
        weylGroupElement[1,2,1][makeSimpleRootSystem[B,2]][makeFiniteWeight[{1,0}]]==
        makeFiniteWeight[{-1,0}]]
 
+fundamentalWeights::"usage"=
+    "fundamentalWeights[rs_?rootSystemQ] calculates fundamental weights of given root system rs";
 fundamentalWeights[rs_finiteRootSystem]:=Plus@@(Inverse[cartanMatrix[rs]]*rs[simpleRoots]);
 
 Expect["Fundamental weights for B2", True, {makeFiniteWeight[{1,0}],makeFiniteWeight[{1/2,1/2}]}==fundamentalWeights[makeSimpleRootSystem[B,2]]]
@@ -234,25 +268,15 @@ Expect["Fundamental weights for A1", True, {makeFiniteWeight[{1/2}]}==fundamenta
 
 Expect["Fundamental weights for A2", True, {makeFiniteWeight[{2/3,-1/3,-1/3}],makeFiniteWeight[{1/3,1/3,-2/3}]}==fundamentalWeights[makeSimpleRootSystem[A,2]]]
 
-(*
-Print/@fundamentalWeights[makeSimpleRootSystem[B,2]]
-
-finiteWeight[$166]{1, 0}
-                   1  1
-finiteWeight[$167]{-, -}
-                   2  2
-
-Out[86]= {Null, Null}
-
-Out[85]= {finiteWeight[$159], finiteWeight[$160]}
-*)
-
-
-rho[rs_finiteRootSystem]:=Plus@@fundamentalWeights[rs];
+rho::"usage"=
+    "rho[rs_?rootSystemQ] - Weyl vector of root system rs (sum of fundamental weights)";
+rho[rs_?rootSystemQ]:=Plus@@fundamentalWeights[rs];
 
 Expect["Weyl vector for B2",True,makeFiniteWeight[{3/2,1/2}]==rho[makeSimpleRootSystem[B,2]]]
 
-toFundamentalChamber[rs_finiteRootSystem][vec_finiteWeight]:=
+toFundamentalChamber::"usage"=
+    "toFundamentalChamber[rs_?rootSystemQ][vec_?weightQ] acts on a weight vec by simple reflections of rs till it gets to main Weyl chamber";
+toFundamentalChamber[rs_?rootSystemQ][vec_?weightQ]:=
     First[NestWhile[Function[v,
 		       reflection[Scan[If[#.v<0,Return[#]]&,rs[simpleRoots]]][v]],
 	      vec,
@@ -265,25 +289,41 @@ Expect["We can use this and other functions for mapping",True,
        {makeFiniteWeight[{1, 1}], makeFiniteWeight[{2, 1}]}]
 
 
-partialOrbit::"usage"="partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}] constructs Weyl partial orbit of given set of weights. \n It starts with the list of weights and reflects them away from main Weyl chamber.\n So for w in fundamental chamber it gives the whole orbit."
-partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}]:=
-    Most[NestWhileList[
-	Function[x,
-		 Union[Flatten[Map[Function[y,
-					    Map[reflection[#][y]&,Cases[rs[simpleRoots],z_ /; z.y>0]]],x]],SameTest->(#1==#2&)]],
-	{weights},
-	#=!={}&]];
+
+partialOrbit::"usage"=
+    "partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}] constructs Weyl partial orbit of given set of weights. \n
+    It starts with the list of weights and reflects them away from main Weyl chamber.\n
+    For w in fundamental chamber it gives the whole orbit.";
+partialOrbit[rs_?rootSystemQ][{weights__?weightQ}]:=
+    Module[{checkGrade},
+	   checkGrade[w_finiteWeight]=True;
+	   checkGrade[w_affineWeight]=(Abs[w[grade]]<rs[gradeLimit]) /. rs[gradeLimit]->10;
+	   Most[NestWhileList[
+	       Function[x,
+			Union[
+			    Flatten[
+				Map[
+				    Function[y,
+					     Map[reflection[#][y]&,
+						 Cases[rs[simpleRoots],
+						       z_ /; And[z.y>0,
+								 checkGrade[reflection[z][y]]]
+						      ]
+						]
+					    ],
+				    x]
+				   ],
+			    SameTest->(#1==#2&)]
+		       ],
+	       {weights},
+	       #=!={}&]]];
 
 
-
-orbit[rs_finiteRootSystem][weight_finiteWeight]:=partialOrbit[rs][{toFundamentalChamber[rs][weight]}];
-orbit[rs_finiteRootSystem][{weights__finiteWeight}]:=partialOrbit[rs][toFundamentalChamber[rs] /@ {weights}];
-
+orbit[rs_?rootSystemQ][weight_?weightQ]:=partialOrbit[rs][{toFundamentalChamber[rs][weight]}];
+orbit[rs_?rootSystemQ][{weights__?weightQ}]:=partialOrbit[rs][toFundamentalChamber[rs] /@ {weights}];
 
 
-
-
-positiveRoots[rs_finiteRootSystem]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]]]]]
+positiveRoots[rs_?rootSystemQ]:=Map[-#&,Flatten[partialOrbit[rs][Map[-#&,rs[simpleRoots]]]]]
 
 orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]]
 
@@ -388,8 +428,6 @@ fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
 								0*rs[finiteRootSystem][simpleRoot][1]],
 							comarks[rs]}]]
 
-rho[rs_affineRootSystem]:=Plus@@fundamentalWeights[rs]
-
 (* fundamentalWeights[b2a] *)
 
 orbit[rs_affineRootSystem][{weights__affineWeight},gradelimit_?NumberQ]:=
@@ -428,4 +466,4 @@ racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?
 			 Plus@@(fan /. {x_finiteWeight,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
 		weights];
 	   mults]
-
+				     
