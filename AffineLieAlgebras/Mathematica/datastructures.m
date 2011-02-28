@@ -325,20 +325,19 @@ orbit[rs_?rootSystemQ][{weights__?weightQ}]:=partialOrbit[rs][toFundamentalChamb
 
 positiveRoots[rs_?rootSystemQ]:=Map[-#&,Flatten[partialOrbit[rs][Map[-#&,rs[simpleRoots]]]]]
 
-orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]]
+(*orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]]
 
 Print/@positiveRoots[makeSimpleRootSystem[B,2]]
 
 Map[Print,orbit[makeSimpleRootSystem[B, 2]][rho[makeSimpleRootSystem[B, 2]]],2]
 
 SubValues[finiteWeight]
+*)
 
-weightSystem[rs_finiteRootSystem][higestWeight_finiteWeight]:=Module[{minusPosRoots=-positiveRoots[rs]},
+weightSystem[rs_?rootSystemQ][higestWeight_?weightQ]:=Module[{minusPosRoots=-positiveRoots[rs]},
 									     NestWhileList[Function[x,Complement[
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@rs[simpleRoots])]
 										 ,x]],{higestWeight},#=!={}&]];
-
-(* weightSystem[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,2}]] *)
 
 freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
     Module[{rh=rho[rs],weights,mults,c,insideQ,
@@ -446,11 +445,6 @@ orbit[rs_affineRootSystem][{weights__affineWeight},gradelimit_?NumberQ]:=
 orbitWithEps[rs_affineRootSystem][weight_affineWeight,gradelimit_?NumberQ]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][{weight},gradelimit]]],1]
 
 positiveRoots[rs_affineRootSystem,gradelimit_?NumberQ]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]],gradelimit]]]
-
-weightSystem[rs_affineRootSystem][higestWeight_affineWeight,gradelimit_?NumberQ]:=Module[{minusPosRoots=-positiveRoots[rs,gradelimit]},
-									     NestWhileList[Function[x,Complement[
-										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And[Abs[y[grade]]<gradelimit,And@@(#.y>=0&/@rs[simpleRoots])]]
-										 ,x]],{higestWeight},#=!={}&]]
 
 
 racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?NumberQ]:=
