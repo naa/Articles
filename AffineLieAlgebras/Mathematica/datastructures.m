@@ -318,9 +318,24 @@ partialOrbit[rs_?rootSystemQ][{weights__?weightQ}]:=
 	       {weights},
 	       #=!={}&]]];
 
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["Partial orbit test", True, partialOrbit[b2][{rho[b2]}]==
+	      {{makeFiniteWeight[{3/2,1/2}]},{makeFiniteWeight[{1/2,3/2}],makeFiniteWeight[{3/2,-1/2}]},
+	       {makeFiniteWeight[{-1/2,3/2}],makeFiniteWeight[{1/2,-3/2}]},
+	       {makeFiniteWeight[{-3/2,1/2}],makeFiniteWeight[{-1/2,-3/2}]},
+	       {makeFiniteWeight[{-3/2,-1/2}]}}]]
+
+orbit::"usage"=
+    "orbit[rs_?rootSystemQ][wg_?weightQ] returns the weight of Weyl orbit, containing given weight wg. \n
+    Orbit is given as the list of lists starting with the weight in dominant Weyl chamber\n
+    orbit[rs_?rootSystemQ][{wg_?weightQ}] works for a list of weights";
 
 orbit[rs_?rootSystemQ][weight_?weightQ]:=partialOrbit[rs][{toFundamentalChamber[rs][weight]}];
 orbit[rs_?rootSystemQ][{weights__?weightQ}]:=partialOrbit[rs][toFundamentalChamber[rs] /@ {weights}];
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["orbit is equivalent to partial orbit",True, partialOrbit[b2][{rho[b2]}]== orbit[b2][rho[b2]]]]
+
 
 
 positiveRoots[rs_?rootSystemQ]:=Map[-#&,Flatten[partialOrbit[rs][Map[-#&,rs[simpleRoots]]]]]
