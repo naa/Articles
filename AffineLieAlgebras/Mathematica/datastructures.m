@@ -208,6 +208,11 @@ Expect["B2:",True,makeSimpleRootSystem[B,2][simpleRoots][[1]]==makeFiniteWeight[
 
 Expect["B2: rank",2,makeSimpleRootSystem[B,2][rank]]
 
+checkGrade[rs_?rootSystemQ][w_finiteWeight]=True;
+checkGrade[rs_?rootSystemQ][w_affineWeight]=(Abs[w[grade]]<rs[gradeLimit]) /. rs[gradeLimit]->10;
+
+
+
 weightQ::"usage"=
     "Weight predicate"
 
@@ -295,28 +300,25 @@ partialOrbit::"usage"=
     It starts with the list of weights and reflects them away from main Weyl chamber.\n
     For w in fundamental chamber it gives the whole orbit.";
 partialOrbit[rs_?rootSystemQ][{weights__?weightQ}]:=
-    Module[{checkGrade},
-	   checkGrade[w_finiteWeight]=True;
-	   checkGrade[w_affineWeight]=(Abs[w[grade]]<rs[gradeLimit]) /. rs[gradeLimit]->10;
-	   Most[NestWhileList[
-	       Function[x,
-			Union[
-			    Flatten[
-				Map[
-				    Function[y,
-					     Map[reflection[#][y]&,
-						 Cases[rs[simpleRoots],
-						       z_ /; And[z.y>0,
-								 checkGrade[reflection[z][y]]]
-						      ]
-						]
-					    ],
-				    x]
-				   ],
-			    SameTest->(#1==#2&)]
-		       ],
-	       {weights},
-	       #=!={}&]]];
+    Most[NestWhileList[
+	Function[x,
+		 Union[
+		     Flatten[
+			 Map[
+			     Function[y,
+				      Map[reflection[#][y]&,
+					  Cases[rs[simpleRoots],
+						z_ /; And[z.y>0,
+							  checkGrade[rs][reflection[z][y]]]
+					       ]
+					 ]
+				     ],
+			     x]
+			    ],
+		     SameTest->(#1==#2&)]
+		],
+	{weights},
+	#=!={}&]];
 
 Module[{b2=makeSimpleRootSystem[B,2]},
        Expect["Partial orbit test", True, partialOrbit[b2][{rho[b2]}]==
@@ -337,8 +339,17 @@ Module[{b2=makeSimpleRootSystem[B,2]},
        Expect["orbit is equivalent to partial orbit",True, partialOrbit[b2][{rho[b2]}]== orbit[b2][rho[b2]]]]
 
 
+positiveRoots::"usage"=
+    "positiveRoots[rs_?rootSystemQ] returns positive roots of root system rs";
+(* Ugly hack *)
+positiveRoots[rs_affineRootSystem]:=Join[Map[-#&,Flatten[partialOrbit[rs][Map[-#&,rs[simpleRoots]]]]],
+					 Join@@Table[NestWhileList[#+makeAffineWeight[zeroWeight[rs[finiteRootSystem]],0,1]&,zeroWeight[rs],checkGrade[rs][#]&],{rs[rank]}]];
+positiveroots[rs_?rootSystemQ]:=Map[-#&,Flatten[partialOrbit[rs][Map[-#&,rs[simpleRoots]]]]]
 
-positiveRoots[rs_?rootSystemQ]:=Map[-#&,Flatten[partialOrbit[rs][Map[-#&,rs[simpleRoots]]]]]
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["Positive roots of B2",True, positiveRoots[b2]=={makeFiniteWeight[{1,-1}],makeFiniteWeight[{0,1}],
+							       makeFiniteWeight[{1,0}],makeFiniteWeight[{1,1}]}]]
 
 (*orbit[makeSimpleRootSystem[B,2]][rho[makeSimpleRootSystem[B,2]]]
 
@@ -349,19 +360,33 @@ Map[Print,orbit[makeSimpleRootSystem[B, 2]][rho[makeSimpleRootSystem[B, 2]]],2]
 SubValues[finiteWeight]
 *)
 
+weightSystem::"usage"=
+    "weightSystem[rs_?rootSystemQ][higestWeight_?weightQ] returns the set of dominant weights in the highest weight module. \n
+    The list is split in pieces by number of root substractions";
 weightSystem[rs_?rootSystemQ][higestWeight_?weightQ]:=Module[{minusPosRoots=-positiveRoots[rs]},
-									     NestWhileList[Function[x,Complement[
-										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;And@@(#.y>=0&/@rs[simpleRoots])]
-										 ,x]],{higestWeight},#=!={}&]];
+							     Most[NestWhileList[Function[x,Complement[
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;
+										       And[checkGrade[rs][y],And@@(#.y>=0&/@rs[simpleRoots])]]
+										 ,x]],{higestWeight},#=!={}&]]];
 
-freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["Weights of [2,1] module of B2",True, weightSystem[b2][makeFiniteWeight[{2,1}]]==
+	      {{makeFiniteWeight[{2,1}]},
+	      {makeFiniteWeight[{1,0}],makeFiniteWeight[{1,1}],makeFiniteWeight[{2,0}]},
+	      {makeFiniteWeight[{0,0}]}}]]
+
+freudenthalMultiplicities::"usage"=
+    "freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight] returns hashtable with the multiplicities of 
+    weights in the highest weight module";
+freudenthalMultiplicities[rs_?rootSystemQ][highestWeight_?weightQ]:=
     Module[{rh=rho[rs],weights,mults,c,insideQ,
 	    posroots=positiveRoots[rs],
 	    toFC=toFundamentalChamber[rs]},
 	   weights=SortBy[ Rest[Flatten[weightSystem[rs][highestWeight]]], -#.rh&];
 	   c:=(#+rh).(#+rh)&;
 	   mults[highestWeight]=1;
-	   insideQ:=IntegerQ[mults[toFC[#]]]&;
+	   insideQ:=And[checkGrade[rs][#],IntegerQ[mults[toFC[#]]]]&;
 	   Scan[Function[v,
 			 mults[v]=
 			 2/(c[highestWeight]-c[v])*
@@ -375,11 +400,16 @@ freudenthalMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
 		weights];
 	   mults];
 
+Module[{b2=makeSimpleRootSystem[B,2],fm},
+       fm=freudenthalMultiplicities[b2][makeFiniteWeight[{2,1}]];
+       Expect["Mutliplicites of [2,1] B2 representation",{1, 1, 2, 3, 3},
+	      fm[#]&/@keys[fm]]]
+
 (* freudenthalMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]] *)
+orbitWithEps::"usage"="returns orbit with the determinants of Weyl reflections";
+orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]]],1];
 
-orbitWithEps[rs_finiteRootSystem][weight_finiteWeight]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]]],1];
-
-racahMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
+racahMultiplicities[rs_?rootSystemQ][highestWeight_?weightQ]:=
     Module[{rh=rho[rs],weights,mults,c,insideQ,
 	    fan,
 	    toFC=toFundamentalChamber[rs]},
@@ -389,7 +419,7 @@ racahMultiplicities[rs_finiteRootSystem][highestWeight_finiteWeight]:=
 	   insideQ:=IntegerQ[mults[toFC[#]]]&;
 	   Scan[Function[v,
 			 mults[v]=
-			 Plus@@(fan /. {x_finiteWeight,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
+			 Plus@@(fan /. {x_?weightQ,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
 		weights];
 	   mults]
 
@@ -423,6 +453,9 @@ affineRootSystem/:rs_affineRootSystem[simpleRoots]:=Prepend[rs[[4]],rs[[3]]]
 
 affineRootSystem/:rs_affineRootSystem[simpleRoot][0]:=rs[[3]];
 affineRootSystem/:rs_affineRootSystem[simpleRoot][n_?NumberQ]/;n<=rs[rank]:=rs[simpleRoots][[n]];
+
+zeroWeight[rs_finiteRootSystem]:=makeFiniteWeight[Table[0,{rs[rank]}]];
+zeroWeight[rs_affineRootSystem]:=makeAffineWeight[zeroWeight[rs[finiteRootSystem]],0,0];
 
 toFundamentalChamber[rs_affineRootSystem][vec_affineWeight]:=
     First[NestWhile[Function[v,
