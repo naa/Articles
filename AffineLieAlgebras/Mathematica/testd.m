@@ -2,7 +2,1094 @@ AppendTo[$Path,"/home/anton/study/2011/Articles/AffineLieAlgebras/Mathematica/"]
 
 <<datastructures.m;
 
+
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["Partial orbit test", True, partialOrbit[b2][{rho[b2]}]==
+	      {{makeFiniteWeight[{3/2,1/2}]},{makeFiniteWeight[{1/2,3/2}],makeFiniteWeight[{3/2,-1/2}]},
+	       {makeFiniteWeight[{-1/2,3/2}],makeFiniteWeight[{1/2,-3/2}]},
+	       {makeFiniteWeight[{-3/2,1/2}],makeFiniteWeight[{-1/2,-3/2}]},
+	       {makeFiniteWeight[{-3/2,-1/2}]}}]]
+
+Throw::nocatch: 
+   Uncaught Throw[Partial orbit test: GOT UNEXPECTED VALUE False INSTEAD OF
+      True, assertion exception] returned to top level.
+
+Out[1]= Hold[Throw[Partial orbit test: GOT UNEXPECTED VALUE False INSTEAD OF\
+ 
+>      True, assertion exception]]
+
+Throw::nocatch: 
+   Uncaught Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[16]= Hold[Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
+b2=makeSimpleRootSystem[B,2]
+
+Out[6]= finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>     finiteWeight[2, {0, 1}]}]
+
+partialOrbit[b2][{rho[b2]}]
+
+                            3  1
+Out[16]= {{finiteWeight[2, {-, -}]}, 
+                            2  2
+ 
+                       1  3                     3    1
+>    {finiteWeight[2, {-, -}], finiteWeight[2, {-, -(-)}]}, 
+                       2  2                     2    2
+ 
+                         1   3                     1    3
+>    {finiteWeight[2, {-(-), -}], finiteWeight[2, {-, -(-)}]}, 
+                         2   2                     2    2
+ 
+                         3   1                       1     3
+>    {finiteWeight[2, {-(-), -}], finiteWeight[2, {-(-), -(-)}]}, 
+                         2   2                       2     2
+ 
+                         3     1
+>    {finiteWeight[2, {-(-), -(-)}]}}
+                         2     2
+
+checkGrade[b2][rho[b2]]
+
+Out[12]= checkGrade[finiteRootSystem[2, 
+ 
+>      {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}]][finiteWeight[2, 
+ 
+       3  1
+>     {-, -}]]
+       2  2
+
+                            3  1
+Out[11]= {{finiteWeight[2, {-, -}]}}
+                            2  2
+
+                           3  1
+Out[7]= {{finiteWeight[2, {-, -}]}}
+                           2  2
+
+weightSystem[b2][makeFiniteWeight[{2,1}]]
+
+Out[19]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}}
+
+Out[6]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}, {}}
+
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["Weights of [1,1] module of B2",True, weightSystem[b2][makeFiniteWeight[{2,1}]]==
+	      {{makeFiniteWeight[{2,1}]},
+	      {makeFiniteWeight[{1,0}],makeFiniteWeight[{1,1}],makeFiniteWeight[{2,0}]},
+	      {makeFiniteWeight[{0,0}]}}]]
+
+
+weightSystem[b2][makeFiniteWeight[{2,1}]]
+
+Out[15]= {{finiteWeight[2, {2, 1}]}}
+                                    
+Throw::nocatch: 
+   Uncaught Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[14]= Hold[Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
+Module[{b2=makeSimpleRootSystem[B,2],fm},
+       fm=freudenthalMultiplicities[b2][makeFiniteWeight[{2,1}]];
+       Expect["Mutliplicites of [2,1] B2 representation",{1, 1, 2, 3, 3},
+	      fm[#]&/@keys[fm]]]
+
+freudenthalMultiplicities[makeAffineExtension[b2]][makeAffineWeight[{2,1},1,0]]
+
+
+orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]]],1];
+
+orbitWithEps[makeAffineExtension[b2]][makeAffineWeight[{2,1},1,0]]
+
+toFundamentalChamber[makeAffineExtension[b2]][makeAffineWeight[{2,1},1,0]]
+
+Out[4]= affineWeight[2, finiteWeight[2, {1, 0}], 1, 2]
+
+Out[3]= {{affineWeight[2, finiteWeight[2, {1, 0}], 1, 2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, 1}], 1, 2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, -1}], 1, 2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, 0}], 1, 2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, 1}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, 2}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, -1}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, 2}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, -2}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, 1}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, -2}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {3, 0}], 1, -2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, -1}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, 3}], 1, -2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {3, 2}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, -3}], 1, -2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, 3}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {3, -2}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-3, 0}], 1, -2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, 3}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, -3}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {4, 1}], 1, -6], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-3, 2}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, -3}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, 4}], 1, -6], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {4, -1}], 1, -6], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-3, -2}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, 4}], 1, -6], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, -4}], 1, -6], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-4, 1}], 1, -6], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, -4}], 1, -6], 1}}
+
+
+racahMultiplicities[rs_?rootSystemQ][highestWeight_?weightQ]:=
+    Module[{rh=rho[rs],weights,mults,c,insideQ,
+	    fan,
+	    toFC=toFundamentalChamber[rs]},
+	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
+	   Print[fan];
+	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight]]], #1.rh>#2.rh&];
+	   mults[highestWeight]=1;
+	   insideQ:=IntegerQ[mults[toFC[#]]]&;
+	   Scan[Function[v,
+			 mults[v]=
+			 Plus@@(fan /. {x_?weightQ,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
+		weights];
+	   mults]
+
+racahMultiplicities[makeAffineExtension[b2]][makeAffineWeight[{2,1},1,0]]
+
+[Calculating...]
+
+[Calculating...]
+
+Out[7]= {{affineWeight[2, finiteWeight[2, {1, 0}], 1, 2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, 1}], 1, 2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, -1}], 1, 2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, 0}], 1, 2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, 1}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, 2}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, -1}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, 2}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, -2}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, 1}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, -2}], 1, 0], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {3, 0}], 1, -2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, -1}], 1, 0], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, 3}], 1, -2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {3, 2}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {0, -3}], 1, -2], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, 3}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {3, -2}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-3, 0}], 1, -2], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, 3}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {2, -3}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {4, 1}], 1, -6], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-3, 2}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-2, -3}], 1, -4], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, 4}], 1, -6], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {4, -1}], 1, -6], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-3, -2}], 1, -4], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, 4}], 1, -6], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, -4}], 1, -6], -1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-4, 1}], 1, -6], 1}, 
+ 
+>    {affineWeight[2, finiteWeight[2, {-1, -4}], 1, -6], 1}}
+
+Out[3]= orbitWithEps[makeAffineExtension[b2]][affineWeight[2, 
+ 
+>     finiteWeight[2, {2, 1}], 1, 0]]
+
+Out[24]= $Aborted
+
+Out[22]= freudenthalMultiplicities[affineRootSystem[2, 
+ 
+>      finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>        finiteWeight[2, {0, 1}]}], 
+ 
+>      affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
+ 
+>      {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
+ 
+>       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]][affineWeight[2, 
+ 
+>     finiteWeight[2, {2, 1}], 1, 0]]
+
+Out[20]= weightSystem[affineRootSystem[2, 
+ 
+>      finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>        finiteWeight[2, {0, 1}]}], 
+ 
+>      affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
+ 
+>      {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
+ 
+>       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]][{affineWeight[2, 
+ 
+>      finiteWeight[2, {2, 1}], 1, 0]}]
+
+
+
+Out[24]= $Aborted
+
+Out[23]= freudenthalMultiplicities[affineRootSystem[2, 
+ 
+>      finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>        finiteWeight[2, {0, 1}]}], 
+ 
+>      affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
+ 
+>      {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
+ 
+>       affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]][affineWeight[2, 
+ 
+>     finiteWeight[2, {2, 1}], 1, 0]]
+
+Out[22]= affineRootSystem[2, finiteRootSystem[2, 
+ 
+>     {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}], 
+ 
+>    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
+ 
+>    {affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
+ 
+>     affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}]
+       
+fm=freudenthalMultiplicities[b2][makeFiniteWeight[{2,1}]]
+
+fm[#]&/@keys[fm]
+
+Out[20]= {1, 1, 2, 3, 3}
+
+Out[19]= {finiteWeight[2, {2, 1}], finiteWeight[2, {2, 0}], 
+ 
+>    finiteWeight[2, {1, 1}], finiteWeight[2, {1, 0}], 
+ 
+>    finiteWeight[2, {0, 0}]}
+
+Out[18]= mults$152
+
+{{makeFiniteWeight[{2,1}]},
+	      {makeFiniteWeight[{1,0}],makeFiniteWeight[{1,1}],makeFiniteWeight[{2,0}]},
+	      {makeFiniteWeight[{0,0}]}}
+
+                  
+Out[15]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}}
+
+weightSystem[b2][makeFiniteWeight[{2,1}]]
+
+Out[14]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}, {}}
+
+                  
+Out[13]= False
+
+                  
+Out[12]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}}
+
+weightSystem[b2][makeFiniteWeight[{2,1}]]
+
+Out[11]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}, {}}
+                                    
+Throw::nocatch: 
+   Uncaught Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[10]= Hold[Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
+                                        
+Throw::nocatch: 
+   Uncaught Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[7]= Hold[Throw[Weights of [1,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
+Out[5]= {{finiteWeight[2, {2, 2}]}, 
+ 
+>    {finiteWeight[2, {1, 1}], finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {0, 0}], finiteWeight[2, {1, 0}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {1, 1}]}, 
+ 
+>    {finiteWeight[2, {0, 0}], finiteWeight[2, {1, 0}]}, {}}
+
+                           3  1                       1  1
+Out[4]= {{finiteWeight[2, {-, -}]}, {finiteWeight[2, {-, -}]}, {}}
+                           2  2                       2  2
+
+?affineWeight
+
+weightQ[x_finiteWeight]=True;
+weightQ[x_affineWeight]=True;
+weightQ[_]=False;
+
+weightQ[1]
+
+coroot[x_?weightQ]:=2*x/(x.x);
+
+coroot[makeAffineWeight[{1,0},1,0]]
+
+Expect["Co root of affine [1,0]", True, coroot[makeAffineWeight[{1,0},1,0]]==makeAffineWeight[{2,0},2,0]]
+
+cartanMatrix[rs_?rootSystemQ]:=Transpose[Outer[Dot,rs[simpleRoots],coroot/@rs[simpleRoots]]];
+
+cartanMatrix[makeAffineExtension[makeSimpleRootSystem[A,4]]]//MatrixForm
+
+rs=makeAffineExtension[makeSimpleRootSystem[A,4]]
+
+sr=makeAffineExtension[makeSimpleRootSystem[A,4]][simpleRoots]
+
+rh=rho[makeAffineExtension[makeSimpleRootSystem[A,4]]]
+
+Out[98]= affineWeight[5, finiteWeight[5, {2, 1, 0, -1, -2}], 5, 0]
+
+FullForm[weylGroupElement[0,1,2,1,0,1][rs]]
+
+y=aaa[1,2,3]
+
+Append[y,4]
+
+Out[118]= aaa[1, 2, 3, 4]
+
+Out[117]= append[aaa[1, 2, 3], 4]
+
+Out[116]= aaa[1, 2, 3]
+
+
+Out[113]//FullForm= 
+ 
+>   affineWeight[5, finiteWeight[5, List[3, 2, 0, -1, -4]], 5, -2]
+
+Range[0,rs[rank]]
+
+Out[112]= {0, 1, 2, 3, 4}
+
+Out[111]= Rnage[0, 4]
+
+Out[110]= 4
+
+modorbit[rs_affineRootSystem][weight__affineWeight,gradelimit_?NumberQ]:=
+			   NestWhileList[
+			       Function[x,
+					Union[Flatten[
+					    Map[Function[y,
+							 Map[Append[y,#]&,
+							     Cases[Range[0,rs[rank]],z_ /; And[rs[simpleRoot][z].y[weight]>0,Abs[reflection[rs[simpleRoots][z]][y[weight]][grade]]<gradelimit]]
+							    ]],
+						x]],
+					      SameTest->(#1==#2&)]],
+			       weylGroupElement[],
+			       #=!={}&]
+
+modorbit[rs][rh,1]
+
+orbit[rs][{rh},2]
+
+rh
+
+Out[127]= affineWeight[5, finiteWeight[5, {2, 1, 0, -1, -2}], 5, 0]
+
+
+Out[125]= {{affineWeight[5, finiteWeight[5, {2, 1, 0, -1, -2}], 5, 0]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {1, 2, 0, -1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 0, 1, -1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 1, -1, 0, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 1, 0, -2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 1, 0, -1, -3}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {0, 2, 1, -1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, 2, -1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 2, -1, 0, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 2, 0, -2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 3, 0, -1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -1, 1, 0, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 0, -1, 1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 0, 1, -2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 1, -2, 0, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 1, -1, -2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 0, 1, -1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 1, -1, 0, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 1, 0, -3, -1}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-1, 2, 1, 0, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, 2, -1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 2, -1, 1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 2, 1, -2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 3, 1, -1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 2, 0, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -1, 2, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, 2, -2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, 3, -1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 2, -2, 0, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 2, -1, -2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 3, -1, 0, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 3, 0, -3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -2, 1, 0, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -1, 0, 1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -1, 1, -2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 0, -2, 1, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 0, -1, -2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 1, -2, -1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -1, 1, 0, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 0, -1, 1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 0, 1, -3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 1, -3, 0, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 1, -1, -3, 0}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-2, 2, 1, 0, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 2, 0, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 2, 0, 1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 2, 1, -2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 3, 1, 0, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 2, 1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -1, 2, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, 2, -2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, 3, -1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 2, -2, 1, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 2, -1, -2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 3, -1, 1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 3, 1, -3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -2, 2, 0, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 0, 2, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 2, -2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 3, 0, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -2, 2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -1, -2, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -1, 3, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, 3, -3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 2, -2, -1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 3, -3, 0, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 3, -1, -3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -2, 0, 1, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -2, 1, -1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -1, -2, 1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -1, 0, -2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, 0, -2, -1, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -3, 1, 0, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -1, 0, 1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -1, 1, -3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 0, -3, 1, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 0, -1, -3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 1, -3, -1, 0}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, 3, 1, 0, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 1, 2, 0, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 2, 0, 1, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 2, 1, -1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 2, 1, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 0, 2, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 2, -2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 3, 0, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 2, -2, 1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 2, 0, -2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 3, 0, 1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 3, 1, -3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -2, 2, 1, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 1, 2, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 2, -2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 3, 1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -2, 2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -1, -2, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -1, 3, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, 3, -3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 2, -2, -1, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 3, -3, 1, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 3, -1, -3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -3, 3, 0, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -2, 0, 2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -2, 2, -1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, -2, 2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 0, -2, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 0, 3, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 3, -3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -3, 3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -2, -1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -1, -3, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 3, -3, -1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -2, -1, 1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -2, 0, -1, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -1, -2, 0, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -3, 0, 1, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -3, 1, -1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -1, -3, 1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -1, 0, -3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, 0, -3, -1, 1}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, 1, 3, 0, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 3, 0, 1, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 3, 1, -1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 0, 2, 1, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 1, 0, 2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 1, 2, -1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 2, -1, 1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 2, 0, -1, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -2, 2, 1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 1, 2, -2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 2, -2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 3, 1, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, -2, 2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 0, -2, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 0, 3, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 3, -3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 2, -2, 0, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 3, -3, 1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 3, 0, -3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -3, 3, 1, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -2, 1, 2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -2, 2, -1, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, -2, 2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 1, -2, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 1, 3, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 3, -3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -3, 3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -2, -1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -1, -3, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 3, -3, -1, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -3, 0, 3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -3, 3, -1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -2, -1, 2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -2, 0, -1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, -3, 3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, -2, 0, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, 0, -3, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, 0, -3, -1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {2, -2, -1, 0, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -3, -1, 1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -3, 0, -1, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -1, -3, 0, 1}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, 0, 3, 1, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 1, 0, 3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 1, 3, -1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 3, -1, 1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 3, 0, -1, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, -1, 2, 1, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 0, 1, 2, -1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 0, 2, -1, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 1, -1, 2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 1, 0, -1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 2, -1, 0, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -3, 3, 1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -2, 1, 2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -2, 2, 0, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, -2, 2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 1, -2, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 1, 3, -3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 3, -3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, -3, 3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, -2, 0, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, 0, -3, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 3, -3, 0, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -3, 1, 3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -3, 3, -1, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -2, -1, 2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -2, 1, -1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, -3, 3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, -2, 1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, 1, -3, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -3, -1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -3, -1, 3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -3, 0, -1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -2, -1, 0, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -1, -3, 0, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {3, -3, -1, 0, 1}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, -1, 3, 1, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 0, 1, 3, -1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 0, 3, -1, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 1, -1, 3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 1, 0, -1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 3, -1, 0, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, -1, 1, 2, 0}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, -1, 2, 0, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 0, -1, 2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 0, 1, -1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 1, -1, 0, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -3, 1, 3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -3, 3, 0, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -2, 0, 2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -2, 1, 0, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, -3, 3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, -2, 1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, 1, -3, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 1, -3, 0, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -3, -1, 3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -3, 1, -1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -2, -1, 1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -1, -3, 1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {1, -3, -1, 0, 3}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, -1, 1, 3, 0}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, -1, 3, 0, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 0, -1, 3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 0, 1, -1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 1, -1, 0, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, -1, 0, 2, 1}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, -1, 1, 0, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, 0, -1, 1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -3, 0, 3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -3, 1, 0, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -2, 0, 1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, 0, -3, 1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, -3, -1, 1, 3}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, -1, 0, 3, 1}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, -1, 1, 0, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-3, 0, -1, 1, 3}], 5, -1], 
+ 
+>     affineWeight[5, finiteWeight[5, {-2, -1, 0, 1, 2}], 5, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {-1, -3, 0, 1, 3}], 5, -1]}, 
+ 
+>    {affineWeight[5, finiteWeight[5, {-3, -1, 0, 1, 3}], 5, -1]}, {}}
+
+[Calculating...]
+
+Out[109]= affineWeight[5, finiteWeight[5, {3, 2, 0, -1, -4}], 5, -2]
+
+Out[108]= affineWeight[5, finiteWeight[5, {3, 2, 0, -1, -4}], 5, -2]
+
+Out[107]= affineWeight[5, finiteWeight[5, {1, 2, 0, -1, -2}], 5, 0]
+
+Out[106]= affineWeight[5, finiteWeight[5, {2, 1, 0, -1, -2}], 5, 0]
+
+Out[105]= affineWeight[5, finiteWeight[5, {3, 1, 0, -1, -3}], 5, -1]
+
+Out[104]= affineWeight[5, finiteWeight[5, {2, 1, 0, -1, -2}], 5, 0]
+
+Out[103]= 0
+
+Out[102]= -1
+
+Out[101]= affineWeight[5, finiteWeight[5, {3, 1, 0, -1, -3}], 5, -1]
+
+Out[97]= {affineWeight[5, finiteWeight[5, {-1, 0, 0, 0, 1}], 0, 1], 
+ 
+>    affineWeight[5, finiteWeight[5, {1, -1, 0, 0, 0}], 0, 0], 
+ 
+>    affineWeight[5, finiteWeight[5, {0, 1, -1, 0, 0}], 0, 0], 
+ 
+>    affineWeight[5, finiteWeight[5, {0, 0, 1, -1, 0}], 0, 0], 
+ 
+>    affineWeight[5, finiteWeight[5, {0, 0, 0, 1, -1}], 0, 0]}
+
+
+Out[96]= affineRootSystem[4, finiteRootSystem[4, 
+ 
+>     {finiteWeight[5, {1, -1, 0, 0, 0}], finiteWeight[5, {0, 1, -1, 0, 0}], 
+ 
+>      finiteWeight[5, {0, 0, 1, -1, 0}], finiteWeight[5, {0, 0, 0, 1, -1}]}]\
+ 
+>     , affineWeight[5, finiteWeight[5, {-1, 0, 0, 0, 1}], 0, 1], 
+ 
+>    {affineWeight[5, finiteWeight[5, {1, -1, 0, 0, 0}], 0, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 1, -1, 0, 0}], 0, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 0, 1, -1, 0}], 0, 0], 
+ 
+>     affineWeight[5, finiteWeight[5, {0, 0, 0, 1, -1}], 0, 0]}]
+
+Out[95]//MatrixForm= 2    -1   0    0    -1
+
+                     -1   2    -1   0    0
+
+                     0    -1   2    -1   0
+
+                     0    0    -1   2    -1
+
+                     -1   0    0    -1   2
+
+Out[94]//MatrixForm= 2    -1   -1
+
+                     -1   2    -1
+
+                     -1   -1   2
+
+Out[93]= {{2, -1, -1}, {-1, 2, -1}, {-1, -1, 2}}
+
+Out[92]= {{2, -1}, {-1, 2}}
+
+Out[91]= cartanMatrix[makeFiniteRootSystem[A, 2]]
+
+Out[88]= affineWeight[2, finiteWeight[2, {2, 0}], 2, 0]
+
+                                          2       2  2
+Out[87]= affineWeight[2, finiteWeight[2, {-, 0}], -, -]
+                                          3       3  3
+
+Out[85]= False
+
+Out[84]= True
+
+Out[83]= False
+
+Out[82]= True
+
+
+?Times
+
+x * y * z, x z or x y z represents a product of terms. Mutliplication by
+                                numbers is defined for the elements of weight
+                                space of affine and finite-dimensional Lie
+                                algebras. 
+                                 
+                              For example
+                                makeFiniteWeight[{1,2,3}]*2==makeFiniteWeight[
+                                {2,4,6}]]
+
 ?finiteWeight
+
+v=3
+
+v+=4
+
+v="aa"
+
+v<>="bb"
+
+Syntax::sntxf: "v<>" cannot be followed by "="bb"".
+
+Out[76]= aa
+
+Out[75]= 7
+
+Out[74]= 7
+
+Out[73]= 3
+
+finiteWeight[dimension_?NomberQ,coordinates_standardBase] represents 
+    vector in weight space of finite-dimensional Lie algebra.
+ 
+    finiteWeight[dimension] returns dimension of the space, where weight
+   vector is embedded 
+    (i.e. for sl_n it is n+1.
+ 
+     finiteWeight[standardBase] returns standard base coordinates of weight of
+   finite-dimensional Lie algebra
 
 ?==
 
