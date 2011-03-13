@@ -142,9 +142,19 @@ Out[97]= weights[{standardBase[1, -1, 0, 0, 0, 0, 0, 0],
 
 freudenthalMultiplicities[b8][wg[[-1]]*2]//Timing
 
+Out[14]= {1.24008, mults$101}
+
+Out[9]= {1.26008, mults$99}
+
 Out[4]= {0.776049, mults$89}
 
-Out[4][[2]][standardBase[0,0,0,0,0,0,0,1]]
+Out[9][[2]][standardBase[0,0,0,0,0,0,0,0]]
+
+Out[12]= 70
+
+Out[11]= mults$99[standardBase[0, 0, 0, 0, 0, 0, 0, 1]]
+
+Out[10]= mults$89[standardBase[0, 0, 0, 0, 0, 0, 0, 1]]
 
 Out[6]= mults$89[standardBase[0, 0, 0, 0, 0, 0, 0, 1]]
 
