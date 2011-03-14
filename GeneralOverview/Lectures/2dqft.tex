@@ -249,6 +249,159 @@
 \end{equation}
 В гауссовой модели функциональный интеграл имеет гауссовский вид, поэтому он хорошо определен и легко вычисляется. Значит можно вычислить статсумму и все корреляционные функции. Величины в модели $\varphi^4$ можно получать по теории возмущений вокруг решения гауссовой модели. Это и есть вычисление функционального интеграла как суммы по фейнмановским диаграммам. 
 
+\subsection*{Классическая и квантовая теория поля}
+\label{sec:qft}
+Напоминание про теорию поля.
+
+Лагранжева формулировка классической теории поля.
+
+ Действие
+\begin{equation}
+  S=\int d^dx \mathcal{L}
+\end{equation}
+зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$.
+Например:
+\begin{equation}
+  S[\varphi]=\int d^d x\left( -\frac{(\partial \varphi)^2}{2}-\frac{\mu \varphi^2}{2}-\frac{u\varphi^4}{24}+h\varphi\right),
+\end{equation}
+
+
+\subsubsection*{Симметрии}
+\label{sec:symmetry}
+
+При преобразованиях координат
+\begin{equation}
+  \label{eq:303}
+  x\to x'
+\end{equation}
+поля тоже преобразуются, то есть у них не только меняется аргумент, но и само поле. Тип поля (скалярное, векторное, спинорное) -- это вид такого преобразования.
+\begin{equation}
+  \label{eq:304}
+  \varphi(x)\to \varphi'(x')=F(\varphi(x))
+\end{equation}
+
+При этом действие тоже преобразуется:
+\begin{equation}
+  \label{eq:305}
+  S'=\int d^{d}x' \mathcal{L}(\varphi'(x'),\partial_{\mu} \varphi'(x'))=\int d^{d}x \left|\frac{\partial x'}{\partial x}\right| \mathcal{L}(F(\varphi(x)),\frac{\partial x^{\nu}}{\partial x'^{\mu}} \partial_{\nu}F(\varphi(x)))
+\end{equation}
+{\bf Примеры.}
+
+Трансляции:
+
+\begin{equation*}
+  \label{eq:306}
+  x'^{\mu}=x^{\mu}+a^{\mu},\quad \varphi'(x+a)=\varphi(x),\quad S'=S
+\end{equation*}
+
+Поворот (преобразования Лоренца):
+\begin{equation*}
+  x'^{\mu}=m^{\mu}_{\nu} x^{\nu}, \quad \varphi'(m x)=\Lambda \varphi(x),\quad \Lambda \mbox{--представление группы} 
+\end{equation*}
+
+Теперь рассмотрим инфинитезимальные преобразования.
+Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным преобразованиям.
+
+\begin{equation}
+  \label{eq:165}
+  x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
+\end{equation}
+($\omega_{a}$ -- бесконечно малые параметры).
+
+Наше поле преобразуется так:
+\begin{equation}
+  \label{eq:166}
+  \varphi'(x')=\varphi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
+\end{equation}
+Генератор преобразования определяется следующим равенством:
+\begin{equation}
+  \label{eq:167}
+  \delta_{\omega} \varphi(x)=\varphi'(x)-\varphi(x)\equiv -i\omega_a G_a \varphi(x)
+\end{equation}
+(здесь нет суммирования по $a$). Действие генератора на поле:
+\begin{equation}
+  \label{eq:168}
+  iG_a \varphi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\varphi-\frac{\delta F}{\delta \omega_a}
+\end{equation}
+
+Примеры генераторов:
+Если мы предположим, что поле $\varphi$ -- такое поле, которое не меняется при конформных преобразованиях, то есть $F(\varphi)=\varphi$, то мы получим следующий вид для генераторов:
+\begin{eqnarray}
+  \label{eq:169}
+  \mbox{трансляция}  & x'^{\mu}=x^{\mu}+\omega^{\mu}& \quad P_{\mu}=-i\partial_{\mu}\\
+  \mbox{поворот} & x'^{\mu}=x^{\mu}+\omega^{\mu}_{\nu}x^{\nu} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})
+\end{eqnarray}
+Если же при поворотах поле преобразуется $\varphi'(x')=\Lambda\varphi(x)$, то при инфинитезимальных преобразованиях $\varphi'(x')=\varphi(x)-\frac{i}{2}\omega_{\mu\nu}S^{\mu\nu}$ и генератор принимает вид
+\begin{equation*}
+  L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})+S_{\mu\nu}
+\end{equation*}
+
+\subsubsection*{Теорема Нётер}
+\label{sec:noether}
+
+Теперь рассмотрим произвольные инфинитезимальные преобразования, при которых действие не меняется.
+Якобиан такого преобразования
+\begin{eqnarray*}
+  \frac{\partial x'^{\nu}}{\partial x^{\mu}} = \delta^{\mu}_{\nu}+\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)\\
+  \frac{\partial x^{\nu}}{\partial x'^{\mu}} = \delta^{\mu}_{\nu}-\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)
+\end{eqnarray*}
+\begin{equation*}
+  \left|\frac{\partial x'^{\nu}}{\partial x^{\mu}}\right| = 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)
+\end{equation*}
+Вариация действия
+\begin{multline*}
+  0=\delta_{\omega} S=\int \mathcal{L}(\varphi',\partial_{\mu}\varphi',x'^{\mu})dx'-\int \mathcal{L}(\varphi,\partial_{\mu}\varphi,x)dx=\\
+  \int d^{d}x\left[ \left( 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\right) \mathcal{L} \left(\varphi+\delta_{\omega}\varphi,
+    \partial_{\mu}\varphi+\partial_{\mu}\delta_{\omega}\varphi\right)\right]-\mathcal{L}(\varphi,\partial_{\mu}\varphi)=
+\end{multline*}
+\begin{multline*}
+      \int d^{d}x\left( \frac{\partial \mathcal{L}}{\partial \varphi} \delta_{\omega}\varphi +\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi +\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\mathcal{L}\right)
+\end{multline*}
+Первые два члена переписываются с использованием уравнений Эйлера-Лагранжа и интегрирования по частям:
+\begin{equation*}
+  \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\right)\delta_{\omega}\varphi+\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi=
+    \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi\right)
+\end{equation*}
+В итоге имеем:
+\begin{equation*}
+  0=\int d^{d}x \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi +\delta^{\mu}_{\nu}\mathcal{L} \frac{\delta x^{\nu}}{\delta \omega_{a}}\right)
+\end{equation*}
+Если подставить явный вид вариации поля и ввести обозначение
+\begin{equation*}
+  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\partial_{\nu}\varphi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}}-\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\frac{\delta F}{\delta w_{a}},
+\end{equation*}
+то для вариации действия выходит:
+\begin{equation*}
+  \delta_{\omega}S=-\int d^{d}x j^{\mu}_{a}\partial_{\mu}\omega_{a}
+\end{equation*}
+$j^{\mu}_{a}$ называется нетеровским током, соответствующим данной симметрии. 
+Если $\delta_{\omega} S=0$, то
+\begin{equation*}
+  \partial_{\mu}j^{\mu}_{a}=0
+\end{equation*}
+Сохраняющийся заряд:
+\begin{equation*}
+  Q_{a}=\int d^{d-1}x\; j^{0}_{a}
+\end{equation*}
+
+ Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$.  При инфинитезимальных преобразованиях $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током:
+\begin{equation}
+  \label{eq:74}
+  \delta\mathcal{L}=\partial_{\mu}J^{\mu}dl
+\end{equation}
+\begin{equation}
+  \label{eq:75}
+  J^{\mu}=x_{\nu}T^{\mu\nu}
+\end{equation}
+Здесь $T^{\mu\nu}$ - тензор энергии-импульса.  Через $\Theta$ мы обозначим след тензора энергии-импульса $\Theta=\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}$. Он задает вариацию действия
+\begin{equation}
+  \label{eq:87}
+  \delta S=dl \int d^d x \Theta(x)
+\end{equation}
+Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В масштабно-инвариантной теории тензор энергии-импульса бесследовый.
+
+
+
 \section{Лекция 2. }
 \label{sec:lecture-2}
 
