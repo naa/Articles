@@ -27,6 +27,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Определение}
 \newtheorem{exercise}{Упражнение}
+\newtheorem{example}{Пример}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
@@ -81,20 +82,24 @@
   \label{eq:305}
   S'=\int d^{d}x' \mathcal{L}(\varphi'(x'),\partial_{\mu} \varphi'(x'))=\int d^{d}x \left|\frac{\partial x'}{\partial x}\right| \mathcal{L}(F(\varphi(x)),\frac{\partial x^{\nu}}{\partial x'^{\mu}} \partial_{\nu}F(\varphi(x)))
 \end{equation}
-{\bf Примеры.}
 
+\begin{example}
 Трансляции:
 
 \begin{equation}
   \label{eq:306}
   x'^{\mu}=x^{\mu}+a^{\mu},\quad \varphi'(x+a)=\varphi(x),\quad S'=S
 \end{equation}
+  
+\end{example}
+\begin{example}
 
 Поворот (преобразования Лоренца):
 \begin{equation}
   x'^{\mu}=m^{\mu}_{\nu} x^{\nu}, \quad \varphi'(m x)=\Lambda \varphi(x),\quad \Lambda \mbox{--представление группы} 
 \end{equation}
-
+  
+\end{example}
 Теперь рассмотрим инфинитезимальные преобразования. 
 Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным преобразованиям. Мы будем считать, что инфинитезимальные параметры преобразований зависят от координат, то есть рассматривать не только глобальные, но и локальные преобразования. 
 
@@ -120,7 +125,7 @@
   iG_a \varphi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\varphi-\frac{\delta F}{\delta \omega_a}
 \end{equation}
 
-Примеры генераторов:
+\begin{example}
 Если мы предположим, что поле $\varphi$ -- такое поле, которое не меняется при конформных преобразованиях, то есть $F(\varphi)=\varphi$, то мы получим следующий вид для генераторов:
 \begin{eqnarray}
   \label{eq:169}
@@ -131,6 +136,8 @@
 \begin{equation}
   L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})+S_{\mu\nu}
 \end{equation}
+  
+\end{example}
 
 \subsection{Теорема Нётер}
 \label{sec:noether}
@@ -186,8 +193,8 @@ $j^{\mu}_{a}$ называется Нётеровским током, соотв
   Q_{a}=\int d^{d-1}x\; j^{0}_{a}
 \end{equation}
 
-{\bf Пример}
-
+\begin{example}
+  
  Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$.  При инфинитезимальных преобразованиях $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током:
 \begin{equation}
   \label{eq:74}
@@ -203,6 +210,7 @@ $j^{\mu}_{a}$ называется Нётеровским током, соотв
   \delta S=dl \int d^d x \Theta(x)
 \end{equation}
 Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В масштабно-инвариантной теории тензор энергии-импульса бесследовый.
+\end{example}
 
 \section{21 марта 2011}
 \label{sec:21--2011-1}
@@ -335,28 +343,28 @@ $j^{\mu}_{a}$ называется Нётеровским током, соотв
 \end{equation}
 При соответствующем инфинитезимальном преобразовании
 \begin{equation}
-  \label{eq:165}
+  \label{eq:10}
   x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
 \end{equation}
 скалярное поле преобразуется так:
 \begin{equation}
-  \label{eq:166}
+  \label{eq:11}
   \Phi'(x')=\Phi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
 \end{equation}
 Генератор преобразования определяется следующим равенством:
 \begin{equation}
-  \label{eq:167}
+  \label{eq:12}
   \delta_{\omega} \Phi(x)=\Phi'(x)-\Phi(x)\equiv -i\omega_a G_a \Phi(x)
 \end{equation}
 (здесь нет суммирования по $a$). Из \eqref{eq:166} получаем действие генератора на скалярное поле:
 \begin{equation}
-  \label{eq:168}
+  \label{eq:13}
   iG_a \Phi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\Phi-\frac{\delta F}{\delta \omega_a}
 \end{equation}
 
 Если мы предположим, что поле $\Phi$ такое поле, которое не меняется при конформных преобразованиях, то есть $F(\Phi)=\Phi$, то мы получим следующий вид для генераторов:
 \begin{eqnarray}
-  \label{eq:169}
+  \label{eq:14}
   \mbox{трансляция} & \quad P_{\mu}=-i\partial_{\mu}\\
   \mbox{поворот} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})\\
   \mbox{растяжение}& \quad D=-ix^{\mu}\partial_{\mu}\\
@@ -507,7 +515,7 @@ $j^{\mu}_{a}$ называется Нётеровским током, соотв
 \subsection{Центральное расширение алгебры Витта}
 \label{sec:witt-algebra-central-extension}
 
-Напомним несколько определений (см \cite{fuks1986cohomology}, \cite{feigin1988}).
+Напомним несколько определений (см \cite{fuks1986cohomology},\cite{fuks1984}, \cite{feigin1988}).
 \begin{definition}
 Будем рассматривать алгебру Ли $\gf$ над полем $k=\mathbb{C},\mathbb{R}$. Векторное пространство $A$ над полем $k$ называется {\it модулем над $\gf$} или {\it $\gf$-модулем}, если задано билинейное отображение $\mu:\gf\times A\to A$, такое что $\mu([X,Y],a)=\mu(X,\mu(Y,a))-\mu(Y,\mu(X,a))$ для $X,Y\in \gf, a\in A$. Далее мы будем опускать символ $\mu$ и писать $X a= \mu(X,a)$.
 \end{definition}
