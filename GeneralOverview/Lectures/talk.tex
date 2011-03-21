@@ -25,24 +25,27 @@
 \theoremstyle{definition}
 \newtheorem{mynote}{Замечание}[section]
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Определение}
+\newtheorem{exercise}{Упражнение}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
 \newcommand{\pia}{\pi_{\mathfrak{a}}}
 \newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\gf}{\mathfrak{g}}
 \newcommand{\af}{\mathfrak{a}}
 \newcommand{\afb}{\mathfrak{a}_{\bot}}
 
-
-\topmargin=-3.5cm
-\oddsidemargin=-1.5cm
-\evensidemargin=-1.5cm
-\textwidth=19cm
-\textheight=28cm
+\title{Записки с семинара ``Конформная теория поля''}
+\author{Антон Назаров}
 
 \begin{document}
-\subsection*{Классическая и квантовая теория поля}
+\maketitle
+\tableofcontents
+\section{14 марта 2011}
+\label{sec:14--2011}
+
+\subsection{Классическая теория поля}
 \label{sec:qft}
 Напоминание про теорию поля.
 
@@ -59,7 +62,7 @@
 \end{equation}
 
 
-\subsubsection*{Симметрии}
+\subsection{Симметрии и генераторы}
 \label{sec:symmetry}
 
 При преобразованиях координат
@@ -82,18 +85,18 @@
 
 Трансляции:
 
-\begin{equation*}
+\begin{equation}
   \label{eq:306}
   x'^{\mu}=x^{\mu}+a^{\mu},\quad \varphi'(x+a)=\varphi(x),\quad S'=S
-\end{equation*}
+\end{equation}
 
 Поворот (преобразования Лоренца):
-\begin{equation*}
+\begin{equation}
   x'^{\mu}=m^{\mu}_{\nu} x^{\nu}, \quad \varphi'(m x)=\Lambda \varphi(x),\quad \Lambda \mbox{--представление группы} 
-\end{equation*}
+\end{equation}
 
-Теперь рассмотрим инфинитезимальные преобразования.
-Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным преобразованиям.
+Теперь рассмотрим инфинитезимальные преобразования. 
+Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным преобразованиям. Мы будем считать, что инфинитезимальные параметры преобразований зависят от координат, то есть рассматривать не только глобальные, но и локальные преобразования. 
 
 \begin{equation}
   \label{eq:165}
@@ -125,86 +128,65 @@
   \mbox{поворот} & x'^{\mu}=x^{\mu}+\omega^{\mu}_{\nu}x^{\nu} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})
 \end{eqnarray}
 Если же при поворотах поле преобразуется $\varphi'(x')=\Lambda\varphi(x)$, то при инфинитезимальных преобразованиях $\varphi'(x')=\varphi(x)-\frac{i}{2}\omega_{\mu\nu}S^{\mu\nu}$ и генератор принимает вид
-\begin{equation*}
+\begin{equation}
   L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})+S_{\mu\nu}
-\end{equation*}
+\end{equation}
 
-\subsubsection*{Теорема Нётер}
+\subsection{Теорема Нётер}
 \label{sec:noether}
-From: Dmitry Chicherin <tchitcherin@gmail.com>
-Subject: теорема Нётер
-To: Anton Nazarov <antonnaz@gmail.com>
-Date: Mon, 14 Mar 2011 23:08:53 +0300
 
-Привет!
-
-Я хочу сказать про злосчастную теорему Нётер, если ты ещё не
-посмотрел. Доказательство из Дифранческо работает для симметрий именно
-действия. Его доказательство тоже, что и у Вайнберга и идейно
-отличается от Боголюбова. Он сначала формально продолжает
-преобразования глобальной симметрии до локальных, т.е. его
-инфинитезимальные параметры становятся функциями. С такими
-преобразованиями он считает вариацию, раскладывается до первого
-порядка по параметру преобразования, но не ограничивается полями на
-уравнениях движения! Затем он выкидывает под интегралом те члены,
-которые не содержат производных от параметров преобразования в силу
-глобальной симметрии(здесь и есть отличие от Боголюбова и иже с ним).
-В итоге как и положено остаётся только первая производная от
-параметров преобразования на ток. При этом параметр преобразований всё
-время произвольная функция. Далее он говорит, что если сесть на
-уравнения движения, то вариация даст нуль и опять же параметр
-преобразования всё время постоянная функция. Короче говоря,
-рассуждение совсем отличается от Боголюбовского, хотя промежуточные
-формулы и похожи.
-
-Удачи,
-Дима
-
-
-Теперь рассмотрим произвольные инфинитезимальные преобразования, при которых действие не меняется.
+Теперь рассмотрим произвольные инфинитезимальные преобразования, при которых действие не меняется. Инфинитезимальные параметры зависят от точки в пространстве, то есть мы рассматриваем локальные преобразования. Преобразования, для которых такой зависимости нет, называются глобальными. 
 Якобиан такого преобразования
-\begin{eqnarray*}
+\begin{eqnarray}
   \frac{\partial x'^{\nu}}{\partial x^{\mu}} = \delta^{\mu}_{\nu}+\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)\\
   \frac{\partial x^{\nu}}{\partial x'^{\mu}} = \delta^{\mu}_{\nu}-\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)
-\end{eqnarray*}
-\begin{equation*}
+\end{eqnarray}
+\begin{equation}
   \left|\frac{\partial x'^{\nu}}{\partial x^{\mu}}\right| = 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)
-\end{equation*}
+\end{equation}
 Вариация действия
-\begin{multline*}
+\begin{multline}
   0=\delta_{\omega} S=\int \mathcal{L}(\varphi',\partial_{\mu}\varphi',x'^{\mu})dx'-\int \mathcal{L}(\varphi,\partial_{\mu}\varphi,x)dx=\\
   \int d^{d}x\left[ \left( 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\right) \mathcal{L} \left(\varphi+\delta_{\omega}\varphi,
     \partial_{\mu}\varphi+\partial_{\mu}\delta_{\omega}\varphi\right)\right]-\mathcal{L}(\varphi,\partial_{\mu}\varphi)=
-\end{multline*}
-\begin{multline*}
+\end{multline}
+\begin{multline}
       \int d^{d}x\left( \frac{\partial \mathcal{L}}{\partial \varphi} \delta_{\omega}\varphi +\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi +\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\mathcal{L}\right)
-\end{multline*}
+\end{multline}
+
+Члены, не содержащие производных от $\omega_{a}$ зануляются в случае наличия глобальной симметрии.
+
 Первые два члена переписываются с использованием уравнений Эйлера-Лагранжа и интегрирования по частям:
-\begin{equation*}
+\begin{equation}
   \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\right)\delta_{\omega}\varphi+\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi=
     \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi\right)
-\end{equation*}
+\end{equation}
 В итоге имеем:
-\begin{equation*}
+\begin{equation}
   0=\int d^{d}x \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi +\delta^{\mu}_{\nu}\mathcal{L} \frac{\delta x^{\nu}}{\delta \omega_{a}}\right)
-\end{equation*}
+\end{equation}
 Если подставить явный вид вариации поля и ввести обозначение
-\begin{equation*}
+\begin{equation}
   j^{\mu}_{a}=\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\partial_{\nu}\varphi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}}-\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\frac{\delta F}{\delta w_{a}},
-\end{equation*}
+\end{equation}
 то для вариации действия выходит:
-\begin{equation*}
+\begin{equation}
   \delta_{\omega}S=-\int d^{d}x j^{\mu}_{a}\partial_{\mu}\omega_{a}
-\end{equation*}
-$j^{\mu}_{a}$ называется нетеровским током, соответствующим данной симметрии. 
-Если $\delta_{\omega} S=0$, то
-\begin{equation*}
+\end{equation}
+$j^{\mu}_{a}$ называется Нётеровским током, соответствующим данной симметрии. Проинтегрируем по частям и получим:
+\begin{equation}
+    \delta_{\omega}S=\int d^{d}x (\partial_{\mu} j^{\mu}_{a})\omega_{a}
+\end{equation}
+Если поля удовлетворяют уравнениям движения, то действие инвариантно относительно любой вариации полей, то есть вариация действия должна зануляться для любого $\omega(x)$. Тогда
+\begin{equation}
   \partial_{\mu}j^{\mu}_{a}=0
-\end{equation*}
-Сохраняющийся заряд:
-\begin{equation*}
+\end{equation}
+Таким образом каждой симметрии соответствует ток $j_{\mu}^{a}$ и сохраняющийся заряд:
+\begin{equation}
   Q_{a}=\int d^{d-1}x\; j^{0}_{a}
-\end{equation*}
+\end{equation}
+
+{\bf Пример}
 
  Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$.  При инфинитезимальных преобразованиях $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током:
 \begin{equation}
@@ -222,7 +204,10 @@ $j^{\mu}_{a}$ называется нетеровским током, соотв
 \end{equation}
 Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В масштабно-инвариантной теории тензор энергии-импульса бесследовый.
 
-\subsection*{Конформная алгебра}
+\section{21 марта 2011}
+\label{sec:21--2011-1}
+
+\subsection{Конформная алгебра в $d\geq 3$}
 \label{sec:conformal}
 
  Сейчас мы обсудим, какие ограничения накладывает на теорию конформная инвариантность, а затем покажем, что в двух измерениях она следует из масштабной, трансляционной и вращательной инвариантностей.
@@ -406,6 +391,9 @@ $j^{\mu}_{a}$ называется нетеровским током, соотв
 \end{equation}
 где $\eta_{ab}=\mathrm{diag}(-1,1,\dots,1)$. Видно, что мы получили алгебру $so(d+1,1)$. В случае пространства Минковского была бы $so(d,2)$.
 
+\subsection{Локальные конформные преобразования в двумерной теории}
+\label{sec:2d-cft}
+
 Мы получили общее условие на вид инфинитезимальных конформных преобразований:
 \begin{equation}
   \label{eq:223}
@@ -430,8 +418,8 @@ $j^{\mu}_{a}$ называется нетеровским током, соотв
 тогда уравнения \eqref{eq:224} можно переписать в виде
 \begin{eqnarray}
   \label{eq:226}
-  \partial \epsilon=0\\
-  \bar \partial \bar \epsilon=0.
+   \bar \partial \epsilon=0\\
+  \partial\bar \epsilon=0.
 \end{eqnarray}
 Решениями будут любые голоморфные и антиголоморфные функции: $\epsilon=\epsilon(z)$ -- голоморфная функция и $\bar \epsilon=\bar \epsilon(\bar z)$ -- антиголоморфная. Таким образом мы видим, что алгебра локальных конформных преобразований в двумерном случае оказывается бесконечномерной алгеброй преобразований
 \begin{eqnarray}
@@ -515,6 +503,100 @@ $j^{\mu}_{a}$ называется нетеровским током, соотв
 Глобальные конформные преобразования образуют группу, локальные же преобразования не обратимы, поэтому по отношению к ним говорят только об алгебре.
 
 Глобальные преобразования полезны для описания физических состояний. Допустим, мы работаем в базисе собственных состояний операторов $l_{0}, \bar l_{0}$, соответствующие собственные значения $h,\bar h$ -- независимые, вещественные, называются конформными весами или голоморфной и антиголоморфной размерностями. Так как $l_{0}+\bar l_{0}$ -- генератор дилатации, то скейлинговая размерность $\Delta=h+\bar h$, а поскольку $i(l_{0}-\bar l_{0})$ порождает вращения, то спин $s=h-\bar h$.
+
+\subsection{Центральное расширение алгебры Витта}
+\label{sec:witt-algebra-central-extension}
+
+Напомним несколько определений (см \cite{fuks1986cohomology}, \cite{feigin1988}).
+\begin{definition}
+Будем рассматривать алгебру Ли $\gf$ над полем $k=\mathbb{C},\mathbb{R}$. Векторное пространство $A$ над полем $k$ называется {\it модулем над $\gf$} или {\it $\gf$-модулем}, если задано билинейное отображение $\mu:\gf\times A\to A$, такое что $\mu([X,Y],a)=\mu(X,\mu(Y,a))-\mu(Y,\mu(X,a))$ для $X,Y\in \gf, a\in A$. Далее мы будем опускать символ $\mu$ и писать $X a= \mu(X,a)$.
+\end{definition}
+\begin{definition}
+  {\it $n$-мерная коцепь с коэффициентами в $A$} -- это кососимметричный $n$-линейный функционал на $\gf$ со значениями в $A$. Пространство $n$-коцепей $C^{n}(\gf;A)=\mathrm{Hom}(\wedge^{n}\gf;A)$.
+\end{definition}
+Заметим, что элементы $\gf$ действуют на $C^{n}(\gf;A)$.
+\begin{definition}
+  Внешний дифференциал $d=d_{n}:C^{n}(\gf;A)\to C^{n+1}(\gf;A)$ определяется формулой
+  \begin{multline}
+    \label{eq:1}
+    (dc) (X_{1},\dots, X_{n+1})=\sum_{1\leq s<t\leq n+1} (-1)^{s+t-1} c([X_{s},X_{t}],X_{1},\dots,\hat X_{s},\dots,\hat X_{t},\dots X_{n+1})\\
+    +\sum_{1\leq s\leq n+1} (-1)^{s}X_{s} c(X_{1},\dots \hat X_{s},\dots X_{n+1})
+  \end{multline}
+\end{definition}
+Оставляем в качестве упражнения проверку того факта, что последовательность
+\begin{equation}
+  \label{eq:2}
+  \dots\stackrel{d_{n}}{\longleftarrow} C^{n}(g;A)\stackrel{d_{n-1}}{\longleftarrow} C^{n-1}(\gf;A)\leftarrow \dots \leftarrow C^{1}(\gf;A) \stackrel{d_{0}}{\longleftarrow} C^{0}(\gf;A)\leftarrow 0
+\end{equation}
+точна.Тогда $\{C^{n}(\gf;A),d_{n}\}=C^{*}(\gf;A)$ есть комплекс.
+\begin{definition}
+Соответствующие когомологии называются {\it когомологиями алгебры $\gf$ с коэффициентами в $A$} и обозначаются через $H^{n}(\gf;A)=\mathrm{Ker}\; d_{n}/\mathrm{Im}\; d_{n-1}$. 
+  
+\end{definition}
+Заметим, что поле $k$ может рассматриваться как тривиальный $\gf$-модуль. В этом случае второй член в формуле \eqref{eq:1} исчезает и используют сокращенные обозначения $C^{n}(\gf), H^{n}(\gf)$.
+\begin{definition}
+  Определим, заодно, и гомологии. Пространство $n$-мерных цепей $C_{n}(\gf;A)=A\otimes \wedge^{n}\gf$, дифференциал $\partial=\partial_{n}:C_{n}(\gf;A)\to C_{n-1}(\gf;A)$ определяется формулой
+  \begin{multline}
+    \label{eq:3}
+    \partial(a\otimes (X_{1}\wedge \dots \wedge X_{n})) =\\ \sum_{1\leq s<t\leq n+1} (-1)^{s+t-1} a\otimes ([X_{s},X_{t}]\wedge X_{1} \wedge\dots\wedge\hat X_{s}\wedge \dots\wedge \hat X_{t}\wedge \dots\wedge X_{n+1})\\
+    +\sum_{1\leq s\leq n+1} (-1)^{s}(X_{s} a)\otimes (X_{1}\wedge\dots\wedge \hat X_{s}\wedge\dots\wedge X_{n+1})
+  \end{multline}
+  Аналогично определяется точная последовательность, комплекс и группа гомологий $H_{n}(\gf;A)$.
+\end{definition}
+\begin{definition}
+  {\it Одномерным центральным расширением алгебры $\gf$ } называется точная последовательность
+  \begin{equation}
+    \label{eq:4}
+    0\to k \to \tilde \gf\to \gf\to 0,
+  \end{equation}
+  такая что образ $k\to \tilde\gf$ содержится в центре $\tilde\gf$.
+\end{definition}
+Заметим, что всякий 2-коцикл $c\in C^{2}(\gf;A)$ определяет центральное расширение $\gf$:
+\begin{equation}
+  \label{eq:5}
+  0\to k\stackrel{\lambda\to (0,\lambda)}{\longrightarrow}\tilde\gf=\gf\oplus k \stackrel{(X,\lambda)\to X}{\longrightarrow} \gf\to 0
+\end{equation}
+Скобка Ли в алгебре $\tilde\gf$, которая равна $\gf\oplus k$ как векторное пространство, определяется равенством
+\begin{equation}
+  \label{eq:6}
+  [(X,\lambda),(Y,\mu)]=([X,Y],c(X,Y))
+\end{equation}
+Тождество Якоби для такой скобки равносильно тому, что $c$-- 2-коцикл. Когомологичным коциклам отвечают эквивалентные расширения. 
+
+Два расширения $\tilde \gf$ и $\tilde{\tilde\gf}$ называются эквивалентными, если существует изоморфизм $I:\tilde\gf\to \tilde{\tilde \gf}$ такой, что диаграмма коммутирует:
+\begin{equation}
+  \label{eq:7}
+  \begin{diagram}
+    \node 0 \arrow{e,t}{}  \node{\gf} \arrow{e,t}{} \arrow{s,l}{id} \node{\tilde\gf}\arrow{s,l}{I} \arrow{e,t}{} \node{k}\arrow{s,r}{id} \arrow{e,t}{} \node{0}\\
+    \node 0 \arrow{e,t}{}  \node{\gf} \arrow{e,t}{} \node{\tilde{\tilde\gf}} \arrow{e,t}{} \node{k} \arrow{e,t}{} \node{0}
+  \end{diagram}
+\end{equation}
+\begin{exercise}
+ Построить изоморфизм $I$.   
+\end{exercise}
+
+
+Таким образом пространство $H^{2}(\gf)$ -- это множество классов 1-мерных центральных расширений $\gf$. Нуль в $H^{2}(\gf)$  соответствует тривиальному расширению. 
+
+Вернемся к алгебре Витта \eqref{eq:230}. Существует коцикл
+\begin{equation}
+  \label{eq:8}
+  c(l_{n},l_{m})=\frac{1}{12}(m^{3}-m)\delta_{-n,m}
+\end{equation}
+\begin{exercise}
+  Проверить, что $c$ -- коцикл алгебры Витта. 
+\end{exercise}
+Соответствующее центральное расширение алгебры Витта называется алгеброй Вирасоро. Коммутационные соотношения этой алгебры имеют вид
+\begin{eqnarray}
+  \label{eq:9}
+  [L_{n},c]=0\\
+  \left[L_{n},L_{m}\right]=(n-m)L_{n+m} +\frac{c}{12} (m^{3}-m) \delta_{-n,m}
+\end{eqnarray}
+Можно показать, что $H^{2}(Witt)\cong \mathbb{C}$ и все нетривиальные коциклы пропорциональны $c$. 
+(Доказательство есть в \cite{fuks1986cohomology}, \cite{schottenloher2008mathematical}).
+\bibliography{talk}{}
+\bibliographystyle{utphys}
+
 \end{document}
 %%% Local Variables: 
 %%% mode: latex
