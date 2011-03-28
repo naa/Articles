@@ -9,6 +9,33 @@
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+%	backgroundcolor=\color{lbcolor},
+        language=Mathematica,
+	tabsize=2,
+	rulecolor=,
+        basicstyle=\scriptsize,
+        upquote=true,
+%        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+%        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+%        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
 
 \newtheorem{statement}{Statement}
 \newtheorem{theorem}{Theorem}
@@ -65,13 +92,11 @@ Example.
 
 Affine Lie algebras, WZW and coset models. Denominator identity 
 
-Extended affine Lie algebras currently attract a lot of attention. These algebras has applications in supergravity 
 
-Reference.
 
 Multiplicities, branching and tensor product problems are essentially different faces of the same problem. One possible solution is recurrent computation from corresponding generalization of Weyl character formula. Such a solution is applicable in many cases. For example if $q$ is not root of unity category of $U_{q}(\gf)$-modules is equivalent to the non-deformed case.  Since Weyl character formula is preserved by $q$-deformation in this case, recurrent approach is applicable to quantum groups. etc.
 
-General recurrent relations for branching coefficients of non-maximal embeddings were proposed in [1007]. It [1102] it was shown that these relations demonstrate the connection of branching problem with BGG resolution. Also it was noticed, that weight multiplicities and tensor product decomposition coefficients can be obtained in the special cases of Lie algebra embeddings ($\hf\subset\gf$ and $\gf\subset\gf\otimes\gf$ correspondingly).
+General recurrent relations for branching coefficients of non-maximal embeddings were proposed in \cite{2010arXiv1007.0318L}. In \cite{2011arXiv1102.1702L} it was shown that these relations demonstrate the connection of branching problem with BGG resolution. Also it was noticed, that weight multiplicities and tensor product decomposition coefficients can be obtained in the special cases of Lie algebra embeddings ($\hf\subset\gf$ and $\gf\subset\gf\otimes\gf$ correspondingly).
 
 Example.
 
@@ -84,7 +109,6 @@ Main features:
 \item Construction of closed algebraic expressions for string and branching functions for low-rank affine Lie algebras.
 \end{itemize}
 
-Methods and algorithms.
 For (1) we use fairly standard algorithms. For simple finite-dimensional Lie algebras these algorithms were already implemented in several software packages (\cite{vanleeuwen1994lsp}, \cite{stembridge2001computational}, \cite{fischbacher2002ilp}, \cite{simplie}). We have made them available to the users of popular computer algebra system {\it Mathematica}. Flexibility of {\it Mathematica} language has allowed us to represent Weyl group elements in the form convenient for simplification with rules []. 
 
 There exists well-known fast recursive formula for recurrent computation of weight multiplicities of Freudenthal \cite{moody1982fast}. It is used in most software packages (\cite{vanleeuwen1994lsp}, \cite{stembridge2001computational}, \cite{fischbacher2002ilp}). We present our own implementation. Also we present another recurrent computation routine based on general approach to branching [1007]. In case of finite-dimensional Lie algebras this procedure is equivalent to Racah formula, which is faster for weight multiplicities in case of low rank algebras and big representations. (See the table with run times). 
@@ -96,9 +120,44 @@ For tensor product decompositions it is sometimes possible to give close algebra
 \section{Core algorithms and data structures}
 \label{sec:core-algorithms}
 
+Consider Lie algebra $\gf$ of finite or affine type. We denote its root system by $\Delta$. Roots and weights of the algebra are represented by the data-structures \lstinline{finiteWeight} and \lstinline{affineWeight} of {\it Affine.m} package. 
+Root system is determined by the set of simple roots $\alpha_{1}, \dots, \alpha_{r}$, where $r$ is the rank of the algebra. So to specify an algebra it is enough to have simple roots. The set of simple roots can be created using different methods. The coordinates of simple roots can be entered by hand, for example direct sum $sl_{2}\oplus sl_{2}$ can be constructed by the code
+\begin{lstlisting}
+  makeFiniteRootSystem[{{1,0}, {0,1}}]
+\end{lstlisting}
+For simple finite-dimensional Lie algebras there are built-in constructors
+\begin{lstlisting}
+  b2=makeSimpleRootSystem[B,2]
+
+  Out[6]= finiteRootSystem[2, {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}]
+\end{lstlisting}
+
+Central data structures of our package are {\it finiteWeight} and {\it affineWeight}. These structures are used to represent weights of finite-dimensional and affine Lie algebras. We have implemented several constructors for convenience of users, so weights can be specified by the coordinates in standard orthogonal basis, Dynkin labels or coefficients of decomposition to the sum of simple roots. We introduce arithmetic operations on the structures of weight and inner product (Killing form) is represented by a built-in dot-product operation. 
+
+
 \section{Examples}
 \label{sec:examples}
 
+\subsection{Finite-dimensional Lie algebras}
+\label{sec:finite-dimens-lie}
+
+Consider the algebra $B_{4}$ and regular subalgebra $B_{2}$. This embedding can be specified by the following code:
+\begin{equation}
+  \label{eq:1}
+  B_{2}\subset B_{4}
+\end{equation}
+
+Branching coefficients can be calculated using the formula () with the code:
+\begin{equation}
+  \label{eq:2}
+  calculate_{branching}
+\end{equation}
+
+It is interesting to note that the subalgebra $\afb$ is equal to $B_{2}$ in this case and not to $A_{1}$ as it can be thought from the Dynkin diagram. To visualize the diagrams and branching coefficients the following instructions were used:
+\begin{equation}
+  \label{eq:3}
+  plot
+\end{equation}
 \section{Conclusion}
 \label{sec:conclusion}
 

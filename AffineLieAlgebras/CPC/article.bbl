@@ -1,5 +1,16 @@
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
 
+\bibitem{2010arXiv1007.0318L}
+V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
+  nonmaximal embeddings},'' {\em Journal of Physics A: Mathematical and
+  Theoretical} {\bf to appear}  , \href{http://arxiv.org/abs/1007.0318}{{\tt
+  arXiv:1007.0318 [math.RT]}}.
+
+\bibitem{2011arXiv1102.1702L}
+V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive properties of branching and BGG
+  resolution},'' \href{http://arxiv.org/abs/1102.1702}{{\tt arXiv:1102.1702
+  [math.RT]}}.
+
 \bibitem{vanleeuwen1994lsp}
 M.~Van~Leeuwen, ``{LiE, a software package for Lie group computations},'' {\em
   Euromath Bull} {\bf 1} (1994) no.~2, 83--94.
