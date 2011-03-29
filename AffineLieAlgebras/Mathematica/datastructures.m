@@ -178,6 +178,7 @@ keys = DownValues[#,Sort->False][[All,1,1,1]]&;
 finiteRootSystem::"usage"=
     "finiteRootSystem[rank_Integer,{roots_finiteWeight}] represents root system of finite-dimensional Lie algebra.\n
     finiteRootSystem[rank] returns rank of the root system\n
+    finiteRootSystem[dimension] returns the dimension of the space where the roors are realized as the vectors\n
     finiteRootSystem[simpleRoots] returns unsorted list of simple roots in the root system.\n
     finiteRootSystem[simpleRoot][n_Integer] returns n'th simple root"
 
@@ -186,12 +187,21 @@ makeFiniteRootSystem::"usage"=
     makeFiniteRootSystem[{roots__finiteWeight}] creates  finiteRootSystem structure from the List of simple roots\n
     given as the lists of coordinates";
 
-makeFiniteRootSystem[{roots__finiteWeight}]:=finiteRootSystem[Length[{roots}],{roots}]
+makeFiniteRootSystem[{roots__finiteWeight}]:=finiteRootSystem[Length[{roots}],{roots}[[1]][dimension],{roots}]
 
 finiteRootSystem/:x_finiteRootSystem[rank]:=x[[1]];
-finiteRootSystem/:x_finiteRootSystem[simpleRoots]:=x[[2]];
-finiteRootSystem/:x_finiteRootSystem[simpleRoot][n_Integer]:=x[[2]][[n]];
-finiteRootSystem/:x_finiteRootSystem+y_finiteRootSystem:=
+finiteRootSystem/:x_finiteRootSystem[dimension]:=x[[2]];
+finiteRootSystem/:x_finiteRootSystem[simpleRoots]:=x[[3]];
+finiteRootSystem/:x_finiteRootSystem[simpleRoot][n_Integer]:=x[[3]][[n]];
+
+prependZeros[num_Integer,vec_finiteWeight]:=makeFiniteWeight[Join[Table[0,{num}],vec[standardBase]]];
+appendZeros[num_Integer,vec_finiteWeight]:=makeFiniteWeight[Join[vec[standardBase],Table[0,{num}]]];
+
+finiteRootSystem/:x_finiteRootSystem+y_finiteRootSystem:=makeFiniteRootSystem[Join[Map[appendZeros[y[dimension],#]&,x[simpleRoots]],
+										   Map[prependZeros[x[dimension],#]&,y[simpleRoots]]]];
+
+affineRootSystem/:x_affineRootSystem+y_affineRootSystem+y:=makeAffineExtension[x[finiteRootSystem]+y[finiteRootSystem]];
+
 
 makeFiniteRootSystem[{roots__List}]:=makeFiniteRootSystem[makeFiniteWeight/@{roots}]
 
@@ -490,7 +500,7 @@ fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
 
 orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[positiveRoots[rs],z_ /; Or[z.#==0& /@ subs[simpleRoots]]]
     
-
+(*
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 
 branching[rs_?rootSystemQ][higestWeight_?weightQ]:=
@@ -507,7 +517,7 @@ branching[rs_?rootSystemQ][higestWeight_?weightQ]:=
 		weights];
 	   mults]
 
-(* fundamentalWeights[b2a] 
+ fundamentalWeights[b2a] 
 
 orbit[rs_affineRootSystem][{weights__affineWeight},gradelimit_?NumberQ]:=
 			   NestWhileList[
@@ -544,3 +554,20 @@ racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?
 				     
 
 *)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
