@@ -194,14 +194,28 @@ finiteRootSystem/:x_finiteRootSystem[dimension]:=x[[2]];
 finiteRootSystem/:x_finiteRootSystem[simpleRoots]:=x[[3]];
 finiteRootSystem/:x_finiteRootSystem[simpleRoot][n_Integer]:=x[[3]][[n]];
 
+
+prependZeros::"usage"=
+    "prependZeros[num_Integer,vec_finiteWeight] embeds vec to bigger space by prepending num zeros to its coordinates";
 prependZeros[num_Integer,vec_finiteWeight]:=makeFiniteWeight[Join[Table[0,{num}],vec[standardBase]]];
+
+Expect["prependZeros",0,"__TODO__"]
+
+appendZeros::"usage"=
+    "appendZeros[num_Integer,vec_finiteWeight] embeds vec to bigger space by appending num zeros to its coordinates";
 appendZeros[num_Integer,vec_finiteWeight]:=makeFiniteWeight[Join[vec[standardBase],Table[0,{num}]]];
 
+Expect["appendZeros",0,"__TODO__"]
+
+Plus::"usage"=Plus::"usage" <> "\n Direct sum of finite-dimensional and affine Lie algebras can be specified as sum of root systems";
 finiteRootSystem/:x_finiteRootSystem+y_finiteRootSystem:=makeFiniteRootSystem[Join[Map[appendZeros[y[dimension],#]&,x[simpleRoots]],
 										   Map[prependZeros[x[dimension],#]&,y[simpleRoots]]]];
 
+Expect["Direct sum of finite-dimensional Lie algebras",0,"__TODO__"]
+
 affineRootSystem/:x_affineRootSystem+y_affineRootSystem+y:=makeAffineExtension[x[finiteRootSystem]+y[finiteRootSystem]];
 
+Expect["Direct sum of affine Lie algebras",0,"__TODO__"]
 
 makeFiniteRootSystem[{roots__List}]:=makeFiniteRootSystem[makeFiniteWeight/@{roots}]
 
@@ -464,6 +478,18 @@ Append[makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoots],makeAffineExt
 
 (* makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoot][0] *)
 
+
+affineRootSystem::"usage"=
+    "affineRootSystem[rank_Integer,finiteRootSystem_finiteRootSystem,imaginaryRoot_affineWeight,realRoots_List] 
+    represents root system of affine Lie algebra.\n
+    affineRootSystem[rank] returns rank of the root system\n
+    affineRootSystem[imaginaryRoot] returns imaginary (zeroth) root\n
+    affineRootSystem[realRoots] returns list of real roots (roots of finite-dimensional subalgebra)
+    affineRootSystem[dimension] returns the dimension of the space where the roots are realized as the vectors\n
+    affineRootSystem[simpleRoots] returns unsorted list of simple roots in the root system.\n
+    affineRootSystem[simpleRoot][n_Integer] returns n'th simple root"
+
+
 affineRootSystem/:rs_affineRootSystem[rank]:=rs[[1]]
 
 affineRootSystem/:rs_affineRootSystem[finiteRootSystem]:=rs[[2]]
@@ -477,7 +503,8 @@ affineRootSystem/:rs_affineRootSystem[simpleRoots]:=Prepend[rs[[4]],rs[[3]]]
 affineRootSystem/:rs_affineRootSystem[simpleRoot][0]:=rs[[3]];
 affineRootSystem/:rs_affineRootSystem[simpleRoot][n_?NumberQ]/;n<=rs[rank]:=rs[simpleRoots][[n]];
 
-zeroWeight[rs_finiteRootSystem]:=makeFiniteWeight[Table[0,{rs[rank]}]];
+zeroWeight::"usage"="zeroWeight[rs_?rootSystemQ] returns zero root of root system rs (zero of rs[dimension]-dimemsional space)"; 
+zeroWeight[rs_finiteRootSystem]:=makeFiniteWeight[Table[0,{rs[dimension]}]];
 zeroWeight[rs_affineRootSystem]:=makeAffineWeight[zeroWeight[rs[finiteRootSystem]],0,0];
 
 toFundamentalChamber[rs_affineRootSystem][vec_affineWeight]:=
@@ -486,8 +513,10 @@ toFundamentalChamber[rs_affineRootSystem][vec_affineWeight]:=
 	      vec,
 	      Head[#]=!=reflection[Null]&]]
 
+marks::"usage"="marks[rs_affineRootSystem] returns marks of affine Lie algebra";
 marks[rs_affineRootSystem]:=Prepend[Inverse[cartanMatrix[rs[finiteRootSystem]]].(-2*#.rs[simpleRoot][0]/(#.#)&)/@rs[realRoots],1]
 
+marks::"usage"="comarks[rs_affineRootSystem] returns comarks of affine Lie algebra";
 comarks[rs_affineRootSystem]:=marks[rs]*Map[#.#/2&,rs[simpleRoots]]
 
 b2a=makeAffineExtension[makeSimpleRootSystem[B,2]]
@@ -498,7 +527,23 @@ fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
 								0*rs[finiteRootSystem][simpleRoot][1]],
 							comarks[rs]}]]
 
-orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[positiveRoots[rs],z_ /; Or[z.#==0& /@ subs[simpleRoots]]]
+weight::"usage"=
+    "weight[rs_?rootSystemQ][labels__Integer] constructs weight defined by Dynkin labels";
+weight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
+
+orthogonalSubsystem::"usage"=
+    "orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ] returns subset of positive roots of root system rs, which 
+    are orthogonal to simple roots of subsystem subs";
+orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[positiveRoots[rs], z_ /; Or @@ (z.#==0& /@ subs[simpleRoots])]
+
+projection::"usage"=
+    "projection[rs_?rootSystemQ][weights__?weightQ] projects given weight to the root (sub)system";
+projection[rs_?rootSystemQ][weights__?weightQ]:=Map[Apply[Plus,#]&,Outer[(#1.#2)/(#2.#2)*#2&,{weights},rs[simpleRoots]]]
+
+
+fan[rs_?rootSystemQ,subs_?rootSystemQ]::"usage"=
+    "Constructs fan of the embedding";
+fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
     
 (*
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=

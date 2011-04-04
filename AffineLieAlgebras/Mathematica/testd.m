@@ -2,6 +2,107 @@ AppendTo[$Path,"/home/anton/study/2011/Articles/AffineLieAlgebras/Mathematica/"]
 
 <<datastructures.m;
 
+b2Out[45]= finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>     finiteWeight[2, {0, 1}]}]
+
+Out[46]= {}
+
+orthogonalSubsystem[b2,makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}]]
+
+marks::"usage"="comarks[rs_affineRootSystem] returns comarks of affine Lie algebra";
+comarks[rs_affineRootSystem]:=marks[rs]*Map[#.#/2&,rs[simpleRoots]]
+
+fundamentalWeights[b2].{3,2}                                                    1  1
+Out[74]= {finiteWeight[2, {1, 0}], finiteWeight[2, {-, -}]}
+                                                    2  2
+
+fundamentalWeights[b2]
+
+makeWeight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
+
+makeWeight[makeAffineExtension[b2]][0,0,1]
+
+weight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
+
+ww=weight[A2][1,0]
+
+
+
+
+Clear[A2]
+
+A2=makeSimpleRootSystem[A,2]
+
+[Calculating...]
+
+[Calculating...]
+
+Out[87]= finiteRootSystem[2, {finiteWeight[3, {1, -1, 0}], 
+ 
+>     finiteWeight[3, {0, 1, -1}]}]
+
+Out[86]= weight[A2][1, 0]
+
+[Calculating...]
+
+                                          1  1
+Out[83]= affineWeight[2, finiteWeight[2, {-, -}], 1, 0]
+                                          2  2
+
+Out[82]= affineWeight[2, finiteWeight[2, {0, 0}], 1, 0]
+
+[Calculating...]
+
+                          7  5
+Out[78]= finiteWeight[2, {-, -}]
+                          2  2
+
+                          3  1
+Out[77]= finiteWeight[2, {-, -}]
+                          2  2
+
+Out[76]= finiteWeight[2, {1, 0}]
+
+[Calculating...]
+
+[Calculating...]
+
+orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[positiveRoots[rs], z_ /; Or @@ (z.#==0 &  /@ subs[simpleRoots])]
+
+Out[67]= {finiteWeight[2, {1, -1}]}
+
+Out[63]= {finiteWeight[2, {1, -1}]}
+
+Out[61]= {finiteWeight[2, {1, -1}]}
+
+Out[59]= {True, False, False, False}
+
+Out[57]= {True, False, False, False}
+
+Out[55]= {{True}, {False}, {False}, {False}}
+
+Out[53]= {{True}, {False}, {False}, {False}}
+
+Out[51]= {}
+
+Out[49]= {}
+
+Out[47]= {}
+
+111
+
+Outer::heads: Heads List and Times at positions 3 and 2
+     are expected to be the same.
+
+Throw::nocatch: 
+   Uncaught Throw[Weights of [2,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[1]= Hold[Throw[Weights of [2,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
 
 
 Module[{b2=makeSimpleRootSystem[B,2]},
@@ -32,6 +133,14 @@ b2=makeSimpleRootSystem[B,2]
 Out[6]= finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
  
 >     finiteWeight[2, {0, 1}]}]
+
+b2+b2
+
+[Calculating...]
+
+Out[42]= 2 finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>      finiteWeight[2, {0, 1}]}]
 
 partialOrbit[b2][{rho[b2]}]
 
@@ -1813,3 +1922,166 @@ Out[62]= {{affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], -1},
 
 
 
+Module[{b2=makeSimpleRootSystem[B,2],fm,rm},
+       fm=freudenthalMultiplicities[b2][makeFiniteWeight[{2,1}]];
+       rm=freudenthalMultiplicities[b2][makeFiniteWeight[{2,1}]];
+       Expect["Racah and Freudenthal formulae should give the same result",rm[#]&/@keys[rm],
+	      fm[#]&/@keys[fm]]]
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Print[positiveRoots[b2]];
+       weightSystem[b2][makeFiniteWeight[{2,1}]]]
+
+                  {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}], finiteWeight[2, {1, 1}], 
+ 
+>   finiteWeight[2, {1, 0}]}
+
+Out[11]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}}
+
+                {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}], finiteWeight[2, {1, 1}], 
+ 
+>   finiteWeight[2, {1, 0}]}
+
+Out[9]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 0}], finiteWeight[2, {1, 1}], 
+ 
+>     finiteWeight[2, {2, 0}]}, {finiteWeight[2, {0, 0}]}, {}}
+
+                positiveRoots[finiteRootSystem[2, 
+ 
+>    {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}]]
+
+Outer::heads: Heads List and Times at positions 3 and 2
+     are expected to be the same.
+
+Out[6]= {{finiteWeight[2, {2, 1}]}, {}}
+
+        
+Outer::heads: Heads List and Times at positions 3 and 2
+     are expected to be the same.
+
+Out[5]= {{finiteWeight[2, {2, 1}]}, {}}
+
+                                
+Outer::heads: Heads List and Times at positions 3 and 2
+     are expected to be the same.
+
+Throw::nocatch: 
+   Uncaught Throw[Weights of [2,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[2]= Hold[Throw[Weights of [2,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
+positiveRoots[rs]
+
+weightSystem[rs_?rootSystemQ][higestWeight_?weightQ]:=Module[{minusPosRoots=-positiveRoots[rs]},
+							     Most[NestWhileList[Function[x,Complement[
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;
+										       And[checkGrade[rs][y],And@@(#.y>=0&/@rs[simpleRoots])]]
+										 ,x]],{higestWeight},#=!={}&]]];
+
+
+
+higestRoot::"usage"="returns highest root of root system";
+higestRoot[rs_finiteRootSystem]:=toFundamentalChamber[rs][rs[simpleRoot][Ordering[(#.#&)/@rs[simpleRoots],-1][[1]]]]
+
+?higestRoot
+
+makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoots]
+
+Out[7]= {affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
+ 
+>    affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
+ 
+>    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0]}
+
+Out[6]= {affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1], 
+ 
+>    affineWeight[2, finiteWeight[2, {1, -1}], 0, 0], 
+ 
+>    affineWeight[2, finiteWeight[2, {0, 1}], 0, 0], 
+ 
+>    affineWeight[2, finiteWeight[2, {-1, -1}], 0, 1]}
+
+returns highest root of root system
+
+
+orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[Flatten[positiveRoots[rs]], z_?weightQ /; Or[z.#==0& /@ subs[simpleRoots]]]
+
+subs=makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}]
+
+Out[28]= finiteRootSystem[1, {finiteWeight[2, {1, 1}]}]
+
+Flatten[positiveRoots[b2]] /. z_?weightQ -> z.#==0& /@ subs[simpleRoots]
+
+Select[Flatten[positiveRoots[b2]], Function[z,Or[(z.#==0&) /@ subs[simpleRoots]]]]
+
+Select[Flatten[positiveRoots[b2]], #.makeFiniteWeight[{1,1}]==0&]
+
+Out[41]= 2 finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>      finiteWeight[2, {0, 1}]}]
+
+Out[40]= {finiteWeight[2, {1, -1}]}
+
+z=finiteWeight[2, {1, 1}]
+
+(z.#==0&) /@ subs[simpleRoots]
+
+[Calculating...]
+
+Out[33]= {}
+
+Out[32]= {}
+
+Out[31]= {}
+
+Out[30]= {{True, False, False, False}}
+
+Out[29]= {{finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}], 
+ 
+>       finiteWeight[2, {1, 1}], finiteWeight[2, {1, 0}]} . 
+ 
+>      finiteWeight[2, {1, 1}] == 0}
+
+Out[27]= {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}], 
+ 
+>    finiteWeight[2, {1, 1}], finiteWeight[2, {1, 0}]}
+
+b2=makeSimpleRootSystem[B,2]
+
+Out[10]= finiteRootSystem[2, {finiteWeight[2, {1, -1}], 
+ 
+>     finiteWeight[2, {0, 1}]}]
+
+orthogonalSubsystem[b2,makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}]]
+
+Out[26]= {}
+
+Out[22]= {}
+
+Out[20]= {{True}, {False}, {False}, {False}}
+
+Out[18]= {}
+
+positiveRoots[b2]
+
+Out[13]= {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}], 
+ 
+>    finiteWeight[2, {1, 1}], finiteWeight[2, {1, 0}]}
+
+Out[12]= {}
+
+Out[11]= finiteRootSystem[1, {finiteWeight[2, {1, 1}]}]
+
+
+makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}][simpleRoots]
+
+Out[14]= {finiteWeight[2, {1, 1}]}

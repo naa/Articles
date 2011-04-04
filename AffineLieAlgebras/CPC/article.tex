@@ -141,6 +141,15 @@ It is possible to specify direct sum of algebras:
   Out[6]= finiteRootSystem[4, 4, {finiteWeight[4, {1, -1, 0, 0}], finiteWeight[2, {0, 1}]}]
 \end{lstlisting}
 
+Weights can be specified by coordinates in standard basis or by Dynkin labels. The latter way is preferable. 
+\begin{lstlisting}
+  makeFiniteWeight[{1,0}]
+
+  weight[b2][1,1]
+
+  weight[b2a][1,0,1]
+\end{lstlisting}
+
 Addition, multiplication by number and scalar product are defined for roots and weights:
 \begin{lstlisting}
   makeFiniteWeight[{1,1}]+2*makeFiniteWeight[{1,-1}]
@@ -174,8 +183,6 @@ Weights of the irreducible highest weight representation are calculated using th
 \begin{lstlisting}
   weightSystem[b2][fundamentalWeights[b2][[1]]*2]
 \end{lstlisting}
-
-Central data structures of our package are {\it finiteWeight} and {\it affineWeight}. These structures are used to represent weights of finite-dimensional and affine Lie algebras. We have implemented several constructors for convenience of users, so weights can be specified by the coordinates in standard orthogonal basis, Dynkin labels or coefficients of decomposition to the sum of simple roots. We introduce arithmetic operations on the structures of weight and inner product (Killing form) is represented by a built-in dot-product operation. 
 
 
 \section{Examples}
