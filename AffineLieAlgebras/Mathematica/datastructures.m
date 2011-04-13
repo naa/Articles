@@ -586,9 +586,9 @@ fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
 								0*rs[finiteRootSystem][simpleRoot][1]],
 							comarks[rs]}]]
 
-weight::"usage"=
-    "weight[rs_?rootSystemQ][labels__Integer] constructs weight defined by Dynkin labels";
-weight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
+makeWeight::"usage"=
+    "makeWeight[rs_?rootSystemQ][labels__Integer] constructs weight defined by Dynkin labels";
+makeWeight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
 
 orthogonalSubsystem::"usage"=
     "orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ] returns subset of positive roots of root system rs, which 
@@ -597,7 +597,7 @@ orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[positiveRoots[rs],
 
 projection::"usage"=
     "projection[rs_?rootSystemQ][weights__?weightQ] projects given weight to the root (sub)system";
-projection[rs_?rootSystemQ][weights__?weightQ]:=Map[Apply[Plus,#]&,Outer[(#1.#2)/(#2.#2)*#2&,{weights},rs[simpleRoots]]]
+projection[rs_?rootSystemQ][weights__?weightQ]:=Sequence @@ Map[Apply[Plus,#]&,Outer[(#1.#2)/(#2.#2)*#2&,{weights},rs[simpleRoots]]]
 
 formalElement::"usage"=
     "Datastructure to represent formal elements of the ring of characters (linear combinations of formal exponents of weights).\n
@@ -615,43 +615,37 @@ formalElement/:fe_formalElement[multiplicities]:=values[fe[[1]]];
 
 makeFormalElement[{weights__?weightQ},{multiplicities__?NumberQ}]:=formalElement[makeHashtable[{weights},{multiplicities}]];
 
+makeFormalElement[h_]:=formalElement[h];
+
+formalElement/:fe_formalElement[hashtable]:=fe[[1]];
+
 formalElement/:x_formalElement + y_formalElement:=Module[{res},
-							 res=makeFormalElement[{},{}];
-							 Scan[(res[[1]][#]:=x[#]+y[#])&,Union[x[weights],y[weights]]];
+							 res=makeFormalElement[makeHashtable[{},{}]];
+							 Scan[(res[hashtable][#]:=x[#]+y[#])&,Union[x[weights],y[weights]]];
 							 res];
 
 formalElement/:x_formalElement*n_?NumberQ:=makeFormalElement[x[weights],n*x[multiplicities]];
 
 formalElement/:x_formalElement*Exp[w_?weightQ]:=makeFormalElement[(#+w)&/@x[weights],x[multiplicities]];
 
+(* formalElement/:orbit[rs_?rootSystemQ][fe_formalElement]:= *)
+
+projection[rs_?rootSystemQ][fe_formalElement]:=
+    Module[{res},
+	   res=makeFormalElement[makeHashtable[{},{}]];
+	   Scan[(res[hashtable][projection[rs][#]]=res[projection[rs][#]]+fe[#])&,fe[weights]];
+	   res];
 
 branching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
-    Module[{mults},
-	   mults=freudenthalMultiplicities[rs][highestWeight];
-	   weights=keys[mults];
+    Module[{mults,pmults,rh=rho[subs],res,wgs},
+	   mults=makeFormalElement[freudenthalMultiplicities[rs][highestWeight]];
+	   Scan[(mults[hashtable][#]=mults[toFundamentalChamber[rs][#]])&,Flatten[orbit[rs][mults[weights]]]];
+	   pmults=projection[subs][mults];
+	   res=makeFormalElement[makeHashtable[{},{}]];
+	   wgs=Select[Sort[pmults[weights],#1.rh>#2.rh&],#.rh>=0&];
+	   Scan[(res[hashtable][#]=pmults[#];pmults=pmults - pmults[#]*makeFormalElement[freudenthalMultiplicities[subs][#]])&, wgs];
+	   res];
 	   
-
-
-{weights,mults,c,insideQ,
-	    posroots=positiveRoots[rs],
-	    toFC=toFundamentalChamber[rs]},
-	   weights=SortBy[ Rest[Flatten[weightSystem[rs][highestWeight]]], -#.rh&];
-	   c:=(#+rh).(#+rh)&;
-	   mults[highestWeight]=1;
-	   insideQ:=And[checkGrade[rs][#],IntegerQ[mults[toFC[#]]]]&;
-	   Scan[Function[v,
-			 mults[v]=
-			 2/(c[highestWeight]-c[v])*
-			 Plus@@
-			     Map[Function[r,
-					  Plus@@Map[mults[toFC[#[[1]]]]*#[[2]]&,
-						    Rest[NestWhileList[({#[[1]]+r,#[[2]]+r.r})&,
-								       {v,v.r},
-								       insideQ[#[[1]]+r]&]]]]
-				 ,posroots]],
-		weights];
-	   mults];
-
 
 fan::"usage"=
     "Constructs fan of the embedding";
