@@ -625,6 +625,33 @@ formalElement/:x_formalElement*n_?NumberQ:=makeFormalElement[x[weights],n*x[mult
 formalElement/:x_formalElement*Exp[w_?weightQ]:=makeFormalElement[(#+w)&/@x[weights],x[multiplicities]];
 
 
+branching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
+    Module[{mults},
+	   mults=freudenthalMultiplicities[rs][highestWeight];
+	   weights=keys[mults];
+	   
+
+
+{weights,mults,c,insideQ,
+	    posroots=positiveRoots[rs],
+	    toFC=toFundamentalChamber[rs]},
+	   weights=SortBy[ Rest[Flatten[weightSystem[rs][highestWeight]]], -#.rh&];
+	   c:=(#+rh).(#+rh)&;
+	   mults[highestWeight]=1;
+	   insideQ:=And[checkGrade[rs][#],IntegerQ[mults[toFC[#]]]]&;
+	   Scan[Function[v,
+			 mults[v]=
+			 2/(c[highestWeight]-c[v])*
+			 Plus@@
+			     Map[Function[r,
+					  Plus@@Map[mults[toFC[#[[1]]]]*#[[2]]&,
+						    Rest[NestWhileList[({#[[1]]+r,#[[2]]+r.r})&,
+								       {v,v.r},
+								       insideQ[#[[1]]+r]&]]]]
+				 ,posroots]],
+		weights];
+	   mults];
+
 
 fan::"usage"=
     "Constructs fan of the embedding";
