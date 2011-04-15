@@ -258,6 +258,12 @@ makeSimpleRootSystem[B,rank_Integer]:=makeFiniteRootSystem[Append[Table[If[i==j,
 makeSimpleRootSystem[C,rank_Integer]:=makeFiniteRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Table[0,{rank-1}],2]]];
 makeSimpleRootSystem[D,rank_Integer]:=makeFiniteRootSystem[Append[Table[If[i==j,1,If[i==j-1,-1,0]],{i,1,rank-1},{j,1,rank}],Append[Append[Table[0,{rank-2}],1],1]]];
 
+
+Subscript[A,n_Integer]:=makeSimpleRootSystem[A,n];
+Subscript[B,n_Integer]:=makeSimpleRootSystem[B,n];
+Subscript[C,n_Integer]:=makeSimpleRootSystem[C,n];
+Subscript[D,n_Integer]:=makeSimpleRootSystem[D,n];
+
 Expect["B2:",True,makeSimpleRootSystem[B,2][simpleRoots][[1]]==makeFiniteWeight[{1,-1}]]
 
 Expect["B2: rank",2,makeSimpleRootSystem[B,2][rank]]
@@ -380,7 +386,7 @@ partialOrbit::"usage"=
     "partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}] constructs Weyl partial orbit of given set of weights. \n
     It starts with the list of weights and reflects them away from main Weyl chamber.\n
     For w in fundamental chamber it gives the whole orbit.";
-partialOrbit[rs_?rootSystemQ][{weights__?weightQ}]:=
+partialOrbit[rs_?rootSystemQ][{weights___?weightQ}]:=
     Most[NestWhileList[
 	Function[x,
 		 Union[
@@ -414,7 +420,7 @@ orbit::"usage"=
     orbit[rs_?rootSystemQ][{wg_?weightQ}] works for a list of weights";
 
 orbit[rs_?rootSystemQ][weight_?weightQ]:=partialOrbit[rs][{toFundamentalChamber[rs][weight]}];
-orbit[rs_?rootSystemQ][{weights__?weightQ}]:=partialOrbit[rs][toFundamentalChamber[rs] /@ {weights}];
+orbit[rs_?rootSystemQ][{weights___?weightQ}]:=partialOrbit[rs][toFundamentalChamber[rs] /@ {weights}];
 
 Module[{b2=makeSimpleRootSystem[B,2]},
        Expect["orbit is equivalent to partial orbit",True, partialOrbit[b2][{rho[b2]}]== orbit[b2][rho[b2]]]]
@@ -542,6 +548,8 @@ makeAffineExtension::"usage"=
     "makeAffineExtension[fs_finiteRootSystem] creates root system of affine Lie algebra which 
     is extension of given finite-dimensional root system";
 makeAffineExtension[fs_finiteRootSystem]:=affineRootSystem[fs[rank],fs,makeAffineWeight[-higestRoot[fs],0,1],(makeAffineWeight[#,0,0]&)/@fs[simpleRoots]]
+
+OverHat[rs_finiteRootSystem]:=makeAffineExtension[rs];
 
 Append[makeAffineExtension[makeSimpleRootSystem[B,2]][simpleRoots],makeAffineExtension[makeSimpleRootSystem[B,2]][[3]]]
 
@@ -673,12 +681,11 @@ fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 	   Module[{pr,r,roots},
 		  roots=Complement[positiveRoots[rs],orthogonalSubsystem[rs,subs]];
 		  pr=makeFormalElement[projection[subs][roots]] - makeFormalElement[positiveRoots[subs]];
-		  Print[pr[weights]];
-		  Print[pr[multiplicities]];
 		  Fold[Expand[#1*(1-Exp[#2])^(pr[#2])]&,makeFormalElement[{zeroWeight[subs]}],pr[weights]]];
 
 ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
-    Module[
+    Module[{anomPoints,fn},
+	   anomPoints=1]
     
 (*
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
