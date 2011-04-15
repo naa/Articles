@@ -267,8 +267,8 @@ checkGrade::"usage"=
     "computations for affine Lie algebras are limited by some grade, by default it is equal to 10. To change it set rs[gradeLimit].\n
     checkGrade[rs_?rootSystemQ][w_?weightQ] checks if given weight has absolute value of grade less then gradeLimit. Returns true 
     for finite-dimensional case";
-checkGrade[rs_?rootSystemQ][w_finiteWeight]=True;
-checkGrade[rs_?rootSystemQ][w_affineWeight]:=(Abs[w[grade]]<rs[gradeLimit]) /. rs[gradeLimit]->10;
+checkGrade[rs_][w_finiteWeight]=True;
+checkGrade[rs_][w_affineWeight]:=(Abs[w[grade]]<rs[gradeLimit]) /. rs[gradeLimit]->10;
 
 Expect["checkGrade finite dimensional Lie algebra", True, checkGrade[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]]];
 
@@ -590,7 +590,7 @@ comarks[rs_affineRootSystem]:=marks[rs]*Map[#.#/2&,rs[simpleRoots]]
 
 fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
 					     Transpose[{Prepend[fundamentalWeights[rs[finiteRootSystem]],
-								0*rs[finiteRootSystem][simpleRoot][1]],
+								zeroWeight[rs[finiteRootSystem]]],
 							comarks[rs]}]]
 
 weight::"usage"=
@@ -604,7 +604,7 @@ orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ]:=Cases[positiveRoots[rs],
 
 projection::"usage"=
     "projection[rs_?rootSystemQ][weights__?weightQ] projects given weight to the root (sub)system";
-projection[rs_?rootSystemQ][weights__?weightQ]:=Sequence @@ Map[Apply[Plus,#]&,Outer[(#1.#2)/(#2.#2)*#2&,{weights},rs[simpleRoots]]]
+projection[rs_?rootSystemQ][{weights__?weightQ}]:= Map[Apply[Plus,#]&,Outer[(#1.#2)/(#2.#2)*#2&,{weights},rs[simpleRoots]]]
 
 formalElement::"usage"=
     "Datastructure to represent formal elements of the ring of characters (linear combinations of formal exponents of weights).\n
@@ -620,11 +620,19 @@ formalElement/:fe_formalElement[weights]:=keys[fe[[1]]];
 
 formalElement/:fe_formalElement[multiplicities]:=values[fe[[1]]];
 
-makeFormalElement[{weights__?weightQ},{multiplicities__?NumberQ}]:=formalElement[makeHashtable[{weights},{multiplicities}]];
+makeFormalElement[{weights___?weightQ},{multiplicities___?NumberQ}]:=formalElement[makeHashtable[{weights},{multiplicities}]];
 
 makeFormalElement[{weights__?weightQ}]:=
+    Module[{res},
+	   res=makeFormalElement[makeHashtable[{},{}]];
+	   Scan[(res[hashtable][#]=res[#]+1)&,{weights}];
+	   res];
 
 makeFormalElement[h_]:=formalElement[h];
+
+subElement[fe_formalElement,{weights___?weightQ}]:=makeFormalElement[{weights},fe/@{weights}];
+
+Expect["subElement",{1},subElement[makeFormalElement[positiveRoots[makeSimpleRootSystem[B,2]],{1,2,3,4}],{makeFiniteWeight[{1,-1}]}][multiplicities]];
 
 formalElement/:fe_formalElement[hashtable]:=fe[[1]];
 
@@ -635,14 +643,17 @@ formalElement/:x_formalElement + y_formalElement:=Module[{res},
 
 formalElement/:x_formalElement*n_?NumberQ:=makeFormalElement[x[weights],n*x[multiplicities]];
 
-formalElement/:x_formalElement*Exp[w_?weightQ]:=makeFormalElement[(#+w)&/@x[weights],x[multiplicities]];
+formalElement/:x_formalElement*Exp[w_?weightQ]:=
+    Module[{ws},
+	   ws=Select[(#+w)&/@x[weights],checkGrade[x]];
+	   makeFormalElement[ws,(x[#-w])&/@ws]]
 
 (* formalElement/:orbit[rs_?rootSystemQ][fe_formalElement]:= *)
 
 projection[rs_?rootSystemQ][fe_formalElement]:=
     Module[{res},
 	   res=makeFormalElement[makeHashtable[{},{}]];
-	   Scan[(res[hashtable][projection[rs][#]]=res[projection[rs][#]]+fe[#])&,fe[weights]];
+	   Scan[(res[hashtable][(projection[rs][{#}])[[1]]]=res[(projection[rs][{#}])[[1]]]+fe[#])&,fe[weights]];
 	   res];
 
 branching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
@@ -659,12 +670,15 @@ branching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
 fan::"usage"=
     "Constructs fan of the embedding";
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
-	   Module[{pr,r},
-		  pr=projection[subs][positiveRoots[rs]];
-		  Complement[
-		  Scan[(r=r-Exp[#]*r)&,
-		      pr];
-		  r]
+	   Module[{pr,r,roots},
+		  roots=Complement[positiveRoots[rs],orthogonalSubsystem[rs,subs]];
+		  pr=makeFormalElement[projection[subs][roots]] - makeFormalElement[positiveRoots[subs]];
+		  Print[pr[weights]];
+		  Print[pr[multiplicities]];
+		  Fold[Expand[#1*(1-Exp[#2])^(pr[#2])]&,makeFormalElement[{zeroWeight[subs]}],pr[weights]]];
+
+ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
+    Module[
     
 (*
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
@@ -718,5 +732,5 @@ racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?
 		weights];
 	   mults]
 				     
-
+p
 *)
