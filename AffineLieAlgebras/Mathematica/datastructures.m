@@ -368,6 +368,13 @@ Expect["We can use this and other functions for mapping",True,
        {makeFiniteWeight[{1, 1}], makeFiniteWeight[{2, 1}]}]
 
 
+mainChamberQ::"usage"=
+    "mainChamberQ[rs_?rootSystemQ][wg_?weightQ] tells if weights wg lies inside the main Weyl chamber of root system rs or not";
+mainChamberQ[rs_?rootSystemQ][wg_?weightQ]:=And@@(#.wg>=0&/@rs[simpleRoots]);
+
+Expect["Main chamber predicate",True,mainChamberQ[makeSimpleRootSystem[B,2]][toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,1/2}]]]]
+
+
 
 partialOrbit::"usage"=
     "partialOrbit[rs_finiteRootSystem][{weights__finiteWeight}] constructs Weyl partial orbit of given set of weights. \n
@@ -453,7 +460,7 @@ weightSystem::"usage"=
 weightSystem[rs_?rootSystemQ][higestWeight_?weightQ]:=Module[{minusPosRoots=-positiveRoots[rs]},
 							     Most[NestWhileList[Function[x,Complement[
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;
-										       And[checkGrade[rs][y],And@@(#.y>=0&/@rs[simpleRoots])]]
+										       And[checkGrade[rs][y],mainChamberQ[rs][y]]]
 										 ,x]],{higestWeight},#=!={}&]]];
 
 Module[{b2=makeSimpleRootSystem[B,2]},
@@ -586,9 +593,9 @@ fundamentalWeights[rs_affineRootSystem]:=Map[makeAffineWeight[#[[1]],#[[2]],0]&,
 								0*rs[finiteRootSystem][simpleRoot][1]],
 							comarks[rs]}]]
 
-makeWeight::"usage"=
-    "makeWeight[rs_?rootSystemQ][labels__Integer] constructs weight defined by Dynkin labels";
-makeWeight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
+weight::"usage"=
+    "weight[rs_?rootSystemQ][labels__Integer] constructs weight defined by Dynkin labels";
+weight[rs_?rootSystemQ][labels__Integer]:=fundamentalWeights[rs].{labels}
 
 orthogonalSubsystem::"usage"=
     "orthogonalSubsystem[rs_?rootSystemQ,subs_?rootSystemQ] returns subset of positive roots of root system rs, which 
@@ -614,6 +621,8 @@ formalElement/:fe_formalElement[weights]:=keys[fe[[1]]];
 formalElement/:fe_formalElement[multiplicities]:=values[fe[[1]]];
 
 makeFormalElement[{weights__?weightQ},{multiplicities__?NumberQ}]:=formalElement[makeHashtable[{weights},{multiplicities}]];
+
+makeFormalElement[{weights__?weightQ}]:=
 
 makeFormalElement[h_]:=formalElement[h];
 
@@ -642,7 +651,7 @@ branching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
 	   Scan[(mults[hashtable][#]=mults[toFundamentalChamber[rs][#]])&,Flatten[orbit[rs][mults[weights]]]];
 	   pmults=projection[subs][mults];
 	   res=makeFormalElement[makeHashtable[{},{}]];
-	   wgs=Select[Sort[pmults[weights],#1.rh>#2.rh&],#.rh>=0&];
+	   wgs=Select[Sort[pmults[weights],#1.rh>#2.rh&],mainChamberQ[subs]];
 	   Scan[(res[hashtable][#]=pmults[#];pmults=pmults - pmults[#]*makeFormalElement[freudenthalMultiplicities[subs][#]])&, wgs];
 	   res];
 	   
@@ -652,6 +661,7 @@ fan::"usage"=
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 	   Module[{pr,r},
 		  pr=projection[subs][positiveRoots[rs]];
+		  Complement[
 		  Scan[(r=r-Exp[#]*r)&,
 		      pr];
 		  r]
