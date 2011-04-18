@@ -686,6 +686,9 @@ fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
     Module[{anomPoints,fn},
 	   anomPoints=1]
+
+
+
     
 (*
 fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
