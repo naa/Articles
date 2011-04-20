@@ -2,6 +2,111 @@ AppendTo[$Path,"/home/anton/study/2011/Articles/AffineLieAlgebras/Mathematica/"]
 
 <<datastructures.m;
 
+orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]],1];
+
+anomalousWeights[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]][weights]
+
+Out[21]= {finiteWeight[2, {2, 1}], finiteWeight[2, {0, 3}], 
+ 
+>    finiteWeight[2, {2, -2}], finiteWeight[2, {-3, 3}], 
+ 
+>    finiteWeight[2, {0, -4}], finiteWeight[2, {-5, 1}], 
+ 
+>    finiteWeight[2, {-3, -4}], finiteWeight[2, {-5, -2}]}
+
+Out[20]= {1, -1, -1, 1, 1, -1, -1, 1}
+
+anomalousWeights[rs_?rootSystemQ][hweight_?weightQ]:=
+    makeFormalElement @@ Transpose[{#[[1]]-rho[rs],#[[2]]}& /@ orbitWithEps[rs][hweight+rho[rs]]]
+
+
+Out[18]= {1, -1, -1, 1, 1, -1, -1, 1}
+
+Out[17]= {finiteWeight[2, {2, 1}], finiteWeight[2, {1, 2}], 
+ 
+>    finiteWeight[2, {2, -1}], finiteWeight[2, {-1, 2}], 
+ 
+>    finiteWeight[2, {1, -2}], finiteWeight[2, {-2, 1}], 
+ 
+>    finiteWeight[2, {-1, -2}], finiteWeight[2, {-2, -1}]}
+
+Out[11]= {finiteWeight[2, {2, 1}], finiteWeight[2, {1, 2}], 
+ 
+>    finiteWeight[2, {2, -1}], finiteWeight[2, {-1, 2}], 
+ 
+>    finiteWeight[2, {1, -2}], finiteWeight[2, {-2, 1}], 
+ 
+>    finiteWeight[2, {-1, -2}]}
+
+Out[10]= {1, -1, -1, 1, 1, -1, -1}
+
+Rest[orbit[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]]]
+
+Out[15]= {{finiteWeight[2, {1, 2}], finiteWeight[2, {2, -1}]}, 
+ 
+>    {finiteWeight[2, {-1, 2}], finiteWeight[2, {1, -2}]}, 
+ 
+>    {finiteWeight[2, {-2, 1}], finiteWeight[2, {-1, -2}]}, 
+ 
+>    {finiteWeight[2, {-2, -1}]}}
+
+Out[14]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 2}], finiteWeight[2, {2, -1}]}, 
+ 
+>    {finiteWeight[2, {-1, 2}], finiteWeight[2, {1, -2}]}, 
+ 
+>    {finiteWeight[2, {-2, 1}], finiteWeight[2, {-1, -2}]}}
+
+orbit[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]]
+
+Out[13]= {{finiteWeight[2, {2, 1}]}, 
+ 
+>    {finiteWeight[2, {1, 2}], finiteWeight[2, {2, -1}]}, 
+ 
+>    {finiteWeight[2, {-1, 2}], finiteWeight[2, {1, -2}]}, 
+ 
+>    {finiteWeight[2, {-2, 1}], finiteWeight[2, {-1, -2}]}, 
+ 
+>    {finiteWeight[2, {-2, -1}]}}
+
+orbitWithEps[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]]
+
+Out[9]= {{finiteWeight[2, {2, 1}], 1}, {finiteWeight[2, {1, 2}], -1}, 
+ 
+>    {finiteWeight[2, {2, -1}], -1}, {finiteWeight[2, {-1, 2}], 1}, 
+ 
+>    {finiteWeight[2, {1, -2}], 1}, {finiteWeight[2, {-2, 1}], -1}, 
+ 
+>    {finiteWeight[2, {-1, -2}], -1}}
+
+Module[{b2=makeSimpleRootSystem[B,2]},
+       Expect["Partial orbit test", True, partialOrbit[b2][{rho[b2]}]==
+	      {{makeFiniteWeight[{3/2,1/2}]},{makeFiniteWeight[{1/2,3/2}],makeFiniteWeight[{3/2,-1/2}]},
+	       {makeFiniteWeight[{-1/2,3/2}],makeFiniteWeight[{1/2,-3/2}]},
+	       {makeFiniteWeight[{-3/2,1/2}],makeFiniteWeight[{-1/2,-3/2}]},
+	       {makeFiniteWeight[{-3/2,-1/2}]}}]]
+
+
+Out[7]= {{finiteWeight[2, {1, 0}], 1}, {finiteWeight[2, {0, 1}], -1}, 
+ 
+>    {finiteWeight[2, {0, -1}], 1}}
+
+Out[6]= {{finiteWeight[2, {1, 1}], 1}, {finiteWeight[2, {1, -1}], -1}, 
+ 
+>    {finiteWeight[2, {-1, 1}], 1}}
+
+Out[5]= {1, -1, 1}
+
+Out[4]= {finiteWeight[2, {1, 1}], finiteWeight[2, {1, -1}], 
+ 
+>    finiteWeight[2, {-1, 1}]}
+
+Out[3]= formalElement[table$147]
+
+Mathematica 8.0 for Linux x86 (32-bit)
+Copyright 1988-2010 Wolfram Research, Inc.
+
 fn=fan[makeSimpleRootSystem[B,2],makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}]]
 
                   1  1
@@ -19,6 +124,8 @@ Out[97]= formalElement[table$910]
 makeFormalElement[{makeFiniteWeight[{1/2,1/2}],makeFiniteWeight[{1/2,1/2}]}]
 
 Expand[makeFormalElement[{zeroWeight[makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}]]},{1}]*(1-Exp[makeFiniteWeight[{1/2,1/2}]])^2][multiplicities]
+
+orbitWithEps[
 
 Out[78]= {1, 0, 0}
 
