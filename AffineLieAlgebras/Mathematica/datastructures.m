@@ -506,7 +506,9 @@ Module[{b2=makeSimpleRootSystem[B,2],fm},
 
 (* freudenthalMultiplicities[makeSimpleRootSystem[B,2]][makeFiniteWeight[{5,5}]] *)
 orbitWithEps::"usage"="returns orbit with the determinants of Weyl reflections";
-orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]]],1];
+orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]],1];
+
+Expect["orbitWithEps __TODO__",False,True]
 
 racahMultiplicities::"usage"=
     "racahMultiplicities[rs_?rootSystemQ] returns hashtable with the multiplicities of 
@@ -673,7 +675,10 @@ branching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
 	   wgs=Select[Sort[pmults[weights],#1.rh>#2.rh&],mainChamberQ[subs]];
 	   Scan[(res[hashtable][#]=pmults[#];pmults=pmults - pmults[#]*makeFormalElement[freudenthalMultiplicities[subs][#]])&, wgs];
 	   res];
-	   
+
+anomalousWeights[rs_?rootSystemQ][hweight_?weightQ]:=
+    makeFormalElement @@ Transpose[{#[[1]]-rho[rs],#[[2]]}& /@ orbitWithEps[rs][hweight+rho[rs]]]
+
 
 fan::"usage"=
     "Constructs fan of the embedding";
@@ -684,8 +689,15 @@ fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 		  Fold[Expand[#1*(1-Exp[#2])^(pr[#2])]&,makeFormalElement[{zeroWeight[subs]}],pr[weights]]];
 
 ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
-    Module[{anomPoints,fn},
-	   anomPoints=1]
+    Module[{anomPoints,fn,reprw,orth},
+	   anomPoints=projection[subs][anomalousWeights[rs][highestWeight]];
+	   orth=orthogonalSubsystem[rs,subs];
+	   anomPoints=makeFormalElement[anomPoints[weights],Map[anomPoints[#]*dimension[orth][#_TODO_]&,anomPoints[weights]]];
+	   reprw=weightSystem[projection[subs][positiveRoots[rs]]][projection[subs][highestWeight]];
+	   fn=fan[rs,subs];
+	   Scan[Function[], reprw];
+	   res;
+	  ]
 
 
 
