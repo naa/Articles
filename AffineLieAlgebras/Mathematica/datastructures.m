@@ -357,6 +357,8 @@ rho::"usage"=
     "rho[rs_?rootSystemQ] - Weyl vector of root system rs (sum of fundamental weights)";
 rho[rs_?rootSystemQ]:=Plus@@fundamentalWeights[rs];
 
+rho[{posroots_?weightQ}]:=1/2*(Plus@@{posroots});
+
 Expect["Weyl vector for B2",True,makeFiniteWeight[{3/2,1/2}]==rho[makeSimpleRootSystem[B,2]]]
 
 toFundamentalChamber::"usage"=
@@ -459,6 +461,16 @@ Map[Print,orbit[makeSimpleRootSystem[B, 2]][rho[makeSimpleRootSystem[B, 2]]],2]
 
 SubValues[finiteWeight]
 *)
+
+dimension[{pr__?weightQ}][hweight_?weightQ]:=
+    Module[{rh=rho[pr]},
+	   Plus@@((#.(hweight+rh)/rh.#)&/@pr)];
+
+Expect["Dimension",5, dimension[{makeFiniteWeight[{1,1}]}][makeFiniteWeight[{2,2}]]];
+
+dimension[rs_?rootSystemQ][hweight_?weightQ]:=dimension[positiveRoots[rs]][hweight];
+
+Expect["Dimension",5, dimension[makeSimpleRootSystem[A,1]][makeFiniteWeight[{2}]]];
 
 weightSystem::"usage"=
     "weightSystem[rs_?rootSystemQ][higestWeight_?weightQ] returns the set of dominant weights in the highest weight module. \n
