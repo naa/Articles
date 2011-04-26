@@ -44,6 +44,7 @@ finiteWeight::"usage"=
 
 finiteWeight/:x_finiteWeight[dimension]:=x[[1]];
 finiteWeight/:x_finiteWeight[standardBase]:=x[[2]];
+finiteWeight/:x_finiteWeight[finitePart]:=x;
 
 makeFiniteWeight::"usage"=
     "makeFiniteWeight[{coordinates__?NumberQ}] creates finiteWeight with given coordinates in standard base";
@@ -114,6 +115,9 @@ affineWeight/:x_affineWeight[dimension]:=x[[1]];
 affineWeight/:x_affineWeight[finitePart]:=x[[2]];
 affineWeight/:x_affineWeight[level]:=x[[3]];
 affineWeight/:x_affineWeight[grade]:=x[[4]];
+
+grade[x_affineWeight]:=x[grade];
+grade[x_finiteWeight]:=0;
 
 makeAffineWeight::"usage"= 
     "makeAffineWeight[fw_finiteWeight,level_?NumberQ,grade_?NumberQ] creates affine weight with the given finite part fw, level and grade\n
@@ -275,6 +279,7 @@ checkGrade::"usage"=
     for finite-dimensional case";
 checkGrade[rs_][w_finiteWeight]=True;
 checkGrade[rs_][w_affineWeight]:=(Abs[w[grade]]<rs[gradeLimit]) /. rs[gradeLimit]->10;
+checkGrade[gr_NumberQ][w_affineWeight]:=Abs[w[grade]]<=gr;
 
 Expect["checkGrade finite dimensional Lie algebra", True, checkGrade[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]]];
 
@@ -378,7 +383,8 @@ Expect["We can use this and other functions for mapping",True,
 
 mainChamberQ::"usage"=
     "mainChamberQ[rs_?rootSystemQ][wg_?weightQ] tells if weights wg lies inside the main Weyl chamber of root system rs or not";
-mainChamberQ[rs_?rootSystemQ][wg_?weightQ]:=And@@(#.wg>=0&/@rs[simpleRoots]);
+mainChamberQ[{roots__?weightQ}][wg_?weightQ]:=And@@(#.wg>=0&/@{roots});
+mainChamberQ[rs_?rootSystemQ][wg_?weightQ]:=mainChamberQ[rs[simpleRoots]][wg];
 
 Expect["Main chamber predicate",True,mainChamberQ[makeSimpleRootSystem[B,2]][toFundamentalChamber[makeSimpleRootSystem[B,2]][makeFiniteWeight[{-1,1/2}]]]]
 
@@ -463,8 +469,8 @@ SubValues[finiteWeight]
 *)
 
 dimension[{pr__?weightQ}][hweight_?weightQ]:=
-    Module[{rh=rho[pr]},
-	   Plus@@((#.(hweight+rh)/rh.#)&/@pr)];
+    Module[{rh=rho[{pr}]},
+	   Plus@@((#.(hweight+rh)/rh.#)&/@{pr})];
 
 Expect["Dimension",5, dimension[{makeFiniteWeight[{1,1}]}][makeFiniteWeight[{2,2}]]];
 
@@ -475,6 +481,13 @@ Expect["Dimension",5, dimension[makeSimpleRootSystem[A,1]][makeFiniteWeight[{2}]
 weightSystem::"usage"=
     "weightSystem[rs_?rootSystemQ][higestWeight_?weightQ] returns the set of dominant weights in the highest weight module. \n
     The list is split in pieces by number of root substractions";
+
+weightSystem[{posroots__?weightQ}][higestWeight_?weightQ]:=Module[{minusPosRoots=-{posroots},mgrade=Max[grade/@{posroots}]},
+							     Most[NestWhileList[Function[x,Complement[
+										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;
+										       And[checkGrade[mgrade][y],mainChamberQ[{posroots}][y]]]
+										 ,x]],{higestWeight},#=!={}&]]];
+
 weightSystem[rs_?rootSystemQ][higestWeight_?weightQ]:=Module[{minusPosRoots=-positiveRoots[rs]},
 							     Most[NestWhileList[Function[x,Complement[
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;
@@ -520,7 +533,7 @@ Module[{b2=makeSimpleRootSystem[B,2],fm},
 orbitWithEps::"usage"="returns orbit with the determinants of Weyl reflections";
 orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]],1];
 
-Expect["orbitWithEps __TODO__",False,True]
+(* Expect["orbitWithEps __TODO__",False,True] *)
 
 racahMultiplicities::"usage"=
     "racahMultiplicities[rs_?rootSystemQ] returns hashtable with the multiplicities of 
@@ -701,70 +714,19 @@ fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 		  Fold[Expand[#1*(1-Exp[#2])^(pr[#2])]&,makeFormalElement[{zeroWeight[subs]}],pr[weights]]];
 
 ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
-    Module[{anomPoints,fn,reprw,orth},
-	   anomPoints=projection[subs][anomalousWeights[rs][highestWeight]];
+    Module[{anomW,selW,selWM,fn,reprw,orth,res},
+(*	   orth=(#[finitePart])& /@ orthogonalSubsystem[rs,subs]; *)
 	   orth=orthogonalSubsystem[rs,subs];
-	   anomPoints=makeFormalElement[anomPoints[weights],Map[anomPoints[#]*dimension[orth][#_TODO_]&,anomPoints[weights]]];
-	   reprw=weightSystem[projection[subs][positiveRoots[rs]]][projection[subs][highestWeight]];
+	   Print[orth];
+	   anomW=anomalousWeights[rs][highestWeight];
+	   Print[anomW[weights],anomW[multiplicities]];
+	   selW=Select[anomW[weights],mainChamberQ[orth]];
+	   Print[(anomW[#]*dimension[orth][#])&/@selW];
+	   selWM=makeFormalElement[selW,(anomW[#]*dimension[orth][#])&/@selW];
+	   Print[selWM[weights],selWM[multiplicities]];
+
+	   reprw=Flatten[weightSystem[projection[subs][positiveRoots[rs]]][projection[subs][highestWeight]]];
 	   fn=fan[rs,subs];
 	   Scan[Function[], reprw];
 	   res;
 	  ]
-
-
-
-    
-(*
-fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
-
-branching[rs_?rootSystemQ][higestWeight_?weightQ]:=
-    Module[{rh=rho[rs],weights,mults,c,insideQ,
-	    fan,
-	    toFC=toFundamentalChamber[rs]},
-	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh]]];
-	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight]]], #1.rh>#2.rh&];
-	   mults[highestWeight]=1;
-	   insideQ:=IntegerQ[mults[toFC[#]]]&;
-	   Scan[Function[v,
-			 mults[v]=
-			 Plus@@(fan /. {x_?weightQ,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
-		weights];
-	   mults]
-
- fundamentalWeights[b2a] 
-
-orbit[rs_affineRootSystem][{weights__affineWeight},gradelimit_?NumberQ]:=
-			   NestWhileList[
-			       Function[x,
-					Union[Flatten[
-					    Map[Function[y,
-							 Map[reflection[#][y]&,
-							     Cases[rs[simpleRoots],z_ /; And[z.y>0,Abs[reflection[z][y][grade]]<gradelimit]]
-							    ]],
-						x]],
-					      SameTest->(#1==#2&)]],
-			       {weights},
-			       #=!={}&]
-
-orbitWithEps[rs_affineRootSystem][weight_affineWeight,gradelimit_?NumberQ]:=Flatten[Most[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][{weight},gradelimit]]],1]
-
-positiveRoots[rs_affineRootSystem,gradelimit_?NumberQ]:=Map[-#&,Flatten[orbit[rs][Map[-#&,rs[simpleRoots]],gradelimit]]]
-*)
-
-(*
-racahMultiplicities[rs_affineRootSystem][highestWeight_affineWeight,gradelimit_?NumberQ]:=
-    Module[{rh=rho[rs],weights,mults,c,insideQ,
-	    fan,
-	    toFC=toFundamentalChamber[rs]},
-	   fan=Map[{rh-#[[1]],#[[2]]}&,Rest[orbitWithEps[rs][rh,gradelimit]]];
-	   weights=Sort[ Rest[Flatten[weightSystem[rs][highestWeight,gradelimit]]], #1.rh>#2.rh&];
-	   mults[highestWeight]=1;
-	   insideQ:=IntegerQ[mults[toFC[#]]]&;
-	   Scan[Function[v,
-			 mults[v]=
-			 Plus@@(fan /. {x_finiteWeight,e_Integer}:> If[insideQ[v+x],-e*mults[toFC[v+x]],0])],
-		weights];
-	   mults]
-				     
-p
-*)
