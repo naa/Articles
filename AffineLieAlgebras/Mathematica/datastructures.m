@@ -713,20 +713,30 @@ fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 		  pr=makeFormalElement[projection[subs][roots]] - makeFormalElement[positiveRoots[subs]];
 		  Fold[Expand[#1*(1-Exp[#2])^(pr[#2])]&,makeFormalElement[{zeroWeight[subs]}],pr[weights]]];
 
-ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
-    Module[{anomW,selW,selWM,fn,reprw,orth,res},
-(*	   orth=(#[finitePart])& /@ orthogonalSubsystem[rs,subs]; *)
-	   orth=orthogonalSubsystem[rs,subs];
-	   Print[orth];
-	   anomW=anomalousWeights[rs][highestWeight];
-	   Print[anomW[weights],anomW[multiplicities]];
-	   selW=Select[anomW[weights],mainChamberQ[orth]];
-	   Print[(anomW[#]*dimension[orth][#])&/@selW];
-	   selWM=makeFormalElement[selW,(anomW[#]*dimension[orth][#])&/@selW];
-	   Print[selWM[weights],selWM[multiplicities]];
+getOrderedWeightsProjectedToWeylChamber[{algroots_?weightQ},subs_?rootSystemQ,hweight_?weightQ]:=
+    Module[{rh=rho[{algroots}]},
+	   Sort[
+	       Flatten[weightSystem[projection[subs][{algroots}]][projection[subs][highestWeight]]],
+	       #1.rh>#2.rh&]];
 
-	   reprw=Flatten[weightSystem[projection[subs][positiveRoots[rs]]][projection[subs][highestWeight]]];
+ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
+    Module[{anomW,selW,selWM,fn,reprw,orth,res,toFC,rh,subrh},
+	   orth=orthogonalSubsystem[rs,subs];
+	   anomW=anomalousWeights[rs][highestWeight];
+	   selW=Select[anomW[weights],mainChamberQ[orth]];
+	   selWM=makeFormalElement[selW,(anomW[#]*dimension[orth][#])&/@selW];
+
+	   reprw=getOrderedWeightsProjectedToWeylChamber[positiveRoots[rs],subs,highestWeight];
 	   fn=fan[rs,subs];
-	   Scan[Function[], reprw];
-	   res;
+	   rh=rho[rs];
+	   subrh=rho[subs];
+	   def=rh-projection[subs][rh];
+	   toFC=toFundamentalChamber[subs][#-def]+def;
+	   res=makeHashtable[{},{}];
+	   insideQ:=NumberQ[res[toFC[#]]]&;
+	   Scan[Function[v,
+			 res[v]=
+			 Plus@@(fan[weights] /. x_?weightQ :> If[insideQ[v+x],selWM[v]-fan[x]*mults[toFC[v+x]],0])],
+		reprs];
+	   makeFormalElement[keys[res],values[res]]
 	  ]
