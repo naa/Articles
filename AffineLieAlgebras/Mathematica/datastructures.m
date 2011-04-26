@@ -483,7 +483,8 @@ weightSystem::"usage"=
     The list is split in pieces by number of root substractions";
 
 weightSystem[{posroots__?weightQ}][higestWeight_?weightQ]:=Module[{minusPosRoots=-{posroots},mgrade=Max[grade/@{posroots}]},
-							     Most[NestWhileList[Function[x,Complement[
+								  Throw["_TODO_","not implemented"];
+								  Most[NestWhileList[Function[x,Complement[
 										 Cases[Flatten[Outer[Plus,minusPosRoots,x]],y_/;
 										       And[checkGrade[mgrade][y],mainChamberQ[{posroots}][y]]]
 										 ,x]],{higestWeight},#=!={}&]]];
@@ -713,10 +714,10 @@ fan[rs_?rootSystemQ,subs_?rootSystemQ]:=
 		  pr=makeFormalElement[projection[subs][roots]] - makeFormalElement[positiveRoots[subs]];
 		  Fold[Expand[#1*(1-Exp[#2])^(pr[#2])]&,makeFormalElement[{zeroWeight[subs]}],pr[weights]]];
 
-getOrderedWeightsProjectedToWeylChamber[{algroots_?weightQ},subs_?rootSystemQ,hweight_?weightQ]:=
+getOrderedWeightsProjectedToWeylChamber[{algroots__?weightQ},subs_?rootSystemQ,hweight_?weightQ]:=
     Module[{rh=rho[{algroots}]},
 	   Sort[
-	       Flatten[weightSystem[projection[subs][{algroots}]][projection[subs][highestWeight]]],
+	       Flatten[weightSystem[projection[subs][{algroots}]][projection[subs][{hweight}][[1]]]],
 	       #1.rh>#2.rh&]];
 
 ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
@@ -724,9 +725,11 @@ ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
 	   orth=orthogonalSubsystem[rs,subs];
 	   anomW=anomalousWeights[rs][highestWeight];
 	   selW=Select[anomW[weights],mainChamberQ[orth]];
-	   selWM=makeFormalElement[selW,(anomW[#]*dimension[orth][#])&/@selW];
-
+	   selWM=makeFormalElement[projection[subs][selW],(anomW[#]*dimension[orth][#])&/@selW];
+(*	   Print[selWM[weights],selWM[multiplicities]]; *)
+	   Print[projection[subs][positiveRoots[rs]]];
 	   reprw=getOrderedWeightsProjectedToWeylChamber[positiveRoots[rs],subs,highestWeight];
+	   Print[reprw];
 	   fn=fan[rs,subs];
 	   rh=rho[rs];
 	   subrh=rho[subs];
@@ -735,8 +738,12 @@ ourBranching[rs_?rootSystemQ,subs_?rootSystemQ][highestWeight_?weightQ]:=
 	   res=makeHashtable[{},{}];
 	   insideQ:=NumberQ[res[toFC[#]]]&;
 	   Scan[Function[v,
+			 Print[v];
 			 res[v]=
-			 Plus@@(fan[weights] /. x_?weightQ :> If[insideQ[v+x],selWM[v]-fan[x]*mults[toFC[v+x]],0])],
-		reprs];
+			 selWM[v]+
+			 Plus@@(fn[weights] /. x_?weightQ :> If[insideQ[v+x],-fan[x]*mults[toFC[v+x]],0]);
+			 Print[res[v]];
+			],
+		reprw];
 	   makeFormalElement[keys[res],values[res]]
 	  ]
