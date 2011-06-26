@@ -617,6 +617,355 @@ $j^{\mu}_{a}$ называется Нётеровским током, соотв
 \item Конформная аномалия.
 \end{itemize}
 
+\section{11 апреля 2011}
+\label{sec:11--2011}
+
+\subsection{Тождества Уорда}
+\label{sec:ward-identities}
+
+Напомним, о чем идет речь. В произвольной теории поля с полями $\Phi(x)$ инфинитезимальное преобразование может быть записано при помощи генераторов
+\begin{equation}
+  \label{eq:198}
+  \Phi'(x)=\Phi(x)-i\omega_{a} G_{a} \Phi(x)
+\end{equation}
+Вариация действия вычисляется через ток, соответствующий данному преобразовании:
+\begin{equation}
+  \label{eq:199}
+  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L} }{\partial (\partial_{\mu}\Phi)} \partial_{\nu}\Phi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}} - \frac{\partial \mathcal{L} }{\partial (\partial_{\mu} \Phi)}\frac{\delta F}{\delta \omega_{a}}
+\end{equation}
+\begin{equation}
+  \label{eq:200}
+  \delta S =\int d^{d}x \partial_{\mu}j^{\mu}_{a} \omega_{a}
+\end{equation}
+Обозначим через $X$ произведение локальных полей, входящих в коррелятор
+\begin{equation}
+  \label{eq:201}
+  X=\Phi(x_{1})\dots \Phi(x_{n}).
+\end{equation}
+Коррелятор дается функциональным интегралом
+\begin{equation}
+  \label{eq:202}
+  \langle X\rangle = \frac{1}{Z}\int \mathcal{D} \Phi X e^{-S[\Phi]}
+\end{equation}
+Сделаем замену переменных $\Phi\to \Phi'$ в функциональном интеграле. При этом можно предполагать, что ``мера интегрирования'' не меняется $\mathcal{D}\Phi'=\mathcal{D}\Phi$ \cite{difrancesco1997cft}:
+\begin{equation}
+  \label{eq:203}
+  \langle X\rangle = \frac{1}{Z} \int \mathcal{D} \Phi' (X+\delta X)e^{-S[\Phi]-\int d^{d}x \partial_{\mu}j^{\mu}_{a}\omega_{a}(x)}
+\end{equation}
+Раскладываем выражение в ряд до первого порядка по $\omega_{a}(x)$:
+\begin{equation}
+  \label{eq:204}
+  \langle X\rangle=\frac{1}{Z} \left( \int \mathcal{D} \Phi X e^{-S[\Phi]}+\int \mathcal{D} \Phi \delta X e^{-S[\Phi]} -\int \mathcal{D}\Phi \int d^{d}x \partial_{\mu}j^{\mu}_{a}\omega_{a}(x) X e^{-S[\Phi]}\right)
+\end{equation}
+В результате имеем
+\begin{equation}
+  \label{eq:205}
+  \langle \delta X\rangle=\int d^{d}x \partial_{\mu}\langle j^{\mu}_{a}(x) X\rangle \omega_{a}(x)
+\end{equation}
+С другой стороны, мы можем вычислить $\langle\delta X\rangle$ используя \eqref{eq:198}:
+\begin{multline}
+  \label{eq:206}
+  \langle\delta X\rangle=-i\sum_{i=1}^{n}\langle \Phi(x_{1})\dots G_{a} \Phi(x_{i}) \dots \Phi(x_{n})\rangle \omega_{a}(x_{i})=\\
+  -i \int d^{d}x \omega_{a}(x) \sum_{i=1}^{n} \langle \Phi(x_{1}) \dots G_{a} \Phi(x_{i}) \dots \Phi(x_{n})\rangle \delta (x-x_{i})
+\end{multline}
+Окончательно общий вид тождеств Уорда выглядит следующим образом:
+\begin{equation}
+  \label{eq:207}
+  \partial_{\mu}\langle j^{\mu}_{a}\Phi(x_{1}) \dots \Phi(x_{n})\rangle=-i\sum_{i=1}^{n}\delta (x-x_{i}) \langle\Phi(x_{1})\dots G_{a} \Phi(x_{i})\dots \Phi(x_{n})\rangle
+\end{equation}
+Рассмотрим некоторые примеры, которые понадобятся нам для конформной теории. Мы используем полученный нами явный вид генераторов \eqref{eq:169}.
+
+Тождество Уорда для трансляций:
+\begin{equation}
+  \label{eq:208}
+  \partial_{\mu}\langle T^{\mu}_{\nu} X\rangle =-i \sum_{i} \delta(x-x_{i}) \frac{\partial}{\partial x_{i}^{\nu}} \langle X \rangle
+\end{equation}
+Теперь рассмотрим вращения. Если тензор энергии-импульса симметризован (это можно сделать в большинстве случаев), то отвечающий вращениям ток дается выражением
+\begin{equation}
+  \label{eq:209}
+  j^{\mu\nu\rho}=T^{\mu\nu}x^{\rho}-T^{\mu\rho}x^{\nu}.
+\end{equation}
+Тогда тождество Уорда может быть записано в виде
+\begin{equation}
+  \label{eq:210}
+  \partial_{\mu}\langle (T^{\mu\nu}x^{\rho}-T^{\mu\rho}x^{\nu}) X\rangle=\sum_{i }\delta(x-x_{i}) \left( (x^{\nu}_{i}\partial^{\rho}_{i}-x^{\rho}_{i}\partial^{\nu}_{i})\langle X\rangle-i S^{\nu\rho}_{i}\langle X\rangle\right).
+\end{equation}
+Его можно упростить с использованием тождества для трансляций \eqref{eq:208}:
+\begin{equation}
+  \label{eq:211}
+  \langle (T^{\rho\nu}-T^{\nu\rho}) X\rangle=-i \sum_{i} \delta(x-x_{i}) S^{\nu\rho}_{i}\langle X\rangle.
+\end{equation}
+Тензор энергии-импульса в квантовой теории симметричен в корреляционных функциях, если его положение не совпадает с положениями других полей в корреляторе. 
+
+Наконец, для масштабных преобразований ток имеет вид $T^{\mu}_{\nu}x^{\nu}$, действие генератора дается выражением \eqref{eq:181} и тождества Уорда выглядят так:
+\begin{equation}
+  \label{eq:212}
+  \partial_{\mu}\langle T^{\mu}_{\nu} x^{\nu} X\rangle=-\sum_{i} \delta(x-x_{i}) \left( x^{\nu}_{i}\frac{\partial}{\partial x^{\nu}_{i}} \langle X\rangle+\Delta_{i} \langle X\rangle\right) 
+\end{equation}
+Его тоже можно упростить:
+\begin{equation}
+  \label{eq:213}
+  \langle T^{\mu}_{\mu} X \rangle = -i \sum_{i} \delta(x-x_{i}) \Delta_{i}\langle X\rangle
+\end{equation}
+
+\subsection{Тождества Уорда в двумерной конформной теории}
+\label{sec:ward-2d-cft}
+В прошлой лекции мы получили общий вид тождеств Уорда для трансляций, поворотов и масштабных преобразований. Выпишем их здесь.
+\begin{eqnarray}
+  \label{eq:236}
+  \partial_{\mu}\langle T^{\mu}_{\nu} X\rangle = -\sum_{i} \delta(x-x_{i}) \partial_{\nu}^{(i)}\langle X\rangle\\
+  \langle (T^{\mu\nu}-T^{\nu\mu}) X\rangle =i\sum_{i}\delta(x-x_{i}) S^{\mu\nu}_{(i)}\langle X\rangle\\
+  \langle T^{\mu}_{\mu} X\rangle=-\sum_{i}\delta(x-x_{i}) \Delta_{(i)} \langle X\rangle
+\end{eqnarray}
+Прежде чем мы начнем переписывать тождества в комплексных координатах обсудим следующий вспомогательный математический факт: для голоморфных (антиголоморфных) функций можно использовать следующее представление для $\delta$-функции:
+\begin{equation}
+  \label{eq:237}
+  \delta(x)=\frac{1}{\pi} \bar \partial \frac{1}{z} = \frac{1}{\pi}\partial \frac{1}{\bar z}
+\end{equation}
+Заметим, что
+\begin{equation}
+  \label{eq:238}
+  \int_{M} d^{2}x \partial_{\mu}F^{\mu}=\int_{\partial M} d\xi_{\mu} F^{\mu}=\frac{1}{2i} \oint_{\partial M} (-dz F^{\bar z}+d\bar z F^{z})
+\end{equation}
+Для голоморфной функции
+\begin{equation}
+  \label{eq:239}
+  \frac{1}{\pi}\int_{M} d^{2}x \bar \partial\left( \frac{f(z)}{z}\right)=\frac{1}{2\pi i} \int_{\partial M} dz \frac{f(z)}{z}=f(0)=\int_{M} d^{2}x \delta(x) f(z)
+\end{equation}
+Теперь перепишем тождества Уорда \eqref{eq:236} в комплексных координатах:
+\begin{eqnarray}
+  \label{eq:240}
+  2\pi \partial \langle T_{\bar z z } X\rangle +2\pi \bar \partial \langle T_{zz}X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X \rangle\\
+  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
+  2 \langle T_{z\bar z} X 1\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) \Delta_{i} \langle X\rangle\\
+  -2 \langle T_{z\bar z} X 1\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle\\
+\end{eqnarray}
+Если сложить и вычесть два последних равенства и вспомнить определение $h, \bar h$, то получим
+\begin{eqnarray}
+  \label{eq:241}
+  2\pi \langle T_{\bar z z} X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} h_{i} \langle X\rangle\\
+  2\pi \langle T_{z \bar z} X\rangle = -\sum_{i}  \partial \frac{1}{\bar z-\bar w_{i}} \bar h_{i} \langle X\rangle
+\end{eqnarray}
+Введем обозачения
+\begin{eqnarray}
+  \label{eq:242}
+  T=-2\pi T_{zz}\\
+  \bar T = -2 \pi T_{\bar z \bar z},
+\end{eqnarray}
+и подставим уравнения \eqref{eq:241} в первые два уравнения \eqref{eq:240}:
+\begin{eqnarray}
+  \label{eq:243}
+  \bar \partial \left( \langle T X\rangle -\sum_{i} \left( \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X\rangle + \frac{h_{i}}{(z-w_{i})^{2}} \langle X\rangle \right) \right) =0\\
+  \partial \left( \langle \bar T X\rangle -\sum_{i} \left( \frac{1}{\bar z-\bar w_{i}} \partial_{\bar w_{i}} \langle X\rangle + \frac{\bar h_{i}}{(\bar z-\bar w_{i})^{2}} \langle X\rangle \right) \right) =0
+\end{eqnarray}
+То есть выражения в скобках (анти)голоморфны. Следовательно
+\begin{equation}
+  \label{eq:244}
+  \langle T X\rangle =\sum_{i} \left( \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X\rangle + \frac{h_{i}}{(z-w_{i})^{2}} \langle X\rangle \right) +\mbox{регулярные члены}
+\end{equation}
+Это пример операторного разложения, которое мы будем обсуждать далее. 
+
+Заметим, что вариация коррелятора при конформных преобразованиях дается тензором энергии-импульса:
+\begin{equation}
+  \label{eq:245}
+  \delta_{\epsilon}\langle X\rangle =\int_{M} d^{2}x \partial_{\mu} \langle T^{\mu\nu}(x)\epsilon_{\nu}(x) X \rangle
+\end{equation}
+В комплексных координатах она перепишется так:
+\begin{equation}
+  \label{eq:246}
+  \delta_{\epsilon,\bar \epsilon} \langle X\rangle = \frac{1}{2\pi i} \oint_{C} dz \epsilon(z) \langle T(z) X\rangle +\frac{1}{2\pi i} \oint_{C}  d\bar z \bar \epsilon(\bar z) \langle \bar T(\bar z) X\rangle
+\end{equation}
+Здесь интеграл берется по контуру, внутри которого находятся все аргументы $X$.
+Вообще говоря, это выражение для вариации верно для коррелятора любых полей, не только примарных.
+
+Применимость тождеств Уорда основывается на регулярности тензора энергии-импульса. Он должен быть везде хорошо определен. В частности, $T(0)$ должен быть конечен. Кроме того, если вычислить вариацию постоянного поля в точке $z=\infty$:
+\begin{equation}
+  \label{eq:247}
+  \delta_{\epsilon} \langle 1\rangle =-\frac{1}{2\pi i} \oint_{C}dz \epsilon(z) \langle T(z)\rangle =0
+\end{equation}
+где контур обходит точку $\infty$. Для специальных конформных преобразований $\epsilon(z)\sim z^{2}$, поэтому $T(z)\sim z^{-4},\quad z\to \infty$.
+
+\subsection{Алгебра локальных полей. Операторное разложение}
+\label{sec:ope}
+
+В набор локальных полей теории входят не только те поля, которые входят в плотность лагранжиана, но и их производные, произведения и так далее.
+Мы предполагаем, что набор локальных полей $A$ является полным, то есть существует некий базис $\{ A_{j}\}$, по которому можно разложить любое поле. Локальные поля образуют линейное пространство.
+
+Кроме того, мы предполагаем, что имеет место операторное разложение
+\begin{equation}
+  \label{eq:248}
+  A_{i}(x)A_{j}(y) =\sum_{k} C^{k}_{ij} (x,y) A_{k}(y),
+\end{equation}
+здесь $C_{ij}^{k}(x,y)$ -- функция. Равенство \eqref{eq:248} надо понимать в смысле корреляционных функций
+\begin{equation}
+  \label{eq:249}
+  \langle A_{i}(x) A_{j}(y) X\rangle = \sum_{k} C^{k}_{ij} (x,y) \langle A_{k}(y) X\rangle.
+\end{equation}
+Тогда набор локальных полей образует алгебру. 
+
+Рассмотрим четырехточечную функцию и воспользуемся операторным разложением \eqref{eq:248}:
+\begin{equation}
+  \label{eq:250}
+  \langle A_{1}(x_{1}) A_{2}(x_{2}) A_{3}(x_{3}) A_{4}(x_{4}) \rangle =\sum_{k,l} C^{k}_{12} (x_{1}-x_{2}) D_{kl}(x_{2}-x_{4}) C^{l}_{34}(x_{3}-x_{4}) 
+\end{equation}
+Здесь мы воспользовались трансляционной инвариантностью, а также ввели обозначение для пропагатора
+\begin{equation}
+  \label{eq:251}
+  \langle A_{i}(x_{i}) A_{j}(x_{j}) \rangle =D_{ij}(x_{i}-x_{j}).
+\end{equation}
+Однако операторным разложением можно воспользоваться и в другом порядке, тогда для четырехточечной функции получим:
+\begin{equation}
+  \label{eq:252}
+  \langle A_{1}(x_{1}) A_{2}(x_{2}) A_{3}(x_{3}) A_{4}(x_{4}) \rangle =\sum_{k,l} C^{k}_{13} (x_{1}-x_{3}) D_{kl}(x_{3}-x_{4}) C^{l}_{24}(x_{2}-x_{4})   
+\end{equation}
+Приравняв правые части уравнений \eqref{eq:252},\eqref{eq:250} можно получить систему уравнений на коэффициенты $C^{k}_{ij}$. Если решить эти уравнения, то в принципе можно вычислять любые корреляторы, если известен набор полей и их конформных размерностей. Такой подход называется конформным бутстрапом. 
+
+Корреляционные функции имеют особенности при совпадении положений полей. Именно характер этих особенностей важен при описании критического поведения (критические индексы и т.п.).
+Для произведения $T$ и примарного поля $\varphi$ с конформными размерностями $h,\bar h$ имеет место операторное разложение \eqref{eq:244}:
+\begin{eqnarray}
+  \label{eq:253}
+  T(z) \varphi(w,\bar w)\sim \frac{h}{(z-w)^{2}} \varphi(w,\bar w)+\frac{1}{z-w} \partial_{w} \varphi(w,\bar w)\\
+  \bar T(\bar z) \varphi(w,\bar w)\sim \frac{\bar h}{(\bar z-\bar w)^{2}} \varphi(w,\bar w)+\frac{1}{\bar z-\bar w} \partial_{\bar w} \varphi(w,\bar w)  
+\end{eqnarray}
+
+\subsection{Свободный бозон}
+\label{sec:free-boson}
+
+В качестве примера конформной теории рассмотрим свободное бозонное поле $\varphi$. Действие имеет вид
+\begin{equation}
+  \label{eq:254}
+  S=\frac{1}{2} g \int d^{2}x \partial_{\mu}\varphi \partial^{\mu}\varphi,
+\end{equation}
+а пропагатор дается равенством
+\begin{equation}
+  \label{eq:255}
+  \langle\varphi(x) \varphi(y)\rangle =-\frac{1}{4\pi g} \ln (x-y)^{2}+\text{const}
+\end{equation}
+В комплексных координатах пропагатор запишется следующим образом:
+\begin{equation}
+  \label{eq:256}
+  \langle \varphi(z,\bar z) \varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \left( \ln(z-w) + \ln(\bar z -\bar w)\right) +\text{const}
+\end{equation}
+Дифференцируя получаем
+\begin{eqnarray}
+  \label{eq:257}
+  \langle\partial_{z} \varphi(z,\bar z) \partial_{w}\varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \frac{1}{(z-w)^{2}}\\
+  \langle\partial_{\bar z} \varphi(z,\bar z) \partial_{\bar w}\varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \frac{1}{(\bar z-\bar w)^{2}}  
+\end{eqnarray}
+То есть имеет место операторное разложение полей $\partial \varphi$:
+\begin{equation}
+  \label{eq:259}
+  \partial \varphi(z) \partial \varphi(w) \sim -\frac{1}{4 \pi g} \frac{1}{(z-w)^{2}}
+\end{equation}
+
+Тензор энергии-импульса:
+\begin{equation}
+  \label{eq:258}
+  T_{\mu\nu}=g \left(\partial_{\mu}\varphi \partial_{\nu} \varphi -\frac{1}{2} \eta_{\mu\nu}\partial_{\rho}\varphi \partial^{\rho} \varphi \right)
+\end{equation}
+После квантования получаем для оператора $T(z)$ следующее выражение:
+\begin{equation}
+  \label{eq:260}
+  T(z) =-2\pi g :\partial \varphi \partial \varphi : =-2\pi g \lim_{w\to z} \left(\partial \varphi(z) \partial \varphi(w) -\langle\partial \varphi(z) \partial \varphi(w)\rangle\right)
+\end{equation}
+Теперь мы можем вычислить операторное разложение тензора энергии-импульса и локального поля $\partial \varphi$:
+\begin{equation}
+  \label{eq:261}
+  T(z)\partial \varphi(w)=-2\pi g :\partial \varphi(z) \partial \varphi(z): \partial \varphi(w) \sim -4\pi g:\partial \varphi(z)  \partial \overbracket{ \varphi(z): \partial \varphi } (w) \sim \frac{\partial \varphi (z)}{(z-w)^{2}}
+\end{equation}
+Для вычисления мы использовали теорему Вика (см. \cite{vasiliev1998}, \cite{difrancesco1997cft}). Раскладывая в ряд по $(z-w)$ получаем окончательно для сингулярной части операторного разложения
+\begin{equation}
+  \label{eq:262}
+  T(z) \partial \varphi(w) \sim \frac{\partial \varphi(w) }{(z-w)^{2}} +\frac{\partial_{w}^{2} \varphi(w)}{z-w}
+\end{equation}
+Теперь мы видим, что поле $\partial \varphi$ -- примарное, с конформной размерностью $h=1$. 
+
+
+Аналогично вычислим операторное разложение $T$  с самим собой.
+\begin{multline}
+  \label{eq:263}
+  T(z) T(w) =4 \pi^{2}g^{2}:\partial \varphi(z) \partial \varphi(z): :\partial \varphi(w)\partial \varphi(w): \\
+  \sim \frac{1/2}{(z-w)^{4}} -\frac{4\pi g:\partial \varphi(z) \partial \varphi(w):}{(z-w)^{2}} \\
+  \sim \frac{1/2}{(z-w)^{4}}+ \frac{2T(w)}{(z-w)^{2}} +\frac{\partial T(w)}{z-w}
+\end{multline}
+
+\subsection{Центральный заряд. Алгебра Вирасоро}
+\label{sec:virasoro}
+
+В силу обсуждения после формулы \eqref{eq:247}, ренормгруппового анализа \ref{c-theorem} и вычисления функции Швингера  \eqref{eq:221} мы имеем следующий общий вид операторного разложения для $T(z)T(w)$:
+\begin{equation}
+  \label{eq:264}
+  T(z)T(w) \sim \frac{c/2}{(z-w)^{4}}+ \frac{2T(w)}{(z-w)^{2}} +\frac{\partial T(w)}{z-w}
+\end{equation}
+Здесь $c$ -- параметр теории, называемый центральным зарядом. Он зависит от физической природы теории и не определяется из соображений конформной инвариантности. В теории свободного бозона $c=1$, для фермиона $c=1/2$. Член $\frac{c/2}{(z-w)^{4}}$ называется аномальным. Если этого члена нет, то $T$--квазипримарное поле c $h=2$. 
+
+Сравнивая выражение \eqref{eq:264} и \eqref{eq:221} мы видим, что константа $A$ в функции Швингера
+\begin{equation}
+  \label{eq:265}
+  A=\frac{c}{4\pi^{2}}
+\end{equation}
+Покажем, как преобразуется тензор энергии-импульса при конформных преобразованиях. Используем формулу \eqref{eq:246}:
+\begin{multline}
+  \label{eq:266}
+  \delta_{\epsilon} T(w) =-\frac{1}{2\pi i} \oint_{C} dz \epsilon(z) T(z) T(w) =-\frac{1}{12} c \partial_{w}^{3}\epsilon(w) -2 T(w) \partial_{w} \epsilon(w) -\epsilon(w) \partial_{w}T(w) 
+\end{multline}
+Соответствующее конечное преобразование $z\to w(z)$ имеет вид
+\begin{eqnarray}
+  \label{eq:267}
+  T\to T'(w) =\left(\frac{dw}{dz}\right)^{-2} \left(T(z) -\frac{c}{12} \left\{ w,z\right\}\right)\\
+  \left\{ w,z\right\}=\frac{\left(\frac{d^{3}w}{dz^{3}}\right) } {\frac{dw}{dz}} -\frac{3}{2}\left(\frac{\frac{d^{2}w}{dz^{2}}}{\frac{dw}{dz}}\right)^{2}
+\end{eqnarray}
+В качестве упражнения предлагаем проверить это выражение обратным переходом к инфинитезимальному преобразованию.
+
+Разложим $T(z)$ в ряд Лорана.
+\begin{eqnarray}
+  \label{eq:268}
+  T(z)=\sum_{n\in \mathbb{z}}z^{-n-2}L_{n}\\
+  T(z)=\sum_{n\in \mathbb{z}}\bar z^{-n-2}\bar L_{n}
+\end{eqnarray}
+При масштабном преобразовании $z\to z/\lambda$ оператор $T(z)\to \lambda^{2}T(z/\lambda)$, соответственно компоненты $L_{-n}\to \lambda^{n}L_{-n}$.
+\begin{equation}
+  \label{eq:269}
+  L_{n}=\oint \frac{dz}{2\pi i} z^{n+1} T(z)
+\end{equation}
+Выведем коммутационные соотношения для операторов $L_{n}$:
+\begin{equation}
+  \label{eq:270}
+  [L_{n},L_{m}]=\left( \oint \frac{dz}{2\pi i}\oint \frac{dw}{2\pi i}-\oint \frac{dw}{2\pi i}\oint \frac{dz}{2\pi i}\right) z^{n+1} T(z)w^{m+1}T(w)
+\end{equation}
+Используем операторное разложение \eqref{eq:264}:
+\begin{multline}
+  \label{eq:271}
+  [L_{n},L_{m}]=\oint \frac{dz}{2\pi i} \oint \frac{dw}{2\pi i} z^{n+1} w^{m+1}\left( \frac{c/2}{(z-w)^{4}} +\frac{2T(w)}{(z-w)^{2}}+\frac{\partial T(w) }{z-w} +\mbox{рег. члены}\right) =\\
+  \oint \frac{dw}{2\pi i} \left(\frac{c}{12} (n+1)n(n-1)w^{n-2}w^{m+1} + 2(n+1)w^{n}w^{m+1}T(w)+w^{n+1}w^{m+1}\partial T(w)\right)
+\end{multline}
+Интегрируем последний член по частям, внеинтегральный член зануляется, а под интегралом остается $(n-m)w^{n+m+1}T(w)$:
+\begin{equation}
+  \label{eq:272}
+    [L_{n},L_{m}]=\oint \frac{dw}{2\pi i} \left(\frac{c}{12} (n+1)n(n-1)w^{m+n-1}+ (n-m)w^{n+m+1}T(w)\right)
+\end{equation}
+Используя определение \eqref{eq:269} и вычисляя вычет подинтегрального выражения при $n=-m$, в итоге получаем коммутационное соотношение
+\begin{equation}
+  \label{eq:273}
+    [L_{n},L_{m}]=(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0}
+\end{equation}
+Это коммутационные соотношения алгебры Вирасоро.
+
+Легко показать, что в результате действия оператора $L_{-n}$ на поле $\varphi$  с конформной размерностью $(h,\bar h)$ получается поле с размерностью $(h-n,\bar h)$. Все поля в теории разбиваются на конформные семейства, соответствующие примарным полям:
+\begin{equation}
+  \label{eq:274}
+  [\varphi]=\{L_{-n_{1}}L_{-n_{2}}\dots L_{-n_{N}}\bar L_{-m_{1}}\dots \bar L_{-m_{M}}\varphi\}
+\end{equation}
+Вычисление корреляторов вторичных полей сводится к корреляторам примарных. Алгебра локальных полей оказывается прямой суммой конформных семейств
+\begin{equation}
+  \label{eq:275}
+  \mathcal{A} =\bigoplus_{\alpha}[\varphi_{\alpha}]
+\end{equation}
+{\it Минимальными} называются теории с конечным числом примарных полей. Чтобы полностью задать такую теорию нужно определить примарные поля и их конформные размерности.
+
+\bibliography{2dqft}{}
+\bibliographystyle{utphys}
+
 \end{document}
 %%% Local Variables: 
 %%% mode: latex
