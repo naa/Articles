@@ -2,6 +2,57 @@ AppendTo[$Path,"/home/anton/study/2011/Articles/AffineLieAlgebras/Mathematica/"]
 
 <<datastructures.m;
 
+ourBranching[b2,makeFiniteRootSystem[{makeFiniteWeight[{1,1}]}]][makeFiniteWeight[{2,1}]]
+
+Out[11]= ourBranching[finiteRootSystem[2, 2, 
+ 
+>      {finiteWeight[2, {1, -1}], finiteWeight[2, {0, 1}]}], 
+ 
+>     makeFiniteRootSystem[finiteWeight[2, {1, 1}]]][finiteWeight[2, {2, 1}]]
+
+Throw::nocatch: 
+   Uncaught Throw[orbitWithEps __TODO__: GOT UNEXPECTED VALUE True INSTEAD OF
+      False, assertion exception] returned to top level.
+
+Out[9]= Hold[Throw[orbitWithEps __TODO__: GOT UNEXPECTED VALUE True INSTEAD\
+ 
+>      OF False, assertion exception]]
+
+b2=makeSimpleRootSystem[B,2]
+
+weightSystem[b2][makeFiniteWeight[{2,1}]]
+
+positiveRoots[b2]
+
+Out[7]= {{finiteWeight[2, {2, 1}]}}
+
+       Expect["Weights of [2,1] module of B2",True, weightSystem[b2][makeFiniteWeight[{2,1}]]==
+	      {{makeFiniteWeight[{2,1}]},
+	      {makeFiniteWeight[{1,0}],makeFiniteWeight[{1,1}],makeFiniteWeight[{2,0}]},
+	      {makeFiniteWeight[{0,0}]}}]]
+
+
+Throw::nocatch: 
+   Uncaught Throw[Weights of [2,1] module of B2: GOT UNEXPECTED VALUE False
+      INSTEAD OF True, assertion exception] returned to top level.
+
+Out[5]= Hold[Throw[Weights of [2,1] module of B2: GOT UNEXPECTED VALUE False\
+ 
+>      INSTEAD OF True, assertion exception]]
+
+makeAffineWeight[{1,2,3},1,1][finitePart]
+
+makeFiniteWeight[{1,2,3}][finitePart]
+
+Out[4]= finiteWeight[3, {1, 2, 3}][finitePart]
+
+Out[3]= finiteWeight[3, {1, 2, 3}]
+
+Out[2]= affineWeight[3, finiteWeight[3, {1, 2, 3}], 1, 1]
+
+Mathematica 8.0 for Linux x86 (32-bit)
+Copyright 1988-2010 Wolfram Research, Inc.
+
 orbitWithEps[rs_?rootSystemQ][weight_?weightQ]:=Flatten[MapIndexed[Function[{x,i},Map[{#,(-1)^(i[[1]]+1)}&,x]],orbit[rs][weight]],1];
 
 anomalousWeights[makeSimpleRootSystem[B,2]][makeFiniteWeight[{2,1}]][weights]

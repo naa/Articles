@@ -81,3 +81,5 @@ science.org
 ***** Рейман, Семенов-Тян-Шанский - "Интегрируемые системы. Теоретико-групповой подход."
 ***** Belavin, Polyakov, Zamolodchikov
 *** TODO Write wikipedia article on WZW 
+* <2011-03-17 Thu>
+*** TODO Implement branching
