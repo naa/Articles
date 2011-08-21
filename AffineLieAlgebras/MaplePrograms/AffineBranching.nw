@@ -6,10 +6,16 @@
 %\usepackage[utf8x]{inputenc}
 %\usepackage[russian]{babel}
 \usepackage{cmap}
-\usepackage[pdftex]{graphicx}
+%\usepackage[pdftex]{graphicx}
 \pagestyle{plain}
 \theoremstyle{definition} \newtheorem{Def}{Definition}
 \begin{document}
+
+%\usepackage{verbatim}
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
 @
 
 \section{Introduction}
@@ -351,7 +357,7 @@ Gamma:=select(y->subs(eps=0,y)<>0,map(x->x-subs(eps=0,gamma0),f1));
 Gamma, gamma0,
 
 @
-Now we can write recurrent procedure, which computes the branching coefficients using constructed sets $\Psi, \Gamm$.
+Now we can write recurrent procedure, which computes the branching coefficients using constructed sets $\Psi, \Gamma$.
 <<Recurrent procedure.mpl>>=
 calculate_branching_coefficient:=proc(xi,fan,gamma0,ap,res,is_in_borders)
        local xi0,a;
