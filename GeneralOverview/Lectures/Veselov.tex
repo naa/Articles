@@ -1,0 +1,149 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage{graphicx}
+\pagestyle{plain}
+
+% \usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{mynote}{Замечание}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+
+\begin{document}
+Напомним, что наша система состоит из частиц в точках $q_{i}$, гамильтониан системы имеет вид
+\begin{equation}
+  \label{eq:1}
+  H=\frac{1}{2}\sum p_{i}^{2}+ \sum_{i=1}^{n-1} e^{q_{i}-q_{i+1}}
+\end{equation}
+Матрица Лакса
+\begin{equation}
+  \label{eq:2}
+  L=
+  \left(
+    \begin{array}{cccc}
+      a_{1} & b_{1} & \dots & 0 \\
+      b_{1} & \ddots & \ddots & \vdots \\
+      \vdots & \ddots & \ddots & b_{n-1} \\
+      0 & \dots & b_{n-1} & a_{n}
+    \end{array}
+  \right)
+\end{equation}
+\begin{equation}
+  \label{eq:3}
+  B=
+  \left(
+    \begin{array}{cccc}
+      0 & b_{1} & \dots & 0 \\
+      b_{1} & \ddots & \ddots & \vdots \\
+      \vdots & \ddots & \ddots & b_{n-1} \\
+      0 & \dots & b_{n-1} & 0
+    \end{array}
+  \right),
+\end{equation}
+где
+\begin{equation}
+  \label{eq:4}
+  a_{i}=\frac{1}{2} p_{i}, \quad b_{i}=\frac{1}{2}e^{q_{i}-q_{i+1}}
+\end{equation}
+Представление Лакса описывает цепочку Тоды, динамика определяется следующей леммой.
+\begin{lemma}
+  \begin{equation}
+    \label{eq:5}
+      \dot{L}=[B,L] \quad\Longleftrightarrow\quad \left\{
+          \begin{array}{l}
+            (L-\lambda E)x=0\\
+            \dot{x}=B x,\quad |x|=1
+          \end{array}
+          \right.
+  \end{equation}
+$B$ описывает эволюцию собственного вектора $L$.
+\begin{proof}
+  $\Leftarrow )$
+
+  \begin{equation*}
+    Lx=\lambda x, \quad \dot{L}x+L\dot{x}=\lambda\dot{x}
+  \end{equation*}
+  \begin{equation*}
+    \dot{L}x+L B  x=\lambda B x = B\lambda x= BL x
+  \end{equation*}
+  следовательно
+  \begin{equation*}
+    (\dot{L}+LB-BL)x=0\quad\Rightarrow \quad \dot{L}=[B,L]
+  \end{equation*}
+
+  $\Rightarrow )$
+
+  Продифференцируем по времени равенство $(L-\lambda E)x=0$:
+  \begin{equation*}
+    \dot{L}x+(L-\lambda E)\dot{x}=0, \quad \dot{L}=BL-LB
+  \end{equation*}
+  То есть
+  \begin{equation*}
+    BLx-LBx+(L-\lambda E)\dot{x}=0
+  \end{equation*}
+  Первые два члена равны $-(L-\lambda E)Bx$, то есть равенство можно переписать, как
+  \begin{equation*}
+    (L-\lambda E)(\dot x -Bx)=0
+  \end{equation*}
+  Значит $\dot x-Bx$ -- тоже собственный вектор $L$, но мы знаем, что спектр $L$ -- простой, поэтому
+  \begin{equation*}
+    \dot x -Bx= \mu x
+  \end{equation*}
+  Умножим последнее равенство скалярно на $x$ и воспользуемся тем, что $B^{T}=-B$, а значит $(Bx,x)=(x,-Bx)=-(Bx,x)=0$, получаем
+  \begin{equation*}
+    (\dot x, x)-(B x, x)=\mu(x,x)
+  \end{equation*}
+  Первый член равен нулю, так как норма $|x|=1$, второй тоже равен нулю, следовательно и $\mu=0$, ч.т.д.
+\end{proof}
+\end{lemma}
+Общая схема метода обратной задачи рассеяния:
+\begin{equation*}
+  \begin{diagram}
+    \node{p(0),q(0)}\arrow{e,t}{?} \arrow{s,l}{S} \node{p(t),q(t)}\\
+    \node{ \text{спектральные данные:}\;L,\lambda,\xi}\arrow{e,t}{\text{простая}}\node{\lambda,\xi(t)}\arrow{n,r}{\mbox{обратная задача}}
+  \end{diagram}
+\end{equation*}
+\begin{theorem}
+  Динамика цепочки Тоды описывается явно формулами
+  \begin{eqnarray}
+    \label{eq:6}
+    \lambda (t)=\lambda(0)\\
+    \xi(t)=\frac{e^{\Lambda t}\xi(0)}{\left|e^{\Lambda t}\xi(0)\right|}\\
+    \Lambda=\left(
+      \begin{array}{ccc}
+        \lambda_{1}&\dots& 0 \\
+        0 & \ddots & 0 \\
+        0 & \dots & \lambda_{n}
+      \end{array}
+      \right)
+  \end{eqnarray}
+  \begin{proof}
+    
+  \end{proof}
+\end{theorem}
+\end{document}
