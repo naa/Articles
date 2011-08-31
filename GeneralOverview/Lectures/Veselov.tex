@@ -17,15 +17,16 @@
 {\par\noindent{\bf TODO}\\}
 {\\\hfill$\scriptstyle\blacksquare$\par}
 
-\newtheorem{statement}{Statement}
-\newtheorem{lemma}{Lemma}
-\newtheorem{theorem}{Theorem}
+\newtheorem{statement}{Утверждение}
+\newtheorem{lemma}{Лемма}
+\newtheorem{theorem}{Теорема}
+\newtheorem{example}{Пример}
 \theoremstyle{definition}
-\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{corollary}{Следствие}[theorem]
 \theoremstyle{definition}
 \newtheorem{mynote}{Замечание}[section]
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Определение}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
@@ -143,7 +144,79 @@ $B$ описывает эволюцию собственного вектора 
       \right)
   \end{eqnarray}
   \begin{proof}
-    
+    \begin{equation}
+      \label{eq:7}
+      L x_{k}=\lambda_{k} x_{k}, \quad 
+      x_{k}=\left(
+        \begin{array}{c} 
+          \xi_{k}\\ 
+          \eta_{k}
+        \end{array}\right), \quad |x_{k}|=1
+      \end{equation}
+      \begin{equation}
+        \label{eq:8}
+        \dot x_{k}=B x_{k} \Longrightarrow \left\{
+            \begin{array}{l}
+              (a_{1}-\lambda_{k})\xi_{k}+b_{1} \eta_{k}=0\\
+              \dot \xi_{k}=b_{1}\eta_{k}
+            \end{array}\right.
+      \end{equation}
+      Следовательно
+      \begin{equation*}
+        \dot \xi_{k}=(\lambda_{k}-a_{1})\xi_{k},\quad \dot \xi=(\Lambda-a_{1} E)\xi
+      \end{equation*}
+      Так как
+      \begin{equation*}
+        0=(\dot \xi,\xi)=((\Lambda-a_{1} E)\xi,\xi)=(\Lambda \xi,\xi)-a_{1}(\xi,\xi),
+      \end{equation*}
+      получаем
+      \begin{equation*}
+        a_{1}=(\Lambda\xi,\xi)=\sum_{i}\lambda_{i}\xi_{i}^{2} \quad (\mbox{формула следов})
+      \end{equation*}
+      то есть
+      \begin{equation*}
+        \dot \xi=(\Lambda-(\Lambda\xi,\xi)E)\xi
+      \end{equation*}
+      Легко видеть, что формула \eqref{eq:6} дает решение этого уравнения.
   \end{proof}
 \end{theorem}
+\begin{mynote}
+  (Мозер, 1974)
+  Это уравнение -- градиентный поток на сфере $|\xi|^{2}=1$ для функции
+  \begin{equation}
+    \label{eq:9}
+    V=\frac{(\Lambda\xi,\xi)}{(\xi,\xi)},\quad \dot\xi_{k}=\frac{\partial V}{\partial \xi_{k}}
+  \end{equation}
+  Градиентные потоки -- объекты топологии и теории Морса. Пространство матриц Якоби не компактно, а их компактификация -- это трехдиагональные матрицы. 
+\end{mynote}
+\begin{corollary}
+  $a_{j}(t), b_{j}^{2}(t)$ являются рациональными функциями от $e^{\lambda_{1}t},\dots,e^{\lambda_{n}t}$.
+\end{corollary}
+\begin{example}
+  $n=2$
+  \begin{eqnarray*}
+    a_{1}=-\frac{1}{2} p_{1}=\frac{\lambda_{1} \xi_{1}^{2}e^{2\lambda_{1}t}+\lambda_{2}\xi_{2}^{2} e^{2\lambda_{2}t}}{\xi_{1}^{2} e^{2\lambda_{1}t}+\xi_{2}^{2}e^{2\lambda_{2}t}}\\
+    a_{2}=-\frac{1}{2} p_{2}=\frac{\lambda_{2} \xi_{1}^{2}e^{2\lambda_{1}t}+\lambda_{1}\xi_{2}^{2} e^{2\lambda_{2}t}}{\xi_{1}^{2} e^{2\lambda_{1}t}+\xi_{2}^{2}e^{2\lambda_{2}t}}\\
+    b_{1}=\frac{1}{2} e^{q_{1}-q_{2}}=\frac{(\lambda_{2}-\lambda_{1})\xi_{1}\xi_{2} e^{(\lambda_{1}+\lambda_{2})t}}{\xi_{1}^{2} e^{2\lambda_{1}t}+\xi_{2}^{2}e^{2\lambda_{2}t}}
+  \end{eqnarray*}
+  Оставляем проверку этого выражения в качестве упражнения читателю.
+\end{example}
+
+Теперь рассмотрим рассеяние в цепочке Тоды.
+Пусть $n=2$, $\lambda_{1}<\lambda_{2}$. 
+При $t\to -\infty$ частицы свободны, так как потенциал экспоненциально убывает:
+\begin{eqnarray*}
+  a_{1}\to\lambda_{1} (=-\frac{1}{2}p_{1})\\
+  a_{2}\to\lambda_{2} (=-\frac{1}{2}p_{2})
+\end{eqnarray*}
+При $t\to+\infty$:
+\begin{eqnarray*}
+  a_{1}\to\lambda_{2}\\
+  a_{2}\to\lambda_{1}
+\end{eqnarray*}
+В результате рассеяния частицы меняются импульсами. 
+
+\begin{mynote}
+  Динамический смысл $\lambda_{1}\dots \lambda_{n}$ -- асимптотические скорости частиц (отсюда следует, что ${\lambda_{i},\lambda_{j}}=0$).
+\end{mynote}
 \end{document}
