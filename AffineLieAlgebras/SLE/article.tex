@@ -341,6 +341,12 @@ It is possible to obtain analogues of KZ-equations:
 \end{equation*}
 
 \subsection{SLE on coset space}
+Consider gauge transformation in gauged WZNW model:
+\begin{eqnarray*}
+  \delta \phi_{i}=(\epsilon_{L}^{a} t^{a}_{i}+\epsilon^{b}_{R}\tilde{t}^{b})\phi_{i}\\
+  \delta A = -\partial \epsilon_{R}-[\epsilon_{R},A]
+\end{eqnarray*}
+Here $\epsilon_{L}, \epsilon_{R}$ are arbitrary holomorphic functions $\bar\partial\epsilon_{L,R}=0$. 
 For  $\gf\oplus \af$ WZNW-model we can write SLE generator of primary field transformation under stochastic evolution as
 \begin{equation*}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)+\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
@@ -378,7 +384,7 @@ For parafermionic current we have
   \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)
 \end{equation*}
 %% Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
-
+%% !!! TODO
 Martingale condition can be rewritten as
 \begin{equation*}
   \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
@@ -391,7 +397,9 @@ which coincides with the result of Santachiara [arXiv:0705.2749].
 
 Next steps in the study of SLE martingales for coset models  are the following. 
 
-At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
+%At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
+% !!! This is wrong !!!
+% We can act by Sugawara generators 
 
 Then we use Knizhnik-Zamolodchikov equations to rewrite the relations in simpler form and get conditions on possible boundary condition changing operators. 
 
