@@ -1,25 +1,63 @@
-\documentclass[12pt]{disser}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{amssymb}
+\documentclass[a4paper,14pt,candidate,subf,href
+%,fixint=false
+%,facsimile
+%,times
+]{disser}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[
+  a4paper, mag=1000, includefoot,
+  left=3cm, right=1cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm
+]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\ifpdf\usepackage{epstopdf}\fi
+
+
 \usepackage{amsmath}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{multicol}
 \usepackage{color}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage{ucs}
+%\usepackage[unicode,verbose]{hyperref}
 
-\newtheorem{statement}{Statement}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}{Lemma}
-\newtheorem{mynote}{Note}[section]
+\usepackage{listings}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+%	backgroundcolor=\color{lbcolor},
+        language=Mathematica,
+	tabsize=2,
+	rulecolor=,
+        basicstyle=\scriptsize,
+        upquote=true,
+%        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+%        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+%        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+\newtheorem{statement}{Утверждение}
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{lemma}{Лемма}
+\newtheorem{mynote}{Замечание}[section]
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{remark}{Remark}
-\newtheorem{example}{Example}
+\newtheorem{definition}{Определение}
+\newtheorem{remark}{Замечание}
+\newtheorem{example}{Пример}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
@@ -32,80 +70,230 @@
 \newcommand{\hf}{\mathfrak{h}}
 \newcommand{\hfb}{\mathfrak{h}_{\bot}}
 \newcommand{\pf}{\mathfrak{p}}
-%\input{tcilatex}
+
+% Номера страниц сверху и по центру
+%\def\headfont{\small}
+%\pagestyle{headcenter}
+%\chapterpagestyle{headcenter}
+
+% Ссылки на работы соискателя включаются в общий список литературы
+\let\citemy=\cite
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{figures/}}
 
 \begin{document}
-\title{Бесконечномерные алгебры симметрии в моделях квантовой теории поля}
-\author{А.А. Назаров$^{1,2}$\\
-{\small $^1$ Theoretical Department, SPb State University}\\
-{\small 198904, Sankt-Petersburg, Russia}\\
-{\small$^{2}$ Chebyshev Laboratory,}\\
-{\small Department of Mathematics and Mechanics, SPb State University}\\
-{\small 199178, Saint-Petersburg, Russia}\\
-{\small email: antonnaz@gmail.com}}
+% Включение файла с общим текстом диссертации и автореферата
+% (текст титульного листа и характеристика работы).
+\input{common}
+
+\title{ДИССЕРТАЦИЯ\\
+на соискание ученой степени\\
+кандидата физико-математических наук}
 
 \maketitle
-
-\begin{abstract}
-\end{abstract}
-
-\tableofcontents
-
-\chapter{Введение}
-\label{cha:intro}
-
-\chapter{Аффинные алгебры Ли}
-\label{cha:affine-lie-algebras}
-
-\section{Конечномерные алгебры Ли}
-\label{sec:finite-dimensional}
-Основные определения: корни, веса, кратности.
-
-\section{Теория представлений аффинных алгебр Ли}
-\label{sec:representation-theory}
-Определение аффинных алгебр. Корни, веса, кратности. Категория О.
-
-\section{Ветвления}
-\label{sec:branching}
-Веер вложения. Алгоритм.
-
-\section{БГГ-резольвента}
-\label{sec:bgg}
-Категория О.
-Резольвента Бернштейна-Гельфанда-Гельфанда для представлений аффинных алгебр Ли. Параболические модули и их связь с подалгебрами и ветвлением.
-
-\section{Проблемы вычислений}
-\label{sec:computations}
-Производительность, скорость алгоритмов. 
-
-\chapter{Конформная теория поля}
-\label{cha:cft}
-
-Подробное изложение \cite{difrancesco1997cft}. 
-
-\section{Общие свойства}
-\label{sec:cft-general}
-Алгебра Вирасоро. Представления алгебры Вирасоро. Модулярная инвариантность.
-
-\section{Модели Весса-Зумино-Новикова-Виттена}
-\label{sec:wzw}
-Связь с аффинными алгебрами Ли.
-Конформные вложения и недиагональные модулярные инварианты. 
-
-\section{Coset-модели}
-\label{sec:coset-models}
-Ветвления. Функции ветвления и статсуммы. 
-Калибровочные WZW-модели. 
-
-\section{SLE}
-\label{sec:sle}
-SLE на WZW-моделях. Граничные условия. Парафермионы. SLE на coset-моделях.
-
-\chapter{Заключение}
-\label{cha:conclusion}
-
-
-\bibliography{bibliography}{}
-\bibliographystyle{utphys}
-
+% ----------------------------------------------------------------
+%\tableofcontents
+% ----------------------------------------------------------------
+\input{intro}
+\input{review}
+\input{1}
+\input{2}
+\input{3}
+\input{concl}
+% ----------------------------------------------------------------
+\bibliography{bibliography,cpc}
+\bibliographystyle{disser}
+% ----------------------------------------------------------------
+\appendix
+\input{app-a}
 \end{document}
+   %%%   
+   %%%   
+   %%%   % \documentclass[12pt]{disser}
+   %%%   % \usepackage[russian]{babel}
+   %%%   % \usepackage[utf8]{inputenc}
+   %%%   % \usepackage{amssymb}
+   %%%   
+   %%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%   \usepackage{amsmath}
+   %%%   \usepackage{amsmath,amssymb,amsthm}
+   %%%   \usepackage{multicol}
+   %%%   \usepackage{color}
+   %%%   \usepackage{graphicx}
+   %%%   \usepackage{hyperref}
+   %%%   
+   %%%   \newtheorem{statement}{Statement}
+   %%%   \newtheorem{theorem}{Theorem}
+   %%%   \newtheorem{corollary}{Corollary}[theorem]
+   %%%   \newtheorem{lemma}{Lemma}
+   %%%   \newtheorem{mynote}{Note}[section]
+   %%%   \theoremstyle{definition}
+   %%%   \newtheorem{definition}{Definition}
+   %%%   \newtheorem{remark}{Remark}
+   %%%   \newtheorem{example}{Example}
+   %%%   \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+   %%%   \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+   %%%   \newcommand{\co}[1]{\stackrel{\circ }{#1}}
+   %%%   \newcommand{\pia}{\pi_{\mathfrak{a}}}
+   %%%   \newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+   %%%   \newcommand{\gf}{\mathfrak{g}}
+   %%%   \newcommand{\af}{\mathfrak{a}}
+   %%%   \newcommand{\aft}{\widetilde{\mathfrak{a}}}
+   %%%   \newcommand{\afb}{\mathfrak{a}_{\bot}}
+   %%%   \newcommand{\hf}{\mathfrak{h}}
+   %%%   \newcommand{\hfb}{\mathfrak{h}_{\bot}}
+   %%%   \newcommand{\pf}{\mathfrak{p}}
+   %%%   %\input{tcilatex}
+   %%%   
+   %%%   \begin{document}
+   %%%   \title{Бесконечномерные алгебры симметрии в моделях квантовой теории поля}
+   %%%   \author{А.А. Назаров$^{1,2}$\\
+   %%%   {\small $^1$ Theoretical Department, SPb State University}\\
+   %%%   {\small 198904, Sankt-Petersburg, Russia}\\
+   %%%   {\small$^{2}$ Chebyshev Laboratory,}\\
+   %%%   {\small Department of Mathematics and Mechanics, SPb State University}\\
+   %%%   {\small 199178, Saint-Petersburg, Russia}\\
+   %%%   {\small email: antonnaz@gmail.com}}
+   %%%   
+   %%%   \maketitle
+   %%%   
+   %%%   \begin{abstract}
+   %%%   \end{abstract}
+   %%%   
+   %%%   \tableofcontents
+   %%%   
+   %%%   \chapter{Введение}
+   %%%   \label{cha:intro}
+   %%%   
+   %%%   
+   %%%   
+   %%%   \section{Обозначения}
+   %%%   
+   %%%   \label{sec:notation}
+   %%%   Пусть $\frak{g}$ и $\frak{a}$ -- (аффинные) алгебры Ли, и существует вложение  $\frak{a}\hookrightarrow \frak{g}$ такое, что  $\frak{a}$ -- редуктивная подалгебра в $\frak{g}$ с согласованным корневым пространством: $\frak{%
+   %%%   h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g}}^{\ast }$. Мы используем следующие обозначения:
+   %%%   
+   %%%   $\frak{g=n}^{-}+\frak{h}+\frak{n}^{+}$ --- разложение Картана;
+   %%%   
+   %%%   $r$ , $\left( r_{\frak{a}}\right) $ --- ранг алгебра $\frak{g}$ $%
+   %%%   \left( \mathrm{\text{соотв., }\frak{a}}\right) $ ;
+   %%%   
+   %%%   $\Delta $ $\left( \Delta _{\frak{a}}\right) $--- корневая система; $\Delta
+   %%%   ^{+} $ $\left( \mathrm{\text{соотв., }\Delta _{\frak{a}}^{+}}\right) $--- набор положительных корней (алгебр $\frak{g}$ и $\frak{a}$ соответственно);
+   %%%   
+   %%%   $\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
+   %%%   \alpha \right) \right) $ --- кратность корня $\alpha$ в $%
+   %%%   \Delta $ (соотв., в $\left( \Delta _{\frak{a}}\right) $);
+   %%%   
+   %%%   $S\quad \left( S_{\frak{a}}\right) $ --- множество простых корней (для 
+   %%%   $\gf$ и $\af$ соответственно);
+   %%%   
+   %%%   $\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ ---  $%
+   %%%   i$-й (соотв., $j$-й) простой корень алгебры $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a%
+   %%%   }}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+   %%%   
+   %%%   
+   %%%   $\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
+   %%%   }\right) $-- простой ко-корень для $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a}%
+   %%%   }\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+   %%%   
+   %%%   $W$ , $\left( W_{\frak{a}}\right) $--- группа Вейля;
+   %%%   
+   %%%   $C$ , $\left( C_{\frak{a}}\right) $--- фундаментальная камера Вейля;
+   %%%   
+   %%%   $\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- замыкание фундаментальной камеры Вейля;
+   %%%   
+   %%%   $\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
+   %%%   
+   %%%   $\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- вектор Вейля;
+   %%%   
+   %%%   $L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- интегрируемый модуль  $\frak{g}$ со старшим весом $\mu $\ ; (соотв., интегрируемый $\af$-модуль старшего веса $\nu $);
+   %%%   
+   %%%   $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
+   %%%   весовая диаграмма модуля $L^{\mu }$ (соотв., ${}L_{\frak{a}}^{\nu }$ );
+   %%%   
+   %%%   $P$ (соотв., $P_{\frak{a}} $) \ --- весовая решетка;
+   %%%   
+   %%%   $P^{+}$ (соотв., $P_{\frak{a}}^{+} $) \ --- решетка доминантных весов;
+   %%%   
+   %%%   $m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\zeta }^{\left( \nu \right)
+   %%%   }\right) $ --- кратность веса $\xi \in P$ \ $\left( \mathrm{\text{соотв., }\in P_{\frak{a}}}\right) $ в $L^{\mu }$, (соотв., в $\zeta \in
+   %%%   L_{\frak{a}}^{\nu } $);
+   %%%   
+   %%%   $ch\left( L^{\mu }\right) $ (соотв., $\mathrm{ch}\left( L_{\frak{a}}^{\nu
+   %%%   }\right) $)--- формальный характер $L^{\mu }$ (соответственно, $L_{\frak{a}}^{\nu
+   %%%   } $);
+   %%%   
+   %%%   $ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
+   %%%   +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
+   %%%   \mathrm{{mult}\left( \alpha \right) }}}$ --- формула Вейля-Каца;
+   %%%   
+   %%%   $R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
+   %%%   mult}\left( \alpha \right) }}\quad $ (соотв., $R_{\frak{a}}:=\prod_{\alpha \in
+   %%%   \Delta _{\frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}%
+   %%%   }\left( \alpha \right) } $)--- знаменатель Вейля.
+   %%%   
+   %%%   \chapter{Аффинные алгебры Ли}
+   %%%   \label{cha:affine-lie-algebras}
+   %%%   
+   %%%   \section{Конечномерные алгебры Ли}
+   %%%   \label{sec:finite-dimensional}
+   %%%   Основные определения: корни, веса, кратности.
+   %%%   
+   %%%   \section{Теория представлений аффинных алгебр Ли}
+   %%%   \label{sec:representation-theory}
+   %%%   Определение аффинных алгебр. Корни, веса, кратности. Категория О.
+   %%%   
+   %%%   \section{Ветвления}
+   %%%   \label{sec:branching}
+   %%%   Веер вложения. Алгоритм.
+   %%%   
+   %%%   \section{БГГ-резольвента}
+   %%%   \label{sec:bgg}
+   %%%   Категория О.
+   %%%   Резольвента Бернштейна-Гельфанда-Гельфанда для представлений аффинных алгебр Ли. Параболические модули и их связь с подалгебрами и ветвлением.
+   %%%   
+   %%%   
+   %%%   
+   %%%   
+   %%%   \section{Проблемы вычислений}
+   %%%   \label{sec:computations}
+   %%%   Производительность, скорость алгоритмов. 
+   %%%   
+   %%%   \chapter{Конформная теория поля}
+   %%%   \label{cha:cft}
+   %%%   
+   %%%   Подробное изложение \cite{difrancesco1997cft}. 
+   %%%   
+   %%%   \section{Общие свойства}
+   %%%   \label{sec:cft-general}
+   %%%   Алгебра Вирасоро. Представления алгебры Вирасоро. Модулярная инвариантность.
+   %%%   
+   %%%   \section{Модели Весса-Зумино-Новикова-Виттена}
+   %%%   \label{sec:wzw}
+   %%%   Связь с аффинными алгебрами Ли.
+   %%%   Конформные вложения и недиагональные модулярные инварианты. 
+   %%%   
+   %%%   \section{Coset-модели}
+   %%%   \label{sec:coset-models}
+   %%%   Ветвления. Функции ветвления и статсуммы. 
+   %%%   Калибровочные WZW-модели. 
+   %%%   
+   %%%   \section{SLE}
+   %%%   \label{sec:sle}
+   %%%   SLE на WZW-моделях. Граничные условия. Парафермионы. SLE на coset-моделях.
+   %%%   
+   %%%   \chapter{Заключение}
+   %%%   \label{cha:conclusion}
+   %%%   
+   %%%   
+   %%%   \bibliography{bibliography}{}
+   %%%   \bibliographystyle{utphys}
+   %%%   
+   %%%   \end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
