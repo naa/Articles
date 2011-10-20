@@ -54,6 +54,12 @@
 \newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{lemma}{Лемма}
 \newtheorem{mynote}{Замечание}[section]
+%%\newtheorem{Def}{Definition}[section]
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Cnj}[Def]{Гипотеза}
+\newtheorem{Prop}[Def]{Свойство}
+%%\newtheorem{example}{Example}[section]
+
 \theoremstyle{definition}
 \newtheorem{definition}{Определение}
 \newtheorem{remark}{Замечание}
@@ -70,6 +76,11 @@
 \newcommand{\hf}{\mathfrak{h}}
 \newcommand{\hfb}{\mathfrak{h}_{\bot}}
 \newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
 
 % Номера страниц сверху и по центру
 %\def\headfont{\small}
@@ -93,7 +104,7 @@
 
 \maketitle
 % ----------------------------------------------------------------
-%\tableofcontents
+\tableofcontents
 % ----------------------------------------------------------------
 \input{intro}
 \input{review}

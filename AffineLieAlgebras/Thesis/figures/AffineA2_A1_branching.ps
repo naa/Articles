@@ -1,0 +1,229 @@
+%!PS-Adobe-3.0 EPSF-2.0
+%%Title: Maple plot
+%%Creator: Maple 
+%%Pages:  1
+%%BoundingBox: 72 72 540 719 
+%%DocumentNeededResources: font Helvetica
+%%EndComments
+20 dict begin
+gsave
+/drawborder true def
+/m {moveto} def
+/l {lineto} def
+/C {setrgbcolor} def
+/Y /setcmykcolor where { %%ifelse Use built-in operator
+       /setcmykcolor get
+   }{ %%ifelse Emulate setcmykcolor with setrgbcolor
+       { %%def
+           1 sub 3 { %%repeat
+               3 index add neg dup 0 lt { pop 0 } if 3 1 roll
+           } repeat setrgbcolor
+       } bind
+   } ifelse def
+/G {setgray} def
+/S {stroke} def
+/NP {newpath} def
+%%%%This draws a filled polygon and avoids bugs/features
+%%%%   of some postscript interpreters
+%%%%GHOSTSCRIPT: has a bug in reversepath - removing
+%%%%the call to reversepath is a sufficient work around
+/P {gsave fill grestore reversepath stroke} def
+%%%%This function is needed for drawing text.  It takes two arguments: a
+%%%%string and a rotation. It outputs width and height.
+/stringbbox {
+    gsave NP 0 0 m    % Set origin for easy calculations.
+    dup rotate exch   % Set orientation, and put string on top.
+    false charpath flattenpath
+    0 exch sub rotate % Undo rotation.
+    pathbbox 4 2 roll pop pop  % Get dimens. of our string.
+    1.1 mul cvi exch 1.1 mul cvi exch % Pad some.
+    grestore} def
+/thin 3 def
+/medium 7 def
+/thick 16 def
+/boundarythick 20 def % thichess of bounding box
+%%IncludeResource: font Helvetica
+540.000000 72.000000 translate
+90 rotate
+/defaultTitleFont {/Helvetica findfont 219 scalefont setfont} def
+/defaultFont {/Helvetica findfont 133 scalefont setfont} def
+0.0936 0.0936 scale
+1 setlinejoin
+1 setlinecap
+0.0 setgray
+/inch {72 mul} def
+/fheight 0.35 inch neg def
+    0 G
+medium setlinewidth
+[] 0 setdash defaultFont
+(1) dup 0 stringbbox 2 idiv 4421 exch sub exch 2 idiv 798 exch sub exch m show
+(1) dup 0 stringbbox 2 idiv 1464 exch sub exch 2 idiv 4601 exch sub exch m show
+(\2611) dup 0 stringbbox 2 idiv 2351 exch sub exch 2 idiv 6122 exch sub exch m show
+(\2611) dup 0 stringbbox 2 idiv 3534 exch sub exch 2 idiv 4601 exch sub exch m show
+(\2611) dup 0 stringbbox 2 idiv 1759 exch sub exch 2 idiv 5361 exch sub exch m show
+(\2611) dup 0 stringbbox 2 idiv 576 exch sub exch 2 idiv 798 exch sub exch m show
+(1) dup 0 stringbbox 2 idiv 872 exch sub exch 2 idiv 2319 exch sub exch m show
+(1) dup 0 stringbbox 2 idiv 3238 exch sub exch 2 idiv 5361 exch sub exch m show
+(\2611) dup 0 stringbbox 2 idiv 4125 exch sub exch 2 idiv 2319 exch sub exch m show
+(1) dup 0 stringbbox 2 idiv 2647 exch sub exch 2 idiv 6122 exch sub exch m show
+medium setlinewidth
+NP 6122 500 m 6122 4500 l
+S
+thin setlinewidth
+NP 6144 576 m 6122 576 l
+S
+NP 6144 724 m 6122 724 l
+S
+NP 6144 872 m 6122 872 l
+S
+NP 6144 1020 m 6122 1020 l
+S
+NP 6166 1168 m 6122 1168 l
+S
+NP 6144 1316 m 6122 1316 l
+S
+NP 6144 1464 m 6122 1464 l
+S
+NP 6144 1611 m 6122 1611 l
+S
+NP 6144 1759 m 6122 1759 l
+S
+NP 6166 1907 m 6122 1907 l
+S
+NP 6144 2055 m 6122 2055 l
+S
+NP 6144 2203 m 6122 2203 l
+S
+NP 6144 2351 m 6122 2351 l
+S
+NP 6144 2499 m 6122 2499 l
+S
+NP 6166 2647 m 6122 2647 l
+S
+NP 6144 2794 m 6122 2794 l
+S
+NP 6144 2942 m 6122 2942 l
+S
+NP 6144 3090 m 6122 3090 l
+S
+NP 6144 3238 m 6122 3238 l
+S
+NP 6166 3386 m 6122 3386 l
+S
+NP 6144 3534 m 6122 3534 l
+S
+NP 6144 3682 m 6122 3682 l
+S
+NP 6144 3830 m 6122 3830 l
+S
+NP 6144 3977 m 6122 3977 l
+S
+NP 6166 4125 m 6122 4125 l
+S
+NP 6144 4273 m 6122 4273 l
+S
+NP 6144 4421 m 6122 4421 l
+S
+medium setlinewidth
+NP 692 2647 m 6230 2647 l
+S
+thin setlinewidth
+NP 798 2693 m 798 2647 l
+S
+NP 950 2663 m 950 2647 l
+S
+NP 1102 2663 m 1102 2647 l
+S
+NP 1255 2663 m 1255 2647 l
+S
+NP 1407 2663 m 1407 2647 l
+S
+NP 1559 2693 m 1559 2647 l
+S
+NP 1711 2663 m 1711 2647 l
+S
+NP 1863 2663 m 1863 2647 l
+S
+NP 2015 2663 m 2015 2647 l
+S
+NP 2167 2663 m 2167 2647 l
+S
+NP 2319 2693 m 2319 2647 l
+S
+NP 2471 2663 m 2471 2647 l
+S
+NP 2623 2663 m 2623 2647 l
+S
+NP 2776 2663 m 2776 2647 l
+S
+NP 2928 2663 m 2928 2647 l
+S
+NP 3080 2693 m 3080 2647 l
+S
+NP 3232 2663 m 3232 2647 l
+S
+NP 3384 2663 m 3384 2647 l
+S
+NP 3536 2663 m 3536 2647 l
+S
+NP 3688 2663 m 3688 2647 l
+S
+NP 3840 2693 m 3840 2647 l
+S
+NP 3992 2663 m 3992 2647 l
+S
+NP 4144 2663 m 4144 2647 l
+S
+NP 4296 2663 m 4296 2647 l
+S
+NP 4449 2663 m 4449 2647 l
+S
+NP 4601 2693 m 4601 2647 l
+S
+NP 4753 2663 m 4753 2647 l
+S
+NP 4905 2663 m 4905 2647 l
+S
+NP 5057 2663 m 5057 2647 l
+S
+NP 5209 2663 m 5209 2647 l
+S
+NP 5361 2693 m 5361 2647 l
+S
+NP 5513 2663 m 5513 2647 l
+S
+NP 5665 2663 m 5665 2647 l
+S
+NP 5817 2663 m 5817 2647 l
+S
+NP 5970 2663 m 5970 2647 l
+S
+medium setlinewidth
+(\26110) dup 0 stringbbox 2 idiv 1168 exch sub exch pop 6184 exch m show
+(\2615) dup 0 stringbbox 2 idiv 1907 exch sub exch pop 6184 exch m show
+(0) dup 0 stringbbox 2647 exch sub exch pop 6184 exch m show
+(5) dup 0 stringbbox 2 idiv 3386 exch sub exch pop 6184 exch m show
+(10) dup 0 stringbbox 2 idiv 4125 exch sub exch pop 6184 exch m show
+(\2617) dup 0 stringbbox pop 2713 exch 2 idiv 798 exch sub exch m show
+(\2616) dup 0 stringbbox pop 2713 exch 2 idiv 1559 exch sub exch m show
+(\2615) dup 0 stringbbox pop 2713 exch 2 idiv 2319 exch sub exch m show
+(\2614) dup 0 stringbbox pop 2713 exch 2 idiv 3080 exch sub exch m show
+(\2613) dup 0 stringbbox pop 2713 exch 2 idiv 3840 exch sub exch m show
+(\2612) dup 0 stringbbox pop 2713 exch 2 idiv 4601 exch sub exch m show
+(\2611) dup 0 stringbbox pop 2713 exch 2 idiv 5361 exch sub exch m show
+boundarythick setlinewidth
+% The following draws a box around the plot,
+% if the variable drawborder is true
+drawborder { 
+/bd boundarythick 2 idiv def
+[] 0 setdash 
+NP bd bd m bd 5000 bd sub l 
+6923 bd sub 5000 bd sub l 
+6923 bd sub bd l 
+bd bd l S
+} if % end of if to draw the border
+
+showpage
+grestore
+end
+%%EOF
