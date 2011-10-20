@@ -67,6 +67,12 @@
 \section{Introduction}
 Schramm-Loewner evolution, introduced by Oded Schramm in papers \cite{schramm2000scaling} is 
 
+The connection of SLE with CFT was studied in papers \cite{bauer2004conformal,bauer2004cfts,bauer2003sle,bauer2002sle}.
+
+Reviews \cite{rohde2005basic}, \cite{bauer20062d}, \cite{Cardy:2005kh}. 
+
+SLE and conformal field theories with additional symmetries \cite{alekseev2010sle}, \cite{santachiara2008sle,picco2008numerical}, \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}.
+
 \subsection{Schramm-Loewner evolution}
 To remind of Schramm-Loewner evolution we first describe simple example.
 
@@ -143,11 +149,12 @@ Now for expectation value of martingale we have this expression.
 \end{equation*}
 
 Now we use Ito calculus to calculate increment of our correlation function. It should be zero so we get the equation:
-\begin{equation*}
+\begin{equation}
   \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
     \mathcal{F}_{\mathbb{H}_{t}}\right]=\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
       \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}
-\end{equation*}
+\label{eq:8}
+\end{equation}
 Then use explicit form of conformal map and obtain
 \begin{equation*}
   \left( \sum_{i}\left[-\frac{2h_{i}}{w_{i}^{2}} +\frac{2}{w_{i}}\partial_{w_{i}}\right]+\frac{\kappa}{2}\sum_{i,j}\partial_{w_{i}} \partial_{w_{j}}\right)\mathcal{F}(\left\{z_{i}\right\})=0
@@ -327,10 +334,10 @@ Virasoro generators are given by difference of Sugawara expressions:
 \end{equation*}
 
 \subsection{Primary fields}
-
+\label{sec:primary-fields}
 Primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra and subalgebra, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
 
-Conformal weight of primary field are equal to
+Conformal weight of primary field is equal to
 \begin{multline}
   L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
   \left|\phi_{\lambda}\right>=\\
@@ -345,6 +352,78 @@ It is possible to obtain analogues of KZ-equations:
 \end{equation*}
 
 \subsection{SLE on coset space}
+Consider Lie (semi-)simple group $G$ with Lie algebra $\gf$ and (semi-)simple subgroup $A\subset G$ with Lie algebra $\af\subset \gf$. 
+The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $\mathrm{dim}\gf-\mathrm{dim}\af$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
+
+Then for generator of field transformation we can write 
+\begin{equation}
+  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}\left(d \theta ^{a} t^{a}_{i}\right)\right)
+\label{eq:5}
+\end{equation}
+Substituting to equation \eqref{eq:8} we get martingale condition
+
+\begin{equation}
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
+\label{eq:9}
+\end{equation}
+
+which can be rewritten as the requirement for
+\begin{equation}
+  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{\Lambda}
+\label{eq:10}
+\end{equation}
+to be level two null-field. Here primary field $\phi_{\Lambda}$ is indexed by the pair $\Lambda=(\mu,\nu)$ with the equivalence relations \ref{sec:primary-fields}.
+
+Consider the simplest possible example. Let $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. The equation \eqref{eq:10} is now
+\begin{equation}
+  \label{eq:11}
+  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{\Lambda}
+\end{equation}
+If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
+\begin{equation}
+ \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{\Lambda}
+\label{eq:12}
+\end{equation}
+which coincides with the equation for parafermionic fields introduced in paper \cite{santachiara2008sle}.
+
+Central charge in this case is equal to
+\begin{equation}
+  \label{eq:14}
+  c=\frac{2(k-1)}{k+2}
+\end{equation}
+
+Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
+\begin{equation}
+  \label{eq:13}
+  L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{\Lambda}=0\quad \Longrightarrow\quad  (3\kappa-8) h_{\Lambda}+\frac{2(k-1)}{k+2}+\tau k =0
+\end{equation}
+Another equation can be obtained by action of $L_{1}^{2}$
+\begin{equation}
+  \label{eq:15}
+  L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{\Lambda}=0
+\end{equation}
+or
+\begin{equation}
+  \label{eq:16}
+  \left(12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) + 2 \tau J^{3}_{0}J^{3}_{0}\right) \phi_{\Lambda}=0
+\end{equation}
+
+
+Alternative approach is to study $\gf\oplus \af$ WZNW-model and then impose equivalence relations on the solutions. 
+So we need to generalize the analysis of \cite{alekseev2010sle} to the case of semisimple Lie algebras. 
+
+From equation 
+
+Now consider as an example $\frac{SU(2)_{k}\times SU(2)_{1}}{SU(2)_{k+1}}$ -- another coset realization for minimal unitary models. 
+
+We get following relations on $\kappa,\tau$ and primary fields. So we see that the solutions at level $k$ are 
+
+Now we need to impose equivalence relations.
+
+
+We get 
+
+
 Consider gauge transformation in gauged WZNW model:
 \begin{eqnarray*}
   \delta \phi_{i}=(\epsilon_{L}^{a} t^{a}_{i}+\epsilon^{b}_{R}\tilde{t}^{b})\phi_{i}\\
@@ -419,7 +498,7 @@ Martingale condition can be rewritten as
 \begin{equation*}
   \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
 \end{equation*}
-which coincides with the result of Santachiara [arXiv:0705.2749].
+which coincides with the result of Santachiara \cite{santachiara2008sle}.
 
 
 
