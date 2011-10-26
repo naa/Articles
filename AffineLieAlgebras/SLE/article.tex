@@ -65,15 +65,20 @@
 \end{abstract}
 
 \section{Introduction}
-Schramm-Loewner evolution, introduced by Oded Schramm in papers \cite{schramm2000scaling} is 
+Schramm-Loewner evolution (SLE) was introduced by Oded Schramm  \cite{schramm2000scaling} to describe scaling limit of critical interfaces in two-dimensional statistical lattice models. This approach to the critical systems has lead to numerous strict results in the study of critical behavior (see reviews  \cite{rohde2005basic}, \cite{bauer20062d}, \cite{Cardy:2005kh}). We give some basics of SLE in Section \ref{sec:schr-loewn-evol}.  
 
-The connection of SLE with CFT was studied in papers \cite{bauer2004conformal,bauer2004cfts,bauer2003sle,bauer2002sle}.
+Probability measure induced by Schramm-Loewner evolution on random curves is conformally invariant. Since conformal field theory (CFT) gives us another tool-set for the study of two-dimensional critical systems, it is natural to discuss its connection with SLE.  This connection  was studied in \cite{bauer2004conformal,bauer2004cfts,bauer2003sle,bauer2002sle} and many other papers mostly in case of unitary minimal models.
+The idea is to consider certain observables in the domain with the cut. This construction is briefly discussed in Section \ref{sec:corr-betw-sle}. 
 
-Reviews \cite{rohde2005basic}, \cite{bauer20062d}, \cite{Cardy:2005kh}. 
+More general models of CFT has additional symmetries. For example Kac-Moody algebras  appear in Wess-Zumino-Novikov-Witten models. To introduce such symmetry in SLE approach one considers additional random motion on Lie group \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}. This construction is described in Section \ref{sec:sle-wzw-models}. The correspondence between SLE martingales in this model and WZNW-correlation functions was studied in \cite{alekseev2010sle}. Similar generalization to $\mathbb{Z}(N)$-parafermionic models were considered in \cite{santachiara2008sle,picco2008numerical}. 
 
-SLE and conformal field theories with additional symmetries \cite{alekseev2010sle}, \cite{santachiara2008sle,picco2008numerical}, \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}.
+Main task of present paper is to generalize SLE with additional random walk on Lie group to the case of factor space $G/H$ and to study the relation with coset conformal field theory. We remind some details of CFT coset construction in Section  \ref{sec:coset-models} then introduce SLE on factor space (Section \ref{sec:sle-coset-space} and relate it to conformal field theory (Section \ref{sec:semis-lie-algebr}). Similarly to WZNW-case we obtain the system of algebraic equations on boundary condition changing operators from martingale condition. 
+Coset construction of CFT can be used to obtain minimal models and parafermions (see \cite{difrancesco1997cft}) so we compare our classification of boundary condition changing operators with the results of paper \cite{santachiara2008sle} (Section \ref{sec:parafermions}). 
+
+In the conclusion we compare classification of boundary condition changing operators which follows from martingale condition with general classification of b.c.c. operators in boundary conformal field theory related to D-brane solutions \cite{fuchs2005geometry,fredenhagen2002d,elitzur2002d,Maldacena:2001ky,felder1999geometry,alekseev1999d}. 
 
 \subsection{Schramm-Loewner evolution}
+\label{sec:schr-loewn-evol}
 To remind of Schramm-Loewner evolution we first describe simple example.
 
 Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fig:sle}). We impose following boundary condition: all spins are down on one half of the boundary and all spins are up on another half. Then in any configuration we get an interface delimiting two clusters and connecting zero and infinity. 
@@ -104,6 +109,7 @@ Here $g_{t}(z)$ is a conformal map from $\mathbb{H}_{t}=\mathbb{H}\setminus \gam
 Schramm-Loewner evolution provides conformally-invariant probability measure on trajectories $\gamma_{t}$ in $\mathbb{H}$.
 
 \subsection{Correspondence between SLE and minimal models of CFT}
+\label{sec:corr-betw-sle}
 
 Now we can look at the observables in the presence of SLE trace. Expectation value of lattice observable on upper half-plane can be calculated as the sum of expectation values of this observable in presence of SLE trace up to some time $t$ multiplied by the probability of this trajectory. 
 
@@ -352,6 +358,8 @@ It is possible to obtain analogues of KZ-equations:
 \end{equation*}
 
 \subsection{SLE on coset space}
+\label{sec:sle-coset-space}
+
 Consider Lie (semi-)simple group $G$ with Lie algebra $\gf$ and (semi-)simple subgroup $A\subset G$ with Lie algebra $\af\subset \gf$. 
 The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $\mathrm{dim}\gf-\mathrm{dim}\af$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
 
@@ -402,10 +410,22 @@ Another equation can be obtained by action of $L_{1}^{2}$
   \label{eq:15}
   L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{\Lambda}=0
 \end{equation}
-or
+Since $J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}=J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}+J_{0}^{3}J_{0}^{3}-J_{0}^{3}J_{0}^{3}$ we have
+
+\begin{equation}
+  \label{eq:17}
+  12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) +  \tau (C_{\Lambda}-\tilde{C}_{\Lambda})=0
+\end{equation}
+
 \begin{equation}
   \label{eq:16}
-  \left(12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) + 2 \tau J^{3}_{0}J^{3}_{0}\right) \phi_{\Lambda}=0
+  \left(12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) +  \tau (C_{\Lambda}-\Lambda^{2}\right) \phi_{\Lambda}=0
+\end{equation}
+
+We need to get one more equation since we have three variables $\kappa,\tau,h_{\Lambda}$. We can use that $\psi$ is singular vector so $L_{1}\psi=0$ and then
+\begin{equation}
+  \label{eq:18}
+  J_{1}^{a}L_{1}\psi=0
 \end{equation}
 
 
@@ -479,6 +499,7 @@ This vector should be null vector of level two, so $L_{2}\left|\psi\right>=L_{1}
 SLE and factorization by equivalence relations. 
 
 \subsection{Parafermions}
+\label{sec:parafermions}
 
 $\mathbb{Z}(N)$ parafermions are equivalent to $SU(2)_{N}/U(1)$ coset theory.
 
