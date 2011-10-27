@@ -1,5 +1,6 @@
+\documentclass[a4paper]{jpconf}
 
-\documentclass[12pt]{article}
+%\documentclass[12pt]{article}
 \usepackage{amssymb}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -37,22 +38,23 @@
 \newcommand{\hfg}{\hf_{\gf}}
 
 \theoremstyle{definition} \newtheorem{Def}{Definition}
-\newcommand{\tr}{\hat\triangleright} \newcommand{\trc}{\triangleright}
 \newcommand{\adk}{a^{\dagger}_{\kappa}} \newcommand{\ak}{a_{\kappa}}
 \def\bF{\mbox{$\overline{\cal F}$}} \def\F{\mbox{$\cal F$}}
 
 \begin{document}
 
 \title{Algebraic properties of CFT coset construction and Schramm-Loewner evolution}
-\author{A A Nazarov$^{1,2}$\\
-  {\small $^1$ Theoretical Department, SPb State University}\\
-  {\small 198904, Sankt-Petersburg, Russia}\\
-  {\small$^{2}$ Chebyshev Laboratory,}\\
-  {\small Department of Mathematics and Mechanics, SPb State University}\\
-  {\small 199178, Saint-Petersburg, Russia}\\
-  {\small email: antonnaz@gmail.com}}
+\author{A A Nazarov$^{1,2}$}
+\address{
+  $^1$ Department of High-Energy and Elementary Particle Physics, 
+  Faculty of Physics, \\ SPb State University
+  198904, Saint-Petersburg, Russia}
+\address{
+  $^{2}$ Chebyshev Laboratory,
+  Faculty of Mathematics and Mechanics, \\ SPb State University
+  199178, Saint-Petersburg, Russia}
 
-\maketitle
+\ead{antonnaz@gmail.com}
 
 \begin{abstract}
   Schramm-Loewner evolution appears naturally as the scaling limit of interfaces in lattice models at critical point. Critical behavior of these models can be described by minimal models of conformal field theory.
@@ -79,9 +81,7 @@ In the conclusion we compare classification of boundary condition changing opera
 
 \subsection{Schramm-Loewner evolution}
 \label{sec:schr-loewn-evol}
-To remind of Schramm-Loewner evolution we first describe simple example.
-
-Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fig:sle}). We impose following boundary condition: all spins are down on one half of the boundary and all spins are up on another half. Then in any configuration we get an interface delimiting two clusters and connecting zero and infinity. 
+Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fig:sle}). We impose following boundary condition: all spins are down on one half of the boundary and all spins are up on another half. Then in any spin configuration we get an interface delimiting two clusters and connecting zero and infinity (see Figure \ref{fig:sle}).
 
 \begin{figure}[h]
   \centering{
@@ -545,7 +545,7 @@ We can use primary fields of direct sum WZNW model and equivalence relations to 
 Martingale conditions should be compared with the classification of boundary states with other methods.
 
 \bibliography{bibliography}{}
-\bibliographystyle{utphys}
+\bibliographystyle{iopart-num}
 
 \end{document}
 %%% Local Variables: 
