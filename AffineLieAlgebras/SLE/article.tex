@@ -86,46 +86,60 @@ Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fi
 \begin{figure}[h]
   \centering{
     \includegraphics[height=25mm]{explore.pdf}
-    \caption{SLE -- continuous limit of interfaces}}
+    \caption{Interface in Ising model on triangular lattice}}
   \label{fig:sle}
 \end{figure}
+We can impose the condition of existence of certain interface of some finite length and study statistical model with this condition. Obviously it is equivalent to the model in the slit domain with the cut along an interface. 
 
-Next we consider continuous limit of lattice model. Interface in random configuration of the model tends to random curve. We can think of this curve as of trace of stochastic process which satisfy some stochastic equation. 
+Now we consider continuous limit of lattice model with a (part of) interface of finite length. Interface in random configuration of the model tends to random curve in this case. Old hypothesis \cite{Polyakov:1970xd} of conformal invariance at critical point was recently strictly proved for some lattice models (See \cite{smirnov2007towards}, \cite{duminil2011conformal} for a review). We assume conformal invariance at critical point and consider upper half-plane $\mathbb{H}$ with the cut along a critical interface $\gamma_{t}$. We denote this slit domain by $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$. Conformal map from $\mathbb{H}_{t}$ to $\mathbb{H}$ is denoted by $g_{t}:\mathbb{H}_{t}\to \mathbb{H}$ (See Figure \ref{fig:sle2}).
 
-In papers [Smirnov, Schramm ... ] it was shown that this equation is
-\begin{equation*}
-  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} \quad \text{or} \quad       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}
-\end{equation*}
-The stochastic process which satisfy this equation is called     {\it Schramm-Loewner evolution} on the upper half-plane $\mathbb{H}$.
-
-Here $g_{t}(z)$ is a conformal map from $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$ to $\mathbb{H}$ (see Fig. \ref{fig:sle2}).
 \begin{figure}[h]
   \centering{
     \includegraphics[width=50mm]{loewner.pdf}
-    \caption{Conformal map}}
+    \caption{Conformal map $g_{t}(z):\mathbb{H}_{t}\to \mathbb{H}$.}}
   \label{fig:sle2}
 \end{figure}
 
-Schramm-Loewner evolution provides conformally-invariant probability measure on trajectories $\gamma_{t}$ in $\mathbb{H}$.
+In paper \cite{schramm2000scaling} it was shown that $g_{t}(z)$ satisfies stochastic differential equation 
+\begin{equation}
+\label{eq:19}
+  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} ,
+\end{equation}
+where $\xi_{t}$ is the Brownian motion.
 
-\subsection{Correspondence between SLE and minimal models of CFT}
+The dynamic of the tip $z_{t}$ of critical curve $\gamma_{t}$ (tip of SLE trace) is given by the law $z_{t}=g_{t}^{-1}(\sqrt{\kappa}\xi_{t})$. 
+
+This stochastic process which satisfy is called     {\it Schramm-Loewner evolution} on the upper half-plane $\mathbb{H}$.
+In the sequel it is more convenient to use map $w_{t} (z)=g_{t}(z)-\sqrt{\kappa}\xi_{t}$, so the equation \eqref{eq:19} becomes
+\begin{equation}
+  \label{eq:20}
+       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}  
+\end{equation}
+Schramm-Loewner evolution provides conformally-invariant probability measure on curves $\gamma_{t}$ in $\mathbb{H}$.
+
+\subsection{SLE martingales and CFT correlation functions}
 \label{sec:corr-betw-sle}
 
-Now we can look at the observables in the presence of SLE trace. Expectation value of lattice observable on upper half-plane can be calculated as the sum of expectation values of this observable in presence of SLE trace up to some time $t$ multiplied by the probability of this trajectory. 
-
-Consider lattice observable $\mathcal{O}$, then it expectation value can be calculated as
+Now we can look at the observables in the presence of SLE trace. Expectation value of lattice observable $\mathcal{O}$ on the upper half-plane can be calculated as the sum of expectation values of this observable in presence of SLE trace $\gamma_{t}$ up to some time $t$ multiplied by the probability of this trajectory:
 \begin{equation*}
   \prec \mathcal{O} \succ_{\mathbb{H}}=\mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=\sum_{\gamma_{t}} P\left[C_{\gamma_{t}}\right] \prec \mathcal{O} \succ_{\gamma_{t}}
 \end{equation*}
-Since lattice observable  $\prec \mathcal{O} \succ_{\mathbb{H}}$ does not depend on $t$, hence $\prec\mathcal{O}\succ_{\gamma_{t}}$ is a martingale.
+Lattice observable  $\prec \mathcal{O} \succ_{\mathbb{H}}$ does not depend on $t$, hence $\prec\mathcal{O}\succ_{\gamma_{t}}$ is a martingale.
 
-In continuous limit lattice observable tends to CFT correlation function. Since we consider the theory with the boundary, CFT correlation function has following form:
-\begin{equation*}
+In continuous limit lattice observable tends to CFT correlation function \cite{bauer2003sle,bauer2003conformal,bauer2002sle}.
+We need to take into account the change of boundary conditions on the tip of SLE trace and at the infinity, so the expression is
+\begin{equation}
   \prec \mathcal{O} \succ_{\mathbb{H}_{t}}\to \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
   \frac{\left< \mathcal{O}(\{z_{i}\})\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}=
-  \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
-\end{equation*}
-We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
+  \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
+\label{eq:21}
+\end{equation}
+
+Here $\phi(z_{t})$ is a primary field corresponding to boundary condition changing operator. We've used the conformal map $g_{t}$ to get the expression on the whole plane in equation \eqref{eq:21}.
+
+We consider the theory with the boundary, so in principle we need to use boundary conformal field theory here and impose proper consistency conditions \cite{cardy1984conformal,cardy1989boundary,cardy1991bulk}. In the case of upper half-plane boundary CFT correlation functions can be rewritten as the correlation functions of the theory on the whole plane but with doubled number of bulk fields. Here we are interested mainly in properties of boundary condition changing operator $\phi$. 
+
+We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Since we work with boundary CFT we need to add bulk fields in conjugate points $\bar z_{i}$. For future use in WZNW models we denote the conformal weights of these duplicate fields by $h_{\lambda_{i}^{*}}$.  Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
 
 \begin{equation}
   \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
@@ -134,7 +148,7 @@ We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_
   \label{eq:1}
 \end{equation}
 
-Now we want to consider evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:1}) gives us
+Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:1}) gives us
 \begin{equation*}
   -\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}.
 \end{equation*}
@@ -145,30 +159,42 @@ For transformation of primary fields $\phi_{\lambda_{i}}$ we have
 \end{equation}
 We denote generator of this transform by $\mathcal{G}_{i}$.
 
-
-
-Continuous limit in critical point leads to CFT correlation function
-
-Now for expectation value of martingale we have this expression.
-\begin{equation*}
-  \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad \mathbb{E}\left[d \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
-\end{equation*}
-
-Now we use Ito calculus to calculate increment of our correlation function. It should be zero so we get the equation:
+Since $ \prec\mathcal{O}\succ_{\gamma_{t}}$ is a martingale, the expectation value of its increment during the evolution from $t$ to $t+dt$ is zero
 \begin{equation}
-  \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
-    \mathcal{F}_{\mathbb{H}_{t}}\right]=\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
-      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}
+  \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad d\mathbb{E}\left[ \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
+\label{eq:22}
+\end{equation}
+By using Ito calculus we get the expression for the differential of $\mathcal{F}$:
+\begin{equation}
+d \mathcal{F}_{\mathbb{H}_{t}}= \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
+      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}=0
 \label{eq:8}
 \end{equation}
-Then use explicit form of conformal map and obtain
-\begin{equation*}
+We substitute \eqref{eq:2} and obtain the equation
+\begin{equation}
   \left( \sum_{i}\left[-\frac{2h_{i}}{w_{i}^{2}} +\frac{2}{w_{i}}\partial_{w_{i}}\right]+\frac{\kappa}{2}\sum_{i,j}\partial_{w_{i}} \partial_{w_{j}}\right)\mathcal{F}(\left\{z_{i}\right\})=0
-\end{equation*}
+\label{eq:23}
+\end{equation}
 
+For the correlation functions of secondary fields $L_{-n}\phi$ we have the equation 
+\begin{equation}
+\left< (L_{-n}\phi)(z) \varphi_{1}\dots \varphi_{N}\right>=\mathcal{L}_{-n}\left<\phi\varphi_{1}\dots\varphi_{N}\right>,
+\end{equation}
+ where $n\geq 1$ and
+\begin{equation*}
+  \mathcal{L}_{-n}=\sum_{i=1}^{N} \left(\frac{(n-1)h_{i}}{(w_{i}-z)^{n}} -\frac{1}{(w_{i}-z)^{n-1}}\partial_{w_{i}}\right)
+\end{equation*}
+(See \cite{difrancesco1997cft}). So we can rewrite the differential equation \eqref{eq:23} as the algebraic equation on the field $\phi$ corresponding to boundary condition changing operator:
+\begin{equation}
+  \label{eq:24}
+   (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0.
+\end{equation}
+
+In case of minimal models the set of primary fields is finite and all the states are obtained through field-state correspondence \cite{belavin1984ics}, \cite{difrancesco1997cft}
+This equation means that 
 We can rewrite it as the necessary condition on b.c.c. operator $\phi$:
 \begin{equation*}
-  (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0 \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
+ \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
 \end{equation*}
 We can see that it can be rewritten as the action of Virasoro generators. Since we have arbitrary observable, this equation is equivalent to the requirement for boundary condition changing operator to have level two null state. 
 In case of minimal model we can see that boundary condition chaining operator is primary field $\phi_{1,2}$ or $\phi_{2,1}$.
