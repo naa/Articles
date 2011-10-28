@@ -74,7 +74,7 @@ The idea is to consider certain observables in the domain with the cut. This con
 
 More general models of CFT has additional symmetries. For example Kac-Moody algebras  appear in Wess-Zumino-Novikov-Witten models. To introduce such symmetry in SLE approach one considers additional random motion on Lie group \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}. This construction is described in Section \ref{sec:sle-wzw-models}. The correspondence between SLE martingales in this model and WZNW-correlation functions was studied in \cite{alekseev2010sle}. Similar generalization to $\mathbb{Z}(N)$-parafermionic models were considered in \cite{santachiara2008sle,picco2008numerical}. 
 
-Main task of present paper is to generalize SLE with additional random walk on Lie group to the case of factor space $G/H$ and to study the relation with coset conformal field theory. We remind some details of CFT coset construction in Section  \ref{sec:coset-models} then introduce SLE on factor space (Section \ref{sec:sle-coset-space} and relate it to conformal field theory (Section \ref{sec:semis-lie-algebr}). Similarly to WZNW-case we obtain the system of algebraic equations on boundary condition changing operators from martingale condition. 
+Main task of present paper is to generalize SLE with additional random walk on Lie group to the case of factor space $G/H$ and to study the relation with coset conformal field theory. We remind some details of CFT coset construction in Section  \ref{sec:coset-models} then introduce SLE on factor space (Section \ref{sec:sle-coset-space}) and relate it to conformal field theory (Section \ref{sec:semis-lie-algebr}). Similarly to WZNW-case we obtain the system of algebraic equations on boundary condition changing operators from martingale condition. 
 Coset construction of CFT can be used to obtain minimal models and parafermions (see \cite{difrancesco1997cft}) so we compare our classification of boundary condition changing operators with the results of paper \cite{santachiara2008sle} (Section \ref{sec:parafermions}). 
 
 In the conclusion we compare classification of boundary condition changing operators which follows from martingale condition with general classification of b.c.c. operators in boundary conformal field theory related to D-brane solutions \cite{fuchs2005geometry,fredenhagen2002d,elitzur2002d,Maldacena:2001ky,felder1999geometry,alekseev1999d}. 
@@ -139,7 +139,7 @@ Here $\phi(z_{t})$ is a primary field corresponding to boundary condition changi
 
 We consider the theory with the boundary, so in principle we need to use boundary conformal field theory here and impose proper consistency conditions \cite{cardy1984conformal,cardy1989boundary,cardy1991bulk}. In the case of upper half-plane boundary CFT correlation functions can be rewritten as the correlation functions of the theory on the whole plane but with doubled number of bulk fields. Here we are interested mainly in properties of boundary condition changing operator $\phi$. 
 
-We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Since we work with boundary CFT we need to add bulk fields in conjugate points $\bar z_{i}$. For future use in WZNW models we denote the conformal weights of these duplicate fields by $h_{\lambda_{i}^{*}}$.  Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
+We assume that $\mathcal{F}$ contains some set of primary fields $\varphi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Since we work with boundary CFT we need to add bulk fields in conjugate points $\bar z_{i}$. For future use in WZNW models we denote the conformal weights of these duplicate fields by $h_{\lambda_{i}^{*}}$.  Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
 
 \begin{equation}
   \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
@@ -152,10 +152,10 @@ Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+
 \begin{equation*}
   -\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}.
 \end{equation*}
-For transformation of primary fields $\phi_{\lambda_{i}}$ we have 
+For transformation of primary fields $\varphi_{\lambda_{i}}$ we have 
 \begin{equation}
   \label{eq:2}
-  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i}) 
+  d\varphi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\varphi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\varphi_{\lambda_{i}}(w_{i}) 
 \end{equation}
 We denote generator of this transform by $\mathcal{G}_{i}$.
 
@@ -187,101 +187,83 @@ For the correlation functions of secondary fields $L_{-n}\phi$ we have the equat
 (See \cite{difrancesco1997cft}). So we can rewrite the differential equation \eqref{eq:23} as the algebraic equation on the field $\phi$ corresponding to boundary condition changing operator:
 \begin{equation}
   \label{eq:24}
-   (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0.
+   \left<\left([L_{-2}-\frac{\kappa}{2}L_{-1}^{2}]\phi\right)(0)\; \varphi_{\lambda_{1}}\dots \varphi_{\lambda_{{2N}}}\right>=0.
 \end{equation}
+In the case of minimal models the set of primary fields is finite and all the states are obtained through field-state correspondence \cite{belavin1984ics}, \cite{difrancesco1997cft}. 
+Equation \eqref{eq:24}  holds for arbitrary observable $\mathcal{O}$ and arbitrary primary fields $\varphi_{i}$, so $[L_{-2}-\frac{\kappa}{2}L_{-1}^{2}]\phi$ is level two null field and $[L_{-2}-\frac{\kappa}{2}L_{-1}^{2}]\phi(0)\left|0\right>$ is level two null-state. There exist only two primary fields in minimal unitary models which give rise to Verma modules of Virasoro algebra with level two null-states. They are $\phi_{1,2}$ and $\phi_{2,1}$, so $\phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}$. 
 
-In case of minimal models the set of primary fields is finite and all the states are obtained through field-state correspondence \cite{belavin1984ics}, \cite{difrancesco1997cft}
-This equation means that 
-We can rewrite it as the necessary condition on b.c.c. operator $\phi$:
-\begin{equation*}
- \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
-\end{equation*}
-We can see that it can be rewritten as the action of Virasoro generators. Since we have arbitrary observable, this equation is equivalent to the requirement for boundary condition changing operator to have level two null state. 
-In case of minimal model we can see that boundary condition chaining operator is primary field $\phi_{1,2}$ or $\phi_{2,1}$.
-
-\section{SLE and WZNW models}
+\section{Wess-Zumino-Novikov-Witten models}
 \label{sec:sle-wzw-models}
-Now we want to generalize this analysis to rational conformal field theories. First we consider Wess-Zumino-Novikov-Witten model.
-\subsection{WZNW models}
+To generalize the analysis of previous section \ref{sec:corr-betw-sle} to non-minimal models we need to take additional symmetries into account. Wess-Zumino-Novikov-Witten models has Kac-Moody symmetry in addition to Virasoro algebra. At first we remind well-known properties of the model \cite{difrancesco1997cft} which are useful to study SLE martingales. 
 
- The action for this model can be written in terms of map $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ from complex plane with infinity or two-sphere to some Lie group $G$:
+ The action of WZNW model can be written in terms of map $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ from complex plane with infinity or two-sphere to some (simple) Lie group $G$:
 \begin{multline}
   S=-\frac{k}{8\pi}\int d^2x\; \mathcal{K} (g^{-1}\partial^{\mu}g, g^{-1} \partial_{\mu}g)  
-  \\
   - \frac{k }{24\pi^{2}} \int_{B}\epsilon_{ijk} \mathcal{K}\left(
     \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i},\left[
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right]\right) d^3y
 \end{multline}
-The first term is just non-linear sigma-model.
+ Here $\mathcal{K}$ is Killing form on Lie algebra $\gf$ of Lie group $G$. The first term is just non-linear sigma-model and the second term is written using the continuation $\tilde{g}$ from two-sphere $S^{2}$ to three-dimensional manifold $B$ which has two-sphere as the boundary. Since this continuation is non-unique we get the requirement for $k$ to be integer. 
 
- Here $\mathcal{K}$ is Killing form on Lie algebra $\gf$ of Lie group $G$. The second term is written in terms of continuation from two-sphere $S^{2}$ to three-dimensional manifold $B$ which has two-sphere as the boundary. Since this continuation is non-unique we get the requirement for $k$ to be integer. 
-
-Currents of this model have following form:
+Conserved currents of this model have following form:
   \begin{eqnarray}
     J(z)= -k \partial_zg g^{-1}
     \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
   \end{eqnarray}
 
-Model possess gauge invariance under gauge transformations:
-  \begin{equation*}
-    g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z),
-  \end{equation*}
-  where $\Omega,\;\bar \Omega \in G$.
-Here $\Omega$ and $\bar \Omega$ are independent. 
-
-If we consider infinitesimal gauge transformation $\Omega=1+\omega$ we get Ward identities:
+Model possess gauge invariance under gauge transformations
+  $g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)$, 
+where $\Omega,\;\bar \Omega \in G$ are are independent. If we consider infinitesimal gauge transformation $\Omega=1+\omega$ we get Ward identities 
   \begin{equation}
     \label{eq:87}
     \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
-    \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+    \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>,
   \end{equation}
-
- Then we can get operator product expansion for currents. 
+which can be used to get operator product expansion for currents:
  \begin{equation}
    \label{eq:3}
-   <J\phi>\sim \dots
+   J^{a}(z)J^{b}(w)\sim \frac{k\delta_{ab}}{(z-w)^{2}}+\sum_{c}i f_{abc}\frac{J^{c}}{z-w},
  \end{equation}
+where $f_{abc}$ are the structure constants of Lie algebra $\gf$.
+ 
+Expanding currents to modes
+$J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n $
+and using operator product expansion \eqref{eq:3} we get commutation relations of affine Lie algebra $\gfh$:
+$ \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0} $.
 
-If we expand currents to modes
-\begin{equation*}
-  J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n 
-\end{equation*}
-and use operator product expansion \eqref{eq:3} we get commutation relations of affine Lie algebra $\gfh$:
-\begin{equation}
-  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0} 
-\end{equation}
-
-This model has conformal invariance which can be seen from 
-Sugawara construction. This is way to embed Virasoro algebra into the universal enveloping algebra of affine Lie algebra $\gfh$ ($Vir\subset U(\gfh)$):
+Conformal invariance of the model can  be seen from 
+Sugawara construction, which is a way to embed Virasoro algebra into the universal enveloping algebra of affine Lie algebra $\gfh$ ($Vir\subset U(\gfh)$):
 \begin{equation}
   \label{eq:4}
-  L_n=\frac{1}{2(k+h^v)}\sum\limits_a\sum\limits_m:J^a_m J^a_{n-m}:
+  L_n=\frac{1}{2(k+h^{\vee})}\left(\sum\limits_a\sum\limits_{m\leq -1}J^a_m J^a_{n-m}+\sum_{m\geq 0} J^{a}_{n-m}J^{a}_{m}\right), 
 \end{equation}
-  
-Full chiral algebra of the model is semidirect product of affine and Virasoro algebra $\gfh \ltimes Vir$. 
-
-Its commutation relations are
+ where $h^{\vee}$ is the dual Coxeter number of Lie algebra $\gf$. 
+Full chiral algebra of the model is semidirect product of affine and Virasoro algebra $\gfh \ltimes Vir$ with commutation relations 
   \begin{equation}
     \label{eq:92}
     \begin{aligned}
+      \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0} \\
       \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
       \left[L_n,J^a_m\right]=-mJ^a_{n+m}
     \end{aligned}
   \end{equation}
-
-Primary fields  $\phi_{\lambda}$ are labeled by highest weights of affine Lie algebra representations. Here we see how Virasoro and affine Lie algebra generators act on primary fields:
+Here central charge $c$ of Virasoro algebra is given by expression
+\begin{equation}
+  \label{eq:25}
+  c=\frac{k\;\mathrm{dim}\gf}{k+h^{\vee}}
+\end{equation}
+There is infinite number of Virasoro primary fields, but they are organized into highest weight modules of affine Lie algebra $\gfh$. 
+Primary fields of full chiral algebra $\phi_{\lambda}$ are labeled by highest weights of affine Lie algebra $\gfh$ modules. Here we see how Virasoro and affine Lie algebra generators act on primary fields:
   \begin{equation*}
     \begin{aligned}
       & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
-      & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>
+      & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^{\vee})}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^{\vee})}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>,
     \end{aligned}
   \end{equation*}
+where $\rho$ is Weyl vector of $\gf$. 
 
-
-\subsection{SLE and WZNW models}
 Now we want to study Schramm-Loewner evolution in WZNW-models.
-
 Similarly to minimal models we consider observable
 \begin{equation*}
   \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
@@ -295,99 +277,70 @@ Again we can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H
   \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
 \end{equation*}
 
-Consider evolution from $t$ to $t+dt$.
-First factor gives us $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
+Under the evolution from $t$ to $t+dt$ first factor gives us $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
 
- For fields we have
+When we consider fields we need to add random gauge transformation (random motion in $G$) to stochastic evolution \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}. 
+For fields we have
 \begin{equation*}
-  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})
+  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i}),
 \end{equation*}
-When we consider fields we need to add random gauge transformation (random motion in $G$) to stochastic evolution \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}:
+so additional term appears in the generator of field transformation. 
 \begin{equation*}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)
 \end{equation*}
-Since we have boundary we are working with boundary CFT so we have only half of gauge transformations due to Cardy conditions.
+Here $d\theta^{a}$ are the generators of $\mathrm{dim}\gf$-dimensional Brownian motion and $\mathbb{E}[d\theta^{a}d\theta^{b}]=\delta_{ab}dt$. We assume that $t^{a}$ is a basis of $\gf$ orthogonal with respect to Killing form $\mathcal{K}$, $\mathcal{K}(t^{a},t^{b})=\delta_{ab}$.
 
-\subsection{SLE martingales in WZNW models}
-We use Ito calculus to get the equation from martingale condition:
+Using formula \eqref{eq:8} we get the equation from martingale condition:
 \begin{equation*}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{1}{2}\tau\sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}=0
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{1}{2}\tau\sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}=0,
 \end{equation*}
+where
 \begin{equation*}
   \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{\lambda_{i}}}{(w_{i}-z)^{n}}-\frac{1}{(w_{i}-z)^{n-1}}\partial_{w_{i}}\right);\quad \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}}
 \end{equation*}
-Again we can rewrite it as algebraic requirement for  field  which 
-correspond to boundary condition changing operator.
+Again we can rewrite it as algebraic requirement for  field  which corresponds to boundary condition changing operator. Now
 \begin{equation*}
   \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
 \end{equation*}
 is level two null state and if we act on this state with raising operators we should get zero.
-\begin{equation*}
-  J^{a}_{1} \left|\psi\right>=0, J^{a}_{2}\left|\psi\right>=0.
-\end{equation*}
- We use commutation relations and get equations which connects parameters of random motion with level of affine Lie algebra representation. 
-
-We can see that $\kappa+\tau h^{v}=4$ and it is possible to derive additional relations connecting $\kappa, \tau, k$:
-\begin{equation*}
-  \kappa=\frac{2(h^{v}-2k)}{2h_{\Lambda}h^{v}-k},\quad \tau=\frac{8 h_{\Lambda}-2}{2h_{\Lambda}h^{v}-k}  \quad\text{for}\; k\neq 2h_{\Lambda}h^{v}
-\end{equation*}
- Also we get some constraints on possible boundary condition changing operators. 
-To get complete classification use Knizhnik-Zamolodchikov equations.
-
+\begin{eqnarray}
+  J^{a}_{1} \left|\psi\right>=0\\
+  J^{a}_{2}\left|\psi\right>=0\\
+  L_{2}\left|\psi\right>=0\\
+  L_{1}\left|\psi\right>=0
+\end{eqnarray}
+Using commutation relations \eqref{eq:92} these equations can be rewritten as algebraic equations connecting parameters of random motion $\kappa, \tau$ with the level $k$ of affine Lie algebra representation. Rigorous analysis of these equations is given in the paper \cite{alekseev2010sle}.
 
 \section{Coset models}
 \label{sec:coset-models}
-Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory.
-
-
-\subsection{Gauged WZNW-models and coset construction}
-
-Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models. We add gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action:
-\begin{multline*}
-  S(g,A)=S_{WZNW}(g)+\\
-  \frac{k}{4\pi}\int d^{2}z \left(\mathcal{K}(A, g^{-1}\bar \partial g)-\mathcal{K}(\bar A, (\partial g ) g^{-1})+\mathcal{K}(A,g^{-1}\bar A g)-\mathcal{K}(A,\bar A)\right)
-\end{multline*}
-Now current is
-\begin{equation*}
-  J_{(\gf,\af)}=-k\partial g g^{-1} -k g A g^{-1}
-\end{equation*}
-
-From Ward identities we get following expression for the product of gauge field and primary fields:
-\begin{equation*}
-  \left< A^{b}(z)\phi_{1}\dots \phi_{N}\right>=\frac{2}{k+2 h^{v}_{\af}}\sum_{k}\frac{\tilde{t}^{b}_{k}}{z-z_{k}}\left<\phi_{1}\dots \phi_{N}\right>
-\end{equation*}
-Here $h_{\af}^{v}$ is the dual Coxeter number of Lie algebra $\af$.
-
-Remember that for WZNW current we have OPE $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi(w)}{z-w}$,  so we see that algebraic structure is connected with the pair of algebras $\gf$ and $\af$, such that $\afh\subset\gfh$. 
-
-Virasoro generators are given by difference of Sugawara expressions:
+Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory\cite{Goddard198588}. Such models are specified by  Lie algebra $\gf$ and its subalgebra $\af$. 
+Virasoro generators in coset models are given by difference of Sugawara expressions of $\gf$ and $\af$-WZNW models:
 \begin{equation*}
   L_{n}=L_{n}^{\gf}-L_{n}^{\af}
 \end{equation*}
 
-\subsection{Primary fields}
-\label{sec:primary-fields}
-Primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra and subalgebra, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
+Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models by adding gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action\cite{gawdzki1988g}. Here we are not interested in the details of this construction. For us it is only important that it is possible to obtain primary fields of coset model by field identification in WZNW-model with algebra $\gf\oplus \af$ \cite{fuchs1996resolution,schellekens1990field}. 
+So, primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra $\gfh$ and subalgebra $\afh$, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
 
 Conformal weight of primary field is equal to
 \begin{multline}
-  L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
-  \left|\phi_{\lambda}\right>=\\
-  \left(\frac{(\mu,\mu+2\rho)}{2(k+h^v)}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^v)}\right)\left|\phi_{(\mu,\nu)}\right>
+  L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^{\vee})}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
+  \left|\phi_{\lambda}\right>=
+  \left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^{\vee})}\right)\left|\phi_{(\mu,\nu)}\right>
 \end{multline}
 
 %% So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
 
-It is possible to obtain analogues of KZ-equations:
+It is possible to obtain analogues of KZ-equations \cite{kogan1997knizhnik}:
 \begin{equation*}
-  \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{v}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{v}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
+  \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{\vee}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{\vee}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
 \end{equation*}
 
-\subsection{SLE on coset space}
-\label{sec:sle-coset-space}
 
-Consider Lie (semi-)simple group $G$ with Lie algebra $\gf$ and (semi-)simple subgroup $A\subset G$ with Lie algebra $\af\subset \gf$. 
-The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $\mathrm{dim}\gf-\mathrm{dim}\af$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
+The idea is to constrain additional Brownian motion on group manifold to the factor space $G/A$. 
+
+First we consider simple example. Let $G=SU(2)$ and $A=U(1)$, and corresponding Lie algebras $\gf=su(2)$, $\af=u(1)$, $\af\subset\gf$.
+The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $(\mathrm{dim}\gf-\mathrm{dim}\af)$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
 
 Then for generator of field transformation we can write 
 \begin{equation}
@@ -406,9 +359,9 @@ which can be rewritten as the requirement for
   \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{\Lambda}
 \label{eq:10}
 \end{equation}
-to be level two null-field. Here primary field $\phi_{\Lambda}$ is indexed by the pair $\Lambda=(\mu,\nu)$ with the equivalence relations \ref{sec:primary-fields}.
+to be level two null-field. 
 
-Consider the simplest possible example. Let $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. The equation \eqref{eq:10} is now
+Here $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. The equation \eqref{eq:10} is now
 \begin{equation}
   \label{eq:11}
   \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{\Lambda}
@@ -455,6 +408,12 @@ We need to get one more equation since we have three variables $\kappa,\tau,h_{\
 \end{equation}
 
 
+
+\subsection{SLE on coset space}
+\label{sec:sle-coset-space}
+
+
+
 Alternative approach is to study $\gf\oplus \af$ WZNW-model and then impose equivalence relations on the solutions. 
 So we need to generalize the analysis of \cite{alekseev2010sle} to the case of semisimple Lie algebras. 
 
@@ -480,6 +439,7 @@ For  $\gf\oplus \af$ WZNW-model we can write SLE generator of primary field tran
 \begin{equation*}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)+\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
 \end{equation*}
+
 %% \begin{equation*}
 %%   \mathcal{G}_{i}^{L,R}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\pm\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
 %% \end{equation*}
@@ -503,7 +463,7 @@ We can compare this result with the simplest possible coset model $su(2)/u(1)$ -
 
 It is well known that unitary minimal models with central charge $c=1-\frac{6}{m(m+1)}$ can be obtained from coset construction starting with $su(2)_{m}\oplus su(2)_{1}$ WZW-model and factorizing it by $su(2)_{m+1}$. Here lower index represents level of affine Lie algebra representation. 
 
-In this case the dimension of Lie algebra $\gf=su(s)\oplus su(2)$ is 6, dual Coxeter number $h^{v}=2+2=4$. 
+In this case the dimension of Lie algebra $\gf=su(s)\oplus su(2)$ is 6, dual Coxeter number $h^{\vee}=2+2=4$. 
 
 
 \begin{equation}
