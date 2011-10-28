@@ -74,8 +74,8 @@ The idea is to consider certain observables in the domain with the cut. This con
 
 More general models of CFT has additional symmetries. For example Kac-Moody algebras  appear in Wess-Zumino-Novikov-Witten models. To introduce such symmetry in SLE approach one considers additional random motion on Lie group \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}. This construction is described in Section \ref{sec:sle-wzw-models}. The correspondence between SLE martingales in this model and WZNW-correlation functions was studied in \cite{alekseev2010sle}. Similar generalization to $\mathbb{Z}(N)$-parafermionic models were considered in \cite{santachiara2008sle,picco2008numerical}. 
 
-Main task of present paper is to generalize SLE with additional random walk on Lie group to the case of factor space $G/H$ and to study the relation with coset conformal field theory. We remind some details of CFT coset construction in Section  \ref{sec:coset-models} then introduce SLE on factor space (Section \ref{sec:sle-coset-space}) and relate it to conformal field theory (Section \ref{sec:semis-lie-algebr}). Similarly to WZNW-case we obtain the system of algebraic equations on boundary condition changing operators from martingale condition. 
-Coset construction of CFT can be used to obtain minimal models and parafermions (see \cite{difrancesco1997cft}) so we compare our classification of boundary condition changing operators with the results of paper \cite{santachiara2008sle} (Section \ref{sec:parafermions}). 
+Main task of present paper is to generalize SLE with additional random walk on Lie group to the case of factor space $G/H$ and to study the relation with coset conformal field theory. We remind some details of CFT coset construction in Section  \ref{sec:coset-models} then introduce SLE on factor space (Section \ref{sec:coset-models}) and relate it to conformal field theory. Similarly to WZNW-case we obtain the system of algebraic equations on boundary condition changing operators from martingale condition. 
+Coset construction of CFT can be used to obtain minimal models and parafermions (see \cite{difrancesco1997cft}) so we compare our classification of boundary condition changing operators with the results of paper \cite{santachiara2008sle}.
 
 In the conclusion we compare classification of boundary condition changing operators which follows from martingale condition with general classification of b.c.c. operators in boundary conformal field theory related to D-brane solutions \cite{fuchs2005geometry,fredenhagen2002d,elitzur2002d,Maldacena:2001ky,felder1999geometry,alekseev1999d}. 
 
@@ -313,13 +313,25 @@ Using commutation relations \eqref{eq:92} these equations can be rewritten as al
 
 \section{Coset models}
 \label{sec:coset-models}
-Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory\cite{Goddard198588}. Such models are specified by  Lie algebra $\gf$ and its subalgebra $\af$. 
+Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory\cite{Goddard198588}. Such models are specified by  Lie algebra $\gf$ and its subalgebra $\af$. Denote by $J_{n}^{a}$ the generators of affine Lie algebra $\gfh$ and by $\tilde{J}_{n}^{b}$ the generators of $\afh$, so that $\tilde{J}^{b}_{n}=\sum_{a} m_{a}^{b} J^{a}_{n}$.
 Virasoro generators in coset models are given by difference of Sugawara expressions of $\gf$ and $\af$-WZNW models:
 \begin{equation*}
   L_{n}=L_{n}^{\gf}-L_{n}^{\af}
 \end{equation*}
+Commutation relations of Virasoro generators with generators of subalgebra $\afh$ are trivial
+\begin{equation}
+  \label{eq:26}
+  \left[L_{n},\tilde{J}^{b}_{m}\right]=0
+\end{equation}
 
-Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models by adding gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action\cite{gawdzki1988g}. Here we are not interested in the details of this construction. For us it is only important that it is possible to obtain primary fields of coset model by field identification in WZNW-model with algebra $\gf\oplus \af$ \cite{fuchs1996resolution,schellekens1990field}. 
+Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models by adding gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action\cite{gawdzki1988g}. Here we are not interested in the details of this construction. 
+
+Looking at equation \eqref{eq:26} it is natural to think that we need to identify fields of $\gf$-model which differ by the action of $\afh$ generators $\tilde{J}_{n}^{b}$ to obtain primary fields of coset model. But the situation is not so simple since fields obtained in this way are equivalent if branching functions 
+
+For us it is only important that it is possible to obtain primary fields of coset model by field identification in WZNW-model with algebra $\gf\oplus \af$ \cite{fuchs1996resolution,schellekens1990field}.
+
+(Field identification group here)
+ 
 So, primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra $\gfh$ and subalgebra $\afh$, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
 
 Conformal weight of primary field is equal to
@@ -336,7 +348,7 @@ It is possible to obtain analogues of KZ-equations \cite{kogan1997knizhnik}:
   \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{\vee}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{\vee}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
 \end{equation*}
 
-
+Let us introduce Schramm-Loewner evolution corresponding to coset models. 
 The idea is to constrain additional Brownian motion on group manifold to the factor space $G/A$. 
 
 First we consider simple example. Let $G=SU(2)$ and $A=U(1)$, and corresponding Lie algebras $\gf=su(2)$, $\af=u(1)$, $\af\subset\gf$.
@@ -407,10 +419,7 @@ We need to get one more equation since we have three variables $\kappa,\tau,h_{\
   J_{1}^{a}L_{1}\psi=0
 \end{equation}
 
-
-
-\subsection{SLE on coset space}
-\label{sec:sle-coset-space}
+We can solve this equations. 
 
 
 
@@ -484,43 +493,43 @@ This vector should be null vector of level two, so $L_{2}\left|\psi\right>=L_{1}
 \end{equation}
 SLE and factorization by equivalence relations. 
 
-\subsection{Parafermions}
-\label{sec:parafermions}
+%% \subsection{Parafermions}
+%% \label{sec:parafermions}
+%% 
+%% $\mathbb{Z}(N)$ parafermions are equivalent to $SU(2)_{N}/U(1)$ coset theory.
+%% 
+%% It is well-known that parafermionic field can be written as product of $su(2)$-primary field and vertex operator of bosonic field. 
+%% \begin{equation*}
+%%   \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
+%% \end{equation*}
+%% where $\phi_{j}(z)$ is field of $SU(2)$-WZNW model with spin $j$, $\phi(z)$ -- $U(1)$ bosonic field.
+%% 
+%% For parafermionic current we have
+%% \begin{equation*}
+%%   \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)
+%% \end{equation*}
+%% %% Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
+%% %% !!! TODO
+%% Martingale condition can be rewritten as
+%% \begin{equation*}
+%%   \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
+%% \end{equation*}
+%% which coincides with the result of Santachiara \cite{santachiara2008sle}.
+%% 
+%% 
 
-$\mathbb{Z}(N)$ parafermions are equivalent to $SU(2)_{N}/U(1)$ coset theory.
-
-It is well-known that parafermionic field can be written as product of $su(2)$-primary field and vertex operator of bosonic field. 
-\begin{equation*}
-  \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
-\end{equation*}
-where $\phi_{j}(z)$ is field of $SU(2)$-WZNW model with spin $j$, $\phi(z)$ -- $U(1)$ bosonic field.
-
-For parafermionic current we have
-\begin{equation*}
-  \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)
-\end{equation*}
-%% Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
-%% !!! TODO
-Martingale condition can be rewritten as
-\begin{equation*}
-  \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
-\end{equation*}
-which coincides with the result of Santachiara \cite{santachiara2008sle}.
-
-
-
-\subsection{Next steps}
-
-Next steps in the study of SLE martingales for coset models  are the following. 
-
-%At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
-% !!! This is wrong !!!
-% We can act by Sugawara generators 
-
-Then we use Knizhnik-Zamolodchikov equations to rewrite the relations in simpler form and get conditions on possible boundary condition changing operators. 
-
-Boundary states in coset models were actively studied. One of the ideas is to consider direct sum WZNW-model and use equivalence relations. This study is essentially the study representation of fusion algebra, Verlinde formula is one of key ingredients in this study. So we hope to compare the classification of boundary states obtained in this way with our condition on boundary condition changing operator. 
-
+%% \subsection{Next steps}
+%% 
+%% Next steps in the study of SLE martingales for coset models  are the following. 
+%% 
+%% %At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
+%% % !!! This is wrong !!!
+%% % We can act by Sugawara generators 
+%% 
+%% Then we use Knizhnik-Zamolodchikov equations to rewrite the relations in simpler form and get conditions on possible boundary condition changing operators. 
+%% 
+%% Boundary states in coset models were actively studied. One of the ideas is to consider direct sum WZNW-model and use equivalence relations. This study is essentially the study representation of fusion algebra, Verlinde formula is one of key ingredients in this study. So we hope to compare the classification of boundary states obtained in this way with our condition on boundary condition changing operator. 
+%% 
 \section{Conclusion}
 \label{sec:conclusion}
 
