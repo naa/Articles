@@ -44,6 +44,15 @@ S.~Kass, R.~Moody, J.~Patera, and R.~Slansky, {\em {Affine Lie algebras, weight
   multiplicities, and branching rules}}.
 \newblock Sl, 1990.
 
+\bibitem{fulton1991representation}
+W.~Fulton and J.~Harris, {\em {Representation theory: a first course}},
+  vol.~129.
+\newblock Springer Verlag, 1991.
+
+\bibitem{bourbaki2002lie}
+N.~Bourbaki, {\em {Lie groups and Lie algebras}}.
+\newblock Springer Verlag, 2002.
+
 \bibitem{humphreys2008representations}
 J.~Humphreys, {\em {Representations of semisimple Lie algebras in the BGG
   category O}}.
@@ -82,6 +91,12 @@ V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
 \bibitem{2011arXiv1102.1702L}
 V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive properties of branching and BGG
   resolution},'' \href{http://arxiv.org/abs/1102.1702}{{\tt arXiv:1102.1702
+  [math.RT]}}.
+
+\bibitem{LyakhovskyPostnova2011}
+P.~P. {Kulish}, V.~D. {Lyakhovsky}, and O.~P. {Postnova}, ``{Tensor powers for
+  non-simply laced Lie Algebras \$B\_2\$ case},''{\em ArXiv e-prints} (June,
+  2011)  , \href{http://arxiv.org/abs/1106.2002}{{\tt arXiv:1106.2002
   [math.RT]}}.
 
 \bibitem{kac1988modular}
@@ -271,6 +286,10 @@ M.~Van~Leeuwen, ``{LiE, a software package for Lie group computations},'' {\em
 J.~Stembridge, ``{A Maple package for symmetric functions},'' {\em Journal of
   Symbolic Computation} {\bf 20} (1995) no.~5-6, 755--758.
 
+\bibitem{coxweyl}
+J.~Stembridge, ``Coxeter/weyl packages for maple.''
+\newblock \url{http://www.math.lsa.umich.edu/~jrs/maple.html}.
+
 \bibitem{fischbacher2002ilp}
 T.~Fischbacher, ``{Introducing LambdaTensor1. 0-A package for explicit symbolic
   and numeric Lie algebra and Lie group calculations},''
@@ -302,9 +321,45 @@ W.~Casselman, ``{Machine calculations in Weyl groups},'' {\em Inventiones
 T.~Gannon, ``{Algorithms for affine Kac-Moody algebras},''
   \href{http://arxiv.org/abs/hep-th/0106123}{{\tt hep-th/0106123}}.
 
+\bibitem{shifrinmathematica}
+L.~Shifrin, {\em Mathematica programming: an advanced introduction}.
+\newblock 2009.
+\newblock \url{http://mathprogramming-intro.org/}.
+
+\bibitem{maeder2000computer}
+R.~Maeder, {\em Computer science with Mathematica}.
+\newblock Cambridge University Press, 2000.
+
+\bibitem{casselman1995automata}
+W.~Casselman, ``Automata to perform basic calculations in coxeter groups,'' in
+  {\em Representations of groups: Canadian Mathematical Society annual seminar,
+  June 15-24, 1994, Banff, Alberta, Canada}, vol.~16, p.~35, Canadian
+  Mathematical Society.
+\newblock 1995.
+
+\bibitem{KallenShortlex}
+W.~van~der Kallen, ``Computing shortlex rewite rules with mathematica.''.
+
+\bibitem{kazhdan1994tensor3}
+D.~Kazhdan and G.~Lusztig, ``Tensor structures arising from affine lie
+  algebras. iii,'' {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 7} (1994) no.~2, .
+
+\bibitem{kazhdan1993tensor1}
+D.~Kazhdan and G.~Lusztig, ``Tensor structures arising from affine lie
+  algebras. i,'' {\em Journal of the American Mathematical Society} {\bf 6}
+  (1993) no.~4, 905--947.
+
+\bibitem{kazhdan1993tensor2}
+D.~Kazhdan and G.~Lusztig, ``Tensor structures arising from affine lie
+  algebras. ii,'' {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 6} (1993) no.~4, .
+
 \bibitem{kac1984infinite}
 V.~Kac and D.~Peterson, ``{Infinite-dimensional Lie algebras, theta functions
   and modular forms},'' {\em Adv. in Math} {\bf 53} (1984) no.~2, 125--264.
+
+\bibitem{hwang1993brst}
+S.~Hwang and H.~Rhedin, ``The brst formulation of g/h wznw models,'' {\em
+  Nuclear Physics B} {\bf 406} (1993) no.~1-2, 165--184.
 
 \bibitem{schramm2000scaling}
 O.~Schramm, ``Scaling limits of loop-erased random walks and uniform spanning
