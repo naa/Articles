@@ -6,72 +6,65 @@
 
 \label{sec:intro-simple-lie-algebras}
 
-\subsection{Lie algebras of finite and affine types}
-\label{sec:lie-algebras-finite}
-
-{\it Lie algebra} $\gf$ is a vector space with bilinear operation $[\cdot,\cdot]:\gf\otimes\gf\to \gf$, which is called {\it Lie bracket}. If we choose the basis $X_{i}$ in $\gf$ we can specify commutation relations by the {\it structure constants} $C_{ijk}$:
+{\it Алгебра Ли} $\gf$ -- это векторное пространство с билинейной операцией $[\cdot,\cdot]:\gf\otimes\gf\to \gf$, которая называется  {\it скобкой Ли или коммутатором}. Если выбрать некоторый  $X_{i}$ в $\gf$, то коммутационные соотношения можно задать при помощи  {\it структурных констант} $C_{ijk}$:
 \begin{equation}
   \label{eq:1}
   [X^{i},X^{j}]=\sum_{k} C^{ij}_{k} X^{k}
 \end{equation}
-Lie algebra is {\it simple} if it contains no non-trivial ideals with respect to commutator. {\it Semisimple} Lie algebra is a direct sum of simple Lie algebras. In the present paper we treat simple and semisimple Lie algebras. 
 
-{\it Cartan subalgebra}  $\hfg$ is a nilpotent subalgebra of  $\gf$ that coincides with its normalizer. 
-We denote the elements of basis of $\hfg$ by $H^{i}$.
+Алгебра Ли называется {\it простой} если она не содержит нетривиальных идеалов относительно коммутатора. {\it Полупростая} алгебра Ли -- это прямая сумма простых алгебр Ли. В этой работе мы рассматриваем, в основном, простые и полупростые алгебры Ли.
 
-Killing form on $\gf$ gives a non-degenerate bilinear form $(\cdot,\cdot)$ on $\hfg$ which can be used to identify $\hfg$ with the subspace of the dual space $\hfg^{*}$ of linear functionals on $\hfg$. {\it Weights} are the elements of $\hfg^{*}$ and are denoted by Greek letters $\mu,\nu, \omega, \lambda\dots$
+{\it Подалгеброй Картана}  $\hfg$ называется нильпотентная подалгебра алгебры $\gf$, совпадающая со своим нормализатором. Мы обозначаем элементы базиса в $\hfg$ через $H^{i}$.
 
-Special choice of basis gives compact description of commutation relations (\ref{eq:1}). This basis can be encoded by the root system which is discussed in Section \ref{sec:weights-roots} (See also \cite{humphreys1997introduction,humphreys1992reflection}).
+Форма Киллинга на  $\gf$ порождает невырожденную билинейную форму $(\cdot,\cdot)$ на подалгебре Картана $\hfg$, позволяющую идентифицировать $\hfg$ с подпространством дуального пространства  $\hfg^{*}$ линейных функционалов на $\hfg$. {\it Веса}  -- это элементы  $\hfg^{*}$, мы обозначаем их греческими буквами $\mu,\nu, \omega, \lambda\dots$
 
-{\it Loop algebra} $L\gf=\gf\otimes \mathbb{C}[t,t^{-1}]$, corresponding to semisimple Lie algebra $\gf$, has commutation relations
+
+Коммутационные соотношения  (\ref{eq:1}) можно записать в компактной форме, если выбрать базис специальным образом. Такой базис описывается корневой системой, которая определяется в разделе \ref{sec:weights-roots} (Смотри также \cite{humphreys1997introduction,humphreys1992reflection}).
+
+{\it Алгебра петель} $L\gf=\gf\otimes \mathbb{C}[t,t^{-1}]$, соответствующая полупростой алгебре Ли $\gf$, определяется коммутационными соотношениями
 \begin{equation}
   \label{eq:6}
   [X^{i}t^{n},X^{j}t^{m}]=t^{n_+m}\sum_{k}C^{ij}_{k}X^{k}
 \end{equation}
-Central extension leads to the appearance of an additional term
+Центральное расширение алгебры петель ведет к возникновению дополнительного члена
 \begin{equation}
   \label{eq:7}
    [X^{i}t^{n}+\alpha c,X^{j}t^{m}+\beta c]=t^{n+m}\sum_{k}C^{ij}_{k}X^{k}+(X^{i},X^{j})n\delta_{n+m,0}c
 \end{equation}
-This algebra $\hat\gf=\gf\otimes\mathbb{C}[t,t^{-1}]\oplus\mathbb{C}c$ is called non-twisted {\it affine Lie algebra} \cite{kac1990idl}, \cite{wakimoto2001idl,wakimoto2001lectures}, \cite{kass1990ala}.
+Эта алгебра $\hat\gf=\gf\otimes\mathbb{C}[t,t^{-1}]\oplus\mathbb{C}c$ называется (не скрученной)  {\it аффинной алгеброй Ли} \cite{kac1990idl}, \cite{wakimoto2001idl,wakimoto2001lectures}, \cite{kass1990ala}.
 
-We do not treat twisted affine Lie algebras in the present paper.
-
-\subsection{Modules, weights and roots}
+\subsection{Модули, веса и корни}
 \label{sec:weights-roots}
 
-Let $\gf$ be a inite-dimensional or an affine Lie algebra.
-
-Then $\gf$-module is a vector space $V$ together with a bilinear map $\gf \times V\to V$ such that
+Пусть $\gf$ -- конечномерная или аффинная алгебра Ли.  $\gf$-модулем называется векторное пространство $V$ с билинейным отображением $\gf \times V\to V$, таким, что выполнено равенство
 \begin{equation}
   \label{eq:2}
   [x,y]\cdot v = x\cdot(y\cdot v) - y\cdot(x\cdot v), \quad \mbox{for}\; x,y\in \gf, v\in V
 \end{equation}
-Representation of algebra $\gf$ on a vector space $V$ is the homomorphism $\gf\to gl(V)$ from $\gf$ to Lie algebra of endomorphisms of the  vector space $V$ with the commutator as a bracket.
+Представление алгебры  $\gf$ на векторном пространстве $V$ называется гомоморфизм $\gf\to gl(V)$ из $\gf$ в алгебру Ли эндоморфизмов векторного пространства $V$, где скобка задана коммутатором.
 
-For an arbitrary representation it is possible to diagonalize the operators corresponding to Cartan generators $H^{i}$ simultaneously by a special choice of basis $\{v_{j}\}$ in $V$:
+В произвольном представлении операторы, соответствующие генераторам подалгебры Картана $H^{i}$ можно одновременно диагонализовать путем специального выбора базиса
+ $\{v_{j}\}$ в $V$:
 \begin{equation}
   \label{eq:3}
   H^{i}\cdot v_{j}=\nu_{j}^{i}v_{j}
 \end{equation}
-Eigenvalues $\nu^{i}_{j}$ of Cartan generators on an element of basis $v_{j}$ determine a weight $\nu_{j}\in \hfg^{*}$ such that $\nu_{j}(H^{i})=\nu_{j}^{i}$. Vector $v\in V$ is called the weight vector of the weight $\lambda$ if $H v=\lambda_{j}(H)v,\; \forall H\in \hf$. The  weight subspace consists of all weight vectors $V_{\lambda}=\{v\in V: H v=\lambda_{j}(H)v,\; \forall H\in \hf\}$. The weight multiplicity $m_{\lambda}=\mathrm{mult}(\lambda)=\mathrm{dim} V_{\lambda}$ is the dimension of the weight subspace.
+Собственные значения $\nu^{i}_{j}$ генераторов Картана на элементе базиса $v_{j}$ определяют вес  $\nu_{j}\in \hfg^{*}$, такой, что $\nu_{j}(H^{i})=\nu_{j}^{i}$. Вектор $v\in V$ называется весовым вектором веса  $\lambda$, если $H v=\lambda_{j}(H)v,\; \forall H\in \hf$. Весовое подпространство состоит из всех весовых векторов $V_{\lambda}=\{v\in V: H v=\lambda_{j}(H)v,\; \forall H\in \hf\}$. Кратностью веса  $m_{\lambda}=\mathrm{mult}(\lambda)=\mathrm{dim} V_{\lambda}$ называется размерность весового подпространства.
 
-The structure of module is determined by the set of weights since the action of generators $E^{\alpha}$ on weight vectors is
+Структура модуля определяется набором весов, так как действие генераторов $E^{\alpha}$ на весовых векторах дается выражением
 \begin{equation}
   \label{eq:5}
   E^{\alpha}\cdot v_{\lambda} \propto v_{\lambda+\alpha}
 \end{equation}
-Module structure can be encoded by the formal character of a module
+Структуру модуля можно записать в виде формального характера
 \begin{equation}
   \label{eq:10}
   \mathrm{ch}V=\sum_{\lambda}m_{\lambda} e^{\lambda}
 \end{equation}
-Character  $\mathrm{ch}V\in \mathcal{E}$ is an element of algebra $\mathcal{E}$ generated by formal exponents of weights.
-A character can be specialized by taking its value on some element $\xi$ of $\hf$.
+Характер  $\mathrm{ch}V\in \mathcal{E}$ -- это элемент алгебры  $\mathcal{E}$, порожденной формальными экспонентами весов. Характер можно специализировать --- взять его значение на некотором элементе $\xi\in\hf$.
 
-Lie algebra is its own module with respect to a special kind of representation. The action that
-defines this representation is called adjoint and is given by the bracket $ad_{X} Y=[X,Y]$. 
-{\it Roots} are weights of the adjoint representation of $\gf$. They encode the commutation relations of algebra in the following way. Denote by $\Delta$ the set of roots. For each $\alpha\in \Delta$ there exist a root $-\alpha\in \Delta$ and the generators $E^{\alpha}, E^{-\alpha}$ such that
+Алгебра Ли является собственным модулем по отношению к специальному представлению, называющемуся присоединенном. Действие генераторов в этом представлении дается скобкой $ad_{X} Y=[X,Y]$. 
+{\it Корни} -- это веса присоединенного представления алгебры $\gf$.  Они определяют коммутационные соотношения в алгебре следующим образом. Обозначим через $\Delta$ множество корней. Для каждого $\alpha\in \Delta$ существует корень  $-\alpha\in \Delta$ и генераторы $E^{\alpha}, E^{-\alpha}$, такие, что
 \begin{align}
   \label{eq:4}
   &  [H^{i},E^{\alpha}]=\alpha^{i}E^{\alpha} \\
@@ -79,7 +72,7 @@ defines this representation is called adjoint and is given by the bracket $ad_{X
   \begin{cases}
     N_{\alpha,\beta} E^{\alpha+\beta}, & \mbox{if}\; \alpha+\beta\in \Delta\\
     \frac{2}{(\alpha,\alpha)} \sum_{i}\alpha^{i} H^{i},&  \mbox{if}\; \alpha=-\beta\\
-    0,&\mbox{otherwise}
+    0,&\mbox{в остальных случаях}
   \end{cases}
 \end{align}
 
