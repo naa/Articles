@@ -259,6 +259,24 @@
         publisher={Russian Academie of Sciences}
       }
 
+***** Fulton, Harris
+      @book{fulton1991representation,
+        title={{Representation theory: a first course}},
+        author={Fulton, W. and Harris, J.},
+        volume={129},
+        isbn={0387974954},
+        year={1991},
+        publisher={Springer Verlag}
+      }
+***** Bourbaki
+      @book{bourbaki2002lie,
+        title={{Lie groups and Lie algebras}},
+        author={Bourbaki, N.},
+        isbn={3540426507},
+        year={2002},
+        publisher={Springer Verlag}
+      }
+      
 ***** Humphreys
       @book{humphreys1997introduction,
         title={{Introduction to Lie algebras and representation theory}},
@@ -430,9 +448,8 @@
             title = "{The Classification of SU(3) Modular Invariants Revisited}",
            eprint = {hep-th/9404185},
              year = 1994,
-        }
             month = apr
-
+        }
         @article{1995JMPGannon,
            author = {Gannon, T.},
             title = "{Towards a classification of su(2)+...+ su(2) modular invariant partition functions}",
@@ -485,6 +502,27 @@
              doi       = "10.1142/S0217732395000879",
              SLACcitation  = "%%CITATION = HEP-TH/9408087;%%"
         }      
+        @article{hwang1993brst,
+          title={The brst formulation of G/H WZNW models},
+          author={Hwang, S. and Rhedin, H.},
+          journal={Nuclear Physics B},
+          volume={406},
+          number={1-2},
+          pages={165--184},
+          year={1993},
+          publisher={Elsevier}
+        }
+        @article{rhedin1996gauged,
+          title={Gauged supersymmetric WZNW model using the BRST approach},
+          author={Rhedin, H.},
+          journal={Physics Letters B},
+          volume={373},
+          number={1-3},
+          pages={76--80},
+          year={1996},
+          publisher={Elsevier}
+        }
+                
         @article{lu1994branching,
           title={{The Branching Rules for Affine Lie Algebras}},
           author={Lu, S.},
@@ -605,6 +643,11 @@
         publisher={Elsevier},
       }
         url={http://www.math.lsa.umich.edu/~jrs/maple.html}
+      @software{coxweyl,
+        title={Coxeter/Weyl packages for Maple},
+        author={Stembridge, J.R.},
+        url={http://www.math.lsa.umich.edu/~jrs/maple.html}
+      }
 
       [[file:~/books/big/science/CompleteBooks/LieGroups/carswc.ps][carswc.ps]]
       @article{stembridge2001computational,
@@ -632,6 +675,17 @@
         year={1994},
         publisher={Springer}
       }
+
+      @inproceedings{casselman1995automata,
+        title={Automata to perform basic calculations in Coxeter groups},
+        author={Casselman, WA},
+        booktitle={Representations of groups: Canadian Mathematical Society annual seminar, June 15-24, 1994, Banff, Alberta, Canada},
+        volume={16},
+        pages={35},
+        year={1995},
+        organization={Canadian Mathematical Society}
+      }
+      
 ***** SimpLie
       [[url:http://code.google.com/p/simplie/][SimpLie is a simple program for Lie algebra.]]
       @software{simplie,
@@ -773,7 +827,27 @@
         author={Kelsey, R. and Clinger, W. and Rees, J. and Abelson, H. and Adams IV, NI and Bartley, DH and Brooks, G. and Dybvig, R.K. and Friedman, D.P. and Halstead, R. and others},
         year={2004}
       }
-          
+***** Mathematica
+      @book{maeder2000computer,
+        title={Computer science with Mathematica},
+        author={Maeder, R.E.},
+        year={2000},
+        publisher={Cambridge University Press}
+      }
+
+      @book{shifrinmathematica,
+        title={Mathematica programming: an advanced introduction},
+        author={Shifrin, L.},
+	url={http://mathprogramming-intro.org/},
+	year={2009}
+      }
+            
+      @unpublished{KallenShortlex,
+        title={Computing ShortLex rewite rules with Mathematica},
+	author={Wilberd van der Kallen},
+	url={http://www.staff.science.uu.nl/~kalle101/ickl/shortlex.html}
+      }
+            
 * My papers
 *** Physics and progress 2008
     [[file:~/doc/conf/2008/PhysicsAndProgress/article.tex]]
@@ -846,6 +920,21 @@
     }
 	year=2010,
 	month=oct
+    }
+
+    @ARTICLE{LyakhovskyPostnova2011,
+        author = {{Kulish}, P.~P. and {Lyakhovsky}, V.~D. and {Postnova}, O.~P.},
+	title = "{Tensor powers for non-simply laced Lie Algebras \$B\_2\$ case}",
+	journal = {ArXiv e-prints},
+	archivePrefix = "arXiv",
+	eprint = {1106.2002},
+	primaryClass = "math.RT",
+	keywords = {Mathematics - Representation Theory, 17B10},
+	year = 2011,
+	month = jun,
+	adsurl = {http://adsabs.harvard.edu/abs/2011arXiv1106.2002K},
+	adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+   }
 
     @conference{2010LyakhovskyNazarovMQFT,
         author={{Lyakhovsky}, V. and {Nazarov}, A.},
@@ -856,7 +945,11 @@
 	url={http://hep.niif.spbu.ru/conf/mktp2010/}
     }
 
-
+    @software{affinemanual,
+      title={Affine.m software manual},
+      author={Anton Nazarov},
+      url={http://naa.github.com/Affine/tree/master/doc/manual.pdf}
+      }
 
 * Some citations for the article on branching
     @article{fauser2006new,
@@ -927,6 +1020,34 @@
   isbn={0306109905},
   year={1986},
   publisher={Consultants bureau}
+}
+@article{kazhdan1993tensor1,
+  title={Tensor structures arising from affine Lie algebras. I},
+  author={Kazhdan, D. and Lusztig, G.},
+  journal={Journal of the American Mathematical Society},
+  volume={6},
+  number={4},
+  pages={905--947},
+  year={1993},
+  publisher={JSTOR}
+}
+
+@article{kazhdan1993tensor2,
+  title={Tensor structures arising from affine Lie algebras. II},
+  author={Kazhdan, D. and Lusztig, G.},
+  journal={AMERICAN MATHEMATICAL SOCIETY},
+  volume={6},
+  number={4},
+  year={1993}
+}
+
+@article{kazhdan1994tensor3,
+  title={Tensor structures arising from affine Lie algebras. III},
+  author={Kazhdan, D. and Lusztig, G.},
+  journal={AMERICAN MATHEMATICAL SOCIETY},
+  volume={7},
+  number={2},
+  year={1994}
 }
 
 
