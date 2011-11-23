@@ -1,5 +1,30 @@
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{2010arXiv1007.0318L}
+V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
+  nonmaximal embeddings},''
+  \href{http://dx.doi.org/10.1088/1751-8113/44/7/075205}{{\em Journal of
+  Physics A: Mathematical and Theoretical} {\bf 44} (2011) no.~7, 075205},
+  \href{http://arxiv.org/abs/1007.0318}{{\tt arXiv:1007.0318 [math.RT]}}.
+
+\bibitem{2010LyakhovskyNazarovTMF}
+V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive properties of branching and
+  Weyl-Verma formulas},''.
+
+\bibitem{Polyakov:1970xd}
+A.~M. Polyakov, ``{Conformal symmetry of critical fluctuations},''
+{\em JETP Lett.} {\bf 12} (1970)  381--383.
+%%CITATION = JTPLA,12,381;%%.
+
+\bibitem{belavin1984ics}
+A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, ``{Infinite conformal symmetry
+  in two-dimensional quantum field theory},'' {\em Nuclear Physics} {\bf 241}
+  (1984)  333--380.
+
+\bibitem{moore1989taming}
+G.~Moore and N.~Seiberg, ``Taming the conformal zoo,'' {\em Physics Letters B}
+  {\bf 220} (1989) no.~3, 422--430.
+
 \bibitem{moore1989classical}
 G.~Moore and N.~Seiberg, ``Classical and quantum conformal field theory,'' {\em
   Communications in Mathematical Physics} {\bf 123} (1989) no.~2, 177--254.
@@ -14,11 +39,6 @@ M.~Schottenloher, {\em {A mathematical introduction to conformal field
   theory}}.
 \newblock Springer Verlag, 2008.
 
-\bibitem{fuks1986cohomology}
-D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
-  Lie algebras}}.
-\newblock Consultants bureau, 1986.
-
 \bibitem{humphreys1997introduction}
 J.~Humphreys, {\em {Introduction to Lie algebras and representation theory}}.
 \newblock Springer, 1997.
@@ -26,6 +46,11 @@ J.~Humphreys, {\em {Introduction to Lie algebras and representation theory}}.
 \bibitem{humphreys1992reflection}
 J.~Humphreys, {\em {Reflection groups and Coxeter groups}}.
 \newblock Cambridge Univ Pr, 1992.
+
+\bibitem{fuks1986cohomology}
+D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
+  Lie algebras}}.
+\newblock Consultants bureau, 1986.
 
 \bibitem{kac1990idl}
 V.~Kac, {\em {Infinite dimensional Lie algebras}}.
@@ -80,13 +105,6 @@ P.~Kulish and V.~Lyakhovsky, ``{String Functions for Affine Lie Algebras
   Integrable Modules},'' {\em Symmetry, Integrability and Geometry: Methods and
   Applications} {\bf 4}  , \href{http://arxiv.org/abs/0812.2381}{{\tt
   arXiv:0812.2381 [math.RT]}}.
-
-\bibitem{2010arXiv1007.0318L}
-V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
-  nonmaximal embeddings},''
-  \href{http://dx.doi.org/10.1088/1751-8113/44/7/075205}{{\em Journal of
-  Physics A: Mathematical and Theoretical} {\bf 44} (2011) no.~7, 075205},
-  \href{http://arxiv.org/abs/1007.0318}{{\tt arXiv:1007.0318 [math.RT]}}.
 
 \bibitem{2011arXiv1102.1702L}
 V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive properties of branching and BGG
@@ -245,6 +263,11 @@ J.~Lepowsky, ``{A generalization of the Bernstein-Gelfand-Gelfand
 S.~Derkachov and A.~Manashov, ``{Noncompact sl(N) spin chains: Alternating sum
   representation for finite dimensional transfer matrices},''
   \href{http://arxiv.org/abs/1008.4734}{{\tt arXiv:1008.4734}}.
+
+\bibitem{derk09}
+S.~Derkachov and A.~Manashov, ``Factorization of-matrix and baxter-operators
+  for generic sl (n) spin chains,'' {\em Journal of Physics A: Mathematical and
+  Theoretical} {\bf 42} (2009)  075204.
 
 \bibitem{KostantHeckman1982}
 G.~Heckman {\em Invent. Math.} {\bf 67} (1982)  333--356.
