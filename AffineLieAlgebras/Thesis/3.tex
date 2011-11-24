@@ -1,802 +1,669 @@
-\chapter{Конформная теория поля}
-\label{cha:cft}
 
-Подробное изложение \cite{difrancesco1997cft}. 
-
-\section{Общие свойства}
-\label{sec:cft-general}
-Алгебра Вирасоро. Представления алгебры Вирасоро. Модулярная инвариантность.
-
-\section{Модели Весса-Зумино-Новикова-Виттена}
-\label{sec:wzw}
-Связь с аффинными алгебрами Ли.
-Конформные вложения и недиагональные модулярные инварианты. 
+\chapter{Коэффициенты ветвления и обобщенная резольвента Бернштейна-Гельфанда-Гельфанда}
+\label{cha:BGG}
 
 
+ \section{Обозначения}
+ 
+ \label{sec:notation}
+ Пусть $\frak{g}$ и $\frak{a}$ -- (аффинные) алгебры Ли, и существует вложение  $\frak{a}\hookrightarrow \frak{g}$ такое, что  $\frak{a}$ -- редуктивная подалгебра в $\frak{g}$ с согласованным корневым пространством: $\frak{%
+ h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g}}^{\ast }$. Мы используем следующие обозначения:
+ 
+ $\frak{g=n}^{-}+\frak{h}+\frak{n}^{+}$ --- разложение Картана;
+ 
+ $r$ , $\left( r_{\frak{a}}\right) $ --- ранг алгебра $\frak{g}$ $%
+ \left( \mathrm{\text{соотв., }\frak{a}}\right) $ ;
+ 
+ $\Delta $ $\left( \Delta _{\frak{a}}\right) $--- корневая система; $\Delta
+ ^{+} $ $\left( \mathrm{\text{соотв., }\Delta _{\frak{a}}^{+}}\right) $--- набор положительных корней (алгебр $\frak{g}$ и $\frak{a}$ соответственно);
+ 
+ $\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
+ \alpha \right) \right) $ --- кратность корня $\alpha$ в $%
+ \Delta $ (соотв., в $\left( \Delta _{\frak{a}}\right) $);
+ 
+ $S\quad \left( S_{\frak{a}}\right) $ --- множество простых корней (для 
+ $\gf$ и $\af$ соответственно);
+ 
+ $\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ ---  $%
+ i$-й (соотв., $j$-й) простой корень алгебры $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a%
+ }}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+ 
+ 
+ $\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
+ }\right) $-- простой ко-корень для $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a}%
+ }\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
+ 
+ $W$ , $\left( W_{\frak{a}}\right) $--- группа Вейля;
+ 
+ $C$ , $\left( C_{\frak{a}}\right) $--- фундаментальная камера Вейля;
+ 
+ $\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- замыкание фундаментальной камеры Вейля;
+ 
+ $\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
+ 
+ $\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- вектор Вейля;
+ 
+ $L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- интегрируемый модуль  $\frak{g}$ со старшим весом $\mu $\ ; (соотв., интегрируемый $\af$-модуль старшего веса $\nu $);
+ 
+ $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
+ весовая диаграмма модуля $L^{\mu }$ (соотв., ${}L_{\frak{a}}^{\nu }$ );
+ 
+ $P$ (соотв., $P_{\frak{a}} $) \ --- весовая решетка;
+ 
+ $P^{+}$ (соотв., $P_{\frak{a}}^{+} $) \ --- решетка доминантных весов;
+ 
+ $m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\zeta }^{\left( \nu \right)
+ }\right) $ --- кратность веса $\xi \in P$ \ $\left( \mathrm{\text{соотв., }\in P_{\frak{a}}}\right) $ в $L^{\mu }$, (соотв., в $\zeta \in
+ L_{\frak{a}}^{\nu } $);
+ 
+ $ch\left( L^{\mu }\right) $ (соотв., $\mathrm{ch}\left( L_{\frak{a}}^{\nu
+ }\right) $)--- формальный характер $L^{\mu }$ (соответственно, $L_{\frak{a}}^{\nu
+ } $);
+ 
+ $ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
+ +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
+ \mathrm{{mult}\left( \alpha \right) }}}$ --- формула Вейля-Каца;
+ 
+ $R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
+ mult}\left( \alpha \right) }}\quad $ (соотв., $R_{\frak{a}}:=\prod_{\alpha \in
+ \Delta _{\frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}%
+ }\left( \alpha \right) } $)--- знаменатель Вейля.
+ 
 
-%\usepackage{verbatim} 
-\newenvironment{comment}
-{\par\noindent{\bf Для заинтересованных читателей}\\}
-{\\\setlength{10cm}\\\hfill$\scriptstyle\blacksquare$\par}
-
-
-\begin{abstract}
-Примерный текст доклада на семинаре кафедры ФВЭиЭЧ по работе ``Recursive algorithms, branching coefficients and applications''.
-\end{abstract}
-
-\section{Постановка задачи}
-\label{sec:task}
-
-Здравствуйте!
-Сегодня я хочу рассказать о работе ``Рекуррентные алгоритмы, коэффициенты ветвления аффинных алгебр
-Ли и приложения''. В этой работе мы решали следующую задачу.
-
-Даны две аффинные алгебры Ли $\mathfrak{a}\subset \mathfrak{g}$. Аффинные алгебры Ли --- это особый
-класс бесконечномерных алгебр, которые строятся из конечномерных (полу)простых алгебр Ли, как
-центральные расширения алгебр петель. Более подробное определение будет дано позже. Неприводимое
-представление $L^{(\mu)}_{\mathfrak{g}}$ аффинной алгебры $\mathfrak{g}$ со старшим весом $\mu$
-может быть разложено на представления подалгебры $\mathfrak{a}$. Наша задача --- придумать
-практический алгоритм вычисления коэффициентов этого разложения. Конечно же эта задача уже решалась,
-например, существует способ решения ``в лоб'', требующий построения всех представлений и различные способы,
-которые работают для частных случаев, например, многое упрощается в физически интересном случае
-конформных вложений. Мы предлагаем общий метод, но иллюстрировать его будем как-раз физическими
-примерами конформных вложений.
-
-Я начну с физической мотивации этой задачи в двумерной конформной теории поля, напомню некоторые
-факты из теории представлений аффинных алгебр Ли, кратко опишу предложенное нами решение проблемы и
-расскажу про физические примеры в нашей статье.
-
-\section{Физическая мотивация}
-\label{sec:physics}
-
-
-Теперь я перейду к краткому объяснению метода и примерам вычислений.
-
-\section{Рекуррентные соотношения для коэффициентов ветвления}
-\label{sec:branching}
-
-Ранее для вычисления коэффициентов ветвления был предложен способ, основанный на преобразовании
-формулы Вейля-Каца для характеров представлений аффинных алгебр Ли в рекуррентное соотношение для
-коэффициентов ветвления. Однако исходный алгоритм не работал для не максимальных вложений. В данной
-работе была решена данная проблема и предложено обобщение рекуррентных соотношений. 
-
-Используя формулу Вейля-Каца мы выделяем два набора элементов в весовом пространстве. Первый набор $\Gamma$
-называется веером и описывает вложение подалгебры $\mathfrak{a}$ в алгебру $\mathfrak{g}$. Веер
-универсален, в том смысле, что он может быть использован для разложения любого из представлений.
-Другой набор элементов весового пространства $\Psi ^{\left( \mu \right) }$ называется набором
-аномальных весов. Он описывает раскладываемое представление без явного его построения. 
-
-После этого процесс вычисления коэффициентов ветвления можно реализовать при помощи следующей
-рекуррентной формулы:
-\begin{equation}
-  \label{eq:1}
-  \begin{array}{c}
-      k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; {\rm dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+ \right.\\
-\left.
-+\sum_{\gamma \in
-\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
-+\gamma }^{\left( \mu \right) }\right)
-
-  \end{array}
-\end{equation}
-Здесь $\mathfrak{a}_{\bot}$ --- это подалгебра, ``натянутая'' на корни $\mathfrak{g}$, ортогональные
-к корневой системе подалгебры  $\mathfrak{a}$, $W_{\bot}$ --- соответствующая этим корням группа Вейля,
-$\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ --- веер --- набор весов в разложении знаменателя $$\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}
-(1-e^{-\pi_{\mathfrak{a}}(\alpha)})^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\pi_{\mathfrak{a}}(\alpha))}$$, а $s(\gamma)$ ---
-коэффициент при  $e^{\gamma}$ в этом разложении.
-
-Набор аномальных весов $\Psi^{(\mu)}$ дает член с $\delta$-символом.
-
-Это рекуррентное соотношение позволяет нам сформулировать следующий алгоритм вычисления
-коэффициентов ветвления, который осуществляется без явного построения исходного представления или
-представлений, входящих в разложение.
-\begin{enumerate}
-\item Построить наборы положительных корней $\Delta^{+}$ и $\Delta_{\mathfrak{a}}^{+}$.
-\item Выбрать те положительные корни $\alpha\in \Delta^{+}$, которые ортогональны корневому
-  подпространству  $\mathfrak{a}$ и собрать их в набор $\Delta^{+}_{\bot}$.
-\item Построить множество весов $\Gamma$, которое мы называем ``веером''.
-\item Найти множество $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$
-  аномальных весов представления $L^{(\mu)}_{\mathfrak{g}}$.
-\item Выбрать в нем веса $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in
-    \bar{C}_{\mathfrak{a}_{\bot}} \right\}$. Это можно легко сделать, так как у нас есть набор
-  $\Delta^{+}_{\bot}$ и мы можем проверить, лежит ли вес $\pi_{\mathfrak{a}_{\bot}}\lambda$ в
-  главной камере Вейля алгебры $\mathfrak{a}_{\bot}$. Для этого все скалярные произведения этого
-  веса $\lambda$ с корнями из  $\Delta^{+}_{\bot}$ должны быть неотрицательны.
-\item Далее для весов $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in
-  \bar{C}_{\mathfrak{a}_{\bot}}$ мы вычисляем размерность соответствующих представлений
-  $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$
-  при помощи формулы Вейля и набора $\Delta^{+}_{\bot}$.
-\item Далее рекуррентно вычисляются аномальные коэффициенты ветвления, а внутри главной камеры Вейля
-  алгебры $\mathfrak{a}$ аномальные коэффициенты совпадают с настоящими коэффициентами ветвления.
-\end{enumerate}
-
-Сейчас я поясню всю процедуру на примере редукции представления простой алгебры $B_2$ ($so(5)$) на
-подалгебру $A_1$ ($so(3)$), а потом расскажу про аффинные алгебры Ли.
-
-\subsection{Примеры}
-\label{sec:examples}
-
-Я начну с примера вычисления в случае конечномерных простых алгебр Ли, так как его легко нарисовать.
-
-Рассмотрим регулярное вложение  $A_1$ в $B_2$. Вот на рисунке корневая системы алгебры $B_2=so(5)$.
-Корень  $\beta$ вложенной алгебры $A_1$ равен $\alpha_1+2\alpha_2$.
-
-Функция $s(\gamma)$ и веер $\Gamma$ строятся исходя из корневых систем $\mathfrak{g}, \mathfrak{a}$
-$\frac{\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}_{\mathfrak{g}}\setminus
-      \Delta^{+}_{\mathfrak{a}}} \left(1-e^{-\alpha}\right) \right)}{\prod_{\beta\in
-    \Delta^{+}_{\mathfrak{a}}} \left(1-e^{-\beta}\right) }$ и получается
-\begin{equation}
-  \label{eq:22}
-  (1,2),\; (2,-1)
-\end{equation}
-Вторая компонента - значение $s(\gamma)$.
-
-Опишем редукцию первого фундаментального представления $B_2$. Старший вес изображен на рисунке.
-\begin{figure}[ph]
-  \noindent\centering{
-    \includegraphics[width=90mm]{B2_A1}
-  }
-  \caption{Регулярное вложение $A_1$ в $B_2$}
-  \label{fig:B2_A1}
-\end{figure}
-Вот набор аномальных весов $\omega(\mu+\rho)-\rho,\; \omega\in W$ с соответствующими четностями
-отражений $\epsilon(\omega)$.
-Теперь мы факторизуем группу Вейля $W$ по подгруппе $W_{\bot}=\left\{\omega_1\right\}$. Получаем
-следующий набор весов и размерностей представлений  $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$:
-\begin{figure}[h!tb]
-  \noindent\centering{
-    \includegraphics[width=90mm]{B2_A1_2}
-  }
-  \caption{Аномальные веса и соответствующие $\mathfrak{a}_{\bot}=A_1$-модули}
-  \label{fig:B2_A1_2}
-\end{figure}
-
-Затем мы проектируем эти веса и размерности на корневое подпространство подалгебры
-$\mathfrak{a}=A_1$ и получаем следующие аномальные веса и их кратности:
-\begin{equation}
-  \label{eq:25}
-  (1,2),\; (0,-3),\; (-4,3),\; (-5,-2)
-\end{equation}
-
-Аномальный коэффициент ветвления  $k^{(1,0)}_{1}=2$, для коэффициента $k^{(1,0)}_{0}$ из
-рекуррентного соотношения получаем
-\begin{equation}
-  \label{eq:23}
-  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1
-\end{equation}
-
-В работе рассмотрено большое число примеров вложений аффинных алгебр Ли. На самом деле мы написали
-программу, которая может строить такие примеры автоматически для алгебр Ли не слишком большого
-ранга.
-
-Я сейчас покажу результаты применения нашего алгоритма для одного из примеров конформных вложений.
-
-Рассмотрим такое вложение $\mathfrak{a}\subset \mathfrak{g}$, где
-$\mathfrak{a}=\hat{A_1}\oplus \hat{A_1}$, а $\mathfrak{g}= \hat{A_3}$. Это
-вложение является аффинным расширением специального вложения конечномерных алгебр Ли $A_1\oplus
-A_1\subset A3$. ($su(2)\oplus su(2)\subset su(4)$).
-\begin{comment}
- Это специальное вложение строится следующим образом: берем четырехмерное
-представление $A_1\oplus A_1$ со старшим весом $(1,1)$. Вот веса этого представления
-\ref{fig:A_1+A_1_to_A3}, их координаты в базисе фундаментальных весов: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
-
-\begin{figure}[h]
-  \begin{multicols}{2}
-    \hfill
-    \includegraphics[width=50mm]{A_1+A_1_to_A3}
-    \hfill
-    \caption{Представление для специального вложения $A_1\oplus A_1\subset A3$}
-    \label{fig:A_1+A_1_to_A3}
-    \hfill
-    \includegraphics[width=50mm]{A1+A1-A3}
-    \hfill
-    \caption{Вложенные корни $A_1\oplus A_1\subset A3$}
-    \label{fig:A1+A1-A3}
-  \end{multicols}
-\end{figure}
-
-Тогда матричные элементы представления генераторов подалгебры Картана $b_1,b_2$ в базисе Вейля
-даются выражениями
-\begin{equation}
-  d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}{(\alpha_i,\alpha_i)}\right),
-\end{equation}
-так что $d(b_1)=\mathrm{diag}(1,-1,1,-1),\;
-  d(b_2)=\mathrm{diag}(1,1,-1,-1).$
-\end{comment}
-Вложенные корни $\alpha_1,\alpha_2$ подалгебры $A_1\oplus A_1$
-выражаются через корни $\tilde{\alpha}_i$ алгебры  $A_3$
-\begin{equation}
-  \label{eq:37}
-  \begin{array}{l}
-     \alpha_1=\frac{1}{2}(\tilde{\alpha}_1+\tilde{\alpha}_3)\\
-     \alpha_2=\frac{1}{2}(\tilde{\alpha}_1+2\tilde{\alpha}_2+\tilde{\alpha}_3)
-  \end{array}
-\end{equation}
-\begin{comment}
-Они изображены на рисунке \ref{fig:A1+A1-A3}.
-\end{comment}
-
-Вложение имеет индексы  $(2,2)$ и является конформным, так как $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
-
-Для построения модулярно-инвариантной статсуммы нам нужно знать редукцию фундаментальных
-представлений $\widehat{su(4)}$. Фундаментальные веса имеют следующие координаты в ортогональном базисе
-\begin{equation}
-  \begin{array}{lll}
-     \omega_0 & = & (0,0,0,0;1;0)\\
-     \omega_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0)\\
-     \omega_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0)\\
-     \omega_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0) \\
-  \end{array}
-\end{equation}
+\section{Конечномерные алгебры Ли}
+\label{sec:finite-dimensional}
+Основные определения: корни, веса, кратности.
 
 
-Множества положительных корней  $\Delta^{+}$ и $\Delta_{\mathfrak{a}}^{+}$:
-\begin{equation}
-  \label{eq:38}
-  \begin{array}{lll}
-    \Delta^{+} &=&\left\{\co{\Delta}^{+}=\{\tilde{\alpha}_1, \tilde{\alpha}_2, \tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2, \tilde{\alpha}_2+\tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2+\tilde{\alpha}_3\};\right.\\
-    &\; & \quad\left.\co{\Delta}+n\delta;\;     +n\delta\;\mbox{с кратностью}\; 3;\; n=1,2,\dots,\right\}\\
-    \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1-n\delta,\pm
-    \alpha_2-n\delta;\; -n\delta\; \mbox{с кратностью} \; 2;\; n=1,2,\dots\}\\
-  \end{array}
-\end{equation}
+\section{Теория представлений аффинных алгебр Ли}
+\label{sec:representation-theory}
 
-Набор $\Delta^{+}_{\bot}$ пуст.
-Веер  $\Gamma _{\frak{a}\subset \frak{g}}$ показан на рисунке \ref{fig:A1+A1-A3_fan}. Конечные координаты
-даны в базисе фундаментальных весов $A_1 \oplus A_1$. Элемент $\gamma$ обозначен крестом, если
-$s(\gamma)=1$ и кругом, если $s(\gamma)=-1$.
-\begin{figure}[h!tb]
-  \includegraphics[width=150mm]{A1+A1-A3_fan}
-  \caption{Веер для специального вложения $\hat A_1\oplus\hat A_1\subset\hat A_3$}
-  \label{fig:A1+A1-A3_fan}
-\end{figure}
+\subsection{Алгебра петель и центральное расширение}
+\label{sec:loop-algebra-central-extension}
 
-Мы ограничимся вычислениями до пятого грейда.
-\begin{figure}[h!tb]
-  \includegraphics[width=170mm]{A1+A1-A3_anom}
-  \caption{Спроектированные аномальные веса $L^{\omega_2}_{A_3}$}
-  \label{fig:A1+A1-A3_anom}
-\end{figure}
+Определение аффинных алгебр. Корни, веса, кратности. Категория О.
 
-Множество аномальных весов  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in
-  W\right\}$ представления алгебры $\hat{A}_3$ состоит из 192 элементов, их проекции
-$\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ показаны на рисунке  \ref{fig:A1+A1-A3_anom}
-для $\mu=\omega_2=(0,1,0;1;0)$.
-
-Аналогичные картинки для $\omega_0, \omega_1,\omega_3$ я не показываю.
-
-Аномальные коэффициенты ветвления для представления  $L^{(\omega_2)}$ вычислены при помощи
-рекуррентных соотношений и показаны на рисунке \ref{fig:A1+A1-A3_branching}. 
-\begin{figure}[h!tb]
-  \hspace*{-2cm}\includegraphics[width=180mm]{A1+A1-A3_branching}
-  \caption{Аномальные коэффициенты ветвления для представления $L^{(0,1,0;1;0)}_{A_3}$}
-  \label{fig:A1+A1-A3_branching}
-\end{figure}
-
-Получаются следующие правила ветвления:
- \begin{equation}
-   \label{eq:39}
-   \begin{array}{ll}
-     L^{(0,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)} \\
-     L^{(1,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\
-     L^{(0,1,0;1;0]}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & \left( L_{\hat{A_1}}^{(2;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)}\right) \oplus \left( L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(2;2;0)}\right) \\
-     L^{(0,0,1;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\     
-   \end{array}
- \end{equation}
-
-В результате мы получаем модулярно-инвариантную статсумму для WZW-модели с киральной алгеброй $\hat{A}_1\oplus \hat{A}_1$.
-\begin{multline}
-  \label{eq:40}
-  Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
-  \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
-\end{multline}
-
-\section{Заключение. Обсуждение перспектив.}
-\label{sec:conlusion}
-
-Функции ветвления играют важную роль в coset-моделях. Эти модели строятся путем факторизации
-WZW-модели с алгеброй $\mathfrak{g}$ по отношению к модели с подалгеброй $\mathfrak{a}$. Тут функции
-ветвления фактически описывают состояния в системе.
-
-Недавно мы заметили, что струнные функции, которые описывают представления, функции ветвления,
-описывающие редукцию представлений и функции слияния, которые описывают разложение тензорных
-произведений представлений на неприводимые, допускают построение дуальных систем функций. Эти
-дуальные функции могут быть построены просто из анализа соответствующих групп и камер Вейля. 
-Задача явного построения струнных функций или функций ветвления тогда сведется к обращению матрицы.
-Явный вид функций ветвления полезен при изучении coset-моделей. Кроме того, многие
-известные результаты могут быть перенесены на дуальные функции, например, результаты Каца о модулярных свойствах
-струнных функций и функций ветвления.
-В настоящее время мы начали исследовать эти системы дуальных функций. 
-
-Среди других возможных приложений полученных методов можно отметить также приложения в интегрируемых
-цепочках, а также в приложения дуальных функций теории модулярных форм. 
+\subsection{Представления аффинных алгебр Ли}
+\label{sec:affine-lie-algebra-representations}
 
 
 
 
 
-\section{Coset-модели}
-\label{sec:coset-models}
-Ветвления. Функции ветвления и статсуммы. 
-Калибровочные WZW-модели. 
-
-\section{SLE}
-\label{sec:sle}
-SLE на WZW-моделях. Граничные условия. Парафермионы. SLE на coset-моделях.
+\section{БГГ-резольвента}
+\label{sec:bgg}
+Категория О.
+Резольвента Бернштейна-Гельфанда-Гельфанда для представлений аффинных алгебр Ли. Параболические модули и их связь с подалгебрами и ветвлением.
 
 
 \begin{abstract}
-  Schramm-Loewner evolution appears naturally as the scaling limit of interfaces in lattice models at critical point. Critical behavior of these models can be described by minimal models of conformal field theory.
-
-  We generalize Schramm-Loewner evolution with additional Brownian motion on Lie group to the case of direct product of two groups. We then study connection between SLE description of critical behavior with coset models of conformal field theory. In order to be consistent such construction should give minimal models for certain choice of groups. 
-
-%%    SLE with additional Brownian motion on Lie group $G$ was proposed as generalization to WZNW models of CFT. Martingale property of SLE observables is related to Virasoro null vector conditions for CFT fields and KZ-equations for correlation functions. 
-%%  
-%%    Minimal models can be obtained from WZNW models by coset construction. Then it is natural to study SLE with additional Brownian motion on coset space $G/H$. We discuss algebraic properties of coset fields and correlation functions which correspond to SLE observables. 
+Рекуррентные соотношения для коэффициентов ветвления основываются на определенном разложении сингулярного элемента. Мы показываем, что такое разложение может использоваться для построения параболических модулей Верма и получения обобщенных формул Вейля-Верма для характеров. Также мы демонстрируем, что коэффициенты ветвления определяют обобщенную резольвенту Бернштейна-Гельфанда-Гельфанда. 
 \end{abstract}
 
-\section{Introduction}
-Schramm-Loewner evolution, introduced by Oded Schramm in papers \cite{schramm2000scaling} is 
+\subsection{Введение}
 
-The connection of SLE with CFT was studied in papers \cite{bauer2004conformal,bauer2004cfts,bauer2003sle,bauer2002sle}.
+\label{sec:introduction}
+Свойства ветвления (аффинных) алгебр Ли важны для приложений в квантовой теории поля (смотри, например, модели конформной теории поля \cite{difrancesco1997cft},\cite{coquereaux2008conformal}). В данной работе мы показываем, что ветвление для произвольной редуктивной подалгебры связано с БГГ резольвентой и демонстрирует свойства резольвенты в категории $\mathcal{O}^{p}$ \cite{lepowsky1977generalization} (параболического обобщения категории $\mathcal{O}$ \cite{bernstein1976category}).
 
-Reviews \cite{rohde2005basic}, \cite{bauer20062d}, \cite{Cardy:2005kh}. 
+Резольвента для неприводимых модулей в терминах бесконечномерных модулей важна для теории интегрируемых спиновых цепочек \cite{derk1008}. В подходе  $\mathcal{Q}$-оператора Бакстера \cite{derk09} общие трансфер-матрицы, соответствующие (обобщенным) модулям Верма, факторизуются в произведение операторов Бакстера. Резольвента позволяет вычислить трансфер-матрицы для конечномерных вспомогательных пространств.
 
-SLE and conformal field theories with additional symmetries \cite{alekseev2010sle}, \cite{santachiara2008sle,picco2008numerical}, \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}.
+Чтобы продемонстрировать связь БГГ резольвенты с ветвлением мы используем рекурсивный подход, представленный в работе \cite
+{2010arXiv1007.0318L} (аналогичный подход для максимальных вложений использовался в работе \cite{ilyin812pbc}). Мы рассматриваем подалгебру $\af \hookrightarrow \gf$ вместе с $\afb$ -- ``ортогональным партнером'' $\af$ по отношению к форме Киллинга, а также подалгебру $\widetilde{\afb}:=\afb\oplus \frak{h}_{\perp }$, где $\frak{h}=\frak{\frak{h}_{\af}}\oplus
+\frak{h}_{\afb}\oplus \frak{h}_{\perp }$. Для любой редуктивной подалгебры $\af$ алгебра $\afb\hookrightarrow \gf$ регулярна и редуктивна. Для интегрируемого модуля старшего веса $%
+L^{\left(\mu \right) }$ и ортогональной подалгебры  $\af_{\bot }$ мы рассматриваем сингулярный элемент $\Psi ^{\left( \mu \right) }$ (числитель в формуле Вейля для характеров $ch\left( L^{\mu }\right) =\frac{\Psi ^{\left(
+\mu \right) }}{\Psi ^{\left( 0\right) }}$, см., например,  \cite
+{humphreys1997introduction}) и знаменатель Вейля $\Psi _{\af_{\bot
+  }}^{\left( 0\right) }$ для ортогонального партнера. В работе показано, что элемент  $\Psi _{\gf%
+}^{\left( \mu \right) }$ может быть разложен в комбинацию числителей Вейля $\Psi _{\af_{\bot }}^{\left( \nu \right) }$, где $\nu \in P_{%
+\mathfrak{a}_{\bot}}^{+}$. Это разложение дает возможность построить множество модулей старшего веса $L_{\afb}%
+^{\mu _{\afb}}$. В том случае, если вложение\ $\af%
+_{\bot }\hookrightarrow \gf$ \ удовлетворяет ``стандартным параболическим'' условиям, эти модули порождают параболические модули Верма $M_{\left(
+\afb \hookrightarrow \gf\right) }^{\mu _{%
+\afb}}$, так что исходный характер $ch\left(
+L^{\mu }\right) $ в итоге раскладывается в знакопеременную сумму таких модулей. С другой стороны, если параболическое условие нарушено, конструкция сохраняется и порождает разложение по отношению к набору обобщенных модулей Верма  $M_{\left( \widetilde{\frak{b}_{\perp }},\gf\right) }^{\mu _{%
+\widetilde{\afb}}}$, где $%
+\widetilde{\frak{b}_{\perp }}$ уже не является подалгеброй в $\gf$, а оказывается сжатием $\widetilde{\afb}$.
 
-\subsection{Schramm-Loewner evolution}
-To remind of Schramm-Loewner evolution we first describe simple example.
+Некоторые общие свойства предложенного разложения формулируются в терминах  формального элемента $\Gamma _{\af\rightarrow \gf}$, называемого ``веером вложения''. Использование этого инструмента позволило сформулировать простой и явный алгоритм для вычисления правил ветвления, подходящий для произвольной (максимальной или не максимальной) подалгебры в аффинной алгебре Ли \cite{2010arXiv1007.0318L}.
 
-Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fig:sle}). We impose following boundary condition: all spins are down on one half of the boundary and all spins are up on another half. Then in any configuration we get an interface delimiting two clusters and connecting zero and infinity. 
+Возможные обобщения полученных результатов обсуждаются в Разделе \ref{sec:conclusions}.
 
-\begin{figure}[h]
-  \centering{
-    \includegraphics[height=25mm]{explore}
-    \caption{SLE -- continuous limit of interfaces}}
-  \label{fig:sle}
-\end{figure}
 
-Next we consider continuous limit of lattice model. Interface in random configuration of the model tends to random curve. We can think of this curve as of trace of stochastic process which satisfy some stochastic equation. 
+\subsection{Ортогональная подалгебра и сингулярные элементы}
 
-In papers [Smirnov, Schramm ... ] it was shown that this equation is
+\label{sec:recurr-form-branch}
+
+В этом разделе мы покажем, как рекуррентный подход к проблеме ветвления естественным образом приводит к представлению формального характера $\frak{g}$-модуля в виде комбинации характеров, соответствующих параболическим (обобщенным) модулям Верма. Рассмотрим редуктивную алгебру Ли  $\frak{g}$ и ее редуктивную подалгебру $\frak{a}\subset \frak{g}$.
+Пусть  $L^{\mu} $ -- интегрируемый модуль старшего веса алгебры  $\frak{g}$, $\mu \in P^{+}$.  Будем считать  $L^{\mu}$ вполне приводимым по отношению к подалгебре $\frak{a}$,
 \begin{equation*}
-  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} \quad \text{or} \quad       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}
+L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
+}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }.
 \end{equation*}
-The stochastic process which satisfy this equation is called     {\it Schramm-Loewner evolution} on the upper half-plane $\mathbb{H}$.
-
-Here $g_{t}(z)$ is a conformal map from $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$ to $\mathbb{H}$ (see Fig. \ref{fig:sle2}).
-\begin{figure}[h]
-  \centering{
-    \includegraphics[width=50mm]{loewner}
-    \caption{Conformal map}}
-  \label{fig:sle2}
-\end{figure}
-
-Schramm-Loewner evolution provides conformally-invariant probability measure on trajectories $\gamma_{t}$ in $\mathbb{H}$.
-
-\subsection{Correspondence between SLE and minimal models of CFT}
-
-Now we can look at the observables in the presence of SLE trace. Expectation value of lattice observable on upper half-plane can be calculated as the sum of expectation values of this observable in presence of SLE trace up to some time $t$ multiplied by the probability of this trajectory. 
-
-Consider lattice observable $\mathcal{O}$, then it expectation value can be calculated as
-\begin{equation*}
-  \prec \mathcal{O} \succ_{\mathbb{H}}=\mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=\sum_{\gamma_{t}} P\left[C_{\gamma_{t}}\right] \prec \mathcal{O} \succ_{\gamma_{t}}
-\end{equation*}
-Since lattice observable  $\prec \mathcal{O} \succ_{\mathbb{H}}$ does not depend on $t$, hence $\prec\mathcal{O}\succ_{\gamma_{t}}$ is a martingale.
-
-In continuous limit lattice observable tends to CFT correlation function. Since we consider the theory with the boundary, CFT correlation function has following form:
-\begin{equation*}
-  \prec \mathcal{O} \succ_{\mathbb{H}_{t}}\to \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
-  \frac{\left< \mathcal{O}(\{z_{i}\})\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}=
-  \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
-\end{equation*}
-We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
-
+Это разложение может быть записано в терминах формальных характеров с использованием оператора проекции  $\pi _{\frak{a}}$ (на весовое пространство $\frak{h_{a}}^{\ast }$):
 \begin{equation}
-  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
-  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
-  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
-  \label{eq:1}
+\pi _{\frak{a}}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\frak{a}%
+}^{+}}b_{\nu }^{(\mu )}ch\left( L_{\frak{a}}^{\nu }\right) .
+\label{branching1}
+\end{equation}
+Для модуля  $L^{\mu }$ существует БГГ резольвента (см. \cite
+{bernstein1976category,bernstein1975differential,bernstein1971structure} и
+\cite{humphreys2008representations}). Все члены фильтрующей последовательности представляются суммами модулей Верма со старшими весами $\nu$, сильно связанными с $\mu$:
+\begin{equation*}
+\left\{ \nu \right\} =\left\{ w\left( \mu +\rho \right) -\rho |w\in
+W\right\} .
+\end{equation*}
+
+\subsubsection{Ортогональная подалгебра}
+
+Пусть  $\frak{h}_{\frak{a}}$ -- подалгебра Картана в  $\mathfrak{g}$. Для  $\mathfrak{a}\hookrightarrow \frak{g}$ введем ``ортогонального партнера''  $\mathfrak{a}_{\bot }\hookrightarrow \frak{g}$.
+
+Рассмотрим корневое подпространство  $\frak{h}_{\perp \frak{a}}^{\ast }$, ортогональное к $\frak{a}$,
+\begin{equation*}
+\frak{h}_{\perp \frak{a}}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast }|\forall
+h\in \frak{h}_{\frak{a}};\eta \left( h\right) =0\right\} ,
+\end{equation*}
+и корни  $\frak{g}$ (соответственно, положительные корни),  ортогональные к $\frak{a}$,
+\begin{eqnarray}
+\Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
+h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
+\label{delta a ort} \\
+\Delta _{\frak{a}_{\perp }}^{+} &:&=\left\{ \beta ^{+}\in \Delta _{\frak{g}%
+}^{+}|\forall h\in \frak{h}_{\frak{a}};\beta ^{+}\left( h\right) =0\right\} .
+\notag
+\end{eqnarray}
+Обозначим символом  $W_{\frak{a}_{\perp }}$ подгруппу  $W$, порожденную отражениями  $w_{\beta }$ с корнями  $\beta \in \Delta_{\frak{a}_{\perp}}^{+}$. Корневая подсистема  $\Delta _{\frak{a}_{\perp }}$ определяет подалгебру  $\frak{a}_{\perp }$, имеющую подалгебру Картана $\frak{h}_{\frak{a}_{\perp }}$. Пусть
+\begin{equation*}
+\frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \frak{a}}^{\ast
+}|\forall h\in \frak{h}_{\frak{a}\oplus \frak{a}_{\perp }};\eta \left(
+h\right) =0\right\};
+\end{equation*}
+выделим в  $\frak{g}$  подалгебры
+\begin{eqnarray}
+\widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp },
+\qquad
+\widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }.
+\end{eqnarray}
+Заметим, что  $\mathfrak{a} \oplus \mathfrak{a}_{\bot}$ в общем случае не является подалгеброй в $\mathfrak{g}$.
+
+Для подалгебр Картана имеет место разложение
+\begin{equation}
+\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus
+\frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\frak{a}}}}\oplus \frak{h}_{%
+\frak{a}_{\perp }}=\frak{\frak{h}_{\widetilde{\frak{a}_{\perp }}}}\oplus
+\frak{h}_{\frak{a}}.
+\end{equation}
+Рассмотрим векторы Вейля  $\rho _{\frak{a}}$ и $\rho _{\frak{a}_{\perp}} $, соответствующие  $\frak{a}$ и $\frak{a}_{\perp }$.
+Введем так называемые ``дефекты'' вложения  $\mathcal{D}_{\frak{a}}$ и $\mathcal{D}_{\frak{a}_{\perp }}$:
+\begin{equation}
+\mathcal{D}_{\frak{a}}:=\rho _{\frak{a}}-\pi _{\frak{a}}\rho , \qquad
+\mathcal{D}_{\frak{a}_{\perp }}:=\rho _{\frak{a}_{\perp }}-\pi _{\frak{a}%
+_{\perp }}\rho .  \label{defect ort}
+\end{equation}
+Для  $\mu \in P^{+}$ рассмотрим связанные веса  $\left\{\left( w(\mu +\rho )-\rho \right) |w\in W\right\} $ и их проекции на $h_{\frak{a}_{\perp }}^{\ast }$, дополнительно сдвинутые на вектор дефекта $-\mathcal{D}_{\frak{a}_{\perp }}$:
+\begin{equation*}
+\mu _{\frak{a}_{\perp }}\left( w\right) :=\pi _{\frak{a}_{\perp }}\left[
+w(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad w\in W.
+\end{equation*}
+
+Среди весов  $\left\{ \mu _{\frak{a}_{\perp
+}}\left( w\right) |w\in W\right\} $ всегда можно выбрать те, которые попадают в фундаментальную камеру $\overline{C_{\frak{a}_{\perp }}}$. Пусть $U$ -- множество представителей $u$ классов  $W/W_{\frak{a}_{\perp }}$, таких что
+\begin{equation}
+U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
+\overline{C_{\frak{a}_{\perp }}}\right\} \quad .  \label{U-def}
+\end{equation}
+Тогда можно выделить подмножества:
+\begin{equation}
+\mu _{\widetilde{\mathfrak{a}}}\left( u\right) :=\pi _{\widetilde{%
+\mathfrak{a}}}\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}%
+_{\perp }},\quad u\in U,  \label{mu-a}
+\end{equation}
+и
+\begin{equation}
+\mu _{\frak{a}_{\perp }}\left( u\right) :=\pi _{\frak{a}_{\perp }}\left[
+u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad u\in U.
+\label{mu-a-tilda}
 \end{equation}
 
-Now we want to consider evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:1}) gives us
+Заметим, что подалгебра  $\mathfrak{a}_{\bot}$ по определению регулярна, так как она построена на подмножестве корней алгебры $\mathfrak{g}$.
+
+Для интересующих нас модулей формула Вейля-Каца для  $\mathrm{ch}\left( L^{\mu }\right) $ может быть записана через сингулярные элементы \cite{humphreys1997introduction},
 \begin{equation*}
-  -\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}.
+\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w(\mu +\rho
+)-\rho },
 \end{equation*}
-For transformation of primary fields $\phi_{\lambda_{i}}$ we have 
+а именно:
 \begin{equation}
-  \label{eq:2}
-  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i}) 
+\mathrm{ch}\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi
+^{\left( 0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
+\label{Weyl-Kac2}
 \end{equation}
-We denote generator of this transform by $\mathcal{G}_{i}$.
-
-
-
-Continuous limit in critical point leads to CFT correlation function
-
-Now for expectation value of martingale we have this expression.
+То же верно и для подмодулей $\mathrm{ch}\left( L_{\frak{a}}^{\nu
+}\right) $ в формуле (\ref{branching1})
 \begin{equation*}
-  \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad \mathbb{E}\left[d \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
+\mathrm{ch}\left( L_{\frak{a}}^{\nu }\right) =\frac{\Psi _{\frak{a}}^{\left(
+\nu \right) }}{\Psi _{\frak{a}}^{\left( 0\right) }}=\frac{\Psi _{\frak{a}%
+}^{\left( \nu \right) }}{R_{\frak{a}}},
 \end{equation*}
+где
+\begin{equation*}
+\Psi _{\frak{a}}^{\left( \nu \right) }:=\sum\limits_{w\in W_{\frak{a}%
+}}\epsilon (w)e^{w(\nu +\rho _{_{\frak{a}}})-\rho _{_{\frak{a}}}}.
+\end{equation*}
+Применяя формулу  (\ref{Weyl-Kac2}) к правилу ветвления  (\ref{branching1}) мы получаем соотношение, связывающее сингулярные элементы $\Psi ^{\left( \mu
+\right) }$ и $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
+\begin{eqnarray}
+\pi _{\frak{a}}\left( \frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho
+)-\rho }}{\prod_{\alpha \in \Delta ^{+}}(1-e^{-\alpha })^{\mathrm{mult}%
+(\alpha )}}\right) &=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\frac{%
+\sum_{w \in W_{\frak{a}}}\epsilon (w )e^{w (\nu +\rho _{\frak{a}})-\rho _{%
+\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{a}}^{+}}(1-e^{-\beta })^{\mathrm{%
+mult}_{\frak{a}}(\beta )}},  \notag  \label{eq:4} \\
+\pi _{\frak{a}}\left( \frac{\Psi ^{\left( \mu \right) }}{R}\right)
+&=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\frak{a}%
+}^{\left( \nu \right) }}{R_{\frak{a}}}.
+\end{eqnarray}
 
-Now we use Ito calculus to calculate increment of our correlation function. It should be zero so we get the equation:
+\subsubsection{Разложение сингулярного элемента.}
+
+\label{subsec:decomp-sing-element}
+
+Теперь мы выполним разложение сингулярного элемента  $\Psi ^{\left(\mu \right) }$ на сингулярные элементы модулей ортогонального партнера:
+
+\begin{lemma}
+
+Пусть  $\frak{a}_{\bot }$ -- ортогональный партнер редуктивной подалгебры  $\frak{a}\hookrightarrow \frak{g}$ и $\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$, $\widetilde{%
+\frak{a}_{\perp }}=\frak{a}_{\perp }\oplus \frak{h}_{\perp }$, $%
+\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$.
+
+Пусть $L^{\mu }$ -- интегрируемый модуль старшего веса  $\mu \in P^{+}$ и 
+
+$\Psi ^{\left( \mu \right) }$\ -- сингулярный элемент $L^{\mu }$.
+
+Тогда элемент  $\Psi ^{\left( \mu \right) }$ может быть разложен в сумму по  $u\in U$ (см. (\ref{U-def})) сингулярных элементов $\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ с коэффициентами
+$\epsilon (u)e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }$:
 \begin{equation}
-  \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
-    \mathcal{F}_{\mathbb{H}_{t}}\right]=\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
-      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}
-\label{eq:8}
+\Psi ^{\left( \mu \right) }=\sum_{u\in U}\;\epsilon (u)e^{\mu _{\widetilde{%
+\mathfrak{a}}}\left( u\right) }\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}%
+_{\perp }}\left( u\right) }.  \label{sing decomp main}
 \end{equation}
-Then use explicit form of conformal map and obtain
-\begin{equation*}
-  \left( \sum_{i}\left[-\frac{2h_{i}}{w_{i}^{2}} +\frac{2}{w_{i}}\partial_{w_{i}}\right]+\frac{\kappa}{2}\sum_{i,j}\partial_{w_{i}} \partial_{w_{j}}\right)\mathcal{F}(\left\{z_{i}\right\})=0
-\end{equation*}
+\label{Psi-decomp-lemma}
+\end{lemma}
 
-We can rewrite it as the necessary condition on b.c.c. operator $\phi$:
-\begin{equation*}
-  (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0 \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
-\end{equation*}
-We can see that it can be rewritten as the action of Virasoro generators. Since we have arbitrary observable, this equation is equivalent to the requirement for boundary condition changing operator to have level two null state. 
-In case of minimal model we can see that boundary condition chaining operator is primary field $\phi_{1,2}$ or $\phi_{2,1}$.
-
-\section{SLE and WZNW models}
-\label{sec:sle-wzw-models}
-Now we want to generalize this analysis to rational conformal field theories. First we consider Wess-Zumino-Novikov-Witten model.
-\subsection{WZNW models}
-
- The action for this model can be written in terms of map $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ from complex plane with infinity or two-sphere to some Lie group $G$:
-\begin{multline}
-  S=-\frac{k}{8\pi}\int d^2x\; \mathcal{K} (g^{-1}\partial^{\mu}g, g^{-1} \partial_{\mu}g)  
-  \\
-  - \frac{k }{24\pi^{2}} \int_{B}\epsilon_{ijk} \mathcal{K}\left(
-    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i},\left[
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right]\right) d^3y
-\end{multline}
-The first term is just non-linear sigma-model.
-
- Here $\mathcal{K}$ is Killing form on Lie algebra $\gf$ of Lie group $G$. The second term is written in terms of continuation from two-sphere $S^{2}$ to three-dimensional manifold $B$ which has two-sphere as the boundary. Since this continuation is non-unique we get the requirement for $k$ to be integer. 
-
-Currents of this model have following form:
-  \begin{eqnarray}
-    J(z)= -k \partial_zg g^{-1}
-    \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
-  \end{eqnarray}
-
-Model possess gauge invariance under gauge transformations:
-  \begin{equation*}
-    g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z),
-  \end{equation*}
-  where $\Omega,\;\bar \Omega \in G$.
-Here $\Omega$ and $\bar \Omega$ are independent. 
-
-If we consider infinitesimal gauge transformation $\Omega=1+\omega$ we get Ward identities:
-  \begin{equation}
-    \label{eq:87}
-    \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
-    \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
-  \end{equation}
-
- Then we can get operator product expansion for currents. 
- \begin{equation}
-   \label{eq:3}
-   <J\phi>\sim \dots
- \end{equation}
-
-If we expand currents to modes
-\begin{equation*}
-  J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n 
-\end{equation*}
-and use operator product expansion \eqref{eq:3} we get commutation relations of affine Lie algebra $\gfh$:
+\begin{proof}
+Пусть
+\[
+u(\mu +\rho )=\pi _{\left( \aft\right) }u(\mu +\rho )+\pi _{\left(
+\frak{a}_{\perp }\right) }u(\mu +\rho ),
+\]
+где $u\in U$. Для произвольного  $v\in W_{\frak{a}_{\bot }}$ рассмотрим сингулярный вес  $vu(\mu +\rho )-\rho $ и выполним разложение:
 \begin{equation}
-  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0} 
+\begin{array}{lcl}
+vu(\mu +\rho )-\rho  & = & \pi _{\left( \frak{a}\right) }\left( u(\mu +\rho
+)\right) -\rho +\rho _{\frak{a}_{\perp }}
+\\
+&  & +\ v\left( \pi _{\left( \aft_{\perp }\right) }u(\mu
++\rho )-\rho _{\frak{a}_{\perp }}+\rho _{\frak{a}_{\perp }}\right) -\rho _{%
+\frak{a}_{\perp }} .
+\end{array}
+\label{sing-decomp-1}
 \end{equation}
-
-This model has conformal invariance which can be seen from 
-Sugawara construction. This is way to embed Virasoro algebra into the universal enveloping algebra of affine Lie algebra $\gfh$ ($Vir\subset U(\gfh)$):
+Используем дефект $\mathcal{D}_{\frak{a}_{\bot }}$ (\ref{defect ort}), чтобы упростить первую строку в формуле (\ref{sing-decomp-1}):
+\[
+\begin{array}{r}
+\pi _{\left( \aft\right) }\left( u(\mu +\rho )\right) -\rho +\rho _{%
+\frak{a}_{\perp }}= \\
+\pi _{\left( \aft\right) }\left( u(\mu +\rho )\right) -\pi _{\aft%
+}\rho -\pi _{\af_{\bot }}\rho +\rho _{\frak{a}_{\bot }}= \\
+=\pi _{\left( \aft\right) }\left( u(\mu +\rho )-\rho \right) +\mathcal{D}%
+_{\frak{a}_{\bot }},
+\end{array}
+\]
+и вторую строку
+\[
+\begin{array}{c}
+v\left( \pi _{\left( \frak{a}_{\perp }\right) }u(\mu +\rho
+)-\rho _{\frak{a}_{\perp }}+\rho _{\frak{a}_{\perp }}\right) -\rho _{\frak{a}%
+_{\perp }}= \\
+v\left( \pi _{\left( \frak{a}_{\bot }\right) }u(\mu +\rho )-%
+\mathcal{D}_{\frak{a}_{\bot }}-\pi _{\left( \frak{a}_{\bot }\right) }\rho
++\rho _{\frak{a}_{\bot }}\right)
+-\rho _{\frak{a}_{\bot }}= \\
+=v\left( \pi _{\left( \frak{a}_{\bot }\right) }\left[ u(\mu
++\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\bot }}+\rho _{\frak{a}_{\bot
+}}\right) -\rho _{\frak{a}_{\bot }}.
+\end{array}
+\]
+В результате получаем требуемое разложение сингулярного элемента $\Psi ^{\mu }$ на сингулярные элементы $\Psi_{\frak{a}_{\perp}}^{\eta}$ модулей $L_{\frak{a}_{\perp }}^{\eta }$ подалгебры $\frak{a}_{\perp }$: 
 \begin{equation}
-  \label{eq:4}
-  L_n=\frac{1}{2(k+h^v)}\sum\limits_a\sum\limits_m:J^a_m J^a_{n-m}:
+\begin{array}{l}
+\Psi ^{\mu }=\sum_{u\in U}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
+(v)\epsilon (u)e^{vu(\mu +\rho )-\rho }= \\
+=\sum_{u\in U}\epsilon (u)e^{\pi _{\aft}\left[ u(\mu +\rho )-\rho \right]
++\mathcal{D}_{\frak{a}_{\perp }}}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
+(v)e^{v\left( \pi _{\left( \frak{a}_{\perp }\right) }\left[
+u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }}+\rho _{\frak{a}%
+_{\perp }}\right) -\rho _{\frak{a}_{\perp }}}= \\
+=\sum_{u\in U}\;\epsilon (u)\Psi _{\af_{\perp }}^{\pi
+_{\left( \frak{a}_{\perp }\right) }\left[ u(\mu +\rho )-\rho
+\right] -\mathcal{D}_{\frak{a}_{\perp }}}e^{\pi _{\left( \aft\right) }%
+\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}_{\perp }}}.
+\end{array}
+\label{singular main}
 \end{equation}
-  
-Full chiral algebra of the model is semidirect product of affine and Virasoro algebra $\gfh \ltimes Vir$. 
+\end{proof}
 
-Its commutation relations are
-  \begin{equation}
-    \label{eq:92}
-    \begin{aligned}
-      \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
-      \left[L_n,J^a_m\right]=-mJ^a_{n+m}
-    \end{aligned}
-  \end{equation}
+%\bigskip
 
-Primary fields  $\phi_{\lambda}$ are labeled by highest weights of affine Lie algebra representations. Here we see how Virasoro and affine Lie algebra generators act on primary fields:
-  \begin{equation*}
-    \begin{aligned}
-      & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
-      & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>
-    \end{aligned}
-  \end{equation*}
+\begin{remark}
+Это соотношение можно рассматривать как обобщение формулы Вейля для сингулярного элемента $\Psi _{\frak{g}}^{\mu }$: векторы $\mu _{%
+\widetilde{\mathfrak{a}}}\left( u\right) $ играют роль сингулярных весов, в то время как множители  $\epsilon (u)$ расширены до $\epsilon
+(u)\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$.
 
+Действительно, при  $\frak{a=g}$ подалгебры  $\frak{a}_{\perp }$, и $\frak{h}_{\perp }$ тривиальны, $U=W$ и оригинальная формула Вейля восстанавливается, так как сингулярные элементы $\epsilon (u)\Psi _{\frak{a}_{\perp %
+}}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\epsilon (u)$ становятся  тривиальными.
 
-\subsection{SLE and WZNW models}
-Now we want to study Schramm-Loewner evolution in WZNW-models.
+В противоположном пределе, когда $\frak{a}=0$, $\Delta _{\frak{a}_{\perp }}=\Delta _{\frak{g}}$, $%
+\frak{h}_{\perp }^{\ast }=0$, $\frak{a}_{\perp }=\frak{g}$, $\mathcal{D}_{%
+\frak{a}_{\perp }}=0$ и $U=W/W_{\frak{a}_{\perp }}=e$, вновь приходим к выражению для  сингулярного элемента
+ $\Psi ^{\mu }$, теперь -- в результате тривиализации множества векторов $\mu _{\af}\left( e\right) =0$.
+\end{remark}
 
-Similarly to minimal models we consider observable
-\begin{equation*}
-  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
-  \frac{\left<\phi_{\Lambda}(z_{t}) \phi_{\lambda_1}(z_{1}) \dots \phi_{\lambda_n}(z_{n}) \phi_{\lambda^{*}_1}(\bar z_{1}) \dots \phi_{\lambda^{*}_n}(\bar z_{n})
-      \phi_{\Lambda^{*}}(\infty)\right>}{\left<\phi_{\Lambda}(z_{t})\phi_{\Lambda^{*}}(\infty)\right>}
-\end{equation*}
-Again we can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite it on the whole upper half-plane. 
-\begin{equation*}
-  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
-  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
-  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
-\end{equation*}
+\begin{remark}
 
-Consider evolution from $t$ to $t+dt$.
-First factor gives us $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
-
- For fields we have
-\begin{equation*}
-  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})
-\end{equation*}
-When we consider fields we need to add random gauge transformation (random motion in $G$) to stochastic evolution \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}:
-\begin{equation*}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)
-\end{equation*}
-Since we have boundary we are working with boundary CFT so we have only half of gauge transformations due to Cardy conditions.
-
-\subsection{SLE martingales in WZNW models}
-We use Ito calculus to get the equation from martingale condition:
-\begin{equation*}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{1}{2}\tau\sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}=0
-\end{equation*}
-\begin{equation*}
-  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{\lambda_{i}}}{(w_{i}-z)^{n}}-\frac{1}{(w_{i}-z)^{n-1}}\partial_{w_{i}}\right);\quad \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}}
-\end{equation*}
-Again we can rewrite it as algebraic requirement for  field  which 
-correspond to boundary condition changing operator.
-\begin{equation*}
-  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
-\end{equation*}
-is level two null state and if we act on this state with raising operators we should get zero.
-\begin{equation*}
-  J^{a}_{1} \left|\psi\right>=0, J^{a}_{2}\left|\psi\right>=0.
-\end{equation*}
- We use commutation relations and get equations which connects parameters of random motion with level of affine Lie algebra representation. 
-
-We can see that $\kappa+\tau h^{v}=4$ and it is possible to derive additional relations connecting $\kappa, \tau, k$:
-\begin{equation*}
-  \kappa=\frac{2(h^{v}-2k)}{2h_{\Lambda}h^{v}-k},\quad \tau=\frac{8 h_{\Lambda}-2}{2h_{\Lambda}h^{v}-k}  \quad\text{for}\; k\neq 2h_{\Lambda}h^{v}
-\end{equation*}
- Also we get some constraints on possible boundary condition changing operators. 
-To get complete classification use Knizhnik-Zamolodchikov equations.
-
-
-\section{Coset models}
-\label{sec:coset-models}
-Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory.
-
-
-\subsection{Gauged WZNW-models and coset construction}
-
-Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models. We add gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action:
-\begin{multline*}
-  S(g,A)=S_{WZNW}(g)+\\
-  \frac{k}{4\pi}\int d^{2}z \left(\mathcal{K}(A, g^{-1}\bar \partial g)-\mathcal{K}(\bar A, (\partial g ) g^{-1})+\mathcal{K}(A,g^{-1}\bar A g)-\mathcal{K}(A,\bar A)\right)
-\end{multline*}
-Now current is
-\begin{equation*}
-  J_{(\gf,\af)}=-k\partial g g^{-1} -k g A g^{-1}
-\end{equation*}
-
-From Ward identities we get following expression for the product of gauge field and primary fields:
-\begin{equation*}
-  \left< A^{b}(z)\phi_{1}\dots \phi_{N}\right>=\frac{2}{k+2 h^{v}_{\af}}\sum_{k}\frac{\tilde{t}^{b}_{k}}{z-z_{k}}\left<\phi_{1}\dots \phi_{N}\right>
-\end{equation*}
-Here $h_{\af}^{v}$ is the dual Coxeter number of Lie algebra $\af$.
-
-Remember that for WZNW current we have OPE $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi(w)}{z-w}$,  so we see that algebraic structure is connected with the pair of algebras $\gf$ and $\af$, such that $\afh\subset\gfh$. 
-
-Virasoro generators are given by difference of Sugawara expressions:
-\begin{equation*}
-  L_{n}=L_{n}^{\gf}-L_{n}^{\af}
-\end{equation*}
-
-\subsection{Primary fields}
-\label{sec:primary-fields}
-Primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra and subalgebra, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
-
-Conformal weight of primary field is equal to
-\begin{multline}
-  L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
-  \left|\phi_{\lambda}\right>=\\
-  \left(\frac{(\mu,\mu+2\rho)}{2(k+h^v)}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^v)}\right)\left|\phi_{(\mu,\nu)}\right>
-\end{multline}
-
-%% So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
-
-It is possible to obtain analogues of KZ-equations:
-\begin{equation*}
-  \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{v}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{v}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
-\end{equation*}
-
-\subsection{SLE on coset space}
-Consider Lie (semi-)simple group $G$ with Lie algebra $\gf$ and (semi-)simple subgroup $A\subset G$ with Lie algebra $\af\subset \gf$. 
-The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $\mathrm{dim}\gf-\mathrm{dim}\af$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
-
-Then for generator of field transformation we can write 
+В работе \cite{2010arXiv1007.0318L} разложение, аналогичное формуле (\ref{singular main}), было использовано для построения рекуррентных соотношений для коэффициентов ветвления $k_{\xi}^{\left( \mu \right) }$, соответствующих вложению  $\frak{a}\hookrightarrow \frak{g}$:
 \begin{equation}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}\left(d \theta ^{a} t^{a}_{i}\right)\right)
-\label{eq:5}
+\begin{array}{c}
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{u\in U}\epsilon (u)\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
+_{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
+\widetilde{\frak{a}}}(u(\mu +\rho )-\rho )}+\right.  \\
+\left. +\sum_{\gamma \in \Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}%
+}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right)
+}\right) .
+\end{array}
+\label{recurrent rel}
 \end{equation}
-Substituting to equation \eqref{eq:8} we get martingale condition
-
+Рекурсия задается множеством  $\Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}}$, которое носит название веера вложения. Это множество определяется как носитель  $\left\{ \xi \right\}_{\frak{a}\rightarrow \frak{g}}$  коэффициентной функции $s(\xi )$
+\begin{equation*}
+\left\{ \xi \right\} _{\widetilde{\frak{a}}\rightarrow \frak{g}}:=\left\{
+\xi \in P_{\widetilde{\frak{a}}}|s(\xi )\neq 0\right\},
+\end{equation*}
+возникающей в разложении 
 \begin{equation}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
-\label{eq:9}
+\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot }^{+}}\left( 1-e^{-\pi
+_{\widetilde{\frak{a}}}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}%
+_{\frak{a}}(\pi _{\widetilde{\frak{a}}}\alpha )}=-\sum_{\gamma \in P_{%
+\widetilde{\frak{a}}}}s(\gamma )e^{-\gamma }.\quad
+\end{equation}
+Веса из множества $\left\{ \xi \right\} _{\widetilde{\frak{a}}\rightarrow \frak{%
+g}}$ сдвигаются на $\gamma _{0}$ -- младший вектор в $\left\{ \xi
+\right\} $, и исключается нулевой элемент:
+\begin{equation}
+\Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}}=\left\{ \xi -\gamma
+_{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
 \end{equation}
 
-which can be rewritten as the requirement for
+Рекуррентное соотношение (\ref{recurrent rel}) первоначально использовалось для описания ветвления интегрируемых модулей. Заметим, что существует важный класс модулей, которые также могут быть редуцированы при помощи веера вложения -- это модули Верма.
+\end{remark}
+
+\subsubsection{Фомулы Вейля-Верма.}
+
+\begin{statement}
+%\bigskip
+Для ортогональной подалгебры  $\frak{a}_{\perp }$ в $\frak{g}$ (являющейся ортогональным партнером редуктивной подалгебры $\frak{a}\hookrightarrow \frak{g}$) характер интегрируемого модуля старшего веса  $L^{\mu }$ может быть представлен в виде комбинации (с целочисленными коэффициентами) характеров параболических модулей Верма, распределенных по множеству весов $\mu _{\widetilde{\mathfrak{a}}}\left(
+u\right)$:
 \begin{equation}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{\Lambda}
-\label{eq:10}
+\mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;\epsilon (u)e^{\mu _{%
+\widetilde{\frak{a}}}\left( u\right) }\mathrm{ch}M_{I}^{\mu _{\frak{a}%
+_{\perp }}\left( u\right) },  \label{gen Weyl-Verma}
 \end{equation}
-to be level two null-field. Here primary field $\phi_{\Lambda}$ is indexed by the pair $\Lambda=(\mu,\nu)$ with the equivalence relations \ref{sec:primary-fields}.
+где  $U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
+\overline{C_{\frak{a}_{\perp }}}\right\} $ и $I$ -- такое подмножество в  $S$, что $\Delta _{I}^{+}$ эквивалентно $\Delta _{\frak{a}_{\perp }}^{+}$.
+\end{statement}
 
-Consider the simplest possible example. Let $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. The equation \eqref{eq:10} is now
-\begin{equation}
-  \label{eq:11}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{\Lambda}
-\end{equation}
-If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
-\begin{equation}
- \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{\Lambda}
-\label{eq:12}
-\end{equation}
-which coincides with the equation for parafermionic fields introduced in paper \cite{santachiara2008sle}.
-
-Central charge in this case is equal to
-\begin{equation}
-  \label{eq:14}
-  c=\frac{2(k-1)}{k+2}
-\end{equation}
-
-Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
-\begin{equation}
-  \label{eq:13}
-  L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{\Lambda}=0\quad \Longrightarrow\quad  (3\kappa-8) h_{\Lambda}+\frac{2(k-1)}{k+2}+\tau k =0
-\end{equation}
-Another equation can be obtained by action of $L_{1}^{2}$
-\begin{equation}
-  \label{eq:15}
-  L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{\Lambda}=0
-\end{equation}
-or
-\begin{equation}
-  \label{eq:16}
-  \left(12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) + 2 \tau J^{3}_{0}J^{3}_{0}\right) \phi_{\Lambda}=0
-\end{equation}
-
-
-Alternative approach is to study $\gf\oplus \af$ WZNW-model and then impose equivalence relations on the solutions. 
-So we need to generalize the analysis of \cite{alekseev2010sle} to the case of semisimple Lie algebras. 
-
-From equation 
-
-Now consider as an example $\frac{SU(2)_{k}\times SU(2)_{1}}{SU(2)_{k+1}}$ -- another coset realization for minimal unitary models. 
-
-We get following relations on $\kappa,\tau$ and primary fields. So we see that the solutions at level $k$ are 
-
-Now we need to impose equivalence relations.
-
-
-We get 
-
-
-Consider gauge transformation in gauged WZNW model:
+%\bigskip
+\begin{proof}
+Подалгебра  $\mathfrak{a}_{\bot }$ регулярна и редуктивна по определению  (\ref{delta a ort}). Рассмотрим её знаменатель Вейля   $R_{\frak{a}_{\perp }}:=\prod_{\alpha \in \Delta _{\frak{a}%
+_{\perp }}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}%
+\mathrm{\left( \alpha \right) }}$ и элемент  $R_{J}:=\prod_{\alpha \in
+\Delta ^{+}\setminus \Delta _{\frak{a}_{\perp }}^{+}}\left( 1-e^{-\alpha
+}\right) ^{\mathrm{mult}(\alpha )}$ как сомножители в $R$:
+\begin{equation*}
+R=R_{J}R_{\frak{a}_{\perp }}.
+\end{equation*}
+Согласно этой факторизации и разложению  (\ref{sing decomp main}) характер $\mathrm{ch}\left( L^{\mu }\right) $ можно переписать в виде
 \begin{eqnarray*}
-  \delta \phi_{i}=(\epsilon_{L}^{a} t^{a}_{i}+\epsilon^{b}_{R}\tilde{t}^{b})\phi_{i}\\
-  \delta A = -\partial \epsilon_{R}-[\epsilon_{R},A]
+\mathrm{ch}\left( L^{\mu }\right) &=&\left( R_{J}\right) ^{-1}\left( R_{%
+\frak{a}_{\perp }}\right) ^{-1}\Psi ^{\mu }=\left( R_{J}\right)
+^{-1}\sum_{u\in U}\;e^{\mu _{\widetilde{\frak{a}}}\left( u\right) }\epsilon
+(u)\left( R_{\frak{a}_{\perp }}\right) ^{-1}\Psi _{\frak{a}_{\perp }}^{\mu _{%
+\frak{a}_{\perp }}\left( u\right) } \\
+&=&\left( R_{J}\right) ^{-1}\sum_{u\in U}\;e^{\mu _{\widetilde{\frak{a}}%
+}\left( u\right) }\epsilon (u)\mathrm{ch}\left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp
+}}\left( u\right) }\right),
 \end{eqnarray*}
-Here $\epsilon_{L}, \epsilon_{R}$ are arbitrary holomorphic functions $\bar\partial\epsilon_{L,R}=0$. 
-For  $\gf\oplus \af$ WZNW-model we can write SLE generator of primary field transformation under stochastic evolution as
+где  $\left\{ L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left(
+u\right) }|u\in U\right\} $ -- множество конечномерных $\frak{a}%
+_{\perp }$-модулей со старшими весами   $\mu _{\frak{a}_{\perp }}\left(
+u\right) $. Нас интересуют нетривиальные подалгебры $\frak{a}$ и, соответственно, нетривиальные  $\frak{a}_{\perp }$ (случай тривиальной ортогональной подалгебры рассматривался выше в (см. Замечание 1)). Значит $r_{\frak{a}}\geq 1$ и $r_{\frak{a}%
+_{\perp }}<r$. Так как диаграмма Дынкина для любой регулярной подалгебры получается в результате исключения одной, двух или более вершин из расширенной диаграммы Дынкина алгебры, а расширенная диаграмма содержит не более одного зависимого корня (старший корень), множество корней $\Delta _{\frak{a}_{\perp }}^{+}$ всегда эквивалентно некоторому множеству $\Delta _{I}^{+}$, порожденному набором  простых корней $I\subset S $.
+
+Следовательно мы можем (переопределяя множество  $\Delta ^{+}$) отождествить $\Delta _{\frak{a}_{\perp }}^{+}$ с подмножеством  $\Delta _{I}^{+}$, где $I\subset S$. В результате мы можем определить объекты, необходимые для построения обобщенных модулей Верма \cite{lepowsky1977generalization,humphreys2008representations}. У нас есть два множества корневых векторов $\left\{ x_{\xi }\in \frak{g}_{\xi }|\xi \in \Delta _{I}^{+}\right\}
+$ и $\left\{ x_{\eta }\in \frak{g}_{\eta }|\eta \in \Delta ^{+}\setminus
+\Delta _{I}^{+}\right\} $, и соответствующие нильпотентные подалгебры в  $\frak{n}%
+^{+}$:
 \begin{equation*}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)+\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
+\frak{n}_{I}^{+}:=\sum_{\xi \in \Delta _{I}^{+}}\frak{g}_{\xi },\quad
+\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta ^{+}\setminus \Delta _{I}^{+}}\frak{g}%
+_{\eta }.
 \end{equation*}
-%% \begin{equation*}
-%%   \mathcal{G}_{i}^{L,R}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\pm\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
-%% \end{equation*}
-
-and get martingale condition
+Первая подалгебра вместе со своей отрицательной копией  $\frak{n}%
+_{I}^{-} $ порождает простую подалгебру 
 \begin{equation*}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
-      \sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
+\frak{s}_{I}=\frak{n}_{I}^{-}+\frak{h}_{I}+\frak{n}_{I}^{+}.
 \end{equation*}
-
-which can be rewritten as the requirement for
+Мы расширяем ее оставшимися картановскими генераторами:
 \begin{equation*}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}
+\frak{l}_{I}=\frak{n}_{I}^{-}+\frak{h}+\frak{n}_{I}^{+}.
 \end{equation*}
-to be level two null-field.
-
-We can compare this result with the simplest possible coset model $su(2)/u(1)$ --  parafermion theory.
-
-\subsection{Semisimple Lie algebras and coset construction}
-\label{sec:semis-lie-algebr}
-
-It is well known that unitary minimal models with central charge $c=1-\frac{6}{m(m+1)}$ can be obtained from coset construction starting with $su(2)_{m}\oplus su(2)_{1}$ WZW-model and factorizing it by $su(2)_{m+1}$. Here lower index represents level of affine Lie algebra representation. 
-
-In this case the dimension of Lie algebra $\gf=su(s)\oplus su(2)$ is 6, dual Coxeter number $h^{v}=2+2=4$. 
-
-
+Полупрямое произведение  $\frak{l}_{I}$ и $\frak{u}_{I}^{+}$ дает параболическую подалгебру $\frak{p}_{I}\hookrightarrow \frak{g}$ :
 \begin{equation}
-  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
-\label{eq:6}
+\frak{p}_{I}=\frak{l}_{I}\vartriangleright \frak{u}_{I}^{+}.
+\label{paralolic subalg}
 \end{equation}
-
-For semisimple Lie algebra $\gf=\gf_{1}+\gf_{2}$ with generators $J^{a}$ and $\tilde{J}^{b}$ correspondingly we can more explicitly write the relation \eqref{eq:6} as 
-
+Ее универсальная обертывающая $U\left( \frak{p}_{I}\right) $ является подалгеброй в  $%
+U\left( \frak{g}\right) $. Модули  $L_{\frak{a}_{\perp }}^{\mu _{%
+\frak{a}_{\perp }}\left( u\right) }$ алгебры  $\frak{l}_{I}$ легко поднимаются до  $\frak{p}_{I}$-модулей при помощи тривиального действия нильрадикала $\frak{u}_{I}^{+}$. Последний стандартным образом индуцирует $U\left( \frak{g}\right) $-модули:
 \begin{equation*}
-  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\left(\sum_{a} J^{a}_{-1} J^{a}_{-1}+\sum_{b}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right) \right) \left|\phi_{\Lambda}\right>    
+M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=U\left( \frak{g}\right)
+\otimes _{U\left( \frak{p}_{I}\right) }L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
+_{\perp }}\left( u\right) }.
 \end{equation*}
 
-This vector should be null vector of level two, so $L_{2}\left|\psi\right>=L_{1}\left|\psi\right>=0$. Then we get following algebraic relations for semisimple Lie algebra:
+Это  \textit{обобщенные модули Верма}  \cite{lepowsky1977generalization},
+порожденные старшими весами  $\mu _{\frak{a}%
+_{\perp }}\left( u\right) $. Как  $U\left( \frak{u}_{I}^{-}\right) $-модуль каждый  $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ изоморфен  $%
+U\left( \frak{u}_{I}^{-}\right) \otimes L_{\frak{a}_{\perp }}^{\mu _{%
+\frak{a}_{\perp }}\left( u\right) }$ и его характер можно записать при помощи функции Костанта-Хекмана \cite{KostantHeckman1982}, соответствующей вложению ортогонального партнера $\frak{a}_{\perp
+}\hookrightarrow \frak{g}$:
+\begin{equation*}
+\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\mathcal{KH}_{%
+\frak{a}_{\perp }\hookrightarrow \frak{g}}\mathrm{ch}L_{\frak{a}_{\perp
+}}^{\mu _{\frak{a}_{\perp }}\left( u\right) }.
+\end{equation*}
+Функция  $\mathcal{KH}_{\frak{a}_{\perp }\hookrightarrow \frak{%
+g}}$ генерируется знаменателем  $R_{I}$, так что последнее выражение можно переписать следующим образом
+\begin{equation*}
+\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\frac{1}{R_{I}}%
+\mathrm{ch}L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }.
+\end{equation*}
+Таким образом мы получили обобщенную формулу Вейля-Верма для характеров -- разложение  $\mathrm{ch}\left(
+L^{\mu }\right) $ на характеры обобщенных модулей Верма:
 \begin{equation}
-  \label{eq:7}
-  \left( 3\kappa h_{\Lambda} +\frac{1}{2} \tau (k_{1} \mathrm{dim} \gf_{1}+k_{2}\mathrm{dim} \gf_{2}) -8 h_{\Lambda} - c\right)\phi_{\Lambda}=0
+\mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;e^{\mu _{\aft}\left(
+u\right) }\epsilon (u)\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
+u\right) }.  \label{char in gen verma mod}
 \end{equation}
-SLE and factorization by equivalence relations. 
+\end{proof}
 
-\subsection{Parafermions}
+\begin{remark}
+Здесь обобщенная формула Вейля-Верма для характеров (называемая формулой переменного суммирования в книге \cite{humphreys2008representations}) имеет специальный вид: веса $\mu _{\aft}$ отличны от старших весов обобщенных модулей Верма $\mu _{\afb}$. Причина в том, что старший вес $M_{I}$-модуля не равен проекции его максимального веса на  $h^*_{\afb}$ (он должен быть дополнительно сдвинут на дефект).
+\end{remark}
 
-$\mathbb{Z}(N)$ parafermions are equivalent to $SU(2)_{N}/U(1)$ coset theory.
+\begin{example}
+  Рассмотрим обобщенные модули Верма для вложения $A_{1}\hookrightarrow B_{2}$, где подалгебра  $\afb$ связана с корнем  $\alpha_{1}$ алгебры  $B_{2}$. Обобщенный модуль Верма $M^{\omega_{1}}_{I}$ со старшим весом   $\omega_{1}=e_{1}$ показан на Рисунке \ref{fig:B2_Verma_Decomp}.
+  \begin{figure}[h!bt]
+  \noindent\centering{
+   \includegraphics[width=120mm]{B2_Gen_Verma_Decomp}
+  }
+  \caption{Обобщенные модули Верма для регулярного вложения  $A_1$ в $B_2$. 
+    Простые корни $\alpha_1, \alpha_2$ алгебры $B_2$ показаны пунктирными стрелками. Простой корень  $\beta = \alpha_1+2\alpha_2$ алгебры $A_1$ изображен серым вектором. Разложение $L^{\omega_{1}}$ представлено набором контуров входящих в него обобщенных модулей Верма. Пунктирные контуры соответствуют положительным значениям  $\epsilon(u)$, а точечные -- отрицательным. }
 
-It is well-known that parafermionic field can be written as product of $su(2)$-primary field and vertex operator of bosonic field. 
+ \label{fig:B2_Verma_Decomp}
+\end{figure}
+
+\end{example}
+
+\begin{remark}
+Как доказано, например, в книге  \cite{humphreys2008representations} (см. утверждение 9.6), характеры обобщенных модулей Верма $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ могут также описываться как линейные комбинации обычных модулей Верма алгебры $\frak{g}$:
 \begin{equation*}
-  \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
+\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\sum_{w\in W_{%
+\frak{a}_{\perp }}}\epsilon \left( w\right) \mathrm{ch}M^{w\left( \mu _{%
+\frak{a}_{\perp }}\left( u\right) +\rho _{\frak{a}_{\perp }}\right) -\rho _{%
+\frak{a}_{\perp }}}
 \end{equation*}
-where $\phi_{j}(z)$ is field of $SU(2)$-WZNW model with spin $j$, $\phi(z)$ -- $U(1)$ bosonic field.
-
-For parafermionic current we have
+Подставляя это выражение в формулу (\ref{char in gen verma mod}) и используя определения  (\ref{mu-a},\ref{mu-a-tilda}) и (\ref{defect ort}), мы восстанавливаем стандартное разложение Вейля-Верма для характера:
 \begin{equation*}
-  \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)
+\mathrm{ch}\left( L^{\mu }\right) =\sum_{w\in W}\;\epsilon (u)\mathrm{ch}%
+M^{w\left( \mu +\rho \right) -\rho }.
 \end{equation*}
-%% Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
-%% !!! TODO
-Martingale condition can be rewritten as
+\end{remark}
+
+\subsection{БГГ резольвента и ветвление}
+В работе \cite{lepowsky1977generalization} показано, что для модуля старшего веса $L^{\mu }$, где $\mu \in P^{+}$, последовательность (обобщенная БГГ резольвента)
+\begin{equation}
+0\rightarrow M_{r}^{I}\overset{\delta _{r}}{\rightarrow }M_{r-1}^{I}\overset{%
+\delta _{r-1}}{\rightarrow }\ldots \overset{\delta _{1}}{\rightarrow }%
+M_{0}^{I}\overset{\varepsilon }{\rightarrow }L^{\mu }\rightarrow 0,
+\label{resolution sequence}
+\end{equation}
+где
+\begin{equation}
+M_{k}^{I}=\bigoplus_{u\in U,\;\mathrm{length}\left( u\right)
+=k}M_{I}^{u\left( \mu +\rho \right) -\rho },\quad M_{0}^{I}=M_{I}^{\mu }
+\label{Verma elements sequence}
+\end{equation}
+является точной и формула (\ref{gen Weyl-Verma}%
+) следует из этого разложения.
+
+\begin{figure}[h!bt]
+ \noindent\centering{
+   \includegraphics[width=140mm]{B2_Exact}}
+ \caption{Вложение $A_1\hookrightarrow B_2$ (см. Рисунок \ref{fig:B2_Verma_Decomp}). Ортогональный партнер, подалгебра $A_1$, соответствует корню $\alpha_1$.
+   Резольвента простого модуля $L^{\omega_1}$. Показана центральная часть точной последовательности
+   $0 \to Im(\delta_2) \to \left( e^{\mu _{\widetilde{%
+\frak{a}}}\left( e\right) }\mathrm{ch}M_{I}^{\pi _{\afb}\left[ \omega_1 \right] -%
+\mathcal{D}_{\afb} }=M^{\omega_1}_{I}\right) \to
+   L^{\omega_1}\to 0 $.  Здесь $\mu _{\widetilde{\frak{a}}}\left( e\right) =\pi _{\aft}\left[ \mu \right] + \mathcal{D}_{\afb}$.
+   }
+\end{figure}
+
+
+\begin{statement}
+Пусть $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$, и пусть регулярная подалгебра  $\afb\hookrightarrow \frak{g}$ ортогональна редуктивной подалгебре $\frak{a}\hookrightarrow \frak{g}$. Тогда разложение (\ref{sing decomp main}) определяет как обобщенную резольвенту $L^{\mu }$ по отношению к $\afb$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к подалгебре $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}$ .
+\end{statement}
+
+\begin{proof}
+Положим
 \begin{equation*}
-  \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
+\mathrm{ch}M_{I}^{u\left( \mu +\rho \right) -\rho }=e^{\mu _{\widetilde{%
+\frak{a}}}\left( u\right) }\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
+u\right) },\mathrm{ch}M_{I}^{\mu }=e^{\mu _{\widetilde{\frak{a}}}\left(
+e\right) }\mathrm{ch}M_{I}^{\pi _{\frak{a}_{\perp }}\left[ \mu \right] -%
+\mathcal{D}_{\frak{a}_{\perp }}},
 \end{equation*}
-which coincides with the result of Santachiara \cite{santachiara2008sle}.
+где \ $\mu _{\widetilde{\frak{a}}}\left( u\right) ,\mu _{\frak{a}_{\perp
+}}\left( u\right) $ и $\mathcal{D}_{\frak{a}_{\perp }}$ заданы как в Лемме \ref{Psi-decomp-lemma}, $%
+u\in U$ определено формулой (\ref{U-def}). В результате получим элементы фильтрующей последовательности (\ref{resolution sequence}).
+
+Рассмотрим множество $\left\{ \mu _{\frak{a}_{\perp }}\left( u\right) |u\in U\right\} $ как множество старших весов простых модулей $L_{\frak{a}%
+_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ и вычислим размерности этих модулей. Вместе с 
+$\left\{ \mu _{\widetilde{\mathfrak{a}}}\left( u\right) |u\in
+U\right\} $ мы получим набор сингулярных весов
+\begin{equation*}
+\left\{ \epsilon (u)\;
+e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }
+\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp
+}}\left( u\right) }\right) \right\} .
+\end{equation*}
+Ветвление  $L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu
+\in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$  определяется веером вложения  $\Gamma _{\frak{a}\rightarrow \frak{g}}$ и соотношением (\ref{recurrent rel}), которое дает нам коэффициенты  $k_{\xi
+}^{\left( \mu \right) }$, а значит определяет и  $b_{\nu }^{\left( \mu \right) }$, так как  $b_{\nu }^{\left( \mu \right) }=k_{\nu }^{\left( \mu
+\right) }$ при $\nu \in \overline{C_{\frak{a}}}$ .
+\end{proof}
+
+\begin{corollary}
+Пусть  $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$ и  $\frak{a}\hookrightarrow \frak{g}$ -- редуктивная подалгебра $\frak{g}$. Пусть $\frak{a}_{\perp }$, ортогональный партнер для $\frak{a}$, эквивалентен  $A_{1}$, $\frak{a}_{\perp }\approx $ $A_{1}$, и $\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$ с $\frak{h=\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. Пусть $L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }=\bigoplus\limits_{\nu \in P_{\widetilde{\frak{a}}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\widetilde{\frak{a}}}^{\nu }$ -- ветвление модуля $L^{\mu }$ относительно подалгебры $\widetilde{\frak{%
+a}}$. Тогда коэффициенты $b_{\nu }^{\left( \mu \right) }$ определяют обобщенную резольвенту (\ref{resolution sequence}) модуля $L^{\mu }$
+по отношению к  $\frak{a}_{\perp }$.
+\end{corollary}
+
+\begin{proof}
+Пусть $\alpha $ -- простой корень  $A_{1}$. Используем преобразования из группы Вейля чтобы перевести его в некоторый простой корень алгебры $\frak{g}$, например $\alpha _{1}$. Построим сингулярный элемент для модуля  $L_{\frak{g}\downarrow
+\widetilde{\frak{a}}}^{\mu }$, то есть  $\Psi _{\widetilde{\frak{a}}%
+}^{\left( L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }\right)
+}=\sum_{\nu \in P_{\widetilde{\frak{a}}}^{+},b_{\nu }^{\left( \mu \right)
+}>0}b_{\nu }^{\left( \mu \right) }\Psi _{\widetilde{\frak{a}}}^{\left( \nu
+\right) }$, и разложим его $\Psi _{\widetilde{\frak{a}}}^{\left( L_{\frak{%
+g}\downarrow \widetilde{\frak{a}}}^{\mu }\right) }=k_{\xi }^{\left( \mu
+\right) }e^{\xi }$. В нашем случае представители $u$ в рекуррентном соотношении (\ref{recurrent rel}) определяются весом $\xi $ однозначно:
+\begin{equation*}
+\epsilon (u\left( \xi \right) )\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{%
+\frak{a}_{\perp }}\left( u\left( \xi \right) \right) }\right) =-s\left(
+\gamma _{0}\right) k_{\xi }^{\left( \mu \right) }-\sum_{\gamma \in \Gamma _{%
+\widetilde{\frak{a}}\rightarrow \frak{g}}}s\left( \gamma +\gamma _{0}\right)
+k_{\xi +\gamma }^{\left( \mu \right) }.
+\end{equation*}
+Тогда
+\begin{equation*}
+\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\left(
+\xi \right) \right) }\right) =\left| s\left( \gamma _{0}\right) k_{\xi
+}^{\left( \mu \right) }+\sum_{\gamma \in \Gamma _{\widetilde{\frak{a}}%
+\rightarrow \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma
+}^{\left( \mu \right) }\right|
+\end{equation*}
+и
+\begin{equation*}
+\mu _{\frak{a}_{\perp }}\left( u\left( \xi \right) \right) =\frac{1}{2}%
+\left( \dim \left( L_{A_{1}}^{\mu \left( \xi \right) }\right) -1\right)
+\alpha _{1}
+\end{equation*}
+Таким образом, множество обобщенных модулей Верма  $e^{\xi +\mathcal{D}%
+_{\frak{a}_{\perp }}}\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
+u\left( \xi \right) \right) }$ полностью фиксировано:
+\begin{equation*}
+\left\{ e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }\mathrm{ch}%
+M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }|u\in U\right\} .
+\end{equation*}
+Упорядочивая эти модули по длине $u$, мы получаем компоненты (\ref{Verma elements sequence}) резольвенты (\ref{resolution sequence}).
+\end{proof}
 
 
 
-\subsection{Next steps}
+\subsection{Заключение}
 
-Next steps in the study of SLE martingales for coset models  are the following. 
+\label{sec:conclusions}
+В работе \cite{2010arXiv1007.0318L} было показано, что метод веера вложения работает также и для специальных вложений. Надо заметить, что  разложения Вейля-Верма также могут быть получены в этом случае. Резольвенты, соответствующие специальным подалгебрам, описывают соотношения между проекциями характера начального модуля и обобщенными модулями Верма со старшими весами в подпространстве $h^*$.
 
-%At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
-% !!! This is wrong !!!
-% We can act by Sugawara generators 
+Рассмотрим ситуацию, когда выбор простых корней зафиксирован какими-то внешними факторами (возникающими, например, из требований физических приложений). В этом случае ортогональный партнер не может порождаться только простыми корнями. Элементы   $\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta
+^{+}\setminus \Delta _{I}^{+}}\frak{g}_{\eta }$ не образуют подалгебру в  $%
+\mathfrak{g}$, так как некоторые не простые корни отсутствуют в  $\Delta ^{+}\setminus
+\Delta _{I}^{+}$. Важно отметить, что в этом случае формула Вейля-Верма по-прежнему существует. В ней обобщенные модули Верма соответствуют сжатиями \cite{Doebner1967Melsheimer} алгебры $%
+\frak{n}^{+}$ и соотношения Вейля-Верма описывают разложение пространства представления $L^{\mu}$ в набор обобщенных модулей Верма сжатой алгебры  $U\left(\frak{n}_c^{+}\right)$. Весовые векторы образованы базисом Пуанкаре-Биркгофа-Витта алгебр $U\left(\frak{n}_c^{+}\right)$ и
+$U\left( \mathfrak{a}_{\bot} \right)$. Чтобы рассмотреть такое пространство как  $%
+\mathfrak{g}$-модуль мы должны выполнить деформацию \cite
+{Nijenhuis1966Richardson} алгебры $\frak{n}_c^{+}$ (то есть восстановить первоначальный закон композиции). Пространство сохраняется, и после такой деформации генераторы начальной алгебры будут действовать на нем правильным образом.
 
-Then we use Knizhnik-Zamolodchikov equations to rewrite the relations in simpler form and get conditions on possible boundary condition changing operators. 
-
-Boundary states in coset models were actively studied. One of the ideas is to consider direct sum WZNW-model and use equivalence relations. This study is essentially the study representation of fusion algebra, Verlinde formula is one of key ingredients in this study. So we hope to compare the classification of boundary states obtained in this way with our condition on boundary condition changing operator. 
-
-\section{Conclusion}
-\label{sec:conclusion}
-
-Now we see that it is possible to match SLE observables and CFT correlation functions. Martingale conditions can be seen as the constraints on possible Verma modules of affine Lie algebra corresponding to boundary condition changing operator. These Verma modules must have level two null state. 
-
-We can use primary fields of direct sum WZNW model and equivalence relations to study coset models. 
-
-Martingale conditions should be compared with the classification of boundary states with other methods.
-
-\bibliography{bibliography}{}
-\bibliographystyle{utphys}
 
 
 %%
