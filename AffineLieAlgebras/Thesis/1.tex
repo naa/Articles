@@ -11,7 +11,7 @@
 
 Существуют различные подходы к вычислению коэффициентов ветвления. Некоторые из них используют резольвенту Бернштейна-Гельфанда-Гельфанда \cite{bernstein1975differential} (См. главу \ref{cha:BGG}, алгоритм вычислений описан в работах \cite{kac1990idl},\cite{wakimoto2001idl}), ряды функций Шура \cite{fauser2006new}, когомологии БРСТ  \cite{Hwang:1994yr}, формулы Каца-Петерсона  \cite{kac1990idl,quella2002branching} или комбинаторные методы \cite{feigin707principal}.
 
-В этой главе мы доказываем, что для произвольной редуктивной подалгебры коэффициенты ветвления описываются набором рекуррентных соотношений и существует эффективный и простой алгоритм для пошагового решения этих соотношений. Общая идея похожа на подход, предложенный в работе  \cite{ilyin812pbc} для максимальных вложений. Но в данном случае алгоритм существенно отличается, так как использует новые свойства сингулярных весов для работы с произвольными редуктивными вложениями $\frak{a} \rightarrow \frak{g}$.
+В этой главе мы доказываем, что для произвольной редуктивной подалгебры коэффициенты ветвления описываются набором рекуррентных соотношений и существует эффективный и простой алгоритм для пошагового решения этих соотношений. Общая идея похожа на подход, предложенный в работе  \cite{ilyin812pbc} для максимальных вложений. Но в данном случае алгоритм существенно отличается, так как использует новые свойства сингулярных весов для работы с произвольными редуктивными вложениями $\af \rightarrow \gf$.
 
 При этом важно рассматривать подалгебру  $\af$ вместе с ее ``ортогональным партнером'' $\afb\subset \gf$. 
 Для любой редуктивной подалгебры $\af$ подалгебра $\afb$ регулярна и редуктивна. 
@@ -21,12 +21,12 @@ $ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left( 0\ri
 см., например, \cite{humphreys1997introduction}), 
 знаменатель Вейля $\Psi ^{\left( 0\right) }_{\afb}$ и проекцию
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
-=\pi_{\af}\frac{\Psi ^{\left( \mu \right) }_{\frak{g}}}{\Psi ^{\left( 0\right) }_{\afb}}$.
+=\pi_{\af}\frac{\Psi ^{\left( \mu \right) }_{\gf}}{\Psi ^{\left( 0\right) }_{\afb}}$.
 
 Мы доказываем, что для произвольного $\hf$-диагонализующего модуля старшего веса $L^{\left( \mu \right)}$ и ортогональной пары $\left(  \af, \afb \right)$ элемент
 $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ допускает разложение на множество числителей Вейля $\Psi ^{\left( \mu \right) }_{ \afb }$ модулей подалгебры $\afb$.
-Это разложение дает возможность построить рекуррентное соотношение для коэффициентов ветвления, соответствующих вложению $\frak{a} \rightarrow \frak{g} $. Рекуррентное соотношение формулируется с использованием особого элемента  $\Gamma_{\af \rightarrow \gf}$ групповой алгебры
-$\mathcal{E}\left( \frak{g} \right)$, который мы называем ``веером вложения''. 
+Это разложение дает возможность построить рекуррентное соотношение для коэффициентов ветвления, соответствующих вложению $\af \rightarrow \gf $. Рекуррентное соотношение формулируется с использованием особого элемента  $\Gamma_{\af \rightarrow \gf}$ групповой алгебры
+$\mathcal{E}\left( \gf \right)$, который мы называем ``веером вложения''. 
 Применение этих инструментов позволяет нам сформулировать простой и явный алгоритм для вычисления коэффициентов ветвления, который может быть использован в случае произвольных (максимальных и не максимальных) подалгебр конечномерных и аффинных алгебр Ли. 
 В случае максимального вложения веер имеет простую форму, сингулярный элемент становится тривиальном $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\Psi ^{\left( \mu \right) }_{\left(  \gf\right)}$ и мы восстанавливаем соотношения, полученные ранее в работе \cite{ilyin812pbc}.
 
@@ -37,26 +37,26 @@ $\mathcal{E}\left( \frak{g} \right)$, который мы называем ``в�
 %%  \subsubsection{Notation}
 %%  \label{sec:notation}
 %%  
-%%  Consider affine Lie algebras $\frak{g}$ and $\af$ with
+%%  Consider affine Lie algebras $\gf$ and $\af$ with
 %%  underlying finite-dimensional subalgebras $\go$ and $%
 %%  \ao$ and an injection $\af\longrightarrow \frak{g%
 %%  }$ such that $\af$ is a reductive subalgebra $\frak{a\subset g}$ with
-%%  correlated root spaces: $\frak{h}_{\af}^{\ast }\subset \frak{h}_{\frak{g%
-%%  }}^{\ast }$ and $\frak{h}_{\ao}^{\ast }\subset \frak{h%
+%%  correlated root spaces: $\hf_{\af}^{\ast }\subset \hf_{\frak{g%
+%%  }}^{\ast }$ and $\hf_{\ao}^{\ast }\subset \frak{h%
 %%  }_{\go}^{\ast }$\
 %%  .
 %%  We use the following notations:
 %%  
 %%  $L^{\mu }$\ $\left( L_{\af}^{\nu }\right) $\ --- the integrable module
-%%  of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\af$
+%%  of $\gf$ with the highest weight $\mu $\ ; (resp. integrable $\af$
 %%  -module with the highest weight $\nu $ );
 %%  
-%%  $r$ , $\left( r_{\af}\right) $ --- the rank of the algebra $\frak{g}$ $%
+%%  $r$ , $\left( r_{\af}\right) $ --- the rank of the algebra $\gf$ $%
 %%  \left( \mbox{resp. }\af\right) $ ;
 %%  
 %%  $\Delta $ $\left( \Delta _{\af}\right) $--- the root system; $\Delta
 %%  ^{+} $ $\left( \mbox{resp. }\Delta _{\af}^{+}\right) $--- the positive
-%%  root system (of $\frak{g}$ and $\af$ respectively);
+%%  root system (of $\gf$ and $\af$ respectively);
 %%  
 %%  $\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\af}\left(
 %%  \alpha \right) \right) $ --- the multiplicity of the root $\alpha$ in $\Delta
@@ -64,7 +64,7 @@ $\mathcal{E}\left( \frak{g} \right)$, который мы называем ``в�
 %%  
 %%  $\co{\Delta}$ , $\left( \co{\Delta _{\af}}%
 %%  \right)$ --- the finite root system of the subalgebra $\co{%
-%%  \frak{g}}$ (resp. $\co{\af}$);
+%%  \gf}$ (resp. $\co{\af}$);
 %%  
 %%  $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\af}^{\nu }\right) $ --- the
 %%  weight diagram of $L^{\mu }$ $\left( \mbox{resp. }L_{\af}^{\nu }\right)
@@ -81,13 +81,13 @@ $\mathcal{E}\left( \frak{g} \right)$, который мы называем ``в�
 %%  $\epsilon \left( w\right) :=\det \left( w\right) $ ;
 %%  
 %%  $\alpha _{i}$ , $\left( \beta _{j}\right) $ --- the $i
-%%  $-th (resp. $j$-th) basic root for $\frak{g}$ $\left( \mbox{resp. }\af%
+%%  $-th (resp. $j$-th) basic root for $\gf$ $\left( \mbox{resp. }\af%
 %%  \right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\af}\right) $;
 %%  
-%%  $\delta $ --- the imaginary root of $\frak{g}$ (and of $\af$ if any);
+%%  $\delta $ --- the imaginary root of $\gf$ (and of $\af$ if any);
 %%  
 %%  $\alpha _{i}^{\vee }$ , $\left( \beta _{j}^{\vee
-%%  }\right) $--- the basic coroot for $\frak{g}$ $\left( \mbox{resp. }\af%
+%%  }\right) $--- the basic coroot for $\gf$ $\left( \mbox{resp. }\af%
 %%  \right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\af}\right) $;
 %%  
 %%  $\co{\xi }$ , $\co{\xi _{\left( \af\right) }}$
@@ -408,53 +408,40 @@ m_{\xi }=-\sum_{w\in W\setminus e}\epsilon (w)m_{\xi
 \section{Рекуррентные соотношения для коэффициентов ветвления}
 \label{sec:branching}
 
-Consider an integrable module $L^{\mu }$
-of $\frak{g}$ with the highest weight $\mu $ and
-let $\af\subset \frak{g}$ be a reductive subalgebra of $\frak{g}$.
-With respect to $\af$ the module $L^{\mu }$ is completely reducible,
+Рассмотрим интегрируемый модуль $L^{\mu }$ алгебры $\gf$ со старшим весом  $\mu$ и пусть  $\af\subset\gf$ -- редуктивная подалгебра $\gf$. Модуль $L^{\mu}$ полностью приводим по отношению к $\af$.
 \begin{equation*}
- L_{\frak{g}\downarrow \af}^{\mu }=\bigoplus
+ L_{\gf\downarrow \af}^{\mu }=\bigoplus
 \limits_{\nu \in P_{\af}^{+}}b_{\nu }^{\left( \mu \right) }L_{\af}^{\nu }.
 \end{equation*}
-Using the projection operator $\pi_{\af}$ (to the weight space $\frak{h_a}^*$)
-one can  rewrite this decomposition in terms of formal characters:
+Используем оператор проекции  $\pi_{\af}$ (на весовое пространство $\hf_{\af}^*$) и перепишем это разложение в терминах формальных характеров:
 \begin{equation}
 \label{branching1}
  \pi _{\af}\circ ch\left( L^{\mu }\right)
  =\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu)}ch\left( L_{\af}^{\nu }\right) .
 \end{equation}
-We are interested in branching coefficients $b^{(\mu)}_{\nu}$.
+Нас интересуют коэффициенты ветвления $b^{(\mu)}_{\nu}$.
 
-\subsubsection{Orthogonal subalgebra and injection fan.}
+\subsubsection{Ортогональная подалгебра и веер вложения.}
 \label{subsec:branching-orthog-pair}
 
-In this subsection we shall introduce some simple constructions that will be used
-in our studies of branching and in particular the "orthogonal partner" $\afb$ for a
-reductive subalgebra $\af$  in  $\gf$.
+В этой секции мы введем простые конструкции, которые будут полезны при изучении ветвлений. Важный объект здесь -- это ``ортогональный партнер''  $\afb$ редуктивной подалгебры $\af$ в  $\gf$.
 
-In the Weyl-Kac formula both numerator and denominator  can be considered
-as formal elements containing the singular weights of the Verma modules $V^{\xi}$
-with the highest weights $\xi=\mu$ and $\xi=0$ \cite{humphreys1997introduction}.
-We attribute singular elements to the corresponding integrable modules $L^{\mu }$
-and $L_{\af}^{\nu }$:
+В формуле Вейля-Каца и числитель, и знаменатель могут рассматриваться как формальные элементы, содержащие сингулярные веса модулей Верма $V^{\xi}$ со старшими весами  $\xi=\mu$ и $\xi=0$ \cite{humphreys1997introduction}.
+Мы связываем сингулярные элементы с соответствующими интегрируемыми модулями  $L^{\mu }$ и $L_{\af}^{\nu }$:
 \begin{equation*}
 \Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w\circ (\mu +\rho )-\rho },
 \end{equation*}
 \begin{equation*}
-\Psi _{ \af}^{\left( \nu \right) }:=
-\sum\limits_{w\in W_{\af}}\epsilon (w)e^{w\circ (\nu +\rho
-_{_{\af}})-\rho _{_{\af}}}.
+\Psi _{ \af}^{\left( \nu \right) }:= \sum\limits_{w\in W_{\af}}\epsilon (w)e^{w\circ (\nu +\rho_{_{\af}})-\rho _{_{\af}}}.
 \end{equation*}
-and use the Weyl-Kac formula in the form
+и используем формулы Вейля-Каца в форме
 \begin{equation}
 \label{Weyl-Kac2}
-ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}
-{\Psi ^{\left( 0 \right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
+ch\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi ^{\left( 0 \right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
 \end{equation}
 
-Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
-we get the relation connecting the
-singular elements $\Psi ^{\left( \mu \right) }$ and $\Psi _{ \af}^{\left( \nu \right) }$ :
+Применим формулу  (\ref{Weyl-Kac2}) к правилу ветвления (\ref{branching1}) и получим соотношение, связывающее сингулярные элементы
+ $\Psi ^{\left( \mu \right) }$ and $\Psi _{ \af}^{\left( \nu \right) }$ :
 \begin{eqnarray}
 \nonumber
 \pi _{\af}\left( \frac{\sum_{w \in W}\epsilon (w )e^{w
@@ -467,56 +454,44 @@ mult}(\alpha )}}\right) &=&\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}%
 &=&\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{ \frak{%
 a}}^{\left( \nu \right) }}{R_{\af}}.
 \end{eqnarray}
-Here $\Delta _{\af}^{+}$ is the set of
-positive roots of the subalgebra $\af$ (without loss of generality we consider
-them as vectors from the positive root space $\frak{h}^{\ast  +}$ of $\frak{g}$).
+Здесь $\Delta _{\af}^{+}$ -- множество положительных корней подалгебры $\af$ (без потери общности мы можем считать их векторами из положительного корневого пространства  $\hf^{\ast  +}$ of $\gf$).
 
-
-Consider the root subspace
-$\frak{h}_{\perp \af}^{\ast }$ orthogonal to  $\af$,
+Рассмотрим корневое подпространство $\hf_{\perp \af}^{\ast }$, ортогональное к  $\af$,
 \begin{equation*}
-\frak{h}_{\perp \af}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast }
+\hf_{\perp \af}^{\ast }:=\left\{ \eta \in \hf^{\ast }
 |\forall h \in \hf_{\af};  \eta\left(h \right)=0 \right\} ,
 \end{equation*}
-and the roots (correspondingly -- positive roots) of $\frak{g}$ orthogonal
-to $\af$,
+и корни (соответственно -- положительные корни)  $\gf$, ортогональные
+к $\af$,
 \begin{eqnarray*}
-\Delta _{\af_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|
+\Delta _{\af_{\perp }} &:&=\left\{ \beta \in \Delta _{\gf}|
 \forall h \in \hf_{\af};  \beta\left(h \right)=0  \right\} , \\
-\Delta _{\af_{\perp }}^{+} &:&=\left\{ \beta ^{+}\in \Delta _{\frak{g}%
+\Delta _{\af_{\perp }}^{+} &:&=\left\{ \beta ^{+}\in \Delta _{\gf%
 }^{+}|\forall h \in \hf_{\af};  \beta^{+}\left(h \right)=0  \right\} .
 \end{eqnarray*}
-Let $W_{\af_{\perp }}$ be the subgroup of $W$ generated by the
-reflections $w _{\beta }$ for the roots $\beta \in \Delta _{\af%
-_{\perp }}^{+}$ . The subsystem $\Delta _{\af_{\perp }}$ determines the
-subalgebra $\af_{\perp }$ with the Cartan subalgebra $\frak{h}_{\af%
-_{\perp }}$. Let
+Обозначим через $W_{\afb}$ подгруппу группы Вейля $W$, порожденную отражениями $w _{\beta }$, соответствующими корням $\beta \in \Delta _{\afb}^{+}$ . Подсистема  $\Delta _{\af_{\perp }}$ определяет подалгебру $\af_{\perp }$ с подалгеброй Картана $\hf_{\afb}$. Пусть
 \begin{equation*}
-\frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \af}^{\ast
-}|\forall h \in \hf_{\af\oplus \af_{\perp}}; \eta \left( h \right)=0 \right\}
+\hf_{\perp }^{\ast }:=\left\{ \eta \in \hf_{\perp \af}^{\ast
+}|\forall h \in \hf_{\af\oplus \af_{\perp}}; \eta \left( h \right)=0 \right\},
 \end{equation*}
-and consider the subalgebras
+рассмотрим подалгебры
 \begin{eqnarray*}
-\widetilde{\af_{\perp }} &:&=\af_{\perp }\oplus \frak{h}_{\perp }
+\widetilde{\af_{\perp }} &:&=\af_{\perp }\oplus \hf_{\perp }
 \\
-\widetilde{\af} &:&=\af\oplus \frak{h}_{\perp }.
+\widetilde{\af} &:&=\af\oplus \hf_{\perp }.
 \end{eqnarray*}
-Algebras $\af$ and $\af_{\perp }$ form the ''orthogonal pair''
-$\left( \af,\af_{\perp}\right) $
-of subalgebras in $\frak{g}$.
+Алгебры $\af$ и $\af_{\perp }$ образуют ''ортогональную пару''
+$\left( \af,\afb\right)$ подалгебр в  $\gf$.
 
-For the Cartan subalgebra we have the decomposition
+Имеет место разложение подалгебры Картана
 \begin{equation}
-\frak{h}=\frak{\frak{h}_{\af}}\oplus \frak{h}_{\af_{\perp }}\oplus
-\frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\af}}}\oplus \frak{h}_{%
-\af_{\perp }}=\frak{\frak{h}_{\widetilde{\af_{\perp }}}}\oplus
-\frak{h}_{\af}.
+\hf=\frak{\hf_{\af}}\oplus \hf_{\af_{\perp }}\oplus
+\hf_{\perp }=\frak{\hf_{\widetilde{\af}}}\oplus \hf_{%
+\af_{\perp }}=\frak{\hf_{\widetilde{\af_{\perp }}}}\oplus
+\hf_{\af}.
 \end{equation}
-For the subalgebras of an orthogonal pair $\left( \af,\af_{\perp
-}\right) $ we consider the corresponding Weyl vectors, $\rho _{\af}$
-and $\rho _{\af_{\perp }}$ , and\ form the so called ''defects'' $%
-\mathcal{D}_{\af}$ and $\mathcal{D}_{\af_{\perp }}$ of the
-injection:
+
+Для подалгебр из ортогональной пары  $\left( \af,\afb\right) $ рассмотрим соответствующие векторы Вейля $\rho _{\af}$ и $\rho _{\af_{\perp }}$, и образуем так называемые  ''дефекты'' вложения $\mathcal{D}_{\af}$ и $\mathcal{D}_{\af_{\perp }}$ :
 \begin{equation}
 \mathcal{D}_{\af}:=\rho _{\af}-\pi _{\af}\rho ,
 \end{equation}
@@ -525,93 +500,64 @@ injection:
 \mathcal{D}_{\af_{\perp }}:=\rho _{\af_{\perp }}-\pi _{\af%
 _{\perp }}\circ\rho .
 \end{equation}
-For the highest weight module $L_{\frak{g}}^{\mu }$ consider the singular
-weights $\left\{\left( w(\mu +\rho )-\rho \right)|w  \in W \right\}$ and
-their projections to $h_{\widetilde{\af_{\perp }}}^{\ast }$ (additionally
-shifted by the defect $-\mathcal{D}_{\af_{\perp }}$):
+
+Рассмотрим сингулярные веса  $\left\{\left( w(\mu +\rho )-\rho \right)|w  \in W \right\}$  модуля старшего веса  $L_{\gf}^{\mu }$ и их проекции на $h_{\widetilde{\af_{\perp }}}^{\ast }$ (дополнительно сдвинутые на дефект $-\mathcal{D}_{\af_{\perp }}$):
 \begin{equation*}
 \mu _{\widetilde{\af_{\perp }}}\left( w\right) :=\pi _{\widetilde{\frak{%
 a}_{\perp }}}\circ\left[ w(\mu +\rho )-\rho \right] -\mathcal{D}_{\af_{\perp
 }},\quad w\in W.
 \end{equation*}
-Among the weights $\left\{\mu _{\widetilde{\af_{\perp }}}\left( w\right)
-|w\in W\right\}$ choose those located in the fundamental chamber $\overline{C_{%
-\widetilde{\af_{\perp }}}}$ and let $U$ be the set of representatives $%
-u $ for classes $W/W_{\af_{\perp }}$ such that
-
+Среди весов  $\left\{\mu _{\widetilde{\af_{\perp }}}\left( w\right)|w\in W\right\}$ выберем находящиеся в главной камере Вейля $\overline{C_{\widetilde{\afb}}}$ и обозначим через $U$ множество представителей $u$ классов смежности $W/W_{\af_{\perp }}$, таких что
 \begin{equation}
 U:=\left\{ u\in W|\quad \mu _{\widetilde{\af_{\perp }}}\left( u\right)
 \in \overline{C_{\widetilde{\af_{\perp }}}}\right\} \quad .
 \label{U-def}
 \end{equation}
-For the same set $U$ introduce the weights
+Для множества  $U$ введем веса
 \begin{equation*}
 \mu _{\af}\left( u\right) :=\pi _{\af}\circ\left[ u(\mu +\rho )-\rho %
 \right] +\mathcal{D}_{\af_{\perp }}.
 \end{equation*}
-To simplify the form of relations we shall now on omit the sign "$\circ$" in projected
-weights.
+Чтобы упростить вид соотношений мы будем опускать значок "$\circ$" при записи проекций весов.
 
-
-To describe the recurrent properties for branching coefficients $b_{\nu
-}^{(\mu )}$ we shall use the technique elaborated in \cite{ilyin812pbc}. One of the
-main tools is the set of weights $\Gamma _{\af\rightarrow \frak{g}%
-} $ called the injection fan. As far as we consider the general situation
-(where the injection is not necessarily maximal) the notion of the injection fan is
-modified:
-
+Воспользуемся техникой, предложенной в работе  \cite{ilyin812pbc} для записи рекуррентных свойств коэффициентов ветвления $b_{\nu}^{(\mu )}$. Один из инструментов в ней -- это множество весов $\Gamma_{\af\rightarrow \gf}$, называющееся веером вложения. Так как мы рассматриваем общую ситуацию (где вложение не обязательно максимально) понятие веера вложения нуждается в уточнении:
 \begin{definition}
-\label{fan-definition} For the product
+\label{fan-definition} Рассмотрим произведение
 \begin{equation}
 \prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\afb }^{+}}\left( 1-e^{-\pi
 _{\af}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}_{\af%
 }(\pi _{\af}\alpha )}=-\sum_{\gamma \in P_{\af}}s(\gamma
 )e^{-\gamma }  \label{eq:6}
 \end{equation}
-consider the carrier $\Phi _{\af\subset \frak{g}}\subset P_{\af}$
-of the function $s(\gamma )=\det \left( \gamma \right) $ :
+и носитель $\Phi _{\af\subset \gf}\subset P_{\af}$ функции $s(\gamma )=\det \left( \gamma \right) $ :
 \begin{equation}
-\Phi _{\af\subset \frak{g}}=\left\{ \gamma \in P_{\af}|s(\gamma
+\Phi _{\af\subset \gf}=\left\{ \gamma \in P_{\af}|s(\gamma
 )\neq 0\right\}   \label{eq:37}
 \end{equation}
-The ordering of roots in $\co{\Delta _{\af}}$ induce the
-natural ordering of the weights in $P_{\af}$. Denote by $\gamma _{0}$
-the lowest vector of $\Phi _{\af\subset \frak{g}}$ . The set
+Упорядочение корней в  $\co{\Delta _{\af}}$ индуцирует натуральное упорядочение весов в $P_{\af}$. Обозначим через $\gamma_{0}$ наименьший вектор $\Phi _{\af\subset \gf}$. Множество
 \begin{equation}
-\Gamma _{\af\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
-\af\subset \frak{g}}\right\} \setminus \left\{ 0\right\}
+\Gamma _{\af\rightarrow \gf}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+\af\subset \gf}\right\} \setminus \left\{ 0\right\}
 \label{fan-defined}
 \end{equation}
-is called the \textit{injection fan}.
+называется  \textit{веером вложения}.
 \end{definition}
-In the next subsection we shall see how the injection fan defines the recurrent
-properties of branching coefficients. It must be noticed that the injection fan is
-the universal instrument that depends only on the injection.
+В следующем разделе мы покажем, что веер вложения определяет рекуррентные свойства коэффициентов ветвления. Нужно отметить, что веер вложения универсален и зависит только от вложения. 
 
-\subsubsection{Decomposing the singular element.}
+\subsubsection{Разложение сингулярного элемента.}
 \label{subsec:decomp-sing-element}
 
-Now we shall prove that the Weyl-Kac character formula (in terms of singular
-elements) describes the particular case of a more general relation:
+Теперь покажем, что формула Вейля-Каца для характеров (в терминах сингулярных элементов) представляет собой частный случай более общего соотношения:
 
 \begin{lemma}
 \label{lemma}
-Let $\left( \af,\afb \right)$ be the orthogonal pair of reductive
-subalgebras in $\frak{g}$, with $\widetilde{\af_{\perp }}=\af%
-_{\perp }\oplus \frak{h}_{\perp }$ and $\widetilde{\af}=\af\oplus
-\frak{h}_{\perp }$ ,
+Пусть $\left( \af,\afb \right)$ -- ортогональная пара редуктивных подалгебр $\gf$ и  $\widetilde{\afb}=\afb\oplus \hf_{\perp }$, $\widetilde{\af}=\af\oplus\hf_{\perp }$ ,
 
-$L^{\mu }$ be the highest weight module with the singular element
-$\Psi ^{\left(\mu \right)}$ ,
+$L^{\mu }$ -- модуль старшего веса с сингулярным элементом $\Psi ^{\left(\mu \right)}$ ,
 
-$R_{\af_{\perp }}$ be the Weyl denominator for $\af_{\perp }$.
+$R_{\af_{\perp }}$ -- знаменатель Вейля для подалгебры $\af_{\perp }$.
 
-Then the element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
-=\pi _{\af}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}\right) $
-can be decomposed into the sum over $u\in U$ (see (\ref{U-def})) of
-singular weights $e^{\mu _{\af}\left( u\right) }$ with the
-coefficients $\epsilon (u)\mathrm{\dim }\left( L_{\widetilde{\af_{\perp
-}}}^{\mu _{\widetilde{\af_{\perp }}}\left( u\right) }\right) $:
+Тогда элемент  $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi _{\af}\left( \frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}\right) $ можно разложить в сумму по  $u\in U$ (см. (\ref{U-def})) сингулярных весов $e^{\mu _{\af}\left( u\right) }$ с коэффициентами $\epsilon (u)\mathrm{\dim}\left( L_{\widetilde{\afb}}^{\mu _{\widetilde{\afb}}\left( u\right) }\right) $:
 \begin{equation}
 \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\quad \pi _{\af}\left( \frac{\Psi^{\mu }}{R_{\af%
 _{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
@@ -621,12 +567,12 @@ _{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
 \end{lemma}
 
 \begin{proof}
-With $u\in U $   and $v\in W_{\afb}$ apply the decomposition
+Для $u\in U $ и $v\in W_{\afb}$ применим разложение
 \begin{equation*}
 u(\mu +\rho )=\pi _{\af } u(\mu +\rho )+\pi _{
 \widetilde{\af_{\perp }} } u(\mu +\rho )
 \end{equation*}
-to the singular weight
+к сингулярному весу
 \begin{equation}
 \label{sing-decomp-1}
 \begin{array}{lcl}
@@ -637,8 +583,7 @@ vu(\mu +\rho )-\rho &=&\pi _{ \af }\left( u(\mu +\rho
 \af_{\perp }}\right) -\rho _{\af_{\perp }} -\pi _{ \hfb }\rho.
 \end{array}
 \end{equation}
-Use the defect $\mathcal{D}_{\afb}$ (\ref{defect-perp}) to simplify
-the first summand in (\ref{sing-decomp-1}):
+Используем дефект $\mathcal{D}_{\afb}$ (\ref{defect-perp}) чтобы упростить в (\ref{sing-decomp-1}) первое слагаемое :
 \begin{equation*}
 \begin{array}{r}
 \pi _{ \af }\left( u(\mu +\rho )\right) -\rho +\rho _{%
@@ -649,7 +594,7 @@ the first summand in (\ref{sing-decomp-1}):
 \mathcal{D}_{\afb},
 \end{array}
 \end{equation*}
-and the second one:
+и второе:
 \begin{equation*}
 \begin{array}{c}
 v\left( \pi _{ \widetilde{%
@@ -665,11 +610,7 @@ v\left( \pi _{ \widetilde{%
 +\rho _{\afb}\right) -\rho _{\afb}.
 \end{array}
 \end{equation*}
-These expressions provide a kind of a factorization in the anomalous element $\Psi^{\mu
-}$ and we find in it the combination of
-anomalous elements $\Psi _{\widetilde{\af_{\perp }}}^{\eta }$ of the
-subalgebra $\widetilde{\af_{\perp }}$-modules $L_{\widetilde{\af%
-_{\perp }}}^{\eta }$:
+Эти выражения представляют собой факторизацию аномального элемента  $\Psi^{\mu}$ и мы видим, что они содержат комбинации сингулярных элементов $\Psi _{\widetilde{\af_{\perp }}}^{\eta }$ модулей $L_{\widetilde{\afb}}^{\eta }$ подалгебры  $\widetilde{\afb}$:
 \begin{equation*}
 \begin{array}{l}
 \Psi^{\mu }=\sum_{u\in U}\sum_{v\in W_{\af_{\perp }}}
@@ -686,10 +627,7 @@ _{\perp }}\right) -\rho _{\af_{\perp }}}= \\
 \end{array}
 \end{equation*}
 
-Dividing both sides by the Weyl element $R_{\af_{\perp }}=\prod_{\beta
-\in \Delta _{\af_{\perp }}}(1-e^{-\beta })^{\mathrm{mult}(\beta )}$ and
-projecting them to the weight space $h_{\af}^{\ast }$\ we obtain the
-desired relation:
+Разделим обе части на элемент Вейля  $R_{\af_{\perp }}=\prod_{\beta \in \Delta _{\afb}}(1-e^{-\beta })^{\mathrm{mult}(\beta )}$, спроектируем их на весовое подпространство  $h_{\af}^{\ast }$ и получим итоговое соотношение:
 \begin{eqnarray*}
 \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
 &=&\sum_{u\in W/W_{\af_{\perp }}}\;\epsilon (u)e^{\pi _{\frak{a%
@@ -706,47 +644,34 @@ e^{\pi _{\af}\left[ u(\mu +\rho )-\rho \right] }.
 
 
 \begin{remark}
-This relation can be considered a generalized form of the Weyl formula for singular
-element $\Psi _{\frak{g}}^{\mu }$ : the vectors $\mu _{\af}\left(
-u\right) $ play the role of singular weights while instead of the determinants $%
-\epsilon (u)$ we have the products $\epsilon (u)\mathrm{\dim }\left( L_{%
-\widetilde{\af_{\perp }}}^{\mu _{\widetilde{\af_{\perp }}}\left(
-u\right) }\right) .$ In fact when $\frak{a=g}$ both $\af_{\perp }$ and $%
-\frak{h}_{\perp }$ are trivial, $U=W$ , and\ the original Weyl formula is
-easily reobtained.
+Это соотношение можно рассматривать как обобщение формулы Вейля для сингулярного элемента  $\Psi _{\gf}^{\mu }$: векторы  $\mu_{\af}\left(u\right)$ играют роль сингулярных весов, но вместо определителей $\epsilon (u)$ появляются произведения  $\epsilon(u)\mathrm{\dim }\left( L_{\widetilde{\afb}}^{\mu _{\widetilde{\afb}}\left(u\right) }\right).$ Действительно, при  $\frak{a=g}$ подалгебры  $\afb$ и $\hf_{\perp }$ тривиальны, $U=W$ , и исходная формула Вейля с легкостью восстанавливается. 
 \end{remark}
 
-\subsubsection{Constructing recurrent relations.}
+\subsubsection{Построение рекуррентных соотношений.}
 \label{subsec:Construct-recurrent-rel}
 
-Consider the right-hand side of relation (\ref{eq:4}).
-The numerator there describes the branching in terms of singular elements and
-it is reasonable to expand it as an element of $\mathcal{E}\left( \frak{g} \right)$:
+Рассмотрим правую часть равенства (\ref{eq:4}).
+Числитель описывает ветвление в терминах сингулярных элементов и, как элемент  $\mathcal{E}\left( \gf \right)$, допускает разложение в виде:
 \begin{equation}
   \label{eq:21}
   \sum_{\nu \in \bar{C_{\mathfrak{a}}}}b_{\nu }^{\left( \mu \right) }\Psi _{\left( \frak{%
         a}\right) }^{\left( \nu \right) }=\sum_{\lambda \in P_{\af}}k_{\lambda
   }^{\left( \mu \right) }e^{\lambda }.
 \end{equation}
-Here the coefficients $k_{\lambda}^{\left( \mu \right) }$ are integer and their signs
-depend on the length (see \cite{humphreys1997introduction})  of the Weyl group elements in
-$\Psi _{\left( \frak{a}\right) }^{\left( \nu \right) }$. The important property of
-$k_{\lambda}^{\left( \mu \right) }$'s is that they coincide with the branching coefficients
-for all weights $\nu$ inside the main Weil chamber:
+Здесь $k_{\lambda}^{\left( \mu \right) }$  -- целочисленные коэффициенты, их знаки зависят от длины элементов группы Вейля в 
+$\Psi _{\left( \af\right) }^{\left( \nu \right) }$. Важно заметить, что $k_{\lambda}^{\left( \mu \right) }$ совпадают с коэффициентами ветвления для всех весов $\nu$ в главной камере Вейля:
 \begin{equation}
 %  \label{eq:20}
   b^{(\mu)}_{\nu}=k^{(\mu)}_{\nu} \; \mbox{for} \; \nu\in \bar{C}_{\mathfrak{a}}.
 \label{eq:21-1}
 \end{equation}
-We call the coefficients $k_{\lambda}$ --- the anomalous branching coefficients
-(see also \cite{ilyin812pbc}).
+Мы называем коэффициенты $k_{\lambda}$ сингулярными коэффициентами ветвления
+(см. также \cite{ilyin812pbc}).
 
-Now we can state the main theorem which gives us an instrument for the
-recurrent computation of branching coefficients.
+Теперь мы можем сформулировать основную в этой главе теорему, которая позволит нам рекуррентно вычислять коэффициенты ветвления.
 
 \begin{theorem}
-  For the anomalous branching coefficients $k^{(\mu)}_{\nu}$ (\ref{eq:21})
-  the following relation holds
+  Для сингулярных коэффициентов ветвления $k^{(\mu)}_{\nu}$ (\ref{eq:21}) выполняется соотношение
   \begin{equation}
     \label{recurrent-relation}
     \begin{array}{c}
@@ -763,24 +688,25 @@ recurrent computation of branching coefficients.
   \end{equation}
 \end{theorem}
 \begin{proof}
+
 Redress relation (\ref{eq:4}) for the element $
-\frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}$ using definition (\ref{eq:37})
-for the carrier $\Phi _{\af\subset \frak{g}}$ ,
+\frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}$ using definition (\ref{eq:37})
+for the carrier $\Phi _{\af\subset \gf}$ ,
 \begin{equation*}
 \begin{array}{l}
 \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
-=\pi _{\frak{a}}\left( \frac{\Psi _{\frak{g}}^{\mu }}{R_{\af_{\perp }}}%
+=\pi _{\af}\left( \frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}%
 \right) = \\[2mm]
 =\prod\limits_{\alpha \in \Delta ^{+}\setminus \Delta _{\afb }^{+}}\left(
 1-e^{-\pi _{\af}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}_{%
 \af}(\pi _{\af}\alpha )}\left( \sum\limits_{\nu \in P_{\af%
 }^{+}}b_{\nu }^{(\mu )}\sum\limits_{w\in W_{\af}}\epsilon (w)e^{w(\nu
 +\rho _{\af})-\rho _{\af}}\right) = \\[5mm]
-=-\sum\limits_{\gamma \in \Phi _{\af\subset \frak{g}}}s(\gamma
+=-\sum\limits_{\gamma \in \Phi _{\af\subset \gf}}s(\gamma
 )e^{-\gamma }\left( \sum\limits_{\nu \in P_{\af}^{+},w\in W_{\af%
 }}\epsilon (w)b_{\nu }^{(\mu )}e^{w(\nu +\rho _{\af})-\rho _{\af%
 }}\right)  \\
-=-\sum\limits_{\gamma \in \Phi _{\af\subset \frak{g}}}s(\gamma
+=-\sum\limits_{\gamma \in \Phi _{\af\subset \gf}}s(\gamma
 )e^{-\gamma }\left( \sum\limits_{\nu \in P_{\af}^{+},w\in W_{\af%
 }}\epsilon (w)b_{\nu }^{(\mu )}e^{w(\nu +\rho _{\af})-\rho _{\af%
 }}\right) .
@@ -791,9 +717,9 @@ Then expand the sum in brackets (with respect to the formal basis in $\mathcal{E
 ):
 \begin{equation*}
 \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}
-=-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}s(\gamma
+=-\sum_{\gamma \in \Phi _{\af\subset \gf}}s(\gamma
 )e^{-\gamma }\sum_{\lambda \in P_{\af}}k_{\nu }^{(\mu )}e^{\lambda
-}=-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}\sum_{\lambda \in P_{%
+}=-\sum_{\gamma \in \Phi _{\af\subset \gf}}\sum_{\lambda \in P_{%
 \af}}s(\gamma )k_{\nu }^{(\mu )}e^{\lambda -\gamma }.
 \end{equation*}
 Substitute the expression obtained in Lemma \ref{lemma} (in the left-hand side),
@@ -806,7 +732,7 @@ Substitute the expression obtained in Lemma \ref{lemma} (in the left-hand side),
 &=&\sum_{u\in U}\;\epsilon (u)e^{\pi _{\af}\left[ u(\mu +\rho )-\rho %
 \right] }\dim \left( L_{\widetilde{\af_{\perp }}}^{\mu _{\widetilde{%
 \af_{\perp }}}\left( u\right) }\right)  \\
-&=&-\sum_{\gamma \in \Phi _{\af\subset \frak{g}}}\sum_{\lambda \in P_{%
+&=&-\sum_{\gamma \in \Phi _{\af\subset \gf}}\sum_{\lambda \in P_{%
 \af}}s(\gamma )k_{\nu }^{(\mu )}e^{\lambda -\gamma }.
 \end{eqnarray*}
 The immediate consequence of this equality is:
@@ -814,17 +740,17 @@ The immediate consequence of this equality is:
 \sum_{u\in U}\epsilon (u)\dim \left( L_{\widetilde{\af_{\perp }}}^{\mu
 _{\widetilde{\af_{\perp }}}\left( u\right) }\right) \delta _{\xi ,\pi _{%
 \af}\left[ u(\mu +\rho )-\rho \right] }+\sum_{\gamma \in \Phi _{\af%
-\subset \frak{g}}}s(\gamma )\;k_{\xi +\gamma }^{(\mu )}=0,\quad \xi \in P_{%
+\subset \gf}}s(\gamma )\;k_{\xi +\gamma }^{(\mu )}=0,\quad \xi \in P_{%
 \af}.  \label{eq:17}
 \end{equation}
 The obtained formula means that the coefficients $k_{\xi +\gamma }^{(\mu )}$
-for $\gamma \in \Phi _{\af\subset \frak{g}}$ are not independent, they
+for $\gamma \in \Phi _{\af\subset \gf}$ are not independent, they
 are subject to linear relations and the form of these relations changes
 when the tested weight $\xi $ coincides with one of \ the ''singular
 weights''  $\left\{ \pi _{\af}\left[ u(\mu +\rho )-\rho \right] |u\in
 U\right\} $ . To conclude the proof we extract the lowest weight $\gamma _{0}\in \Phi _{\frak{a%
-}\subset \frak{g}}$ and pass to a summation over the vectors of the
-injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see Definition \ref
+}\subset \gf}$ and pass to a summation over the vectors of the
+injection fan $\Gamma _{\af\rightarrow \gf}$ (see Definition \ref
 {fan-definition}). Thus we get the desired recurrent relation (\ref{recurrent-relation}).
 \end{proof}
 
@@ -834,19 +760,19 @@ injection fan $\Gamma _{\af\rightarrow \frak{g}}$ (see Definition \ref
 In this subsection we discuss some properties of ''orthogonal pairs'' of
 subalgebras in simple Lie algebras of classical series.
 
-When both $\frak{g}$ and $\af$ are finite-dimensional all regular
+When both $\gf$ and $\af$ are finite-dimensional all regular
 embeddings can be obtained by a successive elimination of nodes in the
-extended Dynkin diagram of $\frak{g}$ (and $\Delta_{\afb }^{+}=\emptyset $
+extended Dynkin diagram of $\gf$ (and $\Delta_{\afb }^{+}=\emptyset $
 if $\af$ is maximal). For the classical series $A$, $C$ and $D$ when
-the regular injection $\af\rightarrow \frak{g}$ is thus fixed, the
-Dynkin diagram for $\af_{\bot }$ is obtained from the extended diagram
-of $\frak{g}$ by eliminating the subdiagram of $\af$ and the adjacent
+the regular injection $\af\rightarrow \gf$ is thus fixed, the
+Dynkin diagram for $\afb$ is obtained from the extended diagram
+of $\gf$ by eliminating the subdiagram of $\af$ and the adjacent
 nodes:
 \begin{table}[tbh]
 \label{tab:diagrams} \noindent \centering{\
 \begin{tabular}{|l|l|l|l|}
 \hline
-$\frak{g}$ & Extended diagram of $\frak{g}$ & Diagrams of the subalgebras $%
+$\gf$ & Extended diagram of $\gf$ & Diagrams of the subalgebras $%
 \af,\; \afb$ &  \\ \hline
 $A_n$ & \includegraphics{table1_1(l)} & \includegraphics{table1_1(r)}
 &  \\ \hline
@@ -856,17 +782,17 @@ $D_n$ & \includegraphics{table1_4(l)} & \includegraphics{table1_4(r)}
 &  \\ \hline
 \end{tabular}
 }
-\caption{Subalgebras $\af,\;\af_{\bot }$ for the classical series}
+\caption{Subalgebras $\af,\;\afb$ for the classical series}
 \end{table}
 
 
 In the case of $B$ series the situation is different. The reason is that
-here the subalgebra $\af_{\bot }$ may be larger than the one obtained
+here the subalgebra $\afb$ may be larger than the one obtained
 by elimination of the subdiagram of $\af$ and the adjacent nodes. The
-subalgebras of the orthogonal pair,$\ \af$ and $\af_{\bot }$, must
-not form a direct sum in $\frak{g}$ . It can be directly
-checked that when $\frak{g}=B_{r}$ and $\af=B_{r_{\af}}$ the
-orthogonal subalgebra is $\af_{\bot }=B_{r-r_{\af}}$. Consider the
+subalgebras of the orthogonal pair,$\ \af$ and $\afb$, must
+not form a direct sum in $\gf$ . It can be directly
+checked that when $\gf=B_{r}$ and $\af=B_{r_{\af}}$ the
+orthogonal subalgebra is $\afb=B_{r-r_{\af}}$. Consider the
 injection $B_{r_{\af}}\rightarrow B_{r},\quad 1<r_{\af}<r$. By
 eliminating the simple root $\alpha _{r_{\af}-1}=e_{r_{\af%
 }-1}-e_{r_{\af}}$ one splits the extended Dynkin diagram of $B_{r}$
@@ -887,7 +813,7 @@ The complete classification of regular subalgebras for affine Lie algebras
 can be found in the recent paper \cite{1751-8121-41-36-365204}. From the complete
 classification of maximal special subalgebras in classical Lie algebras \cite
 {dynkin1952semisimple} we can deduce the following list of pairs of
-orthogonal subalgebras $\af,\;\af_{\bot }$:
+orthogonal subalgebras $\af,\;\afb$:
 \begin{equation*}
 \begin{array}{lll}
 su(p)\oplus su(q) & \subset su(pq) &  \\
@@ -905,27 +831,27 @@ so(p)\oplus so(q) & \subset so(p+q) & \mathrm{{for}\;p\;{and}\;q\;{odd}.}
 
 The recurrent relation (\ref{recurrent-relation}) allows us to formulate an
 algorithm for recursive computation of branching coefficients. In this
-algorithm there is no need to construct the module $L^{(\mu)}_{\frak{g}}$ or
+algorithm there is no need to construct the module $L^{(\mu)}_{\gf}$ or
 any of the modules $L^{(\nu)}_{\af}$.
 
 It contains the following steps:
 
 \begin{enumerate}
 \item  Construct the root system $\Delta _{\af}$ for the embedding $%
-\af\rightarrow \frak{g}$.
+\af\rightarrow \gf$.
 
 \item  Select all positive roots $\alpha \in \Delta ^{+}$ orthogonal
 to  $\af$, i.e. form the set $\Delta_{\afb }^{+}$.
 
-\item  Construct the set $\Gamma _{\af\rightarrow \frak{g}}$. Relation
+\item  Construct the set $\Gamma _{\af\rightarrow \gf}$. Relation
  (\ref{eq:6}) defines the sign function
- $s(\gamma)$ and the set $\Phi_{\af\subset \frak{g}}$ where the lowest weight
+ $s(\gamma)$ and the set $\Phi_{\af\subset \gf}$ where the lowest weight
  $\gamma_0$ is to be subtracted to get the fan (\ref{fan-defined}):
- $\Gamma _{\af\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
-\af\subset \frak{g}}\right\} \setminus \left\{ 0\right\}$.
+ $\Gamma _{\af\rightarrow \gf}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+\af\subset \gf}\right\} \setminus \left\{ 0\right\}$.
 
 \item  Construct the set $\widehat{\Psi ^{(\mu )}}=\left\{ w (\mu +\rho
-)-\rho ;\;w \in W\right\} $ of singular weights for the $\frak{g}$%
+)-\rho ;\;w \in W\right\} $ of singular weights for the $\gf$%
 -module $L^{(\mu )}$.
 
 \item  Select the weights $\left\{ \mu _{\widetilde{\af_{\perp }}%
