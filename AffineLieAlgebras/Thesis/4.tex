@@ -1,884 +1,794 @@
+\chapter{Практические приложения}
+\label{cha:applications}
 
-\chapter{Сплинты корневых систем и функции ветвления}
-\label{cha:splints}
-
-
-\section{Сплинты и ветвления}
-\label{sec:splints}
-
-
-%%\newtheorem{Def}{Definition}[section]
-%%\newtheorem{Cnj}[Def]{Conjecture}
-%%\newtheorem{Prop}[Def]{Property}
-%%\newtheorem{example}{Example}[section]
-%%
-%\input{tcilatex}
+\section{Эволюция Шрамма-Левнера и алгебраические свойства предельного перехода от решеточных моделей к конформной теории поля}
+\label{sec:SLE}
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf Для заинтересованных читателей}\\}
+{\\\setlength{10cm}\\\hfill$\scriptstyle\blacksquare$\par}
 
 
 \begin{abstract}
-Splint of root system for simple Lie algebra appears naturally in
-studies of (regular) embeddings of reductive subalgebras. Splint can
-be used to construct branching rules. We demonstrate that 
-splint properties implementation drastically simplify calculations of
-branching coefficients.
+Примерный текст доклада на семинаре кафедры ФВЭиЭЧ по работе ``Recursive algorithms, branching coefficients and applications''.
+\end{abstract}
+
+\section{Постановка задачи}
+\label{sec:task}
+
+Здравствуйте!
+Сегодня я хочу рассказать о работе ``Рекуррентные алгоритмы, коэффициенты ветвления аффинных алгебр
+Ли и приложения''. В этой работе мы решали следующую задачу.
+
+Даны две аффинные алгебры Ли $\mathfrak{a}\subset \mathfrak{g}$. Аффинные алгебры Ли --- это особый
+класс бесконечномерных алгебр, которые строятся из конечномерных (полу)простых алгебр Ли, как
+центральные расширения алгебр петель. Более подробное определение будет дано позже. Неприводимое
+представление $L^{(\mu)}_{\mathfrak{g}}$ аффинной алгебры $\mathfrak{g}$ со старшим весом $\mu$
+может быть разложено на представления подалгебры $\mathfrak{a}$. Наша задача --- придумать
+практический алгоритм вычисления коэффициентов этого разложения. Конечно же эта задача уже решалась,
+например, существует способ решения ``в лоб'', требующий построения всех представлений и различные способы,
+которые работают для частных случаев, например, многое упрощается в физически интересном случае
+конформных вложений. Мы предлагаем общий метод, но иллюстрировать его будем как-раз физическими
+примерами конформных вложений.
+
+Я начну с физической мотивации этой задачи в двумерной конформной теории поля, напомню некоторые
+факты из теории представлений аффинных алгебр Ли, кратко опишу предложенное нами решение проблемы и
+расскажу про физические примеры в нашей статье.
+
+\section{Физическая мотивация}
+\label{sec:physics}
+
+
+Теперь я перейду к краткому объяснению метода и примерам вычислений.
+
+\section{Рекуррентные соотношения для коэффициентов ветвления}
+\label{sec:branching}
+
+Ранее для вычисления коэффициентов ветвления был предложен способ, основанный на преобразовании
+формулы Вейля-Каца для характеров представлений аффинных алгебр Ли в рекуррентное соотношение для
+коэффициентов ветвления. Однако исходный алгоритм не работал для не максимальных вложений. В данной
+работе была решена данная проблема и предложено обобщение рекуррентных соотношений. 
+
+Используя формулу Вейля-Каца мы выделяем два набора элементов в весовом пространстве. Первый набор $\Gamma$
+называется веером и описывает вложение подалгебры $\mathfrak{a}$ в алгебру $\mathfrak{g}$. Веер
+универсален, в том смысле, что он может быть использован для разложения любого из представлений.
+Другой набор элементов весового пространства $\Psi ^{\left( \mu \right) }$ называется набором
+аномальных весов. Он описывает раскладываемое представление без явного его построения. 
+
+После этого процесс вычисления коэффициентов ветвления можно реализовать при помощи следующей
+рекуррентной формулы:
+\begin{equation}
+  \label{eq:1}
+  \begin{array}{c}
+      k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; {\rm dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+ \right.\\
+\left.
++\sum_{\gamma \in
+\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
++\gamma }^{\left( \mu \right) }\right)
+
+  \end{array}
+\end{equation}
+Здесь $\mathfrak{a}_{\bot}$ --- это подалгебра, ``натянутая'' на корни $\mathfrak{g}$, ортогональные
+к корневой системе подалгебры  $\mathfrak{a}$, $W_{\bot}$ --- соответствующая этим корням группа Вейля,
+$\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ --- веер --- набор весов в разложении знаменателя $$\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}
+(1-e^{-\pi_{\mathfrak{a}}(\alpha)})^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\pi_{\mathfrak{a}}(\alpha))}$$, а $s(\gamma)$ ---
+коэффициент при  $e^{\gamma}$ в этом разложении.
+
+Набор аномальных весов $\Psi^{(\mu)}$ дает член с $\delta$-символом.
+
+Это рекуррентное соотношение позволяет нам сформулировать следующий алгоритм вычисления
+коэффициентов ветвления, который осуществляется без явного построения исходного представления или
+представлений, входящих в разложение.
+\begin{enumerate}
+\item Построить наборы положительных корней $\Delta^{+}$ и $\Delta_{\mathfrak{a}}^{+}$.
+\item Выбрать те положительные корни $\alpha\in \Delta^{+}$, которые ортогональны корневому
+  подпространству  $\mathfrak{a}$ и собрать их в набор $\Delta^{+}_{\bot}$.
+\item Построить множество весов $\Gamma$, которое мы называем ``веером''.
+\item Найти множество $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$
+  аномальных весов представления $L^{(\mu)}_{\mathfrak{g}}$.
+\item Выбрать в нем веса $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in
+    \bar{C}_{\mathfrak{a}_{\bot}} \right\}$. Это можно легко сделать, так как у нас есть набор
+  $\Delta^{+}_{\bot}$ и мы можем проверить, лежит ли вес $\pi_{\mathfrak{a}_{\bot}}\lambda$ в
+  главной камере Вейля алгебры $\mathfrak{a}_{\bot}$. Для этого все скалярные произведения этого
+  веса $\lambda$ с корнями из  $\Delta^{+}_{\bot}$ должны быть неотрицательны.
+\item Далее для весов $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in
+  \bar{C}_{\mathfrak{a}_{\bot}}$ мы вычисляем размерность соответствующих представлений
+  $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$
+  при помощи формулы Вейля и набора $\Delta^{+}_{\bot}$.
+\item Далее рекуррентно вычисляются аномальные коэффициенты ветвления, а внутри главной камеры Вейля
+  алгебры $\mathfrak{a}$ аномальные коэффициенты совпадают с настоящими коэффициентами ветвления.
+\end{enumerate}
+
+Сейчас я поясню всю процедуру на примере редукции представления простой алгебры $B_2$ ($so(5)$) на
+подалгебру $A_1$ ($so(3)$), а потом расскажу про аффинные алгебры Ли.
+
+\subsection{Примеры}
+\label{sec:examples}
+
+Я начну с примера вычисления в случае конечномерных простых алгебр Ли, так как его легко нарисовать.
+
+Рассмотрим регулярное вложение  $A_1$ в $B_2$. Вот на рисунке корневая системы алгебры $B_2=so(5)$.
+Корень  $\beta$ вложенной алгебры $A_1$ равен $\alpha_1+2\alpha_2$.
+
+Функция $s(\gamma)$ и веер $\Gamma$ строятся исходя из корневых систем $\mathfrak{g}, \mathfrak{a}$
+$\frac{\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}_{\mathfrak{g}}\setminus
+      \Delta^{+}_{\mathfrak{a}}} \left(1-e^{-\alpha}\right) \right)}{\prod_{\beta\in
+    \Delta^{+}_{\mathfrak{a}}} \left(1-e^{-\beta}\right) }$ и получается
+\begin{equation}
+  \label{eq:22}
+  (1,2),\; (2,-1)
+\end{equation}
+Вторая компонента - значение $s(\gamma)$.
+
+Опишем редукцию первого фундаментального представления $B_2$. Старший вес изображен на рисунке.
+\begin{figure}[ph]
+  \noindent\centering{
+    \includegraphics[width=90mm]{B2_A1}
+  }
+  \caption{Регулярное вложение $A_1$ в $B_2$}
+  \label{fig:B2_A1}
+\end{figure}
+Вот набор аномальных весов $\omega(\mu+\rho)-\rho,\; \omega\in W$ с соответствующими четностями
+отражений $\epsilon(\omega)$.
+Теперь мы факторизуем группу Вейля $W$ по подгруппе $W_{\bot}=\left\{\omega_1\right\}$. Получаем
+следующий набор весов и размерностей представлений  $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$:
+\begin{figure}[h!tb]
+  \noindent\centering{
+    \includegraphics[width=90mm]{B2_A1_2}
+  }
+  \caption{Аномальные веса и соответствующие $\mathfrak{a}_{\bot}=A_1$-модули}
+  \label{fig:B2_A1_2}
+\end{figure}
+
+Затем мы проектируем эти веса и размерности на корневое подпространство подалгебры
+$\mathfrak{a}=A_1$ и получаем следующие аномальные веса и их кратности:
+\begin{equation}
+  \label{eq:25}
+  (1,2),\; (0,-3),\; (-4,3),\; (-5,-2)
+\end{equation}
+
+Аномальный коэффициент ветвления  $k^{(1,0)}_{1}=2$, для коэффициента $k^{(1,0)}_{0}$ из
+рекуррентного соотношения получаем
+\begin{equation}
+  \label{eq:23}
+  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1
+\end{equation}
+
+В работе рассмотрено большое число примеров вложений аффинных алгебр Ли. На самом деле мы написали
+программу, которая может строить такие примеры автоматически для алгебр Ли не слишком большого
+ранга.
+
+Я сейчас покажу результаты применения нашего алгоритма для одного из примеров конформных вложений.
+
+Рассмотрим такое вложение $\mathfrak{a}\subset \mathfrak{g}$, где
+$\mathfrak{a}=\hat{A_1}\oplus \hat{A_1}$, а $\mathfrak{g}= \hat{A_3}$. Это
+вложение является аффинным расширением специального вложения конечномерных алгебр Ли $A_1\oplus
+A_1\subset A3$. ($su(2)\oplus su(2)\subset su(4)$).
+\begin{comment}
+ Это специальное вложение строится следующим образом: берем четырехмерное
+представление $A_1\oplus A_1$ со старшим весом $(1,1)$. Вот веса этого представления
+\ref{fig:A_1+A_1_to_A3}, их координаты в базисе фундаментальных весов: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
+
+\begin{figure}[h]
+  \begin{multicols}{2}
+    \hfill
+    \includegraphics[width=50mm]{A_1+A_1_to_A3}
+    \hfill
+    \caption{Представление для специального вложения $A_1\oplus A_1\subset A3$}
+    \label{fig:A_1+A_1_to_A3}
+    \hfill
+    \includegraphics[width=50mm]{A1+A1-A3}
+    \hfill
+    \caption{Вложенные корни $A_1\oplus A_1\subset A3$}
+    \label{fig:A1+A1-A3}
+  \end{multicols}
+\end{figure}
+
+Тогда матричные элементы представления генераторов подалгебры Картана $b_1,b_2$ в базисе Вейля
+даются выражениями
+\begin{equation}
+  d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}{(\alpha_i,\alpha_i)}\right),
+\end{equation}
+так что $d(b_1)=\mathrm{diag}(1,-1,1,-1),\;
+  d(b_2)=\mathrm{diag}(1,1,-1,-1).$
+\end{comment}
+Вложенные корни $\alpha_1,\alpha_2$ подалгебры $A_1\oplus A_1$
+выражаются через корни $\tilde{\alpha}_i$ алгебры  $A_3$
+\begin{equation}
+  \label{eq:37}
+  \begin{array}{l}
+     \alpha_1=\frac{1}{2}(\tilde{\alpha}_1+\tilde{\alpha}_3)\\
+     \alpha_2=\frac{1}{2}(\tilde{\alpha}_1+2\tilde{\alpha}_2+\tilde{\alpha}_3)
+  \end{array}
+\end{equation}
+\begin{comment}
+Они изображены на рисунке \ref{fig:A1+A1-A3}.
+\end{comment}
+
+Вложение имеет индексы  $(2,2)$ и является конформным, так как $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
+
+Для построения модулярно-инвариантной статсуммы нам нужно знать редукцию фундаментальных
+представлений $\widehat{su(4)}$. Фундаментальные веса имеют следующие координаты в ортогональном базисе
+\begin{equation}
+  \begin{array}{lll}
+     \omega_0 & = & (0,0,0,0;1;0)\\
+     \omega_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0)\\
+     \omega_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0)\\
+     \omega_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0) \\
+  \end{array}
+\end{equation}
+
+
+Множества положительных корней  $\Delta^{+}$ и $\Delta_{\mathfrak{a}}^{+}$:
+\begin{equation}
+  \label{eq:38}
+  \begin{array}{lll}
+    \Delta^{+} &=&\left\{\co{\Delta}^{+}=\{\tilde{\alpha}_1, \tilde{\alpha}_2, \tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2, \tilde{\alpha}_2+\tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2+\tilde{\alpha}_3\};\right.\\
+    &\; & \quad\left.\co{\Delta}+n\delta;\;     +n\delta\;\mbox{с кратностью}\; 3;\; n=1,2,\dots,\right\}\\
+    \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1-n\delta,\pm
+    \alpha_2-n\delta;\; -n\delta\; \mbox{с кратностью} \; 2;\; n=1,2,\dots\}\\
+  \end{array}
+\end{equation}
+
+Набор $\Delta^{+}_{\bot}$ пуст.
+Веер  $\Gamma _{\frak{a}\subset \frak{g}}$ показан на рисунке \ref{fig:A1+A1-A3_fan}. Конечные координаты
+даны в базисе фундаментальных весов $A_1 \oplus A_1$. Элемент $\gamma$ обозначен крестом, если
+$s(\gamma)=1$ и кругом, если $s(\gamma)=-1$.
+\begin{figure}[h!tb]
+  \includegraphics[width=150mm]{A1+A1-A3_fan}
+  \caption{Веер для специального вложения $\hat A_1\oplus\hat A_1\subset\hat A_3$}
+  \label{fig:A1+A1-A3_fan}
+\end{figure}
+
+Мы ограничимся вычислениями до пятого грейда.
+\begin{figure}[h!tb]
+  \includegraphics[width=170mm]{A1+A1-A3_anom}
+  \caption{Спроектированные аномальные веса $L^{\omega_2}_{A_3}$}
+  \label{fig:A1+A1-A3_anom}
+\end{figure}
+
+Множество аномальных весов  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in
+  W\right\}$ представления алгебры $\hat{A}_3$ состоит из 192 элементов, их проекции
+$\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ показаны на рисунке  \ref{fig:A1+A1-A3_anom}
+для $\mu=\omega_2=(0,1,0;1;0)$.
+
+Аналогичные картинки для $\omega_0, \omega_1,\omega_3$ я не показываю.
+
+Аномальные коэффициенты ветвления для представления  $L^{(\omega_2)}$ вычислены при помощи
+рекуррентных соотношений и показаны на рисунке \ref{fig:A1+A1-A3_branching}. 
+\begin{figure}[h!tb]
+  \hspace*{-2cm}\includegraphics[width=180mm]{A1+A1-A3_branching}
+  \caption{Аномальные коэффициенты ветвления для представления $L^{(0,1,0;1;0)}_{A_3}$}
+  \label{fig:A1+A1-A3_branching}
+\end{figure}
+
+Получаются следующие правила ветвления:
+ \begin{equation}
+   \label{eq:39}
+   \begin{array}{ll}
+     L^{(0,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)} \\
+     L^{(1,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\
+     L^{(0,1,0;1;0]}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & \left( L_{\hat{A_1}}^{(2;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)}\right) \oplus \left( L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(2;2;0)}\right) \\
+     L^{(0,0,1;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\     
+   \end{array}
+ \end{equation}
+
+В результате мы получаем модулярно-инвариантную статсумму для WZW-модели с киральной алгеброй $\hat{A}_1\oplus \hat{A}_1$.
+\begin{multline}
+  \label{eq:40}
+  Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
+  \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
+\end{multline}
+
+\section{Заключение. Обсуждение перспектив.}
+\label{sec:conlusion}
+
+Функции ветвления играют важную роль в coset-моделях. Эти модели строятся путем факторизации
+WZW-модели с алгеброй $\mathfrak{g}$ по отношению к модели с подалгеброй $\mathfrak{a}$. Тут функции
+ветвления фактически описывают состояния в системе.
+
+Недавно мы заметили, что струнные функции, которые описывают представления, функции ветвления,
+описывающие редукцию представлений и функции слияния, которые описывают разложение тензорных
+произведений представлений на неприводимые, допускают построение дуальных систем функций. Эти
+дуальные функции могут быть построены просто из анализа соответствующих групп и камер Вейля. 
+Задача явного построения струнных функций или функций ветвления тогда сведется к обращению матрицы.
+Явный вид функций ветвления полезен при изучении coset-моделей. Кроме того, многие
+известные результаты могут быть перенесены на дуальные функции, например, результаты Каца о модулярных свойствах
+струнных функций и функций ветвления.
+В настоящее время мы начали исследовать эти системы дуальных функций. 
+
+Среди других возможных приложений полученных методов можно отметить также приложения в интегрируемых
+цепочках, а также в приложения дуальных функций теории модулярных форм. 
+
+
+
+
+
+\section{Coset-модели}
+\label{sec:coset-models}
+Ветвления. Функции ветвления и статсуммы. 
+Калибровочные WZW-модели. 
+
+\section{SLE}
+\label{sec:sle}
+SLE на WZW-моделях. Граничные условия. Парафермионы. SLE на coset-моделях.
+
+
+\begin{abstract}
+  Schramm-Loewner evolution appears naturally as the scaling limit of interfaces in lattice models at critical point. Critical behavior of these models can be described by minimal models of conformal field theory.
+
+  We generalize Schramm-Loewner evolution with additional Brownian motion on Lie group to the case of direct product of two groups. We then study connection between SLE description of critical behavior with coset models of conformal field theory. In order to be consistent such construction should give minimal models for certain choice of groups. 
+
+%%    SLE with additional Brownian motion on Lie group $G$ was proposed as generalization to WZNW models of CFT. Martingale property of SLE observables is related to Virasoro null vector conditions for CFT fields and KZ-equations for correlation functions. 
+%%  
+%%    Minimal models can be obtained from WZNW models by coset construction. Then it is natural to study SLE with additional Brownian motion on coset space $G/H$. We discuss algebraic properties of coset fields and correlation functions which correspond to SLE observables. 
 \end{abstract}
 
 \section{Introduction}
-\label{sec:Introduction}
+Schramm-Loewner evolution, introduced by Oded Schramm in papers \cite{schramm2000scaling} is 
 
-Embedding $\phi$ of a root system $\Delta_1$ into a root system
-$\Delta$ is a bijective map of roots of $\Delta_{1}$ to a (proper)
-subset of $\Delta$ that commutes with vector composition law in
-$\Delta_{1}$ and $\Delta$.
+The connection of SLE with CFT was studied in papers \cite{bauer2004conformal,bauer2004cfts,bauer2003sle,bauer2002sle}.
+
+Reviews \cite{rohde2005basic}, \cite{bauer20062d}, \cite{Cardy:2005kh}. 
+
+SLE and conformal field theories with additional symmetries \cite{alekseev2010sle}, \cite{santachiara2008sle,picco2008numerical}, \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}.
+
+\subsection{Schramm-Loewner evolution}
+To remind of Schramm-Loewner evolution we first describe simple example.
+
+Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fig:sle}). We impose following boundary condition: all spins are down on one half of the boundary and all spins are up on another half. Then in any configuration we get an interface delimiting two clusters and connecting zero and infinity. 
+
+\begin{figure}[h]
+  \centering{
+    \includegraphics[height=25mm]{explore}
+    \caption{SLE -- continuous limit of interfaces}}
+  \label{fig:sle}
+\end{figure}
+
+Next we consider continuous limit of lattice model. Interface in random configuration of the model tends to random curve. We can think of this curve as of trace of stochastic process which satisfy some stochastic equation. 
+
+In papers [Smirnov, Schramm ... ] it was shown that this equation is
 \begin{equation*}
-\phi:\Delta_1 \longrightarrow \Delta
+  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} \quad \text{or} \quad       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}
+\end{equation*}
+The stochastic process which satisfy this equation is called     {\it Schramm-Loewner evolution} on the upper half-plane $\mathbb{H}$.
+
+Here $g_{t}(z)$ is a conformal map from $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$ to $\mathbb{H}$ (see Fig. \ref{fig:sle2}).
+\begin{figure}[h]
+  \centering{
+    \includegraphics[width=50mm]{loewner}
+    \caption{Conformal map}}
+  \label{fig:sle2}
+\end{figure}
+
+Schramm-Loewner evolution provides conformally-invariant probability measure on trajectories $\gamma_{t}$ in $\mathbb{H}$.
+
+\subsection{Correspondence between SLE and minimal models of CFT}
+
+Now we can look at the observables in the presence of SLE trace. Expectation value of lattice observable on upper half-plane can be calculated as the sum of expectation values of this observable in presence of SLE trace up to some time $t$ multiplied by the probability of this trajectory. 
+
+Consider lattice observable $\mathcal{O}$, then it expectation value can be calculated as
+\begin{equation*}
+  \prec \mathcal{O} \succ_{\mathbb{H}}=\mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=\sum_{\gamma_{t}} P\left[C_{\gamma_{t}}\right] \prec \mathcal{O} \succ_{\gamma_{t}}
+\end{equation*}
+Since lattice observable  $\prec \mathcal{O} \succ_{\mathbb{H}}$ does not depend on $t$, hence $\prec\mathcal{O}\succ_{\gamma_{t}}$ is a martingale.
+
+In continuous limit lattice observable tends to CFT correlation function. Since we consider the theory with the boundary, CFT correlation function has following form:
+\begin{equation*}
+  \prec \mathcal{O} \succ_{\mathbb{H}_{t}}\to \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
+  \frac{\left< \mathcal{O}(\{z_{i}\})\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}=
+  \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
+\end{equation*}
+We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
+
+\begin{equation}
+  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
+  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
+  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
+  \label{eq:1}
+\end{equation}
+
+Now we want to consider evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:1}) gives us
+\begin{equation*}
+  -\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}.
+\end{equation*}
+For transformation of primary fields $\phi_{\lambda_{i}}$ we have 
+\begin{equation}
+  \label{eq:2}
+  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i}) 
+\end{equation}
+We denote generator of this transform by $\mathcal{G}_{i}$.
+
+
+
+Continuous limit in critical point leads to CFT correlation function
+
+Now for expectation value of martingale we have this expression.
+\begin{equation*}
+  \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad \mathbb{E}\left[d \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
+\end{equation*}
+
+Now we use Ito calculus to calculate increment of our correlation function. It should be zero so we get the equation:
+\begin{equation}
+  \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
+    \mathcal{F}_{\mathbb{H}_{t}}\right]=\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
+      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}
+\label{eq:8}
+\end{equation}
+Then use explicit form of conformal map and obtain
+\begin{equation*}
+  \left( \sum_{i}\left[-\frac{2h_{i}}{w_{i}^{2}} +\frac{2}{w_{i}}\partial_{w_{i}}\right]+\frac{\kappa}{2}\sum_{i,j}\partial_{w_{i}} \partial_{w_{j}}\right)\mathcal{F}(\left\{z_{i}\right\})=0
+\end{equation*}
+
+We can rewrite it as the necessary condition on b.c.c. operator $\phi$:
+\begin{equation*}
+  (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0 \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
+\end{equation*}
+We can see that it can be rewritten as the action of Virasoro generators. Since we have arbitrary observable, this equation is equivalent to the requirement for boundary condition changing operator to have level two null state. 
+In case of minimal model we can see that boundary condition chaining operator is primary field $\phi_{1,2}$ or $\phi_{2,1}$.
+
+\section{SLE and WZNW models}
+\label{sec:sle-wzw-models}
+Now we want to generalize this analysis to rational conformal field theories. First we consider Wess-Zumino-Novikov-Witten model.
+\subsection{WZNW models}
+
+ The action for this model can be written in terms of map $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ from complex plane with infinity or two-sphere to some Lie group $G$:
+\begin{multline}
+  S=-\frac{k}{8\pi}\int d^2x\; \mathcal{K} (g^{-1}\partial^{\mu}g, g^{-1} \partial_{\mu}g)  
+  \\
+  - \frac{k }{24\pi^{2}} \int_{B}\epsilon_{ijk} \mathcal{K}\left(
+    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i},\left[
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right]\right) d^3y
+\end{multline}
+The first term is just non-linear sigma-model.
+
+ Here $\mathcal{K}$ is Killing form on Lie algebra $\gf$ of Lie group $G$. The second term is written in terms of continuation from two-sphere $S^{2}$ to three-dimensional manifold $B$ which has two-sphere as the boundary. Since this continuation is non-unique we get the requirement for $k$ to be integer. 
+
+Currents of this model have following form:
+  \begin{eqnarray}
+    J(z)= -k \partial_zg g^{-1}
+    \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
+  \end{eqnarray}
+
+Model possess gauge invariance under gauge transformations:
+  \begin{equation*}
+    g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z),
+  \end{equation*}
+  where $\Omega,\;\bar \Omega \in G$.
+Here $\Omega$ and $\bar \Omega$ are independent. 
+
+If we consider infinitesimal gauge transformation $\Omega=1+\omega$ we get Ward identities:
+  \begin{equation}
+    \label{eq:87}
+    \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
+    \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+  \end{equation}
+
+ Then we can get operator product expansion for currents. 
+ \begin{equation}
+   \label{eq:3}
+   <J\phi>\sim \dots
+ \end{equation}
+
+If we expand currents to modes
+\begin{equation*}
+  J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n 
+\end{equation*}
+and use operator product expansion \eqref{eq:3} we get commutation relations of affine Lie algebra $\gfh$:
+\begin{equation}
+  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0} 
+\end{equation}
+
+This model has conformal invariance which can be seen from 
+Sugawara construction. This is way to embed Virasoro algebra into the universal enveloping algebra of affine Lie algebra $\gfh$ ($Vir\subset U(\gfh)$):
+\begin{equation}
+  \label{eq:4}
+  L_n=\frac{1}{2(k+h^v)}\sum\limits_a\sum\limits_m:J^a_m J^a_{n-m}:
+\end{equation}
+  
+Full chiral algebra of the model is semidirect product of affine and Virasoro algebra $\gfh \ltimes Vir$. 
+
+Its commutation relations are
+  \begin{equation}
+    \label{eq:92}
+    \begin{aligned}
+      \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+      \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+    \end{aligned}
+  \end{equation}
+
+Primary fields  $\phi_{\lambda}$ are labeled by highest weights of affine Lie algebra representations. Here we see how Virasoro and affine Lie algebra generators act on primary fields:
+  \begin{equation*}
+    \begin{aligned}
+      & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
+      & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>
+    \end{aligned}
+  \end{equation*}
+
+
+\subsection{SLE and WZNW models}
+Now we want to study Schramm-Loewner evolution in WZNW-models.
+
+Similarly to minimal models we consider observable
+\begin{equation*}
+  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
+  \frac{\left<\phi_{\Lambda}(z_{t}) \phi_{\lambda_1}(z_{1}) \dots \phi_{\lambda_n}(z_{n}) \phi_{\lambda^{*}_1}(\bar z_{1}) \dots \phi_{\lambda^{*}_n}(\bar z_{n})
+      \phi_{\Lambda^{*}}(\infty)\right>}{\left<\phi_{\Lambda}(z_{t})\phi_{\Lambda^{*}}(\infty)\right>}
+\end{equation*}
+Again we can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite it on the whole upper half-plane. 
+\begin{equation*}
+  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
+  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
+  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
+\end{equation*}
+
+Consider evolution from $t$ to $t+dt$.
+First factor gives us $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
+
+ For fields we have
+\begin{equation*}
+  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})
+\end{equation*}
+When we consider fields we need to add random gauge transformation (random motion in $G$) to stochastic evolution \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}:
+\begin{equation*}
+  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)
+\end{equation*}
+Since we have boundary we are working with boundary CFT so we have only half of gauge transformations due to Cardy conditions.
+
+\subsection{SLE martingales in WZNW models}
+We use Ito calculus to get the equation from martingale condition:
+\begin{equation*}
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{1}{2}\tau\sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}=0
 \end{equation*}
 \begin{equation*}
-\phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,
-\,\,\, \alpha,\beta \in \Delta_1
+  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{\lambda_{i}}}{(w_{i}-z)^{n}}-\frac{1}{(w_{i}-z)^{n-1}}\partial_{w_{i}}\right);\quad \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}}
+\end{equation*}
+Again we can rewrite it as algebraic requirement for  field  which 
+correspond to boundary condition changing operator.
+\begin{equation*}
+  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
+\end{equation*}
+is level two null state and if we act on this state with raising operators we should get zero.
+\begin{equation*}
+  J^{a}_{1} \left|\psi\right>=0, J^{a}_{2}\left|\psi\right>=0.
+\end{equation*}
+ We use commutation relations and get equations which connects parameters of random motion with level of affine Lie algebra representation. 
+
+We can see that $\kappa+\tau h^{v}=4$ and it is possible to derive additional relations connecting $\kappa, \tau, k$:
+\begin{equation*}
+  \kappa=\frac{2(h^{v}-2k)}{2h_{\Lambda}h^{v}-k},\quad \tau=\frac{8 h_{\Lambda}-2}{2h_{\Lambda}h^{v}-k}  \quad\text{for}\; k\neq 2h_{\Lambda}h^{v}
+\end{equation*}
+ Also we get some constraints on possible boundary condition changing operators. 
+To get complete classification use Knizhnik-Zamolodchikov equations.
+
+
+\section{Coset models}
+\label{sec:coset-models}
+Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory.
+
+
+\subsection{Gauged WZNW-models and coset construction}
+
+Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models. We add gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action:
+\begin{multline*}
+  S(g,A)=S_{WZNW}(g)+\\
+  \frac{k}{4\pi}\int d^{2}z \left(\mathcal{K}(A, g^{-1}\bar \partial g)-\mathcal{K}(\bar A, (\partial g ) g^{-1})+\mathcal{K}(A,g^{-1}\bar A g)-\mathcal{K}(A,\bar A)\right)
+\end{multline*}
+Now current is
+\begin{equation*}
+  J_{(\gf,\af)}=-k\partial g g^{-1} -k g A g^{-1}
 \end{equation*}
 
-Note that the image $Im(\phi)$ must not inherit the root system
-properties except the addition rules equivalent to the addition
-rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and $\phi_2$  
-can splinter $\Delta$  when the latter can be presented 
-as a disjoint union of images $Im(\phi_1)$ and $Im(\phi_2)$.   
-The term {\it splint} was
-introduced by D. Richter in  \cite{richter2008splints} where the
-classification of splints for simple Lie algebras was obtained.
-There was also mentioned that splint must have tight
-connections with the injection fan construction. The fan $\Gamma
-\subset \Delta$ was
-introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent
-properties of branching coefficients for maximal embeddings. Injection fan is an
-efficient tool to study branching rules. Later this construction
-was generalized to non-maximal embeddings and infinite-dimensional
-Lie algebras in \cite{2010arXiv1007.0318L, ilyin812pbc}.
+From Ward identities we get following expression for the product of gauge field and primary fields:
+\begin{equation*}
+  \left< A^{b}(z)\phi_{1}\dots \phi_{N}\right>=\frac{2}{k+2 h^{v}_{\af}}\sum_{k}\frac{\tilde{t}^{b}_{k}}{z-z_{k}}\left<\phi_{1}\dots \phi_{N}\right>
+\end{equation*}
+Here $h_{\af}^{v}$ is the dual Coxeter number of Lie algebra $\af$.
 
-In the present paper we study connections between splint and
-injection fan for regular embedding of reductive subalgebras
-${\mathfrak a}$ in simple Lie algebra $\mathfrak{g}$. We show that (under
-certain conditions described in section \ref{sec:stems and
-multiplicity functions}) splint is a natural tool to study
-reduction properties of ${\mathfrak g}$-modules
-with respect to a subalgebra ${\mathfrak a}\longrightarrow
-{\mathfrak g}$. Using this tool we obtain the main result -- the one-to-one correspondence between weight
-multiplicities in irreducible modules of splint and branching
-coefficients for a reduced module $L^{\mu}_{{\mathfrak
-g}\downarrow {\mathfrak a}}$.
+Remember that for WZNW current we have OPE $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi(w)}{z-w}$,  so we see that algebraic structure is connected with the pair of algebras $\gf$ and $\af$, such that $\afh\subset\gfh$. 
 
+Virasoro generators are given by difference of Sugawara expressions:
+\begin{equation*}
+  L_{n}=L_{n}^{\gf}-L_{n}^{\af}
+\end{equation*}
 
-\section{Injections and splints}
+\subsection{Primary fields}
+\label{sec:primary-fields}
+Primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra and subalgebra, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
 
-\label{sec:Injections and splints}
+Conformal weight of primary field is equal to
+\begin{multline}
+  L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
+  \left|\phi_{\lambda}\right>=\\
+  \left(\frac{(\mu,\mu+2\rho)}{2(k+h^v)}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^v)}\right)\left|\phi_{(\mu,\nu)}\right>
+\end{multline}
 
-Consider a simple Lie algebra $\mathfrak{g}$ and its regular subalgebra $%
-\mathfrak{a}\hookrightarrow \mathfrak{g}$ such that $\mathfrak{a}$
-is a
-reductive subalgebra $\mathfrak{a \subset g}$ with correlated root spaces: $%
-\mathfrak{h}_{\mathfrak{a}}^{\ast }\subset \mathfrak{h}_{\mathfrak{g }%
-}^{\ast }$. Let $\mathfrak{a}^{\mathfrak{s}}$ be a semisimple summand of
-$\mathfrak{a}$,
-this means that $\mathfrak{a}=\mathfrak{a}^{\mathfrak{s}} \oplus \mathfrak{u}(1)\oplus %
-\mathfrak{u}(1)\oplus \dots$. We shall consider $\mathfrak{a}^{\mathfrak{s}}$
-to be a proper regular subalgebra and $\mathfrak{a}$ to be the
-maximal subalgebra with $\mathfrak{a}^{\mathfrak{s}}$ fixed that is the rank
-$r$ of $\frak{a}$ is equal to that of $\mathfrak{g}$.
+%% So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
 
-The following notations are used:
+It is possible to obtain analogues of KZ-equations:
+\begin{equation*}
+  \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{v}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{v}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
+\end{equation*}
 
-$r$ , $\left( r_{\mathfrak{a}^{\mathfrak{s}}}\right) $ --- the rank of
-$\frak{g}$ $\left( \mathrm{{resp. }\mathfrak{a}^{\mathfrak{s}}}\right) $ ;
+\subsection{SLE on coset space}
+Consider Lie (semi-)simple group $G$ with Lie algebra $\gf$ and (semi-)simple subgroup $A\subset G$ with Lie algebra $\af\subset \gf$. 
+The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $\mathrm{dim}\gf-\mathrm{dim}\af$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
 
-$\Delta $ $\left( \Delta _{\frak{a}}\right) $--- the root system;
-$\Delta ^{+} $ $\left( \mathrm{{resp. }\Delta
-_{\frak{a}}^{+}}\right) $--- the positive root system (of
-$\frak{g}$ and $\frak{a}$ respectively);
-
-$S \, ,\quad \left( S_{\frak{a}}\right) $ --- the system of simple roots (of $%
-\frak{g}$ and $\frak{a}$ respectively);
-
-$\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $%
-i$-th (resp. $j$-th) simple root for $\frak{g}$  $\left( \mathrm{{resp. \,} \frak{%
-a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\mathfrak{a}%
-^S}\right) $;
-
-$\omega _{i}$ , $\left( \omega _{\left( \frak{a}\right) j}\right) $ --- the $%
-i$-th (resp. $j$-th) fundamental weight for $\frak{g}$ $\left( \mathrm{{resp. \,}\frak{%
-a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\mathfrak{a}%
-^S}\right) $;
-
-$W$ , $\left( W_{\frak{a}}\right) $--- the corresponding Weyl group;
-
-$C$ , $\left( C_{\frak{a}}\right) $--- the fundamental Weyl chamber;
-
-$\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- the closure of the
-fundamental Weyl chamber;
-
-$\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
-
-$\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- the Weyl vector;
-
-$L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
-of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
--module with the highest weight $\nu $ );
-
-$\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
-the weight diagram of $L^{\mu }$ (resp. ${}L_{\frak{a}}^{\nu }$ );
-
-$P$ (resp. $P_{\frak{a}} $) \ --- the weight lattice;
-
-$P^{+}$ (resp. $P_{\frak{a}}^{+} $) \ --- the dominant weight lattice;
-
-$\mathcal{E}$ (resp. $\mathcal{E}_{\frak{a}} $) \ --- the formal algebra;
-
-$m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
-}\right) $ --- the multiplicity of the weight $\xi \in P$ \ $\left( \mathrm{{%
-resp. }\in P_{\frak{a}}}\right) $ in the module $L^{\mu }$ , (resp. $\xi \in
-L_{\frak{a}}^{\nu } $);
-
-$ch\left( L^{\mu }\right) $ (resp. $\mathrm{ch}\left( L_{\frak{a}}^{\nu
-}\right) $)--- the formal character of $L^{\mu }$ (resp. $L_{\frak{a}}^{\nu
-} $);
-
-$ch\left( L^{\mu }\right)  =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
-+\rho )-\rho }} {\prod_{\alpha \in \Delta ^{+}} \left( 1-e^{-\alpha }\right)
-} $ --- the Weyl formula;
-
-$R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) \quad $
-(resp. $R_{\frak{a}}: =\prod_{\alpha \in \Delta_{\frak{a}}^{+}} \left(
-1-e^{-\alpha }\right) $ ) --- the Weyl denominator.
-
-Let $L^{\mu }$ be completely reducible with respect to $\frak{a}$,
-\[
-L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
-}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }.
-\]
+Then for generator of field transformation we can write 
 \begin{equation}
-\pi _{\frak{a}}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\frak{a}%
-}^{+}}b_{\nu }^{(\mu )}ch\left( L_{\frak{a}}^{\nu }\right) .
-\label{branching1}
+  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}\left(d \theta ^{a} t^{a}_{i}\right)\right)
+\label{eq:5}
 \end{equation}
-For the modules we are interested in the Weyl formula for $\mathrm{ch}\left(
-L^{\mu }\right) $ can be written in terms of singular elements \cite
-{humphreys1997introduction}
-\[
-\Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w(\mu +\rho
-)-\rho },
-\]
-namely,
-\begin{equation}
-\mathrm{ch}\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi
-^{\left( 0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
-\label{Weyl-Kac2}
-\end{equation}
-The same is true for submodules $\mathrm{ch}\left( L_{\frak{a}}^{\nu
-}\right) $ in (\ref{branching1})
-\[
-\mathrm{ch}\left( L_{\frak{a}}^{\nu }\right) =\frac{\Psi _{\frak{a}}^{\left(
-\nu \right) }}{\Psi _{\frak{a}}^{\left( 0\right) }}=\frac{\Psi _{\frak{a}%
-}^{\left( \nu \right) }}{R_{\frak{a}}},
-\]
-with
-\[
-\Psi _{\frak{a}}^{\left( \nu \right) }:=\sum\limits_{w\in W_{\frak{a}%
-}}\epsilon (w)e^{w(\nu +\rho _{_{\frak{a}}})-\rho _{_{\frak{a}}}}.
-\]
-
-Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
-we get a relation connecting the singular elements $\Psi ^{\left( \mu
-\right) }$ and $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
-\begin{eqnarray}
-\frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho )-\rho }}{\prod_{\alpha \in
-\Delta ^{+}}(1-e^{-\alpha })} &=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu
-}^{(\mu )}\frac{\sum_{w \in W_{\frak{a}}}\epsilon (w )e^{w (\nu +\rho _{%
-\frak{a}})-\rho _{\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{a}%
-}^{+}}(1-e^{-\beta })},  \nonumber  \label{eq:4} \\
-\frac{\Psi ^{\left( \mu \right) }}{R} &=&\sum_{\nu \in P_{\frak{a}%
-}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\frak{a}}^{\left( \nu \right) }}{R_{%
-\frak{a}}}.  \label{singular main}
-\end{eqnarray}
-
-In \cite{2010arXiv1007.0318L} it was proven that branching coefficients $%
-b_{\xi }^{\left( \mu \right) }$ corresponding to the injection $\frak{a}%
-\hookrightarrow \frak{g}$ are subject to the set of recurrent relations:
-\begin{equation}
-\begin{array}{c}
-b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-\sum_{u\in W/W_{\perp}}\epsilon (u)\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
-_{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
-\widetilde{\frak{a}}}(u(\mu +\rho )-\rho )}+\right. \\
-\left. +\sum_{\gamma \in \Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}%
-}}s\left( \gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right)
-}\right) .
-\end{array}
-\label{recurrent rel}
-\end{equation}
-where $\frak{a}_{\perp }$ is the subalgebra determined by the roots of $%
-\frak{g}$ orthogonal to roots of $\frak{a}$ and $W_{\perp}$ is a Weyl group of $\mathfrak{a}_{\perp}$
-\begin{eqnarray}
-\Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
-h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
-\label{delta a ort}
-\end{eqnarray}
-\begin{eqnarray}
-\widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
-\qquad \widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }
-\end{eqnarray}
-and $\pi$ is the projection operator. When an injection is maximal the
-projection becomes trivial and the relation (\ref{recurrent rel}) is
-simplified:
-\begin{equation}
-\begin{array}{c}
-b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-\sum_{u\in W}\epsilon (u) \delta _{\xi -\gamma _{0}, u(\mu +\rho )-\rho
-}+\right. \\
-\left. +\sum_{\gamma \in \Gamma _{\frak{a}\rightarrow \frak{g}}}s\left(
-\gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right) }\right) .
-\end{array}
-\label{recurrent relation max}
-\end{equation}
-The recursion is goverened by the set $\Gamma _{\frak{a}\rightarrow \frak{g}}
-$ called the injection fan. The latter is defined by the carrier set $%
-\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}$ for the coefficient
-function $s(\xi )$
-\[
-\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}:=\left\{ \xi \in P_{%
-\frak{a}}|s(\xi )\neq 0\right\}
-\]
-appearing in the expansion
-\begin{equation}
-\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\frak{a}}^{+}}\left( 1-e^{
--\alpha }\right) =-\sum_{\gamma \in P_{\frak{a}}}s(\gamma )e^{-\gamma };\quad
-\label{product}
-\end{equation}
-
-Now we remind two definitions introduced in \cite{richter2008splints}
-
-\begin{Def}
-Suppose $\Delta _{0}$ and $\Delta $ are root systems with corresponding
-weight lattices $P_{0}$ and $P$. Then $\phi $ is an ``embedding'',
-\begin{equation}
-\phi :\left\{
-\begin{array}{l}
-\Delta _{0}\hookrightarrow \Delta , \\
-P_{0}\hookrightarrow P,
-\end{array}
-\right.
-\end{equation}
-if \newline
-\noindent (a) it injects $\Delta _{0}$ in $\Delta $, and \newline
-\noindent (b) acts homomorphically with respect to the vector groups in $%
-P_{0}$ and $P$:
-\[
-\phi (\gamma )=\phi (\alpha )+\phi (\beta )
-\]
-for any triple $\alpha ,\beta ,\gamma \in P_{0}$ such that $\gamma =\alpha
-+\beta $.
-\end{Def}
-
-$\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
-\hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
-_i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
-\phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
-
-Notice that one must distinguish two classes of embeddings: when the scalar
-product (defined by the Killing form) in the root space $P_0$ is invariant
-with respect to $\phi$ and when it is not $\phi$-invariant. The first
-embedding is called "metric" , the second -- "nonmetric".
-
-\begin{Def}
-A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if
-there are two embeddings $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
-\phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the
-disjoint union of the images of $\phi _{1}$ and $\phi _{2}$ and (b) neither
-the rank of $\Delta _{1}$ nor the rank of $\Delta _{2}$ exceeds the rank of $%
-\Delta $.
-\end{Def}
-
-It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$
-and we shall denote this by $\Delta \approx (\Delta_1,\Delta_2)$. Each
-component $\Delta_1$ and $\Delta_2$ is a "stem'' of the splint $%
-(\Delta_1,\Delta_2)$.
-
-To study relations between injection fan technique and splint let us 
-consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ 
-is a root subsystem.
-
-Splint $\Delta \approx (\Delta _{1},\Delta _{2})$ is called ''injective'' if
-$\Delta _{1}=\Delta _{\frak{a}}$, is a root subsystem
-in $\Delta $ corresponding to a regular reductive subalgebra $\frak{a}%
-\hookrightarrow \frak{g}$.
-
-In case of injective splint the second stem $\Delta _{\frak{s}}:=\Delta
-_{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product (%
-\ref{product}) and it defines an injection fan $\Gamma _{\frak{a}%
-\hookrightarrow \frak{g}}$. Denote by $\Delta_{\mathfrak{s}0}$ the coimage of the second embedding $\phi:\Delta_{\mathfrak{s}0}\to \Delta_{\mathfrak{g}}$.
-The following conjecture follows.
-
-\begin{Cnj}
-Each injective splint $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})
-$ defines an injection fan with the carrier $\left\{ \xi \right\} _{\frak{a}%
-\rightarrow \frak{g}}$ fixed by the product
-\begin{equation}
-\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)
-=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}
-\end{equation}
-\end{Cnj}
-
-In case of injective splint we say that subalgebra $\frak{a}\hookrightarrow \frak{g}$
-splinters $\Delta $ (and call $\frak{a}$ the ''splinting subalgebra'' of $%
-\frak{g}$). In \cite{richter2008splints} splints are classified (see Appendix there)
-and the first three types of them are injective.
-
-\section{How stems define multiplicity functions}
-
-\label{sec:stems and multiplicity functions}
-
-In this Section we study properties of injective splints  $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})
-$. It will
-be demonstrated that in this case to find branching
-coefficients for a splinting injection $\frak{a}\hookrightarrow
-\frak{g}$ means to find weight multiplicities of an irreducible
-$\frak{s}$-module $L_{\frak{s}}^{\nu }$ with fixed highest weight
-$\nu $. Notice that $\frak{s}$ must not be a subalgebra of
-$\frak{g}$.
-
-Let us return to relation (\ref{singular main}) and multiply both sides by $%
-R_{\frak{a}}$:
-\begin{equation}
-\frac{1}{\prod_{\beta \in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })}\Psi _{%
-\frak{g}}^{\left( \mu \right) }=\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu
-}^{(\mu )}\Psi _{\frak{a}}^{\left( \nu \right) }.
-\label{singular main-2}
-\end{equation}
-Here the first factor in the l.h.s. is the inverse of the fan $\Gamma _{%
-\frak{a}\rightarrow \frak{g}}$. Consider the highest weight module $L_{\frak{%
-s}}^{\nu }$. The embedding $\phi :\Delta _{\frak{s}\,0}\longrightarrow \Delta
-_{\frak{g}}$ sends the singular element $\Psi _{\frak{s}}^{\left( \nu
-\right) }$ into $\Psi _{\frak{g}}^{\left( \mu \right) }$. Applying the
-inverse morphism $\phi ^{-1}$ to the product $\left( \prod_{\beta \in \Delta
-_{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}\phi \left( \Psi _{\frak{s}%
-}^{\left( \nu \right) }\right) $ one gets the character of the module $L_{%
-\frak{s}}^{\nu }$,
+Substituting to equation \eqref{eq:8} we get martingale condition
 
 \begin{equation}
-\phi ^{-1}\left( \frac{1}{\prod_{\beta \in \Delta _{\frak{s}%
-}^{+}}(1-e^{-\beta })}\phi \left( \Psi _{\frak{s}}^{\left( \nu \right)
-}\right) \right) =\frac{1}{\prod_{\beta \in \Delta _{\frak{s}0
-}^{+}}(1-e^{-\beta })}\Psi _{\frak{s}}^{\left( \nu \right) }=\mathrm{ch}%
-\left( L_{\frak{s}}^{\nu }\right) .  \label{inverse for stem}
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
+\label{eq:9}
 \end{equation}
-Our task is to prove that the singular element $\Psi _{\frak{g}}^{\left( \mu
-\right) }$ contains the element $\Psi _{\frak{s}}^{\left( \xi \right) }$ for
-a module $L_{\frak{s}}^{\xi }$ uniquely defined by $L_{\frak{g}}^{\mu }$ and
-that the branching coefficients $b_{\nu }^{(\mu )}$ in the r.h.s. of (\ref
-{singular main-2}) coincide with multiplicities $m_{\zeta }^{\left( \xi
-\right) }$ of the corresponding weights in $\mathcal{N}_{\frak{s}}^{\xi }$ .
 
-For a highest weight irreducible module $L_{\frak{g}}^{\mu }$ the singular
-element $\Psi _{\frak{g}}^{\left( \mu \right) }$ is an element of $\mathcal{E%
-}$ corresponding to the shifted Weyl-orbit of the weight $\left( \mu +\rho
-\right) \in P^{+}$ with the sign function $\epsilon \left( w\right) $. It is
-convenient to use also unshifted singular elements
+which can be rewritten as the requirement for
 \begin{equation}
-\Phi ^{\left( \mu \right) }:=\Psi ^{\left( \mu \right) }e^{\rho }.
-\label{definition Phi}
+  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{\Lambda}
+\label{eq:10}
 \end{equation}
-In these terms the relation (\ref{singular main-2}) looks like
+to be level two null-field. Here primary field $\phi_{\Lambda}$ is indexed by the pair $\Lambda=(\mu,\nu)$ with the equivalence relations \ref{sec:primary-fields}.
+
+Consider the simplest possible example. Let $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. The equation \eqref{eq:10} is now
 \begin{equation}
-\frac{e^{\rho _{\frak{g}}-\rho _{\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{%
-s}}^{+}}(1-e^{-\beta })}\Phi _{\frak{g}}^{\left( \mu \right) }=\sum_{\nu \in
-P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\Phi _{\frak{a}}^{\left( \nu \right) }.
-\label{singular main-3}
+  \label{eq:11}
+  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{\Lambda}
 \end{equation}
-The orbit related to $\Phi _{\frak{g}}^{\left( \mu \right) }$ is completely
-defined by the set of edges $\left\{ \lambda _{i}\right\} _{i=1,\dots ,r}$
-adjusted to the end of the highest weight vector $\mu +\rho $. For $\mu
-=\sum m_{i}\omega _{i}$ these edges are
+If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
 \begin{equation}
-\lambda _{i}=-\left( m_{i}+1\right) \alpha _{i},\quad i=1,\dots ,r.
-\label{edge}
+ \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{\Lambda}
+\label{eq:12}
 \end{equation}
-Each formal exponent $e^{\mu +\rho +\lambda _{i}}$ in $\Phi _{\frak{g}%
-}^{\left( \mu \right) }$ bears the sign coefficient $\epsilon =(-)$. The
-defining property of $\Phi _{\frak{g}}^{\left( \mu \right) }$ is as follows.
-Consider any pair of edges $\lambda _{i},\lambda _{j}$ and the corresponding
-weights $\mu +\rho $, $\mu +\rho +\lambda _{i}$ and $\mu +\rho +\lambda _{j}$. 
-Apply the reflection $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
+which coincides with the equation for parafermionic fields introduced in paper \cite{santachiara2008sle}.
+
+Central charge in this case is equal to
 \begin{equation}
-s_{\alpha _{i}}\circ \left\{
-\begin{array}{l}
-\left( \mu +\rho \right)  \\
-\left( \mu +\rho +\lambda _{i}\right)  \\
-\left( \mu +\rho +\lambda _{j}\right)
-\end{array}
-\right. =\left\{
-\begin{array}{l}
-\left( \mu +\rho +\lambda _{i}\right)  \\
-\left( \mu +\rho \right)  \\
-\left( \mu +\rho +\lambda _{i}-(m_{j}+1)s_{\alpha _{i}}\circ \alpha
-_{j}\right)
-\end{array}
-\right.   \label{reflected triple}
+  \label{eq:14}
+  c=\frac{2(k-1)}{k+2}
 \end{equation}
 
-\begin{Prop}
-The edge $\lambda _{i,j}$ of $\Phi _{\frak{g}}^{\left( \mu \right) }$
-starting at the weight $\left( \mu +\rho +\lambda _{i}\right) $ along the
-root $-s_{\alpha _{i}}\circ \alpha _{j}$ has the same length in $(s_{\alpha
-_{i}}\circ \alpha _{j})$ as $\lambda _{j}$ has in $\alpha _{j}$. (The same
-is true for the edge $\lambda _{j,i}$, its length in $(s_{\alpha _{j}}\circ
-\alpha _{i})$ is equal to the length of $\lambda _{i}$ in $\alpha _{i}$.)
-\label{diagram property}
-\end{Prop}
-
-In $\Phi _{\frak{g}}^{\left( \mu \right) }$ the elements $e^{\left( \mu
-+\rho +\lambda _{i}-(m_{j}+1)s_{\alpha _{i}}\circ \alpha _{j}\right) }$ and $%
-e^{\left( \mu +\rho +\lambda _{j}-(m_{i}+1)s_{\alpha _{j}}\circ \alpha
-_{i}\right) }$ have the sign coefficient  $\epsilon =(+)$.
-
-Remember that only three types of splints are
-injective and thus are naturally connected with branching. Below we
-reproduce the part of the splints table from \cite{richter2008splints} corresponding to
-injective splints:
-\[
-\begin{array}{cc||c|c}
-\hbox{type} & \hspace{0.25in}\Delta \hspace{0.25in} & \hspace{0.25in}\Delta
-_{\frak{a}}\hspace{0.25in} & \hspace{0.25in}\Delta _{\frak{s}}\hspace{0.25in}
-\\ \hline\hline
-\hbox{(i)} & G_{2} & A_{2} & A_{2} \\
-& F_{4} & D_{4} & D_{4} \\ \hline
-\hbox{(ii)} & B_{r}(r\geq 2) & D_{r} & \oplus ^{r}A_{1} \\
-& C_{r}(r\geq 3) & D_{r} & \oplus ^{r}A_{1} \\ \hline
-\hbox{(iii)} & A_{r}(r\geq 2) & A_{r-1}\oplus u\left( 1\right)  & \oplus
-^{r}A_{1} \\
-& B_{2} & A_{1}\oplus u\left( 1\right)  & A_{2}
-\end{array}
-\]
-Each row in the table gives a splint $(\Delta _{\frak{a}},\Delta _{\frak{s}})
-$ of the simple root system $\Delta $. In the first two types both $\Delta _{%
-\frak{a}}$ and $\Delta _{\frak{s}}$ are embedded metrically. Stems in the
-first type splints are equivalent and in the second are not. In the third
-type splints only $\Delta _{\frak{a}}$ is embedded metrically. The summands $%
-u\left( 1\right) $ are added to keep $r_{\frak{a}}=r$. This does not change
-the principle properties of branching but makes it possible to use the
-multiplicities of $\frak{s}$-modules without further projecting their
-weights.
-
-Splints induce a decomposition of the set $S=S_{\frak{c}}\cup S_{\frak{d}}$
-with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}}$. 
-It is easy to check that for any injective splint the subset $S_{%
-\frak{d}}$ is nonempty. It follows that in the set $\left\{ \lambda
-_{i}\right\} _{i=1,\dots ,r}$ one can always find simple roots $\beta
-_{k}\in \Delta _{\frak{s}}$ and that the orbit corresponding to $\Phi _{%
-\frak{g}}^{\left( \mu \right) }$ contains the edges
+Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
 \begin{equation}
-\lambda _{k}=-\left( m_{k}+1\right) \beta _{k}  \label{beta edge}
+  \label{eq:13}
+  L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{\Lambda}=0\quad \Longrightarrow\quad  (3\kappa-8) h_{\Lambda}+\frac{2(k-1)}{k+2}+\tau k =0
 \end{equation}
-attached to the weight $\mu +\rho $. As far as $\Delta _{\frak{a}}$ is a
-root system and for any pair of simple roots from $S_{\frak{c}}$ the
-property \ref{diagram property} is fulfilled, the element $\Phi _{\frak{g}%
-}^{\left( \mu \right) }$ being a singular element for a set of $\frak{a}$%
--modules. Consider $\beta _{l}\in \Delta _{\frak{s}}$ whose coimage in $%
-\Delta _{\frak{s}0}$ is simple. In Appendix it is shown that for any such $%
-\beta _{l}$ there exists a root $\alpha _{l}\in S_{\frak{c}}$ such that
-$\beta _{l}=\alpha _{l}+\beta _{k}$. It is easily seen that the
-corresponding edge intersects the boundary plane of the fundamental chamber $%
-\bar{C_{\frak{a}}}$ orthogonal to the root $\alpha _{l}$,
+Another equation can be obtained by action of $L_{1}^{2}$
 \begin{equation}
-s_{\alpha _{l}}\left( \mu +\rho -p\beta _{l}\right) =s_{\alpha _{l}}\left(
-\mu +\rho \right) -ps_{\alpha _{l}}\beta _{l}=\mu +\rho -p\beta _{l},
-\label{intersection}
+  \label{eq:15}
+  L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{\Lambda}=0
 \end{equation}
+or
 \begin{equation}
-\mu +\rho -s_{\alpha _{l}}\left( \mu +\rho \right) =\left( m_{l}+1\right)
-\alpha _{l}=\left( m_{l}+1\right) \beta _{l}-\left( m_{l}+1\right) \beta
-_{k}=p\beta _{l}-ps_{\alpha _{l}}\beta _{l}.  
-\label{intersection-2}
+  \label{eq:16}
+  \left(12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) + 2 \tau J^{3}_{0}J^{3}_{0}\right) \phi_{\Lambda}=0
 \end{equation}
-It follows that $p=\left( m_{l}+1\right) $ and $s_{\alpha _{l}}\beta
-_{l}=\beta _{k}$. Now apply the operator $s_{\beta _{k}}$ and find that the
-edge along the root $s_{\beta _{k}}\alpha _{l}$ attached at the weight $%
-s_{\beta _{k}}(\mu +\rho )$ is also equal to $-ps_{\beta _{k}}\alpha _{l}$.
-This means that for the triple of roots $\beta _{k},\beta _{l}$ and $%
-s_{\beta _{k}}\alpha _{l}$ in $\Delta _{\frak{s}}$ the edges $\lambda
-_{k}=-\left( m_{k}+1\right) \beta _{k}$, $\lambda _{l}=-\left(
-m_{l}+1\right) \beta _{l}$ and $\lambda _{kl}=-\left( m_{l}+1\right)
-s_{\beta _{k}}\alpha _{l}$ demonstrate the property \ref{diagram property}.
-One can continue this procedure further in the 2-dimensional subspace fixed
-by the roots $\beta _{k}$ and $\beta _{l}$ and find the set of formal
-exponents that being supplied with the corresponding sign factors compose
-the coimage of the singular element of a module for the subalgebra in $\frak{%
-s}$ (this subalgebra has rank $r=2$).
 
-The same can be proven for any positive root $\beta _{l}\in \Delta $ that is
-simple in $\Delta _{\frak{s}0}$ and correspondingly for any $r=2$ subalgebra
-in $\frak{s}$. The latter means that to ''find'' a singular element of $%
-\frak{s}$-module in $\Phi _{\frak{g}}^{\left( \mu \right) }$ it is necessary
-to incorporate in it additional formal elements $\left\{ -e^{\mu +\rho
--\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{\frak{c}}\right\}.$ This
-fixes the starting edges of the diagram $\phi ^{-1}\left( \Phi _{\frak{s}}^{%
-\widetilde{\mu }}\right) $. As it follows from the reconstruction procedure
-the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $%
-, they have the same Dynkin numbers:
+
+Alternative approach is to study $\gf\oplus \af$ WZNW-model and then impose equivalence relations on the solutions. 
+So we need to generalize the analysis of \cite{alekseev2010sle} to the case of semisimple Lie algebras. 
+
+From equation 
+
+Now consider as an example $\frac{SU(2)_{k}\times SU(2)_{1}}{SU(2)_{k+1}}$ -- another coset realization for minimal unitary models. 
+
+We get following relations on $\kappa,\tau$ and primary fields. So we see that the solutions at level $k$ are 
+
+Now we need to impose equivalence relations.
+
+
+We get 
+
+
+Consider gauge transformation in gauged WZNW model:
+\begin{eqnarray*}
+  \delta \phi_{i}=(\epsilon_{L}^{a} t^{a}_{i}+\epsilon^{b}_{R}\tilde{t}^{b})\phi_{i}\\
+  \delta A = -\partial \epsilon_{R}-[\epsilon_{R},A]
+\end{eqnarray*}
+Here $\epsilon_{L}, \epsilon_{R}$ are arbitrary holomorphic functions $\bar\partial\epsilon_{L,R}=0$. 
+For  $\gf\oplus \af$ WZNW-model we can write SLE generator of primary field transformation under stochastic evolution as
+\begin{equation*}
+  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)+\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
+\end{equation*}
+%% \begin{equation*}
+%%   \mathcal{G}_{i}^{L,R}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\pm\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
+%% \end{equation*}
+
+and get martingale condition
+\begin{equation*}
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
+      \sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
+\end{equation*}
+
+which can be rewritten as the requirement for
+\begin{equation*}
+  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}
+\end{equation*}
+to be level two null-field.
+
+We can compare this result with the simplest possible coset model $su(2)/u(1)$ --  parafermion theory.
+
+\subsection{Semisimple Lie algebras and coset construction}
+\label{sec:semis-lie-algebr}
+
+It is well known that unitary minimal models with central charge $c=1-\frac{6}{m(m+1)}$ can be obtained from coset construction starting with $su(2)_{m}\oplus su(2)_{1}$ WZW-model and factorizing it by $su(2)_{m+1}$. Here lower index represents level of affine Lie algebra representation. 
+
+In this case the dimension of Lie algebra $\gf=su(s)\oplus su(2)$ is 6, dual Coxeter number $h^{v}=2+2=4$. 
+
+
 \begin{equation}
-\mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
-m_{k}\widetilde{\omega }_{k} . \label{new h weight}
+  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
+\label{eq:6}
 \end{equation}
-The next step is to construct the full $W_{\frak{s}}$-orbit $\Phi _{\frak{s}%
-}^{\left( \widetilde{\mu }\right) }$  in $P_{\frak{s}}$. It is easily seen
-that its coimage belongs to $\bar{C_{\frak{a}}}$ and that the set $\phi
-^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) \setminus \Phi _{%
-\frak{g}}^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ corresponds to the
-weights belonging to the boundary $\bar{C_{\frak{a}}}$ (including the subset
-$\left\{ -e^{\mu +\rho -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{%
-\frak{c}}\right\} $). Thus we have constructed all the formal elements\ with
-the appropriate sign factors that after being added to $\Phi _{\frak{g}%
-}^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ form the diagram $\phi
-^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) $ in $\bar{C_{\frak{a}%
-}}$.
 
-Now let us return to relation (\ref{singular main-3}). One can add to $%
-\Phi _{\frak{g}}^{\left( \mu \right) }$ pairs of formal elements
-constructed above  with the opposite signs: $\epsilon \left( w\right)
-|_{w\in W_{\frak{s}}}$ and $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$. 
-Attribute the signs $\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ to
-the elements whose weights we shall attribute to $\bar{C_{\frak{a}}}$. 
-The same elements with the opposite signs are to be referred to the
-neighboring Weyl chambers of $\bar{C_{\frak{a}}^{(l)}}$ (the latter are
-connected with the main one via simple reflections $s_{\alpha _{l}}$ so the
-signes $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ are natural for
-them). In fact one can repeat the procedure and find additional singular
-weights in any Weyl chamber $\bar{C_{\frak{a}}^{(m)}}$ and in them
-additional singular weights always have the signs opposite to that in their
-nearest neighbors. Thus without changing the element $\Phi _{\frak{g}%
-}^{\left( \mu \right) }$ one can present it as a sum
+For semisimple Lie algebra $\gf=\gf_{1}+\gf_{2}$ with generators $J^{a}$ and $\tilde{J}^{b}$ correspondingly we can more explicitly write the relation \eqref{eq:6} as 
+
+\begin{equation*}
+  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\left(\sum_{a} J^{a}_{-1} J^{a}_{-1}+\sum_{b}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right) \right) \left|\phi_{\Lambda}\right>    
+\end{equation*}
+
+This vector should be null vector of level two, so $L_{2}\left|\psi\right>=L_{1}\left|\psi\right>=0$. Then we get following algebraic relations for semisimple Lie algebra:
 \begin{equation}
-\Phi _{\frak{g}}^{\left( \mu \right) }=\sum_{w\in W_{\frak{a}}}w\circ \left(
-e^{\rho _{\frak{a}}}\Psi ^{\widetilde{\mu }+\rho _{\frak{s}}}\right)
-\label{singular final}
+  \label{eq:7}
+  \left( 3\kappa h_{\Lambda} +\frac{1}{2} \tau (k_{1} \mathrm{dim} \gf_{1}+k_{2}\mathrm{dim} \gf_{2}) -8 h_{\Lambda} - c\right)\phi_{\Lambda}=0
 \end{equation}
-where the weight $\widetilde{\mu }=\sum m_{k}\omega _{\frak{s}}^{k}$ was
-defined above. The decomposition (\ref{singular final}) provides the
-possibility to apply the factor $\left( \prod_{\beta \in \Delta _{\frak{s}%
-}^{+}}(1-e^{-\beta })\right) ^{-1}$ to each summand of the singular element $%
-\Phi _{\frak{g}}^{\left( \mu \right) }$ separately because the sets of
-weights from different Weyl summands do not intersect. Taking into account
-the isomorphism $\phi $ one can see that in the main Weyl chamber $\bar{C_{%
-\frak{a}}}$ the set of weights generated by the factor $\left( \prod_{\beta
-\in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}$ is isomorphic to
-the weight diagram $\mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ of the $\frak{%
-s}$-module $L_{\frak{s}}^{\widetilde{\mu }}$. Now one can restrict
-relation (\ref{singular main-3}) to $\bar{C_{\frak{a}}}$ and obtain the main
-result:
-\begin{Prop}
-\begin{equation}
-\frac{e^{\rho _{\frak{g}}}}{\prod_{\beta \in \Delta _{\frak{s}%
-}^{+}}(1-e^{-\beta })}\left( \Psi ^{\widetilde{\mu }+\rho _{\frak{s}%
-}}\right) =\sum_{\widetilde{\nu }\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }%
-}}M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}e^{\left(
-\mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
-}=\sum_{\nu \in P_{\frak{a}}^{++}}b_{\nu }^{(\mu )}e^{\nu }.
-\label{singular main-4}
-\end{equation}
-Any weight with nonzero multiplicity in the r. h. s. is equal to one of the
-highest weights in the decomposition. The multiplicity $M_{\left( \frak{s}%
-\right) \widetilde{\nu }}^{\widetilde{\mu }}$ of the weight  $\widetilde{\nu
-}\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ defines the branching
-coefficient $b_{\nu }^{(\mu )}$ for the highest weight $\nu =\left( \mu
--\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right) $:
-\[
-b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
-}^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}.
-\]
-\end{Prop}
+SLE and factorization by equivalence relations. 
 
-\section{Examples}
-\label{sec:examples}
-\begin{example}
-  Consider the Lie algebra $A_{2} =\bf{sl}(3)$ and branching of its irreducible module $L^{[3,2]}_{A_{2}}$ with respect to the reductive subalgebra $A_{1}\oplus u(1)$. The root system  $\Delta _{\frak{a}}= \Delta_{A_{1}\oplus u(1)}$ contains the simple root of $\alpha_1=e_1-e_2$ of $A_{2}$. The singular element $\Psi^{[3,2]}_{\frak{a}}$ is decomposed into a sum of splint images of singular elements of $A_{1}\oplus A_{1}$-modules. Branching coefficients $b_{\nu }^{[ 3,2 ] }$ coincide with weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module (see Fig. \ref{fig:a2_splint}).
+\subsection{Parafermions}
 
-  \begin{figure}[h!bt]
-  \noindent\centering{
-   \includegraphics[width=80mm]{a2-a1}
-  }
-  \caption{Weyl group orbit (dotted) producing singular element of $L^{[3,2]}_{A_{2}}$ and its decomposition into the sum of splint images of singular elements of modules  $L^{[3,2]}_{A_{1}\oplus A_{1}}$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{A_{2}\downarrow A_{1}\oplus u(1)}$.}
+$\mathbb{Z}(N)$ parafermions are equivalent to $SU(2)_{N}/U(1)$ coset theory.
 
- \label{fig:a2_splint}
-\end{figure}
-\end{example}
-\begin{example}
-  For the Lie algebra $B_{2}= \bf{so}(5)$ branching of its irreducible module $L^{[3,2]}$ into  modules of a reductive subalgebra $A_{1}\oplus u(1)$ with the root system spanned by the first simple root $\alpha_1=e_1-e_2$ of $B_{2}$. Singular element of $\Psi^{[3,2]}_{B_{2}}$ is decomposed into the sum of splint images of singular elements of $A_{2}$-modules and branching coefficients coincide with weight multiplicities of $A_{2}$-module (see Fig. \ref{fig:b2_splint}).
+It is well-known that parafermionic field can be written as product of $su(2)$-primary field and vertex operator of bosonic field. 
+\begin{equation*}
+  \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
+\end{equation*}
+where $\phi_{j}(z)$ is field of $SU(2)$-WZNW model with spin $j$, $\phi(z)$ -- $U(1)$ bosonic field.
 
-  \begin{figure}[h!bt]
-  \hspace*{-1.2cm}
-
-   \includegraphics[width=65mm]{b2}
-   \includegraphics[width=65mm]{b2-a2-a1}
-  \caption{Weights of the $B_{2}$-module $L^{[3,2]}$ are indicated by dots in the left picture (their multiplicities are also indicated). Contour of the singular element is shown by dotted line. The right picture presents the decomposition of  $\Psi_{B_{2}}(L^{[3,2]}_{B_{2}})$-singular element into the sum of splint images of singular elements $\Psi_{A_{2}}(L^{[3,2]})$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{2}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
-
- \label{fig:b2_splint}
-\end{figure}
-\end{example}
-
-\vspace{10mm}
-\begin{example}
-   Lie algebra $G_{2}$ has a regular subalgebra $A_{2}$ with root system $\Delta_{\mathfrak{a}}=\Delta_{A_{2}}$ containing the $G_{2}$ long roots. Consider branching of an irreducible module $L_{G_{2}}^{(3,2)}$ into the $A_{2}$-modules. Singular element $\Psi_{G_{2}}(L^{[3,2]})$ is decomposed into the sum of splint images of singular elements $\Psi_{A_{2}}(L^{[3,2]})$ and the corresponding branching coefficients coincide with weight multiplicities of $L^{[3,2]}_{A_{2}}$-module (see Fig. \ref{fig:g2_splint}).
+For parafermionic current we have
+\begin{equation*}
+  \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)
+\end{equation*}
+%% Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
+%% !!! TODO
+Martingale condition can be rewritten as
+\begin{equation*}
+  \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
+\end{equation*}
+which coincides with the result of Santachiara \cite{santachiara2008sle}.
 
 
-  \begin{figure}[h!bt]
-  \noindent\centering{
-   \includegraphics[width=120mm]{g2}
-  }
 
-  \caption{Weyl group orbit (dotted) for the singular element $\Psi_{G_{2}}(L^{[3,2]})$ and its decomposition into the sum of splint images of singular elements of $A_{2}$-modules (dashed). Weight multiplicities of $L^{[3,2]}_{A_{2}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{G_{2}\downarrow A_{2}}$.}
+\subsection{Next steps}
 
+Next steps in the study of SLE martingales for coset models  are the following. 
 
- \label{fig:g2_splint}
-\end{figure}
+%At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
+% !!! This is wrong !!!
+% We can act by Sugawara generators 
 
-\end{example}
+Then we use Knizhnik-Zamolodchikov equations to rewrite the relations in simpler form and get conditions on possible boundary condition changing operators. 
 
-\section{Conclusions}
+Boundary states in coset models were actively studied. One of the ideas is to consider direct sum WZNW-model and use equivalence relations. This study is essentially the study representation of fusion algebra, Verlinde formula is one of key ingredients in this study. So we hope to compare the classification of boundary states obtained in this way with our condition on boundary condition changing operator. 
 
-\label{sec:conclusions}It is explicitly demonstrated that splint
-presents a very effective tool to find branching coefficients. In
-particular injective splints provide a possibility to reduce
-branching rules calculations for highest weight modules to a
-determination of weight multiplicities for a module with the same
-Dynkin labels referred to the Lie algebra $\mathfrak{s}$. This algebra
-$\mathfrak{s}$ must not be a subalgebra in the initial $\mathfrak{g}$ , it
-has the same rank $r_{\mathfrak{s}}=r$\ , but obviously less
-"complicated" than $\mathfrak{g}$ -- only a subset of the initial root system is involved in the second stem $\Delta_{\mathfrak{s}}$.
+\section{Conclusion}
+\label{sec:conclusion}
 
-It is significant that for the injections $D_{r}\hookrightarrow B_{r}$ , $%
-D_{r}\hookrightarrow C_{r}$ and $A_{r-1}\oplus u\left( 1\right) \hookrightarrow A_{r}$ splint technique shows
-transparently Gelfand-Tzeytlin rules for branching:  the reduction is
-multiplicity free (all nonzero
-branching coefficients are equal to 1). Here it is an immediate consequence of the
-structure of the second stem being a direct sum of $A_{1}$
-algebras and the fact that the corresponding module
-$L_{\frak{s}}^{\mu }$ is irreducible.
+Now we see that it is possible to match SLE observables and CFT correlation functions. Martingale conditions can be seen as the constraints on possible Verma modules of affine Lie algebra corresponding to boundary condition changing operator. These Verma modules must have level two null state. 
+
+We can use primary fields of direct sum WZNW model and equivalence relations to study coset models. 
+
+Martingale conditions should be compared with the classification of boundary states with other methods.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Appendix}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Let us demonstrate that for injective splints of classical Lie
-algebras the following property is valid:
-\begin{Prop}
-Let $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})$ be an
-injective
-splint with the decomposition of simple roots $S=S_{\frak{c}}\cup S_{\frak{d}%
-}$ with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}%
-}$.
-\end{Prop}
-Thus for any simple root $\beta \in S_{\frak{s}}$ there exists the
-pair of
-roots ( $\alpha $ ,$\beta ^{\prime }$) with $\alpha \in $ $S_{\frak{c}%
-},\beta ^{\prime }\in S_{\frak{s}}$ such that $\alpha =\beta
--\beta ^{\prime }$
-
-\begin{itemize}
-\item
-Type 1. $\Delta _{G_{2}}\approx (\Delta _{A_{2}},\Delta
-_{A_{2}}).$
-
- \begin{figure}[h!bt]
-  \noindent\centering{
-   \includegraphics[width=100mm]{g2-roots}
-  }
-  \caption{Positive roots of $G_{2}$ and formation of singular element $\Phi^{(0)}_{\mathfrak{s}}$ in the main Weyl chamber of $\mathfrak{a}=A_{2}$.}
-\end{figure}
-Here both stems are metric and the corresponding root systems are
-equivalent. In Figure 4 a part of the singular element $\Phi
-_{G_{2}}^{\left( 0\right) }$ is presented. The boundaries of $\bar{C_{\frak{a%
-}}}$ are the dashed lines starting at the center of the singular
-element. It
-contains the edge $\lambda _{2}=-\alpha _{2}=-\beta _{2}$ and the roots $%
--\beta _{1}=-s_{\alpha _{2}}\circ \beta _{3}$ and $ -\beta _{3}$
-($\beta _{3}$ is indicated as $\beta _{l}$). For the root $\beta
-_{1}$ the necessary pair
-is  $(\alpha _{1}, \beta _{2})$: $\alpha _{1}=\beta _{1}-\beta _{2}$. The $%
-\lambda _{2,3}^{\frak{s}}=\beta _{3}$ edge is equal to $\lambda _{1}^{\frak{s%
-}}=\beta _{1}=s_{\alpha _{2}}\circ \beta _{3}$ and $m_{1}$ index
-is aquired by the $\frak{s}$-module that also inherit the second
-index $m_{2}$. In this particular
-case they are $m_{1}=m_{2}=0$. The general case with the initial module $%
-L^{\mu }$ and $\mu =m_{1}\omega _{1}+m_{2}\omega _{2}$ can be
-treated in the same way: one finds an edge $\lambda _{2}=-\left(
-m_{2}+1\right) \beta _{2}$ and put $\lambda
-_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$, its end
-belongs to the boundary $\bar{C_{\frak{a}}}$. The reflection
-$s_{\beta
-_{2}} $ sends $\beta _{1}$ to $\beta _{3}$ and the corresponding edge 
-$\lambda _{2,3}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{3}$ has
-the length $\left( m_{1}+1\right) $. Now consider $\lambda _{1}^{\frak{s}}$ (or
-$\lambda _{2,3}^{\frak{s}} $) and $\lambda _{1,3}^{\frak{s}}$ (or
-$\lambda _{2,3,1}^{\frak{s}}$) edges to find that they belong to
-the boundary $\bar{C_{\frak{a}}}$ and the Weyl symmetry predicts
-that $\lambda _{1,3}^{\frak{s}}=-\left( m_{2}+1\right)
-\beta _{3}$ ($\lambda _{2,3,1}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{1}$%
-) . Finally the edge $\lambda _{1,3,2}^{\frak{s}}=-\left(
-m_{1}+1\right) \beta _{2}$ closes the polytope. Its vertices
-correspond to weights of the singular
-element $\Phi _{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in W_{%
-\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
-\widetilde{\mu }+\rho
-_{\frak{s}}\right) }$ of the module $L_{\frak{s}}^{\left( \widetilde{\mu }%
-\right) }$ with $\widetilde{\mu }=m_{1}\widetilde{\omega }_{1}+m_{2}%
-\widetilde{\omega }_{2}$. Notice that in this case the sign
-factors can be obtained directly in the initial weight system as
-far as the stem is metric.
-\item
-Type 1. $\Delta _{F_{4}}\approx (\Delta _{D_{4}},\Delta
-_{D_{4}}).$
-
-Both stems are metric here and the corresponding root systems are
-equivalent. The system $\Delta _{D_{4}}$ of the subalgebra
-$\frak{a=}D_{4}$ is formed by the set $\left\{ \pm e_{i}\pm
-e_{j}\right\} _{|i,j=1,\ldots 4,\; i\neq j}.$ The simple roots
-$S_{\frak{c}}$ are $\left\{ e_{2}-e_{3},e_{3}-e_{4}\right\} $ and
-$S_{\frak{d}}=\left\{ e_{4},\frac{1}{2}\left(
-e_{1}-e_{2}-e_{3}-e_{4}\right) \right\} $.
-For a module $L^{\mu }$ with $\mu =\sum m_{k}\omega _{k}$ consider the edge $%
-\lambda _{3}=-\left( m_{3}+1\right) e_{4}=-\left( m_{3}+1\right)
-\beta _{3}$.
- Compose an edge $\lambda _{2}^{\frak{s}}=-\left( \widetilde{m}%
-_{2}+1\right) \beta _{2}$. The necessary pair of roots is $\left(
-\alpha
-_{2}=e_{3}-e_{4},\beta _{3}\right) $. The intersection of $\lambda _{2}^{%
-\frak{s}}$ with the $\alpha _{2}$-boundary of
-$\bar{C_{\frak{a}}}$ fixes
-its length to be $\lambda _{2}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{2}$%
-\ and the length of the edge $\lambda _{3,2}^{\frak{s}}$ is equal
-to that of
-$\lambda _{2}^{\frak{s}}$. Next consider the edge $\lambda _{2}^{\frak{s}%
-}=-\left( m_{2}+1\right) \beta _{2}$ and the pair $\left( \alpha
-_{1}=e_{2}-e_{3},\beta _{1}=e_{2}\right) $. The length of  
-$\lambda _{1}^{\frak{s}}$ becomes equal to $\lambda
-_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$. Proceed further till the closure of the polytope. 
-The edges looking along the roots of the $\alpha_4$-type, $\alpha _{4}=\beta
-_{4}=$ $\frac{1}{2}\left( e_{1}-e_{2}-e_{3}-e_{4}\right) $, are
-treated similarly and finally the singular element $\Phi
-_{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in
-W_{\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
-\widetilde{\mu }+\rho _{\frak{s}}\right) }$ for the module
-$L_{\frak{s}}^{\left( \widetilde{\mu }\right) }$ with
-$\widetilde{\mu }=\sum m_{k}\widetilde{\omega }_{k}$ is formed in
-$\bar{C_{\frak{a}}}$.
-\item
-Type 2. $\Delta _{B_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
-^{r}A_{1}}). $
-
-Both stems are metric. An injection is fixed by the stem $\Delta
-_{D_{r}}$ simple roots $S_{\frak{a}}=\left\{
-e_{1}-e_{2},e_{2}-e_{3},\ldots
-,e_{r-1}-e_{r},e_{r-1}+e_{r}\right\} $. The second stem
-corresponds to a
-direct sum of algebras $A_{1}$ with the simple roots $S_{\frak{s}%
-}=\left\{ e_{1},e_{2},\ldots ,e_{r-1},e_{r}\right\} $. Consider the edge $%
-\lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$ (here $\beta
-_{r}=e_{r}$) and $\lambda _{r-1}=-\left(
-\widetilde{m}_{r-1}+1\right) \beta _{r-1}$
-attached to it (here $\beta _{r-1}=e_{r-1}$). The corresponding pair is $%
-\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta _{r-1}=e_{r-1}\right) $.
- The intersection condition fixes the second edge to be $\lambda
-_{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ , it is orthogonal
-to $\beta _{r}$ so the opposite edge has the same length. The
-Dynkin index $m_{r-1}$ now refers
-also to the\ simple root $\beta _{r-1}$. Next consider the obtained edge $%
-\lambda _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ and $\lambda
-_{r-2}=-\left( \widetilde{m}_{r-2}+1\right) \beta _{r-2}$ to
-fix the index $\widetilde{m}_{r-2}=m_{r-2}$ and the edge
-$\lambda _{r-2}=-\left( m_{r-2}+1\right) \beta _{r-2}$ and so on
-till all the pairs of edges are properly fixed. Finally in
-$\bar{C}_{D_{r}}$ the element $\Phi _{\oplus ^{r}A_{1}}^{\left(
-\widetilde{\mu }\right) }=\sum_{w\in W_{\oplus
-^{r}A_{1}}}\varepsilon \left( w\right) e^{w\circ \left( \widetilde{\mu }+%
-\frac{1}{2}\sum e_{k}\right) }$ can be constructed for the module
-$L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
-$\widetilde{\mu }=\sum m_{k}\frac{1}{2}e_{k}$.
-
-\item
-Type 2. $\Delta _{C_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
-^{r}A_{1}}). $
-
-The situation in this case is eqivalent to the previous one and
-the additional edges are constructed similarly.
-\item
-Type 3 $\Delta _{A_{r}}\approx (\Delta _{A_{r-1}\oplus
-u_{1}},\Delta _{\oplus ^{r}A_{1}}).$
-
-Here only the first stem is metric and it fixes the injection with
-simple roots $S_{\frak{a}}=\left\{ e_{1}-e_{2},e_{2}-e_{3},\ldots
-,e_{r-1}-e_{r}\right\} $. The second stem corresponding to a direct sum of $%
-r$ copies of $A_{1}$ has the simple roots $S_{\frak{s}}=\left\{
-e_{1}-e_{r+1},e_{2}-e_{r+1},\ldots ,e_{r}-e_{r+1}\right\} $.
-Consider the edge $\lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$
-with $\beta
-_{r}=e_{r}-e_{r+1}$ and $\lambda _{r-1}=-\left( \widetilde{m}%
-_{r-1}+1\right) \beta _{r-1}$ \ with $\beta
-_{r-1}=e_{r-1}-e_{r+1}$ attached to it. Then the corresponding
-pair is $\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta
-_{r-1}=e_{r-1}-e_{r+1}\right)$. The intersection with the
-boundary of $\bar{C}_{A_{r-1}}$ orthogonal to $\alpha _{r-1}$
-fixes the second edge to be $\lambda _{r-1}=-\left(
-m_{r-1}+1\right) \beta _{r-1}$. The Dynkin index $m_{r-1}$ is to
-be used for the fundamental weight  $\omega _{r-1}.$ The\
-reflection $s_{\beta _{r}}$ sends $\lambda _{r-1}=-\left(
-m_{r-1}+1\right) \beta _{r-1}$ to $\lambda _{r,r-1}=-\left(
-m_{r-1}+1\right) \beta _{r-1}.$ Next consider the obtained edge
-$\lambda _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ and
-$\lambda _{r-2}=-\left( \widetilde{m}_{r-2}+1\right) \beta _{r-2}$
-with $\beta _{r-2}=e_{r-2}-e_{r+1} $ to obtain the index
-$\widetilde{m}_{r-2}=m_{r-2}$ and the edge $\lambda _{r-2}=-\left(
-m_{r-2}+1\right) \beta _{r-2}$ and so on till all the pairs of
-edges are properly fixed. Finally in $\bar{C}_{D_{r}}$ the element
-$\Phi _{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right)
-}=\sum_{w\in W_{\oplus
-^{r}A_{1}}}\varepsilon \left( w\right) e^{w\circ \left( \widetilde{\mu }+%
-\widetilde{\rho }\right) }$ can be constructed for the module
-$L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
-$\widetilde{\mu }=\sum m_{k}\beta _{k}.$ The simplest case
-$\Delta _{A_{2}}\approx (\Delta _{A_{1}\oplus u_{1}},\Delta
-_{A_{1}\oplus A_{1}})$ is presented in Example 4.1 and Figure 1.
-\item
-Type 3 $\Delta _{B_{2}}\approx (\Delta _{A_{1}},\Delta _{A_{2}}).$
-
-This splint is illustrated in Example 4.1 and Figure 1, 
-$S_{A\_1}=\left\{ e_{1}-e_{2}\right\} $, $S_{A\_2}=\left\{
-e_{1},e_{2}\right\} $. The edge $\lambda _{\alpha _{2}}=\lambda
-_{\beta _{2}}=-\left( m_{2}+1\right) \beta _{2}$ is followed by
-$\lambda _{\beta _{1}}=-\left( \widetilde{m}_{1}+1\right) \beta
-_{1}$. Consider the pair $\left( \alpha
-_{1}=e_{1}-e_{2},\beta _{1}=e_{1}\right)$. The end of the edge
-$\lambda _{\beta _{1}}$ must indicate a weight
-invariant under the reflexion $s_{\alpha _{1}}$.  Its length is thus fixed: 
-$\lambda _{\beta _{1}}=-\left( m_{1}+1\right) \beta _{1}$. In the
-coimage of
-the second stem, that is in the root system $\Delta_{A_{2}}$, the reflection 
-$s_{\beta _{2}}$ sends $\lambda _{\beta _{1}}=-\left(
-m_{1}+1\right) \beta
-_{1}$ to $\lambda _{2,3}$, thus the latter edge has the same length in $%
-\beta _{3}=e_{1}+e_{3}$, we have $\lambda _{2,3}=-\left(
-m_{1}+1\right)
-\beta _{3}$ with $\beta _{3}=e_{1}+e_{3}$. The irreducible $\frak{s}$%
--module has the highest weight $\widetilde{\mu }=m_{1}\widetilde{\omega }%
-_{1}+m_{2}\widetilde{\omega }_{2}$. In Figure 1 we see the
-details of these relations in a particular case where
-$L_{B_{2}}^{\left[ 3,2\right] }$ is reduced to a subalgebra
-$A_{1}\oplus u\left( 1\right) $ and the
-corresponding highest weights (with their multiplicities) form the diagram $%
-\mathcal{N}_{A_2}^{\left[ 3,2\right] }$ .
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%
+%% End of file
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 

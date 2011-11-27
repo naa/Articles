@@ -1,802 +1,995 @@
-
-\chapter{Эволюция Шрамма-Левнера и алгебраические свойства предельного перехода от решеточных моделей к конформной теории поля}
-\label{cha:SLE}
-
-Подробное изложение \cite{difrancesco1997cft}. 
-
-\section{Общие свойства}
-\label{sec:cft-general}
-Алгебра Вирасоро. Представления алгебры Вирасоро. Модулярная инвариантность.
-
-\section{Модели Весса-Зумино-Новикова-Виттена}
-\label{sec:wzw}
-Связь с аффинными алгебрами Ли.
-Конформные вложения и недиагональные модулярные инварианты. 
-
-
-
-%\usepackage{verbatim} 
-\newenvironment{comment}
-{\par\noindent{\bf Для заинтересованных читателей}\\}
-{\\\setlength{10cm}\\\hfill$\scriptstyle\blacksquare$\par}
+\section{Вычислительные методы для теории представлений аффинных алгебр Ли}
+\label{cha:computational-methods}
+%% \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+%% \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+%% \newcommand{\co}[1]{\stackrel{\circ }{#1}}
+%% \newcommand{\pia}{\pi_{\mathfrak{a}}}
+%% \newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+%% \newcommand{\gf}{\mathfrak{g}}
+%% \newcommand{\af}{\mathfrak{a}}
+%\newcommand{\bff}{\mathfrak{b}}
+%% \newcommand{\afb}{\mathfrak{a}_{\bot}}
+%% \newcommand{\hf}{\mathfrak{h}}
+%\newcommand{\hfg}{\hf_{\gf}}
+%% \newcommand{\hfb}{\mathfrak{h}_{\bot}}
+%% \newcommand{\pf}{\mathfrak{p}}
+%% \newcommand{\aft}{\widetilde{\mathfrak{a}}}
 
 
 \begin{abstract}
-Примерный текст доклада на семинаре кафедры ФВЭиЭЧ по работе ``Recursive algorithms, branching coefficients and applications''.
+%% Text of abstract
+In this paper we present {\bf Affine.m} -- program for computations in representation theory of finite-dimensional and affine Lie algebras and describe implemented algorithms.  Algorithms are based on the properties of weights and Weyl symmetry. The most important problems for us are the ones, concerning computation of weight multiplicities in irreducible and Verma modules, branching of representations and tensor product decomposition. These problems have numerous applications in physics and we provide some examples of these applications. The program is implemented in popular computer algebra system {\it Mathematica} and works with finite-dimensional and affine Lie algebras. 
+
+% A submitted program is expected to be of benefit to other physicists or physical chemists, or be an exemplar of good programming practice, or illustrate new or novel programming techniques which are of importance to some branch of computational physics or physical chemistry.
+%
+% Acceptable program descriptions can take different forms. The following Long Write-Up structure is a suggested structure but it is not obligatory. Actual structure will depend on the length of the program, the extent to which the algorithms or software have already been described in literature, and the detail provided in the user manual.
+
+%Your manuscript and figure sources should be submitted through the Elsevier Editorial System (EES) by using the online submission tool at \\
+% http://www.ees.elsevier.com/cpc.
+
+%In addition to the manuscript you must supply: the program source code; job control scripts, where applicable; a README file giving the names and a brief description of all the files that make up the package and clear instructions on the installation and execution of the program; sample input and output data for at least one comprehensive test run; and, where appropriate, a user manual. These should be sent, via email as a compressed archive file, to the CPC Program Librarian at cpc@qub.ac.uk.
+
 \end{abstract}
 
-\section{Постановка задачи}
-\label{sec:task}
-
-Здравствуйте!
-Сегодня я хочу рассказать о работе ``Рекуррентные алгоритмы, коэффициенты ветвления аффинных алгебр
-Ли и приложения''. В этой работе мы решали следующую задачу.
-
-Даны две аффинные алгебры Ли $\mathfrak{a}\subset \mathfrak{g}$. Аффинные алгебры Ли --- это особый
-класс бесконечномерных алгебр, которые строятся из конечномерных (полу)простых алгебр Ли, как
-центральные расширения алгебр петель. Более подробное определение будет дано позже. Неприводимое
-представление $L^{(\mu)}_{\mathfrak{g}}$ аффинной алгебры $\mathfrak{g}$ со старшим весом $\mu$
-может быть разложено на представления подалгебры $\mathfrak{a}$. Наша задача --- придумать
-практический алгоритм вычисления коэффициентов этого разложения. Конечно же эта задача уже решалась,
-например, существует способ решения ``в лоб'', требующий построения всех представлений и различные способы,
-которые работают для частных случаев, например, многое упрощается в физически интересном случае
-конформных вложений. Мы предлагаем общий метод, но иллюстрировать его будем как-раз физическими
-примерами конформных вложений.
-
-Я начну с физической мотивации этой задачи в двумерной конформной теории поля, напомню некоторые
-факты из теории представлений аффинных алгебр Ли, кратко опишу предложенное нами решение проблемы и
-расскажу про физические примеры в нашей статье.
-
-\section{Физическая мотивация}
-\label{sec:physics}
 
 
-Теперь я перейду к краткому объяснению метода и примерам вычислений.
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
 
-\section{Рекуррентные соотношения для коэффициентов ветвления}
-\label{sec:branching}
+% Computer program descriptions should contain the following
+% PROGRAM SUMMARY.
 
-Ранее для вычисления коэффициентов ветвления был предложен способ, основанный на преобразовании
-формулы Вейля-Каца для характеров представлений аффинных алгебр Ли в рекуррентное соотношение для
-коэффициентов ветвления. Однако исходный алгоритм не работал для не максимальных вложений. В данной
-работе была решена данная проблема и предложено обобщение рекуррентных соотношений. 
+{\bf PROGRAM SUMMARY}%/NEW VERSION PROGRAM SUMMARY}
+  %Delete as appropriate.
 
-Используя формулу Вейля-Каца мы выделяем два набора элементов в весовом пространстве. Первый набор $\Gamma$
-называется веером и описывает вложение подалгебры $\mathfrak{a}$ в алгебру $\mathfrak{g}$. Веер
-универсален, в том смысле, что он может быть использован для разложения любого из представлений.
-Другой набор элементов весового пространства $\Psi ^{\left( \mu \right) }$ называется набором
-аномальных весов. Он описывает раскладываемое представление без явного его построения. 
+\begin{small}
+\noindent
+{\em Manuscript Title:}{\bf Affine.m} -- {\it Mathematica} package for computations in representation theory of finite-dimensional and affine Lie algebras                                       \\
+{\em Authors:}Anton Nazarov                                                \\
+{\em Program Title:}Affine.m                                          \\
+{\em Journal Reference:}                                      \\
+  %Leave blank, supplied by Elsevier.
+{\em Catalogue identifier:}                                   \\
+  %Leave blank, supplied by Elsevier.
+{\em Licensing provisions:}none                                   \\
+  %enter "none" if CPC non-profit use license is sufficient.
+{\em Programming language:}Mathematica                                   \\
+{\em Computer:}i386-i686, x86\textunderscore 64                                               \\
+  %Computer(s) for which program has been designed.
+{\em Operating system:} Linux, Windows, MacOS, Solaris                                       \\
+  %Operating system(s) for which program has been designed.
+{\em RAM:} 5-500 Mb                                              \\
+  %RAM in bytes required to execute program with typical data.
+%{\em Number of processors used:}                              \\
+  %If more than one processor.
+%{\em Supplementary material:}                                 \\
+  % Fill in if necessary, otherwise leave out.
+{\em Keywords:} Mathematica; Lie algebra; affine Lie algebra; Kac-Moody algebra; root system; weights; irreducible modules, CFT, Integrable systems\\
+  % Please give some freely chosen keywords that we can use in a
+  % cumulative keyword index.
+{\em Classification:} 5 Computer Algebra, 4.2 Other algebras and groups                                         \\
+  %Classify using CPC Program Library Subject Index, see (
+  % http://cpc.cs.qub.ac.uk/subjectIndex/SUBJECT_index.html)
+  %e.g. 4.4 Feynman diagrams, 5 Computer Algebra.
+%{\em External routines/libraries:}                            \\
+  % Fill in if necessary, otherwise leave out.
+%{\em Subprograms used:}                                       \\
+  %Fill in if necessary, otherwise leave out.
+%{\em Catalogue identifier of previous version:}*              \\
+  %Only required for a New Version summary, otherwise leave out.
+%{\em Journal reference of previous version:}*                  \\
+  %Only required for a New Version summary, otherwise leave out.
+%{\em Does the new version supersede the previous version?:}*   \\
+  %Only required for a New Version summary, otherwise leave out.
+{\em Nature of problem:}\\
+  %Describe the nature of the problem here.
+Representation theory of finite-dimensional Lie algebras has many applications in different branches of physics, including elementary particle physics, molecular physics, nuclear physics. Representations of affine Lie algebras appear in string theories and two-dimensional conformal field theory used for the description of critical phenomena in two-dimensional systems. Also Lie symmetries play major role in study of quantum integrable systems.
+   \\
+{\em Solution method:}\\
+  %Describe the method solution here.
+We work with weights and roots of finite-dimensional and affine Lie algebras and use Weyl symmetry extensively. Central problems which are the computations of weight multiplicities, branching and fusion coefficients are solved using one general recurrent algorithm based on generalization of Weyl character formula. We also offer alternative implementation based on Freudenthal multiplicity formula which can be faster in some cases.
+   \\
+%{\em Reasons for the new version:}*\\
+  %Only required for a New Version summary, otherwise leave out.
+%   \\
+%{\em Summary of revisions:}*\\
+  %Only required for a New Version summary, otherwise leave out.
+%   \\
+{\em Restrictions:}\\
+  %Describe any restrictions on the complexity of the problem here.
+Computational complexity grows fast  with the rank of algebra, so computations for algebra of rank greater than 8 are non practical.
+   \\
+{\em Unusual features:}\\
+  %Describe any unusual features of the program/problem here.
+We offer the possibility to use traditional mathematical notation for objects in representation theory of Lie algebras in computations if {\bf Affine.m} is used in {\it Mathematica} notebook interface.
+   \\
+%{\em Additional comments:}\\
+  %Provide any additional comments here.
+%   \\
+{\em Running time:}\\
+  %Give an indication of the typical running time here.
+From seconds to days depending on rank of algebra and complexity of representations.
+   \\
 
-После этого процесс вычисления коэффициентов ветвления можно реализовать при помощи следующей
-рекуррентной формулы:
-\begin{equation}
-  \label{eq:1}
-  \begin{array}{c}
-      k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-  \sum_{\omega\in W_{\bot}\backslash W} \epsilon(\omega)\; {\rm dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right) \delta_{\xi-\gamma_0,\pi_{\mathfrak{a}}(\omega(\mu+\rho)-\rho)}+ \right.\\
-\left.
-+\sum_{\gamma \in
-\Gamma _{\frak{a}\subset \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi
-+\gamma }^{\left( \mu \right) }\right)
-
-  \end{array}
-\end{equation}
-Здесь $\mathfrak{a}_{\bot}$ --- это подалгебра, ``натянутая'' на корни $\mathfrak{g}$, ортогональные
-к корневой системе подалгебры  $\mathfrak{a}$, $W_{\bot}$ --- соответствующая этим корням группа Вейля,
-$\Gamma_{\mathfrak{a}\subset \mathfrak{g}}$ --- веер --- набор весов в разложении знаменателя $$\prod_{\alpha\in \Delta^{+}\setminus \Delta^{+}_{\mathfrak{a}_{\bot}}}
-(1-e^{-\pi_{\mathfrak{a}}(\alpha)})^{\mathrm{mult}(\alpha)-\mathrm{mult}_{\mathfrak{a}}(\pi_{\mathfrak{a}}(\alpha))}$$, а $s(\gamma)$ ---
-коэффициент при  $e^{\gamma}$ в этом разложении.
-
-Набор аномальных весов $\Psi^{(\mu)}$ дает член с $\delta$-символом.
-
-Это рекуррентное соотношение позволяет нам сформулировать следующий алгоритм вычисления
-коэффициентов ветвления, который осуществляется без явного построения исходного представления или
-представлений, входящих в разложение.
-\begin{enumerate}
-\item Построить наборы положительных корней $\Delta^{+}$ и $\Delta_{\mathfrak{a}}^{+}$.
-\item Выбрать те положительные корни $\alpha\in \Delta^{+}$, которые ортогональны корневому
-  подпространству  $\mathfrak{a}$ и собрать их в набор $\Delta^{+}_{\bot}$.
-\item Построить множество весов $\Gamma$, которое мы называем ``веером''.
-\item Найти множество $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in W\right\}$
-  аномальных весов представления $L^{(\mu)}_{\mathfrak{g}}$.
-\item Выбрать в нем веса $\left\{ \lambda=\omega(\mu+\rho) | \pi_{\mathfrak{a}_{\bot}}\lambda \in
-    \bar{C}_{\mathfrak{a}_{\bot}} \right\}$. Это можно легко сделать, так как у нас есть набор
-  $\Delta^{+}_{\bot}$ и мы можем проверить, лежит ли вес $\pi_{\mathfrak{a}_{\bot}}\lambda$ в
-  главной камере Вейля алгебры $\mathfrak{a}_{\bot}$. Для этого все скалярные произведения этого
-  веса $\lambda$ с корнями из  $\Delta^{+}_{\bot}$ должны быть неотрицательны.
-\item Далее для весов $\lambda=\omega(\mu+\rho),\; \pi_{\mathfrak{a}_{\bot}}\lambda\in
-  \bar{C}_{\mathfrak{a}_{\bot}}$ мы вычисляем размерность соответствующих представлений
-  $\mathrm{dim}\left(L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}\right)$
-  при помощи формулы Вейля и набора $\Delta^{+}_{\bot}$.
-\item Далее рекуррентно вычисляются аномальные коэффициенты ветвления, а внутри главной камеры Вейля
-  алгебры $\mathfrak{a}$ аномальные коэффициенты совпадают с настоящими коэффициентами ветвления.
-\end{enumerate}
-
-Сейчас я поясню всю процедуру на примере редукции представления простой алгебры $B_2$ ($so(5)$) на
-подалгебру $A_1$ ($so(3)$), а потом расскажу про аффинные алгебры Ли.
-
-\subsection{Примеры}
-\label{sec:examples}
-
-Я начну с примера вычисления в случае конечномерных простых алгебр Ли, так как его легко нарисовать.
-
-Рассмотрим регулярное вложение  $A_1$ в $B_2$. Вот на рисунке корневая системы алгебры $B_2=so(5)$.
-Корень  $\beta$ вложенной алгебры $A_1$ равен $\alpha_1+2\alpha_2$.
-
-Функция $s(\gamma)$ и веер $\Gamma$ строятся исходя из корневых систем $\mathfrak{g}, \mathfrak{a}$
-$\frac{\pi_{\mathfrak{a}}\left(\prod_{\alpha\in \Delta^{+}_{\mathfrak{g}}\setminus
-      \Delta^{+}_{\mathfrak{a}}} \left(1-e^{-\alpha}\right) \right)}{\prod_{\beta\in
-    \Delta^{+}_{\mathfrak{a}}} \left(1-e^{-\beta}\right) }$ и получается
-\begin{equation}
-  \label{eq:22}
-  (1,2),\; (2,-1)
-\end{equation}
-Вторая компонента - значение $s(\gamma)$.
-
-Опишем редукцию первого фундаментального представления $B_2$. Старший вес изображен на рисунке.
-\begin{figure}[ph]
-  \noindent\centering{
-    \includegraphics[width=90mm]{B2_A1}
-  }
-  \caption{Регулярное вложение $A_1$ в $B_2$}
-  \label{fig:B2_A1}
-\end{figure}
-Вот набор аномальных весов $\omega(\mu+\rho)-\rho,\; \omega\in W$ с соответствующими четностями
-отражений $\epsilon(\omega)$.
-Теперь мы факторизуем группу Вейля $W$ по подгруппе $W_{\bot}=\left\{\omega_1\right\}$. Получаем
-следующий набор весов и размерностей представлений  $L^{\pi_{\mathfrak{a}_{\bot}}(\omega(\mu+\rho))-\rho_{\mathfrak{a}_{\bot}}}_{\mathfrak{a}_{\bot}}$:
-\begin{figure}[h!tb]
-  \noindent\centering{
-    \includegraphics[width=90mm]{B2_A1_2}
-  }
-  \caption{Аномальные веса и соответствующие $\mathfrak{a}_{\bot}=A_1$-модули}
-  \label{fig:B2_A1_2}
-\end{figure}
-
-Затем мы проектируем эти веса и размерности на корневое подпространство подалгебры
-$\mathfrak{a}=A_1$ и получаем следующие аномальные веса и их кратности:
-\begin{equation}
-  \label{eq:25}
-  (1,2),\; (0,-3),\; (-4,3),\; (-5,-2)
-\end{equation}
-
-Аномальный коэффициент ветвления  $k^{(1,0)}_{1}=2$, для коэффициента $k^{(1,0)}_{0}$ из
-рекуррентного соотношения получаем
-\begin{equation}
-  \label{eq:23}
-  k^{(1,0)}_{0}=-1\cdot k^{(1,0)}_2 +2\cdot k^{(1,0)}_1 - 3\cdot \delta_{0,0} = 1
-\end{equation}
-
-В работе рассмотрено большое число примеров вложений аффинных алгебр Ли. На самом деле мы написали
-программу, которая может строить такие примеры автоматически для алгебр Ли не слишком большого
-ранга.
-
-Я сейчас покажу результаты применения нашего алгоритма для одного из примеров конформных вложений.
-
-Рассмотрим такое вложение $\mathfrak{a}\subset \mathfrak{g}$, где
-$\mathfrak{a}=\hat{A_1}\oplus \hat{A_1}$, а $\mathfrak{g}= \hat{A_3}$. Это
-вложение является аффинным расширением специального вложения конечномерных алгебр Ли $A_1\oplus
-A_1\subset A3$. ($su(2)\oplus su(2)\subset su(4)$).
-\begin{comment}
- Это специальное вложение строится следующим образом: берем четырехмерное
-представление $A_1\oplus A_1$ со старшим весом $(1,1)$. Вот веса этого представления
-\ref{fig:A_1+A_1_to_A3}, их координаты в базисе фундаментальных весов: $\nu_1=(1,1),\; \nu_2=(-1,1),\; \nu_3=(1,-1),\; \nu_4=(-1,-1)$.
-
-\begin{figure}[h]
-  \begin{multicols}{2}
-    \hfill
-    \includegraphics[width=50mm]{A_1+A_1_to_A3}
-    \hfill
-    \caption{Представление для специального вложения $A_1\oplus A_1\subset A3$}
-    \label{fig:A_1+A_1_to_A3}
-    \hfill
-    \includegraphics[width=50mm]{A1+A1-A3}
-    \hfill
-    \caption{Вложенные корни $A_1\oplus A_1\subset A3$}
-    \label{fig:A1+A1-A3}
-  \end{multicols}
-\end{figure}
-
-Тогда матричные элементы представления генераторов подалгебры Картана $b_1,b_2$ в базисе Вейля
-даются выражениями
-\begin{equation}
-  d(b_i)=\mathrm{diag}\left(\frac{2(\nu_1,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_2,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_3,\alpha_i)}{(\alpha_i,\alpha_i)},\frac{2(\nu_4,\alpha_i)}{(\alpha_i,\alpha_i)}\right),
-\end{equation}
-так что $d(b_1)=\mathrm{diag}(1,-1,1,-1),\;
-  d(b_2)=\mathrm{diag}(1,1,-1,-1).$
-\end{comment}
-Вложенные корни $\alpha_1,\alpha_2$ подалгебры $A_1\oplus A_1$
-выражаются через корни $\tilde{\alpha}_i$ алгебры  $A_3$
-\begin{equation}
-  \label{eq:37}
-  \begin{array}{l}
-     \alpha_1=\frac{1}{2}(\tilde{\alpha}_1+\tilde{\alpha}_3)\\
-     \alpha_2=\frac{1}{2}(\tilde{\alpha}_1+2\tilde{\alpha}_2+\tilde{\alpha}_3)
-  \end{array}
-\end{equation}
-\begin{comment}
-Они изображены на рисунке \ref{fig:A1+A1-A3}.
-\end{comment}
-
-Вложение имеет индексы  $(2,2)$ и является конформным, так как $c(A_1\oplus A_1)=c(A_1)+c(A_1)=2\frac{x_e \mathrm{dim}(A_1)}{x_e+2}=\frac{\mathrm{dim}A_3}{5}=c(A_3)$.
-
-Для построения модулярно-инвариантной статсуммы нам нужно знать редукцию фундаментальных
-представлений $\widehat{su(4)}$. Фундаментальные веса имеют следующие координаты в ортогональном базисе
-\begin{equation}
-  \begin{array}{lll}
-     \omega_0 & = & (0,0,0,0;1;0)\\
-     \omega_1 & = & (\frac{3}{4},-\frac{1}{4},-\frac{1}{4},-\frac{1}{4}; 1; 0)\\
-     \omega_2 & = & (\frac{1}{2},\frac{1}{2},-\frac{1}{2},-\frac{1}{2}; 1; 0)\\
-     \omega_3 & = & (\frac{1}{4},\frac{1}{4},\frac{1}{4},-\frac{3}{4}; 1; 0) \\
-  \end{array}
-\end{equation}
+% \begin{thebibliography}{0}
+% \bibitem{1}Reference 1         % This list should only contain those items referenced in the
+% \bibitem{2}Reference 2         % Program Summary section.
+% \bibitem{3}Reference 3         % Type references in text as [1], [2], etc.
+%                                % This list is different from the bibliography at the end of
+%                                % the Long Write-Up.
+% \end{thebibliography}
+% * Items marked with an asterisk are only required for new versions
+% of programs previously published in the CPC Program Library.\\
+\end{small}
 
 
-Множества положительных корней  $\Delta^{+}$ и $\Delta_{\mathfrak{a}}^{+}$:
-\begin{equation}
-  \label{eq:38}
-  \begin{array}{lll}
-    \Delta^{+} &=&\left\{\co{\Delta}^{+}=\{\tilde{\alpha}_1, \tilde{\alpha}_2, \tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2, \tilde{\alpha}_2+\tilde{\alpha}_3, \tilde{\alpha}_1+\tilde{\alpha}_2+\tilde{\alpha}_3\};\right.\\
-    &\; & \quad\left.\co{\Delta}+n\delta;\;     +n\delta\;\mbox{с кратностью}\; 3;\; n=1,2,\dots,\right\}\\
-    \Delta_{\mathfrak{a}}^{+} &=& \{  \alpha_1,\alpha_2;\;\pm \alpha_1-n\delta,\pm
-    \alpha_2-n\delta;\; -n\delta\; \mbox{с кратностью} \; 2;\; n=1,2,\dots\}\\
-  \end{array}
-\end{equation}
-
-Набор $\Delta^{+}_{\bot}$ пуст.
-Веер  $\Gamma _{\frak{a}\subset \frak{g}}$ показан на рисунке \ref{fig:A1+A1-A3_fan}. Конечные координаты
-даны в базисе фундаментальных весов $A_1 \oplus A_1$. Элемент $\gamma$ обозначен крестом, если
-$s(\gamma)=1$ и кругом, если $s(\gamma)=-1$.
-\begin{figure}[h!tb]
-  \includegraphics[width=150mm]{A1+A1-A3_fan}
-  \caption{Веер для специального вложения $\hat A_1\oplus\hat A_1\subset\hat A_3$}
-  \label{fig:A1+A1-A3_fan}
-\end{figure}
-
-Мы ограничимся вычислениями до пятого грейда.
-\begin{figure}[h!tb]
-  \includegraphics[width=170mm]{A1+A1-A3_anom}
-  \caption{Спроектированные аномальные веса $L^{\omega_2}_{A_3}$}
-  \label{fig:A1+A1-A3_anom}
-\end{figure}
-
-Множество аномальных весов  $\widehat{\Psi^{(\mu)}}=\left\{\omega(\mu+\rho)-\rho;\; \omega\in
-  W\right\}$ представления алгебры $\hat{A}_3$ состоит из 192 элементов, их проекции
-$\pi_{\mathfrak{a}}\left(\widehat{\Psi^{(\mu)}}\right)$ показаны на рисунке  \ref{fig:A1+A1-A3_anom}
-для $\mu=\omega_2=(0,1,0;1;0)$.
-
-Аналогичные картинки для $\omega_0, \omega_1,\omega_3$ я не показываю.
-
-Аномальные коэффициенты ветвления для представления  $L^{(\omega_2)}$ вычислены при помощи
-рекуррентных соотношений и показаны на рисунке \ref{fig:A1+A1-A3_branching}. 
-\begin{figure}[h!tb]
-  \hspace*{-2cm}\includegraphics[width=180mm]{A1+A1-A3_branching}
-  \caption{Аномальные коэффициенты ветвления для представления $L^{(0,1,0;1;0)}_{A_3}$}
-  \label{fig:A1+A1-A3_branching}
-\end{figure}
-
-Получаются следующие правила ветвления:
- \begin{equation}
-   \label{eq:39}
-   \begin{array}{ll}
-     L^{(0,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)} \\
-     L^{(1,0,0;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\
-     L^{(0,1,0;1;0]}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & \left( L_{\hat{A_1}}^{(2;2;0)}\otimes L_{\hat{A_1}}^{(0;2;0)}\right) \oplus \left( L_{\hat{A_1}}^{(0;2;0)}\otimes L_{\hat{A_1}}^{(2;2;0)}\right) \\
-     L^{(0,0,1;1;0)}_{\hat{A_3}\downarrow \hat{A_1}\oplus \hat{A_1}}= & L_{\hat{A_1}}^{(1;2;0)}\otimes L_{\hat{A_1}}^{(1;2;0)} \\     
-   \end{array}
- \end{equation}
-
-В результате мы получаем модулярно-инвариантную статсумму для WZW-модели с киральной алгеброй $\hat{A}_1\oplus \hat{A}_1$.
-\begin{multline}
-  \label{eq:40}
-  Z=\left|\chi_{(0;2;0)}\chi_{(0;2;0)}\right|^2+2\left|\chi_{(1;2;0)}\chi_{(1;2;0)}\right|^2+ \left|\chi_{(2;2;0)}\chi_{(0;2;0)}+\chi_{(0;2;0)}\chi_{(2;2;0)}\right|^2=\\
-  \left|\chi_{(0;2;0)}\right|^4+2\left|\chi_{(1;2;0)}\right|^4+ 4\left|\chi_{(2;2;0)}\chi_{(0;2;0)}\right|^2
-\end{multline}
-
-\section{Заключение. Обсуждение перспектив.}
-\label{sec:conlusion}
-
-Функции ветвления играют важную роль в coset-моделях. Эти модели строятся путем факторизации
-WZW-модели с алгеброй $\mathfrak{g}$ по отношению к модели с подалгеброй $\mathfrak{a}$. Тут функции
-ветвления фактически описывают состояния в системе.
-
-Недавно мы заметили, что струнные функции, которые описывают представления, функции ветвления,
-описывающие редукцию представлений и функции слияния, которые описывают разложение тензорных
-произведений представлений на неприводимые, допускают построение дуальных систем функций. Эти
-дуальные функции могут быть построены просто из анализа соответствующих групп и камер Вейля. 
-Задача явного построения струнных функций или функций ветвления тогда сведется к обращению матрицы.
-Явный вид функций ветвления полезен при изучении coset-моделей. Кроме того, многие
-известные результаты могут быть перенесены на дуальные функции, например, результаты Каца о модулярных свойствах
-струнных функций и функций ветвления.
-В настоящее время мы начали исследовать эти системы дуальных функций. 
-
-Среди других возможных приложений полученных методов можно отметить также приложения в интегрируемых
-цепочках, а также в приложения дуальных функций теории модулярных форм. 
-
-
-
-
-
-\section{Coset-модели}
-\label{sec:coset-models}
-Ветвления. Функции ветвления и статсуммы. 
-Калибровочные WZW-модели. 
-
-\section{SLE}
-\label{sec:sle}
-SLE на WZW-моделях. Граничные условия. Парафермионы. SLE на coset-моделях.
-
-
-\begin{abstract}
-  Schramm-Loewner evolution appears naturally as the scaling limit of interfaces in lattice models at critical point. Critical behavior of these models can be described by minimal models of conformal field theory.
-
-  We generalize Schramm-Loewner evolution with additional Brownian motion on Lie group to the case of direct product of two groups. We then study connection between SLE description of critical behavior with coset models of conformal field theory. In order to be consistent such construction should give minimal models for certain choice of groups. 
-
-%%    SLE with additional Brownian motion on Lie group $G$ was proposed as generalization to WZNW models of CFT. Martingale property of SLE observables is related to Virasoro null vector conditions for CFT fields and KZ-equations for correlation functions. 
-%%  
-%%    Minimal models can be obtained from WZNW models by coset construction. Then it is natural to study SLE with additional Brownian motion on coset space $G/H$. We discuss algebraic properties of coset fields and correlation functions which correspond to SLE observables. 
-\end{abstract}
-
+%% main text
 \section{Introduction}
-Schramm-Loewner evolution, introduced by Oded Schramm in papers \cite{schramm2000scaling} is 
+\label{intro}
 
-The connection of SLE with CFT was studied in papers \cite{bauer2004conformal,bauer2004cfts,bauer2003sle,bauer2002sle}.
+Representation theory of Lie algebras is of central importance for different areas of physics and mathematics. In physics Lie algebras are used to describe symmetries of quantum and classical systems. Computational methods in representation theory have a long history \cite{belinfante1989survey}, there exist numerous software packages for computations related to Lie algebras \cite{simplie}, \cite{vanleeuwen1994lsp}, \cite{stembridge1995mps,coxweyl}, \cite{fischbacher2002ilp}, \cite{Fuchs:1996dd}.
 
-Reviews \cite{rohde2005basic}, \cite{bauer20062d}, \cite{Cardy:2005kh}. 
+Most popular programs \cite{simplie}, \cite{vanleeuwen1994lsp}, \cite{fischbacher2002ilp}, \cite{coxweyl} are created to study representation theory of simple finite-dimensional Lie algebras. The main computational problems are the following:
+\begin{enumerate}
+\item Construction of root system which determine the properties of Lie algebra including its commutation relations.
+\item Weyl group traversal which is important due to Weyl symmetry of root system and characters of representations.
+\item Calculation of weight multiplicities, branching and fusion coefficients, which are essential for construction and study of representations.
+\end{enumerate}
+There are well-known algorithms for these tasks \cite{moody1982fast}, \cite{stembridge2001computational}, \cite{belinfante1989survey}, \cite{casselman1994machine}.
+The third problem is most computation-intensive. There are two different recurrent algorithms which are based on the Weyl character formula and the Freudenthal multiplicity formula. In this paper we analyze them both.
 
-SLE and conformal field theories with additional symmetries \cite{alekseev2010sle}, \cite{santachiara2008sle,picco2008numerical}, \cite{bettelheim2005stochastic}, \cite{Rasmussen:2004xr}.
+Infinite-dimensional Lie algebras also have growing number of applications in physics for example in conformal field theory and in a study of  integrable systems. But infinite-dimensional algebras are much harder to investigate and the number of available computer programs is much smaller in this case.
 
-\subsection{Schramm-Loewner evolution}
-To remind of Schramm-Loewner evolution we first describe simple example.
+Affine Lie algebras \cite{kac1990idl} constitute important and tractable class of infinite-dimensional Lie algebras. They are constructed as central extensions of loop algebras of (semi-simple) finite-dimensional Lie algebras and appear naturally in a study of Wess-Zumino-Witten and coset models in conformal field theory \cite{Walton:1999xc}, \cite{difrancesco1997cft}, \cite{Goddard198588}, \cite{Dunbar:1992gh}.
 
-Consider Ising model on triangular lattice on upper half plane (see Fig. \ref{fig:sle}). We impose following boundary condition: all spins are down on one half of the boundary and all spins are up on another half. Then in any configuration we get an interface delimiting two clusters and connecting zero and infinity. 
+The structure of affine Lie algebras allows to adapt for them computational algorithms created for finite-dimensional Lie algebras  \cite{Fuchs:1996dd}, \cite{gannon2001algorithms}, \cite{kass1990ala}. The book \cite{kass1990ala} with the tables of multiplicities and other computed characteristics of affine Lie algebras and representations was published in 1990. But we are not aware of software packages for popular computer algebra systems which can be used to extend these results.
+We address this issue and present {\bf Affine.m} -- {\it Mathematica} package for computations in representation theory of affine and finite-dimensional Lie algebras.  We describe the features and limitations of the package in the present paper.  We also provide representation-theoretical background of implemented algorithms and present examples of computations relevant to physical applications.
 
-\begin{figure}[h]
-  \centering{
-    \includegraphics[height=25mm]{explore}
-    \caption{SLE -- continuous limit of interfaces}}
-  \label{fig:sle}
-\end{figure}
+The paper starts with an overview of Lie algebras and their representation theory (Sec. \ref{sec:theor-backgr}). Then we describe datastructures of {\bf Affine.m} used to present different objects related to Lie algebras and representations (Sec. \ref{sec:core-datastructures}) and discuss implemented algorithms (Sec. \ref{sec:comp-algor}). Next section consists of physically interesting examples (Sec. \ref{sec:examples}). The paper is concluded with the discussion of possible extensions and refinements (Sec. \ref{sec:conclusion}).
 
-Next we consider continuous limit of lattice model. Interface in random configuration of the model tends to random curve. We can think of this curve as of trace of stochastic process which satisfy some stochastic equation. 
+\section{Theoretical background}
+\label{sec:theor-backgr}
 
-In papers [Smirnov, Schramm ... ] it was shown that this equation is
-\begin{equation*}
-  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} \quad \text{or} \quad       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}
-\end{equation*}
-The stochastic process which satisfy this equation is called     {\it Schramm-Loewner evolution} on the upper half-plane $\mathbb{H}$.
+In this section we remind necessary definitions and present formulae used in computations. 
 
-Here $g_{t}(z)$ is a conformal map from $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$ to $\mathbb{H}$ (see Fig. \ref{fig:sle2}).
-\begin{figure}[h]
-  \centering{
-    \includegraphics[width=50mm]{loewner}
-    \caption{Conformal map}}
-  \label{fig:sle2}
-\end{figure}
+\subsection{Lie algebras of finite and affine types}
+\label{sec:lie-algebras-finite}
 
-Schramm-Loewner evolution provides conformally-invariant probability measure on trajectories $\gamma_{t}$ in $\mathbb{H}$.
-
-\subsection{Correspondence between SLE and minimal models of CFT}
-
-Now we can look at the observables in the presence of SLE trace. Expectation value of lattice observable on upper half-plane can be calculated as the sum of expectation values of this observable in presence of SLE trace up to some time $t$ multiplied by the probability of this trajectory. 
-
-Consider lattice observable $\mathcal{O}$, then it expectation value can be calculated as
-\begin{equation*}
-  \prec \mathcal{O} \succ_{\mathbb{H}}=\mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=\sum_{\gamma_{t}} P\left[C_{\gamma_{t}}\right] \prec \mathcal{O} \succ_{\gamma_{t}}
-\end{equation*}
-Since lattice observable  $\prec \mathcal{O} \succ_{\mathbb{H}}$ does not depend on $t$, hence $\prec\mathcal{O}\succ_{\gamma_{t}}$ is a martingale.
-
-In continuous limit lattice observable tends to CFT correlation function. Since we consider the theory with the boundary, CFT correlation function has following form:
-\begin{equation*}
-  \prec \mathcal{O} \succ_{\mathbb{H}_{t}}\to \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
-  \frac{\left< \mathcal{O}(\{z_{i}\})\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}=
-  \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
-\end{equation*}
-We assume that $\mathcal{F}$ contains some set of primary fields $\phi_{\lambda_{i}}$ with conformal weights $\lambda_{i}$. Also we have boundary condition changing operators  $\phi$ at the tip of SLE trace and in the infinity.  We can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite this expression in upper half plane:
-
+{\it Lie algebra} $\gf$ is a vector space with bilinear operation $[\cdot,\cdot]:\gf\otimes\gf\to \gf$, which is called {\it Lie bracket}. If we choose the basis $X_{i}$ in $\gf$ we can specify commutation relations by the {\it structure constants} $C_{ijk}$:
 \begin{equation}
-  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
-  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
-  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
   \label{eq:1}
+  [X^{i},X^{j}]=\sum_{k} C^{ij}_{k} X^{k}
 \end{equation}
+Lie algebra is {\it simple} if it contains no non-trivial ideals with respect to commutator. {\it Semisimple} Lie algebra is a direct sum of simple Lie algebras. In the present paper we treat simple and semisimple Lie algebras. 
 
-Now we want to consider evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:1}) gives us
-\begin{equation*}
-  -\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}.
-\end{equation*}
-For transformation of primary fields $\phi_{\lambda_{i}}$ we have 
+{\it Cartan subalgebra}  $\hfg$ is a nilpotent subalgebra of  $\gf$ that coincides with its normalizer. 
+We denote the elements of basis of $\hfg$ by $H^{i}$.
+
+Killing form on $\gf$ gives a non-degenerate bilinear form $(\cdot,\cdot)$ on $\hfg$ which can be used to identify $\hfg$ with the subspace of the dual space $\hfg^{*}$ of linear functionals on $\hfg$. {\it Weights} are the elements of $\hfg^{*}$ and are denoted by Greek letters $\mu,\nu, \omega, \lambda\dots$
+
+Special choice of basis gives compact description of commutation relations (\ref{eq:1}). This basis can be encoded by the root system which is discussed in Section \ref{sec:weights-roots} (See also \cite{humphreys1997introduction,humphreys1992reflection}).
+
+{\it Loop algebra} $L\gf=\gf\otimes \mathbb{C}[t,t^{-1}]$, corresponding to semisimple Lie algebra $\gf$, has commutation relations
 \begin{equation}
-  \label{eq:2}
-  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i}) 
+  \label{eq:6}
+  [X^{i}t^{n},X^{j}t^{m}]=t^{n_+m}\sum_{k}C^{ij}_{k}X^{k}
 \end{equation}
-We denote generator of this transform by $\mathcal{G}_{i}$.
-
-
-
-Continuous limit in critical point leads to CFT correlation function
-
-Now for expectation value of martingale we have this expression.
-\begin{equation*}
-  \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad \mathbb{E}\left[d \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
-\end{equation*}
-
-Now we use Ito calculus to calculate increment of our correlation function. It should be zero so we get the equation:
-\begin{equation}
-  \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
-    \mathcal{F}_{\mathbb{H}_{t}}\right]=\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
-      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}
-\label{eq:8}
-\end{equation}
-Then use explicit form of conformal map and obtain
-\begin{equation*}
-  \left( \sum_{i}\left[-\frac{2h_{i}}{w_{i}^{2}} +\frac{2}{w_{i}}\partial_{w_{i}}\right]+\frac{\kappa}{2}\sum_{i,j}\partial_{w_{i}} \partial_{w_{j}}\right)\mathcal{F}(\left\{z_{i}\right\})=0
-\end{equation*}
-
-We can rewrite it as the necessary condition on b.c.c. operator $\phi$:
-\begin{equation*}
-  (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0 \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
-\end{equation*}
-We can see that it can be rewritten as the action of Virasoro generators. Since we have arbitrary observable, this equation is equivalent to the requirement for boundary condition changing operator to have level two null state. 
-In case of minimal model we can see that boundary condition chaining operator is primary field $\phi_{1,2}$ or $\phi_{2,1}$.
-
-\section{SLE and WZNW models}
-\label{sec:sle-wzw-models}
-Now we want to generalize this analysis to rational conformal field theories. First we consider Wess-Zumino-Novikov-Witten model.
-\subsection{WZNW models}
-
- The action for this model can be written in terms of map $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ from complex plane with infinity or two-sphere to some Lie group $G$:
-\begin{multline}
-  S=-\frac{k}{8\pi}\int d^2x\; \mathcal{K} (g^{-1}\partial^{\mu}g, g^{-1} \partial_{\mu}g)  
-  \\
-  - \frac{k }{24\pi^{2}} \int_{B}\epsilon_{ijk} \mathcal{K}\left(
-    \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i},\left[
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right]\right) d^3y
-\end{multline}
-The first term is just non-linear sigma-model.
-
- Here $\mathcal{K}$ is Killing form on Lie algebra $\gf$ of Lie group $G$. The second term is written in terms of continuation from two-sphere $S^{2}$ to three-dimensional manifold $B$ which has two-sphere as the boundary. Since this continuation is non-unique we get the requirement for $k$ to be integer. 
-
-Currents of this model have following form:
-  \begin{eqnarray}
-    J(z)= -k \partial_zg g^{-1}
-    \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
-  \end{eqnarray}
-
-Model possess gauge invariance under gauge transformations:
-  \begin{equation*}
-    g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z),
-  \end{equation*}
-  where $\Omega,\;\bar \Omega \in G$.
-Here $\Omega$ and $\bar \Omega$ are independent. 
-
-If we consider infinitesimal gauge transformation $\Omega=1+\omega$ we get Ward identities:
-  \begin{equation}
-    \label{eq:87}
-    \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
-    \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
-  \end{equation}
-
- Then we can get operator product expansion for currents. 
- \begin{equation}
-   \label{eq:3}
-   <J\phi>\sim \dots
- \end{equation}
-
-If we expand currents to modes
-\begin{equation*}
-  J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n 
-\end{equation*}
-and use operator product expansion \eqref{eq:3} we get commutation relations of affine Lie algebra $\gfh$:
-\begin{equation}
-  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0} 
-\end{equation}
-
-This model has conformal invariance which can be seen from 
-Sugawara construction. This is way to embed Virasoro algebra into the universal enveloping algebra of affine Lie algebra $\gfh$ ($Vir\subset U(\gfh)$):
-\begin{equation}
-  \label{eq:4}
-  L_n=\frac{1}{2(k+h^v)}\sum\limits_a\sum\limits_m:J^a_m J^a_{n-m}:
-\end{equation}
-  
-Full chiral algebra of the model is semidirect product of affine and Virasoro algebra $\gfh \ltimes Vir$. 
-
-Its commutation relations are
-  \begin{equation}
-    \label{eq:92}
-    \begin{aligned}
-      \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
-      \left[L_n,J^a_m\right]=-mJ^a_{n+m}
-    \end{aligned}
-  \end{equation}
-
-Primary fields  $\phi_{\lambda}$ are labeled by highest weights of affine Lie algebra representations. Here we see how Virasoro and affine Lie algebra generators act on primary fields:
-  \begin{equation*}
-    \begin{aligned}
-      & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
-      & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>
-    \end{aligned}
-  \end{equation*}
-
-
-\subsection{SLE and WZNW models}
-Now we want to study Schramm-Loewner evolution in WZNW-models.
-
-Similarly to minimal models we consider observable
-\begin{equation*}
-  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
-  \frac{\left<\phi_{\Lambda}(z_{t}) \phi_{\lambda_1}(z_{1}) \dots \phi_{\lambda_n}(z_{n}) \phi_{\lambda^{*}_1}(\bar z_{1}) \dots \phi_{\lambda^{*}_n}(\bar z_{n})
-      \phi_{\Lambda^{*}}(\infty)\right>}{\left<\phi_{\Lambda}(z_{t})\phi_{\Lambda^{*}}(\infty)\right>}
-\end{equation*}
-Again we can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite it on the whole upper half-plane. 
-\begin{equation*}
-  \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
-  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
-  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
-\end{equation*}
-
-Consider evolution from $t$ to $t+dt$.
-First factor gives us $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
-
- For fields we have
-\begin{equation*}
-  d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})
-\end{equation*}
-When we consider fields we need to add random gauge transformation (random motion in $G$) to stochastic evolution \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}:
-\begin{equation*}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)
-\end{equation*}
-Since we have boundary we are working with boundary CFT so we have only half of gauge transformations due to Cardy conditions.
-
-\subsection{SLE martingales in WZNW models}
-We use Ito calculus to get the equation from martingale condition:
-\begin{equation*}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{1}{2}\tau\sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}=0
-\end{equation*}
-\begin{equation*}
-  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{\lambda_{i}}}{(w_{i}-z)^{n}}-\frac{1}{(w_{i}-z)^{n-1}}\partial_{w_{i}}\right);\quad \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}}
-\end{equation*}
-Again we can rewrite it as algebraic requirement for  field  which 
-correspond to boundary condition changing operator.
-\begin{equation*}
-  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
-\end{equation*}
-is level two null state and if we act on this state with raising operators we should get zero.
-\begin{equation*}
-  J^{a}_{1} \left|\psi\right>=0, J^{a}_{2}\left|\psi\right>=0.
-\end{equation*}
- We use commutation relations and get equations which connects parameters of random motion with level of affine Lie algebra representation. 
-
-We can see that $\kappa+\tau h^{v}=4$ and it is possible to derive additional relations connecting $\kappa, \tau, k$:
-\begin{equation*}
-  \kappa=\frac{2(h^{v}-2k)}{2h_{\Lambda}h^{v}-k},\quad \tau=\frac{8 h_{\Lambda}-2}{2h_{\Lambda}h^{v}-k}  \quad\text{for}\; k\neq 2h_{\Lambda}h^{v}
-\end{equation*}
- Also we get some constraints on possible boundary condition changing operators. 
-To get complete classification use Knizhnik-Zamolodchikov equations.
-
-
-\section{Coset models}
-\label{sec:coset-models}
-Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory.
-
-
-\subsection{Gauged WZNW-models and coset construction}
-
-Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models. We add gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action:
-\begin{multline*}
-  S(g,A)=S_{WZNW}(g)+\\
-  \frac{k}{4\pi}\int d^{2}z \left(\mathcal{K}(A, g^{-1}\bar \partial g)-\mathcal{K}(\bar A, (\partial g ) g^{-1})+\mathcal{K}(A,g^{-1}\bar A g)-\mathcal{K}(A,\bar A)\right)
-\end{multline*}
-Now current is
-\begin{equation*}
-  J_{(\gf,\af)}=-k\partial g g^{-1} -k g A g^{-1}
-\end{equation*}
-
-From Ward identities we get following expression for the product of gauge field and primary fields:
-\begin{equation*}
-  \left< A^{b}(z)\phi_{1}\dots \phi_{N}\right>=\frac{2}{k+2 h^{v}_{\af}}\sum_{k}\frac{\tilde{t}^{b}_{k}}{z-z_{k}}\left<\phi_{1}\dots \phi_{N}\right>
-\end{equation*}
-Here $h_{\af}^{v}$ is the dual Coxeter number of Lie algebra $\af$.
-
-Remember that for WZNW current we have OPE $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi(w)}{z-w}$,  so we see that algebraic structure is connected with the pair of algebras $\gf$ and $\af$, such that $\afh\subset\gfh$. 
-
-Virasoro generators are given by difference of Sugawara expressions:
-\begin{equation*}
-  L_{n}=L_{n}^{\gf}-L_{n}^{\af}
-\end{equation*}
-
-\subsection{Primary fields}
-\label{sec:primary-fields}
-Primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra and subalgebra, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. But some pairs are equivalent. This equivalence is given by the action of simple currents $(J,\tilde{J})$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
-
-Conformal weight of primary field is equal to
-\begin{multline}
-  L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
-  \left|\phi_{\lambda}\right>=\\
-  \left(\frac{(\mu,\mu+2\rho)}{2(k+h^v)}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^v)}\right)\left|\phi_{(\mu,\nu)}\right>
-\end{multline}
-
-%% So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
-
-It is possible to obtain analogues of KZ-equations:
-\begin{equation*}
-  \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{v}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{v}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
-\end{equation*}
-
-\subsection{SLE on coset space}
-Consider Lie (semi-)simple group $G$ with Lie algebra $\gf$ and (semi-)simple subgroup $A\subset G$ with Lie algebra $\af\subset \gf$. 
-The simplest way to study SLE on $G/A$ coset space is to restrict random walk on group manifold to the coset space by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $\mathrm{dim}\gf-\mathrm{dim}\af$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
-
-Then for generator of field transformation we can write 
-\begin{equation}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}\left(d \theta ^{a} t^{a}_{i}\right)\right)
-\label{eq:5}
-\end{equation}
-Substituting to equation \eqref{eq:8} we get martingale condition
-
-\begin{equation}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
-\label{eq:9}
-\end{equation}
-
-which can be rewritten as the requirement for
-\begin{equation}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{\Lambda}
-\label{eq:10}
-\end{equation}
-to be level two null-field. Here primary field $\phi_{\Lambda}$ is indexed by the pair $\Lambda=(\mu,\nu)$ with the equivalence relations \ref{sec:primary-fields}.
-
-Consider the simplest possible example. Let $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. The equation \eqref{eq:10} is now
-\begin{equation}
-  \label{eq:11}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{\Lambda}
-\end{equation}
-If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
-\begin{equation}
- \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{\Lambda}
-\label{eq:12}
-\end{equation}
-which coincides with the equation for parafermionic fields introduced in paper \cite{santachiara2008sle}.
-
-Central charge in this case is equal to
-\begin{equation}
-  \label{eq:14}
-  c=\frac{2(k-1)}{k+2}
-\end{equation}
-
-Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
-\begin{equation}
-  \label{eq:13}
-  L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{\Lambda}=0\quad \Longrightarrow\quad  (3\kappa-8) h_{\Lambda}+\frac{2(k-1)}{k+2}+\tau k =0
-\end{equation}
-Another equation can be obtained by action of $L_{1}^{2}$
-\begin{equation}
-  \label{eq:15}
-  L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{\Lambda}=0
-\end{equation}
-or
-\begin{equation}
-  \label{eq:16}
-  \left(12 h_{\Lambda}+2\kappa h_{\Lambda} (2h_{\Lambda}+1) + 2 \tau J^{3}_{0}J^{3}_{0}\right) \phi_{\Lambda}=0
-\end{equation}
-
-
-Alternative approach is to study $\gf\oplus \af$ WZNW-model and then impose equivalence relations on the solutions. 
-So we need to generalize the analysis of \cite{alekseev2010sle} to the case of semisimple Lie algebras. 
-
-From equation 
-
-Now consider as an example $\frac{SU(2)_{k}\times SU(2)_{1}}{SU(2)_{k+1}}$ -- another coset realization for minimal unitary models. 
-
-We get following relations on $\kappa,\tau$ and primary fields. So we see that the solutions at level $k$ are 
-
-Now we need to impose equivalence relations.
-
-
-We get 
-
-
-Consider gauge transformation in gauged WZNW model:
-\begin{eqnarray*}
-  \delta \phi_{i}=(\epsilon_{L}^{a} t^{a}_{i}+\epsilon^{b}_{R}\tilde{t}^{b})\phi_{i}\\
-  \delta A = -\partial \epsilon_{R}-[\epsilon_{R},A]
-\end{eqnarray*}
-Here $\epsilon_{L}, \epsilon_{R}$ are arbitrary holomorphic functions $\bar\partial\epsilon_{L,R}=0$. 
-For  $\gf\oplus \af$ WZNW-model we can write SLE generator of primary field transformation under stochastic evolution as
-\begin{equation*}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)+\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
-\end{equation*}
-%% \begin{equation*}
-%%   \mathcal{G}_{i}^{L,R}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\pm\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
-%% \end{equation*}
-
-and get martingale condition
-\begin{equation*}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
-      \sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
-\end{equation*}
-
-which can be rewritten as the requirement for
-\begin{equation*}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}
-\end{equation*}
-to be level two null-field.
-
-We can compare this result with the simplest possible coset model $su(2)/u(1)$ --  parafermion theory.
-
-\subsection{Semisimple Lie algebras and coset construction}
-\label{sec:semis-lie-algebr}
-
-It is well known that unitary minimal models with central charge $c=1-\frac{6}{m(m+1)}$ can be obtained from coset construction starting with $su(2)_{m}\oplus su(2)_{1}$ WZW-model and factorizing it by $su(2)_{m+1}$. Here lower index represents level of affine Lie algebra representation. 
-
-In this case the dimension of Lie algebra $\gf=su(s)\oplus su(2)$ is 6, dual Coxeter number $h^{v}=2+2=4$. 
-
-
-\begin{equation}
-  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
-\label{eq:6}
-\end{equation}
-
-For semisimple Lie algebra $\gf=\gf_{1}+\gf_{2}$ with generators $J^{a}$ and $\tilde{J}^{b}$ correspondingly we can more explicitly write the relation \eqref{eq:6} as 
-
-\begin{equation*}
-  \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\left(\sum_{a} J^{a}_{-1} J^{a}_{-1}+\sum_{b}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right) \right) \left|\phi_{\Lambda}\right>    
-\end{equation*}
-
-This vector should be null vector of level two, so $L_{2}\left|\psi\right>=L_{1}\left|\psi\right>=0$. Then we get following algebraic relations for semisimple Lie algebra:
+Central extension leads to the appearance of an additional term
 \begin{equation}
   \label{eq:7}
-  \left( 3\kappa h_{\Lambda} +\frac{1}{2} \tau (k_{1} \mathrm{dim} \gf_{1}+k_{2}\mathrm{dim} \gf_{2}) -8 h_{\Lambda} - c\right)\phi_{\Lambda}=0
+   [X^{i}t^{n}+\alpha c,X^{j}t^{m}+\beta c]=t^{n+m}\sum_{k}C^{ij}_{k}X^{k}+(X^{i},X^{j})n\delta_{n+m,0}c
 \end{equation}
-SLE and factorization by equivalence relations. 
+This algebra $\hat\gf=\gf\otimes\mathbb{C}[t,t^{-1}]\oplus\mathbb{C}c$ is called non-twisted {\it affine Lie algebra} \cite{kac1990idl}, \cite{wakimoto2001idl,wakimoto2001lectures}, \cite{kass1990ala}.
 
-\subsection{Parafermions}
+We do not treat twisted affine Lie algebras in the present paper.
 
-$\mathbb{Z}(N)$ parafermions are equivalent to $SU(2)_{N}/U(1)$ coset theory.
+\subsection{Modules, weights and roots}
+\label{sec:weights-roots}
 
-It is well-known that parafermionic field can be written as product of $su(2)$-primary field and vertex operator of bosonic field. 
+Let $\gf$ be a inite-dimensional or an affine Lie algebra.
+
+Then $\gf$-module is a vector space $V$ together with a bilinear map $\gf \times V\to V$ such that
+\begin{equation}
+  \label{eq:2}
+  [x,y]\cdot v = x\cdot(y\cdot v) - y\cdot(x\cdot v), \quad \mbox{for}\; x,y\in \gf, v\in V
+\end{equation}
+Representation of algebra $\gf$ on a vector space $V$ is the homomorphism $\gf\to gl(V)$ from $\gf$ to Lie algebra of endomorphisms of the  vector space $V$ with the commutator as a bracket.
+
+For an arbitrary representation it is possible to diagonalize the operators corresponding to Cartan generators $H^{i}$ simultaneously by a special choice of basis $\{v_{j}\}$ in $V$:
+\begin{equation}
+  \label{eq:3}
+  H^{i}\cdot v_{j}=\nu_{j}^{i}v_{j}
+\end{equation}
+Eigenvalues $\nu^{i}_{j}$ of Cartan generators on an element of basis $v_{j}$ determine a weight $\nu_{j}\in \hfg^{*}$ such that $\nu_{j}(H^{i})=\nu_{j}^{i}$. Vector $v\in V$ is called the weight vector of the weight $\lambda$ if $H v=\lambda_{j}(H)v,\; \forall H\in \hf$. The  weight subspace consists of all weight vectors $V_{\lambda}=\{v\in V: H v=\lambda_{j}(H)v,\; \forall H\in \hf\}$. The weight multiplicity $m_{\lambda}=\mathrm{mult}(\lambda)=\mathrm{dim} V_{\lambda}$ is the dimension of the weight subspace.
+
+The structure of module is determined by the set of weights since the action of generators $E^{\alpha}$ on weight vectors is
+\begin{equation}
+  \label{eq:5}
+  E^{\alpha}\cdot v_{\lambda} \propto v_{\lambda+\alpha}
+\end{equation}
+Module structure can be encoded by the formal character of a module
+\begin{equation}
+  \label{eq:10}
+  \mathrm{ch}V=\sum_{\lambda}m_{\lambda} e^{\lambda}
+\end{equation}
+Character  $\mathrm{ch}V\in \mathcal{E}$ is an element of algebra $\mathcal{E}$ generated by formal exponents of weights.
+A character can be specialized by taking its value on some element $\xi$ of $\hf$.
+
+Lie algebra is its own module with respect to a special kind of representation. The action that
+defines this representation is called adjoint and is given by the bracket $ad_{X} Y=[X,Y]$. 
+{\it Roots} are weights of the adjoint representation of $\gf$. They encode the commutation relations of algebra in the following way. Denote by $\Delta$ the set of roots. For each $\alpha\in \Delta$ there exist a root $-\alpha\in \Delta$ and the generators $E^{\alpha}, E^{-\alpha}$ such that
+\begin{align}
+  \label{eq:4}
+  &  [H^{i},E^{\alpha}]=\alpha^{i}E^{\alpha} \\
+  &\left[E^{\alpha},E^{\beta}\right]=
+  \begin{cases}
+    N_{\alpha,\beta} E^{\alpha+\beta}, & \mbox{if}\; \alpha+\beta\in \Delta\\
+    \frac{2}{(\alpha,\alpha)} \sum_{i}\alpha^{i} H^{i},&  \mbox{if}\; \alpha=-\beta\\
+    0,&\mbox{otherwise}
+  \end{cases}
+\end{align}
+
+Given the root system $\Delta$ we can choose the set of positive roots. This is a subset  $\Delta^{+}\subset \Delta$ such that for each root $\alpha\in\Delta$ exactly one of the roots $\alpha, -\alpha$ is contained in $\Delta^{+}$ and for any two distinct positive roots $\alpha, \beta\in \Delta^{+}$ such that $\alpha+\beta\in \Delta$ their sum is also positive $\alpha+\beta\in\Delta^{+}$.
+Elements of $-\Delta^{+}$ are called negative roots.
+
+A positive root is {\it simple} if it cannot be written as a sum of positive roots. The set of simple roots $\Phi=\left\{\alpha_{i}\right\}$ is a basis in $\hfg^{*}$ and each root can be written as $\alpha=\sum_{i}n_{i}\alpha_{i}$ with all $n_{i}$ non-negative or non-positive simultaneously. In case of a finite-dimensional Lie algebra $\gf$ simple roots are numbered from 1 to the rank of algebra $i=1,\dots,r,\quad r=\mathrm{rank}(\gf)$. By numbering simple roots with an index $i$ we introduce lexicographic ordering in the root system $\Delta$. Highest root with respect to this ordering is denoted by  $\theta=\sum_{i=1,\dots,r} a_i \alpha_i$, coefficients $a_i$ are called {\it marks}. $\theta$ is also the highest weight  of the adjoint module (See section \ref{sec:high-weight-modul}). {\it Comarcs} are the numbers equal to $a_i^{\vee}=\frac{(\alpha_i,\alpha_i)}{2} a_i$.
+
+Although for affine Lie algebra $\hat\gf$ the set of roots $\Delta$ is infinite the set of simple roots $\Phi$ is finite and its elements are denoted by $\alpha_{0},\dots \alpha_{r}$ where $r=\mathrm{rank}(\gf)$. The roots $\alpha_1,\dots, \alpha_r$ are the roots of the underlying finite-dimensional Lie algebra $\go$. The root $\alpha_0=\delta-\theta$ is the difference of {\it imaginary root} $\delta$ and $\theta$ -- the highest root of the algebra $\go$.
+Note that root multiplicity $\mathrm{mult}(\alpha)$ for an affine Lie algebra root can be greater than one.
+
+Subalgebra  $\bff_{+}\subset \gf$ spanned by the generators $H^{i}, E^{\alpha}$ for positive roots $\alpha\in \Delta^{+}$ is called the Borel subalgebra.
+
+{\it Parabolic subalgebra}  $\pf_{I}\supset \bff_{+}$ contains Borel subalgebra and is  generated by some subset of simple roots $\{\alpha_{j}:j\in I, I\subset \{1\dots r\}\}$. It is spanned by the subset of generators $\{H^{i}\}\cup \{E^{\alpha}:\alpha\in \Delta^{+}\}\cup \{E^{-\alpha}: \alpha\in\Delta^{+}, \alpha=\sum_{j\in I} n_{j} \alpha_{j}\}$.
+{\it Regular subalgebra} $\af\subset\gf$ is determined by the root system $\Delta_{\af}$ with the set of simple roots $\{\beta_{i}, i=1,\dots,r_{\af}\}$ being a subset of set of roots $\{\alpha_{1},\dots,\alpha_{r}\}\cup \{-\theta\}$ .
+
+The {\it Weyl group} $W_{\gf}$ is generated by reflections $\{s_{i}:\hfg^{*}\to\hfg^{*}\}$ corresponding to simple roots $\{\alpha_{i}\}$:
+\begin{equation}
+  \label{eq:8}
+  s_{i}\cdot\lambda=\lambda-\frac{2(\alpha_{i},\lambda)}{(\alpha_{i},\alpha_{i})}\alpha_{i}
+\end{equation}
+Root system and characters of representation are invariant with respect to the Weyl group  action. Root system can be reconstructed from the set of simple roots by the Weyl group transformations.
+
+Weyl groups are finite for finite-dimensional Lie algebras and finitely-generated for affine Lie algebras.
+
+Consider an action of the element $s_{\alpha}s_{\alpha+\delta}$ of the Weyl group of affine Lie algebra  $\hat\gf$ for $\alpha$ being a simple root of the underlying finite-dimensional Lie algebra $\gf$. Using definition \eqref{eq:8} it is easy to see that $s_{\alpha}s_{\alpha+\delta} \cdot \lambda=\lambda+\frac{2}{(\alpha,\alpha)}\alpha+\left(\frac{(\alpha,\alpha)}{2 (\lambda,\delta)}+(\lambda,\alpha)\right) \delta$. So the Weyl group can be presented as a semidirect product of the Weyl group $W_{\gf}$ of $\gf$ and the set of translations corresponding to roots of $\gf$. 
+
+A Weyl group element can be presented as a product of elementary reflections in multiple ways. Number of elementary reflections in the shortest sequence representing an element $w\in W_{\gf}$ is called the {\it length} of $w$ and is denoted by $l(w)$. We also use the notation $\epsilon(w)=(-1)^{l(w)}$ for the parity of the number of Weyl reflections generating $w$. 
+
+Fundamental domain $\bar{C}$ for the Weyl group $W_{\gf}$ action  on $\hfg^{*}$ is determined by the requirement $\xi\in \bar{C}\Leftrightarrow (\xi,\alpha_{i})\geq 0$ for all simple roots $\alpha_{i}$. It is called a {\it main Weyl chamber}. 
+
+The {\it Cartan matrix} $A$ is defined by products of simple roots
+\begin{equation}
+  \label{eq:9}
+  A_{ij}=\frac{2(\alpha_{i},\alpha_{j})}{(\alpha_{j},\alpha_{j})}
+\end{equation}
+and can be used for a compact description of Lie algebra commutation relations in the Chevalley basis \cite{humphreys1997introduction}, \cite{fulton1991representation}, \cite{bourbaki2002lie}.
+
+Form \eqref{eq:9} induces a basis dual  to the simple
+roots basis. It is called the {\it fundamental weights basis}. We denote
+its elements by $\omega_i$:
+\begin{equation}
+  \label{eq:20}
+  \langle\omega_i,\alpha_j\rangle=\frac{2(\omega_{i},\alpha_{j})}{(\alpha_{j},\alpha_{j})}=\delta_{ij}
+\end{equation}
+For a finite-dimensional Lie algebra there are $r$ fundamental weights, $i=1,\dots, r$. For affine Lie algebra we have additional fundamental weight $\omega_0=\lambda$, $(\lambda,\delta)=1, \; (\lambda,\lambda)=(\delta,\delta)=0$. Other fundamental weights are equal to $\omega_i=a_i^v \omega_0 +\co{\omega_i}$, where $\co{\omega_i}$ is the fundamental weight of the finite-dimensional Lie algebra $\gf$.
+
+ The sum of fundamental weights $\rho=\sum_{i} \omega_{i}$ is called a {\it Weyl vector}. It is an important tool in representation theory.
+
+\subsection{Highest weight modules}
+\label{sec:high-weight-modul}
+
+We consider finitely-generated $\gf$-modules $V$ such that $V=\bigoplus_{\xi\in \hfg^{*}} V_{\xi}$, where each $V_{\xi}$ is finite-dimensional and there exists a finite set of weights $\lambda_{1},\dots \lambda_{s}$ which generates the weight system of $V$, i.e. if $\mathrm{dim}V_{\xi}\neq 0$ then $\xi=\lambda_{i}-\sum_{k=1,\dots, r} n_{k}\alpha_{k}$ where $n_{k}\in \mathbb{Z}_{+}$ (See \cite{humphreys2008representations}, \cite{carter2005lie}).
+
+Highest weight module $V^{\mu}$ contains a single highest weight $\mu$, all the other weights are obtained by subtractions of linear combinations of simple roots $\lambda=\mu-n_{1}\alpha_{1}-\dots-n_{r}\alpha_{r},\; n_{k}\in \mathbb{Z} _{+}$.
+
+The most simple type of highest weight modules is the Verma module
+$M^{\mu}$. Its space can be defined as a module
+\begin{equation}
+  \label{eq:17}
+  M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+}),
+\end{equation}
+with respect to a multiplication in $U(\gf)$ and
+$\underset{U(\bff_{+})}{\otimes}$ means that the action of elements of $U(\bff_{+})$ ``falls through'' the left part of tensor product onto the right part. Here $\bff_{+}$ is Borel subalgebra, $D^{\mu}(\bff_{+})$ is a representation of $\bff_{+}$ such that $D(E^{\alpha})=0,\; D(H)=\mu(H)$ for any positive root $\alpha$.
+Elements of $\gf$ act from the left and we should commute all the elements of $\bff_{+}$ to the right, so that they can act on the space $D^{\lambda}(\bff_{+})$.
+
+Weight multiplicities in Verma modules can be found by applying the Weyl
+character formula
+\begin{equation}
+  \label{eq:11}
+  \mathrm{ch} M^{\mu}=\frac{e^{\mu}}{\prod_{\alpha\in \Delta^{+}} \left( 1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}}=\frac{e^{\mu}}{\sum_{w\in W} \epsilon(w) e^{w\rho-\rho}}
+\end{equation}
+Here we have used the Weyl denominator identity
+\begin{equation}
+  \label{eq:12}
+  R:=\prod_{\alpha\in \Delta^{+}} \left( 1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}=\sum_{w\in W} \epsilon(w) e^{w\rho-\rho},
+\end{equation}
+and $\epsilon \left( w\right) :=\det \left( w\right)$ is equal to 
+the parity of the sequence of Weyl reflections generating $w$.
+
+Verma module $M^{\mu}$ has the unique maximal submodule and the
+unique nontrivial simple quotient $L^{\mu}$ which is an
+{\it irreducible highest weight module}. 
+
+Irreducible highest weight modules have no non-trivial submodules. 
+The Weyl character formula for
+irreducible highest weight modules is
+\begin{equation}
+  \label{eq:13}
+  \mathrm{ch} L^{\mu}=\frac{\sum_{w\in W} \epsilon(w) e^{w(\mu+\rho)-\rho}}{\sum_{w\in W}\epsilon(w) e^{w\rho-\rho}}=\sum_{w\in W} \epsilon(w)\; \mathrm{ch} M^{w(\mu+\rho)-\rho}
+\end{equation}
+Thus the character of an irreducible highest weight module can be
+seen as a combination of characters of Verma modules. ( This
+fact is a consequence of the Bernstein-Gelfand-Gelfand resolution
+(\cite{bernstein1976category,bernstein1971structure}, see also
+\cite{humphreys2008representations}).)
+
+Construction of generalized Verma modules is analogous to (\ref{eq:17}), but representation of Borel subalgebra is substituted by a representation of parabolic subalgebra $\pf_{I}\supset \bff_{+}$ generated by some subset $\{\alpha_{I}\}$ of simple roots $I\subset \{1,\dots, r\}$:
+%% !!! \Delta_{p}?!
 \begin{equation*}
-  \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
+M_{I}^{\mu}=U\left( \gf\right)\otimes _{U\left( \pf_{I}\right) }L_{\pf_{I}}^{\mu}.
 \end{equation*}
-where $\phi_{j}(z)$ is field of $SU(2)$-WZNW model with spin $j$, $\phi(z)$ -- $U(1)$ bosonic field.
+Introduce a formal element $R_{I}:=\prod_{\alpha \in \Delta
+^{+}\setminus \Delta _{\pf_{I}}^{+}}\left( 1-e^{-\alpha }\right)
+^{\mathrm{mult}(\alpha )}$. Then the character of a generalized
+Verma module can be written as
+\begin{equation}
+  \label{eq:18}
+  \mathrm{ch}M_{I}^{\mu}=\frac{1}{R_{I}}\mathrm{ch}L_{\pf_{I}}^{\mu }.
+\end{equation}
 
-For parafermionic current we have
+
+%% Define external border of irreducible representation here
+
+We can use the Weyl character formula to obtain recurrent relations for weight multiplicities -- important tools for calculations \cite{il2010folded,kulish4sfa}. 
+
+For irreducible highest-weight modules recurrent relations have the following form
+\begin{equation}
+\label{eq:14}
+m_{\xi }=-\sum_{w\in W\setminus e}\epsilon (w)m_{\xi
+-\left( w(\rho )-\rho \right) }+\sum_{w\in W}\epsilon
+(w)\delta _{\left( w(\mu +\rho )-\rho \right) ,\xi }.
+\end{equation}
+Formulae for Verma and generalized Verma modules differ only in the second term on the right-hand side. In case of Verma module it is just $\delta_{\xi,\mu}$. For generalized Verma module the summation in the second term on the right-hand side of \eqref{eq:14} is over the Weyl subgroup generated by reflections corresponding to roots $\{\alpha_{I}\}$.
+
+Other recurrent formula can be obtained from a study of Casimir
+elements action on irreducible highest weight modules
+\cite{humphreys1997introduction}:
+\begin{equation}
+  \label{eq:15}
+  m_{\lambda}=\frac{2}{(\mu+\rho)^{2}-(\lambda+\rho)^{2}}\sum_{\alpha\in \Delta^{+}}\sum_{k\geq 1} (\lambda+k\alpha,\alpha)m_{\lambda+k\alpha}.
+\end{equation}
+It is called the Freudenthal multiplicity formula.
+Note that it is applicable only to irreducible modules. 
+
+
+We discuss the use of formulae \eqref{eq:14} and \eqref{eq:15} for computations in section \ref{sec:comp-algor}. 
+
+Now consider an algebra $\gf$ and a reductive subalgebra
+$\af\subset \gf$. Simple roots $\beta_{i}$ of the subalgebra $\af$
+can be presented as linear combinations of $\gf$-algebra roots
+$\alpha_{j}$: $\beta_{i}=\sum_{j=1,\dots,r_{\gf}}k_{j}
+\alpha_{j},\ j=1,\dots,r_{\af}$.
+
+Each irreducible $\gf$-module is also an $\af$-module, although
+$L^{\mu}_{\gf}$ is in general not irreducible as $\af$-module. 
+It can be
+decomposed into a direct sum of irreducible $\af$-modules:
+\begin{equation}
+  \label{eq:16}
+  L^{\mu}_{\gf}=\bigoplus_{\nu}b^{\mu}_{\nu}L^{\nu}_{\af}
+\end{equation}
+Coefficients in such a decomposition are called branching
+coefficients. 
+
+It is possible to calculate branching coefficients by constructing and successively  subtracting the submodules $L^{\nu}_{\af}$. 
+This traditional approach has serious limitations especially in case of affine Lie algebras. We discuss them in the end of section \ref{sec:comp-algor}. 
+
+Now we describe an alternative approach which is based on recurrent properties of branching coefficients. 
+But before we proceed to these recurrent relations we need several additional definitions.
+
+For a subalgebra $\af\subset \gf$ we introduce the subalgebra
+$\afb$. Consider the root subspace $\hf_{\perp \af}^{\ast }$
+orthogonal to $\hf_{\af}$,
 \begin{equation*}
-  \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)
+\hf_{\perp \af}^{\ast }:=\left\{ \eta \in \hf^{\ast }|\forall
+h\in \hf_{\af};\eta \left( h\right) =0\right\} ,
 \end{equation*}
-%% Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
-%% !!! TODO
-Martingale condition can be rewritten as
+and the roots (correspondingly -- positive roots) of $\gf$ orthogonal
+to roots of $\af$,
+\begin{eqnarray}
+\Delta _{\afb} &:&=\left\{ \beta \in \Delta _{\gf}|\forall
+h\in \hf_{\af};\beta \left( h\right) =0\right\} ,
+\label{delta a ort} \\
+\Delta _{\afb}^{+} &:&=\left\{ \beta ^{+}\in \Delta _{\gf%
+}^{+}|\forall h\in \hf_{\af};\beta ^{+}\left( h\right) =0\right\} .
+\notag
+\end{eqnarray}
+Let $W_{\afb}$ be a subgroup of $W$ generated by
+reflections $w_{\beta }$ with the roots $\beta \in \Delta _{\af_{\perp
+}}^{+}$. The subsystem $\Delta _{\afb}$ determines a 
+subalgebra $\afb$ with the Cartan subalgebra $\hf_{\af%
+_{\perp }}$.
+
+The Cartan subalgebra $\frak{h}$ can be decomposed in the following way:  $\frak{h}=\frak{\frak{h}_{\af}}\oplus
+\frak{h}_{\afb}\oplus \frak{h}_{\perp }$
+
+We also introduce the notations
+\begin{eqnarray}
+\widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
+\qquad
+\widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }.
+\end{eqnarray}
+
+For $\af$ and $\afb$ we consider the
+corresponding Weyl vectors, $\rho _{\af}$ and $\rho _{\af_{\perp
+}} $ and compose the so called ''defects'' $\mathcal{D}_{\af}$ and $\mathcal{%
+D}_{\afb}$ of the injection:
+\begin{equation}
+\mathcal{D}_{\af}:=\rho _{\af}-\pi _{\af}\rho , \qquad
+\mathcal{D}_{\afb}:=\rho _{\afb}-\pi _{\af%
+_{\perp }}\rho .  \label{defect-ort}
+\end{equation}
+
+%%!!! Define P^+
+For $\mu \in P^{+}$ consider the linked weights $\left\{ \left(
+w(\mu +\rho )-\rho \right) |w\in W\right\} $ and their projections
+to
+$h_{\afb}^{\ast }$ additionally shifted by the defect $-%
+\mathcal{D}_{\afb}$:
 \begin{equation*}
-  \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
+\mu _{\afb}\left( w\right) :=\pi _{\afb}\left[
+w(\mu +\rho )-\rho \right] -\mathcal{D}_{\afb},\quad w\in W.
 \end{equation*}
-which coincides with the result of Santachiara \cite{santachiara2008sle}.
+Among the weights $\left\{ \mu _{\af_{\perp
+}}\left( w\right) |w\in W\right\} $ one can always choose those located in
+the fundamental chamber $\overline{C_{\afb}}$. Let $U$ be the
+set of representatives $u$ for the classes $W/W_{\afb}$ such
+that
+
+\begin{equation}
+U:=\left\{ u\in W|\quad \mu _{\afb}\left( u\right) \in
+\overline{C_{\afb}}\right\} \quad .  \label{U-def}
+\end{equation}
+Thus we can form the subsets:
+\begin{equation}
+\mu _{\widetilde{\mathfrak{a}}}\left( u\right) :=\pi _{\widetilde{%
+\mathfrak{a}}}\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\af%
+_{\perp }},\quad u\in U,  \label{mu-a}
+\end{equation}
+and
+\begin{equation}
+\mu _{\afb}\left( u\right) :=\pi _{\afb}\left[
+u(\mu +\rho )-\rho \right] -\mathcal{D}_{\afb},\quad u\in U.
+\label{mu-a-tilda}
+\end{equation}
+
+Notice that the subalgebra $\mathfrak{a}_{\bot}$ is regular by definition
+since it is built on a subset of roots of the algebra $\mathfrak{g}$.
+
+Denote by  $k_{\xi }^{\left( \mu \right) }$ signed branching coefficients. If $\xi\in \bar C_{\af}$ is in main Weyl chamber $k_{\xi}^{(\mu)}=b^{(\mu)}_{\xi}$ otherwise $k_{\xi}^{(\mu)}=\epsilon(w) b^{(\mu)}_{w (\xi+\rho_{\af})-\rho_{\af}}$ where $w\in W_{\af}$ is such that $w (\xi+\rho_{\af})-\rho_{\af}\in \bar C_{\af}$. 
+
+Now we can use the Weyl character formula to write a
+recurrent relation \cite{2010arXiv1007.0318L} for signed branching
+coefficients $k_{\xi }^{\left( \mu \right) }$ corresponding to an
+injection $\af\hookrightarrow \gf$:
+\begin{equation}
+\begin{array}{c}
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{u\in U}\epsilon (u)\;\dim \left( L_{\afb}^{\mu _{\af%
+_{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
+\widetilde{\af}}(u(\mu +\rho )-\rho )}+\right.  \\
+\left. +\sum_{\gamma \in \Gamma _{\widetilde{\af}\rightarrow \gf%
+}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right)
+}\right) .
+\end{array}
+\label{recurrent-rel}
+\end{equation}
+The recursion is governed by the set $\Gamma _{\af\rightarrow \gf}$ called the injection fan. The latter is defined by the
+carrier set $\left\{ \xi \right\} _{\af\rightarrow \gf}$ for the
+coefficient function $s(\xi )$
+\begin{equation*}
+\left\{ \xi \right\} _{\widetilde{\af}\rightarrow \gf}:=\left\{
+\xi \in P_{\widetilde{\af}}|s(\xi )\neq 0\right\}
+\end{equation*}
+appearing in the expansion
+\begin{equation}
+\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot }^{+}}\left( 1-e^{-\pi
+_{\widetilde{\af}}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}%
+_{\af}(\pi _{\widetilde{\af}}\alpha )}=-\sum_{\gamma \in P_{%
+\widetilde{\af}}}s(\gamma )e^{-\gamma };\quad
+\end{equation}
+The weights in $\left\{ \xi \right\} _{\widetilde{\af}\rightarrow \gf}$ are to be shifted by $\gamma _{0}$ -- the lowest vector in $\left\{ \xi
+\right\} $ -- and the zero element is to be eliminated:
+\begin{equation}
+\Gamma _{\af\rightarrow \gf}=\left\{ \xi -\gamma
+_{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
+\end{equation}
+Formula (\ref{eq:14}) is a particular case of recurrent relation for branching coefficients (\ref{recurrent-rel}) in the case of Cartan subalgebra $\af=\hfg$.
+
+If the root system of $\afb$ is generated by some subset of $\gf$
+simple roots $\alpha_{1},\dots,\alpha_{r}$ then the recurrent
+relation (\ref{recurrent-rel}) is connected with the generalized
+Bernstein-Bernstein-Gelfand resolution for parabolic Verma modules
+\cite{2011arXiv1102.1702L}.
+
+Another particular case of this formula is connected with tensor
+product decompositions. Consider the tensor product of two
+irreducible $\gf$-modules $L^{\mu}\otimes L^{\nu}$. It is also a
+$\gf$-module but not irreducible in general. So
+\begin{equation}
+  \label{eq:19}
+  L^{\mu}\otimes L^{\nu}=\bigoplus_{\gamma} f^{\mu\nu}_{\gamma}L^{\gamma}
+\end{equation}
+The coefficients $f^{\mu\nu}_{\gamma}$ are called fusion
+coefficients. The problem of computation of fusion coefficients is
+equivalent to branching problem for the diagonal subalgebra
+$\gf\subset \gf\oplus \gf$ (see \cite{LyakhovskyPostnova2011}). So our implementation of recurrent algorithm can be used to decompose tensor products (See Section \ref{sec:tens-prod-decomp}).
+
+In the case of affine Lie algebras $\gf, \af$  the multiplicities
+$m_{\nu}$ and the corresponding branching coefficients $b_{\nu}$
+can be regarded as the coefficients in power series decomposition
+of string and branching functions correspondingly:
+\begin{align}
+  \label{eq:21}
+  &\sigma_{\nu}(q)=\sum_{n=0}^{\infty} m_{\nu-n\delta} q^n, \quad \nu=\sum_j c_j \omega_j,\quad c_j\geq 0\\
+  & b_{\nu}(q)=\sum_{n=0}^{\infty} b_{\nu-n\delta} q^n,\quad  \nu=\sum_j c_j \omega_j, \quad c_j\geq 0
+\end{align}
+String and branching functions have  modular and analytic properties which are important for conformal field theory, especially in  coset models and the study of CFT on higher genus surfaces \cite{kac1988modular}, \cite{difrancesco1997cft}, \cite{Walton:1999xc}, \cite{walton1989conformal}.
 
 
+{\bf Affine.m}  calculates weight multiplicities and branching coefficients for affine Lie algebras up to some finite grade. We present examples of computations in Sections \ref{sec:string-funct-affine}, \ref{sec:branch-funct-coset}. Now we proceed to the description of datastructures and algorithms implemented in {\bf Affine.m}.
 
-\subsection{Next steps}
+\section{Core datastructures}
+\label{sec:core-datastructures} Having introduced necessary
+mathematical objects, problems and relations we now describe the
+related datastructures of {\bf Affine.m}. Although {\it
+Mathematica} is untyped language it is possible to create
+structured objects and do type checks with patterns
+\cite{shifrinmathematica}, \cite{maeder2000computer}.
+\subsection{Weights}
+\label{sec:weights}
 
-Next steps in the study of SLE martingales for coset models  are the following. 
+Weights are represented  by two data-structures: \lstinline{finiteWeight} for finite-dimensional Lie algebras and \lstinline{affineWeight}  for affine.
 
-%At first we act on $  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum\limits_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}+\sum\limits_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\Lambda,\Gamma)}$ with  raising operators $J^{(a,b)}_{1}, J^{(a,b)}_{2}$ and get relations which connects level of representation and parameters of random motion $\kappa, \tau$. 
-% !!! This is wrong !!!
-% We can act by Sugawara generators 
+Internally the finite weight is a \lstinline{List} with the
+\lstinline{Head} \lstinline{finiteWeight}, its components are the
+coordinates of the weight in the orthogonal Bourbaki  basis
+\cite{bourbaki2002lie}.
 
-Then we use Knizhnik-Zamolodchikov equations to rewrite the relations in simpler form and get conditions on possible boundary condition changing operators. 
+Affine weight is an extension of a finite weight by supplying it
+with level and grade coordinates. There is a set of functions
+defined for finite and affine weights. The complete list can be
+found in  online help of the package. The most important
+are definitions of addition, multiplication by a number and a
+scalar product (bilinear form) for weights. These definitions
+allow to use traditional notation when working with {\bf
+Affine.m}:
+\begin{lstlisting}
+  w=makeFiniteWeight[{1,0,3}];
+  v=makeFiniteWeight[{3,2,1}];
+  2*w+v==makeFiniteWeight[{5,2,7}]
+  w.v==6
+\end{lstlisting}
 
-Boundary states in coset models were actively studied. One of the ideas is to consider direct sum WZNW-model and use equivalence relations. This study is essentially the study representation of fusion algebra, Verlinde formula is one of key ingredients in this study. So we hope to compare the classification of boundary states obtained in this way with our condition on boundary condition changing operator. 
+The use of orthogonal basis in the internal structure of weights allows us to work with weights without complete specification of root system which is useful for study of branching, since roots of the subalgebra can be specified by hand.
+
+\subsection{Root systems}
+\label{sec:root-systems}
+
+To specify an algebra of finite or affine type it is enough to fix
+its root system. Root systems are represented by two datatypes
+\lstinline{finiteRootSystem} and \lstinline{affineRootSystem}. The
+latter is an extension of the former. We offer several different
+constructors for these datastructures. It is possible to specify
+the set of simple roots explicitly, for example to study the
+subalgebra $B_2\subset B_4$ we can use the definition
+\begin{lstlisting}
+  b2b4=makeFiniteRootSystem[ { {1,-1,0,0}, {0,1,0,0} } ]
+\end{lstlisting}
+There are constructors for root systems of simple finite-dimensional Lie algebras:
+\begin{lstlisting}
+  b2=makeSimpleRootSystem[B,2]
+\end{lstlisting}
+We use typographic features of {\it Mathematica} frontend to offer mathematical notation for simple Lie algebras:
+
+
+\begin{lstlisting}[mathescape=true]
+  $B_2$ == makeFiniteRootSystem[ { {1, -1}, {0, 1} }]
+\end{lstlisting}
+
+Non-twisted affine root systems can be created as affine extensions of finte root systems, e.g.
+\begin{lstlisting}
+  b2affine = makeAffineExtension[b2]
+\end{lstlisting}
+In notebook interface this can be written simply as $\hat{B}_2$.
+
+Semisimple Lie algebras can be created as sums of simple:
+\begin{lstlisting}[mathescape=true]
+  $A_1\oplus A_1$ == finiteRootSystem[2, 2, {finiteWeight[2, {1, 0}], finiteWeight[2, {0, 1}]}]
+\end{lstlisting}
+%% The problem is here
+
+Predicate \lstinline{rootSystemQ} checks if the object is root systems of finite or affine type.
+
+List of simple roots is the property of root system so it is accessed as \lstinline{rs[simpleRoots]}.
+
+We have implemented several functions to get major properties of root systems. Weyl vector is given by the function \lstinline{rho[rs_?rootSystemQ]}:
+\begin{lstlisting}[label=list:1]
+  In[1]  =  rho[b2]
+  Out[1]  =  finiteWeight[2, {3/2, 1/2}]
+\end{lstlisting}
+Positive roots can be constructed with \lstinline{positiveRoots[rs_?rootSystemQ]}. For an affine Lie algebra this and related functions return the list up to fixed grade. This grade limit is set through the value of \lstinline{rs[gradeLimit]} which is equal to 10 by default. List of roots (up to \lstinline{gradeLimit}) is returned by \lstinline{roots[rs]}. Cartan matrix and fundamental weights are calculated by the functions \lstinline{cartanMatrix} and \lstinline{fundamentalWeights} correspondingly.
+
+It is possible to specify a weight of a Lie algebra by its Dynkin labels
+\begin{lstlisting}
+  weight[b2][1,2] == makeFiniteWeight[{2, 1}]
+\end{lstlisting}
+The function \lstinline{dynkinLabels[rs_?rootSystemQ][wg_?weightQ]} returns Dynkin labels of weight \lstinline{wg} in the root system \lstinline{rs}.
+
+Elements of Weyl group are specified by the set of indices of reflections, so the element  $w=s_{1}s_{2}s_{1}$ of the Weyl group of algebra $B_{2}$ is constructed with \lstinline{weylGroupElement[b2][1,2,1]}. Then it can be applied to the weights:
+\begin{lstlisting}
+  w = weylGroupElement[b2][1,2,1];
+  w @ makeFiniteWeight[{1,0}] == makeFiniteWeight[{-1,0}]
+\end{lstlisting}
+
+Computation of lexicographically minimal form \cite{casselman1994machine,casselman1995automata} for Weyl group elements can be conveniently implemented through the use of pattern-matching in {\it Mathematica}. In \cite{KallenShortlex} rewrite rules for simple finite dimensional and affine Lie algebras are presented as {\it Mathematica} patterns. Our presentation of Weyl group elements is compatible with the code of \cite{KallenShortlex}
+\begin{lstlisting}[mathescape=true]
+  In[1]  = $<<$A3reduce;
+           reduce[s[1,2,1,2,1,3,2,1,1]]
+  Out[1] = s[2, 3, 2]
+
+  In[2]  = (weylGroupElement[$A_{3}$] @@ reduce[s[1,2,1,2,1,3,2,1,1]]) @ weight[$A_{3}$][-1,-2,-1]
+  Out[2] = finiteWeight[4, {-2, 2, 1, -1}]
+
+  In[3]  = dynkinLabels[$A_{3}$][Out[2]]
+  Out[3] = {-4, 1, 2}
+\end{lstlisting}
+
+\subsection{Formal elements}
+\label{sec:formal-elements}
+
+We represent formal characters of representations by special structure \lstinline{formalElement}. This structure is a hash-table implemented with \lstinline{DownValues}. The keys are weights at the exponents and the values are the  corresponding multiplicities. \lstinline[mathescape=true]!makeFormalElement[{$\gamma_{1},\dots,\gamma_{n}$},{$m_{1},\dots,m_{n}$}]! creates data-structure which represents the element $\sum_{i=1}^{n} m_{i} e^{\gamma_{i}}$ of the formal algebra $\mathcal{E}$. The operations in $\mathcal{E}$ are implemented for \lstinline{formalElement} data-type: formal elements can be added, multiplied by a number or by an exponent of a weight. There exists also a multiplication of formal elements but no division.
+\begin{lstlisting}[mathescape=true]
+  In[1]  = makeFormalElement[{makeFiniteWeight[{1,1}],makeFiniteWeight[{0,0}]},{1,2}] *
+             (2 * Exp[makeFiniteWeight[{1,0}]] *
+             makeFormalElement[{makeFiniteWeight[{1,1}],makeFiniteWeight[{0,0}]},{1,2}]);
+  In[2]  = In[1][weights]
+  Out[2] = {finiteWeight[2, {1, 0}], finiteWeight[2, {2, 1}], finiteWeight[2, {3, 2}]}
+
+  In[3]  = In[1][multiplicities]
+  Out[3] = {8, 8, 2}
+\end{lstlisting}
+
+\subsection{Modules}
+\label{sec:modules}
+
+{\bf Affine.m} can be used to study different kinds of modules, i.e. Verma modules, irreducible modules and parabolic Verma modules.  We need datastructure \lstinline{module} to represent generic module of Lie algebra $\gf$. Module properties can be deduced from its set of singular weights using Weyl character formulae \eqref{eq:11},\eqref{eq:12},\eqref{eq:18},\eqref{eq:13}. Set of singular weights can have Weyl symmetry. It can be a symmetry with respect to the Weyl group $W_{\gf}$ or with respect to some subalgebra $W_{\af}$ as in the case of parabolic Verma modules. Then it is possible to study only the main Weyl chamber $C_{\af}$. To use this symmetry generic constructor for \lstinline{module} datastructure accepts several parameters \lstinline{makeModule[rs_?rootSystemQ][singWeights_formalElement,subs_?rootSystemQ|emptyRootSystem[],limit:10}. Here \lstinline{rs} is the root system of the Lie algebra $\gf$,\lstinline{singWeights} is the set of singular weights,  \lstinline{subs} is the root system corresponding to the Weyl group $W_{\af}$ which is the (anti-)symmetry of the set of singular weights. Parameter \lstinline{limit} limits computation for infinite-dimensional modules such as Verma or parabolic Verma.
+There are several specialized constructors for different types of highest weight modules:
+\begin{lstlisting}[mathescape=true]
+vm=makeVermaModule[$B_{2}$][{2,1}];
+pm=makeParabolicVermaModule[$B_{2}$][weight[$B_{2}$][2,1],{1}];
+im=makeIrreducibleModule[$B_{2}$][2,1];
+GraphicsRow[textPlot/@{im,vm,pm}]
+$\includegraphics[width=130mm]{figures/irrep-verma-pverma}$
+\end{lstlisting}
+
+As we already stated properties of a module are encoded by its singular element. Function \lstinline{singularElement[m_module]} returns singular element of a module as \lstinline{formalElement} datastructure. Character (up to \lstinline{limit} for (parabolic) Verma modules) is returned by the function \lstinline{character[m_module]}. Direct sum of modules is a module and we use natural notation
+\begin{lstlisting}[mathescape=true]
+im1=makeIrreducibleModule[$B_{2}$][weight[$B_{2}$][2,1]];
+im2=makeIrreducibleModule[$B_{2}$][weight[$B_{2}$][1,2]];
+textPlot[im1$\oplus$ im2]
+$\includegraphics[width=60mm]{figures/irrep-sum}$
+\end{lstlisting}
+
+The tensor product is also implemented but only for finite-dimensional Lie algebras, since tensor product of affine Lie algebra modules leads to rich new structures \cite{kazhdan1994tensor3,kazhdan1993tensor1,kazhdan1993tensor2} which are out of the scope of the present paper.
+\begin{lstlisting}[mathescape=true]
+textPlot[makeIrreducibleModule[$A_{1}$][5]$\otimes$ makeIrreducibleModule[$A_{1}$][3]];
+$\includegraphics[width=60mm]{figures/tensor-product}$
+\end{lstlisting}
+\section{Computational algorithms}
+\label{sec:comp-algor}
+   
+As we have already stated in section \ref{sec:high-weight-modul} there exist two recurrent relations which can be used to calculate weight multiplicities in irreducible modules. Both algorithms proceed in the following way to calculate weight multiplicities:
+\begin{enumerate}
+\item Create the list of weights in the main Weyl chamber by subtracting all possible combinations of simple roots from the highest weight (e.g. for finite-dimensional algebra subtract $\alpha_{1}$ from $\mu$ while inside $\bar C$, then subtract $\alpha_{2}$ from all the weights already obtained etc).
+\item Sort the list of weights by their product with the Weyl vector.
+\item Use a recurrent formula. If the weight required for recurrent computation is outside the main chamber use the Weyl symmetry.
+\end{enumerate}
+The difference in the performance of algorithms is in the number of previous values required to get the multiplicity of weight under consideration. For  the Weyl formula based recurrent relation \eqref{eq:14} it is constant and equal to the number of elements in the Weyl group (if we are far from the boundary of representation diagram). When the Freudenthal formula \eqref{eq:15} is used number of previous values grows with the distance from the external border of representation. So the Freudenthal formula is faster if the weight is close to the border or the rank of the algebra and the size of Weyl group is large \cite{moody1982fast}.
+Note that the Freudenthal formula is valid for irreducible modules only, so it can not be used to study (generalized) Verma modules.
+
+We have made some experiments with our implementations of the Freudenthal formula and formula \eqref{eq:15} and have got Figure  \ref{fig:freudenthal-racah-times}, which depicts the dependence of the computation time on the number of weights in a module.
+
+\begin{figure}[h]
+  \noindent\centering{
+    \includegraphics[width=80mm]{figures/timing}
+  }
+  \caption{Running time of algorithms based on the Freudenthal formula \eqref{eq:15} (dashed) and recurrent relation \eqref{eq:14} (solid) with the number of weights in $\bar C$ for calculation of multiplicities in representations of $B_{2}$.}
+\label{fig:freudenthal-racah-times}
+
+\end{figure}
+
+In the calculation of branching coefficients the application of the Freudenthal formula requires a complete construction of formal characters of an algebra module and all the representations of a subalgebra. It is impractical when the rank of algebra and subalgebra are big, for example for maximal subalgebras.
+
+Alternative algorithm which was presented in the paper \cite{2010arXiv1007.0318L}  contains the following steps:
+
+\begin{enumerate}
+\item  Construct the root system $\Delta _{\af}$ for the embedding $%
+\af\rightarrow \frak{g}$.
+
+\item  Select all the positive roots $\alpha \in \Delta ^{+}$ orthogonal
+to  $\af$, i.e. form the set $\Delta_{\afb }^{+}$.
+
+\item  Construct the set $\Gamma _{\af\rightarrow \frak{g}}$. Relation
+ (\ref{eq:6}) defines the sign function
+ $s(\gamma)$ and the set $\Phi_{\af\subset \frak{g}}$ where the lowest weight
+ $\gamma_0$ is to be subtracted to get the fan:
+ $\Gamma _{\af\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
+\af\subset \frak{g}}\right\} \setminus \left\{ 0\right\}$.
+
+\item  Construct the set $\widehat{\Psi ^{(\mu )}}=\left\{ w (\mu +\rho
+)-\rho ;\;w \in W\right\} $ of singular weights for the $\frak{g}$%
+-module $L^{(\mu )}$.
+
+\item  Select the weights $\left\{ \mu _{\widetilde{\af_{\perp }}%
+}\left( w\right) =\pi _{\widetilde{\af_{\perp }}}\left[ w(\mu +\rho
+)-\rho \right] -\mathcal{D}_{\af_{\perp }}\in \overline{C_{\widetilde{%
+\af_{\perp }}}}\right\} $. Since the set $\Delta_{\afb }^{+}$ is fixed
+we can easily check wether the weight $\mu _{\widetilde{\af_{\perp }}%
+}\left( w\right) $ belongs to the main Weyl chamber $\overline{C_{\widetilde{%
+\af_{\perp }}}}$ (by computing its scalar product with the fundamental
+weights of $\afb^{+}$).
+
+\item  For the weights $\mu _{\widetilde{\af_{\perp }}}\left( w\right) $
+calculate dimensions of the corresponding modules, $\mathrm{\dim }\left(
+L_{\widetilde{\af_{\perp }}}^{\mu _{\widetilde{\af_{\perp }}%
+}\left( u\right) }\right) $, using the Weyl dimension formula and construct
+the singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$.
+
+\item  Calculate the anomalous branching coefficients using 
+recurrent relation (\ref{recurrent-rel}) and select among them those
+corresponding to the weights in the main Weyl
+chamber $\overline{C_{\af}}$.
+\end{enumerate}
+
+We can speed up the algorithm by
+one-time computation of the representatives of the conjugate classes $%
+W/W_{\afb }$.
+
+
+Consider the regular embedding $B_{2}\subset B_{4}$. In this case the fan consists of 24 elements. In order to decompose $B_{4}$ module we need to construct the subset of singular weights of the module which projects to the main Weyl chamber of the subalgebra $B_{2}$. The full set of singular weights consists of 384 elements. The required subset contains at most 48 elements. So the time for the construction of this required subset is negligible if the number of branching coefficients is greater than that. We may estimate the total number of required operations for the computation of branching coefficients as the product of the number of elements in the main Weyl chamber of a subalgebra with non-zero branching coefficients and the number of elements in the fan. In the case of a direct algorithm we need to compute the multiplicities for each module in the decomposition, so the number of operations grows faster than the square of the number of elements in the main Weyl chamber of a subalgebra with non-zero branching coefficients. 
+
+To further illustrate this performance issue we include Figure \ref{fig:branching} where we show the time required for computations of branching coefficients for $B_{3}\subset B_{4}$.
+
+\begin{figure}[h]
+  \noindent\centering{
+   \includegraphics[width=100mm]{figures/branching-timing}
+  }
+  \caption{Running time of algorithms based on the Freudenthal formula \eqref{eq:15} (dashed) and recurrent relation \eqref{recurrent-rel} (solid) with the number of weights in $\bar C$ for calculation of branching coefficients for $B_{3}\subset B_{4}$.}
+  \label{fig:branching}
+\end{figure}
+
+\section{Examples}
+\label{sec:examples}
+In this section we present some examples of computations available with {\bf Affine.m} with the code required to produce these results.
+
+\subsection{Tensor product decompositon for finite-dimensional Lie algebras}
+\label{sec:tens-prod-decomp}
+
+Computation of fusion coefficients for the decomposition of tensor product of highest-weight modules to the direct sum of irreducible modules has numerous applications in physics. For example, we can consider the spin of a composite system such as an atom. Another interesting example is integrable spin chain consisting of $N$ particles with the spins living in some representation $L$ of a Lie algebra $\gf$ with a $\gf$-invariant Hamiltonian $H$, describing the nearest-neighbour spin-spin interaction. In order to solve such a system, i.e. to find eigenstates of the Hamiltonian, we need to decompose $L^{\otimes N}$ into the direct sum of irreducible $\gf$-modules of lower dimension and diagonalize the Hamiltonian on these modules.
+
+For fundamental representations of simple Lie algebras it is sometimes possible to get an analytic result describing the dependence of decomposition coefficients on $N$ (See \cite{LyakhovskyPostnova2011}). Our code provides numerical values and can be used to check this analytic results.
+
+Consider a tensor power of $B_{2}$ the first fundamental representation $\left(L^{[1,0]}\right)^{\otimes 4}$. Decomposition coefficients are just the branching
+ coefficients for the tensor power module reduced to the diagonal subalgebra $B_{2}\subset B_{2}\oplus B_{2}\oplus B_{2}\oplus B_{2}$. So the following code calculates these coefficients:
+\begin{lstlisting}[mathescape=true]
+fm = makeIrreducibleModule[$B_{2}$][1, 0];
+tp = ((fm$\otimes$ ]fm)$\otimes$ fm)$\otimes$]fm;
+subs = makeFiniteRootSystem[
+  {1/4*{1, -1, 1, -1, 1, -1, 1, -1}, 
+   1/4*{0, 1, 0, 1, 0, 1, 0, 1}}];
+bc = branching[tp, subs];
+{bc[#], dynkinLabels[subs][#]} & /@ bc[weights]
+\end{lstlisting}
+It produces a list of highest weights and tensor product decomposition coefficients:
+\begin{lstlisting}
+{{1, {4, 0}}, {3, {2, 2}}, {0, {3, 0}}, 
+{2, {0, 4}}, {3, {1, 2}}, {6, {2, 0}}, 
+{6, {0, 2}}, {1, {1, 0}}, {3, {0, 0}}}]
+\end{lstlisting}
+
+Returning to the problem of spin chain Hamiltonian diagonalization we can see that instead of diagonalizing operator in space of dimension $625$ we can diagonalize operators in the spaces of dimensions $55, 81, 30, 35, 35, 14, 10, 5, 1$.
+
+\subsection{Branching and parabolic Verma modules}
+\label{sec:branch-parab-verma}
+
+We illustrate the generalized BGG-resolution by the diagrams of $G_{2}$ parabolic Verma modules which appear in the decomposition of irreducible module $L^{[1,1]}_{G_{2}}$:
+\begin{equation}
+\mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;e^{\mu _{\aft}\left(
+u\right) }\epsilon (u)\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
+u\right) }.  \label{char-in-gen-verma-mod}
+\end{equation}
+The character of $L^{[1,1]}$ is presented in Figure \ref{branching-bgg}, characters of the generalized Verma modules in decomposition \eqref{char-in-gen-verma-mod} are shown in Figure \ref{g2-pverma}. Characters in the upper row appear in \eqref{char-in-gen-verma-mod} with positive sign and in the lower row -- with negative.
+
+
+\begin{figure}[h]
+  \noindent\centering{
+    \includegraphics[width=80mm]{figures/G2-irrep}
+  }
+  \caption{Character of the irreducible $G_{2}$-module $L^{[1,1]}$}
+  \label{branching-bgg}
+\end{figure}
+\begin{figure}[h]
+  \noindent\centering{
+    \includegraphics[width=150mm]{figures/G2-pverma}
+  }
+  \caption{Characters of $G_{2}$ generalized Verma modules appearing in the decomposition of $L^{[1,1]}$. Parabolic Verma modules in the upper row appear in the decomposition with a positive sign, in the lower row -- with a negative.}
+  \label{g2-pverma}
+\end{figure}
+
+\subsection{String functions of affine Lie algebras and CFT models}
+\label{sec:string-funct-affine}
+
+String functions can be used to present formal characters of affine Lie algebra highest weight representation. They have interesting analytic and modular properties \cite{kac1990idl,kac1988modular,kac1984infinite}.
+
+{\bf Affine.m} produces power series decomposition for string functions. Consider an affine Lie algebra $\hat{sl(3)}=\hat A_{2}$ and its highest weight module $L^{(1,0,0)}$. To get the string functions we can use the code:
+\begin{lstlisting}[mathescape=true]
+stringFunctions[$\hat A_2$,{1,1,2}]
+{{0, 0, 4}, 
+  $2 q + 10 q^2 + 40 q^3 + 133 q^4 + 398 q^5 + 1084 q^6 + 2760 q^7 + 6632 q^8 + 15214 q^9 + 33508 q^{10}$}, 
+{{0, 3, 1}, 
+  $2 q + 12 q^2 + 49 q^3 + 166 q^4 + 494 q^5 + 1340 q^6 + 3387 q^7 + 8086 q^8 + 18415 q^9 + 40302 q^{10}$}, 
+{{1, 1, 2}, 
+  $1 + 6 q + 27 q^2 + 96 q^3 + 298 q^4 + 836 q^5 + 2173 q^6 + 5310 q^7 + 12341 q^8 + 27486 q^9 + 59029 q^{10}$}, 
+{{2, 2, 0}, 
+  $1 + 8 q + 35 q^2 + 124 q^3 + 379 q^4 + 1052 q^5 + 2700 q^6 + 6536 q^7 + 15047 q^8 + 33248 q^9 + 70877 q^{10}$}, 
+{{3, 0, 1}, 
+  $2 + 12 q + 49 q^2 + 166 q^3 + 494 q^4 + 1340 q^5 + 3387 q^6 + 8086 q^7 + 18415 q^8 + 40302 q^9 + 85226 q^{10}$}
+\end{lstlisting}
+Similarly for the affine Lie algebra $\hat G_{2}$ we get
+\begin{lstlisting}[mathescape=true]
+stringFunctions[$\hat G_2$,{1,1,0}]
+{{2, 0, 0}, 
+  $1 + 8 q + 37 q^2 + 138 q^3 + 431 q^4 + 1227 q^5 + 3208 q^6 + 7901 q^7$}, 
+{{0, 0, 1}, 
+  $3 q + 18 q^2 + 73 q^3 + 247 q^4 + 736 q^5 + 2000 q^6 + 5070 q^7$}, 
+{{1, 1, 0},
+  $1 + 7 q + 32 q^2 + 117 q^3 + 370 q^4 + 1055 q^5 + 2780 q^6 + 6880 q^7$}, 
+{{0, 2, 0}, 
+  $3 q + 15 q^2 + 63 q^3 + 210 q^4 + 633 q^5 + 1725 q^6 + 4407 q^7$}
+\end{lstlisting}
+
+\subsection{Branching functions and coset models of conformal field theory}
+\label{sec:branch-funct-coset}
+
+It is believed that most rational models of CFT can be obtained from cosets $G/A$ corresponding to the embedding $\af\subset\gf$. These models can be studied as gauge theories \cite{Hwang:1994yr, hwang1993brst}.
+
+Branching functions for an embedding $\af\subset\gf$ are the partition functions of CFT on the torus (see \cite{difrancesco1997cft}).
+
+As a first example we show how to construct branching functions for the embedding $\hat A_{1}\to \hat B_{2}$ up to the tenth grade:
+\begin{lstlisting}[mathescape=true]
+branchingFunctions[$\hat B_{2}$,makeAffineExtension[makeFiniteRootSystem[{{1, 1}}]], {1, 1, 1}]
+
+ {{3, 0}, 
+  $2 + 14 q + 52 q^2 + 154 q^3 + 410 q^4 + 994 q^5 + 2248 q^6 + 4832 q^7 + 9934 q^8 + 19680 q^9 + 37802 q^{10}$},
+ {{2, 1}, 
+  $4 + 20 q + 72 q^2 + 220 q^3 + 584 q^4 + 1424 q^5 + 3248 q^6 + 7012 q^7 + 14488 q^8 + 28844 q^9 + 55616 q^{10}$},
+ {{0, 3}, 
+  $4 q + 20 q^2 + 68 q^3 + 200 q^4 + 516 q^5 + 1224 q^6 + 2736 q^7 + 5808 q^8 + 11820 q^9 + 23236 q^{10}$},
+ {{1, 2}, 
+  $2 + 14 q + 54 q^2 + 168 q^3 + 462 q^4 + 1148 q^5 + 2656 q^6 + 5812 q^7 + 12130 q^8 + 24358 q^9 + 47328 q^{10}$}
+\end{lstlisting}
+
+Another example demonstrates the computation of branching functions for the regular embedding $\hat B_{2}\subset \hat C_{3}$:
+\begin{lstlisting}[mathescape=true]
+sub=makeAffineExtension[parabolicSubalgebra[$C_{3}$][2,3]];
+branchingFunctions[$\hat C_{3}$,sub, {2, 0, 0, 0}]
+
+{{0, 1, 0}, 
+  $2 q - 20 q^3 + 24 q^4 + 82 q^5 - 320 q^6 + 108 q^7$}, 
+{{1, 0, 0}, 
+  $1 - q - 8 q^2 + 19 q^3 + 16 q^4 - 156 q^5 + 205 q^6 + 640 q^7$}, 
+{{0, 0, 1}, 
+  $q - 5 q^3 + 7 q^5$}
+\end{lstlisting}
 
 \section{Conclusion}
 \label{sec:conclusion}
+We have presented the package {\bf Affine.m} for computations in representation theory of finite-dimensional and affine Lie algebras. It can be used to study Weyl symmetry, root systems, irreducible, Verma and parabolic Verma modules of finite-dimensional and affine Lie algebras.  In the present paper we have also discussed main ideas used for an implementation of the package and described most important notions of representation theory required to use {\bf Affine.m}. 
 
-Now we see that it is possible to match SLE observables and CFT correlation functions. Martingale conditions can be seen as the constraints on possible Verma modules of affine Lie algebra corresponding to boundary condition changing operator. These Verma modules must have level two null state. 
+We have demonstrated that recurrent approach based on the Weyl character formula is not only useful for calculations but also allows to establish connections with the (generalized) Bernstein-Bernstein-Gelfand resolution. 
 
-We can use primary fields of direct sum WZNW model and equivalence relations to study coset models. 
+Also we have presented examples of computations with this package connected with problems of physics and mathematics. 
 
-Martingale conditions should be compared with the classification of boundary states with other methods.
+In future versions of our software we are going to treat twisted affine Lie algebras, extended affine Lie algebras and provide more direct support for tensor product decompositions. 
+
+\section*{Acknowledgements}
+\label{sec:acknowledgements}
+I thank V.D. Lyakhovsky and O.Postnova for discussions and helpful comments.
+
+The work is supported by the Chebyshev Laboratory
+(Department of Mathematics and Mechanics, Saint-Petersburg State
+University) under the grant 11.G34.31.0026 of the Government of the
+Russian Federation.
 
 
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%\appendix
+
+\section{Software package}
+\label{package}
+The package can be freely downloaded from \url{http://github.com/naa/Affine}. To get the development code use the command
+\begin{lstlisting}[language=bash]
+ git clone git://github.com/naa/Affine.git
+\end{lstlisting}
+
+Contents of the package:
+\begin{verbatim}
+    Affine/                                root folder
+      demo/                                  demonstrations
+        demo.nb                                demo notebook
+        paper.nb                               code for the paper
+      doc/                                 documentation folder
+        figures/                             figures in paper 
+          timing.pdf                           diagram showing performance
+          branching-timing.pdf                 ...  for branching coefficients  
+          irrep-sum.pdf                        sum of B2 irreps
+          irrep-verma-pverma.pdf               irrep, Verma, (p)Verma for B2
+          G2-irrep.pdf                         irrep for G2
+          G2-pverma.pdf                        parabolic Verma for G2
+          tensor-product.pdf                   tensor product of A1-modules
+        bibliography.bib                     bibliographic database
+        paper.pdf                            present paper
+        paper.tex                            paper source
+        TODO.org                             list of issues
+      src/                                 source folder
+        affine.m                             main software package
+      tests/                               unit tests folder
+        tests.m                              unit tests
+      README.markdown                      installation and usage notes
+\end{verbatim}
+
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}         ==>>  [#]
+%%   \cite[chap. 2]{key} ==>> [#, chap. 2]
+%%
+
+%% References with bibTeX database:
+
+  %   \section*{References}
+  %   \label{sec:references}
+  %   
+  %   
+  %   \bibliography{bibliography}
+  %   \bibliographystyle{phcpc}
+  %   %\bibliographystyle{model1-num-names}
+  %   
+  %   
+  %   %% Authors are advised to submit their bibtex database files. They are
+  %   %% requested to list a bibtex style file in the manuscript if they do
+  %   %% not want to use elsarticle-num.bst.
+  %   
+  %   %% References without bibTeX database:
+  %   
+  %   % \begin{thebibliography}{00}
+  %   
+  %   %% \bibitem must have the following form:
+  %   %%   \bibitem{key}...
+  %   %%
+  %   
+  %   % \bibitem{}
+  %   
+  %   % \end{thebibliography}
+  %   
+  %   
+  %   
 
 %%
 %% End of file
