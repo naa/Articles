@@ -353,156 +353,7 @@
 \newblock Vol. 105, no.~1. "---
 \newblock Pp.~42--58.
 
-\bibitem[\BibPrefix48\BibPostfix]{belinfante1989survey}
-\selectlanguageifdefined{english}
-\BibEmph{J.G.F. Belinfante, B.~Kolman}. {A survey of Lie groups and Lie
-  algebras with applications and computational methods}. "---
-\newblock Society for Industrial Mathematics, 1989.
-
-\bibitem[\BibPrefix49\BibPostfix]{simplie}
-\selectlanguageifdefined{english}
-\BibEmph{TA~Nutma}. SimpLie. \BibUrl{ http://code.google.com/p/simplie/}.
-
-\bibitem[\BibPrefix50\BibPostfix]{vanleeuwen1994lsp}
-\selectlanguageifdefined{english}
-\BibEmph{MAA Van~Leeuwen}. {LiE, a software package for Lie group
-  computations}~// \BibEmph{Euromath Bull}. "---
-\newblock 1994. "---
-\newblock Vol.~1, no.~2. "---
-\newblock Pp.~83--94. \BibUrl{ http://www-math.univ-poitiers.fr/~maavl/LiE/}.
-
-\bibitem[\BibPrefix51\BibPostfix]{stembridge1995mps}
-\selectlanguageifdefined{english}
-\BibEmph{J.R. Stembridge}. {A Maple package for symmetric functions}~//
-  \BibEmph{Journal of Symbolic Computation}. "---
-\newblock 1995. "---
-\newblock Vol.~20, no. 5-6. "---
-\newblock Pp.~755--758.
-
-\bibitem[\BibPrefix52\BibPostfix]{coxweyl}
-\selectlanguageifdefined{english}
-\BibEmph{J.R. Stembridge}. Coxeter/Weyl packages for Maple. \BibUrl{
-  http://www.math.lsa.umich.edu/~jrs/maple.html}.
-
-\bibitem[\BibPrefix53\BibPostfix]{fischbacher2002ilp}
-\selectlanguageifdefined{english}
-\BibEmph{T.~Fischbacher}. {Introducing LambdaTensor1. 0-A package for explicit
-  symbolic and numeric Lie algebra and Lie group calculations}. "---
-\newblock 2002.
-
-\bibitem[\BibPrefix54\BibPostfix]{Fuchs:1996dd}
-\selectlanguageifdefined{english}
-\BibEmph{J.~Fuchs, A.~N. Schellekens, C.~Schweigert}. {A matrix S for all
-  simple current extensions}~// \BibEmph{Nucl. Phys.} "---
-\newblock 1996. "---
-\newblock Vol. B473. "---
-\newblock Pp.~323--366. \BibUrl{ http://www.nikhef.nl/~t58/kac.html}.
-
-\bibitem[\BibPrefix55\BibPostfix]{moody1982fast}
-\selectlanguageifdefined{english}
-\BibEmph{RV~Moody, J.~Patera}. {Fast recursion formula for weight
-  multiplicities}~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
-\newblock 1982. "---
-\newblock Vol.~7, no.~1.
-
-\bibitem[\BibPrefix56\BibPostfix]{stembridge2001computational}
-\selectlanguageifdefined{english}
-\BibEmph{JR~Stembridge}. {Computational aspects of root systems, Coxeter
-  groups, and Weyl characters, Interaction of combinatorics and representation
-  theory, MSJ Mem., vol. 11}~// \BibEmph{Math. Soc. Japan, Tokyo}. "---
-\newblock 2001. "---
-\newblock Pp.~1--38.
-
-\bibitem[\BibPrefix57\BibPostfix]{casselman1994machine}
-\selectlanguageifdefined{english}
-\BibEmph{W.A. Casselman}. {Machine calculations in Weyl groups}~//
-  \BibEmph{Inventiones mathematicae}. "---
-\newblock 1994. "---
-\newblock Vol. 116, no.~1. "---
-\newblock Pp.~95--108.
-
-\bibitem[\BibPrefix58\BibPostfix]{gannon2001algorithms}
-\selectlanguageifdefined{english}
-\BibEmph{T.~Gannon}. {Algorithms for affine Kac-Moody algebras}. "---
-\newblock 2001.
-
-\bibitem[\BibPrefix59\BibPostfix]{2011arXiv1102.1702L}
-\selectlanguageifdefined{english}
-\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Recursive properties of branching and
-  BGG resolution}.
-
-\bibitem[\BibPrefix60\BibPostfix]{LyakhovskyPostnova2011}
-\selectlanguageifdefined{english}
-\BibEmph{P.~P. {Kulish}, V.~D. {Lyakhovsky}, O.~P. {Postnova}}. {Tensor powers
-  for non-simply laced Lie Algebras \$B\_2\$ case}~// \BibEmph{ArXiv e-prints}.
-  "---
-\newblock 2011.
-
-\bibitem[\BibPrefix61\BibPostfix]{shifrinmathematica}
-\selectlanguageifdefined{english}
-\BibEmph{L.~Shifrin}. Mathematica programming: an advanced introduction. "---
-\newblock 2009. \BibUrl{ http://mathprogramming-intro.org/}.
-
-\bibitem[\BibPrefix62\BibPostfix]{maeder2000computer}
-\selectlanguageifdefined{english}
-\BibEmph{R.E. Maeder}. Computer science with Mathematica. "---
-\newblock Cambridge University Press, 2000.
-
-\bibitem[\BibPrefix63\BibPostfix]{casselman1995automata}
-\selectlanguageifdefined{english}
-\BibEmph{WA~Casselman}. Automata to perform basic calculations in Coxeter
-  groups~// Representations of groups: Canadian Mathematical Society annual
-  seminar, June 15-24, 1994, Banff, Alberta, Canada~/ Canadian Mathematical
-  Society. "---
-\newblock Vol.~16. "---
-\newblock 1995. "---
-\newblock P.~35.
-
-\bibitem[\BibPrefix64\BibPostfix]{KallenShortlex}
-\selectlanguageifdefined{english}
-\BibEmph{Wilberd van~der Kallen}. Computing ShortLex rewite rules with
-  Mathematica. \BibUrl{
-  http://www.staff.science.uu.nl/~kalle101/ickl/shortlex.html}.
-
-\bibitem[\BibPrefix65\BibPostfix]{kazhdan1994tensor3}
-\selectlanguageifdefined{english}
-\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
-  algebras. III~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
-\newblock 1994. "---
-\newblock Vol.~7, no.~2.
-
-\bibitem[\BibPrefix66\BibPostfix]{kazhdan1993tensor1}
-\selectlanguageifdefined{english}
-\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
-  algebras. I~// \BibEmph{Journal of the American Mathematical Society}. "---
-\newblock 1993. "---
-\newblock Vol.~6, no.~4. "---
-\newblock Pp.~905--947.
-
-\bibitem[\BibPrefix67\BibPostfix]{kazhdan1993tensor2}
-\selectlanguageifdefined{english}
-\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
-  algebras. II~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
-\newblock 1993. "---
-\newblock Vol.~6, no.~4.
-
-\bibitem[\BibPrefix68\BibPostfix]{kac1984infinite}
-\selectlanguageifdefined{english}
-\BibEmph{V.G. Kac, D.H. Peterson}. {Infinite-dimensional Lie algebras, theta
-  functions and modular forms}~// \BibEmph{Adv. in Math}. "---
-\newblock 1984. "---
-\newblock Vol.~53, no.~2. "---
-\newblock Pp.~125--264.
-
-\bibitem[\BibPrefix69\BibPostfix]{hwang1993brst}
-\selectlanguageifdefined{english}
-\BibEmph{S.~Hwang, H.~Rhedin}. The brst formulation of G/H WZNW models~//
-  \BibEmph{Nuclear Physics B}. "---
-\newblock 1993. "---
-\newblock Vol. 406, no. 1-2. "---
-\newblock Pp.~165--184.
-
-\bibitem[\BibPrefix70\BibPostfix]{lepowsky1977generalization}
+\bibitem[\BibPrefix48\BibPostfix]{lepowsky1977generalization}
 \selectlanguageifdefined{english}
 \BibEmph{J.~Lepowsky}. {A generalization of the Bernstein-Gelfand-Gelfand
   resolution}~// \BibEmph{J. Algebra}. "---
@@ -510,13 +361,13 @@
 \newblock Vol.~49, no.~2. "---
 \newblock Pp.~496--511.
 
-\bibitem[\BibPrefix71\BibPostfix]{derk1008}
+\bibitem[\BibPrefix49\BibPostfix]{derk1008}
 \selectlanguageifdefined{english}
 \BibEmph{S.~Derkachov, A.~Manashov}. {Noncompact sl(N) spin chains: Alternating
   sum representation for finite dimensional transfer matrices}. "---
 \newblock 2010.
 
-\bibitem[\BibPrefix72\BibPostfix]{derk09}
+\bibitem[\BibPrefix50\BibPostfix]{derk09}
 \selectlanguageifdefined{english}
 \BibEmph{S.E. Derkachov, A.N. Manashov}. Factorization of-matrix and
   Baxter-operators for generic sl (N) spin chains~// \BibEmph{Journal of
@@ -525,21 +376,21 @@
 \newblock Vol.~42. "---
 \newblock P.~075204.
 
-\bibitem[\BibPrefix73\BibPostfix]{KostantHeckman1982}
+\bibitem[\BibPrefix51\BibPostfix]{KostantHeckman1982}
 \selectlanguageifdefined{english}
 \BibEmph{G.J. Heckman}~// \BibEmph{Invent. Math.} "---
 \newblock 1982. "---
 \newblock Vol.~67. "---
 \newblock Pp.~333--356.
 
-\bibitem[\BibPrefix74\BibPostfix]{Doebner1967Melsheimer}
+\bibitem[\BibPrefix52\BibPostfix]{Doebner1967Melsheimer}
 \selectlanguageifdefined{english}
 \BibEmph{H.D. Doebner, O.~Melsheimer}. Graded contractions~// \BibEmph{Nouvo
   Cimento}. "---
 \newblock 1967. "---
 \newblock Vol. 306.
 
-\bibitem[\BibPrefix75\BibPostfix]{Nijenhuis1966Richardson}
+\bibitem[\BibPrefix53\BibPostfix]{Nijenhuis1966Richardson}
 \selectlanguageifdefined{english}
 \BibEmph{A.~Nijenhuis, R.W. Richardson}. Deformations of algebras~//
   \BibEmph{Bull. Amer. Math. Soc.} "---
@@ -547,13 +398,13 @@
 \newblock Vol.~71. "---
 \newblock Pp.~1--60.
 
-\bibitem[\BibPrefix76\BibPostfix]{richter2008splints}
+\bibitem[\BibPrefix54\BibPostfix]{richter2008splints}
 \selectlanguageifdefined{english}
 \BibEmph{D.A. Richter}. Splints of classical root systems~// \BibEmph{Arxiv
   preprint arXiv:0807.0640}. "---
 \newblock 2008.
 
-\bibitem[\BibPrefix77\BibPostfix]{lyakhovsky1996rra}
+\bibitem[\BibPrefix55\BibPostfix]{lyakhovsky1996rra}
 \selectlanguageifdefined{english}
 \BibEmph{VD~Lyakhovsky, S.Y. Melnikov et~al.} {Recursion relations and
   branching rules for simple Lie algebras}~// \BibEmph{Journal of Physics
@@ -562,7 +413,7 @@
 \newblock Vol.~29, no.~5. "---
 \newblock Pp.~1075--1088.
 
-\bibitem[\BibPrefix78\BibPostfix]{schramm2000scaling}
+\bibitem[\BibPrefix56\BibPostfix]{schramm2000scaling}
 \selectlanguageifdefined{english}
 \BibEmph{O.~Schramm}. Scaling limits of loop-erased random walks and uniform
   spanning trees~// \BibEmph{Israel Journal of Mathematics}. "---
@@ -570,7 +421,7 @@
 \newblock Vol. 118, no.~1. "---
 \newblock Pp.~221--288.
 
-\bibitem[\BibPrefix79\BibPostfix]{bauer2004conformal}
+\bibitem[\BibPrefix57\BibPostfix]{bauer2004conformal}
 \selectlanguageifdefined{english}
 \BibEmph{M.~Bauer, D.~Bernard}. Conformal transformations and the SLE partition
   function martingale~// Annales Henri Poincare~/ Springer. "---
@@ -578,7 +429,7 @@
 \newblock 2004. "---
 \newblock Pp.~289--326.
 
-\bibitem[\BibPrefix80\BibPostfix]{bauer2004cfts}
+\bibitem[\BibPrefix58\BibPostfix]{bauer2004cfts}
 \selectlanguageifdefined{english}
 \BibEmph{M.~Bauer, D.~Bernard}. CFTs of SLEs: the radial case~//
   \BibEmph{Physics Letters B}. "---
@@ -586,7 +437,7 @@
 \newblock Vol. 583, no. 3-4. "---
 \newblock Pp.~324--330.
 
-\bibitem[\BibPrefix81\BibPostfix]{bauer2003sle}
+\bibitem[\BibPrefix59\BibPostfix]{bauer2003sle}
 \selectlanguageifdefined{english}
 \BibEmph{M.~Bauer, D.~Bernard}. SLE martingales and the Virasoro algebra~//
   \BibEmph{Physics Letters B}. "---
@@ -594,7 +445,7 @@
 \newblock Vol. 557, no. 3-4. "---
 \newblock Pp.~309--316.
 
-\bibitem[\BibPrefix82\BibPostfix]{bauer2002sle}
+\bibitem[\BibPrefix60\BibPostfix]{bauer2002sle}
 \selectlanguageifdefined{english}
 \BibEmph{M.~Bauer, D.~Bernard}. SLE [kappa] growth processes and conformal
   field theories~// \BibEmph{Physics Letters B}. "---
@@ -602,14 +453,14 @@
 \newblock Vol. 543, no. 1-2. "---
 \newblock Pp.~135--138.
 
-\bibitem[\BibPrefix83\BibPostfix]{rohde2005basic}
+\bibitem[\BibPrefix61\BibPostfix]{rohde2005basic}
 \selectlanguageifdefined{english}
 \BibEmph{S.~Rohde, O.~Schramm}. Basic properties of SLE~// \BibEmph{Annals of
   mathematics}. "---
 \newblock 2005. "---
 \newblock Pp.~883--924.
 
-\bibitem[\BibPrefix84\BibPostfix]{bauer20062d}
+\bibitem[\BibPrefix62\BibPostfix]{bauer20062d}
 \selectlanguageifdefined{english}
 \BibEmph{M.~Bauer, D.~Bernard}. 2D growth processes: SLE and Loewner chains~//
   \BibEmph{Physics reports}. "---
@@ -617,7 +468,7 @@
 \newblock Vol. 432, no. 3-4. "---
 \newblock Pp.~115--221.
 
-\bibitem[\BibPrefix85\BibPostfix]{Cardy:2005kh}
+\bibitem[\BibPrefix63\BibPostfix]{Cardy:2005kh}
 \selectlanguageifdefined{english}
 \BibEmph{John~L. Cardy}. {SLE for theoretical physicists}~// \BibEmph{Annals
   Phys.} "---
@@ -625,14 +476,14 @@
 \newblock Vol. 318. "---
 \newblock Pp.~81--118.
 
-\bibitem[\BibPrefix86\BibPostfix]{alekseev2010sle}
+\bibitem[\BibPrefix64\BibPostfix]{alekseev2010sle}
 \selectlanguageifdefined{english}
 \BibEmph{A.~Alekseev, A.~Bytsko, K.~Izyurov}. On SLE martingales in boundary
   WZW models~// \BibEmph{Letters in Mathematical Physics}. "---
 \newblock 2010. "---
 \newblock Pp.~1--19.
 
-\bibitem[\BibPrefix87\BibPostfix]{santachiara2008sle}
+\bibitem[\BibPrefix65\BibPostfix]{santachiara2008sle}
 \selectlanguageifdefined{english}
 \BibEmph{R.~Santachiara}. SLE in self-dual critical Z (N) spin systems: CFT
   predictions~// \BibEmph{Nuclear Physics B}. "---
@@ -640,7 +491,7 @@
 \newblock Vol. 793, no.~3. "---
 \newblock Pp.~396--424.
 
-\bibitem[\BibPrefix88\BibPostfix]{picco2008numerical}
+\bibitem[\BibPrefix66\BibPostfix]{picco2008numerical}
 \selectlanguageifdefined{english}
 \BibEmph{M.~Picco, R.~Santachiara}. Numerical study on Schramm-Loewner
   Evolution in nonminimal conformal field theories~// \BibEmph{Physical review
@@ -649,7 +500,7 @@
 \newblock Vol. 100, no.~1. "---
 \newblock P.~15704.
 
-\bibitem[\BibPrefix89\BibPostfix]{bettelheim2005stochastic}
+\bibitem[\BibPrefix67\BibPostfix]{bettelheim2005stochastic}
 \selectlanguageifdefined{english}
 \BibEmph{E.~Bettelheim, IA~Gruzberg, AWW Ludwig, P.~Wiegmann}. Stochastic
   Loewner evolution for conformal field theories with Lie group symmetries~//
@@ -658,7 +509,7 @@
 \newblock Vol.~95, no.~25. "---
 \newblock P.~251601.
 
-\bibitem[\BibPrefix90\BibPostfix]{Rasmussen:2004xr}
+\bibitem[\BibPrefix68\BibPostfix]{Rasmussen:2004xr}
 \selectlanguageifdefined{english}
 \BibEmph{Jorgen Rasmussen}. {On SU(2) Wess-Zumino-Witten models and stochastic
   evolutions}~// \BibEmph{Afr.J.Math.Phys.} "---

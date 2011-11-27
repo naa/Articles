@@ -1,674 +1,884 @@
 
-\chapter{Коэффициенты ветвления и обобщенная резольвента Бернштейна-Гельфанда-Гельфанда}
-\label{cha:BGG}
+\chapter{Сплинты корневых систем и функции ветвления}
+\label{cha:splints}
 
 
- \section{Обозначения}
- 
- \label{sec:notation}
- Пусть $\frak{g}$ и $\frak{a}$ -- (аффинные) алгебры Ли, и существует вложение  $\frak{a}\hookrightarrow \frak{g}$ такое, что  $\frak{a}$ -- редуктивная подалгебра в $\frak{g}$ с согласованным корневым пространством: $\frak{%
- h}_{\frak{a}}^{\ast }\subset \frak{h}_{\frak{g}}^{\ast }$. Мы используем следующие обозначения:
- 
- $\frak{g=n}^{-}+\frak{h}+\frak{n}^{+}$ --- разложение Картана;
- 
- $r$ , $\left( r_{\frak{a}}\right) $ --- ранг алгебра $\frak{g}$ $%
- \left( \mathrm{\text{соотв., }\frak{a}}\right) $ ;
- 
- $\Delta $ $\left( \Delta _{\frak{a}}\right) $--- корневая система; $\Delta
- ^{+} $ $\left( \mathrm{\text{соотв., }\Delta _{\frak{a}}^{+}}\right) $--- набор положительных корней (алгебр $\frak{g}$ и $\frak{a}$ соответственно);
- 
- $\mathrm{mult}\left( \alpha \right) $ $\left( \mathrm{mult}_{\frak{a}}\left(
- \alpha \right) \right) $ --- кратность корня $\alpha$ в $%
- \Delta $ (соотв., в $\left( \Delta _{\frak{a}}\right) $);
- 
- $S\quad \left( S_{\frak{a}}\right) $ --- множество простых корней (для 
- $\gf$ и $\af$ соответственно);
- 
- $\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ ---  $%
- i$-й (соотв., $j$-й) простой корень алгебры $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a%
- }}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
- 
- 
- $\alpha _{i}^{\vee }$ , $\left( \alpha _{\left( \frak{a}\right) j}^{\vee
- }\right) $-- простой ко-корень для $\frak{g}$ $\left( \mathrm{\text{соотв.,}\frak{a}%
- }\right) $ , $i=0,\ldots ,r$ ;\ \ $\left( j=0,\ldots ,r_{\frak{a}}\right) $;
- 
- $W$ , $\left( W_{\frak{a}}\right) $--- группа Вейля;
- 
- $C$ , $\left( C_{\frak{a}}\right) $--- фундаментальная камера Вейля;
- 
- $\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- замыкание фундаментальной камеры Вейля;
- 
- $\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
- 
- $\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- вектор Вейля;
- 
- $L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- интегрируемый модуль  $\frak{g}$ со старшим весом $\mu $\ ; (соотв., интегрируемый $\af$-модуль старшего веса $\nu $);
- 
- $\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
- весовая диаграмма модуля $L^{\mu }$ (соотв., ${}L_{\frak{a}}^{\nu }$ );
- 
- $P$ (соотв., $P_{\frak{a}} $) \ --- весовая решетка;
- 
- $P^{+}$ (соотв., $P_{\frak{a}}^{+} $) \ --- решетка доминантных весов;
- 
- $m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\zeta }^{\left( \nu \right)
- }\right) $ --- кратность веса $\xi \in P$ \ $\left( \mathrm{\text{соотв., }\in P_{\frak{a}}}\right) $ в $L^{\mu }$, (соотв., в $\zeta \in
- L_{\frak{a}}^{\nu } $);
- 
- $ch\left( L^{\mu }\right) $ (соотв., $\mathrm{ch}\left( L_{\frak{a}}^{\nu
- }\right) $)--- формальный характер $L^{\mu }$ (соответственно, $L_{\frak{a}}^{\nu
- } $);
- 
- $ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
- +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
- \mathrm{{mult}\left( \alpha \right) }}}$ --- формула Вейля-Каца;
- 
- $R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
- mult}\left( \alpha \right) }}\quad $ (соотв., $R_{\frak{a}}:=\prod_{\alpha \in
- \Delta _{\frak{a}}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}%
- }\left( \alpha \right) } $)--- знаменатель Вейля.
- 
-
-\section{Конечномерные алгебры Ли}
-\label{sec:finite-dimensional}
-Основные определения: корни, веса, кратности.
+\section{Сплинты и ветвления}
+\label{sec:splints}
 
 
-\section{Теория представлений аффинных алгебр Ли}
-\label{sec:representation-theory}
-
-\subsection{Алгебра петель и центральное расширение}
-\label{sec:loop-algebra-central-extension}
-
-Определение аффинных алгебр. Корни, веса, кратности. Категория О.
-
-\subsection{Представления аффинных алгебр Ли}
-\label{sec:affine-lie-algebra-representations}
-
-
-
-
-
-\section{БГГ-резольвента}
-\label{sec:bgg}
-Категория О.
-Резольвента Бернштейна-Гельфанда-Гельфанда для представлений аффинных алгебр Ли. Параболические модули и их связь с подалгебрами и ветвлением.
+%%\newtheorem{Def}{Definition}[section]
+%%\newtheorem{Cnj}[Def]{Conjecture}
+%%\newtheorem{Prop}[Def]{Property}
+%%\newtheorem{example}{Example}[section]
+%%
+%\input{tcilatex}
 
 
 \begin{abstract}
-Рекуррентные соотношения для коэффициентов ветвления основываются на определенном разложении сингулярного элемента. Мы показываем, что такое разложение может использоваться для построения параболических модулей Верма и получения обобщенных формул Вейля-Верма для характеров. Также мы демонстрируем, что коэффициенты ветвления определяют обобщенную резольвенту Бернштейна-Гельфанда-Гельфанда. 
+Splint of root system for simple Lie algebra appears naturally in
+studies of (regular) embeddings of reductive subalgebras. Splint can
+be used to construct branching rules. We demonstrate that 
+splint properties implementation drastically simplify calculations of
+branching coefficients.
 \end{abstract}
 
-\subsection{Введение}
+\section{Introduction}
+\label{sec:Introduction}
 
-\label{sec:introduction}
-Свойства ветвления (аффинных) алгебр Ли важны для приложений в квантовой теории поля (смотри, например, модели конформной теории поля \cite{difrancesco1997cft},\cite{coquereaux2008conformal}). В данной работе мы показываем, что ветвление для произвольной редуктивной подалгебры связано с БГГ резольвентой и демонстрирует свойства резольвенты в категории $\mathcal{O}^{p}$ \cite{lepowsky1977generalization} (параболического обобщения категории $\mathcal{O}$ \cite{bernstein1976category}).
-
-Резольвента для неприводимых модулей в терминах бесконечномерных модулей важна для теории интегрируемых спиновых цепочек \cite{derk1008}. В подходе  $\mathcal{Q}$-оператора Бакстера \cite{derk09} общие трансфер-матрицы, соответствующие (обобщенным) модулям Верма, факторизуются в произведение операторов Бакстера. Резольвента позволяет вычислить трансфер-матрицы для конечномерных вспомогательных пространств.
-
-Чтобы продемонстрировать связь БГГ резольвенты с ветвлением мы используем рекурсивный подход, представленный в работе \cite
-{2010arXiv1007.0318L} (аналогичный подход для максимальных вложений использовался в работе \cite{ilyin812pbc}). Мы рассматриваем подалгебру $\af \hookrightarrow \gf$ вместе с $\afb$ -- ``ортогональным партнером'' $\af$ по отношению к форме Киллинга, а также подалгебру $\widetilde{\afb}:=\afb\oplus \frak{h}_{\perp }$, где $\frak{h}=\frak{\frak{h}_{\af}}\oplus
-\frak{h}_{\afb}\oplus \frak{h}_{\perp }$. Для любой редуктивной подалгебры $\af$ алгебра $\afb\hookrightarrow \gf$ регулярна и редуктивна. Для интегрируемого модуля старшего веса $%
-L^{\left(\mu \right) }$ и ортогональной подалгебры  $\af_{\bot }$ мы рассматриваем сингулярный элемент $\Psi ^{\left( \mu \right) }$ (числитель в формуле Вейля для характеров $ch\left( L^{\mu }\right) =\frac{\Psi ^{\left(
-\mu \right) }}{\Psi ^{\left( 0\right) }}$, см., например,  \cite
-{humphreys1997introduction}) и знаменатель Вейля $\Psi _{\af_{\bot
-  }}^{\left( 0\right) }$ для ортогонального партнера. В работе показано, что элемент  $\Psi _{\gf%
-}^{\left( \mu \right) }$ может быть разложен в комбинацию числителей Вейля $\Psi _{\af_{\bot }}^{\left( \nu \right) }$, где $\nu \in P_{%
-\mathfrak{a}_{\bot}}^{+}$. Это разложение дает возможность построить множество модулей старшего веса $L_{\afb}%
-^{\mu _{\afb}}$. В том случае, если вложение\ $\af%
-_{\bot }\hookrightarrow \gf$ \ удовлетворяет ``стандартным параболическим'' условиям, эти модули порождают параболические модули Верма $M_{\left(
-\afb \hookrightarrow \gf\right) }^{\mu _{%
-\afb}}$, так что исходный характер $ch\left(
-L^{\mu }\right) $ в итоге раскладывается в знакопеременную сумму таких модулей. С другой стороны, если параболическое условие нарушено, конструкция сохраняется и порождает разложение по отношению к набору обобщенных модулей Верма  $M_{\left( \widetilde{\frak{b}_{\perp }},\gf\right) }^{\mu _{%
-\widetilde{\afb}}}$, где $%
-\widetilde{\frak{b}_{\perp }}$ уже не является подалгеброй в $\gf$, а оказывается сжатием $\widetilde{\afb}$.
-
-Некоторые общие свойства предложенного разложения формулируются в терминах  формального элемента $\Gamma _{\af\rightarrow \gf}$, называемого ``веером вложения''. Использование этого инструмента позволило сформулировать простой и явный алгоритм для вычисления правил ветвления, подходящий для произвольной (максимальной или не максимальной) подалгебры в аффинной алгебре Ли \cite{2010arXiv1007.0318L}.
-
-Возможные обобщения полученных результатов обсуждаются в Разделе \ref{sec:conclusions}.
-
-
-\subsection{Ортогональная подалгебра и сингулярные элементы}
-
-\label{sec:recurr-form-branch}
-
-В этом разделе мы покажем, как рекуррентный подход к проблеме ветвления естественным образом приводит к представлению формального характера $\frak{g}$-модуля в виде комбинации характеров, соответствующих параболическим (обобщенным) модулям Верма. Рассмотрим редуктивную алгебру Ли  $\frak{g}$ и ее редуктивную подалгебру $\frak{a}\subset \frak{g}$.
-Пусть  $L^{\mu} $ -- интегрируемый модуль старшего веса алгебры  $\frak{g}$, $\mu \in P^{+}$.  Будем считать  $L^{\mu}$ вполне приводимым по отношению к подалгебре $\frak{a}$,
+Embedding $\phi$ of a root system $\Delta_1$ into a root system
+$\Delta$ is a bijective map of roots of $\Delta_{1}$ to a (proper)
+subset of $\Delta$ that commutes with vector composition law in
+$\Delta_{1}$ and $\Delta$.
 \begin{equation*}
+\phi:\Delta_1 \longrightarrow \Delta
+\end{equation*}
+\begin{equation*}
+\phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,
+\,\,\, \alpha,\beta \in \Delta_1
+\end{equation*}
+
+Note that the image $Im(\phi)$ must not inherit the root system
+properties except the addition rules equivalent to the addition
+rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and $\phi_2$  
+can splinter $\Delta$  when the latter can be presented 
+as a disjoint union of images $Im(\phi_1)$ and $Im(\phi_2)$.   
+The term {\it splint} was
+introduced by D. Richter in  \cite{richter2008splints} where the
+classification of splints for simple Lie algebras was obtained.
+There was also mentioned that splint must have tight
+connections with the injection fan construction. The fan $\Gamma
+\subset \Delta$ was
+introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent
+properties of branching coefficients for maximal embeddings. Injection fan is an
+efficient tool to study branching rules. Later this construction
+was generalized to non-maximal embeddings and infinite-dimensional
+Lie algebras in \cite{2010arXiv1007.0318L, ilyin812pbc}.
+
+In the present paper we study connections between splint and
+injection fan for regular embedding of reductive subalgebras
+${\mathfrak a}$ in simple Lie algebra $\mathfrak{g}$. We show that (under
+certain conditions described in section \ref{sec:stems and
+multiplicity functions}) splint is a natural tool to study
+reduction properties of ${\mathfrak g}$-modules
+with respect to a subalgebra ${\mathfrak a}\longrightarrow
+{\mathfrak g}$. Using this tool we obtain the main result -- the one-to-one correspondence between weight
+multiplicities in irreducible modules of splint and branching
+coefficients for a reduced module $L^{\mu}_{{\mathfrak
+g}\downarrow {\mathfrak a}}$.
+
+
+\section{Injections and splints}
+
+\label{sec:Injections and splints}
+
+Consider a simple Lie algebra $\mathfrak{g}$ and its regular subalgebra $%
+\mathfrak{a}\hookrightarrow \mathfrak{g}$ such that $\mathfrak{a}$
+is a
+reductive subalgebra $\mathfrak{a \subset g}$ with correlated root spaces: $%
+\mathfrak{h}_{\mathfrak{a}}^{\ast }\subset \mathfrak{h}_{\mathfrak{g }%
+}^{\ast }$. Let $\mathfrak{a}^{\mathfrak{s}}$ be a semisimple summand of
+$\mathfrak{a}$,
+this means that $\mathfrak{a}=\mathfrak{a}^{\mathfrak{s}} \oplus \mathfrak{u}(1)\oplus %
+\mathfrak{u}(1)\oplus \dots$. We shall consider $\mathfrak{a}^{\mathfrak{s}}$
+to be a proper regular subalgebra and $\mathfrak{a}$ to be the
+maximal subalgebra with $\mathfrak{a}^{\mathfrak{s}}$ fixed that is the rank
+$r$ of $\frak{a}$ is equal to that of $\mathfrak{g}$.
+
+The following notations are used:
+
+$r$ , $\left( r_{\mathfrak{a}^{\mathfrak{s}}}\right) $ --- the rank of
+$\frak{g}$ $\left( \mathrm{{resp. }\mathfrak{a}^{\mathfrak{s}}}\right) $ ;
+
+$\Delta $ $\left( \Delta _{\frak{a}}\right) $--- the root system;
+$\Delta ^{+} $ $\left( \mathrm{{resp. }\Delta
+_{\frak{a}}^{+}}\right) $--- the positive root system (of
+$\frak{g}$ and $\frak{a}$ respectively);
+
+$S \, ,\quad \left( S_{\frak{a}}\right) $ --- the system of simple roots (of $%
+\frak{g}$ and $\frak{a}$ respectively);
+
+$\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $%
+i$-th (resp. $j$-th) simple root for $\frak{g}$  $\left( \mathrm{{resp. \,} \frak{%
+a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\mathfrak{a}%
+^S}\right) $;
+
+$\omega _{i}$ , $\left( \omega _{\left( \frak{a}\right) j}\right) $ --- the $%
+i$-th (resp. $j$-th) fundamental weight for $\frak{g}$ $\left( \mathrm{{resp. \,}\frak{%
+a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\mathfrak{a}%
+^S}\right) $;
+
+$W$ , $\left( W_{\frak{a}}\right) $--- the corresponding Weyl group;
+
+$C$ , $\left( C_{\frak{a}}\right) $--- the fundamental Weyl chamber;
+
+$\bar{C}, \left(\bar{C_{\frak{a}}}\right)$ --- the closure of the
+fundamental Weyl chamber;
+
+$\epsilon \left( w\right) :=\left( -1\right) ^{\mathrm{length}(w)}$;
+
+$\rho $\ , $\left( \rho _{\frak{a}}\right) $\ --- the Weyl vector;
+
+$L^{\mu }$\ $\left( L_{\frak{a}}^{\nu }\right) $\ --- the integrable module
+of $\frak{g}$ with the highest weight $\mu $\ ; (resp. integrable $\frak{a}$
+-module with the highest weight $\nu $ );
+
+$\mathcal{N}^{\mu }$ , $\left( \mathcal{N}_{\frak{a}}^{\nu }\right) $ ---
+the weight diagram of $L^{\mu }$ (resp. ${}L_{\frak{a}}^{\nu }$ );
+
+$P$ (resp. $P_{\frak{a}} $) \ --- the weight lattice;
+
+$P^{+}$ (resp. $P_{\frak{a}}^{+} $) \ --- the dominant weight lattice;
+
+$\mathcal{E}$ (resp. $\mathcal{E}_{\frak{a}} $) \ --- the formal algebra;
+
+$m_{\xi }^{\left( \mu \right) }$ , $\left( m_{\xi }^{\left( \nu \right)
+}\right) $ --- the multiplicity of the weight $\xi \in P$ \ $\left( \mathrm{{%
+resp. }\in P_{\frak{a}}}\right) $ in the module $L^{\mu }$ , (resp. $\xi \in
+L_{\frak{a}}^{\nu } $);
+
+$ch\left( L^{\mu }\right) $ (resp. $\mathrm{ch}\left( L_{\frak{a}}^{\nu
+}\right) $)--- the formal character of $L^{\mu }$ (resp. $L_{\frak{a}}^{\nu
+} $);
+
+$ch\left( L^{\mu }\right)  =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
++\rho )-\rho }} {\prod_{\alpha \in \Delta ^{+}} \left( 1-e^{-\alpha }\right)
+} $ --- the Weyl formula;
+
+$R:=\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) \quad $
+(resp. $R_{\frak{a}}: =\prod_{\alpha \in \Delta_{\frak{a}}^{+}} \left(
+1-e^{-\alpha }\right) $ ) --- the Weyl denominator.
+
+Let $L^{\mu }$ be completely reducible with respect to $\frak{a}$,
+\[
 L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu \in P_{\frak{a}%
 }^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }.
-\end{equation*}
-Это разложение может быть записано в терминах формальных характеров с использованием оператора проекции  $\pi _{\frak{a}}$ (на весовое пространство $\frak{h_{a}}^{\ast }$):
+\]
 \begin{equation}
 \pi _{\frak{a}}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\frak{a}%
 }^{+}}b_{\nu }^{(\mu )}ch\left( L_{\frak{a}}^{\nu }\right) .
 \label{branching1}
 \end{equation}
-Для модуля  $L^{\mu }$ существует БГГ резольвента (см. \cite
-{bernstein1976category,bernstein1975differential,bernstein1971structure} и
-\cite{humphreys2008representations}). Все члены фильтрующей последовательности представляются суммами модулей Верма со старшими весами $\nu$, сильно связанными с $\mu$:
-\begin{equation*}
-\left\{ \nu \right\} =\left\{ w\left( \mu +\rho \right) -\rho |w\in
-W\right\} .
-\end{equation*}
-
-\subsubsection{Ортогональная подалгебра}
-
-Пусть  $\frak{h}_{\frak{a}}$ -- подалгебра Картана в  $\mathfrak{g}$. Для  $\mathfrak{a}\hookrightarrow \frak{g}$ введем ``ортогонального партнера''  $\mathfrak{a}_{\bot }\hookrightarrow \frak{g}$.
-
-Рассмотрим корневое подпространство  $\frak{h}_{\perp \frak{a}}^{\ast }$, ортогональное к $\frak{a}$,
-\begin{equation*}
-\frak{h}_{\perp \frak{a}}^{\ast }:=\left\{ \eta \in \frak{h}^{\ast }|\forall
-h\in \frak{h}_{\frak{a}};\eta \left( h\right) =0\right\} ,
-\end{equation*}
-и корни  $\frak{g}$ (соответственно, положительные корни),  ортогональные к $\frak{a}$,
-\begin{eqnarray}
-\Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
-h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
-\label{delta a ort} \\
-\Delta _{\frak{a}_{\perp }}^{+} &:&=\left\{ \beta ^{+}\in \Delta _{\frak{g}%
-}^{+}|\forall h\in \frak{h}_{\frak{a}};\beta ^{+}\left( h\right) =0\right\} .
-\notag
-\end{eqnarray}
-Обозначим символом  $W_{\frak{a}_{\perp }}$ подгруппу  $W$, порожденную отражениями  $w_{\beta }$ с корнями  $\beta \in \Delta_{\frak{a}_{\perp}}^{+}$. Корневая подсистема  $\Delta _{\frak{a}_{\perp }}$ определяет подалгебру  $\frak{a}_{\perp }$, имеющую подалгебру Картана $\frak{h}_{\frak{a}_{\perp }}$. Пусть
-\begin{equation*}
-\frak{h}_{\perp }^{\ast }:=\left\{ \eta \in \frak{h}_{\perp \frak{a}}^{\ast
-}|\forall h\in \frak{h}_{\frak{a}\oplus \frak{a}_{\perp }};\eta \left(
-h\right) =0\right\};
-\end{equation*}
-выделим в  $\frak{g}$  подалгебры
-\begin{eqnarray}
-\widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp },
-\qquad
-\widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }.
-\end{eqnarray}
-Заметим, что  $\mathfrak{a} \oplus \mathfrak{a}_{\bot}$ в общем случае не является подалгеброй в $\mathfrak{g}$.
-
-Для подалгебр Картана имеет место разложение
-\begin{equation}
-\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus
-\frak{h}_{\perp }=\frak{\frak{h}_{\widetilde{\frak{a}}}}\oplus \frak{h}_{%
-\frak{a}_{\perp }}=\frak{\frak{h}_{\widetilde{\frak{a}_{\perp }}}}\oplus
-\frak{h}_{\frak{a}}.
-\end{equation}
-Рассмотрим векторы Вейля  $\rho _{\frak{a}}$ и $\rho _{\frak{a}_{\perp}} $, соответствующие  $\frak{a}$ и $\frak{a}_{\perp }$.
-Введем так называемые ``дефекты'' вложения  $\mathcal{D}_{\frak{a}}$ и $\mathcal{D}_{\frak{a}_{\perp }}$:
-\begin{equation}
-\mathcal{D}_{\frak{a}}:=\rho _{\frak{a}}-\pi _{\frak{a}}\rho , \qquad
-\mathcal{D}_{\frak{a}_{\perp }}:=\rho _{\frak{a}_{\perp }}-\pi _{\frak{a}%
-_{\perp }}\rho .  \label{defect ort}
-\end{equation}
-Для  $\mu \in P^{+}$ рассмотрим связанные веса  $\left\{\left( w(\mu +\rho )-\rho \right) |w\in W\right\} $ и их проекции на $h_{\frak{a}_{\perp }}^{\ast }$, дополнительно сдвинутые на вектор дефекта $-\mathcal{D}_{\frak{a}_{\perp }}$:
-\begin{equation*}
-\mu _{\frak{a}_{\perp }}\left( w\right) :=\pi _{\frak{a}_{\perp }}\left[
-w(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad w\in W.
-\end{equation*}
-
-Среди весов  $\left\{ \mu _{\frak{a}_{\perp
-}}\left( w\right) |w\in W\right\} $ всегда можно выбрать те, которые попадают в фундаментальную камеру $\overline{C_{\frak{a}_{\perp }}}$. Пусть $U$ -- множество представителей $u$ классов  $W/W_{\frak{a}_{\perp }}$, таких что
-\begin{equation}
-U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
-\overline{C_{\frak{a}_{\perp }}}\right\} \quad .  \label{U-def}
-\end{equation}
-Тогда можно выделить подмножества:
-\begin{equation}
-\mu _{\widetilde{\mathfrak{a}}}\left( u\right) :=\pi _{\widetilde{%
-\mathfrak{a}}}\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}%
-_{\perp }},\quad u\in U,  \label{mu-a}
-\end{equation}
-и
-\begin{equation}
-\mu _{\frak{a}_{\perp }}\left( u\right) :=\pi _{\frak{a}_{\perp }}\left[
-u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }},\quad u\in U.
-\label{mu-a-tilda}
-\end{equation}
-
-Заметим, что подалгебра  $\mathfrak{a}_{\bot}$ по определению регулярна, так как она построена на подмножестве корней алгебры $\mathfrak{g}$.
-
-Для интересующих нас модулей формула Вейля-Каца для  $\mathrm{ch}\left( L^{\mu }\right) $ может быть записана через сингулярные элементы \cite{humphreys1997introduction},
-\begin{equation*}
+For the modules we are interested in the Weyl formula for $\mathrm{ch}\left(
+L^{\mu }\right) $ can be written in terms of singular elements \cite
+{humphreys1997introduction}
+\[
 \Psi ^{\left( \mu \right) }:=\sum\limits_{w\in W}\epsilon (w)e^{w(\mu +\rho
 )-\rho },
-\end{equation*}
-а именно:
+\]
+namely,
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi
 ^{\left( 0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
 \label{Weyl-Kac2}
 \end{equation}
-То же верно и для подмодулей $\mathrm{ch}\left( L_{\frak{a}}^{\nu
-}\right) $ в формуле (\ref{branching1})
-\begin{equation*}
+The same is true for submodules $\mathrm{ch}\left( L_{\frak{a}}^{\nu
+}\right) $ in (\ref{branching1})
+\[
 \mathrm{ch}\left( L_{\frak{a}}^{\nu }\right) =\frac{\Psi _{\frak{a}}^{\left(
 \nu \right) }}{\Psi _{\frak{a}}^{\left( 0\right) }}=\frac{\Psi _{\frak{a}%
 }^{\left( \nu \right) }}{R_{\frak{a}}},
-\end{equation*}
-где
-\begin{equation*}
+\]
+with
+\[
 \Psi _{\frak{a}}^{\left( \nu \right) }:=\sum\limits_{w\in W_{\frak{a}%
 }}\epsilon (w)e^{w(\nu +\rho _{_{\frak{a}}})-\rho _{_{\frak{a}}}}.
-\end{equation*}
-Применяя формулу  (\ref{Weyl-Kac2}) к правилу ветвления  (\ref{branching1}) мы получаем соотношение, связывающее сингулярные элементы $\Psi ^{\left( \mu
-\right) }$ и $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
+\]
+
+Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
+we get a relation connecting the singular elements $\Psi ^{\left( \mu
+\right) }$ and $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
 \begin{eqnarray}
-\pi _{\frak{a}}\left( \frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho
-)-\rho }}{\prod_{\alpha \in \Delta ^{+}}(1-e^{-\alpha })^{\mathrm{mult}%
-(\alpha )}}\right) &=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\frac{%
-\sum_{w \in W_{\frak{a}}}\epsilon (w )e^{w (\nu +\rho _{\frak{a}})-\rho _{%
-\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{a}}^{+}}(1-e^{-\beta })^{\mathrm{%
-mult}_{\frak{a}}(\beta )}},  \notag  \label{eq:4} \\
-\pi _{\frak{a}}\left( \frac{\Psi ^{\left( \mu \right) }}{R}\right)
-&=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\frak{a}%
-}^{\left( \nu \right) }}{R_{\frak{a}}}.
+\frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho )-\rho }}{\prod_{\alpha \in
+\Delta ^{+}}(1-e^{-\alpha })} &=&\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu
+}^{(\mu )}\frac{\sum_{w \in W_{\frak{a}}}\epsilon (w )e^{w (\nu +\rho _{%
+\frak{a}})-\rho _{\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{a}%
+}^{+}}(1-e^{-\beta })},  \nonumber  \label{eq:4} \\
+\frac{\Psi ^{\left( \mu \right) }}{R} &=&\sum_{\nu \in P_{\frak{a}%
+}^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\frak{a}}^{\left( \nu \right) }}{R_{%
+\frak{a}}}.  \label{singular main}
 \end{eqnarray}
 
-\subsubsection{Разложение сингулярного элемента.}
-
-\label{subsec:decomp-sing-element}
-
-Теперь мы выполним разложение сингулярного элемента  $\Psi ^{\left(\mu \right) }$ на сингулярные элементы модулей ортогонального партнера:
-
-\begin{lemma}
-
-Пусть  $\frak{a}_{\bot }$ -- ортогональный партнер редуктивной подалгебры  $\frak{a}\hookrightarrow \frak{g}$ и $\frak{h}=\frak{\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$, $\widetilde{%
-\frak{a}_{\perp }}=\frak{a}_{\perp }\oplus \frak{h}_{\perp }$, $%
-\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$.
-
-Пусть $L^{\mu }$ -- интегрируемый модуль старшего веса  $\mu \in P^{+}$ и 
-
-$\Psi ^{\left( \mu \right) }$\ -- сингулярный элемент $L^{\mu }$.
-
-Тогда элемент  $\Psi ^{\left( \mu \right) }$ может быть разложен в сумму по  $u\in U$ (см. (\ref{U-def})) сингулярных элементов $\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ с коэффициентами
-$\epsilon (u)e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }$:
-\begin{equation}
-\Psi ^{\left( \mu \right) }=\sum_{u\in U}\;\epsilon (u)e^{\mu _{\widetilde{%
-\mathfrak{a}}}\left( u\right) }\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}%
-_{\perp }}\left( u\right) }.  \label{sing decomp main}
-\end{equation}
-\label{Psi-decomp-lemma}
-\end{lemma}
-
-\begin{proof}
-Пусть
-\[
-u(\mu +\rho )=\pi _{\left( \aft\right) }u(\mu +\rho )+\pi _{\left(
-\frak{a}_{\perp }\right) }u(\mu +\rho ),
-\]
-где $u\in U$. Для произвольного  $v\in W_{\frak{a}_{\bot }}$ рассмотрим сингулярный вес  $vu(\mu +\rho )-\rho $ и выполним разложение:
-\begin{equation}
-\begin{array}{lcl}
-vu(\mu +\rho )-\rho  & = & \pi _{\left( \frak{a}\right) }\left( u(\mu +\rho
-)\right) -\rho +\rho _{\frak{a}_{\perp }}
-\\
-&  & +\ v\left( \pi _{\left( \aft_{\perp }\right) }u(\mu
-+\rho )-\rho _{\frak{a}_{\perp }}+\rho _{\frak{a}_{\perp }}\right) -\rho _{%
-\frak{a}_{\perp }} .
-\end{array}
-\label{sing-decomp-1}
-\end{equation}
-Используем дефект $\mathcal{D}_{\frak{a}_{\bot }}$ (\ref{defect ort}), чтобы упростить первую строку в формуле (\ref{sing-decomp-1}):
-\[
-\begin{array}{r}
-\pi _{\left( \aft\right) }\left( u(\mu +\rho )\right) -\rho +\rho _{%
-\frak{a}_{\perp }}= \\
-\pi _{\left( \aft\right) }\left( u(\mu +\rho )\right) -\pi _{\aft%
-}\rho -\pi _{\af_{\bot }}\rho +\rho _{\frak{a}_{\bot }}= \\
-=\pi _{\left( \aft\right) }\left( u(\mu +\rho )-\rho \right) +\mathcal{D}%
-_{\frak{a}_{\bot }},
-\end{array}
-\]
-и вторую строку
-\[
-\begin{array}{c}
-v\left( \pi _{\left( \frak{a}_{\perp }\right) }u(\mu +\rho
-)-\rho _{\frak{a}_{\perp }}+\rho _{\frak{a}_{\perp }}\right) -\rho _{\frak{a}%
-_{\perp }}= \\
-v\left( \pi _{\left( \frak{a}_{\bot }\right) }u(\mu +\rho )-%
-\mathcal{D}_{\frak{a}_{\bot }}-\pi _{\left( \frak{a}_{\bot }\right) }\rho
-+\rho _{\frak{a}_{\bot }}\right)
--\rho _{\frak{a}_{\bot }}= \\
-=v\left( \pi _{\left( \frak{a}_{\bot }\right) }\left[ u(\mu
-+\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\bot }}+\rho _{\frak{a}_{\bot
-}}\right) -\rho _{\frak{a}_{\bot }}.
-\end{array}
-\]
-В результате получаем требуемое разложение сингулярного элемента $\Psi ^{\mu }$ на сингулярные элементы $\Psi_{\frak{a}_{\perp}}^{\eta}$ модулей $L_{\frak{a}_{\perp }}^{\eta }$ подалгебры $\frak{a}_{\perp }$: 
-\begin{equation}
-\begin{array}{l}
-\Psi ^{\mu }=\sum_{u\in U}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
-(v)\epsilon (u)e^{vu(\mu +\rho )-\rho }= \\
-=\sum_{u\in U}\epsilon (u)e^{\pi _{\aft}\left[ u(\mu +\rho )-\rho \right]
-+\mathcal{D}_{\frak{a}_{\perp }}}\sum_{v\in W_{\frak{a}_{\perp }}}\epsilon
-(v)e^{v\left( \pi _{\left( \frak{a}_{\perp }\right) }\left[
-u(\mu +\rho )-\rho \right] -\mathcal{D}_{\frak{a}_{\perp }}+\rho _{\frak{a}%
-_{\perp }}\right) -\rho _{\frak{a}_{\perp }}}= \\
-=\sum_{u\in U}\;\epsilon (u)\Psi _{\af_{\perp }}^{\pi
-_{\left( \frak{a}_{\perp }\right) }\left[ u(\mu +\rho )-\rho
-\right] -\mathcal{D}_{\frak{a}_{\perp }}}e^{\pi _{\left( \aft\right) }%
-\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{a}_{\perp }}}.
-\end{array}
-\label{singular main}
-\end{equation}
-\end{proof}
-
-%\bigskip
-
-\begin{remark}
-Это соотношение можно рассматривать как обобщение формулы Вейля для сингулярного элемента $\Psi _{\frak{g}}^{\mu }$: векторы $\mu _{%
-\widetilde{\mathfrak{a}}}\left( u\right) $ играют роль сингулярных весов, в то время как множители  $\epsilon (u)$ расширены до $\epsilon
-(u)\Psi _{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$.
-
-Действительно, при  $\frak{a=g}$ подалгебры  $\frak{a}_{\perp }$, и $\frak{h}_{\perp }$ тривиальны, $U=W$ и оригинальная формула Вейля восстанавливается, так как сингулярные элементы $\epsilon (u)\Psi _{\frak{a}_{\perp %
-}}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\epsilon (u)$ становятся  тривиальными.
-
-В противоположном пределе, когда $\frak{a}=0$, $\Delta _{\frak{a}_{\perp }}=\Delta _{\frak{g}}$, $%
-\frak{h}_{\perp }^{\ast }=0$, $\frak{a}_{\perp }=\frak{g}$, $\mathcal{D}_{%
-\frak{a}_{\perp }}=0$ и $U=W/W_{\frak{a}_{\perp }}=e$, вновь приходим к выражению для  сингулярного элемента
- $\Psi ^{\mu }$, теперь -- в результате тривиализации множества векторов $\mu _{\af}\left( e\right) =0$.
-\end{remark}
-
-\begin{remark}
-
-В работе \cite{2010arXiv1007.0318L} разложение, аналогичное формуле (\ref{singular main}), было использовано для построения рекуррентных соотношений для коэффициентов ветвления $k_{\xi}^{\left( \mu \right) }$, соответствующих вложению  $\frak{a}\hookrightarrow \frak{g}$:
+In \cite{2010arXiv1007.0318L} it was proven that branching coefficients $%
+b_{\xi }^{\left( \mu \right) }$ corresponding to the injection $\frak{a}%
+\hookrightarrow \frak{g}$ are subject to the set of recurrent relations:
 \begin{equation}
 \begin{array}{c}
-k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-\sum_{u\in U}\epsilon (u)\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
+b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{u\in W/W_{\perp}}\epsilon (u)\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
 _{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
-\widetilde{\frak{a}}}(u(\mu +\rho )-\rho )}+\right.  \\
+\widetilde{\frak{a}}}(u(\mu +\rho )-\rho )}+\right. \\
 \left. +\sum_{\gamma \in \Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}%
-}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right)
+}}s\left( \gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right)
 }\right) .
 \end{array}
 \label{recurrent rel}
 \end{equation}
-Рекурсия задается множеством  $\Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}}$, которое носит название веера вложения. Это множество определяется как носитель  $\left\{ \xi \right\}_{\frak{a}\rightarrow \frak{g}}$  коэффициентной функции $s(\xi )$
-\begin{equation*}
-\left\{ \xi \right\} _{\widetilde{\frak{a}}\rightarrow \frak{g}}:=\left\{
-\xi \in P_{\widetilde{\frak{a}}}|s(\xi )\neq 0\right\},
-\end{equation*}
-возникающей в разложении 
+where $\frak{a}_{\perp }$ is the subalgebra determined by the roots of $%
+\frak{g}$ orthogonal to roots of $\frak{a}$ and $W_{\perp}$ is a Weyl group of $\mathfrak{a}_{\perp}$
+\begin{eqnarray}
+\Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
+h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
+\label{delta a ort}
+\end{eqnarray}
+\begin{eqnarray}
+\widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
+\qquad \widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }
+\end{eqnarray}
+and $\pi$ is the projection operator. When an injection is maximal the
+projection becomes trivial and the relation (\ref{recurrent rel}) is
+simplified:
 \begin{equation}
-\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\bot }^{+}}\left( 1-e^{-\pi
-_{\widetilde{\frak{a}}}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}%
-_{\frak{a}}(\pi _{\widetilde{\frak{a}}}\alpha )}=-\sum_{\gamma \in P_{%
-\widetilde{\frak{a}}}}s(\gamma )e^{-\gamma }.\quad
+\begin{array}{c}
+b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+\sum_{u\in W}\epsilon (u) \delta _{\xi -\gamma _{0}, u(\mu +\rho )-\rho
+}+\right. \\
+\left. +\sum_{\gamma \in \Gamma _{\frak{a}\rightarrow \frak{g}}}s\left(
+\gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right) }\right) .
+\end{array}
+\label{recurrent relation max}
 \end{equation}
-Веса из множества $\left\{ \xi \right\} _{\widetilde{\frak{a}}\rightarrow \frak{%
-g}}$ сдвигаются на $\gamma _{0}$ -- младший вектор в $\left\{ \xi
-\right\} $, и исключается нулевой элемент:
+The recursion is goverened by the set $\Gamma _{\frak{a}\rightarrow \frak{g}}
+$ called the injection fan. The latter is defined by the carrier set $%
+\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}$ for the coefficient
+function $s(\xi )$
+\[
+\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}:=\left\{ \xi \in P_{%
+\frak{a}}|s(\xi )\neq 0\right\}
+\]
+appearing in the expansion
 \begin{equation}
-\Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}}=\left\{ \xi -\gamma
-_{0}|\xi \in \left\{ \xi \right\} \right\} \setminus \left\{ 0\right\} .
+\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\frak{a}}^{+}}\left( 1-e^{
+-\alpha }\right) =-\sum_{\gamma \in P_{\frak{a}}}s(\gamma )e^{-\gamma };\quad
+\label{product}
 \end{equation}
 
-Рекуррентное соотношение (\ref{recurrent rel}) первоначально использовалось для описания ветвления интегрируемых модулей. Заметим, что существует важный класс модулей, которые также могут быть редуцированы при помощи веера вложения -- это модули Верма.
-\end{remark}
+Now we remind two definitions introduced in \cite{richter2008splints}
 
-\subsubsection{Фомулы Вейля-Верма.}
-
-\begin{statement}
-%\bigskip
-Для ортогональной подалгебры  $\frak{a}_{\perp }$ в $\frak{g}$ (являющейся ортогональным партнером редуктивной подалгебры $\frak{a}\hookrightarrow \frak{g}$) характер интегрируемого модуля старшего веса  $L^{\mu }$ может быть представлен в виде комбинации (с целочисленными коэффициентами) характеров параболических модулей Верма, распределенных по множеству весов $\mu _{\widetilde{\mathfrak{a}}}\left(
-u\right)$:
+\begin{Def}
+Suppose $\Delta _{0}$ and $\Delta $ are root systems with corresponding
+weight lattices $P_{0}$ and $P$. Then $\phi $ is an ``embedding'',
 \begin{equation}
-\mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;\epsilon (u)e^{\mu _{%
-\widetilde{\frak{a}}}\left( u\right) }\mathrm{ch}M_{I}^{\mu _{\frak{a}%
-_{\perp }}\left( u\right) },  \label{gen Weyl-Verma}
+\phi :\left\{
+\begin{array}{l}
+\Delta _{0}\hookrightarrow \Delta , \\
+P_{0}\hookrightarrow P,
+\end{array}
+\right.
 \end{equation}
-где  $U:=\left\{ u\in W|\quad \mu _{\frak{a}_{\perp }}\left( u\right) \in
-\overline{C_{\frak{a}_{\perp }}}\right\} $ и $I$ -- такое подмножество в  $S$, что $\Delta _{I}^{+}$ эквивалентно $\Delta _{\frak{a}_{\perp }}^{+}$.
-\end{statement}
+if \newline
+\noindent (a) it injects $\Delta _{0}$ in $\Delta $, and \newline
+\noindent (b) acts homomorphically with respect to the vector groups in $%
+P_{0}$ and $P$:
+\[
+\phi (\gamma )=\phi (\alpha )+\phi (\beta )
+\]
+for any triple $\alpha ,\beta ,\gamma \in P_{0}$ such that $\gamma =\alpha
++\beta $.
+\end{Def}
 
-%\bigskip
-\begin{proof}
-Подалгебра  $\mathfrak{a}_{\bot }$ регулярна и редуктивна по определению  (\ref{delta a ort}). Рассмотрим её знаменатель Вейля   $R_{\frak{a}_{\perp }}:=\prod_{\alpha \in \Delta _{\frak{a}%
-_{\perp }}^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{mult}_{\frak{a}}%
-\mathrm{\left( \alpha \right) }}$ и элемент  $R_{J}:=\prod_{\alpha \in
-\Delta ^{+}\setminus \Delta _{\frak{a}_{\perp }}^{+}}\left( 1-e^{-\alpha
-}\right) ^{\mathrm{mult}(\alpha )}$ как сомножители в $R$:
-\begin{equation*}
-R=R_{J}R_{\frak{a}_{\perp }}.
-\end{equation*}
-Согласно этой факторизации и разложению  (\ref{sing decomp main}) характер $\mathrm{ch}\left( L^{\mu }\right) $ можно переписать в виде
-\begin{eqnarray*}
-\mathrm{ch}\left( L^{\mu }\right) &=&\left( R_{J}\right) ^{-1}\left( R_{%
-\frak{a}_{\perp }}\right) ^{-1}\Psi ^{\mu }=\left( R_{J}\right)
-^{-1}\sum_{u\in U}\;e^{\mu _{\widetilde{\frak{a}}}\left( u\right) }\epsilon
-(u)\left( R_{\frak{a}_{\perp }}\right) ^{-1}\Psi _{\frak{a}_{\perp }}^{\mu _{%
-\frak{a}_{\perp }}\left( u\right) } \\
-&=&\left( R_{J}\right) ^{-1}\sum_{u\in U}\;e^{\mu _{\widetilde{\frak{a}}%
-}\left( u\right) }\epsilon (u)\mathrm{ch}\left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp
-}}\left( u\right) }\right),
-\end{eqnarray*}
-где  $\left\{ L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left(
-u\right) }|u\in U\right\} $ -- множество конечномерных $\frak{a}%
-_{\perp }$-модулей со старшими весами   $\mu _{\frak{a}_{\perp }}\left(
-u\right) $. Нас интересуют нетривиальные подалгебры $\frak{a}$ и, соответственно, нетривиальные  $\frak{a}_{\perp }$ (случай тривиальной ортогональной подалгебры рассматривался выше в (см. Замечание 1)). Значит $r_{\frak{a}}\geq 1$ и $r_{\frak{a}%
-_{\perp }}<r$. Так как диаграмма Дынкина для любой регулярной подалгебры получается в результате исключения одной, двух или более вершин из расширенной диаграммы Дынкина алгебры, а расширенная диаграмма содержит не более одного зависимого корня (старший корень), множество корней $\Delta _{\frak{a}_{\perp }}^{+}$ всегда эквивалентно некоторому множеству $\Delta _{I}^{+}$, порожденному набором  простых корней $I\subset S $.
+$\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
+\hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
+_i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
+\phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
 
-Следовательно мы можем (переопределяя множество  $\Delta ^{+}$) отождествить $\Delta _{\frak{a}_{\perp }}^{+}$ с подмножеством  $\Delta _{I}^{+}$, где $I\subset S$. В результате мы можем определить объекты, необходимые для построения обобщенных модулей Верма \cite{lepowsky1977generalization,humphreys2008representations}. У нас есть два множества корневых векторов $\left\{ x_{\xi }\in \frak{g}_{\xi }|\xi \in \Delta _{I}^{+}\right\}
-$ и $\left\{ x_{\eta }\in \frak{g}_{\eta }|\eta \in \Delta ^{+}\setminus
-\Delta _{I}^{+}\right\} $, и соответствующие нильпотентные подалгебры в  $\frak{n}%
-^{+}$:
-\begin{equation*}
-\frak{n}_{I}^{+}:=\sum_{\xi \in \Delta _{I}^{+}}\frak{g}_{\xi },\quad
-\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta ^{+}\setminus \Delta _{I}^{+}}\frak{g}%
-_{\eta }.
-\end{equation*}
-Первая подалгебра вместе со своей отрицательной копией  $\frak{n}%
-_{I}^{-} $ порождает простую подалгебру 
-\begin{equation*}
-\frak{s}_{I}=\frak{n}_{I}^{-}+\frak{h}_{I}+\frak{n}_{I}^{+}.
-\end{equation*}
-Мы расширяем ее оставшимися картановскими генераторами:
-\begin{equation*}
-\frak{l}_{I}=\frak{n}_{I}^{-}+\frak{h}+\frak{n}_{I}^{+}.
-\end{equation*}
-Полупрямое произведение  $\frak{l}_{I}$ и $\frak{u}_{I}^{+}$ дает параболическую подалгебру $\frak{p}_{I}\hookrightarrow \frak{g}$ :
+Notice that one must distinguish two classes of embeddings: when the scalar
+product (defined by the Killing form) in the root space $P_0$ is invariant
+with respect to $\phi$ and when it is not $\phi$-invariant. The first
+embedding is called "metric" , the second -- "nonmetric".
+
+\begin{Def}
+A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if
+there are two embeddings $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
+\phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the
+disjoint union of the images of $\phi _{1}$ and $\phi _{2}$ and (b) neither
+the rank of $\Delta _{1}$ nor the rank of $\Delta _{2}$ exceeds the rank of $%
+\Delta $.
+\end{Def}
+
+It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$
+and we shall denote this by $\Delta \approx (\Delta_1,\Delta_2)$. Each
+component $\Delta_1$ and $\Delta_2$ is a "stem'' of the splint $%
+(\Delta_1,\Delta_2)$.
+
+To study relations between injection fan technique and splint let us 
+consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ 
+is a root subsystem.
+
+Splint $\Delta \approx (\Delta _{1},\Delta _{2})$ is called ''injective'' if
+$\Delta _{1}=\Delta _{\frak{a}}$, is a root subsystem
+in $\Delta $ corresponding to a regular reductive subalgebra $\frak{a}%
+\hookrightarrow \frak{g}$.
+
+In case of injective splint the second stem $\Delta _{\frak{s}}:=\Delta
+_{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product (%
+\ref{product}) and it defines an injection fan $\Gamma _{\frak{a}%
+\hookrightarrow \frak{g}}$. Denote by $\Delta_{\mathfrak{s}0}$ the coimage of the second embedding $\phi:\Delta_{\mathfrak{s}0}\to \Delta_{\mathfrak{g}}$.
+The following conjecture follows.
+
+\begin{Cnj}
+Each injective splint $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})
+$ defines an injection fan with the carrier $\left\{ \xi \right\} _{\frak{a}%
+\rightarrow \frak{g}}$ fixed by the product
 \begin{equation}
-\frak{p}_{I}=\frak{l}_{I}\vartriangleright \frak{u}_{I}^{+}.
-\label{paralolic subalg}
+\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)
+=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}
 \end{equation}
-Ее универсальная обертывающая $U\left( \frak{p}_{I}\right) $ является подалгеброй в  $%
-U\left( \frak{g}\right) $. Модули  $L_{\frak{a}_{\perp }}^{\mu _{%
-\frak{a}_{\perp }}\left( u\right) }$ алгебры  $\frak{l}_{I}$ легко поднимаются до  $\frak{p}_{I}$-модулей при помощи тривиального действия нильрадикала $\frak{u}_{I}^{+}$. Последний стандартным образом индуцирует $U\left( \frak{g}\right) $-модули:
-\begin{equation*}
-M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=U\left( \frak{g}\right)
-\otimes _{U\left( \frak{p}_{I}\right) }L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
-_{\perp }}\left( u\right) }.
-\end{equation*}
+\end{Cnj}
 
-Это  \textit{обобщенные модули Верма}  \cite{lepowsky1977generalization},
-порожденные старшими весами  $\mu _{\frak{a}%
-_{\perp }}\left( u\right) $. Как  $U\left( \frak{u}_{I}^{-}\right) $-модуль каждый  $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ изоморфен  $%
-U\left( \frak{u}_{I}^{-}\right) \otimes L_{\frak{a}_{\perp }}^{\mu _{%
-\frak{a}_{\perp }}\left( u\right) }$ и его характер можно записать при помощи функции Костанта-Хекмана \cite{KostantHeckman1982}, соответствующей вложению ортогонального партнера $\frak{a}_{\perp
-}\hookrightarrow \frak{g}$:
-\begin{equation*}
-\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\mathcal{KH}_{%
-\frak{a}_{\perp }\hookrightarrow \frak{g}}\mathrm{ch}L_{\frak{a}_{\perp
-}}^{\mu _{\frak{a}_{\perp }}\left( u\right) }.
-\end{equation*}
-Функция  $\mathcal{KH}_{\frak{a}_{\perp }\hookrightarrow \frak{%
-g}}$ генерируется знаменателем  $R_{I}$, так что последнее выражение можно переписать следующим образом
-\begin{equation*}
-\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\frac{1}{R_{I}}%
-\mathrm{ch}L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }.
-\end{equation*}
-Таким образом мы получили обобщенную формулу Вейля-Верма для характеров -- разложение  $\mathrm{ch}\left(
-L^{\mu }\right) $ на характеры обобщенных модулей Верма:
+In case of injective splint we say that subalgebra $\frak{a}\hookrightarrow \frak{g}$
+splinters $\Delta $ (and call $\frak{a}$ the ''splinting subalgebra'' of $%
+\frak{g}$). In \cite{richter2008splints} splints are classified (see Appendix there)
+and the first three types of them are injective.
+
+\section{How stems define multiplicity functions}
+
+\label{sec:stems and multiplicity functions}
+
+In this Section we study properties of injective splints  $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})
+$. It will
+be demonstrated that in this case to find branching
+coefficients for a splinting injection $\frak{a}\hookrightarrow
+\frak{g}$ means to find weight multiplicities of an irreducible
+$\frak{s}$-module $L_{\frak{s}}^{\nu }$ with fixed highest weight
+$\nu $. Notice that $\frak{s}$ must not be a subalgebra of
+$\frak{g}$.
+
+Let us return to relation (\ref{singular main}) and multiply both sides by $%
+R_{\frak{a}}$:
 \begin{equation}
-\mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;e^{\mu _{\aft}\left(
-u\right) }\epsilon (u)\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
-u\right) }.  \label{char in gen verma mod}
+\frac{1}{\prod_{\beta \in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })}\Psi _{%
+\frak{g}}^{\left( \mu \right) }=\sum_{\nu \in P_{\frak{a}}^{+}}b_{\nu
+}^{(\mu )}\Psi _{\frak{a}}^{\left( \nu \right) }.
+\label{singular main-2}
 \end{equation}
-\end{proof}
+Here the first factor in the l.h.s. is the inverse of the fan $\Gamma _{%
+\frak{a}\rightarrow \frak{g}}$. Consider the highest weight module $L_{\frak{%
+s}}^{\nu }$. The embedding $\phi :\Delta _{\frak{s}\,0}\longrightarrow \Delta
+_{\frak{g}}$ sends the singular element $\Psi _{\frak{s}}^{\left( \nu
+\right) }$ into $\Psi _{\frak{g}}^{\left( \mu \right) }$. Applying the
+inverse morphism $\phi ^{-1}$ to the product $\left( \prod_{\beta \in \Delta
+_{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}\phi \left( \Psi _{\frak{s}%
+}^{\left( \nu \right) }\right) $ one gets the character of the module $L_{%
+\frak{s}}^{\nu }$,
 
-\begin{remark}
-Здесь обобщенная формула Вейля-Верма для характеров (называемая формулой переменного суммирования в книге \cite{humphreys2008representations}) имеет специальный вид: веса $\mu _{\aft}$ отличны от старших весов обобщенных модулей Верма $\mu _{\afb}$. Причина в том, что старший вес $M_{I}$-модуля не равен проекции его максимального веса на  $h^*_{\afb}$ (он должен быть дополнительно сдвинут на дефект).
-\end{remark}
+\begin{equation}
+\phi ^{-1}\left( \frac{1}{\prod_{\beta \in \Delta _{\frak{s}%
+}^{+}}(1-e^{-\beta })}\phi \left( \Psi _{\frak{s}}^{\left( \nu \right)
+}\right) \right) =\frac{1}{\prod_{\beta \in \Delta _{\frak{s}0
+}^{+}}(1-e^{-\beta })}\Psi _{\frak{s}}^{\left( \nu \right) }=\mathrm{ch}%
+\left( L_{\frak{s}}^{\nu }\right) .  \label{inverse for stem}
+\end{equation}
+Our task is to prove that the singular element $\Psi _{\frak{g}}^{\left( \mu
+\right) }$ contains the element $\Psi _{\frak{s}}^{\left( \xi \right) }$ for
+a module $L_{\frak{s}}^{\xi }$ uniquely defined by $L_{\frak{g}}^{\mu }$ and
+that the branching coefficients $b_{\nu }^{(\mu )}$ in the r.h.s. of (\ref
+{singular main-2}) coincide with multiplicities $m_{\zeta }^{\left( \xi
+\right) }$ of the corresponding weights in $\mathcal{N}_{\frak{s}}^{\xi }$ .
 
+For a highest weight irreducible module $L_{\frak{g}}^{\mu }$ the singular
+element $\Psi _{\frak{g}}^{\left( \mu \right) }$ is an element of $\mathcal{E%
+}$ corresponding to the shifted Weyl-orbit of the weight $\left( \mu +\rho
+\right) \in P^{+}$ with the sign function $\epsilon \left( w\right) $. It is
+convenient to use also unshifted singular elements
+\begin{equation}
+\Phi ^{\left( \mu \right) }:=\Psi ^{\left( \mu \right) }e^{\rho }.
+\label{definition Phi}
+\end{equation}
+In these terms the relation (\ref{singular main-2}) looks like
+\begin{equation}
+\frac{e^{\rho _{\frak{g}}-\rho _{\frak{a}}}}{\prod_{\beta \in \Delta _{\frak{%
+s}}^{+}}(1-e^{-\beta })}\Phi _{\frak{g}}^{\left( \mu \right) }=\sum_{\nu \in
+P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\Phi _{\frak{a}}^{\left( \nu \right) }.
+\label{singular main-3}
+\end{equation}
+The orbit related to $\Phi _{\frak{g}}^{\left( \mu \right) }$ is completely
+defined by the set of edges $\left\{ \lambda _{i}\right\} _{i=1,\dots ,r}$
+adjusted to the end of the highest weight vector $\mu +\rho $. For $\mu
+=\sum m_{i}\omega _{i}$ these edges are
+\begin{equation}
+\lambda _{i}=-\left( m_{i}+1\right) \alpha _{i},\quad i=1,\dots ,r.
+\label{edge}
+\end{equation}
+Each formal exponent $e^{\mu +\rho +\lambda _{i}}$ in $\Phi _{\frak{g}%
+}^{\left( \mu \right) }$ bears the sign coefficient $\epsilon =(-)$. The
+defining property of $\Phi _{\frak{g}}^{\left( \mu \right) }$ is as follows.
+Consider any pair of edges $\lambda _{i},\lambda _{j}$ and the corresponding
+weights $\mu +\rho $, $\mu +\rho +\lambda _{i}$ and $\mu +\rho +\lambda _{j}$. 
+Apply the reflection $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
+\begin{equation}
+s_{\alpha _{i}}\circ \left\{
+\begin{array}{l}
+\left( \mu +\rho \right)  \\
+\left( \mu +\rho +\lambda _{i}\right)  \\
+\left( \mu +\rho +\lambda _{j}\right)
+\end{array}
+\right. =\left\{
+\begin{array}{l}
+\left( \mu +\rho +\lambda _{i}\right)  \\
+\left( \mu +\rho \right)  \\
+\left( \mu +\rho +\lambda _{i}-(m_{j}+1)s_{\alpha _{i}}\circ \alpha
+_{j}\right)
+\end{array}
+\right.   \label{reflected triple}
+\end{equation}
+
+\begin{Prop}
+The edge $\lambda _{i,j}$ of $\Phi _{\frak{g}}^{\left( \mu \right) }$
+starting at the weight $\left( \mu +\rho +\lambda _{i}\right) $ along the
+root $-s_{\alpha _{i}}\circ \alpha _{j}$ has the same length in $(s_{\alpha
+_{i}}\circ \alpha _{j})$ as $\lambda _{j}$ has in $\alpha _{j}$. (The same
+is true for the edge $\lambda _{j,i}$, its length in $(s_{\alpha _{j}}\circ
+\alpha _{i})$ is equal to the length of $\lambda _{i}$ in $\alpha _{i}$.)
+\label{diagram property}
+\end{Prop}
+
+In $\Phi _{\frak{g}}^{\left( \mu \right) }$ the elements $e^{\left( \mu
++\rho +\lambda _{i}-(m_{j}+1)s_{\alpha _{i}}\circ \alpha _{j}\right) }$ and $%
+e^{\left( \mu +\rho +\lambda _{j}-(m_{i}+1)s_{\alpha _{j}}\circ \alpha
+_{i}\right) }$ have the sign coefficient  $\epsilon =(+)$.
+
+Remember that only three types of splints are
+injective and thus are naturally connected with branching. Below we
+reproduce the part of the splints table from \cite{richter2008splints} corresponding to
+injective splints:
+\[
+\begin{array}{cc||c|c}
+\hbox{type} & \hspace{0.25in}\Delta \hspace{0.25in} & \hspace{0.25in}\Delta
+_{\frak{a}}\hspace{0.25in} & \hspace{0.25in}\Delta _{\frak{s}}\hspace{0.25in}
+\\ \hline\hline
+\hbox{(i)} & G_{2} & A_{2} & A_{2} \\
+& F_{4} & D_{4} & D_{4} \\ \hline
+\hbox{(ii)} & B_{r}(r\geq 2) & D_{r} & \oplus ^{r}A_{1} \\
+& C_{r}(r\geq 3) & D_{r} & \oplus ^{r}A_{1} \\ \hline
+\hbox{(iii)} & A_{r}(r\geq 2) & A_{r-1}\oplus u\left( 1\right)  & \oplus
+^{r}A_{1} \\
+& B_{2} & A_{1}\oplus u\left( 1\right)  & A_{2}
+\end{array}
+\]
+Each row in the table gives a splint $(\Delta _{\frak{a}},\Delta _{\frak{s}})
+$ of the simple root system $\Delta $. In the first two types both $\Delta _{%
+\frak{a}}$ and $\Delta _{\frak{s}}$ are embedded metrically. Stems in the
+first type splints are equivalent and in the second are not. In the third
+type splints only $\Delta _{\frak{a}}$ is embedded metrically. The summands $%
+u\left( 1\right) $ are added to keep $r_{\frak{a}}=r$. This does not change
+the principle properties of branching but makes it possible to use the
+multiplicities of $\frak{s}$-modules without further projecting their
+weights.
+
+Splints induce a decomposition of the set $S=S_{\frak{c}}\cup S_{\frak{d}}$
+with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}}$. 
+It is easy to check that for any injective splint the subset $S_{%
+\frak{d}}$ is nonempty. It follows that in the set $\left\{ \lambda
+_{i}\right\} _{i=1,\dots ,r}$ one can always find simple roots $\beta
+_{k}\in \Delta _{\frak{s}}$ and that the orbit corresponding to $\Phi _{%
+\frak{g}}^{\left( \mu \right) }$ contains the edges
+\begin{equation}
+\lambda _{k}=-\left( m_{k}+1\right) \beta _{k}  \label{beta edge}
+\end{equation}
+attached to the weight $\mu +\rho $. As far as $\Delta _{\frak{a}}$ is a
+root system and for any pair of simple roots from $S_{\frak{c}}$ the
+property \ref{diagram property} is fulfilled, the element $\Phi _{\frak{g}%
+}^{\left( \mu \right) }$ being a singular element for a set of $\frak{a}$%
+-modules. Consider $\beta _{l}\in \Delta _{\frak{s}}$ whose coimage in $%
+\Delta _{\frak{s}0}$ is simple. In Appendix it is shown that for any such $%
+\beta _{l}$ there exists a root $\alpha _{l}\in S_{\frak{c}}$ such that
+$\beta _{l}=\alpha _{l}+\beta _{k}$. It is easily seen that the
+corresponding edge intersects the boundary plane of the fundamental chamber $%
+\bar{C_{\frak{a}}}$ orthogonal to the root $\alpha _{l}$,
+\begin{equation}
+s_{\alpha _{l}}\left( \mu +\rho -p\beta _{l}\right) =s_{\alpha _{l}}\left(
+\mu +\rho \right) -ps_{\alpha _{l}}\beta _{l}=\mu +\rho -p\beta _{l},
+\label{intersection}
+\end{equation}
+\begin{equation}
+\mu +\rho -s_{\alpha _{l}}\left( \mu +\rho \right) =\left( m_{l}+1\right)
+\alpha _{l}=\left( m_{l}+1\right) \beta _{l}-\left( m_{l}+1\right) \beta
+_{k}=p\beta _{l}-ps_{\alpha _{l}}\beta _{l}.  
+\label{intersection-2}
+\end{equation}
+It follows that $p=\left( m_{l}+1\right) $ and $s_{\alpha _{l}}\beta
+_{l}=\beta _{k}$. Now apply the operator $s_{\beta _{k}}$ and find that the
+edge along the root $s_{\beta _{k}}\alpha _{l}$ attached at the weight $%
+s_{\beta _{k}}(\mu +\rho )$ is also equal to $-ps_{\beta _{k}}\alpha _{l}$.
+This means that for the triple of roots $\beta _{k},\beta _{l}$ and $%
+s_{\beta _{k}}\alpha _{l}$ in $\Delta _{\frak{s}}$ the edges $\lambda
+_{k}=-\left( m_{k}+1\right) \beta _{k}$, $\lambda _{l}=-\left(
+m_{l}+1\right) \beta _{l}$ and $\lambda _{kl}=-\left( m_{l}+1\right)
+s_{\beta _{k}}\alpha _{l}$ demonstrate the property \ref{diagram property}.
+One can continue this procedure further in the 2-dimensional subspace fixed
+by the roots $\beta _{k}$ and $\beta _{l}$ and find the set of formal
+exponents that being supplied with the corresponding sign factors compose
+the coimage of the singular element of a module for the subalgebra in $\frak{%
+s}$ (this subalgebra has rank $r=2$).
+
+The same can be proven for any positive root $\beta _{l}\in \Delta $ that is
+simple in $\Delta _{\frak{s}0}$ and correspondingly for any $r=2$ subalgebra
+in $\frak{s}$. The latter means that to ''find'' a singular element of $%
+\frak{s}$-module in $\Phi _{\frak{g}}^{\left( \mu \right) }$ it is necessary
+to incorporate in it additional formal elements $\left\{ -e^{\mu +\rho
+-\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{\frak{c}}\right\}.$ This
+fixes the starting edges of the diagram $\phi ^{-1}\left( \Phi _{\frak{s}}^{%
+\widetilde{\mu }}\right) $. As it follows from the reconstruction procedure
+the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $%
+, they have the same Dynkin numbers:
+\begin{equation}
+\mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
+m_{k}\widetilde{\omega }_{k} . \label{new h weight}
+\end{equation}
+The next step is to construct the full $W_{\frak{s}}$-orbit $\Phi _{\frak{s}%
+}^{\left( \widetilde{\mu }\right) }$  in $P_{\frak{s}}$. It is easily seen
+that its coimage belongs to $\bar{C_{\frak{a}}}$ and that the set $\phi
+^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) \setminus \Phi _{%
+\frak{g}}^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ corresponds to the
+weights belonging to the boundary $\bar{C_{\frak{a}}}$ (including the subset
+$\left\{ -e^{\mu +\rho -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{%
+\frak{c}}\right\} $). Thus we have constructed all the formal elements\ with
+the appropriate sign factors that after being added to $\Phi _{\frak{g}%
+}^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ form the diagram $\phi
+^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) $ in $\bar{C_{\frak{a}%
+}}$.
+
+Now let us return to relation (\ref{singular main-3}). One can add to $%
+\Phi _{\frak{g}}^{\left( \mu \right) }$ pairs of formal elements
+constructed above  with the opposite signs: $\epsilon \left( w\right)
+|_{w\in W_{\frak{s}}}$ and $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$. 
+Attribute the signs $\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ to
+the elements whose weights we shall attribute to $\bar{C_{\frak{a}}}$. 
+The same elements with the opposite signs are to be referred to the
+neighboring Weyl chambers of $\bar{C_{\frak{a}}^{(l)}}$ (the latter are
+connected with the main one via simple reflections $s_{\alpha _{l}}$ so the
+signes $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ are natural for
+them). In fact one can repeat the procedure and find additional singular
+weights in any Weyl chamber $\bar{C_{\frak{a}}^{(m)}}$ and in them
+additional singular weights always have the signs opposite to that in their
+nearest neighbors. Thus without changing the element $\Phi _{\frak{g}%
+}^{\left( \mu \right) }$ one can present it as a sum
+\begin{equation}
+\Phi _{\frak{g}}^{\left( \mu \right) }=\sum_{w\in W_{\frak{a}}}w\circ \left(
+e^{\rho _{\frak{a}}}\Psi ^{\widetilde{\mu }+\rho _{\frak{s}}}\right)
+\label{singular final}
+\end{equation}
+where the weight $\widetilde{\mu }=\sum m_{k}\omega _{\frak{s}}^{k}$ was
+defined above. The decomposition (\ref{singular final}) provides the
+possibility to apply the factor $\left( \prod_{\beta \in \Delta _{\frak{s}%
+}^{+}}(1-e^{-\beta })\right) ^{-1}$ to each summand of the singular element $%
+\Phi _{\frak{g}}^{\left( \mu \right) }$ separately because the sets of
+weights from different Weyl summands do not intersect. Taking into account
+the isomorphism $\phi $ one can see that in the main Weyl chamber $\bar{C_{%
+\frak{a}}}$ the set of weights generated by the factor $\left( \prod_{\beta
+\in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}$ is isomorphic to
+the weight diagram $\mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ of the $\frak{%
+s}$-module $L_{\frak{s}}^{\widetilde{\mu }}$. Now one can restrict
+relation (\ref{singular main-3}) to $\bar{C_{\frak{a}}}$ and obtain the main
+result:
+\begin{Prop}
+\begin{equation}
+\frac{e^{\rho _{\frak{g}}}}{\prod_{\beta \in \Delta _{\frak{s}%
+}^{+}}(1-e^{-\beta })}\left( \Psi ^{\widetilde{\mu }+\rho _{\frak{s}%
+}}\right) =\sum_{\widetilde{\nu }\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }%
+}}M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}e^{\left(
+\mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
+}=\sum_{\nu \in P_{\frak{a}}^{++}}b_{\nu }^{(\mu )}e^{\nu }.
+\label{singular main-4}
+\end{equation}
+Any weight with nonzero multiplicity in the r. h. s. is equal to one of the
+highest weights in the decomposition. The multiplicity $M_{\left( \frak{s}%
+\right) \widetilde{\nu }}^{\widetilde{\mu }}$ of the weight  $\widetilde{\nu
+}\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ defines the branching
+coefficient $b_{\nu }^{(\mu )}$ for the highest weight $\nu =\left( \mu
+-\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right) $:
+\[
+b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
+}^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}.
+\]
+\end{Prop}
+
+\section{Examples}
+\label{sec:examples}
 \begin{example}
-  Рассмотрим обобщенные модули Верма для вложения $A_{1}\hookrightarrow B_{2}$, где подалгебра  $\afb$ связана с корнем  $\alpha_{1}$ алгебры  $B_{2}$. Обобщенный модуль Верма $M^{\omega_{1}}_{I}$ со старшим весом   $\omega_{1}=e_{1}$ показан на Рисунке \ref{fig:B2_Verma_Decomp}.
+  Consider the Lie algebra $A_{2} =\bf{sl}(3)$ and branching of its irreducible module $L^{[3,2]}_{A_{2}}$ with respect to the reductive subalgebra $A_{1}\oplus u(1)$. The root system  $\Delta _{\frak{a}}= \Delta_{A_{1}\oplus u(1)}$ contains the simple root of $\alpha_1=e_1-e_2$ of $A_{2}$. The singular element $\Psi^{[3,2]}_{\frak{a}}$ is decomposed into a sum of splint images of singular elements of $A_{1}\oplus A_{1}$-modules. Branching coefficients $b_{\nu }^{[ 3,2 ] }$ coincide with weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module (see Fig. \ref{fig:a2_splint}).
+
   \begin{figure}[h!bt]
   \noindent\centering{
-   \includegraphics[width=120mm]{B2_Gen_Verma_Decomp}
+   \includegraphics[width=80mm]{a2-a1}
   }
-  \caption{Обобщенные модули Верма для регулярного вложения  $A_1$ в $B_2$. 
-    Простые корни $\alpha_1, \alpha_2$ алгебры $B_2$ показаны пунктирными стрелками. Простой корень  $\beta = \alpha_1+2\alpha_2$ алгебры $A_1$ изображен серым вектором. Разложение $L^{\omega_{1}}$ представлено набором контуров входящих в него обобщенных модулей Верма. Пунктирные контуры соответствуют положительным значениям  $\epsilon(u)$, а точечные -- отрицательным. }
+  \caption{Weyl group orbit (dotted) producing singular element of $L^{[3,2]}_{A_{2}}$ and its decomposition into the sum of splint images of singular elements of modules  $L^{[3,2]}_{A_{1}\oplus A_{1}}$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{A_{2}\downarrow A_{1}\oplus u(1)}$.}
 
- \label{fig:B2_Verma_Decomp}
+ \label{fig:a2_splint}
+\end{figure}
+\end{example}
+\begin{example}
+  For the Lie algebra $B_{2}= \bf{so}(5)$ branching of its irreducible module $L^{[3,2]}$ into  modules of a reductive subalgebra $A_{1}\oplus u(1)$ with the root system spanned by the first simple root $\alpha_1=e_1-e_2$ of $B_{2}$. Singular element of $\Psi^{[3,2]}_{B_{2}}$ is decomposed into the sum of splint images of singular elements of $A_{2}$-modules and branching coefficients coincide with weight multiplicities of $A_{2}$-module (see Fig. \ref{fig:b2_splint}).
+
+  \begin{figure}[h!bt]
+  \hspace*{-1.2cm}
+
+   \includegraphics[width=65mm]{b2}
+   \includegraphics[width=65mm]{b2-a2-a1}
+  \caption{Weights of the $B_{2}$-module $L^{[3,2]}$ are indicated by dots in the left picture (their multiplicities are also indicated). Contour of the singular element is shown by dotted line. The right picture presents the decomposition of  $\Psi_{B_{2}}(L^{[3,2]}_{B_{2}})$-singular element into the sum of splint images of singular elements $\Psi_{A_{2}}(L^{[3,2]})$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{2}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
+
+ \label{fig:b2_splint}
+\end{figure}
+\end{example}
+
+\vspace{10mm}
+\begin{example}
+   Lie algebra $G_{2}$ has a regular subalgebra $A_{2}$ with root system $\Delta_{\mathfrak{a}}=\Delta_{A_{2}}$ containing the $G_{2}$ long roots. Consider branching of an irreducible module $L_{G_{2}}^{(3,2)}$ into the $A_{2}$-modules. Singular element $\Psi_{G_{2}}(L^{[3,2]})$ is decomposed into the sum of splint images of singular elements $\Psi_{A_{2}}(L^{[3,2]})$ and the corresponding branching coefficients coincide with weight multiplicities of $L^{[3,2]}_{A_{2}}$-module (see Fig. \ref{fig:g2_splint}).
+
+
+  \begin{figure}[h!bt]
+  \noindent\centering{
+   \includegraphics[width=120mm]{g2}
+  }
+
+  \caption{Weyl group orbit (dotted) for the singular element $\Psi_{G_{2}}(L^{[3,2]})$ and its decomposition into the sum of splint images of singular elements of $A_{2}$-modules (dashed). Weight multiplicities of $L^{[3,2]}_{A_{2}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{G_{2}\downarrow A_{2}}$.}
+
+
+ \label{fig:g2_splint}
 \end{figure}
 
 \end{example}
 
-\begin{remark}
-Как доказано, например, в книге  \cite{humphreys2008representations} (см. утверждение 9.6), характеры обобщенных модулей Верма $M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ могут также описываться как линейные комбинации обычных модулей Верма алгебры $\frak{g}$:
-\begin{equation*}
-\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=\sum_{w\in W_{%
-\frak{a}_{\perp }}}\epsilon \left( w\right) \mathrm{ch}M^{w\left( \mu _{%
-\frak{a}_{\perp }}\left( u\right) +\rho _{\frak{a}_{\perp }}\right) -\rho _{%
-\frak{a}_{\perp }}}
-\end{equation*}
-Подставляя это выражение в формулу (\ref{char in gen verma mod}) и используя определения  (\ref{mu-a},\ref{mu-a-tilda}) и (\ref{defect ort}), мы восстанавливаем стандартное разложение Вейля-Верма для характера:
-\begin{equation*}
-\mathrm{ch}\left( L^{\mu }\right) =\sum_{w\in W}\;\epsilon (u)\mathrm{ch}%
-M^{w\left( \mu +\rho \right) -\rho }.
-\end{equation*}
-\end{remark}
+\section{Conclusions}
 
-\subsection{БГГ резольвента и ветвление}
-В работе \cite{lepowsky1977generalization} показано, что для модуля старшего веса $L^{\mu }$, где $\mu \in P^{+}$, последовательность (обобщенная БГГ резольвента)
-\begin{equation}
-0\rightarrow M_{r}^{I}\overset{\delta _{r}}{\rightarrow }M_{r-1}^{I}\overset{%
-\delta _{r-1}}{\rightarrow }\ldots \overset{\delta _{1}}{\rightarrow }%
-M_{0}^{I}\overset{\varepsilon }{\rightarrow }L^{\mu }\rightarrow 0,
-\label{resolution sequence}
-\end{equation}
-где
-\begin{equation}
-M_{k}^{I}=\bigoplus_{u\in U,\;\mathrm{length}\left( u\right)
-=k}M_{I}^{u\left( \mu +\rho \right) -\rho },\quad M_{0}^{I}=M_{I}^{\mu }
-\label{Verma elements sequence}
-\end{equation}
-является точной и формула (\ref{gen Weyl-Verma}%
-) следует из этого разложения.
+\label{sec:conclusions}It is explicitly demonstrated that splint
+presents a very effective tool to find branching coefficients. In
+particular injective splints provide a possibility to reduce
+branching rules calculations for highest weight modules to a
+determination of weight multiplicities for a module with the same
+Dynkin labels referred to the Lie algebra $\mathfrak{s}$. This algebra
+$\mathfrak{s}$ must not be a subalgebra in the initial $\mathfrak{g}$ , it
+has the same rank $r_{\mathfrak{s}}=r$\ , but obviously less
+"complicated" than $\mathfrak{g}$ -- only a subset of the initial root system is involved in the second stem $\Delta_{\mathfrak{s}}$.
 
-\begin{figure}[h!bt]
- \noindent\centering{
-   \includegraphics[width=140mm]{B2_Exact}}
- \caption{Вложение $A_1\hookrightarrow B_2$ (см. Рисунок \ref{fig:B2_Verma_Decomp}). Ортогональный партнер, подалгебра $A_1$, соответствует корню $\alpha_1$.
-   Резольвента простого модуля $L^{\omega_1}$. Показана центральная часть точной последовательности
-   $0 \to Im(\delta_2) \to \left( e^{\mu _{\widetilde{%
-\frak{a}}}\left( e\right) }\mathrm{ch}M_{I}^{\pi _{\afb}\left[ \omega_1 \right] -%
-\mathcal{D}_{\afb} }=M^{\omega_1}_{I}\right) \to
-   L^{\omega_1}\to 0 $.  Здесь $\mu _{\widetilde{\frak{a}}}\left( e\right) =\pi _{\aft}\left[ \mu \right] + \mathcal{D}_{\afb}$.
-   }
+It is significant that for the injections $D_{r}\hookrightarrow B_{r}$ , $%
+D_{r}\hookrightarrow C_{r}$ and $A_{r-1}\oplus u\left( 1\right) \hookrightarrow A_{r}$ splint technique shows
+transparently Gelfand-Tzeytlin rules for branching:  the reduction is
+multiplicity free (all nonzero
+branching coefficients are equal to 1). Here it is an immediate consequence of the
+structure of the second stem being a direct sum of $A_{1}$
+algebras and the fact that the corresponding module
+$L_{\frak{s}}^{\mu }$ is irreducible.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us demonstrate that for injective splints of classical Lie
+algebras the following property is valid:
+\begin{Prop}
+Let $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})$ be an
+injective
+splint with the decomposition of simple roots $S=S_{\frak{c}}\cup S_{\frak{d}%
+}$ with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}%
+}$.
+\end{Prop}
+Thus for any simple root $\beta \in S_{\frak{s}}$ there exists the
+pair of
+roots ( $\alpha $ ,$\beta ^{\prime }$) with $\alpha \in $ $S_{\frak{c}%
+},\beta ^{\prime }\in S_{\frak{s}}$ such that $\alpha =\beta
+-\beta ^{\prime }$
+
+\begin{itemize}
+\item
+Type 1. $\Delta _{G_{2}}\approx (\Delta _{A_{2}},\Delta
+_{A_{2}}).$
+
+ \begin{figure}[h!bt]
+  \noindent\centering{
+   \includegraphics[width=100mm]{g2-roots}
+  }
+  \caption{Positive roots of $G_{2}$ and formation of singular element $\Phi^{(0)}_{\mathfrak{s}}$ in the main Weyl chamber of $\mathfrak{a}=A_{2}$.}
 \end{figure}
+Here both stems are metric and the corresponding root systems are
+equivalent. In Figure 4 a part of the singular element $\Phi
+_{G_{2}}^{\left( 0\right) }$ is presented. The boundaries of $\bar{C_{\frak{a%
+}}}$ are the dashed lines starting at the center of the singular
+element. It
+contains the edge $\lambda _{2}=-\alpha _{2}=-\beta _{2}$ and the roots $%
+-\beta _{1}=-s_{\alpha _{2}}\circ \beta _{3}$ and $ -\beta _{3}$
+($\beta _{3}$ is indicated as $\beta _{l}$). For the root $\beta
+_{1}$ the necessary pair
+is  $(\alpha _{1}, \beta _{2})$: $\alpha _{1}=\beta _{1}-\beta _{2}$. The $%
+\lambda _{2,3}^{\frak{s}}=\beta _{3}$ edge is equal to $\lambda _{1}^{\frak{s%
+}}=\beta _{1}=s_{\alpha _{2}}\circ \beta _{3}$ and $m_{1}$ index
+is aquired by the $\frak{s}$-module that also inherit the second
+index $m_{2}$. In this particular
+case they are $m_{1}=m_{2}=0$. The general case with the initial module $%
+L^{\mu }$ and $\mu =m_{1}\omega _{1}+m_{2}\omega _{2}$ can be
+treated in the same way: one finds an edge $\lambda _{2}=-\left(
+m_{2}+1\right) \beta _{2}$ and put $\lambda
+_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$, its end
+belongs to the boundary $\bar{C_{\frak{a}}}$. The reflection
+$s_{\beta
+_{2}} $ sends $\beta _{1}$ to $\beta _{3}$ and the corresponding edge 
+$\lambda _{2,3}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{3}$ has
+the length $\left( m_{1}+1\right) $. Now consider $\lambda _{1}^{\frak{s}}$ (or
+$\lambda _{2,3}^{\frak{s}} $) and $\lambda _{1,3}^{\frak{s}}$ (or
+$\lambda _{2,3,1}^{\frak{s}}$) edges to find that they belong to
+the boundary $\bar{C_{\frak{a}}}$ and the Weyl symmetry predicts
+that $\lambda _{1,3}^{\frak{s}}=-\left( m_{2}+1\right)
+\beta _{3}$ ($\lambda _{2,3,1}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{1}$%
+) . Finally the edge $\lambda _{1,3,2}^{\frak{s}}=-\left(
+m_{1}+1\right) \beta _{2}$ closes the polytope. Its vertices
+correspond to weights of the singular
+element $\Phi _{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in W_{%
+\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
+\widetilde{\mu }+\rho
+_{\frak{s}}\right) }$ of the module $L_{\frak{s}}^{\left( \widetilde{\mu }%
+\right) }$ with $\widetilde{\mu }=m_{1}\widetilde{\omega }_{1}+m_{2}%
+\widetilde{\omega }_{2}$. Notice that in this case the sign
+factors can be obtained directly in the initial weight system as
+far as the stem is metric.
+\item
+Type 1. $\Delta _{F_{4}}\approx (\Delta _{D_{4}},\Delta
+_{D_{4}}).$
 
+Both stems are metric here and the corresponding root systems are
+equivalent. The system $\Delta _{D_{4}}$ of the subalgebra
+$\frak{a=}D_{4}$ is formed by the set $\left\{ \pm e_{i}\pm
+e_{j}\right\} _{|i,j=1,\ldots 4,\; i\neq j}.$ The simple roots
+$S_{\frak{c}}$ are $\left\{ e_{2}-e_{3},e_{3}-e_{4}\right\} $ and
+$S_{\frak{d}}=\left\{ e_{4},\frac{1}{2}\left(
+e_{1}-e_{2}-e_{3}-e_{4}\right) \right\} $.
+For a module $L^{\mu }$ with $\mu =\sum m_{k}\omega _{k}$ consider the edge $%
+\lambda _{3}=-\left( m_{3}+1\right) e_{4}=-\left( m_{3}+1\right)
+\beta _{3}$.
+ Compose an edge $\lambda _{2}^{\frak{s}}=-\left( \widetilde{m}%
+_{2}+1\right) \beta _{2}$. The necessary pair of roots is $\left(
+\alpha
+_{2}=e_{3}-e_{4},\beta _{3}\right) $. The intersection of $\lambda _{2}^{%
+\frak{s}}$ with the $\alpha _{2}$-boundary of
+$\bar{C_{\frak{a}}}$ fixes
+its length to be $\lambda _{2}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{2}$%
+\ and the length of the edge $\lambda _{3,2}^{\frak{s}}$ is equal
+to that of
+$\lambda _{2}^{\frak{s}}$. Next consider the edge $\lambda _{2}^{\frak{s}%
+}=-\left( m_{2}+1\right) \beta _{2}$ and the pair $\left( \alpha
+_{1}=e_{2}-e_{3},\beta _{1}=e_{2}\right) $. The length of  
+$\lambda _{1}^{\frak{s}}$ becomes equal to $\lambda
+_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$. Proceed further till the closure of the polytope. 
+The edges looking along the roots of the $\alpha_4$-type, $\alpha _{4}=\beta
+_{4}=$ $\frac{1}{2}\left( e_{1}-e_{2}-e_{3}-e_{4}\right) $, are
+treated similarly and finally the singular element $\Phi
+_{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in
+W_{\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
+\widetilde{\mu }+\rho _{\frak{s}}\right) }$ for the module
+$L_{\frak{s}}^{\left( \widetilde{\mu }\right) }$ with
+$\widetilde{\mu }=\sum m_{k}\widetilde{\omega }_{k}$ is formed in
+$\bar{C_{\frak{a}}}$.
+\item
+Type 2. $\Delta _{B_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
+^{r}A_{1}}). $
 
-\begin{statement}
-Пусть $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$, и пусть регулярная подалгебра  $\afb\hookrightarrow \frak{g}$ ортогональна редуктивной подалгебре $\frak{a}\hookrightarrow \frak{g}$. Тогда разложение (\ref{sing decomp main}) определяет как обобщенную резольвенту $L^{\mu }$ по отношению к $\afb$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к подалгебре $\frak{a}_{\perp }$, так и правила ветвления $L^{\mu }$ по отношению к $\frak{a}$ .
-\end{statement}
+Both stems are metric. An injection is fixed by the stem $\Delta
+_{D_{r}}$ simple roots $S_{\frak{a}}=\left\{
+e_{1}-e_{2},e_{2}-e_{3},\ldots
+,e_{r-1}-e_{r},e_{r-1}+e_{r}\right\} $. The second stem
+corresponds to a
+direct sum of algebras $A_{1}$ with the simple roots $S_{\frak{s}%
+}=\left\{ e_{1},e_{2},\ldots ,e_{r-1},e_{r}\right\} $. Consider the edge $%
+\lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$ (here $\beta
+_{r}=e_{r}$) and $\lambda _{r-1}=-\left(
+\widetilde{m}_{r-1}+1\right) \beta _{r-1}$
+attached to it (here $\beta _{r-1}=e_{r-1}$). The corresponding pair is $%
+\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta _{r-1}=e_{r-1}\right) $.
+ The intersection condition fixes the second edge to be $\lambda
+_{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ , it is orthogonal
+to $\beta _{r}$ so the opposite edge has the same length. The
+Dynkin index $m_{r-1}$ now refers
+also to the\ simple root $\beta _{r-1}$. Next consider the obtained edge $%
+\lambda _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ and $\lambda
+_{r-2}=-\left( \widetilde{m}_{r-2}+1\right) \beta _{r-2}$ to
+fix the index $\widetilde{m}_{r-2}=m_{r-2}$ and the edge
+$\lambda _{r-2}=-\left( m_{r-2}+1\right) \beta _{r-2}$ and so on
+till all the pairs of edges are properly fixed. Finally in
+$\bar{C}_{D_{r}}$ the element $\Phi _{\oplus ^{r}A_{1}}^{\left(
+\widetilde{\mu }\right) }=\sum_{w\in W_{\oplus
+^{r}A_{1}}}\varepsilon \left( w\right) e^{w\circ \left( \widetilde{\mu }+%
+\frac{1}{2}\sum e_{k}\right) }$ can be constructed for the module
+$L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
+$\widetilde{\mu }=\sum m_{k}\frac{1}{2}e_{k}$.
 
-\begin{proof}
-Положим
-\begin{equation*}
-\mathrm{ch}M_{I}^{u\left( \mu +\rho \right) -\rho }=e^{\mu _{\widetilde{%
-\frak{a}}}\left( u\right) }\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
-u\right) },\mathrm{ch}M_{I}^{\mu }=e^{\mu _{\widetilde{\frak{a}}}\left(
-e\right) }\mathrm{ch}M_{I}^{\pi _{\frak{a}_{\perp }}\left[ \mu \right] -%
-\mathcal{D}_{\frak{a}_{\perp }}},
-\end{equation*}
-где \ $\mu _{\widetilde{\frak{a}}}\left( u\right) ,\mu _{\frak{a}_{\perp
-}}\left( u\right) $ и $\mathcal{D}_{\frak{a}_{\perp }}$ заданы как в Лемме \ref{Psi-decomp-lemma}, $%
-u\in U$ определено формулой (\ref{U-def}). В результате получим элементы фильтрующей последовательности (\ref{resolution sequence}).
+\item
+Type 2. $\Delta _{C_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
+^{r}A_{1}}). $
 
-Рассмотрим множество $\left\{ \mu _{\frak{a}_{\perp }}\left( u\right) |u\in U\right\} $ как множество старших весов простых модулей $L_{\frak{a}%
-_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\right) }$ и вычислим размерности этих модулей. Вместе с 
-$\left\{ \mu _{\widetilde{\mathfrak{a}}}\left( u\right) |u\in
-U\right\} $ мы получим набор сингулярных весов
-\begin{equation*}
-\left\{ \epsilon (u)\;
-e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }
-\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp
-}}\left( u\right) }\right) \right\} .
-\end{equation*}
-Ветвление  $L_{\frak{g}\downarrow \frak{a}}^{\mu }=\bigoplus\limits_{\nu
-\in P_{\frak{a}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\frak{a}}^{\nu }$  определяется веером вложения  $\Gamma _{\frak{a}\rightarrow \frak{g}}$ и соотношением (\ref{recurrent rel}), которое дает нам коэффициенты  $k_{\xi
-}^{\left( \mu \right) }$, а значит определяет и  $b_{\nu }^{\left( \mu \right) }$, так как  $b_{\nu }^{\left( \mu \right) }=k_{\nu }^{\left( \mu
-\right) }$ при $\nu \in \overline{C_{\frak{a}}}$ .
-\end{proof}
+The situation in this case is eqivalent to the previous one and
+the additional edges are constructed similarly.
+\item
+Type 3 $\Delta _{A_{r}}\approx (\Delta _{A_{r-1}\oplus
+u_{1}},\Delta _{\oplus ^{r}A_{1}}).$
 
-\begin{corollary}
-Пусть  $L^{\mu }$ --  $\frak{g}$-модуль со старшим весом $\mu \in P^{+}$ и  $\frak{a}\hookrightarrow \frak{g}$ -- редуктивная подалгебра $\frak{g}$. Пусть $\frak{a}_{\perp }$, ортогональный партнер для $\frak{a}$, эквивалентен  $A_{1}$, $\frak{a}_{\perp }\approx $ $A_{1}$, и $\widetilde{\frak{a}}=\frak{a}\oplus \frak{h}_{\perp }$ с $\frak{h=\frak{h}_{\frak{a}}}\oplus \frak{h}_{\frak{a}_{\perp }}\oplus \frak{h}_{\perp }$. Пусть $L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }=\bigoplus\limits_{\nu \in P_{\widetilde{\frak{a}}}^{+}}b_{\nu }^{\left( \mu \right) }L_{\widetilde{\frak{a}}}^{\nu }$ -- ветвление модуля $L^{\mu }$ относительно подалгебры $\widetilde{\frak{%
-a}}$. Тогда коэффициенты $b_{\nu }^{\left( \mu \right) }$ определяют обобщенную резольвенту (\ref{resolution sequence}) модуля $L^{\mu }$
-по отношению к  $\frak{a}_{\perp }$.
-\end{corollary}
+Here only the first stem is metric and it fixes the injection with
+simple roots $S_{\frak{a}}=\left\{ e_{1}-e_{2},e_{2}-e_{3},\ldots
+,e_{r-1}-e_{r}\right\} $. The second stem corresponding to a direct sum of $%
+r$ copies of $A_{1}$ has the simple roots $S_{\frak{s}}=\left\{
+e_{1}-e_{r+1},e_{2}-e_{r+1},\ldots ,e_{r}-e_{r+1}\right\} $.
+Consider the edge $\lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$
+with $\beta
+_{r}=e_{r}-e_{r+1}$ and $\lambda _{r-1}=-\left( \widetilde{m}%
+_{r-1}+1\right) \beta _{r-1}$ \ with $\beta
+_{r-1}=e_{r-1}-e_{r+1}$ attached to it. Then the corresponding
+pair is $\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta
+_{r-1}=e_{r-1}-e_{r+1}\right)$. The intersection with the
+boundary of $\bar{C}_{A_{r-1}}$ orthogonal to $\alpha _{r-1}$
+fixes the second edge to be $\lambda _{r-1}=-\left(
+m_{r-1}+1\right) \beta _{r-1}$. The Dynkin index $m_{r-1}$ is to
+be used for the fundamental weight  $\omega _{r-1}.$ The\
+reflection $s_{\beta _{r}}$ sends $\lambda _{r-1}=-\left(
+m_{r-1}+1\right) \beta _{r-1}$ to $\lambda _{r,r-1}=-\left(
+m_{r-1}+1\right) \beta _{r-1}.$ Next consider the obtained edge
+$\lambda _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ and
+$\lambda _{r-2}=-\left( \widetilde{m}_{r-2}+1\right) \beta _{r-2}$
+with $\beta _{r-2}=e_{r-2}-e_{r+1} $ to obtain the index
+$\widetilde{m}_{r-2}=m_{r-2}$ and the edge $\lambda _{r-2}=-\left(
+m_{r-2}+1\right) \beta _{r-2}$ and so on till all the pairs of
+edges are properly fixed. Finally in $\bar{C}_{D_{r}}$ the element
+$\Phi _{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right)
+}=\sum_{w\in W_{\oplus
+^{r}A_{1}}}\varepsilon \left( w\right) e^{w\circ \left( \widetilde{\mu }+%
+\widetilde{\rho }\right) }$ can be constructed for the module
+$L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
+$\widetilde{\mu }=\sum m_{k}\beta _{k}.$ The simplest case
+$\Delta _{A_{2}}\approx (\Delta _{A_{1}\oplus u_{1}},\Delta
+_{A_{1}\oplus A_{1}})$ is presented in Example 4.1 and Figure 1.
+\item
+Type 3 $\Delta _{B_{2}}\approx (\Delta _{A_{1}},\Delta _{A_{2}}).$
 
-\begin{proof}
-Пусть $\alpha $ -- простой корень  $A_{1}$. Используем преобразования из группы Вейля чтобы перевести его в некоторый простой корень алгебры $\frak{g}$, например $\alpha _{1}$. Построим сингулярный элемент для модуля  $L_{\frak{g}\downarrow
-\widetilde{\frak{a}}}^{\mu }$, то есть  $\Psi _{\widetilde{\frak{a}}%
-}^{\left( L_{\frak{g}\downarrow \widetilde{\frak{a}}}^{\mu }\right)
-}=\sum_{\nu \in P_{\widetilde{\frak{a}}}^{+},b_{\nu }^{\left( \mu \right)
-}>0}b_{\nu }^{\left( \mu \right) }\Psi _{\widetilde{\frak{a}}}^{\left( \nu
-\right) }$, и разложим его $\Psi _{\widetilde{\frak{a}}}^{\left( L_{\frak{%
-g}\downarrow \widetilde{\frak{a}}}^{\mu }\right) }=k_{\xi }^{\left( \mu
-\right) }e^{\xi }$. В нашем случае представители $u$ в рекуррентном соотношении (\ref{recurrent rel}) определяются весом $\xi $ однозначно:
-\begin{equation*}
-\epsilon (u\left( \xi \right) )\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{%
-\frak{a}_{\perp }}\left( u\left( \xi \right) \right) }\right) =-s\left(
-\gamma _{0}\right) k_{\xi }^{\left( \mu \right) }-\sum_{\gamma \in \Gamma _{%
-\widetilde{\frak{a}}\rightarrow \frak{g}}}s\left( \gamma +\gamma _{0}\right)
-k_{\xi +\gamma }^{\left( \mu \right) }.
-\end{equation*}
-Тогда
-\begin{equation*}
-\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}_{\perp }}\left( u\left(
-\xi \right) \right) }\right) =\left| s\left( \gamma _{0}\right) k_{\xi
-}^{\left( \mu \right) }+\sum_{\gamma \in \Gamma _{\widetilde{\frak{a}}%
-\rightarrow \frak{g}}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma
-}^{\left( \mu \right) }\right|
-\end{equation*}
-и
-\begin{equation*}
-\mu _{\frak{a}_{\perp }}\left( u\left( \xi \right) \right) =\frac{1}{2}%
-\left( \dim \left( L_{A_{1}}^{\mu \left( \xi \right) }\right) -1\right)
-\alpha _{1}
-\end{equation*}
-Таким образом, множество обобщенных модулей Верма  $e^{\xi +\mathcal{D}%
-_{\frak{a}_{\perp }}}\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
-u\left( \xi \right) \right) }$ полностью фиксировано:
-\begin{equation*}
-\left\{ e^{\mu _{\widetilde{\mathfrak{a}}}\left( u\right) }\mathrm{ch}%
-M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }|u\in U\right\} .
-\end{equation*}
-Упорядочивая эти модули по длине $u$, мы получаем компоненты (\ref{Verma elements sequence}) резольвенты (\ref{resolution sequence}).
-\end{proof}
+This splint is illustrated in Example 4.1 and Figure 1, 
+$S_{A\_1}=\left\{ e_{1}-e_{2}\right\} $, $S_{A\_2}=\left\{
+e_{1},e_{2}\right\} $. The edge $\lambda _{\alpha _{2}}=\lambda
+_{\beta _{2}}=-\left( m_{2}+1\right) \beta _{2}$ is followed by
+$\lambda _{\beta _{1}}=-\left( \widetilde{m}_{1}+1\right) \beta
+_{1}$. Consider the pair $\left( \alpha
+_{1}=e_{1}-e_{2},\beta _{1}=e_{1}\right)$. The end of the edge
+$\lambda _{\beta _{1}}$ must indicate a weight
+invariant under the reflexion $s_{\alpha _{1}}$.  Its length is thus fixed: 
+$\lambda _{\beta _{1}}=-\left( m_{1}+1\right) \beta _{1}$. In the
+coimage of
+the second stem, that is in the root system $\Delta_{A_{2}}$, the reflection 
+$s_{\beta _{2}}$ sends $\lambda _{\beta _{1}}=-\left(
+m_{1}+1\right) \beta
+_{1}$ to $\lambda _{2,3}$, thus the latter edge has the same length in $%
+\beta _{3}=e_{1}+e_{3}$, we have $\lambda _{2,3}=-\left(
+m_{1}+1\right)
+\beta _{3}$ with $\beta _{3}=e_{1}+e_{3}$. The irreducible $\frak{s}$%
+-module has the highest weight $\widetilde{\mu }=m_{1}\widetilde{\omega }%
+_{1}+m_{2}\widetilde{\omega }_{2}$. In Figure 1 we see the
+details of these relations in a particular case where
+$L_{B_{2}}^{\left[ 3,2\right] }$ is reduced to a subalgebra
+$A_{1}\oplus u\left( 1\right) $ and the
+corresponding highest weights (with their multiplicities) form the diagram $%
+\mathcal{N}_{A_2}^{\left[ 3,2\right] }$ .
+\end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\subsection{Заключение}
-
-\label{sec:conclusions}
-В работе \cite{2010arXiv1007.0318L} было показано, что метод веера вложения работает также и для специальных вложений. Надо заметить, что  разложения Вейля-Верма также могут быть получены в этом случае. Резольвенты, соответствующие специальным подалгебрам, описывают соотношения между проекциями характера начального модуля и обобщенными модулями Верма со старшими весами в подпространстве $h^*$.
-
-Рассмотрим ситуацию, когда выбор простых корней зафиксирован какими-то внешними факторами (возникающими, например, из требований физических приложений). В этом случае ортогональный партнер не может порождаться только простыми корнями. Элементы   $\frak{u}_{I}^{+}:=\sum_{\eta \in \Delta
-^{+}\setminus \Delta _{I}^{+}}\frak{g}_{\eta }$ не образуют подалгебру в  $%
-\mathfrak{g}$, так как некоторые не простые корни отсутствуют в  $\Delta ^{+}\setminus
-\Delta _{I}^{+}$. Важно отметить, что в этом случае формула Вейля-Верма по-прежнему существует. В ней обобщенные модули Верма соответствуют сжатиями \cite{Doebner1967Melsheimer} алгебры $%
-\frak{n}^{+}$ и соотношения Вейля-Верма описывают разложение пространства представления $L^{\mu}$ в набор обобщенных модулей Верма сжатой алгебры  $U\left(\frak{n}_c^{+}\right)$. Весовые векторы образованы базисом Пуанкаре-Биркгофа-Витта алгебр $U\left(\frak{n}_c^{+}\right)$ и
-$U\left( \mathfrak{a}_{\bot} \right)$. Чтобы рассмотреть такое пространство как  $%
-\mathfrak{g}$-модуль мы должны выполнить деформацию \cite
-{Nijenhuis1966Richardson} алгебры $\frak{n}_c^{+}$ (то есть восстановить первоначальный закон композиции). Пространство сохраняется, и после такой деформации генераторы начальной алгебры будут действовать на нем правильным образом.
-
-
-
-%%
-%% End of file
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "thesis"
-%%% End: 

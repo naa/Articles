@@ -1004,226 +1004,147 @@ $\mathfrak{g}$ и $\mathfrak{a}$, а  $g$ и $a$ -- соответствующи
 
 Если рассмотреть соотношение (\ref{eq:111}) и асимптотику функций ветвления, то можно доказать теорему о конечной приводимости \cite{kac1988modular}. Она утверждает, что для конформного вложения  $\af\longrightarrow\mathfrak{g}$ лишь конечное число коэффициентов ветвления отлично от нуля.
 
-\begin{mynote} The orthogonal subalgebra $\afb$ is always trivial
-for conformal embeddings $\af\longrightarrow \mathfrak{g}$.
+\begin{mynote} Ортогональная подалгебра  $\afb$ всегда тривиальна в случае конформного вложения $\af\longrightarrow \mathfrak{g}$.
 \begin{proof}
-Consider the modes expansion of the energy-momentum tensor
+Рассмотрим разложение тензора энергии-импульса на моды:
 \begin{equation*}
 \label{eq:47}
   T(z)=\frac{1}{2(k+h^v)}\sum_n z^{-n-1}L_n.
 \end{equation*}
-The modes $L_n$ are constructed as combinations of normally-ordered products of $\gf$-algebra generators,
+Моды $L_n$ представляют собой комбинации нормально упорядоченных произведений генераторов алгебры $\gf$,
 \begin{equation*}
 \label{eq:48}
   L_n=\frac{1}{2(k+h^v)}\sum_{\alpha}\sum_m:X^{\alpha}_m X^{\alpha}_{n-m}: \; .
 \end{equation*}
-In case of a conformal embedding energy-momentum tensors $T_{\mathfrak{g}}(z)$ and $T_{\af}(z)$ are
-equal (see (\ref{eq:2})).
+При конформном вложении тензоры энергии-импульса  $T_{\mathfrak{g}}(z)$ и $T_{\af}(z)$ равны (см. (\ref{eq:2})).
 
-In these combinations we are to substitute  $\af$-generators in terms of $\mathfrak{g}$-generators
-and obtain the energy-momentum tensor $T_{\mathfrak{g}}$.
-But if the set of generators attributed to $\Delta_{\afb}$ is not empty this is not possible,
-since $T_{\mathfrak{g}}$ contains generators $X^{\alpha}_n$ for $\alpha\in \Delta_{\afb}$.
+В эти комбинации мы должны подставить генераторы подалгебры $\af$ выраженные через генераторы $\mathfrak{g}$ и получить тензор энергии-импульса $T_{\mathfrak{g}}$. Но если набор генераторов, связанных с  $\Delta_{\afb}$ не пуст, это не возможно, так как  $T_{\mathfrak{g}}$ содержит генераторы $X^{\alpha}_n$, где $\alpha\in \Delta_{\afb}$.
 \end{proof}
 \end{mynote}
 
 
 
-\subsubsection{Special embedding $\hat{A}_1\rightarrow\hat{A}_2$.}
+\subsubsection{Специальное вложение $\hat{A}_1\rightarrow\hat{A}_2$.}
 \label{sec:spec-embedd-hata_1s}
+Рассмотрим следующие пример аффинной алгебры Ли $\gf$ и аффинной подалгебры $\af$:
+$\hat{A}_1 \rightarrow \hat{A}_2$ и вложение является аффинным расширением специального вложения $A_1 \rightarrow A_2$ с индексом вложения $x_e=4$. Так как мы должны рассматривать $\gf$-модули уровня один, соответствующие  $\af$-модули будут иметь уровень $\tilde{k}=kx_e=4$.
 
-Consider the case where both $\gf$ and $\af$ are affine Lie algebras:
-$\hat{A}_1 \rightarrow \hat{A}_2$ and the injection is the affine extension of the
-special injection $A_1 \rightarrow A_2$ with the embedding index $x_e=4$.
-As far as $\gf$-modules to be considered are of level one,
-the necessary $\af$-modules will be of level $\tilde{k}=kx_e=4$.
+Существует три фундаментальных веса алгебры  $\hat{A}_2$ имеющих уровень один. 
+Легко видеть, что множество $\Delta_{ \afb }$ пусто и подалгебра $\afb=0$. Тогда ${\cal D}_{\afb}=0$, $\hf_{\perp}$ -- одномерная абелева подалгебра и размерность $\tilde\afb=\afb\oplus \hf_{\perp}$ также равна 1. Удобно выбрать классический корень для подалгебры $\hat{A}_1$ равным $\beta=\frac{1}{2}(\alpha_1+\alpha_2)$.
 
-There exist three level one fundamental weights of $\hat{A}_2$.
-It is easy to see that the set $\Delta_{ \afb }$ is empty and the subalgebra $\afb=0$.
-Then ${\cal D}_{\afb}=0$, $\hf_{\perp}$ is one-dimensional abelian subalgebra and
-the dimension of $\tilde\afb=\afb\oplus \hf_{\perp}$ is also 1.
-It is convenient to choose the classical root for $\hat{A}_1$ to be
-$\beta=\frac{1}{2}(\alpha_1+\alpha_2)$.
-
-Using Definition (\ref{fan-definition})  we construct the fan $\Gamma_{\hat A_1\to\hat A_2}$.
-In this case $\gamma_0 =0$ and its sign $s\left( 0 \right)=-1$ thus we are to use the
-sign function $s(\gamma)$ (see Figure \ref{fig:AffineA2A1Fan}).
+Используем Определение (\ref{fan-definition}) и построим веер $\Gamma_{\hat A_1\to\hat A_2}$. В этом случае $\gamma_0 =0$ и знак  $s\left( 0 \right)=-1$, то есть мы используем знаковую функцию $s(\gamma)$ (см. Рисунок \ref{fig:AffineA2A1Fan}).
 
 
 \begin{figure}[h!bt]
   \centering
   \includegraphics[width=125mm]{figure6}
 
-  \caption{The fan $\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ for $\hat{A_1}\rightarrow \hat{A_2}$
-  in the basis $\left\{\beta,\delta \right\}$. Notice that $\gamma_0 =0$, so values of $s(\gamma)$
-  are prescribed to the weights $\gamma\in \Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$}
+  \caption{Веер  $\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ для вложения $\hat{A_1}\rightarrow \hat{A_2}$ в базисе $\left\{\beta,\delta \right\}$. Заметим, что  $\gamma_0 =0$ и значения $s(\gamma)$ приписаны к весам $\gamma\in \Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$}
   \label{fig:AffineA2A1Fan}
 \end{figure}
 
-Consider the module $L^{\omega_0=(0,0;1;0)}$. Here we use the (finite part; level; grade)
-presentation of the highest weight and the finite part
-coordinates are the Dynkin indices (see section(\ref{sec:notation})).
+Рассмотрим модуль $L^{\omega_0=(0,0;1;0)}$. Здесь мы используем обозначение (конечномерная часть; уровень; грейд)
+для старшего веса и координаты конечномерной части даются индексами Дынкина (см. раздел \ref{sec:weights-roots}).
 
-The set $\widehat{\Psi^{(\omega_0)}}$  is displayed in Figure
-\ref{fig:affine_A2_anom_point} up to the sixth grade.
+Множество весов $\widehat{\Psi^{(\omega_0)}}$ показано на Рисунке \ref{fig:affine_A2_anom_point} вплоть до шестого грейда.
 
 \begin{figure}[h!tb]
   \hspace*{-1.5cm}
   \includegraphics[width=180mm]{figure7}
-  \caption{Singular weights of the module $L_{\hat{A_2}}^{\omega_0}=L^{(0,0;1;0)}_{\hat{A_2}}$.
-   The classical (grade zero) cross-section of the diagram is shown separately
-   in the right part of the figure.
-  We use the orthogonal basis with the unit vector equal to $\alpha_1$.
-  The weights $w (\omega_0+\rho)-\rho$ are marked by crosses when $\epsilon(w)=1$ and
-by box when $\epsilon(w)=-1$. Simple roots of the classical subalgebra $A_2$ are
-grey and the grey diagonal plane corresponds to the Cartan subalgebra of
-the embedded algebra $\hat{A}_1$.}
+  \caption{Сингулярные веса модуля $L_{\hat{A_2}}^{\omega_0}=L^{(0,0;1;0)}_{\hat{A_2}}$. Классическое сечение (нулевой грейд) диаграммы показано отдельно в правой части рисунка. 
+    Мы используем ортогональный базис с единичным вектором, равным $\alpha_1$. Веса $w (\omega_0+\rho)-\rho$ показаны крестами, если $\epsilon(w)=1$ и квадратами при $\epsilon(w)=-1$. Простые корни классической подалгебры  $A_2$ показаны серым, а диагональная плоскость соответствует подалгебре Картана вложенной алгебры $\hat{A}_1$.}
   \label{fig:affine_A2_anom_point}
 \end{figure}
 
-The next step is  to project the anomalous weights to $P_{\hat A_1}$.
-The result is the element $\Psi ^{\left( \omega_0 \right) }_{\left(  \hat A_1\, , \, \afb=0 \right)}$
-presented in Figure \ref{fig:AffineA2_A1_anom_proj} up to the twelfth grade.
+Следующий шаг состоит в проектировании сингулярных весов на $P_{\hat A_1}$. В результате получается элемент $\Psi ^{\left( \omega_0 \right) }_{\left(  \hat A_1\, , \, \afb=0 \right)}$, изображенный на Рисунке \ref{fig:AffineA2_A1_anom_proj} вплоть до двенадцатого грейда.
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=130mm]{figure8}
-  \caption{The singular element $\Psi ^{\left( \omega_0 \right) }_{\left(  \hat A_1\, , \, \afb=0 \right)}$
-  displayed in $P_{\hat A_1}$
-  with the basis $\left\{\beta,\delta \right\}$.}
+  \caption{Сингулярный элемент $\Psi ^{\left( \omega_0 \right) }_{\left(  \hat A_1\, , \, \afb=0 \right)}$ показан в $P_{\hat A_1}$ с базисом $\left\{\beta,\delta \right\}$.}
   \label{fig:AffineA2_A1_anom_proj}
 \end{figure}
 
-
-Using the recurrent relation (\ref{recurrent-relation}) with the fan
-$\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ and the singular weights in
-$\Psi ^{\left( \omega_0 \right) }_{\left(  \hat A_1\, , \, \afb=0 \right)}$
-we get the anomalous branching coefficients presented
-in Figure \ref{fig:AffineA2_A1_branching}.
+Используя рекуррентное соотношение  (\ref{recurrent-relation}) с веером
+$\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ и сингулярными весами $\Psi ^{\left( \omega_0 \right) }_{\left(  \hat A_1\, , \, \afb=0 \right)}$, мы получаем сингулярные коэффициенты ветвления, показанные на Рисунке \ref{fig:AffineA2_A1_branching}.
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=130mm]{figure9}
-  \caption{Anomalous branching coefficients for $\hat{A_1}\subset \hat{A_2}$. The boundaries
-  of the main Weyl chamber $\bar{C}_{\hat{A}_1}$
- are indicated by black lines. Two anomalous highest weights located
- in the main Weyl chamber are marked by stars.
- Both have multiplicity 1, so the branching coefficients for them are equal 1.}
+  \caption{Сингулярные коэффициенты ветвления для вложения $\hat{A_1}\subset \hat{A_2}$. Границы главной камеры Вейля $\bar{C}_{\hat{A}_1}$ показаны черными линиями. Два сингулярных веса, расположенные в главной камере Вейля, отмечены звездочками. Они оба имеют кратность 1, то есть соответствующие коэффициенты ветвления равны 1.}
   \label{fig:AffineA2_A1_branching}
 \end{figure}
-Inside the Weyl chamber $\bar{C}_{\hat{A}_1}$
-(its boundaries are indicated in Figure \ref{fig:AffineA2_A1_branching})
-there are only two nonzero anomalous weights and both have multiplicity 1.
-These are the highest weights of $\af$-submodules and the multiplicities are their branching
-coefficients. Thus we get the decomposition
+Внутри камеры Вейля $\bar{C}_{\hat{A}_1}$ (ее границы показаны на Рисунке \ref{fig:AffineA2_A1_branching}) находятся только два ненулевых сингулярных веса и оба они имеют кратность 1. Это старшие веса подмодулей $\af$ и их кратности равны коэффициентам ветвления. То есть мы получаем разложение
 \begin{equation*}
   \label{eq:43}
   L^{(0,0;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(0;4;0)}\oplus L_{\hat{A_1}}^{(4;4;0)}.
 \end{equation*}
-Notice that the finite reducibility theorem holds.
+Заметим, что теорема о конечной приводимости выполняется.
 
-The same fan $\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ can be used for any other highest weight
-module $L^{\mu}_{\hat{A_2}}$. In particular for irreducible modules of level one  we get the trivial
-branching:
+Тот же веер $\Gamma_{\hat{A_1}\rightarrow \hat{A_2}}$ можно использовать для других модулей старшего веса $L^{\mu}_{\hat{A_2}}$. В частности для неприводимых модулей уровня один мы получаем тривиальное ветвление:
 \begin{equation*}
   \label{eq:44}
    L^{(1,0;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(2;4;0)},\\
    L^{(0,1;1;0)}_{\hat{A_2}\downarrow \hat{A_1}}= L_{\hat{A_1}}^{(2;4;0)}.
 \end{equation*}
 
-Using these results the modular-invariant partition function is easily found,
+Используя эти результаты легко получить модулярно-инвариантную статсумму:
 \begin{equation*}
   \label{eq:45}
   Z=\left|\chi_{(4;4;0)}+\chi_{(0;4;0)}\right|^2+2\chi_{(2;4;0)}^2.
 \end{equation*}
 
-\subsubsection{Coset models}
+\subsubsection{Coset-модели}
 \label{sec:coset-models}
 
-Coset models \cite{Goddard198588} tightly connected with the gauged WZW-models are actively studied
-in string theory, especially in string models on anti-de-Sitter space
-\cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km,Maldacena:2001ky,Aharony:1999ti}.
-The characters in coset models are proportional to branching functions,
+Coset-модели \cite{Goddard198588} тесно связанные с калибровочными ВЗНВ-моделям активно изучаются в теории струн, особенно в струнных моделях в пространстве анти де Ситтера
+\cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km,Maldacena:2001ky,Aharony:1999ti}. Характера в coset-моделях пропорциональны функциям ветвления.
 \begin{equation}
   \label{eq:31}
   \chi^{(\mu)}_{\nu}(\tau)=e^{2\pi i \tau (m_{\mu}-m_{\nu})} b^{(\mu)}_{\nu}(\tau),
 \end{equation}
-with
+где
 \begin{equation*}
   \label{eq:46}
   m_{\mu}=\frac{\left|\mu+\rho\right|^2}{2(k+g)}-\frac{\left|\rho\right|^2}{2g}.
 \end{equation*}
-The problem of branching functions construction in the coset models was considered
-in  \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}.
+Проблема построения функций ветвления для  coset-моделей рассматривалась в работах  \cite{Dunbar:1992gh}, \cite{Hwang:1994yr}, \cite{lu1994branching}.
 
-Let us return to our example \ref{sec:regul-embedd-a_1} and consider the affine extension of the injection
-$A_1 \rightarrow B_2$.
-Since this embedding is regular and $x_e=1$, the subalgebra modules and the initial module are of the same level.
-The set  of positive roots with zero projection
-on the root space of the subalgebra $\hat{A_1}$ is the same as in the finite-dimensional case:
-$\Delta^{+}_{\afb}=\left\{ \alpha_1 \right\}$ and $\afb=A_1$. It is easy to see that here $\hf_{\perp}$
-is trivial and ${\cal D}_{\afb}=0$.
+Вернемся к нашему примеру \ref{sec:regul-embedd-a_1} и рассмотрим аффинное расширение вложения $A_1 \rightarrow B_2$. Так как вложение регулярно и индекс $x_e=1$, модули подалгебры и исходный модуль имеют одинаковый уровень. Множество положительных корней с нулевой проекцией на корневое пространство подалгебры  $\hat{A_1}$ то же, что и в конечномерном случае: $\Delta^{+}_{\afb}=\left\{ \alpha_1 \right\}$ и $\afb=A_1$. Легко видеть, что здесь $\hf_{\perp}$ тривиальна и  ${\cal D}_{\afb}=0$.
 
-Using Definition (\ref{fan-definition}) we obtain the fan
-$\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$.
-Notice that here the lowest weight  $\gamma_0$ of the fan  is zero and $s\left( \gamma_0 \right)=-1$.
-Values of the sign function $s(\gamma)$ for
-$ \gamma \in \Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$ are presented in Figure \ref{fig:AffineB2A1Fan}.
-We restricted the computation to the twelfth grade.
+Используя Определение (\ref{fan-definition}) мы получаем веер вложения $\Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$. Заметим, что наименьший вес веера $\gamma_0$ равен нулю и  $s\left( \gamma_0 \right)=-1$. Значения знаковой функции  $s(\gamma)$ для $ \gamma \in \Gamma_{\hat{A_1} \longrightarrow  \hat{B_2} }$ показаны на Рисунке \ref{fig:AffineB2A1Fan}.
+Мы ограничили вычисление двенадцатым грейдом. 
 \begin{figure}[h!bt]
   \centering
   \includegraphics[width=135mm]{figure10}
-  \caption{The fan $\Gamma_{\hat{A_1}\rightarrow \hat{B_2}}$
-  for $\hat{A_1}\rightarrow \hat{B_2}$ in the basis $\left\{\beta,\delta \right\}$. Values of  $s(\gamma)$ are shown for the
-  weights $\gamma\in \Gamma_{\hat{A_1}\rightarrow \hat{B_2}}$}
+  \caption{Веер $\Gamma_{\hat{A_1}\rightarrow \hat{B_2}}$ для вложения $\hat{A_1}\rightarrow \hat{B_2}$ в базисе $\left\{\beta,\delta \right\}$. Значения $s(\gamma)$ показаны для весов $\gamma\in \Gamma_{\hat{A_1}\rightarrow \hat{B_2}}$}
   \label{fig:AffineB2A1Fan}
 \end{figure}
 
-
-Consider the level one module $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  with the highest weight $\omega_1=(1,0;1;0)$,
-where the finite part coordinates are in the orthogonal basis $e_1,e_2$.
-The set of anomalous weights for this module up to the sixth grade is presented in Figure \ref{fig:affine_B2_anom_point}.
+Рассмотрим модуль уровня один $L^{\left( 1,0;1;0 \right)}_{\hat{B_2}}$  со старшим весом  $\omega_1=(1,0;1;0)$, где координаты конечномерной части даны в ортогональном базисе $e_1,e_2$. Множество сингулярных весов для этого модуля вплоть до шестого грейда приведено на Рисунке \ref{fig:affine_B2_anom_point}.
 
 \begin{figure}[h!tb]
 %  \hspace*{-2cm}
   \includegraphics[width=140mm]{figure11}
-  \caption{Singular weights for $L^{(1,0;1;0)}_{\hat B_2 }$. The standard basis $\{e_1,e_2\}$ is used for the classical cross-section.
-  The weights in the zero grade are the same as in Figure \ref{fig:B2_A1}.
-  The weights $w (\omega_1+\rho)-\rho$ are marked by crosses if $\epsilon(w)=1$ and by boxes for $\epsilon(w)=-1$.
-Simple roots of the classical subalgebra $B_2$ are grey and grey diagonal plane corresponds to the Cartan subalgebra
-of the embedded algebra $\hat{A}_1$.}
+  \caption{Сингулярные веса модуля $L^{(1,0;1;0)}_{\hat B_2 }$. В классическом сечении используется стандартный базис  $\{e_1,e_2\}$. Веса в нулевом грейде те же, что и на Рисунке \ref{fig:B2_A1}. Веса  $w (\omega_1+\rho)-\rho$ отмечены крестами, если $\epsilon(w)=1$ и квадратами при $\epsilon(w)=-1$. Простые корни классической подалгебры  $B_2$ показаны серым, а диагональная плоскость соответствует подалгебре Картана вложенной алгебры $\hat{A}_1$.}
   \label{fig:affine_B2_anom_point}
 \end{figure}
 
-According to the recursive algorithm \ref{sec:algorithm} we project these anomalous weights to
-$P_{\hat{A_1}}$ and find the dimensions of the corresponding
-$\afb$-modules $L^{\pi_{\afb}(w(\mu+\rho))-\rho_{\afb}}_{\afb}$.
-In the grade zero this projection gives exactly the set
-$\Psi ^{\left( \mu \right) }_{\left(  A_1, A_1 \right)}$ for the embedding of
-the classical Lie algebra $A_1\rightarrow B_2$. To see this compare Figure \ref{fig:B2_A1}
-with Figure \ref{fig:AffineB2_A1_anom_proj}
-where the singular element $\Psi ^{\left( \mu \right) }_{\left(  \widehat{A_1}, A_1 \right)}$
-for the affine embedding $\hat{A_1}$ is presented up to the twelfth grade.
+В соответствии с рекурсивным алгоритмом  \ref{sec:algorithm} мы проектируем сингулярные веса на $P_{\hat{A_1}}$ и вычисляем размерности $\afb$-модулей $L^{\pi_{\afb}(w(\mu+\rho))-\rho_{\afb}}_{\afb}$. В нулевом грейде эта проекция дает в точности множество $\Psi ^{\left( \mu \right) }_{\left(  A_1, A_1 \right)}$, соответствующее вложению классической алгебры Ли  $A_1\rightarrow B_2$. Это можно заметить сравнивая Рисунок \ref{fig:B2_A1} и Рисунок \ref{fig:AffineB2_A1_anom_proj}, на котором сингулярный элемент $\Psi ^{\left( \mu \right) }_{\left(  \widehat{A_1}, A_1 \right)}$ для аффинного вложения  $\hat{A_1}\to\hat{B_{2}}$  показан вплоть до двенадцатого грейда.
 \begin{figure}[h!tb]
   \centering
   \includegraphics[width=120mm]{figure12}
-  \caption{Singular element $\Psi ^{\left( \omega_1 \right) }_{\left(  \widehat{A_1}, A_1 \right)}$
-  in the basis $\{\beta,\delta\}$. Dimensions of the corresponding $\afb=A_1$-modules
-  with the signs $\epsilon(u)$ are indicated.}
+  \caption{Сингулярный элемент $\Psi ^{\left( \omega_1 \right) }_{\left(  \widehat{A_1}, A_1 \right)}$ в базисе $\{\beta,\delta\}$. Размерности соответствующих  $\afb=A_1$-модулей со знаками  $\epsilon(u)$ представлены на рисунке.}
   \label{fig:AffineB2_A1_anom_proj}
 \end{figure}
 
 \begin{figure}[h!bt]
   \centering
   \includegraphics[width=120mm]{figure13}
-  \caption{Anomalous branching coefficients for $\hat{A_1}\rightarrow \hat{B_2}$. The basis $\{\beta,\delta\}$ is used.
- Boundaries  of the main Weyl chamber $\bar{C}_{\hat{A}_1}$
- are indicated by black lines. Anomalous branching coefficients
- inside the main Weyl chamber are equal to branching coefficients of the embedding $\hat{A_1}\rightarrow \hat{B_2}$.}
+  \caption{Сингулярные коэффициенты ветвления для вложения $\hat{A_1}\rightarrow \hat{B_2}$. Использован базис $\{\beta,\delta\}$. Границы главной камеры Вейля $\bar{C}_{\hat{A}_1}$ показаны черными линиями. Сингулярные коэффициенты ветвления внутри главной камеры Вейля равны коэффициентам ветвления для вложения $\hat{A_1}\rightarrow \hat{B_2}$.}
   \label{fig:AffineB2_A1_branching}
 \end{figure}
 
-Multiplicities of the highest weights inside the  Weyl chamber
-$\bar{C}^{\left( 0 \right)}_{\hat{A_1}}$
-define the following branching coefficients (up to the twelfth grade),
+Кратности старших весов внутри главной камеры Вейля
+$\bar{C}^{\left( 0 \right)}_{\hat{A_1}}$ определяют следующие значения коэффициентов ветвления (до двенадцатого грейда):
 \begin{eqnarray*}
   \label{eq:28}
   L^{\omega_1}_{\hat{B_2}\downarrow \hat{A_1}}
@@ -1241,7 +1162,7 @@ define the following branching coefficients (up to the twelfth grade),
     &&797 L_{\hat{A_1}}^{\omega_0-11\delta}\oplus 1080 L_{\hat{A_1}}^{\omega_1-12\delta}\oplus
     1180 L_{\hat{A_1}}^{\omega_0-12\delta}\oplus \dots
 \end{eqnarray*}
-This result can be presented as the set of branching functions:
+Этот результат можно представить в виде набора функций ветвления:
 \begin{eqnarray*}
   \label{eq:29}
   \begin{array}{cc}
@@ -1253,11 +1174,9 @@ This result can be presented as the set of branching functions:
     & 202\,q^{8}+306\,q^{9}+482\,q^{10}+714\,q^{11}+1080\,q^{12}+\dots
   \end{array}
 \end{eqnarray*}
-Here $q=\exp (2\pi i \tau)$ and the lower index enumerates the branching functions according
-to their highest weights in $P^+_{\hat{A_1}}$.
-These are the fundamental weights $\omega_0=\lambda_0=(0,1,0),\; \omega_1=\alpha/2=(1,1,0)$.
+Здесь $q=\exp (2\pi i \tau)$ и нижний индекс нумерует функции ветвления по их старшим весам в  $P^+_{\hat{A_1}}$, равным фундаментальным весам $\omega_0=\lambda_0=(0,1,0),\; \omega_1=\alpha/2=(1,1,0)$.
 
-Now we can return to (\ref{eq:31}),
+Теперь мы можем вернуться к равенству (\ref{eq:31}) и получить выражение для характеров coset-модели $B_2/A_1$:
 \begin{equation*}
   \label{eq:35}
   \begin{array}{cc}
@@ -1267,52 +1186,15 @@ Now we can return to (\ref{eq:31}),
     &\left. 222\,q^{8}+ 346\,q^{9}+ 530\,q^{10}+ 797\,q^{11}+ 1180\,q^{12}+\dots\right),
   \end{array}
 \end{equation*}
-and finally obtain expansions for the $B_2/A_1$-coset characters.
 
-\section{Выводы к первой главе}
+\section{Выводы ко второй главе}
 \label{sec:conclusion}
-We have demonstrated that the injection fan technique can be used to deal with arbitrary
-reductive subalgebras (maximal as well as  nonmaximal).
-It was shown that the branching problem for $\af \subset \gf$  is tightly connected with
-the properties of the orthogonal partner $ \af_{\perp
-} $ of $\af$. The subalgebra $\afb$ corresponds to the subset
-$\Delta^{+}_{\afb}$ of positive roots in $\Delta_{\mathfrak{g}}^{+}$ that trivialize
-the Cartan subalgebra $\hf_{\afb}$.
-Both the injection fan and the sets of singular weights for
-highest weight $\gf$-modules depend substantially on the structure of $\afb$ and its submodules.
-For the fan $\Gamma_{\af\rightarrow \gf}$ this dependence is almost obvious:
-in the element $\Phi_{\af\rightarrow \gf}$ the factors corresponding to the roots
-of $\Delta^{+}_{\afb}$ are eliminated.
-The transformation in the set of projected singular weights is more interesting.
-We have found out that in the new singular element
-$\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ the coefficients depend on
-the $\afb$-submodules (their highest weights $\mu _{\widetilde{\af_{\perp }}}\left( u\right)$
-are fixed by the injection and by the weights of the initial
-element $\Psi^{\mu}$).
-Fortunately no more information on $L^{\mu _{\widetilde{\af_{\perp }}}\left( u\right)}
-_{\left\{ \afb \right\}}$-submodules is necessary than their dimensions.
-In the new singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$
-weight multiplicities are equal to dimensions
-$\dim\left(L^{\mu _{\widetilde{\af_{\perp }}}\left( u\right)}_{\left\{ \afb \right\}}\right)$
-of the corresponding $\afb$-modules
-multiplied by the values $\epsilon (u)$. As a result
-the highest weights of $\af$-submodules and their
-multiplicities are subject to the set of linear equations (\ref{eq:17}).
-These properties are valid for any reductive subalgebra $\af\rightarrow \gf$ and
-the set can be redressed to the form of recurrent relations to be solved step by step.
 
-The efficiency of the obtained algorithm was illustrated in various examples.
-In particular we considered the construction of modular-invariant partition functions
-in the framework of conformal embedding method and the coset construction in rational conformal field theory.
-This construction is useful in the study of WZW-models
-emerging in the context of the AdS/CFT correspondence \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
+Мы продемонстрировали, что техника веера вложения может использоваться для работы с произвольными редуктивными подалгебрами (как максимальными, так и не максимальными). Также показано, что проблема редукции для  $\af \subset \gf$ тесно связана со свойствами ортогонального партнера $ \afb $ подалгебры $\af$. Подалгебра  $\afb$ соответствует подмножеству положительных корней $\Delta^{+}_{\afb}$ в $\Delta_{\mathfrak{g}}^{+}$, которое тривиализует подалгебру Картана $\hf_{\afb}$. Веер вложения и множества сингулярных весов для модулей старшего веса алгебры $\gf$ существенным образом зависят от структуры  $\afb$ и ее подмодулей.  Для веера  $\Gamma_{\af\rightarrow \gf}$ эта зависимость почти очевидна: в элементе  $\Phi_{\af\rightarrow \gf}$ исключены множители, соответствующие корням  $\Delta^{+}_{\afb}$. Преобразование множества спроектированных сингулярных весов более интересно. Мы показали, что в новом сингулярном элементе $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ коэффициенты зависят от $\afb$-подмодулей (их старшие веса $\mu _{\widetilde{\afb}}\left( u\right)$ заданы вложением и весами первоначального элемента $\Psi^{\mu}$). К счастью, для вычислений не требуется никакой информации о  $L^{\mu _{\widetilde{\afb}}\left( u\right)}_{\left\{ \afb \right\}}$-подмодулях, кроме их размерностей. В новом сингулярном элементе $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$ кратности весов равны размерностям $\dim\left(L^{\mu _{\widetilde{\afb}}\left( u\right)}_{\left\{ \afb \right\}}\right)$ соответствующих  $\afb$-модулей, умноженным на значения $\epsilon (u)$. В результате старшие веса подмодулей $\af$ и их кратности удовлетворяют набору линейных соотношений (\ref{eq:17}). Эти свойства выполняются для любой редуктивной подалгебры $\af\rightarrow \gf$ и уравнения могут быть переписаны в виде рекуррентных соотношений, которые можно решать последовательно.
 
-Further amelioration of the algorithm can be achieved by using
-the folded fan technique \cite{il2010folded}. It must be mentioned that even in the case
-of string functions the explicit solution of the corresponding recurrent relations is
-a difficult problem (see \cite{il2010folded} for details). Nevertheless we hope that by
-developing the procedure of folding one could get explicit solutions
-for at least some of branching functions and the corresponding coset characters.
+Эффективность полученного алгоритма была продемонстрирована на различных примерах. В частности, мы рассмотрели построение модулярно-инвариантных статсумм в методе конформных вложений и coset-конструкцию моделей рациональной конформной теории поля. Эти конструкции полезны при изучении ВЗНВ-моделей, возникающих в контексте AdS/CFT соответствия \cite{Maldacena:2000hw,Maldacena:2000kv,Maldacena:2001km}.
+
+Дальнейшее улучшение алгоритма может быть достигнуто при использовании техники сложенных вееров \cite{il2010folded}. Нужно отметить, что даже в случае струнных функций явное решение соответствующих рекуррентных соотношений представляет собой сложную проблему (см. подробности в работе\cite{il2010folded}). Тем не менее, мы надеемся, что развитие процедуры сложения позволит получить явные решения хотя бы для некоторых функций ветвления и соответствующих характеров coset-моделей.
 
 %-----------------------------------------------------------------------------------------------------
 
