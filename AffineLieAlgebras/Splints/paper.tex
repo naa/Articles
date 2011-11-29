@@ -28,7 +28,7 @@
 
 
 \author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$ \\
-  {\small $^1$ Department of High-energy and elementary particle physics, SPb State University}\\
+  {\small $^1$ Department of High-Energy and Elementary Particle Physics, SPb State University}\\
   {\small 198904, Saint-Petersburg, Russia}\\
   {\small e-mail: lyakh1507@nm.ru}\\
   {\small$^{2}$ Chebyshev Laboratory,}\\
@@ -38,19 +38,19 @@
 \maketitle
 
 \begin{abstract}
-Splint of root system of simple Lie algebra appears naturally in
-the study of (regular) embeddings of reductive subalgebras. It can
-be used to derive branching rules. We show that application of
-splint properties drastically simplifies calculations of
+Splint of root system for simple Lie algebra appears naturally in
+studies of (regular) embeddings of reductive subalgebras. Splint can
+be used to construct branching rules. We demonstrate that 
+splint properties implementation drastically simplify calculations of
 branching coefficients.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:Introduction}
 
-Splint $\phi$ of a root system $\Delta_1$ into a root system
-$\Delta$ is a bijective map of roots of $\Delta_{1}$ to (proper)
-subset of $\Delta$ which commutes with vector composition law in
+Embedding $\phi$ of a root system $\Delta_1$ into a root system
+$\Delta$ is a bijective map of roots of $\Delta_{1}$ to a (proper)
+subset of $\Delta$ that commutes with vector composition law in
 $\Delta_{1}$ and $\Delta$.
 \begin{equation*}
 \phi:\Delta_1 \longrightarrow \Delta
@@ -62,27 +62,29 @@ $\Delta_{1}$ and $\Delta$.
 
 Note that the image $Im(\phi)$ must not inherit the root system
 properties except the addition rules equivalent to the addition
-rules in $\Delta_{1}$ (for pre-images). The term {\it splint} was
+rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and $\phi_2$  
+can splinter $\Delta$  when the latter can be presented 
+as a disjoint union of images $Im(\phi_1)$ and $Im(\phi_2)$.   
+The term {\it splint} was
 introduced by D. Richter in  \cite{richter2008splints} where the
 classification of splints for simple Lie algebras was obtained.
-There was also mentioned that the notion of splint must have tight
-connections with the injection fan approach. The fan $\Gamma
+There was also mentioned that splint must have tight
+connections with the injection fan construction. The fan $\Gamma
 \subset \Delta$ was
-introduced in \cite{lyakhovsky1996rra} as the subset of root system describing recurrent
-properties of branching coefficients for maximal embeddings  . Injection fan is an
+introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent
+properties of branching coefficients for maximal embeddings. Injection fan is an
 efficient tool to study branching rules. Later this construction
 was generalized to non-maximal embeddings and infinite-dimensional
 Lie algebras in \cite{2010arXiv1007.0318L, ilyin812pbc}.
 
-In the present paper we study the connection of splint with
-injection fan for regular embeddings of reductive subalgebras
-${\mathfrak a}\longrightarrow {\mathfrak g}$ of simple Lie algebra $\mathfrak{g}$. We show that (under
+In the present paper we study connections between splint and
+injection fan for regular embedding of reductive subalgebras
+${\mathfrak a}$ in simple Lie algebra $\mathfrak{g}$. We show that (under
 certain conditions described in section \ref{sec:stems and
 multiplicity functions}) splint is a natural tool to study
 reduction properties of ${\mathfrak g}$-modules
 with respect to a subalgebra ${\mathfrak a}\longrightarrow
-{\mathfrak g}$. Using this tool we obtain the main result of the
-present paper -- the one-to-one correspondence between weight
+{\mathfrak g}$. Using this tool we obtain the main result -- the one-to-one correspondence between weight
 multiplicities in irreducible modules of splint and branching
 coefficients for a reduced module $L^{\mu}_{{\mathfrak
 g}\downarrow {\mathfrak a}}$.
@@ -93,7 +95,7 @@ g}\downarrow {\mathfrak a}}$.
 \label{sec:Injections and splints}
 
 Consider a simple Lie algebra $\mathfrak{g}$ and its regular subalgebra $%
-\mathfrak{a}\longrightarrow \mathfrak{g}$ such that $\mathfrak{a}$
+\mathfrak{a}\hookrightarrow \mathfrak{g}$ such that $\mathfrak{a}$
 is a
 reductive subalgebra $\mathfrak{a \subset g}$ with correlated root spaces: $%
 \mathfrak{h}_{\mathfrak{a}}^{\ast }\subset \mathfrak{h}_{\mathfrak{g }%
@@ -102,10 +104,11 @@ $\mathfrak{a}$,
 this means that $\mathfrak{a}=\mathfrak{a}^{\mathfrak{s}} \oplus \mathfrak{u}(1)\oplus %
 \mathfrak{u}(1)\oplus \dots$. We shall consider $\mathfrak{a}^{\mathfrak{s}}$
 to be a proper regular subalgebra and $\mathfrak{a}$ to be the
-maximal subalgebra with $\mathfrak{a}^S$ fixed that is the rank
+maximal subalgebra with $\mathfrak{a}^{\mathfrak{s}}$ fixed that is the rank
 $r$ of $\frak{a}$ is equal to that of $\mathfrak{g}$.
 
-We use the following notations:
+The following notations are used:
+
 $r$ , $\left( r_{\mathfrak{a}^{\mathfrak{s}}}\right) $ --- the rank of
 $\frak{g}$ $\left( \mathrm{{resp. }\mathfrak{a}^{\mathfrak{s}}}\right) $ ;
 
@@ -114,16 +117,16 @@ $\Delta ^{+} $ $\left( \mathrm{{resp. }\Delta
 _{\frak{a}}^{+}}\right) $--- the positive root system (of
 $\frak{g}$ and $\frak{a}$ respectively);
 
-$S\quad \left( S_{\frak{a}}\right) $ --- the system of simple roots (of $%
+$S \, ,\quad \left( S_{\frak{a}}\right) $ --- the system of simple roots (of $%
 \frak{g}$ and $\frak{a}$ respectively);
 
 $\alpha _{i}$ , $\left( \alpha _{\left( \frak{a}\right) j}\right) $ --- the $%
-i$-th (resp. $j$-th) simple root for $\frak{g}$ $\left( \mathrm{{resp.}\frak{%
+i$-th (resp. $j$-th) simple root for $\frak{g}$  $\left( \mathrm{{resp. \,} \frak{%
 a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\mathfrak{a}%
 ^S}\right) $;
 
 $\omega _{i}$ , $\left( \omega _{\left( \frak{a}\right) j}\right) $ --- the $%
-i$-th (resp. $j$-th) fundamental weight for $\frak{g}$ $\left( \mathrm{{resp.}\frak{%
+i$-th (resp. $j$-th) fundamental weight for $\frak{g}$ $\left( \mathrm{{resp. \,}\frak{%
 a}}\right) $; $i=0,\ldots ,r$,\ \ $\left( j=0,\ldots ,r_{\mathfrak{a}%
 ^S}\right) $;
 
@@ -205,7 +208,7 @@ with
 \]
 
 Applying formula (\ref{Weyl-Kac2}) to the branching rule (\ref{branching1})
-we get the relation connecting the singular elements $\Psi ^{\left( \mu
+we get a relation connecting the singular elements $\Psi ^{\left( \mu
 \right) }$ and $\Psi _{\frak{a}}^{\left( \nu \right) }$ :
 \begin{eqnarray}
 \frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho )-\rho }}{\prod_{\alpha \in
@@ -234,7 +237,7 @@ _{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
 \label{recurrent rel}
 \end{equation}
 where $\frak{a}_{\perp }$ is the subalgebra determined by the roots of $%
-\frak{g}$ orthogonal to roots of $\frak{a}$, $W_{\perp}$ is a Weyl group of $\mathfrak{a}_{\perp}$
+\frak{g}$ orthogonal to roots of $\frak{a}$ and $W_{\perp}$ is a Weyl group of $\mathfrak{a}_{\perp}$
 \begin{eqnarray}
 \Delta _{\frak{a}_{\perp }} &:&=\left\{ \beta \in \Delta _{\frak{g}}|\forall
 h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
@@ -244,7 +247,7 @@ h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
 \widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
 \qquad \widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }
 \end{eqnarray}
-and $\pi$ is the projection operator. When the injection is maximal the
+and $\pi$ is the projection operator. When an injection is maximal the
 projection becomes trivial and the relation (\ref{recurrent rel}) is
 simplified:
 \begin{equation}
@@ -275,7 +278,7 @@ appearing in the expansion
 Now we remind two definitions introduced in \cite{richter2008splints}
 
 \begin{Def}
-Suppose $\Delta _{0}$ and $\Delta $ are root systems with the corresponding
+Suppose $\Delta _{0}$ and $\Delta $ are root systems with corresponding
 weight lattices $P_{0}$ and $P$. Then $\phi $ is an ``embedding'',
 \begin{equation}
 \phi :\left\{
@@ -297,7 +300,7 @@ for any triple $\alpha ,\beta ,\gamma \in P_{0}$ such that $\gamma =\alpha
 \end{Def}
 
 $\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
-\longrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
+\hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
 _i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
 \phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
 
@@ -320,15 +323,12 @@ and we shall denote this by $\Delta \approx (\Delta_1,\Delta_2)$. Each
 component $\Delta_1$ and $\Delta_2$ is a "stem'' of the splint $%
 (\Delta_1,\Delta_2)$.
 
-In \cite{richter2008splints} it was indicated that the injection fan technique used in
-\cite{lyakhovsky1996rra} is close to that of splints.
-
-To demonstrate the relations between these instruments consider the case
-where one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ is a root subsystem
-in $\Delta $.
+To study relations between injection fan technique and splint let us 
+consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ 
+is a root subsystem.
 
 Splint $\Delta \approx (\Delta _{1},\Delta _{2})$ is called ''injective'' if
-one of its stems, say $\Delta _{1}=\Delta _{\frak{a}}$ , is a root subsystem
+$\Delta _{1}=\Delta _{\frak{a}}$, is a root subsystem
 in $\Delta $ corresponding to a regular reductive subalgebra $\frak{a}%
 \hookrightarrow \frak{g}$.
 
@@ -336,8 +336,7 @@ In case of injective splint the second stem $\Delta _{\frak{s}}:=\Delta
 _{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product (%
 \ref{product}) and it defines an injection fan $\Gamma _{\frak{a}%
 \hookrightarrow \frak{g}}$. Denote by $\Delta_{\mathfrak{s}0}$ the coimage of the second embedding $\phi:\Delta_{\mathfrak{s}0}\to \Delta_{\mathfrak{g}}$.
-
-Thus we see that
+The following conjecture follows.
 
 \begin{Cnj}
 Each injective splint $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})
@@ -349,7 +348,7 @@ $ defines an injection fan with the carrier $\left\{ \xi \right\} _{\frak{a}%
 \end{equation}
 \end{Cnj}
 
-In this case we say that the subalgebra $\frak{a}\hookrightarrow \frak{g}$
+In case of injective splint we say that subalgebra $\frak{a}\hookrightarrow \frak{g}$
 splinters $\Delta $ (and call $\frak{a}$ the ''splinting subalgebra'' of $%
 \frak{g}$). In \cite{richter2008splints} splints are classified (see Appendix there)
 and the first three types of them are injective.
@@ -417,18 +416,18 @@ P_{\frak{a}}^{+}}b_{\nu }^{(\mu )}\Phi _{\frak{a}}^{\left( \nu \right) }.
 \end{equation}
 The orbit related to $\Phi _{\frak{g}}^{\left( \mu \right) }$ is completely
 defined by the set of edges $\left\{ \lambda _{i}\right\} _{i=1,\dots ,r}$
-adjusted to the end of the highest weight vector $\mu +\rho $. Let $\mu
-=\sum m_{i}\omega _{i}$ then these edges are
+adjusted to the end of the highest weight vector $\mu +\rho $. For $\mu
+=\sum m_{i}\omega _{i}$ these edges are
 \begin{equation}
-\lambda _{i}=-\left( m_{i}+1\right) \alpha _{i}.\quad i=1,\dots ,r
+\lambda _{i}=-\left( m_{i}+1\right) \alpha _{i},\quad i=1,\dots ,r.
 \label{edge}
 \end{equation}
 Each formal exponent $e^{\mu +\rho +\lambda _{i}}$ in $\Phi _{\frak{g}%
 }^{\left( \mu \right) }$ bears the sign coefficient $\epsilon =(-)$. The
 defining property of $\Phi _{\frak{g}}^{\left( \mu \right) }$ is as follows.
 Consider any pair of edges $\lambda _{i},\lambda _{j}$ and the corresponding
-weights $\mu +\rho $, $\mu +\rho +\lambda _{i}$ and $\mu +\rho +\lambda _{j}$%
-. Apply the reflection $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
+weights $\mu +\rho $, $\mu +\rho +\lambda _{i}$ and $\mu +\rho +\lambda _{j}$. 
+Apply the reflection $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
 \begin{equation}
 s_{\alpha _{i}}\circ \left\{
 \begin{array}{l}
@@ -461,8 +460,8 @@ In $\Phi _{\frak{g}}^{\left( \mu \right) }$ the elements $e^{\left( \mu
 e^{\left( \mu +\rho +\lambda _{j}-(m_{i}+1)s_{\alpha _{j}}\circ \alpha
 _{i}\right) }$ have the sign coefficient  $\epsilon =(+)$.
 
-Remember that only the first three types in Richter classification are
-injective splints and thus are naturally connected with branching. Below we
+Remember that only three types of splints are
+injective and thus are naturally connected with branching. Below we
 reproduce the part of the splints table from \cite{richter2008splints} corresponding to
 injective splints:
 \[
@@ -484,14 +483,14 @@ $ of the simple root system $\Delta $. In the first two types both $\Delta _{%
 \frak{a}}$ and $\Delta _{\frak{s}}$ are embedded metrically. Stems in the
 first type splints are equivalent and in the second are not. In the third
 type splints only $\Delta _{\frak{a}}$ is embedded metrically. The summands $%
-u\left( 1\right) $ are added to keep $r_{\frak{a}}=r$ . This does not change
+u\left( 1\right) $ are added to keep $r_{\frak{a}}=r$. This does not change
 the principle properties of branching but makes it possible to use the
 multiplicities of $\frak{s}$ -modules without further projecting their
 weights.
 
 Splints induce a decomposition of the set $S=S_{\frak{c}}\cup S_{\frak{d}}$
-with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}}$%
-. It is easy to check that for all the injective splints the subset $S_{%
+with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}}$. 
+It is easy to check that for any injective splint the subset $S_{%
 \frak{d}}$ is nonempty. It follows that in the set $\left\{ \lambda
 _{i}\right\} _{i=1,\dots ,r}$ one can always find simple roots $\beta
 _{k}\in \Delta _{\frak{s}}$ and that the orbit corresponding to $\Phi _{%
@@ -511,13 +510,14 @@ corresponding edge intersects the boundary plane of the fundamental chamber $%
 \bar{C_{\frak{a}}}$ orthogonal to the root $\alpha _{l}$,
 \begin{equation}
 s_{\alpha _{l}}\left( \mu +\rho -p\beta _{l}\right) =s_{\alpha _{l}}\left(
-\mu +\rho \right) -ps_{\alpha _{l}}\beta _{l}=\mu +\rho -p\beta _{l}
+\mu +\rho \right) -ps_{\alpha _{l}}\beta _{l}=\mu +\rho -p\beta _{l},
 \label{intersection}
 \end{equation}
 \begin{equation}
 \mu +\rho -s_{\alpha _{l}}\left( \mu +\rho \right) =\left( m_{l}+1\right)
 \alpha _{l}=\left( m_{l}+1\right) \beta _{l}-\left( m_{l}+1\right) \beta
-_{k}=p\beta _{l}-ps_{\alpha _{l}}\beta _{l}  \label{intersection-2}
+_{k}=p\beta _{l}-ps_{\alpha _{l}}\beta _{l}.  
+\label{intersection-2}
 \end{equation}
 It follows that $p=\left( m_{l}+1\right) $ and $s_{\alpha _{l}}\beta
 _{l}=\beta _{k}$. Now apply the operator $s_{\beta _{k}}$ and find that the
@@ -546,11 +546,11 @@ the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $%
 , they have the same Dynkin numbers:
 \begin{equation}
 \mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
-m_{k}\widetilde{\omega }_{k}  \label{new h weight}
+m_{k}\widetilde{\omega }_{k} . \label{new h weight}
 \end{equation}
 The next step is to construct the full $W_{\frak{s}}$-orbit $\Phi _{\frak{s}%
 }^{\left( \widetilde{\mu }\right) }$  in $P_{\frak{s}}$. It is easily seen
-that its coimage belongs to $\bar{C_{\frak{a}}}$. and that the set $\phi
+that its coimage belongs to $\bar{C_{\frak{a}}}$ and that the set $\phi
 ^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) \setminus \Phi _{%
 \frak{g}}^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ corresponds to the
 weights belonging to the boundary $\bar{C_{\frak{a}}}$ (including the subset
@@ -561,20 +561,20 @@ the appropriate sign factors that after being added to $\Phi _{\frak{g}%
 ^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) $ in $\bar{C_{\frak{a}%
 }}$.
 
-Now let us return to the relation (\ref{singular main-3}). One can add to $%
-\Phi _{\frak{g}}^{\left( \mu \right) }$ pairs of additional formal elements
+Now let us return to relation (\ref{singular main-3}). One can add to $%
+\Phi _{\frak{g}}^{\left( \mu \right) }$ pairs of formal elements
 constructed above  with the opposite signs: $\epsilon \left( w\right)
-|_{w\in W_{\frak{s}}}$ and $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$%
-. Attribute the signs $\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ to
-the elements whose weights we shall consider beloning to $\bar{C_{\frak{a}}}$%
-. The same elements with the opposite signs are to be referred to the
-neighbor Weyl chambers of $\bar{C_{\frak{a}}^{(l)}}$ (the latter are
+|_{w\in W_{\frak{s}}}$ and $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$. 
+Attribute the signs $\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ to
+the elements whose weights we shall attribute to $\bar{C_{\frak{a}}}$. 
+The same elements with the opposite signs are to be referred to the
+neighboring Weyl chambers of $\bar{C_{\frak{a}}^{(l)}}$ (the latter are
 connected with the main one via simple reflections $s_{\alpha _{l}}$ so the
 signes $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ are natural for
-them). In fact one can repeat the procedure of finding additional singular
+them). In fact one can repeat the procedure and find additional singular
 weights in any Weyl chamber $\bar{C_{\frak{a}}^{(m)}}$ and in them
 additional singular weights always have the signs opposite to that in their
-nearest neighbors. Thus without changing in fact the element $\Phi _{\frak{g}%
+nearest neighbors. Thus without changing the element $\Phi _{\frak{g}%
 }^{\left( \mu \right) }$ one can present it as a sum
 \begin{equation}
 \Phi _{\frak{g}}^{\left( \mu \right) }=\sum_{w\in W_{\frak{a}}}w\circ \left(
@@ -591,10 +591,9 @@ the isomorphism $\phi $ one can see that in the main Weyl chamber $\bar{C_{%
 \frak{a}}}$ the set of weights generated by the factor $\left( \prod_{\beta
 \in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}$ is isomorphic to
 the weight diagram $\mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ of the $\frak{%
-s}$-module $L_{\frak{s}}^{\widetilde{\mu }}$. Finally one must restrict
+s}$-module $L_{\frak{s}}^{\widetilde{\mu }}$. Now one can restrict
 relation (\ref{singular main-3}) to $\bar{C_{\frak{a}}}$ and obtain the main
 result:
-
 \begin{Prop}
 \begin{equation}
 \frac{e^{\rho _{\frak{g}}}}{\prod_{\beta \in \Delta _{\frak{s}%
@@ -620,32 +619,34 @@ b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 \section{Examples}
 \label{sec:examples}
 \begin{example}
-  Consider Lie algebra $A_{2} (\bf{sl}(3))$ and branching of its irreducible module $L^{(3,2)}$ into the modules of reductive subalgebra $A_{1}\oplus u(1)$ with root system spanned by first simple root of $A_{2}$. Singular element of $L^{(3,2)}$ is decomposed into the sum of splint images of singular elements of $A_{1}\oplus A_{1}$-modules and branching coefficients coincide with weight multiplicities of $A_{1}\oplus A_{1}$-module (see Fig. \ref{fig:a2_splint}).
+  Consider the Lie algebra $A_{2} =\bf{sl}(3)$ and branching of its irreducible module $L^{[3,2]}_{A_{2}}$ with respect to the reductive subalgebra $A_{1}\oplus u(1)$. The root system  $\Delta _{\frak{a}}= \Delta_{A_{1}\oplus u(1)}$ contains the simple root of $\alpha_1=e_1-e_2$ of $A_{2}$. The singular element $\Psi^{[3,2]}_{\frak{a}}$ is decomposed into a sum of splint images of singular elements of $A_{1}\oplus A_{1}$-modules. Branching coefficients $b_{\nu }^{[ 3,2 ] }$ coincide with weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module (see Fig. \ref{fig:a2_splint}).
 
   \begin{figure}[h!bt]
   \noindent\centering{
-   \includegraphics[width=120mm]{a2-a1}
+   \includegraphics[width=80mm]{a2-a1}
   }
-  \caption{Weyl group orbit (dotted) producing singular element of $A_{2}$-module $L^{(3,2)}$ and its decomposition into the sum of splint images of singular elements of $A_{1}\oplus A_{1}$-modules (dashed). Weight multiplicities of $A_{1}\oplus A_{1}$-module coincide with branching coefficients for the reduction $L^{(3,2)}_{A_{2}\downarrow A_{1}\oplus u(1)}$.}
+  \caption{Weyl group orbit (dotted) producing singular element of $L^{[3,2]}_{A_{2}}$ and its decomposition into the sum of splint images of singular elements of modules  $L^{[3,2]}_{A_{1}\oplus A_{1}}$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{A_{2}\downarrow A_{1}\oplus u(1)}$.}
 
  \label{fig:a2_splint}
 \end{figure}
 \end{example}
 \begin{example}
-  Now consider Lie algebra $B_{2} (\bf{so}(5))$ and branching of its irreducible module $L^{(3,2)}$ into the modules of reductive subalgebra $A_{1}\oplus u(1)$ with root system spanned by first simple root of $B_{2}$. Singular element of $L^{(3,2)}$ is decomposed into the sum of splint images of singular elements of $A_{2}$-modules and branching coefficients coincide with weight multiplicities of $A_{2}$-module (see Fig. \ref{fig:b2_splint}).
+  For the Lie algebra $B_{2}= \bf{so}(5)$ branching of its irreducible module $L^{[3,2]}$ into  modules of a reductive subalgebra $A_{1}\oplus u(1)$ with the root system spanned by the first simple root $\alpha_1=e_1-e_2$ of $B_{2}$. Singular element of $\Psi^{[3,2]}_{B_{2}}$ is decomposed into the sum of splint images of singular elements of $A_{2}$-modules and branching coefficients coincide with weight multiplicities of $A_{2}$-module (see Fig. \ref{fig:b2_splint}).
 
   \begin{figure}[h!bt]
-  \hspace*{-1.5cm}
+  \hspace*{-1.2cm}
 
-   \includegraphics[width=75mm]{b2}
-   \includegraphics[width=75mm]{b2-a2-a1}
-  \caption{$B_{2}$-module $L^{(3,2)}$ is shown on the left. Weight multiplicities are indicated. Contour of singular element is shown by dotted line. Right figure represents the decomposition of  $L^{(3,2)}$-singular element into the sum of splint images of singular elements of $A_{2}$-modules (dashed). Weight multiplicities of $A_{2}$-module coincide with branching coefficients for the reduction $L^{(3,2)}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
+   \includegraphics[width=65mm]{b2}
+   \includegraphics[width=65mm]{b2-a2-a1}
+  \caption{Weights of the $B_{2}$-module $L^{[3,2]}$ are indicated by dots in the left picture (their multiplicities are also indicated). Contour of the singular element is shown by dotted line. The right picture presents the decomposition of  $\Psi_{B_{2}}(L^{[3,2]}_{B_{2}})$-singular element into the sum of splint images of singular elements $\Psi_{A_{2}}(L^{[3,2]})$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{2}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
 
  \label{fig:b2_splint}
 \end{figure}
 \end{example}
+
+\vspace{10mm}
 \begin{example}
-   Lie algebra $G_{2}$ has regular subalgebra $A_{2}$ with root system built on long roots of $G_{2}$. Consider branching of its irreducible module $L^{(3,2)}$ into the modules of reductive subalgebra $A_{2}$. Singular element of $L^{(3,2)}$ is decomposed into the sum of splint images of singular elements of $A_{2}$-modules and branching coefficients coincide with weight multiplicities of $A_{2}$-module (see Fig. \ref{fig:g2_splint}).
+   Lie algebra $G_{2}$ has a regular subalgebra $A_{2}$ with root system $\Delta_{\mathfrak{a}}=\Delta_{A_{2}}$ containing the $G_{2}$ long roots. Consider branching of an irreducible module $L_{G_{2}}^{(3,2)}$ into the $A_{2}$-modules. Singular element $\Psi_{G_{2}}(L^{[3,2]})$ is decomposed into the sum of splint images of singular elements $\Psi_{A_{2}}(L^{[3,2]})$ and the corresponding branching coefficients coincide with weight multiplicities of $L^{[3,2]}_{A_{2}}$-module (see Fig. \ref{fig:g2_splint}).
 
 
   \begin{figure}[h!bt]
@@ -653,7 +654,7 @@ b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
    \includegraphics[width=120mm]{g2}
   }
 
-  \caption{Weyl group orbit (dotted) producing singular element of $G_{2}$-module $L^{(3,2)}$ and its decomposition into the sum of splint images of singular elements of $A_{2}$-modules (dashed). Weight multiplicities of $A_{2}$-module coincide with branching coefficients for the reduction $L^{(3,2)}_{G_{2}\downarrow A_{2}}$.}
+  \caption{Weyl group orbit (dotted) for the singular element $\Psi_{G_{2}}(L^{[3,2]})$ and its decomposition into the sum of splint images of singular elements of $A_{2}$-modules (dashed). Weight multiplicities of $L^{[3,2]}_{A_{2}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{G_{2}\downarrow A_{2}}$.}
 
 
  \label{fig:g2_splint}
@@ -668,16 +669,16 @@ presents a very effective tool to find branching coefficients. In
 particular injective splints provide a possibility to reduce
 branching rules calculations for highest weight modules to a
 determination of weight multiplicities for a module with the same
-Dynkin labels referred to a different Lie algebra. This algebra
-$\frak{s}$ must not be a subalgebra in the initial $\frak{g}$ , it
-has the same rank $r_{\frak{s}}=r$\ , but as a rule is less
-complicated than $\frak{g}$ .
+Dynkin labels referred to the Lie algebra $\mathfrak{s}$. This algebra
+$\mathfrak{s}$ must not be a subalgebra in the initial $\mathfrak{g}$ , it
+has the same rank $r_{\mathfrak{s}}=r$\ , but obviously less
+"complicated" than $\mathfrak{g}$ -- only a subset of the initial root system is involved in the second stem $\Delta_{\mathfrak{s}}$.
 
 It is significant that for the injections $D_{r}\hookrightarrow B_{r}$ , $%
 D_{r}\hookrightarrow C_{r}$ and $A_{r-1}\oplus u\left( 1\right) \hookrightarrow A_{r}$ splint technique shows
-immediately Gelfand-Tzeytlin rules for branching: the nonzero
-branching coefficients are equal to 1, the reduction is
-multiplicity free. Here it is an immediate consequence of the
+transparently Gelfand-Tzeytlin rules for branching:  the reduction is
+multiplicity free (all nonzero
+branching coefficients are equal to 1). Here it is an immediate consequence of the
 structure of the second stem being a direct sum of $A_{1}$
 algebras and the fact that the corresponding module
 $L_{\frak{s}}^{\mu }$ is irreducible.
@@ -685,10 +686,10 @@ $L_{\frak{s}}^{\mu }$ is irreducible.
 \section*{Acknowledgements}
 \label{sec:acknowledgements}
 The work was supported in part by the
-RFFI grant N 09-01-00504. The work of A.A.~Nazarov is supported by
+RFFI grant N 09-01-00504. A.A.N. thanks 
 the Chebyshev Laboratory (Department of Mathematics and Mechanics,
-Saint-Petersburg State University) under the grant 11.G34.31.0026
-of the Government of the Russian Federation.
+Saint-Petersburg State University) for support under the grant 11.G34.31.0026
+of the Government of Russian Federation.
 
 
 \bibliography{bibliography}{}
@@ -704,19 +705,21 @@ of the Government of the Russian Federation.
 
 Let us demonstrate that for injective splints of classical Lie
 algebras the following property is valid:
-
+\begin{Prop}
 Let $\Delta \approx (\Delta _{\frak{a}},\Delta _{\frak{s}})$ be an
 injective
 splint with the decomposition of simple roots $S=S_{\frak{c}}\cup S_{\frak{d}%
 }$ with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}%
 }$.
-
-Then for any simple root $\beta \in S_{\frak{s}}$ there exists the
+\end{Prop}
+Thus for any simple root $\beta \in S_{\frak{s}}$ there exists the
 pair of
 roots ( $\alpha $ ,$\beta ^{\prime }$) with $\alpha \in $ $S_{\frak{c}%
 },\beta ^{\prime }\in S_{\frak{s}}$ such that $\alpha =\beta
 -\beta ^{\prime }$
 
+\begin{itemize}
+\item
 Type 1. $\Delta _{G_{2}}\approx (\Delta _{A_{2}},\Delta
 _{A_{2}}).$
 
@@ -729,35 +732,35 @@ _{A_{2}}).$
 Here both stems are metric and the corresponding root systems are
 equivalent. In Figure 4 a part of the singular element $\Phi
 _{G_{2}}^{\left( 0\right) }$ is presented. The boundaries of $\bar{C_{\frak{a%
-}}}$ are the dashed lines starting in the center of the singular
+}}}$ are the dashed lines starting at the center of the singular
 element. It
 contains the edge $\lambda _{2}=-\alpha _{2}=-\beta _{2}$ and the roots $%
--\beta _{1}=-s_{\alpha _{2}}\circ \beta _{3},\; -\beta _{3}$
-($\beta _{3}$ is indicated as $\beta _{l}$). For this root $\beta
+-\beta _{1}=-s_{\alpha _{2}}\circ \beta _{3}$ and $ -\beta _{3}$
+($\beta _{3}$ is indicated as $\beta _{l}$). For the root $\beta
 _{1}$ the necessary pair
 is  $(\alpha _{1}, \beta _{2})$: $\alpha _{1}=\beta _{1}-\beta _{2}$. The $%
 \lambda _{2,3}^{\frak{s}}=\beta _{3}$ edge is equal to $\lambda _{1}^{\frak{s%
 }}=\beta _{1}=s_{\alpha _{2}}\circ \beta _{3}$ and $m_{1}$ index
-is aquired by the $\frak{s}$-module that inherit the second
-indice. In this particular
+is aquired by the $\frak{s}$-module that also inherit the second
+index $m_{2}$. In this particular
 case they are $m_{1}=m_{2}=0$. The general case with the initial module $%
-L^{\mu }$ and $\mu =m_{1}\omega _{1}+m_{2}\omega _{2}$.can be
+L^{\mu }$ and $\mu =m_{1}\omega _{1}+m_{2}\omega _{2}$ can be
 treated in the same way: one finds an edge $\lambda _{2}=-\left(
 m_{2}+1\right) \beta _{2}$ and put $\lambda
 _{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$, its end
 belongs to the boundary $\bar{C_{\frak{a}}}$ . The reflection
 $s_{\beta
-_{2}} $ sends $\beta _{1}$ to $\beta _{3}$ and the corresponding edge $%
-\lambda _{2,3}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{3}$ has
-the same length. Now consider $\lambda _{1}^{\frak{s}}$ (or
+_{2}} $ sends $\beta _{1}$ to $\beta _{3}$ and the corresponding edge 
+$\lambda _{2,3}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{3}$ has
+the length $\left( m_{1}+1\right) $. Now consider $\lambda _{1}^{\frak{s}}$ (or
 $\lambda _{2,3}^{\frak{s}} $) and $\lambda _{1,3}^{\frak{s}}$ (or
 $\lambda _{2,3,1}^{\frak{s}}$) edges to find that they belong to
 the boundary $\bar{C_{\frak{a}}}$ and the Weyl symmetry predicts
 that $\lambda _{1,3}^{\frak{s}}=-\left( m_{2}+1\right)
 \beta _{3}$ ($\lambda _{2,3,1}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{1}$%
 ) . Finally the edge $\lambda _{1,3,2}^{\frak{s}}=-\left(
-m_{1}+1\right) \beta _{2}$ close the polytope. The latter
-corresponds to the singular
+m_{1}+1\right) \beta _{2}$ closes the polytope. Its vertices
+correspond to weights of the singular
 element $\Phi _{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in W_{%
 \frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
 \widetilde{\mu }+\rho
@@ -766,23 +769,22 @@ _{\frak{s}}\right) }$ of the module $L_{\frak{s}}^{\left( \widetilde{\mu }%
 \widetilde{\omega }_{2}$ . Notice that in this case the sign
 factors can be obtained directly in the initial weight system as
 far as the stem is metric.
-
+\item
 Type 1. $\Delta _{F_{4}}\approx (\Delta _{D_{4}},\Delta
 _{D_{4}}).$
 
-Both stems are metric and the corresponding root systems are
+Both stems are metric here and the corresponding root systems are
 equivalent. The system $\Delta _{D_{4}}$ of the subalgebra
-$\frak{a=}D_{4}$ is formed by the set $\left\{ \pm e_{i},\pm
+$\frak{a=}D_{4}$ is formed by the set $\left\{ \pm e_{i}\pm
 e_{j}\right\} _{|i,j=1,\ldots 4,\; i\neq j}.$ The simple roots
 $S_{\frak{c}}$ are $\left\{ e_{2}-e_{3},e_{3}-e_{4}\right\} $ and
 $S_{\frak{d}}=\left\{ e_{4},\frac{1}{2}\left(
 e_{1}-e_{2}-e_{3}-e_{4}\right) \right\} $.
-
 For a module $L^{\mu }$ with $\mu =\sum m_{k}\omega _{k}$ consider the edge $%
 \lambda _{3}=-\left( m_{3}+1\right) e_{4}=-\left( m_{3}+1\right)
-\beta _{3}$
-\ Compose an edge $\lambda _{2}^{\frak{s}}=-\left( \widetilde{m}%
-_{2}+1\right) \beta _{2}$ . Now the necessary pair is $\left(
+\beta _{3}$.
+ Compose an edge $\lambda _{2}^{\frak{s}}=-\left( \widetilde{m}%
+_{2}+1\right) \beta _{2}$. The necessary pair of roots is $\left(
 \alpha
 _{2}=e_{3}-e_{4},\beta _{3}\right) $. The intersection of $\lambda _{2}^{%
 \frak{s}}$ with the $\alpha _{2}$ -boundary of
@@ -792,42 +794,42 @@ its length to be $\lambda _{2}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{2}$%
 to that of
 $\lambda _{2}^{\frak{s}}$. Next consider the edge $\lambda _{2}^{\frak{s}%
 }=-\left( m_{2}+1\right) \beta _{2}$ and the pair $\left( \alpha
-_{1}=e_{2}-e_{3},\beta _{1}=e_{2}\right) $ \ The length of the
-edge $\lambda _{1}^{\frak{s}}$ becomes equal to $\lambda
-_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$ and so on. The
-edges along the roots like $\alpha _{4}=\beta
-_{4}=\frac{1}{2}\left( e_{1}-e_{2}-e_{3}-e_{4}\right) $ are
+_{1}=e_{2}-e_{3},\beta _{1}=e_{2}\right) $. The length of  
+$\lambda _{1}^{\frak{s}}$ becomes equal to $\lambda
+_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$. Proceed further till the closure of the polytope. 
+The edges looking along the roots of the $\alpha_4$-type, $\alpha _{4}=\beta
+_{4}=$ $\frac{1}{2}\left( e_{1}-e_{2}-e_{3}-e_{4}\right) $, are
 treated similarly and finally the singular element $\Phi
 _{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in
 W_{\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
-\widetilde{\mu }+\rho _{\frak{s}}\right) }$ of the module
+\widetilde{\mu }+\rho _{\frak{s}}\right) }$ for the module
 $L_{\frak{s}}^{\left( \widetilde{\mu }\right) }$ with
 $\widetilde{\mu }=\sum m_{k}\widetilde{\omega }_{k}$ is formed in
 $\bar{C_{\frak{a}}}$.
-
+\item
 Type 2. $\Delta _{B_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
 ^{r}A_{1}}). $
 
-Both stems are metric. The injection is fixed by the stem $\Delta
-_{D_{r}}$ with simple roots $S_{\frak{a}}=\left\{
+Both stems are metric. An injection is fixed by the stem $\Delta
+_{D_{r}}$ simple roots $S_{\frak{a}}=\left\{
 e_{1}-e_{2},e_{2}-e_{3},\ldots
 ,e_{r-1}-e_{r},e_{r-1}+e_{r}\right\} $ . The second stem
 corresponds to a
-direct sum of algebras $A_{1}$ and has the simple roots $S_{\frak{s}%
+direct sum of algebras $A_{1}$ with the simple roots $S_{\frak{s}%
 }=\left\{ e_{1},e_{2},\ldots ,e_{r-1},e_{r}\right\} $. Consider the edge $%
 \lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$ (here $\beta
 _{r}=e_{r}$) and $\lambda _{r-1}=-\left(
 \widetilde{m}_{r-1}+1\right) \beta _{r-1}$
 attached to it (here $\beta _{r-1}=e_{r-1}$). The corresponding pair is $%
-\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta _{r-1}=e_{r-1}\right) $
-.\ The intersection condition fixes the second edge to be $\lambda
+\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta _{r-1}=e_{r-1}\right) $.
+ The intersection condition fixes the second edge to be $\lambda
 _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ , it is orthogonal
 to $\beta _{r}$ so the opposite edge has the same length. The
 Dynkin index $m_{r-1}$ now refers
 also to the\ simple root $\beta _{r-1}$ . Next consider the obtained edge $%
 \lambda _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ and $\lambda
 _{r-2}=-\left( \widetilde{m}_{r-2}+1\right) \beta _{r-2}$ to
-obtain the index $\widetilde{m}_{r-2}=m_{r-2}$ and the edge
+fix the index $\widetilde{m}_{r-2}=m_{r-2}$ and the edge
 $\lambda _{r-2}=-\left( m_{r-2}+1\right) \beta _{r-2}$ and so on
 till all the pairs of edges are properly fixed. Finally in
 $\bar{C}_{D_{r}}$ the element $\Phi _{\oplus ^{r}A_{1}}^{\left(
@@ -837,27 +839,28 @@ $\bar{C}_{D_{r}}$ the element $\Phi _{\oplus ^{r}A_{1}}^{\left(
 $L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
 $\widetilde{\mu }=\sum m_{k}\frac{1}{2}e_{k}$ .
 
+\item
 Type 2. $\Delta _{C_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
 ^{r}A_{1}}). $
 
 The situation in this case is eqivalent to the previous one and
 the additional edges are constructed similarly.
-
+\item
 Type 3 $\Delta _{A_{r}}\approx (\Delta _{A_{r-1}\oplus
 u_{1}},\Delta _{\oplus ^{r}A_{1}}).$
 
 Here only the first stem is metric and it fixes the injection with
 simple roots $S_{\frak{a}}=\left\{ e_{1}-e_{2},e_{2}-e_{3},\ldots
-,e_{r-1}-e_{r}\right\} $ . The second stem corresponding to a direct sum of $%
+,e_{r-1}-e_{r}\right\} $. The second stem corresponding to a direct sum of $%
 r$ copies of $A_{1}$ has the simple roots $S_{\frak{s}}=\left\{
 e_{1}-e_{r+1},e_{2}-e_{r+1},\ldots ,e_{r}-e_{r+1}\right\} $.
 Consider the edge $\lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$
 with $\beta
 _{r}=e_{r}-e_{r+1}$ and $\lambda _{r-1}=-\left( \widetilde{m}%
 _{r-1}+1\right) \beta _{r-1}$ \ with $\beta
-_{r-1}=e_{r-1}-e_{r+1}$ attached to it . Then the corresponding
+_{r-1}=e_{r-1}-e_{r+1}$ attached to it. Then the corresponding
 pair is $\left( \alpha _{r-1}=e_{r-1}-e_{r},\beta
-_{r-1}=e_{r-1}-e_{r+1}\right).$ The intersection with the
+_{r-1}=e_{r-1}-e_{r+1}\right)$. The intersection with the
 boundary of $\bar{C}_{A_{r-1}}$ orthogonal to $\alpha _{r-1}$
 fixes the second edge to be $\lambda _{r-1}=-\left(
 m_{r-1}+1\right) \beta _{r-1}$. The Dynkin index $m_{r-1}$ is to
@@ -879,22 +882,22 @@ $L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
 $\widetilde{\mu }=\sum m_{k}\beta _{k}.$ The simplest case
 $\Delta _{A_{2}}\approx (\Delta _{A_{1}\oplus u_{1}},\Delta
 _{A_{1}\oplus A_{1}})$ is presented in Example 4.1 and Figure 1.
-
+\item
 Type 3 $\Delta _{B_{2}}\approx (\Delta _{A_{1}},\Delta _{A_{2}}).$
 
-The necessary elements are presented in Example 4.1 and Figure 1 , $%
-S_{A\_1}=\left\{ e_{1}-e_{2}\right\} $ , $S_{A\_2}=\left\{
-e_{1},e_{2}\right\} $.The edge $\lambda _{\alpha _{2}}=\lambda
-_{\beta _{2}}=-\left( m_{2}+1\right) \beta _{2}$ has an edge
+This splint is illustrated in Example 4.1 and Figure 1, 
+$S_{A\_1}=\left\{ e_{1}-e_{2}\right\} $, $S_{A\_2}=\left\{
+e_{1},e_{2}\right\} $. The edge $\lambda _{\alpha _{2}}=\lambda
+_{\beta _{2}}=-\left( m_{2}+1\right) \beta _{2}$ is followed by
 $\lambda _{\beta _{1}}=-\left( \widetilde{m}_{1}+1\right) \beta
-_{1}$ attached to it. Consider the pair $\left( \alpha
-_{1}=e_{1}-e_{2},\beta _{1}=e_{1}\right).$ The end of the edge
-$\lambda _{\beta _{1}}$ is to define a weight
-invariant under the reflexion $s_{\alpha _{1}}.$ This defines its length: $%
-\lambda _{\beta _{1}}=-\left( m_{1}+1\right) \beta _{1}$ . In the
+_{1}$. Consider the pair $\left( \alpha
+_{1}=e_{1}-e_{2},\beta _{1}=e_{1}\right)$. The end of the edge
+$\lambda _{\beta _{1}}$ must indicate a weight
+invariant under the reflexion $s_{\alpha _{1}}$.  Its length is thus fixed: 
+$\lambda _{\beta _{1}}=-\left( m_{1}+1\right) \beta _{1}$. In the
 coimage of
-the second stem, that is in the $A_{2}$ root system, the reflection $%
-s_{\beta _{2}}$ sends $\lambda _{\beta _{1}}=-\left(
+the second stem, that is in the root system $\Delta_{A_{2}}$, the reflection 
+$s_{\beta _{2}}$ sends $\lambda _{\beta _{1}}=-\left(
 m_{1}+1\right) \beta
 _{1}$ to $\lambda _{2,3}$, thus the latter edge has the same length in $%
 \beta _{3}=e_{1}+e_{3}$ , we have $\lambda _{2,3}=-\left(
@@ -905,9 +908,9 @@ _{1}+m_{2}\widetilde{\omega }_{2}$ . In Figure 1 we see the
 details of these relations in a particular case where
 $L_{B_{2}}^{\left[ 3,2\right] }$ is reduced to a subalgebra
 $A_{1}\oplus u\left( 1\right) $ and the
-corresponding highest weights with their multiplicities form the diagram $%
-\mathcal{N}_{A\_2}^{\left[ 3,2\right] }$ .
-
+corresponding highest weights (with their multiplicities) form the diagram $%
+\mathcal{N}_{A_2}^{\left[ 3,2\right] }$ .
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
