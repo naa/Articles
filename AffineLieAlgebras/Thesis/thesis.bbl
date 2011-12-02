@@ -517,4 +517,153 @@
 \newblock Vol.~4. "---
 \newblock Pp.~1--9.
 
+\bibitem[\BibPrefix69\BibPostfix]{belinfante1989survey}
+\selectlanguageifdefined{english}
+\BibEmph{J.G.F. Belinfante, B.~Kolman}. {A survey of Lie groups and Lie
+  algebras with applications and computational methods}. "---
+\newblock Society for Industrial Mathematics, 1989.
+
+\bibitem[\BibPrefix70\BibPostfix]{simplie}
+\selectlanguageifdefined{english}
+\BibEmph{TA~Nutma}. SimpLie. \BibUrl{ http://code.google.com/p/simplie/}.
+
+\bibitem[\BibPrefix71\BibPostfix]{vanleeuwen1994lsp}
+\selectlanguageifdefined{english}
+\BibEmph{MAA Van~Leeuwen}. {LiE, a software package for Lie group
+  computations}~// \BibEmph{Euromath Bull}. "---
+\newblock 1994. "---
+\newblock Vol.~1, no.~2. "---
+\newblock Pp.~83--94. \BibUrl{ http://www-math.univ-poitiers.fr/~maavl/LiE/}.
+
+\bibitem[\BibPrefix72\BibPostfix]{stembridge1995mps}
+\selectlanguageifdefined{english}
+\BibEmph{J.R. Stembridge}. {A Maple package for symmetric functions}~//
+  \BibEmph{Journal of Symbolic Computation}. "---
+\newblock 1995. "---
+\newblock Vol.~20, no. 5-6. "---
+\newblock Pp.~755--758.
+
+\bibitem[\BibPrefix73\BibPostfix]{coxweyl}
+\selectlanguageifdefined{english}
+\BibEmph{J.R. Stembridge}. Coxeter/Weyl packages for Maple. \BibUrl{
+  http://www.math.lsa.umich.edu/~jrs/maple.html}.
+
+\bibitem[\BibPrefix74\BibPostfix]{fischbacher2002ilp}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Fischbacher}. {Introducing LambdaTensor1. 0-A package for explicit
+  symbolic and numeric Lie algebra and Lie group calculations}. "---
+\newblock 2002.
+
+\bibitem[\BibPrefix75\BibPostfix]{Fuchs:1996dd}
+\selectlanguageifdefined{english}
+\BibEmph{J.~Fuchs, A.~N. Schellekens, C.~Schweigert}. {A matrix S for all
+  simple current extensions}~// \BibEmph{Nucl. Phys.} "---
+\newblock 1996. "---
+\newblock Vol. B473. "---
+\newblock Pp.~323--366. \BibUrl{ http://www.nikhef.nl/~t58/kac.html}.
+
+\bibitem[\BibPrefix76\BibPostfix]{moody1982fast}
+\selectlanguageifdefined{english}
+\BibEmph{RV~Moody, J.~Patera}. {Fast recursion formula for weight
+  multiplicities}~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
+\newblock 1982. "---
+\newblock Vol.~7, no.~1.
+
+\bibitem[\BibPrefix77\BibPostfix]{stembridge2001computational}
+\selectlanguageifdefined{english}
+\BibEmph{JR~Stembridge}. {Computational aspects of root systems, Coxeter
+  groups, and Weyl characters, Interaction of combinatorics and representation
+  theory, MSJ Mem., vol. 11}~// \BibEmph{Math. Soc. Japan, Tokyo}. "---
+\newblock 2001. "---
+\newblock Pp.~1--38.
+
+\bibitem[\BibPrefix78\BibPostfix]{casselman1994machine}
+\selectlanguageifdefined{english}
+\BibEmph{W.A. Casselman}. {Machine calculations in Weyl groups}~//
+  \BibEmph{Inventiones mathematicae}. "---
+\newblock 1994. "---
+\newblock Vol. 116, no.~1. "---
+\newblock Pp.~95--108.
+
+\bibitem[\BibPrefix79\BibPostfix]{gannon2001algorithms}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Gannon}. {Algorithms for affine Kac-Moody algebras}. "---
+\newblock 2001.
+
+\bibitem[\BibPrefix80\BibPostfix]{2011arXiv1102.1702L}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Recursive properties of branching and
+  BGG resolution}.
+
+\bibitem[\BibPrefix81\BibPostfix]{LyakhovskyPostnova2011}
+\selectlanguageifdefined{english}
+\BibEmph{P.~P. {Kulish}, V.~D. {Lyakhovsky}, O.~P. {Postnova}}. {Tensor powers
+  for non-simply laced Lie Algebras \$B\_2\$ case}~// \BibEmph{ArXiv e-prints}.
+  "---
+\newblock 2011.
+
+\bibitem[\BibPrefix82\BibPostfix]{shifrinmathematica}
+\selectlanguageifdefined{english}
+\BibEmph{L.~Shifrin}. Mathematica programming: an advanced introduction. "---
+\newblock 2009. \BibUrl{ http://mathprogramming-intro.org/}.
+
+\bibitem[\BibPrefix83\BibPostfix]{maeder2000computer}
+\selectlanguageifdefined{english}
+\BibEmph{R.E. Maeder}. Computer science with Mathematica. "---
+\newblock Cambridge University Press, 2000.
+
+\bibitem[\BibPrefix84\BibPostfix]{casselman1995automata}
+\selectlanguageifdefined{english}
+\BibEmph{WA~Casselman}. Automata to perform basic calculations in Coxeter
+  groups~// Representations of groups: Canadian Mathematical Society annual
+  seminar, June 15-24, 1994, Banff, Alberta, Canada~/ Canadian Mathematical
+  Society. "---
+\newblock Vol.~16. "---
+\newblock 1995. "---
+\newblock P.~35.
+
+\bibitem[\BibPrefix85\BibPostfix]{KallenShortlex}
+\selectlanguageifdefined{english}
+\BibEmph{Wilberd van~der Kallen}. Computing ShortLex rewite rules with
+  Mathematica. \BibUrl{
+  http://www.staff.science.uu.nl/~kalle101/ickl/shortlex.html}.
+
+\bibitem[\BibPrefix86\BibPostfix]{kazhdan1994tensor3}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
+  algebras. III~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
+\newblock 1994. "---
+\newblock Vol.~7, no.~2.
+
+\bibitem[\BibPrefix87\BibPostfix]{kazhdan1993tensor1}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
+  algebras. I~// \BibEmph{Journal of the American Mathematical Society}. "---
+\newblock 1993. "---
+\newblock Vol.~6, no.~4. "---
+\newblock Pp.~905--947.
+
+\bibitem[\BibPrefix88\BibPostfix]{kazhdan1993tensor2}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
+  algebras. II~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
+\newblock 1993. "---
+\newblock Vol.~6, no.~4.
+
+\bibitem[\BibPrefix89\BibPostfix]{kac1984infinite}
+\selectlanguageifdefined{english}
+\BibEmph{V.G. Kac, D.H. Peterson}. {Infinite-dimensional Lie algebras, theta
+  functions and modular forms}~// \BibEmph{Adv. in Math}. "---
+\newblock 1984. "---
+\newblock Vol.~53, no.~2. "---
+\newblock Pp.~125--264.
+
+\bibitem[\BibPrefix90\BibPostfix]{hwang1993brst}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Hwang, H.~Rhedin}. The brst formulation of G/H WZNW models~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 1993. "---
+\newblock Vol. 406, no. 1-2. "---
+\newblock Pp.~165--184.
+
 \end{thebibliography}
