@@ -14,22 +14,13 @@
 %%
 %\input{tcilatex}
 
+Сплинт корневой системы простой алгебры Ли возникает при изучении регулярных вложений редуктивных подалгебр. Сплинт можно использовать для получения правил ветвления. Мы показываем, что использование свойств сплинта  позволяет сильно упростить вычисление коэффициентов ветвления. 
 
-\begin{abstract}
-Splint of root system for simple Lie algebra appears naturally in
-studies of (regular) embeddings of reductive subalgebras. Splint can
-be used to construct branching rules. We demonstrate that 
-splint properties implementation drastically simplify calculations of
-branching coefficients.
-\end{abstract}
-
-\section{Introduction}
+\section{Введение}
 \label{sec:Introduction}
 
-Embedding $\phi$ of a root system $\Delta_1$ into a root system
-$\Delta$ is a bijective map of roots of $\Delta_{1}$ to a (proper)
-subset of $\Delta$ that commutes with vector composition law in
-$\Delta_{1}$ and $\Delta$.
+Вложение  $\phi$ корневой системы $\Delta_1$ в корневую систему $\Delta$ -- это биективное отображение корней из $\Delta_{1}$ в (собственное) подмножество $\Delta$, коммутирующее с законом сложения векторов в $\Delta_{1}$ и $\Delta$.
+
 \begin{equation*}
 \phi:\Delta_1 \longrightarrow \Delta
 \end{equation*}
@@ -38,37 +29,12 @@ $\Delta_{1}$ and $\Delta$.
 \,\,\, \alpha,\beta \in \Delta_1
 \end{equation*}
 
-Note that the image $Im(\phi)$ must not inherit the root system
-properties except the addition rules equivalent to the addition
-rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and $\phi_2$  
-can splinter $\Delta$  when the latter can be presented 
-as a disjoint union of images $Im(\phi_1)$ and $Im(\phi_2)$.   
-The term {\it splint} was
-introduced by D. Richter in  \cite{richter2008splints} where the
-classification of splints for simple Lie algebras was obtained.
-There was also mentioned that splint must have tight
-connections with the injection fan construction. The fan $\Gamma
-\subset \Delta$ was
-introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent
-properties of branching coefficients for maximal embeddings. Injection fan is an
-efficient tool to study branching rules. Later this construction
-was generalized to non-maximal embeddings and infinite-dimensional
-Lie algebras in \cite{2010arXiv1007.0318L, ilyin812pbc}.
+Заметим, что образ  $Im(\phi)$ не обязан обладать свойствами корневой системы за исключением правил сложения, эквивалентных правилам сложения в  $\Delta_{1}$ (для прообразов). Два вложения  $\phi_1$ и $\phi_2$  {\it расщепляют} корневую систему  $\Delta$ если она может быть представлена, как несвязное объединение образов $Im(\phi_1)$ и $Im(\phi_2)$.   
+Термин {\it сплинт} (расщепление) предложил D. Richter в работе  \cite{richter2008splints}, где  были получены все сплинты для простых алгебр Ли. В работе так же упоминалось, что сплинт должен быть тесно связан с конструкцией веера вложения. Веер вложения  $\Gamma\subset \Delta$ был введен в работе  \cite{lyakhovsky1996rra} как подмножество корневой системы, описывающее рекуррентные свойства коэффициентов ветвления для максимальных вложений. Веер вложения -- это эффективный инструмент для изучения правил ветвления. Позднее в работах \cite{2010arXiv1007.0318L, ilyin812pbc} эта конструкция была обобщена на не-максимальные вложения и бесконечномерные алгебры Ли.
 
-In the present paper we study connections between splint and
-injection fan for regular embedding of reductive subalgebras
-${\mathfrak a}$ in simple Lie algebra $\mathfrak{g}$. We show that (under
-certain conditions described in section \ref{sec:stems and
-multiplicity functions}) splint is a natural tool to study
-reduction properties of ${\mathfrak g}$-modules
-with respect to a subalgebra ${\mathfrak a}\longrightarrow
-{\mathfrak g}$. Using this tool we obtain the main result -- the one-to-one correspondence between weight
-multiplicities in irreducible modules of splint and branching
-coefficients for a reduced module $L^{\mu}_{{\mathfrak
-g}\downarrow {\mathfrak a}}$.
+В данной главе мы изучаем связь между сплинтом и веером вложения для регулярных вложений редуктивных подалгебр ${\mathfrak a}$ в простую алгебру Ли $\mathfrak{g}$. Мы демонстрируем, что (при выполнении определенных условий, описанных в разделе \ref{sec:stems and multiplicity functions}) сплинт является естественным инструментом для изучения свойств редукции  $\gf$-модулей по отношению к подалгебре $\af\longrightarrow\gf$. Используя этот инструмент мы получаем основной результат данной главы -- однозначное соответствие между кратностями весов неприводимых модулей сплинта и коэффициентов ветвления для редуцированного модуля $L^{\mu}_{\gf\downarrow \af}$
 
-
-\section{Injections and splints}
+\section{Вложения и сплинты}
 
 \label{sec:Injections and splints}
 
@@ -882,3 +848,10 @@ corresponding highest weights (with their multiplicities) form the diagram $%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%
+%% End of file
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 
