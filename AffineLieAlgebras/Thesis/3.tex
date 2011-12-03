@@ -167,12 +167,12 @@ $\phi$ индуцирует вложение формальных алгебр: 
 
 Сплинт $\Delta \approx (\Delta _{1},\Delta _{2})$ называется ``инъективным'', если $\Delta _{1}=\Delta _{\af}$, -- подсистема корневой системы $\Delta $, соответствующая регулярной редуктивной подалгебре $\af\hookrightarrow \gf$. 
 
-В случае инъективного сплинта второй стебель $\Delta _{\frak{s}}:=\Delta_{2}=\Delta \setminus \Delta _{\af}$ может быть переписан как произведение (\ref{product}) и определяет веер вложения  $\Gamma _{\af\hookrightarrow \gf}$. Обозначим через $\Delta_{\mathfrak{s}0}$ кообраз второго вложения $\phi:\Delta_{\mathfrak{s}0}\to \Delta_{\gf}$. Верна следующая гипотеза.
+В случае инъективного сплинта второй стебель $\Delta _{\sfr}:=\Delta_{2}=\Delta \setminus \Delta _{\af}$ может быть переписан как произведение (\ref{product}) и определяет веер вложения  $\Gamma _{\af\hookrightarrow \gf}$. Обозначим через $\Delta_{\mathfrak{s}0}$ кообраз второго вложения $\phi:\Delta_{\mathfrak{s}0}\to \Delta_{\gf}$. Верна следующая гипотеза.
 
 \begin{Cnj}
-Каждый инъективный сплинт $\Delta \approx (\Delta _{\af},\Delta _{\frak{s}})$ определяет веер вложения с носителем $\left\{ \xi \right\} _{\af\rightarrow \gf}$, задающимся произведением
+Каждый инъективный сплинт $\Delta \approx (\Delta _{\af},\Delta _{\sfr})$ определяет веер вложения с носителем $\left\{ \xi \right\} _{\af\rightarrow \gf}$, задающимся произведением
 \begin{equation}
-\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)
+\prod_{\beta \in \Delta _{\sfr}^{+}}\left( 1-e^{-\beta }\right)
 =-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}
 \end{equation}
 \end{Cnj}
@@ -183,70 +183,43 @@ $\phi$ индуцирует вложение формальных алгебр: 
 
 \label{sec:stems and multiplicity functions}
 
-В этом разделе мы рассмотрим свойства инъективных сплинтов $\Delta \approx (\Delta _{\af},\Delta _{\frak{s}})$. Мы покажем, что в этом случае вычисление коэффициентов ветвления для расщепляющего вложения $\af\hookrightarrow\gf$ эквивалентно нахождению кратностей весов неприводимого $\frak{s}$-модуля $L_{\frak{s}}^{\nu }$ с определенным старшим весом $\nu $. Заметим, что алгебра $\frak{s}$ не обязательно должна быть подалгеброй $\gf$.
+В этом разделе мы рассмотрим свойства инъективных сплинтов $\Delta \approx (\Delta _{\af},\Delta _{\sfr})$. Мы покажем, что в этом случае вычисление коэффициентов ветвления для расщепляющего вложения $\af\hookrightarrow\gf$ эквивалентно нахождению кратностей весов неприводимого $\sfr$-модуля $L_{\sfr}^{\nu }$ с определенным старшим весом $\nu $. Заметим, что алгебра $\sfr$ не обязательно должна быть подалгеброй $\gf$.
 
-Let us return to relation (\ref{singular main}) and multiply both sides by $%
-R_{\af}$:
+Вернемся к соотношению  (\ref{singular main}) и домножим обе стороны на  $R_{\af}$:
 \begin{equation}
-\frac{1}{\prod_{\beta \in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })}\Psi _{%
-\gf}^{\left( \mu \right) }=\sum_{\nu \in P_{\af}^{+}}b_{\nu
-}^{(\mu )}\Psi _{\af}^{\left( \nu \right) }.
+\frac{1}{\prod_{\beta \in \Delta _{\sfr}^{+}}(1-e^{-\beta })}\Psi _{\gf}^{\left( \mu \right) }=\sum_{\nu \in P_{\af}^{+}}b_{\nu}^{(\mu )}\Psi _{\af}^{\left( \nu \right) }.
 \label{singular main-2}
 \end{equation}
-Here the first factor in the l.h.s. is the inverse of the fan $\Gamma _{%
-\af\rightarrow \gf}$. Consider the highest weight module $L_{\frak{%
-s}}^{\nu }$. The embedding $\phi :\Delta _{\frak{s}\,0}\longrightarrow \Delta
-_{\gf}$ sends the singular element $\Psi _{\frak{s}}^{\left( \nu
-\right) }$ into $\Psi _{\gf}^{\left( \mu \right) }$. Applying the
-inverse morphism $\phi ^{-1}$ to the product $\left( \prod_{\beta \in \Delta
-_{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}\phi \left( \Psi _{\frak{s}%
-}^{\left( \nu \right) }\right) $ one gets the character of the module $L_{%
-\frak{s}}^{\nu }$,
+Здесь первый множитель в левой части -- это формальный элемент, обратный к вееру $\Gamma _{\af\rightarrow \gf}$. Рассмотрим модуль старшего веса $L_{\sfr}^{\nu }$. Вложение $\phi :\Delta _{\sfr\,0}\longrightarrow \Delta_{\gf}$ переводит сингулярный элемент  $\Psi _{\sfr}^{\left( \nu\right) }$ в $\Psi _{\gf}^{\left( \mu \right) }$. Применяя обратный морфизм $\phi ^{-1}$ к произведению $\left( \prod_{\beta \in \Delta_{\sfr}^{+}}(1-e^{-\beta })\right) ^{-1}\phi \left( \Psi _{\sfr}^{\left( \nu \right) }\right) $, мы получаем характер модуля $L_{\sfr}^{\nu }$,
 
 \begin{equation}
-\phi ^{-1}\left( \frac{1}{\prod_{\beta \in \Delta _{\frak{s}%
-}^{+}}(1-e^{-\beta })}\phi \left( \Psi _{\frak{s}}^{\left( \nu \right)
-}\right) \right) =\frac{1}{\prod_{\beta \in \Delta _{\frak{s}0
-}^{+}}(1-e^{-\beta })}\Psi _{\frak{s}}^{\left( \nu \right) }=\mathrm{ch}%
-\left( L_{\frak{s}}^{\nu }\right) .  \label{inverse for stem}
+\phi ^{-1}\left( \frac{1}{\prod_{\beta \in \Delta _{\sfr%
+}^{+}}(1-e^{-\beta })}\phi \left( \Psi _{\sfr}^{\left( \nu \right)
+}\right) \right) =\frac{1}{\prod_{\beta \in \Delta _{\sfr0
+}^{+}}(1-e^{-\beta })}\Psi _{\sfr}^{\left( \nu \right) }=\mathrm{ch}%
+\left( L_{\sfr}^{\nu }\right) .  \label{inverse for stem}
 \end{equation}
-Our task is to prove that the singular element $\Psi _{\gf}^{\left( \mu
-\right) }$ contains the element $\Psi _{\frak{s}}^{\left( \xi \right) }$ for
-a module $L_{\frak{s}}^{\xi }$ uniquely defined by $L_{\gf}^{\mu }$ and
-that the branching coefficients $b_{\nu }^{(\mu )}$ in the r.h.s. of (\ref
-{singular main-2}) coincide with multiplicities $m_{\zeta }^{\left( \xi
-\right) }$ of the corresponding weights in $\mathcal{N}_{\frak{s}}^{\xi }$ .
+Наша задача состоит в том, чтобы доказать, что сингулярный элемент $\Psi _{\gf}^{\left(\mu\right) }$ содержит элемент $\Psi _{\sfr}^{\left( \xi \right) }$ для модуля $L_{\sfr}^{\xi }$, однозначно определяемого модулем $L_{\gf}^{\mu }$ и что коэффициенты ветвления $b_{\nu }^{(\mu )}$ в правой части равенства (\ref{singular main-2}) совпадают с кратностями $m_{\zeta }^{\left( \xi\right) }$ соответствующих весов в $\mathcal{N}_{\sfr}^{\xi }$ .
 
-For a highest weight irreducible module $L_{\gf}^{\mu }$ the singular
-element $\Psi _{\gf}^{\left( \mu \right) }$ is an element of $\mathcal{E%
-}$ corresponding to the shifted Weyl-orbit of the weight $\left( \mu +\rho
-\right) \in P^{+}$ with the sign function $\epsilon \left( w\right) $. It is
-convenient to use also unshifted singular elements
+Для неприводимого модуля старшего веса $L_{\gf}^{\mu }$ сингулярный элемент $\Psi _{\gf}^{\left( \mu \right) }$ -- это элемент $\mathcal{E}$, соответствующий сдвинутой орбите группы веса $\left( \mu +\rho\right) \in P^{+}$, со знаковой функцией $\epsilon \left( w\right) $. Удобно использовать также не сдвинутые сингулярные элементы
 \begin{equation}
 \Phi ^{\left( \mu \right) }:=\Psi ^{\left( \mu \right) }e^{\rho }.
 \label{definition Phi}
 \end{equation}
-In these terms the relation (\ref{singular main-2}) looks like
+В этих обозначениях соотношение (\ref{singular main-2}) имеет вид
 \begin{equation}
 \frac{e^{\rho _{\gf}-\rho _{\af}}}{\prod_{\beta \in \Delta _{\frak{%
 s}}^{+}}(1-e^{-\beta })}\Phi _{\gf}^{\left( \mu \right) }=\sum_{\nu \in
 P_{\af}^{+}}b_{\nu }^{(\mu )}\Phi _{\af}^{\left( \nu \right) }.
 \label{singular main-3}
 \end{equation}
-The orbit related to $\Phi _{\gf}^{\left( \mu \right) }$ is completely
-defined by the set of edges $\left\{ \lambda _{i}\right\} _{i=1,\dots ,r}$
-adjusted to the end of the highest weight vector $\mu +\rho $. For $\mu
-=\sum m_{i}\omega _{i}$ these edges are
+Орбита, связанная с  $\Phi _{\gf}^{\left( \mu \right) }$, полностью определяется набором ребер $\left\{ \lambda _{i}\right\} _{i=1,\dots ,r}$ построенным из конца вектора старшего веса $\mu +\rho $. Для $\mu=\sum m_{i}\omega _{i}$ эти ребра равны
 \begin{equation}
 \lambda _{i}=-\left( m_{i}+1\right) \alpha _{i},\quad i=1,\dots ,r.
 \label{edge}
 \end{equation}
-Each formal exponent $e^{\mu +\rho +\lambda _{i}}$ in $\Phi _{\gf%
-}^{\left( \mu \right) }$ bears the sign coefficient $\epsilon =(-)$. The
-defining property of $\Phi _{\gf}^{\left( \mu \right) }$ is as follows.
-Consider any pair of edges $\lambda _{i},\lambda _{j}$ and the corresponding
-weights $\mu +\rho $, $\mu +\rho +\lambda _{i}$ and $\mu +\rho +\lambda _{j}$. 
-Apply the reflection $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
+Каждая формальная экспонента $e^{\mu +\rho +\lambda _{i}}$ in $\Phi _{\gf}^{\left( \mu \right) }$ снабжена знаковым коэффициентом  $\epsilon =(-)$. Можно определить $\Phi_{\gf}^{\left( \mu \right) }$ следующим свойством. Рассмотрим любую пару ребер $\lambda _{i},\lambda _{j}$ и соответствующие веса $\mu +\rho $, $\mu +\rho +\lambda _{i}$ и $\mu +\rho +\lambda _{j}$. 
+Применим отражение $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
 \begin{equation}
 s_{\alpha _{i}}\circ \left\{
 \begin{array}{l}
@@ -265,28 +238,17 @@ _{j}\right)
 \end{equation}
 
 \begin{Prop}
-The edge $\lambda _{i,j}$ of $\Phi _{\gf}^{\left( \mu \right) }$
-starting at the weight $\left( \mu +\rho +\lambda _{i}\right) $ along the
-root $-s_{\alpha _{i}}\circ \alpha _{j}$ has the same length in $(s_{\alpha
-_{i}}\circ \alpha _{j})$ as $\lambda _{j}$ has in $\alpha _{j}$. (The same
-is true for the edge $\lambda _{j,i}$, its length in $(s_{\alpha _{j}}\circ
-\alpha _{i})$ is equal to the length of $\lambda _{i}$ in $\alpha _{i}$.)
+Ребро  $\lambda _{i,j}$ сингулярного элемента $\Phi _{\gf}^{\left( \mu \right) }$, начинающееся в весе $\left( \mu +\rho +\lambda _{i}\right) $ и направленное вдоль корня $-s_{\alpha _{i}}\circ \alpha _{j}$ имеет такую же длину, выраженную в длинах корня $(s_{\alpha_{i}}\circ \alpha _{j})$, как и $\lambda _{j}$ в длинах $\alpha _{j}$. (Это же верно для ребра $\lambda _{j,i}$, его длина в единицах $(s_{\alpha _{j}}\circ\alpha _{i})$ равна длине $\lambda _{i}$ в единицах $\alpha _{i}$.)
 \label{diagram property}
 \end{Prop}
 
-In $\Phi _{\gf}^{\left( \mu \right) }$ the elements $e^{\left( \mu
-+\rho +\lambda _{i}-(m_{j}+1)s_{\alpha _{i}}\circ \alpha _{j}\right) }$ and $%
-e^{\left( \mu +\rho +\lambda _{j}-(m_{i}+1)s_{\alpha _{j}}\circ \alpha
-_{i}\right) }$ have the sign coefficient  $\epsilon =(+)$.
+В $\Phi _{\gf}^{\left( \mu \right) }$ элементы $e^{\left( \mu+\rho +\lambda_{i}-(m_{j}+1)s_{\alpha _{i}}\circ \alpha _{j}\right) }$ и $e^{\left( \mu +\rho +\lambda _{j}-(m_{i}+1)s_{\alpha_{j}}\circ \alpha_{i}\right) }$ имеют знаковый коэффициент  $\epsilon =(+)$.
 
-Remember that only three types of splints are
-injective and thus are naturally connected with branching. Below we
-reproduce the part of the splints table from \cite{richter2008splints} corresponding to
-injective splints:
+Вспомним, что только три типа сплинтов инъективны и имеют естественную связь с ветвлениями. Ниже мы приводим часть таблицы сплинтов из работы \cite{richter2008splints}, соответствующую инъективным сплинтам:
 \[
 \begin{array}{cc||c|c}
 \hbox{type} & \hspace{0.25in}\Delta \hspace{0.25in} & \hspace{0.25in}\Delta
-_{\af}\hspace{0.25in} & \hspace{0.25in}\Delta _{\frak{s}}\hspace{0.25in}
+_{\af}\hspace{0.25in} & \hspace{0.25in}\Delta _{\sfr}\hspace{0.25in}
 \\ \hline\hline
 \hbox{(i)} & G_{2} & A_{2} & A_{2} \\
 & F_{4} & D_{4} & D_{4} \\ \hline
@@ -297,22 +259,22 @@ _{\af}\hspace{0.25in} & \hspace{0.25in}\Delta _{\frak{s}}\hspace{0.25in}
 & B_{2} & A_{1}\oplus u\left( 1\right)  & A_{2}
 \end{array}
 \]
-Each row in the table gives a splint $(\Delta _{\af},\Delta _{\frak{s}})
+Each row in the table gives a splint $(\Delta _{\af},\Delta _{\sfr})
 $ of the simple root system $\Delta $. In the first two types both $\Delta _{%
-\af}$ and $\Delta _{\frak{s}}$ are embedded metrically. Stems in the
+\af}$ and $\Delta _{\sfr}$ are embedded metrically. Stems in the
 first type splints are equivalent and in the second are not. In the third
 type splints only $\Delta _{\af}$ is embedded metrically. The summands $%
 u\left( 1\right) $ are added to keep $r_{\af}=r$. This does not change
 the principle properties of branching but makes it possible to use the
-multiplicities of $\frak{s}$-modules without further projecting their
+multiplicities of $\sfr$-modules without further projecting their
 weights.
 
 Splints induce a decomposition of the set $S=S_{\frak{c}}\cup S_{\frak{d}}$
-with $S_{\frak{c}}=S\cap S_{\af}$ and $S_{\frak{d}}=S\cap S_{\frak{s}}$. 
+with $S_{\frak{c}}=S\cap S_{\af}$ and $S_{\frak{d}}=S\cap S_{\sfr}$. 
 It is easy to check that for any injective splint the subset $S_{%
 \frak{d}}$ is nonempty. It follows that in the set $\left\{ \lambda
 _{i}\right\} _{i=1,\dots ,r}$ one can always find simple roots $\beta
-_{k}\in \Delta _{\frak{s}}$ and that the orbit corresponding to $\Phi _{%
+_{k}\in \Delta _{\sfr}$ and that the orbit corresponding to $\Phi _{%
 \gf}^{\left( \mu \right) }$ contains the edges
 \begin{equation}
 \lambda _{k}=-\left( m_{k}+1\right) \beta _{k}  \label{beta edge}
@@ -321,8 +283,8 @@ attached to the weight $\mu +\rho $. As far as $\Delta _{\af}$ is a
 root system and for any pair of simple roots from $S_{\frak{c}}$ the
 property \ref{diagram property} is fulfilled, the element $\Phi _{\gf%
 }^{\left( \mu \right) }$ being a singular element for a set of $\af$%
--modules. Consider $\beta _{l}\in \Delta _{\frak{s}}$ whose coimage in $%
-\Delta _{\frak{s}0}$ is simple. In Appendix it is shown that for any such $%
+-modules. Consider $\beta _{l}\in \Delta _{\sfr}$ whose coimage in $%
+\Delta _{\sfr0}$ is simple. In Appendix it is shown that for any such $%
 \beta _{l}$ there exists a root $\alpha _{l}\in S_{\frak{c}}$ such that
 $\beta _{l}=\alpha _{l}+\beta _{k}$. It is easily seen that the
 corresponding edge intersects the boundary plane of the fundamental chamber $%
@@ -343,7 +305,7 @@ _{l}=\beta _{k}$. Now apply the operator $s_{\beta _{k}}$ and find that the
 edge along the root $s_{\beta _{k}}\alpha _{l}$ attached at the weight $%
 s_{\beta _{k}}(\mu +\rho )$ is also equal to $-ps_{\beta _{k}}\alpha _{l}$.
 This means that for the triple of roots $\beta _{k},\beta _{l}$ and $%
-s_{\beta _{k}}\alpha _{l}$ in $\Delta _{\frak{s}}$ the edges $\lambda
+s_{\beta _{k}}\alpha _{l}$ in $\Delta _{\sfr}$ the edges $\lambda
 _{k}=-\left( m_{k}+1\right) \beta _{k}$, $\lambda _{l}=-\left(
 m_{l}+1\right) \beta _{l}$ and $\lambda _{kl}=-\left( m_{l}+1\right)
 s_{\beta _{k}}\alpha _{l}$ demonstrate the property \ref{diagram property}.
@@ -354,12 +316,12 @@ the coimage of the singular element of a module for the subalgebra in $\frak{%
 s}$ (this subalgebra has rank $r=2$).
 
 The same can be proven for any positive root $\beta _{l}\in \Delta $ that is
-simple in $\Delta _{\frak{s}0}$ and correspondingly for any $r=2$ subalgebra
-in $\frak{s}$. The latter means that to ''find'' a singular element of $%
-\frak{s}$-module in $\Phi _{\gf}^{\left( \mu \right) }$ it is necessary
+simple in $\Delta _{\sfr0}$ and correspondingly for any $r=2$ subalgebra
+in $\sfr$. The latter means that to ''find'' a singular element of $%
+\sfr$-module in $\Phi _{\gf}^{\left( \mu \right) }$ it is necessary
 to incorporate in it additional formal elements $\left\{ -e^{\mu +\rho
 -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{\frak{c}}\right\}.$ This
-fixes the starting edges of the diagram $\phi ^{-1}\left( \Phi _{\frak{s}}^{%
+fixes the starting edges of the diagram $\phi ^{-1}\left( \Phi _{\sfr}^{%
 \widetilde{\mu }}\right) $. As it follows from the reconstruction procedure
 the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $%
 , they have the same Dynkin numbers:
@@ -367,29 +329,29 @@ the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $%
 \mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
 m_{k}\widetilde{\omega }_{k} . \label{new h weight}
 \end{equation}
-The next step is to construct the full $W_{\frak{s}}$-orbit $\Phi _{\frak{s}%
-}^{\left( \widetilde{\mu }\right) }$  in $P_{\frak{s}}$. It is easily seen
+The next step is to construct the full $W_{\sfr}$-orbit $\Phi _{\sfr%
+}^{\left( \widetilde{\mu }\right) }$  in $P_{\sfr}$. It is easily seen
 that its coimage belongs to $\bar{C_{\af}}$ and that the set $\phi
-^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) \setminus \Phi _{%
+^{-1}\left( \Phi _{\sfr}^{\widetilde{\mu }}\right) \setminus \Phi _{%
 \gf}^{\left( \mu \right) }|_{\bar{C_{\af}}}$ corresponds to the
 weights belonging to the boundary $\bar{C_{\af}}$ (including the subset
 $\left\{ -e^{\mu +\rho -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{%
 \frak{c}}\right\} $). Thus we have constructed all the formal elements\ with
 the appropriate sign factors that after being added to $\Phi _{\gf%
 }^{\left( \mu \right) }|_{\bar{C_{\af}}}$ form the diagram $\phi
-^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) $ in $\bar{C_{\af%
+^{-1}\left( \Phi _{\sfr}^{\widetilde{\mu }}\right) $ in $\bar{C_{\af%
 }}$.
 
 Now let us return to relation (\ref{singular main-3}). One can add to $%
 \Phi _{\gf}^{\left( \mu \right) }$ pairs of formal elements
 constructed above  with the opposite signs: $\epsilon \left( w\right)
-|_{w\in W_{\frak{s}}}$ and $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$. 
-Attribute the signs $\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ to
+|_{w\in W_{\sfr}}$ and $-\epsilon \left( w\right) |_{w\in W_{\sfr}}$. 
+Attribute the signs $\epsilon \left( w\right) |_{w\in W_{\sfr}}$ to
 the elements whose weights we shall attribute to $\bar{C_{\af}}$. 
 The same elements with the opposite signs are to be referred to the
 neighboring Weyl chambers of $\bar{C_{\af}^{(l)}}$ (the latter are
 connected with the main one via simple reflections $s_{\alpha _{l}}$ so the
-signes $-\epsilon \left( w\right) |_{w\in W_{\frak{s}}}$ are natural for
+signes $-\epsilon \left( w\right) |_{w\in W_{\sfr}}$ are natural for
 them). In fact one can repeat the procedure and find additional singular
 weights in any Weyl chamber $\bar{C_{\af}^{(m)}}$ and in them
 additional singular weights always have the signs opposite to that in their
@@ -397,41 +359,41 @@ nearest neighbors. Thus without changing the element $\Phi _{\gf%
 }^{\left( \mu \right) }$ one can present it as a sum
 \begin{equation}
 \Phi _{\gf}^{\left( \mu \right) }=\sum_{w\in W_{\af}}w\circ \left(
-e^{\rho _{\af}}\Psi ^{\widetilde{\mu }+\rho _{\frak{s}}}\right)
+e^{\rho _{\af}}\Psi ^{\widetilde{\mu }+\rho _{\sfr}}\right)
 \label{singular final}
 \end{equation}
-where the weight $\widetilde{\mu }=\sum m_{k}\omega _{\frak{s}}^{k}$ was
+where the weight $\widetilde{\mu }=\sum m_{k}\omega _{\sfr}^{k}$ was
 defined above. The decomposition (\ref{singular final}) provides the
-possibility to apply the factor $\left( \prod_{\beta \in \Delta _{\frak{s}%
+possibility to apply the factor $\left( \prod_{\beta \in \Delta _{\sfr%
 }^{+}}(1-e^{-\beta })\right) ^{-1}$ to each summand of the singular element $%
 \Phi _{\gf}^{\left( \mu \right) }$ separately because the sets of
 weights from different Weyl summands do not intersect. Taking into account
 the isomorphism $\phi $ one can see that in the main Weyl chamber $\bar{C_{%
 \af}}$ the set of weights generated by the factor $\left( \prod_{\beta
-\in \Delta _{\frak{s}}^{+}}(1-e^{-\beta })\right) ^{-1}$ is isomorphic to
-the weight diagram $\mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ of the $\frak{%
-s}$-module $L_{\frak{s}}^{\widetilde{\mu }}$. Now one can restrict
+\in \Delta _{\sfr}^{+}}(1-e^{-\beta })\right) ^{-1}$ is isomorphic to
+the weight diagram $\mathcal{N}_{\sfr}^{\widetilde{\mu }}$ of the $\frak{%
+s}$-module $L_{\sfr}^{\widetilde{\mu }}$. Now one can restrict
 relation (\ref{singular main-3}) to $\bar{C_{\af}}$ and obtain the main
 result:
 \begin{Prop}
 \begin{equation}
-\frac{e^{\rho _{\gf}}}{\prod_{\beta \in \Delta _{\frak{s}%
-}^{+}}(1-e^{-\beta })}\left( \Psi ^{\widetilde{\mu }+\rho _{\frak{s}%
-}}\right) =\sum_{\widetilde{\nu }\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }%
-}}M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}e^{\left(
+\frac{e^{\rho _{\gf}}}{\prod_{\beta \in \Delta _{\sfr%
+}^{+}}(1-e^{-\beta })}\left( \Psi ^{\widetilde{\mu }+\rho _{\sfr%
+}}\right) =\sum_{\widetilde{\nu }\in \mathcal{N}_{\sfr}^{\widetilde{\mu }%
+}}M_{\left( \sfr\right) \widetilde{\nu }}^{\widetilde{\mu }}e^{\left(
 \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 }=\sum_{\nu \in P_{\af}^{++}}b_{\nu }^{(\mu )}e^{\nu }.
 \label{singular main-4}
 \end{equation}
 Any weight with nonzero multiplicity in the r. h. s. is equal to one of the
-highest weights in the decomposition. The multiplicity $M_{\left( \frak{s}%
+highest weights in the decomposition. The multiplicity $M_{\left( \sfr%
 \right) \widetilde{\nu }}^{\widetilde{\mu }}$ of the weight  $\widetilde{\nu
-}\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ defines the branching
+}\in \mathcal{N}_{\sfr}^{\widetilde{\mu }}$ defines the branching
 coefficient $b_{\nu }^{(\mu )}$ for the highest weight $\nu =\left( \mu
 -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right) $:
 \[
 b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
-}^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}.
+}^{(\mu )}=M_{\left( \sfr\right) \widetilde{\nu }}^{\widetilde{\mu }}.
 \]
 \end{Prop}
 
@@ -500,7 +462,7 @@ multiplicity free (all nonzero
 branching coefficients are equal to 1). Here it is an immediate consequence of the
 structure of the second stem being a direct sum of $A_{1}$
 algebras and the fact that the corresponding module
-$L_{\frak{s}}^{\mu }$ is irreducible.
+$L_{\sfr}^{\mu }$ is irreducible.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -514,16 +476,16 @@ $L_{\frak{s}}^{\mu }$ is irreducible.
 Let us demonstrate that for injective splints of classical Lie
 algebras the following property is valid:
 \begin{Prop}
-Let $\Delta \approx (\Delta _{\af},\Delta _{\frak{s}})$ be an
+Let $\Delta \approx (\Delta _{\af},\Delta _{\sfr})$ be an
 injective
 splint with the decomposition of simple roots $S=S_{\frak{c}}\cup S_{\frak{d}%
-}$ with $S_{\frak{c}}=S\cap S_{\af}$ and $S_{\frak{d}}=S\cap S_{\frak{s}%
+}$ with $S_{\frak{c}}=S\cap S_{\af}$ and $S_{\frak{d}}=S\cap S_{\sfr%
 }$.
 \end{Prop}
-Thus for any simple root $\beta \in S_{\frak{s}}$ there exists the
+Thus for any simple root $\beta \in S_{\sfr}$ there exists the
 pair of
 roots ( $\alpha $ ,$\beta ^{\prime }$) with $\alpha \in $ $S_{\frak{c}%
-},\beta ^{\prime }\in S_{\frak{s}}$ such that $\alpha =\beta
+},\beta ^{\prime }\in S_{\sfr}$ such that $\alpha =\beta
 -\beta ^{\prime }$
 
 \begin{itemize}
@@ -547,32 +509,32 @@ contains the edge $\lambda _{2}=-\alpha _{2}=-\beta _{2}$ and the roots $%
 ($\beta _{3}$ is indicated as $\beta _{l}$). For the root $\beta
 _{1}$ the necessary pair
 is  $(\alpha _{1}, \beta _{2})$: $\alpha _{1}=\beta _{1}-\beta _{2}$. The $%
-\lambda _{2,3}^{\frak{s}}=\beta _{3}$ edge is equal to $\lambda _{1}^{\frak{s%
+\lambda _{2,3}^{\sfr}=\beta _{3}$ edge is equal to $\lambda _{1}^{\frak{s%
 }}=\beta _{1}=s_{\alpha _{2}}\circ \beta _{3}$ and $m_{1}$ index
-is aquired by the $\frak{s}$-module that also inherit the second
+is aquired by the $\sfr$-module that also inherit the second
 index $m_{2}$. In this particular
 case they are $m_{1}=m_{2}=0$. The general case with the initial module $%
 L^{\mu }$ and $\mu =m_{1}\omega _{1}+m_{2}\omega _{2}$ can be
 treated in the same way: one finds an edge $\lambda _{2}=-\left(
 m_{2}+1\right) \beta _{2}$ and put $\lambda
-_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$, its end
+_{1}^{\sfr}=-\left( m_{1}+1\right) \beta _{1}$, its end
 belongs to the boundary $\bar{C_{\af}}$. The reflection
 $s_{\beta
 _{2}} $ sends $\beta _{1}$ to $\beta _{3}$ and the corresponding edge 
-$\lambda _{2,3}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{3}$ has
-the length $\left( m_{1}+1\right) $. Now consider $\lambda _{1}^{\frak{s}}$ (or
-$\lambda _{2,3}^{\frak{s}} $) and $\lambda _{1,3}^{\frak{s}}$ (or
-$\lambda _{2,3,1}^{\frak{s}}$) edges to find that they belong to
+$\lambda _{2,3}^{\sfr}=-\left( m_{1}+1\right) \beta _{3}$ has
+the length $\left( m_{1}+1\right) $. Now consider $\lambda _{1}^{\sfr}$ (or
+$\lambda _{2,3}^{\sfr} $) and $\lambda _{1,3}^{\sfr}$ (or
+$\lambda _{2,3,1}^{\sfr}$) edges to find that they belong to
 the boundary $\bar{C_{\af}}$ and the Weyl symmetry predicts
-that $\lambda _{1,3}^{\frak{s}}=-\left( m_{2}+1\right)
-\beta _{3}$ ($\lambda _{2,3,1}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{1}$%
-) . Finally the edge $\lambda _{1,3,2}^{\frak{s}}=-\left(
+that $\lambda _{1,3}^{\sfr}=-\left( m_{2}+1\right)
+\beta _{3}$ ($\lambda _{2,3,1}^{\sfr}=-\left( m_{2}+1\right) \beta _{1}$%
+) . Finally the edge $\lambda _{1,3,2}^{\sfr}=-\left(
 m_{1}+1\right) \beta _{2}$ closes the polytope. Its vertices
 correspond to weights of the singular
-element $\Phi _{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in W_{%
-\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
+element $\Phi _{\sfr}^{\left( \widetilde{\mu }\right) }=\sum_{w\in W_{%
+\sfr}}\varepsilon \left( w\right) e^{w\circ \left(
 \widetilde{\mu }+\rho
-_{\frak{s}}\right) }$ of the module $L_{\frak{s}}^{\left( \widetilde{\mu }%
+_{\sfr}\right) }$ of the module $L_{\sfr}^{\left( \widetilde{\mu }%
 \right) }$ with $\widetilde{\mu }=m_{1}\widetilde{\omega }_{1}+m_{2}%
 \widetilde{\omega }_{2}$. Notice that in this case the sign
 factors can be obtained directly in the initial weight system as
@@ -591,27 +553,27 @@ e_{1}-e_{2}-e_{3}-e_{4}\right) \right\} $.
 For a module $L^{\mu }$ with $\mu =\sum m_{k}\omega _{k}$ consider the edge $%
 \lambda _{3}=-\left( m_{3}+1\right) e_{4}=-\left( m_{3}+1\right)
 \beta _{3}$.
- Compose an edge $\lambda _{2}^{\frak{s}}=-\left( \widetilde{m}%
+ Compose an edge $\lambda _{2}^{\sfr}=-\left( \widetilde{m}%
 _{2}+1\right) \beta _{2}$. The necessary pair of roots is $\left(
 \alpha
 _{2}=e_{3}-e_{4},\beta _{3}\right) $. The intersection of $\lambda _{2}^{%
-\frak{s}}$ with the $\alpha _{2}$-boundary of
+\sfr}$ with the $\alpha _{2}$-boundary of
 $\bar{C_{\af}}$ fixes
-its length to be $\lambda _{2}^{\frak{s}}=-\left( m_{2}+1\right) \beta _{2}$%
-\ and the length of the edge $\lambda _{3,2}^{\frak{s}}$ is equal
+its length to be $\lambda _{2}^{\sfr}=-\left( m_{2}+1\right) \beta _{2}$%
+\ and the length of the edge $\lambda _{3,2}^{\sfr}$ is equal
 to that of
-$\lambda _{2}^{\frak{s}}$. Next consider the edge $\lambda _{2}^{\frak{s}%
+$\lambda _{2}^{\sfr}$. Next consider the edge $\lambda _{2}^{\sfr%
 }=-\left( m_{2}+1\right) \beta _{2}$ and the pair $\left( \alpha
 _{1}=e_{2}-e_{3},\beta _{1}=e_{2}\right) $. The length of  
-$\lambda _{1}^{\frak{s}}$ becomes equal to $\lambda
-_{1}^{\frak{s}}=-\left( m_{1}+1\right) \beta _{1}$. Proceed further till the closure of the polytope. 
+$\lambda _{1}^{\sfr}$ becomes equal to $\lambda
+_{1}^{\sfr}=-\left( m_{1}+1\right) \beta _{1}$. Proceed further till the closure of the polytope. 
 The edges looking along the roots of the $\alpha_4$-type, $\alpha _{4}=\beta
 _{4}=$ $\frac{1}{2}\left( e_{1}-e_{2}-e_{3}-e_{4}\right) $, are
 treated similarly and finally the singular element $\Phi
-_{\frak{s}}^{\left( \widetilde{\mu }\right) }=\sum_{w\in
-W_{\frak{s}}}\varepsilon \left( w\right) e^{w\circ \left(
-\widetilde{\mu }+\rho _{\frak{s}}\right) }$ for the module
-$L_{\frak{s}}^{\left( \widetilde{\mu }\right) }$ with
+_{\sfr}^{\left( \widetilde{\mu }\right) }=\sum_{w\in
+W_{\sfr}}\varepsilon \left( w\right) e^{w\circ \left(
+\widetilde{\mu }+\rho _{\sfr}\right) }$ for the module
+$L_{\sfr}^{\left( \widetilde{\mu }\right) }$ with
 $\widetilde{\mu }=\sum m_{k}\widetilde{\omega }_{k}$ is formed in
 $\bar{C_{\af}}$.
 \item
@@ -623,7 +585,7 @@ _{D_{r}}$ simple roots $S_{\af}=\left\{
 e_{1}-e_{2},e_{2}-e_{3},\ldots
 ,e_{r-1}-e_{r},e_{r-1}+e_{r}\right\} $. The second stem
 corresponds to a
-direct sum of algebras $A_{1}$ with the simple roots $S_{\frak{s}%
+direct sum of algebras $A_{1}$ with the simple roots $S_{\sfr%
 }=\left\{ e_{1},e_{2},\ldots ,e_{r-1},e_{r}\right\} $. Consider the edge $%
 \lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$ (here $\beta
 _{r}=e_{r}$) and $\lambda _{r-1}=-\left(
@@ -660,7 +622,7 @@ u_{1}},\Delta _{\oplus ^{r}A_{1}}).$
 Here only the first stem is metric and it fixes the injection with
 simple roots $S_{\af}=\left\{ e_{1}-e_{2},e_{2}-e_{3},\ldots
 ,e_{r-1}-e_{r}\right\} $. The second stem corresponding to a direct sum of $%
-r$ copies of $A_{1}$ has the simple roots $S_{\frak{s}}=\left\{
+r$ copies of $A_{1}$ has the simple roots $S_{\sfr}=\left\{
 e_{1}-e_{r+1},e_{2}-e_{r+1},\ldots ,e_{r}-e_{r+1}\right\} $.
 Consider the edge $\lambda _{r}=-\left( m_{r}+1\right) \beta _{r}$
 with $\beta
@@ -710,7 +672,7 @@ m_{1}+1\right) \beta
 _{1}$ to $\lambda _{2,3}$, thus the latter edge has the same length in $%
 \beta _{3}=e_{1}+e_{3}$, we have $\lambda _{2,3}=-\left(
 m_{1}+1\right)
-\beta _{3}$ with $\beta _{3}=e_{1}+e_{3}$. The irreducible $\frak{s}$%
+\beta _{3}$ with $\beta _{3}=e_{1}+e_{3}$. The irreducible $\sfr$%
 -module has the highest weight $\widetilde{\mu }=m_{1}\widetilde{\omega }%
 _{1}+m_{2}\widetilde{\omega }_{2}$. In Figure 1 we see the
 details of these relations in a particular case where
