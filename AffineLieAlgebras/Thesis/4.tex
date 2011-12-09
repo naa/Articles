@@ -283,112 +283,101 @@ Coset-модели можно реализовать, как калиброво�
 
 Теперь введем эволюцию Шрамма-Левнера, соответствующую coset-моделям. Суть конструкции состоит в ограничении дополнительного броуновского движения на групповом многообразии на фактор-пространство  $G/A$. 
 
+Чтобы ограничить броуновское движение на фактор-пространство $G/A$ выберем базис в $\gf$ специальным образом. Потребуем, чтобы генераторы $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ были выбраны так, что $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$, а $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ -- генераторы подалгебры $\af\subset \gf$. Теперь мы  можем ввести  $(\mathrm{dim}\gf-\mathrm{dim}\af)$-мерное Броуновское движение с генераторами $d\theta^{a}$, такими, что $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
 
-To study SLE on $G/A$ factor space we restrict random walk on group manifold by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $(\mathrm{dim}\gf-\mathrm{dim}\af)$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
-
-Then for generator of field transformation we can write 
+Тогда для генераторов преобразования полей можно написать
 \begin{equation}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}\left(d \theta ^{a} t^{a}_{i}\right)\right)
 \label{eq:5}
 \end{equation}
-Substituting to equation \eqref{eq:8} we get martingale condition
-
+Подставляя это выражение в уравнение \eqref{eq:8} мы получаем условие мартингала
 \begin{equation}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0,
 \label{eq:9}
 \end{equation}
-
-which can be rewritten as the requirement for
+которое можно переписать как требование, чтобы поле
 \begin{equation}
   \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{(\mu,\nu)}
 \label{eq:10}
 \end{equation}
-to be level two null-field. 
+было нулевым полем уровня два.
 
-Now consider simple example. Let $G=SU(2)$ and $A=U(1)$, and corresponding Lie algebras $\gf=\mathrm{su}(2)$
-with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator $J^{3}$, $\af\subset\gf$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. 
+Рассмотрим простой пример.Пусть $G=SU(2)$ и $A=U(1)$, соответствующая алгебра Ли $\gf=\mathrm{su}(2)$ имеет генераторы $J^{1},J^{2},J^{3}$, а $\af=\mathrm{u}(1)$ -- генератор $J^{3}$, $\af\subset\gf$. Заметим, что $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. 
 %%We label weights by Dynkin labels, so $J^{3}_{0}\phi_{(\mu,\nu)}=\frac{\mu}{2} \phi_{(\mu,\nu)}$.
 
- The equation \eqref{eq:10} is now
+Уравнение \eqref{eq:10} теперь имеет вид
 \begin{equation}
   \label{eq:11}
   \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{(\mu,\nu)}
 \end{equation}
-If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
+Если перейти к базису $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$, это уравнение будет переписано в виде
 \begin{equation}
- \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{(\mu,\nu)}
+ \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{(\mu,\nu)},
 \label{eq:12}
 \end{equation}
-which is similar to the equations for parafermionic fields introduced in paper \cite{santachiara2008sle}.
+аналогичном уравнениям для парафермионных полей, выведенным в статье  \cite{santachiara2008sle}.
 
-Central charge in this case is equal to
+В данном примере центральный заряд равен
 \begin{equation}
   \label{eq:14}
   c=\frac{2(k-1)}{k+2}
 \end{equation}
 
-Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
+Найдем решения уравнения  \eqref{eq:11}. Подействуем на  $\psi$ оператором $L_{2}$:
 \begin{equation}
   \label{eq:13}
   L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{(\mu,\nu)}=0,
 \end{equation}
-and obtain
+и получим
 \begin{equation}
   \label{eq:28}
   (3\kappa-8) h_{(\mu,\nu)}+c+\tau k =0
 \end{equation}
-Another equation can be obtained by action of $L_{1}^{2}$
+Другое уравнение можно получить действием  $L_{1}^{2}$
 \begin{equation}
   \label{eq:15}
   L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{(\mu,\nu)}=0
 \end{equation}
-Since $J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}=J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}+J_{0}^{3}J_{0}^{3}-J_{0}^{3}J_{0}^{3}$ we have
+Так как $J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}=J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}+J_{0}^{3}J_{0}^{3}-J_{0}^{3}J_{0}^{3}$, мы получаем
 \begin{equation}
   \label{eq:17}
   12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) +  \tau (C_{\mu}-\tilde{C}_{\nu})=0,
 \end{equation}
-where $C_{\mu}=(\mu,\mu+2\rho)$ is the eigenvalue of quadratic Casimir operator $\sum_{a}t^{a}t^{a}$. For $u(1)$ it is just $\nu^{2}$.
-We need to get one more equation since we have three variables $\kappa,\tau,h_{(\mu,\nu)}$. We can use that $\psi$ is singular vector so $L_{1}\psi=0$ and then $J_{1}^{3}L_{1}\psi=0$, so
+где $C_{\mu}=(\mu,\mu+2\rho)$ -- собственное значение квадратичного оператора Казимира $\sum_{a}t^{a}t^{a}$. Для $u(1)$ это просто $\nu^{2}$. Нам необходимо еще одно уравнение, так как у нас три неизвестных $\kappa,\tau,h_{(\mu,\nu)}$. Чтобы его получить, мы пользуемся тем, что $\psi$ -- сингулярный вектор, так что $L_{1}\psi=0$ и следовательно $J_{1}^{3}L_{1}\psi=0$, что дает уравнение
 \begin{equation}
   \label{eq:29}
   \left(-6  + \kappa +  \tau +  2 \kappa h_{(\mu,\nu)}\right) J^{3}_{0} \phi_{(\mu,\nu)}=0
 \end{equation}
 
+Рассмотрим случай $k=2, \;c=1/2$, который соответствует модели Изинга на квадратной решетке. У нас есть три неэквивалентных поля, нумерующихся парами весов $su(2)$ и $u(1)$: $\phi_{(0,0)}, \; h_{(0,0)}=0; \quad \phi_{(0,2)}, \; h_{(0,2)}=1/2; \quad \phi_{(1,1)}, \; h_{(1,1)}=1/16$.
+Уравнение \eqref{eq:29} тривиально для  $\phi_{(0,0)}$ и  $\phi_{(0,2)}$, так что уравнения  \eqref{eq:17}, \eqref{eq:28} непротиворечивы,  однако мы не знаем, как интерпретировать параметр  $\tau$ в контексте модели Изинга. Для поля  $\phi_{(1,1)}$ не существует решений уравнений на  $\kappa,\tau$, так что не каждое примарное поле соответствует оператору смены граничного условия.
 
-Turn to the case $k=2, \;c=1/2$ which corresponds to square lattice Ising model. We have three non-equivalent fields numbered by the pairs of $su(2)$ and $u(1)$ weights, which are $\phi_{(0,0)}, \; h_{(0,0)}=0; \quad \phi_{(0,2)}, \; h_{(0,2)}=1/2; \quad \phi_{(1,1)}, \; h_{(1,1)}=1/16$.
-The equation \eqref{eq:29} is trivial for $\phi_{(0,0)}$ and $\phi_{(0,2)}$, so the equations \eqref{eq:17}, \eqref{eq:28} are consistent although we do not know how to interpret $\tau$ in context of the Ising model. If we consider the field $\phi_{(1,1)}$ we have no solution for $\kappa,\tau$, so we see that not every primary field corresponds to some boundary condition changing operator. 
-
-Now let us generalize to arbitrary coset model. It is not always convenient to work with generators orthogonal with respect to Killing form $\mathcal{K}$, sometimes it is preferable to use Chevalley or Cartan-Weyl basis. So we change normalization condition of additional $\mathrm{dim}\gf$-dimensional Brownian motion \eqref{eq:5} to $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation \eqref{eq:2} is
+Теперь обобщим анализ на произвольную  coset-модель. Работать с генераторами, ортогональными по отношению к форме Киллинга $\mathcal{K}$, не всегда удобно. Иногда предпочтительно использовать базис Шевалле или Картана-Вейля. Так что мы изменим условие нормировке дополнительного $\mathrm{dim}\gf$-мерного Броуновского движения \eqref{eq:5} на $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, и генератор преобразования поля  \eqref{eq:2} примет вид 
 \begin{equation*}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right).
 \end{equation*}
- Martingale condition  \eqref{eq:8} can be written as
+Условие мартингала  \eqref{eq:8} запишется в виде
 \begin{equation*}
   \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
       \sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0.
 \end{equation*}
-This equation can again be rewritten as the requirement for
+Это уравнение снова может быть переписано, как требование чтобы поле
 \begin{equation}
   \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\mu,\nu)}
 \label{eq:30}
 \end{equation}
-to be level two null-field.
+было нулевым полем уровня два.
 
-Acting on \eqref{eq:30} with $L_{2}$ and $L_{1}^{2}$ we can obtain equations \eqref{eq:28} and \eqref{eq:17}. To get more equations we can act by $\afh$-generators $\tilde{J}^{b}_{1}$ and $L_{1}$ similarly to what was done with $J^{3}_{1}$ to get equation \eqref{eq:29}. 
+Действуя на уравнение \eqref{eq:30} операторами  $L_{2}$ и $L_{1}^{2}$ мы можем получить уравнения \eqref{eq:28} и \eqref{eq:17}. Чтобы получить дополнительные уравнения мы можем подействовать генераторами  $\tilde{J}^{b}_{1}$ алгебры $\afh$ и оператором $L_{1}$, аналогично том, как мы делали с оператором  $J^{3}_{1}$ при выводе уравнения \eqref{eq:29}. 
 
-To obtain simpler relations it is also possible to use generalization of Knizhnik-Zamolodchikov equations \eqref{eq:6} as was done for WZNW-models in paper \cite{alekseev2010sle}. 
+Чтобы упростить соотношения можно использовать обобщение уравнений Книжника-Замолодчикова \eqref{eq:6}, как было сделано для ВЗНВ-моделей в статье \cite{alekseev2010sle}. 
 
-\section{Conclusion}
+\section{Заключение}
 \label{sec:conclusion}
 
-We proposed a way to generalize Schramm-Loewner evolution to obtain observables which can be studied by methods of coset conformal field theory. The description of fields in coset models is not very simple due to field identification \cite{schellekens1990field} and the need of  fixed points resolution \cite{Fuchs:1996dd,fuchs1996resolution} which we have not discussed here. These subtleties can complicate the solution of equations  \eqref{eq:28}, \eqref{eq:17} and analogues of equation \eqref{eq:29}. On the other hand the use of Knizhnik-Zamolodchikov equations \cite{kogan1997knizhnik} for correlation functions in the spirit of \cite{alekseev2010sle} leads to matrix algebraic relations which are similar to NIM-representations for boundary states \cite{ishikawa2003novel}. The study of this subject can reveal deep algebraic connection of martingale conditions with boundary states classification. 
+Мы предложили способ обобщения эволюции Шрамма-Левнера для получения таких наблюдаемых, которые могут исследоваться методами конформной теории поля. Описание полей в coset-моделях нетривиально ввиду идентификации полей \cite{schellekens1990field} и необходимости в разрешении фиксированных точек \cite{Fuchs:1996dd,fuchs1996resolution}, которое не обсуждалась в данной главе. Эти тонкости могут усложнить решение уравнений  \eqref{eq:28}, \eqref{eq:17} и аналогов уравнения \eqref{eq:29}. С другой стороны, использование уравнений Книжника-Замолодчикова  \cite{kogan1997knizhnik} для корреляционных функций в духе работы \cite{alekseev2010sle} приводит к матричным алгебраическим соотношениям, которые напоминают NIM-представления для граничных состояний \cite{ishikawa2003novel}. Дальнейшее изучение этого предмета может выявить глубокую алгебраическую связь условия мартингала с классификацией граничных состояний.
 
-Physical interpretation of the solutions of martingale conditions is not clear, but there is also no lattice interpretation of Schramm-Loewner evolution with additional Brownian motion on group manifold \cite{bettelheim2005stochastic} and no lattice interpretation of WZNW-models. We think that these questions are closely related.
-
-
-
-
-
+Физическая интерпретация решений условий мартингала не вполне ясна, но пока не найдена и решеточная интерпретация эволюции Шрамма-Левнера с дополнительным Броуновским движением на групповом многообразии \cite{bettelheim2005stochastic} и решеточная реализация ВЗНВ-моделей. Кажется, что эти вопросы тесно связаны.
 
 %\usepackage{verbatim} 
 \newenvironment{comment}
