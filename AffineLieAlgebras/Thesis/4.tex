@@ -133,11 +133,11 @@ d \mathcal{F}_{\mathbb{H}_{t}}= \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}
 \cite{belavin1984ics}, \cite{difrancesco1997cft}. 
 Равенство \eqref{eq:24} верно для произвольной наблюдаемой $\mathcal{O}$ и для произвольных примарных поле $\varphi_{\lambda_{i}}$, так что $\psi=[L_{-2}-\frac{\kappa}{2}L_{-1}^{2}]\phi$ -- нулевое поле уровня два и $\psi(0)\left|0\right>$ -- нулевое состояние уровня два. В минимальных унитарных моделях существует только два примарных поля, порождающих модули Верма алгебры Вирасоро с нулевыми состояниями на уровне два. Это поля $\phi_{1,2}$ и $\phi_{2,1}$, так что $\phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}$. 
 
-\section{Wess-Zumino-Novikov-Witten models}
+\section{Модели Весса-Зумино-Новикова-Виттена и эволюция Шрамма-Левнера}
 \label{sec:sle-wzw-models}
-To generalize the analysis of previous section \ref{sec:corr-betw-sle} to non-minimal models we need to take into account extra symmetries. Wess-Zumino-Novikov-Witten models has Kac-Moody symmetry in addition to conformal invariance leading to the appearance of Virasoro algebra. At first we remind well-known properties of WZNW-models \cite{difrancesco1997cft} which are useful to study SLE martingales. 
+Чтобы обобщить анализ предыдущего раздела  \ref{sec:corr-betw-sle} на не-минимальные модели мы должны принять во внимание дополнительные симметрии. Модели Весса-Зумино-Новикова-Виттена обладают симметрией Каца-Муди в дополнение к конформной инвариантности, приводящей к появлению алгебры Вирасоро. Сначала мы напомним свойства ВЗНВ-моделей \cite{difrancesco1997cft}, которые нужны для изучения мартингалов эволюции Шрамма-Левнера.
 
- The action of WZNW model can be written in terms of map $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ from complex plane with infinity or two-sphere to some (simple) Lie group $G$:
+Действие модели Весса-Зумино-Новикова-Виттена записывается в терминах отображения $g:\mathbb{C}\cup \{\infty\}\sim S^{2}\to G$ из комплексной плоскости с бесконечностью (сферы Римана) в некоторую (простую) группу Ли $G$:
 \begin{multline}
   S=-\frac{k}{8\pi}\int d^2x\; \mathcal{K} (g^{-1}\partial^{\mu}g, g^{-1} \partial_{\mu}g)  
   - \frac{k }{24\pi^{2}} \int_{B}\epsilon_{ijk} \mathcal{K}\left(
@@ -145,45 +145,41 @@ To generalize the analysis of previous section \ref{sec:corr-betw-sle} to non-mi
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right]\right) d^3y
 \end{multline}
- Here $\mathcal{K}$ is Killing form on Lie algebra $\gf$ of Lie group $G$. The first term is just non-linear sigma-model and the second term is written using the continuation $\tilde{g}$ from two-sphere $S^{2}$ to three-dimensional manifold $B$ which has two-sphere as the boundary. Since this continuation is non-unique we get the requirement for $k$ to be integer. 
+Здесь $\mathcal{K}$ -- форма Киллинга на алгебре Ли  $\gf$ группы Ли $G$. Первый член -- это просто нелинейная сигма-модель, а второй записывается при помощи продолжения $\tilde{g}$ с два-сферы $S^{2}$ на трехмерное многообразие $B$, границей которого является два-сфера. Так как это продолжение не единственно, а экспонента действия должна быть определена однозначно, константа  $k$ должна быть целочисленной.
 
-Conserved currents of this model have the following form:
+Сохраняющиеся токи в этой модели даются выражениями:
   \begin{eqnarray}
     J(z)= -k \partial_zg g^{-1}
     \bar J(\bar z)=k g^{-1}\partial_{\bar z}g
   \end{eqnarray}
 
-The model possesses gauge invariance under the transformations
+Модель обладает калибровочной инвариантностью по отношению к преобразованиям
   $g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)$, 
-where $\Omega,\;\bar \Omega \in G$ are are independent. If we consider infinitesimal gauge transformation $\Omega=1+\omega$ we get Ward identities 
+здесь $\Omega,\;\bar \Omega \in G$ независимы. Из рассмотрения инфинитезимальных калибровочных преобразований  $\Omega=1+\omega$ получаем тождества Уорда
   \begin{equation}
     \label{eq:87}
     \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
     \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>,
   \end{equation}
-which can be used to get operator product expansion for currents:
+из которых следует операторное разложение для токов:
  \begin{equation}
    \label{eq:3}
    J^{a}(z)J^{b}(w)\sim \frac{k\delta_{ab}}{(z-w)^{2}}+\sum_{c}i f_{abc}\frac{J^{c}}{z-w},
  \end{equation}
-where $f_{abc}$ are the structure constants of Lie algebra $\gf$.
+здесь $f_{abc}$ -- структурные константы алгебры Ли $\gf$.
  
-Expanding the currents to modes
-$J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n $
-and using operator product expansion \eqref{eq:3} we get commutation relations of affine Lie algebra $\gfh$:
+Разложим токи на моды $J^a(z)=\sum\limits_{n\in \mathbb Z}z^{n-1}J^a_n $, воспользуемся операторным разложением \eqref{eq:3} и получим коммутационные соотношения аффинной алгебры Ли $\gfh$:
 \begin{equation*}
  \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}.  
 \end{equation*}
 
-
-Conformal invariance of the model can  be seen from 
-Sugawara construction, which is a way to embed Virasoro algebra into the universal enveloping algebra of affine Lie algebra $\gfh$ ($Vir\subset U(\gfh)$):
+Конформная инвариантность в этой модели следует из конструкции Сугавары, которая представляет собой способ вложения алгебры Вирасоро в универсальную обертывающую алгебры аффинной алгебры Ли $\gfh$ ($Vir\subset U(\gfh)$):
 \begin{equation}
   \label{eq:4}
   L_n=\frac{1}{2(k+h^{\vee})}\left(\sum\limits_a\sum\limits_{m\leq -1}J^a_m J^a_{n-m}+\sum_{m\geq 0} J^{a}_{n-m}J^{a}_{m}\right), 
 \end{equation}
- where $h^{\vee}$ is the dual Coxeter number of Lie algebra $\gf$. 
-Full chiral algebra of the model is semidirect product of affine and Virasoro algebra $\gfh \ltimes Vir$ with commutation relations 
+где $h^{\vee}$ -- дуальное число Кокстера алгебры Ли $\gf$. 
+Полная киральная алгебра модели представляет собой полупрямое произведение аффинной алгебры и алгебры Вирасоро $\gfh \ltimes Vir$ с коммутационными соотношениями
   \begin{equation}
     \label{eq:92}
     \begin{aligned}
@@ -192,103 +188,100 @@ Full chiral algebra of the model is semidirect product of affine and Virasoro al
       \left[L_n,J^a_m\right]=-mJ^a_{n+m}
     \end{aligned}
   \end{equation}
-Here central charge $c$ of Virasoro algebra is given by expression
+Здесь центральный заряд  $c$ алгебры Вирасоро дается выражением
 \begin{equation}
   \label{eq:25}
   c=\frac{k\;\mathrm{dim}\gf}{k+h^{\vee}}
 \end{equation}
-There is infinite number of Virasoro primary fields, but they are organized into highest weight modules of affine Lie algebra $\gfh$. 
-Primary fields of full chiral algebra $\phi_{\lambda}$ are labeled by highest weights of  $\gfh$-modules. Here we see how Virasoro and affine Lie algebra generators act on primary fields:
+В модели существует бесконечное число полей, примарных по отношению к действию алгебры Вирасоро, но они организованы в модули старшего веса аффинной алгебры Ли $\gfh$. Примарные поля полной киральной алгебры  $\phi_{\lambda}$ нумеруются старшими весами  $\gfh$-модулей. Покажем, как генераторы алгебры Вирасоро и аффинной алгебры Ли действуют на примарные поля:
   \begin{equation*}
     \begin{aligned}
-      & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{for}\; n>0 \\
+      & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \text{для}\; n>0 \\
       & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^{\vee})}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^{\vee})}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>,
     \end{aligned}
   \end{equation*}
-where $\rho$ is Weyl vector of $\gf$. 
+где $\rho$ -- вектор Вейля алгебры $\gf$. 
 
-Now we want to study Schramm-Loewner evolution in WZNW-models.
-Similarly to minimal models we consider observable
+Теперь рассмотрим эволюцию Шрамма-Левнера в ВЗНВ-моделях. 
+Подобно минимальным моделям мы рассматриваем наблюдаемые
 \begin{equation*}
   \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
   \frac{\left<\phi_{\Lambda}(z_{t}) \phi_{\lambda_1}(z_{1}) \dots \phi_{\lambda_n}(z_{n}) \phi_{\lambda^{*}_1}(\bar z_{1}) \dots \phi_{\lambda^{*}_n}(\bar z_{n})
       \phi_{\Lambda^{*}}(\infty)\right>}{\left<\phi_{\Lambda}(z_{t})\phi_{\Lambda^{*}}(\infty)\right>}
 \end{equation*}
-Again we can use conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite it on the whole upper half-plane. 
+Мы опять используем конформное отображение  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ чтобы переписать формулу для наблюдаемых на всей верхней полуплоскости.
 \begin{equation*}
   \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
   \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
   \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
 \end{equation*}
 
-Under the evolution from $t$ to $t+dt$ first factor gives us $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
+В результате эволюции от $t$ к $t+dt$ первый множитель дает нам $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
 
-When we consider fields we need to add random gauge transformation (random motion in $G$) to stochastic evolution \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}. 
-For fields we have
+При рассмотрении полей нам нужно добавить случайное калибровочное преобразование  (случайное блуждание в $G$) к стохастическому процессу \cite{bettelheim2005stochastic}, \cite{alekseev2010sle}. 
+Для полей мы имеем
 \begin{equation*}
   d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i}),
 \end{equation*}
-so additional term appears in the generator of field transformation. 
+так что в генераторе преобразования поля появляется дополнительный член
 \begin{equation}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)
 \label{eq:18}
 \end{equation}
-Here $d\theta^{a}$ are the generators of $\mathrm{dim}\gf$-dimensional Brownian motion and $\mathbb{E}[d\theta^{a}d\theta^{b}]=\delta_{ab}dt$. We assume that $t^{a}$ is a basis of $\gf$ orthogonal with respect to Killing form $\mathcal{K}$, $\mathcal{K}(t^{a},t^{b})=\delta_{ab}$.
+Здесь  $d\theta^{a}$ -- генераторы  $\mathrm{dim}\gf$--мерного Броуновского движения, с $\mathbb{E}[d\theta^{a}d\theta^{b}]=\delta_{ab}dt$. Мы предполагаем, что $t^{a}$ -- это базис в $\gf$, ортогональный по отношению к форме Киллинга $\mathcal{K}$, $\mathcal{K}(t^{a},t^{b})=\delta_{ab}$.
 
-Using formula \eqref{eq:8} we get the equation from martingale condition:
+Воспользуемся формулой \eqref{eq:8} и получим следующее уравнение из условий для мартингала:
 \begin{equation}
   \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{1}{2}\tau\sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}=0,
   \label{eq:27}
 \end{equation}
-where
+где
 \begin{equation*}
   \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{\lambda_{i}}}{(w_{i}-z)^{n}}-\frac{1}{(w_{i}-z)^{n-1}}\partial_{w_{i}}\right);\quad \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}}
 \end{equation*}
-Again we can rewrite it as algebraic requirement for  field  which corresponds to boundary condition changing operator. Now
+Мы снова перепишем уравнение в виде алгебраического соотношения на поле, соответствующее оператору смены граничного условия. Теперь
 \begin{equation}
   \left| \psi\right>=\left(-2 L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau\sum_{a} J^{a}_{-1} J^{a}_{-1}\right) \left|\phi_{\Lambda}\right>    
   \label{eq:16}
 \end{equation}
-is level two null state and if we act on this state with raising operators we should get zero.
+является нулевым состоянием уровня два и если на него подействовать повышающими операторами, мы должны получить ноль.
 \begin{eqnarray}
   J^{a}_{1} \left|\psi\right>=0\\
   J^{a}_{2}\left|\psi\right>=0\\
   L_{2}\left|\psi\right>=0\\
   L_{1}\left|\psi\right>=0
 \end{eqnarray}
-Using commutation relations \eqref{eq:92} these equations can be rewritten as the algebraic equations connecting parameters of random motion $\kappa, \tau$ with the level $k$ of affine Lie algebra representation. Rigorous analysis of these equations is given in the paper \cite{alekseev2010sle}.
+Эти уравнения можно переписать как алгебраические соотношения, связывающие параметры случайного блуждания $\kappa, \tau$ с уровнем  $k$ представления аффинной алгебры Ли, если воспользоваться коммутационными соотношениями  \eqref{eq:92}. Строгий анализ полученных алгебраических соотношений проведен в работе \cite{alekseev2010sle}.
 
-\section{Coset models}
+\section{Coset-модели}
 \label{sec:coset-models}
-Now we want to generalize analysis of correspondence between SLE and CFT even further and study coset models of conformal field theory\cite{Goddard198588}. Such models are specified by  Lie algebra $\gf$ and its subalgebra $\af$. Denote by $J_{n}^{a}$ the generators of affine Lie algebra $\gfh$ and by $\tilde{J}_{n}^{b}$ the generators of $\afh$, so that $\tilde{J}^{b}_{n}=\sum_{a} m_{a}^{b} J^{a}_{n}$.
-Virasoro generators in coset models are given by the difference of Sugawara expressions of $\gf$ and $\af$-WZNW models:
+Теперь мы обобщим анализ соответствия между эволюцией Шрамма-Левнера и конформной теорией поля на случай coset-моделей \cite{Goddard198588}. Такие модели задаются алгеброй Ли $\gf$ и ее подалгеброй $\af$. Обозначим через $J_{n}^{a}$ генераторы аффинной алгебры Ли $\gfh$, а через $\tilde{J}_{n}^{b}$ -- генераторы $\afh$, так что $\tilde{J}^{b}_{n}=\sum_{a} m_{a}^{b} J^{a}_{n}$. Генераторы алгебры Вирасоро в coset-моделях даются разностями выражений Сугавары для ВЗНВ-моделей, соответствующих алгебрам  $\gf$ и $\af$:
 \begin{equation*}
   L_{n}=L_{n}^{\gf}-L_{n}^{\af}
 \end{equation*}
-Commutation relations of Virasoro generators with generators of subalgebra $\afh$ are trivial
+Коммутационные соотношения между генераторам алгебры Вирасоро и генераторами подалгебры  $\afh$ тривиальны
 \begin{equation}
   \label{eq:26}
   \left[L_{n},\tilde{J}^{b}_{m}\right]=0
 \end{equation}
 
-Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models by adding gauge fields  $A, \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action\cite{gawdzki1988g}. Then fields are labeled by pairs of weights $(\mu,\nu)$, where $\mu$ is the weight of $\gfh$ and $\nu$ is the weight of $\afh$ correspondingly. But there are selection rules, i.e. the branching functions for certain pairs of weights $(\mu,\nu)$ vanish. There is also a redundancy, i.e. non-vanishing branching functions for distinct pairs $(\mu,\nu)$ turn out to be identical \cite{fuchs1996resolution,schellekens1990field}.
+Coset-модели можно реализовать, как калибровочные модели Весса-Зумино-Новикова-Виттена, если добавить дополнительные калибровочные полями  $A, \bar{A}$, принимающие значения в алгебре Ли $\af\subset \gf$, в действие \cite{gawdzki1988g}. Теперь поля нумеруются парами весов  $(\mu,\nu)$, где $\mu$ -- вес  $\gfh$, а $\nu$ -- вес $\afh$, соответственно. Но появляются правила отбора, так как функции ветвления для некоторых пар весов  $(\mu,\nu)$ исчезают. Кроме того, имеется избыточность, так как функции ветвления для различных пар $(\mu,\nu)$ могут совпадать \cite{fuchs1996resolution,schellekens1990field}.
 
-So, primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$  of algebra $\gfh$ and subalgebra $\afh$, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. Some pairs are equivalent. This equivalence is given by the action of so called ``simple currents'' $(J,\tilde{J})$, which are certain elements of outer  automorphisms group $\mathcal{O}(\gfh)\times \mathcal{O}(\afh)\approx B(G)\times B(A)$ of $\gfh\times\afh$, where $B(G)$ is center of Lie group G. We can think of simple currents as of primary fields and their action on fields of theory are then given by fusion product \cite{difrancesco1997cft}.  So primary fields of coset model are given by the equivalence classes of pairs of weights $(\mu,\nu)\sim (J*\mu,\tilde{J}*\nu)$, where $(J,\tilde J)$ such that their conformal weights are equal:  $h_{J}-h_{\tilde{J}}=0$. 
+Итак, примарные поля нумеруются парами весов  $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$ алгебры $\gfh$ и подалгебры $\afh$, такими, что соответствующие функции ветвления $b^{\mu}_{\nu}(q)\neq 0$. Некоторые пары эквивалентны. Эта эквивалентность дается действием так называемых ``простых токов'' $(J,\tilde{J})$, которые являются элементами группы внешних автоморфизмов  $\mathcal{O}(\gfh)\times \mathcal{O}(\afh)\approx B(G)\times B(A)$ алгебры $\gfh\times\afh$, где $B(G)$ -- это центр группы Ли $G$. Мы можем думать о простых токах как о примарных полях, тогда их действие на поля теории дается слиянием \cite{difrancesco1997cft}. Таким образом, примарные поля coset-моделей нумеруются классами эквивалентности пар весов  $(\mu,\nu)\sim (J*\mu,\tilde{J}*\nu)$, где $(J,\tilde J)$ такие, что  конформные веса компонент равны:  $h_{J}-h_{\tilde{J}}=0$. 
 
-Conformal weight of coset primary field is equal to
+Конформный вес примарного поля в coset-модели равен
 \begin{multline}
   L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^{\vee})}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^{\vee})}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
   \left|\phi_{(\mu,\nu)}\right>=\\
   \left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^{\vee})}\right)\left|\phi_{(\mu,\nu)}\right>
 \end{multline}
-It is possible to obtain analogues of Knizhnik-Zamolodchikov equations for coset models \cite{kogan1997knizhnik}:
+Можно получить аналог уравнений Книжника-Замолодчикова для coset-моделей \cite{kogan1997knizhnik}:
 \begin{equation}
   \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{\vee}}-\frac{\tilde t^{b}_{i}\tilde t^{b}_{j}}{k+h^{\vee}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots \phi_{N}(z_{N})\right>=0
   \label{eq:6}
 \end{equation}
 
-Let us introduce Schramm-Loewner evolution corresponding to coset models. 
-The idea is to constrain additional Brownian motion on group manifold to the factor space $G/A$. 
+Теперь введем эволюцию Шрамма-Левнера, соответствующую coset-моделям. Суть конструкции состоит в ограничении дополнительного броуновского движения на групповом многообразии на фактор-пространство  $G/A$. 
 
 
 To study SLE on $G/A$ factor space we restrict random walk on group manifold by the choice of basis in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ are chosen in such way that $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ are the generators of subalgebra $\af\subset \gf$. Now we can consider $(\mathrm{dim}\gf-\mathrm{dim}\af)$-dimensional Brownian motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
