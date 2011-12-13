@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+
+%TCIDATA{OutputFilter=Latex.dll}
+%TCIDATA{LastRevised=Mon Oct 10 18:16:16 2011}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{CSTFile=article.cst}
+
+\newtheorem{Def}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{statement}{Statement}
+\newtheorem{Cnj}[Def]{Conjecture}
+\newtheorem{Prop}[Def]{Property}
+\newtheorem{example}{Example}[section]
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+%\input{tcilatex}
+
+\begin{document}
+\title{On affine extension of splint root systems}
+
+
+
+\author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$ \\
+  {\small $^1$ Department of High-energy and elementary particle physics, SPb State University}\\
+  {\small 198904, Saint-Petersburg, Russia}\\
+  {\small e-mail: lyakh1507@nm.ru}\\
+  {\small$^{2}$ Chebyshev Laboratory,}\\
+  {\small Department of Mathematics and Mechanics, SPb State University}\\
+  {\small 199178, Saint-Petersburg, Russia}\\
+  {\small email: antonnaz@gmail.com}}
+\maketitle
+
+\begin{abstract}
+Splint of root system of simple Lie algebra appears naturally in
+the study of (regular) embeddings of reductive subalgebras. It can
+be used to derive branching rules. Application of
+splint properties drastically simplifies calculations of
+branching coefficients. We study affine extension of splint root system of simple Lie algebra.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Consider Lie algebra $\gf$ and its irreducible modules $L^{\mu}_{\gf}$. 
+Splints of root systems were introduced by D. Richter in paper \cite{richter2008splints} to describe cases of drastic simplification of module reduction into the sum of subalgebra modules. In paper \cite{2011arXiv1111.6787L} we've proved that branching coefficients coincide with multiplicities (more details here). 
+
+In present note we generalize our analysis to affine extension of $\gf$. We consider affine Lie algebra $\gfh$ with the underlying simple finite-dimensional Lie algebra $\gf$. We assume that root system $\Delta_{\gf}$ admits splint $\Delta_{\gf}=\Delta_{\af_{1}}\cup \Delta_{\af_{2}}$. It is well-known \cite{kac1990idl} that irreducible $\gfh$-module can be decomposed into the sum of irreducible $\gf$-modules.
+\begin{equation}
+  \label{eq:1}
+  L_{\gfh}^{\mu}=\bigoplus_{\nu=(\co{\nu},n,k)} b^{\mu}_{\co{\nu}}(n) L^{\co{\nu}}_{\gf}
+\end{equation}
+Then each of these $\gf$-modules in this decomposition admits decomposition to $\af_{1}$ modules with branching coefficients equal to weight multiplicities of $\af_{2}$ irreducible module \cite{2011arXiv1111.6787L}. 
+\begin{equation}
+  \label{eq:2}
+  L^{\co{\nu}}_{\gf} = \bigoplus b^{\mu}_{\af_{1}\co{\nu}}(n) L^{\co{\nu}}_{\gf}
+\end{equation}
+We state that it is possible to reorganize weights in such a way that branching coefficients for the reduction $\gfh\downarrow \af_{1}$  are expressed in terms of weight multiplicities of $\hat\af_{2}$. 
+\section{Main theorem}
+\label{sec:main-theorem}
+\begin{theorem}
+  Consider reduction of affine Lie algebra $\gfh$-module $L^{\mu}_{\gfh}$ to finite-dimensional subalgebra $\af_{1}$. Then for branching coefficients following relation holds:
+  \begin{equation}
+    \label{eq:3}
+    b^{\mu}_{\nu}=\sum_{?} m^{\nu}_{\hat\af_{2}}
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  At first we use equation \eqref{eq:1}, then substitute to equation \eqref{eq:2}, reorganize weights and obtain the desired result. 
+\end{proof}
+
+\section{Examples}
+\label{sec:examples}
+The most simple example is constructed starting with splint $\Delta_{A_{2}}=\Delta_{A_{1}\oplus A_{1}}\cup \Delta_{A_{1}}$.
+
+Then we consider the case $\gfh=\hat B_{2}$.
+\section*{Conclusion}
+\label{sec:conclusion}
+Further question is to generalize this analysis to affine sublagebras and apply the results on branching coefficients to the study of CFT coset models. 
+
+%%  
+%%  
+%%  In the present paper we provide alternative proof of the main statement of paper [LN-2011-Splints] which uses graded commutative structure on vector space of universal enveloping algebra $U(n^{-})$. 
+%%  
+%%  Con
+%%  
+%%  
+%%  Consider decomposition of simple Lie algebra $\gf=\nfp\oplus \hf \oplus \nfm$. Verma module $M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+})$. $S(\nfm)=\{x_{1}\dots x_{l}:x_{i}\in\nfm\}_{l=0}^{\infty}$
+%%  \begin{theorem}
+%%    Fix some ordering $\alpha_{1},\dots,\alpha_{s}$ on the set of positive roots $\Delta^{+}$ and obtain the ordering on the basis $f_{1},\dots,f_{s}$ of $\nfm$.  Then monomials $f_{1}^{n_{1}} \dots f_{s}^{n_{s}}$ form a basis in $U(\nfm)\sim M^{\lambda}$ and $U(\nfm)\sim \mathbb{Z}^{s}_{\geq 0}$. 
+%%  \end{theorem}
+%%  \begin{statement}
+%%    Let $\Delta^{+}_{\gf}=\Delta^{+}_{\af_{1}}\cup \Delta^{+}_{\af_{2}}$ be a splint positive root system of simple Lie algebra $\gf$. Then $M^{\lambda}_{\gf}\sim M^{\lambda}_{\af_{1}}\oplus M^{\lambda}_{\af_{2}}$.
+%%    \begin{proof}
+%%      Basis of $M^{\lambda}_{\gf}$ is given by $f_{1}^{n_{1}}\dots f_{s_{1}}^{n_{s_{1}}} f_{s_{1}+1}^{n_{s_{1}+1}}\dots f_{s_{1}+s_{2}}^{n_{s_{1}+s_{2}}}$, where $f_{1},\dots, f_{s_{1}}\in \nfm_{\af_{1}}$ and $f_{s_{1}+1},\dots,f_{s_{1}+s_{2}}\in \nfm_{\af_{2}}$
+%%    \end{proof}
+%%  \end{statement}
+%%  Now consider irreducible $\gf$-module $L_{\gf}^{\mu}=M^{\mu}_{\gf}/I^{\mu}_{\gf}$t
+%%  
+\bibliography{bibliography}{}
+\bibliographystyle{utphys}
+
+\end{document}
