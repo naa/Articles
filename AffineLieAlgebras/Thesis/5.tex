@@ -128,9 +128,8 @@
 \label{sec:modules}
 
 {\bf Affine.m} можно использовать для изучения различных видов модулей, например, модулей Верма, неприводимых модулей и параболических модулей Верма. Для представления произвольного модуля используется структура данных  \lstinline{module}. 
-
-Module properties can be deduced from its set of singular weights using Weyl character formulae \eqref{eq:11},\eqref{eq:12},\eqref{eq:18},\eqref{eq:13}. Set of singular weights can have Weyl symmetry. It can be a symmetry with respect to the Weyl group $W_{\gf}$ or with respect to some subalgebra $W_{\af}$ as in the case of parabolic Verma modules. Then it is possible to study only the main Weyl chamber $C_{\af}$. To use this symmetry generic constructor for \lstinline{module} datastructure accepts several parameters \lstinline{makeModule[rs_?rootSystemQ][singWeights_formalElement,subs_?rootSystemQ|emptyRootSystem[],limit:10}. Here \lstinline{rs} is the root system of the Lie algebra $\gf$,\lstinline{singWeights} is the set of singular weights,  \lstinline{subs} is the root system corresponding to the Weyl group $W_{\af}$ which is the (anti-)symmetry of the set of singular weights. Parameter \lstinline{limit} limits computation for infinite-dimensional modules such as Verma or parabolic Verma.
-There are several specialized constructors for different types of highest weight modules:
+Свойства модуля можно вывести из набора его сингулярных весов используя формулы Вейля для характеров \eqref{eq:11},\eqref{eq:12},\eqref{eq:18},\eqref{eq:13}. Множество сингулярных весов может обладать вейлевой симметрией. Это может быть симметрия по отношению к действию группы Вейля алгебры  $W_{\gf}$ или по отношению к действию группы Вейля некоторой подалгебры $W_{\af}$, как в случае параболических модулей Верма. В этом случае можно ограничиться изучением главной камеры Вейля $C_{\af}$. Чтобы воспользоваться такой симметрией общий конструктор для структуры данных \lstinline{module} принимает несколько параметров \lstinline{makeModule[rs_?rootSystemQ][singWeights_formalElement,subs_?rootSystemQ|emptyRootSystem[],limit:10}. Здесь \lstinline{rs} -- корневая система алгебры Ли $\gf$,\lstinline{singWeights} -- набор сингулярных весов,  \lstinline{subs} -- корневая система, соответствующая группе Вейля  $W_{\af}$, являющейся группой (анти-)симметрии множества сингулярных весов. Параметр \lstinline{limit} ограничивает вычисления в случае бесконечномерных модулей, таких, как модули Верма и параболические модули Верма.
+Существует несколько специализированных конструкторов для различных типов модулей старшего веса:
 \begin{lstlisting}[mathescape=true]
 vm=makeVermaModule[$B_{2}$][{2,1}];
 pm=makeParabolicVermaModule[$B_{2}$][weight[$B_{2}$][2,1],{1}];
@@ -139,7 +138,7 @@ GraphicsRow[textPlot/@{im,vm,pm}]
 $\includegraphics[width=130mm]{figures/irrep-verma-pverma}$
 \end{lstlisting}
 
-As we already stated properties of a module are encoded by its singular element. Function \lstinline{singularElement[m_module]} returns singular element of a module as \lstinline{formalElement} datastructure. Character (up to \lstinline{limit} for (parabolic) Verma modules) is returned by the function \lstinline{character[m_module]}. Direct sum of modules is a module and we use natural notation
+Как мы уже отмечали, свойства модулей определяются его сингулярным элементом. Функция  \lstinline{singularElement[m_module]} возвращает сингулярный элемент модуля в виде структуры данных  \lstinline{formalElement}. Характер  (вплоть до предела \lstinline{limit} для  (параболических) модулей Верма) вычисляется функцией \lstinline{character[m_module]}. Прямая сумма модулей является модулем и мы используем естественные обозначения
 \begin{lstlisting}[mathescape=true]
 im1=makeIrreducibleModule[$B_{2}$][weight[$B_{2}$][2,1]];
 im2=makeIrreducibleModule[$B_{2}$][weight[$B_{2}$][1,2]];
@@ -147,107 +146,60 @@ textPlot[im1$\oplus$ im2]
 $\includegraphics[width=60mm]{figures/irrep-sum}$
 \end{lstlisting}
 
-The tensor product is also implemented but only for finite-dimensional Lie algebras, since tensor product of affine Lie algebra modules leads to rich new structures \cite{kazhdan1994tensor3,kazhdan1993tensor1,kazhdan1993tensor2} which are out of the scope of the present paper.
+Тензорное произведение модулей тоже реализовано, но только для модулей конечномерных алгебр Ли. Это связано с тем, что тензорные произведения модулей аффинных алгебр Ли приводят к возникновению различных дополнительных структур  \cite{kazhdan1994tensor3,kazhdan1993tensor1,kazhdan1993tensor2}, изучение которых пока лежит за пределами наших интересов. 
 \begin{lstlisting}[mathescape=true]
 textPlot[makeIrreducibleModule[$A_{1}$][5]$\otimes$ makeIrreducibleModule[$A_{1}$][3]];
 $\includegraphics[width=60mm]{figures/tensor-product}$
 \end{lstlisting}
-\section{Computational algorithms}
+\section{Основные алгоритмы}
 \label{sec:comp-algor}
    
-As we have already stated in section \ref{sec:high-weight-modul} there exist two recurrent relations which can be used to calculate weight multiplicities in irreducible modules. Both algorithms proceed in the following way to calculate weight multiplicities:
+Существует два рекуррентных соотношения \eqref{eq:15}, \eqref{eq:14}, которые можно использовать для вычисления кратностей весов в неприводимых модулях. Оба алгоритма состоят из следующих шагов:
 \begin{enumerate}
-\item Create the list of weights in the main Weyl chamber by subtracting all possible combinations of simple roots from the highest weight (e.g. for finite-dimensional algebra subtract $\alpha_{1}$ from $\mu$ while inside $\bar C$, then subtract $\alpha_{2}$ from all the weights already obtained etc).
-\item Sort the list of weights by their product with the Weyl vector.
-\item Use a recurrent formula. If the weight required for recurrent computation is outside the main chamber use the Weyl symmetry.
+\item Построение списка весов в главной камере Вейля путем вычитания всех возможных комбинаций простых корней их старшего веса (например, для конечномерной алгебры вычитаем корень  $\alpha_{1}$ из старшего веса $\mu$ до тех пор, пока остаемся внутри  $\bar C$, затем вычитаем корень $\alpha_{2}$ из всех весов полученных на перво шаге и так далее).
+\item Сортировка списка весов по значению их скалярного произведения с вектором Вейля.
+\item Рекуррентное вычисление кратностей по формуле. Если вес, необходимый для вычислений оказывается вне главной камеры Вейля, то используется симметрия относительно группы Вейля.
 \end{enumerate}
-The difference in the performance of algorithms is in the number of previous values required to get the multiplicity of weight under consideration. For  the Weyl formula based recurrent relation \eqref{eq:14} it is constant and equal to the number of elements in the Weyl group (if we are far from the boundary of representation diagram). When the Freudenthal formula \eqref{eq:15} is used number of previous values grows with the distance from the external border of representation. So the Freudenthal formula is faster if the weight is close to the border or the rank of the algebra and the size of Weyl group is large \cite{moody1982fast}.
-Note that the Freudenthal formula is valid for irreducible modules only, so it can not be used to study (generalized) Verma modules.
+Различие в производительности алгоритмов происходит от количества предыдущих значений, требующихся для вычисления кратности веса. В случае рекуррентного соотношения, основанного на формуле Вейля  \eqref{eq:14} это количество постоянно и равно числу элементов в группе Вейля (если мы находимся далеко от внешнего контура диаграммы представления). При использовании формулы Фрейдентала \eqref{eq:15} требуемое число предыдущих значений растет с расстоянием от внешнего контура диаграммы представления.  Поэтому формула Фрейденталя работает быстрее, если вес близок к границе или ранг алгебры и размер группы Вейля велик \cite{moody1982fast}. Заметим, что формула Фрейденталя работает только для неприводимых модулей и не подходит для изучения (обобщенных) модулей Верма.
 
-We have made some experiments with our implementations of the Freudenthal formula and formula \eqref{eq:15} and have got Figure  \ref{fig:freudenthal-racah-times}, which depicts the dependence of the computation time on the number of weights in a module.
+Мы осуществили тестирование производительности наших реализаций алгоритмов, основанных на формуле Фрейденталя и формуле \eqref{eq:15} и получили результаты, представленные на Рисунке  \ref{fig:freudenthal-racah-times}. Там показана зависимость времени вычислений от числа весов в модуле.
 
 \begin{figure}[h]
   \noindent\centering{
     \includegraphics[width=80mm]{figures/timing}
   }
-  \caption{Running time of algorithms based on the Freudenthal formula \eqref{eq:15} (dashed) and recurrent relation \eqref{eq:14} (solid) with the number of weights in $\bar C$ for calculation of multiplicities in representations of $B_{2}$.}
+  \caption{Время работы алгоритмов, основанных на формуле Фрейденталя \eqref{eq:15} (пунктир) и рекуррентном соотношении \eqref{eq:14} (сплошная линия) в зависимости от количества весов в  $\bar C$ для вычисления кратностей в представлениях алгебры $B_{2}$.}
 \label{fig:freudenthal-racah-times}
 
 \end{figure}
 
-In the calculation of branching coefficients the application of the Freudenthal formula requires a complete construction of formal characters of an algebra module and all the representations of a subalgebra. It is impractical when the rank of algebra and subalgebra are big, for example for maximal subalgebras.
+При вычислении коэффициентов ветвления использование формулы Фрейденталя требует полного построения формальных характеров представления алгебры и всех представлений подалгебры, входящих в его разложение. Такой подход становится непрактичным для большого ранга алгебры и подалгебры, например, при максимальных вложениях. 
 
-Alternative algorithm which was presented in the paper \cite{2010arXiv1007.0318L}  contains the following steps:
+Альтернативный алгоритм описан в разделе \ref{sec:algorithm}. Рассмотренный там же пример регулярного вложения \ref{sec:someth-high-dimens}  $B_{2}\subset B_{4}$ позволяет сделать следующее сравнение числа требующихся операций. В данном примере веер вложения состоит из 24 элементов. Для разложения модуля алгебры  $B_{4}$ необходимо построить подмножество сингулярных весов модуля, проектирующихся в главную камеру Вейля подалгебры $B_{2}$. Полное множество сингулярных весов состоит из 384 элементов, в главную камеру Вейля проектируется не более 48, так что время на построение этого множества пренебрежимо мало, если число коэффициентов ветвления более 48. Мы можем оценить сверху общее число операций для вычисления коэффициентов ветвления произведением числа весов в главной камере Вейля подалгебры с ненулевыми коэффициентами ветвления на число элементов веера вложения. 
+С другой стороны, при использовании алгоритма, основанного на построении всех характеров при помощи формулы Фрейденталя мы должны вычислить кратности для каждого модуля в разложении, так что общее количество операций растет с ростом числа весов в представлении быстрее, чем квадрат числа весов в главной камере Вейля подалгебры с ненулевыми коэффициентами ветвления. 
 
-\begin{enumerate}
-\item  Construct the root system $\Delta _{\af}$ for the embedding $%
-\af\rightarrow \frak{g}$.
-
-\item  Select all the positive roots $\alpha \in \Delta ^{+}$ orthogonal
-to  $\af$, i.e. form the set $\Delta_{\afb }^{+}$.
-
-\item  Construct the set $\Gamma _{\af\rightarrow \frak{g}}$. Relation
- (\ref{eq:6}) defines the sign function
- $s(\gamma)$ and the set $\Phi_{\af\subset \frak{g}}$ where the lowest weight
- $\gamma_0$ is to be subtracted to get the fan:
- $\Gamma _{\af\rightarrow \frak{g}}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
-\af\subset \frak{g}}\right\} \setminus \left\{ 0\right\}$.
-
-\item  Construct the set $\widehat{\Psi ^{(\mu )}}=\left\{ w (\mu +\rho
-)-\rho ;\;w \in W\right\} $ of singular weights for the $\frak{g}$%
--module $L^{(\mu )}$.
-
-\item  Select the weights $\left\{ \mu _{\widetilde{\af_{\perp }}%
-}\left( w\right) =\pi _{\widetilde{\af_{\perp }}}\left[ w(\mu +\rho
-)-\rho \right] -\mathcal{D}_{\af_{\perp }}\in \overline{C_{\widetilde{%
-\af_{\perp }}}}\right\} $. Since the set $\Delta_{\afb }^{+}$ is fixed
-we can easily check wether the weight $\mu _{\widetilde{\af_{\perp }}%
-}\left( w\right) $ belongs to the main Weyl chamber $\overline{C_{\widetilde{%
-\af_{\perp }}}}$ (by computing its scalar product with the fundamental
-weights of $\afb^{+}$).
-
-\item  For the weights $\mu _{\widetilde{\af_{\perp }}}\left( w\right) $
-calculate dimensions of the corresponding modules, $\mathrm{\dim }\left(
-L_{\widetilde{\af_{\perp }}}^{\mu _{\widetilde{\af_{\perp }}%
-}\left( u\right) }\right) $, using the Weyl dimension formula and construct
-the singular element $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}$.
-
-\item  Calculate the anomalous branching coefficients using 
-recurrent relation (\ref{recurrent-rel}) and select among them those
-corresponding to the weights in the main Weyl
-chamber $\overline{C_{\af}}$.
-\end{enumerate}
-
-We can speed up the algorithm by
-one-time computation of the representatives of the conjugate classes $%
-W/W_{\afb }$.
-
-
-Consider the regular embedding $B_{2}\subset B_{4}$. In this case the fan consists of 24 elements. In order to decompose $B_{4}$ module we need to construct the subset of singular weights of the module which projects to the main Weyl chamber of the subalgebra $B_{2}$. The full set of singular weights consists of 384 elements. The required subset contains at most 48 elements. So the time for the construction of this required subset is negligible if the number of branching coefficients is greater than that. We may estimate the total number of required operations for the computation of branching coefficients as the product of the number of elements in the main Weyl chamber of a subalgebra with non-zero branching coefficients and the number of elements in the fan. In the case of a direct algorithm we need to compute the multiplicities for each module in the decomposition, so the number of operations grows faster than the square of the number of elements in the main Weyl chamber of a subalgebra with non-zero branching coefficients. 
-
-To further illustrate this performance issue we include Figure \ref{fig:branching} where we show the time required for computations of branching coefficients for $B_{3}\subset B_{4}$.
+Чтобы проиллюстрировать эту разницу в производительности алгоритмов, мы приводим Рисунок \ref{fig:branching}, на котором показано время, необходимое для вычисления коэффициентов ветвления для вложения $B_{3}\subset B_{4}$.
 
 \begin{figure}[h]
   \noindent\centering{
    \includegraphics[width=100mm]{figures/branching-timing}
   }
-  \caption{Running time of algorithms based on the Freudenthal formula \eqref{eq:15} (dashed) and recurrent relation \eqref{recurrent-rel} (solid) with the number of weights in $\bar C$ for calculation of branching coefficients for $B_{3}\subset B_{4}$.}
+  \caption{Время работы алгоритмов, основанных на применении формулы Фрейденталя \eqref{eq:15} (пунктиром)  и рекуррентного соотношения \eqref{recurrent-rel} (сплошная линия) с ростом числа весов в  $\bar C$ при вычислении коэффициентов ветвления для вложения $B_{3}\subset B_{4}$.}
   \label{fig:branching}
 \end{figure}
 
-\section{Examples}
+\section{Примеры}
 \label{sec:examples}
-In this section we present some examples of computations available with {\bf Affine.m} with the code required to produce these results.
+В этом разделе мы приводим примеры вычислений, проведенных с использованием {\bf Affine.m} и код, который для этого потребовался.
 
-\subsection{Tensor product decompositon for finite-dimensional Lie algebras}
+\subsection{Разложение тензорных произведений модулей конечномерных алгебр Ли на неприводимые}
 \label{sec:tens-prod-decomp}
 
-Computation of fusion coefficients for the decomposition of tensor product of highest-weight modules to the direct sum of irreducible modules has numerous applications in physics. For example, we can consider the spin of a composite system such as an atom. Another interesting example is integrable spin chain consisting of $N$ particles with the spins living in some representation $L$ of a Lie algebra $\gf$ with a $\gf$-invariant Hamiltonian $H$, describing the nearest-neighbour spin-spin interaction. In order to solve such a system, i.e. to find eigenstates of the Hamiltonian, we need to decompose $L^{\otimes N}$ into the direct sum of irreducible $\gf$-modules of lower dimension and diagonalize the Hamiltonian on these modules.
+Вычисление коэффициентов слияния для разложения тензорного произведения модулей старшего веса в прямую сумму неприводимых модулей важно для различных приложений в физике. Например, мы можем рассматривать спин составной системы, такой как атом. Другой интересный пример -- это интегрируемые спиновые цепочки, состоящие из  $N$ частиц со спинами, живущими в некотором представлении  $L$ алгебры Ли $\gf$, с  $\gf$-инвариантным гамильтонианом $H$, описывающим спин-спиновое взаимодействие ближайших соседей. Чтобы решить такую систему, то есть найти собственные состояния гамильтониана, мы должны разложить  $L^{\otimes N}$ в прямую сумму неприводимых $\gf$-модулей меньшей размерности и диагонализовывать гамильтониан на этих модулях.
 
-For fundamental representations of simple Lie algebras it is sometimes possible to get an analytic result describing the dependence of decomposition coefficients on $N$ (See \cite{LyakhovskyPostnova2011}). Our code provides numerical values and can be used to check this analytic results.
+Для фундаментальных представлений простых алгебр Ли иногда можно написать аналитический ответ, описывающий зависимость коэффициентов разложения от  $N$ (См. работу \cite{LyakhovskyPostnova2011}). Наш код позволяет получать численные ответы, которые можно использовать для проверки этих аналитических результатов.
 
-Consider a tensor power of $B_{2}$ the first fundamental representation $\left(L^{[1,0]}\right)^{\otimes 4}$. Decomposition coefficients are just the branching
- coefficients for the tensor power module reduced to the diagonal subalgebra $B_{2}\subset B_{2}\oplus B_{2}\oplus B_{2}\oplus B_{2}$. So the following code calculates these coefficients:
+Рассмотрим тензорную степень $\left(L^{[1,0]}\right)^{\otimes 4}$ первого фундаментального представления алгебры $B_{2}$. Коэффициенты разложения тензорной степени на неприводимые модули -- это коэффициенты ветвления модуля алгебры $B_{2}\oplus B_{2}\oplus B_{2}\oplus B_{2}$ на диагональную подалгебру $B_{2}\subset B_{2}\oplus B_{2}\oplus B_{2}\oplus B_{2}$. Следующий код осуществляет необходимые вычисления:
 \begin{lstlisting}[mathescape=true]
 fm = makeIrreducibleModule[$B_{2}$][1, 0];
 tp = ((fm$\otimes$ ]fm)$\otimes$ fm)$\otimes$]fm;
@@ -257,48 +209,47 @@ subs = makeFiniteRootSystem[
 bc = branching[tp, subs];
 {bc[#], dynkinLabels[subs][#]} & /@ bc[weights]
 \end{lstlisting}
-It produces a list of highest weights and tensor product decomposition coefficients:
+Он выдает в результате следующий набор старших весов и коэффициентов разложения:
 \begin{lstlisting}
 {{1, {4, 0}}, {3, {2, 2}}, {0, {3, 0}}, 
 {2, {0, 4}}, {3, {1, 2}}, {6, {2, 0}}, 
 {6, {0, 2}}, {1, {1, 0}}, {3, {0, 0}}}]
 \end{lstlisting}
 
-Returning to the problem of spin chain Hamiltonian diagonalization we can see that instead of diagonalizing operator in space of dimension $625$ we can diagonalize operators in the spaces of dimensions $55, 81, 30, 35, 35, 14, 10, 5, 1$.
+Возвращаясь к проблеме диагонализации гамильтониана спиновой цепочке, мы можем заметить, что вместо диагонализации оператора в пространстве размерности  $625$ мы можем диагонализовывать операторы в пространствах размерностей $55, 81, 30, 35, 35, 14, 10, 5, 1$.
 
-\subsection{Branching and parabolic Verma modules}
+\subsection{Ветвления и параболические модули Верма}
 \label{sec:branch-parab-verma}
 
-We illustrate the generalized BGG-resolution by the diagrams of $G_{2}$ parabolic Verma modules which appear in the decomposition of irreducible module $L^{[1,1]}_{G_{2}}$:
+Мы иллюстрируем обобщенную резольвенту Бернштейна-Гельфанда-Гельфанда (см. главу \ref{cha:BGG}) диаграммами параболических модулей Верма алгебры $G_{2}$, возникающих в разложении неприводимого модуля $L^{[1,1]}_{G_{2}}$:
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\sum_{u\in U}\;e^{\mu _{\aft}\left(
 u\right) }\epsilon (u)\mathrm{ch}M_{I}^{\mu _{\frak{a}_{\perp }}\left(
 u\right) }.  \label{char-in-gen-verma-mod}
 \end{equation}
-The character of $L^{[1,1]}$ is presented in Figure \ref{branching-bgg}, characters of the generalized Verma modules in decomposition \eqref{char-in-gen-verma-mod} are shown in Figure \ref{g2-pverma}. Characters in the upper row appear in \eqref{char-in-gen-verma-mod} with positive sign and in the lower row -- with negative.
+Характер  $L^{[1,1]}$ представлен на Рисунке \ref{branching-bgg}, характеры обобщенных модулей Верма в разложении  \eqref{char-in-gen-verma-mod} показаны на Рисунке  \ref{g2-pverma}. Характеры в верхнем ряду входят в формулу \eqref{char-in-gen-verma-mod} со знаком плюс, в нижнем -- со знаком минус. 
 
 
 \begin{figure}[h]
   \noindent\centering{
     \includegraphics[width=80mm]{figures/G2-irrep}
   }
-  \caption{Character of the irreducible $G_{2}$-module $L^{[1,1]}$}
+  \caption{Характер неприводимого модуля  $L^{[1,1]}$ алгебры $G_{2}$}
   \label{branching-bgg}
 \end{figure}
 \begin{figure}[h]
   \noindent\centering{
     \includegraphics[width=150mm]{figures/G2-pverma}
   }
-  \caption{Characters of $G_{2}$ generalized Verma modules appearing in the decomposition of $L^{[1,1]}$. Parabolic Verma modules in the upper row appear in the decomposition with a positive sign, in the lower row -- with a negative.}
+  \caption{Характеры обобщенных модулей Верма алгебры $G_{2}$, входящие в разложение характера $L^{[1,1]}$. Параболические модули Верма в верхнем ряду входят в разложение со знаком плюс, в нижнем -- со знаком минус.}
   \label{g2-pverma}
 \end{figure}
 
-\subsection{String functions of affine Lie algebras and CFT models}
+\subsection{Струнные функции аффинных алгебр Ли и модели конформной теории поля}
 \label{sec:string-funct-affine}
+Струнные функции можно использовать для описания формальных характеров представлений старшего веса аффинных алгебр Ли. Эти функции обладают интересными аналитическими и модулярными свойствами \cite{kac1990idl,kac1988modular,kac1984infinite}.
 
-String functions can be used to present formal characters of affine Lie algebra highest weight representation. They have interesting analytic and modular properties \cite{kac1990idl,kac1988modular,kac1984infinite}.
-
-{\bf Affine.m} produces power series decomposition for string functions. Consider an affine Lie algebra $\hat{sl(3)}=\hat A_{2}$ and its highest weight module $L^{(1,0,0)}$. To get the string functions we can use the code:
+{\bf Affine.m} позволяет вычислять степенное разложение для струнных функций. Рассмотрим аффинную алгебру Ли $\hat{sl(3)}=\hat A_{2}$ и ее модуль старшего веса $L^{(1,0,0)}$. Чтобы получить струнные функции используем следующий код:
 \begin{lstlisting}[mathescape=true]
 stringFunctions[$\hat A_2$,{1,1,2}]
 {{0, 0, 4}, 
@@ -312,7 +263,7 @@ stringFunctions[$\hat A_2$,{1,1,2}]
 {{3, 0, 1}, 
   $2 + 12 q + 49 q^2 + 166 q^3 + 494 q^4 + 1340 q^5 + 3387 q^6 + 8086 q^7 + 18415 q^8 + 40302 q^9 + 85226 q^{10}$}
 \end{lstlisting}
-Similarly for the affine Lie algebra $\hat G_{2}$ we get
+Аналогично для аффинной алгебры Ли $\hat G_{2}$ получаем
 \begin{lstlisting}[mathescape=true]
 stringFunctions[$\hat G_2$,{1,1,0}]
 {{2, 0, 0}, 
@@ -325,14 +276,14 @@ stringFunctions[$\hat G_2$,{1,1,0}]
   $3 q + 15 q^2 + 63 q^3 + 210 q^4 + 633 q^5 + 1725 q^6 + 4407 q^7$}
 \end{lstlisting}
 
-\subsection{Branching functions and coset models of conformal field theory}
+\subsection{Функции ветвления и  coset-модели конформной теории поля}
 \label{sec:branch-funct-coset}
 
-It is believed that most rational models of CFT can be obtained from cosets $G/A$ corresponding to the embedding $\af\subset\gf$. These models can be studied as gauge theories \cite{Hwang:1994yr, hwang1993brst}.
+Считается, что рациональные модели конформной теории поля могут быть получены как  $G/A$ coset-модели, соответствующие вложениям $\af\subset\gf$. Эти модели можно реализовать как калибровочные теории  \cite{Hwang:1994yr, hwang1993brst} (см. раздел \ref{sec:coset-models-cft}). 
 
-Branching functions for an embedding $\af\subset\gf$ are the partition functions of CFT on the torus (see \cite{difrancesco1997cft}).
+Функции ветвления для вложения  $\af\subset\gf$ являются статсуммами для моделей конформной теории поля на торе (см. \cite{difrancesco1997cft}).
 
-As a first example we show how to construct branching functions for the embedding $\hat A_{1}\to \hat B_{2}$ up to the tenth grade:
+В качестве первого примера мы демонстрируем вычисление функций ветвления для вложения $\hat A_{1}\to \hat B_{2}$ до десятого грейда:
 \begin{lstlisting}[mathescape=true]
 branchingFunctions[$\hat B_{2}$,makeAffineExtension[makeFiniteRootSystem[{{1, 1}}]], {1, 1, 1}]
 
@@ -346,7 +297,7 @@ branchingFunctions[$\hat B_{2}$,makeAffineExtension[makeFiniteRootSystem[{{1, 1}
   $2 + 14 q + 54 q^2 + 168 q^3 + 462 q^4 + 1148 q^5 + 2656 q^6 + 5812 q^7 + 12130 q^8 + 24358 q^9 + 47328 q^{10}$}
 \end{lstlisting}
 
-Another example demonstrates the computation of branching functions for the regular embedding $\hat B_{2}\subset \hat C_{3}$:
+Второй пример -- это вычисление функций ветвления для регулярного вложения  $\hat B_{2}\subset \hat C_{3}$:
 \begin{lstlisting}[mathescape=true]
 sub=makeAffineExtension[parabolicSubalgebra[$C_{3}$][2,3]];
 branchingFunctions[$\hat C_{3}$,sub, {2, 0, 0, 0}]
@@ -359,61 +310,49 @@ branchingFunctions[$\hat C_{3}$,sub, {2, 0, 0, 0}]
   $q - 5 q^3 + 7 q^5$}
 \end{lstlisting}
 
-\section{Conclusion}
+\section{Заключение}
 \label{sec:conclusion}
-We have presented the package {\bf Affine.m} for computations in representation theory of finite-dimensional and affine Lie algebras. It can be used to study Weyl symmetry, root systems, irreducible, Verma and parabolic Verma modules of finite-dimensional and affine Lie algebras.  In the present paper we have also discussed main ideas used for an implementation of the package and described most important notions of representation theory required to use {\bf Affine.m}. 
+В данной главе мы представили пакет {\bf Affine.m} для вычислений в теории представлений конечномерных и аффинных алгебр Ли. Он может использоваться для изучения групп Вейля, корневых систем, неприводимых модулей, модулей Верма и параболических модулей Верма конечномерных и аффинных алгебр Ли. Кроме того, мы обсудили основные идеи в реализации пакета  {\bf Affine.m}. 
 
-We have demonstrated that recurrent approach based on the Weyl character formula is not only useful for calculations but also allows to establish connections with the (generalized) Bernstein-Bernstein-Gelfand resolution. 
+Мы показали, что рекуррентный подход, основанный на формуле Вейля для характеров полезен не только для вычислений, но и позволяет прояснить связь с (обобщенной) резольвентой Бернштейна-Гельфанда-Гельфанда.
 
-Also we have presented examples of computations with this package connected with problems of physics and mathematics. 
+Также мы представили примеры вычислений с применением нашего пакета, полезных для различных физических и математических проблем. 
 
-In future versions of our software we are going to treat twisted affine Lie algebras, extended affine Lie algebras and provide more direct support for tensor product decompositions. 
+В следующих версиях программы мы планируем реализовать работу со скрученными аффинными алгебрами Ли, расширенными аффинными алгебрами и реализовать более полную поддержку вычислений коэффициентов разложения тензорных произведений.
 
-\section*{Acknowledgements}
-\label{sec:acknowledgements}
-I thank V.D. Lyakhovsky and O.Postnova for discussions and helpful comments.
+\appendix
 
-The work is supported by the Chebyshev Laboratory
-(Department of Mathematics and Mechanics, Saint-Petersburg State
-University) under the grant 11.G34.31.0026 of the Government of the
-Russian Federation.
-
-
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
-%\appendix
-
-\section{Software package}
+\section{Описание пакета}
 \label{package}
-The package can be freely downloaded from \url{http://github.com/naa/Affine}. To get the development code use the command
+Пакет может быть бесплатно загружен с сайта \url{http://github.com/naa/Affine}. Чтобы получить разрабатываемую версию кода можно использовать систему управления версиями {\it git} и команду
 \begin{lstlisting}[language=bash]
  git clone git://github.com/naa/Affine.git
 \end{lstlisting}
 
-Contents of the package:
+Содержимое пакета:
 \begin{verbatim}
-    Affine/                                root folder
-      demo/                                  demonstrations
-        demo.nb                                demo notebook
-        paper.nb                               code for the paper
-      doc/                                 documentation folder
-        figures/                             figures in paper 
-          timing.pdf                           diagram showing performance
-          branching-timing.pdf                 ...  for branching coefficients  
-          irrep-sum.pdf                        sum of B2 irreps
-          irrep-verma-pverma.pdf               irrep, Verma, (p)Verma for B2
-          G2-irrep.pdf                         irrep for G2
-          G2-pverma.pdf                        parabolic Verma for G2
-          tensor-product.pdf                   tensor product of A1-modules
-        bibliography.bib                     bibliographic database
-        paper.pdf                            present paper
-        paper.tex                            paper source
-        TODO.org                             list of issues
-      src/                                 source folder
-        affine.m                             main software package
-      tests/                               unit tests folder
-        tests.m                              unit tests
-      README.markdown                      installation and usage notes
+    Affine/                              Корневой каталог
+      demo/                               Демонстрации
+        demo.nb                                Демонстрационный файл
+        paper.nb                               Код, содержащийся в статье 
+      doc/                                 Каталог документации
+        figures/                             рисунки в статье
+          timing.pdf                           диаграмма, показывающая производительность
+          branching-timing.pdf                 ...  для коэффициентов ветвления
+          irrep-sum.pdf                        сумма неприводимых представлений B2
+          irrep-verma-pverma.pdf               неприводимое представлений, модуль Верма и обобщенный модуль Верма для B2
+          G2-irrep.pdf                         неприводимое представление G2
+          G2-pverma.pdf                        параболический модуль Верма для G2
+          tensor-product.pdf                   тензорное произведение модулей  A1
+        bibliography.bib                     Библиографическая база
+        paper.pdf                            Статья, описывающая пакет
+        paper.tex                            Исходный LaTeX-файл статьи
+        TODO.org                             Список доработок
+      src/                                 Каталог исходного кода
+        affine.m                             основной пакет
+      tests/                               Каталог тестов
+        tests.m                              тесты
+      README.markdown                    Инструкция по установке и использованию
 \end{verbatim}
 
 
