@@ -1,0 +1,126 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{difrancesco1997cft}
+P.~Di~Francesco, P.~Mathieu, and D.~Senechal, {\em {Conformal field theory}}.
+\newblock Springer, 1997.
+
+\bibitem{vasiliev1976}
+А.~Васильев, {\em {Функциональные методы в квантовой теории поля и
+  статистике}}.
+\newblock Изд-во Ленинградского унив., Ленинград, 1976.
+
+\bibitem{ma1980}
+S.~Ma, {\em {Современная теория критических явлений}}.
+\newblock " Mir", 1980.
+
+\bibitem{ma2000modern}
+S.~Ma, {\em {Modern theory of critical phenomena}}.
+\newblock Westview Press, 2000.
+
+\bibitem{vasiliev1998}
+А.~Васильев, {\em {Квантовополевая ренормгруппа в теории критического поведения
+  и стохастической динамике}}.
+\newblock Изд-во Петербург. ин-та ядер. физики (ПИЯФ) СПб., 1998.
+
+\bibitem{Vasilev:1027193}
+A.~N. Vasilev, {\em The field theoretic renormalization group in critical
+  behavior theory and stochastic dynamics}.
+\newblock Chapman and Hall, St. Petersburg, 1998.
+
+\bibitem{Ravanini:2000st}
+F.~Ravanini, ``{Finite size effects in integrable quantum field theories},''
+\href{http://arxiv.org/abs/hep-th/0102148}{{\tt arXiv:hep-th/0102148}}.
+%%CITATION = HEP-TH/0102148;%%.
+
+\bibitem{belavin2001lect}
+А.~Белавин, А.~Кулаков, and Р.~Усманов, {\em {Лекции по теоретической физике}}.
+\newblock М.: МЦНМО, 2001.
+
+\bibitem{belavin1984ics}
+A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, ``{Infinite conformal symmetry
+  in two-dimensional quantum field theory},'' {\em Nuclear Physics} {\bf 241}
+  (1984)  333--380.
+
+\bibitem{zamolodchikov1989rus}
+А.~Замолодчиков and А.~Замолодчиков, ``{Конформная теория поля и критические
+  явления в двумерных системах},'' {\em ИТЭФ, ЦНИИатоминформ, М} {\bf 1990}
+  (1989)  .
+
+\bibitem{zamolodchikov1989conformal}
+A.~Zamolodchikov, {\em {Conformal field theory and critical phenomena in
+  two-dimensional systems}}.
+\newblock Harwood Academic Pub, 1989.
+
+\bibitem{Ginsparg:1988ui}
+P.~H. Ginsparg, ``{APPLIED CONFORMAL FIELD THEORY},''
+\href{http://arxiv.org/abs/hep-th/9108028}{{\tt arXiv:hep-th/9108028}}.
+%%CITATION = HEP-TH/9108028;%%.
+
+\bibitem{golod2001}
+П.~Голод and А.~Климык, {\em {Математические основы теории симметрии}}.
+\newblock Научн.-изд. центр {\guillemotleft}Регулярная и хаотическая
+  динамика{\guillemotright}, Ижевск, 2001.
+
+\bibitem{springerlink:10.1134/S1063778810050108}
+A.~Belavin and G.~Tarnopolsky, ``Introduction to string theory and conformal
+  field theory,'' {\em Physics of Atomic Nuclei} {\bf 73} (2010)  848--877.
+  \url{http://dx.doi.org/10.1134/S1063778810050108}. 10.1134/S1063778810050108.
+
+\bibitem{Walton:1999xc}
+M.~Walton, ``{Affine Kac-Moody algebras and the Wess-Zumino-Witten model},''
+  (1999)  ,
+\href{http://arxiv.org/abs/hep-th/9911187}{{\tt arXiv:hep-th/9911187}}.
+%%CITATION = HEP-TH/9911187;%%.
+
+\bibitem{gaberdiel2000icf}
+M.~Gaberdiel, ``{An introduction to conformal field theory},'' {\em Reports on
+  Progress in Physics} {\bf 63} (2000) no.~4, 607--668,
+  \href{http://arxiv.org/abs/hep-th/9910156}{{\tt hep-th/9910156}}.
+
+\bibitem{campuzano1985110}
+J.~Campuzano, M.~Foster, G.~Jennings, R.~Willis, and W.~Unertl, ``{Au
+  (110)(1$\times$ 2)-to-(1$\times$ 1) phase transition: a physical realization
+  of the two-dimensional Ising model},'' {\em Physical Review Letters} {\bf 54}
+  (1985) no.~25, 2684--2687.
+
+\bibitem{Polyakov:1970xd}
+A.~M. Polyakov, ``{Conformal symmetry of critical fluctuations},''
+{\em JETP Lett.} {\bf 12} (1970)  381--383.
+%%CITATION = JTPLA,12,381;%%.
+
+\bibitem{smirnov2007conformal}
+S.~Smirnov, ``{Conformal invariance in random cluster models. I. Holomorphic
+  fermions in the Ising model},''  (2007)  ,
+  \href{http://arxiv.org/abs/0708.0039}{{\tt 0708.0039}}.
+
+\bibitem{smirnov2006towards}
+S.~Smirnov, ``{Towards conformal invariance of 2D lattice models},'' in {\em
+  Proceedings of the International Congress of Mathematicians, Madrid}, vol.~2,
+  pp.~1421--1452.
+\newblock 2006.
+
+\bibitem{smirnov2001critical}
+S.~Smirnov, ``{Critical percolation in the plane: Conformal invariance, Cardy's
+  formula, scaling limits},'' {\em Comptes Rendus de l'Acad{\'e}mie des
+  Sciences-Series I-Mathematics} {\bf 333} (2001) no.~3, 239--244.
+
+\bibitem{zamolodchikov1986irreversibility}
+A.~Zamolodchikov, ``{'Irreversibility'of the Flux of the Renormalization Group
+  in a 2-D Field Theory},'' {\em JETP Lett} {\bf 43} (1986) no.~730-732, 9.
+
+\bibitem{schottenloher2008mathematical}
+M.~Schottenloher, {\em {A mathematical introduction to conformal field
+  theory}}.
+\newblock Springer Verlag, 2008.
+
+\bibitem{schramm2000scaling}
+O.~Schramm, ``Scaling limits of loop-erased random walks and uniform spanning
+  trees,'' {\em Israel Journal of Mathematics} {\bf 118} (2000) no.~1,
+  221--288.
+
+\bibitem{chelkak2009universality}
+D.~Chelkak and S.~Smirnov, ``Universality in the 2d ising model and conformal
+  invariance of fermionic observables,'' {\em Arxiv preprint arXiv:0910.2045}
+  (2009)  .
+
+\end{thebibliography}\endgroup
