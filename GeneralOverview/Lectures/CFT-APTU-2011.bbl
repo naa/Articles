@@ -9,6 +9,10 @@ P.~Di~Francesco, P.~Mathieu, and D.~Senechal, {\em {Conformal field theory}}.
   статистике}}.
 \newblock Изд-во Ленинградского унив., Ленинград, 1976.
 
+\bibitem{belavin2001lect}
+А.~Белавин, А.~Кулаков, and Р.~Усманов, {\em {Лекции по теоретической физике}}.
+\newblock М.: МЦНМО, 2001.
+
 \bibitem{ma1980}
 S.~Ma, {\em {Современная теория критических явлений}}.
 \newblock " Mir", 1980.
@@ -31,10 +35,6 @@ A.~N. Vasilev, {\em The field theoretic renormalization group in critical
 F.~Ravanini, ``{Finite size effects in integrable quantum field theories},''
 \href{http://arxiv.org/abs/hep-th/0102148}{{\tt arXiv:hep-th/0102148}}.
 %%CITATION = HEP-TH/0102148;%%.
-
-\bibitem{belavin2001lect}
-А.~Белавин, А.~Кулаков, and Р.~Усманов, {\em {Лекции по теоретической физике}}.
-\newblock М.: МЦНМО, 2001.
 
 \bibitem{belavin1984ics}
 A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, ``{Infinite conformal symmetry
@@ -103,6 +103,12 @@ S.~Smirnov, ``{Towards conformal invariance of 2D lattice models},'' in {\em
 S.~Smirnov, ``{Critical percolation in the plane: Conformal invariance, Cardy's
   formula, scaling limits},'' {\em Comptes Rendus de l'Acad{\'e}mie des
   Sciences-Series I-Mathematics} {\bf 333} (2001) no.~3, 239--244.
+
+\bibitem{0022-3719-6-7-010}
+J.~M. Kosterlitz and D.~J. Thouless, ``Ordering, metastability and phase
+  transitions in two-dimensional systems,'' {\em Journal of Physics C: Solid
+  State Physics} {\bf 6} (1973) no.~7, 1181.
+  \url{http://stacks.iop.org/0022-3719/6/i=7/a=010}.
 
 \bibitem{zamolodchikov1986irreversibility}
 A.~Zamolodchikov, ``{'Irreversibility'of the Flux of the Renormalization Group
