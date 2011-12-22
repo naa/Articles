@@ -712,29 +712,17 @@
 \BibEmph{T.~Gannon}. {Algorithms for affine Kac-Moody algebras}. "---
 \newblock 2001.
 
-\bibitem[\BibPrefix96\BibPostfix]{2011arXiv1102.1702L}
-\selectlanguageifdefined{english}
-\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Recursive properties of branching and
-  BGG resolution}.
-
-\bibitem[\BibPrefix97\BibPostfix]{LyakhovskyPostnova2011}
-\selectlanguageifdefined{english}
-\BibEmph{P.~P. {Kulish}, V.~D. {Lyakhovsky}, O.~P. {Postnova}}. {Tensor powers
-  for non-simply laced Lie Algebras \$B\_2\$ case}~// \BibEmph{ArXiv e-prints}.
-  "---
-\newblock 2011.
-
-\bibitem[\BibPrefix98\BibPostfix]{shifrinmathematica}
+\bibitem[\BibPrefix96\BibPostfix]{shifrinmathematica}
 \selectlanguageifdefined{english}
 \BibEmph{L.~Shifrin}. Mathematica programming: an advanced introduction. "---
 \newblock 2009. \BibUrl{ http://mathprogramming-intro.org/}.
 
-\bibitem[\BibPrefix99\BibPostfix]{maeder2000computer}
+\bibitem[\BibPrefix97\BibPostfix]{maeder2000computer}
 \selectlanguageifdefined{english}
 \BibEmph{R.E. Maeder}. Computer science with Mathematica. "---
 \newblock Cambridge University Press, 2000.
 
-\bibitem[\BibPrefix100\BibPostfix]{casselman1995automata}
+\bibitem[\BibPrefix98\BibPostfix]{casselman1995automata}
 \selectlanguageifdefined{english}
 \BibEmph{WA~Casselman}. Automata to perform basic calculations in Coxeter
   groups~// Representations of groups: Canadian Mathematical Society annual
@@ -744,20 +732,20 @@
 \newblock 1995. "---
 \newblock P.~35.
 
-\bibitem[\BibPrefix101\BibPostfix]{KallenShortlex}
+\bibitem[\BibPrefix99\BibPostfix]{KallenShortlex}
 \selectlanguageifdefined{english}
 \BibEmph{Wilberd van~der Kallen}. Computing ShortLex rewite rules with
   Mathematica. \BibUrl{
   http://www.staff.science.uu.nl/~kalle101/ickl/shortlex.html}.
 
-\bibitem[\BibPrefix102\BibPostfix]{kazhdan1994tensor3}
+\bibitem[\BibPrefix100\BibPostfix]{kazhdan1994tensor3}
 \selectlanguageifdefined{english}
 \BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
   algebras. III~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
 \newblock 1994. "---
 \newblock Vol.~7, no.~2.
 
-\bibitem[\BibPrefix103\BibPostfix]{kazhdan1993tensor1}
+\bibitem[\BibPrefix101\BibPostfix]{kazhdan1993tensor1}
 \selectlanguageifdefined{english}
 \BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
   algebras. I~// \BibEmph{Journal of the American Mathematical Society}. "---
@@ -765,14 +753,21 @@
 \newblock Vol.~6, no.~4. "---
 \newblock Pp.~905--947.
 
-\bibitem[\BibPrefix104\BibPostfix]{kazhdan1993tensor2}
+\bibitem[\BibPrefix102\BibPostfix]{kazhdan1993tensor2}
 \selectlanguageifdefined{english}
 \BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
   algebras. II~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
 \newblock 1993. "---
 \newblock Vol.~6, no.~4.
 
-\bibitem[\BibPrefix105\BibPostfix]{kac1984infinite}
+\bibitem[\BibPrefix103\BibPostfix]{LyakhovskyPostnova2011}
+\selectlanguageifdefined{english}
+\BibEmph{P.~P. {Kulish}, V.~D. {Lyakhovsky}, O.~P. {Postnova}}. {Tensor powers
+  for non-simply laced Lie Algebras \$B\_2\$ case}~// \BibEmph{ArXiv e-prints}.
+  "---
+\newblock 2011.
+
+\bibitem[\BibPrefix104\BibPostfix]{kac1984infinite}
 \selectlanguageifdefined{english}
 \BibEmph{V.G. Kac, D.H. Peterson}. {Infinite-dimensional Lie algebras, theta
   functions and modular forms}~// \BibEmph{Adv. in Math}. "---
@@ -780,7 +775,7 @@
 \newblock Vol.~53, no.~2. "---
 \newblock Pp.~125--264.
 
-\bibitem[\BibPrefix106\BibPostfix]{hwang1993brst}
+\bibitem[\BibPrefix105\BibPostfix]{hwang1993brst}
 \selectlanguageifdefined{english}
 \BibEmph{S.~Hwang, H.~Rhedin}. The brst formulation of G/H WZNW models~//
   \BibEmph{Nuclear Physics B}. "---

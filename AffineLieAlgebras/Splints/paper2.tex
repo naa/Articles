@@ -49,12 +49,13 @@
 
 \author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$ \\
   {\small $^1$ Department of High-energy and elementary particle physics, SPb State University}\\
-  {\small 198904, Saint-Petersburg, Russia}\\
+  {\small 198904, Saint-Petersburg, Russia,}
   {\small e-mail: lyakh1507@nm.ru}\\
-  {\small$^{2}$ Chebyshev Laboratory,}\\
+  {\small$^{2}$ Chebyshev Laboratory,}
   {\small Department of Mathematics and Mechanics, SPb State University}\\
-  {\small 199178, Saint-Petersburg, Russia}\\
+  {\small 199178, Saint-Petersburg, Russia}
   {\small email: antonnaz@gmail.com}}
+\date{}
 \maketitle
 
 \begin{abstract}
@@ -62,57 +63,74 @@ Splint of root system of simple Lie algebra appears naturally in
 the study of (regular) embeddings of reductive subalgebras. It can
 be used to derive branching rules. Application of
 splint properties drastically simplifies calculations of
-branching coefficients. We study affine extension of splint root system of simple Lie algebra.
+branching coefficients. We study affine extension of splint root system of simple Lie algebra and obtain relations on theta and branching functions.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:introduction}
 
 
-The term {\it splint} was
-introduced by D. Richter in  \cite{richter2008splints} where the
-classification of splints for simple Lie algebras was obtained.
-There was also mentioned that splint must have tight
-connections with the injection fan construction. The fan $\Gamma
-\subset \Delta$ was
-introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent
-properties of branching coefficients for maximal embeddings. Injection fan is an
-efficient tool to study branching rules. Later this construction
-was generalized to non-maximal embeddings and affine Lie algebras
-Lie algebras in \cite{2010arXiv1007.0318L, ilyin812pbc}.
+The term {\it splint} was introduced by D. Richter in \cite{richter2008splints} where the
+classification of splints for simple Lie algebras was obtained. The fan $\Gamma \subset \Delta$ was
+introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent properties of
+branching coefficients for maximal embeddings. Injection fan is an efficient tool to study branching
+rules. Later this construction was generalized to non-maximal embeddings and affine Lie algebras in
+\cite{2010arXiv1007.0318L, ilyin812pbc}. In paper \cite{2011arXiv1111.6787L} we have shown that the
+existence of a splint for a root system of a simple Lie algebra leads to simplifications in
+reduction procedures of a Lie algebra module to modules of a subalgebra. This effect is based on the
+injection fan and singular element properties of Lie algebra modules.
 
-In paper \cite{2011arXiv1111.6787L} we have shown that existence of splint of root system of simple Lie algebra leads to simplification of reduction of Lie algebra module to modules of subalgebra. This statement is based upon the properties of injection fan and singular element of Lie algebra module. 
+In the present note we discuss possible applications of splint in
+a root system of simple Lie algebra related to representation
+theory of affine Lie algebras. We discuss the structure of
+injection fan for affine Lie algebras and show that it admits a
+decomposition similar to that used in \cite{2011arXiv1111.6787L}
+for simple Lie algebras. Such a decomposition leads to equations
+for theta-functions. We study graded branching of affine Lie
+algebra modules reduced to a finite-dimensional subalgebra and
+discuss consequences of splint in this case.
 
-In present note we discuss the poss applications of splint of root system of simple Lie algebra to representation theory of affine Lie algebras. We discuss the structure of injection fan for affine Lie algebras and show that it admits decomposition similar to that used in \cite{2011arXiv1111.6787L} for simple Lie algebras. But there is no such decomposition for singular elements due to semidirect product structure of Weyl group of affine Lie algebras. So there is no straightforward generalization of the coincidence of branching coefficients to weight multiplicities, and branching functions for affine Lie algebras in general do not coincide with string functions of other algebras. 
-
-Then we study graded branching of affine Lie algebra module to finite-dimensional subalgebras and discuss the consequences of splint existence on branching functions in this case. 
-
-\section{Definitions}
+\section{Splints and affine Lie algebras}
 \label{sec:definitions}
 
-Consider simple Lie algebra $\gf$ with root system $\Delta$. Let $\af_{1}\subset \gf$ be its reductive subalgebra, such that $\Delta_{1}\subset\Delta$. Irreducible highest-weight modules of $\gf$ and $\af$ are denoted by $L^{\mu}$ and $L^{\nu}_{\af}$ correspondingly. Weyl character formula for irreducible modules is $\mathrm{ch}L^{\mu}=\frac{\Psi^{(\mu)}}{\prod_{\alpha\in\Delta}(1-e^{-\alpha})}$, where $\Psi^{(\mu)}=\sum_{w\in W}\epsilon(w) e^{w(\mu+\rho)-\rho}$ is singular element of the module and $W$ -- Weyl group of $\gf$. Formal character of irreducible module admits decomposition
+Consider simple Lie algebra $\gf$ with a root system $\Delta$. Let
+$\af_{1}\subset \gf$ be its reductive subalgebra, such that
+$\Delta_{1}\subset\Delta$. Irreducible highest-weight modules of
+$\gf$ and $\af$ are denoted by $L^{\mu}$ and $L^{\nu}_{\af}$
+correspondingly. Weyl character formula for irreducible modules is
+$\mathrm{ch}L^{\mu}=\frac{\Psi^{(\mu)}}{\prod_{\alpha\in\Delta}(1-e^{-\alpha})}$,
+where $\Psi^{(\mu)}=\sum_{w\in W}\epsilon(w) e^{w(\mu+\rho)-\rho}$
+is a singular element of the module and $W$ -- the Weyl group of
+$\gf$. Formal character of irreducible module admits a
+decomposition
 \begin{equation}
   \label{eq:4}
   \mathrm{ch} L^{\mu}=\sum_{\nu\in P_{\af}} b^{\mu}_{\nu} \mathrm{ch} L^{\nu}_{\af},
 \end{equation}
-where $P$, $P_{\af}$ are weight lattices of $\gf$ and $\af$.
-We want to study affine extension of this situation: $\gf\subset\gfh,\; \af\subset\afh$, $\afh\subset\gfh$, $\hat{\Delta}\subset\hat{\Delta}$ and $\mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{\hat{\nu}} b^{\hat{\mu}}_{\hat{\nu}} \mathrm{ch} L^{\hat{\nu}}_{\afh}$. For weights of affine Lie algebra $\gfh$ we have $\hat{\mu}=(\mu,k,n)$, where $\mu$ is a weight of $\gf$, $k$ -- level of module and $n$ -- grade of weight $\hat{\mu}$
+where $P$, $P_{\af}$ are weight lattices of $\gf$ and $\af$. We
+want to study affine extension of this situation:
+$\gf\subset\gfh,\; \af\subset\afh$, $\afh\subset\gfh$,
+$\hat{\Delta}\subset\hat{\Delta}$ and
+$\mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{\hat{\nu}}
+b^{\hat{\mu}}_{\hat{\nu}} \mathrm{ch} L^{\hat{\nu}}_{\afh}$. For
+weights of an affine Lie algebra $\gfh$ we have
+$\hat{\mu}=(\mu,k,n)$, where $\mu$ is a weight of $\gf$, $k$ --
+the level of the module and $n$ -- the grade of the weight
+$\hat{\mu}$
 
 \begin{Def}
-Embedding $\phi$ of a root system $\Delta_1$ into a root system $\Delta$ is a bijective map of roots of $\Delta_{1}$ to a (proper) 
-subset of $\Delta$ that commutes with vector composition law in $\Delta_{1}$ and $\Delta$.
+  Embedding $\phi$ of a root system $\Delta_1$ into a root system $\Delta$ is a bijective map of
+  roots of $\Delta_{1}$ to a (proper) subset of $\Delta$ that commutes with vector composition law
+  in $\Delta_{1}$ and $\Delta$.
 \begin{equation*}
-\phi:\Delta_1 \longrightarrow \Delta
+\phi:\Delta_1 \longrightarrow \Delta, \quad \phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,\,\,\, \alpha,\beta \in \Delta_1
 \end{equation*}
-\begin{equation*}
-\phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,
-\,\,\, \alpha,\beta \in \Delta_1
-\end{equation*}
-  
 \end{Def}
 
-Note that the image $Im(\phi)$ must not inherit the root system properties except the addition rules equivalent to the addition
-rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and $\phi_2$  can splinter $\Delta$  when the latter can be presented as a disjoint union of images $Im(\phi_1)$ and $Im(\phi_2)$.   
+Note that the image $Im(\phi)$ must not inherit the root system properties except the addition rules
+equivalent to the addition rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and
+$\phi_2$ can splinter $\Delta$ when the latter can be presented as a disjoint union of images
+$Im(\phi_1)$ and $Im(\phi_2)$.
 
 $\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
 \hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
@@ -120,148 +138,139 @@ _i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
 \phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
 
 \begin{Def}
-A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if there are two embeddings $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
-\phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the disjoint union of the images of $\phi _{1}$ and $\phi _{2}$ and (b) neither the rank of $\Delta _{1}$ nor the rank of $\Delta _{2}$ exceeds the rank of $%
-\Delta $.
+  A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if there are two embeddings
+  $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
+  \phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the disjoint union of the
+  images of $\phi _{1}$ and $\phi _{2}$ and (b) neither the rank of $\Delta _{1}$ nor the rank of
+  $\Delta _{2}$ exceeds the rank of $%
+  \Delta $.
 \end{Def}
 
-It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$ and we shall denote this by $\Delta \approx (\Delta_1,\Delta_2)$. Each component $\Delta_1$ and $\Delta_2$ is a "stem'' of the splint $%
+It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$ and we shall denote
+this by $\Delta \approx (\Delta_1,\Delta_2)$. Each component $\Delta_1$ and $\Delta_2$ is a "stem''
+of the splint $%
 (\Delta_1,\Delta_2)$.
 
 We consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ is a root subsystem. As shown in paper \cite{2011arXiv1111.6787L} the second stem $\Delta _{\frak{s}}:=\Delta
-_{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product 
+_{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product
 $\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}$
 and it defines an injection fan $\Gamma _{\frak{a}%
 \hookrightarrow \frak{g}}$ \cite{lyakhovsky1996rra,ilyin812pbc,2010arXiv1007.0318L}.
 
-Since singular element of $\gf$-module $L^{\mu}$ can be written as $\Psi _{\frak{g}}^{\left( \mu \right) }=e^{-\rho } \sum_{w\in W_{\frak{a}}}w\circ \left(
-e^{\rho _{\frak{a}}}\Psi ^{\widetilde{\mu }+\rho _{\frak{s}}}\right)$  for branching coefficients we get the identity $b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
-}^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}$  \cite{2011arXiv1111.6787L}.
-
-Now we consider affine extension of this setup, $\afh\subset\gfh$. Since $\mathrm{rank}\gf\leq \mathrm{rank} \af+\mathrm{rank}\sfr$
-for Weyl denominators we get
- \[
-\prod_{\alpha\in\hat{\Delta}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\prod_{\gamma\in\hat{\Delta}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
-\]
-
-This decomposition can lead to the conjecture that branching coefficients for the embedding $\afh\subset\gfh$ coincide with branching coefficients for the embedding $\widehat{\uf(1)\oplus\dots\oplus\uf(1)}\subset\sfh$ but we have no corresponding decomposition of singular elements. It can be seen from the following counterexample.
-
-\begin{example}
-  Consider affine extension of splint 
-  Consider the Lie algebra $A_{2} =\bf{sl}(3)$ and branching of its irreducible module $L^{[3,2]}_{A_{2}}$ with respect to the reductive subalgebra $A_{1}\oplus u(1)$. The root system  $\Delta _{\frak{a}}= \Delta_{A_{1}\oplus u(1)}$ contains the simple root of $\alpha_1=e_1-e_2$ of $A_{2}$. The singular element $\Psi^{[3,2]}_{\frak{a}}$ is decomposed into a sum of splint images of singular elements of $A_{1}\oplus A_{1}$-modules. Branching coefficients $b_{\nu }^{[ 3,2 ] }$ coincide with weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module (see Fig. \ref{fig:a2_splint}).
-
-  \begin{figure}[h!bt]
-  \noindent\centering{
-   \includegraphics[width=80mm]{a2-a1}
-  }
-  \caption{Weyl group orbit (dotted) producing singular element of $L^{[3,2]}_{A_{2}}$ and its decomposition into the sum of splint images of singular elements of modules  $L^{[3,2]}_{A_{1}\oplus A_{1}}$ (dashed). Weight multiplicities of $L^{[3,2]}_{A_{1}\oplus A_{1}}$-module coincide with branching coefficients for the reduction $L^{[3,2]}_{A_{2}\downarrow A_{1}\oplus u(1)}$.}
-
- \label{fig:a2_splint}
-\end{figure}
-\end{example}
-
-
-
-Consider Lie algebra $\gf$ and its irreducible modules $L^{\mu}_{\gf}$. 
-Splints of root systems were introduced by D. Richter in paper \cite{richter2008splints} to describe cases of drastic simplification of module reduction into the sum of subalgebra modules. In paper \cite{2011arXiv1111.6787L} we've proved that branching coefficients coincide with multiplicities of the representation of second stem algebra.
-
-
-
-In present note we generalize our analysis to affine extension of $\gf$. We consider affine Lie algebra $\gfh$ with the underlying simple finite-dimensional Lie algebra $\gf$. We assume that root system $\Delta_{\gf}$ admits splint $\Delta_{\gf}=\Delta_{\af_{1}}\cup \Delta_{\af_{2}}$. It is well-known \cite{kac1990idl} that irreducible $\gfh$-module can be decomposed into the sum of irreducible $\gf$-modules.
+Since the singular element of a $\gf$-module $L^{\mu}$ can be
+written as $\Psi _{\frak{g}}^{\left( \mu \right) }=e^{-\rho }
+\sum_{w\in W_{\frak{a}}}\epsilon \left( w \right) w\circ \left(
+e^{\rho _{\frak{a}}}\Psi ^{\widetilde{\mu }+\rho
+_{\frak{s}}}\right)$  for branching coefficients we get the
+identity \cite{2011arXiv1111.6787L}:
 \begin{equation}
-  \label{eq:1}
-  L_{\gfh}^{\mu}=\bigoplus_{\nu=(\co{\nu},n,k)} b^{\mu}_{\co{\nu}}(n) L^{\co{\nu}}_{\gf}
-\end{equation}
-
-Then each of these $\gf$-modules in this decomposition admits decomposition to $\af_{1}$ modules with branching coefficients equal to weight multiplicities of $\af_{2}$ irreducible module \cite{2011arXiv1111.6787L}. 
-\begin{equation}
-  \label{eq:2}
-  L^{\co{\nu}}_{\gf} = \bigoplus b^{\mu}_{\af_{1}\co{\nu}}(n) L^{\co{\nu}}_{\gf}
-\end{equation}
-We state that it is possible to reorganize weights in such a way that branching coefficients for the reduction $\gfh\downarrow \af_{1}$  are expressed in terms of weight multiplicities of $\hat\af_{2}$. 
-\section{Main theorem}
-\label{sec:main-theorem}
-
-When an injection is maximal the
-projection becomes trivial and the relation (\ref{recurrent rel}) is
-simplified:
-\begin{equation}
-\begin{array}{c}
-b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
-\sum_{u\in W}\epsilon (u) \delta _{\xi -\gamma _{0}, u(\mu +\rho )-\rho
-}+\right. \\
-\left. +\sum_{\gamma \in \Gamma _{\frak{a}\rightarrow \frak{g}}}s\left(
-\gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right) }\right) .
-\end{array}
-\label{recurrent relation max}
-\end{equation}
-The recursion is goverened by the set $\Gamma _{\frak{a}\rightarrow \frak{g}}
-$ called the injection fan. The latter is defined by the carrier set $%
-\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}$ for the coefficient
-function $s(\xi )$
-\[
-\left\{ \xi \right\} _{\frak{a}\rightarrow \frak{g}}:=\left\{ \xi \in P_{%
-\frak{a}}|s(\xi )\neq 0\right\}
-\]
-appearing in the expansion
-\begin{equation}
-\prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\frak{a}}^{+}}\left( 1-e^{
--\alpha }\right) =-\sum_{\gamma \in P_{\frak{a}}}s(\gamma )e^{-\gamma };\quad
-\label{product}
-\end{equation}
-
-\begin{theorem}
-
- So following statement holds:
-\begin{statement}
-\label{statement-1}
-\begin{equation}
-\frac{e^{\rho _{\frak{g}}}}{\prod_{\beta \in \Delta _{\frak{s}%
-}^{+}}(1-e^{-\beta })}\left( \Psi ^{\widetilde{\mu }+\rho _{\frak{s}%
-}}\right) =\sum_{\widetilde{\nu }\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }%
-}}M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}e^{\left(
-\mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
-}=\sum_{\nu \in P_{\frak{a}}^{++}}b_{\nu }^{(\mu )}e^{\nu }.
-\label{singular main-4}
-\end{equation}
-Any weight with nonzero multiplicity in the r. h. s. is equal to one of the
-highest weights in the decomposition. The multiplicity $M_{\left( \frak{s}%
-\right) \widetilde{\nu }}^{\widetilde{\mu }}$ of the weight  $\widetilde{\nu
-}\in \mathcal{N}_{\frak{s}}^{\widetilde{\mu }}$ defines the branching
-coefficient $b_{\nu }^{(\mu )}$ for the highest weight $\nu =\left( \mu
--\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right) $:
-\[
+  \label{eq:9}
 b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
-}^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}.
+}^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}  
+\end{equation}
+Here the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $, they have the
+same Dynkin numbers: $\mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
+m_{k}\omega_{(\sfr) k} . \label{new h weight}$ So branching coefficients coincide with weight
+multiplicities of $\sfr$-modules.
+
+Now we consider affine extension of this setup, $\afh\subset\gfh$. Since $\mathrm{rank}\gf\leq
+\mathrm{rank} \af+\mathrm{rank}\sfr$ for Weyl denominators we get
+ \[
+\prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
 \]
-\end{statement}
 
+Using a specialization
+\cite{kac1988modular,kac1984infinite,kac1990idl} and the
+definition of Dedekind eta-function
+$\eta(\tau)=q^{1/24}\prod_{n=1}^{\infty}(1-q^{n})$, where
+$q=e^{2\pi i \tau}$ we can rewrite this identity as the relation
+imposed on theta-functions $\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in P_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$:
+\begin{multline}
+  \label{eq:5}
+  \eta(\tau)^{\mathrm{dim}(\af)}\prod_{\alpha\in\Delta_{1}^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z)}{\eta(\tau)} \eta(\tau)^{\mathrm{dim}(\sfr)}\prod_{\beta\in\Delta_{2}^{+}}\frac{\Theta^{(\hat A_{1})}_{\phi\circ \beta}(\tau,z))}{\eta(\tau)}=\\
+\eta(\tau)^{\mathrm{rank}(\af)+\mathrm{rank}(\sfr)-\mathrm{rank}(\gf)}
+\eta(\tau)^{\mathrm{dim}(\gf)}\prod_{\alpha\in\Delta^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z))}{\eta(\tau)}
+\end{multline}
+Here $z\in P_{\geq 0}\otimes \mathbb{C}$. Using Weyl denominator identity this relation can be
+rewritten as a non-trivial relation connecting theta-functions of algebras $\gfh,\hat\sfr,\afh$:
+\begin{equation}
+  \label{eq:6}
+  \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
+  \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= 
+  \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
+\end{equation}
+%Now we can use Weyl denominator identity $e^{-\rho}\prod_{\alpha\in \hat{\Delta}^{+}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}=\sum_{w\in \hat{W}}\det(w)e^{w\rho}$
 
-The extension to the case of non-twisted affine Lie algebras is not straightforward. The statement \ref{statement-1} is based upon the decomposition of the injection fan and the possibility to present the singular element of the algebra module as the linear combination of singular elements of second stem algebra modules. 
+Now consider the branching of $\gfh$-module to $\gf$-modules. For
+formal characters we can write the following expression:
+\begin{equation}
+  \label{eq:8}
+\mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{\nu}(n) \mathrm{ch} L^{\nu}_{\gf}.
+\end{equation}
+Rewriting this equation for weight multiplicities we get
+$m^{(\hat{\mu})}_{\hat{\nu}=(\nu,k,n)}=\sum_{\xi\in P}
+b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}$. We can introduce
+branching functions similarly to the case of branching for affine
+subalgebra \cite{kac1988modular,kac1990idl}:
+$b^{(\hat{\mu})}_{\nu}(q)=\sum_{n=0}^{\infty}
+b^{(\hat{\mu})}_{\nu}(n) q^{n}$.  These branching functions are connected to $q$-dimension of module $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$. It is well-known \cite{gannon2006moonshine} that $q$-dimension is a modular function for some $\Gamma\subset SL_{2}(\mathbb{Z})$, so branching functions $b^{(\hat \mu)}_{\nu}(q)$ have modular properties.
 
-  Consider reduction of affine Lie algebra $\gfh$-module $L^{\mu}_{\gfh}$ to finite-dimensional subalgebra $\af_{1}$. Then for branching coefficients following relation holds:
-  \begin{equation}
-    \label{eq:3}
-    b^{\mu}_{\nu}=\sum_{?} m^{\nu}_{\hat\af_{2}}
-  \end{equation}
-\end{theorem}
-\begin{proof}
-  At first we use equation \eqref{eq:1}, then substitute to equation \eqref{eq:2}, reorganize weights and obtain the desired result. 
-\end{proof}
+ For string functions of a module
+$L^{\hat{\mu}}$ we have
+\begin{equation}
+  \label{eq:7}
+   \sigma^{(\hat{\mu})}_{\nu}(q) = \sum_{\xi\in P} m^{(\xi)}_{\nu} b^{(\hat{\mu})}_{\xi}(q).
+\end{equation}
 
-\section{Examples}
-\label{sec:examples}
-The most simple example is constructed starting with splint $\Delta_{A_{2}}=\Delta_{A_{1}\oplus A_{1}}\cup \Delta_{A_{1}}$.
+Introduce an ordering of the set of weights $\xi$ as follows:
+attribute to a weight $(\rho,\xi)$ its product $(\rho,\xi)$ with
+the Weyl vector $\rho$. Then relation \eqref{eq:7} can be written
+in the matrix form $\sigma(q)=M b(q)$ or as an inverse relation
+$b(q)=M^{-1}\sigma(q)$. Here $\sigma(q)$ and $b(q)$ are infinite
+columns of string and branching functions. Matrix $M$ contains
+multiplicities of weights in $\gf$-modules similar to that of
+Table 1 in paper \cite{2010arXiv1001}. The inverse matrix $M^{-1}$
+encodes recurrent relations imposed weight multiplicities
+\cite{il2010folded}.
 
-Then we consider the case $\gfh=\hat B_{2}$.
+Now consider the branching of $\gfh$-modules in $\af$-modules and
+assume the existence of a splint
+$\Delta^{+}_{\gf}=\Delta^{+}_{\af}\cup \phi(\Delta^{+}_{\sfr})$.
+We decompose $\gf$-modules in equation \eqref{eq:8} into
+$\af$-modules using property \eqref{eq:9}:
+\begin{multline}
+  \label{eq:10}
+  \mathrm{ch}L^{\hat{\mu}}_{\gfh}=
+\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P_{\af}} b^{(\hat{\mu})}_{(\gfh\downarrow\af)\nu}(n) \mathrm{ch} L^{\nu}_{\af}=
+\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} b^{(\nu)}_{(\gf\downarrow \af) \xi}\mathrm{ch} L^{\xi}_{\af}=\\
+=\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} M^{\widetilde{\nu}}_{  \widetilde{\nu}-\phi^{-1}( \nu-\xi )}\mathrm{ch} L^{\xi}_{\af}
+\end{multline}
+We see that the similar matrix relation holds for branching
+functions $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}
+b_{(\gfh\downarrow\gf)}(q)$ and we can write
+$\sigma(q)=M_{\af}\cdot b_{(\gfh\downarrow\af)}(q)$. So if we know
+branching coefficients for the embedding $\gf\subset\gfh$ (for
+example, see book \cite{kass1990ala}) we can easily obtain
+branching functions for the embedding $\af\subset \gfh$.
 \section*{Conclusion}
-\label{sec:conclusion}
-Further question is to generalize this analysis to affine sublagebras and apply the results on branching coefficients to the study of CFT coset models. 
+\label{sec:conclusion} We have demonstrated that splint in affine
+Lie algebras leads to new relations between theta-functions and
+branching functions for branching to finite-dimensional
+subalgebras, which can be useful for computations. Further
+question is to generalize this analysis to affine subalgebras and
+to apply the results to branching in the study of CFT coset
+models.
 
-%%  
-%%  
-%%  In the present paper we provide alternative proof of the main statement of paper [LN-2011-Splints] which uses graded commutative structure on vector space of universal enveloping algebra $U(n^{-})$. 
-%%  
+\section*{Acknowledgements}
+\label{sec:acknowledgements}
+Anton Nazarov thanks the Chebyshev Laboratory (Department of Mathematics and Mechanics,
+Saint-Petersburg State University) for support under the grant 11.G34.31.0026
+of the Government of Russian Federation.
+
+%%
+%%
+%%  In the present paper we provide alternative proof of the main statement of paper [LN-2011-Splints] which uses graded commutative structure on vector space of universal enveloping algebra $U(n^{-})$.
+%%
 %%  Con
 %%  
 %%  
