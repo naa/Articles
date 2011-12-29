@@ -1,7 +1,8 @@
-\documentclass[a4paper,14pt,candidate,subf,href
+\documentclass[a4paper,14pt,candidate,href
 %,fixint=false
 %,facsimile
 %,times
+%,subf
 ]{disser}
 
 
@@ -17,9 +18,9 @@
 %% \textheight=28cm
 %% 
 \usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
-\ifpdf\usepackage{epstopdf}\fi
+\ifpdf\usepackage{epstopdf}\usepackage[unicode]{hyperref}\fi
 
 
 \usepackage{amsmath}
@@ -29,7 +30,6 @@
 \usepackage{graphicx}
 \usepackage{ucs}
 \usepackage{pb-diagram}
-\usepackage[unicode]{hyperref}
 
 \usepackage{listings}
 \usepackage{textcomp}
