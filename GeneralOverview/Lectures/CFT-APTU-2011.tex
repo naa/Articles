@@ -182,7 +182,7 @@
 Здесь мы ввели обозначение $\sigma_{\mathrm{tot}}=\sum_i \sigma_i$. Видно, что магнитная восприимчивость пропорциональна дисперсии полного спина. Введем парную корреляционную функцию
 \begin{equation}
   \label{eq:9}
-  \Gamma(i-j)=\left<\sigma_i-\sigma_j\right>.
+  \Gamma(i-j)=\left<\sigma_i\sigma_j\right>.
 \end{equation}
 Из-за вращательной и трансляционной инвариантности $\Gamma$ зависит только от расстояния между вершинами $\left|i-j\right|$. Связная корреляционная функция
 \begin{equation}
@@ -679,8 +679,8 @@ $j^{\mu}_{a}$ называется нетеровским током, соотв
 Теперь мы можем выразить $\Sigma$ через $F^{(1)}$:
 \begin{equation}
   \label{eq:120}
-  \Sigma=\sum_{s=0}^{\infty}\frac{1}{s!}\sum_{l_1\dots l_s=1}^{\infty} \kappa^{l_1+\dots+l_s}F^{(1)}_{l_1} \dots F^{(1)}_{l_s}=
-  \sum_{s=0}^{\infty}\frac{1}{s!}\left(\sum_{l=1}^{\infty} \kappa^{l}F^{(1)}_{l} \right)^s =\exp\left(-\sum_{l=1}^{\infty} \kappa^l F_l\right)
+  \Sigma=\sum_{s=0}^{\infty}\frac{(-1)^s}{s!}\sum_{l_1\dots l_s=1}^{\infty} \kappa^{l_1+\dots+l_s}F^{(1)}_{l_1} \dots F^{(1)}_{l_s}=
+  \sum_{s=0}^{\infty}\frac{(-1)^s}{s!}\left(\sum_{l=1}^{\infty} \kappa^{l}F^{(1)}_{l} \right)^s =\exp\left(-\sum_{l=1}^{\infty} \kappa^l F_l\right)
 \end{equation}
 Петли с числом узлов больше $N$ не дают вклада, так как содержат повторяющиеся ребра и поэтому сократятся (Смотри рисунок \ref{fig:ising-2}).
 \begin{figure}[h!tb]
@@ -859,7 +859,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 Аналогично для удельной теплоемкости получаем
 \begin{equation}
   \label{eq:38}
-  c=-T\left.\frac{\partial^2 f}{\partial T^2}\right|_{h=0}=-\frac{1}{T_c}t^{\frac{1}{a-2}}g''(0)
+  c=-T\left.\frac{\partial^2 f}{\partial T^2}\right|_{h=0}=-\frac{1}{T_c}t^{\frac{1}{a}-2}g''(0)
 \end{equation}
 В пределе $t\to 0$ $M\sim h^{\frac{1}{\delta}}$, поэтому $g'(y)\sim y^{\frac{1}{\delta}}$ при $y\to \infty$. А значит, если в критической точке намагниченность $M$ конечна и не равна нулю, должно выполняться равенство $1-b-\frac{b}{\delta}=0$. Подставляя выражение для $\delta$ через $b$ в (\ref{eq:36},\ref{eq:37},\ref{eq:38}), мы получаем связь критических индексов
   \begin{eqnarray}
