@@ -1483,7 +1483,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 \begin{eqnarray}
   \label{eq:180}
   e^{i x^{\rho}P_{\rho}}D e^{-i x^{\rho}P_{\rho}}=D+x^{\nu}P_{\nu}\\
-  e^{i x^{\rho}P_{\rho}}K_{\mu} e^{-i x^{\rho}P_{\rho}}=K_{\mu}+2x_{\mu}D -2 x^{\nu}L_{\mu\nu}+2x_{\mu}(x^{\nu}P_{\nu})-x^{2 P_{\mu}}
+  e^{i x^{\rho}P_{\rho}}K_{\mu} e^{-i x^{\rho}P_{\rho}}=K_{\mu}+2x_{\mu}D -2 x^{\nu}L_{\mu\nu}+2x_{\mu}(x^{\nu}P_{\nu})-x^{2} P_{\mu}
 \end{eqnarray}
 В результате действие этих генераторов на поле имеет вид
 \begin{eqnarray}
@@ -1551,7 +1551,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 Однако мы ещё не воспользовались инвариантностью коррелятора относительно специальных конформных преобразований. Подставим явный вид преобразований $\left|x_{1}-x_{2}\right|$ из \eqref{eq:174} и введем обозначение $\gamma_{i}=\left(1-2(h,x_{i})+h^{2}x_{i}^{2}\right)$, тогда
 \begin{equation}
   \label{eq:189}
-  \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}=\frac{C_{12}(\gamma_{1}\gamma_{2})^{(\Delta_{1}+\Delta_{2})/2}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}} \left|x_{1}-x_{2}\right|}.
+  \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}=\frac{C_{12}(\gamma_{1}\gamma_{2})^{(\Delta_{1}+\Delta_{2})/2}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}} \left|x_{1}-x_{2}\right|^{\Delta_1+\Delta_2}}.
 \end{equation}
 Это равенство может выполняться только при $\Delta_{1}=\Delta_{2}$. В итоге для коррелятора
 \begin{equation}
@@ -1908,9 +1908,9 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 \begin{eqnarray}
   \label{eq:240}
   2\pi \partial \langle T_{\bar z z } X\rangle +2\pi \bar \partial \langle T_{zz}X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X \rangle\\
-  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
+  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-\bar w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
   2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) \Delta_{i} \langle X\rangle\\
-  -2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle\\
+  -2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle
 \end{eqnarray}
 Если сложить и вычесть два последних равенства и вспомнить определение $h, \bar h$, то получим
 \begin{eqnarray}
@@ -2393,7 +2393,7 @@ N & h+N & $P(N)$ полей & $P(N)$ состояний  \\ \hline
 То есть
 \begin{equation}
   \label{eq:311}
-  a=-\frac{3}{2}(2h+1)
+  a=-\frac{3}{2(2h+1)}
 \end{equation}
 Аналогично, действуя $L_{2}$ получаем условие
 \begin{equation}
