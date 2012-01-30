@@ -20,6 +20,8 @@
 
 В данной главе мы изучаем связь между сплинтом и веером вложения для регулярных вложений редуктивных подалгебр ${\mathfrak a}$ в простую алгебру Ли $\gf$. Мы демонстрируем, что (при выполнении определенных условий, описанных в разделе \ref{sec:stems and multiplicity functions}) сплинт является естественным инструментом для изучения свойств редукции  $\gf$-модулей по отношению к подалгебре $\af\longrightarrow\gf$. Используя этот инструмент мы получаем основной результат данной главы -- однозначное соответствие между кратностями весов неприводимых модулей сплинта и коэффициентов ветвления для редуцированного модуля $L^{\mu}_{\gf\downarrow \af}$.
 
+Затем мы обсуждаем аффинное расширение корневой системы допускающей сплинт и получаем новые соотношения, связывающие функции ветвления неприводимых модулей на модули конечномерных подалгебр (см. Раздел \ref{sec:splints-affine}).
+
 \section{Вложения и сплинты}
 
 \label{sec:Injections and splints}
@@ -35,7 +37,7 @@ L_{\gf\downarrow \af}^{\mu }=\bigoplus\limits_{\nu \in P_{\af%
 \begin{equation}
 \pi _{\af}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\af%
 }^{+}}b_{\nu }^{(\mu )}ch\left( L_{\af}^{\nu }\right) .
-\label{branching1}
+\label{branching13}
 \end{equation}
 Для модулей, которые мы исследуем, формула Вейля для характеров $\mathrm{ch}\left(L^{\mu }\right) $ может быть записана через сингулярные элементы \cite{humphreys1997introduction}
 \[
@@ -46,9 +48,9 @@ L_{\gf\downarrow \af}^{\mu }=\bigoplus\limits_{\nu \in P_{\af%
 \begin{equation}
 \mathrm{ch}\left( L^{\mu }\right) =\frac{\Psi ^{\left( \mu \right) }}{\Psi
 ^{\left( 0\right) }}=\frac{\Psi ^{\left( \mu \right) }}{R}.
-\label{Weyl-Kac2}
+\label{Weyl-Kac22}
 \end{equation}
-Это же верно и для подмодулей $\mathrm{ch}\left( L_{\af}^{\nu}\right) $ в уравнении (\ref{branching1})
+Это же верно и для подмодулей $\mathrm{ch}\left( L_{\af}^{\nu}\right) $ в уравнении (\ref{branching13})
 \[
 \mathrm{ch}\left( L_{\af}^{\nu }\right) =\frac{\Psi _{\af}^{\left(
 \nu \right) }}{\Psi _{\af}^{\left( 0\right) }}=\frac{\Psi _{\af%
@@ -60,16 +62,16 @@ L_{\gf\downarrow \af}^{\mu }=\bigoplus\limits_{\nu \in P_{\af%
 }}\epsilon (w)e^{w(\nu +\rho _{_{\af}})-\rho _{_{\af}}}.
 \]
 
-Применяя формулу (\ref{Weyl-Kac2}) к правилам ветвления (\ref{branching1}) мы получаем соотношение, связывающее сингулярные элементы $\Psi ^{\left( \mu\right) }$ и $\Psi _{\af}^{\left( \nu \right) }$ :
+Применяя формулу (\ref{Weyl-Kac22}) к правилам ветвления (\ref{branching13}) мы получаем соотношение, связывающее сингулярные элементы $\Psi ^{\left( \mu\right) }$ и $\Psi _{\af}^{\left( \nu \right) }$ :
 \begin{eqnarray}
 \frac{\sum_{w \in W}\epsilon (w )e^{w (\mu +\rho )-\rho }}{\prod_{\alpha \in
 \Delta ^{+}}(1-e^{-\alpha })} &=&\sum_{\nu \in P_{\af}^{+}}b_{\nu
 }^{(\mu )}\frac{\sum_{w \in W_{\af}}\epsilon (w )e^{w (\nu +\rho _{%
 \af})-\rho _{\af}}}{\prod_{\beta \in \Delta _{\af%
-}^{+}}(1-e^{-\beta })},  \nonumber  \label{eq:4} \\
+}^{+}}(1-e^{-\beta })},  \nonumber  \label{eq:171} \\
 \frac{\Psi ^{\left( \mu \right) }}{R} &=&\sum_{\nu \in P_{\af%
 }^{+}}b_{\nu }^{(\mu )}\frac{\Psi _{\af}^{\left( \nu \right) }}{R_{%
-\af}}.  \label{singular main}
+\af}}.  \label{singular-main}
 \end{eqnarray}
 
 В работе \cite{2010arXiv1007.0318L} (см. главу \ref{cha:affine-lie-algebras}) было доказано, что коэффициенты ветвления $b_{\xi }^{\left(\mu\right)}$, отвечающие вложению $\af\hookrightarrow \gf$, удовлетворяют следующим рекуррентным соотношениям:
@@ -83,19 +85,19 @@ _{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
 }}s\left( \gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right)
 }\right) ,
 \end{array}
-\label{recurrent rel}
+\label{recurrent-rel}
 \end{equation}
 где $\afb$ -- подалгбера, задающаяся корнями  $\gf$, ортогональными ко всем корням $\af$ и $W_{\perp}$ -- подгруппа Вейля, соответствующая $\afb$,
 \begin{eqnarray}
 \Delta _{\af_{\perp }} &:&=\left\{ \beta \in \Delta _{\gf}|\forall
 h\in \frak{h}_{\af};\beta \left( h\right) =0\right\} ,
-\label{delta a ort}
+\label{delta-a-ort}
 \end{eqnarray}
 \begin{eqnarray}
 \widetilde{\af_{\perp }} :=\af_{\perp }\oplus \frak{h}_{\perp }
 \qquad \widetilde{\af} :=\af\oplus \frak{h}_{\perp }
 \end{eqnarray}
-и $\pi$ -- оператор проекции. Если вложение максимально, то оператор проекции становится тривиальным и соотношение (\ref{recurrent rel}) упрощается:
+и $\pi$ -- оператор проекции. Если вложение максимально, то оператор проекции становится тривиальным и соотношение (\ref{recurrent-rel}) упрощается:
 \begin{equation}
 \begin{array}{c}
 b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
@@ -120,7 +122,7 @@ b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 
 Теперь мы приведем два определения, введенные в работе \cite{richter2008splints}
 
-\begin{Def}
+\begin{definition}
 Пусть $\Delta _{0}$ и $\Delta$ -- корневые системы с соответствующими весовыми решетками $P_{0}$ и $P$. Тогда отображение $\phi $ -- ``вложение''
 \begin{equation}
 \phi :\left\{
@@ -137,15 +139,15 @@ P_{0}\hookrightarrow P,
 \phi (\gamma )=\phi (\alpha )+\phi (\beta )
 \]
 для любой тройки $\alpha ,\beta ,\gamma \in P_{0}$, такой, что $\gamma =\alpha+\beta $.
-\end{Def}
+\end{definition}
 
 $\phi$ индуцирует вложение формальных алгебр: ${\mathcal{E}}_0\hookrightarrow \mathcal{E}$ и для образа ${\mathcal{E}}_i=\mathrm{Im}_{\phi}\left( {\mathcal{E}}_0\right)$ можно рассмотреть обратное отображение $\phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
 
 Заметим, что нужно различать два класса вложений: когда скалярное произведение (заданное формой Киллинга) в корневом пространстве $P_0$ инвариантно по отношению к  $\phi$ и когда оно не  $\phi$-инвариантно. Вложения первого класса называются ``метрическими'', второго -- ``неметрическими''. 
 
-\begin{Def}
+\begin{definition}
 Корневая система $\Delta$ ``расщепляется'' на  $(\Delta _{1},\Delta _{2})$, если существует два вложения  $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ и $\phi _{2}:\Delta _{2}\hookrightarrow \Delta $, где (a) $\Delta $ -- несвязное объединение образов $\phi _{1}$ и $\phi _{2}$, и (b) ни ранг  $\Delta _{1}$, ни ранг  $\Delta _{2}$ не превосходит ранга $\Delta $.
-\end{Def}
+\end{definition}
 
 Эквивалентно, можно сказать, что  $(\Delta_1,\Delta_2)$  -- ``сплинт'' (расщепление)  $\Delta$ и мы можем обозначить его через $\Delta \approx (\Delta_1,\Delta_2)$. Каждая из компонент  $\Delta_1$ и $\Delta_2$ называется ``стеблем'' сплинта $(\Delta_1,\Delta_2)$.
 
@@ -155,13 +157,13 @@ $\phi$ индуцирует вложение формальных алгебр: 
 
 В случае инъективного сплинта второй стебель $\Delta _{\sfr}:=\Delta_{2}=\Delta \setminus \Delta _{\af}$ может быть переписан как произведение (\ref{product}) и определяет веер вложения  $\Gamma _{\af\hookrightarrow \gf}$. Обозначим через $\Delta_{\mathfrak{s}0}$ кообраз второго вложения $\phi:\Delta_{\mathfrak{s}0}\to \Delta_{\gf}$. Верна следующая гипотеза.
 
-\begin{Cnj}
+\begin{conjecture}
 Каждый инъективный сплинт $\Delta \approx (\Delta _{\af},\Delta _{\sfr})$ определяет веер вложения с носителем $\left\{ \xi \right\} _{\af\rightarrow \gf}$, задающимся произведением
 \begin{equation}
 \prod_{\beta \in \Delta _{\sfr}^{+}}\left( 1-e^{-\beta }\right)
 =-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}
 \end{equation}
-\end{Cnj}
+\end{conjecture}
 
 В случае инъективного сплинты мы можем сказать, что подалгебра $\af\hookrightarrow \gf$ расщепляется $\Delta$ (и назовем $\af$ ``расщепляющей подалгеброй'' алгебры $\gf$).  Сплинты были классифицированы в работе \cite{richter2008splints}  (см. Приложение в конце главы) и первые три класса сплинтов в этой классификации инъективны. 
 
@@ -171,7 +173,7 @@ $\phi$ индуцирует вложение формальных алгебр: 
 
 В этом разделе мы рассмотрим свойства инъективных сплинтов $\Delta \approx (\Delta _{\af},\Delta _{\sfr})$. Мы покажем, что в этом случае вычисление коэффициентов ветвления для расщепляющего вложения $\af\hookrightarrow\gf$ эквивалентно нахождению кратностей весов неприводимого $\sfr$-модуля $L_{\sfr}^{\nu }$ с определенным старшим весом $\nu $. Заметим, что алгебра $\sfr$ не обязательно должна быть подалгеброй $\gf$.
 
-Вернемся к соотношению  (\ref{singular main}) и домножим обе стороны на  $R_{\af}$:
+Вернемся к соотношению  (\ref{singular-main}) и домножим обе стороны на  $R_{\af}$:
 \begin{equation}
 \frac{1}{\prod_{\beta \in \Delta _{\sfr}^{+}}(1-e^{-\beta })}\Psi _{\gf}^{\left( \mu \right) }=\sum_{\nu \in P_{\af}^{+}}b_{\nu}^{(\mu )}\Psi _{\af}^{\left( \nu \right) }.
 \label{singular main-2}
@@ -205,7 +207,7 @@ P_{\af}^{+}}b_{\nu }^{(\mu )}\Phi _{\af}^{\left( \nu \right) }.
 \label{edge}
 \end{equation}
 Каждая формальная экспонента $e^{\mu +\rho +\lambda _{i}}$ in $\Phi _{\gf}^{\left( \mu \right) }$ снабжена знаковым коэффициентом  $\epsilon =(-)$. Можно определить $\Phi_{\gf}^{\left( \mu \right) }$ следующим свойством. Рассмотрим любую пару ребер $\lambda _{i},\lambda _{j}$ и соответствующие веса $\mu +\rho $, $\mu +\rho +\lambda _{i}$ и $\mu +\rho +\lambda _{j}$. 
-Применим отражение $s_{\alpha _{i}}$ (or $s_{\alpha _{j}}$),
+Применим отражение $s_{\alpha _{i}}$ (или $s_{\alpha _{j}}$),
 \begin{equation}
 s_{\alpha _{i}}\circ \left\{
 \begin{array}{l}
@@ -253,7 +255,7 @@ _{i}\right\} _{i=1,\dots ,r}$ всегда найдется простые ко�
 \begin{equation}
 \lambda _{k}=-\left( m_{k}+1\right) \beta _{k}  \label{beta edge},
 \end{equation}
-построенные из веса  $\mu +\rho $.  Так как $\Delta _{\af}$ -- корневая система и для любой пары простых корней из $S_{\frak{c}}$ выполнено свойство \ref{diagram property}, элемент  $\Phi _{\gf}^{\left( \mu \right) }$ является сингулярным элементом для набора  $\af$-модулей. Рассмотрим корень $\beta _{l}\in \Delta _{\sfr}$, кообраз которого в  $\Delta _{\sfr0}$  простой. В разделе \ref{sec:appendix} мы показываем, что для каждого такого $\beta _{l}$ существует корень  $\alpha _{l}\in S_{\frak{c}}$, такой, что $\beta _{l}=\alpha _{l}+\beta _{k}$. Легко видеть, что в этом случае соответствующее ребро пересекает гиперплоскость, ограничивающую главную камеру Вейля$ \bar{C_{\af}}$ и ортогональную к корню $\alpha _{l}$,
+построенные из веса  $\mu +\rho $.  Так как $\Delta _{\af}$ -- корневая система и для любой пары простых корней из $S_{\frak{c}}$ выполнено свойство \ref{diagram property}, элемент  $\Phi _{\gf}^{\left( \mu \right) }$ является сингулярным элементом для набора  $\af$-модулей. Рассмотрим корень $\beta _{l}\in \Delta _{\sfr}$, кообраз которого в  $\Delta _{\sfr0}$  простой. В разделе \ref{sec:appendix} мы показываем, что для каждого такого $\beta _{l}$ существует корень  $\alpha _{l}\in S_{\frak{c}}$, такой, что $\beta _{l}=\alpha _{l}+\beta _{k}$. Легко видеть, что в этом случае соответствующее ребро пересекает гиперплоскость, ограничивающую главную камеру Вейля $\bar{C_{\af}}$ и ортогональную к корню $\alpha _{l}$,
 \begin{equation}
 s_{\alpha _{l}}\left( \mu +\rho -p\beta _{l}\right) =s_{\alpha _{l}}\left(
 \mu +\rho \right) -ps_{\alpha _{l}}\beta _{l}=\mu +\rho -p\beta _{l},
@@ -274,10 +276,10 @@ s}$ (ранг этой подалгебры $r=2$).
 \mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
 m_{k}\widetilde{\omega }_{k} . \label{new h weight}
 \end{equation}
-Следующим шагом построим полную  $W_{\sfr}$-орбиту элемента $\Phi _{\sfr}^{\left( \widetilde{\mu }\right) }$  в $P_{\sfr}$. Легко видеть, что его кообраз принадлежит  $\bar{C_{\af}}$ и что множество $\phi^{-1}\left( \Phi _{\sfr}^{\widetilde{\mu }}\right) \setminus \Phi _{\gf}^{\left( \mu \right) }|_{\bar{C_{\af}}}$ соответствует весам, принадлежащим границе$\bar{C_{\af}}$ (включая подмножество $\left\{ -e^{\mu +\rho -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{\frak{c}}\right\} $). То есть мы построили все формальные элементы с соответствующими знаковыми множителями, которые после сложения с  $\Phi _{\gf}^{\left( \mu \right) }|_{\bar{C_{\af}}}$ образуют диаграмму $\phi^{-1}\left( \Phi _{\sfr}^{\widetilde{\mu }}\right) $ в $\bar{C_{\af}}$.
+Следующим шагом построим полную  $W_{\sfr}$-орбиту элемента $\Phi _{\sfr}^{\left( \widetilde{\mu }\right) }$  в $P_{\sfr}$. Легко видеть, что его кообраз принадлежит  $\bar{C_{\af}}$ и что множество $\phi^{-1}\left( \Phi _{\sfr}^{\widetilde{\mu }}\right) \setminus \Phi _{\gf}^{\left( \mu \right) }|_{\bar{C_{\af}}}$ соответствует весам, принадлежащим границе $\bar{C_{\af}}$ (включая подмножество $\left\{ -e^{\mu +\rho -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{\frak{c}}\right\} $). То есть мы построили все формальные элементы с соответствующими знаковыми множителями, которые после сложения с  $\Phi _{\gf}^{\left( \mu \right) }|_{\bar{C_{\af}}}$ образуют диаграмму $\phi^{-1}\left( \Phi _{\sfr}^{\widetilde{\mu }}\right) $ в $\bar{C_{\af}}$.
 
-Теперь вернемся к равенству (\ref{singular main-3}). Можно добавить к $\Phi _{\gf}^{\left( \mu \right) }$ пары формальных элементов, построенные выше, с противоположными знаками: $\epsilon \left( w\right)|_{w\in W_{\sfr}}$ and $-\epsilon \left( w\right) |_{w\in W_{\sfr}}$. 
-Припишем знаки $\epsilon \left( w\right) |_{w\in W_{\sfr}}$ элементам, веса которых попадут в главную камеру $\bar{C_{\af}}$. К соседним камерам $\bar{C_{\af}^{(l)}}$ относятся те же элементы, но  с противоположным знаком  (Эти камеры связаны с главной простыми отражениями $s_{\alpha _{l}}$, так что противоположные знаки $-\epsilon \left( w\right) |_{w\in W_{\sfr}}$ здесь естественны). Можно повторить эту процедуру и получить дополнительные сингулярные веса в любой камере Вейля $\bar{C_{\af}^{(m)}}$, причем эти веса будут иметь знаки, противоположные знакам в соседних камерах. То есть не меняя элемент $\Phi _{\gf}^{\left( \mu \right) }$ его можно представить в виде суммы
+Теперь вернемся к равенству (\ref{singular main-3}). Можно добавить к $\Phi _{\gf}^{\left( \mu \right) }$ пары формальных элементов, построенные выше, с противоположными знаками: $\epsilon \left( w\right)|_{w\in W_{\sfr}}$  и  $-\epsilon \left( w\right) |_{w\in W_{\sfr}}$. 
+Припишем знаки $\epsilon \left( w\right) |_{w\in W_{\sfr}}$ элементам, веса которых попадут в главную камеру $\bar{C_{\af}}$. К соседним камерам $\bar{C}_{\af}^{(l)}$ относятся те же элементы, но  с противоположным знаком  (Эти камеры связаны с главной простыми отражениями $s_{\alpha _{l}}$, так что противоположные знаки $-\epsilon \left( w\right) |_{w\in W_{\sfr}}$ здесь естественны). Можно повторить эту процедуру и получить дополнительные сингулярные веса в любой камере Вейля $\bar{C_{\af}^{(m)}}$, причем эти веса будут иметь знаки, противоположные знакам в соседних камерах. То есть не меняя элемент $\Phi _{\gf}^{\left( \mu \right) }$ его можно представить в виде суммы
 \begin{equation}
 \Phi _{\gf}^{\left( \mu \right) }=\sum_{w\in W_{\af}}w\circ \left(
 e^{\rho _{\af}}\Psi ^{\widetilde{\mu }+\rho _{\sfr}}\right)
@@ -353,215 +355,157 @@ b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 \section{Сплинты и соотношения для аффинных алгебр Ли}
 \label{sec:splints-affine}
 
-Splint of root system of simple Lie algebra appears naturally in
-the study of (regular) embeddings of reductive subalgebras. It can
-be used to derive branching rules. Application of
-splint properties drastically simplifies calculations of
-branching coefficients. We study affine extension of splint root system of simple Lie algebra and obtain relations on theta and branching functions.
+Как мы показали в предыдущих разделах, сплинты корневых систем простых алгебр Ли возникают при изучении регулярных вложений редуктивных подалгебр. Сплинт может использоваться для вывода правил ветвления, его свойства сильно облегчают вычисления коэффициентов ветвления. В этом разделе мы используем свойства сплинта конечномерной алгебры Ли для получения новых соотношений на тета-функции и функции ветвления, связанные с аффинным расширением алгебры. 
 
-The term {\it splint} was introduced by D. Richter in \cite{richter2008splints} where the
-classification of splints for simple Lie algebras was obtained. The fan $\Gamma \subset \Delta$ was
-introduced in \cite{lyakhovsky1996rra} as a subset of root system describing recurrent properties of
-branching coefficients for maximal embeddings. Injection fan is an efficient tool to study branching
-rules. Later this construction was generalized to non-maximal embeddings and affine Lie algebras in
-\cite{2010arXiv1007.0318L, ilyin812pbc}. In paper \cite{2011arXiv1111.6787L} we have shown that the
-existence of a splint for a root system of a simple Lie algebra leads to simplifications in
-reduction procedures of a Lie algebra module to modules of a subalgebra. This effect is based on the
-injection fan and singular element properties of Lie algebra modules.
+Веер вложения для аффинных алгебр Ли допускает разложение, аналогичное разложению веера для простых алгебр Ли, следующему из существования сплинта. Такое разложение приводит к соотношению на тета-функции. Затем мы рассматриваем градуированное ветвление модуля аффинной алгебры Ли на модули конечномерной подалгебры и получаем соотношения на функции ветвления.
 
-In the present note we discuss possible applications of splint in
-a root system of simple Lie algebra related to representation
-theory of affine Lie algebras. We discuss the structure of
-injection fan for affine Lie algebras and show that it admits a
-decomposition similar to that used in \cite{2011arXiv1111.6787L}
-for simple Lie algebras. Such a decomposition leads to equations
-for theta-functions. We study graded branching of affine Lie
-algebra modules reduced to a finite-dimensional subalgebra and
-discuss consequences of splint in this case.
-
-\subsection{Splints and affine Lie algebras}
-\label{sec:definitions}
-
-Consider simple Lie algebra $\gf$ with a root system $\Delta$. Let
-$\af_{1}\subset \gf$ be its reductive subalgebra of the same rank, such that
-$\Delta_{\af}\equiv\Delta_{1}\subset\Delta$ and $Q_{\af}\subset Q$, where $Q$ is the root lattice. Irreducible highest-weight modules of
-$\gf$ and $\af$ are denoted by $L^{\mu}$ and $L^{\nu}_{\af}$
-correspondingly. Weyl character formula for irreducible modules is
+Рассмотрим простую алгебры Ли $\gf$ с корневой системой $\Delta$. Пусть
+$\af_{1}\subset \gf$ --  ее редуктивная подалегебра того же ранга, такая, что
+$\Delta_{\af}\equiv\Delta_{1}\subset\Delta$ и $Q_{\af}\subset Q$, где $Q$ -- корневая решетка. Неприводимые модули старшего веса алгебр 
+$\gf$ и $\af$ мы обозначаем через $L^{\mu}$ и $L^{\nu}_{\af}$. Формула Вейля для характеров неприводимых модулей имеет вид
 $\mathrm{ch}L^{\mu}=\frac{\Psi^{(\mu)}}{\prod_{\alpha\in\Delta}(1-e^{-\alpha})}$,
-where $\Psi^{(\mu)}=\sum_{w\in W}\epsilon(w) e^{w(\mu+\rho)-\rho}$
-is a singular element of the module and $W$ -- the Weyl group of
-$\gf$. Formal character of irreducible module admits a
-decomposition
+где  $\Psi^{(\mu)}=\sum_{w\in W}\epsilon(w) e^{w(\mu+\rho)-\rho}$ -- сингулярный элемент модуля, а$W$ -- группа Вейля алгебры $\gf$. Формальный характер неприводимого модуля допускает разложение
 \begin{equation}
-  \label{eq:4}
+  \label{eq:133}
   \mathrm{ch} L^{\mu}=\sum_{\nu\in P_{\af}} b^{\mu}_{\nu} \mathrm{ch} L^{\nu}_{\af},
 \end{equation}
-where $P$, $P_{\af}$ are weight lattices of $\gf$ and $\af$. We
-want to study affine extension of this situation:
+где $P$, $P_{\af}$ -- весовые решетки $\gf$ и $\af$. Мы хотим рассмотреть аффинное расширение данной конструкции:
 $\gf\subset\gfh,\; \af\subset\afh$, $\afh\subset\gfh$,
-$\hat{\Delta}\subset\hat{\Delta}$ and
+$\hat{\Delta}\subset\hat{\Delta}$ и
 $\mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{\hat{\nu}}
-b^{\hat{\mu}}_{\hat{\nu}} \mathrm{ch} L^{\hat{\nu}}_{\afh}$. For
-weights of an affine Lie algebra $\gfh$ we have
-$\hat{\mu}=(\mu,k,n)$, where $\mu$ is a weight of $\gf$, $k$ --
-the level of the module and $n$ -- the grade of the weight
+b^{\hat{\mu}}_{\hat{\nu}} \mathrm{ch} L^{\hat{\nu}}_{\afh}$. Веса аффинной алгебры Ли $\gfh$ имеют вид
+$\hat{\mu}=(\mu,k,n)$, где $\mu$ -- вес алгебры $\gf$, $k$ -- уровень представления, а  $n$ -- грейд веса
 $\hat{\mu}$
 
-\begin{Def}
-  Embedding $\phi$ of a root system $\Delta_1$ into a root system $\Delta$ is a bijective map of
-  roots of $\Delta_{1}$ to a (proper) subset of $\Delta$ that commutes with vector composition law
-  in $\Delta_{1}$ and $\Delta$.
-\begin{equation*}
-\phi:\Delta_1 \longrightarrow \Delta, \quad \phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,\,\,\, \alpha,\beta \in \Delta_1
-\end{equation*}
-\end{Def}
+%%  \begin{Def}
+%%    Embedding $\phi$ of a root system $\Delta_1$ into a root system $\Delta$ is a bijective map of
+%%    roots of $\Delta_{1}$ to a (proper) subset of $\Delta$ that commutes with vector composition law
+%%    in $\Delta_{1}$ and $\Delta$.
+%%  \begin{equation*}
+%%  \phi:\Delta_1 \longrightarrow \Delta, \quad \phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,\,\,\, \alpha,\beta \in \Delta_1
+%%  \end{equation*}
+%%  \end{Def}
+%%  
+%%  Note that the image $Im(\phi)$ must not inherit the root system properties except the addition rules
+%%  equivalent to the addition rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and
+%%  $\phi_2$ can splinter $\Delta$ when the latter can be presented as a disjoint union of images
+%%  $Im(\phi_1)$ and $Im(\phi_2)$.
+%%  
+%%  $\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
+%%  \hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
+%%  _i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
+%%  \phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
+%%  
+%%  \begin{Def}
+%%    A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if there are two embeddings
+%%    $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
+%%    \phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the disjoint union of the
+%%    images of $\phi _{1}$ and $\phi _{2}$ and (b) neither the rank of $\Delta _{1}$ nor the rank of
+%%    $\Delta _{2}$ exceeds the rank of $%
+%%    \Delta $.
+%%  \end{Def}
+%%  
+%%  It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$ and we shall denote
+%%  this by $\Delta \approx (\Delta_1,\Delta_2)$. Each component $\Delta_1$ and $\Delta_2$ is a "stem''
+%%  of the splint.
+%%  
+%% We consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ is a root subsystem.
 
-Note that the image $Im(\phi)$ must not inherit the root system properties except the addition rules
-equivalent to the addition rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and
-$\phi_2$ can splinter $\Delta$ when the latter can be presented as a disjoint union of images
-$Im(\phi_1)$ and $Im(\phi_2)$.
+Пусть $(\Delta_1,\Delta_2)$ -- сплинт корневой системы $\Delta$ алгебры $\gf$, причем $\Delta_1=\Delta_{\af}$ является корневой системой редуктивной подалгебры $\af$. Как было показано ранее, второй стебель $\Delta_{\frak{s}}:=\Delta_{2}=\Delta \setminus \Delta_{\af}$ можно переписать в виде произведения 
+$\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint-product}$, которое определяет веер вложения $\Gamma _{\frak{a}\hookrightarrow \frak{g}}$ \cite{lyakhovsky1996rra,ilyin812pbc,2010arXiv1007.0318L}.
 
-$\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
-\hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
-_i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
-\phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
-
-\begin{Def}
-  A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if there are two embeddings
-  $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
-  \phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the disjoint union of the
-  images of $\phi _{1}$ and $\phi _{2}$ and (b) neither the rank of $\Delta _{1}$ nor the rank of
-  $\Delta _{2}$ exceeds the rank of $%
-  \Delta $.
-\end{Def}
-
-It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$ and we shall denote
-this by $\Delta \approx (\Delta_1,\Delta_2)$. Each component $\Delta_1$ and $\Delta_2$ is a "stem''
-of the splint.
-
-We consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ is a root subsystem. As shown in paper \cite{2011arXiv1111.6787L} the second stem $\Delta _{\frak{s}}:=\Delta
-_{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product
-$\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}$
-and it defines an injection fan $\Gamma _{\frak{a}%
-\hookrightarrow \frak{g}}$ \cite{lyakhovsky1996rra,ilyin812pbc,2010arXiv1007.0318L}.
-
-Since the singular element of $L^{\mu}$ can be
-written as $\Psi _{\frak{g}}^{\left( \mu \right) }=e^{-\rho }
+Так как сингулярный элемент модуля $L^{\mu}$ можно переписать в виде $\Psi _{\frak{g}}^{\left( \mu \right) }=e^{-\rho }
 \sum_{w\in W_{\frak{a}}}\epsilon \left( w \right) w\circ \left(
 e^{\rho _{\frak{a}}}\Psi ^{\widetilde{\mu }+\rho
-_{\frak{s}}}\right)$  for branching coefficients we get the
-identity \cite{2011arXiv1111.6787L}:
+_{\frak{s}}}\right)$, для коэффициентов ветвления имеет место равенство \cite{2011arXiv1111.6787L}:
 \begin{equation}
-  \label{eq:9}
+  \label{eq:146}
 b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 }^{(\mu )}=M_{\left( \frak{s}\right) \widetilde{\nu }}^{\widetilde{\mu }}  
 \end{equation}
-Here the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $, they have the
-same Dynkin numbers: $\mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
-m_{k}\omega_{(\sfr) k} . \label{new h weight}$ So branching coefficients coincide with weight
-multiplicities of $\sfr$-modules.
+Здесь старший вес $\widetilde{\mu }$ однозначно определяется весом $\mu $, так как они оба имеют одинаковые индексы Дынкина: $\mu =\sum m_{k}\omega _{k}\qquad \Longrightarrow \quad \widetilde{\mu }=\sum
+m_{k}\omega_{(\sfr) k} . \label{new-h-weight}$ То есть коэффициенты ветвления совпадают с кратностями весов в модулях алгебры $\sfr$. 
 
-Now we consider affine extension of this setup, $\afh\subset\gfh$. Since $\mathrm{rank}\gf\leq
-\mathrm{rank} \af+\mathrm{rank}\sfr$ for Weyl denominators we get
- \[
-\prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
-\]
-
-Using a specialization
-\cite{kac1988modular,kac1984infinite,kac1990idl} and the
-definition of Dedekind eta-function
-$\eta(\tau)=q^{1/24}\prod_{n=1}^{\infty}(1-q^{n})$, where
-$q=e^{2\pi i \tau}$ we can rewrite this identity as the relation
-imposed on theta-functions $\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$:
+Теперь рассмотрим аффинное расширение $\afh\subset\gfh$. Так как $\mathrm{rank}\gf\leq\mathrm{rank} \af+\mathrm{rank}\sfr$, для знаменателей Вейля мы получаем
 \begin{multline}
-  \label{eq:5}
+  \label{eq:129}
+\prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\\
+\prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
+\end{multline}
+
+
+Воспользуемя специализацией \cite{kac1988modular,kac1984infinite,kac1990idl} и определением $\eta$-функции Дедекинда
+$\eta(\tau)=q^{1/24}\prod_{n=1}^{\infty}(1-q^{n})$, где
+$q=e^{2\pi i \tau}$, чтбы переписать предыдущее равенство в виде соотношения на тета-функции $$\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$$:
+\begin{multline}
+  \label{eq:135}
   \eta(\tau)^{\mathrm{dim}(\af)}\prod_{\alpha\in\Delta_{1}^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z)}{\eta(\tau)} \eta(\tau)^{\mathrm{dim}(\sfr)}\prod_{\beta\in\Delta_{2}^{+}}\frac{\Theta^{(\hat A_{1})}_{\phi\circ \beta}(\tau,z))}{\eta(\tau)}=\\
 \eta(\tau)^{\mathrm{rank}(\af)+\mathrm{rank}(\sfr)-\mathrm{rank}(\gf)}
 \eta(\tau)^{\mathrm{dim}(\gf)}\prod_{\alpha\in\Delta^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z))}{\eta(\tau)}
 \end{multline}
-Here $z\in P_{\geq 0}\otimes \mathbb{C}$. Using Weyl denominator identity this relation can be
-rewritten as a non-trivial relation connecting theta-functions of algebras $\gfh,\hat\sfr,\afh$:
+Здесь $z\in P_{\geq 0}\otimes \mathbb{C}$. При помощи тождества Вейля для знаменателей это равенство можно переписать как нетривиальное соотношение, связывающее тета-функции алгебр $\gfh,\hat\sfr,\afh$:
 \begin{equation}
-  \label{eq:6}
+  \label{eq:143}
   \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
   \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= 
   \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
 \end{equation}
 %Now we can use Weyl denominator identity $e^{-\rho}\prod_{\alpha\in \hat{\Delta}^{+}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}=\sum_{w\in \hat{W}}\det(w)e^{w\rho}$
 
-Now consider the branching of $\gfh$-module to $\gf$-modules. For
-formal characters we can write the following expression:
+Теперь рассмотрим ветвление модуля алгебры $\gfh$ на модули подалгебры $\gf$. Для формальных характеров верно следующее выражение:
 \begin{equation}
-  \label{eq:8}
+  \label{eq:149}
 \mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{\nu}(n) \mathrm{ch} L^{\nu}_{\gf}.
 \end{equation}
-Rewriting this equation for weight multiplicities we get
+Переписывая это уравнения для кратностей весов мы получаем
 $m^{(\hat{\mu})}_{\hat{\nu}=(\nu,k,n)}=\sum_{\xi\in P}
-b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}$. We can introduce
-branching functions similarly to the case of branching for affine
-subalgebra \cite{kac1988modular,kac1990idl}:
+b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}$. Теперь мы можем ввести функции ветвления аналогично случаю аффинной подалгебры \cite{kac1988modular,kac1990idl}:
 $b^{(\hat{\mu})}_{\nu}(q)=\sum_{n=0}^{\infty}
-b^{(\hat{\mu})}_{\nu}(n) q^{n}$.  These branching functions are connected to $q$-dimension of module $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$. It is well-known that $q$-dimension is a modular function for some $\Gamma\subset SL_{2}(\mathbb{Z})$  \cite{gannon2006moonshine}, so branching functions $b^{(\hat \mu)}_{\nu}(q)$ have modular properties.
+b^{(\hat{\mu})}_{\nu}(n) q^{n}$.  Эти функции ветвления связаны с  $q$-размерностью модуя $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$. Известно, что  $q$-размерность является модулярной функцией по отношению к действию некоторой подгруппы $\Gamma\subset SL_{2}(\mathbb{Z})$  \cite{gannon2006moonshine}, так что функции ветвления  $b^{(\hat \mu)}_{\nu}(q)$ обладают модулярными свойствами.
 
- For string functions of a module
-$L^{\hat{\mu}}$ we have
+Для струнных функций модуля
+$L^{\hat{\mu}}$ верно соотношение
 \begin{equation}
-  \label{eq:7}
+  \label{eq:145}
    \sigma^{(\hat{\mu})}_{\nu}(q) = \sum_{\xi\in P} m^{(\xi)}_{\nu} b^{(\hat{\mu})}_{\xi}(q).
 \end{equation}
 
-Introduce an ordering of the set of weights $\xi$ as follows:
-attribute to a weight $(\rho,\xi)$ its product $(\rho,\xi)$ with
-the Weyl vector $\rho$. Then relation \eqref{eq:7} can be written
-in the matrix form $\sigma(q)=M b(q)$ or as an inverse relation
-$b(q)=M^{-1}\sigma(q)$. Here $\sigma(q)$ and $b(q)$ are infinite
-columns of string and branching functions. Matrix $M$ contains
-multiplicities of weights in $\gf$-modules similar to that of
-Table 1 in paper \cite{2010arXiv1001}. The inverse matrix $M^{-1}$
-encodes recurrent relations imposed weight multiplicities
+Введем порядок на множестве весов $\xi$ следующим образом:
+припишем весу  $\xi$ значение его скалярного произведения $(\rho,\xi)$ с вектором Вейля $\rho$ и упорядочим веса по этим значениям. Тогда соотношение \eqref{eq:145} можно переписать в матричном виде: $\sigma(q)=M b(q)$ и обратно,
+$b(q)=M^{-1}\sigma(q)$. Здесь  $\sigma(q)$ и  $b(q)$ -- бесконечные векторы струнных функций и функций ветвления. Матрица $M$ содержит кратности весов в  $\gf$-модулях, аналогично Таблице 1 в работе \cite{2010arXiv1001}. Обратная матрица $M^{-1}$ содержит рекуррентные соотношения на кратности весов
 \cite{il2010folded}.
 
-Now consider the branching of $\gfh$-modules in $\af$-modules and
-assume the existence of a splint
+Теперь рассмотрим ветвление модулей алгебры $\gfh$ на модули подалгебры $\af$ в предположении существовании сплинта
 $\Delta^{+}_{\gf}=\Delta^{+}_{\af}\cup \phi(\Delta^{+}_{\sfr})$.
-We decompose $\gf$-modules in equation \eqref{eq:8} into
-$\af$-modules using property \eqref{eq:9}:
+Разложим  $\gf$-модули в равенстве \eqref{eq:149} на 
+$\af$-модули используя свойство \eqref{eq:146}:
 \begin{multline}
-  \label{eq:10}
+  \label{eq:125}
   \mathrm{ch}L^{\hat{\mu}}_{\gfh}=
 \sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P_{\af}} b^{(\hat{\mu})}_{(\gfh\downarrow\af)\nu}(n) \mathrm{ch} L^{\nu}_{\af}=
 \sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} b^{(\nu)}_{(\gf\downarrow \af) \xi}\mathrm{ch} L^{\xi}_{\af}=\\
 =\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} M^{\widetilde{\nu}}_{  \widetilde{\nu}-\phi^{-1}( \nu-\xi )}\mathrm{ch} L^{\xi}_{\af}
 \end{multline}
-We see that the similar matrix relation holds for branching
-functions $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}\;
-b_{(\gfh\downarrow\gf)}(q)$ and we can write
-$\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$. So if we know
-branching coefficients for the embedding $\gf\subset\gfh$ (for
-example, see book \cite{kass1990ala}) we can easily obtain
-branching functions for the embedding $\af\subset \gfh$.
-\subsection*{Conclusion}
-\label{sec:conclusion} We have demonstrated that splint in affine
-Lie algebras leads to new relations between theta-functions and
-branching functions for branching to finite-dimensional
-subalgebras, which can be useful for computations. Further
-question is to generalize this analysis to affine subalgebras and
-to apply the results to branching in the study of CFT coset
-models.
+ Мы видим, что аналогичное матричное соотношение выполняется для функций ветвления $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}\;
+b_{(\gfh\downarrow\gf)}(q)$ и мы можем написать
+$\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$. Так что если мы знаем коэффициенты ветвления для вложения $\gf\subset\gfh$ (см., например, книгу \cite{kass1990ala}) мы сразу получаем (градуированные) функции ветвления для вложения $\af\subset \gfh$.
 
-\section{Выводы к четвертой главе}
+\section{Заключение}
 
 \label{sec:4-conclusions}
 Мы продемонстрировали, что сплинт представляет собой очень эффективный инструмент для вычисления коэффициентов ветвления.  В частности, инъективные сплинты дают возможность свести определение правил ветвления модулей старшего веса к вычислению кратностей весов для модуля с теми же индексами Дынкина алгебры Ли $\mathfrak{s}$. Эта алгебра $\mathfrak{s}$ не обязательно является подалгеброй в  $\gf$ , ее ранг $r_{\mathfrak{s}}=r$ совпадает с рангом $\gf$, но сома она ``проще'' чем  $\gf$, так как только подмножество корней корневой системы включено во второй ``стебель''  $\Delta_{\mathfrak{s}}$.
 
 Важно отметить, что для вложений  $D_{r}\hookrightarrow B_{r}$ , $D_{r}\hookrightarrow C_{r}$ и $A_{r-1}\oplus u\left( 1\right) \hookrightarrow A_{r}$ техника сплинта ведет к появлению правил ветвления Гельфанда-Цейтлина: редукция свободна от множественности (все ненулевые коэффициенты ветвления равны 1). В данном случае это немедленное следствие структуры второго стебля, который является прямой суммой алгебр $A_{1}$, и того факта, что соответствующий модуль $L_{\sfr}^{\mu }$ неприводим.
 
+Также мы продемонстрировали, что сплинт для аффинных алгебр Ли ведет к новым соотношениям на тета-функции и функции ветвления для редукции на модули конечномерных подалгебр, что может быть полезно для вычислений. Возможно дальнейшее обобщение этого анализа на аффинные подалгебры и применение результатов изучению coset-моделей конформной теории поля.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Приложение}
+\begin{subappendices}
+\section{Приложение}
 \label{sec:appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Покажем, что для инъективного сплинта классической алгебры Ли выполняется следующее свойство:
@@ -620,8 +564,8 @@ $\lambda _{r-1}=-\left( m_{r-1}+1\right) \beta _{r-1}$ и $\lambda _{r-2}=-\left
 Этот сплинт показан в примере \ref{example-2} и на Рисунке \ref{fig:b2_splint}, 
 $S_{A\_1}=\left\{ e_{1}-e_{2}\right\} $, $S_{A\_2}=\left\{e_{1},e_{2}\right\} $. Ребро $\lambda _{\alpha _{2}}=\lambda_{\beta _{2}}=-\left( m_{2}+1\right) \beta _{2}$ продолжается ребром $\lambda _{\beta _{1}}=-\left( \widetilde{m}_{1}+1\right) \beta_{1}$. Рассмотрим пару $\left(\alpha_{1}=e_{1}-e_{2},\beta _{1}=e_{1}\right)$. Конец ребра $\lambda _{\beta _{1}}$ должен указывать вес, инвариантный по отношению к отражению  $s_{\alpha _{1}}$. Его длина таким образом фиксирована: $\lambda _{\beta _{1}}=-\left( m_{1}+1\right) \beta _{1}$ В кообразе второго стебля, то есть в корневой системе $\Delta_{A_{2}}$, отражение $s_{\beta _{2}}$ переводит $\lambda _{\beta _{1}}=-\left(m_{1}+1\right) \beta_{1}$ в $\lambda _{2,3}$, то есть это ребро имеет ту же длину в $\beta _{3}=e_{1}+e_{3}$, и $\lambda _{2,3}=-\left(m_{1}+1\right)\beta _{3}$ с $\beta_{3}=e_{1}+e_{3}$. Неприводимый  $\sfr$-модуль имеет старший вес $\widetilde{\mu }=m_{1}\widetilde{\omega }_{1}+m_{2}\widetilde{\omega }_{2}$. На Рисунке \ref{fig:b2_splint} мы видим детали этих соотношений и, в частности, случай, когда $L_{B_{2}}^{\left[ 3,2\right] }$ редуцируется на подалгебру $A_{1}\oplus u\left( 1\right) $ и соответствующие старшие веса (вместе с их кратностями) образуют диаграмму $\mathcal{N}_{A_2}^{\left[ 3,2\right] }$ .
 \end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{subappendices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
