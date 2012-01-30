@@ -182,7 +182,7 @@
 Здесь мы ввели обозначение $\sigma_{\mathrm{tot}}=\sum_i \sigma_i$. Видно, что магнитная восприимчивость пропорциональна дисперсии полного спина. Введем парную корреляционную функцию
 \begin{equation}
   \label{eq:9}
-  \Gamma(i-j)=\left<\sigma_i-\sigma_j\right>.
+  \Gamma(i-j)=\left<\sigma_i\sigma_j\right>.
 \end{equation}
 Из-за вращательной и трансляционной инвариантности $\Gamma$ зависит только от расстояния между вершинами $\left|i-j\right|$. Связная корреляционная функция
 \begin{equation}
@@ -679,8 +679,8 @@ $j^{\mu}_{a}$ называется нетеровским током, соотв
 Теперь мы можем выразить $\Sigma$ через $F^{(1)}$:
 \begin{equation}
   \label{eq:120}
-  \Sigma=\sum_{s=0}^{\infty}\frac{1}{s!}\sum_{l_1\dots l_s=1}^{\infty} \kappa^{l_1+\dots+l_s}F^{(1)}_{l_1} \dots F^{(1)}_{l_s}=
-  \sum_{s=0}^{\infty}\frac{1}{s!}\left(\sum_{l=1}^{\infty} \kappa^{l}F^{(1)}_{l} \right)^s =\exp\left(-\sum_{l=1}^{\infty} \kappa^l F_l\right)
+  \Sigma=\sum_{s=0}^{\infty}\frac{(-1)^s}{s!}\sum_{l_1\dots l_s=1}^{\infty} \kappa^{l_1+\dots+l_s}F^{(1)}_{l_1} \dots F^{(1)}_{l_s}=
+  \sum_{s=0}^{\infty}\frac{(-1)^s}{s!}\left(\sum_{l=1}^{\infty} \kappa^{l}F^{(1)}_{l} \right)^s =\exp\left(-\sum_{l=1}^{\infty} \kappa^l F_l\right)
 \end{equation}
 Петли с числом узлов больше $N$ не дают вклада, так как содержат повторяющиеся ребра и поэтому сократятся (Смотри рисунок \ref{fig:ising-2}).
 \begin{figure}[h!tb]
@@ -859,7 +859,7 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
 Аналогично для удельной теплоемкости получаем
 \begin{equation}
   \label{eq:38}
-  c=-T\left.\frac{\partial^2 f}{\partial T^2}\right|_{h=0}=-\frac{1}{T_c}t^{\frac{1}{a-2}}g''(0)
+  c=-T\left.\frac{\partial^2 f}{\partial T^2}\right|_{h=0}=-\frac{1}{T_c}t^{\frac{1}{a}-2}g''(0)
 \end{equation}
 В пределе $t\to 0$ $M\sim h^{\frac{1}{\delta}}$, поэтому $g'(y)\sim y^{\frac{1}{\delta}}$ при $y\to \infty$. А значит, если в критической точке намагниченность $M$ конечна и не равна нулю, должно выполняться равенство $1-b-\frac{b}{\delta}=0$. Подставляя выражение для $\delta$ через $b$ в (\ref{eq:36},\ref{eq:37},\ref{eq:38}), мы получаем связь критических индексов
   \begin{eqnarray}
@@ -883,7 +883,8 @@ W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
   \label{eq:41}
   \Sigma_I=\frac{1}{R}\sum_{i\in I}\sigma_i
 \end{equation}
-$R$ - нормировочный множитель, который выбирается так, чтобы блочный спин мог принимать значения $\pm 1$. Если бы спины были всегда в одном направлении, то $R$ имел бы значение $r^d$. 
+Здесь $R$ - некоторый нормировочный множитель, который мы скоро вычислим.
+% выбирается так, чтобы блочный спин мог принимать значения $\pm 1$. Если бы спины были всегда в одном направлении, то $R$ имел бы значение $r^d$. 
 
 Основной вклад в статсумму вблизи критической точки вносят большие кластеры, так как корреляционная длина $\xi>>r$. Поэтому мы предполагаем, что поведение вблизи критической точки описывается в терминах блочных спинов. Гамильтониан для блочных спинов имеет вид
 \begin{equation}
@@ -1179,7 +1180,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 Вариация действия определяется следом тензора энергии-импульса (\ref{eq:87}). Поэтому
 \begin{equation}
   \label{eq:89}
-  \delta\langle X\rangle=dl \left(\sum_k (x_k^{\mu}\partial_{\mu}^k+d[A_k])\langle X\rangle-\int d^d y \Theta(y)\right)
+  \delta\langle X\rangle=dl \left(\sum_k (x_k^{\mu}\partial_{\mu}^k+d[A_k])\langle X\rangle-\int d^d y \langle\Theta(y)X\rangle\right)
 \end{equation}
 
 Другой способ вычисления состоит в вариации полей и действия по константам связи $u_i$:
@@ -1483,7 +1484,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 \begin{eqnarray}
   \label{eq:180}
   e^{i x^{\rho}P_{\rho}}D e^{-i x^{\rho}P_{\rho}}=D+x^{\nu}P_{\nu}\\
-  e^{i x^{\rho}P_{\rho}}K_{\mu} e^{-i x^{\rho}P_{\rho}}=K_{\mu}+2x_{\mu}D -2 x^{\nu}L_{\mu\nu}+2x_{\mu}(x^{\nu}P_{\nu})-x^{2 P_{\mu}}
+  e^{i x^{\rho}P_{\rho}}K_{\mu} e^{-i x^{\rho}P_{\rho}}=K_{\mu}+2x_{\mu}D -2 x^{\nu}L_{\mu\nu}+2x_{\mu}(x^{\nu}P_{\nu})-x^{2} P_{\mu}
 \end{eqnarray}
 В результате действие этих генераторов на поле имеет вид
 \begin{eqnarray}
@@ -1551,7 +1552,7 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 Однако мы ещё не воспользовались инвариантностью коррелятора относительно специальных конформных преобразований. Подставим явный вид преобразований $\left|x_{1}-x_{2}\right|$ из \eqref{eq:174} и введем обозначение $\gamma_{i}=\left(1-2(h,x_{i})+h^{2}x_{i}^{2}\right)$, тогда
 \begin{equation}
   \label{eq:189}
-  \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}=\frac{C_{12}(\gamma_{1}\gamma_{2})^{(\Delta_{1}+\Delta_{2})/2}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}} \left|x_{1}-x_{2}\right|}.
+  \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}=\frac{C_{12}(\gamma_{1}\gamma_{2})^{(\Delta_{1}+\Delta_{2})/2}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}} \left|x_{1}-x_{2}\right|^{\Delta_1+\Delta_2}}.
 \end{equation}
 Это равенство может выполняться только при $\Delta_{1}=\Delta_{2}$. В итоге для коррелятора
 \begin{equation}
@@ -1908,9 +1909,9 @@ $\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$
 \begin{eqnarray}
   \label{eq:240}
   2\pi \partial \langle T_{\bar z z } X\rangle +2\pi \bar \partial \langle T_{zz}X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X \rangle\\
-  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
+  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-\bar w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
   2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) \Delta_{i} \langle X\rangle\\
-  -2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle\\
+  -2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle
 \end{eqnarray}
 Если сложить и вычесть два последних равенства и вспомнить определение $h, \bar h$, то получим
 \begin{eqnarray}
@@ -2393,7 +2394,7 @@ N & h+N & $P(N)$ полей & $P(N)$ состояний  \\ \hline
 То есть
 \begin{equation}
   \label{eq:311}
-  a=-\frac{3}{2}(2h+1)
+  a=-\frac{3}{2(2h+1)}
 \end{equation}
 Аналогично, действуя $L_{2}$ получаем условие
 \begin{equation}
