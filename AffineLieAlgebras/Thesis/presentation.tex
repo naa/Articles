@@ -27,7 +27,7 @@
 %% \newtheorem{mydefinition}[theorem]{Definition}
 %% \newtheorem{myexample}[theorem]{Example}
 %% \newtheorem{myexercise}[theorem]{Exercise}
-%% \newtheorem{mylemma}[theorem]{Lemma}
+\newtheorem{mylemma}[theorem]{Лемма}
 %% \newtheorem{mynotation}[theorem]{Notation}
 %% \newtheorem{myproblem}[theorem]{Problem}
 %% \newtheorem{myproposition}[theorem]{Proposition}
@@ -53,10 +53,10 @@
 \newcommand{\hfb}{\mathfrak{h}_{\bot}}
 \newcommand{\pf}{\mathfrak{p}}
 \newcommand{\aft}{\widetilde{\mathfrak{a}}}
-
+\newcommand{\sfr}{\mathfrak{s}}
 %\pagestyle{plain}
 
-\theoremstyle{definition} \newtheorem{Def}{Definition}
+\theoremstyle{definition} \newtheorem{Def}{Определение}
 \setbeamertemplate{caption}[empty]
 \newcommand{\tr}{\hat\triangleright} \newcommand{\trc}{\triangleright}
 \newcommand{\adk}{a^{\dagger}_{\kappa}} \newcommand{\ak}{a_{\kappa}}
@@ -223,165 +223,93 @@ $\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определ�
 %%  So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
 \end{frame}
 
-\begin{frame}
-  \frametitle{Формула Вейля для характеров и сингулярные элементы}
-  
-\begin{equation*}
-    ch\left( L^{\mu }\right) =\frac{\sum_{w\in W}\epsilon (w)e^{w\circ (\mu
-        +\rho )-\rho }}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{%
-        \mathrm{{mult}\left( \alpha \right) }}}=\frac{\Psi ^{\left( \mu \right) }}{%
-      \Psi ^{\left( 0\right) }};\quad
-    \frac{1}{R}=\frac{1}{\prod_{\alpha \in \Delta ^{+}}\left( 1-e^{-\alpha }\right) ^{\mathrm{{%
-          mult}\left( \alpha \right) }}}
-  \end{equation*}
-  \begin{figure}
-    \centering
-%    \includegraphics[width=50mm]{figure4.jpg}    
-    \caption{Verma modules and Weyl formula}
-    \label{fig:verma}
-  \end{figure}
-\end{frame}
 
 \section{Сингулярные элементы модулей (аффинных) алгебр Ли}
 
-
-  Consider semisimple Lie algebra $\gf$ with commutator $[\cdot,\cdot]:\gf\otimes\gf\to \gf$
-  \begin{Def}
-    {\it Affine Lie algebra} $\gfh$ is central extension of loop algebra, corresponding to semisimple Lie algebra $\gf$ with commutation relations
-    \begin{equation*}
-      \label{eq:7}
-      [X t^{n}+\alpha c,Y t^{m}+\beta c]=t^{n+m} [X,Y]+(X,Y)n\delta_{n+m,0}c
-    \end{equation*}
-  \end{Def}
-  \begin{equation*}
-      Vir \subset U(\gfh) \quad \text{(Sugawara construction)}
-  \end{equation*}
-  Current algebra of WZNW models in CFT is
-  \begin{equation*}
-    \gfh \ltimes Vir
-  \end{equation*}
-  Primary fields are indexed by highest weights of irreducible $\gfh$-modules
-
 \begin{frame}
-  \frametitle{Формула Вейля-Каца для характеров}
-  We can use Weyl character formula to obtain recurrent relation on weight multiplicities which can be used for calculations:
-  \begin{equation}
-    \label{eq:14}
-    m_{\xi }=-\sum_{w\in W\setminus e}\epsilon (w)m_{\xi
-      -\left( w(\rho )-\rho \right) }+\sum_{w\in W}\epsilon
-    (w)\delta _{\left( w(\mu +\rho )-\rho \right) ,\xi }.
-  \end{equation}
-  The set of weights to sum over is obtained through expansion of denominator:
-  \begin{equation*}
-    \sum_{w\in W}\epsilon(w) e^{w\rho-\rho}=\prod_{\alpha\in \Delta^{+}}\left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}
-  \end{equation*}
+  \frametitle{Формула Вейля-Каца для характеров и сингулярные элементы}
+
+Модуль Верма 
+\begin{equation*}
+ M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+}) \quad \mbox{где} \quad     \gf=\bff_{+}\oplus \hf \oplus\bff_{-}
+\end{equation*}
+
+$D^{\mu}(\bff_{+}): D(E^{\alpha})=0,\; D(H)=\mu(H)\quad \forall \alpha>0$.
+
+\begin{equation*}
+  \label{eq:11}
+  \mathrm{ch} M^{\mu}=\frac{e^{\mu}}{\prod_{\alpha\in \Delta^{+}} \left( 1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}}=\frac{e^{\mu}}{\sum_{w\in W} \epsilon(w) e^{w\rho-\rho}}, \quad \epsilon \left( w\right) :=\det \left( w\right)
+\end{equation*}
+  
+У $M^{\mu}$ есть единственный максимальный подмодуль и нетривиальный фактормодуль $L^{\mu}$ -- 
+{\it неприводимый модуль старшего веса}. 
+
+\begin{equation*}
+  \label{eq:13}
+  \mathrm{ch} L^{\mu}=\frac{\sum_{w\in W} \epsilon(w) e^{w(\mu+\rho)-\rho}}{\sum_{w\in W}\epsilon(w) e^{w\rho-\rho}}=\sum_{w\in W} \epsilon(w)\; \mathrm{ch} M^{w(\mu+\rho)-\rho} (\mbox{БГГ})
+\end{equation*}
+
 \end{frame}
 \begin{frame}
   \frametitle{Разложение сингулярного элемента}
-  Consider reductive subalgebra $\gfh \supset \afh$. 
-
-  Each $\gfh$-module is also an $\afh$-module, although
-  $L^{\mu}_{\gfh}$ is not irreducible as $\afh$-module. It can be
-  decomposed into the sum of irreducible $\afh$-modules:
+  Пусть $\af\subset\gf$ -- конечномерные или аффинные. Можно разложить $L^{\mu}_{\gf}$ на модули $\af$:
   \begin{equation*}
-    L_{\gfh \downarrow \afh}^{\mu }=\bigoplus\limits_{\nu \in P_{\afh}^{+}}b_{\nu }^{\mu}L_{\afh}^{\nu }.
+    L^{\mu}_{\gf}=\bigoplus_{\nu} b^{\mu}_{\nu} L^{\nu}_{\af}
   \end{equation*}
-  For characters we have
+  В терминах характеров
   \begin{equation*}
-    \pi _{\afh}ch\left( L^{\mu }\right) =\sum_{\nu \in P_{\afh}^{+}}b_{\nu }^{\mu}ch\left( L_{\afh}^{\nu }\right) .
-\label{branching1}
-\end{equation*}
-We want to write recurrent relations.\\
-  Denote by  $k_{\xi }^{\left( \mu \right) }$ signed branching coefficients.
-  \begin{equation*}
-    \begin{array}{lll}
-     k_{\xi}^{(\mu)}=b^{(\mu)}_{\xi} & \text{if} & \xi\in \bar C_{\afh}\\
-     k_{\xi}^{(\mu)}=\epsilon(w) b^{(\mu)}_{w (\xi+\rho_{\afh})-\rho_{\afh}} & \text{where} &w\in W_{\afh} : w (\xi+\rho_{\afh})-\rho_{\afh}\in \bar C_{\afh}
-    \end{array}
-  \end{equation*}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Обобщенная БГГ-резольвента}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Сплинты корневых систем и разложение сингулярного элемента}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Рекуррентные соотношения на коэффициенты ветвления для немаксимальных вложений}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Функции ветвления и характеры WZNW-моделей}
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Coset-модели и эволюция Шрамма-Левнера}
-  
-\end{frame}
-\begin{frame}
-  \frametitle{Сингулярные элементы в coset-моделях}
-  
-\end{frame}
-
-\section{Заключение}
-
-
-\begin{frame}
-  \frametitle{Заключение}
-  
-\end{frame}
-\begin{frame}
-  \frametitle{Спасибо за внимание!!}
-\end{frame}
-
-\begin{frame}
-The Weyl-Kac character formula leads to the relation 
-\begin{equation*}
-\pi _{\afh}\left( \frac{\sum_{\omega \in W}\epsilon (\omega )e^{\omega (\mu +\rho )-\rho }}
+\pi _{\af}\left( \frac{\sum_{\omega \in W}\epsilon (\omega )e^{\omega (\mu +\rho )-\rho }}
   {\prod_{\alpha \in \Delta ^{+}}(1-e^{-\alpha })^{\mathrm{mult}(\alpha )}}\right) =
-\sum_{\nu \in P_{\afh}^{+}}b_{\nu }^{(\mu )}
-\frac{\sum_{\omega \in W_{\afh}}\epsilon (\omega )e^{\omega (\nu +\rho _{\afh})-\rho _{\afh}}}
-{\prod_{\beta \in \Delta _{\afh}^{+}}(1-e^{-\beta })^{\mathrm{mult}_{\afh}(\beta )}}.  
+\sum_{\nu \in P_{\af}^{+}}b_{\nu }^{(\mu )}
+\frac{\sum_{\omega \in W_{\af}}\epsilon (\omega )e^{\omega (\nu +\rho _{\af})-\rho _{\af}}}
+{\prod_{\beta \in \Delta _{\af}^{+}}(1-e^{-\beta })^{\mathrm{mult}_{\af}(\beta )}}.  
 \end{equation*}
 
-Now we want to multiply by $R$ and rewrite this as recurrent relation. \\
+Хотим домножить на знаменатель и переписать как рекуррентное соотношение на коэффициенты ветвления. \\
 
-Consider the roots orthogonal to $\Delta_{\afh}$.
+Рассмотрим корни, ортогональные к $\Delta_{\af}$.
 
-Let $\Delta^{+}_{\frak{b}}=\left\{\alpha\in \Delta^{+}_{\frak{g}}:\forall
-\beta\in\Delta_{\afh} ; \alpha\bot \beta\right\}$ be the subset of
-positive roots of $\frak{g}$ orthogonal to the root system of $\afh$.
+Пусть $\Delta^{+}_{\frak{b}}=\left\{\alpha\in \Delta^{+}_{\frak{g}}:\forall
+\beta\in\Delta_{\af} ; \alpha\bot \beta\right\}$ -- подмножество положительных корней $\gf$, ортогональных корневой системе $\af$.
 
-Denote by $W_{\frak{b}}$ the subgroup of the Weyl group $W$ generated by the
-reflections $\omega _{\beta }$ corresponding to the roots $\beta \in \Delta
+Обозначим  $W_{\frak{b}}$ подгруппу группы Вейля $W$, порожденную отражениями $\omega _{\beta }$, соотв. корням $\beta \in \Delta
 _{\frak{b}}^{+}$.
 
-The subsystem $\Delta _{\frak{b}}$ determines the subalgebra $\frak{b}=\frak{%
-a}_{\bot }\subset \frak{g}$.
+Подсистема $\Delta _{\frak{b}}$ определяет подалгебру $\frak{b}=\afb\subset\gf$.
+\end{frame}
+\begin{frame}
+  
+$\af, \mathfrak{b}$ -- ``ортогональная пара'' подалгебр $\gf$, $\bff$ регулярная.
 
-$\afh, \mathfrak{b}$ is the "orthogonal pair" of subalgebras in $\frak{g}$.
-
- Cartan subalgebra is decomposed
+Подалгебра Картана раскладывается
 $\frak{{h}=\frak{h}_{\afh}+\frak{h}_{d}+\frak{h}_{\frak{b}}.}$
 
-Introduce
+Введем
 \begin{eqnarray*}
-\mathcal{D}_{\afh} :=\rho_{\afh}-\pi_{\afh}\rho.\\
+\mathcal{D}_{\af} :=\rho_{\af}-\pi_{\af}\rho.\\
 \mathcal{D}_{\frak{b}} :=\rho_{\frak{b}}-\pi_{\frak{b}}\rho.
 \end{eqnarray*}
+и получим
+\begin{mylemma}
+\label{lemma}
+Пусть  $\widetilde{\afb}=\afb\oplus \hf_{\perp }$, $\widetilde{\af}=\af\oplus\hf_{\perp }$ ,
 
+$L^{\mu }$ -- модуль старшего веса с сингулярным элементом $\Psi ^{\left(\mu \right)}$ ,
+
+$R_{\af_{\perp }}$ -- знаменатель Вейля для подалгебры $\af_{\perp }$. $U\sim W/W_{afb}$.
+
+Тогда элемент  $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi _{\af}\left( \frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}\right) $ можно разложить в сумму по  $u\in U$:
+\begin{equation*}
+\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\quad \pi _{\af}\left( \frac{\Psi^{\mu }}{R_{\af%
+_{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
+\left( L_{\widetilde{\af_{\perp }}}^{\mu _{%
+\widetilde{\af_{\perp }}}\left( u\right) }\right) e^{\mu _{\af}\left( u \right) }.
+\end{equation*}
+\end{mylemma}
 \end{frame}
-
 \begin{frame}
-\frametitle{Recurrent relation for branching coefficients}
+  \frametitle{Рекуррентные соотношения на коэффициенты ветвления}
+  
 \begin{eqnarray*}
 k_{\xi }^{\left( \mu \right) } &=&-\frac{1}{s\left( \gamma _{0}\right) }%
 \left( \sum_{u\in W/W_{\frak{b}}}\epsilon (u)\;\mathrm{dim}\left( L_{\mathfrak{b}}^{\pi
@@ -396,52 +324,35 @@ _{\mathfrak{d}}\right) }\left[ u(\mu +\rho )-\rho \right] +\mathcal{D}_{\frak{b}
 \sum_{\gamma \in \Gamma _{\afh\subset \gfh}}s\left( \gamma
 +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right) }\right) \text{.}
 \end{eqnarray*}
-The recursion is goverened by the set $\Gamma _{\afh\subset \gfh}$ of the weights $\left\{\xi\right\}$
-appearing in the expansion
+Рекурсия задается множеством $\Gamma _{\afh\subset \gfh}$ весов $\left\{\xi\right\}$, появляющихся в разложении
 \begin{equation*}
 \prod_{\alpha \in \Delta ^{+}\setminus \Delta _{\mathfrak{b} }^{+}}\left( 1-e^{-\pi
 _{\afh}\alpha }\right) ^{\mathrm{mult}(\alpha )-\mathrm{mult}_{\afh}(\pi _{\afh}\alpha )}=-\sum_{\gamma \in P_{\afh}}s(\gamma )e^{-\gamma }
 \end{equation*}
-The weights are to be shifted by $\gamma _{0}$ -- the lowest vector in $\left\{ \xi
-\right\} $ -- and the zero element is to be eliminated:
+Веса надо сдвинуть на  $\gamma _{0}$ -- минимальный вес в  $\left\{ \xi\right\} $ -- и исключить нулевой элемент:
 \begin{equation*}
 \Gamma _{\afh\subset \gfh}=\left\{ \xi -\gamma
 _{0}\right\} \setminus \left\{ 0\right\} .
 \end{equation*}
 \end{frame}
-\section{Examples}
+\section{Примеры}
 \begin{frame}
-  \frametitle{Simple example: $A_{1}\subset B_{2}$}
+  \frametitle{Простой пример: $A_{1}\subset B_{2}$}
   \begin{figure}[t]
     \vspace*{-0.5cm}
     \begin{multicols}{2}
       \hfill
       \includegraphics[width=60mm]{figures/figure1}
       \hfill
-      \caption{Roots of $B_{2},A_{1}$ and $\Psi ^{\omega_1  }$}
+      \caption{Корни алгебр $B_{2},A_{1}$ и $\Psi ^{\omega_1  }$}
       \hfill
       \vspace{5mm}
       \includegraphics[width=60mm]{figures/figure2}
-      \caption{Orthogonal subalgebra $\mathfrak{b}$ and $\mathfrak{b}$-module dimensions}
+      \caption{Ортогональная подалгебра $\mathfrak{b}$ и размерности $\mathfrak{b}$-модулей}
     \end{multicols}
   \end{figure}
 \end{frame}
-\begin{frame}
-  \frametitle{Surprises}
-  \begin{figure}[t]
-    \vspace*{-0.5cm}
-    \begin{multicols}{2}
-      \hfill
-        \includegraphics[width=60mm]{figures/B2_Gen_Verma_Decomp}
-      \hfill
-      \caption{Embedding $A_{1}\oplus u(1) \subset B_{2}$ and generalized Verma modules.
-        Dashed -- positive $\epsilon(u)$, dotted --  negative.}
-      \hfill
-      \includegraphics[width=60mm]{figures/B2_A1_A2}
-      \caption{Embedding $A_{1}\oplus u(1) \subset B_{2}$ and (deformed) $A_{2}$-modules}
-    \end{multicols}
-  \end{figure}
-\end{frame}
+\subsection{Аффинный пример}
 \begin{frame}
   \begin{figure}[t]
     \vspace*{-0.5cm}
@@ -459,42 +370,154 @@ _{0}\right\} \setminus \left\{ 0\right\} .
     \vspace*{-1.3cm}
     \centering
       \includegraphics[width=100mm]{figures/figure13}
-    \caption{(Signed) Branching coefficients for $\hat A_1\subset \hat B_2$}
+    \caption{Коэффициенты ветвления (со знаком) для $\hat A_1\subset \hat B_2$}
     \label{fig:2}
   \end{figure}
 \end{frame}
 
+\section{Связь с обобщенной БГГ-резольвентой}
 \begin{frame}
-  \frametitle{Affine case}
-  \begin{itemize}
-  \item Infinite number of generalized Verma modules -- in each grade containing weights of singular element $\Psi$
-  \item Not so simple relation with multiplicities of another algebra.\\
-     $\Gamma_{\afh\subset \gfh}\nleftrightarrow \prod_{\alpha\in \Delta^{+}}\left(1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}$ due to the difference in imaginary roots. E.g. $\widehat{A_{1}\oplus u(1)}\subset \hat B_{2}$:
-    \begin{multline*}
-      \frac{\cancel{\prod_{n>0} (1-e^{-n\delta})^{2}} \cancel{\prod_{n\geq 0}(1-e^{-\alpha_{1}-n\delta})}\dots }{\cancel{\prod_{n>0} (1-e^{-n\delta})^{2}} \cancel{\prod_{n\geq 0}(1-e^{-\alpha_{1}-n\delta})}\dots}\\ 
-      \prod_{n\geq 0}(1-e^{-\alpha_{2}-n\delta}) 
-        \prod_{n\geq 0}(1-e^{-\alpha_{1}-\alpha_{2}-n\delta}) \prod_{n\geq 0}(1-e^{-\alpha_{1}-2\alpha_{2}-n\delta}) \dots\\
-        \nleftrightarrow \prod_{n>0} (1-e^{-n\delta})^{2} \prod_{n\geq 0}(1-e^{-\alpha_{1}-n\delta}) 
-        \prod_{n\geq 0}(1-e^{-\alpha_{2}-n\delta})\\ \prod_{n\geq 0}(1-e^{-\alpha_{1}-\alpha_{2}-n\delta}) \dots
-    \end{multline*}
-  \end{itemize}
+\frametitle{Связь с обобщенной резольвентой Бернштейна-Гельфанда-Гельфанда}
+  Рассмотрим ситуацию без проекции ($\mathrm{rank}\af=\mathrm{rank}\gf$).
+  \begin{equation*}
+    M_{I}^{\mu _{\frak{a}_{\perp }}\left( u\right) }=U\left( \frak{g}\right)
+    \otimes _{U\left( \frak{p}_{I}\right) }L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
+        _{\perp }}\left( u\right) }\quad  \Delta _{\frak{a}_{\perp }}^{+}\sim  \Delta _{I}^{+}, \mbox{ где}\; I\subset S
+  \end{equation*}
+  Введем  $R_{I}:=\prod_{\alpha \in \Delta^{+}\setminus \Delta _{\pf_{I}}^{+}}\left( 1-e^{-\alpha }\right)^{\mathrm{mult}(\alpha )}$. Тогда
+$\mathrm{ch}M_{I}^{\mu}=\frac{1}{R_{I}}\mathrm{ch}L_{\pf_{I}}^{\mu }$
+
+  \begin{figure}[t]
+    \vspace*{-0.5cm}
+      \hfill
+        \includegraphics[width=60mm]{figures/B2_Gen_Verma_Decomp}
+      \hfill
+      \caption{Вложение $A_{1}\oplus u(1) \subset B_{2}$ и обобщенные модули Верма.
+        Пунктир -- с положительным знаком $\epsilon(u)$, точки --  с отрицательным.}
+  \end{figure}
 \end{frame}
 
-\section{Conclusion}
+\section{Сплинты и вложения}
 \begin{frame}
-  \frametitle{Conclusion}
+  \frametitle{Сплинты}
+  \begin{Def}
+$\phi $ -- ``вложение'' $\Delta_{0}\hookrightarrow \Delta$:
+$\phi (\gamma )=\phi (\alpha )+\phi (\beta )\quad  \forall \alpha ,\beta ,\gamma \in P_{0}: \gamma =\alpha+\beta.$
+
+\end{Def}
+$\phi$ индуцирует вложение формальных алгебр: ${\mathcal{E}}_0\hookrightarrow \mathcal{E}$ и  для ${\mathcal{E}}_i=\mathrm{Im}_{\phi}\left( {\mathcal{E}}_0\right)$ есть $\phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
+
+\begin{Def}
+Корневая система $\Delta$ ``расщепляется'' на  $(\Delta _{1},\Delta _{2})$, если существует два вложения  $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ и $\phi _{2}:\Delta _{2}\hookrightarrow \Delta $, где (a) $\Delta $ -- несвязное объединение образов $\phi _{1}$ и $\phi _{2}$, и (b) ни ранг  $\Delta _{1}$, ни ранг  $\Delta _{2}$ не превосходит ранга $\Delta $.
+\end{Def}
+Пусть $\Delta _{1}=\Delta _{\af}$. $\Delta _{\sfr}:=\Delta_{2}=\Delta \setminus \Delta _{\af}$ определяет  веер вложения  $\Gamma _{\af\hookrightarrow \gf}$. 
+$\prod_{\beta \in \Delta _{\sfr}^{+}}\left( 1-e^{-\beta }\right)
+=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }$
+
+$\Psi _{\gf}^{\left( \mu \right) }=e^{-\rho}\sum_{w\in W_{\af}}w\circ \left(
+e^{\rho _{\af}}\Psi ^{\widetilde{\mu }+\rho _{\sfr}}\right) \quad \widetilde{\mu }=\sum m_{k}\omega _{\sfr}^{k}\widetilde{\mu }=\sum m_{k}\omega _{\sfr}^{k}$
+
+\end{frame}
+\begin{frame}
+  \frametitle{Пример}
+  \vspace{-0.5cm}
+\begin{figure}[h!bt]
+  \hspace*{-1.2cm}
+
+   \includegraphics[width=50mm]{figures/b2}
+   \includegraphics[width=50mm]{figures/b2-a2-a1}
+  \caption{Веса  $L^{[3,2]}_{B_{2}}$  с кратностями показаны слева. Короткий пунктир -- контур сингулярного элемента. Справа -- разложение сингулярного элемента $\Psi_{B_{2}}(L^{[3,2]}_{B_{2}})$ в сумму образов сингулярных элементов $\Psi_{A_{2}}(L^{[3,2]})$ (длинный пунктир). Кратности $L^{[3,2]}_{A_{2}}$ =  коэффициентам ветвления $L^{[3,2]}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
+
+ \label{fig:b2_splint}
+\end{figure}
+
+\end{frame}
+
+\subsection{$G_2$}
+\begin{frame}
+  
+  \begin{figure}[h!bt]
+  \noindent\centering{
+   \includegraphics[width=65mm]{figures/g2}
+  }
+
+  \caption{Орбита группы Вейля  (длинный пунктир) для  $\Psi_{G_{2}}(L^{[3,2]})$ и его разложение в сумму образов сингулярных элементов модулей  $A_{2}$ (короткий). Кратности весов  $L^{[3,2]}_{A_{2}}$ совпадают с коэффициентами ветвления $L^{[3,2]}_{G_{2}\downarrow A_{2}}$.}
+
+
+ \label{fig:g2_splint}
+\end{figure}
+
+\end{frame}
+
+\subsection{Аффинные алгебры}
+\begin{frame}
+Аффинное расширение $\afh\subset\gfh$. Так как $\mathrm{rank}\gf\leq\mathrm{rank} \af+\mathrm{rank}\sfr$, для знаменателей Вейля 
+\begin{multline}
+  \label{eq:129}
+\prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\\
+\prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
+\end{multline}
+ $$\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$$
+Соотношение, связывающее тета-функции алгебр $\gfh,\hat\sfr,\afh$:
+\begin{multline}
+  \label{eq:143}
+  \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
+  \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= \\
+  \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
+\end{multline}
+\end{frame}
+\begin{frame}
+  \frametitle{Ветвление на конечномерные подалгебры}
+
+Рассмотрим ветвление модуля $\gfh$ на модули $\gf$
+\begin{equation*}
+  \label{eq:149}
+\mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{\nu}(n) \mathrm{ch} L^{\nu}_{\gf} \quad m^{(\hat{\mu})}_{\hat{\nu}=(\nu,k,n)}=\sum_{\xi\in P}
+b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}
+\end{equation*}
+Введем $b^{(\hat{\mu})}_{\nu}(q):=\sum_{n=0}^{\infty} b^{(\hat{\mu})}_{\nu}(n) q^{n}$, они связаны с  $q$-размерностью \\ $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$.
+
+ $ \sigma^{(\hat{\mu})}_{\nu}(q) = \sum_{\xi\in P} m^{(\xi)}_{\nu} b^{(\hat{\mu})}_{\xi}(q)$.
+
+Введем порядок на множестве весов $\xi$ следующим образом:
+припишем весу  $\xi$ значение  $(\rho,\xi)$ и упорядочим веса по этим значениям. Тогда  $$\sigma(q)=M b(q)\quad b(q)=M^{-1}\sigma(q)$$
+  $\sigma(q)$ и  $b(q)$ -- бесконечные векторы струнных функций и функций ветвления. Матрица $M$ содержит кратности весов в  $\gf$-модулях. Обратная матрица $M^{-1}$ содержит рекуррентные соотношения на кратности весов.
+\end{frame}
+\begin{frame}
+    \frametitle{Матричные соотношения для сплинтов}
+Рассмотрим ветвление модулей  $\gfh$ на модули $\af$ в предположении существовании сплинта
+$\Delta^{+}_{\gf}=\Delta^{+}_{\af}\cup \phi(\Delta^{+}_{\sfr})$.
+Разложим  $\gf$-модули на 
+$\af$-модули используя свойство сплинта:
+\begin{multline}
+  \label{eq:125}
+  \mathrm{ch}L^{\hat{\mu}}_{\gfh}=
+\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P_{\af}} b^{(\hat{\mu})}_{(\gfh\downarrow\af)\nu}(n) \mathrm{ch} L^{\nu}_{\af}=\\
+\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} b^{(\nu)}_{(\gf\downarrow \af) \xi}\mathrm{ch} L^{\xi}_{\af}=\\
+=\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} M^{\widetilde{\nu}}_{  \widetilde{\nu}-\phi^{-1}( \nu-\xi )}\mathrm{ch} L^{\xi}_{\af}
+\end{multline}
+  Матричное соотношение выполняется для функций ветвления $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}\;
+b_{(\gfh\downarrow\gf)}(q)$ и мы можем написать
+$\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$.  Зная коэффициенты ветвления для вложения $\gf\subset\gfh$  сразу получаем (градуированные) функции ветвления для вложения $\af\subset \gfh$.
+\end{frame}
+
+
+\section{Заключение}
+
+
+\begin{frame}
+  \frametitle{Заключение}
   \begin{itemize}
-  \item Recurrent relation for branching coefficients works as in finite-dimensional case
-  \item It can be used for computations 
-  \item We can relate recurrent relations for branching coefficients of one pair algebra-subalgebra with recurrent relation of another pair, but we can not interpret singular weights as highest weights of Verma modules.\\
-    \begin{multicols}{2}
-      E.g.: $\widehat{A_{1}\oplus u(1)}\subset \hat B_{2} \longleftrightarrow \widehat{u(1)\oplus u(1)}\subset \hat A_{2}$, \\
-      or $\hat A_{2} \subset \hat G_{2} \longleftrightarrow \widehat{u(1)\oplus u(1)}\subset \hat A_{2}$      \\
-    \includegraphics[width=40mm]{figures/G2-color}
-    \end{multicols}
+  \item Сингулярные элементы модулей аффинных алгебр Ли появляются в coset-моделях CFT
+  \item Структура модуля определяется сингулярным элементом
+  \item Разложение сингулярного элемента позволяет вычислять функции ветвления
+  \item Проясняется связь с обобщенной резольвентой Бернштейна-Гельфанда-Гельфанда
+  \item Особый тип разложения -- сплинт. Он сильно упрощает вычисление коэффициентов ветвления.
+  \item Из существования сплинта следуют соотношения на тета-функции и функции ветвления.
   \end{itemize}
 \end{frame}
 \begin{frame}
-  \frametitle{Thank you for your attention!}
+  \frametitle{Спасибо за внимание!}
 \end{frame}
+
 \end{document}
