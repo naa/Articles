@@ -82,7 +82,7 @@
 %% 
 \title[Сингулярные элементы]{Сингулярные элементы модулей аффинных алгебр Ли в моделях конформной
 теории поля }
-\author[Антон Назаров]{Антон Назаров\\\small{Кандидатская диссертация\\ см. также arXiv:1007.0318, 1102.1702, 1107.4681, 1111.6787, 1112.4354 \\ научный руководитель В. Д. Ляховаский}}
+\author[Антон Назаров]{Антон Назаров\\\small{По материалам кандидатской диссертации\\ см. также arXiv:1007.0318, 1102.1702, 1107.4681, 1111.6787, 1112.4354 \\ научный руководитель В. Д. Ляховаский}}
 
 \institute[СПбГУ]{
   Кафедра физики высоких энергий и элементарных частиц\\
@@ -231,7 +231,7 @@ $\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определ�
 
 Модуль Верма 
 \begin{equation*}
- M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+}) \quad \mbox{где} \quad     \gf=\bff_{+}\oplus \hf \oplus\bff_{-}
+ M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+}) \quad \mbox{где} \quad     \gf=\mathfrak{n}_{+}\oplus \hf \oplus\mathfrak{n}_{-}, \bff_{+}=\mathfrak{n}_{+}\oplus \hf
 \end{equation*}
 
 $D^{\mu}(\bff_{+}): D(E^{\alpha})=0,\; D(H)=\mu(H)\quad \forall \alpha>0$.
@@ -296,7 +296,7 @@ $\frak{{h}=\frak{h}_{\afh}+\frak{h}_{d}+\frak{h}_{\frak{b}}.}$
 
 $L^{\mu }$ -- модуль старшего веса с сингулярным элементом $\Psi ^{\left(\mu \right)}$ ,
 
-$R_{\af_{\perp }}$ -- знаменатель Вейля для подалгебры $\af_{\perp }$. $U\sim W/W_{afb}$.
+$R_{\af_{\perp }}$ -- знаменатель Вейля для подалгебры $\af_{\perp }$. $U\sim W/W_{\afb}$.
 
 Тогда элемент  $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi _{\af}\left( \frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}\right) $ можно разложить в сумму по  $u\in U$:
 \begin{equation*}
@@ -452,19 +452,17 @@ e^{\rho _{\af}}\Psi ^{\widetilde{\mu }+\rho _{\sfr}}\right) \quad \widetilde{\mu
 \subsection{Аффинные алгебры}
 \begin{frame}
 Аффинное расширение $\afh\subset\gfh$. Так как $\mathrm{rank}\gf\leq\mathrm{rank} \af+\mathrm{rank}\sfr$, для знаменателей Вейля 
-\begin{multline}
-  \label{eq:129}
+\begin{multline*}
 \prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\\
 \prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
-\end{multline}
+\end{multline*}
  $$\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$$
 Соотношение, связывающее тета-функции алгебр $\gfh,\hat\sfr,\afh$:
-\begin{multline}
-  \label{eq:143}
+\begin{multline*}
   \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
   \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= \\
   \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
-\end{multline}
+\end{multline*}
 \end{frame}
 \begin{frame}
   \frametitle{Ветвление на конечномерные подалгебры}
