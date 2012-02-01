@@ -282,14 +282,13 @@ _{\frak{b}}^{+}$.
 $\af, \mathfrak{b}$ -- ``ортогональная пара'' подалгебр $\gf$, $\bff$ регулярная.
 
 Подалгебра Картана раскладывается
-$\frak{{h}=\frak{h}_{\afh}+\frak{h}_{d}+\frak{h}_{\frak{b}}.}$
+$\frak{{h}=\frak{h}_{\af}+\frak{h}_{\bot}+\frak{h}_{\frak{b}}.}$
 
 Введем
 \begin{eqnarray*}
 \mathcal{D}_{\af} :=\rho_{\af}-\pi_{\af}\rho.\\
 \mathcal{D}_{\frak{b}} :=\rho_{\frak{b}}-\pi_{\frak{b}}\rho.
 \end{eqnarray*}
-и получим
 \begin{mylemma}
 \label{lemma}
 Пусть  $\widetilde{\afb}=\afb\oplus \hf_{\perp }$, $\widetilde{\af}=\af\oplus\hf_{\perp }$ ,
@@ -396,7 +395,31 @@ $\mathrm{ch}M_{I}^{\mu}=\frac{1}{R_{I}}\mathrm{ch}L_{\pf_{I}}^{\mu }$
         Пунктир -- с положительным знаком $\epsilon(u)$, точки --  с отрицательным.}
   \end{figure}
 \end{frame}
-
+\begin{frame}
+  \frametitle{Точная последовательность}
+  \begin{equation*}
+    0\rightarrow M_{r}^{I}\overset{\delta _{r}}{\rightarrow }M_{r-1}^{I}\overset{%
+      \delta _{r-1}}{\rightarrow }\ldots \overset{\delta _{1}}{\rightarrow }%
+    M_{0}^{I}\overset{\varepsilon }{\rightarrow }L^{\mu }\rightarrow 0,
+  \end{equation*}
+  \begin{equation*}
+    M_{k}^{I}=\bigoplus_{u\in U,\;\mathrm{length}\left( u\right)
+      =k}M_{I}^{u\left( \mu +\rho \right) -\rho },\quad M_{0}^{I}=M_{I}^{\mu }
+  \end{equation*}
+  \vspace{-0.5cm}
+  \begin{figure}[h!bt]
+    \noindent\centering{
+      \includegraphics[width=120mm]{figures/B2_Exact}}
+\vspace{-0.5cm}
+    \caption{
+      Резольвента модуля $L^{\omega_1}$.  Центральная часть точной последовательности
+      $0 \to Im(\delta_2) \to \left( e^{\mu _{\widetilde{%
+              \frak{a}}}\left( e\right) }\mathrm{ch}M_{I}^{\pi _{\afb}\left[ \omega_1 \right] -%
+          \mathcal{D}_{\afb} }=M^{\omega_1}_{I}\right) \to
+      L^{\omega_1}\to 0 $.  Здесь $\mu _{\widetilde{\frak{a}}}\left( e\right) =\pi _{\aft}\left[ \mu \right] + \mathcal{D}_{\afb}$.
+    }
+  \end{figure}
+\end{frame}
 \section{Сплинты и вложения}
 \begin{frame}
   \frametitle{Сплинты}
