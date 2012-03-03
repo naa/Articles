@@ -21,9 +21,12 @@ V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
   Physics A: Mathematical and Theoretical} {\bf 44} (2011) no.~7, 075205},
   \href{http://arxiv.org/abs/1007.0318}{{\tt arXiv:1007.0318 [math.RT]}}.
 
-\bibitem{2010LyakhovskyNazarovTMF}
-V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive properties of branching and
-  Weyl-Verma formulas},''.
+\bibitem{2011arXiv1102.1702L}
+V.~{Lyakhovsky} and A.~{Nazarov},
+  \href{http://dx.doi.org/{10.1007/s11232-011-0132-9}}{``{Recursive properties
+  of branching and BGG resolution},''{\em {THEORETICAL AND MATHEMATICAL
+  PHYSICS}} {\bf {169}} ({NOV}, {2011})  {1551--1560}},
+  \href{http://arxiv.org/abs/1102.1702}{{\tt arXiv:1102.1702 [math.RT]}}.
 
 \bibitem{2011arXiv1111.6787L}
 V.~{Laykhovsky} and A.~{Nazarov}, ``{Fan, splint and branching rules},'' {\em
@@ -109,9 +112,9 @@ G.~Moore and N.~Seiberg, ``Classical and quantum conformal field theory,'' {\em
 
 \bibitem{zamolodchikov1987representations}
 A.~Zamolodchikov and V.~Fateev, ``Representations of the algebra of
-  “parafermion currents” of spin 4/3 in two-dimensional conformal field
-  theory. minimal models and the tricritical potts z 3 model,'' {\em
-  Theoretical and Mathematical Physics} {\bf 71} (1987) no.~2, 451--462.
+  "parafermion currents" of spin 4/3 in two-dimensional conformal field theory.
+  minimal models and the tricritical potts z 3 model,'' {\em Theoretical and
+  Mathematical Physics} {\bf 71} (1987) no.~2, 451--462.
 
 \bibitem{zamolodchikov1987conformal}
 A.~Zamolodchikov, ``Conformal scalar field on the hyperelliptic curve and
@@ -247,17 +250,14 @@ D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
 \newblock Consultants bureau, 1986.
 
 \bibitem{fuks1984}
-Д.Б.~Фукс, {\em {Когомологии бесконечномерных
-  алгебр Ли}}.
-\newblock Наука, Глав. ред.
-  физико-математической лит-ры, Москва, 1984.
+Д.~Фукс, {\em {Когомологии бесконечномерных алгебр Ли}}.
+\newblock Наука, Глав. ред. физико-математической лит-ры, Москва, 1984.
 
 \bibitem{feigin1988}
- Б.Л.~Фейгин и Д.Б.~Фукс, ``{Когомологии групп и
-  алгебр Ли},'' {\em Итоги науки и техники.
-  Серия {\guillemotleft}Современные проблемы
-  математики. Фундаментальные
-  направления{\guillemotright}} {\bf 21} (1988) no.~0, 121--209.
+Б.~Фейгин and Д.~Фукс, ``{Когомологии групп и алгебр Ли},'' {\em Итоги науки и
+  техники. Серия {\guillemotleft}Современные проблемы математики.
+  Фундаментальные направления{\guillemotright}} {\bf 21} (1988) no.~0,
+  121--209.
 
 \bibitem{wakimoto2001lectures}
 M.~Wakimoto, {\em {Lectures on infinite-dimensional Lie algebra}}.
