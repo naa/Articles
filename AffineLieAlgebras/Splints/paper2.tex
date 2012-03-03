@@ -1,4 +1,9 @@
 \documentclass[12pt]{article}
+ \textheight=24cm
+ \textwidth=16.5cm
+ \topmargin=-1.5cm
+ \oddsidemargin=-0.25cm
+
 \usepackage{amsfonts}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,11 +13,6 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[english]{babel}
-
-%TCIDATA{OutputFilter=Latex.dll}
-%TCIDATA{LastRevised=Mon Oct 10 18:16:16 2011}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{CSTFile=article.cst}
 
 \newtheorem{Def}{Definition}[section]
 \newtheorem{theorem}{Theorem}
@@ -39,8 +39,6 @@
 \newcommand{\sfh}{\hat{\mathfrak{s}}}
 \newcommand{\bff}{\mathfrak{b}}
 \newcommand{\hfg}{\hf_{\gf}}
-
-%\input{tcilatex}
 
 \begin{document}
 \title{On affine extension of splint root systems}
@@ -94,8 +92,8 @@ discuss consequences of splint in this case.
 \label{sec:definitions}
 
 Consider simple Lie algebra $\gf$ with a root system $\Delta$. Let
-$\af_{1}\subset \gf$ be its reductive subalgebra, such that
-$\Delta_{1}\subset\Delta$. Irreducible highest-weight modules of
+$\af_{1}\subset \gf$ be its reductive subalgebra of the same rank, such that
+$\Delta_{\af}\equiv\Delta_{1}\subset\Delta$ and $Q_{\af}\subset Q$, where $Q$ is the root lattice. Irreducible highest-weight modules of
 $\gf$ and $\af$ are denoted by $L^{\mu}$ and $L^{\nu}_{\af}$
 correspondingly. Weyl character formula for irreducible modules is
 $\mathrm{ch}L^{\mu}=\frac{\Psi^{(\mu)}}{\prod_{\alpha\in\Delta}(1-e^{-\alpha})}$,
@@ -148,8 +146,7 @@ _i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
 
 It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$ and we shall denote
 this by $\Delta \approx (\Delta_1,\Delta_2)$. Each component $\Delta_1$ and $\Delta_2$ is a "stem''
-of the splint $%
-(\Delta_1,\Delta_2)$.
+of the splint.
 
 We consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ is a root subsystem. As shown in paper \cite{2011arXiv1111.6787L} the second stem $\Delta _{\frak{s}}:=\Delta
 _{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product
@@ -157,7 +154,7 @@ $\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)=-\sum_{\gam
 and it defines an injection fan $\Gamma _{\frak{a}%
 \hookrightarrow \frak{g}}$ \cite{lyakhovsky1996rra,ilyin812pbc,2010arXiv1007.0318L}.
 
-Since the singular element of a $\gf$-module $L^{\mu}$ can be
+Since the singular element of $L^{\mu}$ can be
 written as $\Psi _{\frak{g}}^{\left( \mu \right) }=e^{-\rho }
 \sum_{w\in W_{\frak{a}}}\epsilon \left( w \right) w\circ \left(
 e^{\rho _{\frak{a}}}\Psi ^{\widetilde{\mu }+\rho
@@ -184,7 +181,7 @@ Using a specialization
 definition of Dedekind eta-function
 $\eta(\tau)=q^{1/24}\prod_{n=1}^{\infty}(1-q^{n})$, where
 $q=e^{2\pi i \tau}$ we can rewrite this identity as the relation
-imposed on theta-functions $\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in P_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$:
+imposed on theta-functions $\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$:
 \begin{multline}
   \label{eq:5}
   \eta(\tau)^{\mathrm{dim}(\af)}\prod_{\alpha\in\Delta_{1}^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z)}{\eta(\tau)} \eta(\tau)^{\mathrm{dim}(\sfr)}\prod_{\beta\in\Delta_{2}^{+}}\frac{\Theta^{(\hat A_{1})}_{\phi\circ \beta}(\tau,z))}{\eta(\tau)}=\\
@@ -213,7 +210,7 @@ b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}$. We can introduce
 branching functions similarly to the case of branching for affine
 subalgebra \cite{kac1988modular,kac1990idl}:
 $b^{(\hat{\mu})}_{\nu}(q)=\sum_{n=0}^{\infty}
-b^{(\hat{\mu})}_{\nu}(n) q^{n}$.  These branching functions are connected to $q$-dimension of module $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$. It is well-known \cite{gannon2006moonshine} that $q$-dimension is a modular function for some $\Gamma\subset SL_{2}(\mathbb{Z})$, so branching functions $b^{(\hat \mu)}_{\nu}(q)$ have modular properties.
+b^{(\hat{\mu})}_{\nu}(n) q^{n}$.  These branching functions are connected to $q$-dimension of module $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$. It is well-known that $q$-dimension is a modular function for some $\Gamma\subset SL_{2}(\mathbb{Z})$  \cite{gannon2006moonshine}, so branching functions $b^{(\hat \mu)}_{\nu}(q)$ have modular properties.
 
  For string functions of a module
 $L^{\hat{\mu}}$ we have
@@ -246,9 +243,9 @@ $\af$-modules using property \eqref{eq:9}:
 =\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} M^{\widetilde{\nu}}_{  \widetilde{\nu}-\phi^{-1}( \nu-\xi )}\mathrm{ch} L^{\xi}_{\af}
 \end{multline}
 We see that the similar matrix relation holds for branching
-functions $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}
+functions $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}\;
 b_{(\gfh\downarrow\gf)}(q)$ and we can write
-$\sigma(q)=M_{\af}\cdot b_{(\gfh\downarrow\af)}(q)$. So if we know
+$\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$. So if we know
 branching coefficients for the embedding $\gf\subset\gfh$ (for
 example, see book \cite{kass1990ala}) we can easily obtain
 branching functions for the embedding $\af\subset \gfh$.
@@ -267,25 +264,6 @@ Anton Nazarov thanks the Chebyshev Laboratory (Department of Mathematics and Mec
 Saint-Petersburg State University) for support under the grant 11.G34.31.0026
 of the Government of Russian Federation.
 
-%%
-%%
-%%  In the present paper we provide alternative proof of the main statement of paper [LN-2011-Splints] which uses graded commutative structure on vector space of universal enveloping algebra $U(n^{-})$.
-%%
-%%  Con
-%%  
-%%  
-%%  Consider decomposition of simple Lie algebra $\gf=\nfp\oplus \hf \oplus \nfm$. Verma module $M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+})$. $S(\nfm)=\{x_{1}\dots x_{l}:x_{i}\in\nfm\}_{l=0}^{\infty}$
-%%  \begin{theorem}
-%%    Fix some ordering $\alpha_{1},\dots,\alpha_{s}$ on the set of positive roots $\Delta^{+}$ and obtain the ordering on the basis $f_{1},\dots,f_{s}$ of $\nfm$.  Then monomials $f_{1}^{n_{1}} \dots f_{s}^{n_{s}}$ form a basis in $U(\nfm)\sim M^{\lambda}$ and $U(\nfm)\sim \mathbb{Z}^{s}_{\geq 0}$. 
-%%  \end{theorem}
-%%  \begin{statement}
-%%    Let $\Delta^{+}_{\gf}=\Delta^{+}_{\af_{1}}\cup \Delta^{+}_{\af_{2}}$ be a splint positive root system of simple Lie algebra $\gf$. Then $M^{\lambda}_{\gf}\sim M^{\lambda}_{\af_{1}}\oplus M^{\lambda}_{\af_{2}}$.
-%%    \begin{proof}
-%%      Basis of $M^{\lambda}_{\gf}$ is given by $f_{1}^{n_{1}}\dots f_{s_{1}}^{n_{s_{1}}} f_{s_{1}+1}^{n_{s_{1}+1}}\dots f_{s_{1}+s_{2}}^{n_{s_{1}+s_{2}}}$, where $f_{1},\dots, f_{s_{1}}\in \nfm_{\af_{1}}$ and $f_{s_{1}+1},\dots,f_{s_{1}+s_{2}}\in \nfm_{\af_{2}}$
-%%    \end{proof}
-%%  \end{statement}
-%%  Now consider irreducible $\gf$-module $L_{\gf}^{\mu}=M^{\mu}_{\gf}/I^{\mu}_{\gf}$t
-%%  
 \bibliography{bibliography}{}
 \bibliographystyle{utphys}
 

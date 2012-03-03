@@ -221,17 +221,16 @@ we get a relation connecting the singular elements $\Psi ^{\left( \mu
 \frak{a}}}.  \label{singular main}
 \end{eqnarray}
 
-In \cite{2010arXiv1007.0318L} it was proven that branching coefficients $%
-b_{\xi }^{\left( \mu \right) }$ corresponding to the injection $\frak{a}%
+In \cite{2010arXiv1007.0318L} it was proven that singular branching coefficients $k_{\xi }^{\left( \mu \right) }$ corresponding to the injection $\frak{a}%
 \hookrightarrow \frak{g}$ are subject to the set of recurrent relations:
 \begin{equation}
 \begin{array}{c}
-b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 \sum_{u\in W/W_{\perp}}\epsilon (u)\;\dim \left( L_{\frak{a}_{\perp }}^{\mu _{\frak{a}%
 _{\perp }}\left( u\right) }\right) \delta _{\xi -\gamma _{0},\pi _{%
 \widetilde{\frak{a}}}(u(\mu +\rho )-\rho )}+\right. \\
 \left. +\sum_{\gamma \in \Gamma _{\widetilde{\frak{a}}\rightarrow \frak{g}%
-}}s\left( \gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right)
+}}s\left( \gamma +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right)
 }\right) .
 \end{array}
 \label{recurrent rel}
@@ -247,16 +246,16 @@ h\in \frak{h}_{\frak{a}};\beta \left( h\right) =0\right\} ,
 \widetilde{\frak{a}_{\perp }} :=\frak{a}_{\perp }\oplus \frak{h}_{\perp }
 \qquad \widetilde{\frak{a}} :=\frak{a}\oplus \frak{h}_{\perp }
 \end{eqnarray}
-and $\pi$ is the projection operator. When an injection is maximal the
+and $\pi$ is the projection operator. Inside the main Weyl chamber $C_{\mathfrak{a}}$ singular branching coefficients coincide with branching coefficients: $ b_{\xi }^{\left( \mu \right) }=k_{\xi }^{\left( \mu \right) }\; \forall \xi\in C_{\mathfrak{a}}$. When an injection is maximal the
 projection becomes trivial and the relation (\ref{recurrent rel}) is
 simplified:
 \begin{equation}
 \begin{array}{c}
-b_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
+k_{\xi }^{\left( \mu \right) }=-\frac{1}{s\left( \gamma _{0}\right) }\left(
 \sum_{u\in W}\epsilon (u) \delta _{\xi -\gamma _{0}, u(\mu +\rho )-\rho
 }+\right. \\
 \left. +\sum_{\gamma \in \Gamma _{\frak{a}\rightarrow \frak{g}}}s\left(
-\gamma +\gamma _{0}\right) b_{\xi +\gamma }^{\left( \mu \right) }\right) .
+\gamma +\gamma _{0}\right) k_{\xi +\gamma }^{\left( \mu \right) }\right) .
 \end{array}
 \label{recurrent relation max}
 \end{equation}
@@ -464,7 +463,8 @@ Remember that only three types of splints are
 injective and thus are naturally connected with branching. Below we
 reproduce the part of the splints table from \cite{richter2008splints} corresponding to
 injective splints:
-\[
+\begin{equation}
+\label{eq:1}
 \begin{array}{cc||c|c}
 \hbox{type} & \hspace{0.25in}\Delta \hspace{0.25in} & \hspace{0.25in}\Delta
 _{\frak{a}}\hspace{0.25in} & \hspace{0.25in}\Delta _{\frak{s}}\hspace{0.25in}
@@ -472,12 +472,13 @@ _{\frak{a}}\hspace{0.25in} & \hspace{0.25in}\Delta _{\frak{s}}\hspace{0.25in}
 \hbox{(i)} & G_{2} & A_{2} & A_{2} \\
 & F_{4} & D_{4} & D_{4} \\ \hline
 \hbox{(ii)} & B_{r}(r\geq 2) & D_{r} & \oplus ^{r}A_{1} \\
-& C_{r}(r\geq 3) & D_{r} & \oplus ^{r}A_{1} \\ \hline
+(*)& C_{r}(r\geq 3) & \oplus ^{r}A_{1} &  D_{r} \\ \hline
 \hbox{(iii)} & A_{r}(r\geq 2) & A_{r-1}\oplus u\left( 1\right)  & \oplus
 ^{r}A_{1} \\
 & B_{2} & A_{1}\oplus u\left( 1\right)  & A_{2}
 \end{array}
-\]
+\end{equation}
+
 Each row in the table gives a splint $(\Delta _{\frak{a}},\Delta _{\frak{s}})
 $ of the simple root system $\Delta $. In the first two types both $\Delta _{%
 \frak{a}}$ and $\Delta _{\frak{s}}$ are embedded metrically. Stems in the
@@ -487,6 +488,8 @@ u\left( 1\right) $ are added to keep $r_{\frak{a}}=r$. This does not change
 the principle properties of branching but makes it possible to use the
 multiplicities of $\frak{s}$ -modules without further projecting their
 weights.
+
+Note that in the case of $C_{r}$-series (marked with the star in table \eqref{eq:1}) metrical embedding $\Delta_{D_{r}}\to \Delta_{C_{r}}$ does not lead to the appearance of regular subalgebra $\mathfrak{a}$ (See \cite{dynkin1952semisimple}). 
 
 Splints induce a decomposition of the set $S=S_{\frak{c}}\cup S_{\frak{d}}$
 with $S_{\frak{c}}=S\cap S_{\frak{a}}$ and $S_{\frak{d}}=S\cap S_{\frak{s}}$. 
@@ -534,6 +537,7 @@ exponents that being supplied with the corresponding sign factors compose
 the coimage of the singular element of a module for the subalgebra in $\frak{%
 s}$ (this subalgebra has rank $r=2$).
 
+
 The same can be proven for any positive root $\beta _{l}\in \Delta $ that is
 simple in $\Delta _{\frak{s}0}$ and correspondingly for any $r=2$ subalgebra
 in $\frak{s}$. The latter means that to ''find'' a singular element of $%
@@ -549,13 +553,13 @@ the highest weight $\widetilde{\mu }$ is totally defined by the weight $\mu $%
 m_{k}\widetilde{\omega }_{k} . \label{new h weight}
 \end{equation}
 The next step is to construct the full $W_{\frak{s}}$-orbit $\Phi _{\frak{s}%
-}^{\left( \widetilde{\mu }\right) }$  in $P_{\frak{s}}$. It is easily seen
+}^{\left( \widetilde{\mu }\right) }$  in $P_{\frak{s}}$. It is necessary to check
 that its coimage belongs to $\bar{C_{\frak{a}}}$ and that the set $\phi
 ^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) \setminus \Phi _{%
 \frak{g}}^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ corresponds to the
 weights belonging to the boundary $\bar{C_{\frak{a}}}$ (including the subset
 $\left\{ -e^{\mu +\rho -\left( m_{l}+1\right) \beta _{l}}|\beta _{l}\in S_{%
-\frak{c}}\right\} $). Thus we have constructed all the formal elements\ with
+\frak{c}}\right\} $). Provided this condition is valid we have constructed all the formal elements\ with
 the appropriate sign factors that after being added to $\Phi _{\frak{g}%
 }^{\left( \mu \right) }|_{\bar{C_{\frak{a}}}}$ form the diagram $\phi
 ^{-1}\left( \Phi _{\frak{s}}^{\widetilde{\mu }}\right) $ in $\bar{C_{\frak{a}%
@@ -839,12 +843,12 @@ $\bar{C}_{D_{r}}$ the element $\Phi _{\oplus ^{r}A_{1}}^{\left(
 $L_{\oplus ^{r}A_{1}}^{\left( \widetilde{\mu }\right) }$ with
 $\widetilde{\mu }=\sum m_{k}\frac{1}{2}e_{k}$ .
 
-\item
-Type 2. $\Delta _{C_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
-^{r}A_{1}}). $
-
-The situation in this case is eqivalent to the previous one and
-the additional edges are constructed similarly.
+%%  \item
+%%  Type 2. $\Delta _{C_{r}}\approx (\Delta _{D_{r}},\Delta _{\oplus
+%%  ^{r}A_{1}}). $
+%%  
+%%  The situation in this case is eqivalent to the previous one and
+%%  the additional edges are constructed similarly.
 \item
 Type 3 $\Delta _{A_{r}}\approx (\Delta _{A_{r-1}\oplus
 u_{1}},\Delta _{\oplus ^{r}A_{1}}).$
