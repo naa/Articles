@@ -35,16 +35,32 @@
 \newcommand{\adk}{a^{\dagger}_{\kappa}} \newcommand{\ak}{a_{\kappa}}
 \def\bF{\mbox{$\overline{\cal F}$}} \def\F{\mbox{$\cal F$}}
 
+
+
 \begin{document}
-
-
 \title{SLE martingales in coset conformal field theory}
 \author{Anton Nazarov}
 \maketitle
+\begin{abstract}
+  The problem is to provide a way for the concurrent use of Scramm-Loewner evolution (SLE) and conformal field theory (CFT). Both SLE and CFT are popular instruments to study critical behavior of physical models in two dimensions, but they use different objects. While Scharmm-Loewner evolution has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory. In order to connect two approaches we consider CFT correlation functions which are martingales with respect to SLE. We establish necessary and sufficient conditions on such observables for coset models of conformal field theory and Schramm-Loewner evolution on group manifolds and check the consistency with the  behaviour of parafermionic models.
+\end{abstract}
+
 \section{Introduction}
 \label{sec:introduction}
 
-Generalizing results of papers \cite{bettelheim2005stochastic,santachiara2008sle,alekseev2010sle} we
+SLE describes critical behavior. It is convenient for strict mathematical proofs. For many lattice models  the convergence of  domain walls to SLE was proved.
+
+CFT on the other hand is formulated in terms of families of quantum fields which usually has no natural interpretation in microscopic terms. On the other hand CFT has efficient computational tools such as Virasoro symmetry, Knizhnik-Zamolodchikov equations, fusion algebra etc and provides numerous predictions, such as celebrated Cardy formula which gives crossing probability for critical percolation. 
+
+Combination of these two approaches should be immensely powerful, so it is important to find objects which can be studied from both points of view. Correlation functions of CFT which are martingales with respect to Schramm-Loewner evolution are such objects. They are actively studied. 
+
+We present new class of such observables. We consider correlation functions in coset conformal field theory which are martingales with respect to Schramm-Loewner evolution with additional random motion on factor of group $G$ by subgroup $A$. Using Knizhnik-Zamolodchikov equations we establish necessary and sufficient conditions on such functions and derive relations connecting parameters of SLE and CFT. We then check the consistency of these results with the earlier results obtained for parafermionic observables and general Cardy conditions on boundary states in conformal field theory. 
+
+\section{Martingale conditions}
+\label{sec:mart-cond}
+
+
+We
 consider Schramm-Loewner evolution $SLE_{\kappa}$ with additional Brownian motion on coset space
 $G/A$ characterised by parameter $\tau$ proposed in our paper \cite{2011arXiv1112.4354N}. We consider correlation functions in coset models of
 conformal field theory which satisfy martingale conditions with respect to this stochastic process.
@@ -97,7 +113,7 @@ Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+
 \begin{equation*}
   -\frac{2h_{i}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}.
 \end{equation*}
-We denote by $\mathcal{G}_{i}$ generator of infinitesimal transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) = \mathcal{G}_{i}\phi_{i}(w_{i})$. Then normalization condition of additional $\dim\gf$-dimensional Brownian motion \eqref{eq:5} to $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation \eqref{eq:2} is
+We denote by $\mathcal{G}_{i}$ generator of infinitesimal transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) = \mathcal{G}_{i}\phi_{i}(w_{i})$. We normalize additional $\dim\gf$-dimensional Brownian motion as $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation \eqref{eq:2} is equal to 
 \begin{equation}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right).
 \label{eq:3}
@@ -150,260 +166,288 @@ Second relation appears as the result of $L_{1}^{\gf}$-action:
 \end{equation}
  where $C_{\mu}=(\mu,\mu+2\rho), \tilde{C}_{\nu}=(\nu,\nu+2\rho_{\af})$ is the eigenvalue of quadratic Casimir operators $\sum_{a}t^{a}t^{a}, \sum_{b}\tilde{t}^{b}\tilde{t}^{b}$ of Lie algebras $\gf$ and $\af$.
 
-From equations \eqref{eq:28},\eqref{eq:17} we immediately get $\kappa,\tau$ for each pair $(\mu,\nu)$ of $\gf$ and $\af$-weights. 
+From equations \eqref{eq:28},\eqref{eq:21} we immediately get $\kappa,\tau$ for each pair $(\mu,\nu)$ of $\gf$ and $\af$-weights. 
+
+But correlation functions in coset conformal field theory must satisfy (generalized) Knizhnik-Zamolodchikov equations \cite{kogan1997knizhnik} which are of the form
+\begin{equation}
+  \label{eq:16}
+ \left[ \frac{1}{2}\frac{\partial}{\partial w_{i}} +\sum_{j\neq i} \left( \frac{\sum_{a}t_{i}^{a}t_{j}^{a}}{k+h^{\vee}}-\frac{\sum_{b}\tilde t_{i}^{b}\tilde t_{j}^{b}}{x_{e}k+h_{\af}^{\vee}}\right) \right]\mathcal{F}_{\mathbb{H}}=0
+\end{equation}
+Rewrite the equation as
+\begin{equation}
+  \label{eq:22}
+  \left[ \frac{1}{2}\frac{\partial}{\partial w_{i}} +\sum_{j\neq i} \left( \frac{\sum_{a}t_{i}^{a}t_{j}^{a}}{k+h^{\vee}}-\frac{\sum_{b}\tilde t_{i}^{b}\tilde t_{j}^{b}}{x_{e}k+h_{\af}^{\vee}}\right) \right]\mathcal{F}_{\mathbb{H}}=0
+\end{equation}
+
+From this relations and equation \eqref{eq:8} we can write sufficient conditions for SLE martingale to be CFT correlation function:
+\begin{equation}
+  \label{eq:23}
+  M x = 0
+\end{equation}
 
 It is also possible to consider coset theory as $G\times A$  gauge theory and impose constraints on physical states later (See \cite{hwang1993brst,kogan1997knizhnik,gawdzki1988g,figueroa89equivalence}). In this case second term in equation \eqref{eq:3} will include sum over $\gf$ and $\af$ generators and two parameters of Brownian motion $\tau_{\gf}$ and $\tau_{\af}$. 
 
+\subsection{Examples}
+\label{sec:examples-1}
 
+Minimal models $su(2)/u(1)$.
 
+\section{Outlook}
+\label{sec:outlook}
 
-Coset  models are specified by Lie algebra
-$\gf$ and its subalgebra $\af$. Denote by $J_{n}^{a}$ the generators of affine Lie algebra $\gfh$
-and by $\tilde{J}_{n}^{b}$ the generators of $\afh$, so that $\tilde{J}^{b}_{n}=\sum_{a} m_{a}^{b}
-J^{a}_{n}$. 
-Virasoro generators in coset models are given by the difference of Sugawara expressions
-of $\gf$ and $\af$-WZNW models:
-\begin{equation*} L_{n}=L_{n}^{\gf}-L_{n}^{\af}
-\end{equation*}
- Commutation relations of Virasoro generators with generators of subalgebra $\afh$
-are trivial
-\begin{equation}
-  \label{eq:26} \left[L_{n},\tilde{J}^{b}_{m}\right]=0
-\end{equation}
-
-Commutation relations between generators of $\gfh$ and Virasoro generators are now
-\begin{equation}
-  \label{eq:1}
-  \left[ L_{n}, J_{m}^{a} \right] = [L_{n}^{\gf}-L_{n}^{\af},J_{m}^{a}]= 
-\end{equation}
-
-Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models by adding gauge fields
- $A,
-\bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action\cite{gawdzki1988g}.
- Then fields
-are labeled by pairs of weights $(\mu,\nu)$, where $\mu$ is the weight of $\gfh$ and $\nu$ is the
-weight of $\afh$ correspondingly. But there are selection rules, i.e. the branching functions for
-certain pairs of weights $(\mu,\nu)$ vanish. There is also a redundancy, i.e. non-vanishing
-branching functions for distinct pairs $(\mu,\nu)$ turn out to be identical
-\cite{fuchs1996resolution,schellekens1990field}.
-
-So, primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$ of
-algebra $\gfh$ and subalgebra $\afh$, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. Some
-pairs are equivalent. This equivalence is given by the action of so called ``simple currents''
-$(J,\tilde{J})$, which are certain elements of outer automorphisms group $\mathcal{O}(\gfh)\times
-\mathcal{O}(\afh)\approx B(G)\times B(A)$ of $\gfh\times\afh$, where $B(G)$ is center of Lie group
-G. We can think of simple currents as of primary fields and their action on fields of theory are
-then given by fusion product \cite{difrancesco1997cft}. So primary fields of coset model are given
-by the equivalence classes of pairs of weights $(\mu,\nu)\sim (J*\mu,\tilde{J}*\nu)$, where
-$(J,\tilde J)$ such that their conformal weights are equal: $h_{J}-h_{\tilde{J}}=0$.
-
-Conformal weight of coset primary field is equal to
-\begin{multline}
-L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^{\vee})}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^{\vee})}\sum_b
-\tilde{J}^b_0 \tilde{J}^b_0 \right) \left|\phi_{(\mu,\nu)}\right>=\\
-\left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^{\vee})}\right)\left|\phi_{(\mu,\nu)}\right>
-\end{multline} It is possible to obtain analogues of Knizhnik-Zamolodchikov equations for coset
-models \cite{kogan1997knizhnik}:
-\begin{equation} \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq
-j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{\vee}}-\frac{\tilde t^{b}_{i}\tilde
-t^{b}_{j}}{k+h^{\vee}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots
-\phi_{N}(z_{N})\right>=0
-  \label{eq:6}
-\end{equation}
-
-Let us introduce Schramm-Loewner evolution corresponding to coset models. The idea is to constrain
-additional Brownian motion on group manifold to the factor space $G/A$.
-
-
-To study SLE on $G/A$ factor space we restrict random walk on group manifold by the choice of basis
-in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \dim\gf\}$ are chosen in such way that
-$\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\;
-a=\dim\gf-\dim\af\dots \dim\gf\}$ are the generators of subalgebra
-$\af\subset \gf$. Now we can consider $(\dim\gf-\dim\af)$-dimensional Brownian
-motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \;
-d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\dim\gf-\dim\af$.
-
-Then for generator of field transformation we can write
-\begin{equation} \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa}
-d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\dim\gf-\dim\af}\left(d
-\theta ^{a} t^{a}_{i}\right)\right)
-\label{eq:5}
-\end{equation}
- Substituting to equation \eqref{eq:8} we get martingale condition
-
-\begin{equation} \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa
-\mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\dim\gf-\dim\af}
-\mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right) \mathcal{F}_{\mathbb{H}}=0
-\label{eq:9}
-\end{equation}
-
-which can be rewritten as the requirement for
-\begin{equation} \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
-\left(\sum_{a=1}^{\dim\gf-\dim\af}J^{a}_{-1}J^{a}_{-1}\right)\right)
-\phi_{(\mu,\nu)}
-\label{eq:10}
-\end{equation}
- to be level two null-field.
-
- It is not always convenient to work with generators
-orthogonal with respect to Killing form $\mathcal{K}$, sometimes it is preferable to use Chevalley
-or Cartan-Weyl basis. So we change normalization condition of additional
-$\dim\gf$-dimensional Brownian motion \eqref{eq:5} to $\mathbb{E}\left[d\theta^{a}\;
-d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation
-\eqref{eq:2} is
-\begin{equation*} \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa}
-d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d
-\theta ^{a} t^{a}_{i}\right)\right).
-\end{equation*}
- Martingale condition \eqref{eq:8} can be written as
-\begin{equation*} \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa
-\mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
-\sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)
-\mathcal{F}_{\mathbb{H}}=0.
-\end{equation*}
- This equation can again be rewritten as the requirement for
-\begin{equation} \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
-\left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)
-\phi_{(\mu,\nu)}
-\label{eq:30}
-\end{equation}
- to be level two null-field.
-
-Acting with $L_{2}$ we get
-\begin{equation*}
-  L_{2}\psi= \left(-8 L_{0}+c/2+ 3 \kappa L_{0}+\frac{1}{2}\tau k \dim\gf\right)
-\phi_{(\mu,\nu)}
-\end{equation*}
-\begin{equation}
-  \label{eq:28} (3\kappa-8) h_{(\mu,\nu)}+c+\tau k =0
-\end{equation}
-
-Now we act with $L_{1}^{2}$  and obtain
-\begin{equation}
-  \label{eq:17} 12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) + \tau
-(C_{\mu}-\tilde{C}_{\nu})=0,
-\end{equation}
- where $C_{\mu}=(\mu,\mu+2\rho)$ is the eigenvalue of quadratic Casimir operator
-$\sum_{a}t^{a}t^{a}$. We need to get one more equation since we
-have three variables $\kappa,\tau,h_{(\mu,\nu)}$. We can use that $\psi$ is singular vector so
-$L_{1}\psi=0$ and then $J_{1}^{a}L_{1}\psi=0,\; \tilde{J}_{1}^{b} L_{1}\psi=0$, so
-
-\begin{equation}
-L_{1} \psi=L_{1}\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
-\left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)
-\phi_{(\mu,\nu)}
-\end{equation}
-
-\begin{equation*}
-L_{1}\psi = \left(-6 L_{-1}+\kappa (2  L_{-1} L_{0}+L_{0}) + \tau \sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{0}\right)
-\phi_{(\mu,\nu)}
-\end{equation*}
-\begin{equation*}
-  L_{1}^{2}\psi= \left(-12 L_{0}+\kappa (4  L_{0}^{2}+2 L_{0}) + \tau \sum_{a=1}^{\dim\gf}J^{a}_{0}J^{a}_{0}\right)
-\phi_{(\mu,\nu)}
-\end{equation*}
-\begin{equation*}
-  J_{1}^{a}L_{1} \psi= \left(-6 J_{0}^{a}+\kappa (2  J_{0}^{a} L_{0}+J_{0}^{a}) + \tau
-    \sum_{b=1}^{\dim\gf}\sum_{c=1}^{\dim\gf}i f^{abc}J^{c}_{0}J^{b}_{0}+k\tau J_{0}^{a}\right)
-\phi_{(\mu,\nu)}
-\end{equation*}
-
-
-\begin{equation*}
-  L_{2}\psi= \left(-8 L_{0}+c/2+ 3 \kappa L_{0}+\frac{1}{2}\tau k \dim\gf\right)
-\phi_{(\mu,\nu)}
-\end{equation*}
-
-\begin{eqnarray*}
-  (3\kappa-8) h_{(\mu,\nu)}+c/2+\frac{1}{2}\tau k \dim\gf=0\\
-  -12 h_{(\mu,\nu)}+\kappa (4 h_{(\mu,\nu)}^{2}+2 h_{(\mu,\nu)}) +\tau C(\mu) =0\\
-  (-6 +\kappa (2 h_{(\mu,\nu)}+1)+\tau
-\end{eqnarray*}
-\begin{equation}
-  \label{eq:29} \left(-6 + \kappa + \tau + 2 \kappa h_{(\mu,\nu)}\right) J^{3}_{0}
-\phi_{(\mu,\nu)}=0
-\end{equation}
-
-Acting on \eqref{eq:30} with $L_{2}$ and $L_{1}^{2}$ we can obtain equations \eqref{eq:28} and
-\eqref{eq:17}. To get more equations we can act by $\afh$-generators $\tilde{J}^{b}_{1}$ and $L_{1}$
-similarly to what was done with $J^{3}_{1}$ to get equation \eqref{eq:29}.
-
-To obtain simpler relations it is also possible to use generalization of Knizhnik-Zamolodchikov
-equations \eqref{eq:6} as was done for WZNW-models in paper \cite{alekseev2010sle}.
-
-
-Now consider simple example. Let $G=SU(2)$ and $A=U(1)$, and corresponding Lie algebras
-$\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator
-$J^{3}$, $\af\subset\gf$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$.
-
- The equation \eqref{eq:10} is now
-\begin{equation}
-  \label{eq:11} \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
-\left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{(\mu,\nu)}
-\end{equation}
- If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\;
-J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
-\begin{equation} \psi= \left(-2
-L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right)
-\phi_{(\mu,\nu)}
-\label{eq:12}
-\end{equation}
- which is similar to the equations for parafermionic fields introduced in paper
-\cite{santachiara2008sle}.
-
-Central charge in this case is equal to
-\begin{equation}
-  \label{eq:14} c=\frac{2(k-1)}{k+2}
-\end{equation}
-
-Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
-\begin{equation}
-  \label{eq:13} L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{(\mu,\nu)}=0,
-\end{equation}
- and obtain
-\begin{equation}
-  \label{eq:28} (3\kappa-8) h_{(\mu,\nu)}+c+\tau k =0
-\end{equation}
- Another equation can be obtained by action of $L_{1}^{2}$
-\begin{equation}
-  \label{eq:15} L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau
-(J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{(\mu,\nu)}=0
-\end{equation}
- Since
-$J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}=J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}+J_{0}^{3}J_{0}^{3}-J_{0}^{3}J_{0}^{3}$
-we have
-\begin{equation}
-  \label{eq:17} 12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) + \tau
-(C_{\mu}-\tilde{C}_{\nu})=0,
-\end{equation}
- where $C_{\mu}=(\mu,\mu+2\rho)$ is the eigenvalue of quadratic Casimir operator
-$\sum_{a}t^{a}t^{a}$. For $u(1)$ it is just $\nu^{2}$. We need to get one more equation since we
-have three variables $\kappa,\tau,h_{(\mu,\nu)}$. We can use that $\psi$ is singular vector so
-$L_{1}\psi=0$ and then $J_{1}^{3}L_{1}\psi=0$, so
-\begin{equation}
-  \label{eq:29} \left(-6 + \kappa + \tau + 2 \kappa h_{(\mu,\nu)}\right) J^{3}_{0}
-\phi_{(\mu,\nu)}=0
-\end{equation}
-
-
-Turn to the case $k=2, \;c=1/2$ which corresponds to square lattice Ising model. We have three
-non-equivalent fields numbered by the pairs of $su(2)$ and $u(1)$ weights, which are $\phi_{(0,0)},
-\; h_{(0,0)}=0; \quad \phi_{(0,2)}, \; h_{(0,2)}=1/2; \quad \phi_{(1,1)}, \; h_{(1,1)}=1/16$. The
-equation \eqref{eq:29} is trivial for $\phi_{(0,0)}$ and $\phi_{(0,2)}$, so the equations
-\eqref{eq:17}, \eqref{eq:28} are consistent although we do not know how to interpret $\tau$ in
-context of the Ising model. If we consider the field $\phi_{(1,1)}$ we have no solution for
-$\kappa,\tau$, so we see that not every primary field corresponds to some boundary condition
-changing operator.
-
-
-\section{Algebraic equations}
-\label{sec:algebraic-equations}
-
-\section{Examples}
-\label{sec:examples}
+In excellent paper \cite{bettelheim2005stochastic} connection between WZNW-models and Schramm-Loewner evolution with additional Brownian motion on group manifold was established. This paper also stated a problem of the connection of SLE parameters for martingales in WZNW, coset and minimal models. Here we used the method to obtain necessary and sufficient conditions on SLE martingales proposed in paper \cite{alekseev2010sle}. This method allowed us to compare our results with parafermionic results of the papers \cite{santachiara2008sle,picco2008numerical}.
 
 \section{Conclusion}
 \label{sec:conclusion}
+
+%%  
+%%  
+%%  
+%%  Coset  models are specified by Lie algebra
+%%  $\gf$ and its subalgebra $\af$. Denote by $J_{n}^{a}$ the generators of affine Lie algebra $\gfh$
+%%  and by $\tilde{J}_{n}^{b}$ the generators of $\afh$, so that $\tilde{J}^{b}_{n}=\sum_{a} m_{a}^{b}
+%%  J^{a}_{n}$. 
+%%  Virasoro generators in coset models are given by the difference of Sugawara expressions
+%%  of $\gf$ and $\af$-WZNW models:
+%%  \begin{equation*} L_{n}=L_{n}^{\gf}-L_{n}^{\af}
+%%  \end{equation*}
+%%   Commutation relations of Virasoro generators with generators of subalgebra $\afh$
+%%  are trivial
+%%  \begin{equation}
+%%    \label{eq:26} \left[L_{n},\tilde{J}^{b}_{m}\right]=0
+%%  \end{equation}
+%%  
+%%  Commutation relations between generators of $\gfh$ and Virasoro generators are now
+%%  \begin{equation}
+%%    \label{eq:1}
+%%    \left[ L_{n}, J_{m}^{a} \right] = [L_{n}^{\gf}-L_{n}^{\af},J_{m}^{a}]= 
+%%  \end{equation}
+%%  
+%%  Coset models can be realized as gauged Wess-Zumino-Novikov-Witten models by adding gauge fields
+%%   $A,
+%%  \bar{A}$ taking values in Lie algebra $\af\subset \gf$ to the action\cite{gawdzki1988g}.
+%%   Then fields
+%%  are labeled by pairs of weights $(\mu,\nu)$, where $\mu$ is the weight of $\gfh$ and $\nu$ is the
+%%  weight of $\afh$ correspondingly. But there are selection rules, i.e. the branching functions for
+%%  certain pairs of weights $(\mu,\nu)$ vanish. There is also a redundancy, i.e. non-vanishing
+%%  branching functions for distinct pairs $(\mu,\nu)$ turn out to be identical
+%%  \cite{fuchs1996resolution,schellekens1990field}.
+%%  
+%%  So, primary fields are labeled by pairs of weights $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$ of
+%%  algebra $\gfh$ and subalgebra $\afh$, such that branching functions $b^{\mu}_{\nu}(q)\neq 0$. Some
+%%  pairs are equivalent. This equivalence is given by the action of so called ``simple currents''
+%%  $(J,\tilde{J})$, which are certain elements of outer automorphisms group $\mathcal{O}(\gfh)\times
+%%  \mathcal{O}(\afh)\approx B(G)\times B(A)$ of $\gfh\times\afh$, where $B(G)$ is center of Lie group
+%%  G. We can think of simple currents as of primary fields and their action on fields of theory are
+%%  then given by fusion product \cite{difrancesco1997cft}. So primary fields of coset model are given
+%%  by the equivalence classes of pairs of weights $(\mu,\nu)\sim (J*\mu,\tilde{J}*\nu)$, where
+%%  $(J,\tilde J)$ such that their conformal weights are equal: $h_{J}-h_{\tilde{J}}=0$.
+%%  
+%%  Conformal weight of coset primary field is equal to
+%%  \begin{multline}
+%%  L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^{\vee})}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^{\vee})}\sum_b
+%%  \tilde{J}^b_0 \tilde{J}^b_0 \right) \left|\phi_{(\mu,\nu)}\right>=\\
+%%  \left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^{\vee})}\right)\left|\phi_{(\mu,\nu)}\right>
+%%  \end{multline} It is possible to obtain analogues of Knizhnik-Zamolodchikov equations for coset
+%%  models \cite{kogan1997knizhnik}:
+%%  \begin{equation} \left\{\frac{1}{2}\partial_{i} + \sum_{i\neq
+%%  j}^{N}\left(\frac{t^{a}_{i}t^{a}_{j}}{k+h^{\vee}}-\frac{\tilde t^{b}_{i}\tilde
+%%  t^{b}_{j}}{k+h^{\vee}_{\af}}\right)\frac{1}{z_{i}-z_{j}}\right\} \left<\phi_{1}(z_{1})\dots
+%%  \phi_{N}(z_{N})\right>=0
+%%    \label{eq:6}
+%%  \end{equation}
+%%  
+%%  Let us introduce Schramm-Loewner evolution corresponding to coset models. The idea is to constrain
+%%  additional Brownian motion on group manifold to the factor space $G/A$.
+%%  
+%%  
+%%  To study SLE on $G/A$ factor space we restrict random walk on group manifold by the choice of basis
+%%  in $\gf$. Assume that generators $\{J^{a};\; a=1\dots \dim\gf\}$ are chosen in such way that
+%%  $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$ and $\{J^{a};\;
+%%  a=\dim\gf-\dim\af\dots \dim\gf\}$ are the generators of subalgebra
+%%  $\af\subset \gf$. Now we can consider $(\dim\gf-\dim\af)$-dimensional Brownian
+%%  motion with generators $d\theta^{a}$ such that $\mathbb{E}(d\theta^{a} \;
+%%  d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\dim\gf-\dim\af$.
+%%  
+%%  Then for generator of field transformation we can write
+%%  \begin{equation} \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa}
+%%  d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\dim\gf-\dim\af}\left(d
+%%  \theta ^{a} t^{a}_{i}\right)\right)
+%%  \label{eq:5}
+%%  \end{equation}
+%%   Substituting to equation \eqref{eq:8} we get martingale condition
+%%  
+%%  \begin{equation} \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa
+%%  \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\dim\gf-\dim\af}
+%%  \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right) \mathcal{F}_{\mathbb{H}}=0
+%%  \label{eq:9}
+%%  \end{equation}
+%%  
+%%  which can be rewritten as the requirement for
+%%  \begin{equation} \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
+%%  \left(\sum_{a=1}^{\dim\gf-\dim\af}J^{a}_{-1}J^{a}_{-1}\right)\right)
+%%  \phi_{(\mu,\nu)}
+%%  \label{eq:10}
+%%  \end{equation}
+%%   to be level two null-field.
+%%  
+%%   It is not always convenient to work with generators
+%%  orthogonal with respect to Killing form $\mathcal{K}$, sometimes it is preferable to use Chevalley
+%%  or Cartan-Weyl basis. So we change normalization condition of additional
+%%  $\dim\gf$-dimensional Brownian motion \eqref{eq:5} to $\mathbb{E}\left[d\theta^{a}\;
+%%  d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation
+%%  \eqref{eq:2} is
+%%  \begin{equation*} \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa}
+%%  d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d
+%%  \theta ^{a} t^{a}_{i}\right)\right).
+%%  \end{equation*}
+%%   Martingale condition \eqref{eq:8} can be written as
+%%  \begin{equation*} \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa
+%%  \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
+%%  \sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)
+%%  \mathcal{F}_{\mathbb{H}}=0.
+%%  \end{equation*}
+%%   This equation can again be rewritten as the requirement for
+%%  \begin{equation} \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
+%%  \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)
+%%  \phi_{(\mu,\nu)}
+%%  \label{eq:30}
+%%  \end{equation}
+%%   to be level two null-field.
+%%  
+%%  Acting with $L_{2}$ we get
+%%  \begin{equation*}
+%%    L_{2}\psi= \left(-8 L_{0}+c/2+ 3 \kappa L_{0}+\frac{1}{2}\tau k \dim\gf\right)
+%%  \phi_{(\mu,\nu)}
+%%  \end{equation*}
+%%  \begin{equation}
+%%    \label{eq:28} (3\kappa-8) h_{(\mu,\nu)}+c+\tau k =0
+%%  \end{equation}
+%%  
+%%  Now we act with $L_{1}^{2}$  and obtain
+%%  \begin{equation}
+%%    \label{eq:17} 12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) + \tau
+%%  (C_{\mu}-\tilde{C}_{\nu})=0,
+%%  \end{equation}
+%%   where $C_{\mu}=(\mu,\mu+2\rho)$ is the eigenvalue of quadratic Casimir operator
+%%  $\sum_{a}t^{a}t^{a}$. We need to get one more equation since we
+%%  have three variables $\kappa,\tau,h_{(\mu,\nu)}$. We can use that $\psi$ is singular vector so
+%%  $L_{1}\psi=0$ and then $J_{1}^{a}L_{1}\psi=0,\; \tilde{J}_{1}^{b} L_{1}\psi=0$, so
+%%  
+%%  \begin{equation}
+%%  L_{1} \psi=L_{1}\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
+%%  \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)
+%%  \phi_{(\mu,\nu)}
+%%  \end{equation}
+%%  
+%%  \begin{equation*}
+%%  L_{1}\psi = \left(-6 L_{-1}+\kappa (2  L_{-1} L_{0}+L_{0}) + \tau \sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{0}\right)
+%%  \phi_{(\mu,\nu)}
+%%  \end{equation*}
+%%  \begin{equation*}
+%%    L_{1}^{2}\psi= \left(-12 L_{0}+\kappa (4  L_{0}^{2}+2 L_{0}) + \tau \sum_{a=1}^{\dim\gf}J^{a}_{0}J^{a}_{0}\right)
+%%  \phi_{(\mu,\nu)}
+%%  \end{equation*}
+%%  \begin{equation*}
+%%    J_{1}^{a}L_{1} \psi= \left(-6 J_{0}^{a}+\kappa (2  J_{0}^{a} L_{0}+J_{0}^{a}) + \tau
+%%      \sum_{b=1}^{\dim\gf}\sum_{c=1}^{\dim\gf}i f^{abc}J^{c}_{0}J^{b}_{0}+k\tau J_{0}^{a}\right)
+%%  \phi_{(\mu,\nu)}
+%%  \end{equation*}
+%%  
+%%  
+%%  \begin{equation*}
+%%    L_{2}\psi= \left(-8 L_{0}+c/2+ 3 \kappa L_{0}+\frac{1}{2}\tau k \dim\gf\right)
+%%  \phi_{(\mu,\nu)}
+%%  \end{equation*}
+%%  
+%%  \begin{eqnarray*}
+%%    (3\kappa-8) h_{(\mu,\nu)}+c/2+\frac{1}{2}\tau k \dim\gf=0\\
+%%    -12 h_{(\mu,\nu)}+\kappa (4 h_{(\mu,\nu)}^{2}+2 h_{(\mu,\nu)}) +\tau C(\mu) =0\\
+%%    (-6 +\kappa (2 h_{(\mu,\nu)}+1)+\tau
+%%  \end{eqnarray*}
+%%  \begin{equation}
+%%    \label{eq:29} \left(-6 + \kappa + \tau + 2 \kappa h_{(\mu,\nu)}\right) J^{3}_{0}
+%%  \phi_{(\mu,\nu)}=0
+%%  \end{equation}
+%%  
+%%  Acting on \eqref{eq:30} with $L_{2}$ and $L_{1}^{2}$ we can obtain equations \eqref{eq:28} and
+%%  \eqref{eq:17}. To get more equations we can act by $\afh$-generators $\tilde{J}^{b}_{1}$ and $L_{1}$
+%%  similarly to what was done with $J^{3}_{1}$ to get equation \eqref{eq:29}.
+%%  
+%%  To obtain simpler relations it is also possible to use generalization of Knizhnik-Zamolodchikov
+%%  equations \eqref{eq:6} as was done for WZNW-models in paper \cite{alekseev2010sle}.
+%%  
+%%  
+%%  Now consider simple example. Let $G=SU(2)$ and $A=U(1)$, and corresponding Lie algebras
+%%  $\gf=\mathrm{su}(2)$ with generators $J^{1},J^{2},J^{3}$ and $\af=\mathrm{u}(1)$ with the generator
+%%  $J^{3}$, $\af\subset\gf$. Note that $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$.
+%%  
+%%   The equation \eqref{eq:10} is now
+%%  \begin{equation}
+%%    \label{eq:11} \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau
+%%  \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{(\mu,\nu)}
+%%  \end{equation}
+%%   If we use basis $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\;
+%%  J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$ this equation is rewritten in the form
+%%  \begin{equation} \psi= \left(-2
+%%  L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right)
+%%  \phi_{(\mu,\nu)}
+%%  \label{eq:12}
+%%  \end{equation}
+%%   which is similar to the equations for parafermionic fields introduced in paper
+%%  \cite{santachiara2008sle}.
+%%  
+%%  Central charge in this case is equal to
+%%  \begin{equation}
+%%    \label{eq:14} c=\frac{2(k-1)}{k+2}
+%%  \end{equation}
+%%  
+%%  Let us study the solutions of the equation \eqref{eq:11}. Act on $\psi$ with $L_{2}$:
+%%  \begin{equation}
+%%    \label{eq:13} L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{(\mu,\nu)}=0,
+%%  \end{equation}
+%%   and obtain
+%%  \begin{equation}
+%%    \label{eq:28} (3\kappa-8) h_{(\mu,\nu)}+c+\tau k =0
+%%  \end{equation}
+%%   Another equation can be obtained by action of $L_{1}^{2}$
+%%  \begin{equation}
+%%    \label{eq:15} L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau
+%%  (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{(\mu,\nu)}=0
+%%  \end{equation}
+%%   Since
+%%  $J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}=J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}+J_{0}^{3}J_{0}^{3}-J_{0}^{3}J_{0}^{3}$
+%%  we have
+%%  \begin{equation}
+%%    \label{eq:17} 12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) + \tau
+%%  (C_{\mu}-\tilde{C}_{\nu})=0,
+%%  \end{equation}
+%%   where $C_{\mu}=(\mu,\mu+2\rho)$ is the eigenvalue of quadratic Casimir operator
+%%  $\sum_{a}t^{a}t^{a}$. For $u(1)$ it is just $\nu^{2}$. We need to get one more equation since we
+%%  have three variables $\kappa,\tau,h_{(\mu,\nu)}$. We can use that $\psi$ is singular vector so
+%%  $L_{1}\psi=0$ and then $J_{1}^{3}L_{1}\psi=0$, so
+%%  \begin{equation}
+%%    \label{eq:29} \left(-6 + \kappa + \tau + 2 \kappa h_{(\mu,\nu)}\right) J^{3}_{0}
+%%  \phi_{(\mu,\nu)}=0
+%%  \end{equation}
+%%  
+%%  
+%%  Turn to the case $k=2, \;c=1/2$ which corresponds to square lattice Ising model. We have three
+%%  non-equivalent fields numbered by the pairs of $su(2)$ and $u(1)$ weights, which are $\phi_{(0,0)},
+%%  \; h_{(0,0)}=0; \quad \phi_{(0,2)}, \; h_{(0,2)}=1/2; \quad \phi_{(1,1)}, \; h_{(1,1)}=1/16$. The
+%%  equation \eqref{eq:29} is trivial for $\phi_{(0,0)}$ and $\phi_{(0,2)}$, so the equations
+%%  \eqref{eq:17}, \eqref{eq:28} are consistent although we do not know how to interpret $\tau$ in
+%%  context of the Ising model. If we consider the field $\phi_{(1,1)}$ we have no solution for
+%%  $\kappa,\tau$, so we see that not every primary field corresponds to some boundary condition
+%%  changing operator.
+%%  
+%%  
+%%  \section{Algebraic equations}
+%%  \label{sec:algebraic-equations}
+%%  
+%%  \section{Examples}
+%%  \label{sec:examples}
+%%  
 
 \bibliography{bibliography}{}
 \bibliographystyle{utphys}
