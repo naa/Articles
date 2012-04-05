@@ -1,8 +1,17 @@
-\documentclass[a4paper]{article}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{multicol}
-\usepackage{color}
-\usepackage{graphicx}
+\documentclass{jetpl}
+\twocolumn
+
+%%% article in English
+\lat
+
+%%% declaration of a new mathematical operator
+\DeclareMathOperator{\sign}{sign}
+
+
+%\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{multicol}
+%\usepackage{color}
+%\usepackage{graphicx}
 \usepackage{hyperref}
 
 \newtheorem{statement}{Statement}
@@ -10,7 +19,7 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}{Lemma}
 \newtheorem{mynote}{Note}[section]
-\theoremstyle{definition}
+%\theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
 \newtheorem{example}{Example}
@@ -31,19 +40,53 @@
 \newcommand{\bff}{\mathfrak{b}}
 \newcommand{\hfg}{\hf_{\gf}}
 
-\theoremstyle{definition} \newtheorem{Def}{Definition}
+%\theoremstyle{definition} \newtheorem{Def}{Definition}
 \newcommand{\adk}{a^{\dagger}_{\kappa}} \newcommand{\ak}{a_{\kappa}}
 \def\bF{\mbox{$\overline{\cal F}$}} \def\F{\mbox{$\cal F$}}
 
 
 
-\begin{document}
+%%% article title
 \title{SLE martingales in coset conformal field theory}
-\author{Anton Nazarov}
+
+%%% article title - for colontitle (at the top of the page)
+\rtitle{SLE martingales in coset conformal field theory}
+
+%%% article title - for table of contents (usualy identical with \title)
+\sodtitle{SLE martingales in coset conformal field theory}
+
+%%% author(s) ( + e-mail)
+
+\author{Anton Nazarov$^{+*}$\/\thanks{e-mail: anton.nazarov@hep.phys.spbu.ru}}
+
+%%% author(s) - for colontitle (at the top of the page)
+\rauthor{Anton Nazarov}
+
+%%% author(s) - for table of contents
+\sodauthor{Nazarov}
+
+%%% author's address(es)
+\address{
+  $^+$ Department of High-Energy and Elementary Particle Physics, 
+  Faculty of Physics and\\ Chebyshev Laboratory,
+  Faculty of Mathematics and Mechanics, \\ SPb State University
+  198904, Saint-Petersburg, Russia}
+
+%%% dates of submition & resubmition (if submitted once, second argument is *)
+\dates{06 April 2012}{*}
+
+%%% abstract
+
+
+
+\abstract{
+  The problem is to provide a way for the concurrent use of Scramm-Loewner evolution (SLE) and conformal field theory (CFT). Both SLE and CFT are popular instruments to study critical behavior of physical models in two dimensions, but they use different objects. While Scharmm-Loewner evolution has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory. In order to connect two approaches we consider CFT correlation functions which are martingales with respect to SLE. We establish necessary and sufficient conditions on such observables for coset models of conformal field theory and Schramm-Loewner evolution on group manifolds and check the consistency with the  behaviour of parafermionic models.}
+
+%%% PACS numbers
+\PACS{05.50.+q, 11.25.Hf, 02.20.Sv}
+
+\begin{document}
 \maketitle
-\begin{abstract}
-  The problem is to provide a way for the concurrent use of Scramm-Loewner evolution (SLE) and conformal field theory (CFT). Both SLE and CFT are popular instruments to study critical behavior of physical models in two dimensions, but they use different objects. While Scharmm-Loewner evolution has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory. In order to connect two approaches we consider CFT correlation functions which are martingales with respect to SLE. We establish necessary and sufficient conditions on such observables for coset models of conformal field theory and Schramm-Loewner evolution on group manifolds and check the consistency with the  behaviour of parafermionic models.
-\end{abstract}
 
 \section{Introduction}
 \label{sec:introduction}
@@ -101,12 +144,13 @@ We assume that boundary field $\varphi$ is also primary and labeled by weights $
 
   We use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite expression \eqref{eq:2} in the whole upper half plane:
 
-\begin{equation}
-  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{i}} 
+\begin{multline}
+  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\})_{\mathbb{H}_{t}}=\\
+  =\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{i}} 
   \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{\bar h_i}
   \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
   \label{eq:1}
-\end{equation}
+\end{multline}
 We can extend the definition of $\mathcal{F}$ to the whole plane by doubling the number of fields $\phi_{i}$ \cite{cardy2004boundary,cardy1984conformal} and consider $w_{i},\bar w_{i}$ as independent variables. To simplify notation we will write $\mathcal{F}(\left\{w_{i}\right\}_{i=1}^{2N})$.
 
 Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:2}) gives us
@@ -119,11 +163,12 @@ We denote by $\mathcal{G}_{i}$ generator of infinitesimal transformation of prim
 \label{eq:3}
 \end{equation}
  Ito formula  gives us the expression for the differential of $\mathcal{F}$, it should be zero due to martingale condition:
-\begin{equation}
-d \mathcal{F}_{\mathbb{H}_{t}}= \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
-      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}=0
+\begin{multline}
+d \mathcal{F}_{\mathbb{H}_{t}}=\\ \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)
+\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
+      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}\\=0
 \label{eq:8}
-\end{equation}
+\end{multline}
 Substitute definition \eqref{eq:3} and get 
 \begin{equation}
   \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
@@ -131,22 +176,30 @@ Substitute definition \eqref{eq:3} and get
   \label{eq:4}
 \end{equation}
 where
-\begin{equation*}
-  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{i}}{(w_{i}-z)^{n}}-\frac{\partial_{w_{i}}}{(w_{i}-z)^{n-1}}\right);\quad \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}};\; \tilde{\mathcal{J}}^{b}_{{-n}}=-\sum_{i}\frac{\tilde{t}^{b}_{i}}{(w_{i}-z)^{n}}
-\end{equation*}
+\begin{eqnarray*}
+  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{i}}{(w_{i}-z)^{n}}-\frac{\partial_{w_{i}}}{(w_{i}-z)^{n-1}}\right)\\ \mathcal{J}^{a}_{{-n}}=-\sum_{i}\frac{t^{a}_{i}}{(w_{i}-z)^{n}};\; \tilde{\mathcal{J}}^{b}_{{-n}}=-\sum_{i}\frac{\tilde{t}^{b}_{i}}{(w_{i}-z)^{n}}
+\end{eqnarray*}
 This equation is equivalent to following algebraic condition on boundary state $\varphi(0)\left|0\right>$:
-\begin{equation}
+\begin{multline}
   \label{eq:7}
-  <0|\varphi(\infty)\phi_{1}(w_{1})\dots\phi_{2N}(w_{2N})\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)\varphi(0)|0>=0
-\end{equation}
-Since the set $\{\phi_{i}\}$ consists of arbitrary primary fields we conclude that $|\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)\varphi(0)|0>$ is null-state. Now we act on $\psi$ by raising operators to get equations on $\kappa,\tau$. Since in coset theory
+  \left<0\left|\varphi(\infty)\phi_{1}(w_{1})\dots\phi_{2N}(w_{2N})\right.\right.\\
+  \left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)\\
+\left.\varphi(0)|0\right>=0
+\end{multline}
+Since the set $\{\phi_{i}\}$ consists of arbitrary primary fields we conclude that 
+\begin{multline}
+|\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)\\
+\cdot\varphi(0)|0>
+\end{multline}
+is null-state. Now we act on $\psi$ by raising operators to get equations on $\kappa,\tau$. Since in coset theory
 \begin{equation}
   \label{eq:18}
-\begin{array}{l}
-  L_{n}=L_{n}^{\gf}-L_{n}^{\af}\\
-  \left[L_{n}^{\gf},J^{a}_{m}\right]=-m J^{a}_{n+m}\\
-  \left[L_{n}^{\gf},\tilde{J}^{b}_{m}\right]=-m\tilde{J}^{b}_{n+m}\\
-  \left[L_{n}^{\gf},L_{m}\right]=[L_{n}^{\gf},L_{m}^{\gf}]-[L_{n}^{\gf},L_{m}^{\af}]=(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0}
+\begin{array}{rl}
+  L_{n}=& L_{n}^{\gf}-L_{n}^{\af}\\
+  \left[L_{n}^{\gf},J^{a}_{m}\right]=& -m J^{a}_{n+m}\\
+  \left[L_{n}^{\gf},\tilde{J}^{b}_{m}\right]=&-m\tilde{J}^{b}_{n+m}\\
+  \left[L_{n}^{\gf},L_{m}\right]=&[L_{n}^{\gf},L_{m}^{\gf}]-[L_{n}^{\gf},L_{m}^{\af}]=\\
+  & =(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0}
 \end{array}
 \end{equation}
  it is more convenient to act by $L_{2}^{\gf}$ and $\left(L_{1}^{\gf}\right)^{2}$. 
@@ -165,6 +218,7 @@ Second relation appears as the result of $L_{1}^{\gf}$-action:
 (C_{\mu}-\tilde{C}_{\nu})=0,
 \end{equation}
  where $C_{\mu}=(\mu,\mu+2\rho), \tilde{C}_{\nu}=(\nu,\nu+2\rho_{\af})$ is the eigenvalue of quadratic Casimir operators $\sum_{a}t^{a}t^{a}, \sum_{b}\tilde{t}^{b}\tilde{t}^{b}$ of Lie algebras $\gf$ and $\af$.
+Relations \eqref{eq:28},\eqref{eq:21} are necessary conditions for CFT correlation functions to be SLE martingales. 
 
 From equations \eqref{eq:28},\eqref{eq:21} we immediately get $\kappa,\tau$ for each pair $(\mu,\nu)$ of $\gf$ and $\af$-weights. 
 
@@ -190,12 +244,14 @@ It is also possible to consider coset theory as $G\times A$  gauge theory and im
 \subsection{Examples}
 \label{sec:examples-1}
 
-Minimal models $su(2)/u(1)$.
+Minimal models $su(2)/u(1)$, $su(2)\oplus su(2)/su(2)$.
 
 \section{Outlook}
 \label{sec:outlook}
 
 In excellent paper \cite{bettelheim2005stochastic} connection between WZNW-models and Schramm-Loewner evolution with additional Brownian motion on group manifold was established. This paper also stated a problem of the connection of SLE parameters for martingales in WZNW, coset and minimal models. Here we used the method to obtain necessary and sufficient conditions on SLE martingales proposed in paper \cite{alekseev2010sle}. This method allowed us to compare our results with parafermionic results of the papers \cite{santachiara2008sle,picco2008numerical}.
+
+Coset structure of minimal models is manifest in field theory perturbed by external magnetic field \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. This theory is supported by experimental data \cite{coldea2010quantum}. Relation between correlation functions in coset theory and SLE observables can be a starting point for the study of domain walls in lattice models away of critical point. Schramm-Loewner evolution was applied for the description of domain walls in Ising model with external field in recent paper \cite{stevenson2011domain}, although the perturbation was not compatible with affine field theory structure. 
 
 \section{Conclusion}
 \label{sec:conclusion}
