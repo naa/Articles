@@ -73,7 +73,7 @@
   198904, Saint-Petersburg, Russia}
 
 %%% dates of submition & resubmition (if submitted once, second argument is *)
-\dates{06 April 2012}{*}
+\dates{26 April 2012}{*}
 
 %%% abstract
 
@@ -81,7 +81,7 @@
 
 \abstract{
   Scharmm-Loewner evolution (SLE) and conformal field theory (CFT) are popular instruments to study critical behavior of physical models in two dimensions, but they use different objects. While SLE  has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory.
-  To provide a way for the concurrent use of SLE and CFT we consider CFT correlation functions which are martingales with respect to SLE.  We establish necessary and sufficient conditions on such observables for coset models of conformal field theory and Schramm-Loewner evolution on group manifolds and check the consistency with the  behaviour of parafermionic models. Coset models are connected with off-critical massive field theories and we discuss possible implications for SLE.} 
+  To provide a way for the concurrent use of SLE and CFT we consider CFT correlation functions which are martingales with respect to SLE.  We establish connection between parameters of Schramm-Loewner evolution on coset space and algebraic data of coset conformal field theory. Then we check the consistency of our approach with the  behaviour of parafermionic and minimal models. Coset models can be connected to off-critical massive field theories and we discuss possible implications for SLE.} 
 
 %%% PACS numbers
 \PACS{05.50.+q, 11.25.Hf, 02.20.Sv}
@@ -98,7 +98,7 @@ Conformal field theory \cite{belavin1984ics} is formulated in terms of families 
 
 Combination of these two approaches should be immensely powerful, so it is important to find objects which can be studied from both points of view. We consider correlation functions of CFT which are martingales with respect to Schramm-Loewner evolution are such objects.
 
-We present new class of such observables in coset conformal field theory \cite{Goddard198588}. They are correlation functions in $G/A$-coset conformal field theory which are martingales with respect to Schramm-Loewner evolution with additional Brownian motion on factor-space of Lie group $G$ by subgroup $A$ \cite{2011arXiv1112.4354N}. Using Knizhnik-Zamolodchikov equations we establish necessary and sufficient conditions on such functions and derive relations connecting parameters of SLE and CFT. We then check the consistency of these results with the earlier results obtained for parafermionic observables \cite{santachiara2008sle}. 
+We present new class of such observables in coset conformal field theory \cite{Goddard198588}. They are correlation functions in $G/A$-coset conformal field theory which are martingales with respect to Schramm-Loewner evolution with additional Brownian motion on factor-space of Lie group $G$ by subgroup $A$ \cite{2011arXiv1112.4354N}. We derive relations connecting parameters of SLE and CFT. We then check the consistency of these results with the earlier results obtained for parafermionic observables \cite{santachiara2008sle}. 
 
 All minimal unitary models can be obtained by coset construction. This coset structure leads to specific off-critical behavior such as classification of massive excitations by affine Toda field theory \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. In conclusion we discuss possible connections of these CFT perturbation with massive off-critical SLEs (which contain additional drift term  \cite{makarov2010off}).
 
@@ -226,33 +226,34 @@ From equations \eqref{eq:28},\eqref{eq:21} we immediately get $\kappa,\tau$ for 
 
 \subsection{Examples}
 \label{sec:examples-1}
-As an example consider   $\frac{su(2)_{N}}{u(1)_{N}}$-coset models which are equivalent to $Z_{N}$-parafermions.  Central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$. $C_{\mu}=k(k+2)/2, C_{\nu}=l^{2}/2$
-Case  $N=2,c=1/2$ is Ising model, we have two non-trivial primary fields with conformal weights $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. Substituting field $\varphi_{(2,0)}$ into equations (\ref{eq:28},\ref{eq:21}) we get $3\kappa-9+4\tau =0;\quad -3+\kappa+4\tau=0$. Then $\kappa=3, \tau=0$. For field $\varphi_{(1,1)}$ we obtain $3\kappa-16+64\tau=0,\quad -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. So we have no additional motion for Ising model and two possible values for SLE parameter $\kappa$,  coinciding with well-known results. 
-For $N=3, c=4/5$. Conformal weights $h_{(0,0)}=0$, $h_{(0,2)}=2/3$, $h_{(0,-2)}=2/3$, $h_{(1,3)}=2/5$, $h_{(1,1)}=1/15$, $h_{(1,-1)}=1/15$.  Corresponding values of $\kappa,\tau$ are: $(208/25,242/225), (460/33,116/33),(260/53,28/477)$
+As an example consider  $\frac{\hat{su}(2)_{N}}{\hat{u}(1)_{N}}$-coset models which are equivalent to $Z_{N}$-parafermions.  Central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$.
+% $C_{\mu}=k(k+2)/2, C_{\nu}=l^{2}/2$
 
-Now use another coset realization of minimal unitary models: $\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{su}(2)_{N+1}}$, $c=\frac{3N}{N+2}+1-\frac{3(N+1)}{N+3}=1-\frac{6}{(N+2)(N+3)}$
+Case $N=2$, $c=\frac{1}{2}$ corresponds to Ising model, we have two non-trivial primary fields with conformal weights $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. Substituting field $\varphi_{(2,0)}$ into equations (\ref{eq:28},\ref{eq:21}) we get $3\kappa-9+4\tau =0;\quad -3+\kappa+4\tau=0$. Then $\kappa=3, \tau=0$. For field $\varphi_{(1,1)}$ we obtain $3\kappa-16+64\tau=0,\quad -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. So we have no additional motion for Ising model and two possible values for SLE parameter $\kappa$,  coinciding with well-known results. 
 
-three-state Potts model $\frac{\hat{su}(3)_{1}\oplus \hat{su}(3)_{1}}{\hat{su}(3)_{2}}$
+For $N=3$ parafermionic model central charge is $c=\frac{4}{5}$. Conformal weights are $h_{(0,0)}=0$, $h_{(0,2)}=h_{(0,-2)}=\frac{2}{3}\; \mathrm{mod}\; 1$, $h_{(2,0)}=\frac{2}{5}$, $h_{(2,2)}=h_{(2,-2)}=\frac{1}{15}$.  Corresponding values of $\kappa,\tau$ are: $(\frac{208}{25},\frac{242}{225}), (\frac{10}{3},0),(\frac{80}{19},\frac{14}{171})$. As was mentioned in \cite{santachiara2008sle} field $\varphi_{(2,0)}$ with conformal weight $h_{(2,0)}=\frac{2}{5}$ constitutes $Z_{3}$-singlet, so  additional random walk does not appear and $\tau=0$. The form of equations (\ref{eq:7}) is similar to that of \cite{santachiara2008sle}, but normalization of $\tau$ differs. 
 
-But correlation functions in coset conformal field theory must satisfy (generalized) Knizhnik-Zamolodchikov equations \cite{kogan1997knizhnik} which are of the form
-\begin{equation}
-  \label{eq:16}
- \left[ \frac{1}{2}\frac{\partial}{\partial w_{i}} +\sum_{j\neq i} \left( \frac{\sum_{a}t_{i}^{a}t_{j}^{a}}{k+h^{\vee}}-\frac{\sum_{b}\tilde t_{i}^{b}\tilde t_{j}^{b}}{x_{e}k+h_{\af}^{\vee}}\right) \right]\mathcal{F}_{\mathbb{H}}=0
-\end{equation}
-Rewrite the equation as
-\begin{equation}
-  \label{eq:22}
-  \left[ \frac{1}{2}\frac{\partial}{\partial w_{i}} +\sum_{j\neq i} \left( \frac{\sum_{a}t_{i}^{a}t_{j}^{a}}{k+h^{\vee}}-\frac{\sum_{b}\tilde t_{i}^{b}\tilde t_{j}^{b}}{x_{e}k+h_{\af}^{\vee}}\right) \right]\mathcal{F}_{\mathbb{H}}=0
-\end{equation}
+It is easy to see that for  $\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{su}(2)_{N+1}}$-coset realization of minimal unitary models with $c=\frac{3N}{N+2}+1-\frac{3(N+1)}{N+3}=1-\frac{6}{(N+2)(N+3)}$ system of equations (\ref{eq:28},\ref{eq:21}) is always consistent for $\tau=0$ and we get standard connection between SLE-parameter $\kappa$ and central charge $c=\frac{(6-\kappa)(3\kappa-8)}{2\kappa}$. 
 
-From this relations and equation \eqref{eq:8} we can write sufficient conditions for SLE martingale to be CFT correlation function:
-\begin{equation}
-  \label{eq:23}
-  M x = 0
-\end{equation}
-
-It is also possible to consider coset theory as $G\times A$  gauge theory and impose constraints on physical states later (See \cite{hwang1993brst,kogan1997knizhnik,gawdzki1988g,figueroa89equivalence}). In this case second term in equation \eqref{eq:3} will include sum over $\gf$ and $\af$ generators and two parameters of Brownian motion $\tau_{\gf}$ and $\tau_{\af}$. 
-
+%% But correlation functions in coset conformal field theory must satisfy (generalized) Knizhnik-Zamolodchikov equations \cite{kogan1997knizhnik} which are of the form
+%% \begin{equation}
+%%   \label{eq:16}
+%%  \left[ \frac{1}{2}\frac{\partial}{\partial w_{i}} +\sum_{j\neq i} \left( \frac{\sum_{a}t_{i}^{a}t_{j}^{a}}{k+h^{\vee}}-\frac{\sum_{b}\tilde t_{i}^{b}\tilde t_{j}^{b}}{x_{e}k+h_{\af}^{\vee}}\right) \right]\mathcal{F}_{\mathbb{H}}=0
+%% \end{equation}
+%% Rewrite the equation as
+%% \begin{equation}
+%%   \label{eq:22}
+%%   \left[ \frac{1}{2}\frac{\partial}{\partial w_{i}} +\sum_{j\neq i} \left( \frac{\sum_{a}t_{i}^{a}t_{j}^{a}}{k+h^{\vee}}-\frac{\sum_{b}\tilde t_{i}^{b}\tilde t_{j}^{b}}{x_{e}k+h_{\af}^{\vee}}\right) \right]\mathcal{F}_{\mathbb{H}}=0
+%% \end{equation}
+%% 
+%% From this relations and equation \eqref{eq:8} we can write sufficient conditions for SLE martingale to be CFT correlation function:
+%% \begin{equation}
+%%   \label{eq:23}
+%%   M x = 0
+%% \end{equation}
+%% 
+%% It is also possible to consider coset theory as $G\times A$  gauge theory and impose constraints on physical states later (See \cite{hwang1993brst,kogan1997knizhnik,gawdzki1988g,figueroa89equivalence}). In this case second term in equation \eqref{eq:3} will include sum over $\gf$ and $\af$ generators and two parameters of Brownian motion $\tau_{\gf}$ and $\tau_{\af}$. 
+%% 
 \section{Conclusion and outlook}
 \label{sec:outlook}
 
@@ -260,9 +261,13 @@ In excellent paper \cite{bettelheim2005stochastic} connection between WZNW-model
 
 Coset structure of minimal models is manifest in field theory perturbed by external magnetic field \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. This theory is supported by experimental data \cite{coldea2010quantum}. Relation between correlation functions in coset theory and SLE observables can be a starting point for the study of domain walls in lattice models away of critical point. 
 
-Massive off-critical SLEs has additional drift term in driving Brownian motion \cite{makarov2010off}.
+Massive perturbations of $G/A$-coset theory are realized as affine Toda field theory and classified by simple roots of Lie algebra $\gf$. 
 
-  Schramm-Loewner evolution was applied for the description of domain walls in Ising model with external field in recent paper \cite{stevenson2011domain}, although the perturbation was not compatible with affine field theory structure. 
+Massive off-critical SLEs have additional drift term in driving Brownian motion \cite{makarov2010off}. Addition of drift term to (\ref{eq:20}) leads to appearance of new terms in martingale condition (\ref{eq:8}).
+
+On the other hand perturbation can be seen as the insertion of certain primary field in all correlation functions \cite{hollowood1989rational}. The question is whether the interaction of this primary field with the $\tau$-term of the equation (\ref{eq:4}) lead to the same contribution as the addition of massive drift to SLE. 
+
+Domain walls in  Ising model perturbed by random Gaussian external were studied numerically using Schramm-Loewner evolution in recent paper \cite{stevenson2011domain}. Further task is to compare this results with massive perturbations. 
 
 
 \section*{Acknowledgements}
