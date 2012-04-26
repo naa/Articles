@@ -137,6 +137,8 @@ Consider  $N$-point correlation function of boundary conformal field theory with
 \end{equation}
 where $\phi_{i}$ are bulk primary fields and $\varphi(z_{t})$ is boundary condition changing operator.
 
+Let $\gf$ be (semisimple) Lie algebra of Lie group $G$ and $\af$ -- Lie algebra of subgroup $A\subset G$. Denote by $x_{e}$ index of embedding $\af\to\gf$. 
+
 Primary fields in coset models are labeled by pairs $(\lambda,\eta)$ of weights $\gf$ and $\af$-representations. For each $\lambda$ possible values of $\eta$ are those which appear in decomposition of representation $L^{(\mu)}_{\gf}=\bigoplus_{\eta} H^{\lambda}_{\eta}\otimes L^{(\eta)}_{\af}$. Some pairs are equivalent, we discuss and use this equivalence relation later. 
 We assume that boundary field $\varphi$ is also primary and labeled by weights $(\mu,\nu)$.
 
@@ -207,7 +209,7 @@ is null-state. Now we act on $\psi$ by raising operators to get equations on $\k
 \begin{equation*}
   L_{2}^{\gf}\psi= \left(-8 L_{0}-c+ 3 \kappa L_{0}+\frac{1}{2}\tau (k \dim\gf-x_{e}k\dim\af)\right) \varphi_{(\mu,\nu)}=0
 \end{equation*}
-We use $L_{0} \varphi_{(\mu,\nu)}=h_{(\mu,\nu)} \varphi_{(\mu,\nu)}$ where conformal weight $h_{(\mu,\nu)}= \left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee}_{\gf})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k x_{e}+h^{\vee}_{\af})}\right)$ and central charge $c=\frac{k\dim \gf}{k+h^{\vee}_{\gf}}-\frac{x_{e}k\dim \af}{x_{e} k+h^{\vee}_{\af}}$ and get relation on $\kappa,\tau$:
+We use $L_{0} \varphi_{(\mu,\nu)}=h_{(\mu,\nu)} \varphi_{(\mu,\nu)}$, where conformal weight is $h_{(\mu,\nu)}= \left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee}_{\gf})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k x_{e}+h^{\vee}_{\af})}\right)$ and central charge is $c=\frac{k\dim \gf}{k+h^{\vee}_{\gf}}-\frac{x_{e}k\dim \af}{x_{e} k+h^{\vee}_{\af}}$ and get relation on $\kappa,\tau$:
 \begin{equation}
   \label{eq:28} (3\kappa-8)h_{(\mu,\nu)}-c+\tau (k\dim\gf-x_{e}k\dim\af) =0
 \end{equation}
@@ -224,11 +226,8 @@ From equations \eqref{eq:28},\eqref{eq:21} we immediately get $\kappa,\tau$ for 
 
 \subsection{Examples}
 \label{sec:examples-1}
-
-Minimal models $su(2)/u(1)$, $su(2)\oplus su(2)/su(2)$.
-
-Consider standard coset realization of minimal models: $su(2)_{N}/u(1)_{N}$. Central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$. $C_{\mu}=k(k+2)/2, C_{\nu}=l^{2}/2$
-For Ising model $N=2,c=1/2$, $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. We get for $\varphi_{(2,0)}$: $3\kappa-9+4\tau =0, -3+\kappa+4\tau=0$, $\kappa=3, \tau=0$. For $\varphi_{(1,1)}$: $3\kappa-16+64\tau=0, -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. 
+As an example consider   $\frac{su(2)_{N}}{u(1)_{N}}$-coset models which are equivalent to $Z_{N}$-parafermions.  Central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$. $C_{\mu}=k(k+2)/2, C_{\nu}=l^{2}/2$
+Case  $N=2,c=1/2$ is Ising model, we have two non-trivial primary fields with conformal weights $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. Substituting field $\varphi_{(2,0)}$ into equations (\ref{eq:28},\ref{eq:21}) we get $3\kappa-9+4\tau =0;\quad -3+\kappa+4\tau=0$. Then $\kappa=3, \tau=0$. For field $\varphi_{(1,1)}$ we obtain $3\kappa-16+64\tau=0,\quad -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. So we have no additional motion for Ising model and two possible values for SLE parameter $\kappa$,  coinciding with well-known results. 
 For $N=3, c=4/5$. Conformal weights $h_{(0,0)}=0$, $h_{(0,2)}=2/3$, $h_{(0,-2)}=2/3$, $h_{(1,3)}=2/5$, $h_{(1,1)}=1/15$, $h_{(1,-1)}=1/15$.  Corresponding values of $\kappa,\tau$ are: $(208/25,242/225), (460/33,116/33),(260/53,28/477)$
 
 Now use another coset realization of minimal unitary models: $\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{su}(2)_{N+1}}$, $c=\frac{3N}{N+2}+1-\frac{3(N+1)}{N+3}=1-\frac{6}{(N+2)(N+3)}$
