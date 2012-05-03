@@ -80,8 +80,8 @@
 
 
 \abstract{
-  Scharmm-Loewner evolution (SLE) and conformal field theory (CFT) are popular instruments to study critical behavior of physical models in two dimensions, but they use different objects. While SLE  has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory.
-  To provide a way for the concurrent use of SLE and CFT we consider CFT correlation functions which are martingales with respect to SLE.  We establish connection between parameters of Schramm-Loewner evolution on coset space and algebraic data of coset conformal field theory. Then we check the consistency of our approach with the  behaviour of parafermionic and minimal models. Coset models can be connected to off-critical massive field theories and we discuss possible implications for SLE.} 
+  Scharmm-Loewner evolution (SLE) and conformal field theory (CFT) are popular and widely used instruments to study critical behavior of two-dimensional models, but they use different objects. While SLE  has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory.
+  To provide a way for the concurrent use of SLE and CFT we consider CFT correlation functions which are martingales with respect to SLE.  We establish connection between parameters of Schramm-Loewner evolution on coset space and algebraic data of coset conformal field theory. Then we check the consistency of our approach with the  behaviour of parafermionic and minimal models. Coset models are connected with off-critical massive field theories and we discuss implications for SLE.} 
 
 %%% PACS numbers
 \PACS{05.50.+q, 11.25.Hf, 02.20.Sv}
@@ -92,15 +92,15 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Schramm-Loewner evolution \cite{schramm2000scaling} is a stochastic process satisfying stochastic differential equation (\ref{eq:19}). Solution of equation (\ref{eq:19}) can be seen as probability measure on random curves called SLE traces. SLE is  useful for the study of critical behavior \cite{Cardy:2005kh,rohde2005basic}, since for many lattice models  the convergence of  domain walls to SLE traces can be proved \cite{bauer20062d,schramm2006conformally}. Practical computations with SLE rely on Ito calculus. 
+Schramm-Loewner evolution \cite{schramm2000scaling} is a stochastic process satisfying stochastic differential equation (\ref{eq:19}). Solution of the equation (\ref{eq:19}) can be seen as a probability measure on random curves (called SLE traces). SLE is useful for the study of critical behavior \cite{Cardy:2005kh,rohde2005basic}, since for many lattice models convergence of  domain walls to SLE traces can be proved \cite{bauer20062d,schramm2006conformally}. Practical computations with SLE rely on Ito calculus. 
 
-Conformal field theory \cite{belavin1984ics} is formulated in terms of families of quantum fields which usually has no natural interpretation in microscopic terms. On the other hand CFT has efficient computational tools such as Virasoro symmetry, Knizhnik-Zamolodchikov equations, fusion algebra etc and provides numerous predictions, such as celebrated Cardy formula \cite{cardy1992critical,smirnov2001critical} which gives crossing probability for critical percolation. 
+Conformal field theory \cite{belavin1984ics} is formulated in terms of families of quantum fields which usually has no direct microscopic interpretation. On the other hand, CFT has efficient computational tools such as Virasoro symmetry, Knizhnik-Zamolodchikov equations, fusion algebra etc and provides numerous predictions, such as celebrated Cardy formula \cite{cardy1992critical,smirnov2001critical} which gives crossing probability for critical percolation. 
 
-Combination of these two approaches should be immensely powerful, so it is important to find objects which can be studied from both points of view. We consider correlation functions of CFT which are martingales with respect to Schramm-Loewner evolution are such objects.
+Combination of these two approaches is immensely powerful, so it is important to find objects which can be studied from both points of view.
 
-We present new class of such observables in coset conformal field theory \cite{Goddard198588}. They are correlation functions in $G/A$-coset conformal field theory which are martingales with respect to Schramm-Loewner evolution with additional Brownian motion on factor-space of Lie group $G$ by subgroup $A$ \cite{2011arXiv1112.4354N}. We derive relations connecting parameters of SLE and CFT. We then check the consistency of these results with the earlier results obtained for parafermionic observables \cite{santachiara2008sle}. 
+We present new class of such observables in coset conformal field theory  -- correlation functions which are martingales with respect to Schramm-Loewner evolution with additional Brownian motion on factor-space of Lie group $G$ by subgroup $A$ \cite{2011arXiv1112.4354N}. We derive relations connecting parameters of SLE and CFT. We then check the consistency of these results with the earlier results  for parafermionic observables \cite{santachiara2008sle}. 
 
-All minimal unitary models can be obtained by coset construction. This coset structure leads to specific off-critical behavior such as classification of massive excitations by affine Toda field theory \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. In conclusion we discuss possible connections of these CFT perturbation with massive off-critical SLEs (which contain additional drift term  \cite{makarov2010off}).
+All minimal unitary models can be obtained by coset construction. Coset structure leads to specific off-critical behavior. Massive excitations of coset CFTs are given by affine Toda field theories \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. Recent experimental study confirming this result attracted a lot of attention \cite{coldea2010quantum}. In conclusion we discuss possible connections of massive CFT perturbations with  off-critical SLEs (containing additional drift term  \cite{makarov2010off}).
 
 \section{Martingale conditions}
 \label{sec:mart-cond}
@@ -115,7 +115,7 @@ All minimal unitary models can be obtained by coset construction. This coset str
 %% observables appearing as the scaling limit of lattice observables. Trace of
 %% Schramm-Loewner $\gamma_{t}$ evolution describes critical domain wall in lattice models.
 %% 
- Consider some critical lattice model on the upper half-plane $\mathbb{H}$ with the cut along a critical interface $\gamma_{t}$. We denote this slit domain by $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$.  Assume that $\gamma_{t}$ satisfies restriction property and is conformally  invariant \cite{Cardy:2005kh}. Then  conformal map  $g_{t}:\mathbb{H}_{t}\to \mathbb{H}$ satisfies stochastic differential equation \cite{schramm2000scaling}:
+ Consider some critical lattice model on the upper half-plane $\mathbb{H}$ with the cut along a critical interface $\gamma_{t}$ (domain wall up to some length $t$). We denote this slit domain by $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$.  Assume that $\gamma_{t}$ satisfies restriction property and is conformally  invariant \cite{Cardy:2005kh}. Then  conformal map  $g_{t}:\mathbb{H}_{t}\to \mathbb{H}$ satisfies stochastic differential equation \cite{schramm2000scaling}:
 \begin{equation}
 \label{eq:19}
   \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} ,
@@ -135,12 +135,11 @@ Consider  $N$-point correlation function of boundary conformal field theory with
       \varphi(\infty)\right>,
     \label{eq:2}
 \end{equation}
-where $\phi_{i}$ are bulk primary fields and $\varphi(z_{t})$ is boundary condition changing operator.
+where $\phi_{i}$ are bulk primary fields with conformal weights $h_i$ and $\varphi(z_{t})$ is a boundary condition changing operator.
 
 Let $\gf$ be (semisimple) Lie algebra of Lie group $G$ and $\af$ -- Lie algebra of subgroup $A\subset G$. Denote by $x_{e}$ index of embedding $\af\to\gf$. 
 
-Primary fields in coset models are labeled by pairs $(\lambda,\eta)$ of weights $\gf$ and $\af$-representations. For each $\lambda$ possible values of $\eta$ are those which appear in decomposition of representation $L^{(\mu)}_{\gf}=\bigoplus_{\eta} H^{\lambda}_{\eta}\otimes L^{(\eta)}_{\af}$. Some pairs are equivalent, we discuss and use this equivalence relation later. 
-We assume that boundary field $\varphi$ is also primary and labeled by weights $(\mu,\nu)$.
+Primary fields in coset models are labeled by pairs $(\lambda,\eta)$ of weights of $\gf$ and $\af$-representations. For each $\lambda$ possible values of $\eta$ are those which appear in decomposition of representation $L^{(\mu)}_{\gf}=\bigoplus_{\eta} H^{\lambda}_{\eta}\otimes L^{(\eta)}_{\af}$. (Some pairs are equivalent, see \cite{fuchs1996resolution,schellekens1990field}). We assume that boundary field $\varphi$ is also primary and labeled by weights $(\mu,\nu)$.
 
   We use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite expression \eqref{eq:2} in the whole upper half plane:
 \begin{multline}
@@ -153,17 +152,19 @@ We assume that boundary field $\varphi$ is also primary and labeled by weights $
 We can extend the definition of $\mathcal{F}$ to the whole plane by doubling the number of fields $\phi_{i}$ \cite{cardy2004boundary,cardy1984conformal} and consider $w_{i},\bar w_{i}$ as independent variables. To simplify notation we will write $\mathcal{F}(\left\{w_{i}\right\}_{i=1}^{2N})$.
 
 
-$G/A$-coset conformal field theory can be realized as WZNW-model with gauge group $G$ interacting with pure gauge field of gauge group $A\subset G$ \cite{gawdzki1988g,figueroa89equivalence}. So we have $G/A$ gauge symmetry and we add random gauge transformations to Schramm-Loewner evolution \cite{2011arXiv1112.4354N} similar to the case of WZNW-models \cite{bettelheim2005stochastic}. Denote by $\mathcal{K}$ Killing form of Lie algebra $\gf$ corresponding to Lie group $G$ and by $t^{a}_{i}$ ($\tilde{t}^{b}_{i}$) the  generators of $\gf$-representation ($\af$-representation) corresponding to primary field $\phi_{i}$.
+$G/A$-coset conformal field theory can be realized as WZNW-model (with gauge group $G$) interacting with pure gauge field of gauge group $A\subset G$ \cite{gawdzki1988g,figueroa89equivalence}. If we fix $A$-gauge we have $G/A$ gauge symmetry. Then we add random gauge transformations to Schramm-Loewner evolution \cite{2011arXiv1112.4354N} similar to the case of WZNW-models \cite{bettelheim2005stochastic}. Denote by $\mathcal{K}$ Killing form of Lie algebra $\gf$ corresponding to Lie group $G$ and by $t^{a}_{i}$ ($\tilde{t}^{b}_{i}$) the  generators of $\gf$-representation ($\af$-representation) corresponding to primary field $\phi_{i}$.
 
-Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:2}) gives us
+Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in right-hand-side of equation (\ref{eq:1}) gives us
 \begin{equation*}
   -\frac{2h_{i}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}.
 \end{equation*}
-We denote by $\mathcal{G}_{i}$ generator of infinitesimal transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) = \mathcal{G}_{i}\phi_{i}(w_{i})$. We normalize additional $\dim\gf$-dimensional Brownian motion as $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation is equal to 
+Denote by $\mathcal{G}_{i}$ generator of infinitesimal transformation of primary field $\phi_{i}$:\;$d\phi_{i}(w_{i}) = \mathcal{G}_{i}\phi_{i}(w_{i})$. We normalize additional $\dim\gf$-dimensional Brownian motion as $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, and the generator of field transformation is equal to 
 \begin{equation}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right).
 \label{eq:3}
 \end{equation}
+So we have fixed $A$-gauge by allowing random walk only in direction orthogonal to subalgebra $\af$. 
+
  Ito formula  gives us the expression for the differential of $\mathcal{F}$ which should be zero due to martingale condition:
 \begin{multline}
 d \mathcal{F}_{\mathbb{H}_{t}}=\\ \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)
@@ -193,7 +194,7 @@ Since the set $\{\phi_{i}\}$ consists of arbitrary primary fields we conclude th
 |\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\dim\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\dim\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right)\\
 \cdot\varphi(0)|0>
 \end{multline}
-is null-state. Now we act on $\psi$ by raising operators to get equations on $\kappa,\tau$. Since in coset theory
+is a null-state. Now we act on $\psi$ by raising operators to get equations on $\kappa,\tau$. Since in coset theory commutation relations of full chiral algebra are
 \begin{equation}
   \label{eq:18}
 \begin{array}{ll}
@@ -201,10 +202,10 @@ is null-state. Now we act on $\psi$ by raising operators to get equations on $\k
   \left[L_{n}^{\gf},J^{a}_{m}\right]= -m J^{a}_{n+m}&\\
   \left[L_{n}^{\gf},\tilde{J}^{b}_{m}\right]=-m\tilde{J}^{b}_{n+m}&\\
   \left[L_{n}^{\gf},L_{m}\right]=[L_{n}^{\gf},L_{m}^{\gf}]-[L_{n}^{\gf},L_{m}^{\af}]=&\\
-  \quad =(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0}&
+  \quad =(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0},&
 \end{array}
 \end{equation}
- it is more convenient to act by $L_{2}^{\gf}$ and $\left(L_{1}^{\gf}\right)^{2}$. 
+ it is more convenient to act with $L_{2}^{\gf}$ and $\left(L_{1}^{\gf}\right)^{2}$. 
  Acting with $L_{2}^{\gf}$ we get
 \begin{equation*}
   L_{2}^{\gf}\psi= \left(-8 L_{0}-c+ 3 \kappa L_{0}+\frac{1}{2}\tau (k \dim\gf-x_{e}k\dim\af)\right) \varphi_{(\mu,\nu)}=0
@@ -219,17 +220,17 @@ Second relation appears as the result of $L_{1}^{\gf}$-action:
  -12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) + \tau
 (C_{\mu}-\tilde{C}_{\nu})=0,
 \end{equation}
- where $C_{\mu}=(\mu,\mu+2\rho), \tilde{C}_{\nu}=(\nu,\nu+2\rho_{\af})$ is the eigenvalue of quadratic Casimir operators $\sum_{a}t^{a}t^{a}, \sum_{b}\tilde{t}^{b}\tilde{t}^{b}$ of Lie algebras $\gf$ and $\af$.
+ where $C_{\mu}=(\mu,\mu+2\rho)$ and $\tilde{C}_{\nu}=(\nu,\nu+2\rho_{\af})$ are the eigenvalues of quadratic Casimir operators $\sum_{a}t^{a}t^{a}$ and $\sum_{b}\tilde{t}^{b}\tilde{t}^{b}$ of Lie algebras $\gf$ and $\af$.
 Relations \eqref{eq:28},\eqref{eq:21} are necessary conditions for CFT correlation functions to be SLE martingales. 
 
 From equations \eqref{eq:28},\eqref{eq:21} we immediately get $\kappa,\tau$ for each pair $(\mu,\nu)$ of $\gf$ and $\af$-weights. 
 
 \subsection{Examples}
 \label{sec:examples-1}
-As an example consider  $\frac{\hat{su}(2)_{N}}{\hat{u}(1)_{N}}$-coset models which are equivalent to $Z_{N}$-parafermions.  Central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$.
+As an example consider  $\frac{\hat{su}(2)_{N}}{\hat{u}(1)_{N}}$-coset model which is equivalent to $Z_{N}$-parafermions.  Central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$.
 % $C_{\mu}=k(k+2)/2, C_{\nu}=l^{2}/2$
 
-Case $N=2$, $c=\frac{1}{2}$ corresponds to Ising model, we have two non-trivial primary fields with conformal weights $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. Substituting field $\varphi_{(2,0)}$ into equations (\ref{eq:28},\ref{eq:21}) we get $3\kappa-9+4\tau =0;\quad -3+\kappa+4\tau=0$. Then $\kappa=3, \tau=0$. For field $\varphi_{(1,1)}$ we obtain $3\kappa-16+64\tau=0,\quad -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. So we have no additional motion for Ising model and two possible values for SLE parameter $\kappa$,  coinciding with well-known results. 
+Case $N=2$, $c=\frac{1}{2}$ corresponds to Ising model, we have two non-trivial primary fields with conformal weights $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. Substituting field $\varphi_{(2,0)}$ into equations (\ref{eq:28},\ref{eq:21}) we get $3\kappa-9+4\tau =0;\quad -3+\kappa+4\tau=0$. Then $\kappa=3, \tau=0$. For field $\varphi_{(1,1)}$ we obtain $3\kappa-16+64\tau=0,\quad -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. So we have no additional motion for Ising model and two possible values for SLE parameter $\kappa$,  coinciding with well-known results \cite{schramm2006conformally}. 
 
 For $N=3$ parafermionic model central charge is $c=\frac{4}{5}$. Conformal weights are $h_{(0,0)}=0$, $h_{(0,2)}=h_{(0,-2)}=\frac{2}{3}\; \mathrm{mod}\; 1$, $h_{(2,0)}=\frac{2}{5}$, $h_{(2,2)}=h_{(2,-2)}=\frac{1}{15}$.  Corresponding values of $\kappa,\tau$ are: $(\frac{208}{25},\frac{242}{225}), (\frac{10}{3},0),(\frac{80}{19},\frac{14}{171})$. As was mentioned in \cite{santachiara2008sle} field $\varphi_{(2,0)}$ with conformal weight $h_{(2,0)}=\frac{2}{5}$ constitutes $Z_{3}$-singlet, so  additional random walk does not appear and $\tau=0$. The form of equations (\ref{eq:7}) is similar to that of \cite{santachiara2008sle}, but normalization of $\tau$ differs. 
 
@@ -257,9 +258,9 @@ It is easy to see that for  $\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{s
 \section{Conclusion and outlook}
 \label{sec:outlook}
 
-In excellent paper \cite{bettelheim2005stochastic} connection between WZNW-models and Schramm-Loewner evolution with additional Brownian motion on group manifold was established. This paper also stated a problem of the connection of SLE parameters for martingales in WZNW, coset and minimal models. In present letter we used the method to obtain necessary and sufficient conditions on SLE martingales proposed in paper \cite{alekseev2010sle}. This method allowed us to compare our results with parafermionic results of the papers \cite{santachiara2008sle,picco2008numerical}.
+In the excellent paper \cite{bettelheim2005stochastic} connection between WZNW-models and Schramm-Loewner evolution with additional Brownian motion on group manifold was established. The authors also stated a problem of the connection of SLE parameters for martingales in WZNW, coset and minimal models. In present letter we used the method to obtain necessary conditions on SLE martingales proposed in paper \cite{alekseev2010sle}. This method allowed us to compare our results with parafermionic results of the papers \cite{santachiara2008sle,picco2008numerical}.
 
-Coset structure of minimal models is manifest in field theory perturbed by external magnetic field \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. This theory is supported by experimental data \cite{coldea2010quantum}. Relation between correlation functions in coset theory and SLE observables can be a starting point for the study of domain walls in lattice models away of critical point. 
+Coset structure of minimal models is manifest in field theory perturbed by external magnetic field \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. This theory is supported by recent experimental data \cite{coldea2010quantum}. Relation between correlation functions in coset theory and SLE observables can be a starting point for the study of domain walls in lattice models away of critical point. 
 
 Massive perturbations of $G/A$-coset theory are realized as affine Toda field theory and classified by simple roots of Lie algebra $\gf$. 
 
@@ -527,6 +528,6 @@ of the Government of the Russian Federation.
 %%  
 
 \bibliography{bibliography}{}
-\bibliographystyle{utphys}
+\bibliographystyle{iopart-num}
 
 \end{document}
