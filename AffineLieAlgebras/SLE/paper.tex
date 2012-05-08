@@ -152,7 +152,21 @@ Primary fields in coset models are labeled by pairs $(\lambda,\eta)$ of weights 
 We can extend the definition of $\mathcal{F}$ to the whole plane by doubling the number of fields $\phi_{i}$ \cite{cardy2004boundary,cardy1984conformal} and by considering $w_{i},\bar w_{i}$ as independent variables. To simplify notations we will write $\mathcal{F}(\left\{w_{i}\right\}_{i=1}^{2N})$.
 
 
-$G/A$-coset conformal field theory can be realized as a WZNW-model (with gauge group $G$) interacting with pure gauge field of gauge group $A\subset G$ \cite{gawdzki1988g,figueroa89equivalence}. If we fix $A$-gauge we have $G/A$ gauge symmetry. Then we add random gauge transformations to Schramm-Loewner evolution \cite{2011arXiv1112.4354N} similar to the case of WZNW-models \cite{bettelheim2005stochastic}. Denote by $\mathcal{K}$ the Killing form of a Lie algebra $\gf$ corresponding to a Lie group $G$ and by $t^{a}_{i}$ ($\tilde{t}^{b}_{i}$) the  generators of $\gf$-representation ($\af$-representation) corresponding to the primary field $\phi_{i}$.
+$G/A$-coset conformal field theory can be realized as a WZNW-model (with gauge group $G$) interacting with pure gauge fields of gauge group $A\subset G$ \cite{gawdzki1988g,figueroa89equivalence}. The action is written in terms of fields $\gamma:\mathbb{C}\to G$ and $\alpha,\bar\alpha:\mathbb{C}\to A$:
+\begin{multline}
+  \label{eq:24}
+      S_{G/A}(\gamma, \alpha)=-\frac{k}{8\pi}\int_{S^2} d^2x\; {\cal K} (\gamma^{-1}\partial^{\mu}\gamma,\gamma^{-1}\partial_{\mu}\gamma)-\\
+ - \frac{k }{24\pi} \int_{B}\epsilon_{ijk} {\cal K}\left(
+    \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^i},
+      \left[\tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^j}
+      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^k}\right]\right) d^3y+\\
++
+      \frac{k}{4\pi}\int_{S^2} d^{2}z \left(\mathcal{K}(\alpha, \gamma^{-1}\bar \partial \gamma)-\mathcal{K}(\bar \alpha, (\partial \gamma ) \gamma^{-1})\right.\\
+      \left.+\mathcal{K}(\alpha,\gamma^{-1}\bar \alpha \gamma)-\mathcal{K}(\alpha,\bar \alpha)\right).
+\end{multline}
+Here we denote by $\mathcal{K}$ the Killing form of a Lie algebra $\gf$ corresponding to a Lie group $G$.
+
+ If we fix $A$-gauge we have $G/A$ gauge symmetry. Then we add random gauge transformations to Schramm-Loewner evolution \cite{2011arXiv1112.4354N} similar to the case of WZNW-models \cite{bettelheim2005stochastic}.  Denote by $t^{a}_{i}$ ($\tilde{t}^{b}_{i}$) the  generators of $\gf$-representation ($\af$-representation) corresponding to the primary field $\phi_{i}$.
 
 Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in the right-hand-side of equation (\ref{eq:1}) gives us
 \begin{equation*}
@@ -264,6 +278,18 @@ The coset structure of minimal models is manifest in field theory perturbed by a
 
 Massive perturbations of $G/A$-coset theory are realized as an affine Toda field theory and are classified by simple roots of the Lie algebra $\gf$. 
 
+It is possible to get the perturbed theory from the action \cite{bakas1996lagrangian,hollowood1995massive,park1994deformed}
+\begin{equation}
+  S_{\text{pert}}=S_{G/A}(\gamma,\alpha)-\frac{k\lambda}{2\pi}\int {\cal K} (\gamma T, \gamma^{-1} \bar T),
+\end{equation}
+where $T,\bar T\in \gf$ are specially chosen Lie algebra elements. 
+
+For example consider  $\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{su}(2)_{N+1}}$-coset realization of minimal unitary models. Then we get perturbation by $\phi_{(2,1)}$ primary field from the action
+\begin{equation}
+  S=S_{\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{su}(2)_{N+1}}} (\gamma_1,\gamma_2,\alpha,\bar \alpha) - \frac{k\lambda}{2\pi}\int Tr(\gamma_1^{-1} \gamma_2+\gamma_2^{-1}\gamma_1)
+\end{equation}
+
+
 Massive off-critical SLEs have additional drift term in driving Brownian motion \cite{makarov2010off}. Inclusion of a drift term in (\ref{eq:20}) leads to the  appearance of new terms in the martingale condition (\ref{eq:8}).
 
 On the other hand the perturbation can be seen as an insertion of certain primary field in all the correlation functions \cite{hollowood1989rational}. The question is whether the interaction of this primary field with the $\tau$-term of the equation (\ref{eq:4}) leads to the same contribution as the addition of a massive drift to SLE.
@@ -273,7 +299,7 @@ Domain walls in the Ising model perturbed by a random Gaussian external field we
 
 \section*{Acknowledgements}
 \label{sec:acknowledgements}
- I am grateful to A. Bytsko, K. Izyurov, D. Chelkak and R. Santachiara for the discussions on SLE and WZNW models and to V.D. Lyakhovsky for careful reading of the present text.  This work  is supported by
+ I am grateful to A. Bytsko, K. Izyurov, D. Chelkak and R. Santachiara for the discussions on SLE and WZNW models and to V.D. Lyakhovsky for the careful reading of the text.  This work  is supported by
 the Chebyshev Laboratory (Department of Mathematics and Mechanics,
 Saint-Petersburg State University) under the grant 11.G34.31.0026
 of the Government of the Russian Federation.
