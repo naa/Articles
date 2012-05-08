@@ -20,14 +20,39 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
-\ifpdf\usepackage{epstopdf}\usepackage[unicode]{hyperref}\fi
 
+%% \newif\ifpdf
+%% \ifx\pdfoutput\undefined
+%%    \pdffalse
+%% \else
+%%    \pdfoutput=1
+%%    \pdftrue
+%% \fi
+%% \ifpdf
+%%    \usepackage{graphicx}
+%%    \usepackage[update,prepend]{epstopdf}
+%%    \epstopdfsetup{suffix=}
+%%    \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+%%    \pdfcompresslevel=9
+%% \else
+%%    \usepackage{graphicx}
+%% \fi
+
+ %% 
+ \ifpdf
+ \usepackage[update,prepend]{epstopdf}
+% \epstopdfsetup{suffix=}
+% \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+% \pdfcompresslevel=9
+ \usepackage[unicode]{hyperref}
+ \fi
+ 
 
 \usepackage{amsmath}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{multicol}
 \usepackage{color}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{ucs}
 \usepackage{pb-diagram}
 \usepackage{enumerate}
