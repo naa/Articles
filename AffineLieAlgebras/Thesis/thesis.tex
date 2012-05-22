@@ -21,13 +21,13 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
 
-%% \newif\ifpdf
-%% \ifx\pdfoutput\undefined
-%%    \pdffalse
-%% \else
-%%    \pdfoutput=1
-%%    \pdftrue
-%% \fi
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+   \pdffalse
+\else
+   \pdfoutput=1
+   \pdftrue
+\fi
 %% \ifpdf
 %%    \usepackage{graphicx}
 %%    \usepackage[update,prepend]{epstopdf}
@@ -41,9 +41,9 @@
  %% 
  \ifpdf
  \usepackage[update,prepend]{epstopdf}
-% \epstopdfsetup{suffix=}
-% \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
-% \pdfcompresslevel=9
+ \epstopdfsetup{suffix=}
+ \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+ \pdfcompresslevel=9
  \usepackage[unicode]{hyperref}
  \fi
  
