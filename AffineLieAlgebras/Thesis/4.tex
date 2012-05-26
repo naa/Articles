@@ -220,11 +220,12 @@ d \mathcal{F}_{\mathbb{H}_{t}}= \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}
       \phi_{\Lambda^{*}}(\infty)\right>}{\left<\phi_{\Lambda}(z_{t})\phi_{\Lambda^{*}}(\infty)\right>}
 \end{equation*}
 Мы опять используем конформное отображение  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ чтобы переписать формулу для наблюдаемых на всей верхней полуплоскости.
-\begin{equation*}
+\begin{equation}
   \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
   \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
   \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
-\end{equation*}
+  \label{eq:177}
+\end{equation}
 
 В результате эволюции от $t$ к $t+dt$ первый множитель дает нам $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
 
@@ -275,7 +276,7 @@ d \mathcal{F}_{\mathbb{H}_{t}}= \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}
   \left[L_{n},\tilde{J}^{b}_{m}\right]=0
 \end{equation}
 
-Coset-модели можно реализовать, как калибровочные модели Весса-Зумино-Новикова-Виттена, если добавить дополнительные калибровочные полями  $A, \bar{A}$, принимающие значения в алгебре Ли $\af\subset \gf$, в действие \cite{gawdzki1988g}. Теперь поля нумеруются парами весов  $(\mu,\nu)$, где $\mu$ -- вес  $\gfh$, а $\nu$ -- вес $\afh$, соответственно. Но появляются правила отбора, так как функции ветвления для некоторых пар весов  $(\mu,\nu)$ исчезают. Кроме того, имеется избыточность, так как функции ветвления для различных пар $(\mu,\nu)$ могут совпадать \cite{fuchs1996resolution,schellekens1990field}.
+Поля нумеруются парами весов  $(\mu,\nu)$, где $\mu$ -- вес  $\gfh$, а $\nu$ -- вес $\afh$, соответственно. Но появляются правила отбора, так как функции ветвления для некоторых пар весов  $(\mu,\nu)$ исчезают. Кроме того, имеется избыточность, так как функции ветвления для различных пар $(\mu,\nu)$ могут совпадать \cite{fuchs1996resolution,schellekens1990field}.
 
 Итак, примарные поля нумеруются парами весов  $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$ алгебры $\gfh$ и подалгебры $\afh$, такими, что соответствующие функции ветвления $b^{\mu}_{\nu}(q)\neq 0$. Некоторые пары эквивалентны. Эта эквивалентность дается действием так называемых ``простых токов'' $(J,\tilde{J})$, которые являются элементами группы внешних автоморфизмов  $\mathcal{O}(\gfh)\times \mathcal{O}(\afh)\approx B(G)\times B(A)$ алгебры $\gfh\times\afh$, где $B(G)$ -- это центр группы Ли $G$. Мы можем думать о простых токах как о примарных полях, тогда их действие на поля теории дается слиянием \cite{difrancesco1997cft}. Таким образом, примарные поля coset-моделей нумеруются классами эквивалентности пар весов  $(\mu,\nu)\sim (J*\mu,\tilde{J}*\nu)$, где $(J,\tilde J)$ такие, что  конформные веса компонент равны:  $h_{J}-h_{\tilde{J}}=0$. 
 
@@ -291,174 +292,7 @@ Coset-модели можно реализовать, как калиброво�
   \label{eq:144}
 \end{equation}
 
-Теперь введем эволюцию Шрамма-Левнера, соответствующую coset-моделям. Суть конструкции состоит в ограничении дополнительного броуновского движения на групповом многообразии на фактор-пространство  $G/A$. 
-
-Чтобы ограничить броуновское движение на фактор-пространство $G/A$ выберем базис в $\gf$ специальным образом. Потребуем, чтобы генераторы $\{J^{a};\; a=1\dots \mathrm{dim}\gf\}$ были выбраны так, что $\mathcal{K}(J^{a},J^{b})=h^{\vee}\delta_{ab}$, а $\{J^{a};\; a=\mathrm{dim}\gf-\mathrm{dim}\af\dots \mathrm{dim}\gf\}$ -- генераторы подалгебры $\af\subset \gf$. Теперь мы  можем ввести  $(\mathrm{dim}\gf-\mathrm{dim}\af)$-мерное Броуновское движение с генераторами $d\theta^{a}$, такими, что $\mathbb{E}(d\theta^{a} \; d\theta^{b})=\delta_{ab};\; a,b=1,\dots,\mathrm{dim}\gf-\mathrm{dim}\af$.
-
-Тогда для генераторов преобразования полей можно написать
-\begin{equation}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}\left(d \theta ^{a} t^{a}_{i}\right)\right)
-\label{eq:136}
-\end{equation}
-Подставляя это выражение в уравнение \eqref{eq:150} мы получаем условие мартингала
-\begin{equation}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0,
-\label{eq:147}
-\end{equation}
-которое можно переписать как требование, чтобы поле
-\begin{equation}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf-\mathrm{dim}\af}J^{a}_{-1}J^{a}_{-1}\right)\right) \phi_{(\mu,\nu)}
-\label{eq:126}
-\end{equation}
-было нулевым полем уровня два.
-
-Рассмотрим простой пример.Пусть $G=SU(2)$ и $A=U(1)$, соответствующая алгебра Ли $\gf=\mathrm{su}(2)$ имеет генераторы $J^{1},J^{2},J^{3}$, а $\af=\mathrm{u}(1)$ -- генератор $J^{3}$, $\af\subset\gf$. Заметим, что $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. 
-%%We label weights by Dynkin labels, so $J^{3}_{0}\phi_{(\mu,\nu)}=\frac{\mu}{2} \phi_{(\mu,\nu)}$.
-
-Уравнение \eqref{eq:126} теперь имеет вид
-\begin{equation}
-  \label{eq:138}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{(\mu,\nu)}
-\end{equation}
-Если перейти к базису $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$, это уравнение будет переписано в виде
-\begin{equation}
- \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{(\mu,\nu)},
-\label{eq:140}
-\end{equation}
-аналогичном уравнениям для парафермионных полей, выведенным в статье  \cite{santachiara2008sle}.
-
-В данном примере центральный заряд равен
-\begin{equation}
-  \label{eq:160}
-  c=\frac{2(k-1)}{k+2}
-\end{equation}
-
-Найдем решения уравнения  \eqref{eq:138}. Подействуем на  $\psi$ оператором $L_{2}$:
-\begin{equation}
-  \label{eq:158}
-  L_{2}\psi=(-8L_{0}+c+3\kappa L_{0}+\tau k)\phi_{(\mu,\nu)}=0,
-\end{equation}
-и получим
-\begin{equation}
-  \label{eq:169}
-  (3\kappa-8) h_{(\mu,\nu)}+c+\tau k =0
-\end{equation}
-Другое уравнение можно получить действием  $L_{1}^{2}$
-\begin{equation}
-  \label{eq:161}
-  L_{1}^{2}\psi = (12 L_{0} + \kappa(4 L_{0}^{2}+2 L_{0}) +\tau (J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}))\phi_{(\mu,\nu)}=0
-\end{equation}
-Так как $J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}=J_{0}^{1}J_{0}^{1}+J_{0}^{2}J_{0}^{2}+J_{0}^{3}J_{0}^{3}-J_{0}^{3}J_{0}^{3}$, мы получаем
-\begin{equation}
-  \label{eq:157}
-  12 h_{(\mu,\nu)}+2\kappa h_{(\mu,\nu)} (2h_{(\mu,\nu)}+1) +  \tau (C_{\mu}-\tilde{C}_{\nu})=0,
-\end{equation}
-где $C_{\mu}=(\mu,\mu+2\rho)$ -- собственное значение квадратичного оператора Казимира $\sum_{a}t^{a}t^{a}$. Для $u(1)$ это просто $\nu^{2}$. Нам необходимо еще одно уравнение, так как у нас три неизвестных $\kappa,\tau,h_{(\mu,\nu)}$. Чтобы его получить, мы пользуемся тем, что $\psi$ -- сингулярный вектор, так что $L_{1}\psi=0$ и следовательно $J_{1}^{3}L_{1}\psi=0$, что дает уравнение
-\begin{equation}
-  \label{eq:170}
-  \left(-6  + \kappa +  \tau +  2 \kappa h_{(\mu,\nu)}\right) J^{3}_{0} \phi_{(\mu,\nu)}=0
-\end{equation}
-
-Рассмотрим случай $k=2, \;c=1/2$, который соответствует модели Изинга на квадратной решетке. У нас есть три неэквивалентных поля, нумерующихся парами весов $su(2)$ и $u(1)$: $\phi_{(0,0)}, \; h_{(0,0)}=0; \quad \phi_{(0,2)}, \; h_{(0,2)}=1/2; \quad \phi_{(1,1)}, \; h_{(1,1)}=1/16$.
-Уравнение \eqref{eq:170} тривиально для  $\phi_{(0,0)}$ и  $\phi_{(0,2)}$, так что уравнения  \eqref{eq:157}, \eqref{eq:169} непротиворечивы,  однако мы не знаем, как интерпретировать параметр  $\tau$ в контексте модели Изинга. Для поля  $\phi_{(1,1)}$ не существует решений уравнений на  $\kappa,\tau$, так что не каждое примарное поле соответствует оператору смены граничного условия.
-
-Теперь обобщим анализ на произвольную  coset-модель. Работать с генераторами, ортогональными по отношению к форме Киллинга $\mathcal{K}$, не всегда удобно. Иногда предпочтительно использовать базис Шевалле или Картана-Вейля. Так что мы изменим условие нормировке дополнительного $\mathrm{dim}\gf$-мерного Броуновского движения \eqref{eq:136} на $\mathbb{E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$, и генератор преобразования поля  \eqref{eq:70} примет вид 
-\begin{equation*}
-  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right).
-\end{equation*}
-Условие мартингала  \eqref{eq:150} запишется в виде
-\begin{equation*}
-  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}+\frac{\tau}{2}\left( \sum_{a} \mathcal{J}^{a}_{-1} \mathcal{J}^{a}_{-1}-
-      \sum_{b}\tilde{\mathcal{J}}^{b}_{-1} \tilde{\mathcal{J}}^{b}_{-1}\right)\right)        \mathcal{F}_{\mathbb{H}}=0.
-\end{equation*}
-Это уравнение снова может быть переписано, как требование чтобы поле
-\begin{equation}
-  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\sum_{a=1}^{\mathrm{dim}\gf}J^{a}_{-1}J^{a}_{-1}-\sum_{b=1}^{\mathrm{dim}\af}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) \phi_{(\mu,\nu)}
-\label{eq:131}
-\end{equation}
-было нулевым полем уровня два.
-
-Действуя на уравнение \eqref{eq:131} операторами  $L_{2}$ и $L_{1}^{2}$ мы можем получить уравнения \eqref{eq:169} и \eqref{eq:157}. Чтобы получить дополнительные уравнения мы можем подействовать генераторами  $\tilde{J}^{b}_{1}$ алгебры $\afh$ и оператором $L_{1}$, аналогично том, как мы делали с оператором  $J^{3}_{1}$ при выводе уравнения \eqref{eq:170}. 
-
-Чтобы упростить соотношения можно использовать обобщение уравнений Книжника-Замолодчикова \eqref{eq:144}, как было сделано для ВЗНВ-моделей в статье \cite{alekseev2010sle}. 
-
-\subsection{О связи мартингалов coset-моделей с классификацией операторов смены граничного условия}
-\label{sec:5-conclusion}
-
-Мы предложили способ обобщения эволюции Шрамма-Левнера для получения таких наблюдаемых, которые могут исследоваться методами конформной теории поля. Описание полей в coset-моделях нетривиально ввиду идентификации полей \cite{schellekens1990field} и необходимости в разрешении фиксированных точек \cite{Fuchs:1996dd,fuchs1996resolution}, которое не обсуждалась в данной главе. Эти тонкости могут усложнить решение уравнений  \eqref{eq:169}, \eqref{eq:157} и аналогов уравнения \eqref{eq:170}. С другой стороны, использование уравнений Книжника-Замолодчикова  \cite{kogan1997knizhnik} для корреляционных функций в духе работы \cite{alekseev2010sle} приводит к матричным алгебраическим соотношениям, которые напоминают NIM-представления для граничных состояний \cite{ishikawa2003novel}. Дальнейшее изучение этого предмета может выявить глубокую алгебраическую связь условия мартингала с классификацией граничных состояний.
-
-Физическая интерпретация решений условий мартингала не вполне ясна, но пока не найдена и решеточная интерпретация эволюции Шрамма-Левнера с дополнительным Броуновским движением на групповом многообразии \cite{bettelheim2005stochastic} и решеточная реализация ВЗНВ-моделей. Кажется, что эти вопросы тесно связаны.
-
-\subsection{Интегрируемые возмущения конформной теории поля и массивная эволюция Шрамма-Лёвнера}
-\label{sec:massive-sle}
-
-
-\section{TODO}
-
-\abstract{
-  Scharmm-Loewner evolution (SLE) and conformal field theory (CFT) are popular and widely used instruments to study critical behavior of two-dimensional models, but they use different objects. While SLE  has natural connection with lattice models and is suitable for strict proofs, it lacks computational and predictive power of conformal field theory.
-  To provide a way for the concurrent use of SLE and CFT we consider CFT correlation functions which are martingales with respect to SLE.  We establish connection between parameters of Schramm-Loewner evolution on coset space and algebraic data of coset conformal field theory. Then we check the consistency of our approach with the  behaviour of parafermionic and minimal models. Coset models are connected with off-critical massive field theories and we discuss implications for SLE.} 
-
-%%% PACS numbers
-%\PACS{05.50.+q, 11.25.Hf, 02.20.Sv}
-
-%\begin{document}
-%\maketitle
-
-\subsection{Introduction}
-\label{sec:introduction}
-
-Schramm-Loewner evolution \cite{schramm2000scaling} is a stochastic process satisfying stochastic differential equation (\ref{eq:19}). A solution of  equation (\ref{eq:19}) can be seen as  probability measure on random curves (called SLE traces). SLE is useful for the study of critical behavior \cite{Cardy:2005kh,rohde2005basic}, since for many lattice models the convergence of  domain walls to SLE traces can be proved \cite{bauer20062d,schramm2006conformally}. Practical computations with SLE rely on Ito calculus while proofs use discrete complex analysis \cite{duminil2011conformal}.
-
-Conformal field theory \cite{belavin1984ics} is formulated in terms of families of quantum fields which usually has no direct microscopic interpretation. On the other hand CFT has efficient computational tools such as Virasoro symmetry, Knizhnik-Zamolodchikov equations, fusion algebra etc and provides numerous predictions, such as celebrated Cardy formula \cite{cardy1992critical,smirnov2001critical} which gives crossing probability for critical percolation. 
-
-Combination of these two approaches is immensely powerful, so it is important to find objects which can be studied from both points of view.
-
-We present a new class of such observables in coset conformal field theory  -- correlation functions which are martingales with respect to Schramm-Loewner evolution with additional Brownian motion on factor-space of Lie group $G$ by subgroup $A$ \cite{2011arXiv1112.4354N}. We derive relations connecting SLE and CFT parameters. We then check the consistency of these results with the earlier results  for parafermionic observables \cite{santachiara2008sle}. 
-
-All minimal unitary models can be obtained by coset construction. Coset structure leads to specific off-critical behavior. Massive excitations of coset CFTs are given by affine Toda field theories \cite{fateev1990conformal,eguchi1989deformations,hollowood1989rational}. Recent experimental study confirming this result attracted a lot of attention \cite{coldea2010quantum}. In conclusion we discuss possible connections of massive CFT perturbations with  off-critical SLEs (containing additional drift term  \cite{makarov2010off}).
-
-\subsection{Martingale conditions}
-\label{sec:mart-cond}
-
- Consider some critical lattice model on the upper half-plane $\mathbb{H}$ with the cut along a critical interface $\gamma_{t}$ (domain wall up to some length $t$). We denote this slit domain by $\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$.  Assume that $\gamma_{t}$ satisfies restriction property and is conformally  invariant \cite{Cardy:2005kh}. Then  conformal map  $g_{t}:\mathbb{H}_{t}\to \mathbb{H}$ satisfies stochastic differential equation \cite{schramm2000scaling}:
-\begin{equation}
-\label{eq:19}
-  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} ,
-\end{equation}
-where $\xi_{t}$ is the Brownian motion. The dynamic of the tip $z_{t}$ of critical curve $\gamma_{t}$ (tip of SLE trace) is given by the law $z_{t}=g_{t}^{-1}(\sqrt{\kappa}\xi_{t})$. 
-
-For us it is convenient to use the map $w_{t} (z)=g_{t}(z)-\sqrt{\kappa}\xi_{t}$, so the equation \eqref{eq:19} becomes
-\begin{equation}
-  \label{eq:20}
-       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}  
-\end{equation}
-
-Consider  $N$-point correlation function of boundary conformal field theory with boundary condition changing operators sitting at the tip of SLE trace and at the infinity:
-\begin{equation}
-  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\}_{i=1}^{N})_{\mathbb{H}_{t}}=
-\left<\varphi(z_{t}) \phi_{1}(z_{1},\bar z_{1}) \dots \phi_{n}(z_{n},\bar z_{n})
-      \varphi(\infty)\right>,
-    \label{eq:2}
-\end{equation}
-where $\phi_{i}$ are bulk primary fields with conformal weights $h_i$ and $\varphi(z_{t})$ is boundary condition changing operator.
-
-Let $\gf$ be a (semisimple) Lie algebra of a Lie group $G$ and $\af$ -- Lie algebra of a subgroup $A\subset G$. Denote by $x_{e}$ embedding index for $\af\to\gf$. 
-
-Primary fields in coset models are labeled by pairs $(\lambda,\eta)$ of weights for $\gf$- and $\af$-representations. For each $\lambda$ the set of possible weights $\eta$ includes those which appear in the decomposition  $L^{(\mu)}_{\gf}=\bigoplus_{\eta} H^{\lambda}_{\eta}\otimes L^{(\eta)}_{\af}$. (Some pairs are equivalent, see \cite{fuchs1996resolution,schellekens1990field}). We assume that boundary field $\varphi$ is also primary and is labeled by weights $(\mu,\nu)$.
-
-  We use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite expression \eqref{eq:2} in the whole upper half plane:
-\begin{multline}
-  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\})_{\mathbb{H}_{t}}=\\
-  =\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{i}} 
-  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{\bar h_i}
-  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
-  \label{eq:1}
-\end{multline}
-We can extend the definition of $\mathcal{F}$ to the whole plane by doubling the number of fields $\phi_{i}$ \cite{cardy2004boundary,cardy1984conformal} and by considering $w_{i},\bar w_{i}$ as independent variables. To simplify notations we will write $\mathcal{F}(\left\{w_{i}\right\}_{i=1}^{2N})$.
-
-
-$G/A$-coset conformal field theory can be realized as a WZNW-model (with gauge group $G$) interacting with pure gauge fields of gauge group $A\subset G$ \cite{gawdzki1988g,figueroa89equivalence}. The action is written in terms of fields $\gamma:\mathbb{C}\to G$ and $\alpha,\bar\alpha:\mathbb{C}\to A$:
+Как мы упоминали в главе \ref{cha:CFT}, $G/A$-coset модель конформной теории поля может быть реализована как ВЗНВ-модель (с калибровочной группой $G$), взаимодействующая с чисто калибровочными полями, с калибровочной группой $A\subset G$ \cite{gawdzki1988g,figueroa89equivalence}. Действие записывается через поля $\gamma:\mathbb{C}\to G$ and $\alpha,\bar\alpha:\mathbb{C}\to A$ следующим образом:
 \begin{multline}
   \label{eq:24}
       S_{G/A}(\gamma, \alpha)=-\frac{k}{8\pi}\int_{S^2} d^2x\; {\cal K} (\gamma^{-1}\partial^{\mu}\gamma,\gamma^{-1}\partial_{\mu}\gamma)-\\
@@ -470,11 +304,11 @@ $G/A$-coset conformal field theory can be realized as a WZNW-model (with gauge g
       \frac{k}{4\pi}\int_{S^2} d^{2}z \left(\mathcal{K}(\alpha, \gamma^{-1}\bar \partial \gamma)-\mathcal{K}(\bar \alpha, (\partial \gamma ) \gamma^{-1})\right.\\
       \left.+\mathcal{K}(\alpha,\gamma^{-1}\bar \alpha \gamma)-\mathcal{K}(\alpha,\bar \alpha)\right).
 \end{multline}
-Here we denote by $\mathcal{K}$ the Killing form of a Lie algebra $\gf$ corresponding to a Lie group $G$.
+Здесь через  $\mathcal{K}$ обозначена форма Киллинга в алгебре Ли $\gf$, соответствующей группе Ли $G$.
 
- If we fix $A$-gauge we have $G/A$ gauge symmetry. Then we add random gauge transformations to Schramm-Loewner evolution \cite{2011arXiv1112.4354N} similar to the case of WZNW-models \cite{bettelheim2005stochastic}.  Denote by $t^{a}_{i}$ ($\tilde{t}^{b}_{i}$) the  generators of $\gf$-representation ($\af$-representation) corresponding to the primary field $\phi_{i}$.
+Если мы фиксируем  $A$-калибровку, у нас останется  $G/A$ калибровочная инвариантность. Значит мы должны добавить случайные калибровочные преобразования к эволюции Шрамма-Левнера, аналогично случаю ВЗНВ-моделей из предыдущего раздела (См. также \cite{bettelheim2005stochastic}).  Обозначим через $t^{a}_{i}$ ($\tilde{t}^{b}_{i}$) генераторы представления алгебры $\gf$ (соответственно, представления $\af$), соответствующего примарному полю $\phi_{i}$.
 
-Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in the right-hand-side of equation (\ref{eq:1}) gives us
+Рассмотрим эволюцию следа SLE $\gamma_{t}$ с момента   $t$ до $t+ dt$.  Первый сомножитель в правой части уравнения (\ref{eq:177}) дает нам
 \begin{equation*}
   -\frac{2h_{i}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}.
 \end{equation*}
@@ -547,6 +381,29 @@ From equations \eqref{eq:28},\eqref{eq:21} we immediately get $\kappa,\tau$ for 
 
 \subsubsection{Examples}
 \label{sec:examples-1}
+
+
+Рассмотрим простой пример.Пусть $G=SU(2)$ и $A=U(1)$, соответствующая алгебра Ли $\gf=\mathrm{su}(2)$ имеет генераторы $J^{1},J^{2},J^{3}$, а $\af=\mathrm{u}(1)$ -- генератор $J^{3}$, $\af\subset\gf$. Заметим, что $\mathcal{K}(J^{a},J^{b})=2\delta^{ab}$. 
+%%We label weights by Dynkin labels, so $J^{3}_{0}\phi_{(\mu,\nu)}=\frac{\mu}{2} \phi_{(\mu,\nu)}$.
+
+Уравнение \eqref{eq:126} теперь имеет вид
+\begin{equation}
+  \label{eq:138}
+  \psi=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(J^{1}_{-1}J^{1}_{-1}+J^{2}_{-1}J^{2}_{-1}\right)\right) \phi_{(\mu,\nu)}
+\end{equation}
+Если перейти к базису $J^{+}=\frac{J^{1}+iJ^{2}}{\sqrt{2}},\; J^{-}=\frac{J^{1}-iJ^{2}}{\sqrt{2}}$, это уравнение будет переписано в виде
+\begin{equation}
+ \psi= \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[J^{+}_{-1}J^{-}_{-1}+J^{-}_{-1}J^{+}_{-1}\right]\right) \phi_{(\mu,\nu)},
+\label{eq:140}
+\end{equation}
+аналогичном уравнениям для парафермионных полей, выведенным в статье  \cite{santachiara2008sle}.
+
+В данном примере центральный заряд равен
+\begin{equation}
+  \label{eq:160}
+  c=\frac{2(k-1)}{k+2}
+\end{equation}
+
 As an example consider  $\frac{\hat{su}(2)_{N}}{\hat{u}(1)_{N}}$-coset models which are equivalent to $Z_{N}$-parafermions.  The central charge is $c=\frac{3N}{N+2}-1=\frac{2N-2}{N+2}$. Conformal weights of primary fields with Dynkin indeces $(k,l)$ are $h_{(k,l)}=\frac{k(k+2)}{4(N+2)}-\frac{l^{2}}{4N}$.
 
 Case $N=2$, $c=\frac{1}{2}$ corresponds to the Ising model, we have two non-trivial primary fields with conformal weights $h_{(2,0)}=1/2, h_{(1,1)}=1/16$. Substituting the field $\varphi_{(2,0)}$ into equations (\ref{eq:28},\ref{eq:21}) we get: $3\kappa-9+4\tau =0;\quad -3+\kappa+4\tau=0$. The solution is $\kappa=3, \tau=0$. For the field $\varphi_{(1,1)}$ the relations are $3\kappa-16+64\tau=0,\quad -64+9\kappa + 64\tau=0$, $\kappa=16/3, \tau=0$. So we have no additional motion for the Ising model and two possible values for SLE parameter $\kappa$  coinciding with the well-known results \cite{schramm2006conformally}.
@@ -555,7 +412,7 @@ For $N=3$ the parafermionic model central charge is $c=\frac{4}{5}$. Conformal w
 
 It is easy to see that for the $\frac{\hat{su}(2)_{N}\oplus \hat{su}(2)_{1}}{\hat{su}(2)_{N+1}}$-coset realization of minimal unitary models with $c=\frac{3N}{N+2}+1-\frac{3(N+1)}{N+3}=1-\frac{6}{(N+2)(N+3)}$ the system of equations (\ref{eq:28},\ref{eq:21}) is always consistent for $\tau=0$ and we get a standard connection between the SLE-parameter $\kappa$ and the central charge $c=\frac{(6-\kappa)(3\kappa-8)}{2\kappa}$.
 
-\subsection{Conclusion and outlook}
+\subsection{Coset-модели и интегрируемые деформации конформной теории поля}
 \label{sec:outlook}
 
 In  \cite{bettelheim2005stochastic} a connection between WZNW-models and Schramm-Loewner evolution with additional Brownian motion on group manifold was established. The authors also stated a problem of a possible connection of SLE parameters for martingales in WZNW, coset and minimal models. In present letter we used the method proposed in \cite{alekseev2010sle} to obtain necessary conditions on SLE martingales. This method allowed us to compare our results with parafermionic results presented in \cite{santachiara2008sle,picco2008numerical}.
@@ -572,6 +429,13 @@ The question is whether the interaction of the perturbing primary field with the
 
 In the forthcoming studies we will address this question and compare  massive perturbations of coset models with the numerical studies of domain walls in the Ising model perturbed by a random Gaussian external field \cite{stevenson2011domain}.
 
+
+\subsection{О связи мартингалов coset-моделей с классификацией операторов смены граничного условия}
+\label{sec:5-conclusion}
+
+Мы предложили способ обобщения эволюции Шрамма-Левнера для получения таких наблюдаемых, которые могут исследоваться методами конформной теории поля. Описание полей в coset-моделях нетривиально ввиду идентификации полей \cite{schellekens1990field} и необходимости в разрешении фиксированных точек \cite{Fuchs:1996dd,fuchs1996resolution}, которое не обсуждалась в данной главе. Эти тонкости могут усложнить решение уравнений  \eqref{eq:169}, \eqref{eq:157} и аналогов уравнения \eqref{eq:170}. С другой стороны, использование уравнений Книжника-Замолодчикова  \cite{kogan1997knizhnik} для корреляционных функций в духе работы \cite{alekseev2010sle} приводит к матричным алгебраическим соотношениям, которые напоминают NIM-представления для граничных состояний \cite{ishikawa2003novel}. Дальнейшее изучение этого предмета может выявить глубокую алгебраическую связь условия мартингала с классификацией граничных состояний.
+
+Физическая интерпретация решений условий мартингала не вполне ясна, но пока не найдена и решеточная интерпретация эволюции Шрамма-Левнера с дополнительным Броуновским движением на групповом многообразии \cite{bettelheim2005stochastic} и решеточная реализация ВЗНВ-моделей. Кажется, что эти вопросы тесно связаны.
 
 %%
 %% End of file
