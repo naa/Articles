@@ -306,6 +306,41 @@ J.~Cardy, ``Effect of boundary conditions on the operator content of
   two-dimensional conformally invariant theories,'' {\em Nuclear Physics B}
   {\bf 275} (1986) no.~2, 200--218.
 
+\bibitem{gawedzki2002boundary}
+K.~Gawedzki, ``Boundary wzw, g/h, g/g and cs theories,'' in {\em Annales Henri
+  Poincare}, vol.~3, pp.~847--881, Springer.
+\newblock 2002.
+
+\bibitem{ishikawa2003novel}
+H.~Ishikawa and T.~Tani, ``Novel construction of boundary states in coset
+  conformal field theories,'' {\em Nuclear Physics B} {\bf 649} (2003) no.~1-2,
+  205--242.
+
+\bibitem{fuchs2005geometry}
+J.~Fuchs and A.~Wurtz, ``On the geometry of coset branes,'' {\em Nuclear
+  Physics B} {\bf 724} (2005) no.~3, 503--528.
+
+\bibitem{fredenhagen2002d}
+S.~Fredenhagen and V.~Schomerus, ``D-branes in coset models,'' {\em Journal of
+  High Energy Physics} {\bf 2002} (2002)  005.
+
+\bibitem{elitzur2002d}
+S.~Elitzur and G.~Sarkissian, ``D-branes on a gauged wzw model,'' {\em Nuclear
+  Physics B} {\bf 625} (2002) no.~1-2, 166--178.
+
+\bibitem{felder1999geometry}
+G.~Felder, J.~Fr{\"o}hlich, J.~Fuchs, and C.~Schweigert, ``The geometry of wzw
+  branes,'' {\em Arxiv preprint hep-th/9909030} (1999)  .
+
+\bibitem{alekseev1999d}
+A.~Alekseev and V.~Schomerus, ``D-branes in the wzw model,'' {\em Physical
+  Review D} {\bf 60} (1999) no.~6, 061901.
+
+\bibitem{mercat2001integrable}
+C.~Mercat and P.~Pearce, ``Integrable and conformal boundary conditions for k
+  parafermions on a cylinder,'' {\em Journal of Physics A: Mathematical and
+  General} {\bf 34} (2001)  5751.
+
 \bibitem{bernstein1975differential}
 I.~Bernstein, M.~Gelfand, and S.~Gelfand, ``{Differential operators on the base
   affine space and a study of $\gamma$-modules, Lie groups and their
@@ -519,26 +554,6 @@ M.~Picco and R.~Santachiara, ``Numerical study on schramm-loewner evolution in
   nonminimal conformal field theories,'' {\em Physical review letters} {\bf
   100} (2008) no.~1, 15704.
 
-\bibitem{fuchs2005geometry}
-J.~Fuchs and A.~Wurtz, ``On the geometry of coset branes,'' {\em Nuclear
-  Physics B} {\bf 724} (2005) no.~3, 503--528.
-
-\bibitem{fredenhagen2002d}
-S.~Fredenhagen and V.~Schomerus, ``D-branes in coset models,'' {\em Journal of
-  High Energy Physics} {\bf 2002} (2002)  005.
-
-\bibitem{elitzur2002d}
-S.~Elitzur and G.~Sarkissian, ``D-branes on a gauged wzw model,'' {\em Nuclear
-  Physics B} {\bf 625} (2002) no.~1-2, 166--178.
-
-\bibitem{felder1999geometry}
-G.~Felder, J.~Fr{\"o}hlich, J.~Fuchs, and C.~Schweigert, ``The geometry of wzw
-  branes,'' {\em Arxiv preprint hep-th/9909030} (1999)  .
-
-\bibitem{alekseev1999d}
-A.~Alekseev and V.~Schomerus, ``D-branes in the wzw model,'' {\em Physical
-  Review D} {\bf 60} (1999) no.~6, 061901.
-
 \bibitem{cardy1991bulk}
 J.~Cardy and D.~Lewellen, ``Bulk and boundary operators in conformal field
   theory* 1,'' {\em Physics Letters B} {\bf 259} (1991) no.~3, 274--278.
@@ -552,14 +567,42 @@ J.~Fuchs, A.~N. Schellekens, and C.~Schweigert, ``{A matrix S for all simple
 \url{http://www.nikhef.nl/~t58/kac.html}.
 %%CITATION = HEP-TH/9601078;%%.
 
-\bibitem{ishikawa2003novel}
-H.~Ishikawa and T.~Tani, ``Novel construction of boundary states in coset
-  conformal field theories,'' {\em Nuclear Physics B} {\bf 649} (2003) no.~1-2,
-  205--242.
-
 \bibitem{schramm2006conformally}
 O.~Schramm, ``Conformally invariant scaling limits (an overview and a
   collection of problems),'' {\em Arxiv preprint math/0602151} (2006)  .
+
+\bibitem{cardy1992critical}
+J.~Cardy, ``Critical percolation in finite geometries,'' {\em Journal of
+  Physics A: Mathematical and General} {\bf 25} (1992)  L201.
+
+\bibitem{fateev1990conformal}
+V.~Fateev and A.~Zamolodchikov, ``Conformal field theory and purely elastic
+  s-matrices,'' {\em Physics and mathematics of strings: memorial volume for
+  Vadim Knizhnik} (1990)  245.
+
+\bibitem{eguchi1989deformations}
+T.~Eguchi and S.~Yang, ``Deformations of conformal field theories and soliton
+  equations,'' {\em Physics Letters B} {\bf 224} (1989) no.~4, 373--378.
+
+\bibitem{hollowood1989rational}
+T.~Hollowood and P.~Mansfield, ``Rational conformal field theories at, and away
+  from, criticality as toda field theories,'' {\em Physics Letters B} {\bf 226}
+  (1989) no.~1, 73--79.
+
+\bibitem{coldea2010quantum}
+R.~Coldea, D.~Tennant, E.~Wheeler, E.~Wawrzynska, D.~Prabhakaran, M.~Telling,
+  K.~Habicht, P.~Smeibidl, and K.~Kiefer, ``Quantum criticality in an ising
+  chain: experimental evidence for emergent e8 symmetry,'' {\em Science} {\bf
+  327} (2010) no.~5962, 177--180.
+
+\bibitem{makarov2010off}
+N.~Makarov, S.~Smirnov, {\em et al.}, ``Off-critical lattice models and massive
+  sles,'' in {\em XVITH INTERNATIONAL CONGRESS ON MATHEMATICAL PHYSICS. Held
+  3-8 August 2009 in Prague, Czech Republic. Edited by Pavel Exner (Doppler
+  Institute, Prague, Czech Republic). Published by World Scientific Publishing
+  Co. Pte. Ltd., 2010. ISBN\# 9789814304634, pp. 362-371}, vol.~1,
+  pp.~362--371.
+\newblock 2010.
 
 \bibitem{cardy2004boundary}
 J.~Cardy, ``Boundary conformal field theory,'' {\em Arxiv preprint
@@ -568,6 +611,29 @@ J.~Cardy, ``Boundary conformal field theory,'' {\em Arxiv preprint
 \bibitem{figueroa89equivalence}
 J.~Figueroa-O’Farrill, ``The equivalence between the gauged wznw and gko
   conformal field theories,'' {\em ITP Stony Brook preprint ITP-SB-89-41}  .
+
+\bibitem{bakas1996lagrangian}
+I.~Bakas, Q.~Park, and H.~Shin, ``Lagrangian formulation of symmetric space
+  sine-gordon models,'' {\em Physics Letters B} {\bf 372} (1996) no.~1-2,
+  45--52.
+
+\bibitem{hollowood1995massive}
+T.~Hollowood, J.~Miramontes, and Q.~Park, ``Massive integrable soliton
+  theories,'' {\em Nuclear Physics B} {\bf 445} (1995) no.~2, 451--468.
+
+\bibitem{park1994deformed}
+Q.~Park, ``Deformed coset models from gauged wzw actions,'' {\em Physics
+  Letters B} {\bf 328} (1994) no.~3, 329--336.
+
+\bibitem{bauer2009off}
+M.~Bauer, D.~Bernard, and L.~Cantini, ``Off-critical sle (2) and sle (4): a
+  field theory approach,'' {\em Journal of Statistical Mechanics: Theory and
+  Experiment} {\bf 2009} (2009)  P07037.
+
+\bibitem{stevenson2011domain}
+J.~Stevenson and M.~Weigel, ``Domain walls and schramm-loewner evolution in the
+  random-field ising model,'' {\em EPL (Europhysics Letters)} {\bf 95} (2011)
+  40001.
 
 \bibitem{belinfante1989survey}
 J.~Belinfante and B.~Kolman, {\em {A survey of Lie groups and Lie algebras with
