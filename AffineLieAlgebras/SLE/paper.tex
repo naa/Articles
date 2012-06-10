@@ -106,7 +106,7 @@ where $\xi_{t}$ is the Brownian motion. The dynamic of the tip $z_{t}$ of critic
 For us it is convenient to use the map $w_{t} (z)=g_{t}(z)-\sqrt{\kappa}\xi_{t}$, so the equation \eqref{eq:19} becomes
 \begin{equation}
   \label{eq:20}
-       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}\xi_{t}  
+       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}d\xi_{t}  
 \end{equation}
 
 Consider  $N$-point correlation function of boundary conformal field theory with boundary condition changing operators sitting at the tip of SLE trace and at the infinity:
@@ -153,14 +153,14 @@ Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+
 \begin{equation*}
   -\frac{2h_{i}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}.
 \end{equation*}
-We denote by $\mathcal{G}_{i}$ the generator of infinitesimal transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) = \mathcal{G}_{i}\phi_{i}(w_{i})$. We normalize additional $\left(\dim\gf\right)$-dimensional Brownian motion as $\mathbb  {E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$. The generator of field transformation is equal to
+We denote by $\mathcal{G}_{i}$ the generator of infinitesimal transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) = \mathcal{G}_{i}\phi_{i}(w_{i})$. We normalize additional $\left(\dim\gf\right)$-dimensional Brownian motion as $\mathbb  {E}\left[d\theta^{a}\; d\theta^{b}\right]=\mathcal{K}(t^{a},t^{b})dt$. We also introduce the parameter $\tau$, which is the variance of this stochastic process. The generator of field transformation is equal to
 \begin{equation}
   \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right).
 \label{eq:3}
 \end{equation}
 So we have fixed $A$-gauge by allowing random walk only in direction orthogonal to subalgebra $\af$. 
 
- Ito formula  gives us an expression for the differential of $\mathcal{F}$ which should be zero due to martingale condition:
+The differential of $\mathcal{F}$ should be zero due to martingale condition.  Ito formula is used to calculate the differential \cite{alekseev2010sle}. We need to include second order terms in  $\mathcal{G}_{i}$ since they contain squares of Brownian motion differentials $d\xi_{t},\; d\theta^{a}$ with the expectation values proportional to $dt$ ($\mathbb{E}[d\xi_{t}^{2}]=dt$):
 \begin{multline}
 d \mathcal{F}_{\mathbb{H}_{t}}=\\ \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)
 \left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
@@ -254,6 +254,7 @@ In the forthcoming studies we will address this question and compare  massive pe
 the Chebyshev Laboratory (Department of Mathematics and Mechanics,
 Saint-Petersburg State University) under the grant 11.G34.31.0026
 of the Government of the Russian Federation.
+
 
 \bibliography{bibliography}{}
 \bibliographystyle{iopart-num}
