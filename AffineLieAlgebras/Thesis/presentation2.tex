@@ -143,8 +143,8 @@
   \item Сплинты корневых систем и функции ветвления
   \item Приложения
     \begin{itemize}
-    \item Coset-модели и критическое поведение в решеточных моделях (Эволюция Шрамма-Левнера и coset-модели)
-    \item Компьютерная программа
+    \item Эволюция Шрамма-Левнера и coset-модели
+    \item Компьютерная программа {\bf Affine.m}
     \end{itemize}
   \end{enumerate}
 \end{frame}
@@ -438,6 +438,7 @@ _{0}\right\} \setminus \left\{ 0\right\} .
   \begin{figure}[b]
     \centering
       \includegraphics[width=50mm]{figures/branching-timing}
+      \vspace{-0.3cm}
       \caption{Зависимость времени вычисления коэффициентов ветвления для вложения $B_{3}\to B_{4}$ от числа весов в $\bar C$. Пунктир -- традиционный алгоритм, сплошная линия -- наш алгоритм}
       \label{fig:branching}
   \end{figure}
@@ -671,7 +672,7 @@ $\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$.  Зная коэффициен
      $d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i})$
    \item WZNW-модели -- калибровочные преобразования
   \begin{equation*}
-    \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)+\sum_{b=1}^{\mathrm{dim} \af}\left(d \tilde{\theta} ^{b} \tilde{t}^{b}_{i}\right)\right)
+    \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\right)
   \end{equation*}
 \item coset-модели $\mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right)$.
 Разрешили случайные блуждания в направлении $\perp \af$.
