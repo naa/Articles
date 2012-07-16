@@ -1,6 +1,6 @@
 \ifx\undefined\BibPrefix\def\BibPrefix{}\else\fi
 \ifx\undefined\BibPostfix\def\BibPostfix{}\else\fi
-\begin{thebibliography}{\BibPrefix\BibPostfix}
+\begin{thebibliography}{\BibPrefix1\BibPostfix}
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\language\csname l@#1\endcsname\fi}
@@ -8,5 +8,14 @@
 \ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
 \ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
 \ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
+
+\bibitem[\BibPrefix1\BibPostfix]{2010arXiv1007.0318L}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Recursive algorithm and branching for
+  nonmaximal embeddings}~// \BibEmph{Journal of Physics A: Mathematical and
+  Theoretical}. "---
+\newblock 2011. "---
+\newblock Vol.~44, no.~7. "---
+\newblock P.~075205.
 
 \end{thebibliography}
