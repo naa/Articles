@@ -14,6 +14,62 @@ A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, ``{Infinite conformal symmetry
   in two-dimensional quantum field theory},'' {\em Nuclear Physics} {\bf 241}
   (1984)  333--380.
 
+\bibitem{difrancesco1997cft}
+P.~Di~Francesco, P.~Mathieu, and D.~Senechal, {\em {Conformal field theory}}.
+\newblock Springer, 1997.
+
+\bibitem{henkel1999conformal}
+M.~Henkel, {\em Conformal invariance and critical phenomena}.
+\newblock Springer Verlag, 1999.
+
+\bibitem{cox1998exotic}
+D.~Cox and A.~Zawadowski, ``Exotic kondo effects in metals: magnetic ions in a
+  crystalline electric field and tunnelling centres,'' {\em Advances in
+  Physics} {\bf 47} (1998) no.~5, 599--942.
+
+\bibitem{affleck1993exact}
+I.~Affleck and A.~Ludwig, ``Exact conformal-field-theory results on the
+  multichannel kondo effect: Single-fermion green’s function, self-energy,
+  and resistivity,'' {\em Physical Review B} {\bf 48} (1993) no.~10, 7297.
+
+\bibitem{moore1991nonabelions}
+G.~Moore and N.~Read, ``Nonabelions in the fractional quantum hall effect,''
+  {\em Nuclear Physics B} {\bf 360} (1991) no.~2, 362--396.
+
+\bibitem{cardy1992critical}
+J.~Cardy, ``Critical percolation in finite geometries,'' {\em Journal of
+  Physics A: Mathematical and General} {\bf 25} (1992)  L201.
+
+\bibitem{smirnov2001critical}
+S.~Smirnov, ``Critical percolation in the plane: Conformal invariance, cardy's
+  formula, scaling limits,'' {\em Comptes Rendus de l'Acad{\'e}mie des
+  Sciences-Series I-Mathematics} {\bf 333} (2001) no.~3, 239--244.
+
+\bibitem{duminil2011conformal}
+H.~Duminil-Copin and S.~Smirnov, ``Conformal invariance of lattice models,''
+  {\em Arxiv preprint arXiv:1109.1549} (2011)  .
+
+\bibitem{smirnov2010discrete}
+S.~Smirnov, ``Discrete complex analysis and probability,'' {\em Arxiv preprint
+  arXiv:1009.6077} (2010)  .
+
+\bibitem{kac1984infinite}
+V.~Kac and D.~Peterson, ``{Infinite-dimensional Lie algebras, theta functions
+  and modular forms},'' {\em Adv. in Math} {\bf 53} (1984) no.~2, 125--264.
+
+\bibitem{macdonald1971affine}
+I.~Macdonald, ``Affine root systems and dedekind's$\eta$-function,'' {\em
+  Inventiones Mathematicae} {\bf 15} (1971) no.~2, 91--143.
+
+\bibitem{witten1984nab}
+E.~Witten, ``{Non-abelian bosonization in two dimensions},'' {\em
+  Communications in Mathematical Physics} {\bf 92} (1984) no.~4, 455--472.
+
+\bibitem{Goddard198588}
+P.~Goddard, A.~Kent, and D.~Olive, ``Virasoro algebras and coset space
+  models,'' \href{http://dx.doi.org/DOI: 10.1016/0370-2693(85)91145-1}{{\em
+  Physics Letters B} {\bf 152} (1985) no.~1-2, 88 -- 92}.
+
 \bibitem{2010arXiv1007.0318L}
 V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
   nonmaximal embeddings},''
@@ -87,10 +143,6 @@ O.~Schramm, ``Scaling limits of loop-erased random walks and uniform spanning
   trees,'' {\em Israel Journal of Mathematics} {\bf 118} (2000) no.~1,
   221--288.
 
-\bibitem{duminil2011conformal}
-H.~Duminil-Copin and S.~Smirnov, ``Conformal invariance of lattice models,''
-  {\em Arxiv preprint arXiv:1109.1549} (2011)  .
-
 \bibitem{bauer2002sle}
 M.~Bauer and D.~Bernard, ``Sle [kappa] growth processes and conformal field
   theories,'' {\em Physics Letters B} {\bf 543} (2002) no.~1-2, 135--138.
@@ -152,9 +204,53 @@ A.~Zamolodchikov, ``Conformal scalar field on the hyperelliptic curve and
   critical ashkin-teller multipoint correlation functions,'' {\em Nuclear
   Physics B} {\bf 285} (1987)  481--503.
 
-\bibitem{difrancesco1997cft}
-P.~Di~Francesco, P.~Mathieu, and D.~Senechal, {\em {Conformal field theory}}.
-\newblock Springer, 1997.
+\bibitem{cardy1984conformal}
+J.~Cardy, ``Conformal invariance and surface critical behavior,'' {\em Nuclear
+  Physics B} {\bf 240} (1984) no.~4, 514--532.
+
+\bibitem{cardy1989boundary}
+J.~Cardy, ``Boundary conditions, fusion rules and the verlinde formula,'' {\em
+  Nuclear Physics B} {\bf 324} (1989) no.~3, 581--596.
+
+\bibitem{cardy1986effect}
+J.~Cardy, ``Effect of boundary conditions on the operator content of
+  two-dimensional conformally invariant theories,'' {\em Nuclear Physics B}
+  {\bf 275} (1986) no.~2, 200--218.
+
+\bibitem{gawedzki2002boundary}
+K.~Gawedzki, ``Boundary wzw, g/h, g/g and cs theories,'' in {\em Annales Henri
+  Poincare}, vol.~3, pp.~847--881, Springer.
+\newblock 2002.
+
+\bibitem{ishikawa2003novel}
+H.~Ishikawa and T.~Tani, ``Novel construction of boundary states in coset
+  conformal field theories,'' {\em Nuclear Physics B} {\bf 649} (2003) no.~1-2,
+  205--242.
+
+\bibitem{fuchs2005geometry}
+J.~Fuchs and A.~Wurtz, ``On the geometry of coset branes,'' {\em Nuclear
+  Physics B} {\bf 724} (2005) no.~3, 503--528.
+
+\bibitem{fredenhagen2002d}
+S.~Fredenhagen and V.~Schomerus, ``D-branes in coset models,'' {\em Journal of
+  High Energy Physics} {\bf 2002} (2002)  005.
+
+\bibitem{elitzur2002d}
+S.~Elitzur and G.~Sarkissian, ``D-branes on a gauged wzw model,'' {\em Nuclear
+  Physics B} {\bf 625} (2002) no.~1-2, 166--178.
+
+\bibitem{felder1999geometry}
+G.~Felder, J.~Fr{\"o}hlich, J.~Fuchs, and C.~Schweigert, ``The geometry of wzw
+  branes,'' {\em Arxiv preprint hep-th/9909030} (1999)  .
+
+\bibitem{alekseev1999d}
+A.~Alekseev and V.~Schomerus, ``D-branes in the wzw model,'' {\em Physical
+  Review D} {\bf 60} (1999) no.~6, 061901.
+
+\bibitem{mercat2001integrable}
+C.~Mercat and P.~Pearce, ``Integrable and conformal boundary conditions for k
+  parafermions on a cylinder,'' {\em Journal of Physics A: Mathematical and
+  General} {\bf 34} (2001)  5751.
 
 \bibitem{Walton:1999xc}
 M.~Walton, ``{Affine Kac-Moody algebras and the Wess-Zumino-Witten model},''
@@ -182,7 +278,7 @@ D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
   физико-математической лит-ры, Москва, 1984.
 
 \bibitem{feigin1988}
-Б.~Фейгин и Д.~Фукс, ``{Когомологии групп и
+Б.~Фейгин and Д.~Фукс, ``{Когомологии групп и
   алгебр Ли},'' {\em Итоги науки и техники.
   Серия {\guillemotleft}Современные проблемы
   математики. Фундаментальные
@@ -242,15 +338,15 @@ P.~Kulish and V.~Lyakhovsky, ``{String Functions for Affine Lie Algebras
   Applications} {\bf 4}  , \href{http://arxiv.org/abs/0812.2381}{{\tt
   arXiv:0812.2381 [math.RT]}}.
 
-\bibitem{kac1988modular}
-V.~Kac and M.~Wakimoto, ``{Modular and conformal invariance constraints in
-  representation theory of affine algebras},'' {\em Advances in mathematics(New
-  York, NY. 1965)} {\bf 70} (1988) no.~2, 156--236.
-
 \bibitem{altschuler1990branching}
 D.~Altschuler, M.~Bauer, and C.~Itzykson, ``{The branching rules of conformal
   embeddings},'' {\em Communications in Mathematical Physics} {\bf 132} (1990)
   no.~2, 349--364.
+
+\bibitem{kac1988modular}
+V.~Kac and M.~Wakimoto, ``{Modular and conformal invariance constraints in
+  representation theory of affine algebras},'' {\em Advances in mathematics(New
+  York, NY. 1965)} {\bf 70} (1988) no.~2, 156--236.
 
 \bibitem{walton1989conformal}
 M.~Walton, ``{Conformal branching rules and modular invariants},'' {\em Nuclear
@@ -262,11 +358,6 @@ R.~Coquereaux and G.~Schieber, ``{From conformal embeddings to quantum
   Conference Series}, vol.~103, p.~012006, Institute of Physics Publishing.
 \newblock 2008.
 \newblock \href{http://arxiv.org/abs/0710.1397}{{\tt arXiv:0710.1397}}.
-
-\bibitem{Goddard198588}
-P.~Goddard, A.~Kent, and D.~Olive, ``Virasoro algebras and coset space
-  models,'' \href{http://dx.doi.org/DOI: 10.1016/0370-2693(85)91145-1}{{\em
-  Physics Letters B} {\bf 152} (1985) no.~1-2, 88 -- 92}.
 
 \bibitem{gawdzki1988g}
 A.~Gawdzki {\em et al.}, ``G/h conformal field theory from gauged wzw model,''
@@ -289,54 +380,6 @@ A.~Schellekens and S.~Yankielowicz, ``Field identification fixed points in the
 \bibitem{kogan1997knizhnik}
 I.~Kogan, A.~Lewis, and O.~Soloviev, ``Knizhnik-zamolodchikov-type equations
   for gauged wznw models,'' {\em Arxiv preprint hep-th/9703028} (1997)  .
-
-\bibitem{cardy1984conformal}
-J.~Cardy, ``Conformal invariance and surface critical behavior,'' {\em Nuclear
-  Physics B} {\bf 240} (1984) no.~4, 514--532.
-
-\bibitem{cardy1989boundary}
-J.~Cardy, ``Boundary conditions, fusion rules and the verlinde formula,'' {\em
-  Nuclear Physics B} {\bf 324} (1989) no.~3, 581--596.
-
-\bibitem{cardy1986effect}
-J.~Cardy, ``Effect of boundary conditions on the operator content of
-  two-dimensional conformally invariant theories,'' {\em Nuclear Physics B}
-  {\bf 275} (1986) no.~2, 200--218.
-
-\bibitem{gawedzki2002boundary}
-K.~Gawedzki, ``Boundary wzw, g/h, g/g and cs theories,'' in {\em Annales Henri
-  Poincare}, vol.~3, pp.~847--881, Springer.
-\newblock 2002.
-
-\bibitem{ishikawa2003novel}
-H.~Ishikawa and T.~Tani, ``Novel construction of boundary states in coset
-  conformal field theories,'' {\em Nuclear Physics B} {\bf 649} (2003) no.~1-2,
-  205--242.
-
-\bibitem{fuchs2005geometry}
-J.~Fuchs and A.~Wurtz, ``On the geometry of coset branes,'' {\em Nuclear
-  Physics B} {\bf 724} (2005) no.~3, 503--528.
-
-\bibitem{fredenhagen2002d}
-S.~Fredenhagen and V.~Schomerus, ``D-branes in coset models,'' {\em Journal of
-  High Energy Physics} {\bf 2002} (2002)  005.
-
-\bibitem{elitzur2002d}
-S.~Elitzur and G.~Sarkissian, ``D-branes on a gauged wzw model,'' {\em Nuclear
-  Physics B} {\bf 625} (2002) no.~1-2, 166--178.
-
-\bibitem{felder1999geometry}
-G.~Felder, J.~Fr{\"o}hlich, J.~Fuchs, and C.~Schweigert, ``The geometry of wzw
-  branes,'' {\em Arxiv preprint hep-th/9909030} (1999)  .
-
-\bibitem{alekseev1999d}
-A.~Alekseev and V.~Schomerus, ``D-branes in the wzw model,'' {\em Physical
-  Review D} {\bf 60} (1999) no.~6, 061901.
-
-\bibitem{mercat2001integrable}
-C.~Mercat and P.~Pearce, ``Integrable and conformal boundary conditions for k
-  parafermions on a cylinder,'' {\em Journal of Physics A: Mathematical and
-  General} {\bf 34} (2001)  5751.
 
 \bibitem{bernstein1975differential}
 I.~Bernstein, M.~Gelfand, and S.~Gelfand, ``{Differential operators on the base
@@ -480,10 +523,6 @@ V.~Lyakhovsky, S.~Melnikov, {\em et al.}, ``{Recursion relations and branching
   General} {\bf 29} (1996) no.~5, 1075--1088,
   \href{http://arxiv.org/abs/q-alg/9505006}{{\tt q-alg/9505006}}.
 
-\bibitem{kac1984infinite}
-V.~Kac and D.~Peterson, ``{Infinite-dimensional Lie algebras, theta functions
-  and modular forms},'' {\em Adv. in Math} {\bf 53} (1984) no.~2, 125--264.
-
 \bibitem{gannon2006moonshine}
 T.~Gannon, {\em Moonshine beyond the Monster: The bridge connecting algebra,
   modular forms and physics}.
@@ -503,11 +542,6 @@ D.~Chelkak and S.~Smirnov, ``Universality in the 2d ising model and conformal
 S.~Smirnov, ``Towards conformal invariance of 2d lattice models,'' {\em Arxiv
   preprint arXiv:0708.0032} (2007)  .
 
-\bibitem{smirnov2001critical}
-S.~Smirnov, ``Critical percolation in the plane: Conformal invariance, cardy's
-  formula, scaling limits,'' {\em Comptes Rendus de l'Acad{\'e}mie des
-  Sciences-Series I-Mathematics} {\bf 333} (2001) no.~3, 239--244.
-
 \bibitem{Cardy:2005kh}
 J.~L. Cardy, ``{SLE for theoretical physicists},''
   \href{http://dx.doi.org/10.1016/j.aop.2005.04.001}{{\em Annals Phys.} {\bf
@@ -518,6 +552,14 @@ J.~L. Cardy, ``{SLE for theoretical physicists},''
 R.~Friedrich and W.~Werner, ``Conformal restriction, highest-weight
   representations and sle,'' {\em Communications in mathematical physics} {\bf
   243} (2003) no.~1, 105--122.
+
+\bibitem{rohde2005basic}
+S.~Rohde and O.~Schramm, ``Basic properties of sle,'' {\em Annals of
+  mathematics} (2005)  883--924.
+
+\bibitem{bauer20062d}
+M.~Bauer and D.~Bernard, ``2d growth processes: Sle and loewner chains,'' {\em
+  Physics reports} {\bf 432} (2006) no.~3-4, 115--221.
 
 \bibitem{bettelheim2005stochastic}
 E.~Bettelheim, I.~Gruzberg, A.~Ludwig, and P.~Wiegmann, ``Stochastic loewner
@@ -533,14 +575,6 @@ J.~Rasmussen, ``{On SU(2) Wess-Zumino-Witten models and stochastic
 \bibitem{alekseev2010sle}
 A.~Alekseev, A.~Bytsko, and K.~Izyurov, ``On sle martingales in boundary wzw
   models,'' {\em Letters in Mathematical Physics} (2010)  1--19.
-
-\bibitem{rohde2005basic}
-S.~Rohde and O.~Schramm, ``Basic properties of sle,'' {\em Annals of
-  mathematics} (2005)  883--924.
-
-\bibitem{bauer20062d}
-M.~Bauer and D.~Bernard, ``2d growth processes: Sle and loewner chains,'' {\em
-  Physics reports} {\bf 432} (2006) no.~3-4, 115--221.
 
 \bibitem{santachiara2008sle}
 R.~Santachiara, ``Sle in self-dual critical z (n) spin systems: Cft
