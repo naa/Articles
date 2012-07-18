@@ -37,7 +37,10 @@
 \bibitem[\BibPrefix4\BibPostfix]{NazarovJETPletters}
 \selectlanguageifdefined{english}
 \BibEmph{A.~{Nazarov}}. {SLE martingales in coset conformal field theory}~//
-  \BibEmph{ArXiv e-prints}.
+  \BibEmph{JETP lett.} "---
+\newblock 2012. "---
+\newblock Vol.~96, no.~2. "---
+\newblock Pp.~93--96.
 
 \bibitem[\BibPrefix5\BibPostfix]{2011arXiv1112.4354N}
 \selectlanguageifdefined{english}
