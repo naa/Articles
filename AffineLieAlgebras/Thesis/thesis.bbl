@@ -90,8 +90,16 @@ V.~{Laykhovsky} and A.~{Nazarov}, ``{Fan, splint and branching rules},'' {\em
 
 \bibitem{NazarovJETPletters}
 A.~{Nazarov}, ``{SLE martingales in coset conformal field theory},'' {\em JETP
-  lett.} {\bf 96} no.~2, 93--96, \href{http://arxiv.org/abs/1205.6104}{{\tt
-  arXiv:1205.6104 [math-ph]}}.
+  lett.} {\bf 96} (2012) no.~2, 93--96,
+  \href{http://arxiv.org/abs/1205.6104}{{\tt arXiv:1205.6104 [math-ph]}}.
+
+\bibitem{2011arXiv1107.4681N}
+A.~{Nazarov}, ``{Affine.m - Mathematica package for computations in
+  representation theory of finite-dimensional and affine Lie algebras},''
+  \href{http://dx.doi.org/10.1016/j.cpc.2012.06.014}{{\em Computer Physics
+  Communications} (2012)  }, \href{http://arxiv.org/abs/1107.4681}{{\tt
+  arXiv:1107.4681 [math.RT]}}.
+  \url{http://dx.doi.org/10.1016/j.cpc.2012.06.014}.
 
 \bibitem{2011arXiv1112.4354N}
 A.~{Nazarov}, ``{Algebraic properties of CFT coset construction and
@@ -120,14 +128,8 @@ A.~Nazarov, ``Computational tools for representation theory of affine lie
 
 \bibitem{2012arXiv1204.1855L}
 V.~{Laykhovsky} and A.~{Nazarov}, ``{On affine extension of splint root
-  systems},'' {\em ArXiv e-prints}  ,
-  \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855 [math.RT]}}.
-
-\bibitem{2011arXiv1107.4681N}
-A.~{Nazarov}, ``{Affine.m - Mathematica package for computations in
-  representation theory of finite-dimensional and affine Lie algebras},'' {\em
-  ArXiv e-prints} (2011)  , \href{http://arxiv.org/abs/1107.4681}{{\tt
-  arXiv:1107.4681 [math.RT]}}.
+  systems},'' \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855
+  [math.RT]}}.
 
 \bibitem{Polyakov:1970xd}
 A.~M. Polyakov, ``{Conformal symmetry of critical fluctuations},''
@@ -278,7 +280,7 @@ D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
   физико-математической лит-ры, Москва, 1984.
 
 \bibitem{feigin1988}
-Б.~Фейгин и Д.~Фукс, ``{Когомологии групп и
+Б.~Фейгин and Д.~Фукс, ``{Когомологии групп и
   алгебр Ли},'' {\em Итоги науки и техники.
   Серия {\guillemotleft}Современные проблемы
   математики. Фундаментальные
