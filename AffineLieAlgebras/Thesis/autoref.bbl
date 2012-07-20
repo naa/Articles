@@ -132,4 +132,48 @@
 \newblock Vol. 152, no. 1-2. "---
 \newblock Pp.~88 -- 92.
 
+\bibitem[\BibPrefix17\BibPostfix]{richter2008splints}
+\selectlanguageifdefined{english}
+\BibEmph{D.A. Richter}. Splints of classical root systems. "---
+\newblock 2008.
+
+\bibitem[\BibPrefix18\BibPostfix]{gawdzki1988g}
+\selectlanguageifdefined{english}
+\BibEmph{A.~Gawdzki et~al.} G/H conformal field theory from gauged WZW model~//
+  \BibEmph{Physics Letters B}. "---
+\newblock 1988. "---
+\newblock Vol. 215, no.~1. "---
+\newblock Pp.~119--123.
+
+\bibitem[\BibPrefix19\BibPostfix]{figueroa89equivalence}
+\selectlanguageifdefined{english}
+\BibEmph{J.M. Figueroa-O’Farrill}. The equivalence between the gauged WZNW
+  and GKO conformal field theories~// \BibEmph{ITP Stony Brook preprint
+  ITP-SB-89-41}.
+
+\bibitem[\BibPrefix20\BibPostfix]{bettelheim2005stochastic}
+\selectlanguageifdefined{english}
+\BibEmph{E.~Bettelheim, IA~Gruzberg, AWW Ludwig, P.~Wiegmann}. Stochastic
+  Loewner evolution for conformal field theories with Lie group symmetries~//
+  \BibEmph{Physical review letters}. "---
+\newblock 2005. "---
+\newblock Vol.~95, no.~25. "---
+\newblock P.~251601.
+
+\bibitem[\BibPrefix21\BibPostfix]{bauer2003sle}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. SLE martingales and the Virasoro algebra~//
+  \BibEmph{Physics Letters B}. "---
+\newblock 2003. "---
+\newblock Vol. 557, no. 3-4. "---
+\newblock Pp.~309--316.
+
+\bibitem[\BibPrefix22\BibPostfix]{santachiara2008sle}
+\selectlanguageifdefined{english}
+\BibEmph{R.~Santachiara}. SLE in self-dual critical Z (N) spin systems: CFT
+  predictions~// \BibEmph{Nuclear Physics B}. "---
+\newblock 2008. "---
+\newblock Vol. 793, no.~3. "---
+\newblock Pp.~396--424.
+
 \end{thebibliography}
