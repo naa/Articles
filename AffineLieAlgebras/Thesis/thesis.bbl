@@ -128,7 +128,8 @@ A.~Nazarov, ``Computational tools for representation theory of affine lie
 
 \bibitem{2012arXiv1204.1855L}
 V.~{Laykhovsky} and A.~{Nazarov}, ``{On affine extension of splint root
-  systems},'' \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855
+  systems},'' in {\em Supersymmetries \& Quantum Symmetries}, SQS'2011, JINR.
+\newblock \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855
   [math.RT]}}.
 
 \bibitem{Polyakov:1970xd}
@@ -280,7 +281,7 @@ D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
   физико-математической лит-ры, Москва, 1984.
 
 \bibitem{feigin1988}
-Б.~Фейгин and Д.~Фукс, ``{Когомологии групп и
+Б.~Фейгин и Д.~Фукс, ``{Когомологии групп и
   алгебр Ли},'' {\em Итоги науки и техники.
   Серия {\guillemotleft}Современные проблемы
   математики. Фундаментальные
@@ -419,6 +420,12 @@ M.~Ilyin, P.~Kulish, and V.~Lyakhovsky, ``{On a property of branching
   (2009)  2, \href{http://arxiv.org/abs/0812.2124}{{\tt arXiv:0812.2124
   [math.RT]}}.
 
+\bibitem{lyakhovsky1996rra}
+V.~Lyakhovsky, S.~Melnikov, {\em et al.}, ``{Recursion relations and branching
+  rules for simple Lie algebras},'' {\em Journal of Physics A-Mathematical and
+  General} {\bf 29} (1996) no.~5, 1075--1088,
+  \href{http://arxiv.org/abs/q-alg/9505006}{{\tt q-alg/9505006}}.
+
 \bibitem{1751-8121-41-36-365204}
 A.~Felikson, A.~Retakh, and P.~Tumarkin, ``Regular subalgebras of affine
   kac-moody algebras,'' {\em Journal of Physics A: Mathematical and
@@ -518,12 +525,6 @@ A.~Nijenhuis and R.~Richardson, ``Deformations of algebras,'' {\em Bull. Amer.
 \bibitem{richter2008splints}
 D.~Richter, ``Splints of classical root systems,''
   \href{http://arxiv.org/abs/0807.0640}{{\tt arXiv:0807.0640}}.
-
-\bibitem{lyakhovsky1996rra}
-V.~Lyakhovsky, S.~Melnikov, {\em et al.}, ``{Recursion relations and branching
-  rules for simple Lie algebras},'' {\em Journal of Physics A-Mathematical and
-  General} {\bf 29} (1996) no.~5, 1075--1088,
-  \href{http://arxiv.org/abs/q-alg/9505006}{{\tt q-alg/9505006}}.
 
 \bibitem{gannon2006moonshine}
 T.~Gannon, {\em Moonshine beyond the Monster: The bridge connecting algebra,
@@ -651,15 +652,6 @@ J.~Stevenson and M.~Weigel, ``Domain walls and schramm-loewner evolution in the
   random-field ising model,'' {\em EPL (Europhysics Letters)} {\bf 95} (2011)
   40001.
 
-\bibitem{Fuchs:1996dd}
-J.~Fuchs, A.~N. Schellekens, and C.~Schweigert, ``{A matrix S for all simple
-  current extensions},''
-  \href{http://dx.doi.org/10.1016/0550-3213(96)00247-7}{{\em Nucl. Phys.} {\bf
-  B473} (1996)  323--366}, \href{http://arxiv.org/abs/hep-th/9601078}{{\tt
-  arXiv:hep-th/9601078}}.
-\url{http://www.nikhef.nl/~t58/kac.html}.
-%%CITATION = HEP-TH/9601078;%%.
-
 \bibitem{belinfante1989survey}
 J.~Belinfante and B.~Kolman, {\em {A survey of Lie groups and Lie algebras with
   applications and computational methods}}.
@@ -686,6 +678,15 @@ J.~Stembridge, ``Coxeter/weyl packages for maple.''
 T.~Fischbacher, ``{Introducing LambdaTensor1. 0-A package for explicit symbolic
   and numeric Lie algebra and Lie group calculations},''
   \href{http://arxiv.org/abs/hep-th/0208218}{{\tt hep-th/0208218}}.
+
+\bibitem{Fuchs:1996dd}
+J.~Fuchs, A.~N. Schellekens, and C.~Schweigert, ``{A matrix S for all simple
+  current extensions},''
+  \href{http://dx.doi.org/10.1016/0550-3213(96)00247-7}{{\em Nucl. Phys.} {\bf
+  B473} (1996)  323--366}, \href{http://arxiv.org/abs/hep-th/9601078}{{\tt
+  arXiv:hep-th/9601078}}.
+\url{http://www.nikhef.nl/~t58/kac.html}.
+%%CITATION = HEP-TH/9601078;%%.
 
 \bibitem{moody1982fast}
 R.~Moody and J.~Patera, ``{Fast recursion formula for weight multiplicities},''
