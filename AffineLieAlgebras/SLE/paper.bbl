@@ -1,0 +1,118 @@
+\providecommand{\newblock}{}
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+% Bibliography created with iopart-num v2.1
+% /biblio/bibtex/contrib/iopart-num
+
+\bibitem{schramm2000scaling}
+Schramm O 2000 {\em Israel Journal of Mathematics\/} {\bf 118} 221--288
+
+\bibitem{Cardy:2005kh}
+Cardy J~L 2005 {\em Annals Phys.\/} {\bf 318} 81--118 (\textit{Preprint}
+  \eprint{cond-mat/0503313})
+
+\bibitem{rohde2005basic}
+Rohde S and Schramm O 2005 {\em Annals of mathematics\/}  883--924
+
+\bibitem{bauer20062d}
+Bauer M and Bernard D 2006 {\em Physics reports\/} {\bf 432} 115--221
+
+\bibitem{schramm2006conformally}
+Schramm O 2006 {\em Arxiv preprint math/0602151\/}
+
+\bibitem{duminil2011conformal}
+Duminil-Copin H and Smirnov S 2011 {\em Arxiv preprint arXiv:1109.1549\/}
+
+\bibitem{belavin1984ics}
+Belavin A, Polyakov A and Zamolodchikov A 1984 {\em Nuclear Physics\/} {\bf
+  241} 333--380
+
+\bibitem{cardy1992critical}
+Cardy J 1992 {\em Journal of Physics A: Mathematical and General\/} {\bf 25}
+  L201
+
+\bibitem{smirnov2001critical}
+Smirnov S 2001 {\em Comptes Rendus de l'Acad{\'e}mie des Sciences-Series
+  I-Mathematics\/} {\bf 333} 239--244
+
+\bibitem{2011arXiv1112.4354N}
+{Nazarov} A 2012 {\em Journal of Physics: Conference Series\/} {\bf 343} 012085
+  (\textit{Preprint} \eprint{1112.4354})
+  
+
+\bibitem{santachiara2008sle}
+Santachiara R 2008 {\em Nuclear Physics B\/} {\bf 793} 396--424
+
+\bibitem{fateev1990conformal}
+Fateev V and Zamolodchikov A 1990 {\em Physics and mathematics of strings:
+  memorial volume for Vadim Knizhnik\/}  245
+
+\bibitem{eguchi1989deformations}
+Eguchi T and Yang S 1989 {\em Physics Letters B\/} {\bf 224} 373--378
+
+\bibitem{hollowood1989rational}
+Hollowood T and Mansfield P 1989 {\em Physics Letters B\/} {\bf 226} 73--79
+
+\bibitem{coldea2010quantum}
+Coldea R, Tennant D, Wheeler E, Wawrzynska E, Prabhakaran D, Telling M, Habicht
+  K, Smeibidl P and Kiefer K 2010 {\em Science\/} {\bf 327} 177--180
+
+\bibitem{makarov2010off}
+Makarov N, Smirnov S {\em et~al.\/} 2010 Off-critical lattice models and
+  massive sles {\em XVITH International Congress On Mathematical Physics}, World Scientific Publishing
+ 2010, vol~1 pp 362--371
+  (\textit{Preprint} \eprint{0909.5377})
+
+\bibitem{fuchs1996resolution}
+Fuchs J, Schellekens B and Schweigert C 1996 {\em Nuclear Physics B\/} {\bf
+  461} 371--404
+
+\bibitem{schellekens1990field}
+Schellekens A and Yankielowicz S 1990 {\em Nuclear Physics B\/} {\bf 334}
+  67--102
+
+\bibitem{cardy2004boundary}
+Cardy J 2004 {\em Arxiv preprint hep-th/0411189\/}
+
+\bibitem{cardy1984conformal}
+Cardy J 1984 {\em Nuclear Physics B\/} {\bf 240} 514--532
+
+\bibitem{gawdzki1988g}
+Gawdzki A {\em et~al.\/} 1988 {\em Physics Letters B\/} {\bf 215} 119--123
+
+\bibitem{figueroa89equivalence}
+Figueroa-O’Farrill J 1989 {\em ITP Stony Brook preprint ITP-SB-89-41\/}
+
+\bibitem{bettelheim2005stochastic}
+Bettelheim E, Gruzberg I, Ludwig A and Wiegmann P 2005 {\em Physical review
+  letters\/} {\bf 95} 251601
+
+\bibitem{alekseev2010sle}
+Alekseev A, Bytsko A and Izyurov K 2011 {\em Letters in Mathematical Physics\/}
+  {\bf 97}(3) 243--261 
+  (\textit{Preprint} \eprint{1012.3113})
+
+\bibitem{picco2008numerical}
+Picco M and Santachiara R 2008 {\em Physical review letters\/} {\bf 100} 15704
+
+\bibitem{bakas1996lagrangian}
+Bakas I, Park Q and Shin H 1996 {\em Physics Letters B\/} {\bf 372} 45--52
+
+\bibitem{hollowood1995massive}
+Hollowood T, Miramontes J and Park Q 1995 {\em Nuclear Physics B\/} {\bf 445}
+  451--468
+
+\bibitem{park1994deformed}
+Park Q 1994 {\em Physics Letters B\/} {\bf 328} 329--336
+
+\bibitem{bauer2009off}
+Bauer M, Bernard D and Cantini L 2009 {\em Journal of Statistical Mechanics:
+  Theory and Experiment\/} {\bf 2009} P07037
+
+\bibitem{stevenson2011domain}
+Stevenson J and Weigel M 2011 {\em EPL (Europhysics Letters)\/} {\bf 95} 40001
+
+\end{thebibliography}
