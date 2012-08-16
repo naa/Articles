@@ -1,14 +1,6 @@
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10%
 0}
 
-\bibitem{kac1968simple}
-V.~Kac, ``Simple irreducible graded lie algebras of finite growth,'' {\em
-  Mathematics of the USSR-Izvestiya} {\bf 2} (1968)  1271.
-
-\bibitem{moody1968new}
-R.~Moody, ``A new class of lie algebras,'' {\em Journal of algebra} {\bf 10}
-  (1968) no.~2, 211--230.
-
 \bibitem{belavin1984ics}
 A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, ``{Infinite conformal symmetry
   in two-dimensional quantum field theory},'' {\em Nuclear Physics} {\bf 241}
@@ -52,6 +44,14 @@ H.~Duminil-Copin and S.~Smirnov, ``Conformal invariance of lattice models,''
 \bibitem{smirnov2010discrete}
 S.~Smirnov, ``Discrete complex analysis and probability,'' {\em Arxiv preprint
   arXiv:1009.6077} (2010)  .
+
+\bibitem{kac1968simple}
+V.~Kac, ``Simple irreducible graded lie algebras of finite growth,'' {\em
+  Mathematics of the USSR-Izvestiya} {\bf 2} (1968)  1271.
+
+\bibitem{moody1968new}
+R.~Moody, ``A new class of lie algebras,'' {\em Journal of algebra} {\bf 10}
+  (1968) no.~2, 211--230.
 
 \bibitem{kac1984infinite}
 V.~Kac and D.~Peterson, ``{Infinite-dimensional Lie algebras, theta functions
@@ -281,7 +281,7 @@ D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
   физико-математической лит-ры, Москва, 1984.
 
 \bibitem{feigin1988}
-Б.~Фейгин и Д.~Фукс, ``{Когомологии групп и
+Б.~Фейгин and Д.~Фукс, ``{Когомологии групп и
   алгебр Ли},'' {\em Итоги науки и техники.
   Серия {\guillemotleft}Современные проблемы
   математики. Фундаментальные
@@ -340,6 +340,20 @@ P.~Kulish and V.~Lyakhovsky, ``{String Functions for Affine Lie Algebras
   Integrable Modules},'' {\em Symmetry, Integrability and Geometry: Methods and
   Applications} {\bf 4}  , \href{http://arxiv.org/abs/0812.2381}{{\tt
   arXiv:0812.2381 [math.RT]}}.
+
+\bibitem{1994hepthGannon}
+T.~Gannon, ``{The Classification of SU(3) Modular Invariants Revisited},''
+  \href{http://arxiv.org/abs/hep-th/9404185}{{\tt hep-th/9404185}}.
+
+\bibitem{1995JMPGannon}
+T.~Gannon, ``{Towards a classification of su(2)+...+ su(2) modular invariant
+  partition functions},'' \href{http://dx.doi.org/10.1063/1.531148}{{\em
+  Journal of Mathematical Physics} {\bf 36} (1995)  675--706},
+  \href{http://arxiv.org/abs/hep-th/9402074}{{\tt hep-th/9402074}}.
+
+\bibitem{schellekens1986conformal}
+A.~Schellekens and N.~Warner, ``{Conformal subalgebras of Kac-Moody
+  algebras},'' {\em Physical Review D} {\bf 34} (1986) no.~10, 3092--3096.
 
 \bibitem{altschuler1990branching}
 D.~Altschuler, M.~Bauer, and C.~Itzykson, ``{The branching rules of conformal
@@ -434,20 +448,6 @@ A.~Felikson, A.~Retakh, and P.~Tumarkin, ``Regular subalgebras of affine
 \bibitem{dynkin1952semisimple}
 E.~Dynkin, ``{Semisimple subalgebras of semisimple Lie algebras},'' {\em
   Matematicheskii Sbornik} {\bf 72} (1952) no.~2, 349--462.
-
-\bibitem{schellekens1986conformal}
-A.~Schellekens and N.~Warner, ``{Conformal subalgebras of Kac-Moody
-  algebras},'' {\em Physical Review D} {\bf 34} (1986) no.~10, 3092--3096.
-
-\bibitem{1994hepthGannon}
-T.~Gannon, ``{The Classification of SU(3) Modular Invariants Revisited},''
-  \href{http://arxiv.org/abs/hep-th/9404185}{{\tt hep-th/9404185}}.
-
-\bibitem{1995JMPGannon}
-T.~Gannon, ``{Towards a classification of su(2)+...+ su(2) modular invariant
-  partition functions},'' \href{http://dx.doi.org/10.1063/1.531148}{{\em
-  Journal of Mathematical Physics} {\bf 36} (1995)  675--706},
-  \href{http://arxiv.org/abs/hep-th/9402074}{{\tt hep-th/9402074}}.
 
 \bibitem{Maldacena:2000hw}
 J.~M. Maldacena and H.~Ooguri, ``{Strings in AdS(3) and SL(2,R) WZW model.
@@ -577,7 +577,9 @@ J.~Rasmussen, ``{On SU(2) Wess-Zumino-Witten models and stochastic
 
 \bibitem{alekseev2010sle}
 A.~Alekseev, A.~Bytsko, and K.~Izyurov, ``On sle martingales in boundary wzw
-  models,'' {\em Letters in Mathematical Physics} (2010)  1--19.
+  models,'' {\em Letters in Mathematical Physics} {\bf 97} (2011)  243--261,
+  \href{http://arxiv.org/abs/1012.3113}{{\tt 1012.3113}}.
+  \url{http://dx.doi.org/10.1007/s11005-011-0500-2}. 10.1007/s11005-011-0500-2.
 
 \bibitem{santachiara2008sle}
 R.~Santachiara, ``Sle in self-dual critical z (n) spin systems: Cft
@@ -594,7 +596,8 @@ J.~Cardy and D.~Lewellen, ``Bulk and boundary operators in conformal field
 
 \bibitem{figueroa89equivalence}
 J.~Figueroa-O’Farrill, ``The equivalence between the gauged wznw and gko
-  conformal field theories,'' {\em ITP Stony Brook preprint ITP-SB-89-41}  .
+  conformal field theories,'' {\em ITP Stony Brook preprint ITP-SB-89-41}
+  (1989)  .
 
 \bibitem{schramm2006conformally}
 O.~Schramm, ``Conformally invariant scaling limits (an overview and a
@@ -641,6 +644,7 @@ N.~Makarov, S.~Smirnov, {\em et al.}, ``Off-critical lattice models and massive
   Co. Pte. Ltd., 2010. ISBN\# 9789814304634, pp. 362-371}, vol.~1,
   pp.~362--371.
 \newblock 2010.
+\newblock \href{http://arxiv.org/abs/0909.5377}{{\tt 0909.5377}}.
 
 \bibitem{bauer2009off}
 M.~Bauer, D.~Bernard, and L.~Cantini, ``Off-critical sle (2) and sle (4): a
