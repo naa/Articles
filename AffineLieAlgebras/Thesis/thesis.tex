@@ -20,7 +20,8 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
-
+\usepackage{cmap}
+\usepackage{hyperref}
 \newif\ifpdf
 \ifx\pdfoutput\undefined
    \pdffalse
@@ -84,7 +85,7 @@
 \input{concl}
 % ----------------------------------------------------------------
 \bibliography{bibliography}
-\bibliographystyle{utphys}
+\bibliographystyle{disser}
 % ----------------------------------------------------------------
 \appendix
 %\input{app-a}
