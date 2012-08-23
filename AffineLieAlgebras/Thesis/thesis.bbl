@@ -1,749 +1,1158 @@
-\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10%
-0}
+\ifx\undefined\BibPrefix\def\BibPrefix{}\else\fi
+\ifx\undefined\BibPostfix\def\BibPostfix{}\else\fi
+\begin{thebibliography}{\BibPrefix100\BibPostfix}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\language\csname l@#1\endcsname\fi}
+\ifx\undefined\url\def\url#1{{\small #1}}\else\fi
+\ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
+\ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
+\ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
 
-\bibitem{belavin1984ics}
-A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, ``{Infinite conformal symmetry
-  in two-dimensional quantum field theory},'' {\em Nuclear Physics} {\bf 241}
-  (1984)  333--380.
+\bibitem[\BibPrefix1\BibPostfix]{belavin1984ics}
+\selectlanguageifdefined{english}
+\BibEmph{AA~Belavin, AM~Polyakov, AB~Zamolodchikov}. {Infinite conformal
+  symmetry in two-dimensional quantum field theory}~// \BibEmph{Nuclear
+  Physics}. "---
+\newblock 1984. "---
+\newblock Vol. 241. "---
+\newblock Pp.~333--380.
 
-\bibitem{difrancesco1997cft}
-P.~Di~Francesco, P.~Mathieu, and D.~Senechal, {\em {Conformal field theory}}.
+\bibitem[\BibPrefix2\BibPostfix]{difrancesco1997cft}
+\selectlanguageifdefined{english}
+\BibEmph{P.~Di~Francesco, P.~Mathieu, D.~Senechal}. {Conformal field theory}.
+  "---
 \newblock Springer, 1997.
 
-\bibitem{henkel1999conformal}
-M.~Henkel, {\em Conformal invariance and critical phenomena}.
+\bibitem[\BibPrefix3\BibPostfix]{henkel1999conformal}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Henkel}. Conformal invariance and critical phenomena. "---
 \newblock Springer Verlag, 1999.
 
-\bibitem{cox1998exotic}
-D.~Cox and A.~Zawadowski, ``Exotic kondo effects in metals: magnetic ions in a
-  crystalline electric field and tunnelling centres,'' {\em Advances in
-  Physics} {\bf 47} (1998) no.~5, 599--942.
+\bibitem[\BibPrefix4\BibPostfix]{cox1998exotic}
+\selectlanguageifdefined{english}
+\BibEmph{DL~Cox, A.~Zawadowski}. Exotic Kondo effects in metals: magnetic ions
+  in a crystalline electric field and tunnelling centres~// \BibEmph{Advances
+  in Physics}. "---
+\newblock 1998. "---
+\newblock Vol.~47, no.~5. "---
+\newblock Pp.~599--942.
 
-\bibitem{affleck1993exact}
-I.~Affleck and A.~Ludwig, ``Exact conformal-field-theory results on the
-  multichannel kondo effect: Single-fermion green’s function, self-energy,
-  and resistivity,'' {\em Physical Review B} {\bf 48} (1993) no.~10, 7297.
+\bibitem[\BibPrefix5\BibPostfix]{affleck1993exact}
+\selectlanguageifdefined{english}
+\BibEmph{I.~Affleck, A.W.W. Ludwig}. Exact conformal-field-theory results on
+  the multichannel kondo effect: Single-fermion green’s function,
+  self-energy, and resistivity~// \BibEmph{Physical Review B}. "---
+\newblock 1993. "---
+\newblock Vol.~48, no.~10. "---
+\newblock P.~7297.
 
-\bibitem{moore1991nonabelions}
-G.~Moore and N.~Read, ``Nonabelions in the fractional quantum hall effect,''
-  {\em Nuclear Physics B} {\bf 360} (1991) no.~2, 362--396.
+\bibitem[\BibPrefix6\BibPostfix]{moore1991nonabelions}
+\selectlanguageifdefined{english}
+\BibEmph{G.~Moore, N.~Read}. Nonabelions in the fractional quantum Hall
+  effect~// \BibEmph{Nuclear Physics B}. "---
+\newblock 1991. "---
+\newblock Vol. 360, no.~2. "---
+\newblock Pp.~362--396.
 
-\bibitem{cardy1992critical}
-J.~Cardy, ``Critical percolation in finite geometries,'' {\em Journal of
-  Physics A: Mathematical and General} {\bf 25} (1992)  L201.
+\bibitem[\BibPrefix7\BibPostfix]{cardy1992critical}
+\selectlanguageifdefined{english}
+\BibEmph{J.L. Cardy}. Critical percolation in finite geometries~//
+  \BibEmph{Journal of Physics A: Mathematical and General}. "---
+\newblock 1992. "---
+\newblock Vol.~25. "---
+\newblock P.~L201.
 
-\bibitem{smirnov2001critical}
-S.~Smirnov, ``Critical percolation in the plane: Conformal invariance, cardy's
-  formula, scaling limits,'' {\em Comptes Rendus de l'Acad{\'e}mie des
-  Sciences-Series I-Mathematics} {\bf 333} (2001) no.~3, 239--244.
+\bibitem[\BibPrefix8\BibPostfix]{smirnov2001critical}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Smirnov}. Critical percolation in the plane: Conformal invariance,
+  Cardy's formula, scaling limits~// \BibEmph{Comptes Rendus de l'Acad{\'e}mie
+  des Sciences-Series I-Mathematics}. "---
+\newblock 2001. "---
+\newblock Vol. 333, no.~3. "---
+\newblock Pp.~239--244.
 
-\bibitem{duminil2011conformal}
-H.~Duminil-Copin and S.~Smirnov, ``Conformal invariance of lattice models,''
-  {\em Arxiv preprint arXiv:1109.1549} (2011)  .
+\bibitem[\BibPrefix9\BibPostfix]{duminil2011conformal}
+\selectlanguageifdefined{english}
+\BibEmph{H.~Duminil-Copin, S.~Smirnov}. Conformal invariance of lattice
+  models~// \BibEmph{Arxiv preprint arXiv:1109.1549}. "---
+\newblock 2011.
 
-\bibitem{smirnov2010discrete}
-S.~Smirnov, ``Discrete complex analysis and probability,'' {\em Arxiv preprint
-  arXiv:1009.6077} (2010)  .
-
-\bibitem{kac1968simple}
-V.~Kac, ``Simple irreducible graded lie algebras of finite growth,'' {\em
-  Mathematics of the USSR-Izvestiya} {\bf 2} (1968)  1271.
-
-\bibitem{moody1968new}
-R.~Moody, ``A new class of lie algebras,'' {\em Journal of algebra} {\bf 10}
-  (1968) no.~2, 211--230.
-
-\bibitem{kac1984infinite}
-V.~Kac and D.~Peterson, ``{Infinite-dimensional Lie algebras, theta functions
-  and modular forms},'' {\em Adv. in Math} {\bf 53} (1984) no.~2, 125--264.
-
-\bibitem{macdonald1971affine}
-I.~Macdonald, ``Affine root systems and dedekind's$\eta$-function,'' {\em
-  Inventiones Mathematicae} {\bf 15} (1971) no.~2, 91--143.
-
-\bibitem{witten1984nab}
-E.~Witten, ``{Non-abelian bosonization in two dimensions},'' {\em
-  Communications in Mathematical Physics} {\bf 92} (1984) no.~4, 455--472.
-
-\bibitem{Goddard198588}
-P.~Goddard, A.~Kent, and D.~Olive, ``Virasoro algebras and coset space
-  models,'' \href{http://dx.doi.org/DOI: 10.1016/0370-2693(85)91145-1}{{\em
-  Physics Letters B} {\bf 152} (1985) no.~1-2, 88 -- 92}.
-
-\bibitem{2010arXiv1007.0318L}
-V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
-  nonmaximal embeddings},''
-  \href{http://dx.doi.org/10.1088/1751-8113/44/7/075205}{{\em Journal of
-  Physics A: Mathematical and Theoretical} {\bf 44} (2011) no.~7, 075205},
-  \href{http://arxiv.org/abs/1007.0318}{{\tt arXiv:1007.0318 [math.RT]}}.
-
-\bibitem{2011arXiv1102.1702L}
-V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive properties of branching and BGG
-  resolution},'' \href{http://dx.doi.org/10.1007/s11232-011-0132-9}{{\em
-  Theoretical and Mathematical Physics} {\bf 169} (2011) no.~2, 1551--1560},
-  \href{http://arxiv.org/abs/1102.1702}{{\tt arXiv:1102.1702 [math.RT]}}.
-
-\bibitem{2011arXiv1111.6787L}
-V.~{Laykhovsky} and A.~{Nazarov}, ``{Fan, splint and branching rules},'' {\em
-  Zapiski Nauchnykh Seminarov POMI} {\bf 398} (2012)  162--179,
-  \href{http://arxiv.org/abs/1111.6787}{{\tt arXiv:1111.6787 [math.RT]}}.
-
-\bibitem{NazarovJETPletters}
-A.~{Nazarov}, ``{SLE martingales in coset conformal field theory},'' {\em JETP
-  lett.} {\bf 96} (2012) no.~2, 93--96,
-  \href{http://arxiv.org/abs/1205.6104}{{\tt arXiv:1205.6104 [math-ph]}}.
-
-\bibitem{2011arXiv1107.4681N}
-A.~{Nazarov}, ``{Affine.m - Mathematica package for computations in
-  representation theory of finite-dimensional and affine Lie algebras},''
-  \href{http://dx.doi.org/10.1016/j.cpc.2012.06.014}{{\em Computer Physics
-  Communications} (2012)  }, \href{http://arxiv.org/abs/1107.4681}{{\tt
-  arXiv:1107.4681 [math.RT]}}.
-  \url{http://dx.doi.org/10.1016/j.cpc.2012.06.014}.
-
-\bibitem{2011arXiv1112.4354N}
-A.~{Nazarov}, ``{Algebraic properties of CFT coset construction and
-  Schramm-Loewner evolution},'' {\em Journal of Physics: Conference Series}
-  {\bf 343} (2012) no.~1, 012085, \href{http://arxiv.org/abs/1112.4354}{{\tt
-  arXiv:1112.4354 [math-ph]}}.
-  \url{http://stacks.iop.org/1742-6596/343/i=1/a=012085}.
-
-\bibitem{2010LyakhovskyNazarovMQFT}
-V.~{Lyakhovsky} and A.~{Nazarov}, ``{Branching functions generated by the
-  injection fan for Lie algebras. (The role of BGG-resolvent)},'' in {\em
-  Models in Quantum Field Theory}.
+\bibitem[\BibPrefix10\BibPostfix]{smirnov2010discrete}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Smirnov}. Discrete complex analysis and probability~//
+  \BibEmph{Arxiv preprint arXiv:1009.6077}. "---
 \newblock 2010.
-\newblock \url{http://hep.niif.spbu.ru/conf/mktp2010/}.
 
-\bibitem{Nazarov2008}
-A.~Nazarov, ``Comparison of algorithms for construction of representations of
-  lie algebras,'' in {\em Physics and Progress}, Physics and Progress, SPbSU.
+\bibitem[\BibPrefix11\BibPostfix]{kac1968simple}
+\selectlanguageifdefined{english}
+\BibEmph{V.G. Kac}. Simple irreducible graded Lie algebras of finite growth~//
+  \BibEmph{Mathematics of the USSR-Izvestiya}. "---
+\newblock 1968. "---
+\newblock Vol.~2. "---
+\newblock P.~1271.
+
+\bibitem[\BibPrefix12\BibPostfix]{moody1968new}
+\selectlanguageifdefined{english}
+\BibEmph{R.V. Moody}. A new class of Lie algebras~// \BibEmph{Journal of
+  algebra}. "---
+\newblock 1968. "---
+\newblock Vol.~10, no.~2. "---
+\newblock Pp.~211--230.
+
+\bibitem[\BibPrefix13\BibPostfix]{kac1984infinite}
+\selectlanguageifdefined{english}
+\BibEmph{V.G. Kac, D.H. Peterson}. {Infinite-dimensional Lie algebras, theta
+  functions and modular forms}~// \BibEmph{Adv. in Math}. "---
+\newblock 1984. "---
+\newblock Vol.~53, no.~2. "---
+\newblock Pp.~125--264.
+
+\bibitem[\BibPrefix14\BibPostfix]{macdonald1971affine}
+\selectlanguageifdefined{english}
+\BibEmph{I.G. Macdonald}. Affine root systems and Dedekind's$\eta$-function~//
+  \BibEmph{Inventiones Mathematicae}. "---
+\newblock 1971. "---
+\newblock Vol.~15, no.~2. "---
+\newblock Pp.~91--143.
+
+\bibitem[\BibPrefix15\BibPostfix]{witten1984nab}
+\selectlanguageifdefined{english}
+\BibEmph{E.~Witten}. {Non-abelian bosonization in two dimensions}~//
+  \BibEmph{Communications in Mathematical Physics}. "---
+\newblock 1984. "---
+\newblock Vol.~92, no.~4. "---
+\newblock Pp.~455--472.
+
+\bibitem[\BibPrefix16\BibPostfix]{Goddard198588}
+\selectlanguageifdefined{english}
+\BibEmph{P.~Goddard, A.~Kent, D.~Olive}. Virasoro algebras and coset space
+  models~// \BibEmph{Physics Letters B}. "---
+\newblock 1985. "---
+\newblock Vol. 152, no. 1-2. "---
+\newblock Pp.~88 -- 92.
+
+\bibitem[\BibPrefix17\BibPostfix]{2010arXiv1007.0318L}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Recursive algorithm and branching for
+  nonmaximal embeddings}~// \BibEmph{Journal of Physics A: Mathematical and
+  Theoretical}. "---
+\newblock 2011. "---
+\newblock Vol.~44, no.~7. "---
+\newblock P.~075205.
+
+\bibitem[\BibPrefix18\BibPostfix]{2011arXiv1102.1702L}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Recursive properties of branching and
+  BGG resolution}~// \BibEmph{Theoretical and Mathematical Physics}. "---
+\newblock 2011. "---
+\newblock Vol. 169, no.~2. "---
+\newblock Pp.~1551--1560.
+
+\bibitem[\BibPrefix19\BibPostfix]{2011arXiv1111.6787L}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Laykhovsky}, A.~{Nazarov}}. {Fan, splint and branching rules}~//
+  \BibEmph{Zapiski Nauchnykh Seminarov POMI}. "---
+\newblock 2012. "---
+\newblock Vol. 398. "---
+\newblock Pp.~162--179.
+
+\bibitem[\BibPrefix20\BibPostfix]{NazarovJETPletters}
+\selectlanguageifdefined{english}
+\BibEmph{A.~{Nazarov}}. {SLE martingales in coset conformal field theory}~//
+  \BibEmph{JETP lett.} "---
+\newblock 2012. "---
+\newblock Vol.~96, no.~2. "---
+\newblock Pp.~93--96.
+
+\bibitem[\BibPrefix21\BibPostfix]{2011arXiv1107.4681N}
+\selectlanguageifdefined{english}
+\BibEmph{A.~{Nazarov}}. {Affine.m - Mathematica package for computations in
+  representation theory of finite-dimensional and affine Lie algebras}~//
+  \BibEmph{Computer Physics Communications}. "---
+\newblock 2012. \BibUrl{ http://dx.doi.org/10.1016/j.cpc.2012.06.014}.
+
+\bibitem[\BibPrefix22\BibPostfix]{2011arXiv1112.4354N}
+\selectlanguageifdefined{english}
+\BibEmph{A.~{Nazarov}}. {Algebraic properties of CFT coset construction and
+  Schramm-Loewner evolution}~// \BibEmph{Journal of Physics: Conference
+  Series}. "---
+\newblock 2012. "---
+\newblock Vol. 343, no.~1. "---
+\newblock P.~012085. \BibUrl{
+  http://stacks.iop.org/1742-6596/343/i=1/a=012085}.
+
+\bibitem[\BibPrefix23\BibPostfix]{2010LyakhovskyNazarovMQFT}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Lyakhovsky}, A.~{Nazarov}}. {Branching functions generated by the
+  injection fan for Lie algebras. (The role of BGG-resolvent)}~// Models in
+  Quantum Field Theory. "---
+\newblock 2010. \BibUrl{ http://hep.niif.spbu.ru/conf/mktp2010/}.
+
+\bibitem[\BibPrefix24\BibPostfix]{Nazarov2008}
+\selectlanguageifdefined{english}
+\BibEmph{A.~Nazarov}. Comparison of algorithms for construction of
+  representations of Lie algebras~// Physics and Progress~/ SPbSU. "---
+\newblock Physics and Progress. "---
 \newblock 2008.
 
-\bibitem{NazarovACSM2009}
-A.~Nazarov, ``Computational tools for representation theory of affine lie
-  algebras,'' in {\em second Workshop on Advanced Computer Simulation Methods
-  for Junior scientists}, ACSM, EIMI.
+\bibitem[\BibPrefix25\BibPostfix]{NazarovACSM2009}
+\selectlanguageifdefined{english}
+\BibEmph{A.~Nazarov}. Computational tools for representation theory of affine
+  Lie algebras~// second Workshop on Advanced Computer Simulation Methods for
+  Junior scientists~/ EIMI. "---
+\newblock ACSM. "---
 \newblock 2009.
 
-\bibitem{2012arXiv1204.1855L}
-V.~{Laykhovsky} and A.~{Nazarov}, ``{On affine extension of splint root
-  systems},'' in {\em Supersymmetries \& Quantum Symmetries}, SQS'2011, JINR.
-\newblock \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855
-  [math.RT]}}.
+\bibitem[\BibPrefix26\BibPostfix]{2012arXiv1204.1855L}
+\selectlanguageifdefined{english}
+\BibEmph{V.~{Laykhovsky}, A.~{Nazarov}}. {On affine extension of splint root
+  systems}~// Supersymmetries \& Quantum Symmetries~/ JINR. "---
+\newblock SQS'2011.
 
-\bibitem{Polyakov:1970xd}
-A.~M. Polyakov, ``{Conformal symmetry of critical fluctuations},''
-{\em JETP Lett.} {\bf 12} (1970)  381--383.
-%%CITATION = JTPLA,12,381;%%.
+\bibitem[\BibPrefix27\BibPostfix]{Polyakov:1970xd}
+\selectlanguageifdefined{english}
+\BibEmph{Alexander~M. Polyakov}. {Conformal symmetry of critical
+  fluctuations}~// \BibEmph{JETP Lett.} "---
+\newblock 1970. "---
+\newblock Vol.~12. "---
+\newblock Pp.~381--383.
 
-\bibitem{moore1989taming}
-G.~Moore and N.~Seiberg, ``Taming the conformal zoo,'' {\em Physics Letters B}
-  {\bf 220} (1989) no.~3, 422--430.
+\bibitem[\BibPrefix28\BibPostfix]{moore1989taming}
+\selectlanguageifdefined{english}
+\BibEmph{G.~Moore, N.~Seiberg}. Taming the conformal zoo~// \BibEmph{Physics
+  Letters B}. "---
+\newblock 1989. "---
+\newblock Vol. 220, no.~3. "---
+\newblock Pp.~422--430.
 
-\bibitem{schramm2000scaling}
-O.~Schramm, ``Scaling limits of loop-erased random walks and uniform spanning
-  trees,'' {\em Israel Journal of Mathematics} {\bf 118} (2000) no.~1,
-  221--288.
+\bibitem[\BibPrefix29\BibPostfix]{schramm2000scaling}
+\selectlanguageifdefined{english}
+\BibEmph{O.~Schramm}. Scaling limits of loop-erased random walks and uniform
+  spanning trees~// \BibEmph{Israel Journal of Mathematics}. "---
+\newblock 2000. "---
+\newblock Vol. 118, no.~1. "---
+\newblock Pp.~221--288.
 
-\bibitem{bauer2002sle}
-M.~Bauer and D.~Bernard, ``Sle [kappa] growth processes and conformal field
-  theories,'' {\em Physics Letters B} {\bf 543} (2002) no.~1-2, 135--138.
+\bibitem[\BibPrefix30\BibPostfix]{bauer2002sle}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. SLE [kappa] growth processes and conformal
+  field theories~// \BibEmph{Physics Letters B}. "---
+\newblock 2002. "---
+\newblock Vol. 543, no. 1-2. "---
+\newblock Pp.~135--138.
 
-\bibitem{bauer2003conformal}
-M.~Bauer and D.~Bernard, ``Conformal field theories of stochastic loewner
-  evolutions,'' {\em Communications in mathematical physics} {\bf 239} (2003)
-  no.~3, 493--521.
+\bibitem[\BibPrefix31\BibPostfix]{bauer2003conformal}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. Conformal field theories of stochastic Loewner
+  evolutions~// \BibEmph{Communications in mathematical physics}. "---
+\newblock 2003. "---
+\newblock Vol. 239, no.~3. "---
+\newblock Pp.~493--521.
 
-\bibitem{bauer2003sle}
-M.~Bauer and D.~Bernard, ``Sle martingales and the virasoro algebra,'' {\em
-  Physics Letters B} {\bf 557} (2003) no.~3-4, 309--316.
+\bibitem[\BibPrefix32\BibPostfix]{bauer2003sle}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. SLE martingales and the Virasoro algebra~//
+  \BibEmph{Physics Letters B}. "---
+\newblock 2003. "---
+\newblock Vol. 557, no. 3-4. "---
+\newblock Pp.~309--316.
 
-\bibitem{bauer2004cfts}
-M.~Bauer and D.~Bernard, ``Cfts of sles: the radial case,'' {\em Physics
-  Letters B} {\bf 583} (2004) no.~3-4, 324--330.
+\bibitem[\BibPrefix33\BibPostfix]{bauer2004cfts}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. CFTs of SLEs: the radial case~//
+  \BibEmph{Physics Letters B}. "---
+\newblock 2004. "---
+\newblock Vol. 583, no. 3-4. "---
+\newblock Pp.~324--330.
 
-\bibitem{bauer2004sle}
-M.~Bauer and D.~Bernard, ``Sle, cft and zig-zag probabilities,'' {\em Arxiv
-  preprint math-ph/0401019} (2004)  .
-
-\bibitem{bauer2004conformal}
-M.~Bauer and D.~Bernard, ``Conformal transformations and the sle partition
-  function martingale,'' in {\em Annales Henri Poincare}, vol.~5, pp.~289--326,
-  Springer.
+\bibitem[\BibPrefix34\BibPostfix]{bauer2004sle}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. SLE, CFT and zig-zag probabilities~//
+  \BibEmph{Arxiv preprint math-ph/0401019}. "---
 \newblock 2004.
 
-\bibitem{felder1989structure}
-G.~Felder, J.~Fr{\"o}hlich, and G.~Keller, ``On the structure of unitary
-  conformal field theory. i. existence of conformal blocks,'' {\em
-  Communications in mathematical physics} {\bf 124} (1989) no.~3, 417--463.
+\bibitem[\BibPrefix35\BibPostfix]{bauer2004conformal}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. Conformal transformations and the SLE partition
+  function martingale~// Annales Henri Poincare~/ Springer. "---
+\newblock Vol.~5. "---
+\newblock 2004. "---
+\newblock Pp.~289--326.
 
-\bibitem{schottenloher2008mathematical}
-M.~Schottenloher, {\em {A mathematical introduction to conformal field
-  theory}}.
+\bibitem[\BibPrefix36\BibPostfix]{felder1989structure}
+\selectlanguageifdefined{english}
+\BibEmph{G.~Felder, J.~Fr{\"o}hlich, G.~Keller}. On the structure of unitary
+  conformal field theory. I. Existence of conformal blocks~//
+  \BibEmph{Communications in mathematical physics}. "---
+\newblock 1989. "---
+\newblock Vol. 124, no.~3. "---
+\newblock Pp.~417--463.
+
+\bibitem[\BibPrefix37\BibPostfix]{schottenloher2008mathematical}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Schottenloher}. {A mathematical introduction to conformal field
+  theory}. "---
 \newblock Springer Verlag, 2008.
 
-\bibitem{segal1987definition}
-G.~Segal, ``The definition of conformal field theory,'' {\em Differential
-  geometrical methods in theoretical physics (Como, 1987)} {\bf 250} (1987)
-  165--171.
+\bibitem[\BibPrefix38\BibPostfix]{segal1987definition}
+\selectlanguageifdefined{english}
+\BibEmph{G.~Segal}. The definition of conformal field theory~//
+  \BibEmph{Differential geometrical methods in theoretical physics (Como,
+  1987)}. "---
+\newblock 1987. "---
+\newblock Vol. 250. "---
+\newblock Pp.~165--171.
 
-\bibitem{kac1998vertex}
-V.~Kac, {\em Vertex algebras for beginners: Victor Kac}, vol.~10.
-\newblock Amer Mathematical Society, 1998.
+\bibitem[\BibPrefix39\BibPostfix]{kac1998vertex}
+\selectlanguageifdefined{english}
+\BibEmph{V.G. Kac}. Vertex algebras for beginners: Victor Kac. "---
+\newblock Amer Mathematical Society, 1998. "---
+\newblock Vol.~10.
 
-\bibitem{moore1989classical}
-G.~Moore and N.~Seiberg, ``Classical and quantum conformal field theory,'' {\em
-  Communications in Mathematical Physics} {\bf 123} (1989) no.~2, 177--254.
+\bibitem[\BibPrefix40\BibPostfix]{moore1989classical}
+\selectlanguageifdefined{english}
+\BibEmph{G.~Moore, N.~Seiberg}. Classical and quantum conformal field theory~//
+  \BibEmph{Communications in Mathematical Physics}. "---
+\newblock 1989. "---
+\newblock Vol. 123, no.~2. "---
+\newblock Pp.~177--254.
 
-\bibitem{zamolodchikov1987representations}
-A.~Zamolodchikov and V.~Fateev, ``Representations of the algebra of
+\bibitem[\BibPrefix41\BibPostfix]{zamolodchikov1987representations}
+\selectlanguageifdefined{english}
+\BibEmph{A.B. Zamolodchikov, V.A. Fateev}. Representations of the algebra of
   “parafermion currents” of spin 4/3 in two-dimensional conformal field
-  theory. minimal models and the tricritical potts z 3 model,'' {\em
-  Theoretical and Mathematical Physics} {\bf 71} (1987) no.~2, 451--462.
+  theory. Minimal models and the tricritical potts Z 3 model~//
+  \BibEmph{Theoretical and Mathematical Physics}. "---
+\newblock 1987. "---
+\newblock Vol.~71, no.~2. "---
+\newblock Pp.~451--462.
 
-\bibitem{zamolodchikov1987conformal}
-A.~Zamolodchikov, ``Conformal scalar field on the hyperelliptic curve and
-  critical ashkin-teller multipoint correlation functions,'' {\em Nuclear
-  Physics B} {\bf 285} (1987)  481--503.
+\bibitem[\BibPrefix42\BibPostfix]{zamolodchikov1987conformal}
+\selectlanguageifdefined{english}
+\BibEmph{A.B. Zamolodchikov}. Conformal scalar field on the hyperelliptic curve
+  and critical Ashkin-Teller multipoint correlation functions~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 1987. "---
+\newblock Vol. 285. "---
+\newblock Pp.~481--503.
 
-\bibitem{cardy1984conformal}
-J.~Cardy, ``Conformal invariance and surface critical behavior,'' {\em Nuclear
-  Physics B} {\bf 240} (1984) no.~4, 514--532.
+\bibitem[\BibPrefix43\BibPostfix]{cardy1984conformal}
+\selectlanguageifdefined{english}
+\BibEmph{J.L. Cardy}. Conformal invariance and surface critical behavior~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 1984. "---
+\newblock Vol. 240, no.~4. "---
+\newblock Pp.~514--532.
 
-\bibitem{cardy1989boundary}
-J.~Cardy, ``Boundary conditions, fusion rules and the verlinde formula,'' {\em
-  Nuclear Physics B} {\bf 324} (1989) no.~3, 581--596.
+\bibitem[\BibPrefix44\BibPostfix]{cardy1989boundary}
+\selectlanguageifdefined{english}
+\BibEmph{J.L. Cardy}. Boundary conditions, fusion rules and the Verlinde
+  formula~// \BibEmph{Nuclear Physics B}. "---
+\newblock 1989. "---
+\newblock Vol. 324, no.~3. "---
+\newblock Pp.~581--596.
 
-\bibitem{cardy1986effect}
-J.~Cardy, ``Effect of boundary conditions on the operator content of
-  two-dimensional conformally invariant theories,'' {\em Nuclear Physics B}
-  {\bf 275} (1986) no.~2, 200--218.
+\bibitem[\BibPrefix45\BibPostfix]{cardy1986effect}
+\selectlanguageifdefined{english}
+\BibEmph{J.L. Cardy}. Effect of boundary conditions on the operator content of
+  two-dimensional conformally invariant theories~// \BibEmph{Nuclear Physics
+  B}. "---
+\newblock 1986. "---
+\newblock Vol. 275, no.~2. "---
+\newblock Pp.~200--218.
 
-\bibitem{gawedzki2002boundary}
-K.~Gawedzki, ``Boundary wzw, g/h, g/g and cs theories,'' in {\em Annales Henri
-  Poincare}, vol.~3, pp.~847--881, Springer.
-\newblock 2002.
+\bibitem[\BibPrefix46\BibPostfix]{gawedzki2002boundary}
+\selectlanguageifdefined{english}
+\BibEmph{K.~Gawedzki}. Boundary wzw, g/h, g/g and cs theories~// Annales Henri
+  Poincare~/ Springer. "---
+\newblock Vol.~3. "---
+\newblock 2002. "---
+\newblock Pp.~847--881.
 
-\bibitem{ishikawa2003novel}
-H.~Ishikawa and T.~Tani, ``Novel construction of boundary states in coset
-  conformal field theories,'' {\em Nuclear Physics B} {\bf 649} (2003) no.~1-2,
-  205--242.
+\bibitem[\BibPrefix47\BibPostfix]{ishikawa2003novel}
+\selectlanguageifdefined{english}
+\BibEmph{H.~Ishikawa, T.~Tani}. Novel construction of boundary states in coset
+  conformal field theories~// \BibEmph{Nuclear Physics B}. "---
+\newblock 2003. "---
+\newblock Vol. 649, no. 1-2. "---
+\newblock Pp.~205--242.
 
-\bibitem{fuchs2005geometry}
-J.~Fuchs and A.~Wurtz, ``On the geometry of coset branes,'' {\em Nuclear
-  Physics B} {\bf 724} (2005) no.~3, 503--528.
+\bibitem[\BibPrefix48\BibPostfix]{fuchs2005geometry}
+\selectlanguageifdefined{english}
+\BibEmph{J.~Fuchs, A.~Wurtz}. On the geometry of coset branes~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 2005. "---
+\newblock Vol. 724, no.~3. "---
+\newblock Pp.~503--528.
 
-\bibitem{fredenhagen2002d}
-S.~Fredenhagen and V.~Schomerus, ``D-branes in coset models,'' {\em Journal of
-  High Energy Physics} {\bf 2002} (2002)  005.
+\bibitem[\BibPrefix49\BibPostfix]{fredenhagen2002d}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Fredenhagen, V.~Schomerus}. D-branes in coset models~//
+  \BibEmph{Journal of High Energy Physics}. "---
+\newblock 2002. "---
+\newblock Vol. 2002. "---
+\newblock P.~005.
 
-\bibitem{elitzur2002d}
-S.~Elitzur and G.~Sarkissian, ``D-branes on a gauged wzw model,'' {\em Nuclear
-  Physics B} {\bf 625} (2002) no.~1-2, 166--178.
+\bibitem[\BibPrefix50\BibPostfix]{elitzur2002d}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Elitzur, G.~Sarkissian}. D-branes on a gauged WZW model~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 2002. "---
+\newblock Vol. 625, no. 1-2. "---
+\newblock Pp.~166--178.
 
-\bibitem{felder1999geometry}
-G.~Felder, J.~Fr{\"o}hlich, J.~Fuchs, and C.~Schweigert, ``The geometry of wzw
-  branes,'' {\em Arxiv preprint hep-th/9909030} (1999)  .
+\bibitem[\BibPrefix51\BibPostfix]{felder1999geometry}
+\selectlanguageifdefined{english}
+\BibEmph{G.~Felder, J.~Fr{\"o}hlich, J.~Fuchs, C.~Schweigert}. The geometry of
+  WZW branes~// \BibEmph{Arxiv preprint hep-th/9909030}. "---
+\newblock 1999.
 
-\bibitem{alekseev1999d}
-A.~Alekseev and V.~Schomerus, ``D-branes in the wzw model,'' {\em Physical
-  Review D} {\bf 60} (1999) no.~6, 061901.
+\bibitem[\BibPrefix52\BibPostfix]{alekseev1999d}
+\selectlanguageifdefined{english}
+\BibEmph{A.Y. Alekseev, V.~Schomerus}. D-branes in the WZW model~//
+  \BibEmph{Physical Review D}. "---
+\newblock 1999. "---
+\newblock Vol.~60, no.~6. "---
+\newblock P.~061901.
 
-\bibitem{mercat2001integrable}
-C.~Mercat and P.~Pearce, ``Integrable and conformal boundary conditions for k
-  parafermions on a cylinder,'' {\em Journal of Physics A: Mathematical and
-  General} {\bf 34} (2001)  5751.
+\bibitem[\BibPrefix53\BibPostfix]{mercat2001integrable}
+\selectlanguageifdefined{english}
+\BibEmph{C.~Mercat, P.A. Pearce}. Integrable and conformal boundary conditions
+  for k parafermions on a cylinder~// \BibEmph{Journal of Physics A:
+  Mathematical and General}. "---
+\newblock 2001. "---
+\newblock Vol.~34. "---
+\newblock P.~5751.
 
-\bibitem{Walton:1999xc}
-M.~Walton, ``{Affine Kac-Moody algebras and the Wess-Zumino-Witten model},''
-  (1999)  ,
-\href{http://arxiv.org/abs/hep-th/9911187}{{\tt arXiv:hep-th/9911187}}.
-%%CITATION = HEP-TH/9911187;%%.
+\bibitem[\BibPrefix54\BibPostfix]{Walton:1999xc}
+\selectlanguageifdefined{english}
+\BibEmph{Mark Walton}. {Affine Kac-Moody algebras and the Wess-Zumino-Witten
+  model}. "---
+\newblock 1999.
 
-\bibitem{humphreys1997introduction}
-J.~Humphreys, {\em {Introduction to Lie algebras and representation theory}}.
+\bibitem[\BibPrefix55\BibPostfix]{humphreys1997introduction}
+\selectlanguageifdefined{english}
+\BibEmph{J.E. Humphreys}. {Introduction to Lie algebras and representation
+  theory}. "---
 \newblock Springer, 1997.
 
-\bibitem{humphreys1992reflection}
-J.~Humphreys, {\em {Reflection groups and Coxeter groups}}.
+\bibitem[\BibPrefix56\BibPostfix]{humphreys1992reflection}
+\selectlanguageifdefined{english}
+\BibEmph{J.E. Humphreys}. {Reflection groups and Coxeter groups}. "---
 \newblock Cambridge Univ Pr, 1992.
 
-\bibitem{fuks1986cohomology}
-D.~Fuks, I.~Gelfand, and A.~Sosinskij, {\em {Cohomology of infinite-dimensional
-  Lie algebras}}.
+\bibitem[\BibPrefix57\BibPostfix]{fuks1986cohomology}
+\selectlanguageifdefined{english}
+\BibEmph{D.B. Fuks, I.~Gelfand, A.B. Sosinskij}. {Cohomology of
+  infinite-dimensional Lie algebras}. "---
 \newblock Consultants bureau, 1986.
 
-\bibitem{fuks1984}
-Д.~Фукс, {\em {Когомологии бесконечномерных
-  алгебр Ли}}.
+\bibitem[\BibPrefix58\BibPostfix]{fuks1984}
+\selectlanguageifdefined{english}
+\BibEmph{Д.Б. Фукс}. {Когомологии
+  бесконечномерных алгебр Ли}. "---
 \newblock Наука, Глав. ред.
   физико-математической лит-ры, Москва, 1984.
 
-\bibitem{feigin1988}
-Б.~Фейгин and Д.~Фукс, ``{Когомологии групп и
-  алгебр Ли},'' {\em Итоги науки и техники.
-  Серия {\guillemotleft}Современные проблемы
-  математики. Фундаментальные
-  направления{\guillemotright}} {\bf 21} (1988) no.~0, 121--209.
+\bibitem[\BibPrefix59\BibPostfix]{feigin1988}
+\selectlanguageifdefined{english}
+\BibEmph{Б.Л. Фейгин, Д.Б. Фукс}. {Когомологии
+  групп и алгебр Ли}~// \BibEmph{Итоги науки и
+  техники. Серия {\guillemotleft}Современные
+  проблемы математики. Фундаментальные
+  направления{\guillemotright}}. "---
+\newblock 1988. "---
+\newblock Vol.~21, no.~0. "---
+\newblock Pp.~121--209.
 
-\bibitem{kac1990idl}
-V.~Kac, {\em {Infinite dimensional Lie algebras}}.
+\bibitem[\BibPrefix60\BibPostfix]{kac1990idl}
+\selectlanguageifdefined{english}
+\BibEmph{V.G. Kac}. {Infinite dimensional Lie algebras}. "---
 \newblock Cambridge University Press, 1990.
 
-\bibitem{wakimoto2001idl}
-M.~Wakimoto, {\em {Infinite-dimensional Lie algebras}}.
+\bibitem[\BibPrefix61\BibPostfix]{wakimoto2001idl}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Wakimoto}. {Infinite-dimensional Lie algebras}. "---
 \newblock American Mathematical Society, 2001.
 
-\bibitem{wakimoto2001lectures}
-M.~Wakimoto, {\em {Lectures on infinite-dimensional Lie algebra}}.
+\bibitem[\BibPrefix62\BibPostfix]{wakimoto2001lectures}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Wakimoto}. {Lectures on infinite-dimensional Lie algebra}. "---
 \newblock World scientific, 2001.
 
-\bibitem{kass1990ala}
-S.~Kass, R.~Moody, J.~Patera, and R.~Slansky, {\em {Affine Lie algebras, weight
-  multiplicities, and branching rules}}.
+\bibitem[\BibPrefix63\BibPostfix]{kass1990ala}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Kass, RV~Moody, J.~Patera, R.~Slansky}. {Affine Lie algebras,
+  weight multiplicities, and branching rules}. "---
 \newblock Sl, 1990.
 
-\bibitem{fulton1991representation}
-W.~Fulton and J.~Harris, {\em {Representation theory: a first course}},
-  vol.~129.
-\newblock Springer Verlag, 1991.
+\bibitem[\BibPrefix64\BibPostfix]{fulton1991representation}
+\selectlanguageifdefined{english}
+\BibEmph{W.~Fulton, J.~Harris}. {Representation theory: a first course}. "---
+\newblock Springer Verlag, 1991. "---
+\newblock Vol.~129.
 
-\bibitem{bourbaki2002lie}
-N.~Bourbaki, {\em {Lie groups and Lie algebras}}.
+\bibitem[\BibPrefix65\BibPostfix]{bourbaki2002lie}
+\selectlanguageifdefined{english}
+\BibEmph{N.~Bourbaki}. {Lie groups and Lie algebras}. "---
 \newblock Springer Verlag, 2002.
 
-\bibitem{humphreys2008representations}
-J.~Humphreys, {\em {Representations of semisimple Lie algebras in the BGG
-  category O}}.
+\bibitem[\BibPrefix66\BibPostfix]{humphreys2008representations}
+\selectlanguageifdefined{english}
+\BibEmph{J.E. Humphreys}. {Representations of semisimple Lie algebras in the
+  BGG category O}. "---
 \newblock Amer Mathematical Society, 2008.
 
-\bibitem{carter2005lie}
-R.~Carter, {\em {Lie algebras of finite and affine type}}.
+\bibitem[\BibPrefix67\BibPostfix]{carter2005lie}
+\selectlanguageifdefined{english}
+\BibEmph{R.~Carter}. {Lie algebras of finite and affine type}. "---
 \newblock Cambridge University Press, 2005.
 
-\bibitem{bernstein1976category}
-J.~Bernstein, I.~Gel'fand, and S.~Gel'fand, ``{Category of g-modules},'' {\em
-  Funktsional'nyi Analiz i ego prilozheniya} {\bf 10} (1976) no.~2, 1--8.
+\bibitem[\BibPrefix68\BibPostfix]{bernstein1976category}
+\selectlanguageifdefined{english}
+\BibEmph{J.~Bernstein, I.M. Gel'fand, S.I. Gel'fand}. {Category of
+  g-modules}~// \BibEmph{Funktsional'nyi Analiz i ego prilozheniya}. "---
+\newblock 1976. "---
+\newblock Vol.~10, no.~2. "---
+\newblock Pp.~1--8.
 
-\bibitem{bernstein1971structure}
-I.~Bernstein, I.~Gel'fand, and S.~Gel'fand, ``{Structure of representations
-  generated by vectors of highest weight},'' {\em Functional Analysis and Its
-  Applications} {\bf 5} (1971) no.~1, 1--8.
+\bibitem[\BibPrefix69\BibPostfix]{bernstein1971structure}
+\selectlanguageifdefined{english}
+\BibEmph{IN~Bernstein, IM~Gel'fand, SI~Gel'fand}. {Structure of representations
+  generated by vectors of highest weight}~// \BibEmph{Functional Analysis and
+  Its Applications}. "---
+\newblock 1971. "---
+\newblock Vol.~5, no.~1. "---
+\newblock Pp.~1--8.
 
-\bibitem{il2010folded}
-M.~Il'in, P.~Kulish, and V.~Lyakhovsky, ``{Folded fans and string functions},''
-  {\em Zapiski Nauchnykh Seminarov POMI} {\bf 374} (2010)  197--212.
+\bibitem[\BibPrefix70\BibPostfix]{il2010folded}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Il'in, P.P. Kulish, V.D. Lyakhovsky}. {Folded fans and string
+  functions}~// \BibEmph{Zapiski Nauchnykh Seminarov POMI}. "---
+\newblock 2010. "---
+\newblock Vol. 374. "---
+\newblock Pp.~197--212.
 
-\bibitem{kulish4sfa}
-P.~Kulish and V.~Lyakhovsky, ``{String Functions for Affine Lie Algebras
-  Integrable Modules},'' {\em Symmetry, Integrability and Geometry: Methods and
-  Applications} {\bf 4}  , \href{http://arxiv.org/abs/0812.2381}{{\tt
-  arXiv:0812.2381 [math.RT]}}.
+\bibitem[\BibPrefix71\BibPostfix]{kulish4sfa}
+\selectlanguageifdefined{english}
+\BibEmph{P.~Kulish, V.~Lyakhovsky}. {String Functions for Affine Lie Algebras
+  Integrable Modules}~// \BibEmph{Symmetry, Integrability and Geometry: Methods
+  and Applications}. "---
+\newblock Vol.~4.
 
-\bibitem{1994hepthGannon}
-T.~Gannon, ``{The Classification of SU(3) Modular Invariants Revisited},''
-  \href{http://arxiv.org/abs/hep-th/9404185}{{\tt hep-th/9404185}}.
+\bibitem[\BibPrefix72\BibPostfix]{1994hepthGannon}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Gannon}. {The Classification of SU(3) Modular Invariants
+  Revisited}. "---
+\newblock 1994.
 
-\bibitem{1995JMPGannon}
-T.~Gannon, ``{Towards a classification of su(2)+...+ su(2) modular invariant
-  partition functions},'' \href{http://dx.doi.org/10.1063/1.531148}{{\em
-  Journal of Mathematical Physics} {\bf 36} (1995)  675--706},
-  \href{http://arxiv.org/abs/hep-th/9402074}{{\tt hep-th/9402074}}.
+\bibitem[\BibPrefix73\BibPostfix]{1995JMPGannon}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Gannon}. {Towards a classification of su(2)+...+ su(2) modular
+  invariant partition functions}~// \BibEmph{Journal of Mathematical Physics}.
+  "---
+\newblock 1995. "---
+\newblock Vol.~36. "---
+\newblock Pp.~675--706.
 
-\bibitem{schellekens1986conformal}
-A.~Schellekens and N.~Warner, ``{Conformal subalgebras of Kac-Moody
-  algebras},'' {\em Physical Review D} {\bf 34} (1986) no.~10, 3092--3096.
+\bibitem[\BibPrefix74\BibPostfix]{schellekens1986conformal}
+\selectlanguageifdefined{english}
+\BibEmph{AN~Schellekens, NP~Warner}. {Conformal subalgebras of Kac-Moody
+  algebras}~// \BibEmph{Physical Review D}. "---
+\newblock 1986. "---
+\newblock Vol.~34, no.~10. "---
+\newblock Pp.~3092--3096.
 
-\bibitem{altschuler1990branching}
-D.~Altschuler, M.~Bauer, and C.~Itzykson, ``{The branching rules of conformal
-  embeddings},'' {\em Communications in Mathematical Physics} {\bf 132} (1990)
-  no.~2, 349--364.
+\bibitem[\BibPrefix75\BibPostfix]{altschuler1990branching}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Altschuler, M.~Bauer, C.~Itzykson}. {The branching rules of
+  conformal embeddings}~// \BibEmph{Communications in Mathematical Physics}.
+  "---
+\newblock 1990. "---
+\newblock Vol. 132, no.~2. "---
+\newblock Pp.~349--364.
 
-\bibitem{kac1988modular}
-V.~Kac and M.~Wakimoto, ``{Modular and conformal invariance constraints in
-  representation theory of affine algebras},'' {\em Advances in mathematics(New
-  York, NY. 1965)} {\bf 70} (1988) no.~2, 156--236.
+\bibitem[\BibPrefix76\BibPostfix]{kac1988modular}
+\selectlanguageifdefined{english}
+\BibEmph{VG~Kac, M.~Wakimoto}. {Modular and conformal invariance constraints in
+  representation theory of affine algebras}~// \BibEmph{Advances in
+  mathematics(New York, NY. 1965)}. "---
+\newblock 1988. "---
+\newblock Vol.~70, no.~2. "---
+\newblock Pp.~156--236.
 
-\bibitem{walton1989conformal}
-M.~Walton, ``{Conformal branching rules and modular invariants},'' {\em Nuclear
-  Physics B} {\bf 322} (1989)  775--790.
+\bibitem[\BibPrefix77\BibPostfix]{walton1989conformal}
+\selectlanguageifdefined{english}
+\BibEmph{M.A. Walton}. {Conformal branching rules and modular invariants}~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 1989. "---
+\newblock Vol. 322. "---
+\newblock Pp.~775--790.
 
-\bibitem{coquereaux2008conformal}
-R.~Coquereaux and G.~Schieber, ``{From conformal embeddings to quantum
-  symmetries: an exceptional SU (4) example},'' in {\em Journal of Physics:
-  Conference Series}, vol.~103, p.~012006, Institute of Physics Publishing.
-\newblock 2008.
-\newblock \href{http://arxiv.org/abs/0710.1397}{{\tt arXiv:0710.1397}}.
+\bibitem[\BibPrefix78\BibPostfix]{coquereaux2008conformal}
+\selectlanguageifdefined{english}
+\BibEmph{R.~Coquereaux, G.~Schieber}. {From conformal embeddings to quantum
+  symmetries: an exceptional SU (4) example}~// Journal of Physics: Conference
+  Series~/ Institute of Physics Publishing. "---
+\newblock Vol.~103. "---
+\newblock 2008. "---
+\newblock P.~012006.
 
-\bibitem{gawdzki1988g}
-A.~Gawdzki {\em et al.}, ``G/h conformal field theory from gauged wzw model,''
-  {\em Physics Letters B} {\bf 215} (1988) no.~1, 119--123.
+\bibitem[\BibPrefix79\BibPostfix]{gawdzki1988g}
+\selectlanguageifdefined{english}
+\BibEmph{A.~Gawdzki et~al.} G/H conformal field theory from gauged WZW model~//
+  \BibEmph{Physics Letters B}. "---
+\newblock 1988. "---
+\newblock Vol. 215, no.~1. "---
+\newblock Pp.~119--123.
 
-\bibitem{hwang1993brst}
-S.~Hwang and H.~Rhedin, ``The brst formulation of g/h wznw models,'' {\em
-  Nuclear Physics B} {\bf 406} (1993) no.~1-2, 165--184.
+\bibitem[\BibPrefix80\BibPostfix]{hwang1993brst}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Hwang, H.~Rhedin}. The brst formulation of G/H WZNW models~//
+  \BibEmph{Nuclear Physics B}. "---
+\newblock 1993. "---
+\newblock Vol. 406, no. 1-2. "---
+\newblock Pp.~165--184.
 
-\bibitem{fuchs1996resolution}
-J.~Fuchs, B.~Schellekens, and C.~Schweigert, ``The resolution of field
-  identification fixed points in diagonal coset theories,'' {\em Nuclear
-  Physics B} {\bf 461} (1996) no.~1-2, 371--404.
+\bibitem[\BibPrefix81\BibPostfix]{fuchs1996resolution}
+\selectlanguageifdefined{english}
+\BibEmph{J.~Fuchs, B.~Schellekens, C.~Schweigert}. The resolution of field
+  identification fixed points in diagonal coset theories~// \BibEmph{Nuclear
+  Physics B}. "---
+\newblock 1996. "---
+\newblock Vol. 461, no. 1-2. "---
+\newblock Pp.~371--404.
 
-\bibitem{schellekens1990field}
-A.~Schellekens and S.~Yankielowicz, ``Field identification fixed points in the
-  coset construction,'' {\em Nuclear Physics B} {\bf 334} (1990) no.~1,
-  67--102.
+\bibitem[\BibPrefix82\BibPostfix]{schellekens1990field}
+\selectlanguageifdefined{english}
+\BibEmph{A.N. Schellekens, S.~Yankielowicz}. Field identification fixed points
+  in the coset construction~// \BibEmph{Nuclear Physics B}. "---
+\newblock 1990. "---
+\newblock Vol. 334, no.~1. "---
+\newblock Pp.~67--102.
 
-\bibitem{kogan1997knizhnik}
-I.~Kogan, A.~Lewis, and O.~Soloviev, ``Knizhnik-zamolodchikov-type equations
-  for gauged wznw models,'' {\em Arxiv preprint hep-th/9703028} (1997)  .
+\bibitem[\BibPrefix83\BibPostfix]{kogan1997knizhnik}
+\selectlanguageifdefined{english}
+\BibEmph{I.I. Kogan, A.~Lewis, O.A. Soloviev}. Knizhnik-Zamolodchikov-type
+  equations for gauged WZNW models~// \BibEmph{Arxiv preprint hep-th/9703028}.
+  "---
+\newblock 1997.
 
-\bibitem{bernstein1975differential}
-I.~Bernstein, M.~Gelfand, and S.~Gelfand, ``{Differential operators on the base
-  affine space and a study of $\gamma$-modules, Lie groups and their
-  representations},'' in {\em Summer school of Bolyai Janos Math.Soc.}
+\bibitem[\BibPrefix84\BibPostfix]{bernstein1975differential}
+\selectlanguageifdefined{english}
+\BibEmph{IN~Bernstein, M.~Gelfand, SI~Gelfand}. {Differential operators on the
+  base affine space and a study of $\gamma$-modules, Lie groups and their
+  representations}~// Summer school of Bolyai Janos Math.Soc. "---
 \newblock Halsted Press, NY, 1975.
 
-\bibitem{fauser2006new}
-B.~Fauser, P.~Jarvis, R.~King, and B.~Wybourne, ``{New branching rules induced
-  by plethysm},'' \href{http://dx.doi.org/10.1088/0305-4470/39/11/006}{{\em J.
-  Phys A: Math. Gen} {\bf 39} (2006)  2611--2655},
-  \href{http://arxiv.org/abs/math-ph/0505037}{{\tt math-ph/0505037}}.
+\bibitem[\BibPrefix85\BibPostfix]{fauser2006new}
+\selectlanguageifdefined{english}
+\BibEmph{B.~Fauser, P.D. Jarvis, R.C. King, B.G. Wybourne}. {New branching
+  rules induced by plethysm}~// \BibEmph{J. Phys A: Math. Gen}. "---
+\newblock 2006. "---
+\newblock Vol.~39. "---
+\newblock Pp.~2611--2655.
 
-\bibitem{Hwang:1994yr}
-S.~Hwang and H.~Rhedin, ``{General branching functions of affine Lie
-  algebras},'' \href{http://dx.doi.org/10.1142/S0217732395000879}{{\em Mod.
-  Phys. Lett.} {\bf A10} (1995)  823--830},
-\href{http://arxiv.org/abs/hep-th/9408087}{{\tt arXiv:hep-th/9408087}}.
-%%CITATION = HEP-TH/9408087;%%.
+\bibitem[\BibPrefix86\BibPostfix]{Hwang:1994yr}
+\selectlanguageifdefined{english}
+\BibEmph{Stephen Hwang, Henric Rhedin}. {General branching functions of affine
+  Lie algebras}~// \BibEmph{Mod. Phys. Lett.} "---
+\newblock 1995. "---
+\newblock Vol. A10. "---
+\newblock Pp.~823--830.
 
-\bibitem{quella2002branching}
-T.~Quella, ``{Branching rules of semi-simple Lie algebras using affine
-  extensions},'' {\em Journal of Physics A-Mathematical and General} {\bf 35}
-  (2002) no.~16, 3743--3754, \href{http://arxiv.org/abs/math-ph/0111020}{{\tt
-  math-ph/0111020}}.
+\bibitem[\BibPrefix87\BibPostfix]{quella2002branching}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Quella}. {Branching rules of semi-simple Lie algebras using affine
+  extensions}~// \BibEmph{Journal of Physics A-Mathematical and General}. "---
+\newblock 2002. "---
+\newblock Vol.~35, no.~16. "---
+\newblock Pp.~3743--3754.
 
-\bibitem{feigin707principal}
-B.~{Feigin}, E.~{Feigin}, M.~{Jimbo}, T.~{Miwa}, and E.~{Mukhin}, ``{Principal
-  \$$\backslash$hat$\{$sl$\}$(3)\$ subspaces and quantum Toda Hamiltonian},''
-  \href{http://arxiv.org/abs/0707.1635}{{\tt arXiv:0707.1635}}.
+\bibitem[\BibPrefix88\BibPostfix]{feigin707principal}
+\selectlanguageifdefined{english}
+\BibEmph{B.~{Feigin}, E.~{Feigin}, M.~{Jimbo} et~al.} {Principal
+  \$$\backslash$hat$\{$sl$\}$(3)\$ subspaces and quantum Toda Hamiltonian}.
+  "---
+\newblock 2007.
 
-\bibitem{ilyin812pbc}
-M.~Ilyin, P.~Kulish, and V.~Lyakhovsky, ``{On a property of branching
-  coefficients for affine Lie algebras},'' {\em Algebra i Analiz} {\bf 21}
-  (2009)  2, \href{http://arxiv.org/abs/0812.2124}{{\tt arXiv:0812.2124
-  [math.RT]}}.
+\bibitem[\BibPrefix89\BibPostfix]{ilyin812pbc}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Ilyin, P.~Kulish, V.~Lyakhovsky}. {On a property of branching
+  coefficients for affine Lie algebras}~// \BibEmph{Algebra i Analiz}. "---
+\newblock 2009. "---
+\newblock Vol.~21. "---
+\newblock P.~2.
 
-\bibitem{lyakhovsky1996rra}
-V.~Lyakhovsky, S.~Melnikov, {\em et al.}, ``{Recursion relations and branching
-  rules for simple Lie algebras},'' {\em Journal of Physics A-Mathematical and
-  General} {\bf 29} (1996) no.~5, 1075--1088,
-  \href{http://arxiv.org/abs/q-alg/9505006}{{\tt q-alg/9505006}}.
+\bibitem[\BibPrefix90\BibPostfix]{lyakhovsky1996rra}
+\selectlanguageifdefined{english}
+\BibEmph{VD~Lyakhovsky, S.Y. Melnikov et~al.} {Recursion relations and
+  branching rules for simple Lie algebras}~// \BibEmph{Journal of Physics
+  A-Mathematical and General}. "---
+\newblock 1996. "---
+\newblock Vol.~29, no.~5. "---
+\newblock Pp.~1075--1088.
 
-\bibitem{1751-8121-41-36-365204}
-A.~Felikson, A.~Retakh, and P.~Tumarkin, ``Regular subalgebras of affine
-  kac-moody algebras,'' {\em Journal of Physics A: Mathematical and
-  Theoretical} {\bf 41} (2008) no.~36, 365204.
+\bibitem[\BibPrefix91\BibPostfix]{1751-8121-41-36-365204}
+\selectlanguageifdefined{english}
+\BibEmph{Anna Felikson, Alexander Retakh, Pavel Tumarkin}. Regular subalgebras
+  of affine Kac-Moody algebras~// \BibEmph{Journal of Physics A: Mathematical
+  and Theoretical}. "---
+\newblock 2008. "---
+\newblock Vol.~41, no.~36. "---
+\newblock P.~365204.
 
-\bibitem{dynkin1952semisimple}
-E.~Dynkin, ``{Semisimple subalgebras of semisimple Lie algebras},'' {\em
-  Matematicheskii Sbornik} {\bf 72} (1952) no.~2, 349--462.
+\bibitem[\BibPrefix92\BibPostfix]{dynkin1952semisimple}
+\selectlanguageifdefined{english}
+\BibEmph{E.B. Dynkin}. {Semisimple subalgebras of semisimple Lie algebras}~//
+  \BibEmph{Matematicheskii Sbornik}. "---
+\newblock 1952. "---
+\newblock Vol.~72, no.~2. "---
+\newblock Pp.~349--462.
 
-\bibitem{Maldacena:2000hw}
-J.~M. Maldacena and H.~Ooguri, ``{Strings in AdS(3) and SL(2,R) WZW model.
-  I},'' \href{http://dx.doi.org/10.1063/1.1377273}{{\em J. Math. Phys.} {\bf
-  42} (2001)  2929--2960},
-\href{http://arxiv.org/abs/hep-th/0001053}{{\tt arXiv:hep-th/0001053}}.
-%%CITATION = HEP-TH/0001053;%%.
+\bibitem[\BibPrefix93\BibPostfix]{Maldacena:2000hw}
+\selectlanguageifdefined{english}
+\BibEmph{Juan~Martin Maldacena, Hirosi Ooguri}. {Strings in AdS(3) and SL(2,R)
+  WZW model. I}~// \BibEmph{J. Math. Phys.} "---
+\newblock 2001. "---
+\newblock Vol.~42. "---
+\newblock Pp.~2929--2960.
 
-\bibitem{Maldacena:2000kv}
-J.~M. Maldacena, H.~Ooguri, and J.~Son, ``{Strings in AdS(3) and the SL(2,R)
-  WZW model. II: Euclidean black hole},''
-  \href{http://dx.doi.org/10.1063/1.1377039}{{\em J. Math. Phys.} {\bf 42}
-  (2001)  2961--2977},
-\href{http://arxiv.org/abs/hep-th/0005183}{{\tt arXiv:hep-th/0005183}}.
-%%CITATION = HEP-TH/0005183;%%.
+\bibitem[\BibPrefix94\BibPostfix]{Maldacena:2000kv}
+\selectlanguageifdefined{english}
+\BibEmph{Juan~Martin Maldacena, Hirosi Ooguri, John Son}. {Strings in AdS(3)
+  and the SL(2,R) WZW model. II: Euclidean black hole}~// \BibEmph{J. Math.
+  Phys.} "---
+\newblock 2001. "---
+\newblock Vol.~42. "---
+\newblock Pp.~2961--2977.
 
-\bibitem{Maldacena:2001km}
-J.~M. Maldacena and H.~Ooguri, ``{Strings in AdS(3) and the SL(2,R) WZW model.
-  III: Correlation functions},''
-  \href{http://dx.doi.org/10.1103/PhysRevD.65.106006}{{\em Phys. Rev.} {\bf
-  D65} (2002)  106006},
-\href{http://arxiv.org/abs/hep-th/0111180}{{\tt arXiv:hep-th/0111180}}.
-%%CITATION = HEP-TH/0111180;%%.
+\bibitem[\BibPrefix95\BibPostfix]{Maldacena:2001km}
+\selectlanguageifdefined{english}
+\BibEmph{Juan~Martin Maldacena, Hirosi Ooguri}. {Strings in AdS(3) and the
+  SL(2,R) WZW model. III: Correlation functions}~// \BibEmph{Phys. Rev.} "---
+\newblock 2002. "---
+\newblock Vol. D65. "---
+\newblock P.~106006.
 
-\bibitem{Maldacena:2001ky}
-J.~M. Maldacena, G.~W. Moore, and N.~Seiberg, ``{Geometrical interpretation of
-  D-branes in gauged WZW models},'' {\em JHEP} {\bf 07} (2001)  046,
-\href{http://arxiv.org/abs/hep-th/0105038}{{\tt arXiv:hep-th/0105038}}.
-%%CITATION = HEP-TH/0105038;%%.
+\bibitem[\BibPrefix96\BibPostfix]{Maldacena:2001ky}
+\selectlanguageifdefined{english}
+\BibEmph{Juan~Martin Maldacena, Gregory~Winthrop Moore, Nathan Seiberg}.
+  {Geometrical interpretation of D-branes in gauged WZW models}~//
+  \BibEmph{JHEP}. "---
+\newblock 2001. "---
+\newblock Vol.~07. "---
+\newblock P.~046.
 
-\bibitem{Aharony:1999ti}
-O.~Aharony, S.~S. Gubser, J.~M. Maldacena, H.~Ooguri, and Y.~Oz, ``{Large N
-  field theories, string theory and gravity},''
-  \href{http://dx.doi.org/10.1016/S0370-1573(99)00083-6}{{\em Phys. Rept.} {\bf
-  323} (2000)  183--386},
-\href{http://arxiv.org/abs/hep-th/9905111}{{\tt arXiv:hep-th/9905111}}.
-%%CITATION = HEP-TH/9905111;%%.
+\bibitem[\BibPrefix97\BibPostfix]{Aharony:1999ti}
+\selectlanguageifdefined{english}
+\BibEmph{Ofer Aharony, Steven~S. Gubser, Juan~Martin Maldacena et~al.} {Large N
+  field theories, string theory and gravity}~// \BibEmph{Phys. Rept.} "---
+\newblock 2000. "---
+\newblock Vol. 323. "---
+\newblock Pp.~183--386.
 
-\bibitem{Dunbar:1992gh}
-D.~C. Dunbar and K.~G. Joshi, ``{Characters for coset conformal field
-  theories},'' \href{http://dx.doi.org/10.1142/S0217751X93001685}{{\em Int. J.
-  Mod. Phys.} {\bf A8} (1993)  4103--4122},
-\href{http://arxiv.org/abs/hep-th/9210122}{{\tt arXiv:hep-th/9210122}}.
-%%CITATION = HEP-TH/9210122;%%.
+\bibitem[\BibPrefix98\BibPostfix]{Dunbar:1992gh}
+\selectlanguageifdefined{english}
+\BibEmph{David~C. Dunbar, Keith~G. Joshi}. {Characters for coset conformal
+  field theories}~// \BibEmph{Int. J. Mod. Phys.} "---
+\newblock 1993. "---
+\newblock Vol.~A8. "---
+\newblock Pp.~4103--4122.
 
-\bibitem{lu1994branching}
-S.~Lu, ``{The Branching Rules for Affine Lie Algebras},'' {\em Advances in
-  Mathematics} {\bf 105} (1994) no.~1, 42--58.
+\bibitem[\BibPrefix99\BibPostfix]{lu1994branching}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Lu}. {The Branching Rules for Affine Lie Algebras}~//
+  \BibEmph{Advances in Mathematics}. "---
+\newblock 1994. "---
+\newblock Vol. 105, no.~1. "---
+\newblock Pp.~42--58.
 
-\bibitem{lepowsky1977generalization}
-J.~Lepowsky, ``{A generalization of the Bernstein-Gelfand-Gelfand
-  resolution},'' {\em J. Algebra} {\bf 49} (1977) no.~2, 496--511.
+\bibitem[\BibPrefix100\BibPostfix]{lepowsky1977generalization}
+\selectlanguageifdefined{english}
+\BibEmph{J.~Lepowsky}. {A generalization of the Bernstein-Gelfand-Gelfand
+  resolution}~// \BibEmph{J. Algebra}. "---
+\newblock 1977. "---
+\newblock Vol.~49, no.~2. "---
+\newblock Pp.~496--511.
 
-\bibitem{derk1008}
-S.~Derkachov and A.~Manashov, ``{Noncompact sl(N) spin chains: Alternating sum
-  representation for finite dimensional transfer matrices},''
-  \href{http://arxiv.org/abs/1008.4734}{{\tt arXiv:1008.4734}}.
+\bibitem[\BibPrefix101\BibPostfix]{derk1008}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Derkachov, A.~Manashov}. {Noncompact sl(N) spin chains: Alternating
+  sum representation for finite dimensional transfer matrices}. "---
+\newblock 2010.
 
-\bibitem{derk09}
-S.~Derkachov and A.~Manashov, ``Factorization of-matrix and baxter-operators
-  for generic sl (n) spin chains,'' {\em Journal of Physics A: Mathematical and
-  Theoretical} {\bf 42} (2009)  075204.
+\bibitem[\BibPrefix102\BibPostfix]{derk09}
+\selectlanguageifdefined{english}
+\BibEmph{S.E. Derkachov, A.N. Manashov}. Factorization of-matrix and
+  Baxter-operators for generic sl (N) spin chains~// \BibEmph{Journal of
+  Physics A: Mathematical and Theoretical}. "---
+\newblock 2009. "---
+\newblock Vol.~42. "---
+\newblock P.~075204.
 
-\bibitem{KostantHeckman1982}
-G.~Heckman {\em Invent. Math.} {\bf 67} (1982)  333--356.
+\bibitem[\BibPrefix103\BibPostfix]{KostantHeckman1982}
+\selectlanguageifdefined{english}
+\BibEmph{G.J. Heckman}~// \BibEmph{Invent. Math.} "---
+\newblock 1982. "---
+\newblock Vol.~67. "---
+\newblock Pp.~333--356.
 
-\bibitem{Doebner1967Melsheimer}
-H.~Doebner and O.~Melsheimer, ``Graded contractions,'' {\em Nouvo Cimento} {\bf
-  306} (1967)  .
+\bibitem[\BibPrefix104\BibPostfix]{Doebner1967Melsheimer}
+\selectlanguageifdefined{english}
+\BibEmph{H.D. Doebner, O.~Melsheimer}. Graded contractions~// \BibEmph{Nouvo
+  Cimento}. "---
+\newblock 1967. "---
+\newblock Vol. 306.
 
-\bibitem{Nijenhuis1966Richardson}
-A.~Nijenhuis and R.~Richardson, ``Deformations of algebras,'' {\em Bull. Amer.
-  Math. Soc.} {\bf 71} (1966)  1--60.
+\bibitem[\BibPrefix105\BibPostfix]{Nijenhuis1966Richardson}
+\selectlanguageifdefined{english}
+\BibEmph{A.~Nijenhuis, R.W. Richardson}. Deformations of algebras~//
+  \BibEmph{Bull. Amer. Math. Soc.} "---
+\newblock 1966. "---
+\newblock Vol.~71. "---
+\newblock Pp.~1--60.
 
-\bibitem{richter2008splints}
-D.~Richter, ``Splints of classical root systems,''
-  \href{http://arxiv.org/abs/0807.0640}{{\tt arXiv:0807.0640}}.
+\bibitem[\BibPrefix106\BibPostfix]{richter2008splints}
+\selectlanguageifdefined{english}
+\BibEmph{D.A. Richter}. Splints of classical root systems. "---
+\newblock 2008.
 
-\bibitem{gannon2006moonshine}
-T.~Gannon, {\em Moonshine beyond the Monster: The bridge connecting algebra,
-  modular forms and physics}.
+\bibitem[\BibPrefix107\BibPostfix]{gannon2006moonshine}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Gannon}. Moonshine beyond the Monster: The bridge connecting
+  algebra, modular forms and physics. "---
 \newblock Cambridge Univ Pr, 2006.
 
-\bibitem{2010arXiv1001}
-M.~{Nesterenko}, J.~{Patera}, and A.~{Tereszkiewicz}, ``{Orthogonal polynomials
-  of compact simple Lie groups},'' \href{http://arxiv.org/abs/1001.3683}{{\tt
-  arXiv:1001.3683}}.
-
-\bibitem{chelkak2009universality}
-D.~Chelkak and S.~Smirnov, ``Universality in the 2d ising model and conformal
-  invariance of fermionic observables,'' {\em Arxiv preprint arXiv:0910.2045}
-  (2009)  .
-
-\bibitem{smirnov2007towards}
-S.~Smirnov, ``Towards conformal invariance of 2d lattice models,'' {\em Arxiv
-  preprint arXiv:0708.0032} (2007)  .
-
-\bibitem{Cardy:2005kh}
-J.~L. Cardy, ``{SLE for theoretical physicists},''
-  \href{http://dx.doi.org/10.1016/j.aop.2005.04.001}{{\em Annals Phys.} {\bf
-  318} (2005)  81--118}, \href{http://arxiv.org/abs/cond-mat/0503313}{{\tt
-  arXiv:cond-mat/0503313 [cond-mat]}}.
-
-\bibitem{friedrich2003conformal}
-R.~Friedrich and W.~Werner, ``Conformal restriction, highest-weight
-  representations and sle,'' {\em Communications in mathematical physics} {\bf
-  243} (2003) no.~1, 105--122.
-
-\bibitem{rohde2005basic}
-S.~Rohde and O.~Schramm, ``Basic properties of sle,'' {\em Annals of
-  mathematics} (2005)  883--924.
-
-\bibitem{bauer20062d}
-M.~Bauer and D.~Bernard, ``2d growth processes: Sle and loewner chains,'' {\em
-  Physics reports} {\bf 432} (2006) no.~3-4, 115--221.
-
-\bibitem{bettelheim2005stochastic}
-E.~Bettelheim, I.~Gruzberg, A.~Ludwig, and P.~Wiegmann, ``Stochastic loewner
-  evolution for conformal field theories with lie group symmetries,'' {\em
-  Physical review letters} {\bf 95} (2005) no.~25, 251601.
-
-\bibitem{Rasmussen:2004xr}
-J.~Rasmussen, ``{On SU(2) Wess-Zumino-Witten models and stochastic
-  evolutions},'' {\em Afr.J.Math.Phys.} {\bf 4} (2007)  1--9,
-  \href{http://arxiv.org/abs/hep-th/0409026}{{\tt arXiv:hep-th/0409026
-  [hep-th]}}.
-
-\bibitem{alekseev2010sle}
-A.~Alekseev, A.~Bytsko, and K.~Izyurov, ``On sle martingales in boundary wzw
-  models,'' {\em Letters in Mathematical Physics} {\bf 97} (2011)  243--261,
-  \href{http://arxiv.org/abs/1012.3113}{{\tt 1012.3113}}.
-  \url{http://dx.doi.org/10.1007/s11005-011-0500-2}. 10.1007/s11005-011-0500-2.
-
-\bibitem{santachiara2008sle}
-R.~Santachiara, ``Sle in self-dual critical z (n) spin systems: Cft
-  predictions,'' {\em Nuclear Physics B} {\bf 793} (2008) no.~3, 396--424.
-
-\bibitem{picco2008numerical}
-M.~Picco and R.~Santachiara, ``Numerical study on schramm-loewner evolution in
-  nonminimal conformal field theories,'' {\em Physical review letters} {\bf
-  100} (2008) no.~1, 15704.
-
-\bibitem{cardy1991bulk}
-J.~Cardy and D.~Lewellen, ``Bulk and boundary operators in conformal field
-  theory* 1,'' {\em Physics Letters B} {\bf 259} (1991) no.~3, 274--278.
-
-\bibitem{figueroa89equivalence}
-J.~Figueroa-O’Farrill, ``The equivalence between the gauged wznw and gko
-  conformal field theories,'' {\em ITP Stony Brook preprint ITP-SB-89-41}
-  (1989)  .
-
-\bibitem{schramm2006conformally}
-O.~Schramm, ``Conformally invariant scaling limits (an overview and a
-  collection of problems),'' {\em Arxiv preprint math/0602151} (2006)  .
-
-\bibitem{fateev1990conformal}
-V.~Fateev and A.~Zamolodchikov, ``Conformal field theory and purely elastic
-  s-matrices,'' {\em Physics and mathematics of strings: memorial volume for
-  Vadim Knizhnik} (1990)  245.
-
-\bibitem{eguchi1989deformations}
-T.~Eguchi and S.~Yang, ``Deformations of conformal field theories and soliton
-  equations,'' {\em Physics Letters B} {\bf 224} (1989) no.~4, 373--378.
-
-\bibitem{hollowood1989rational}
-T.~Hollowood and P.~Mansfield, ``Rational conformal field theories at, and away
-  from, criticality as toda field theories,'' {\em Physics Letters B} {\bf 226}
-  (1989) no.~1, 73--79.
-
-\bibitem{coldea2010quantum}
-R.~Coldea, D.~Tennant, E.~Wheeler, E.~Wawrzynska, D.~Prabhakaran, M.~Telling,
-  K.~Habicht, P.~Smeibidl, and K.~Kiefer, ``Quantum criticality in an ising
-  chain: experimental evidence for emergent e8 symmetry,'' {\em Science} {\bf
-  327} (2010) no.~5962, 177--180.
-
-\bibitem{bakas1996lagrangian}
-I.~Bakas, Q.~Park, and H.~Shin, ``Lagrangian formulation of symmetric space
-  sine-gordon models,'' {\em Physics Letters B} {\bf 372} (1996) no.~1-2,
-  45--52.
-
-\bibitem{hollowood1995massive}
-T.~Hollowood, J.~Miramontes, and Q.~Park, ``Massive integrable soliton
-  theories,'' {\em Nuclear Physics B} {\bf 445} (1995) no.~2, 451--468.
-
-\bibitem{park1994deformed}
-Q.~Park, ``Deformed coset models from gauged wzw actions,'' {\em Physics
-  Letters B} {\bf 328} (1994) no.~3, 329--336.
-
-\bibitem{makarov2010off}
-N.~Makarov, S.~Smirnov, {\em et al.}, ``Off-critical lattice models and massive
-  sles,'' in {\em XVITH INTERNATIONAL CONGRESS ON MATHEMATICAL PHYSICS. Held
-  3-8 August 2009 in Prague, Czech Republic. Edited by Pavel Exner (Doppler
-  Institute, Prague, Czech Republic). Published by World Scientific Publishing
-  Co. Pte. Ltd., 2010. ISBN\# 9789814304634, pp. 362-371}, vol.~1,
-  pp.~362--371.
+\bibitem[\BibPrefix108\BibPostfix]{2010arXiv1001}
+\selectlanguageifdefined{english}
+\BibEmph{M.~{Nesterenko}, J.~{Patera}, A.~{Tereszkiewicz}}. {Orthogonal
+  polynomials of compact simple Lie groups}. "---
 \newblock 2010.
-\newblock \href{http://arxiv.org/abs/0909.5377}{{\tt 0909.5377}}.
 
-\bibitem{bauer2009off}
-M.~Bauer, D.~Bernard, and L.~Cantini, ``Off-critical sle (2) and sle (4): a
-  field theory approach,'' {\em Journal of Statistical Mechanics: Theory and
-  Experiment} {\bf 2009} (2009)  P07037.
+\bibitem[\BibPrefix109\BibPostfix]{chelkak2009universality}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Chelkak, S.~Smirnov}. Universality in the 2D Ising model and
+  conformal invariance of fermionic observables~// \BibEmph{Arxiv preprint
+  arXiv:0910.2045}. "---
+\newblock 2009.
 
-\bibitem{stevenson2011domain}
-J.~Stevenson and M.~Weigel, ``Domain walls and schramm-loewner evolution in the
-  random-field ising model,'' {\em EPL (Europhysics Letters)} {\bf 95} (2011)
-  40001.
+\bibitem[\BibPrefix110\BibPostfix]{smirnov2007towards}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Smirnov}. Towards conformal invariance of 2D lattice models~//
+  \BibEmph{Arxiv preprint arXiv:0708.0032}. "---
+\newblock 2007.
 
-\bibitem{belinfante1989survey}
-J.~Belinfante and B.~Kolman, {\em {A survey of Lie groups and Lie algebras with
-  applications and computational methods}}.
+\bibitem[\BibPrefix111\BibPostfix]{Cardy:2005kh}
+\selectlanguageifdefined{english}
+\BibEmph{John~L. Cardy}. {SLE for theoretical physicists}~// \BibEmph{Annals
+  Phys.} "---
+\newblock 2005. "---
+\newblock Vol. 318. "---
+\newblock Pp.~81--118.
+
+\bibitem[\BibPrefix112\BibPostfix]{friedrich2003conformal}
+\selectlanguageifdefined{english}
+\BibEmph{R.~Friedrich, W.~Werner}. Conformal restriction, highest-weight
+  representations and SLE~// \BibEmph{Communications in mathematical physics}.
+  "---
+\newblock 2003. "---
+\newblock Vol. 243, no.~1. "---
+\newblock Pp.~105--122.
+
+\bibitem[\BibPrefix113\BibPostfix]{rohde2005basic}
+\selectlanguageifdefined{english}
+\BibEmph{S.~Rohde, O.~Schramm}. Basic properties of SLE~// \BibEmph{Annals of
+  mathematics}. "---
+\newblock 2005. "---
+\newblock Pp.~883--924.
+
+\bibitem[\BibPrefix114\BibPostfix]{bauer20062d}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard}. 2D growth processes: SLE and Loewner chains~//
+  \BibEmph{Physics reports}. "---
+\newblock 2006. "---
+\newblock Vol. 432, no. 3-4. "---
+\newblock Pp.~115--221.
+
+\bibitem[\BibPrefix115\BibPostfix]{bettelheim2005stochastic}
+\selectlanguageifdefined{english}
+\BibEmph{E.~Bettelheim, IA~Gruzberg, AWW Ludwig, P.~Wiegmann}. Stochastic
+  Loewner evolution for conformal field theories with Lie group symmetries~//
+  \BibEmph{Physical review letters}. "---
+\newblock 2005. "---
+\newblock Vol.~95, no.~25. "---
+\newblock P.~251601.
+
+\bibitem[\BibPrefix116\BibPostfix]{Rasmussen:2004xr}
+\selectlanguageifdefined{english}
+\BibEmph{Jorgen Rasmussen}. {On SU(2) Wess-Zumino-Witten models and stochastic
+  evolutions}~// \BibEmph{Afr.J.Math.Phys.} "---
+\newblock 2007. "---
+\newblock Vol.~4. "---
+\newblock Pp.~1--9.
+
+\bibitem[\BibPrefix117\BibPostfix]{alekseev2010sle}
+\selectlanguageifdefined{english}
+\BibEmph{A.~Alekseev, A.~Bytsko, K.~Izyurov}. On SLE martingales in boundary
+  WZW models~// \BibEmph{Letters in Mathematical Physics}. "---
+\newblock 2011. "---
+\newblock Vol.~97. "---
+\newblock Pp.~243--261. "---
+\newblock 10.1007/s11005-011-0500-2. \BibUrl{
+  http://dx.doi.org/10.1007/s11005-011-0500-2}.
+
+\bibitem[\BibPrefix118\BibPostfix]{santachiara2008sle}
+\selectlanguageifdefined{english}
+\BibEmph{R.~Santachiara}. SLE in self-dual critical Z (N) spin systems: CFT
+  predictions~// \BibEmph{Nuclear Physics B}. "---
+\newblock 2008. "---
+\newblock Vol. 793, no.~3. "---
+\newblock Pp.~396--424.
+
+\bibitem[\BibPrefix119\BibPostfix]{picco2008numerical}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Picco, R.~Santachiara}. Numerical study on Schramm-Loewner
+  Evolution in nonminimal conformal field theories~// \BibEmph{Physical review
+  letters}. "---
+\newblock 2008. "---
+\newblock Vol. 100, no.~1. "---
+\newblock P.~15704.
+
+\bibitem[\BibPrefix120\BibPostfix]{cardy1991bulk}
+\selectlanguageifdefined{english}
+\BibEmph{J.L. Cardy, D.C. Lewellen}. Bulk and boundary operators in conformal
+  field theory* 1~// \BibEmph{Physics Letters B}. "---
+\newblock 1991. "---
+\newblock Vol. 259, no.~3. "---
+\newblock Pp.~274--278.
+
+\bibitem[\BibPrefix121\BibPostfix]{figueroa89equivalence}
+\selectlanguageifdefined{english}
+\BibEmph{J.M. Figueroa-O’Farrill}. The equivalence between the gauged WZNW
+  and GKO conformal field theories~// \BibEmph{ITP Stony Brook preprint
+  ITP-SB-89-41}. "---
+\newblock 1989.
+
+\bibitem[\BibPrefix122\BibPostfix]{schramm2006conformally}
+\selectlanguageifdefined{english}
+\BibEmph{O.~Schramm}. Conformally invariant scaling limits (an overview and a
+  collection of problems)~// \BibEmph{Arxiv preprint math/0602151}. "---
+\newblock 2006.
+
+\bibitem[\BibPrefix123\BibPostfix]{fateev1990conformal}
+\selectlanguageifdefined{english}
+\BibEmph{VA~Fateev, AB~Zamolodchikov}. Conformal field theory and purely
+  elastic S-matrices~// \BibEmph{Physics and mathematics of strings: memorial
+  volume for Vadim Knizhnik}. "---
+\newblock 1990. "---
+\newblock P.~245.
+
+\bibitem[\BibPrefix124\BibPostfix]{eguchi1989deformations}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Eguchi, S.K. Yang}. Deformations of conformal field theories and
+  soliton equations~// \BibEmph{Physics Letters B}. "---
+\newblock 1989. "---
+\newblock Vol. 224, no.~4. "---
+\newblock Pp.~373--378.
+
+\bibitem[\BibPrefix125\BibPostfix]{hollowood1989rational}
+\selectlanguageifdefined{english}
+\BibEmph{T.J. Hollowood, P.~Mansfield}. Rational conformal field theories at,
+  and away from, criticality as Toda field theories~// \BibEmph{Physics Letters
+  B}. "---
+\newblock 1989. "---
+\newblock Vol. 226, no.~1. "---
+\newblock Pp.~73--79.
+
+\bibitem[\BibPrefix126\BibPostfix]{coldea2010quantum}
+\selectlanguageifdefined{english}
+\BibEmph{R.~Coldea, DA~Tennant, EM~Wheeler et~al.} Quantum criticality in an
+  Ising chain: experimental evidence for emergent E8 symmetry~//
+  \BibEmph{Science}. "---
+\newblock 2010. "---
+\newblock Vol. 327, no. 5962. "---
+\newblock Pp.~177--180.
+
+\bibitem[\BibPrefix127\BibPostfix]{bakas1996lagrangian}
+\selectlanguageifdefined{english}
+\BibEmph{I.~Bakas, Q.H. Park, H.J. Shin}. Lagrangian formulation of symmetric
+  space sine-Gordon models~// \BibEmph{Physics Letters B}. "---
+\newblock 1996. "---
+\newblock Vol. 372, no. 1-2. "---
+\newblock Pp.~45--52.
+
+\bibitem[\BibPrefix128\BibPostfix]{hollowood1995massive}
+\selectlanguageifdefined{english}
+\BibEmph{T.J. Hollowood, J.L. Miramontes, Q.H. Park}. Massive integrable
+  soliton theories~// \BibEmph{Nuclear Physics B}. "---
+\newblock 1995. "---
+\newblock Vol. 445, no.~2. "---
+\newblock Pp.~451--468.
+
+\bibitem[\BibPrefix129\BibPostfix]{park1994deformed}
+\selectlanguageifdefined{english}
+\BibEmph{Q.H. Park}. Deformed coset models from gauged WZW actions~//
+  \BibEmph{Physics Letters B}. "---
+\newblock 1994. "---
+\newblock Vol. 328, no.~3. "---
+\newblock Pp.~329--336.
+
+\bibitem[\BibPrefix130\BibPostfix]{makarov2010off}
+\selectlanguageifdefined{english}
+\BibEmph{N.~Makarov, S.~Smirnov et~al.} Off-critical lattice models and massive
+  SLEs~// XVITH INTERNATIONAL CONGRESS ON MATHEMATICAL PHYSICS. Held 3-8 August
+  2009 in Prague, Czech Republic. Edited by Pavel Exner (Doppler Institute,
+  Prague, Czech Republic). Published by World Scientific Publishing Co. Pte.
+  Ltd., 2010. ISBN\# 9789814304634, pp. 362-371. "---
+\newblock Vol.~1. "---
+\newblock 2010. "---
+\newblock Pp.~362--371.
+
+\bibitem[\BibPrefix131\BibPostfix]{bauer2009off}
+\selectlanguageifdefined{english}
+\BibEmph{M.~Bauer, D.~Bernard, L.~Cantini}. Off-critical SLE (2) and SLE (4): a
+  field theory approach~// \BibEmph{Journal of Statistical Mechanics: Theory
+  and Experiment}. "---
+\newblock 2009. "---
+\newblock Vol. 2009. "---
+\newblock P.~P07037.
+
+\bibitem[\BibPrefix132\BibPostfix]{stevenson2011domain}
+\selectlanguageifdefined{english}
+\BibEmph{J.D. Stevenson, M.~Weigel}. Domain walls and Schramm-Loewner evolution
+  in the random-field Ising model~// \BibEmph{EPL (Europhysics Letters)}. "---
+\newblock 2011. "---
+\newblock Vol.~95. "---
+\newblock P.~40001.
+
+\bibitem[\BibPrefix133\BibPostfix]{belinfante1989survey}
+\selectlanguageifdefined{english}
+\BibEmph{J.G.F. Belinfante, B.~Kolman}. {A survey of Lie groups and Lie
+  algebras with applications and computational methods}. "---
 \newblock Society for Industrial Mathematics, 1989.
 
-\bibitem{simplie}
-T.~Nutma, ``Simplie.''
-\newblock \url{http://code.google.com/p/simplie/}.
+\bibitem[\BibPrefix134\BibPostfix]{simplie}
+\selectlanguageifdefined{english}
+\BibEmph{TA~Nutma}. SimpLie. \BibUrl{ http://code.google.com/p/simplie/}.
 
-\bibitem{vanleeuwen1994lsp}
-M.~Van~Leeuwen, ``{LiE, a software package for Lie group computations},'' {\em
-  Euromath Bull} {\bf 1} (1994) no.~2, 83--94.
-  \url{http://www-math.univ-poitiers.fr/~maavl/LiE/}.
+\bibitem[\BibPrefix135\BibPostfix]{vanleeuwen1994lsp}
+\selectlanguageifdefined{english}
+\BibEmph{MAA Van~Leeuwen}. {LiE, a software package for Lie group
+  computations}~// \BibEmph{Euromath Bull}. "---
+\newblock 1994. "---
+\newblock Vol.~1, no.~2. "---
+\newblock Pp.~83--94. \BibUrl{ http://www-math.univ-poitiers.fr/~maavl/LiE/}.
 
-\bibitem{stembridge1995mps}
-J.~Stembridge, ``{A Maple package for symmetric functions},'' {\em Journal of
-  Symbolic Computation} {\bf 20} (1995) no.~5-6, 755--758.
+\bibitem[\BibPrefix136\BibPostfix]{stembridge1995mps}
+\selectlanguageifdefined{english}
+\BibEmph{J.R. Stembridge}. {A Maple package for symmetric functions}~//
+  \BibEmph{Journal of Symbolic Computation}. "---
+\newblock 1995. "---
+\newblock Vol.~20, no. 5-6. "---
+\newblock Pp.~755--758.
 
-\bibitem{coxweyl}
-J.~Stembridge, ``Coxeter/weyl packages for maple.''
-\newblock \url{http://www.math.lsa.umich.edu/~jrs/maple.html}.
+\bibitem[\BibPrefix137\BibPostfix]{coxweyl}
+\selectlanguageifdefined{english}
+\BibEmph{J.R. Stembridge}. Coxeter/Weyl packages for Maple. \BibUrl{
+  http://www.math.lsa.umich.edu/~jrs/maple.html}.
 
-\bibitem{fischbacher2002ilp}
-T.~Fischbacher, ``{Introducing LambdaTensor1. 0-A package for explicit symbolic
-  and numeric Lie algebra and Lie group calculations},''
-  \href{http://arxiv.org/abs/hep-th/0208218}{{\tt hep-th/0208218}}.
+\bibitem[\BibPrefix138\BibPostfix]{fischbacher2002ilp}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Fischbacher}. {Introducing LambdaTensor1. 0-A package for explicit
+  symbolic and numeric Lie algebra and Lie group calculations}. "---
+\newblock 2002.
 
-\bibitem{Fuchs:1996dd}
-J.~Fuchs, A.~N. Schellekens, and C.~Schweigert, ``{A matrix S for all simple
-  current extensions},''
-  \href{http://dx.doi.org/10.1016/0550-3213(96)00247-7}{{\em Nucl. Phys.} {\bf
-  B473} (1996)  323--366}, \href{http://arxiv.org/abs/hep-th/9601078}{{\tt
-  arXiv:hep-th/9601078}}.
-\url{http://www.nikhef.nl/~t58/kac.html}.
-%%CITATION = HEP-TH/9601078;%%.
+\bibitem[\BibPrefix139\BibPostfix]{Fuchs:1996dd}
+\selectlanguageifdefined{english}
+\BibEmph{J.~Fuchs, A.~N. Schellekens, C.~Schweigert}. {A matrix S for all
+  simple current extensions}~// \BibEmph{Nucl. Phys.} "---
+\newblock 1996. "---
+\newblock Vol. B473. "---
+\newblock Pp.~323--366. \BibUrl{ http://www.nikhef.nl/~t58/kac.html}.
 
-\bibitem{moody1982fast}
-R.~Moody and J.~Patera, ``{Fast recursion formula for weight multiplicities},''
-  {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 7} (1982) no.~1, .
+\bibitem[\BibPrefix140\BibPostfix]{moody1982fast}
+\selectlanguageifdefined{english}
+\BibEmph{RV~Moody, J.~Patera}. {Fast recursion formula for weight
+  multiplicities}~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
+\newblock 1982. "---
+\newblock Vol.~7, no.~1.
 
-\bibitem{stembridge2001computational}
-J.~Stembridge, ``{Computational aspects of root systems, Coxeter groups, and
-  Weyl characters, Interaction of combinatorics and representation theory, MSJ
-  Mem., vol. 11},'' {\em Math. Soc. Japan, Tokyo} (2001)  1--38.
+\bibitem[\BibPrefix141\BibPostfix]{stembridge2001computational}
+\selectlanguageifdefined{english}
+\BibEmph{JR~Stembridge}. {Computational aspects of root systems, Coxeter
+  groups, and Weyl characters, Interaction of combinatorics and representation
+  theory, MSJ Mem., vol. 11}~// \BibEmph{Math. Soc. Japan, Tokyo}. "---
+\newblock 2001. "---
+\newblock Pp.~1--38.
 
-\bibitem{casselman1994machine}
-W.~Casselman, ``{Machine calculations in Weyl groups},'' {\em Inventiones
-  mathematicae} {\bf 116} (1994) no.~1, 95--108.
+\bibitem[\BibPrefix142\BibPostfix]{casselman1994machine}
+\selectlanguageifdefined{english}
+\BibEmph{W.A. Casselman}. {Machine calculations in Weyl groups}~//
+  \BibEmph{Inventiones mathematicae}. "---
+\newblock 1994. "---
+\newblock Vol. 116, no.~1. "---
+\newblock Pp.~95--108.
 
-\bibitem{gannon2001algorithms}
-T.~Gannon, ``{Algorithms for affine Kac-Moody algebras},''
-  \href{http://arxiv.org/abs/hep-th/0106123}{{\tt hep-th/0106123}}.
+\bibitem[\BibPrefix143\BibPostfix]{gannon2001algorithms}
+\selectlanguageifdefined{english}
+\BibEmph{T.~Gannon}. {Algorithms for affine Kac-Moody algebras}. "---
+\newblock 2001.
 
-\bibitem{shifrinmathematica}
-L.~Shifrin, {\em Mathematica programming: an advanced introduction}.
-\newblock 2009.
-\newblock \url{http://mathprogramming-intro.org/}.
+\bibitem[\BibPrefix144\BibPostfix]{shifrinmathematica}
+\selectlanguageifdefined{english}
+\BibEmph{L.~Shifrin}. Mathematica programming: an advanced introduction. "---
+\newblock 2009. \BibUrl{ http://mathprogramming-intro.org/}.
 
-\bibitem{maeder2000computer}
-R.~Maeder, {\em Computer science with Mathematica}.
+\bibitem[\BibPrefix145\BibPostfix]{maeder2000computer}
+\selectlanguageifdefined{english}
+\BibEmph{R.E. Maeder}. Computer science with Mathematica. "---
 \newblock Cambridge University Press, 2000.
 
-\bibitem{casselman1995automata}
-W.~Casselman, ``Automata to perform basic calculations in coxeter groups,'' in
-  {\em Representations of groups: Canadian Mathematical Society annual seminar,
-  June 15-24, 1994, Banff, Alberta, Canada}, vol.~16, p.~35, Canadian
-  Mathematical Society.
-\newblock 1995.
+\bibitem[\BibPrefix146\BibPostfix]{casselman1995automata}
+\selectlanguageifdefined{english}
+\BibEmph{WA~Casselman}. Automata to perform basic calculations in Coxeter
+  groups~// Representations of groups: Canadian Mathematical Society annual
+  seminar, June 15-24, 1994, Banff, Alberta, Canada~/ Canadian Mathematical
+  Society. "---
+\newblock Vol.~16. "---
+\newblock 1995. "---
+\newblock P.~35.
 
-\bibitem{KallenShortlex}
-W.~van~der Kallen, ``Computing shortlex rewite rules with mathematica.''.
+\bibitem[\BibPrefix147\BibPostfix]{KallenShortlex}
+\selectlanguageifdefined{english}
+\BibEmph{Wilberd van~der Kallen}. Computing ShortLex rewite rules with
+  Mathematica. \BibUrl{
+  http://www.staff.science.uu.nl/~kalle101/ickl/shortlex.html}.
 
-\bibitem{kazhdan1994tensor3}
-D.~Kazhdan and G.~Lusztig, ``Tensor structures arising from affine lie
-  algebras. iii,'' {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 7} (1994) no.~2, .
+\bibitem[\BibPrefix148\BibPostfix]{kazhdan1994tensor3}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
+  algebras. III~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
+\newblock 1994. "---
+\newblock Vol.~7, no.~2.
 
-\bibitem{kazhdan1993tensor1}
-D.~Kazhdan and G.~Lusztig, ``Tensor structures arising from affine lie
-  algebras. i,'' {\em Journal of the American Mathematical Society} {\bf 6}
-  (1993) no.~4, 905--947.
+\bibitem[\BibPrefix149\BibPostfix]{kazhdan1993tensor1}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
+  algebras. I~// \BibEmph{Journal of the American Mathematical Society}. "---
+\newblock 1993. "---
+\newblock Vol.~6, no.~4. "---
+\newblock Pp.~905--947.
 
-\bibitem{kazhdan1993tensor2}
-D.~Kazhdan and G.~Lusztig, ``Tensor structures arising from affine lie
-  algebras. ii,'' {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 6} (1993) no.~4, .
+\bibitem[\BibPrefix150\BibPostfix]{kazhdan1993tensor2}
+\selectlanguageifdefined{english}
+\BibEmph{D.~Kazhdan, G.~Lusztig}. Tensor structures arising from affine Lie
+  algebras. II~// \BibEmph{AMERICAN MATHEMATICAL SOCIETY}. "---
+\newblock 1993. "---
+\newblock Vol.~6, no.~4.
 
-\bibitem{LyakhovskyPostnova2011}
-P.~P. {Kulish}, V.~D. {Lyakhovsky}, and O.~P. {Postnova}, ``{Tensor powers for
-  non-simply laced Lie Algebras \$B\_2\$ case},'' {\em ArXiv e-prints} (2011)
-  , \href{http://arxiv.org/abs/1106.2002}{{\tt arXiv:1106.2002 [math.RT]}}.
+\bibitem[\BibPrefix151\BibPostfix]{LyakhovskyPostnova2011}
+\selectlanguageifdefined{english}
+\BibEmph{P.~P. {Kulish}, V.~D. {Lyakhovsky}, O.~P. {Postnova}}. {Tensor powers
+  for non-simply laced Lie Algebras \$B\_2\$ case}~// \BibEmph{ArXiv e-prints}.
+  "---
+\newblock 2011.
 
-\end{thebibliography}\endgroup
+\end{thebibliography}
