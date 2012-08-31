@@ -134,8 +134,13 @@
 
 \bibitem[\BibPrefix17\BibPostfix]{richter2008splints}
 \selectlanguageifdefined{english}
-\BibEmph{D.A. Richter}. Splints of classical root systems. "---
-\newblock 2008.
+\BibEmph{David Richter}. Splints of classical root systems~// \BibEmph{Journal
+  of Geometry}. "---
+\newblock 2012. "---
+\newblock Vol. 103. "---
+\newblock Pp.~103--117. "---
+\newblock 10.1007/s00022-012-0109-3. \BibUrl{
+  http://dx.doi.org/10.1007/s00022-012-0109-3}.
 
 \bibitem[\BibPrefix18\BibPostfix]{gawdzki1988g}
 \selectlanguageifdefined{english}
@@ -149,7 +154,8 @@
 \selectlanguageifdefined{english}
 \BibEmph{J.M. Figueroa-O’Farrill}. The equivalence between the gauged WZNW
   and GKO conformal field theories~// \BibEmph{ITP Stony Brook preprint
-  ITP-SB-89-41}.
+  ITP-SB-89-41}. "---
+\newblock 1989.
 
 \bibitem[\BibPrefix20\BibPostfix]{bettelheim2005stochastic}
 \selectlanguageifdefined{english}
