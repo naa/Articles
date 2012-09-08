@@ -47,7 +47,10 @@
 \BibEmph{A.~{Nazarov}}. {Affine.m - Mathematica package for computations in
   representation theory of finite-dimensional and affine Lie algebras}~//
   \BibEmph{Computer Physics Communications}. "---
-\newblock 2012. \BibUrl{ http://dx.doi.org/10.1016/j.cpc.2012.06.014}.
+\newblock 2012. "---
+\newblock Vol. 183. "---
+\newblock Pp.~2480--2493. \BibUrl{
+  http://dx.doi.org/10.1016/j.cpc.2012.06.014}.
 
 \bibitem[\BibPrefix6\BibPostfix]{2011arXiv1112.4354N}
 \selectlanguageifdefined{english}
@@ -85,6 +88,7 @@
 \selectlanguageifdefined{english}
 \BibEmph{V.~{Laykhovsky}, A.~{Nazarov}}. {On affine extension of splint root
   systems}~// Supersymmetries \& Quantum Symmetries~/ JINR. "---
-\newblock SQS'2011.
+\newblock SQS'2011. "---
+\newblock 2012.
 
 \end{thebibliography}
