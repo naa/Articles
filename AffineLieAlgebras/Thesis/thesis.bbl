@@ -139,7 +139,7 @@
   Theoretical}. "---
 \newblock 2011. "---
 \newblock Vol.~44, no.~7. "---
-\newblock P.~075205.
+\newblock P.~075205(20).
 
 \bibitem[\BibPrefix18\BibPostfix]{2011arXiv1102.1702L}
 \selectlanguageifdefined{english}
@@ -182,7 +182,7 @@
   Series}. "---
 \newblock 2012. "---
 \newblock Vol. 343, no.~1. "---
-\newblock P.~012085. \BibUrl{
+\newblock P.~012085(10). \BibUrl{
   http://stacks.iop.org/1742-6596/343/i=1/a=012085}.
 
 \bibitem[\BibPrefix23\BibPostfix]{2010LyakhovskyNazarovMQFT}
@@ -469,22 +469,22 @@
 \newblock Consultants bureau, 1986.
 
 \bibitem[\BibPrefix60\BibPostfix]{fuks1984}
-\selectlanguageifdefined{english}
+\selectlanguageifdefined{russian}
 \BibEmph{Д.Б. Фукс}. {Когомологии
   бесконечномерных алгебр Ли}. "---
 \newblock Наука, Глав. ред.
   физико-математической лит-ры, Москва, 1984.
 
 \bibitem[\BibPrefix61\BibPostfix]{feigin1988}
-\selectlanguageifdefined{english}
+\selectlanguageifdefined{russian}
 \BibEmph{Б.Л. Фейгин, Д.Б. Фукс}. {Когомологии
   групп и алгебр Ли}~// \BibEmph{Итоги науки и
   техники. Серия {\guillemotleft}Современные
   проблемы математики. Фундаментальные
   направления{\guillemotright}}. "---
 \newblock 1988. "---
-\newblock Vol.~21, no.~0. "---
-\newblock Pp.~121--209.
+\newblock \CYRT.~21, {\cyr\textnumero}~0. "---
+\newblock {\cyr\CYRS.}~121--209.
 
 \bibitem[\BibPrefix62\BibPostfix]{kac1990idl}
 \selectlanguageifdefined{english}
