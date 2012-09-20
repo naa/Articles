@@ -1,6 +1,6 @@
 \ifx\undefined\BibPrefix\def\BibPrefix{}\else\fi
 \ifx\undefined\BibPostfix\def\BibPostfix{}\else\fi
-\begin{thebibliography}{\BibPrefix10\BibPostfix}
+\begin{thebibliography}{\BibPrefix1\BibPostfix}
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\language\csname l@#1\endcsname\fi}
@@ -9,61 +9,7 @@
 \ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
 \ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
 
-\bibitem[\BibPrefix1\BibPostfix]{belavin1984ics}
-\selectlanguageifdefined{english}
-\BibEmph{AA~Belavin, AM~Polyakov, AB~Zamolodchikov}. {Infinite conformal
-  symmetry in two-dimensional quantum field theory}~// \BibEmph{Nuclear
-  Physics}. "---
-\newblock 1984. "---
-\newblock Vol. 241. "---
-\newblock Pp.~333--380.
-
-\bibitem[\BibPrefix2\BibPostfix]{difrancesco1997cft}
-\selectlanguageifdefined{english}
-\BibEmph{P.~Di~Francesco, P.~Mathieu, D.~Senechal}. {Conformal field theory}.
-  "---
-\newblock Springer, 1997.
-
-\bibitem[\BibPrefix3\BibPostfix]{henkel1999conformal}
-\selectlanguageifdefined{english}
-\BibEmph{M.~Henkel}. Conformal invariance and critical phenomena. "---
-\newblock Springer Verlag, 1999.
-
-\bibitem[\BibPrefix4\BibPostfix]{cox1998exotic}
-\selectlanguageifdefined{english}
-\BibEmph{DL~Cox, A.~Zawadowski}. Exotic Kondo effects in metals: magnetic ions
-  in a crystalline electric field and tunnelling centres~// \BibEmph{Advances
-  in Physics}. "---
-\newblock 1998. "---
-\newblock Vol.~47, no.~5. "---
-\newblock Pp.~599--942.
-
-\bibitem[\BibPrefix5\BibPostfix]{affleck1993exact}
-\selectlanguageifdefined{english}
-\BibEmph{I.~Affleck, A.W.W. Ludwig}. Exact conformal-field-theory results on
-  the multichannel kondo effect: Single-fermion green’s function,
-  self-energy, and resistivity~// \BibEmph{Physical Review B}. "---
-\newblock 1993. "---
-\newblock Vol.~48, no.~10. "---
-\newblock P.~7297.
-
-\bibitem[\BibPrefix6\BibPostfix]{moore1991nonabelions}
-\selectlanguageifdefined{english}
-\BibEmph{G.~Moore, N.~Read}. Nonabelions in the fractional quantum Hall
-  effect~// \BibEmph{Nuclear Physics B}. "---
-\newblock 1991. "---
-\newblock Vol. 360, no.~2. "---
-\newblock Pp.~362--396.
-
-\bibitem[\BibPrefix7\BibPostfix]{cardy1992critical}
-\selectlanguageifdefined{english}
-\BibEmph{J.L. Cardy}. Critical percolation in finite geometries~//
-  \BibEmph{Journal of Physics A: Mathematical and General}. "---
-\newblock 1992. "---
-\newblock Vol.~25. "---
-\newblock P.~L201.
-
-\bibitem[\BibPrefix8\BibPostfix]{smirnov2001critical}
+\bibitem[\BibPrefix1\BibPostfix]{smirnov2001critical}
 \selectlanguageifdefined{english}
 \BibEmph{S.~Smirnov}. Critical percolation in the plane: Conformal invariance,
   Cardy's formula, scaling limits~// \BibEmph{Comptes Rendus de l'Acad{\'e}mie
@@ -72,19 +18,7 @@
 \newblock Vol. 333, no.~3. "---
 \newblock Pp.~239--244.
 
-\bibitem[\BibPrefix9\BibPostfix]{duminil2011conformal}
-\selectlanguageifdefined{english}
-\BibEmph{H.~Duminil-Copin, S.~Smirnov}. Conformal invariance of lattice
-  models~// \BibEmph{Arxiv preprint arXiv:1109.1549}. "---
-\newblock 2011.
-
-\bibitem[\BibPrefix10\BibPostfix]{smirnov2010discrete}
-\selectlanguageifdefined{english}
-\BibEmph{S.~Smirnov}. Discrete complex analysis and probability~//
-  \BibEmph{Arxiv preprint arXiv:1009.6077}. "---
-\newblock 2010.
-
-\bibitem[\BibPrefix11\BibPostfix]{kac1968simple}
+\bibitem[\BibPrefix2\BibPostfix]{kac1968simple}
 \selectlanguageifdefined{english}
 \BibEmph{V.G. Kac}. Simple irreducible graded Lie algebras of finite growth~//
   \BibEmph{Mathematics of the USSR-Izvestiya}. "---
@@ -92,7 +26,7 @@
 \newblock Vol.~2. "---
 \newblock P.~1271.
 
-\bibitem[\BibPrefix12\BibPostfix]{moody1968new}
+\bibitem[\BibPrefix3\BibPostfix]{moody1968new}
 \selectlanguageifdefined{english}
 \BibEmph{R.V. Moody}. A new class of Lie algebras~// \BibEmph{Journal of
   algebra}. "---
@@ -100,81 +34,15 @@
 \newblock Vol.~10, no.~2. "---
 \newblock Pp.~211--230.
 
-\bibitem[\BibPrefix13\BibPostfix]{kac1984infinite}
-\selectlanguageifdefined{english}
-\BibEmph{V.G. Kac, D.H. Peterson}. {Infinite-dimensional Lie algebras, theta
-  functions and modular forms}~// \BibEmph{Adv. in Math}. "---
-\newblock 1984. "---
-\newblock Vol.~53, no.~2. "---
-\newblock Pp.~125--264.
-
-\bibitem[\BibPrefix14\BibPostfix]{macdonald1971affine}
-\selectlanguageifdefined{english}
-\BibEmph{I.G. Macdonald}. Affine root systems and Dedekind's$\eta$-function~//
-  \BibEmph{Inventiones Mathematicae}. "---
-\newblock 1971. "---
-\newblock Vol.~15, no.~2. "---
-\newblock Pp.~91--143.
-
-\bibitem[\BibPrefix15\BibPostfix]{witten1984nab}
-\selectlanguageifdefined{english}
-\BibEmph{E.~Witten}. {Non-abelian bosonization in two dimensions}~//
-  \BibEmph{Communications in Mathematical Physics}. "---
-\newblock 1984. "---
-\newblock Vol.~92, no.~4. "---
-\newblock Pp.~455--472.
-
-\bibitem[\BibPrefix16\BibPostfix]{Goddard198588}
-\selectlanguageifdefined{english}
-\BibEmph{P.~Goddard, A.~Kent, D.~Olive}. Virasoro algebras and coset space
-  models~// \BibEmph{Physics Letters B}. "---
-\newblock 1985. "---
-\newblock Vol. 152, no. 1-2. "---
-\newblock Pp.~88 -- 92.
-
-\bibitem[\BibPrefix17\BibPostfix]{richter2008splints}
+\bibitem[\BibPrefix4\BibPostfix]{richter2008splints}
 \selectlanguageifdefined{english}
 \BibEmph{David Richter}. Splints of classical root systems~// \BibEmph{Journal
   of Geometry}. "---
 \newblock 2012. "---
 \newblock Vol. 103. "---
-\newblock Pp.~103--117. "---
-\newblock 10.1007/s00022-012-0109-3. \BibUrl{
-  http://dx.doi.org/10.1007/s00022-012-0109-3}.
+\newblock Pp.~103--117. %\BibUrl{ http://dx.doi.org/10.1007/s00022-012-0109-3}.
 
-\bibitem[\BibPrefix18\BibPostfix]{gawdzki1988g}
-\selectlanguageifdefined{english}
-\BibEmph{A.~Gawdzki et~al.} G/H conformal field theory from gauged WZW model~//
-  \BibEmph{Physics Letters B}. "---
-\newblock 1988. "---
-\newblock Vol. 215, no.~1. "---
-\newblock Pp.~119--123.
-
-\bibitem[\BibPrefix19\BibPostfix]{figueroa89equivalence}
-\selectlanguageifdefined{english}
-\BibEmph{J.M. Figueroa-O’Farrill}. The equivalence between the gauged WZNW
-  and GKO conformal field theories~// \BibEmph{ITP Stony Brook preprint
-  ITP-SB-89-41}. "---
-\newblock 1989.
-
-\bibitem[\BibPrefix20\BibPostfix]{bettelheim2005stochastic}
-\selectlanguageifdefined{english}
-\BibEmph{E.~Bettelheim, IA~Gruzberg, AWW Ludwig, P.~Wiegmann}. Stochastic
-  Loewner evolution for conformal field theories with Lie group symmetries~//
-  \BibEmph{Physical review letters}. "---
-\newblock 2005. "---
-\newblock Vol.~95, no.~25. "---
-\newblock P.~251601.
-
-\bibitem[\BibPrefix21\BibPostfix]{bauer2003sle}
-\selectlanguageifdefined{english}
-\BibEmph{M.~Bauer, D.~Bernard}. SLE martingales and the Virasoro algebra~//
-  \BibEmph{Physics Letters B}. "---
-\newblock 2003. "---
-\newblock Vol. 557, no. 3-4. "---
-\newblock Pp.~309--316.
-
-\bibitem[\BibPrefix22\BibPostfix]{santachiara2008sle}
+\bibitem[\BibPrefix5\BibPostfix]{santachiara2008sle}
 \selectlanguageifdefined{english}
 \BibEmph{R.~Santachiara}. SLE in self-dual critical Z (N) spin systems: CFT
   predictions~// \BibEmph{Nuclear Physics B}. "---
