@@ -73,13 +73,13 @@
 \selectlanguageifdefined{english}
 \BibEmph{A.~Nazarov}. Comparison of algorithms for construction of
   representations of Lie algebras~// Physics and Progress~/ SPbSU. "---
-\newblock Physics and Progress. "---
+%\newblock Physics and Progress. "---
 \newblock 2008.
 
 \bibitem[\BibPrefix9\BibPostfix]{NazarovACSM2009}
 \selectlanguageifdefined{english}
 \BibEmph{A.~Nazarov}. Computational tools for representation theory of affine
-  Lie algebras~// second Workshop on Advanced Computer Simulation Methods for
+  Lie algebras~// Second Workshop on Advanced Computer Simulation Methods for
   Junior scientists~/ EIMI. "---
 \newblock ACSM. "---
 \newblock 2009.
