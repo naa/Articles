@@ -1,6 +1,9 @@
 \ifx\undefined\BibPrefix\def\BibPrefix{}\else\fi
 \ifx\undefined\BibPostfix\def\BibPostfix{}\else\fi
 \begin{thebibliography}{\BibPrefix1\BibPostfix}
+\vspace{-0.3cm}
+\setlength{\parskip}{-0.3cm}
+
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\language\csname l@#1\endcsname\fi}
@@ -40,7 +43,7 @@
   of Geometry}. "---
 \newblock 2012. "---
 \newblock Vol. 103. "---
-\newblock Pp.~103--117. %\BibUrl{ http://dx.doi.org/10.1007/s00022-012-0109-3}.
+\newblock Pp.~103--117.% \BibUrl{ http://dx.doi.org/10.1007/s00022-012-0109-3}.
 
 \bibitem[\BibPrefix5\BibPostfix]{santachiara2008sle}
 \selectlanguageifdefined{english}

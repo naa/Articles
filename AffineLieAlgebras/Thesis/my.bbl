@@ -1,6 +1,9 @@
 \ifx\undefined\BibPrefix\def\BibPrefix{}\else\fi
 \ifx\undefined\BibPostfix\def\BibPostfix{}\else\fi
 \begin{thebibliography}{\BibPrefix10\BibPostfix}
+\vspace{-0.3cm}
+\setlength{\parskip}{-0.3cm}
+
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\language\csname l@#1\endcsname\fi}
@@ -49,7 +52,7 @@
   \BibEmph{Computer Physics Communications}. "---
 \newblock 2012. "---
 \newblock Vol. 183. "---
-\newblock Pp.~2480--2493. %\BibUrl{
+\newblock Pp.~2480--2493.% \BibUrl{
 %  http://dx.doi.org/10.1016/j.cpc.2012.06.014}.
 
 \bibitem[\BibPrefix6\BibPostfix]{2011arXiv1112.4354N}
@@ -59,7 +62,7 @@
   Series}. "---
 \newblock 2012. "---
 \newblock Vol. 343, no.~1. "---
-\newblock P.~012085(10). %\BibUrl{
+\newblock P.~012085(10).% \BibUrl{
 %  http://stacks.iop.org/1742-6596/343/i=1/a=012085}.
 
 \bibitem[\BibPrefix7\BibPostfix]{2010LyakhovskyNazarovMQFT}
@@ -79,7 +82,7 @@
 \bibitem[\BibPrefix9\BibPostfix]{NazarovACSM2009}
 \selectlanguageifdefined{english}
 \BibEmph{A.~Nazarov}. Computational tools for representation theory of affine
-  Lie algebras~// Second Workshop on Advanced Computer Simulation Methods for
+  Lie algebras~// second Workshop on Advanced Computer Simulation Methods for
   Junior scientists~/ EIMI. "---
 \newblock ACSM. "---
 \newblock 2009.
@@ -87,8 +90,9 @@
 \bibitem[\BibPrefix10\BibPostfix]{2012arXiv1204.1855L}
 \selectlanguageifdefined{english}
 \BibEmph{V.~{Laykhovsky}, A.~{Nazarov}}. {On affine extension of splint root
-  systems}~// Supersymmetries \& Quantum Symmetries~/ JINR. "---
-\newblock SQS'2011. "---
-\newblock 2012.
+  systems}~// \BibEmph{Physics of Particles and Nuclei}. "---
+\newblock 2012. "---
+\newblock Vol.~43, no.~5. "---
+\newblock Pp.~676--678.
 
 \end{thebibliography}
