@@ -176,10 +176,11 @@ $ L_{\gf\downarrow \af}^{\mu }=\bigoplus
 
 Для любой алгебры $\gf$ и подалгебры $\af\subset \gf$ можно построить  подалгебру $\afb$ такую, что $\Delta _{\af_{\perp }} =\left\{ \beta \in \Delta _{\gf}| \forall h \in \hf_{\af};  \beta\left(h \right)=0  \right\}$.
 
-Обозначим через $W_{\afb}$ подгруппу группы Вейля $W$, порожденную отражениями $w _{\beta }$, соответствующими корням $\beta \in \Delta _{\afb}^{+}$ . Подсистема  $\Delta _{\af_{\perp }}$ определяет подалгебру $\af_{\perp }$ с подалгеброй Картана $\hf_{\afb}$.  Пусть
+Обозначим через $W_{\afb}$ подгруппу группы Вейля $W$, порожденную отражениями $w _{\beta }$, соответствующими корням $\beta \in \Delta _{\afb}^{+}$ . Подсистема  $\Delta _{\af_{\perp }}$ определяет подалгебру $\af_{\perp }$ с подалгеброй Картана $\hf_{\afb}$.  
+
+Пусть
 $\hf_{\perp }^{\ast }:=\left\{ \eta \in \hf_{\perp \af}^{\ast
 }|\forall h \in \hf_{\af\oplus \af_{\perp}}; \eta \left( h \right)=0 \right\}$, тогда имеет место разложение подалгебры Картана $\hf=\frak{\hf_{\af}}\oplus \hf_{\afb}\oplus\hf_{\perp }$.
-
 Для подалгебр из ортогональной пары  $\left( \af,\afb\right) $ рассмотрим соответствующие векторы Вейля $\rho _{\af}$ и $\rho _{\af_{\perp }}$, и образуем так называемые  ``дефекты'' вложения $\mathcal{D}_{\af}:=\rho _{\af}-\pi _{\af}\rho$, $\mathcal{D}_{\af_{\perp }}:=\rho _{\af_{\perp }}-\pi_{\afb}\rho$.
 
 Рассмотрим сингулярные веса  $\left\{\left( w(\mu +\rho )-\rho \right)|w  \in W \right\}$  модуля старшего веса  $L_{\gf}^{\mu }$ и их проекции на $h_{\widetilde{\af_{\perp }}}^{\ast }$ (дополнительно сдвинутые на дефект $-\mathcal{D}_{\af_{\perp }}$):
@@ -220,7 +221,7 @@ $
 \Phi _{\af\subset \gf}=\left\{ \gamma \in P_{\af}|s(\gamma
 )\neq 0\right\}   \label{eq:37}
 $
-Упорядочение корней в  $\co{\Delta _{\af}}$ индуцирует естественное упорядочение весов в $P_{\af}$. Обозначим через $\gamma_{0}$ наименьший вектор $\Phi _{\af\subset \gf}$. 
+Упорядочение корней в  $\Delta _{\af}$ индуцирует естественное упорядочение весов в $P_{\af}$. Обозначим через $\gamma_{0}$ наименьший вектор $\Phi _{\af\subset \gf}$. 
 
 Множество
 $\Gamma _{\af\rightarrow \gf}=\left\{ \xi -\gamma _{0}|\xi \in \Phi _{%
@@ -341,7 +342,7 @@ b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 Заключительная \textbf{глава 5} посвящена практическим приложениям результатов диссертации.
  В разделе 5.1 мы  описываем применение алгебраических методов к проблеме поиска соответствия между квантовополевым и решеточным описанием критического поведения. Эти результаты были опубликованы в работах \citemy{NazarovJETPletters,2011arXiv1112.4354N}.
 
-Стохастический процесс, который удовлетворяет уравнению 
+Стохастический процесс, удовлетворяющий уравнению 
 $
   \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} ,
 $
@@ -351,14 +352,14 @@ $
 $G/A$-coset модель конформной теории поля может быть реализована как ВЗНВ-модель (с калибровочной группой $G$), взаимодействующая с чисто калибровочными полями, с калибровочной группой $A\subset G$. Действие записывается через поля $\gamma:\mathbb{C}\to G$ и $\alpha,\bar\alpha:\mathbb{C}\to A$:
 \begin{multline}
 \label{eq:178}
-      S=
--\frac{k}{4\pi}\left[ \frac{1}{2} \int_{S^2} d^2x\; {\cal K} (\gamma^{-1}\partial^{\mu}\gamma,\gamma^{-1}\partial_{\mu}\gamma)-
- \frac{1 }{6} \int_{B}\epsilon_{ijk} {\cal K}\left(
+\hspace{-0.5cm}      S=
+-\frac{k}{8\pi}\left[ \int_{S^2} d^2x\; {\cal K} (\gamma^{-1}\partial^{\mu}\gamma,\gamma^{-1}\partial_{\mu}\gamma)-
+ \frac{1 }{3} \int_{B}\epsilon_{ijk} {\cal K}\left(
     \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^i},
       \left[\tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^j}
-      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^k}\right]\right) d^3y+\right.\\
+      \tilde \gamma^{-1}\frac{\partial \tilde \gamma}{\partial y^k}\right]\right) d^3y\right.\\
 \left.+
- \int_{S^2} d^{2}z \left(\mathcal{K}(\alpha, \gamma^{-1}\bar \partial \gamma)-\mathcal{K}(\bar \alpha, (\partial \gamma ) \gamma^{-1})\right.
+2 \int_{S^2} d^{2}z \left(\mathcal{K}(\alpha, \gamma^{-1}\bar \partial \gamma)-\mathcal{K}(\bar \alpha, (\partial \gamma ) \gamma^{-1})\right.
       \left.+\mathcal{K}(\alpha,\gamma^{-1}\bar \alpha \gamma)-\mathcal{K}(\alpha,\bar \alpha)\right)\right].
 \end{multline}
 Через  $\mathcal{K}$ обозначена форма Киллинга в алгебре Ли $\gf$, соответствующей группе Ли $G$.
