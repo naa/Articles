@@ -67,6 +67,27 @@
 \end{itemize}
 
 \begin{Def}
-  Vertex algebra: $V$ -- vector space, $Y:V\otimes V\to V((z))$
+  Vertex algebra: $V$ -- vector space with identity $1$, endomorphism
+  $T:V\to V$ and linear multiplication map $Y:V\otimes V\to V((z)):
+  (a,b)\to Y(a,z)b=\sum_n a_n b z^{-n-1}$,
+  such that
+  \begin{itemize}
+  \item {\it Identity} $\forall a\in V, Y(1,z) a =a$ and $Y(a,z) 1 \in a+z V z$
+  \item {\it Translation} $T(1)=0$ and $\forall a,b\in V$:
+    $$Y(a,z)T b - T Y(a,z) b =
+    \frac{d}{dz} Y(a,z) b$$
+  \item {\it Four point function}. $\forall a,b,c\in V \exists
+    X(a,b,c;z,w)\in V[[z,w]][z^{-1},w^{-1},(z-w)^{-1}]: Y(a,z)Y(b,w)c,
+    Y(b,w)Y(a,z)c, Y(Y(a,z-w)b,w)c$ are expansions of $X(a,b,c;z,w)$
+    in $V((z))((w)), V((w))((z)), V((w))((z-w))$
+  \item {\it Grading} $V=\bigoplus_{n=0}^{\infty} V_n$
+  \item {\it Virasoro element} $\omega\in V_2: Y(w,z)=\sum_{n\in
+      \mathbb{Z}} L_n z^{-n-2}$ satisfies $\forall a\in V_n$ the
+      relations $L_0 a =n a$,
+      $Y(L_{-1}a,z)=\frac{d}{dz}Y(a,z)=[Y(a,z),T]$,
+      $[L_m,L_n]a=(m-n)L_{m+n} a + \delta_{m+n,0} \frac{m^3 -
+        m}{12}ca$, $c$ -- central charge.
+  \end{itemize}
+
 \end{Def}
 \end{document}
