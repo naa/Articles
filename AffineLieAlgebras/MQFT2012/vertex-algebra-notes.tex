@@ -10,13 +10,13 @@
 \usepackage[russian]{babel}
 \usepackage[utf8]{inputenc}
 
-\newtheorem{Def}{Definition}[section]
-\newtheorem{theorem}{Theorem}
-\newtheorem{statement}{Statement}
-\newtheorem{Cnj}[Def]{Conjecture}
-\newtheorem{Prop}[Def]{Property}
-\newtheorem{example}{Example}[section]
-\newtheorem{axiom}{Axiom}
+\newtheorem{Def}{Определение}[section]
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}{Утверждение}
+\newtheorem{Cnj}[Def]{Гипотеза}
+\newtheorem{Prop}[Def]{Свойство}
+\newtheorem{example}{Пример}[section]
+\newtheorem{axiom}{Аксиома}
 
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
 \newcommand{\gf}{\mathfrak{g}}
@@ -210,30 +210,135 @@ B_{0}$, их размерностями и коэффициентами опер
 вертексной алгебры:
 
 \begin{Def}
-  Вертексная алгебра -- это градуированное векторное пространство $V=\sum_{n\in \mathbb{Z}_{+}}
-  V_{n}$, содержащее выделенный элемент $1$, снабженное эндоморфизмом
-  $T:V\to V$  и линейным отображением $Y:V\otimes V\to \mathrm{End}V((z)):
-  (a,b)\to Y(a,z)b=\sum_n a (n) b z^{-n-1}$
-  таким, что выполняются следующие свойства:
+  Вертексная алгебра -- это градуированное векторное пространство
+  $V=\sum_{n\in \mathbb{Z}_{+}} V_{n}$, содержащее выделенный элемент
+  $1$ или  $\Omega$, снабженное эндоморфизмом $T:V\to V$ и линейным отображением
+  $Y:V\otimes V\to \mathrm{End}V((z)): (a,b)\to Y(a,z)b=\sum_n a (n) b
+  z^{-n-1}$ таким, что выполняются следующие свойства:
   \begin{itemize}
-  \item {\it Identity} $\forall a\in V, Y(1,z) a =a$ and $Y(a,z) 1 \in a+z V z$
-  \item {\it Translation} $T(1)=0$ and $\forall a,b\in V$:
+  \item {\it Единица} $\forall a\in V, Y(1,z) a =a$ и $Y(a,z) 1 \in a+z V z$
+  \item {\it Трансляции} $T(1)=0$ and $\forall a,b\in V$:
     $$Y(a,z)T b - T Y(a,z) b =
     \frac{d}{dz} Y(a,z) b$$
-  \item {\it Four point function}. $\forall a,b,c\in V \exists
+  \item {\it Четырехточечная функция}. $\forall a,b,c\in V \exists
     X(a,b,c;z,w)\in V[[z,w]][z^{-1},w^{-1},(z-w)^{-1}]: Y(a,z)Y(b,w)c,
     Y(b,w)Y(a,z)c, Y(Y(a,z-w)b,w)c$ are expansions of $X(a,b,c;z,w)$
     in $V((z))((w)), V((w))((z)), V((w))((z-w))$
-  \item {\it Grading} $V=\bigoplus_{n=0}^{\infty} V_n$
-  \item {\it Virasoro element} $\omega\in V_2: Y(w,z)=\sum_{n\in
-      \mathbb{Z}} L_n z^{-n-2}$ satisfies $\forall a\in V_n$ the
-      relations $L_0 a =n a$,
-      $Y(L_{-1}a,z)=\frac{d}{dz}Y(a,z)=[Y(a,z),T]$,
-      $[L_m,L_n]a=(m-n)L_{m+n} a + \delta_{m+n,0} \frac{m^3 -
-        m}{12}ca$, $c$ -- central charge.
+  \item {\it Градуировка} $V=\bigoplus_{n=0}^{\infty} V_n$
+  \item {\it Элемент Вирасоро} $\omega\in V_2: Y(w,z)=\sum_{n\in
+      \mathbb{Z}} L_n z^{-n-2}$ удовлетворяет $\forall a\in V_n$
+    соотношениям $L_0 a =n a$,
+    $Y(L_{-1}a,z)=\frac{d}{dz}Y(a,z)=[Y(a,z),T]$,
+    $[L_m,L_n]a=(m-n)L_{m+n} a + \delta_{m+n,0} \frac{m^3 - m}{12}ca$,
+    где $c$ -- центральный заряд .
   \end{itemize}
 
 \end{Def}
+
+
+Так как мы работаем с формальными рядами, введем следующие обозначения.
+Пусть $f(z)=\sum f_n z^{-n-1}$ тогда $\mathrm{Res} f(z)= f_0$. Определим $i_{z_1,\dots z_n}
+f(z_1,\dots,z_n)$ как разложение $f$ в ряд в области $|z_1|>\dots>|z_n|$. 
+Тогда $i_{z,w}(z-w)^{-n} = \sum_{k=1}^{\infty} C_n^k (-1)^k z^{-n-k} w^k$ и $i_{w,z}(z-w)^{-n} = \sum_{k=1}^{\infty} C_n^k (-1)^{n+k} w^{-n-k} z^{k} $ 
+
+\subsection{Связь вертексных алгебр и конформной теории поля}
+ Примарные поля
+$\varphi_j$ можно понимать в смысле вертексных алгебр: $\varphi_j (z)
+=  \sum a(n) z^{-n-1} \in \mathrm{End} D [[z^{\pm}]]$. Если
+рассматривать пространство $V\subset D$, натянутое на элементы $\left\{a^1
+(-k_1) \dots a^n (-k_n) 1 \right\} \cup \{1\}$, то $\varphi_j (z) \in
+\mathrm{End} V [[z^{\pm}]]$. 
+$\varphi_j (z) = Y(j,z)$.
+
+С другой стороны, корреляционные функции можно определить как
+матричные элементы вертексной алгебры: $\left<v',Y(a_1,z_1)\dots
+  Y(a_n,z_n) v\right> \;\mbox{for}\; v\in V, v'\in V^*$
+
+\section{Вертексные алгебры и аффинные алгебры Ли}
+\label{sec:affine-lie-algebras}
+Данный раздел следует статье \cite{frenkel1992vertex}.
+
+Рассмотрим аффинную алгебру Ли. Пусть $\gf$ -- простая конечномерная
+алгера Ли, $\hf$ -- подалгебра Картана, $\Delta$ -- корневая система
+$\gf$, $\Delta^+$ -- набор положительных корней, $\Theta$ --
+максимальный корень и $(\Theta,\Theta)=2$. 
+Тогда $\gfh=\gf\otimes \mathbb{C} [t,t^{-1}]\oplus \mathbb{C}{\bf k}$
+и $[a\otimes t^n, b\otimes t^m]=[a,b]\otimes t^{m+n} +{\bf k}\cdot
+(a,b)\delta_{m+n,0}$, где $a,b\in \gf$. 
+
+Пусть $\gfh_+=\gf\otimes \mathbb{C}[t]t$, $\gfh_- =\gf\otimes
+\mathbb{C}[t^{-1}]t^{-1}$, тогда $\gfh=\gfh_+\oplus \gfh_- \oplus \gf\oplus
+\mathbb{C}{\bf k}$. 
+Обозначим $a\otimes t^n$ через $a(n)$.
+
+Для произвольного $\gf$-модуля $V$ построим индуцированный $\gfh$-модуль $\hat{V}_k$ следующим
+образом: рассмотрим $V$ как $\gfh_+ \oplus\gf\oplus \mathbb{C}{\bf k}$-модуль с
+действием $\gfh_+ V=0; \; {\bf k} V=k V,\; k\in \mathbb{Z}$, тогда
+\begin{equation}
+  \label{eq:1}
+  \hat{V}_k=U(\gfh) \bigotimes_{U(\gfh_+)\oplus \gf\oplus\mathbb{C}{\bf k}} V
+\end{equation}
+Для старшего веса $\mu\in \hf^* $ обозначим через $M^{\mu}_{k}$ $\gfh$-модуль
+$\hat{L}^{\mu}_k$. Пусть $J^{\mu}_k$ -- максимальный подмодуль $M^{\mu}_k$,
+тогда $L^{\mu}_k=M^{\mu}_k/J^{\mu}_k$ -- неприводимый модуль аффинной алгебры Ли
+$\gfh$ со старшим весом $(\mu,k,0)$.
+
+Если $\mu=0$, то $M^0_k\cong U(\gfh_-)$ как векторное пространство. 
+
+Градуировка в алгебре $\mathrm{deg} a(n)=-n, \; \mathrm{deg} {\bf k}=0$ 
+продолжается на $\hat{V}_k$ и $U(\gfh)$.
+
+Покажем, что $M^0_k$ при $k\neq h^{\vee}$ можно рассматривать как вертексную
+алгебру и все $\hat{V}_k$ являются ее модулями. 
+
+$M^0_k=\bigoplus_{n=0}^{\infty} M^0_k(n)$ и $M^0_k(0)\cong \mathbb{C}$,
+$M^0_k(1)=\gf$. Введем $Y(1,z)=Id$, где $1\in M^0_k$ и для всех $a\in \gf\subset
+M^0_k$ определим
+\begin{equation}
+  \label{eq:2}
+  Y(a,z)=a(z)=\sum_{n=-\infty}^{\infty} a(n) z^{-n-1}
+\end{equation}
+На физическом языке эти вертексные операторы называются токами $J^a(z)$.
+
+Элементы $a(z)$ принадлежат пополненному пространству $\tilde{U}(\gfh,k)<z>$, формальных
+рядов с коэффициентами в $U(\gfh)$, где действие ${\bf k}$ равно $k
+\mathrm{Id}$.
+
+Введем действие $\gfh$ на $\tilde{U}(\gfh,k)<z>$ следующим образом:
+\begin{equation}
+  \label{eq:3}
+  a(n)\bullet b(z)=\mathrm{Res}_w \left(a(w)b(z)i_{w,z}(w-z)^n - b(z)a(w) i_{z,w}(w-z)^n\right)
+\end{equation}
+Это эквивалентно формальному определению контурного интеграла $\frac{1}{2\pi i }
+\oint_C a(w) b(z) (w-z)^n dw$
+
+Итак, мы наделили  $\tilde{U}(\gfh,k)<z>$ структурой $\gfh$-модуля, при этом
+$1$ является вектором старшего веса, $a(n)\bullet 1=0$ при $n\geq 0$ и
+$a(n)\bullet 1=\frac{1}{(-n-1)!}\left(\frac{d}{dz}\right)^{-n-1}a(z)$ при $n<0$. 
+
+То есть $Y(\cdot, z): a_1 (-i_1)\dots a_n(-i_n)1\to a_1(-i_1)\bullet\dots\bullet
+a_n(-i_n)\bullet 1$ -- гомоморфизм $\gfh$-модулей $M^0_k$ и
+$\tilde{U}(\gfh,k)<z>$. Будем называть $Y(b,z)$ вершинным оператором,
+соответствующим $b$.
+
+Элемент Вирасоро $\omega=\frac{1}{2(k+h^{\vee})}\sum_i u_i(-1) u_i(-1)$, где
+$u_i (i=1,\dots,\mathrm{dim}\gf)$ -- ортогональный базис по отношению к форме
+Картана-Киллинга. 
+
+Случай $k=-h^{\vee}$ выделенный, в этом случае нет элемента Вирасоро.
+
+Можно показать, что отображение
+ $$Y_{\hat{V}_k}(\cdot,z):M^0_k\to
+\tilde{U}(\gfh,k)<z> \to \mathrm{End}(\hat{V}_k)[[z,z^{-1}]]$$
+является представлением вертексной операторной алгебры $M^0_k$.
+
+\subsection{Корреляционные функции}
+\label{sec:correlation-functions}
+
+\subsection{Вертексные алгебры, связанные с неприводимыми представлениями}
+\label{sec:voa-irreps}
+
+
 
 \begin{itemize}
 \item Singular element of simple Lie algebra irreducible module, VOA corresponding to that module.
