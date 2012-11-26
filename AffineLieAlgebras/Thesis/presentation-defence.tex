@@ -129,6 +129,15 @@
 \maketitle
 \section{Введение}
 \begin{frame}
+  \frametitle{Актуальность темы}
+  
+\end{frame}
+\begin{frame}
+  \frametitle{Научная новизна и практическая значимость}
+  
+\end{frame}
+
+\begin{frame}
   \frametitle{Структура диссертации}
   \begin{enumerate}
   \item Конформная теория поля и аффинные алгебры Ли: 
@@ -151,46 +160,35 @@
 
 \section{Глава 1. Конформная теория поля и аффинные алгебры}
 \begin{frame}
-  \frametitle{Действие WZNW-моделей}
-  \begin{equation}
+  \frametitle{Модели Весса-Зумино-Новикова-Виттена и аффинные алгебры Ли}
+  Действие: нелинейная $\sigma$-модель + топологический член
+  \begin{multline*}
     \label{eq:4}
-    S=S_0+k\Gamma, \quad k\in \mathbb{Z}
-  \end{equation}
- $S_0$ --- действие нелинейной $\sigma$-модели:
-\begin{equation}
-  \label{eq:5}
-  S_0=-\frac{k}{8\pi}\int_{S^2} d^2x\; Tr (\partial^{\mu}g^{-1}\partial_{\mu}g),\quad g(x):\mathbb{C}\cup \{\infty\}\sim S^{2}\to G 
-\end{equation}
-
-Топологический член Весса-Зумино:
-\begin{equation}
-  \label{eq:73}
-\Gamma= - \frac{i }{24\pi} \int_{B}\epsilon_{ijk} Tr\left(
+    S=S_0+k\Gamma=\\
+    -\frac{k}{8\pi}\int_{S^2} d^2x\; Tr (\partial^{\mu}g^{-1}\partial_{\mu}g)- \frac{ik }{24\pi} \int_{B}\epsilon_{ijk} Tr\left(
     \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
-\end{equation}
-$\Gamma$ определен на трехмерном многообразии $B$, ограниченном $S^{2}$. $\tilde{g}$  -- продолжение $g$ на $B$.\\
-$\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определен однозначно.
-
-\end{frame}
-\begin{frame}
-  \frametitle{Аффинная алгебра}
+  \end{multline*}
+  $g(x):\mathbb{C}\cup \{\infty\}\sim S^{2}\to D(G) , \ k\in \mathbb{Z}$, $\tilde{g}$  -- продолжение $g$ на трехмерное многообразие $B$, ограниченное $S^{2}$. 
+%$\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определен однозначно.
 
   \begin{itemize}
+  \item Конформная инвариантность, калибровочная симметрия
   \item   Токи 
-    $J(z)= -k \partial_zg g^{-1}\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g$
+    $J(z)= -k \partial_zg g^{-1}\sum_{a} J^{a}(z) t^{a}=\sum_{a} \sum _{n} J^{a}_{n} t^{a} z^{n-1}$ + тождества Уорда $\Rightarrow$ соотношения аффинной алгебры $\gfh$: 
 
-  \item Калибровочная инвариантность $   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)$,
-    где $\Omega,\;\bar \Omega \in G$
+    %\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g$
 
-  \item Тождества Уорда $\Omega=1+\omega$:
-    \begin{equation*}
-      \label{eq:87}
-      \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
-      \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
-    \end{equation*}
-  \item  $J(z)=\sum_{a} J^{a}(z) t^{a}=\sum_{a} \sum _{n} J^{a}_{n} t^{a} z^{n-1} \Rightarrow$ соотношения аффинной алгебры $\gfh$: 
+%%   \item Калибровочная инвариантность $   g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar \Omega^{-1}(\bar z)$,
+%%     где $\Omega,\;\bar \Omega \in G$
+%% 
+%%   \item Тождества Уорда $\Omega=1+\omega$:
+%%     \begin{equation*}
+%%       \label{eq:87}
+%%       \delta_{\omega,\bar \omega}\left< X \right>=-\frac{1}{2\pi i}\oint dz \sum\omega^a \left< J^a X\right>+
+%%       \frac{1}{2\pi i} \oint d\bar z \sum \bar \omega^a \left< \bar J^a X\right>
+%%     \end{equation*}
     \begin{equation*}
       \left[J^a_n,J^b_m\right]=\sum_c i f^{abc}J^c_{n+m}+kn\delta^{ab}\delta_{n+m,0}
     \end{equation*}
@@ -198,16 +196,16 @@ $\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определ�
   \end{itemize}
 \end{frame}
 \begin{frame}
-  \frametitle{Примарные поля}
+  \frametitle{Примарные поля и представления аффинных алгебр Ли}
   \begin{itemize}
-  \item Полная киральная алгебра $\gfh \ltimes Vir$:
-    \begin{equation}
-      \label{eq:92}
-      \begin{aligned}
-        \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
-        \left[L_n,J^a_m\right]=-mJ^a_{n+m}
-      \end{aligned}
-    \end{equation}
+%%   \item Полная киральная алгебра $\gfh \ltimes Vir$:
+%%     \begin{equation}
+%%       \label{eq:92}
+%%       \begin{aligned}
+%%         \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+%%         \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+%%       \end{aligned}
+%%     \end{equation}
   \item Примарные поля определяются операторным разложением $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi_{i}(w)}{z-w}$.
   \item Примарные поля $\phi_{\lambda}$ соответствуют старшим весам представлений:
     \begin{equation*}
@@ -227,40 +225,29 @@ $\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определ�
 \end{frame}
 
 \begin{frame}
-  \frametitle{Coset-модели и калибровочная WZNW-модель}
-
-  Добавим в действие калибровочные поля $A, \bar{A}$ со значениями в подалгебре $\af\subset \gf$:
+  \frametitle{Coset-модели и правила ветвления представлений аффинных алгебр Ли}
+   $A, \bar{A}:S^2\to \af\subset \gf$:
   \begin{multline*}
     S(g,A)=S_{WZNW}(g)+\\
-    \frac{k}{4\pi}\int d^{2}z \left(Tr(A g^{-1}\bar \partial g)-Tr(\bar A (\partial g ) g^{-1})+Tr(A g^{-1}\bar A g)-Tr(A \bar A)\right)
+    +\frac{k}{4\pi}\int d^{2}z \left(Tr(A g^{-1}\bar \partial g)-Tr(\bar A (\partial g ) g^{-1})+Tr(A g^{-1}\bar A g)-Tr(A \bar A)\right)
   \end{multline*}
 
-  Теперь токи
-  \begin{equation*}
-    J_{(\gf,\af)}=-k\partial g g^{-1} -k g A g^{-1}
-  \end{equation*}
 
-  Из тождеств Уорда получаем
-  \begin{equation*}
-    \left< A^{b}(z)\phi_{1}\dots \phi_{N}\right>=\frac{2}{k+2 h^{v}_{\af}}\sum_{k}\frac{\tilde{t}^{b}_{k}}{z-z_{k}}\left<\phi_{1}\dots \phi_{N}\right>
-  \end{equation*}
 
+%%   Из тождеств Уорда получаем
+%%   \begin{equation*}
+%%     \left< A^{b}(z)\phi_{1}\dots \phi_{N}\right>=\frac{2}{k+2 h^{v}_{\af}}\sum_{k}\frac{\tilde{t}^{b}_{k}}{z-z_{k}}\left<\phi_{1}\dots \phi_{N}\right>
+%%   \end{equation*}
+%% 
 %%  Commutation relations for current components are preserved.
 
   Алгебраическая структура связана с  $\gfh, \afh: \afh\subset\gfh$. 
 
-  Генераторы алгебры Вирасоро -- разности выражений Сугавары:
   \begin{equation*}
     L_{n}=L_{n}^{\gf}-L_{n}^{\af}
   \end{equation*}
-\end{frame}
 
-\begin{frame}
-  \frametitle{Примарные поля в coset-моделях}
-  Для генераторов подалгебры $\afh$:
-  \begin{equation*}
-    \left[ L_{n}, \tilde{J}^{b}_{m}\right]=0 \quad\Longleftrightarrow\quad \tilde{J}^{b}_{m}\left| v \right>=0\Rightarrow \tilde{J}^{b}_{m}L_{n}\left| v \right>=0
-  \end{equation*}
+  $\left[ L_{n}, \tilde{J}^{b}_{m}\right]=0 \quad\Longleftrightarrow\quad \tilde{J}^{b}_{m}\left| v \right>=0\Rightarrow \tilde{J}^{b}_{m}L_{n}\left| v \right>=0 $
   Сингулярные векторы по отношению к $\afh$ образуют модули алгебры Вирасоро в coset-моделях. Функции ветвления $b^{\mu}_{(\gfh\downarrow\afh) \nu}(q)$ являются характерами модулей алгебры Вирасоро.
 
   Примарные поля нумеруются парами весов $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$, такими, что  $b^{\mu}_{\nu}(q)\neq 0$. Некоторые пары эквивалентны. Эквивалентность дается действием т.н. ``простых токов'' $(J,\tilde{J})$, таких, что $h_{J}-h_{\tilde{J}}=0$. 
