@@ -130,10 +130,47 @@
 \section{Введение}
 \begin{frame}
   \frametitle{Актуальность темы}
-  
+  \begin{itemize}
+  \item Конформная теория поля
+    \begin{itemize}
+    \item описывает критическое поведение в двух измерениях
+    \item важна в теории струн
+    \item точно решаемая квантовая теория поля
+    \item допускает аксиоматическую формулировку
+    \item 30 лет, тысячи работ
+    \end{itemize}
+  \item Модели Весса-Зумино-Новикова-Виттена и coset-модели
+    \begin{itemize}
+    \item реализуют рациональные модели конформной теории поля
+    \item калибровочно-инвариантны
+    \item описываются с использованием теории представлений аффинных алгебр Ли
+    \end{itemize}
+  \item Аффинные алгебры Ли
+    \begin{itemize}
+    \item важный класс бесконечномерных алгебр Ли
+    \item развитая теория представлений
+    \item приложения в конформной теории поля
+    \item специальные функции и  модулярная инвариантность
+    \end{itemize}
+  \item Задача редукции представлений нетривиальна и полезна для конформной теории поля
+
+  \end{itemize}
 \end{frame}
 \begin{frame}
   \frametitle{Научная новизна и практическая значимость}
+  В диссертации впервые решены следующие задачи:
+  \begin{itemize}
+  \item Получено эффективное рекуррентное соотношение для коэффициентов ветвления.
+  \item Алгоритм вычисления коэффициентов ветвления реализован в пакете {\bf Affine.m} для {\it Mathematica}.
+  \item Установлена прямая связь расщепления корневой системы и ветвлений -- кратности весов вспомогательного модуля совпадают с коэффициентами
+    ветвления.
+%  \item Показано, что наличие расщепления приводит к существенному упрощению при вычислении коэффициентов ветвления.
+  \item Разложение сингулярного элемента определяет как коэффициенты ветвления, так и обобщенную БГГ-резольвенту.
+  \item Построен обобщенный стохастический процесс Шрамма-Лёвнера для систем с
+    калибровочной инвариантностью, соответствующих coset-моделям конформной теории поля.
+  \end{itemize}
+  {\bf Affine.m} подходит для задач теории представлений в различных областях физики, от изучения
+  атомных и молекулярных спектров и до конформной теории поля и интегрируемых систем.
   
 \end{frame}
 
@@ -150,7 +187,7 @@
   \item Разложение сингулярных элементов и рекуррентные соотношения на коэффициенты ветвления
   \item Коэффициенты ветвления и обобщенная резольвента Бернштейна-Гельфанда-Гельфанда
   \item Сплинты корневых систем и функции ветвления
-  \item Приложения
+  \item Практические приложения
     \begin{itemize}
     \item Эволюция Шрамма-Левнера и coset-модели
     \item Компьютерная программа {\bf Affine.m}
@@ -289,6 +326,7 @@ $D^{\mu}(\bff_{+}): D(E^{\alpha})=0,\; D(H)=\mu(H)\quad \forall \alpha>0$.
 \end{equation*}
 
 \end{frame}
+
 \begin{frame}
   \frametitle{Разложение сингулярного элемента}
   Пусть $\af\subset\gf$ -- конечномерные или аффинные. Можно разложить $L^{\mu}_{\gf}$ на модули $\af$:
@@ -316,35 +354,55 @@ _{\frak{b}}^{+}$.
 
 Подсистема $\Delta _{\frak{b}}$ определяет подалгебру $\frak{b}=\afb\subset\gf$.
 \end{frame}
+
 \begin{frame}
-  
-$\af, \mathfrak{b}$ -- ``ортогональная пара'' подалгебр $\gf$, $\bff$ регулярная.
-
-Подалгебра Картана раскладывается
-$\frak{{h}=\frak{h}_{\af}+\frak{h}_{\bot}+\frak{h}_{\frak{b}}.}$
-
-Введем
-\begin{eqnarray*}
-\mathcal{D}_{\af} :=\rho_{\af}-\pi_{\af}\rho.\\
-\mathcal{D}_{\frak{b}} :=\rho_{\frak{b}}-\pi_{\frak{b}}\rho.
-\end{eqnarray*}
-\begin{mylemma}
-\label{lemma}
-Пусть  $\widetilde{\afb}=\afb\oplus \hf_{\perp }$, $\widetilde{\af}=\af\oplus\hf_{\perp }$ ,
-
-$L^{\mu }$ -- модуль старшего веса с сингулярным элементом $\Psi ^{\left(\mu \right)}$ ,
-
-$R_{\af_{\perp }}$ -- знаменатель Вейля для подалгебры $\af_{\perp }$. $U\sim W/W_{\afb}$.
-
-Тогда элемент  $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi _{\af}\left( \frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}\right) $ можно разложить в сумму по  $u\in U$:
-\begin{equation*}
-\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\quad \pi _{\af}\left( \frac{\Psi^{\mu }}{R_{\af%
-_{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
-\left( L_{\widetilde{\af_{\perp }}}^{\mu _{%
-\widetilde{\af_{\perp }}}\left( u\right) }\right) e^{\mu _{\af}\left( u \right) }.
-\end{equation*}
-\end{mylemma}
+  \frametitle{Простой пример: $A_{1}\subset B_{2}$}
+  \begin{figure}[t]
+    \vspace*{-0.5cm}
+    \begin{multicols}{2}
+      \hfill
+      \includegraphics[width=60mm]{figures/figure1}
+      \hfill
+      \caption{Корни алгебр $B_{2},A_{1}$ и $\Psi ^{\omega_1  }$}
+      \hfill
+      \vspace{5mm}
+      \includegraphics[width=60mm]{figures/figure2}
+      \caption{Ортогональная подалгебра $\mathfrak{b}$ и размерности $\mathfrak{b}$-модулей}
+    \end{multicols}
+  \end{figure}
 \end{frame}
+
+%%  \begin{frame}
+%%    
+%%  $\af, \mathfrak{b}$ -- ``ортогональная пара'' подалгебр $\gf$, $\bff$ регулярная.
+%%  
+%%  Подалгебра Картана раскладывается
+%%  $\frak{{h}=\frak{h}_{\af}+\frak{h}_{\bot}+\frak{h}_{\frak{b}}.}$
+%%  
+%%  Введем
+%%  \begin{eqnarray*}
+%%  \mathcal{D}_{\af} :=\rho_{\af}-\pi_{\af}\rho.\\
+%%  \mathcal{D}_{\frak{b}} :=\rho_{\frak{b}}-\pi_{\frak{b}}\rho.
+%%  \end{eqnarray*}
+%%  \begin{mylemma}
+%%  \label{lemma}
+%%  Пусть  $\widetilde{\afb}=\afb\oplus \hf_{\perp }$, $\widetilde{\af}=\af\oplus\hf_{\perp }$ ,
+%%  
+%%  $L^{\mu }$ -- модуль старшего веса с сингулярным элементом $\Psi ^{\left(\mu \right)}$ ,
+%%  
+%%  $R_{\af_{\perp }}$ -- знаменатель Вейля для подалгебры $\af_{\perp }$. $U\sim W/W_{\afb}$.
+%%  
+%%  Тогда элемент  $\Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\pi _{\af}\left( \frac{\Psi _{\gf}^{\mu }}{R_{\af_{\perp }}}\right) $ можно разложить в сумму по  $u\in U$:
+%%  \begin{equation*}
+%%  \Psi ^{\left( \mu \right) }_{\left(  \af, \afb \right)}=\quad \pi _{\af}\left( \frac{\Psi^{\mu }}{R_{\af%
+%%  _{\perp }}}\right) =\sum_{u\in U}\;\epsilon (u)\mathrm{\dim }
+%%  \left( L_{\widetilde{\af_{\perp }}}^{\mu _{%
+%%  \widetilde{\af_{\perp }}}\left( u\right) }\right) e^{\mu _{\af}\left( u \right) }.
+%%  \end{equation*}
+%%  \end{mylemma}
+%%  \end{frame}
+
+
 \begin{frame}
   \frametitle{Рекуррентные соотношения на коэффициенты ветвления}
   
@@ -374,22 +432,6 @@ _{0}\right\} \setminus \left\{ 0\right\} .
 \end{equation*}
 \end{frame}
 \subsection{Примеры}
-\begin{frame}
-  \frametitle{Простой пример: $A_{1}\subset B_{2}$}
-  \begin{figure}[t]
-    \vspace*{-0.5cm}
-    \begin{multicols}{2}
-      \hfill
-      \includegraphics[width=60mm]{figures/figure1}
-      \hfill
-      \caption{Корни алгебр $B_{2},A_{1}$ и $\Psi ^{\omega_1  }$}
-      \hfill
-      \vspace{5mm}
-      \includegraphics[width=60mm]{figures/figure2}
-      \caption{Ортогональная подалгебра $\mathfrak{b}$ и размерности $\mathfrak{b}$-модулей}
-    \end{multicols}
-  \end{figure}
-\end{frame}
 \subsection{Аффинный пример}
 \begin{frame}
   \begin{figure}[t]
@@ -535,55 +577,55 @@ e^{\rho _{\af}}\phi_{2}\left(\Psi ^{\widetilde{\mu }+\rho _{\sfr}}\right)\right)
 
 \end{frame}
 
-\subsection{Аффинные алгебры}
-\begin{frame}
-Аффинное расширение $\afh\subset\gfh$. Так как $\mathrm{rank}\gf\leq\mathrm{rank} \af+\mathrm{rank}\sfr$, для знаменателей Вейля 
-\begin{multline*}
-\prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\\
-\prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
-\end{multline*}
- $$\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$$
-Соотношение, связывающее тета-функции алгебр $\gfh,\hat\sfr,\afh$:
-\begin{multline*}
-  \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
-  \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= \\
-  \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
-\end{multline*}
-\end{frame}
-\begin{frame}
-  \frametitle{Ветвление на конечномерные подалгебры}
-
-Рассмотрим ветвление модуля $\gfh$ на модули $\gf$
-\begin{equation*}
-  \label{eq:149}
-\mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{\nu}(n) \mathrm{ch} L^{\nu}_{\gf} \quad m^{(\hat{\mu})}_{\hat{\nu}=(\nu,k,n)}=\sum_{\xi\in P}
-b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}
-\end{equation*}
-Введем $b^{(\hat{\mu})}_{\nu}(q):=\sum_{n=0}^{\infty} b^{(\hat{\mu})}_{\nu}(n) q^{n}$, они связаны с  $q$-размерностью \\ $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$.
-
- $ \sigma^{(\hat{\mu})}_{\nu}(q) = \sum_{\xi\in P} m^{(\xi)}_{\nu} b^{(\hat{\mu})}_{\xi}(q)$.
-
-Введем порядок на множестве весов $\xi$ следующим образом:
-припишем весу  $\xi$ значение  $(\rho,\xi)$ и упорядочим веса по этим значениям. Тогда  $$\sigma(q)=M b(q)\quad b(q)=M^{-1}\sigma(q)$$
-  $\sigma(q)$ и  $b(q)$ -- бесконечные векторы струнных функций и функций ветвления. Матрица $M$ содержит кратности весов в  $\gf$-модулях. Обратная матрица $M^{-1}$ содержит рекуррентные соотношения на кратности весов.
-\end{frame}
-\begin{frame}
-    \frametitle{Матричные соотношения для сплинтов}
-Рассмотрим ветвление модулей  $\gfh$ на модули $\af$ в предположении существовании сплинта
-$\Delta^{+}_{\gf}=\Delta^{+}_{\af}\cup \phi(\Delta^{+}_{\sfr})$.
-Разложим  $\gf$-модули на 
-$\af$-модули используя свойство сплинта:
-\begin{multline}
-  \label{eq:125}
-  \mathrm{ch}L^{\hat{\mu}}_{\gfh}=
-\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P_{\af}} b^{(\hat{\mu})}_{(\gfh\downarrow\af)\nu}(n) \mathrm{ch} L^{\nu}_{\af}=\\
-\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} b^{(\nu)}_{(\gf\downarrow \af) \xi}\mathrm{ch} L^{\xi}_{\af}=\\
-=\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} M^{\widetilde{\nu}}_{  \widetilde{\nu}-\phi^{-1}( \nu-\xi )}\mathrm{ch} L^{\xi}_{\af}
-\end{multline}
-  Матричное соотношение выполняется для функций ветвления $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}\;
-b_{(\gfh\downarrow\gf)}(q)$ и мы можем написать
-$\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$.  Зная коэффициенты ветвления для вложения $\gf\subset\gfh$  сразу получаем (градуированные) функции ветвления для вложения $\af\subset \gfh$.
-\end{frame}
+%%  \subsection{Аффинные алгебры}
+%%  \begin{frame}
+%%  Аффинное расширение $\afh\subset\gfh$. Так как $\mathrm{rank}\gf\leq\mathrm{rank} \af+\mathrm{rank}\sfr$, для знаменателей Вейля 
+%%  \begin{multline*}
+%%  \prod_{\alpha\in\hat{\Delta}^{+}_{1}}(1-e^{-\alpha})^{\mathrm{mult}(\alpha)}\prod_{\beta\in\hat{\Delta}^{+}_{2}}(1-e^{\phi\circ \beta})^{\mathrm{mult}(\beta)}=\\
+%%  \prod_{\gamma\in\hat{\Delta}^{+}}(1-e^{-\gamma})^{\mathrm{mult}(\gamma)}\prod_{n=0}^{\infty}(1-e^{-n\delta})^{\mathrm{rank}\af+\mathrm{rank}\sfr-\mathrm{rank}\gf}
+%%  \end{multline*}
+%%   $$\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$$
+%%  Соотношение, связывающее тета-функции алгебр $\gfh,\hat\sfr,\afh$:
+%%  \begin{multline*}
+%%    \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
+%%    \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= \\
+%%    \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
+%%  \end{multline*}
+%%  \end{frame}
+%%  \begin{frame}
+%%    \frametitle{Ветвление на конечномерные подалгебры}
+%%  
+%%  Рассмотрим ветвление модуля $\gfh$ на модули $\gf$
+%%  \begin{equation*}
+%%    \label{eq:149}
+%%  \mathrm{ch}L^{\hat{\mu}}_{\gfh}=\sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{\nu}(n) \mathrm{ch} L^{\nu}_{\gf} \quad m^{(\hat{\mu})}_{\hat{\nu}=(\nu,k,n)}=\sum_{\xi\in P}
+%%  b^{(\hat{\mu})}_{\xi}(n) m^{(\xi)}_{\nu}
+%%  \end{equation*}
+%%  Введем $b^{(\hat{\mu})}_{\nu}(q):=\sum_{n=0}^{\infty} b^{(\hat{\mu})}_{\nu}(n) q^{n}$, они связаны с  $q$-размерностью \\ $\mathrm{dim}_{q}L^{\hat \mu}_{\gfh}=\sum_{n=0}^{\infty}q^{n}\sum_{\nu\in P} b^{(\hat \mu)}_{\nu}(n) \mathrm{dim }L^{\nu}_{\gf}=\sum_{\nu\in P}b^{(\hat\mu)}_{\nu}(q) \mathrm{dim} L^{\nu}_{\gf}$.
+%%  
+%%   $ \sigma^{(\hat{\mu})}_{\nu}(q) = \sum_{\xi\in P} m^{(\xi)}_{\nu} b^{(\hat{\mu})}_{\xi}(q)$.
+%%  
+%%  Введем порядок на множестве весов $\xi$ следующим образом:
+%%  припишем весу  $\xi$ значение  $(\rho,\xi)$ и упорядочим веса по этим значениям. Тогда  $$\sigma(q)=M b(q)\quad b(q)=M^{-1}\sigma(q)$$
+%%    $\sigma(q)$ и  $b(q)$ -- бесконечные векторы струнных функций и функций ветвления. Матрица $M$ содержит кратности весов в  $\gf$-модулях. Обратная матрица $M^{-1}$ содержит рекуррентные соотношения на кратности весов.
+%%  \end{frame}
+%%  \begin{frame}
+%%      \frametitle{Матричные соотношения для сплинтов}
+%%  Рассмотрим ветвление модулей  $\gfh$ на модули $\af$ в предположении существовании сплинта
+%%  $\Delta^{+}_{\gf}=\Delta^{+}_{\af}\cup \phi(\Delta^{+}_{\sfr})$.
+%%  Разложим  $\gf$-модули на 
+%%  $\af$-модули используя свойство сплинта:
+%%  \begin{multline}
+%%    \label{eq:125}
+%%    \mathrm{ch}L^{\hat{\mu}}_{\gfh}=
+%%  \sum_{n=0}^{\infty}e^{-n\delta} \sum_{\nu\in P_{\af}} b^{(\hat{\mu})}_{(\gfh\downarrow\af)\nu}(n) \mathrm{ch} L^{\nu}_{\af}=\\
+%%  \sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} b^{(\nu)}_{(\gf\downarrow \af) \xi}\mathrm{ch} L^{\xi}_{\af}=\\
+%%  =\sum_{n=0}^{\infty} e^{-n\delta} \sum_{\nu\in P} b^{(\hat{\mu})}_{(\gfh\downarrow\gf )\nu}(n) \sum_{\xi\in P_{\af}} M^{\widetilde{\nu}}_{  \widetilde{\nu}-\phi^{-1}( \nu-\xi )}\mathrm{ch} L^{\xi}_{\af}
+%%  \end{multline}
+%%    Матричное соотношение выполняется для функций ветвления $b_{(\gfh\downarrow\af)}(q)= M_{\sfr}\;
+%%  b_{(\gfh\downarrow\gf)}(q)$ и мы можем написать
+%%  $\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$.  Зная коэффициенты ветвления для вложения $\gf\subset\gfh$  сразу получаем (градуированные) функции ветвления для вложения $\af\subset \gfh$.
+%%  \end{frame}
 \subsection{Выводы}
 \begin{frame}
   \frametitle{Выводы к главе 4}
@@ -626,55 +668,58 @@ $\sigma(q)=M_{\af}\; b_{(\gfh\downarrow\af)}(q)$.  Зная коэффициен
 
 \begin{frame}
   \frametitle{Стохастические наблюдаемые и корреляторы в CFT}
-      \vspace{-0.2cm}
-  Рассмотрим решеточную наблюдаемую $\mathcal{O}$, тогда
-  \begin{equation*}
-    \prec \mathcal{O} \succ_{\mathbb{H}}=\mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=\sum_{\gamma_{t}} P\left[C_{\gamma_{t}}\right] \prec \mathcal{O} \succ_{\gamma_{t}}
-  \end{equation*}
-  $\prec \mathcal{O} \succ_{\mathbb{H}}$ не зависит от $t$, следовательно $\prec\mathcal{O}\succ_{\gamma_{t}}$ -- мартингал.
-
-  Непрерывный предел в критической точке дается корреляционной функцией в конформной теории поля
-  \begin{equation*}
-    \prec \mathcal{O} \succ_{\mathbb{H}_{t}}\to \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
-    \frac{\left< \mathcal{O}(\{z_{i}\})\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}=
-    \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
-  \end{equation*}
-  Здесь $\phi$ -- оператор изменения граничных условий.
-
-
-  После конформного отображения $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$
-  \begin{equation*}
-    \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
-    \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
-        \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
-  \end{equation*}
-  При переходе от  $t$ к $t+dt$ первый сомножитель дает $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
 \end{frame}
-\begin{frame}
-  \frametitle{Мартингалы стохастического процесса}
-   Поля преобразуются так:
-   \begin{itemize}
-   \item   Минимальные модели -- только конформные преобразования
-     $d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i})$
-   \item WZNW-модели -- калибровочные преобразования
-  \begin{equation*}
-    \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\right)
-  \end{equation*}
-\item coset-модели $\mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right)$.
-Разрешили случайные блуждания в направлении $\perp \af$.
-   \end{itemize}
 
-  Верно равенство
-$    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad \mathbb{E}\left[d \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
-$
-  Используя формулу Ито, получаем $0 =$
-  \begin{multline}
-    \hspace{-0.5cm}
-    \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
-      \mathcal{F}_{\mathbb{H}_{t}}\right]=
-    \left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
-        \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}} = 0
-  \end{multline}
+%% \vspace{-0.2cm}
+%%    Рассмотрим решеточную наблюдаемую $\mathcal{O}$, тогда
+%%    \begin{equation*}
+%%      \prec \mathcal{O} \succ_{\mathbb{H}}=\mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=\sum_{\gamma_{t}} P\left[C_{\gamma_{t}}\right] \prec \mathcal{O} \succ_{\gamma_{t}}
+%%    \end{equation*}
+%%    $\prec \mathcal{O} \succ_{\mathbb{H}}$ не зависит от $t$, следовательно $\prec\mathcal{O}\succ_{\gamma_{t}}$ -- мартингал.
+%%  
+%%    Непрерывный предел в критической точке дается корреляционной функцией в конформной теории поля
+%%    \begin{equation*}
+%%      \prec \mathcal{O} \succ_{\mathbb{H}_{t}}\to \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=
+%%      \frac{\left< \mathcal{O}(\{z_{i}\})\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}_{t}}}=
+%%      \frac{\left< ^{g_{t}}\mathcal{O}\phi(\xi_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}{\left<\phi(z_{t})\phi^{\dagger}(\infty)\right>_{\mathbb{H}}}
+%%    \end{equation*}
+%%    Здесь $\phi$ -- оператор изменения граничных условий.
+%%  
+%%  
+%%    После конформного отображения $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$
+%%    \begin{equation*}
+%%      \mathcal{F}(\left\{z_{i}\right\})_{\mathbb{H}_{t}}=\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{\lambda_i}} 
+%%      \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{h_{\lambda^{*}_i}}
+%%          \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
+%%    \end{equation*}
+%%    При переходе от  $t$ к $t+dt$ первый сомножитель дает $-\frac{2h_{\lambda_{i}}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{\lambda_{i}}}$.
+%%  \end{frame}
+%%  \begin{frame}
+%%    \frametitle{Мартингалы стохастического процесса}
+%%     Поля преобразуются так:
+%%     \begin{itemize}
+%%     \item   Минимальные модели -- только конформные преобразования
+%%       $d\phi_{\lambda_{i}}(w_{i}) = \mathcal{G}_{i}\phi_{\lambda_{i}}(w_{i})=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}\phi_{\lambda_{i}}(w_{i})$
+%%     \item WZNW-модели -- калибровочные преобразования
+%%    \begin{equation*}
+%%      \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a=1}^{\mathrm{dim} \gf}\left(d \theta ^{a} t^{a}_{i}\right)\right)
+%%    \end{equation*}
+%%  \item coset-модели $\mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}+\frac{\sqrt{\tau}}{w_{i}}\left(\sum_{a:\mathcal{K}(t^{a},\tilde{t}^{b})=0}\left(d \theta ^{a} t^{a}_{i}\right)\right)$.
+%%  Разрешили случайные блуждания в направлении $\perp \af$.
+%%     \end{itemize}
+%%  
+%%    Верно равенство
+%%  $    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t}}\right]=    \mathbb{E}\left[\prec\mathcal{O}\succ_{\gamma_{t+dt}}\right], \quad \mathbb{E}\left[d \prec\mathcal{O}\succ_{\gamma_{t}}\right]=0
+%%  $
+%%    Используя формулу Ито, получаем $0 =$
+%%    \begin{multline}
+%%      \hspace{-0.5cm}
+%%      \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{-h_{i}}\right)\mathbb{E}\left[d 
+%%        \mathcal{F}_{\mathbb{H}_{t}}\right]=
+%%      \left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\mathbb{E}\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
+%%          \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}} = 0
+%%    \end{multline}
+
 %%    Подставляем явный вид конформного преобразования полей и получаем равенство
 %%    \begin{equation*}
 %%      \left( \sum_{i}\left[-\frac{2h_{i}}{w_{i}^{2}} +\frac{2}{w_{i}}\partial_{w_{i}}\right]+\frac{\kappa}{2}\sum_{i,j}\partial_{w_{i}} \partial_{w_{j}}\right)\mathcal{F}(\left\{z_{i}\right\})=0
@@ -685,7 +730,7 @@ $
 %%      (L_{-2}-\frac{\kappa}{2}L_{-1}^{2})\phi=0 \Longrightarrow \phi \left|0\right>  \text{has level 2 null state}, \phi\sim \phi_{1,2} \;\text{or}\; \phi_{2,1}
 %%    \end{equation*}
 %%  
-\end{frame}
+%% \end{frame}
 %%  \begin{frame}
 %%    \frametitle{Эволюция Шрамма-Лёвнера на факторпространстве}
 %%      В $\gf\oplus \af$ WZNW-модели генератор преобразования примарного поля при эволюции от $t$ до $t+dt$
@@ -711,28 +756,28 @@ $
 %%  
 %%  
 
-\begin{frame}
-  \frametitle{Парафермионы и минимальные модели в coset-конструкции}
-$|\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\displaystyle{\sum_{a=1}^{\dim\gf}}J^{a}_{-1}J^{a}_{-1}-\displaystyle{\sum_{b=1}^{\dim\af}}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) 
-\varphi(0)|0>$
-
-  $\mathbb{Z}(N)$-парафермионы эквивалентны $SU(2)_{N}/U(1)$ coset-теории.
-  
-  Парафермионное поле раскладывается в произведение
-  \begin{equation*}
-    \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
-  \end{equation*}
-  где $\phi_{j}(z)$ -- поле $SU(2)$-WZNW модели со спином $j$, $\phi(z)$ -- $U(1)$ бозонное поле.
-  
-  Парафермионный ток $ \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)$
-%%  Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
-
-  Условие на мартингалы принимает вид
-  \begin{equation*}
-    \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
-  \end{equation*}
-  что совпадает с результатом Santachiara [arXiv:0705.2749].
-\end{frame}
+%%  \begin{frame}
+%%    \frametitle{Парафермионы и минимальные модели в coset-конструкции}
+%%  $|\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}+\frac{1}{2}\tau \left(\displaystyle{\sum_{a=1}^{\dim\gf}}J^{a}_{-1}J^{a}_{-1}-\displaystyle{\sum_{b=1}^{\dim\af}}\tilde{J}^{b}_{-1}\tilde{J}^{b}_{-1}\right)\right) 
+%%  \varphi(0)|0>$
+%%  
+%%    $\mathbb{Z}(N)$-парафермионы эквивалентны $SU(2)_{N}/U(1)$ coset-теории.
+%%    
+%%    Парафермионное поле раскладывается в произведение
+%%    \begin{equation*}
+%%      \Phi^{j}=\phi_{j}(z) \exp\left( -i \frac{j}{\sqrt{N}}\phi(z)\right)
+%%    \end{equation*}
+%%    где $\phi_{j}(z)$ -- поле $SU(2)$-WZNW модели со спином $j$, $\phi(z)$ -- $U(1)$ бозонное поле.
+%%    
+%%    Парафермионный ток $ \Psi^{\pm}=\frac{1}{\sqrt{N}} J^{\pm}\exp\left(\mp i \frac{1}{\sqrt{N}}\phi(z)\right)$
+%%  %%  Its action in terms of primary fields of $su(2)\oplus u(1)$ WZNW-model is equivalent to $J^{\pm}\pm \tilde{J}^{\pm}$.
+%%  
+%%    Условие на мартингалы принимает вид
+%%    \begin{equation*}
+%%      \left(-2 L_{-2}+\frac{\kappa}{2}L_{-1}^{2}+\frac{\tau}{2}\left[\Psi^{+}_{-1}\Psi^{-}_{-1}+\Psi^{-}_{-1}\Psi^{+}_{-1}\right]\right) \left|\Phi\right>=0
+%%    \end{equation*}
+%%    что совпадает с результатом Santachiara [arXiv:0705.2749].
+%%  \end{frame}
 
 \subsection{Программа Affine.m}
 \label{sec:-affine.m}
@@ -791,7 +836,7 @@ $\includegraphics[width=100mm]{figures/irrep-verma-pverma.pdf}$
 \end{frame}
 
 \begin{frame}
-  \frametitle{Публикации в журналах}
+  \frametitle{Публикации в рецензируемых журналах}
   \begin{itemize}
   \item
     V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
@@ -812,25 +857,24 @@ $\includegraphics[width=100mm]{figures/irrep-verma-pverma.pdf}$
     \href{http://arxiv.org/abs/1111.6787}{{\tt arXiv:1111.6787 [math.RT]}}.
 
   \item
-    A.~{Nazarov}, ``{Algebraic properties of CFT coset construction and
-      Schramm-Loewner evolution},'' {\em Journal of Physics: Conference Series}
-    {\bf 343} (2012) no.~1, 012085, \href{http://arxiv.org/abs/1112.4354}{{\tt
-        arXiv:1112.4354 [math-ph]}}.
-%    \url{http://stacks.iop.org/1742-6596/343/i=1/a=012085}.
-  \item
     A.~{Nazarov}, ``{SLE martingales in coset conformal field theory},''  {\em
       JETP Letters} {\bf 96}, 1,  (2012)  162--179,
     \href{http://arxiv.org/abs/1205.6104}{{\tt arXiv:1205.6104 [math-ph]}}.
 
+  \item
+    A.~{Nazarov}, ``{Affine.m - Mathematica package for computations in
+      representation theory of finite-dimensional and affine Lie algebras},'' {\em
+    Computer Physics Communications} {\bf 183}, 11, (2012)  2480--2493 , \href{http://arxiv.org/abs/1107.4681}{{\tt
+        arXiv:1107.4681 [math.RT]}}.
 
   \end{itemize}
 \end{frame}
 \begin{frame}
-  \frametitle{Доклады и препринты}
+  \frametitle{Другие публикации и доклады}
   \begin{itemize}
   \item
     A.~Nazarov, ``Comparison of algorithms for construction of representations of
-    Lie algebras,'' in {\em Physics and Progress}, Physics and Progress, SPbSU.
+    Lie algebras,'', Physics and Progress, SPbSU.
      2008.
 
   \item
@@ -846,14 +890,23 @@ $\includegraphics[width=100mm]{figures/irrep-verma-pverma.pdf}$
     % \url{http://hep.niif.spbu.ru/conf/mktp2010/}.
 
   \item
-    V.~{Laykhovsky} and A.~{Nazarov}, ``{On affine extension of splint root
-      systems},'' {\em To appear in PEPAN Letters}  ,
-    \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855 [math.RT]}}.
+    A.~{Nazarov}, ``{Algebraic properties of CFT coset construction and
+      Schramm-Loewner evolution},'' {\em Journal of Physics: Conference Series}
+    {\bf 343} (2012) no.~1, 012085, \href{http://arxiv.org/abs/1112.4354}{{\tt
+        arXiv:1112.4354 [math-ph]}}.
+%    \url{http://stacks.iop.org/1742-6596/343/i=1/a=012085}.
+
   \item
-    A.~{Nazarov}, ``{Affine.m - Mathematica package for computations in
-      representation theory of finite-dimensional and affine Lie algebras},'' {\em
-    To appear in Computer Physics Communications} (2012)  , \href{http://arxiv.org/abs/1107.4681}{{\tt
-        arXiv:1107.4681 [math.RT]}}.
+    V.~{Laykhovsky} and A.~{Nazarov}, ``{On affine extension of splint root
+      systems},'' {\em Physics of Particles and Nuclei}, {\bf 43}, 5, (2012) 676--678,
+    \href{http://arxiv.org/abs/1204.1855}{{\tt arXiv:1204.1855 [math.RT]}}.
+
+
+  \item 
+    A.~{Nazarov}, ``{On singular elements in conformal field theory},'' in 
+    {\em Models in Quantum Field Theory 2012} 
+    % \url{http://hep.niif.spbu.ru/conf/mktp2010/}.
+
   \end{itemize}
 \end{frame}
 
