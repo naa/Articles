@@ -58,34 +58,30 @@
 \end{abstract}
 
 \section{Introduction}
-The notion of vertex operator algebra \cite{borcherds1986vertex} formalizes
-algebraic structure that underlies two-dimensional conformal field theory
-\cite{kac1998vertex,frenkel1988vertex}. Vertex algebras associated to
-representations of affine Lie algebras \cite{frenkel1992vertex} form an
-important class corresponding to Wess-Zumino-Novikov-Witten
-\cite{witten1984nab,Walton:1999xc} and coset models \cite{Goddard198588} of
-conformal field theory.
+The notion of vertex operator algebra \cite{borcherds1986vertex} formalizes algebraic structure that
+underlies two-dimensional conformal field theory \cite{kac1998vertex,frenkel1988vertex}. Vertex
+algebras associated to representations of affine Lie algebras \cite{frenkel1992vertex} form an
+important class corresponding to Wess-Zumino-Novikov-Witten \cite{witten1984nab,Walton:1999xc} and
+coset models \cite{Goddard198588} of conformal field theory. These vertex algebras are used to
+reveal modular properties of formal characters of affine Lie algebra modules \cite{zhu1996modular}. 
 
-We show that recurrent relations on branching coefficients for affine Lie
-algebra modules are related to the structure of Virasoro modules. 
+In present paper we consider vertex operator algebras corresponding to coset models of conformal
+field theory. Properties of these algebras are connected with the problem of reduction of affine Lie
+algebra module into the sum of affine Lie subalgebra modules. 
 
-We study singular elements of affine Lie algebra modules and establish the properties
-of 
+We demonstrate that recurrent relations on branching coefficients for affine Lie algebra modules are
+related to the structure of Virasoro modules. Our method is based upon the structure of singular
+elements of affine Lie algebra modules.
 
+\section{Vertex operator algebra for coset models}
+\label{sec:vert-oper-algebra}
 
-\begin{itemize}
-\item Singular element of simple Lie algebra irreducible module, VOA corresponding to that module.
-  What are the relations in VOA on singular vectors? Is there BGG-resolution?
-\item Affine Lie algebra, parabolic Verma modules?
-\item Splints?
-\item Coset vertex operator algebras and branching
-\end{itemize}
-
+Recall the definition of vertex operator algebra \cite{borcherds1986vertex,kac1998vertex,frenkel2001vertex,frenkel1988vertex}.
 \begin{Def}
-  Vertex algebra: $V$ -- vector space with identity $1$, endomorphism
-  $T:V\to V$ and linear multiplication map $Y:V\otimes V\to V((z)):
+  Vertex algebra is a  vector space $V$ with identity $1$, equipped with an endomorphism
+  $T:V\to V$ and a linear multiplication map $Y:V\otimes V\to V((z)):
   (a,b)\to Y(a,z)b=\sum_n a_n b z^{-n-1}$,
-  such that
+  such that following relations are satisfied:
   \begin{itemize}
   \item {\it Identity} $\forall a\in V, Y(1,z) a =a$ and $Y(a,z) 1 \in a+z V z$
   \item {\it Translation} $T(1)=0$ and $\forall a,b\in V$:
@@ -105,6 +101,21 @@ of
   \end{itemize}
 
 \end{Def}
+
+Consider affine Lie algebra $\gfh$, which is an affine extension of (semi)simple Lie algebra $\gf$.
+Let $\omega_{0},\dots,\omega_{r}$ be fundamental weights of $\gfh$. Then $L^{k\omega_{0}}_{\gfh}$ is vertex operator algebra and its irreducible modules are $L^{\mu}_{\gfh}$ such that $\mu<k$.
+
+
+
+
+\begin{itemize}
+\item Singular element of simple Lie algebra irreducible module, VOA corresponding to that module.
+  What are the relations in VOA on singular vectors? Is there BGG-resolution?
+\item Affine Lie algebra, parabolic Verma modules?
+\item Splints?
+\item Coset vertex operator algebras and branching
+\end{itemize}
+
 
 \bibliography{bibliography}{}
 \bibliographystyle{utphys}
