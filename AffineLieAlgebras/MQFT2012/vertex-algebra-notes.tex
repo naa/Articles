@@ -52,159 +52,160 @@
 которой удовлетворяют некоторым аксиомам. Например, следующая аксиоматика была приведена в моей
 диссертаций. 
 
-Корреляционные функции обычно понимают следующим образом. Пусть $\Omega\in\mathbb{H}$ -- вакуум,
-тогда $n$-точечные корреляционные функции в квантовой теории поля даются выражением
-\begin{equation}
-  \label{eq:50}
-  G_{i_{1},\dots ,i_{n}}(z_{1},\dots,z_{n}):=\left<\Omega|\varphi_{i_{1}}(z_{1})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>, \quad |z_{n}|>\dots > |z_{1}|,
-\end{equation}
-где $\varphi_{i_{k}}$ -- поля в теории. Функции $G_{i_{1},\dots,i_{n}}$ можно аналитически
-продолжить на пространство $M_{n}=\{(z_{1},\dots,z_{n})\in \mathbb{C}^{n}: z_{i}\neq z_{j},\; i\neq
-j\}$. $M_{n}^{+}$ состоит из наборов, где $\mathrm{Re}\;z_{i}>0$ для любого $i$. Введем
-последовательность пространств тест-функций $S_{n}^{+}$, где $S_{0}^{+}=\mathbb{C}$, а
-$S_{n}^{+}=\{f\in S(\mathbb{C}^{n}): \mathrm{supp}(f)\subset M^{+}_{n}\} $. Теперь мы можем
-определить корреляционные функции не обращаясь к понятию полей.
-
-Пусть $B_{0}$ -- индексное множество (счетное). Последовательности произвольной длины
-$(i_{1},\dots,i_{n})\in B_{0}^{n}$ образуют пространство мультииндексов $i\in B$. Корреляционные
-функции $G_{i_{1},\dots, i_{n}}:M_{n}\to \mathbb{R}$ удовлетворяют следующим аксиомам.
-\begin{axiom}
-  (Аксиома локальности) Для всех $(i_{1},\dots,i_{n})\in B_{0}^{n}$, $(z_{1},\dots, z_{n})\in M_{n}$
-  и $\pi\in S_{n}$ --- перестановок множества из $n$ элементов верно равенство
-  \begin{equation}
-    \label{eq:51}
-    G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})=G_{i_{\pi(1)},\dots i_{\pi(n)}}(z_{\pi(1)},\dots, z_{\pi(n)})
-  \end{equation}
-\end{axiom}
-Рассмотрим группу движений двумерного пространства $E_{2}$, генераторами которой являются повороты
-$r_{\alpha}:\mathbb{C}\to\mathbb{C}, \; z\to e^{i\alpha}z,\; \alpha\in \mathbb{R}$ и трансляции
-$t_{a}:\mathbb{C}\to\mathbb{C},\; z\to z+a,\; a\in\mathbb{C}$.
-\begin{axiom}
-  (Аксиома ковариантности) Для любого индекса $i\in B_{0}$ существуют независимые конформные веса
-  $h_{i},\bar h_{i}\in \mathbb{R}$, такие, что для всех преобразований $w\in E_{2}$
-  \begin{multline}
-    \label{eq:52}
-    G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n},\bar z_{1},\dots, \bar z_{n})=\\
-    \prod_{j=1}^{n}\left(\frac{dw(z_{j})}{dz}\right)^{h_{i_{j}}}\left(\overline{\frac{dw(z_{j})}{dz}}\right)^{\bar{h}_{i_{j}}}
-    G_{i_1,\dots i_n}(w_{1},\dots, w_{n},\bar w_{1},\dots,\bar w_{n}),
-  \end{multline}
-  где $w_{i}=w(z_{i})$, а $s_{i}=h_{i}-\bar h_{i}, d_{i}=h_{i}+\bar h_{i}$ -- конформный спин и
-  скейлинговая размерность.
-\end{axiom}
-\begin{axiom}
-  (Положительность по отношению к отражениям). Обозначим через $\Theta:\mathbb{C}\to\mathbb{C}$
-  отображение $z=t+i y\to \Theta(z)= -t+i y$. Тогда аксиома утверждает, что существует инволюция
-  $\star:B_{0}\to B_{0}$, $\star^{2}=\mathrm{id}_{B_{0}}$, которая продолжается на $B$ ($\star:i\to
-  i^{*}$), и выполняются свойства
-  \begin{enumerate}
-  \item Верно равенство
-    \begin{equation}
-      \label{eq:53}
-      G_{i}(z)=G_{i^{*}}(\Theta(z))=G_{i^{*}}(-z^{*})
-    \end{equation}
-  \item Обозначим через $\underline{S}^{+}$ пространство последовательностей тест-функций
-    $\underline{f}=(f_{i})_{i\in B}, f_{i}\in S^{+}_{n}$. Тогда
-    \begin{multline}
-      \label{eq:54}
-      \left<\underline{f},\underline{f}\right>=\\
-      \sum_{i,j\in B}\sum_{n,m}\int_{M_{n+m}}G_{i^{*} j}(\Theta(z_{1}),\dots ,\Theta(z_{n}),w_{1},\dots,w_{m}) f_{i}(z)^{*}f_{j}(w) d^{n}z d^{m}w 
-      \geq 0,\\ \forall \underline{f}\in \underline{S}^{+}
-    \end{multline}
-  \end{enumerate}
-\end{axiom}
-Эта аксиома позволяет восстановить гильбертово пространство $\mathbb{H}$, так как она дает
-положительную полуопределенную форму $H$ на $\underline{S}^{+}$. То есть мы можем определить
-$\mathbb{H}$ как пополнение $\underline{S}^{+}$ факторизованное по $\mathrm{ker}\, H$ с
-произведением \eqref{eq:54}. Мы можем построить и полевые операторы. Для $j\in B_{0}$ определим
-$\varphi_{j}$ как операторно-значную обобщенную функцию. Пусть $f\in S^{+}$,
-$\underline{g}\in\underline{S}^{+}$, а через $[\underline{g}]$ обозначим класс эквивалентности
-$\underline{g}$ по отношению к ядру $H$. Определим $\varphi_{j}(f)([\underline{g}])$ как класс
-эквивалентности $\underline{g}\times f$, такой, что
-\begin{equation}
-  \label{eq:55}
-  \begin{array}{l}
-    \underline{g}\times f=((\underline{g}\times f)_{i_{1},\dots,i_{n+1}});\quad\quad (i_{1},\dots,i_{n+1})\in B\\
-    (\underline{g}\times f)_{i_{1},\dots,i_{n+1}}(z_{1},\dots,z_{n+1}):=g_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})f(z_{n+1})\delta_{j,i_{n+1}}.
-  \end{array}
-\end{equation}
-Можно показать, что эта конструкция порождает унитарное представление $U$ группы $E_{2}$ евклидовых
-движений плоскости на гильбертовом пространстве $\mathbb{H}$. Кроме того, существует инвариантное
-плотное подпространство $D\subset \mathbb{H}$, такое, что отображения
-$\varphi_{j}(f):[\underline{g}]\to [\underline{g}\times f]$ определены на $D$ для всех $j\in B_{0}$
-и $\varphi_{j}(f)(D)\subset D$. Также существует вакуум $\Omega\in\mathbb{H}: \Omega=[f];\;
-f_{\emptyset}=1, f_{i}=0\quad \forall i\neq \emptyset$. Тогда следующая теорема определяет структуру
-двумерной евклидовой теории поля
-\begin{theorem}
-  \begin{enumerate}
-  \item Для всех $j\in B_{0}$ отображения $\varphi_{j}:S^{+}\to \mathrm{End}(D)$ линейны, $\varphi_{j}$ -- полевые операторы, $\varphi_{j}(D)\subset D, \Omega\in D$ и вакуум $\Omega$ инвариантен относительно унитарных представлений $U$ группы $E_{2}$.
-  \item Поля $\varphi_{j}$ преобразуются ковариантно по отношению к представлению $U$, для $w\in E_{2}$:
-    \begin{equation}
-      \label{eq:57}
-      U(w)\varphi_{j}(z)U(w)^{*}=\left(\frac{\partial w}{\partial z}\right)^{h_{j}}\varphi_{j}(w(z))
-    \end{equation}
-  \item Матричные коэффициенты $\left<\Omega|\varphi_{i_{1}}(z_{1})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>$ представляются аналитическими функциями, которые при $\mathrm{Re}z_{n}>\dots>\mathrm{Re}z_{1}>0$ совпадают с корреляционными функциями
-  \begin{equation}
-    \label{eq:56}
-    \left<\Omega|\varphi_{i_{1}}(z_{1})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>=G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})
-  \end{equation}
-  \end{enumerate}
-\end{theorem}
-Доказательство этой теоремы приведено в книге \cite{schottenloher2008mathematical}.
-
-Теперь добавим аксиомы, специфичные для конформной теории поля. Во-первых введем масштабную
-инвариантность.
-\begin{axiom}
-  (Масштабная инвариантность) Корреляционная функция $G_{i}, i\in B$ преобразуется ковариантно
-  \eqref{eq:52} при масштабных преобразованиях $w(z)=e^{\tau}z$, то есть
-  \begin{equation}
-    \label{eq:58}
-    G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})=\left(e^{\tau}\right)^{h_{1}+\dots+h_{n}+\bar{h}_{1}+\dots+\bar{h}_{n}} 
-    G_{i_{1},\dots,i_{n}}(e^{\tau} z_{1},\dots,e^{\tau} z_{n}),
-  \end{equation}
-  где $(z_{1},\dots,z_{n})\in M_{n},\quad h_{j}=h_{i_{j}}$
-\end{axiom}
-Из требований масштабной инвариантности можно вычислить двухточечные функции. 
-\begin{axiom}
-  (Существование тензора энергии-импульса) Среди полей $\varphi_{i},\; i\in B_{0}$ есть четыре поля
-  $T_{\mu\nu},\; \mu,\nu=0,1$, такие, что $T_{\mu\nu}=T_{\nu\mu},\quad
-  T_{\mu\nu}^{*}=T_{\nu\mu}(\Theta(z)),\quad \partial_{0} T_{\mu 0}+\partial_{1}T_{\mu 1}=0$,
-  скейлинговая размерность поля $d(T_{\mu\nu})=h_{\mu\nu}+\bar{h}_{\mu\nu}=2$, конформный спин
-  $s(T_{00}-T_{11}\pm 2i T_{01})=\pm 2$.
-\end{axiom}
-Можно показать, что $\mathrm{tr} T_{\mu\nu}=0$ и $T=T_{00}-i T_{01}$ не зависит от $\bar z$, то есть
-$\bar \partial T=0$. Операторы
-\begin{equation}
-  \label{eq:59}
-    L_{n}=\oint \frac{dz}{2\pi i} z^{n+1} T(z)
-\end{equation}
-удовлетворяют коммутационным соотношениям алгебры Вирасоро. 
-
-Примарными называются поля $\varphi_{i}, i\in B_{0}$, такие, что
-\begin{equation}
-  \label{eq:60}
-  [L_{n}, \varphi_{i}(z)]=z^{n+1}\partial \varphi_{i}(z)+h_{i}(n+1)z^{n}\varphi_{i}(z),\quad \forall n\in\mathbb{Z}
-\end{equation}
-Для каждого примарного поля $\varphi_{i}$ можно определить конформное семейство $[\varphi_{i}]$,
-состоящее из полей вторичных $\varphi_{i}^{\alpha}(z)=L_{-\alpha_{1}}(z)\dots
-L_{-\alpha_{n}}(z)\varphi_{i}(z)$, где $L_{-n}(z)=\frac{1}{2\pi i}\oint\frac{T(\xi)}{(\xi-z)^{n+1}}
-d\xi$. Заметим, что $L_{n}(0)=L_{n}$ и корреляционные функции вторичных полей могут быть выражены
-через корреляционные функции примарных. Последняя аксиома определяет операторное разложение
-\begin{axiom}
-  (Операторное разложение). Корреляционные функции примарных полей при $z_{i}\to z_{j}$
-  удовлетворяют уравнению:
-\begin{multline}
-  \label{eq:61}
-  \left<\Omega|\varphi_{i_{1}}(z_{1})\dots\varphi_{i}(z_{i})\dots \varphi_{j}(z_{j})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>=\\
-  \sum_{k\in B_{0}}C_{ijk} (z_{i}-z_{j})^{h_{k}-h_{i}-h_{j}} \left<\Omega|\varphi_{i_{1}}(z_{1})\dots\varphi_{k}(z_{k})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>\\
-  +\mbox{регулярные члены}
-\end{multline}
-
-\end{axiom}
-
-Если дополнительно предположить, что операторное разложение ассоциативно (так называемый
-``конформный бутстрап''), то вся теория определяется набором примарных полей $\varphi_{j}, j\in
-B_{0}$, их размерностями и коэффициентами операторного разложения $C_{ijk}$.
-
+%%  
+%%  Корреляционные функции обычно понимают следующим образом. Пусть $\Omega\in\mathbb{H}$ -- вакуум,
+%%  тогда $n$-точечные корреляционные функции в квантовой теории поля даются выражением
+%%  \begin{equation}
+%%    \label{eq:50}
+%%    G_{i_{1},\dots ,i_{n}}(z_{1},\dots,z_{n}):=\left<\Omega|\varphi_{i_{1}}(z_{1})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>, \quad |z_{n}|>\dots > |z_{1}|,
+%%  \end{equation}
+%%  где $\varphi_{i_{k}}$ -- поля в теории. Функции $G_{i_{1},\dots,i_{n}}$ можно аналитически
+%%  продолжить на пространство $M_{n}=\{(z_{1},\dots,z_{n})\in \mathbb{C}^{n}: z_{i}\neq z_{j},\; i\neq
+%%  j\}$. $M_{n}^{+}$ состоит из наборов, где $\mathrm{Re}\;z_{i}>0$ для любого $i$. Введем
+%%  последовательность пространств тест-функций $S_{n}^{+}$, где $S_{0}^{+}=\mathbb{C}$, а
+%%  $S_{n}^{+}=\{f\in S(\mathbb{C}^{n}): \mathrm{supp}(f)\subset M^{+}_{n}\} $. Теперь мы можем
+%%  определить корреляционные функции не обращаясь к понятию полей.
+%%  
+%%  Пусть $B_{0}$ -- индексное множество (счетное). Последовательности произвольной длины
+%%  $(i_{1},\dots,i_{n})\in B_{0}^{n}$ образуют пространство мультииндексов $i\in B$. Корреляционные
+%%  функции $G_{i_{1},\dots, i_{n}}:M_{n}\to \mathbb{R}$ удовлетворяют следующим аксиомам.
+%%  \begin{axiom}
+%%    (Аксиома локальности) Для всех $(i_{1},\dots,i_{n})\in B_{0}^{n}$, $(z_{1},\dots, z_{n})\in M_{n}$
+%%    и $\pi\in S_{n}$ --- перестановок множества из $n$ элементов верно равенство
+%%    \begin{equation}
+%%      \label{eq:51}
+%%      G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})=G_{i_{\pi(1)},\dots i_{\pi(n)}}(z_{\pi(1)},\dots, z_{\pi(n)})
+%%    \end{equation}
+%%  \end{axiom}
+%%  Рассмотрим группу движений двумерного пространства $E_{2}$, генераторами которой являются повороты
+%%  $r_{\alpha}:\mathbb{C}\to\mathbb{C}, \; z\to e^{i\alpha}z,\; \alpha\in \mathbb{R}$ и трансляции
+%%  $t_{a}:\mathbb{C}\to\mathbb{C},\; z\to z+a,\; a\in\mathbb{C}$.
+%%  \begin{axiom}
+%%    (Аксиома ковариантности) Для любого индекса $i\in B_{0}$ существуют независимые конформные веса
+%%    $h_{i},\bar h_{i}\in \mathbb{R}$, такие, что для всех преобразований $w\in E_{2}$
+%%    \begin{multline}
+%%      \label{eq:52}
+%%      G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n},\bar z_{1},\dots, \bar z_{n})=\\
+%%      \prod_{j=1}^{n}\left(\frac{dw(z_{j})}{dz}\right)^{h_{i_{j}}}\left(\overline{\frac{dw(z_{j})}{dz}}\right)^{\bar{h}_{i_{j}}}
+%%      G_{i_1,\dots i_n}(w_{1},\dots, w_{n},\bar w_{1},\dots,\bar w_{n}),
+%%    \end{multline}
+%%    где $w_{i}=w(z_{i})$, а $s_{i}=h_{i}-\bar h_{i}, d_{i}=h_{i}+\bar h_{i}$ -- конформный спин и
+%%    скейлинговая размерность.
+%%  \end{axiom}
+%%  \begin{axiom}
+%%    (Положительность по отношению к отражениям). Обозначим через $\Theta:\mathbb{C}\to\mathbb{C}$
+%%    отображение $z=t+i y\to \Theta(z)= -t+i y$. Тогда аксиома утверждает, что существует инволюция
+%%    $\star:B_{0}\to B_{0}$, $\star^{2}=\mathrm{id}_{B_{0}}$, которая продолжается на $B$ ($\star:i\to
+%%    i^{*}$), и выполняются свойства
+%%    \begin{enumerate}
+%%    \item Верно равенство
+%%      \begin{equation}
+%%        \label{eq:53}
+%%        G_{i}(z)=G_{i^{*}}(\Theta(z))=G_{i^{*}}(-z^{*})
+%%      \end{equation}
+%%    \item Обозначим через $\underline{S}^{+}$ пространство последовательностей тест-функций
+%%      $\underline{f}=(f_{i})_{i\in B}, f_{i}\in S^{+}_{n}$. Тогда
+%%      \begin{multline}
+%%        \label{eq:54}
+%%        \left<\underline{f},\underline{f}\right>=\\
+%%        \sum_{i,j\in B}\sum_{n,m}\int_{M_{n+m}}G_{i^{*} j}(\Theta(z_{1}),\dots ,\Theta(z_{n}),w_{1},\dots,w_{m}) f_{i}(z)^{*}f_{j}(w) d^{n}z d^{m}w 
+%%        \geq 0,\\ \forall \underline{f}\in \underline{S}^{+}
+%%      \end{multline}
+%%    \end{enumerate}
+%%  \end{axiom}
+%%  Эта аксиома позволяет восстановить гильбертово пространство $\mathbb{H}$, так как она дает
+%%  положительную полуопределенную форму $H$ на $\underline{S}^{+}$. То есть мы можем определить
+%%  $\mathbb{H}$ как пополнение $\underline{S}^{+}$ факторизованное по $\mathrm{ker}\, H$ с
+%%  произведением \eqref{eq:54}. Мы можем построить и полевые операторы. Для $j\in B_{0}$ определим
+%%  $\varphi_{j}$ как операторно-значную обобщенную функцию. Пусть $f\in S^{+}$,
+%%  $\underline{g}\in\underline{S}^{+}$, а через $[\underline{g}]$ обозначим класс эквивалентности
+%%  $\underline{g}$ по отношению к ядру $H$. Определим $\varphi_{j}(f)([\underline{g}])$ как класс
+%%  эквивалентности $\underline{g}\times f$, такой, что
+%%  \begin{equation}
+%%    \label{eq:55}
+%%    \begin{array}{l}
+%%      \underline{g}\times f=((\underline{g}\times f)_{i_{1},\dots,i_{n+1}});\quad\quad (i_{1},\dots,i_{n+1})\in B\\
+%%      (\underline{g}\times f)_{i_{1},\dots,i_{n+1}}(z_{1},\dots,z_{n+1}):=g_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})f(z_{n+1})\delta_{j,i_{n+1}}.
+%%    \end{array}
+%%  \end{equation}
+%%  Можно показать, что эта конструкция порождает унитарное представление $U$ группы $E_{2}$ евклидовых
+%%  движений плоскости на гильбертовом пространстве $\mathbb{H}$. Кроме того, существует инвариантное
+%%  плотное подпространство $D\subset \mathbb{H}$, такое, что отображения
+%%  $\varphi_{j}(f):[\underline{g}]\to [\underline{g}\times f]$ определены на $D$ для всех $j\in B_{0}$
+%%  и $\varphi_{j}(f)(D)\subset D$. Также существует вакуум $\Omega\in\mathbb{H}: \Omega=[f];\;
+%%  f_{\emptyset}=1, f_{i}=0\quad \forall i\neq \emptyset$. Тогда следующая теорема определяет структуру
+%%  двумерной евклидовой теории поля
+%%  \begin{theorem}
+%%    \begin{enumerate}
+%%    \item Для всех $j\in B_{0}$ отображения $\varphi_{j}:S^{+}\to \mathrm{End}(D)$ линейны, $\varphi_{j}$ -- полевые операторы, $\varphi_{j}(D)\subset D, \Omega\in D$ и вакуум $\Omega$ инвариантен относительно унитарных представлений $U$ группы $E_{2}$.
+%%    \item Поля $\varphi_{j}$ преобразуются ковариантно по отношению к представлению $U$, для $w\in E_{2}$:
+%%      \begin{equation}
+%%        \label{eq:57}
+%%        U(w)\varphi_{j}(z)U(w)^{*}=\left(\frac{\partial w}{\partial z}\right)^{h_{j}}\varphi_{j}(w(z))
+%%      \end{equation}
+%%    \item Матричные коэффициенты $\left<\Omega|\varphi_{i_{1}}(z_{1})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>$ представляются аналитическими функциями, которые при $\mathrm{Re}z_{n}>\dots>\mathrm{Re}z_{1}>0$ совпадают с корреляционными функциями
+%%    \begin{equation}
+%%      \label{eq:56}
+%%      \left<\Omega|\varphi_{i_{1}}(z_{1})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>=G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})
+%%    \end{equation}
+%%    \end{enumerate}
+%%  \end{theorem}
+%%  Доказательство этой теоремы приведено в книге \cite{schottenloher2008mathematical}.
+%%  
+%%  Теперь добавим аксиомы, специфичные для конформной теории поля. Во-первых введем масштабную
+%%  инвариантность.
+%%  \begin{axiom}
+%%    (Масштабная инвариантность) Корреляционная функция $G_{i}, i\in B$ преобразуется ковариантно
+%%    \eqref{eq:52} при масштабных преобразованиях $w(z)=e^{\tau}z$, то есть
+%%    \begin{equation}
+%%      \label{eq:58}
+%%      G_{i_{1},\dots,i_{n}}(z_{1},\dots,z_{n})=\left(e^{\tau}\right)^{h_{1}+\dots+h_{n}+\bar{h}_{1}+\dots+\bar{h}_{n}} 
+%%      G_{i_{1},\dots,i_{n}}(e^{\tau} z_{1},\dots,e^{\tau} z_{n}),
+%%    \end{equation}
+%%    где $(z_{1},\dots,z_{n})\in M_{n},\quad h_{j}=h_{i_{j}}$
+%%  \end{axiom}
+%%  Из требований масштабной инвариантности можно вычислить двухточечные функции. 
+%%  \begin{axiom}
+%%    (Существование тензора энергии-импульса) Среди полей $\varphi_{i},\; i\in B_{0}$ есть четыре поля
+%%    $T_{\mu\nu},\; \mu,\nu=0,1$, такие, что $T_{\mu\nu}=T_{\nu\mu},\quad
+%%    T_{\mu\nu}^{*}=T_{\nu\mu}(\Theta(z)),\quad \partial_{0} T_{\mu 0}+\partial_{1}T_{\mu 1}=0$,
+%%    скейлинговая размерность поля $d(T_{\mu\nu})=h_{\mu\nu}+\bar{h}_{\mu\nu}=2$, конформный спин
+%%    $s(T_{00}-T_{11}\pm 2i T_{01})=\pm 2$.
+%%  \end{axiom}
+%%  Можно показать, что $\mathrm{tr} T_{\mu\nu}=0$ и $T=T_{00}-i T_{01}$ не зависит от $\bar z$, то есть
+%%  $\bar \partial T=0$. Операторы
+%%  \begin{equation}
+%%    \label{eq:59}
+%%      L_{n}=\oint \frac{dz}{2\pi i} z^{n+1} T(z)
+%%  \end{equation}
+%%  удовлетворяют коммутационным соотношениям алгебры Вирасоро. 
+%%  
+%%  Примарными называются поля $\varphi_{i}, i\in B_{0}$, такие, что
+%%  \begin{equation}
+%%    \label{eq:60}
+%%    [L_{n}, \varphi_{i}(z)]=z^{n+1}\partial \varphi_{i}(z)+h_{i}(n+1)z^{n}\varphi_{i}(z),\quad \forall n\in\mathbb{Z}
+%%  \end{equation}
+%%  Для каждого примарного поля $\varphi_{i}$ можно определить конформное семейство $[\varphi_{i}]$,
+%%  состоящее из полей вторичных $\varphi_{i}^{\alpha}(z)=L_{-\alpha_{1}}(z)\dots
+%%  L_{-\alpha_{n}}(z)\varphi_{i}(z)$, где $L_{-n}(z)=\frac{1}{2\pi i}\oint\frac{T(\xi)}{(\xi-z)^{n+1}}
+%%  d\xi$. Заметим, что $L_{n}(0)=L_{n}$ и корреляционные функции вторичных полей могут быть выражены
+%%  через корреляционные функции примарных. Последняя аксиома определяет операторное разложение
+%%  \begin{axiom}
+%%    (Операторное разложение). Корреляционные функции примарных полей при $z_{i}\to z_{j}$
+%%    удовлетворяют уравнению:
+%%  \begin{multline}
+%%    \label{eq:61}
+%%    \left<\Omega|\varphi_{i_{1}}(z_{1})\dots\varphi_{i}(z_{i})\dots \varphi_{j}(z_{j})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>=\\
+%%    \sum_{k\in B_{0}}C_{ijk} (z_{i}-z_{j})^{h_{k}-h_{i}-h_{j}} \left<\Omega|\varphi_{i_{1}}(z_{1})\dots\varphi_{k}(z_{k})\dots \varphi_{i_{n}}(z_{n})|\Omega\right>\\
+%%    +\mbox{регулярные члены}
+%%  \end{multline}
+%%  
+%%  \end{axiom}
+%%  
+%%  Если дополнительно предположить, что операторное разложение ассоциативно (так называемый
+%%  ``конформный бутстрап''), то вся теория определяется набором примарных полей $\varphi_{j}, j\in
+%%  B_{0}$, их размерностями и коэффициентами операторного разложения $C_{ijk}$.
+%%  
 Для формализации конформной теории поля нам нужна алгебраическая конструкция, которая будет
 удовлетворять этому (или какому-то другому) набору аксиом. Предлагается следующее определение
 вертексной алгебры:
@@ -393,6 +394,8 @@ $W$ и обозначается $\mathrm{Com}(W)\equiv W'$.
   Пусть выполнены условия теоремы \ref{thm:cosets} и пусть $Y(\omega_1,z)=\sum_n
   L_{(1)n} z^{-n-2}$, тогда $\mathrm{Com}(W)=\{b: L_{(1)-1}b=0\}$. 
 \end{theorem}
+
+
 \begin{itemize}
 \item Singular element of simple Lie algebra irreducible module, VOA corresponding to that module.
   What are the relations in VOA on singular vectors? Is there BGG-resolution?
