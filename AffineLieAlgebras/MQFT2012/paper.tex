@@ -105,7 +105,23 @@ Recall the definition of vertex operator algebra \cite{borcherds1986vertex,kac19
 Consider affine Lie algebra $\gfh$, which is an affine extension of (semi)simple Lie algebra $\gf$.
 Let $\omega_{0},\dots,\omega_{r}$ be fundamental weights of $\gfh$. Then $L^{k\omega_{0}}_{\gfh}$ is vertex operator algebra and its irreducible modules are $L^{\mu}_{\gfh}$ such that $\mu<k$.
 
+In this case Virasoro element is  $\omega=\frac{1}{2(k+h^{\vee})}\sum_i u_i(-1) u_i(-1)$, where
+$u_i (i=1,\dots,\mathrm{dim}\gf)$  is an orthogonal basis in $\gfh$ w.r.t. Cartan-Killing form. 
 
+Vertex operator algebra structure for coset models of conformal field theory is given by the following statements \cite{frenkel1992vertex}:
+\begin{statement}
+\label{thm:cosets}
+Let  $V=\bigoplus_{n=0}^{\infty} V_n$ -- vertex operator algebra such that $\mathrm{dim}V_0=1$ and $W\subset V$ is a subalgebra, denote by $\omega,\omega_1$ Virasoro elements of  $V$ and $W$ correspondingly. If the condition  $L_1\omega_1 =0$ is satisfied then $W'=\{b:
+  a(n)b=0 \forall n\geq 0, a\in W\}$ is vertex operator subalgebra of  $V$ with Virasoro element $\omega'=\omega-\omega_1$.
+\end{statement}
+Note that for $\af\subset\gf$ and $V=L^0_{(\gf)}k, W=L^0_{(\af)k}$ the algebra
+$W'$ is vertex operator algebra of  $G/A$-coset-model. 
+
+The algebra  $W'$ is called {\it commutant} of $W$ and denoted as $\mathrm{Com}(W)\equiv W'$.
+\begin{statement}
+  If the conditions of previous statement are satisfied and  $Y(\omega_1,z)=\sum_n
+  L_{(1)n} z^{-n-2}$ then $\mathrm{Com}(W)=\{b: L_{(1)-1}b=0\}$. 
+\end{statement}
 
 
 \begin{itemize}
