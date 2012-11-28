@@ -15,6 +15,8 @@
 \usepackage{hyperref}
 \usepackage{amsfonts}
 
+%\usepackage{utopia}
+
 \usepackage{listings}
 \usepackage{textcomp}
 \definecolor{listinggray}{gray}{0.9}
@@ -44,29 +46,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\newtheorem{theorem}{Theorem}
-%% \newtheorem{acknowledgement}[theorem]{Acknowledgement}
-%% \newtheorem{algorithm}[theorem]{Algorithm}
-%% \newtheorem{axiom}[theorem]{Axiom}
-%% \newtheorem{case}[theorem]{Case}
-%% \newtheorem{claim}[theorem]{Claim}
-%% \newtheorem{conclusion}[theorem]{Conclusion}
-%% \newtheorem{condition}[theorem]{Condition}
-%% \newtheorem{conjecture}[theorem]{Conjecture}
-%% \newtheorem{mycorollary}[theorem]{Corollary}
-%% \newtheorem{mycriterion}[theorem]{Criterion}
-%% \newtheorem{mydefinition}[theorem]{Definition}
-%% \newtheorem{myexample}[theorem]{Example}
-%% \newtheorem{myexercise}[theorem]{Exercise}
-\newtheorem{mylemma}[theorem]{Лемма}
-%% \newtheorem{mynotation}[theorem]{Notation}
-%% \newtheorem{myproblem}[theorem]{Problem}
-%% \newtheorem{myproposition}[theorem]{Proposition}
-%% \newtheorem{myremark}[theorem]{Remark}
-%% \newtheorem{mysolution}[theorem]{Solution}
-%% \newtheorem{mysummary}[theorem]{Summary}
-%% \newenvironment{myproof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
 
+\newtheorem{mylemma}[theorem]{Лемма}
 
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
@@ -93,24 +74,11 @@
 \newcommand{\adk}{a^{\dagger}_{\kappa}} \newcommand{\ak}{a_{\kappa}}
 \def\bF{\mbox{$\overline{\cal F}$}} \def\F{\mbox{$\cal F$}}
 
-\usetheme{AnnArbor}
-%\usetheme{Warsaw}
+%\usetheme{AnnArbor}
+\usetheme{Warsaw}
+\useoutertheme{infolines}
+\addtobeamertemplate{headline}{}{\vskip2pt}
 
-%% Модели Весса-Зумино-Новикова-Виттена и coset-модели -- это два важных
-%% класса моделей двумерной конформной теории поля. Теория представления
-%% аффинных алгебр Ли играет центральную роль при изучении таких моделей. 
-%% Сингулярные векторы в модулях алгебры Ли аннигилируются повышающими
-%% операторами. Набор этих векторов определяет структуры представления:
-%% например, неприводимый модуль можно построить из модуля Верма путем
-%% отщепления модулей Верма, соответствующих сингулярным векторам
-%% (БГГ-резольвента). 
-%% Мы рассмотрим структуру сингулярных элементов и свойства их разложения
-%% по отношению к (аффинным) подалгебрам. Из этих свойств следуют
-%% рекуррентные соотношения на коэффициенты ветвления и связь ветвления с
-%% обобщенной резольвентой Бернштейна-Гельфанда-Гельфанда. Мы также
-%% покажем, что разложение сингулярных элементов определяет структуру
-%% модулей алгебры Вирасоро в coset-моделях конформной теории поля.
-%% 
 \title[Аффинные алгебры Ли]{Правила ветвления аффинных алгебр Ли и приложения в моделях конформной теории поля}
 
 \author[Антон Назаров]{Антон Назаров\\\small{Кандидатская диссертация\\ научный руководитель В. Д. Ляховский}}
@@ -125,8 +93,11 @@
 
 \date[2012] % (optional, should be abbreviation of conference name)
 {6 декабря 2012}
+
+%\usefonttheme{serif}
 \begin{document}
 \maketitle
+
 \section{Введение}
 \begin{frame}
   \frametitle{Актуальность темы}
@@ -143,13 +114,11 @@
     \begin{itemize}
     \item реализуют рациональные модели конформной теории поля
     \item калибровочно-инвариантны
-    \item описываются с использованием теории представлений аффинных алгебр Ли
     \end{itemize}
   \item Аффинные алгебры Ли
     \begin{itemize}
     \item важный класс бесконечномерных алгебр Ли
-    \item развитая теория представлений
-    \item приложения в конформной теории поля
+    \item теория представлений -- инструмент исследования моделей конформной теории поля
     \item специальные функции и  модулярная инвариантность
     \end{itemize}
   \item Задача редукции представлений нетривиальна и полезна для конформной теории поля
@@ -161,7 +130,7 @@
   В диссертации впервые решены следующие задачи:
   \begin{itemize}
   \item Получено эффективное рекуррентное соотношение для коэффициентов ветвления.
-  \item Алгоритм вычисления коэффициентов ветвления реализован в пакете {\bf Affine.m} для {\it Mathematica}.
+  \item Создан пакет {\bf Affine.m} для {\it Mathematica} вычисляющий коэффициенты ветвления и кратности весов
   \item Установлена прямая связь расщепления корневой системы и ветвлений -- кратности весов вспомогательного модуля совпадают с коэффициентами
     ветвления.
 %  \item Показано, что наличие расщепления приводит к существенному упрощению при вычислении коэффициентов ветвления.
@@ -169,24 +138,36 @@
   \item Построен обобщенный стохастический процесс Шрамма-Лёвнера для систем с
     калибровочной инвариантностью, соответствующих coset-моделям конформной теории поля.
   \end{itemize}
+  \vspace{-4pt}
+  \begin{block}{}
   {\bf Affine.m} подходит для задач теории представлений в различных областях физики, от изучения
-  атомных и молекулярных спектров и до конформной теории поля и интегрируемых систем.
-  
+  атомных и молекулярных спектров, и до конформной теории поля и интегрируемых систем.
+  \end{block}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Структура диссертации}
   \begin{enumerate}
-  \item Конформная теория поля и аффинные алгебры Ли: 
-    \begin{itemize}
-    \item конформная теория поля в двух измерениях
-    \item WZNW и coset-модели
-    \item аффинные алгебры Ли
-    \item конформная теория поля на области с границей
-    \end{itemize}
+  \item Конформная теория поля и аффинные алгебры Ли
   \item Разложение сингулярных элементов и рекуррентные соотношения на коэффициенты ветвления
+    \begin{itemize}
+    \item Рекуррентные соотношения для коэффициентов ветвления
+    \item Примеры вычисления коэффициентов ветвления и преимущества рекуррентного алгоритма
+    \item Приложения в конформной теории поля
+    \end{itemize}
   \item Коэффициенты ветвления и обобщенная резольвента Бернштейна-Гельфанда-Гельфанда
+    \begin{itemize}
+    \item Ортогональная подалгебра и сингулярные элементы
+    \item БГГ резольвента и ветвление
+    \end{itemize}
   \item Сплинты корневых систем и функции ветвления
+    \begin{itemize}
+    \item Вложения и сплинты
+    \item Как стебли определяют функции кратности
+    \item Сплинты и соотношения для аффинных алгебр Ли
+    \end{itemize}
+
   \item Практические приложения
     \begin{itemize}
     \item Эволюция Шрамма-Левнера и coset-модели
@@ -201,19 +182,22 @@
   Действие: нелинейная $\sigma$-модель + топологический член
   \begin{multline*}
     \label{eq:4}
-    S=S_0+k\Gamma=\\
-    -\frac{k}{8\pi}\int_{S^2} d^2x\; Tr (\partial^{\mu}g^{-1}\partial_{\mu}g)- \frac{ik }{24\pi} \int_{B}\epsilon_{ijk} Tr\left(
+    S=\boxed{\underset{\mbox{нелинейная} \;\sigma\mbox{-модель}\mathstrut}{S_0\mathstrut}}+\boxed{\underset{\mbox{топологический член}\mathstrut}{k\Gamma\mathstrut}}=\\
+{\scriptstyle    -\frac{k}{8\pi}\int_{S^2} d^2x\; Tr (\partial^{\mu}g^{-1}\partial_{\mu}g)- \frac{ik }{24\pi} \int_{B}\epsilon_{ijk} Tr\left(
     \tilde g^{-1}\frac{\partial \tilde g}{\partial y^i}
       \tilde g^{-1}\frac{\partial \tilde g}{\partial y^j}
-      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y
+      \tilde g^{-1}\frac{\partial \tilde g}{\partial y^k}\right) d^3y}\\
+{\scriptstyle    g(x):\mathbb{C}\cup \{\infty\}\sim S^{2}\to D(G) , \ k\in \mathbb{Z},}\\
+{\scriptstyle \tilde{g}\;  \mbox{{\small-- продолжение $g$ на трехмерное многообразие $B$, ограниченное $S^{2}$}}. 
+}
   \end{multline*}
-  $g(x):\mathbb{C}\cup \{\infty\}\sim S^{2}\to D(G) , \ k\in \mathbb{Z}$, $\tilde{g}$  -- продолжение $g$ на трехмерное многообразие $B$, ограниченное $S^{2}$. 
+\vspace{-15pt}
 %$\pi_{3}(G)=\mathbb{Z} \Rightarrow k\in\mathbb{Z}, \; e^{-S[g]}$ определен однозначно.
 
   \begin{itemize}
-  \item Конформная инвариантность, калибровочная симметрия
   \item   Токи 
-    $J(z)= -k \partial_zg g^{-1}\sum_{a} J^{a}(z) t^{a}=\sum_{a} \sum _{n} J^{a}_{n} t^{a} z^{n-1}$ + тождества Уорда $\Rightarrow$ соотношения аффинной алгебры $\gfh$: 
+    $J(z)= -k \partial_zg g^{-1}\sum_{a} J^{a}(z) t^{a}=\sum_{a} \sum _{n} J^{a}_{n} t^{a} z^{n-1}$\\
+    + тождества Уорда\quad $\Longrightarrow$\quad соотношения аффинной алгебры $\gfh$: 
 
     %\quad \bar J(\bar z)=k g^{-1}\partial_{\bar z}g$
 
@@ -232,41 +216,41 @@
   \item Конструкция Сугавары $  L_n=\frac{1}{2(k+h^v)}\sum\limits_a\sum\limits_m:J^a_m J^a_{n-m}: \Leftrightarrow Vir\subset U(\gfh)$.
   \end{itemize}
 \end{frame}
-\begin{frame}
-  \frametitle{Примарные поля и представления аффинных алгебр Ли}
-  \begin{itemize}
-%%   \item Полная киральная алгебра $\gfh \ltimes Vir$:
-%%     \begin{equation}
-%%       \label{eq:92}
+%% \begin{frame}
+%%   \frametitle{Примарные поля и представления аффинных алгебр Ли}
+%%   \begin{itemize}
+%% %%   \item Полная киральная алгебра $\gfh \ltimes Vir$:
+%% %%     \begin{equation}
+%% %%       \label{eq:92}
+%% %%       \begin{aligned}
+%% %%         \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
+%% %%         \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+%% %%       \end{aligned}
+%% %%     \end{equation}
+%%   \item Примарные поля определяются операторным разложением $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi_{i}(w)}{z-w}$.
+%%   \item Примарные поля $\phi_{\lambda}$ соответствуют старшим весам представлений:
+%%     \begin{equation*}
 %%       \begin{aligned}
-%%         \left[L_n,L_m\right]=(n-m)L_{n+m}+\frac{c}{12}(n^3-n)\delta_{n+m,0}\\
-%%         \left[L_n,J^a_m\right]=-mJ^a_{n+m}
+%%         & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{при}\; n>0 \\
+%%         & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>
 %%       \end{aligned}
-%%     \end{equation}
-  \item Примарные поля определяются операторным разложением $J_{\gf}^{a}(z)\phi_{i}(w)\sim \frac{-t^{a}_{i}\phi_{i}(w)}{z-w}$.
-  \item Примарные поля $\phi_{\lambda}$ соответствуют старшим весам представлений:
-    \begin{equation*}
-      \begin{aligned}
-        & J_0^a\left|\phi_{\lambda}\right>=-t^a_{\lambda}\left|\phi_{\lambda}\right>  \quad    J^a_n\left|\phi_{\lambda}\right>=0 \quad \mbox{при}\; n>0 \\
-        & L_0\left|\phi_{\lambda}\right>=\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0\left|\phi_{\lambda}\right>=\frac{(\lambda,\lambda+2\rho)}{2(k+h^v)}\left|\phi_{\lambda}\right>=h_{\lambda} \left|\phi_{\lambda}\right>
-      \end{aligned}
-    \end{equation*}
-  \item Сингулярные векторы 
-    \begin{equation*}
-    \begin{aligned}
-      &J^a_n\left|v \right>=0 \quad \mbox{при}\; n>0 \\
-      & J^{+}_{0} \left|v \right>=0
-    \end{aligned}
-    \end{equation*}
-  \end{itemize}
-\end{frame}
+%%     \end{equation*}
+%%   \item Сингулярные векторы 
+%%     \begin{equation*}
+%%     \begin{aligned}
+%%       &J^a_n\left|v \right>=0 \quad \mbox{при}\; n>0 \\
+%%       & J^{+}_{0} \left|v \right>=0
+%%     \end{aligned}
+%%     \end{equation*}
+%%   \end{itemize}
+%% \end{frame}
 
 \begin{frame}
   \frametitle{Coset-модели и правила ветвления представлений аффинных алгебр Ли}
-   $A, \bar{A}:S^2\to \af\subset \gf$:
+  \vspace{-20pt}
   \begin{multline*}
-    S(g,A)=S_{WZNW}(g)+\\
-    +\frac{k}{4\pi}\int d^{2}z \left(Tr(A g^{-1}\bar \partial g)-Tr(\bar A (\partial g ) g^{-1})+Tr(A g^{-1}\bar A g)-Tr(A \bar A)\right)
+    S(g,A)=S(g)+\boxed{\underset{ {\scriptstyle    A, \bar{A}:S^2\to \af\subset \gf}}{\mbox{взаимодействие с чистой калибровкой}}}=\\
+    S(g)+\frac{k}{4\pi}\int d^{2}z \left(Tr(A g^{-1}\bar \partial g)-Tr(\bar A (\partial g ) g^{-1})+Tr(A g^{-1}\bar A g)-Tr(A \bar A)\right)
   \end{multline*}
 
 
@@ -281,50 +265,73 @@
   Алгебраическая структура связана с  $\gfh, \afh: \afh\subset\gfh$. 
 
   \begin{equation*}
-    L_{n}=L_{n}^{\gf}-L_{n}^{\af}
+    L_{n}=L_{n}^{\gf}-L_{n}^{\af}=\frac{1}{2(k+h^v)}\sum\limits_a\sum\limits_m:J^a_m J^a_{n-m}: - \frac{1}{2(k+h^v)}\sum\limits_b\sum\limits_m:\tilde{J}^b_m \tilde{J}^b_{n-m}:
   \end{equation*}
 
-  $\left[ L_{n}, \tilde{J}^{b}_{m}\right]=0 \quad\Longleftrightarrow\quad \tilde{J}^{b}_{m}\left| v \right>=0\Rightarrow \tilde{J}^{b}_{m}L_{n}\left| v \right>=0 $
-  Сингулярные векторы по отношению к $\afh$ образуют модули алгебры Вирасоро в coset-моделях. Функции ветвления $b^{\mu}_{(\gfh\downarrow\afh) \nu}(q)$ являются характерами модулей алгебры Вирасоро.
+  $\left[ L_{n}, \tilde{J}^{b}_{m}\right]=0 \quad\Longleftrightarrow\quad \tilde{J}^{b}_{m}\left| v \right>=0\Rightarrow \tilde{J}^{b}_{m}L_{n}\left| v \right>=0 $\\
+  Сингулярные векторы $\afh$ образуют модули алгебры Вирасоро. Функции ветвления $b^{\mu}_{(\gfh\downarrow\afh) \nu}(q)$  -- характеры модулей алгебры Вирасоро.
 
-  Примарные поля нумеруются парами весов $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$, такими, что  $b^{\mu}_{\nu}(q)\neq 0$. Некоторые пары эквивалентны. Эквивалентность дается действием т.н. ``простых токов'' $(J,\tilde{J})$, таких, что $h_{J}-h_{\tilde{J}}=0$. 
+  Примарные поля нумеруются парами весов $(\mu,\nu)\in \hf_{\gfh}\oplus \hf_{\afh}$, такими, что  $b^{\mu}_{\nu}(q)\neq 0$. 
 
-  Конформный вес примарного поля
-  \begin{multline}
-    L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
-    \left|\phi_{\lambda}\right>=\\
-    \left(\frac{(\mu,\mu+2\rho)}{2(k+h^v)}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^v)}\right)\left|\phi_{(\mu,\nu)}\right>
-  \end{multline}
-
-%%  So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
+%% Некоторые пары эквивалентны. Эквивалентность дается действием т.н. ``простых токов'' $(J,\tilde{J})$, таких, что $h_{J}-h_{\tilde{J}}=0$. 
+%% 
+%%   Конформный вес примарного поля
+%%   \begin{multline}
+%%     L_0\left|\phi_{(\mu,\nu)}\right>=\left(\frac{1}{2(k+h^v)}\sum_aJ^a_0J^a_0-\frac{1}{2(k+h_{\af}^v)}\sum_b \tilde{J}^b_0 \tilde{J}^b_0 \right)
+%%     \left|\phi_{\lambda}\right>=\\
+%%     \left(\frac{(\mu,\mu+2\rho)}{2(k+h^v)}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^v)}\right)\left|\phi_{(\mu,\nu)}\right>
+%%   \end{multline}
+%% 
+%% %%  So $G/A$-coset theory is related to $\gf\oplus \bar{\af}$-theory.
 \end{frame}
 
 
 \section{Глава 2. Сингулярные элементы и редукция модулей}
 
 \begin{frame}
-  \frametitle{Формула Вейля-Каца для характеров и сингулярные элементы}
+  \frametitle{Модули, характеры и сингулярные элементы}
 
 Модуль Верма 
-\begin{equation*}
- M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+}) \quad \mbox{где} \quad     \gf=\mathfrak{n}_{+}\oplus \hf \oplus\mathfrak{n}_{-}, \bff_{+}=\mathfrak{n}_{+}\oplus \hf
-\end{equation*}
-
-$D^{\mu}(\bff_{+}): D(E^{\alpha})=0,\; D(H)=\mu(H)\quad \forall \alpha>0$.
-
-\begin{equation*}
-  \label{eq:11}
-  \mathrm{ch} M^{\mu}=\frac{e^{\mu}}{\displaystyle{\prod_{\alpha\in \Delta^{+}} \left( 1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}}}=\frac{e^{\mu}}{\displaystyle{\sum_{w\in W} \epsilon(w) e^{w\rho-\rho}}}, \quad \epsilon \left( w\right) :=\det \left( w\right)
-\end{equation*}
-  
+\begin{multline*}
+ M^{\mu}=\{J^{a_1}_{-n_1}\dots J^{a_k}_{-n_k}\left| \mu \right>, \quad n_i \geq 0\}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+}) \\ \mbox{где} \quad     \gf=\mathfrak{n}_{+}\oplus \hf \oplus\mathfrak{n}_{-}, \bff_{+}=\mathfrak{n}_{+}\oplus \hf\quad D^{\mu}(\bff_{+}): D(J^a_{n>0})=0,\; D(J^H_0)=\mu(H).
+\end{multline*}
+%% 
+%% \begin{equation*}
+%%   \label{eq:11}
+%%   \mathrm{ch} M^{\mu}=\frac{e^{\mu}}{\displaystyle{\prod_{\alpha\in \Delta^{+}} \left( 1-e^{-\alpha}\right)^{\mathrm{mult}(\alpha)}}}=\frac{e^{\mu}}{\displaystyle{\sum_{w\in W} \epsilon(w) e^{w\rho-\rho}}}, \quad \epsilon \left( w\right) :=\det \left( w\right)
+%% \end{equation*}
+%%   
 У $M^{\mu}$ есть единственный максимальный подмодуль и нетривиальный фактормодуль $L^{\mu}$ -- 
 {\it неприводимый модуль старшего веса}. 
 
+Структура модуля задается формальным характером
 \begin{equation*}
   \label{eq:13}
-  \mathrm{ch} L^{\mu}=\frac{\sum_{w\in W} \epsilon(w) e^{w(\mu+\rho)-\rho}}{\sum_{w\in W}\epsilon(w) e^{w\rho-\rho}}=\sum_{w\in W} \epsilon(w)\; \mathrm{ch} M^{w(\mu+\rho)-\rho} (\mbox{БГГ})
+  \mathrm{ch} L^{\mu}=\frac{\Psi^{\mu}}{R}=\frac{\sum_{w\in W} \epsilon(w) e^{w(\mu+\rho)-\rho}}{\sum_{w\in W}\epsilon(w) e^{w\rho-\rho}}=\sum_{w\in W} \epsilon(w)\; \mathrm{ch} M^{w(\mu+\rho)-\rho} (\mbox{БГГ})
 \end{equation*}
+Сингулярный элемент $\Psi^{\mu}$ определяет основные свойства модуля.
+\begin{block}{Задача редукции}
+  Алгебры $\af\subset\gf$ -- конечномерные или аффинные. Хотим разложить $L^{\mu}_{\gf}$ на модули $\af$ и вычислить коэффициенты $b^{\mu}_{\nu}$:
+  $L^{\mu}_{\gf}=\bigoplus\limits_{\nu} b^{\mu}_{\nu} L^{\nu}_{\af} $
+\end{block}
+\end{frame}
 
+
+\begin{frame}
+  \frametitle{Простой пример: $A_{1}\subset B_{2}$}
+  \begin{figure}[t]
+    \vspace*{-0.5cm}
+    \begin{multicols}{2}
+      \hfill
+      \includegraphics[width=60mm]{figures/figure1}
+      \hfill
+      \caption{Корни алгебр $B_{2},A_{1}$ и $\Psi ^{\omega_1  }$}
+      \hfill
+      \vspace{5mm}
+      \includegraphics[width=60mm]{figures/figure2}
+      \caption{Ортогональная подалгебра $\mathfrak{b}$ и размерности $\mathfrak{b}$-модулей}
+    \end{multicols}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -355,22 +362,6 @@ _{\frak{b}}^{+}$.
 Подсистема $\Delta _{\frak{b}}$ определяет подалгебру $\frak{b}=\afb\subset\gf$.
 \end{frame}
 
-\begin{frame}
-  \frametitle{Простой пример: $A_{1}\subset B_{2}$}
-  \begin{figure}[t]
-    \vspace*{-0.5cm}
-    \begin{multicols}{2}
-      \hfill
-      \includegraphics[width=60mm]{figures/figure1}
-      \hfill
-      \caption{Корни алгебр $B_{2},A_{1}$ и $\Psi ^{\omega_1  }$}
-      \hfill
-      \vspace{5mm}
-      \includegraphics[width=60mm]{figures/figure2}
-      \caption{Ортогональная подалгебра $\mathfrak{b}$ и размерности $\mathfrak{b}$-модулей}
-    \end{multicols}
-  \end{figure}
-\end{frame}
 
 %%  \begin{frame}
 %%    
@@ -910,7 +901,7 @@ $\includegraphics[width=100mm]{figures/irrep-verma-pverma.pdf}$
   \end{itemize}
 \end{frame}
 
-\begin{frame}[c]
+\begin{frame}[c,plain]
   \begin{center}
   \Large{Спасибо за внимание!}    
   \end{center}
