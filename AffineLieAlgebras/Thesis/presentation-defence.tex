@@ -471,7 +471,7 @@ _{0}\right\} \setminus \left\{ 0\right\} .
 \begin{frame}
   \frametitle{Выводы к главе 2}
   \begin{itemize}
-  \item Коэффициенты ветвления нужны для вычисления спектра возбуждений в WZNW-модели на торе
+  \item Коэффициенты ветвления нужны для вычисления спектра возбуждений в WZNW-модели 
   \item Фунцкии ветвления дают статсумму coset-моделей
   \item Получена новая рекуррентная формула для коэффициентов ветвления, не требующая лишних вычислений
   \item Продемонстрирована эффективность алгоритма
@@ -523,7 +523,8 @@ $\mathrm{ch}M_{I}^{\mu}=\frac{1}{R_{I}}\mathrm{ch}L_{\pf_{I}}^{\mu }$
       \includegraphics[width=120mm]{figures/B2_Exact}}
 \vspace{-0.5cm}
     \caption{
-      Резольвента модуля $L^{\omega_1}$.  Центральная часть точной последовательности
+      %% Резольвента модуля $L^{\omega_1}$.
+      Центральная часть точной последовательности
       $0 \to Im(\delta_2) \to \left( e^{\pi _{\aft}\left[ \mu \right] + \mathcal{D}_{\afb}}\mathrm{ch}M_{I}^{\pi _{\afb}\left[ \omega_1 \right] -
           \mathcal{D}_{\afb} }=M^{\omega_1}_{I}\right) \to
       L^{\omega_1}\to 0 $.  
@@ -539,6 +540,21 @@ $\mathrm{ch}M_{I}^{\mu}=\frac{1}{R_{I}}\mathrm{ch}L_{\pf_{I}}^{\mu }$
   \end{itemize}
 \end{frame}
 \section{Глава 4. Сплинты и ветвление}
+\begin{frame}
+  \frametitle{Пример}
+  \vspace{-0.5cm}
+\begin{figure}[h!bt]
+  \hspace*{-1.2cm}
+
+   \includegraphics[width=50mm]{figures/b2}
+   \includegraphics[width=50mm]{figures/b2-a2-a1}
+  \caption{Веса  $L^{[3,2]}_{B_{2}}$  с кратностями показаны слева. Короткий пунктир -- контур сингулярного элемента. Справа -- разложение сингулярного элемента $\Psi_{B_{2}}(L^{[3,2]}_{B_{2}})$ в сумму образов сингулярных элементов $\Psi_{A_{2}}(L^{[3,2]})$ (длинный пунктир). Кратности $L^{[3,2]}_{A_{2}}$ =  коэффициентам ветвления $L^{[3,2]}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
+
+ \label{fig:b2_splint}
+\end{figure}
+
+\end{frame}
+
 \begin{frame}
   \frametitle{Сплинты}
   \begin{Def}
@@ -557,20 +573,6 @@ $\prod_{\beta \in \Delta _{\sfr}^{+}}\left( 1-e^{-\beta }\right)
 
 $\Psi _{\gf}^{\left( \mu \right) }=e^{-\rho}\sum_{w\in W_{\af}}w\circ \left(
 e^{\rho _{\af}}\phi_{2}\left(\Psi ^{\widetilde{\mu }+\rho _{\sfr}}\right)\right) \quad \mu=\sum m_{k}\omega ^{k},\;\widetilde{\mu }=\sum m_{k}\omega _{\sfr}^{k}$
-
-\end{frame}
-\begin{frame}
-  \frametitle{Пример}
-  \vspace{-0.5cm}
-\begin{figure}[h!bt]
-  \hspace*{-1.2cm}
-
-   \includegraphics[width=50mm]{figures/b2}
-   \includegraphics[width=50mm]{figures/b2-a2-a1}
-  \caption{Веса  $L^{[3,2]}_{B_{2}}$  с кратностями показаны слева. Короткий пунктир -- контур сингулярного элемента. Справа -- разложение сингулярного элемента $\Psi_{B_{2}}(L^{[3,2]}_{B_{2}})$ в сумму образов сингулярных элементов $\Psi_{A_{2}}(L^{[3,2]})$ (длинный пунктир). Кратности $L^{[3,2]}_{A_{2}}$ =  коэффициентам ветвления $L^{[3,2]}_{B_{2}\downarrow A_{1}\oplus u(1)}$.}
-
- \label{fig:b2_splint}
-\end{figure}
 
 \end{frame}
 
