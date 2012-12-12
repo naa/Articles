@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}{Утверждение}
+\newtheorem{Cnj}[Def]{Гипотеза}
+\newtheorem{Prop}[Def]{Свойство}
+\newtheorem{example}{Пример}[section]
+\newtheorem{axiom}{Аксиома}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Заметки по теории групп Ли, алгебр Ли и их представлений}
+
+\maketitle
+
+\begin{abstract}
+  Здесь мы обсуждаем основные проблемы теории групп Ли, указываем на
+  аналогию с теорией Галуа и приводим некоторые нерешенные задачи.
+\end{abstract}
+
+\section{Мотивация}
+\begin{itemize}
+\item Как появилась появилась теория групп Ли?
+\item В чем состоит аналогия с теорией Галуа?
+\item Какие задачи должна была решать теория непрерывных групп?
+\item Какие задачи не смогла решить? Почему?
+\item Какие задачи еще не решены?
+\end{itemize}
+
+\section{Теория групп Ли и теория Галуа}
+\label{sec:galois}
+
+Группы Галуа появились для решения полиномиальных (алгебраических)
+уравнений, группы Ли -- для решения обыкновенных дифференциальных
+уравнений. 
+
+Галуа ввел конечные группы для решения уравнений второй, третьей и
+четвертой степени и доказательства неразрешимости уравнений пятой
+степени. Речь идет о группах инвариантности уравнений.
+
+
+
+
+Ли аналогично ввел непрерывные группы инвариантности дифференциальных
+уравнений.
+
+Группы делятся на простые и разрешимые. Разрешимые связаны с
+интегрируемостью и упрощением обыкновенных дифференциальных уравнений. 
+
+Дифференциальные уравнения могут быть разрешены, если их группа
+инвариантности разрешима. 
+
+Классические функции математической физики возникают как матричные
+элементы представлений простых групп Ли. 
+
+
+\bibliography{bibliography}{}
+\bibliographystyle{utphys}
+
+\end{document}
