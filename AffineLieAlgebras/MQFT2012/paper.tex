@@ -103,10 +103,12 @@ Recall the definition of vertex operator algebra \cite{borcherds1986vertex,kac19
 \end{Def}
 
 Consider affine Lie algebra $\gfh$, which is an affine extension of (semi)simple Lie algebra $\gf$.
-Let $\omega_{0},\dots,\omega_{r}$ be fundamental weights of $\gfh$. Then $L^{k\omega_{0}}_{\gfh}$ is vertex operator algebra and its irreducible modules are $L^{\mu}_{\gfh}$ such that $\mu<k$.
-
-In this case Virasoro element is  $\omega=\frac{1}{2(k+h^{\vee})}\sum_i u_i(-1) u_i(-1)$, where
-$u_i (i=1,\dots,\mathrm{dim}\gf)$  is an orthogonal basis in $\gfh$ w.r.t. Cartan-Killing form. 
+Let $\omega_{0},\dots,\omega_{r}$ be fundamental weights of $\gfh$. Irreducible highest weight module $L^{k\omega_0}_{\gfh}$ of affine Lie algebra $\gfh$ can be endowed with the structure of Vertex operator algebra \cite{frenkel1992vertex}. Its irreducible modules are $L^{\mu}_{\gfh}$ such that $\mu<k$.  Virasoro element in this case is given by the formula
+\begin{equation}
+  \label{eq:2}
+  \omega=\frac{1}{2(k+h^{\vee})}\sum_i u_i(-1) u_i(-1),
+\end{equation}
+where $u_i (i=1,\dots,\mathrm{dim}\gf)$  form an orthogonal basis in $\gfh$ with respect to Cartan-Killing form. 
 
 Vertex operator algebra structure for coset models of conformal field theory is given by the following statements \cite{frenkel1992vertex}:
 \begin{statement}
@@ -115,7 +117,7 @@ Let  $V=\bigoplus_{n=0}^{\infty} V_n$ -- vertex operator algebra such that $\mat
   a(n)b=0 \forall n\geq 0, a\in W\}$ is vertex operator subalgebra of  $V$ with Virasoro element $\omega'=\omega-\omega_1$.
 \end{statement}
 Note that for $\af\subset\gf$ and $V=L^0_{(\gf)}k, W=L^0_{(\af)k}$ the algebra
-$W'$ is vertex operator algebra of  $G/A$-coset-model. 
+$W'$ is the vertex operator algebra of  $G/A$-coset-model. 
 
 The algebra  $W'$ is called {\it commutant} of $W$ and denoted as $\mathrm{Com}(W)\equiv W'$.
 \begin{statement}
@@ -123,12 +125,29 @@ The algebra  $W'$ is called {\it commutant} of $W$ and denoted as $\mathrm{Com}(
   L_{(1)n} z^{-n-2}$ then $\mathrm{Com}(W)=\{b: L_{(1)-1}b=0\}$. 
 \end{statement}
 
-$V$-modules can be reduced into combination of tensor products of $W$ and $W'$-modules:
+Irreducible $V$-modules can be reduced into combination of tensor products of irreducible $W$- and $W'$-modules:
 \begin{equation}
   \label{eq:1}
-  M=\bigoplus (M\otimes M)
+  M_V=\bigoplus_{i\in I} (M^i_{W}\otimes M^i_{W'}),
 \end{equation}
+where $I$ is some index set. 
 
+For coset models we can write this decomposition as
+\begin{equation}
+  \label{eq:3}
+  L^{\mu}_{\gfh}=\bigoplus_{\nu \in \pi({\cal N})} (M^{h(\mu,\nu),c}_{Vir} \otimes L^{\nu}_{\afh}),
+\end{equation}
+where the summation is over the projection of weight diagram of $L^{\mu}_{\gfh}$ to Cartan subalgebra of $\afh$. Central charge and conformal weights of Virasoro modules are equal to
+\begin{eqnarray}
+  \label{eq:4}
+    c=\frac{k\;\mathrm{dim}\gf}{k+h^{\vee}_{\gf}}-\frac{x_e k\;\mathrm{dim}\af}{x_e k+h^{\vee}_{\af}}\\
+    h(\mu,\nu)=\left(\frac{(\mu,\mu+2\rho)}{2(k+h^{\vee}_{\gf})}-\frac{(\nu,\nu+2\rho_{\af})}{2(k+h^{\vee}_{\gf})}\right)
+\end{eqnarray}
+(See pp. 837-840 (855-858 in file) of Di Francesco for a characterization of singular vectors of Virasoro modules for $su(2)$) 
+
+Let $V=L$
+Branching functions coincide with characters of Virasoro modules. Virasoro characters can be written in terms of Virasoro Verma modules characters. 
+Recurrence relations on branching coefficients lead to recurrence relations on integer partitions numbers.
 \begin{itemize}
 \item Singular element of simple Lie algebra irreducible module, VOA corresponding to that module.
   What are the relations in VOA on singular vectors? Is there BGG-resolution?
