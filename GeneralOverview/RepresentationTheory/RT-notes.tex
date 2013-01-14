@@ -4,11 +4,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{multicol}
-\usepackage{color}
-\usepackage{hyperref}
+\usepackage[pdftex]{color}
 \usepackage{graphicx}
 \usepackage[russian]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{cmap}
+
+%\usepackage[makeindex]{imakeidx}
+\usepackage{makeidx}
+\usepackage[plainpages=false,pdfpagelabels,pagebackref]{hyperref}
+\usepackage{showidx}
+\makeindex
+
 
 \newtheorem{Def}{Определение}[section]
 \newtheorem{theorem}{Теорема}
@@ -74,7 +81,7 @@
 уравнений.
 
 Группы делятся на простые и разрешимые. Разрешимые связаны с
-интегрируемостью и упрощением обыкновенных дифференциальных уравнений. 
+интегрируемостью \index{интегрируемость} и упрощением обыкновенных дифференциальных уравнений. 
 
 Дифференциальные уравнения могут быть разрешены, если их группа
 инвариантности разрешима. 
@@ -82,6 +89,8 @@
 Классические функции математической физики возникают как матричные
 элементы представлений простых групп Ли. 
 
+
+\printindex
 
 \bibliography{bibliography}{}
 \bibliographystyle{utphys}
