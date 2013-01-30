@@ -149,7 +149,23 @@
        year={1993},
        publisher={APS}
      }
-          
+*** Coset models
+    @article{doi:10.1142/S0217751X93001685,
+      author = {DUNBAR, DAVID C. and JOSHI, KEITH G.},
+      title = {CHARACTERS FOR COSET CONFORMAL FIELD THEORIES AND MAVERICK EXAMPLES},
+      journal = {International Journal of Modern Physics A},
+      volume = {08},
+      number = {23},
+      pages = {4103-4121},
+      year = {1993},
+      doi = {10.1142/S0217751X93001685},
+      
+      URL = {http://arxiv.org/abs/hep-th/9210122},
+      eprint = {hep-th/9210122}
+    }
+    
+
+
 * AdS/CFT correspondence
 *** Reviews and introduction
 ***** TODO Read: [[file:~/books/big/science/CompleteBooks/CFT/Aharony,%20Gubser,%20Maldacena,%20Ooguri,%20Oz.%20Large%20N%20field%20theories,%20string%20theory%20and%20gravity%20(PR323,%202000)(204s).pdf][Aharony, Gubser, Maldacena, Ooguri, Oz. Large N field theories, string theory and gravity]]
@@ -780,8 +796,17 @@
 ***** Common Lisp package LambdaTensor
       [[file:~/programing/lambdatensor][lambdatensor]]
       @article{fischbacher2002ilp,
+        title={Introducing LambdaTensor1. 0-A package for explicit symbolic and numeric Lie algebra and Lie group calculations},
+        author={Fischbacher, T.},
+        journal={arXiv preprint hep-th/0208218},
+        year={2002}
+      }
+            
+      @article{fischbacher2002ilp0,
         title={{Introducing LambdaTensor1. 0-A package for explicit symbolic and numeric Lie algebra and Lie group calculations}},
         author={Fischbacher, T.},
+	journal = {ArXiv e-print},	
+	archivePrefix  = "arXiv",
         eprint={hep-th/0208218},
         year={2002}
       }
@@ -918,7 +943,7 @@
 * My papers
 *** Physics and progress 2008
     [[file:~/doc/conf/2008/PhysicsAndProgress/article.tex]]
-    @InProceedings{Nazarov2008,
+    @InProceedings{Nazarov2008en,
       author = 	 {Nazarov, A.},
       title = 	 {Comparison of algorithms for construction of representations of Lie algebras},
       year = 	 2008,
@@ -928,7 +953,15 @@
       url={http://anton_nazarov.fatal.ru/static/articles/2008/physics-and-progress/article.pdf}
     }
 
-
+    @InProceedings{Nazarov2008,
+      author = 	 {А.А.~{Назаров}},
+      title = 	 {Сравнение эффективности алгоритмов построения представлений алгебр Ли},
+      year = 	 2008,
+      series = 	 {Физика и прогресс},
+      organization = {СПбГУ},
+      booktitle = 	 {Физика и прогресс},
+      pages = {71--76},
+    }
 *** ACSM 2009
     [[file:~/study/2009/Articles/AffineLieAlgebras/ACMS2009/article.tex][Article]]
     @Conference{NazarovACSM2009,
@@ -937,6 +970,7 @@
       year = 	 2009,
       series = 	 {ACSM},
       organization = {EIMI},
+      pages = {4},
       booktitle = 	 {second Workshop on Advanced Computer Simulation Methods for Junior scientists},
     }  
 *** TODO To be published
@@ -951,10 +985,10 @@
        title = "{Recursive algorithm and branching for nonmaximal embeddings}",
        journal={Journal of Physics A: Mathematical and Theoretical},
        year = 2011,
-
+       numpages={20},
        volume = 44,
        number = 7,
-       pages = {075205},
+       pages = {075205(20)},
        doi = {10.1088/1751-8113/44/7/075205},
        archivePrefix = "arXiv",
        eprint = {1007.0318},
@@ -981,6 +1015,18 @@
           eprint = {1102.1702},
 	  primaryClass = "math.RT"
 }
+      @ARTICLE{2011arXiv1102.1702Lru,
+         author = {В.Д.~{Ляховский}, А.~{Назаров}},
+          title = "{Рекуррентные свойства ветвления и резольвента Бернштейна–Гельфанда–Гельфанда}",
+	  Journal = {Теоретическая и математическая физика},
+	  Year = 2011,
+	  Volume = 169,
+	  Number = 2,
+	  Pages = {218-228},
+	  archivePrefix = "arXiv",
+          eprint = {1102.1702},
+	  primaryClass = "math.RT"
+}
 
       @ARTICLE{2011arXiv1112.4354N,
          author = {{Nazarov}, A.},
@@ -988,10 +1034,10 @@
          journal={Journal of Physics: Conference Series},
          volume={343},
          number={1},
-         pages={012085},
+         pages={012085(10)},
          url={http://stacks.iop.org/1742-6596/343/i=1/a=012085},
          year={2012},
-      
+	 numpages={10},
          archivePrefix = "arXiv",
          eprint = {1112.4354},
          primaryClass = "math-ph",
@@ -1011,19 +1057,35 @@
       }
 
 
-      @conference{2012arXiv1204.1855L,
+      @article{2012arXiv1204.1855L,
          author = {{Laykhovsky}, V. and {Nazarov}, A.},
          title = "{On affine extension of splint root systems}",
-	 series = 	 {SQS'2011},
-	 organization = {JINR},
-	 booktitle={Supersymmetries \& Quantum Symmetries},
 	 archivePrefix = "arXiv",
          eprint = {1204.1855},
 	 primaryClass = "math.RT",
+	 year={2012},
 	 keywords = {Mathematics - Representation Theory, 17B10, 17B22, 20F55},
+	 journal={Physics of Particles and Nuclei},
+	 volume={43},
+	 number={5},
+	 pages={676--678}
       }
+	 series = 	 {SQS'2011},
+	 organization = {JINR},
+	 booktitle={Supersymmetries \& Quantum Symmetries},
       
-    @ARTICLE{LyakhovskyPostnova2011,
+    @inproceedings{LyakhovskyPostnova2011,
+      title={Tensor powers for non-simply laced Lie algebras B2-case},
+      author={Kulish, P.P. and Lyakhovsky, V.D. and Postnova, OV},
+      booktitle={Journal of Physics: Conference Series},
+      volume={346},
+      number={1},
+      pages={012012},
+      year={2012},
+      organization={IOP Publishing}
+    }
+    
+    @ARTICLE{LyakhovskyPostnova20110,
         author = {{Kulish}, P.~P. and {Lyakhovsky}, V.~D. and {Postnova}, O.~P.},
 	title = "{Tensor powers for non-simply laced Lie Algebras \$B\_2\$ case}",
 	journal = {ArXiv e-prints},
@@ -1042,6 +1104,8 @@
 	title="{Branching functions generated by the injection fan for Lie algebras. (The role of BGG-resolvent)}",
 	booktitle={Models in Quantum Field Theory},
 	year=2010,
+	organization = {SPbSU},
+	pages = {12},
 	url={http://hep.niif.spbu.ru/conf/mktp2010/}
     }
 	month=oct,
@@ -1064,7 +1128,6 @@
     eprint = {1111.6787},
     primaryClass = "math.RT",
     keywords = {Mathematics - Representation Theory, 17B10, 17B22, 20F55},
-    year = 2011,
     adsurl = {http://adsabs.harvard.edu/abs/2011arXiv1111.6787L},
     }
 
@@ -1080,8 +1143,13 @@ archivePrefix = "arXiv",
    adsurl = {http://adsabs.harvard.edu/abs/2011arXiv1107.4681N},
   adsnote = {Provided by the SAO/NASA Astrophysics Data System},
   doi={10.1016/j.cpc.2012.06.014},
-  url={http://dx.doi.org/10.1016/j.cpc.2012.06.014}
+  volume={183},
+  issue={11}, 
+  pages={2480--2493}
 }
+  url={http://dx.doi.org/10.1016/j.cpc.2012.06.014},
+
+  month={November},
 
   	
 	
@@ -1250,6 +1318,17 @@ archivePrefix = "arXiv",
   publisher={Elsevier}
 }
 @article{chelkak2009universality,
+  title={Universality in the 2D Ising model and conformal invariance of fermionic observables},
+  author={Chelkak, D. and Smirnov, S.},
+  journal={Inventiones Mathematicae},
+  pages={1--66},
+  year={2009},
+  publisher={Springer},
+  archivePrefix  = "arXiv",
+  eprint={0910.2045}
+}
+
+@article{chelkak2009universality0,
   title={Universality in the 2D Ising model and conformal invariance of fermionic observables},
   author={Chelkak, D. and Smirnov, S.},
   journal={Arxiv preprint arXiv:0910.2045},
@@ -1534,12 +1613,27 @@ archivePrefix = "arXiv",
 
 
 @article{richter2008splints,
+   author = {Richter, David},
+   affiliation = {Department of Mathematics, MS 5248, Western Michigan University, Kalamazoo, MI 49008-5248, USA},
+   journal = {Journal of Geometry},
+   publisher = {Birkhäuser Basel},
+   issn = {0047-2468},
+   keyword = {Mathematics and Statistics},
+   pages = {103-117},
+   volume = {103},
+   issue = {1},
+   year = {2012},
+
   title={Splints of classical root systems},
   archivePrefix = {arXiv},
-  author={Richter, D.A.},
-  eprint={0807.0640},
-  year={2008}
+  eprint={0807.0640}
+
 }
+   url = {http://dx.doi.org/10.1007/s00022-012-0109-3},
+
+   note = {10.1007/s00022-012-0109-3},
+
+  year={2008}
   journal={Arxiv preprint arXiv:0807.0640},
 * SLE
 @article{schramm2000scaling,
@@ -1563,8 +1657,11 @@ archivePrefix = "arXiv",
 }
 @inproceedings{makarov2010off,
   title={Off-critical lattice models and massive SLEs},
-  author={Makarov, N. and Smirnov, S. and others},
-  booktitle={XVITH INTERNATIONAL CONGRESS ON MATHEMATICAL PHYSICS. Held 3-8 August 2009 in Prague, Czech Republic. Edited by Pavel Exner (Doppler Institute, Prague, Czech Republic). Published by World Scientific Publishing Co. Pte. Ltd., 2010. ISBN\# 9789814304634, pp. 362-371},
+  author={Makarov, N. and Smirnov, S.},
+  booktitle={XVI International Congress on Mathematical Physics. Held 3-8 August 2009 in Prague, Czech Republic.},
+  editor = {Pavel Exner},
+  publisher = {World Scientific Publishing Co. Pte. Ltd.},
+  ISBN = {9789814304634},
   volume={1},
   pages={362--371},
   year={2010},
@@ -1769,12 +1866,14 @@ Taming the conformal Zoo
   pages={121--209},
   issn={0202-7488},
   year={1988},
+  language = {russian},
   publisher={ВИНИТИ РАН-Всероссийский институт научной и технической информации РАН}
 }
 @book{fuks1984,
   title={{Когомологии бесконечномерных алгебр Ли}},
   author={Фукс, Д.Б.},
   year={1984},
+  language = {russian},
   publisher={Наука, Глав. ред. физико-математической лит-ры, Москва}
 }
 @article{zamolodchikov1987representations,
@@ -1885,3 +1984,86 @@ Taming the conformal Zoo
     year={2009},
     publisher={IOP Publishing}
   }
+* Vertex algebras
+*** Classic papers and books
+    @article{frenkel1992vertex,
+      title={Vertex operator algebras associated to representations of affine and Virasoro algebras},
+      author={Frenkel, I.B. and Zhu, Y.},
+      journal={Duke Mathematical Journal},
+      volume={66},
+      number={1},
+      pages={123--168},
+      year={1992},
+      publisher={Duke University Press}
+    }
+    @book{frenkel1988vertex,
+      title={Vertex operator algebras and the Monster},
+      author={Frenkel, I. and Lepowsky, J. and Meurman, A.},
+      volume={134},
+      year={1988},
+      publisher={Academic press}
+    }
+    @article{zhu1996modular,
+      title={Modular invariance of characters of vertex operator algebras},
+      author={Zhu, Y.},
+      journal={Journal of the American Mathematical Society},
+      pages={237--302},
+      year={1996},
+      publisher={JSTOR}
+    }
+    @book{frenkel2001vertex,
+      title={Vertex algebras and algebraic curves},
+      author={Frenkel, E. and Ben-Zvi, D.},
+      year={2001},
+      publisher={American mathematical society}
+    }
+    @article{borcherds1986vertex,
+      title={Vertex algebras, Kac-Moody algebras, and the Monster},
+      author={Borcherds, R.E.},
+      journal={Proceedings of the National Academy of Sciences},
+      volume={83},
+      number={10},
+      pages={3068--3071},
+      year={1986},
+      publisher={National Acad Sciences}
+    }
+                
+*** Recent papers
+    @article{frenkel2010vertex,
+      title={Vertex operator algebras associated to modified regular representations of the Virasoro algebra},
+      author={Frenkel, I. and Zhu, M.},
+      journal={arXiv preprint arXiv:1012.5443},
+      year={2010}
+    }
+    @article{dong2010structure,
+      title={The structure of parafermion vertex operator algebras},
+      author={Dong, C. and Lam, C.H. and Wang, Q. and Yamada, H.},
+      journal={Journal of Algebra},
+      volume={323},
+      number={2},
+      pages={371--381},
+      year={2010},
+      publisher={Elsevier}
+    }
+    @article{adamovic2011some,
+      title={Some general results on conformal embeddings of affine vertex operator algebras},
+      author={Adamovi{\'c}, D. and Per{\v{s}}e, O.},
+      journal={Algebras and Representation Theory},
+      pages={1--14},
+      year={2011},
+      publisher={Springer}
+    }
+    @article{loney2012decomposition,
+      title={Decomposition of Level-1 Representations of D\_4\^{}(1) With Respect to its Subalgebra G\_2\^{}(1) in the Spinor Construction},
+      author={Loney, Q.},
+      journal={arXiv preprint arXiv:1209.0018},
+      year={2012}
+    }
+
+    @article{dobrev2007representations,
+      title={Representations and characters of the Virasoro algebra and N= 1 super-Virasoro algebras},
+      author={Dobrev, VK},
+      archivePrefix = {arXiv},
+      eprint={0709.0105},
+      year={2007}
+    }
