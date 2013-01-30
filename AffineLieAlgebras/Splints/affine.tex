@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+%% \textheight=24cm
+%% \textwidth=16.5cm
+%% \topmargin=-1.5cm
+%% \oddsidemargin=-0.25cm
+%%
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+
+\newtheorem{Def}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{statement}{Statement}
+\newtheorem{Cnj}[Def]{Conjecture}
+\newtheorem{Prop}[Def]{Property}
+\newtheorem{example}{Example}[section]
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{On affine extension of splint root systems}
+
+
+
+\author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$ \\
+  {\small $^1$ Department of High-energy and elementary particle physics, SPb State University}\\
+  {\small 198904, Saint-Petersburg, Russia,}
+  {\small e-mail: lyakh1507@nm.ru}\\
+  {\small$^{2}$ Chebyshev Laboratory,}
+  {\small Department of Mathematics and Mechanics, SPb State University}\\
+  {\small 199178, Saint-Petersburg, Russia}
+  {\small email: antonnaz@gmail.com}}
+\date{}
+\maketitle
+
+\begin{abstract}
+Splint of root system of simple Lie algebra appears naturally in
+the study of (regular) embeddings of reductive subalgebras. It can
+be used to derive branching rules. Application of
+splint properties drastically simplifies calculations of
+branching coefficients. We study affine extension of splint root system of simple Lie algebra and obtain relations on theta and branching functions.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+The equivalence of coset models $g_2/su(3)$ and $su(3)\times
+su(3)/su(3)$ is well-known for more then twenty years \cite{Dunbar:1992gh}. 
+They are also equivalent to $su(2)\times su(2)/su(2)$ coset model with
+non-diagonal modular invariant. In paper \cite{Dunbar:1992gh} the equivalence
+is derived from the coincidence of conformal weights and central
+charges in these models.
+
+Note that irreducible Virasoro modules are uniquely specified by central
+charge and conformal weights and characters
+of Virasoro modules are proportional to branching functions. So the branching
+coefficients for the affine Lie algebra embeddings $\hat A_2\to \hat G_2$ and
+$\hat A_2\to \hat A_2 \otimes \hat A_2$ should coincide.
+
+In present text we do not rely on properties of Virasoro algebra modules to
+establish this equality of branching functions. We use structure of affine Lie
+algebras.
+
+Now consider branching coefficients computation for the embedding
+$\hat{su(3)}\to \hat g_2$. Construct the injection
+fan. All the multipliers, corresponding to long and imaginary roots of
+$\hat g_2$ are reduced. So we are left with
+$\prod_{\alpha\in \Delta^+_{short} (g_2)}\prod_{n=1}^{\infty}
+(1-exp(-\alpha - n\delta))$
+We have Weyl denominator of affine $su(3)$ on short roots, but without
+purely imaginary roots.
+
+To construct singular element we can present the Weyl group elements
+of $\hat g_2 as s_1\dots s_k t_{\lambda} s'_1\dots s'_l$,
+where $s_i$ are reflection w.r.t. long roots, $s'$ are reflections w.r.t.
+short roots and $t_{\lambda}$ are usual translations
+that change grade. The translation can be presented as a combination
+of translations on the short roots (?).
+So in each grade of singular element we have singular weights of $\hat
+A_2$ on short roots, additionally
+translated and reflected by Weyl group of $A_2$ on long roots.
+
+This data allows us to compute branching coefficients.
+
+Then we need to compare this picture with $su(3)\times su(3)/su(3)$
+model. The injection fan is similar to previous
+case, but we have the imaginary roots, since rank of algebra is 4 and
+rank of subalgebra is 2.
+In singular element we also have some additional translations. The
+question is, how do these translations compensate
+extra imaginary roots in calculation?
+
+The case of non-diagonal modular invariants for $su(2)\times
+su(2)/su(2)$ model is also unclear for me.
+
+\bibliography{bibliography}{}
+\bibliographystyle{utphys}
+
+\end{document}
