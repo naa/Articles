@@ -137,6 +137,74 @@ extra imaginary roots in calculation?
 The case of non-diagonal modular invariants for $su(2)\times
 su(2)/su(2)$ model is also unclear for me.
 
+
+\section{Splints and affine root systems}
+\label{sec:splints-affine-root}
+
+\begin{Def}
+  Embedding $\phi$ of a root system $\Delta_1$ into a root system $\Delta$ is a bijective map of
+  roots of $\Delta_{1}$ to a (proper) subset of $\Delta$ that commutes with vector composition law
+  in $\Delta_{1}$ and $\Delta$.
+\begin{equation*}
+\phi:\Delta_1 \longrightarrow \Delta, \quad \phi \circ (\alpha + \beta) =\phi \circ \alpha + \phi \circ \beta,\,\,\, \alpha,\beta \in \Delta_1
+\end{equation*}
+\end{Def}
+
+Note that the image $Im(\phi)$ must not inherit the root system properties except the addition rules
+equivalent to the addition rules in $\Delta_{1}$ (for pre-images). Two embeddings $\phi_1$ and
+$\phi_2$ can splinter $\Delta$ when the latter can be presented as a disjoint union of images
+$Im(\phi_1)$ and $Im(\phi_2)$.
+
+$\phi$ induces an injection of formal algebras $:{\mathcal{E}}_0
+\hookrightarrow \mathcal{E}$ and for the image ${\mathcal{E}}%
+_i=Im_{\phi}\left( {\mathcal{E}}_0\right)$ one can consider its inverse $%
+\phi^{-1}:{\mathcal{E}}_i \longrightarrow {\mathcal{E}}_0$.
+
+\begin{Def}
+  A root system $\Delta $ ''splinters'' as $(\Delta _{1},\Delta _{2})$ if there are two embeddings
+  $\phi _{1}:\Delta _{1}\hookrightarrow \Delta $ and $%
+  \phi _{2}:\Delta _{2}\hookrightarrow \Delta $ where (a) $\Delta $ is the disjoint union of the
+  images of $\phi _{1}$ and $\phi _{2}$ and (b) neither the rank of $\Delta _{1}$ nor the rank of
+  $\Delta _{2}$ exceeds the rank of $%
+  \Delta $.
+\end{Def}
+
+It is equivalent to say that $(\Delta_1,\Delta_2)$ is a "splint'' of $\Delta$ and we shall denote
+this by $\Delta \approx (\Delta_1,\Delta_2)$. Each component $\Delta_1$ and $\Delta_2$ is a "stem''
+of the splint.
+
+
+We consider the case when one of the stems $\Delta _{1}=\Delta _{\frak{a}}$ is a root subsystem. As shown in paper \cite{2011arXiv1111.6787L} the second stem $\Delta _{\frak{s}}:=\Delta
+_{2}=\Delta \setminus \Delta _{\frak{a}}$ can be translated into a product
+$\prod_{\beta \in \Delta _{\frak{s}}^{+}}\left( 1-e^{-\beta }\right)=-\sum_{\gamma \in P}s(\gamma )e^{-\gamma }\quad   \label{splint product}$
+and it defines an injection fan $\Gamma _{\frak{a}%
+\hookrightarrow \frak{g}}$ \cite{lyakhovsky1996rra,ilyin812pbc,2010arXiv1007.0318L}.
+
+
+Using straightforward calculation we can easily obtain an identity on theta-functions
+
+
+
+definition of Dedekind eta-function
+$\eta(\tau)=q^{1/24}\prod_{n=1}^{\infty}(1-q^{n})$, where
+$q=e^{2\pi i \tau}$ we can rewrite this identity as the relation
+imposed on theta-functions $\Theta^{(\gfh)}_{\widehat{\lambda}=(\lambda,k,0)}(\tau,z)=\sum_{\xi\in Q_{\gf}+\frac{\lambda}{k}}e^{2\pi i k \left(\frac{1}{2} (\xi,\xi) \tau + (\xi,z)\right)}$:
+\begin{multline}
+  \label{eq:5}
+  \eta(\tau)^{\mathrm{dim}(\af)}\prod_{\alpha\in\Delta_{1}^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z)}{\eta(\tau)} \eta(\tau)^{\mathrm{dim}(\sfr)}\prod_{\beta\in\Delta_{2}^{+}}\frac{\Theta^{(\hat A_{1})}_{\phi\circ \beta}(\tau,z))}{\eta(\tau)}=\\
+\eta(\tau)^{\mathrm{rank}(\af)+\mathrm{rank}(\sfr)-\mathrm{rank}(\gf)}
+\eta(\tau)^{\mathrm{dim}(\gf)}\prod_{\alpha\in\Delta^{+}}\frac{\Theta^{(\hat A_{1})}_{\alpha}(\tau,z))}{\eta(\tau)}
+\end{multline}
+Here $z\in P_{\geq 0}\otimes \mathbb{C}$. Using Weyl denominator identity this relation can be
+rewritten as a non-trivial relation connecting theta-functions of algebras $\gfh,\hat\sfr,\afh$:
+\begin{equation}
+  \label{eq:6}
+  \left(\sum_{v\in W_{\af}}\epsilon(v) \Theta^{(\afh)}_{v\rho_{\af}}(\tau,z)\right)
+  \cdot \left(\sum_{u\in W_{\sfr}}\epsilon(u) \Theta^{(\hat{\sfr})}_{\phi\circ(u\rho_{\sfr})}(\tau,z)\right)= 
+  \left(\sum_{w\in W}\epsilon(w) \Theta^{(\gfh)}_{w\rho_{\gf}}(\tau,z)\right)
+\end{equation}
+
+
 \bibliography{bibliography}{}
 \bibliographystyle{utphys}
 
