@@ -1,4 +1,10 @@
 \documentclass[a4paper]{article}
+\usepackage{verbatim}
+\usepackage{amsmath,amssymb,amsthm}
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\af}{\mathfrak{a}}
+
 
 \title{Boundary condition changing operators and singular vectors of Virasoro and
 affine Lie algebra modules}
@@ -17,10 +23,35 @@ boundary condition changing operators and interpreted from
 representation-theoretic point of view.
 \end{abstract}
 
-Hello!
-It's a great pleasure for me to be here in Simons Center for geometry and physics. 
-My talk is called ``Boundary condition changing operators and singular vectors of Virasoro and
-affine Lie algebra modules''. 
+\section{Title}
+\label{sec:title}
+
+Hello! 
+
+It's a great pleasure for me to be here in Simons Center for geometry and physics. My name is Anton
+Nazarov. I am work in St. Petersburg state university and my talk is called ``Boundary condition
+changing operators and singular vectors of Virasoro and affine Lie algebra modules''.
+
+This talk is based upon my letter to JETP letters, some previous conference talks and my PhD thesis. 
+
+\section{Plan of the talk}
+\label{sec:plan-talk}
+
+Plan of my talk is here. First of all I will remind you how to study martingales of Schramm-Loewner
+evolution using conformal field theory in two dimensions. 
+
+Then I will talk of generalized Schramm-Loewner evolution with additional random gauge
+transformations. This process is connected with Wess-Zumino-Novikov-Witen models of conformal field
+theory. 
+
+To generalize this study even further we will add the interaction with pure gauge field. Then gauge
+fixing reduces some degrees of freedom and we obtain coset models of conformal field theory and
+martingale conditions on certain class of observables in these models. 
+
+I will discuss observables that can have natural interpretation as the limits of lattice
+observables. These observables contain boundary condition changing operators. Martingale condition
+can be written as an algebraic relation on boundary fields. So in Wess-Zumino-Witten and coset models
+we can use representation theory to interpret martingale condition. 
 
 Consider some simple two-dimensional lattice model, for example, Ising
 model on hexagonal lattice. Let us study the behavior of domain walls.
@@ -30,4 +61,153 @@ that we have a domain wall from zero to infinity.
 
 In critical model there is continuous limit. It is given by a solution
 of Schramm-Loewner stochastic differential equation. 
+
+\section{Domain wall in Ising model}
+\label{sec:domain-wall-ising}
+
+I want to remind you of Schramm-Loewner evolution. Consider Ising model on triangular lattice on the
+upper half-plane  with the following boundary condition: Spins up on half of the boundary and down
+on another half. Then we have a domain boundary growing from zero. We can parametrize this growth
+with parameter $t$ and prove that in scaling limit in critical point it tends to SLE trace. 
+Consider curve up to some value of parameter $t_{I}$ and make a cut along it. Then conformal map
+$g_{t}$ maps the domain with the cut to the upper half plane. For Schramm-Loewner evolution this map
+satisfies following differential equation. It will be more convenient for me to write it another
+way. Solution of the equation gives us conformally-invariant probability measure on trajectories
+$\gamma_{t}$ in upper half-plane. 
+
+\section{CFT description}
+\label{sec:cft-description}
+
+How can we describe this using conformal field theory? We can consider lattice observables in upper
+half plane. Expectation values of these observables can be obtained as an average of expectation
+values in domains with all possible cuts. For a finite lattice it can be written as a sum over all
+possible trajectories of average values of ${\cal O}$ in slit domains multiplied by probabilities of
+trajectories. 
+
+But the expectation value of the observable in upper half-plane does not depend on parametrization
+of cuts, so the expectation value in slit domain should be a martingale with respect to growth of
+cut. 
+
+Now we consider continuous limit in critical point. Expectation value of lattice observable is then
+given by correlation function of conformal field theory. 
+
+Since we consider CFT with boundary we need to take into account boundary conditions. So we insert
+boundary condition changing operators at the tip of the trace and at the infinity. Using conformal
+map we can rewrite it on the whole half-plane. 
+
+We also assume that limit of lattice observable is given by a product of primary fields in points
+$z_{1}, \dots, z_{n}$ or $w_{1},\dots,w_{n}$ after the conformal map. 
+
+\section{SLE martingales}
+\label{sec:sle-martingales}
+
+Now I want to write martingale condition and analyze correlation functions that satisfy it. 
+
+Use Ito formula for stochastic differential. First term here gives us this contribution, second term
+depends on primary fields $\varphi_{i}$. So the differential consists of powers of field
+transformation generators. For minimal models these generators are derivatives, so we obtain this
+differential equation on correlation function. 
+
+We can rewrite this equation as algebraic relation on boundary condition changing operator. Then we
+can establish correspondence between SLE parameter $\kappa$ and CFT paramters $c$ and $h_{\phi}$. 
+
+\section{SLE martingales-2}
+Let's generalize this analysis to non-minimal models. Consider Wess-Zumino-Novikov-Witten model. The
+action of this model is written for the field $\gamma$ that lives on complex plane with infinity and
+takes values in Lie group $G$ or its representation. The action consists of two termss. First term
+is the action of non-linear sigma model and the second term is topological. It is added to restore
+the conformal invariance after quantization. The model has gauge invariance and two conserved
+currents. Conformal invariance is manifest in independent conservation of holomorphic and
+antiholomorphic currents. 
+
+We can use Ward identities to get commutation relation for the coefficients in power series
+expansion for the currents.
+\section{Primary fields}
+\label{sec:primary-fields}
+
+We see that coefficients in mode expansion of currents satisfy commutation relations for generators
+of affine Lie algebra $\gfh$. Sugawara construction gives us generators of Virasoro algebra in terms
+of affine Lie algebra generators. 
+
+So Virasoro algebra is embedded into the universal enveloping algebra of affine Lie algebra. 
+Full chiral algebra is a semidirect product of Virasoro and affine Lie algebra with these
+commutation relations. Note that central charge is determined by the level of affine Lie algebra
+representation. 
+
+Primary fields with respect to full chiral algebra are labeled by highest weights of affine Lie
+algebra representations. Conformal weight for primary field is given by this formula. 
+
+\section{SLE and WZNW models}
+\label{sec:sle-wznw-models}
+
+Consider and observable in Wess-Zumino-Novikov-Witten model of the same form as in minimal models. 
+
+Now we have an additional degree of freedom since we can do gauge transformations. We augment
+Schramm-Loewner evolution with random walk on the group $G$. 
+
+This idea was proposed in papers by Gruzberg and Rassmussen. 
+
+Now we add the differential of random gauge transform to field transformation generator. 
+Full generator look like this. Here the basis elements of Lie algebra representation and $d \Theta$
+are independent Brownian motions. We have new parameter $\tau$. 
+
+\section{SLE martingales in WZNW-models}
+\label{sec:sle-martingales-wznw}
+
+Again we use Ito formula to obtain the differential equation on martingales. 
+
+Here I use this notation for ${\cal L}_{-n}$ and ${\cal J}^{a}_{-n}$. 
+
+The differential equation holds for all observables so for all combinations of primary fields in
+correlation function. Then it can be rewritten as an algebraic relation on boundary condition
+changing operator. ????
+
+Correlation function of arbitrary primary fields with this operator is zero. Then this state is
+level 2 null-state and action of raising operators on it is zero. So we obtain algebraic relations
+connecting $\kappa, \tau$ and $k, h_{\phi}$. In this way we get a classification of primary boundary
+condition changing operators which can sit at the tip of SLE trace. 
+
+\section{Null states and singular weights of affine Lie algebra module}
+\label{sec:null-states-singular}
+
+Can we answer simple question: are there level two null states in a given affine Lie algebra Verma
+module? Yes, we can. All null states belong to Verma modules of singular weights. 
+
+Consider Verma module of highest weight $\lambda$ and let $\lambda$ be integral dominant. Then the
+set of singular weights is $\{\omega (\lambda+\rho)-\rho\}$ for $\omega\in W_{\gfh}$.
+
+\section{Gauged WZNW-action and coset construction}
+\label{sec:gauged-wznw-action}
+
+We can generalize our analysis even further and consider coset models of conformal field theory.
+These models can be constructed by adding the interaction with pure gauge fields to
+Wess-Zumino-Novikov-Witten action. The fields $\alpha, \bar \alpha$ takes values in some subalgebra
+$\af$ of Lie algebra $\gf$.  So we have this action. 
+
+Now the current has an additional term. If we fix gauge some degrees of freedom are restricted. 
+
+Algebraic structure is determined by two algebras $\af\subset\gf$ and generators of Virasoro algebra
+are given by difference of Sugawara expressions. 
+
+Note that affine subalgebra generators commute with Virasoro algebra. 
+
+\section{Primary fields}
+\label{sec:primary-fields-1}
+
+In coset models we can label primary fields by pairs of weights. First weight is weight of algebra
+$\gfh$ and the second for subalgebra $\af$. Branching functions for these pairs must be non-trivial.
+Some pairs are equivalent but it is possible to take this equivalence into account. 
+
+Conformal weight is equal to the difference of these expressions that are similar to conformal
+weights in Wess-Zumino-Novikov-Witten model. 
+
+We also have an analogue of Knizhnik-Zamolodchikov equations that can be useful later. 
+
+\section{SLE on coset space}
+\label{sec:sle-coset-space}
+
+Let me analyze the martingale condition in coset models. When I fix gauge in the model some degrees
+of freedom are frozen, so I allow only certain directions for additional random walk. 
+
+
 \end{document}
