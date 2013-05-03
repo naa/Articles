@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Schramm-Loewner evolution martingale equation and Cardy conditions in Wess-Zumino-Novikov-Witten models}
+
+\maketitle
+
+\begin{abstract}
+  We can write martingale condition with respect to Schramm-Loewner evolution as an equation on
+  boundary condition changing operator. This equation has discrete set of solutions, so we have a
+  classification of boundary conditions producing SLE traces. On the other hand Cardy conditions
+  provide full classification of conformally-invariant boundary conditions. We describe the
+  intersection and difference of these two sets of solutions. 
+\end{abstract}
+
+Heroes: SLE with random gauge transforms, WZNW-model, classification of Cardy conditions solutions. 
+
+Story: WZNW-model connects parameters of SLE and random gauge transform, martingale condition leads
+to classification of solutions. This classification is compared with Cardy conditions. 
+
+Consider Scharmm-Loewner evolution with additional random walk on simple Lie group $G$. It is a
+stochastic process $(w_{t}, \Omega_{t}(z))$ in $\mathbb{C}\times G$ satisfying stochastic
+differential equations $d w_{t}(z)=\frac{dt}{w_{t}(z)}-\sqrt{\kappa} d\xi_{t}$, $d \Omega_{t}(z) =
+\frac{\sum_{a} t^{a} d\theta^{a}}{z-z_{0}}$
+
+Consider Wess-Zumino-Novikov-Witten model on the upper half-plane.
+
+
+ Correlation function of the form
+$\left<\phi(0) \varphi_{1}(w_{1})\dots \varphi_{n}(w_{n}) \phi^{*}(\infty)\right>$ that is
+martingale with to the stochastic process $(w_{t}(z), \Omega_{t}(z))$ $d w_{t}(z)=\frac{dt}{w_{t}(z)}-\sqrt{\kappa} d\xi_{t}$ if
+and only if the state $L_{-2}+\frac{\kappa}{2} L_{-1}^{2} +\frac{\tau}{2}$
+
+\end{document}
