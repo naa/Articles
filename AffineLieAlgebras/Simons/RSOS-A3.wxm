@@ -1,0 +1,73 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.5 ] */
+
+/* [wxMaxima: input   start ] */
+adjMatrix:matrix([0,1,0],[1,0,1],[0,1,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvectors(adjMatrix);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvalues(adjMatrix);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lm:%o2[1][1][2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy:%o2[2][2][1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+adjMatrix.psy;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s(r,u,l):=sin(r*l+u)/sin(l);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(a,b,c,d):=s(1,-u,l)*kron_delta(a,c)+s(0,u,l)*psy[a]^(1/2)*psy[c]^(1/2)/psy[b]*kron_delta(b,d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(3,2,1,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,1,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(1,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(3,2,1,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,1,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(3,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
