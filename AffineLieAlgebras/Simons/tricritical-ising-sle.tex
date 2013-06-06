@@ -149,7 +149,7 @@ are given by matrices with rows and columns labeled by the paths in ${\cal G}^{L
   \delta_{a_{j-1} a_{j+1}} \prod_{\substack{k=0\\k\neq j}}^{L+1}\delta_{a_k b_k}
 \end{equation}
 
-Bolzmann weights are given by the expression
+Bolzmann  weights for the lattice faces are given by the expression
 \begin{equation}
   \label{eq:5}
   W\left.\left(
@@ -175,6 +175,14 @@ $\lambda=0.62831853071796$ and $\psi=\left[1,2\cos\lambda,
 The isotropic case $u=\lambda/2$ with boundary parameters
 $u=\xi_1=\xi_2=\lambda/2$ corresponds to the  conformal point. Then we have
 $s_1(-u)=\frac{\sin\lambda/2}{\sin\lambda}=\frac{1}{2\cos\lambda/2}$ and $s_0(u)=\frac{1}{2\cos\lambda/2}$.
+
+The weight of the spin configuration $C$ is equal to the product of
+face weights and boundary weights:
+\begin{equation}
+  \label{eq:7}
+  W(c)=\prod_{f\in \mathrm{faces}} W(f,C) \prod_{b\in \mathrm{boundary
+      edges}} W(b,C)
+\end{equation}
 
   
 The Hamiltonian of the RSOS model is symmetric under
