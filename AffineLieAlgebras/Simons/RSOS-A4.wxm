@@ -1,0 +1,364 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.5 ] */
+
+/* [wxMaxima: input   start ] */
+t:matrix(
+ [0,1,0,0], 
+ [1,0,1,0], 
+ [0,1,0,1], 
+ [0,0,1,0]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvalues(t);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+acos(eigenvalues(t));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+acos(sqrt(sqrt(5)+3)/sqrt(2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t+1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+invert(t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+describe(eigenvalues);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(z);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+diff(log(g(z)),z,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+polarform(log(z));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+des;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+J*J;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+if numer#false then numer:false else numer:false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+I*I;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+functions;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve([%], [x]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(acos(sqrt(sqrt(5)+3)/sqrt(2)/2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvectors(t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy:[1,sqrt(sqrt(5)+3)/sqrt(2),(sqrt(5)+1)/2,(sqrt(sqrt(5)+3)*(sqrt(2)*sqrt(5)-sqrt(2)))/4];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy/sqrt(psy.psy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+? eigenvectors;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvectors(matrix([2,0],[0,1]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy1:radcan(psy/sqrt(psy.psy));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+radcan(psy1.psy1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(2*cos(lm)-psy[2],[lm]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lm:acos(psy[2]/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trican(1/cos(lm/2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1/cos(lm/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigsimp(1/cos(lm/2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigrat(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigexpand(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lm;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s(r,u):=sin(r*lm+u)/sin(lm);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s(0,lm/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+?kron_delta;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(a,b,c,d):=s(1,-lm/2)*kron_delta(a,c)+s(0,lm/2)*psy[a]^(1/2)*psy[c]^(1/2)/(psy[b]^(1/2))*kron_delta(b,d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigrat(sin(l/2)/sin(l));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigreduce(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigexpand(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigrat(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,4,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1(r,u):=sin(r*l+u)/sin(l);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(a,b,c,d):=s1(1,-l/2)*kron_delta(a,c)+s1(0,l/2)*psy1[a]^(1/2)*psy1[c]^(1/2)/(psy1[b]^(1/2))*kron_delta(b,d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(3,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(2,3,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(2,3,4,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(3,2,1,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst(lm, l, %);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy2:[1,2*cos(l),4*(cos(l))^2-1,2*cos(l)-1/(2*cos(l))];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(a,b,c,d):=s1(1,-l/2)*kron_delta(a,c)+s1(0,l/2)*psy2[a]^(1/2)*psy2[c]^(1/2)/(psy2[b]^(1/2))*kron_delta(b,d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psy2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,4,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,4,3,4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,4,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(4,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,4,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S(a):=sin(a*l)/sin(l);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(S(1)*S(4)/(S(2)*S(3)))^(1/2)*s1(0,l/2)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trigsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1(2,l/2)/S(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1(3,-l/2)/S(3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1(1,-l/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1(2,l/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1(3,-l/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S(3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,2,1,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(4,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(4,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(4,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(S(2)*S(4))^(1/2)/S(3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
