@@ -14,7 +14,6 @@ t:matrix(
 eigenvalues(t);
 /* [wxMaxima: input   end   ] */
 
-
 /* [wxMaxima: input   start ] */
 acos(eigenvalues(t));
 /* [wxMaxima: input   end   ] */
@@ -38,7 +37,6 @@ describe(eigenvalues);
 /* [wxMaxima: input   start ] */
 log(z);
 /* [wxMaxima: input   end   ] */
-
 
 /* [wxMaxima: input   start ] */
 diff(log(g(z)),z,1);
@@ -358,6 +356,22 @@ W3(3,2,3,2);
 
 /* [wxMaxima: input   start ] */
 W3(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(2,3,4,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(4,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,2,3,4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W3(3,4,3,2);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
