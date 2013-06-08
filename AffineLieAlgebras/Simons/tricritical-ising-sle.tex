@@ -168,20 +168,101 @@ where
 %%      \lim_{\lambda'\to \lambda} \frac{\sin(r \lambda'
 %%        +(\lambda'-\lambda)u)}{\sin \lambda'}
   \end{equation}
-We are interested in the case $A_4$, so we have
+
+Bulk weights satisfy Yang-Baxter equation \cite{behrend2001integrable}
+that leads to integrability of the model using transfer matrix
+approach. 
+
+  We are interested in the case $A_4$, so we have
 $2\cos\lambda=\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}}$,
 $\lambda=0.62831853071796$ and $\psi=\left[1,2\cos\lambda,
-  4\cos^2\lambda-1, 2cos\lambda-\frac{1}{2\cos\lambda}\right]=\left[1,\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}},\frac{\sqrt{5}+1}{2},\frac{\sqrt{\sqrt{5}+3}\,\left( \sqrt{2}\,\sqrt{5}-\sqrt{2}\right) }{4}\right]$.
+  4\cos^2\lambda-1, 2cos\lambda-\frac{1}{2\cos\lambda}\right]$ or $\psi=\left[1,\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}},\frac{\sqrt{5}+1}{2},\frac{\sqrt{\sqrt{5}+3}\,\left( \sqrt{2}\,\sqrt{5}-\sqrt{2}\right) }{4}\right]$.
 The isotropic case $u=\lambda/2$ with boundary parameters
 $u=\xi_1=\xi_2=\lambda/2$ corresponds to the  conformal point. Then we have
 $s_1(-u)=\frac{\sin\lambda/2}{\sin\lambda}=\frac{1}{2\cos\lambda/2}$ and $s_0(u)=\frac{1}{2\cos\lambda/2}$.
+
+Bolzmann weights for the lattice edges can differ from face weights.
+Choice of these weights corresponds to different boundary conditions.
+Conformally invariant boundary conditions for $A_4$ RSOS realization
+of the tricritical Ising model were identified in
+\cite{chim1996boundary}, boundary weights were listed in
+\cite{behrend2001integrable}. 
+
+Behrend and Pearce use following labeling of boundary conditions for
+rank $g$ model:
+$\left\{(r,a)\ |\ r\in\{1,\dots,g-1\}, a\in {\cal G}\right\}$. For the
+$(1,a)$ boundary condition boundary weights are given by the equation
+\begin{equation}
+  \label{eq:8}
+  B^{1,a}\left.\left( c
+    \begin{array}{ll}
+      a & 1\\
+      a & 1
+    \end{array}\right| u, \xi \right)= \frac{s_0(\xi+u) s_1(\xi-u)
+  \psi^{1/2}_c } {s_0(2\xi) \psi_a^{1/2}}
+\end{equation}
+
+So in the $(1, a)$ boundary condition the state of every alternate
+boundary spin is fixed to be $a$, while each other boundary spin,
+with state $c$ adjacent to $a$ on ${\cal G}$, is associated with a
+weight proportional to $\psi_c^{1/2}$. 
+
+These boundary weights satisfy the boundary Yang-Baxter equation.
+For the Ising and tricritical Ising models we limit ourselves with $r=1$
+boundary states. 
 
 The weight of the spin configuration $C$ is equal to the product of
 face weights and boundary weights:
 \begin{equation}
   \label{eq:7}
   W(c)=\prod_{f\in \mathrm{faces}} W(f,C) \prod_{b\in \mathrm{boundary
-      edges}} W(b,C)
+      faces}} B(b,C)
+\end{equation}
+
+\subsection{RSOS realization of Ising model}
+\label{sec:rsos-real-ising}
+
+For RSOS realization of Ising model we have:
+\begin{eqnarray}
+  \label{eq:10}
+  2 \cos\lambda = \sqrt{2}\\
+  \lambda=\frac{\pi}{4}\\
+  \psi = (1,\sqrt{2},1)
+\end{eqnarray}
+So we obtain Boltzmann weights:
+\begin{equation}
+  \label{eq:9}
+  \begin{array}{l}
+  W\left.\left(
+    \begin{array}{ll}
+      2 & 3\\
+      1 & 2
+    \end{array}\right| u \right) = \frac{1}{\sqrt{2}} \frac{\sin(u)}{\sin(\lambda)}=\sin(u)\\
+  W\left.\left(
+    \begin{array}{ll}
+      1 & 2\\
+      2 & 3
+    \end{array}\right| u
+\right)=-\frac{\sin(u-\lambda)}{\sin(\lambda)}=-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
+  W\left.\left(
+    \begin{array}{ll}
+      2 & 1\\
+      3 & 2
+    \end{array}\right| u
+\right)=\frac{1}{\sqrt{2}}\frac{\sin(u)}{\sin(\lambda)}=\sin(u)\\
+  W\left.\left(
+    \begin{array}{ll}
+      3 & 2\\
+      2 & 1
+    \end{array}\right| u
+\right)=-\frac{\sin(u-\lambda)}{\sin(\lambda)}=-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
+  W\left.\left(
+    \begin{array}{ll}
+      3 & 2\\
+      2 & 1
+    \end{array}\right| u
+\right)=-\frac{\sin(u-\lambda)}{\sin(\lambda)}=-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
+\end{array}
 \end{equation}
 
   
