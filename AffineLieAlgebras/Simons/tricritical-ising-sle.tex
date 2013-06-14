@@ -215,9 +215,16 @@ The weight of the spin configuration $C$ is equal to the product of
 face weights and boundary weights:
 \begin{equation}
   \label{eq:7}
-  W(c)=\prod_{f\in \mathrm{faces}} W(f,C) \prod_{b\in \mathrm{boundary
-      faces}} B(b,C)
+  W(c)=\prod_{f\in \mathrm{faces}} W(f,C) \prod_{b\in \mbox{\small{boundary
+      faces}}} B(b,C)
 \end{equation}
+
+\subsection{Mapping of RSOS and tricritical model}
+\label{sec:mapp-rsos-tricr}
+
+Weights for $A_4$ RSOS model are:
+
+
 
 \subsection{RSOS realization of Ising model}
 \label{sec:rsos-real-ising}
@@ -229,42 +236,74 @@ For RSOS realization of Ising model we have:
   \lambda=\frac{\pi}{4}\\
   \psi = (1,\sqrt{2},1)
 \end{eqnarray}
+Values on even sublattice sites are fixed to $2$ and odd sublattice
+values $1,3$ can be mapped to Ising spins $-1,+1$. Critical value for
+Ising model is $K_C=\frac{1}{2}\log (1+\sqrt{2})$.
+
 So we obtain Boltzmann weights:
 \begin{equation}
   \label{eq:9}
-  \begin{array}{l}
-  W\left.\left(
+  \begin{array}{lllll}
+    V_{-} &=& W\left.\left(
     \begin{array}{ll}
       2 & 3\\
       1 & 2
-    \end{array}\right| u \right) = \frac{1}{\sqrt{2}} \frac{\sin(u)}{\sin(\lambda)}=\sin(u)\\
-  W\left.\left(
-    \begin{array}{ll}
-      1 & 2\\
-      2 & 3
-    \end{array}\right| u
-\right)=-\frac{\sin(u-\lambda)}{\sin(\lambda)}=-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
-  W\left.\left(
+    \end{array}\right| u \right) &=&   W\left.\left(
     \begin{array}{ll}
       2 & 1\\
       3 & 2
     \end{array}\right| u
-\right)=\frac{1}{\sqrt{2}}\frac{\sin(u)}{\sin(\lambda)}=\sin(u)\\
-  W\left.\left(
+\right)=\frac{1}{\sqrt{2}} \frac{\sin(u)}{\sin(\lambda)}=\sin(u)\\
+H_{-}&=&W\left.\left(
+    \begin{array}{ll}
+      1 & 2\\
+      2 & 3
+    \end{array}\right| u\right) &=&  W\left.\left(
     \begin{array}{ll}
       3 & 2\\
       2 & 1
     \end{array}\right| u
 \right)=-\frac{\sin(u-\lambda)}{\sin(\lambda)}=-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
-  W\left.\left(
+
+V_{+}&=&W\left.\left(
     \begin{array}{ll}
-      3 & 2\\
+      2 & 1\\
+      1 & 2
+    \end{array}\right| u
+\right)&=&   W\left.\left(
+    \begin{array}{ll}
+      2 & 3\\
+      3 & 2
+    \end{array}\right| u
+\right)= \frac{\sin\left( u\right) }{\sqrt{2}\,\sin\left(
+    \lambda\right) }-\frac{\sin\left( u-\lambda\right) }{\sin\left(
+    l\right) } = \sin(u)-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
+H_{+}&=&W\left.\left(
+    \begin{array}{ll}
+      1 & 2\\
       2 & 1
     \end{array}\right| u
-\right)=-\frac{\sin(u-\lambda)}{\sin(\lambda)}=-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)\\
+\right)&=&   W\left.\left(
+    \begin{array}{ll}
+      3 & 2\\
+      2 & 3
+    \end{array}\right| u
+\right)= \frac{\sqrt{2}\sin\left( u\right) }{\sin\left(
+    \lambda\right) }-\frac{\sin\left( u-\lambda\right) }{\sin\left(
+    l\right) } = 2\sin(u)-\sqrt{2}\sin\left(u-\frac{\pi}{4}\right)
 \end{array}
 \end{equation}
+Here we have denoted by $V_{\pm}, H_{\pm}$ Boltzmann weights for
+vertical and horizontal adjacent spins with positive ($+$) or negative
+($-$) product. The case $u=\lambda/2=\frac{\pi}{8}$ is isotropic
+$\frac{V_+}{V_-}=\frac{H_+}{H_-}= 1+\sqrt{2}=e^{2 K_C}$.
 
+The crucial object in the proof of convergence of lattice correlations
+to correlation functions in critical limit is parafermionic observable
+of Smirnov, Hongler \cite{1202.2838v2}.
+
+It can be defined as follows: consider Ising configuration on a double cover of domain $\Omega$
+with singularity at $z$. 
   
 The Hamiltonian of the RSOS model is symmetric under
 the global $Z_2$ transform $l_i \to 5 - l_i$, which corresponds to the
