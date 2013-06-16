@@ -30,7 +30,7 @@ s(r,u,l):=sin(r*l+u)/sin(l);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-W(a,b,c,d):=s(1,-u,lm)*kron_delta(a,c)+s(0,u,lm)*psy[a]^(1/2)*psy[c]^(1/2)/psy[b]*kron_delta(b,d);
+W(a,b,c,d):=s(1,-u,l)*kron_delta(a,c)+s(0,u,l)*psy[a]^(1/2)*psy[c]^(1/2)/psy[b]*kron_delta(b,d);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -95,6 +95,63 @@ solve(a+u=0,u);
 
 /* [wxMaxima: input   start ] */
 solve([sin(u)+sqrt(2)*sin(u-%pi/4)=0], [u]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,2+1,2,2-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(3,2,1,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+l;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(a,b,c,d):=sin(l-u)/sin(l)*kron_delta(a,c)+sin(u)/sin(l)*sqrt(sin(a*l)*sin(c*l)/(sin(b*l)*sin(d*l)))*kron_delta(b,d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(2,1,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,1,2,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(1,2,1,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst(lm,l,%o195);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W(2,3,2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst(lm,l,%o198);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W1(3,2,3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst(lm/2,u,subst(lm, l, W1(2,1,2,1)));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(subst(lm, l, W1(2,1,2,1)-W1(1,2,1,2)),u);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(subst(lm, l, W1(3,2,1,2)-W1(2,3,2,1)),u);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
