@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Schramm-Loewner evolution in tricritical Ising model}
+\author{Anton Nazarov}%% $^{1,2}$}
+
+%% \address{
+%%   $^1$ Department of High-Energy and Elementary Particle Physics, 
+%%   Faculty of Physics, \\ SPb State University
+%%   198904, Saint-Petersburg, Russia}
+%% \address{
+%%   $^{2}$ Chebyshev Laboratory,
+%%   Faculty of Mathematics and Mechanics, \\ SPb State University
+%%   199178, Saint-Petersburg, Russia\\
+%% anton.nazarov@hep.phys.spbu.ru}
+%% 
+%% 
+\maketitle
+
+\begin{abstract}
+  We consider restricted solid-on-solid realization of the tricritical Ising model on upper
+  half-plane. We use conformally-invariant boundary conditions  and integrability of the model to
+  show the coincidence of lattice interfaces to Schramm-Loewner evolution traces in critical point.
+  We emphasize the similarity and differences with the Ising model. 
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Tricritical Ising model is the dilute Ising model in the tricritcal point.
+The 2-Dimensional tricritical Ising model is the simplest known statistical model to exhibit
+supersymmetry. This simple model has a long history of theoretical and experimental study. 
+
+Several lattice realization of tricritical Ising model are possible. We consider the dilute Ising model and the $A_4$
+Restricted Solid-on-Solid (RSOS) model. The dilute Ising model is described by the Hamiltonian 
+\begin{equation}
+  \label{eq:1}
+  H = -\beta \sum_{<i,j>}\sigma_i\sigma_j - \mu \sum_{i}(\sigma_i)^2  
+\end{equation}
+We overview the phase diagram and present restricted solid-on-solid realization of the model in
+section \ref{sec:rsos-real-ising}. This model has the tricritical point $T$. 
+
+
+In recent
+years theoretical progress in the study of critical behavior was connected with the description of
+geometrical objects -- interfaces. It was achieved by the use of Scharmm-Loewner evolution. To study
+the behavior of critical interfaces we consider the model on the bounded domain. 
+
+The behaviour of the model in critical
+point is described by conformal field theory (CFT) with central charge $c=\frac{7}{10}$
+\cite{friedan1985superconformal}. 
+
+Shramm-Loewner evolution is the stochastic differential equation that describes the growth of
+conformally-invariant cut (some details here).
+
+We use CFT data to establish the value of Schramm-Loewner evolution parameter $\kappa$. The relation
+$c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}$ gives us possible values of $\kappa=\frac{16}{5},\; 5$.
+The model is also simplest example of supersymmetric conformal field theory. Schramm-Loewner
+evolution on superspace was introduced in \cite{nagi2005stochastic,rasmussen2004stochastic}. The
+relationship between the central charge and SLE parameter in this case is
+$c=\frac{15}{2}-3\left(\kappa+\frac{1}{\kappa}\right)$. It gives us
+$\kappa=\frac{3}{5},\frac{5}{3}$. (? c different for different sectors? )
+
+We consider the model on the domain with a boundary (upper half-plane). So we need to impose
+conformally invariant boundary conditions. Boundary states satisfy Cardy conditions and were
+classified by Chim \cite{chim1996boundary}. Conformal weights for the boundary fields are $h=0,\;
+\frac{1}{10},\; \frac{3}{5},\; \frac{3}{2},\; \frac{3}{80},\; \frac{7}{16}$.
+
+We review the Schramm-Loewner evolution and conformal field theory model for the tricritical Ising
+model in section \ref{sec:conf-field-theory}. 
+
+The weights $h=\frac{1}{10},\; \frac{7}{16}$ satisfy the relationship between the parameter $\kappa$
+and conformal weight of boundary condition changing operator in SLE martingale: $(3\kappa-8) h =c$.
+If we consider SLE on a superspace we have the equation $h=\frac{6\kappa-3}{16}$ and get the weights
+$h=\frac{7}{6}?, \frac{1}{10}$ in the Neveu-Schwartz sector and $h=\frac{3}{80}, \frac{7}{16}$ in
+the Ramond-Ramond sector.
+
+The classification of boundary states and SLE martingale condition suggests us the proper choice of
+integrable boundary conditions in RSOS realization of the model. For example, the following boundary
+satisfy it:
+\begin{equation}
+  \label{eq:2}
+  \underline{\begin{array}{llllllllll}
+    2 & & 2 & & 4 & & 4 & & 4\\
+    &  3 & & 3 & & 3 & & 3 & &
+  \end{array}}
+\end{equation}
+There is obviously an interface on double lattice delimiting $2$-s from $4$-s. We analyze the
+boundary conditions in RSOS model and  introduce the interfaces in section
+\ref{sec:bound-cond-interf}. 
+
+ Then we
+select lattice observable that is martingale with respect to the interface growth.
+This observable is a generalization of Smirnov-Hongler parafermionic observable []:
+\begin{equation}
+  \label{eq:3}
+  f = \sum e^{-\mbox{winding}} e^{-Kl}
+\end{equation}
+
+In the section \ref{sec:discr-holom-observ} we show that this observable satisfy discrete s-holomorphicity
+condition and is a solution of discrete boundary problem. In critical limit this gives us the
+holomorphic function crucial for the proof of the convergence of the interface to SLE trace.
+
+We list unsolved problems and future directions in conclusion \ref{sec:conclusion}.
+
+\section{Statement of the main theorem}
+\label{sec:results}
+
+
+\section{RSOS realization of the Ising and tricritical Ising model}
+\label{sec:rsos-real-ising}
+
+\section{Conformal field theory and Scramm-Loewner evolution}
+\label{sec:conf-field-theory}
+
+\section{Boundary conditions and interfaces}
+\label{sec:bound-cond-interf}
+
+\section{Discrete holomorphic observable and proof of convergence}
+\label{sec:discr-holom-observ}
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+
+
+\bibliography{bibliography}{} 
+\bibliographystyle{utphys}
+
+\end{document}
