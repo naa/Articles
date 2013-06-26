@@ -324,30 +324,136 @@ $\frac{V_+}{V_-}=\frac{H_+}{H_-}= 1+\sqrt{2}=e^{2 K_C}$.
 $2\cos\lambda=\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}}$,
 $\lambda=0.62831853071796$ and $\psi=\left[1,2\cos\lambda,
   4\cos^2\lambda-1, 2cos\lambda-\frac{1}{2\cos\lambda}\right]$ or $\psi=\left[1,\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}},\frac{\sqrt{5}+1}{2},\frac{\sqrt{\sqrt{5}+3}\,\left( \sqrt{2}\,\sqrt{5}-\sqrt{2}\right) }{4}\right]$.
-The isotropic case $u=\lambda/2$ with boundary parameters
-$u=\xi_1=\xi_2=\lambda/2$ corresponds to the  conformal point. Then we have
+
+For simplicity we consider only the isotropic case $u=\lambda/2$ with boundary parameters
+$u=\xi_1=\xi_2=\lambda/2$. This case in critical limit corresponds to the  conformal point. Then we have
 $s_1(-u)=\frac{\sin\lambda/2}{\sin\lambda}=\frac{1}{2\cos\lambda/2}$ and $s_0(u)=\frac{1}{2\cos\lambda/2}$.
 
-Bolzmann weights are
+There are 14 configurations with Bolzmann weights:
 \begin{equation}
-  \label{eq:4}
-    \begin{array}{lllll}
-    V_{-} &=& W\left.\left(
-    \begin{array}{ll}
-      2 & 3\\
-      1 & 2
-    \end{array}\right| u \right) &=&   W\left.\left(
-    \begin{array}{ll}
-      2 & 1\\
-      3 & 2
-    \end{array}\right| u
-\right)=\frac{1}{\sqrt{2}} \frac{\sin(u)}{\sin(\lambda)}=\sin(u)\\
+  \label{eq:12}
+  \begin{array}{l}
+    W\left(                                          
+        \begin{array}{cc}
+          2 & 1 \\
+          1 & 2
+        \end{array}
+      \right)=
+    W\left(
+        \begin{array}{cc}
+          3 & 4 \\
+          4 & 3
+        \end{array}
+      \right)=
+\frac{\sqrt{2+\frac{2}{\sqrt{5}}}
+      \left(3+\sqrt{5}\right) \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4}
+          \left(1+\sqrt{5}\right)\right)\right)}{1+\sqrt{5}}\\
+    W\left(                                      
+        \begin{array}{cc}
+          2 & 3 \\
+          1 & 2
+        \end{array}
+      \right)=
+    W\left(                                         
+        \begin{array}{cc}
+          3 & 2 \\
+          4 & 3
+        \end{array}
+      \right)=    W\left(                                         
+        \begin{array}{cc}
+          3 & 4 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(                                         
+        \begin{array}{cc}
+          2 & 1 \\
+          3 & 2
+        \end{array}
+      \right)=\frac{2 \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4}
+          \left(1+\sqrt{5}\right)\right)\right)}{\sqrt[4]{5}}\\
+    W\left(                                         
+        \begin{array}{cc}
+          1 & 2 \\
+          2 & 1
+        \end{array}
+      \right)= 
+      W\left(                                                  
+        \begin{array}{cc}
+          4 & 3 \\
+          3 & 4
+        \end{array}
+      \right)=\left(3+\sqrt{5}\right) \sqrt{\frac{1}{10}
+      \left(5+\sqrt{5}\right)} \sin
+    \left(\frac{1}{2}\cos^{-1}\left(\frac{1}{4}
+        \left(1+\sqrt{5}\right)\right)\right) \\  
+    W\left(                                       
+        \begin{array}{cc}
+          3 & 2 \\
+          2 & 1
+        \end{array}
+      \right)=
+    W\left(                                                       
+        \begin{array}{cc}
+          1 & 2 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(                                                      
+        \begin{array}{cc}
+          4 & 3 \\
+          3 & 2
+        \end{array}
+      \right)=
+    W\left(                                                        
+        \begin{array}{cc}
+          2 & 3 \\
+          3 & 4
+        \end{array}
+      \right)=\\
+    \quad\quad\quad\sqrt{2+\frac{2}{\sqrt{5}}} \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4} \left(1+\sqrt{5}\right)\right)\right)\\
+    W\left(
+        \begin{array}{cc}
+          3 & 2 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(
+        \begin{array}{cc}
+          2 & 3 \\
+          3 & 2
+        \end{array}
+      \right)=2 \sqrt{2+\frac{2}{\sqrt{5}}} \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4} \left(1+\sqrt{5}\right)\right)\right)\\
+
+  \end{array}
 \end{equation}
 
+We see the duality under the exchange $1\leftrightarrow 4, 2\leftrightarrow 3$.
+
+Boundary weights are in correspondence with the choice of boundary
+conditions. Possible integrable boundary conditions and boundary
+weights were identified in \cite{behrend2001integrable}. 
+
+
+The $A_4$ RSOS model admits following loop description. Consider odd
+sublattice with values at sites equal to $1,3$ and draw loops around
+$4$s on it. Then consider even sublattice and draw loops around $1$s.
+The loops do not intersect. Loop picture characterizes configuration
+up to duality. 
+
+
+Consider following boundary condition:
+\begin{equation}
+  \label{eq:13}
+  \underline{\begin{array}{llllllllll}
+    & 3 & & 1 &  & 3 & - & 3 & & \\
+    2 & & 2 &  & 2 & | & 4 & | & 2\\
+    & 1 & & 3 & - & 3 & & 3 &- & \\
+    2 & & 2 & | & 4 & & 4 & & 4\\
+    &  3 & & 3 &- & 3 &- & 3 &- &\dots
+  \end{array}}
+\end{equation}
+There is obviously an interface on double lattice delimiting $2$-s from $4$-s. We analyze the
+
 \begin{itemize}
-\item Boltzmann weights for $A_{4}$
 \item Boundary weights ?
-\item Critical point, isotropicity
 \item Loop description (two types of loops, duality, similarity with dilute Ising model) 
 \end{itemize}
 
