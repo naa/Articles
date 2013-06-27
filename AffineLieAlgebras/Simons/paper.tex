@@ -140,7 +140,9 @@ We list unsolved problems and future directions in conclusion \ref{sec:conclusio
 \section{RSOS realization of the Ising and tricritical Ising model}
 \label{sec:rsos-real-ising}
 
-Tricritical Ising model was introduced as a modification of the Ising model \cite{} (See Malte Henkel ``Conformal invariance and critical phenomena'' 430, 408). (pp 14, 221, 340).
+Tricritical Ising model was introduced as a modification of the Ising
+model \cite{} (See Malte Henkel ``Conformal invariance and critical
+phenomena'' 430, 408). (pp 14, 221, 340).  
 
 Blume-Capel model. Critical exponents [430]. Mathematica program for CFT: Lassig Mussardo CPC 66, 71 (1991) [423].
 
@@ -450,7 +452,8 @@ Consider following boundary condition:
     &  3 & & 3 &- & 3 &- & 3 &- &\dots
   \end{array}}
 \end{equation}
-There is obviously an interface on double lattice delimiting $2$-s from $4$-s. We analyze the
+There is obviously an interface on double lattice delimiting $2$-s
+from $4$-s. We need to prove conformal invariance of this interface. 
 
 \begin{itemize}
 \item Boundary weights ?
@@ -460,22 +463,126 @@ There is obviously an interface on double lattice delimiting $2$-s from $4$-s. W
 \section{Conformal field theory and Scramm-Loewner evolution}
 \label{sec:conf-field-theory}
 
-
+Connection of interfaces in restricted solid-on-solid models with
+Schramm-Loewner evolution and conformal field theory was discussed in
+the paper \cite{cardy2007ade}, but no rigorous proof was given.
 
 In recent
 years theoretical progress in the study of critical behavior was connected with the description of
-geometrical objects -- interfaces. It was achieved by the use of Scharmm-Loewner evolution. To study
-the behavior of critical interfaces we consider the model on the bounded domain. 
+geometrical objects -- interfaces. It was achieved by the use of
+Scharmm-Loewner evolution \cite{schramm2000scaling}, which is
+introduced as follows. 
+Consider some critical lattice model on the upper half-plane
+$\mathbb{H}$ with the cut along a critical interface $\gamma_{t}$
+(domain wall up to some length $t$). We denote this slit domain by
+$\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$. Assume that
+$\gamma_{t}$ satisfies restriction property and is conformally
+invariant \cite{Cardy:2005kh}. Then conformal map
+$g_{t}:\mathbb{H}_{t}\to \mathbb{H}$ satisfies stochastic differential
+equation \cite{schramm2000scaling}:
+\begin{equation}
+\label{eq:19}
+  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} ,
+\end{equation}
+where $\xi_{t}$ is the Brownian motion. The dynamic of the tip $z_{t}$ of critical curve $\gamma_{t}$ (tip of SLE trace) is given by the law $z_{t}=g_{t}^{-1}(\sqrt{\kappa}\xi_{t})$. 
 
-The behaviour of the model in critical
+Sometimes it is more convenient to use the map $w_{t} (z)=g_{t}(z)-\sqrt{\kappa}\xi_{t}$, so the equation \eqref{eq:19} becomes
+\begin{equation}
+  \label{eq:20}
+       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}d\xi_{t}  
+\end{equation}
+
+To establish the connection with conformal field theory one needs to
+consider $N$-point correlation function of boundary CFT with boundary
+condition changing operators $\varphi$ sitting at the tip of SLE trace
+$z_t$ and at the infinity:
+\begin{equation}
+  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\}_{i=1}^{N})_{\mathbb{H}_{t}}=
+\left<\varphi(z_{t}) \phi_{1}(z_{1},\bar z_{1}) \dots \phi_{n}(z_{n},\bar z_{n})
+      \varphi(\infty)\right>,
+    \label{eq:14}
+\end{equation}
+where $\phi_{i}$ are bulk primary fields with conformal weights $h_i$.
+Then use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite expression \eqref{eq:14} in the whole upper half plane:
+\begin{multline}
+  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\})_{\mathbb{H}_{t}}=\\
+  =\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{i}} 
+  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{\bar h_i}
+  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
+  \label{eq:4}
+\end{multline}
+To extend the definition of $\mathcal{F}$ to the whole plane we need
+to double the number of fields $\phi_{i}$
+\cite{cardy2004boundary,cardy1984conformal} and consider $w_{i},\bar
+w_{i}$ as independent variables. For simplicity we will write
+$\mathcal{F}(\left\{w_{i}\right\}_{i=1}^{2N})$.
+
+Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in the right-hand-side of equation (\ref{eq:1}) gives us
+\begin{equation*}
+  -\frac{2h_{i}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}.
+\end{equation*}
+We denote by $\mathcal{G}_{i}$ the generator of infinitesimal
+transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) =
+\mathcal{G}_{i}\phi_{i}(w_{i})$:
+ The generator of field transformation is equal to
+\begin{equation}
+  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}.
+  \label{eq:11}
+\end{equation}
+
+The differential of $\mathcal{F}$ should be zero due to martingale condition.  Ito formula is used to calculate the differential. We need to include second order terms in  $\mathcal{G}_{i}$ since they contain squares of Brownian motion differential $d\xi_{t}$ with the expectation value proportional to $dt$ ($\mathbb{E}[d\xi_{t}^{2}]=dt$):
+\begin{multline}
+d \mathcal{F}_{\mathbb{H}_{t}}=\\ \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)
+\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
+      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}\\=0
+\label{eq:8}
+\end{multline}
+Substituting  definition \eqref{eq:11} we get 
+\begin{equation}
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}\right)        \mathcal{F}_{\mathbb{H}}=0,
+  \label{eq:4}
+\end{equation}
+with
+\begin{eqnarray*}
+  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{i}}{(w_{i}-z)^{n}}-\frac{\partial_{w_{i}}}{(w_{i}-z)^{n-1}}\right).
+\end{eqnarray*}
+This equation is equivalent to the algebraic condition on the boundary state $\varphi(0)\left|0\right>$:
+\begin{multline}
+  \label{eq:7}
+  \left<0\left|\varphi(\infty)\phi_{1}(w_{1})\dots\phi_{2N}(w_{2N})
+  \left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}\right)
+\varphi(0)\right|0\right>=0.
+\end{multline}
+Since the set $\{\phi_{i}\}$ consists of arbitrary primary fields we conclude that 
+\begin{equation}
+|\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}\right)
+\varphi(0)|0>
+\end{equation}
+is a null-state. Now act on $\psi$ by raising operators to get
+equations connecting  $\kappa$, central charge $c$ and conformal
+weight of boundary condition changing operator $h$.
+\begin{eqnarray}
+  \label{eq:15}
+  c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}\\
+  h=\frac{c}{3\kappa-8}
+\end{eqnarray}
+
+
+The behaviour of the dilute Ising and $A_4$ RSOS  models in tricritical
 point is described by conformal field theory (CFT) with central charge $c=\frac{7}{10}$
 \cite{friedan1985superconformal}. 
 
-Shramm-Loewner evolution is the stochastic differential equation that describes the growth of
-conformally-invariant cut (some details here).
-
 We use CFT data to establish the value of Schramm-Loewner evolution parameter $\kappa$. The relation
-$c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}$ gives us possible values of $\kappa=\frac{16}{5},\; 5$.
+$c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}$ gives us possible values of
+$\kappa=\frac{16}{5},\; 5$. Boundary states satisfy Cardy conditions and were
+classified by Chim \cite{chim1996boundary}. Conformal weights for the boundary fields are $h=0,\;
+\frac{1}{10},\; \frac{3}{5},\; \frac{3}{2},\; \frac{3}{80},\;
+\frac{7}{16}$.
+
+Substituting $c=7/10, \kappa=16/5, 5$ in equations (\ref{eq:15}) we
+obtain following possible values for conformal weight of boundary
+condition changing operator: $h=7/16,1/10$
+
 The model is also simplest example of supersymmetric conformal field theory. Schramm-Loewner
 evolution on superspace was introduced in \cite{nagi2005stochastic,rasmussen2004stochastic}. The
 relationship between the central charge and SLE parameter in this case is
@@ -483,9 +590,7 @@ $c=\frac{15}{2}-3\left(\kappa+\frac{1}{\kappa}\right)$. It gives us
 $\kappa=\frac{3}{5},\frac{5}{3}$. (? c different for different sectors? )
 
 We consider the model on the domain with a boundary (upper half-plane). So we need to impose
-conformally invariant boundary conditions. Boundary states satisfy Cardy conditions and were
-classified by Chim \cite{chim1996boundary}. Conformal weights for the boundary fields are $h=0,\;
-\frac{1}{10},\; \frac{3}{5},\; \frac{3}{2},\; \frac{3}{80},\; \frac{7}{16}$.
+conformally invariant boundary conditions. 
 
 We review the Schramm-Loewner evolution and conformal field theory model for the tricritical Ising
 model in section \ref{sec:conf-field-theory}. 
