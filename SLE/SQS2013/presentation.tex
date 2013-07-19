@@ -1,0 +1,206 @@
+\documentclass[pdftex]{beamer} 
+% \usepackage[pdftex]{graphicx}
+\usepackage{amsmath,amssymb,amsthm} 
+% \usepackage[authoryear]{natbib}
+% \bibliographystyle{plainnat}
+% \setcitestyle{square,aysep={}}
+\usepackage{pb-diagram}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+% \usepackage[russian]{babel}
+\usepackage{epstopdf}
+\usepackage{multicol}
+\usepackage{cancel}
+
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% \newtheorem{theorem}{Theorem}
+%% \newtheorem{acknowledgement}[theorem]{Acknowledgement}
+%% \newtheorem{algorithm}[theorem]{Algorithm}
+%% \newtheorem{axiom}[theorem]{Axiom}
+%% \newtheorem{case}[theorem]{Case}
+%% \newtheorem{claim}[theorem]{Claim}
+%% \newtheorem{conclusion}[theorem]{Conclusion}
+%% \newtheorem{condition}[theorem]{Condition}
+%% \newtheorem{conjecture}[theorem]{Conjecture}
+%% \newtheorem{mycorollary}[theorem]{Corollary}
+%% \newtheorem{mycriterion}[theorem]{Criterion}
+%% \newtheorem{mydefinition}[theorem]{Definition}
+%% \newtheorem{myexample}[theorem]{Example}
+%% \newtheorem{myexercise}[theorem]{Exercise}
+%% \newtheorem{mylemma}[theorem]{Lemma}
+%% \newtheorem{mynotation}[theorem]{Notation}
+%% \newtheorem{myproblem}[theorem]{Problem}
+%% \newtheorem{myproposition}[theorem]{Proposition}
+%% \newtheorem{myremark}[theorem]{Remark}
+%% \newtheorem{mysolution}[theorem]{Solution}
+%% \newtheorem{mysummary}[theorem]{Summary}
+%% \newenvironment{myproof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfg}{\hf_{\gf}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+
+% \pagestyle{plain}
+
+\theoremstyle{definition} \newtheorem{Def}{Definition}
+\setbeamertemplate{caption}[empty]
+\newcommand{\tr}{\hat\triangleright} \newcommand{\trc}{\triangleright}
+\newcommand{\adk}{a^{\dagger}_{\kappa}} \newcommand{\ak}{a_{\kappa}}
+\def\bF{\mbox{$\overline{\cal F}$}} \def\F{\mbox{$\cal F$}}
+
+\usetheme{default}
+% \usetheme{Warsaw}
+\title[Tricritical Ising model]{Integrability and s-holomorphicity in tricritical Ising model}
+\author[Anton Nazarov]{Anton Nazarov}
+
+\institute[SPbSU]{
+  Department of high-energy physics,\\
+  Faculty of physics,\\ 
+  Chebyshev laboratory,\\
+  Faculty of mathematics and mechanics,\\
+  Saint-Petersburg State University,\\
+  198904, Saint-Petersburg, Russia\\
+  e-mail: anton.nazarov@hep.phys.spbu.ru
+}
+
+\date[SQS'2013] % (optional, should be abbreviation of conference name)
+{Supersymmetries and Quantum Symmetries 2013,\\ Joint Institute for Nuclear Research, Bogoliubov Laboratory of Theoretical Physics, August, 2013}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\begin{frame}
+  \frametitle{Plan of the talk}
+  \begin{itemize}
+  \item Tricritical Ising model
+  \item RSOS formulation and integrability
+  \item CFT description and SLE 
+  \item S-holomorphic observable
+  \item Conclusion
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{ Tricritical Ising model}
+  \begin{equation}
+    \label{eq:1}
+    H = -\beta \sum_{<i,j>}\sigma_i\sigma_j - \mu \sum_{i}(\sigma_i)^2  
+  \end{equation}
+\end{frame}
+\begin{frame}
+  \frametitle{ RSOS formulation and integrability}
+   \begin{equation}
+     \label{eq:12}
+     \begin{array}{l}
+       W\left(                                          
+         \begin{array}{cc}
+           2 & 1 \\
+           1 & 2
+         \end{array}
+       \right)=
+       W\left(
+         \begin{array}{cc}
+           3 & 4 \\
+           4 & 3
+         \end{array}
+       \right)=   W\left(                                         
+         \begin{array}{cc}
+           1 & 2 \\
+           2 & 1
+         \end{array}
+       \right)= \\
+       W\left(                                                  
+         \begin{array}{cc}
+           4 & 3 \\
+           3 & 4
+         \end{array}
+       \right)=\sqrt{\frac{2}{1+\sqrt{5}}}+\sqrt{\frac{1}{2}\left(1+\sqrt{5}\right)}\\
+ W\left(                                      
+           \begin{array}{cc}
+             2 & 3 \\
+             1 & 2
+           \end{array}
+         \right)=
+         W\left(                                         
+           \begin{array}{cc}
+             3 & 2 \\
+             4 & 3
+           \end{array}
+         \right)=    W\left(                                         
+           \begin{array}{cc}
+             3 & 4 \\
+             2 & 3
+           \end{array}
+         \right)=    W\left(                                         
+           \begin{array}{cc}
+             2 & 1 \\
+             3 & 2
+           \end{array}
+         \right)=\\
+         W\left(                                       
+           \begin{array}{cc}
+             3 & 2 \\
+             2 & 1
+           \end{array}
+         \right)=
+         W\left(                                                       
+           \begin{array}{cc}
+             1 & 2 \\
+             2 & 3
+           \end{array}
+         \right)=    W\left(                                                      
+           \begin{array}{cc}
+             4 & 3 \\
+             3 & 2
+           \end{array}
+         \right)=
+         W\left(                                                        
+           \begin{array}{cc}
+             2 & 3 \\
+             3 & 4
+           \end{array}
+         \right)=
+         \sqrt[4]{\frac{2}{1+\sqrt{5}}}\\
+         W\left(
+           \begin{array}{cc}
+             3 & 2 \\
+             2 & 3
+           \end{array}
+         \right)=    W\left(
+           \begin{array}{cc}
+             2 & 3 \\
+             3 & 2
+           \end{array}
+         \right)=2 
+       \end{array}
+     \end{equation}
+   \end{frame}
+   
+  \begin{frame}
+    \frametitle{ CFT description and SLE }
+  \end{frame}
+  \begin{frame}
+    \frametitle{ S-holomorphic observable}
+  \end{frame}
+  \begin{frame}
+    \frametitle{ Conclusion}
+  \end{frame}
+\bibliography{bibliography}{} 
+  \bibliographystyle{apalike}
+\end{document}
