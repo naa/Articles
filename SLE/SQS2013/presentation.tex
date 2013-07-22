@@ -1,6 +1,7 @@
 \documentclass[pdftex]{beamer} 
 % \usepackage[pdftex]{graphicx}
 \usepackage{amsmath,amssymb,amsthm} 
+\usepackage{pb-diagram}
 % \usepackage[authoryear]{natbib}
 % \bibliographystyle{plainnat}
 % \setcitestyle{square,aysep={}}
@@ -98,13 +99,34 @@
 \end{frame}
 \begin{frame}
   \frametitle{ Tricritical Ising model}
+  Hamiltonian of the model
   \begin{equation}
     \label{eq:1}
     H = -\beta \sum_{<i,j>}\sigma_i\sigma_j - \mu \sum_{i}(\sigma_i)^2  
   \end{equation}
+  Partition function
+  \begin{equation}
+    \label{eq:2}
+    Z=\sum_{\mathrm{conf}} W[\mathrm{conf}]=\sum_{\mathrm{conf}} e^{-\frac{H[\mathrm{conf}]}{kT}}
+  \end{equation}
+
 \end{frame}
 \begin{frame}
-  \frametitle{ RSOS formulation and integrability}
+  \frametitle{$A_4$  restricted solid-on-solid model}
+  Dynkin diagram, nodes: $1,\dots,4$, adjacent nodes -- adjacent values
+  \begin{equation}
+    \label{eq:4}
+    A_4:\quad
+    \begin{diagram}
+      \node{1}\arrow{e,-}\node{2}\arrow{e,-}\node{3}\arrow{e,-}\node{4}
+    \end{diagram}
+  \end{equation}
+
+  \begin{equation}
+    \label{eq:3}
+    W[\mathrm{conf}]=\prod_{\mathrm{faces}} W(\mathrm{face})
+  \end{equation}
+
    \begin{equation}
      \label{eq:12}
      \begin{array}{l}
@@ -124,13 +146,13 @@
            1 & 2 \\
            2 & 1
          \end{array}
-       \right)= \\
+       \right)= 
        W\left(                                                  
          \begin{array}{cc}
            4 & 3 \\
            3 & 4
          \end{array}
-       \right)=\sqrt{\frac{2}{1+\sqrt{5}}}+\sqrt{\frac{1}{2}\left(1+\sqrt{5}\right)}\\
+       \right)=\\\quad=\sqrt{\frac{2}{1+\sqrt{5}}}+\sqrt{\frac{1}{2}\left(1+\sqrt{5}\right)}\\
  W\left(                                      
            \begin{array}{cc}
              2 & 3 \\
@@ -175,8 +197,8 @@
              2 & 3 \\
              3 & 4
            \end{array}
-         \right)=
-         \sqrt[4]{\frac{2}{1+\sqrt{5}}}\\
+         \right)=\\
+         \quad=\sqrt[4]{\frac{2}{1+\sqrt{5}}}\\
          W\left(
            \begin{array}{cc}
              3 & 2 \\
@@ -191,7 +213,14 @@
        \end{array}
      \end{equation}
    \end{frame}
-   
+   \begin{frame}
+     \frametitle{RSOS formulation and integrability}
+     Two rows transfer matrix:
+     \begin{equation}
+       \label{eq:5}
+       T(u)=\prod W
+     \end{equation}
+   \end{frame}
   \begin{frame}
     \frametitle{ CFT description and SLE }
   \end{frame}
