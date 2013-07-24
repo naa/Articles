@@ -135,12 +135,23 @@ We list unsolved problems and future directions in conclusion \ref{sec:conclusio
 \begin{theorem}
   For tricritical Ising model on upper half plane there exists s-holomorphic observable $f$ given by the
   formula. It satisfies discrete boundary problem with boundary conditions. In the limit it
-  converges to analytic function. Correlation function of something $F$ can be calculated as $F=f+if$.
+  converges to analytic function. Correlation function of something
+  $F$ can be calculated as $F=f+if$.
+
+  $f$ is defined on dual lattice. 
+  \begin{eqnarray}
+    \label{eq:17}
+    f=\sum_{C\in \mbox{conf}|\gamma:a\to z} W(C) e^{-i s \Theta}\\
+    s=3/5\\
+    \kappa=5
+  \end{eqnarray}
 \end{theorem}
 \section{RSOS realization of the Ising and tricritical Ising model}
 \label{sec:rsos-real-ising}
 
-Tricritical Ising model was introduced as a modification of the Ising model \cite{} (See Malte Henkel ``Conformal invariance and critical phenomena'' 430, 408). (pp 14, 221, 340).
+Tricritical Ising model was introduced as a modification of the Ising
+model \cite{} (See Malte Henkel ``Conformal invariance and critical
+phenomena'' 430, 408). (pp 14, 221, 340).  
 
 Blume-Capel model. Critical exponents [430]. Mathematica program for CFT: Lassig Mussardo CPC 66, 71 (1991) [423].
 
@@ -321,6 +332,7 @@ $\frac{V_+}{V_-}=\frac{H_+}{H_-}= 1+\sqrt{2}=e^{2 K_C}$.
 
 
   We are interested in the case $A_4$, so we have
+
 $2\cos\lambda=\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}}$,
 $\lambda=0.62831853071796$ and $\psi=\left[1,2\cos\lambda,
   4\cos^2\lambda-1, 2cos\lambda-\frac{1}{2\cos\lambda}\right]$ or $\psi=\left[1,\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}},\frac{\sqrt{5}+1}{2},\frac{\sqrt{\sqrt{5}+3}\,\left( \sqrt{2}\,\sqrt{5}-\sqrt{2}\right) }{4}\right]$.
@@ -332,6 +344,230 @@ $s_1(-u)=\frac{\sin\lambda/2}{\sin\lambda}=\frac{1}{2\cos\lambda/2}$ and $s_0(u)
 \item Boltzmann weights for $A_{4}$
 \item Boundary weights ?
 \item Critical point, isotropicity
+
+$2\cos\lambda=\frac{1+\sqrt{5}}{2}$, $\lambda=\pi/5$, $\psi=\left[1,2\cos\lambda,2\cos\lambda,1\right]$.
+$2\cos\lambda=\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}}$,
+$\lambda=0.62831853071796$ and $\psi=\left[1,2\cos\lambda,
+  4\cos^2\lambda-1, 2cos\lambda-\frac{1}{2\cos\lambda}\right]$ or $\psi=\left[1,\frac{\sqrt{\sqrt{5}+3}}{\sqrt{2}},\frac{\sqrt{5}+1}{2},\frac{\sqrt{\sqrt{5}+3}\,\left( \sqrt{2}\,\sqrt{5}-\sqrt{2}\right) }{4}\right]$.
+
+For simplicity we consider only the isotropic case $u=\lambda/2$ with boundary parameters
+$u=\xi_1=\xi_2=\lambda/2$. This case in critical limit corresponds to the  conformal point. Then we have
+$s_1(-u)=\frac{\sin\lambda/2}{\sin\lambda}=\frac{1}{2\cos\lambda/2}$ and $s_0(u)=\frac{1}{2\cos\lambda/2}$.
+
+There are 14 configurations with Bolzmann weights:
+\begin{equation}
+  \label{eq:12}
+  \begin{array}{l}
+    W\left(                                          
+        \begin{array}{cc}
+          2 & 1 \\
+          1 & 2
+        \end{array}
+      \right)=
+    W\left(
+        \begin{array}{cc}
+          3 & 4 \\
+          4 & 3
+        \end{array}
+      \right)=
+\frac{\sqrt{2+\frac{2}{\sqrt{5}}}
+      \left(3+\sqrt{5}\right) \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4}
+          \left(1+\sqrt{5}\right)\right)\right)}{1+\sqrt{5}}\\
+    W\left(                                      
+        \begin{array}{cc}
+          2 & 3 \\
+          1 & 2
+        \end{array}
+      \right)=
+    W\left(                                         
+        \begin{array}{cc}
+          3 & 2 \\
+          4 & 3
+        \end{array}
+      \right)=    W\left(                                         
+        \begin{array}{cc}
+          3 & 4 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(                                         
+        \begin{array}{cc}
+          2 & 1 \\
+          3 & 2
+        \end{array}
+      \right)=\frac{2 \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4}
+          \left(1+\sqrt{5}\right)\right)\right)}{\sqrt[4]{5}}\\
+    W\left(                                         
+        \begin{array}{cc}
+          1 & 2 \\
+          2 & 1
+        \end{array}
+      \right)= 
+      W\left(                                                  
+        \begin{array}{cc}
+          4 & 3 \\
+          3 & 4
+        \end{array}
+      \right)=\left(3+\sqrt{5}\right) \sqrt{\frac{1}{10}
+      \left(5+\sqrt{5}\right)} \sin
+    \left(\frac{1}{2}\cos^{-1}\left(\frac{1}{4}
+        \left(1+\sqrt{5}\right)\right)\right) \\  
+    W\left(                                       
+        \begin{array}{cc}
+          3 & 2 \\
+          2 & 1
+        \end{array}
+      \right)=
+    W\left(                                                       
+        \begin{array}{cc}
+          1 & 2 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(                                                      
+        \begin{array}{cc}
+          4 & 3 \\
+          3 & 2
+        \end{array}
+      \right)=
+    W\left(                                                        
+        \begin{array}{cc}
+          2 & 3 \\
+          3 & 4
+        \end{array}
+      \right)=\\
+    \quad\quad\quad\sqrt{2+\frac{2}{\sqrt{5}}} \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4} \left(1+\sqrt{5}\right)\right)\right)\\
+    W\left(
+        \begin{array}{cc}
+          3 & 2 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(
+        \begin{array}{cc}
+          2 & 3 \\
+          3 & 2
+        \end{array}
+      \right)=2 \sqrt{2+\frac{2}{\sqrt{5}}} \sin \left(\frac{1}{2} \cos^{-1}\left(\frac{1}{4} \left(1+\sqrt{5}\right)\right)\right)\\
+
+  \end{array}
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:12}
+  \begin{array}{l}
+    W\left(                                          
+        \begin{array}{cc}
+          2 & 1 \\
+          1 & 2
+        \end{array}
+      \right)=
+    W\left(
+        \begin{array}{cc}
+          3 & 4 \\
+          4 & 3
+        \end{array}
+      \right)=   W\left(                                         
+        \begin{array}{cc}
+          1 & 2 \\
+          2 & 1
+        \end{array}
+      \right)= \\
+      W\left(                                                  
+        \begin{array}{cc}
+          4 & 3 \\
+          3 & 4
+        \end{array}
+      \right)=\sqrt{\frac{2}{1+\sqrt{5}}}+\sqrt{\frac{1}{2}\left(1+\sqrt{5}\right)\\
+    W\left(                                      
+        \begin{array}{cc}
+          2 & 3 \\
+          1 & 2
+        \end{array}
+      \right)=
+    W\left(                                         
+        \begin{array}{cc}
+          3 & 2 \\
+          4 & 3
+        \end{array}
+      \right)=    W\left(                                         
+        \begin{array}{cc}
+          3 & 4 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(                                         
+        \begin{array}{cc}
+          2 & 1 \\
+          3 & 2
+        \end{array}
+      \right)=\\
+    W\left(                                       
+        \begin{array}{cc}
+          3 & 2 \\
+          2 & 1
+        \end{array}
+      \right)=
+    W\left(                                                       
+        \begin{array}{cc}
+          1 & 2 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(                                                      
+        \begin{array}{cc}
+          4 & 3 \\
+          3 & 2
+        \end{array}
+      \right)=
+    W\left(                                                        
+        \begin{array}{cc}
+          2 & 3 \\
+          3 & 4
+        \end{array}
+      \right)=
+\sqrt[4]{\frac{2}{1+\sqrt{5}}}\\
+    W\left(
+        \begin{array}{cc}
+          3 & 2 \\
+          2 & 3
+        \end{array}
+      \right)=    W\left(
+        \begin{array}{cc}
+          2 & 3 \\
+          3 & 2
+        \end{array}
+      \right)=2 
+
+  \end{array}
+\end{equation}
+
+We see the duality under the exchange $1\leftrightarrow 4, 2\leftrightarrow 3$.
+
+Boundary weights are in correspondence with the choice of boundary
+conditions. Possible integrable boundary conditions and boundary
+weights were identified in \cite{behrend2001integrable}. 
+
+
+The $A_4$ RSOS model admits following loop description. Consider odd
+sublattice with values at sites equal to $1,3$ and draw loops around
+$4$s on it. Then consider even sublattice and draw loops around $1$s.
+The loops do not intersect. Loop picture characterizes configuration
+up to duality. 
+
+
+Consider following boundary condition:
+\begin{equation}
+  \label{eq:13}
+  \underline{\begin{array}{llllllllll}
+    & 3 & & 1 &  & 3 & - & 3 & & \\
+    2 & & 2 &  & 2 & | & 4 & | & 2\\
+    & 1 & & 3 & - & 3 & & 3 &- & \\
+    2 & & 2 & | & 4 & & 4 & & 4\\
+    &  3 & & 3 &- & 3 &- & 3 &- &\dots
+  \end{array}}
+\end{equation}
+There is obviously an interface on double lattice delimiting $2$-s
+from $4$-s. We need to prove conformal invariance of this interface. 
+
+\begin{itemize}
+\item Boundary weights ?
 \item Loop description (two types of loops, duality, similarity with dilute Ising model) 
 \end{itemize}
 
@@ -359,6 +595,128 @@ conformally-invariant cut
 
 We use CFT data to establish the value of Schramm-Loewner evolution parameter $\kappa$. The relation
 $c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}$ gives us possible values of $\kappa=\frac{16}{5},\; 5$.
+
+Connection of interfaces in restricted solid-on-solid models with
+Schramm-Loewner evolution and conformal field theory was discussed in
+the paper \cite{cardy2007ade}, but no rigorous proof was given.
+
+In recent
+years theoretical progress in the study of critical behavior was connected with the description of
+geometrical objects -- interfaces. It was achieved by the use of
+Scharmm-Loewner evolution \cite{schramm2000scaling}, which is
+introduced as follows. 
+Consider some critical lattice model on the upper half-plane
+$\mathbb{H}$ with the cut along a critical interface $\gamma_{t}$
+(domain wall up to some length $t$). We denote this slit domain by
+$\mathbb{H}_{t}=\mathbb{H}\setminus \gamma_{t}$. Assume that
+$\gamma_{t}$ satisfies restriction property and is conformally
+invariant \cite{Cardy:2005kh}. Then conformal map
+$g_{t}:\mathbb{H}_{t}\to \mathbb{H}$ satisfies stochastic differential
+equation \cite{schramm2000scaling}:
+\begin{equation}
+\label{eq:19}
+  \frac{\partial g_t(z)}{\partial t} = \frac{ 2}{g_t(z)-\sqrt{\kappa}\xi_{t}} ,
+\end{equation}
+where $\xi_{t}$ is the Brownian motion. The dynamic of the tip $z_{t}$ of critical curve $\gamma_{t}$ (tip of SLE trace) is given by the law $z_{t}=g_{t}^{-1}(\sqrt{\kappa}\xi_{t})$. 
+
+Sometimes it is more convenient to use the map $w_{t} (z)=g_{t}(z)-\sqrt{\kappa}\xi_{t}$, so the equation \eqref{eq:19} becomes
+\begin{equation}
+  \label{eq:20}
+       d w _{t}= \frac{2dt}{w_{t} }-\sqrt{\kappa}d\xi_{t}  
+\end{equation}
+
+To establish the connection with conformal field theory one needs to
+consider $N$-point correlation function of boundary CFT with boundary
+condition changing operators $\varphi$ sitting at the tip of SLE trace
+$z_t$ and at the infinity:
+\begin{equation}
+  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\}_{i=1}^{N})_{\mathbb{H}_{t}}=
+\left<\varphi(z_{t}) \phi_{1}(z_{1},\bar z_{1}) \dots \phi_{n}(z_{n},\bar z_{n})
+      \varphi(\infty)\right>,
+    \label{eq:14}
+\end{equation}
+where $\phi_{i}$ are bulk primary fields with conformal weights $h_i$.
+Then use the conformal map  $w(z):\mathbb{H}\setminus\gamma_{t}\to \mathbb{H}$ to rewrite expression \eqref{eq:14} in the whole upper half plane:
+\begin{multline}
+  \mathcal{F}(\left\{z_{i},\bar z_{i}\right\})_{\mathbb{H}_{t}}=\\
+  =\prod \left(\frac{\partial w(z_{i})}{\partial z_{i}}\right)^{h_{i}} 
+  \prod \left(\frac{\partial \bar w(\bar z_{i})}{\partial \bar z_{i}}\right)^{\bar h_i}
+  \mathcal{F}(\left\{w_{i}, \bar w_{i}\right\})_{\mathbb{H}}
+  \label{eq:4}
+\end{multline}
+To extend the definition of $\mathcal{F}$ to the whole plane we need
+to double the number of fields $\phi_{i}$
+\cite{cardy2004boundary,cardy1984conformal} and consider $w_{i},\bar
+w_{i}$ as independent variables. For simplicity we will write
+$\mathcal{F}(\left\{w_{i}\right\}_{i=1}^{2N})$.
+
+Now we need to consider the evolution of SLE trace $\gamma_{t}$ from  $t$ to $t+ dt$. First factor in the right-hand-side of equation (\ref{eq:1}) gives us
+\begin{equation*}
+  -\frac{2h_{i}}{w_{i}^{2}}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}.
+\end{equation*}
+We denote by $\mathcal{G}_{i}$ the generator of infinitesimal
+transformation of primary field $\phi_{i}$:$d\phi_{i}(w_{i}) =
+\mathcal{G}_{i}\phi_{i}(w_{i})$:
+ The generator of field transformation is equal to
+\begin{equation}
+  \mathcal{G}_{i}=\left(\frac{2dt}{w_{i}}-\sqrt{\kappa} d\xi_{t}\right) \partial_{w_{i}}.
+  \label{eq:11}
+\end{equation}
+
+The differential of $\mathcal{F}$ should be zero due to martingale condition.  Ito formula is used to calculate the differential. We need to include second order terms in  $\mathcal{G}_{i}$ since they contain squares of Brownian motion differential $d\xi_{t}$ with the expectation value proportional to $dt$ ($\mathbb{E}[d\xi_{t}^{2}]=dt$):
+\begin{multline}
+d \mathcal{F}_{\mathbb{H}_{t}}=\\ \left(\prod_{i=1}^{2N}\left(\frac{\partial w_{i}}{\partial z_{i}}\right)^{h_{i}}\right)
+\left(-\sum_{i=1}^{2N}\frac{2h_{i}dt}{w_{i}^{2}}+\left[\sum_{i=1}^{2N}\mathcal{G}_{i}+\frac{1}{2}
+      \sum_{i,j}\mathcal{G}_{i}\mathcal{G}_{j}\right]\right)\mathcal{F}_{\mathbb{H}}\\=0
+\label{eq:8}
+\end{multline}
+Substituting  definition \eqref{eq:11} we get 
+\begin{equation}
+  \left(-2 \mathcal{L}_{-2}+\frac{1}{2}\kappa \mathcal{L}_{-1}^{2}\right)        \mathcal{F}_{\mathbb{H}}=0,
+  \label{eq:4}
+\end{equation}
+with
+\begin{eqnarray*}
+  \mathcal{L}_{-n}=\sum_{i}\left(\frac{(n-1)h_{i}}{(w_{i}-z)^{n}}-\frac{\partial_{w_{i}}}{(w_{i}-z)^{n-1}}\right).
+\end{eqnarray*}
+This equation is equivalent to the algebraic condition on the boundary state $\varphi(0)\left|0\right>$:
+\begin{multline}
+  \label{eq:7}
+  \left<0\left|\varphi(\infty)\phi_{1}(w_{1})\dots\phi_{2N}(w_{2N})
+  \left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}\right)
+\varphi(0)\right|0\right>=0.
+\end{multline}
+Since the set $\{\phi_{i}\}$ consists of arbitrary primary fields we conclude that 
+\begin{equation}
+|\psi>=\left(-2L_{-2}+\frac{1}{2}\kappa L_{-1}^{2}\right)
+\varphi(0)|0>
+\end{equation}
+is a null-state. Now act on $\psi$ by raising operators to get
+equations connecting  $\kappa$, central charge $c$ and conformal
+weight of boundary condition changing operator $h$.
+\begin{eqnarray}
+  \label{eq:15}
+  c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}\\
+  h=\frac{c}{3\kappa-8}
+\end{eqnarray}
+
+
+The behaviour of the dilute Ising and $A_4$ RSOS  models in tricritical
+point is described by conformal field theory (CFT) with central charge $c=\frac{7}{10}$
+\cite{friedan1985superconformal}. 
+
+We use CFT data to establish the value of Schramm-Loewner evolution parameter $\kappa$. The relation
+$c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}$ gives us possible values of
+$\kappa=\frac{16}{5},\; 5$. Boundary states satisfy Cardy conditions and were
+classified by Chim \cite{chim1996boundary}. Conformal weights for the boundary fields are $h=0,\;
+\frac{1}{10},\; \frac{3}{5},\; \frac{3}{2},\; \frac{3}{80},\;
+\frac{7}{16}$.
+
+Substituting $c=7/10, \kappa=16/5, 5$ in equations (\ref{eq:15}) we
+obtain following possible values for conformal weight of boundary
+condition changing operator: $h=7/16,1/10$
+
+
 The model is also simplest example of supersymmetric conformal field theory. Schramm-Loewner
 evolution on superspace was introduced in \cite{nagi2005stochastic,rasmussen2004stochastic}. The
 relationship between the central charge and SLE parameter in this case is
