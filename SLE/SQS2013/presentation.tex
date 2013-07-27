@@ -127,7 +127,24 @@
     W[\mathrm{conf}]=\prod_{\mathrm{faces}} W(\mathrm{face})
   \end{equation}
 
-   \begin{equation}
+  \begin{equation}
+    \label{eq:6}
+    W(\mathrm{face}) = W\left(\left.\begin{array}{cc}d & c\\a &b\end{array} \right| \lambda, u\right)
+  \end{equation}
+  $\lambda$ -- highest eigenvalue of adjacency matrix, $u$ -- spectral parameter.
+  \begin{equation}
+    \label{eq:7}
+    u=\lambda/2\quad \mbox{--\quad conformal point}
+  \end{equation}
+  \begin{equation}
+    \label{eq:8}
+    \lambda = \frac{\pi}{5}
+  \end{equation}
+\end{frame}
+\begin{frame}
+\frametitle{$A_4$ RSOS model weights at conformal point}
+After proper normalization we have
+\begin{equation}
      \label{eq:12}
      \begin{array}{l}
        W\left(                                          
@@ -215,18 +232,45 @@
    \end{frame}
    \begin{frame}
      \frametitle{RSOS formulation and integrability}
-     Two rows transfer matrix:
-     \begin{equation}
+     Consider model on a cylinder $N\times 2M$. 
+
+     Double row transfer matrix:
+     \begin{multline}
        \label{eq:5}
-       T(u)=\prod_{i} W\left(\left.\begin{array}{cc} d_{i} & c_{i}\\ a_{i} & b_{i}  \end{array} \right| u \right)
-         
-         \end{equation}
+
+       D_N(u,\mbox{left boundary},\mbox{right boundary})=\sum_{c_0,\dots,c_N} B_{\mathrm{left}}(c_0,b_0,d_0| u)\cdot\\
+       \cdot\prod_{j=0}^{N-1} W \left(\left.\begin{array}{cc} c_j & c_{j+1} \\ b_j & b_{j+1} \end{array}\right| u\right) 
+       W \left(\left.\begin{array}{cc} d_j & d_{j+1} \\ c_j & c_{j+1} \end{array}\right| u\right) B_{\mathrm{right}} (c_N, b_N, d_N|u)
+     \end{multline}
+     Partition function is a sum of powers of eigenvalues
+     \begin{equation}
+       \label{eq:9}
+       Z_{NM}(u)=\mathrm{tr} (D_N(u))^M=\sum_k \Lambda_N(u)_k ^M
+     \end{equation}
+     At conformal point $D_N$ is decomposed into a product of one-row transfer matrices. 
+
    \end{frame}
   \begin{frame}
     \frametitle{ CFT description and SLE }
+    Take limit and obtain
+     \begin{equation}
+       \label{eq:10}
+       Z_{r_1,a_1|r_2,a_2}(q) = \sum_{r=1}^{g-2} \sum_{s=1}^{g-1} F(A_{g-2})_{r_1,r_2}^r F({\cal G})_{a_1,a_2}^s \chi_{(r,s)}(q)
+     \end{equation}
+     \begin{equation}
+       \label{eq:11}
+       c=1-\frac{6}{g(g-1)}
+     \end{equation}
+     \begin{equation}
+       \label{eq:13}
+       \Delta_{(r,s)}=\frac{(rg-s(g-1))^2-1}{4g(g-1)}
+     \end{equation}
+
+     $\Delta_{(r,s)}$, b.c.c., SLE, $\kappa$. 
   \end{frame}
   \begin{frame}
     \frametitle{ S-holomorphic observable}
+    Local conservation laws, discrete holomorphicity, continuation operator and transfer matrix
   \end{frame}
   \begin{frame}
     \frametitle{ Conclusion}
