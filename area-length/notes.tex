@@ -36,4 +36,20 @@
   Here I document staff related to my work on area-length problem.
 \end{abstract}
 
+Consider rooted loops in $O(n)$ model. Let $N^r(L)$ be number of
+rooted loops with a given length.  By $N^r(L,A)$ we denote the number
+of loops of given length and area. $N^r(L)=\int_0^{\infty} N^r(L,A)
+dA$. Area weighted number of loops is denoted by $G^r(L,\mu)$. (Here
+$\mu$ is bulk coupling constant ?).
+\begin{equation}
+  \label{eq:2}
+  G^r(L,\mu)=\int e^{\mu A} N^r(L,A) dA
+\end{equation}
+
+\begin{equation}
+  \label{eq:1}
+  G^r (\mu,x) = \sum_{\mathrm{clusters}} N^r (L,A) x^L e^{-\mu A}
+\end{equation}
+
+The idea is to write $G$ as a correlation function in Liouville theory.
 \end{document}
