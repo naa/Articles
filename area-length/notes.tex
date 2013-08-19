@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
 
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
 \newcommand{\gf}{\mathfrak{g}}
@@ -75,6 +76,48 @@ $\mu$ is bulk coupling constant ?).
 
 The idea is to write $G$ as a correlation function in Liouville
 theory.
+
+Note that number of rooted loops of given area scales as the area to
+the power minus one. 
+
+Define Hausdorff dimension as follows.
+\begin{definition}
+  {\it Hausdorff content} of the set $S$ is
+  \begin{equation}
+    \label{eq:3}
+    C^d_H = \mathrm{inf} \sum_i r_i^d,
+  \end{equation}
+  where $\{r_i\}$ are such that there exists cover of $S$ by balls of
+  radii $r_i>0$. 
+
+  {\it Hausdorff dimension}
+  \begin{equation}
+    \label{eq:4}
+    d_H\equiv\mathrm{dim}_H(S) = \mathrm{inf}\{ d\geq 0: C^d_H(S)=0\}
+  \end{equation}
+\end{definition}
+
+Consider loop of length $L$. The radius of the loop is connected with
+the length as $L\sim R^{d_H}$. The area is related to radius $A\sim
+R^2$, so $A\sim L^{\frac{2}{d_H}$.
+(It is proved or almost proved in papers by Lawler).
+
+For CLE the connection of Hausdorff dimension and parameter $\kappa$
+is known:
+\begin{equation}
+  \label{eq:5}
+  d_H=1+\frac{\kappa}{8}
+\end{equation}
+
+($\nu^{-1}=d_H$ ????)
+
+
+At $x\to x_c$
+\begin{equation}
+  \label{eq:6}
+  G^r(\mu,x)= \mu^{\theta} F\left(\frac{x-x_c}{\mu^{\phi}}\right)
+\end{equation}
+
 
 \section{Scaling limit and CFT on a cone}
 \label{sec:scaling-limit-cft}
