@@ -54,6 +54,17 @@ on this problem and the answer is
 obtained from computer simulation \cite{richard2001scaling}, good understanding was not
 obtained. 
 
+\subsectio{$O(n)$ model}
+\label{sec:introduction-1}
+
+Partition function for $O(n)$ model is
+\begin{equation}
+  \label{eq:9}
+  Z_{O(n)} = \sum_{\mbox{loop conf}} x^{\mbox{total length}}
+  n^{\mbox{number of loops}}
+\end{equation}
+
+
 \section{Scaling of random loops}
 \label{sec:scaling-random-loops}
 
@@ -117,6 +128,27 @@ At $x\to x_c$
   \label{eq:6}
   G^r(\mu,x)= \mu^{\theta} F\left(\frac{x-x_c}{\mu^{\phi}}\right)
 \end{equation}
+
+Partition function is product over loops of different length
+\begin{equation}
+  \label{eq:10}
+  Z_{O(n)} = \sum_{\mbox{loop conf}} \prod_L x^{L N(L)} n^{N(L)} = \sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}
+\end{equation}
+
+
+We can rewrite $G^r(\mu,x)$ as the derivative of generating function
+\begin{equation}
+  \label{eq:7}
+  G^r(\mu,x)=\mu\partial_x \log Z(\mu,\mu_B)
+\end{equation}
+
+Here
+\begin{equation}
+  \label{eq:8}
+  Z(\mu,\mu_B) = \left< e^{-\mu A} \right> = \frac{\sum_{\mbox{loop conf}}
+  \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)} e^{-\mu A}}{\sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}}
+\end{equation}
+
 
 
 \section{Scaling limit and CFT on a cone}
