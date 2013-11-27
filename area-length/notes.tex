@@ -155,14 +155,67 @@ Here
 \end{equation}
 
 
+\section{Liouville theory}
+\label{sec:liouville-theory}
 
-\section{Scaling limit and CFT on a cone}
-\label{sec:scaling-limit-cft}
+Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism. 
 
-Here we argue that scaling limit is connected with correlation
-functions of CFT on a cone. Then we introduce recurrence relations on
-the angle of the cone. We show that this recurrent relation is
-equivalent to fusion rules of degenerate field in CFT. 
+The action for Liouville theory on a surface $\Gamma$ in arbitrary world-sheet metric $g$ is
+\begin{equation}
+  \label{eq:13}
+  S=\frac{1}{4\pi} \int_{\Gamma} \sqrt{g} \left( g^{ab} \partial_{a}\varphi \partial_{b}\varphi + Q R \varphi +4\pi \mu e^{2b\varphi}\right) d^{2}x
+\end{equation}
+Classical equations of motion are
+\begin{equation}
+  \label{eq:16}
+  \Delta \varphi(x) = \frac{1}{2} \left(b+\frac{1}{b}\right) R (x) + 4\pi b e^{2 b \varphi}
+\end{equation}
+Here $\Delta$ is Laplace-Beltrami operator
+\begin{equation}
+  \label{eq:17}
+  \Delta=\frac{1}{\sqrt{g}}\partial_{\mu} \left(\sqrt{g} g^{\mu\nu} \partial_{\nu}\right)
+\end{equation}
+
+We can select locally flat metric $g^{ab}=\delta^{ab}$ on some sheet, then the action takes the form
+\begin{equation}
+  \label{eq:14}
+  S= \int d^{2}x \frac{1}{4\pi} (\partial_{a} \varphi)^{2}+\mu e^{2b\varphi}
+\end{equation}
+Since we rewrote the action in this form we need to take into account the curvature. We do it by
+supposing the existence of conical singularity at infinity.
+\begin{equation}
+  \label{eq:15}
+  \varphi(z)=-Q \log (z\bar z)+O(1) \quad z\to\infty
+\end{equation}
+The equations of motion take the from
+\begin{equation}
+  \label{eq:18}
+  \Delta \varphi = 4\pi b e^{2b\varphi}
+\end{equation}
+The background charge is connected with the parameter $b$ by equation
+\begin{equation}
+  \label{eq:20}
+  Q=b+\frac{1}{b}
+\end{equation}
+
+Liouville field theory is a conformal field theory with central charge
+\begin{equation}
+  \label{eq:19}
+  c=1+6\left(b+\frac{1}{b}\right)^{2}
+\end{equation}
+and primary fields are given by vertex operators $V_{\alpha}=e^{\alpha\varphi}$. But primary fields
+$V_{\alpha}$ and $V_{Q-\alpha}$ are to be identified. For $\alpha=\frac{Q}{2}+i P, P\in \mathbb{R}$
+fields $V_{\alpha}$ are non-local. 
+
+Computation of correlation functions in Liouville field theory relies on screening operators and
+recurrent relations that appear from OPE for auxiliary correlation functions.
+\subsection{Coulomb gas representation and screening operators}
+\label{sec:coul-gas-repr}
+
+
+\subsection{Boundary Liouville theory}
+\label{sec:bound-liouv-theory}
+
 
 
 Boundary Liouville theory:
@@ -175,6 +228,69 @@ Boundary Liouville theory:
   \label{eq:11}
   G^{r}(\mu,\mu_{B}) = \mu \frac{\left<V_{\frac{b}{2}} B_{-\frac{1}{b}}\right>}{\left<V_{\frac{b}{2}}\right>}
 \end{equation}
+
+In paper \cite{fateev2000boundary} following expression was obtained for one-point boundary
+correlation function
+\begin{equation}
+  \label{eq:22}
+  \left<V_{\alpha}(x)\right>=\frac{U(\alpha|\mu_{B})}{|z-\bar z|^{2\Delta_{\alpha}}}
+\end{equation}
+
+\begin{equation}
+  \label{eq:21}
+  U(\alpha)=\frac{2}{b}\left(\pi\mu\gamma( b^{2})\right)^{\frac{Q-2\alpha}{2b}} \Gamma(2b\alpha-b^{2})
+  \Gamma\left(\frac{2\alpha}{b}-\frac{1}{b^{2}}-1\right) \cosh (2\alpha-Q)\pi s
+\end{equation}
+where $s$ is determined from the equation
+\begin{equation}
+  \label{eq:23}
+  \cosh^{2} \pi b s=\frac{\mu_{B}^{2}}{\mu}\sin \pi b^{2}
+\end{equation}
+and $\gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)}$.
+
+This one point function is related to generating function of surfaces with a conic singularity of given length and area in
+two-dimensional gravity theory. 
+Partition function for  surfaces with a conic singularity of given length and area in
+two-dimensional gravity theory is denoted by $Z_{\alpha}(A,l)$. Canonical transformation gives us
+\begin{equation}
+  \label{eq:24}
+  W_{\alpha}(l,\mu)=\int_{0}^{\infty} \frac{dA}{A} e^{-\mu A}Z_{\alpha}(A,l)
+\end{equation}
+
+Note that number of surfaces of given area $A$ and length $l$ is given by a canonical ensemble
+(parameters $N$, $E$)
+\begin{equation}
+  \label{eq:25}
+  N(l,A) = \sum_{\mbox{surfaces}} \delta(\mbox{Area}-A)\delta(\mbox{Length}-l)
+\end{equation}
+\begin{equation}
+  \label{eq:26}
+  F=\log Z
+\end{equation}
+Using Legendre transformation ($f^{*}(p)=\sup_{x\in I} (xp - f(x))$ $x\to \mbox{tangent}$) we move
+to the description with bulk and boundary interaction constants. 
+\begin{equation}
+  \label{eq:27}
+  \min_{\mu}(F(\mu)-\mu A) = S = \log N(A) \quad \mbox{Enthropy}
+\end{equation}
+Thus we obtain grand canonical ensemble (number of particles is not fixed, $w_{n}=\frac{1}{Z}
+e^{\frac{-(E_{n}-\mu N)}{kT}}$)
+
+$Z(\mu_{B},\mu) = \sum_{\mbox{surfaces}} e^{-\mu_{B}l -\mu A}=\int D\varphi e^{-S[\varphi]}$
+\begin{equation}
+  \label{eq:28}
+  \int D\varphi = \int dA dl \int D\phi \quad \mbox{but} \quad \int D\phi = N(A,l)
+\end{equation}
+It is useful to note different definition of integration measure in \cite{fateev2000boundary}: $\int
+\frac{d A}{A}\frac{d l }{l} N(A,l)$
+\section{Scaling limit and CFT on a cone}
+\label{sec:scaling-limit-cft}
+
+Here we argue that scaling limit is connected with correlation
+functions of CFT on a cone. Then we introduce recurrence relations on
+the angle of the cone. We show that this recurrent relation is
+equivalent to fusion rules of degenerate field in CFT. 
+
 
 \section{CFT fusion coefficients and Bessel's functions}
 \label{sec:cft-fusi-coeff}
