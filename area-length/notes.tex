@@ -158,7 +158,7 @@ Here
 \section{Liouville theory}
 \label{sec:liouville-theory}
 
-Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism. 
+Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism. \cite{nakayama2004liouville,ponsot2002boundary,teschner2001liouville,fateev2000boundary,teschner2000remarks,zamolodchikov1996conformal}
 
 The action for Liouville theory on a surface $\Gamma$ in arbitrary world-sheet metric $g$ is
 \begin{equation}
@@ -205,12 +205,64 @@ Liouville field theory is a conformal field theory with central charge
 \end{equation}
 and primary fields are given by vertex operators $V_{\alpha}=e^{\alpha\varphi}$. But primary fields
 $V_{\alpha}$ and $V_{Q-\alpha}$ are to be identified. For $\alpha=\frac{Q}{2}+i P, P\in \mathbb{R}$
-fields $V_{\alpha}$ are non-local. 
+fields $V_{\alpha}$ are non-local. Conformal dimension of primary field $V_{\alpha}$ is
+\begin{equation}
+  \label{eq:32}
+  \Delta_{\alpha}=\alpha(Q-\alpha)
+\end{equation}
+
+Fields $V_{-\frac{nb}{2}}, \; n\in \mathbb{N}$ are degenerate, correlation functions of these fields
+satisfy differential equations of order $n+1$. 
 
 Computation of correlation functions in Liouville field theory relies on screening operators and
 recurrent relations that appear from OPE for auxiliary correlation functions.
 \subsection{Coulomb gas representation and screening operators}
 \label{sec:coul-gas-repr}
+
+Calculation of correlation functions in Liouville field theory can be done as follows. 
+Consider correlation some function with operator $V_{-\frac{b}{2}}$, it satisfies second order
+differential equation:
+\begin{equation}
+  \label{eq:33}
+  \left(\frac{1}{b^{2}}\partial^{2}+T(z)\right)\left<V_{-\frac{b}{2}}(z) \dots \right>=0
+\end{equation}
+Now to find some correlation function $\left<V_{\alpha_{1}}(z_{1})\dots
+  V_{\alpha_{k}}(z_{k})\right>$ we consider auxiliary correlation function with additional
+operator $V_{-\frac{b}{2}}(z)$, find a solution to differential equation and fix the integration
+constants using fusion rules for field $V_{-\frac{b}{2}}$.
+
+It can be shown (add reference here? \cite{nakayama2004liouville},\cite{teschner2001liouville}) that 
+\begin{equation}
+  \label{eq:34}
+  V_{-\frac{b}{2}}\times V_{\alpha}= [V_{\alpha-\frac{b}{2}}]+[V_{\alpha+\frac{b}{2}}]
+\end{equation}
+We can introduce structure constants of this operator product expansion \cite{fateev2000boundary}
+\begin{equation}
+  \label{eq:35}
+   V_{-\frac{b}{2}} V_{\alpha}= C_{+}[V_{\alpha-\frac{b}{2}}]+C_{-}[V_{\alpha+\frac{b}{2}}]
+\end{equation}
+
+Why? $C_{+}=1$,
+\begin{multline}
+  \label{eq:36}
+  C_{-}=-\mu\int d^{2}x \left<V_{\alpha}(0)V_{-\frac{b}{2}}(1) e^{2b\varphi(x)}
+    V_{Q-\alpha-\frac{b}{2}}(\infty)\right>=\\
+  -\mu\frac{\pi\gamma(2b\alpha-1-b^{2})}{\gamma(-b^{2})\gamma(2b\alpha)},
+\end{multline}
+where
+\begin{equation}
+  \label{eq:37}
+  \gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)}
+\end{equation}
+
+To calculate two-point function
+$\left<V_{\alpha}(x)V_{\alpha}(0)\right>=\frac{D(\alpha)}{|x|^{2\Delta_{\alpha}}}$ we consider
+auxiliary three-point function
+\begin{equation}
+  \label{eq:38}
+  \left<V_{\alpha}(x_{1})V_{\alpha+\frac{b}{2}}(x_{2})V_{-\frac{b}{2}}(z)\right>
+\end{equation}
+
 
 
 \subsection{Boundary Liouville theory}
@@ -248,6 +300,7 @@ where $s$ is determined from the equation
 \end{equation}
 and $\gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)}$.
 
+
 This one point function is related to generating function of surfaces with a conic singularity of given length and area in
 two-dimensional gravity theory. 
 Partition function for  surfaces with a conic singularity of given length and area in
@@ -256,6 +309,17 @@ two-dimensional gravity theory is denoted by $Z_{\alpha}(A,l)$. Canonical transf
   \label{eq:24}
   W_{\alpha}(l,\mu)=\int_{0}^{\infty} \frac{dA}{A} e^{-\mu A}Z_{\alpha}(A,l)
 \end{equation}
+
+For the partition function of surfaces with given area $A$ and length $l$ and conical singularity
+with angle $a(\alpha)$ following expression is obtained:
+\begin{equation}
+  \label{eq:29}
+  Z_{\alpha}(A,l)=\frac{1}{b}\frac{\Gamma(2\alpha b
+    -b^{2})}{\Gamma\left(1+\frac{1}{b^{2}}-\frac{2\alpha}{b}\right)} \left(\frac{l\Gamma(b^{2})}{2
+      A}\right)^{\frac{(Q-2\alpha)}{b}} \exp\left(-\frac{l^{2}}{4 A \sin \pi b^{2}}\right)
+\end{equation}
+
+How is it connected with the equation \eqref{eq:21}?
 
 Note that number of surfaces of given area $A$ and length $l$ is given by a canonical ensemble
 (parameters $N$, $E$)
@@ -283,6 +347,27 @@ $Z(\mu_{B},\mu) = \sum_{\mbox{surfaces}} e^{-\mu_{B}l -\mu A}=\int D\varphi e^{-
 \end{equation}
 It is useful to note different definition of integration measure in \cite{fateev2000boundary}: $\int
 \frac{d A}{A}\frac{d l }{l} N(A,l)$
+
+\begin{multline}
+  \label{eq:30}
+  \left< 1 \right>_{\alpha}=\int \left< V_{\alpha}(z)\right> dz = \int dz \sum_{\mbox{surfaces with cone
+    }\alpha\mbox{ at }z} e^{-S[\mbox{surface}]}=\\
+  \int \frac{dl}{l} \int dz  \sum_{\mbox{surfaces with cone
+    }\alpha\mbox{ at }z \mbox{ of length }l}e^{-S[\mbox{surface}]}=\\
+  \int\frac{dl}{l} W_{a}(l) e^{-\mu_{B}l}
+\end{multline}
+
+
+\begin{multline}
+  \label{eq:31}
+  Z_{\alpha}(\mu,\mu_{B}) = \int \left< V_{\alpha}(z)\right> dz=\\\int D\varphi\int d^{2}z \exp\left(-\frac{1}{4\pi} \int d^{2}z
+    b(\nabla\varphi)^{2}-\mu_{B}\oint e^{b\varphi}dx -\mu\int d^{2}z e^{2b\varphi}\right.\\
+  \left.-\alpha\int
+  d^{2}w \varphi(w) \delta(z-w)\right)
+\end{multline}
+So we see that one point boundary correlation function gives us partition function for surfaces of
+given length and area. 
+
 \section{Scaling limit and CFT on a cone}
 \label{sec:scaling-limit-cft}
 
