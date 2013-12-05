@@ -146,3 +146,20 @@
     CLOSED: [2013-09-06 Fri 20:31]
 *** DONE Написать Марианне
     CLOSED: [2013-09-11 Wed 20:09]
+* DEADLINE: <2013-10-22 Tue>
+*** DONE Read Takhtajan's notes
+    CLOSED: [2013-10-23 Wed 01:37]
+*** TODO Write my Liouville notes
+*** TODO Read ZZ lectures
+*** DONE Call ATT ?
+    CLOSED: [2013-10-31 Thu 01:38]
+*** TODO Fill-in documents for Ioffe
+* DEADLINE: <2013-10-23 Wed>
+*** TODO Put presentations on the website
+* DEADLINE: <2013-10-29 Mon>
+*** TODO Распечатать I -94 - свою и мою (свою получить новую - с актуальной датой)
+*** TODO Отксерить DS-2019 - свою и мою
+*** TODO Отсканить и распечатать мой паспорт (сам паспорт, виза, страница со штампом)
+*** DONE Положить деньги на счет
+    CLOSED: [2013-10-28 Mon 08:19]
+
