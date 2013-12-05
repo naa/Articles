@@ -236,17 +236,288 @@ It can be shown (add reference here? \cite{nakayama2004liouville},\cite{teschner
   \label{eq:34}
   V_{-\frac{b}{2}}\times V_{\alpha}= [V_{\alpha-\frac{b}{2}}]+[V_{\alpha+\frac{b}{2}}]
 \end{equation}
+
+
+Full form of the operator product expansion is
+\begin{equation}
+  \label{eq:39}
+  A(z)B(w)\underset{z\to w}{\longrightarrow} \sum_{C} \frac{f_{AB}^{C}}{(z-w)^{h_{A}+h_{B}-h_{C}}} C(w)
+\end{equation}
+
+We use auxiliary correlation function that can be computed using Coulomb gas picture. The
+computation relies on following ideas.
+
+
+\subsubsection{Coulomb gas picture. Free boson theory. Minimal models}
+\label{sec:free-boson-minimal-models}
+
+
+\begin{equation}
+  \label{eq:40}
+  S=\int d^{2}z b (\partial \varphi)^{2},\quad \left<\varphi(z,\bar z)\varphi(w,\bar
+    w)\right>=-\frac{1}{2b}\left(\ln (z-w) + \ln (\bar z - \bar w)\right)+const
+\end{equation}
+
+\begin{equation}
+  \label{eq:42}
+  T(z)=-\frac{1}{2}:\partial \varphi \partial \varphi:, \quad c=1
+\end{equation}
+In holomorphic sector primary fields are $\partial \varphi$ with $h=1$ and
+$V_{\alpha}(z)=e^{i \alpha \varphi(z)}$ with dimension $h_{\alpha}=\frac{\alpha^{2}}{2}$.
+
+Field $\varphi(z)$ is not purely holomorphic, it contains zero mode
+\begin{equation}
+  \label{eq:43}
+  \varphi(z)=\varphi_{0}-ia_{0}\ln z+\sum_{n\neq 0}\frac{1}{n}a_{n} z^{-n},\quad
+  [a_{n},a_{m}]=n\delta_{n+m,0}, \quad [\varphi_{0},a_{0}]=i
+\end{equation}
+But we can limit ourselves to chiral operators.
+
+If $\alpha_{1}+\dots+\alpha_{n}=0$ then 
+\begin{equation}
+  \label{eq:41}
+  \left<e^{\alpha_{1}\varphi}(z_{1})\dots e^{\alpha_{n}\varphi}(z_{n})\right> = \prod_{i<j}(z_{i}-z_{j})^{-\alpha_{i}\alpha_{j}}
+\end{equation}
+Since $\left< :e^{A_{1}}::e^{A_{2}}:\dots :A^{A_{n}}:\right> =
+\exp\sum_{i<j}\left<A_{i}A_{j}\right>$, we can take $A_{i}=\alpha_{i}\varphi(z_{i})$ and use the
+fact that $\left<A_{i}A_{j}\right>=\ln |z_{i}-z_{j}|^{-\alpha_{i}\alpha_{j}}$. 
+
+Neutrality condition can be seen from the invariance of the action w.r.t. $\varphi\to\varphi+a$,
+then the correlator obtains factor $e^{\sum \alpha_{i}}$ which is 1 if $\sum \alpha_{i}=0$.
+
+Vacuum expectation value of operator with non-zero charge $\alpha$ should be zero. 
+
+To obtain models with $c\neq 1$ one needs to introduce the background charge:
+\begin{equation}
+  \label{eq:44}
+  S=\frac{1}{8\pi} \int d^{2}x \sqrt{g} (\partial_{\mu}\varphi\partial^{\mu}\varphi+2\gamma\varphi R)
+\end{equation}
+Here $R$ is scalar curvature, $\gamma$ - constant. 
+
+(Gauss-Bonnet theorem: $\int d^{2}x \sqrt{g} R = 8\pi(1-h)$, $h$-number of handles).
+
+After introducing interaction with the curvature Ward identities are changed and now neutrality
+condition is $\sum \alpha_{i}=2\alpha_{0}$, where $i\sqrt{2}\alpha_{0}=\gamma$. 
+Stress-energy tensor now takes the form
+\begin{equation}
+  \label{eq:45}
+  T_{\mu\nu}=T^{(0)}_{\mu\nu}-\frac{\gamma}{2\pi}\left(\partial_{\mu}\partial_{\nu}\varphi-\frac{1}{2}\eta_{\mu\nu}\partial^{\rho}\partial_{\rho}\varphi\right)
+\end{equation}
+and
+\begin{equation}
+  \label{eq:46}
+  T(z)=-\frac{1}{2}:\partial \varphi\partial\varphi:+i\sqrt{2}\alpha_{0}\partial^{2}\varphi
+\end{equation}
+If we calculate OPE of $T$ we see that $\partial\varphi$ is not primary any more \cite{difrancesco1997cft}:
+\begin{equation}
+  \label{eq:47}
+  T(z)\partial\varphi(w)\sim
+  \frac{i2\sqrt{2}\alpha_{0}}{(z-w)^{3}}+\frac{\partial\varphi(w)}{(z-w)^{2}} +\frac{\partial^{2}\varphi(w)}{z-w}
+\end{equation}
+Vertex operators are still primary, but conformal dimensions are now
+\begin{equation}
+  \label{eq:48}
+  h_{\alpha}=\alpha^{2}-2\alpha_{0}\alpha
+\end{equation}
+and central charge is
+\begin{equation}
+  \label{eq:49}
+  c=1-24\alpha_{0}^{2}
+\end{equation}
+The correlator \eqref{eq:41} is preserved. Now vertex operators $V_{\alpha}$ and
+$V_{2\alpha_{0}-\alpha}$ are equivalent, so two-point function
+$\left<V_{\alpha}(z)V_{\alpha}(w)\right>$  is not zero, but it should be represented as
+$\left<V_{\alpha}(z)V_{2\alpha_{0}-\alpha}(w)\right>=\frac{1}{(z-w)^{h_{\alpha}}}$. 
+
+In general we insert non-local screening operator with zero conformal dimension but nonzero charge.
+If $\psi$ is primary field with $h_{\psi}=1$ its integral $  A=\oint dz \psi(z) $ is a nonlocal
+operator of conformal dimension zero (invariant under conformal mapping $z\to w$ 
+\begin{equation}
+  \label{eq:50}
+  A\to \oint dz \psi(z) \left(\frac{\partial w}{\partial z}\right)=\oint dw \psi(w)
+\end{equation}
+Then
+\begin{multline}
+  \label{eq:51}
+  [L_{n},A]=\oint dz [L_{n},\psi(z)]=\\\oint dz  (n+1) z^{n}\psi(z)+z^{n+1}\partial \psi(z)=\\
+  \oint dz \partial (z^{n+1}\psi (z))=0
+\end{multline}
+Screening operators are constructed from vertex operators
+\begin{equation}
+  \label{eq:52}
+  V_{\pm}=V_{\alpha_{\pm}}, \quad \alpha_{\pm}=\alpha_{0}\pm \sqrt{\alpha_{0}^{2}+1}, \quad
+  \alpha_{+}\alpha_{-}=-1,\quad \alpha_{+}+\alpha_{-}=2\alpha_{0}
+\end{equation}
+\begin{equation}
+  \label{eq:53}
+  Q_{\pm}=\oint dz V_{\pm}(z)=\oint dz e^{i\sqrt{2}\alpha_{\pm}\varphi(z)}
+\end{equation}
+Now for two-point function we can write
+\begin{equation}
+  \label{eq:54}
+  \left<V_{\alpha}(z)V_{\alpha}(w)Q_{-}^{m}Q_{+}^{n}\right>,
+\end{equation}
+with neutrality condition $2\alpha+n\alpha_{+}+m\alpha_{-}=2\alpha_{0}$,  so $2\alpha$ is an integer
+combination of $\alpha_{-}$ and $\alpha_{+}$.
+So we obtain Kac formula for conformal weights of fields in minimal models
+\begin{equation}
+  \label{eq:55}
+  \alpha_{r,s}=\frac{1}{2}(1-r)\alpha_{+}+\frac{1}{2}(1-s)\alpha_{-}\quad 
+  h_{r,s}(c)=\frac{1}{4}(r\alpha_{+}+s\alpha_{-})^{2}-\alpha_{0}^{2}
+\end{equation}
+
+If we calculate three-point function and require operator algebra to be closed we can obtain
+conditions on possible values of central charge or background charge $\alpha_{0}$. 
+
+Computation of three-point function relies on following trick: find four-point function as a
+solution of differential equation following from null-vector condition and then recover structure
+constants for three-point function from the limit $z\to 0$, where $z$ is cross-ratio. 
+
+Structure constants in three-point function are equal to fusion coefficients for corresponding
+fields, for example substitute fusion rule \eqref{eq:39} to three-point function
+
+  \begin{equation}
+    \label{eq:56}
+    \langle
+    \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{\Delta_{1}+\Delta_{2}-\Delta_{3}}
+      x_{23}^{\Delta_{2}+\Delta_{3}-\Delta_{1}}x_{13}^{\Delta_{3}+\Delta_{1}-\Delta_{2}}}.     
+  \end{equation}
+
+
+Assume that we know four-point function
+$\left<\varphi_{1}(z_{1})\varphi_{2}(z_{2})\varphi_{3}(z_{3})\varphi_{4}(z_{4})\right>$, then we
+take limits $z_{1}\to z_{2}$ and $z_{3}\to z_{4}$ and obtain product of structure constants
+$C_{12}^{r}C_{34}^{r}$ as a coefficient before $\frac{1}{z_{24}^{r}}$.
+
+To compute four-point function we use conformal invariance to send $z_{1}\to 0$, $z_{2}\to z$
+$z_{3}\to 1$ and $z_{4}\to \infty$:
+\begin{equation}
+  \label{eq:58}
+  \left<\varphi_{1}(z_{1})\varphi_{2}(z_{2})\varphi_{3}(z_{3})\varphi_{4}(z_{4})\right>=\left<
+    V_{r_{1},s_{1}}(z_{1}) V_{r_{2},s_{2}}(z_{2}) V_{r_{3},s_{3}}(z_{3}) V_{-r_{4},-s_{4}}(z_{4})
+    Q_{+}^{r} Q_{-}^{s}\right>,
+\end{equation}
+where neutrality condition gives us
+\begin{equation}
+  \label{eq:59}
+  \begin{array}{c}
+    r_{4}=r_{1}+r_{2}+r_{3}-2r-2\\
+    s_{4}=s_{1}+s_{2}+s_{3}-2s-2
+  \end{array}
+\end{equation}
+then 
+\begin{multline}
+  \label{eq:58}
+  \left<\varphi_{1}(0)\varphi_{2}(z)\varphi_{3}(1)\varphi_{4}(\infty)\right>=\left<
+    V_{r_{1},s_{1}}(0) V_{r_{2},s_{2}}(z) V_{r_{3},s_{3}}(1) V_{-r_{4},-s_{4}}(\infty)
+    Q_{+}^{r} Q_{-}^{s}\right>=\\
+  z^{\frac{1}{3}\sum h_{i}-h_{1}-h_{2}}(1-z)^{\frac{1}{3}\sum h_{i}-h_{2}-h_{3}} G(z)
+\end{multline}
+
+The simplest case is when $\varphi_{2}=\varphi_{(2,1)}$, then we need to compute integral
+\begin{multline}
+  \label{eq:60}
+  \left<
+    V_{r_{1},s_{1}}(0) V_{2,1}(z) V_{r_{3},s_{3}}(1) V_{-r_{4},-s_{4}}(\infty)
+    Q_{+}\right>=\\
+  \oint dw \left<     V_{r_{1},s_{1}}(0) V_{2,1}(z) V_{r_{3},s_{3}}(1) V_{-r_{4},-s_{4}}(\infty)
+    V_{+}(w)\right>=\\
+  z^{2\alpha_{2,1}\alpha_{r_{1},s_{1}}}  (1-z)^{2\alpha_{2,1}\alpha_{r_{3},s_{3}}} G(z)
+\end{multline}
+Substitute \eqref{eq:41} and in holomorphic sector we obtain
+\begin{equation}
+  \label{eq:61}
+  \oint dw w^{a}(w-1)^{b}(w-z)^{c},
+\end{equation}
+where
+\begin{equation}
+  \label{eq:62}
+  a=2\alpha_{+}\alpha_{r_{1},s_{1}},\quad b=2\alpha_{+}\alpha_{r_{3},s_{3}}, c=2\alpha_{+}\alpha_{2,1}
+\end{equation}
+
+The difficulty is in choice of integration contour, we need to choose two independent contours which
+will give us two independent solutions of differential equation \eqref{eq:33}. 
+
+Two choices of contour \cite{difrancesco1997cft} give integrals
+\begin{equation}
+  \label{eq:63}
+  \begin{array}{ll}
+    I_{1}(a,b,c; z) &= \int_{1}^{\infty} dw w^{a} (w-1)^{b} (w-z)^{c}\\
+    I_{1}(a,b,c; z) &= \int_{0}^{z} dw w^{a} (1-w)^{b} (w-z)^{c}\\
+    &=z^{1+a+b+c}\int_{0}^{1}dw  w^{a}(1-w)^{b}(1-zw)^{c}
+  \end{array}
+\end{equation}
+These integrals can be calculated by power series expansion of terms with $z$, use of integral
+formula for beta-function 
+\begin{equation}
+  \label{eq:64}
+    B(x,y)=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)} = \int_{0}^{1} t^{x-1} (1-t)^{y-1} dt =
+    \int_{0}^{\infty} t^{x-1} (1+t)^{-x-y} dt
+  \end{equation}
+then convert power series to hypergeometric function definition using $\Gamma(t+1)=t\Gamma(t)$
+\begin{equation}  
+  F(\lambda,\mu,\nu; z)=\sum_{k=0}^{\infty}\frac{1}{k!}\frac{(\lambda)_{k}(\mu)_{k}}{(\nu)_{k}}
+  z^{k}, \;\mbox{where}\; (x)_{k}=x(x-1)\dots (x-k+1)
+\end{equation}
+Final result for conformal block is
+\begin{eqnarray}
+  \label{eq:65}
+  I_{1}(a,b,c;z)=\frac{\Gamma(-a-b-c-1)\Gamma(b+1)}{\Gamma(-a-c)} F(-c,-a-b-c-1,-a-c; z)\\
+  I_{2}(a,b,c;z)=z^{1+a+b+c}\frac{\Gamma(a+1)\Gamma(c+1)}{\Gamma(a+c+2)} F(-b,a+1,a+c+2; z)\\
+  G(z,\bar z)=\sum_{i,j=1,2}X_{ij} I_{i}(z) \bar I_{j}(\bar z)
+\end{eqnarray}
+Calculation of coefficients $X_{ij}$ can be made using monodromy properties of correlation function
+around singularities. It is equivalent to operator product expansion of primary fields. Functions
+$I_{1}, I_{2}$ are in correspondence with intermediate fields in OPE for pairs of primary fields in
+four-point function. Different ways to calculate using OPE correspond to different conformal blocks:
+\begin{equation}
+  \label{eq:66}
+  \mathcal{G}(z,\bar z) =
+  \left<\varphi_{1}(z_{1})\varphi_{2}(z_{2})\varphi_{3}(z_{3})\varphi_{4}(z_{4})\right> =
+  \sum_{r,s;\bar r, \bar s}\mathcal{F}_{r,s}(z) \bar{\mathcal{F}}_{\bar r,\bar s}(\bar z)
+\end{equation}
+where $\mathcal{F}_{r,s}$ corresponds to a field $\varphi_{(r,s)}$ in OPE
+\begin{equation}
+  \label{eq:67}
+  \varphi_{(r,s)}\in \varphi_{(r_{1},s_{1})}\times \varphi_{(r_{2},s_{2})}
+\end{equation}
+
+\subsubsection{Liouville theory}
+\label{sec:liouville-theory-1}
+
+Liouville theory is very similar to Coulomb gas picture for minimal models. Scalar curvature at
+infinity is $4\pi b$. 
+
+Stress-energy tensor is
+\begin{equation}
+  \label{eq:68}
+  T(z)=-(\partial \varphi)^{2}+Q \partial^{2}\varphi
+\end{equation}
+Central charge is related to $Q$ by formula \eqref{eq:19}, similarly to minimal models
+\eqref{eq:49}. 
+
+It can be shown (add reference here? \cite{nakayama2004liouville},\cite{teschner2001liouville}) that 
+\begin{equation}
+  \label{eq:34}
+  V_{-\frac{b}{2}}\times V_{\alpha}= [V_{\alpha-\frac{b}{2}}]+[V_{\alpha+\frac{b}{2}}]
+\end{equation}
+
 We can introduce structure constants of this operator product expansion \cite{fateev2000boundary}
 \begin{equation}
   \label{eq:35}
    V_{-\frac{b}{2}} V_{\alpha}= C_{+}[V_{\alpha-\frac{b}{2}}]+C_{-}[V_{\alpha+\frac{b}{2}}]
 \end{equation}
 
-Why? $C_{+}=1$,
+This structure constants are equal to constants in three-point functions and can be computed by
+screening integrals. For $C_{+}$ we have neutrality condition
+$\alpha-\frac{b}{2}+Q-\alpha+\frac{b}{2}=Q$, so we do not need screening integrals and $C_{+}=1$.
+For $C_{-}$ we screen by first order of Liouville interaction $-\mu\int e^{2b\varphi} d^{2}x$ 
+(Check here, it should be contour integral!!!): 
 \begin{multline}
   \label{eq:36}
   C_{-}=-\mu\int d^{2}x \left<V_{\alpha}(0)V_{-\frac{b}{2}}(1) e^{2b\varphi(x)}
     V_{Q-\alpha-\frac{b}{2}}(\infty)\right>=\\
+  \int d^{2}x x^{2\alpha b} (x-1)^{-b^{2}}=\\
   -\mu\frac{\pi\gamma(2b\alpha-1-b^{2})}{\gamma(-b^{2})\gamma(2b\alpha)},
 \end{multline}
 where
