@@ -29,12 +29,12 @@
 
 \begin{document}
 \title{Notes on area-length problem for CLE}
-\author{Anton Nazarov}%% $^{1,2}$}
+%\author{Anton Nazarov}%% $^{1,2}$}
 
 \maketitle
 
 \begin{abstract}
-  Here I document staff related to my work on area-length problem.
+%  Here I document staff related to my work on area-length problem.
 
   We consider the scaling limit of conformal loop ensemble. The ratio
   of loop area to certain power of loop length exhibit universal
@@ -482,6 +482,9 @@ where $\mathcal{F}_{r,s}$ corresponds to a field $\varphi_{(r,s)}$ in OPE
   \varphi_{(r,s)}\in \varphi_{(r_{1},s_{1})}\times \varphi_{(r_{2},s_{2})}
 \end{equation}
 
+Complete results for four-point functions in minimal model with Coulomb gas representation are
+presented in paper \cite{dotsenko1985four}. 
+
 \subsubsection{Liouville theory}
 \label{sec:liouville-theory-1}
 
@@ -512,7 +515,7 @@ This structure constants are equal to constants in three-point functions and can
 screening integrals. For $C_{+}$ we have neutrality condition
 $\alpha-\frac{b}{2}+Q-\alpha+\frac{b}{2}=Q$, so we do not need screening integrals and $C_{+}=1$.
 For $C_{-}$ we screen by first order of Liouville interaction $-\mu\int e^{2b\varphi} d^{2}x$ 
-(Check here, it should be contour integral!!!): 
+(Add notes from Zamolodchikov lectures p.131,141 \cite{zamolodchikovlectures}): 
 \begin{multline}
   \label{eq:36}
   C_{-}=-\mu\int d^{2}x \left<V_{\alpha}(0)V_{-\frac{b}{2}}(1) e^{2b\varphi(x)}
@@ -533,8 +536,22 @@ auxiliary three-point function
   \label{eq:38}
   \left<V_{\alpha}(x_{1})V_{\alpha+\frac{b}{2}}(x_{2})V_{-\frac{b}{2}}(z)\right>
 \end{equation}
+Then we consider two operator product expansions when $z\to x_{1}$ and when $z\to x_{2}$. In the
+first case only the term $C_{-} V_{\alpha+\frac{b}{2}}$ survives and we get
+$C_{-}D\left(\alpha+\frac{b}{2}\right)$. In the second case we get $C_{+}D(\alpha)$. Since $C_{+}=1$
+we get functional equation on $D$:
+\begin{equation}
+  \label{eq:57}
+  \frac{D\left(\alpha+\frac{b}{2}\right)}{D(\alpha)}=\frac{1}{C_{-}(\alpha)}
+\end{equation}
+The solution of this equation is
+\begin{equation}
+  \label{eq:69}
+  D(\alpha)=(\pi\mu\gamma(b^{2}))^{\frac{Q-2\alpha}{b}} \frac{\gamma(2b\alpha-b^{2})}{b^{2}\gamma\left(2-\frac{2\alpha}{b}+\frac{1}{b^{2}}\right)}
+\end{equation}
 
-
+Result for three-point function can be obtained in the same way by considering auxiliary four-point
+function that satisfy second order differential equation due to degeneracy of the field $V_{-\frac{b}{2}}$.
 
 \subsection{Boundary Liouville theory}
 \label{sec:bound-liouv-theory}
@@ -639,6 +656,51 @@ It is useful to note different definition of integration measure in \cite{fateev
 So we see that one point boundary correlation function gives us partition function for surfaces of
 given length and area. 
 
+
+\subsection{Computation of one-point function}
+\label{sec:comp-one-point}
+
+To actually compute bulk one-point function \eqref{eq:22} in boundary Liouville field theory  we
+consider auxiliary bulk two-point function
+\begin{equation}
+  \label{eq:70}
+  G_{\alpha,-\frac{b}{2}}=\left<V_{\alpha}(x)V_{-\frac{b}{2}}(z)\right>
+\end{equation}
+Since we consider theory on upper half-plane, this two-point function satisfy the same equation as
+four-point function $\left<V_{\alpha}(x)V_{-\frac{b}{2}}(z)V_{\alpha}(\bar x)V_{-\frac{b}{2}}(\bar
+  z)\right>$ in the whole plane. (Zero mode?) 
+(Note: $\left<\phi(z,\bar z)\right>_{b}\sim\left<\phi(z)\phi(\bar z)\right>=\frac{1}{(z-\bar
+  z)^{2h}}$, then $\left<\phi(y)\right>\sim \frac{1}{y^{2h}}$)
+
+Since our four-point function satisfy second order ODE, it can be presented as a linear combination
+of two independent solutions -- conformal blocks. Change of variables allows to rewrite the equation
+as a hypergeometric equation, so conformal blocks are given by hypergeometric functions:
+\begin{equation}
+  \label{eq:71}
+  \mathcal{G}_{\pm}(x,z)=\frac{|x-\bar x|^{2\Delta_{\alpha}-2\Delta_{-\frac{b}{2}}}}{|z-\bar
+    x|^{4\Delta_{\alpha}}} \mathcal{F}_{\pm}(\eta),
+\end{equation}
+where $\Delta_{-\frac{b}{2}}=-\frac{1}{2}-\frac{3b^{2}}{4}$ and 
+\begin{equation}
+  \label{eq:72}
+  \eta=\frac{(z-x)(\bar z-\bar x)}{(z-\bar x)(\bar z - x)}
+\end{equation}
+\begin{eqnarray}
+  \label{eq:73}
+  F_{+}(\eta)=\eta^{\alpha b}(1-\eta)^{-\frac{b^{2}}{2}} F(2\alpha b -1-2b^{2},-b^{2},2\alpha
+  b-b^{2};\eta)\\
+  F_{-}(\eta)=\eta^{1+b^{2}-\alpha b}(1-\eta)^{-\frac{b^{2}}{2}} F(-b^{2},1-2\alpha b,2+b^{2}-2\alpha
+  b;\eta)
+\end{eqnarray}
+Coefficients before independent solutions $\mathcal{G}_{\pm}$ are fixed by substituting OPE
+\eqref{eq:35}:
+\begin{equation}
+  \label{eq:74}
+  G_{\alpha,-\frac{b}{2}}=C_{+}(\alpha) U\left(\alpha-\frac{b}{2}\right) \mathcal{G}_{+}(x,z)+
+  C_{-}(\alpha) U\left(\alpha+\frac{b}{2}\right) \mathcal{G}_{-}(x,z)
+\end{equation}
+Next we need to consider OPE when both operators $V_{\alpha}(x), V_{-\frac{b}{2}}(z)$ approach the
+boundary. 
 \section{Scaling limit and CFT on a cone}
 \label{sec:scaling-limit-cft}
 
