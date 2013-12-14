@@ -51,11 +51,62 @@ Here we discuss the history of the problem and state our answer to it.
 Though several publications exist
 \cite{cardy2003exact,cardy2003crossover,cardy2001exact,cardy1994geometrical}
 on this problem and the answer is
-obtained from computer simulation \cite{richard2001scaling}, good understanding was not
+obtained from computer simulation \cite{ richard2001scaling}, good understanding was not
 obtained. 
+
+\subsection{Self-avoiding polygons}
+\label{sec:self-avoid-polyg}
+
+The model of self-avoiding polygons was numerically studied in the paper \cite{richard2001scaling}.
+Author consider polygons with generating function
+\begin{equation}
+  \label{eq:75}
+  G(x,q)=\sum_{m,n} p_{m,n} x^{m} q^{n},
+\end{equation}
+where $p_{m,n}$ is the number of polygons with perimeter $m$, enclosing an area $n$ passing through
+a given edge (or node). 
+Cardy \cite{cardy2001exact} use following definition for generating function of rooted loops, using
+$g=-\ln q$:
+\begin{equation}
+  \label{eq:76}
+  G^{(r)}(x,g)=\sum_{l,A} p_{l,A}^{(r)} x^{l} e^{-gA}
+\end{equation}
+Generating function for rooted polygons $G^{(r)}(x,g)$ is related to $G(x,g)$ by
+\begin{equation}
+  \label{eq:81}
+  G^{(r)}(x,g)=x \frac{d}{dx} G(x,g),
+\end{equation}
+because root can be chosen in $l$ ways. 
+
+This model has critical point $(x_{c},0)$ and generating functions displays scaling behavior
+\begin{equation}
+  \label{eq:77}
+  G(x,g)\sim G(x,g)_{\mathrm{reg}}+g^{\theta} F\left((x_{c}-x)g^{-\phi}\right)
+\end{equation}
+Critical indices $\theta,\phi$ are related to conventional exponents $\nu,\alpha$:
+\begin{eqnarray}
+  \label{eq:78}
+  \phi=\frac{1}{2}\nu\\
+  \theta=\frac{1}{2}(1-\alpha) \nu
+\end{eqnarray}
+Hyperscaling hypothesis adds another relation
+\begin{equation}
+  \label{eq:79}
+  \alpha=2-2\nu
+\end{equation}
+Numerical results predict
+\begin{eqnarray}
+  \label{eq:80}
+  \nu=\frac{3}{4}\\
+  \theta=\frac{1}{3}\\
+  \phi=\frac{2}{3}
+\end{eqnarray}
+We want to find scaling function $F$.
 
 \subsection{$O(n)$ model}
 \label{sec:introduction-1}
+
+Self-avoiding polygons can be thought as the limit $n\to 0$ of loops in $O(n)$ model.
 
 Partition function for $O(n)$ model is
 \begin{equation}
@@ -65,13 +116,24 @@ Partition function for $O(n)$ model is
 \end{equation}
 Critical point is $x=\frac{1}{\sqrt{2+\sqrt{2-n}}}$, the continuum
 limit in this point is described by minimal model $(p,p')$ with
-$n=-2\cos\left(\frac{\pi p}{p'}\right)$. $c=1-6\frac{(p-p')^2}{pp'}$, $b=$.
+$n=-2\cos\left(\frac{\pi p}{p'}\right)$. $c=1-6\frac{(p-p')^2}{pp'}$, $b=\sqrt{\frac{3}{2}}$.
 
 Self-avoiding walk is obtained in the limit $n\to 0$. Then $c=0$ and
 we have logarithmic conformal field theory. 
 
+Logarithmic CFT $\sim$ Liouville theory ???
+
 \section{Scaling of random loops}
 \label{sec:scaling-random-loops}
+
+Cardy \cite{cardy2001exact} argues that generating function $G^{(r)}$ for rooted self-avoiding loops is given by a derivative w.r.t. $x$
+of expectation value of $e^{-gA}$ (eq.6):
+\begin{equation}
+  \label{eq:82}
+  Z=\left<e^{-gA}\right>_{\mathrm{SAL}}=\left<e^{-\sqrt{g}\int J_{\lambda}A_{\lambda}d^{2}x}\right>_{\mathrm{SAL}.A}
+\end{equation}
+But reasoning is quite strange and unsound. 
+
 
 In this section we introduce scaling function for random loops. 
 
@@ -153,12 +215,36 @@ Here
   Z(\mu,\mu_B) = \left< e^{-\mu A} \right> = \frac{\sum_{\mbox{loop conf}}
   \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)} e^{-\mu A}}{\sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}}
 \end{equation}
+ Very strange. 
+
 
 
 \section{Liouville theory}
 \label{sec:liouville-theory}
 
-Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism. \cite{nakayama2004liouville,ponsot2002boundary,teschner2001liouville,fateev2000boundary,teschner2000remarks,zamolodchikov1996conformal}
+Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism.
+\cite{nakayama2004liouville,ponsot2002boundary,teschner2001liouville,fateev2000boundary,teschner2000remarks,zamolodchikov1996conformal} 
+
+Liouville theory describes internal metric of surface. It is possible to obtain length of boundary
+and area of surface with such a metric. To get the answer for flat loops we need to impose some
+condition on metric in the bulk. 
+It is
+\begin{equation}
+  \label{eq:83}
+  g^{ab}=\eta^{ab}
+\end{equation}
+where
+\begin{equation}
+  \label{eq:84}
+  g^{ab}=e^{2b\varphi} \eta^{ab}
+\end{equation}
+So the condition is
+\begin{equation}
+  \label{eq:85}
+  \varphi(x) = 0 
+\end{equation}
+
+
 
 The action for Liouville theory on a surface $\Gamma$ in arbitrary world-sheet metric $g$ is
 \begin{equation}
@@ -693,7 +779,7 @@ where $\Delta_{-\frac{b}{2}}=-\frac{1}{2}-\frac{3b^{2}}{4}$ and
   b;\eta)
 \end{eqnarray}
 Coefficients before independent solutions $\mathcal{G}_{\pm}$ are fixed by substituting OPE
-\eqref{eq:35}:
+\eqref{eq:35} (substitute it to equation?):
 \begin{equation}
   \label{eq:74}
   G_{\alpha,-\frac{b}{2}}=C_{+}(\alpha) U\left(\alpha-\frac{b}{2}\right) \mathcal{G}_{+}(x,z)+
@@ -701,6 +787,10 @@ Coefficients before independent solutions $\mathcal{G}_{\pm}$ are fixed by subst
 \end{equation}
 Next we need to consider OPE when both operators $V_{\alpha}(x), V_{-\frac{b}{2}}(z)$ approach the
 boundary. 
+
+Bulk operator $V_{-\frac{b}{2}}$ near the boundary gives rise to two boundary families $B_{0}$ and
+$B_{-b}$. The fusion of $B_{0}=I$ to $V_{\alpha}$ is $\left<V_{\alpha}(x)
+  B_{0}(0)\right>=\frac{R(\alpha,0|\mu_{B})}{|z-\bar z|^{2\Delta_{\alpha}}}$, and the fusion of $V_{-\frac{b}{2}}$ 
 \section{Scaling limit and CFT on a cone}
 \label{sec:scaling-limit-cft}
 
