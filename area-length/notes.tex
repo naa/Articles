@@ -36,17 +36,22 @@
 \begin{abstract}
 %  Here I document staff related to my work on area-length problem.
 
-  We consider the scaling limit of conformal loop ensemble. The ratio
+  We consider conformal loop ensemble. The ratio
   of loop area to certain power of loop length exhibit universal
   scaling behavior. Scaling function is proportional to Bessel's
-  function. We show it using fusion rules for degenerate field in
-  conformal field theory on a cone. 
+  function. We show it using boundary Liouville field theory fusion rules for degenerate field.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:introduction}
 
-Here we discuss the history of the problem and state our answer to it. 
+
+One can ask simple question: how many loops is there?
+
+To make this question more precise consider conformal loop ensemble \cite{sheffield2010conformal}. It is critical limit of
+lattice different models for different values of $\kappa$. Loops can be interpreted as a critical
+limits of domain walls in lattice models. 
+We are interested in distribution of loops by length and area. 
 
 Though several publications exist
 \cite{cardy2003exact,cardy2003crossover,cardy2001exact,cardy1994geometrical}
@@ -54,11 +59,30 @@ on this problem and the answer is
 obtained from computer simulation \cite{ richard2001scaling}, good understanding was not
 obtained. 
 
+
+Some results exist in literature for particular case of self-avoiding walks ($\kappa=\frac{8}{3}$). We start
+with the description of these results \ref{sec:self-avoid-polyg}, then show that general problem
+leads to Liouville field theory \ref{sec:scaling-random-loops} and obtain our result using Liouville
+field theory fusion rules \ref{sec:liouville-theory}. 
+
+
+
+
 \subsection{Self-avoiding polygons}
 \label{sec:self-avoid-polyg}
 
 The model of self-avoiding polygons was numerically studied in the paper \cite{richard2001scaling}.
-Author consider polygons with generating function
+The simplest case is the generating function for polygons of given length. It can be introduced as
+\begin{equation}
+  \label{eq:86}
+  G(x)=\sum_l p_l x^l,
+\end{equation}
+where  $p_l$ is the number of different polygons on square lattice of length $l$. Different are
+polygons that can not be superposed by a lattice translation.
+If we know generating function we can obtain number of polygons of given length differentiating
+w.r.t. $x$. 
+
+We can also introduce generating function for polygons of given length and area:
 \begin{equation}
   \label{eq:75}
   G(x,q)=\sum_{m,n} p_{m,n} x^{m} q^{n},
@@ -132,7 +156,9 @@ of expectation value of $e^{-gA}$ (eq.6):
   \label{eq:82}
   Z=\left<e^{-gA}\right>_{\mathrm{SAL}}=\left<e^{-\sqrt{g}\int J_{\lambda}A_{\lambda}d^{2}x}\right>_{\mathrm{SAL}.A}
 \end{equation}
-But reasoning is quite strange and unsound. 
+But reasoning is quite strange and unsound. Due to the need to use $g$ for metric in later sections
+we will denote area coupling constant by $\mu$ and loop length coupling constant by $\mu_{B}=-\ln x$
+(boundary). 
 
 
 In this section we introduce scaling function for random loops. 
@@ -141,7 +167,7 @@ Consider rooted loops in $O(n)$ model. Let $N^r(L)$ be number of
 rooted loops with a given length.  By $N^r(L,A)$ we denote the number
 of loops of given length and area. $N^r(L)=\int_0^{\infty} N^r(L,A)
 dA$. Area weighted number of loops is denoted by $G^r(L,\mu)$. (Here
-$\mu$ is bulk coupling constant ?).
+$\mu$ is bulk coupling constant ).
 \begin{equation}
   \label{eq:2}
   G^r(L,\mu)=\int e^{\mu A} N^r(L,A) dA
@@ -187,7 +213,7 @@ is known:
   d_H=1+\frac{\kappa}{8}
 \end{equation}
 
-($\nu^{-1}=d_H$ ????)
+($\nu^{-1}=d_H$)
 
 
 At $x\to x_c$
@@ -215,7 +241,6 @@ Here
   Z(\mu,\mu_B) = \left< e^{-\mu A} \right> = \frac{\sum_{\mbox{loop conf}}
   \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)} e^{-\mu A}}{\sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}}
 \end{equation}
- Very strange. 
 
 
 
@@ -228,39 +253,111 @@ Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism.
 Liouville theory describes internal metric of surface. It is possible to obtain length of boundary
 and area of surface with such a metric. To get the answer for flat loops we need to impose some
 condition on metric in the bulk. 
-It is
-\begin{equation}
-  \label{eq:83}
-  g^{ab}=\eta^{ab}
-\end{equation}
-where
-\begin{equation}
-  \label{eq:84}
-  g^{ab}=e^{2b\varphi} \eta^{ab}
-\end{equation}
-So the condition is
-\begin{equation}
-  \label{eq:85}
-  \varphi(x) = 0 
-\end{equation}
 
 
-
-The action for Liouville theory on a surface $\Gamma$ in arbitrary world-sheet metric $g$ is
+The action for Liouville theory on a surface $\Gamma$ in arbitrary background metric $g$ is
 \begin{equation}
   \label{eq:13}
   S=\frac{1}{4\pi} \int_{\Gamma} \sqrt{g} \left( g^{ab} \partial_{a}\varphi \partial_{b}\varphi + Q R \varphi +4\pi \mu e^{2b\varphi}\right) d^{2}x
 \end{equation}
+
+This theory gives internal metric $\tilde g^{ab}=e^{\varphi(x)}g^{ab}(x)$
+
+
 Classical equations of motion are
 \begin{equation}
   \label{eq:16}
-  \Delta \varphi(x) = \frac{1}{2} \left(b+\frac{1}{b}\right) R (x) + 4\pi b e^{2 b \varphi}
+  \Delta \varphi(x) = \frac{1}{2} \left(b+\frac{1}{b}\right) R (x) + 4\pi \mu e^{2 b \varphi}
 \end{equation}
 Here $\Delta$ is Laplace-Beltrami operator
 \begin{equation}
   \label{eq:17}
   \Delta=\frac{1}{\sqrt{g}}\partial_{\mu} \left(\sqrt{g} g^{\mu\nu} \partial_{\nu}\right)
 \end{equation}
+
+Since
+\begin{equation}
+  \label{eq:93}
+  \sqrt{g}(R-\Delta \varphi)=\sqrt{\tilde g} \tilde R, 
+\end{equation}
+for metric $\tilde g= e^{2b\varphi} g$, equation of motion can be written as
+\begin{equation}
+  \label{eq:94}
+  \tilde R(x) + 4\pi \mu=0
+\end{equation}
+So classical configurations have constant curvature $-4\pi\mu$.
+
+In most cases it is possible to use flat background metric, but one needs to be careful with
+singularities. For example, consider a manifold with the topology of a sphere. We can use flat
+background metric but we need to introduce singularity at infinity \cite{zamolodchikovlectures}. 
+
+In flat background metric $g: ds^{2}=dz d\bar z$ equations of motions are
+\begin{equation}
+  \label{eq:90}
+  4\partial\bar \partial \varphi = 4\pi\mu e^{2b\varphi}
+\end{equation}
+To solve it we consider auxiliary equation:
+\begin{equation}
+  \label{eq:91}
+  4\partial^{2} \psi + t\psi=0
+\end{equation}
+Function $t$ here is $zz$ component of energy-momentum tensor. Denote by $\psi$  vector
+$\psi=(\psi_{1},\psi_{2})$ of linearly independent solutions. Then solution of equation
+\eqref{eq:90} is given by the expression
+\begin{equation}
+  \label{eq:92}
+  \varphi=-\frac{1}{b} \log \left(\bar \psi(\bar z) \lambda \psi(z)\right),
+\end{equation}
+where $\lambda$ is some matrix that is invariant w.r.t. to the action of monodromy group around the
+singularity. 
+
+\begin{equation}
+  \label{eq:89}
+  g=
+\end{equation}
+
+
+
+In theory with the action
+$$S=\frac{1}{4\pi} \int \sqrt{g}\left( \frac{1}{2} g^{\mu\nu} \partial_{\mu} \varphi \partial_{\nu}
+  \varphi + Q R\varphi + 4\pi\mu e^{2b\varphi}\right) d^{2}x,$$ 
+where $g$ is a background metric we need to assume some regularization procedure to define a
+functional integral, because we want to integrate over measure that does not depend upon metric.
+The idea is that the form of the action is the same but parameters are changed. 
+So now $\mu$ is not a classical cosmological constant and $\mu,b,Q$ are connected through
+consistency requirements for the theory. 
+The consistency requirement is background-independence. The action should not change when we choose
+another background metric and shift field $\varphi$ accordingly. 
+Let $\tilde g = e^{\sigma} g$, redefine $\varphi$ as $\tilde \varphi=\varphi + \frac{Q}{2}\sigma$,
+then all the terms with $\sigma$ are cancelled if we take into account contributions from matter
+partition function. But it is possible only if 
+$$Q=\frac{25-c_{M}}{6}$$. 
+To make exponential term background-independent we need to have $Q=\frac{1}{b}+b$. 
+
+If we consider correlation functions of fields $V_{\alpha}=e^{2\alpha\varphi}$ and impose
+background-independence conditions we obtain relation on conformal weights
+$$\Delta_{\alpha}=\alpha(Q-\alpha)$$
+So for theory to be background-independent we need to have these relations. 
+
+Conformal transformation $z\to w(z)$ can be presented as a change in background metric, so 
+$$\varphi(w,\bar w) = \varphi(z,\bar z) -\frac{Q}{2}\log \left|\frac{dw}{dz}\right|^{2}$$
+If we consider flat background metric, we need to have asymptotic $\varphi(z,\bar z)\sim -Q \log
+|z|^{2}$ at infinity to have smooth metric $e^{2b\varphi}$. 
+
+
+Now if we consider flat theory with $\mu=0$ everything is good, but when we introduce the observable
+$e^{-\mu A}=e^{-\mu \int d^{2}x e^{2b\varphi}}$ we need to regularize exponential field, impose
+consistency conditions and we get ordinary Liouville theory as the result! 
+So Liouville theory seems to be unique in this way. 
+
+My understanding is that averaging over flat configurations weighted by $e^{-\mu A}$ is equivalent
+to averaging over configurations with cosmological constant $\mu$ which introduces non-zero
+curvature of singularity at infinity in flat background. 
+
+By the way, it is also written that they consider unnormalized correlation functions (without the
+division by $Z$) because there are difficulties with the definition of functional integral $\int
+D\varphi e^{-S[\varphi]}$. 
+So we need to impose some normalization on their results. 
 
 We can select locally flat metric $g^{ab}=\delta^{ab}$ on some sheet, then the action takes the form
 \begin{equation}
@@ -290,7 +387,21 @@ Liouville field theory is a conformal field theory with central charge
   c=1+6\left(b+\frac{1}{b}\right)^{2}
 \end{equation}
 and primary fields are given by vertex operators $V_{\alpha}=e^{\alpha\varphi}$. But primary fields
-$V_{\alpha}$ and $V_{Q-\alpha}$ are to be identified. For $\alpha=\frac{Q}{2}+i P, P\in \mathbb{R}$
+$V_{\alpha}$ and $V_{Q-\alpha}$ are to be identified. 
+Reflection amplitudes are used for this identification:
+\begin{equation}
+  \label{eq:87}
+  V_{\alpha}(z,\bar z)=S(\alpha) V_{Q-\alpha}(z,\bar z),
+\end{equation}
+where
+\begin{equation}
+  \label{eq:88}
+  S(\alpha)=\frac{\left(\pi\mu\gamma(b^{2})\right)^{\frac{Q-2\alpha}{b}}}{b^{2}}
+  \frac{\gamma(2\alpha b -b^{2})}{\gamma\left(2-\frac{2\alpha}{b}+\frac{1}{b^{2}}\right)}
+\end{equation}
+
+
+For $\alpha=\frac{Q}{2}+i P, P\in \mathbb{R}$
 fields $V_{\alpha}$ are non-local. Conformal dimension of primary field $V_{\alpha}$ is
 \begin{equation}
   \label{eq:32}
@@ -790,7 +901,44 @@ boundary.
 
 Bulk operator $V_{-\frac{b}{2}}$ near the boundary gives rise to two boundary families $B_{0}$ and
 $B_{-b}$. The fusion of $B_{0}=I$ to $V_{\alpha}$ is $\left<V_{\alpha}(x)
-  B_{0}(0)\right>=\frac{R(\alpha,0|\mu_{B})}{|z-\bar z|^{2\Delta_{\alpha}}}$, and the fusion of $V_{-\frac{b}{2}}$ 
+  B_{0}(0)\right>=\frac{R(\alpha,0|\mu_{B})}{|z-\bar z|^{2\Delta_{\alpha}}}$, and the fusion of
+$V_{-\frac{b}{2}}$ 
+
+\section{Quantum gravity from random graphs}
+\label{sec:quantum-gravity-from}
+
+There is another approach to quantum gravity. Instead of field theory on a surface one can consider
+random discrete surfaces and statistical models on them. Random triangulations or quadrangulations
+of a surface can be represented by dual random graphs \cite{kazakov1986ising}.  The matter is
+introduced as a lattice statistical model on such random graph. Then computation of partition
+function (or correlation functions) for matter on random surface is equivalent to summation over
+random planar Feynman diagrams for certain matrix model. 
+
+Using this approach Ivan Kostov was able to obtain disk partition function
+\cite{kostov2004boundary,kostov2003boundary}. His results are as follows. 
+
+\begin{equation}
+  \label{eq:95}
+  W(\tau) = -\frac{M^{g}}{2\sin \pi g} \cosh g\tau,
+\end{equation}
+where parameters $M$, $\tau$ are defined by
+\begin{equation}
+  \label{eq:96}
+  \mu=\frac{1}{\pi} \frac{\Gamma\left(1-\frac{1}{g}\right)}{\Gamma\left(\frac{1}{g}\right)} M^{2}
+\end{equation}
+\begin{equation}
+  \label{eq:97}
+  \mu_{B}=\frac{\Gamma\left(1-\frac{1}{g}\right)}{\pi} M\cosh \tau
+\end{equation}
+
+Here $g=\frac{1}{b^{2}}$. The result \eqref{eq:95} is supposed to coincide with the results of
+\cite{fateev2000boundary} in the following sense:
+\begin{equation}
+  \label{eq:98}
+  \partial_{\mu} W = \partial_{\mu_{B}} U
+\end{equation}
+
+
 \section{Scaling limit and CFT on a cone}
 \label{sec:scaling-limit-cft}
 
