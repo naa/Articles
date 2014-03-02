@@ -61,8 +61,8 @@ obtained.
 
 
 Some results exist in literature for particular case of self-avoiding walks ($\kappa=\frac{8}{3}$). We start
-with the description of these results \ref{sec:self-avoid-polyg}, then show that general problem
-leads to Liouville field theory \ref{sec:scaling-random-loops} and obtain our result using Liouville
+with the description of these results \ref{sec:self-avoid-polyg} and show that general problem
+leads to Liouville field theory and obtain our result using Liouville
 field theory fusion rules \ref{sec:liouville-theory}. 
 
 
@@ -102,6 +102,7 @@ Generating function for rooted polygons $G^{(r)}(x,g)$ is related to $G(x,g)$ by
 \end{equation}
 because root can be chosen in $l$ ways. 
 
+
 This model has critical point $(x_{c},0)$ and generating functions displays scaling behavior
 \begin{equation}
   \label{eq:77}
@@ -127,62 +128,42 @@ Numerical results predict
 \end{eqnarray}
 We want to find scaling function $F$.
 
-\subsection{$O(n)$ model}
-\label{sec:introduction-1}
+Let us reformulate this problem a bit so that it could be generalized. Consider self-avoiding
+polygons of length not greater than $n$ on a square lattice. This implies uniform measure on
+polygons. The scaling limit of self-avoiding walk when lattice mesh size $a\to 0$ and length $l\to
+\infty$ is conjectured to be described by Schramm-Loewner evolution with parameter
+$\kappa=\frac{8}{3}$. Since we consider closed loops the limit is loops of conformal loop ensemble
+with $\kappa=\frac{8}{3}$.
+The natural question is how to generalize the definition of functions $G$ and $F$ to CLE with
+arbitrary value of $\kappa$?
 
-Self-avoiding polygons can be thought as the limit $n\to 0$ of loops in $O(n)$ model.
-
-Partition function for $O(n)$ model is
+If we consider self-avoiding polygons of length up to $n$ the generating function $G_{n}(x)$ can be
+introduced as non-local observable. Denote by $N_{n}$ total number of polygons of length up to $n$.
+Since we have uniform measure, the probability for polygon to have length $l$ is
+$\frac{p_{l}}{N_{n}}$. Then the generating function $G_{n}(x)$ is the expectation value of $x^{l}=e^{-\mu_{B}l}$
 \begin{equation}
-  \label{eq:9}
-  Z_{O(n)} = \sum_{\mbox{loop conf}} x^{\mbox{total length}}
-  n^{\mbox{number of loops}}
+  \label{eq:102}
+  G_{n}(x)=\sum_{l<n} p_{l} x^{l} = N_{n} \sum_{l<n} \frac{p_{l}}{N_{n}} x^{l} = N_{n}\mathbb{E}[x^{l}]
 \end{equation}
-Critical point is $x=\frac{1}{\sqrt{2+\sqrt{2-n}}}$, the continuum
-limit in this point is described by minimal model $(p,p')$ with
-$n=-2\cos\left(\frac{\pi p}{p'}\right)$. $c=1-6\frac{(p-p')^2}{pp'}$, $b=\sqrt{\frac{3}{2}}$.
-
-Self-avoiding walk is obtained in the limit $n\to 0$. Then $c=0$ and
-we have logarithmic conformal field theory. 
-
-Logarithmic CFT $\sim$ Liouville theory ???
-
-\section{Scaling of random loops}
-\label{sec:scaling-random-loops}
-
-Cardy \cite{cardy2001exact} argues that generating function $G^{(r)}$ for rooted self-avoiding loops is given by a derivative w.r.t. $x$
-of expectation value of $e^{-gA}$ (eq.6):
+Generating function for polygons of given area can be written in similar way as
 \begin{equation}
-  \label{eq:82}
-  Z=\left<e^{-gA}\right>_{\mathrm{SAL}}=\left<e^{-\sqrt{g}\int J_{\lambda}A_{\lambda}d^{2}x}\right>_{\mathrm{SAL}.A}
+  \label{eq:103}
+   G_{n}(x,\mu)=\sum_{l<n} p_{l,A} x^{l} e^{-\mu A} = N_{n} \sum_{l<n} \frac{p_{l,A}}{N_{n}} x^{l} =
+   N_{n}\mathbb{E}[x^{l} e^{-\mu A}]
 \end{equation}
-But reasoning is quite strange and unsound. Due to the need to use $g$ for metric in later sections
-we will denote area coupling constant by $\mu$ and loop length coupling constant by $\mu_{B}=-\ln x$
-(boundary). 
+Note that the  observables $\mathbb{E}[e^{-\mu_{B}l}]$ ,$\mathbb{E}[e^{-\mu_{B}l -\mu A}]$ are
+non-local. So while the generalization from self-avoiding walk to arbitrary SLE is natural it is not
+clear how one can compute such observables.
 
+Local observables w.r.t. SLE can be described by correlation functions of boundary conformal field
+theory. So we need a theory which reproduces CFT in the limit $\mu,\mu_{B}\to 0$ and has non-local
+observables such as area and length.
 
-In this section we introduce scaling function for random loops. 
+Liouville theory of two-dimensional gravity is a natural choice, but to see it we need to discuss
+some geometry first. 
 
-Consider rooted loops in $O(n)$ model. Let $N^r(L)$ be number of
-rooted loops with a given length.  By $N^r(L,A)$ we denote the number
-of loops of given length and area. $N^r(L)=\int_0^{\infty} N^r(L,A)
-dA$. Area weighted number of loops is denoted by $G^r(L,\mu)$. (Here
-$\mu$ is bulk coupling constant ).
-\begin{equation}
-  \label{eq:2}
-  G^r(L,\mu)=\int e^{\mu A} N^r(L,A) dA
-\end{equation}
+Parameter $\kappa$ of SLE and CLE is connected with Hausdorff dimension of the curve. 
 
-\begin{equation}
-  \label{eq:1}
-  G^r (\mu,x) = \sum_{\mathrm{clusters}} N^r (L,A) x^L e^{-\mu A}
-\end{equation}
-
-The idea is to write $G$ as a correlation function in Liouville
-theory.
-
-Note that number of rooted loops of given area scales as the area to
-the power minus one. 
 
 Define Hausdorff dimension as follows.
 \begin{definition}
@@ -215,6 +196,21 @@ is known:
 
 ($\nu^{-1}=d_H$)
 
+Note that number of rooted loops of given area scales as the area to
+the power minus one. 
+
+Let $N^r(L)$ be number of rooted loops with a given length. By $N^r(L,A)$ we denote the number of
+loops of given length and area. $N^r(L)=\int_0^{\infty} N^r(L,A) dA$. Area weighted number of loops
+is denoted by $G^r(L,\mu)$. (Here $\mu$ is bulk coupling constant ).
+\begin{equation}
+  \label{eq:2}
+  G^r(L,\mu)=\int e^{\mu A} N^r(L,A) dA
+\end{equation}
+
+\begin{equation}
+  \label{eq:1}
+  G^r (\mu,x) = \sum_{\mathrm{clusters}} N^r (L,A) x^L e^{-\mu A}
+\end{equation}
 
 At $x\to x_c$
 \begin{equation}
@@ -222,38 +218,181 @@ At $x\to x_c$
   G^r(\mu,x)= \mu^{\theta} F\left(\frac{x-x_c}{\mu^{\phi}}\right)
 \end{equation}
 
-Partition function is product over loops of different length
-\begin{equation}
-  \label{eq:10}
-  Z_{O(n)} = \sum_{\mbox{loop conf}} \prod_L x^{L N(L)} n^{N(L)} = \sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}
-\end{equation}
-
-
-We can rewrite $G^r(\mu,x)$ as the derivative of generating function
-\begin{equation}
-  \label{eq:7}
-  G^r(\mu,x)=\mu\partial_x \log Z(\mu,\mu_B)
-\end{equation}
-
-Here
-\begin{equation}
-  \label{eq:8}
-  Z(\mu,\mu_B) = \left< e^{-\mu A} \right> = \frac{\sum_{\mbox{loop conf}}
-  \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)} e^{-\mu A}}{\sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}}
-\end{equation}
-
+%% 
+%% \subsection{$O(n)$ model}
+%% \label{sec:introduction-1}
+%% 
+%% Self-avoiding polygons can be thought as the limit $n\to 0$ of loops in $O(n)$ model.
+%% 
+%% Partition function for $O(n)$ model is
+%% \begin{equation}
+%%   \label{eq:9}
+%%   Z_{O(n)} = \sum_{\mbox{loop conf}} x^{\mbox{total length}}
+%%   n^{\mbox{number of loops}}
+%% \end{equation}
+%% Critical point is $x=\frac{1}{\sqrt{2+\sqrt{2-n}}}$, the continuum
+%% limit in this point is described by minimal model $(p,p')$ with
+%% $n=-2\cos\left(\frac{\pi p}{p'}\right)$. $c=1-6\frac{(p-p')^2}{pp'}$, $b=\sqrt{\frac{3}{2}}$.
+%% 
+%% Self-avoiding walk is obtained in the limit $n\to 0$. Then $c=0$ and
+%% we have logarithmic conformal field theory. 
+%% 
+%% Logarithmic CFT $\sim$ Liouville theory ???
+%% 
+%% \section{Scaling of random loops}
+%% \label{sec:scaling-random-loops}
+%% 
+%% Cardy \cite{cardy2001exact} argues that generating function $G^{(r)}$ for rooted self-avoiding loops is given by a derivative w.r.t. $x$
+%% of expectation value of $e^{-gA}$ (eq.6):
+%% \begin{equation}
+%%   \label{eq:82}
+%%   Z=\left<e^{-gA}\right>_{\mathrm{SAL}}=\left<e^{-\sqrt{g}\int J_{\lambda}A_{\lambda}d^{2}x}\right>_{\mathrm{SAL}.A}
+%% \end{equation}
+%% But reasoning is quite strange and unsound. Due to the need to use $g$ for metric in later sections
+%% we will denote area coupling constant by $\mu$ and loop length coupling constant by $\mu_{B}=-\ln x$
+%% (boundary). 
+%% 
+%% 
+%% In this section we introduce scaling function for random loops. 
+%% 
+%% Consider rooted loops in $O(n)$ model.
+%% 
+%% The idea is to write $G$ as a correlation function in Liouville
+%% theory.
+%% 
+%% 
+%% Partition function is product over loops of different length
+%% \begin{equation}
+%%   \label{eq:10}
+%%   Z_{O(n)} = \sum_{\mbox{loop conf}} \prod_L x^{L N(L)} n^{N(L)} = \sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}
+%% \end{equation}
+%% 
+%% 
+%% We can rewrite $G^r(\mu,x)$ as the derivative of generating function
+%% \begin{equation}
+%%   \label{eq:7}
+%%   G^r(\mu,x)=\mu\partial_x \log Z(\mu,\mu_B)
+%% \end{equation}
+%% 
+%% Here
+%% \begin{equation}
+%%   \label{eq:8}
+%%   Z(\mu,\mu_B) = \left< e^{-\mu A} \right> = \frac{\sum_{\mbox{loop conf}}
+%%   \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)} e^{-\mu A}}{\sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}}
+%% \end{equation}
+%% 
+%% 
+KPZ-scaling. ``Wrong branch'' for $\mu_{B}$? 
 
 
 \section{Liouville theory}
 \label{sec:liouville-theory}
 
-Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism.
-\cite{nakayama2004liouville,ponsot2002boundary,teschner2001liouville,fateev2000boundary,teschner2000remarks,zamolodchikov1996conformal} 
 
-Liouville theory describes internal metric of surface. It is possible to obtain length of boundary
-and area of surface with such a metric. To get the answer for flat loops we need to impose some
-condition on metric in the bulk. 
+%%  Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism.
+%%  \cite{nakayama2004liouville,ponsot2002boundary,teschner2001liouville,fateev2000boundary,teschner2000remarks,zamolodchikov1996conformal} 
+%%  
+%%  Liouville theory describes internal metric of surface. It is possible to obtain length of boundary
+%%  and area of surface with such a metric. To get the answer for flat loops we need to impose some
+%%  condition on metric in the bulk. 
+%%  
 
+In last 30 years great progress was made in study of quantum Liouville theory made in papers
+\cite{fateev2000boundary,zamolodchikov1996conformal,knizhnik1988fractal} and in study of matter on
+random discrete surfaces
+\cite{kazakov1986ising,duplantier1990geometrical,gaudin1989n,duplantier1988conformal}. These two
+approaches to two-dimensional quantum gravity are in agreement
+\cite{kostov2004boundary,kostov2003boundary}. In recent years strict mathematical definitions and proofs for some
+field-theoretic results were obtained \cite{duplantier2011liouville,garban2012quantum}. All these
+solid developments allow us to use Liouville theory as a theory of random surfaces and apply its
+methods to the geometry of random loops. Our approach is similar to the application of Liouville
+theory to harmonic measure problems \cite{duplantier2000conformally}. 
+
+In present text we do not try to be mathematically strict and do not use the definition of Liouville
+measure from \cite{duplantier2011liouville} but we suppose that our result can be proven using
+methods of that paper.
+
+Before moving to quantum Liouville theory and scaling limit of generating functions of self-avoiding
+polygons we need to discuss the geometry of Riemann surfaces and polygons on complex plane and its
+connection with Liouville equation. 
+
+\subsection{Uniformization of Riemann surfaces and Liouville equation}
+\label{sec:unif-riem-surf}
+
+The problem of uniformization of Riemann surfaces was of central importance in mathematics at the
+end of 19th -- beginning of 20th century. Great mathematicians such as Riemann, Klein and Poincare
+proposed different approaches to its solution and the uniformization theorem was finally proven by
+Koebe in 1907. 
+
+\begin{definition}
+  A Riemann surface is a connected Hausdorff space $M$ (distinct points have disjoint neighbourhoods) together with a collection
+  of charts ${U_{\alpha} , z_{\alpha} }$ with the following properties:
+  \begin{itemize}
+  \item The $U_{\alpha}$ form an open covering of $M$ .
+  \item Each $z_{\alpha}$ is a homeomorphic mapping ($\exists$ continuous inverse) of $U_{\alpha}$ onto an open subset of the complex plane $\mathbb{C}$.
+  \item If $U_{\alpha}\cap  U_{\beta} \neq \emptyset$, then $f_{\alpha\beta} = z_{\beta}\circ  z_{\alpha}^{-1}$ is complex analytic on $z_{\alpha} (U_{\alpha} \cap U_{\beta} )$.
+  \end{itemize}  
+\end{definition}
+
+The statement of the theorem is 
+\begin{theorem}
+  Every simply connected Riemann surface is conformally equivalent to one of the three domains: the
+  open unit disk, the complex plane, or the Riemann sphere. In particular it admits a Riemannian
+  metric of constant curvature.
+\end{theorem} 
+
+This classifies Riemannian surfaces as elliptic (positively curved -- rather, admitting a constant
+positively curved metric), parabolic (flat), and hyperbolic (negatively curved) according to their
+universal cover.
+
+Proof is based upon existence and properties of Green function for the surface $M$.
+
+ We can
+ compose each $z_{\alpha}$ with a Mobius transformation of the disk onto itself so that we can
+assume that for each coordinate disk $U_{\alpha}$ and each $p_{0}\in  U_{\alpha}$ there is a coordinate function
+$z$ with $z (p_{0} ) = 0$.
+
+     Suppose $M$ is a Riemann surface. Fix $p_{0}\in  M$ and let $z : U\to  \mathbb{D}$ be a coordinate
+function such that $z(p_{0} ) = 0$. Let $\mathcal{F}_{p_{0}}$ be the collection of subharmonic
+functions $v$ on $M \setminus p_{0}$ satisfying
+\begin{itemize}
+\item $v = 0$ on $M \setminus K$, for some compact $K\subset M$ with $K \neq M$, and
+\item $\limsup_{p\to p_{0}} (v(p) + log |z(p)|) < \infty$
+\end{itemize}
+
+Set
+\begin{equation}
+  \label{eq:104}
+  g_{M} (p, p_{0} ) = \sup\{v(p) : v\in \mathcal{F}_{p_{0}} \}
+\end{equation}
+  
+Second condition does not depend on the choice of the coordinate function $z_{\alpha}$ , provided
+$z_{\alpha} (p_{0} ) = 0$. The collection $\mathcal{F}_{p_{0}}$ is a Perron family, so by Harnack's
+Theorem      $g_M (p, p_{0} )$ is either harmonic in  $M \setminus \{p_{0} \}$, or  is equal to $+\infty$  for
+all $p\in M \setminus \{p_{0} \}$.
+In the first case, $g_{M} (p, p_{0} )$ is called Green's function with pole (or logarithmic singularity)
+at $p_{0}$ . In the second case we say that Green's function does not exist.
+
+The Uniformization Theorem can be reformulated as follows (Koebe[1907]):
+
+\begin{theorem}
+  Suppose $M$ is a simply connected Riemann surface. If Green's function exists for $M$ , then there
+  is a one-to-one analytic map of $M$ onto $\mathbb{D}$. If $M$ is compact, then there is a
+  one-to-one analytic map of $M$ onto $\mathbb{C}^{*}$ . If $M$ is not compact and if Green's
+  function does not exist for $M$ , then there is a one-to-one analytic map of $M$ onto
+  $\mathbb{C}$.
+\end{theorem}
+
+Note that uniformization theorem does not give a construction of uniformization map. 
+
+More modern formulation of uniformization principle operates with quotient of universal cover of
+Riemann surface by the action of some Fuchsian group. This group is monodromy group of Liouville
+equation (?)
+
+
+
+\subsection{Classical theory}
+\label{sec:classical-theory}
 
 The action for Liouville theory on a surface $\Gamma$ in arbitrary background metric $g$ is
 \begin{equation}
@@ -316,13 +455,28 @@ singularity.
   g=
 \end{equation}
 
+**** More on classical solutions here *****
 
+\subsection{Functional integral formulation}
+\label{sec:funct-integr-form}
+
+To have quantum theory of gravity we need to define somehow functional integral. It can symbolically
+written as
+\begin{equation}
+  \label{eq:101}
+  \int [\mathcal{D}\varphi] e^{-S[\varphi]}
+\end{equation}
+Actual definition is tricky, because we need to quantize metric $e^{2b\varphi}g^{\mu\nu}$ and this
+metric takes part not only in action for field $\varphi$, but also in action for matter field and
+even functional integral measure \cite{david1988conformal,distler1989conformal,polyakov1987gauge}. 
 
 In theory with the action
 $$S=\frac{1}{4\pi} \int \sqrt{g}\left( \frac{1}{2} g^{\mu\nu} \partial_{\mu} \varphi \partial_{\nu}
   \varphi + Q R\varphi + 4\pi\mu e^{2b\varphi}\right) d^{2}x,$$ 
 where $g$ is a background metric we need to assume some regularization procedure to define a
 functional integral, because we want to integrate over measure that does not depend upon metric.
+
+
 The idea is that the form of the action is the same but parameters are changed. 
 So now $\mu$ is not a classical cosmological constant and $\mu,b,Q$ are connected through
 consistency requirements for the theory. 
@@ -410,6 +564,35 @@ fields $V_{\alpha}$ are non-local. Conformal dimension of primary field $V_{\alp
 
 Fields $V_{-\frac{nb}{2}}, \; n\in \mathbb{N}$ are degenerate, correlation functions of these fields
 satisfy differential equations of order $n+1$. 
+
+\subsubsection{KPZ-scaling}
+\label{sec:kpz-scaling}
+
+Knizhnik-Polyakov-Zamolodchikov (KPZ \cite{knizhnik1988fractal}) scaling relation gives behavior of
+Liouville correlation functions w.r.t. to change in coupling constants $\mu, \mu_{B}$. This relation
+is easy to obtain. Consider reparametrisation $\varphi\to\varphi-\frac{1}{2b}\ln\mu$. The action
+$S[\mu,\mu_{B}]$ is then
+\begin{equation}
+  \label{eq:84}
+  S[\mu,\mu_{B}]=-\frac{1}{4\pi}\int d^{2}x \frac{1}{2b}QR\ln\mu+S\left[1,\frac{\mu_{B}}{\sqrt{\mu}}\right]
+\end{equation}
+Since
+\begin{equation}
+  \label{eq:85}
+  \int d^{2}x R =4\pi\chi,
+\end{equation}
+where $\chi=2-2\#handles-\#boundaries$ is Euler characteristic of the surface, we get
+\begin{equation}
+  \label{eq:99}
+    S[\mu,\mu_{B}]=-\frac{1}{2b}Q\chi\ln\mu+S\left[1,\frac{\mu_{B}}{\sqrt{\mu}}\right]
+\end{equation}
+Substitute it into functional integral for correlation function of arbitrary bulk and boundary
+vertex operators:
+\begin{equation}
+  \label{eq:100}
+  \langle V_{\alpha_{1}}(z_{1})\dots V_{\alpha_{n}}(z_{n}) B_{\beta_{1}}(x_{1})\dots B_{\beta_{m}}(x_{m})\rangle=
+\end{equation}
+
 
 Computation of correlation functions in Liouville field theory relies on screening operators and
 recurrent relations that appear from OPE for auxiliary correlation functions.
@@ -932,12 +1115,31 @@ where parameters $M$, $\tau$ are defined by
 \end{equation}
 
 Here $g=\frac{1}{b^{2}}$. The result \eqref{eq:95} is supposed to coincide with the results of
-\cite{fateev2000boundary} in the following sense:
+\cite{fateev2000boundary} \eqref{eq:21} in the following sense:
 \begin{equation}
   \label{eq:98}
   \partial_{\mu} W = \partial_{\mu_{B}} U
 \end{equation}
 for $\alpha=b$ (?)
+
+Substitute $  M^{2}=\mu\frac{\pi}{1}
+\frac{\Gamma\left(\frac{1}{g}\right)}{\Gamma\left(1-\frac{1}{g}\right)}$ to \eqref{eq:95}:
+\begin{equation}
+  \label{eq:83}
+  W(\tau) = -\frac{\left(\mu\frac{\pi}{1}
+\frac{\Gamma\left(\frac{1}{g}\right)}{\Gamma\left(1-\frac{1}{g}\right)}\right)^{g/2}}{2\sin \pi g} \cosh g\tau,
+\end{equation}
+
+and compare with \eqref{eq:21} for $\alpha=b$: 
+
+\begin{equation}
+  U(b)=\frac{2}{b} \left(\pi\mu\gamma( b^{2})\right)^{\frac{-b+1/b}{2b}} \Gamma(b^{2})
+  \Gamma\left(1-\frac{1}{b^{2}}\right) \cosh (b-1/b)\pi s
+\end{equation}
+where $s$ is determined from the equation
+\begin{equation}
+  \cosh^{2} \pi b s=\frac{\mu_{B}^{2}}{\mu}\sin \pi b^{2}
+\end{equation}
 
 
 \section{Scaling limit and CFT on a cone}
