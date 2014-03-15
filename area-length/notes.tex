@@ -68,7 +68,7 @@ field theory fusion rules \ref{sec:liouville-theory}.
 
 
 
-\subsection{Self-avoiding polygons}
+v\subsection{Self-avoiding polygons}
 \label{sec:self-avoid-polyg}
 
 The model of self-avoiding polygons was numerically studied in the paper \cite{richard2001scaling}.
@@ -128,6 +128,15 @@ Numerical results predict
 \end{eqnarray}
 We want to find scaling function $F$.
 
+Using their numeric results, authors of the paper \cite{richard2001scaling} were able to come with
+the following scaling for rooted generating function:
+\begin{equation}
+  \label{eq:112}
+  G^{(r)}(\mu,\mu_B)\sim \mu^{\frac{1}{3}} \frac{\mathrm{Ai}'(s)}{\mathrm{Ai}(s)},\quad \mbox{where}\; s=\left(\frac{\mu_{B}^{2}}{\mu}\right)^{\phi}
+\end{equation}
+We want to get physical and geometrical understanding of this result and its generalization to
+different measures on closed curves.
+
 Let us reformulate this problem a bit so that it could be generalized. Consider self-avoiding
 polygons of length not greater than $n$ on a square lattice. This implies uniform measure on
 polygons. The scaling limit of self-avoiding walk when lattice mesh size $a\to 0$ and length $l\to
@@ -157,7 +166,13 @@ clear how one can compute such observables.
 
 Local observables w.r.t. SLE can be described by correlation functions of boundary conformal field
 theory. So we need a theory which reproduces CFT in the limit $\mu,\mu_{B}\to 0$ and has non-local
-observables such as area and length.
+observables such as area and length. Note also that the parameter $\kappa$ is connected with the
+central charge of conformal field theory by the relation
+\begin{equation}
+  \label{eq:113}
+  c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}
+\end{equation}
+
 
 Liouville theory of two-dimensional gravity is a natural choice, but to see it we need to discuss
 some geometry first. 
@@ -182,6 +197,7 @@ Define Hausdorff dimension as follows.
   \end{equation}
 \end{definition}
 
+
 Consider loop of length $L$. The radius of the loop is connected with
 the length as $L\sim R^{d_H}$. The area is related to radius $A\sim
 R^2$, so $A\sim L^{\frac{2}{d_H}}$.
@@ -198,6 +214,112 @@ is known:
 
 Note that number of rooted loops of given area scales as the area to
 the power minus one. 
+
+Hausdorff dimension in CFT is calculated by the insertion of certain primary field called ``pinning
+operator'' \cite{bettelheim2005harmonic}. Expanded presentation can be found in the paper
+\cite{gruzberg2006stochastic}. The argument is as follows. 
+
+Consider a closed curve. Harmonic measure of some part of the curve can be understood as a charge of
+that part if the curve is made of conducting material and its total charge is equal to one. 
+Closed curve can be covered by small circles of radius $r$ centered at points
+$z_{i}$. Consider one such circle. The curve divides the circle into two parts, inner and outer
+w.r.t. to curve. Outer part can be conformally mapped to the unit disk. Denote this map by $w(z)$.
+With the normalization such that one point is fixed and derivative at infinity is equal to one the
+moments of harmonic measure in small circle of radius $r$ scale as
+\begin{equation}
+  \label{eq:116}
+  \mu(r)\sim |w(r)|\sim r |w'(r)|
+\end{equation}
+So scaling of the moments of $\mu(r)$ are determined by scaling of $|w'(r)|$:
+\begin{equation}
+  \label{eq:117}
+  \prec |w'(r)|^{h}\succ \sim r^{\Delta(h)}, \quad r\to 0
+\end{equation}
+
+The moments of harmonic measure for the whole curve can be written as a sum over small circles:
+\begin{equation}
+  \label{eq:120}
+  M_{h}=\sum_{i=1}^{N} \mu(z_{i},r)^{h}
+\end{equation}
+
+In the limit $r\to 0$ number of circles grows and moments scale as
+\begin{equation}
+  \label{eq:121}
+  M_{h}\sim r^{\tau(h)}
+\end{equation}
+The function $\tau(h)$ is called multifractal spectrum. For simple curve $\tau(h)=h-1$, so anomalous
+exponents $\delta(h)$ are defined as $\delta(h)=\tau(h)-h+1$. 
+
+Note that $M_{0}$ is a total number of circles and $\tau(0)=-d_{H}$ by definition of Hausdorff
+dimension. For $h=1$ the sum is equal to the total charge of the curve so it does not scale and
+$\tau(1)=0$. 
+
+To calculate multifractal spectrum we need to average over the values at points $z_{i}$. One can
+assume the ergodicity and rewrite $M_{h}$ as
+\begin{equation}
+  \label{eq:122}
+  M_{h}=N \prec \mu(z,r)^{h}\succ
+\end{equation}
+for some point $z$. The total number of circles $N$ is equal to zeroth momentum $M_{0}$, so
+$M_{h}\sim r^{\tau(0)} \prec \mu(z,r)^{h}\succ$. Local multifractal spectrum $\tilde\tau(h)$ is
+defined as $ \prec \mu(z,r)^{h}\succ\sim r^{\tilde\tau(h)}$ and local anomalous exponents are
+$\Delta_{bulk}(h)=\tilde\tau(h) -h$.
+
+Following relations hold for multifractal spectrum and anomalous exponents:
+$\tilde\tau(h)=\tau(h)-\tau(0)$, $\Delta_{bulk}(h)=\delta(h)-\delta(0)$, $d_{H}=1+\Delta_{bulk}(1)$
+
+Multifractal spectrum and anomalous exponents were first obtained by Duplantier in paper
+\cite{duplantier2000conformally} using quantum gravity. The result is
+\begin{equation}
+  \label{eq:123}
+  \Delta_{bulk}(h)=-\frac{h}{2}+\left(\frac{1}{16}+\frac{1}{4\kappa}\right)
+  (\kappa-4+\sqrt{(\kappa-4)^{2}+16\kappa h})
+\end{equation}
+\begin{equation}
+  \label{eq:124}
+  \tau(h)=\frac{1}{2}(h-1) +\frac{25-c}{24}\left(\sqrt{\frac{24 h +1-c}{25-c}}-1\right), 
+\end{equation}
+where $c$ and $\kappa$ are connected by \eqref{eq:113}.
+
+So we have following result for Hausdorff dimension (eq \eqref{eq:5}):
+\begin{equation}
+  \label{eq:125}
+  d_{H}=1+\frac{\kappa}{8}
+\end{equation}
+
+
+
+The stochastic averages for (local) moments of harmonic measure are represented by different CFT
+correlation functions depending upon the position of point of interest. If we are interested in a
+bulk point lying on a curve, we need to put at this point a special operator. It is $\Psi_{10}$
+which has an interpretation as an operator that creates two lines coming from the point in the bulk.
+To see it one can consider circle of small radius $\varepsilon$ centered at $z$. Put some conformal
+boundary condition on one half of the circle and another condition on the rest of the circle. Then
+critical curve would join the points of change in boundary conditions. The expectation values of
+observables in this geometry are given by CFT correlation functions with two boundary condition
+changing operators inserted:
+\begin{equation}
+  \label{eq:119}
+  \left< \Psi_{12}(z')\Psi_{12}(z'')\right>
+\end{equation}
+where $|z'-z|\leq \varepsilon$ and $|z''-z|\leq \varepsilon$. The boundary condition changing
+operators in Coulomb gas picture can be presented as the vertex operators
+$V_{\alpha_{12}}=e^{i\sqrt{2}\alpha_{12}\varphi(z)}$. When $\varepsilon\to 0$ we can fuse this two
+operators to single operator $V_{2\alpha_{12}}$. Note that $\alpha_{12}=-\frac{1}{2}\alpha_{-}$
+\eqref{eq:55}, so $V_{2\alpha_{12}}\sim V_{-\alpha_{-}}\sim V_{\alpha_{+}}$ (?)
+
+
+The moments of harmonic measure are connected with the CFT correlation functions by
+\begin{equation}
+  \label{eq:118}
+  \left<O_{h}(r) \Psi_{10}(0)\Psi(\infty)\right>\sim r^{h'-2h}\prec |w'(r)|^{h}\succ
+\end{equation}
+
+
+
+
+
+
 
 Let $N^r(L)$ be number of rooted loops with a given length. By $N^r(L,A)$ we denote the number of
 loops of given length and area. $N^r(L)=\int_0^{\infty} N^r(L,A) dA$. Area weighted number of loops
@@ -389,7 +511,66 @@ More modern formulation of uniformization principle operates with quotient of un
 Riemann surface by the action of some Fuchsian group. This group is monodromy group of Liouville
 equation (?)
 
+Let $D$ denote $\mathbb{C}$, $\mathbb{C}^{*}$ or $\mathbb{D}$.
+\begin{theorem}
+Every Riemann surface $M$ is conformally equivalent to the quotient $D/\Gamma$ with $\Gamma$  a freely acting
+discontinuous group of fractional transformations preserving $D$.
+\end{theorem}
 
+Let us consider the case of Riemann surfaces with universal covering $\mathbb{H}\sim \mathbb{D}$ and
+denote by $J_{H}$ the complex analytic covering $J_{H} : \mathbb{H}\to M$ . In this case $\Gamma$
+(the automorphism group of $J_{H}$ ) is a finitely generated Fuchsian 
+group $\Gamma\subset PSL(2,
+\mathbb{R}) = SL(2, \mathbb{R})/{I, -I}$ acting on $\mathbb{H}$ by linear fractional transformations
+\begin{equation}
+  \label{eq:106}
+  w\in \mathbb{H}\quad \gamma\cdot w=\frac{aw+b}{cw+d}\in\mathbb{H},\quad
+  \gamma=\begin{pmatrix} a & b\\ c & d\end{pmatrix} \in\Gamma\subset PSL(2,\mathbb{R})
+\end{equation}
+
+By the fixed point equation
+\begin{equation}
+  \label{eq:107}
+  w_{\pm}=\frac{a-d\pm\sqrt{(a+d)^{2}-4}}{2c}
+\end{equation}
+it follows that $\gamma\neq I$ can be classified according to the value of $|\mathrm{tr} \gamma|$:
+\begin{enumerate}
+\item Elliptic case: $|\mathrm{tr} \gamma|<2$, $\gamma$ has one fixed point on $\mathbb{H}$:
+  $w_{-}=\bar w_{+}\not\in\mathbb{R}$ and $M$ has branch point
+\item Parabolic case: $|\mathrm{tr}\gamma|=2$, $w_{-}=w_{+}\in\mathbb{R}$ and Riemann surface $M$
+  has a puncture.
+\item Hyperbolic case: $|\mathrm{tr}\gamma|>2$, Riemann surface has handles. 
+\end{enumerate}
+
+   A Riemann surface $M$ isomorphic to the quotient $\mathbb{H}/\Gamma$ has the Poincar\'e metric $\hat g$ as the
+unique metric with scalar curvature $R_{\hat g} = -1$ compatible with its complex structure. This
+implies the uniqueness of the solution of the Liouville equation on $M$. The Poincar\'e metric
+on $\mathbb{H}$ is
+\begin{equation}
+  \label{eq:108}
+  ds^{2}=\frac{|dw|^{2}}{(\Im w)^{2}}
+\end{equation}
+Note that $P SL(2, \mathbb{R})$ transformations are isometries of $\mathbb{H}$ endowed with the Poincar\'e metric.
+   An important property of $\Gamma$ is that it is isomorphic to the fundamental group $\pi_{1}(M)$.
+
+Substitute $w=J_{H}^{-1}(z)$ in \eqref{eq:108} and get Poincar\'e metric on $M$:
+\begin{equation}
+  \label{eq:109}
+  ds^{2}=2\hat g_{z\bar z}|dz|^{2}=e^{\varphi(z,\bar z)} |dz|^{2}=\frac{|J_{H}^{-1}(z)'|^{2}}{(\Im
+    J_{H}^{-1}(z))^{2}} |dz|^{2}
+\end{equation}
+
+The curvature in complex coordinates is given by
+\begin{equation}
+  \label{eq:110}
+  R_{\hat g}=-\hat g^{z\bar z}\partial \bar \partial \ln \hat g_{z\bar z}, \quad \hat g^{z\bar z}=2e^{-\varphi}
+\end{equation}
+The condition $R_{\hat g}=-1$ is equivalent to Liouville equation
+\begin{equation}
+  \label{eq:111}
+  \partial \bar \partial \varphi(z,\bar z)=\frac{1}{2} e^{\varphi(z,\bar z)}
+\end{equation}
+The field $\tilde\varphi=\varphi+\ln \mu, \; \mu>0$ defines a metric of constant curvature $-\mu$. 
 
 \subsection{Classical theory}
 \label{sec:classical-theory}
@@ -473,16 +654,33 @@ even functional integral measure \cite{david1988conformal,distler1989conformal,p
 In theory with the action
 $$S=\frac{1}{4\pi} \int \sqrt{g}\left( \frac{1}{2} g^{\mu\nu} \partial_{\mu} \varphi \partial_{\nu}
   \varphi + Q R\varphi + 4\pi\mu e^{2b\varphi}\right) d^{2}x,$$ 
-where $g$ is a background metric we need to assume some regularization procedure to define a
-functional integral, because we want to integrate over measure that does not depend upon metric.
+where $g$ is a background metric, we need to assume some regularization procedure to define a
+functional integral, because we want to integrate over measure that does not depend upon metric
+\begin{equation}
+  \label{eq:114}
+  ||\delta\varphi||^{2}=\int \sqrt{g} e^{\varphi(x)}(\delta\varphi)^{2} d^{2}x
+\end{equation}
+This measure is non-linear and non translation-invariant and we need to substitute it with the
+measure
+\begin{equation}
+  \label{eq:115}
+    ||\delta\varphi||^{2}=\int \sqrt{g}(\delta\varphi)^{2} d^{2}x,
+\end{equation}
+that is  w.r.t. to change $\varphi(x)\to \varphi(x) +C(x)$ for arbitrary fixed function $C(x)$. 
 
+There is for now no way to do it, so 
+the idea is that the form of the action after regularization is the same but parameters are changed.
+The parameters are then obtained from consistency condition, which is background-independence of the
+theory. 
 
-The idea is that the form of the action is the same but parameters are changed. 
 So now $\mu$ is not a classical cosmological constant and $\mu,b,Q$ are connected through
 consistency requirements for the theory. 
 The consistency requirement is background-independence. The action should not change when we choose
 another background metric and shift field $\varphi$ accordingly. 
-Let $\tilde g = e^{\sigma} g$, redefine $\varphi$ as $\tilde \varphi=\varphi + \frac{Q}{2}\sigma$,
+Let $\tilde g = e^{\sigma} g$ and redefine $\varphi$ as $\tilde \varphi=\varphi +
+\frac{Q}{2}\sigma$. 
+
+Consider first the case $\mu=0$.
 then all the terms with $\sigma$ are cancelled if we take into account contributions from matter
 partition function. But it is possible only if 
 $$Q=\frac{25-c_{M}}{6}$$. 
@@ -1156,6 +1354,15 @@ equivalent to fusion rules of degenerate field in CFT.
 
 In this section we solve recurrent relation using fusion rules and
 show that scaling function is equal to Bessel's function. 
+
+\section{Scaling of generating function for polygons}
+\label{sec:scal-gener-funct}
+
+The solution is
+\begin{equation}
+  \label{eq:105}
+  \left< V_{\alpha_{01}} B_{\beta_{10}}\right>
+\end{equation}
 
 \section{Conclusion}
 \label{sec:conclusion}
