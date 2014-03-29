@@ -293,6 +293,192 @@ The stochastic averages for (local) moments of harmonic measure are represented 
 correlation functions depending upon the position of point of interest. If we are interested in a
 bulk point lying on a curve, we need to put at this point a special operator. It is $\Psi_{10}$
 which has an interpretation as an operator that creates two lines coming from the point in the bulk.
+
+Identification of this operator is based upon the model of compactified boson field. Level lines of
+such a field are critical curves described by Schramm-Loewner evolution. Vertex operators of the
+model are either ``electric'' or ``magnetic''. Magnetic operators are interpreted as discontinuities
+in field value. 
+
+This interpretation is based on the following analogy. Consider $O(n)$ model on the domain
+$\mathcal{D}$ on the honeycomb lattice. It's configurations can be seen as the configurations of
+oriented loops with arbitrary orientation. Then each site has weight $e^{\pm i e_{0}\pi/6}$ if loop
+is turning right or left at the site. The parameter $e_{0}$ is connected with $n$ by $n=2\cos \pi
+e_{0}$. Then we need to introduce height function that will give us field in critical limit. Choose
+an arbitrary site of dual lattice as a reference point $H=0$ and increase or decrease $H$ by $\pi$
+when crossing loop depending upon its orientation.
+
+Since the choice of loop orientations is arbitrary field $H$ should be compactified $H\simeq
+H+2\pi$.
+ In critical limit this gives us free boson theory:
+\begin{equation}
+  \label{eq:126}
+  S=\frac{g}{4\pi} \int_{\mathcal{D}} d^{2}x (\nabla H)^{2} +\frac{i e_{0}}{2\pi}
+  \int_{\partial\mathcal{D}} dl KH +\frac{i e_{0}}{8\pi} \int_{\mathcal{D}} d^{2}x
+  RH+\lambda\int_{\mathcal{D}} d^{2}x V(H)
+\end{equation}
+Boundary loops has different weights. To take this into account we need to add second term to the
+action. Third term comes from the curvature of surface which can be realized microscopically by
+insertion of lattice faces with number of edges not equal to 6. The last term is locking potential
+which is needed for field compactification. In the limit $\lambda\to\infty$ field $H=k\pi$, so the
+potential is
+\begin{equation}
+  \label{eq:127}
+  V(H)=\sum_{k\in\mathbb{Z}\setminus \{0\}}v_{k}e^{2ikH}
+\end{equation}
+Each term in this expansion is vertex operator with scaling dimension $x_{k}=\frac{2}{g}k(k-e_{0})$,
+so for $e_{0}\in [0,1]$ the operator with $k=1$ is most relevant and it is strictly marginal if
+$x_{k}=2$, which is required for conformal invariance. This fixes us the parameter $g$:
+\begin{equation}
+  \label{eq:128}
+  e_{0}=1-g\quad n=-2\cos \pi g
+\end{equation}
+Dense phase is for $e_{0}\in [0,1], g\in [0,1]$ and dilute phase of $O(n)$ model corresponds to
+$e_{0}\in [-1,0], g\in [1,2]$.
+Now critical curves can be identified with the level lines of field $H$ and $g=\frac{4}{\kappa}$. 
+
+Following notation is more conventional:
+$\varphi=\sqrt{2g}H$ with new coupling constant in action equal to $\frac{1}{2}$. Compactification
+radius for this choice is $\mathcal{R}=\sqrt{\frac{8}{\kappa}}$ and action reads
+\begin{equation}
+  \label{eq:129}
+  S[\varphi]=\frac{1}{8\pi}\int_{\mathcal{D}}d^{2}x ((\nabla \varphi)^{2} + i2\sqrt{2} \alpha_{0}
+  R\varphi)+i\frac{\sqrt{2}\alpha_{0}}{2\pi} \int_{\partial\mathcal{D}} dl
+  K\varphi+\int_{\mathcal{D}}d^{2}x e^{i\sqrt{2}\alpha_{+}\varphi}
+\end{equation}
+where $2\alpha_{0}=\frac{\sqrt{\kappa}}{2}e_{0}=\frac{\sqrt{\kappa}}{2}-\frac{2}{\sqrt{\kappa}}$,
+$\alpha_{\pm}=\alpha_{0}\pm\sqrt{\alpha_{0}^{2}+1}$, $\alpha_{+}=\frac{\sqrt{\kappa}}{2}$,
+$\alpha_{-}=-\frac{2}{\sqrt{\kappa}}$. 
+
+Central charge of this theory is
+\begin{equation}
+  \label{eq:130}
+  c=1-24\alpha_{0}^{2}=1-3\frac{(\kappa-4)^{2}}{2\kappa}
+\end{equation}
+In computations of correlation functions the last term in action is treated perturbatively. Due to
+neutrality condition at most first order terms survive. 
+
+We now describe theory on a full plane which has the following primary fields and local operators. 
+
+By choosing coordinates we can make space locally flat with the curvature at infinity. Then instead
+of term with the curvature $R$ we get vertex operator $V_{-2\alpha_{0},-2\alpha_{0}}(\infty)$.
+
+We can decompose field $\varphi(z,\bar z)$ into holomorphic and antiholomorphic part and introduce a
+dual field $\tilde\varphi$ as
+\begin{equation}
+  \label{eq:131}
+  \varphi(z,\bar z)=\phi(z)+\bar\phi(\bar z),\quad \tilde\varphi=-i\phi(z)+i\bar\phi(z)
+\end{equation}
+
+Holomorphic and antiholomorphic vertex operators are
+\begin{equation}
+  \label{eq:132}
+  V_{\alpha}(z)=e^{i\sqrt{2}\alpha \phi(z)},\quad \bar V_{\bar\alpha}(\bar z)=e^{i\sqrt{2}\bar\alpha
+    \bar \phi(\bar z)}
+\end{equation}
+
+Full vertex operator is a product of them
+\begin{equation}
+  \label{eq:133}
+  V_{\alpha,\bar\alpha}(z,\bar z)=V_{\alpha}(z)\bar V_{\bar \alpha}(\bar z)
+\end{equation}
+There is another possible decomposition with physical interpretation of electric and magnetic operators:
+\begin{equation}
+  \label{eq:134}
+  \alpha=e+m\quad \bar\alpha=e-m
+\end{equation}
+\begin{equation}
+  \label{eq:135}
+  V_{e,0}(z,\bar z)=e^{i\sqrt{2} e\varphi(z,\bar z)},\quad   V_{0,m}(z,\bar z)=e^{-\sqrt{2} m\tilde\varphi(z,\bar z)}
+\end{equation}
+
+Conformal weights of these operators are 
+\begin{equation}
+  \label{eq:136}
+  h(\alpha)=\alpha(\alpha-2\alpha_{0})=(e+m)(e+m-2\alpha_{0})
+\end{equation}
+\begin{equation}
+  \label{eq:137}
+  \bar h(\bar\alpha)=\bar\alpha(\bar\alpha-2\alpha_{0})=(e-m)(e-m-2\alpha_{0})
+\end{equation}
+
+Spinless operators with $h=\bar h$ are possible when $\alpha=\bar\alpha$ or
+$\bar\alpha=2\alpha_{0}-\alpha$. These two cases correspond to pure electric operators with $m=0$ or
+magnetic operators with arbitrary $m$ and electric charge $e=\alpha_{0}$. 
+
+The following notation is used in \cite{gruzberg2006stochastic} for spinless vertex operators:
+\begin{equation}
+  \label{eq:138}
+  V^{(\alpha)}=V_{\alpha,2\alpha_{0}-\alpha}=V_{\alpha}\bar V_{2\alpha_{0}-\alpha}
+\end{equation}
+
+Charges and conformal weights of degenerate fields from Kac table are
+\begin{equation}
+  \label{eq:139}
+  \alpha_{r,s}=\frac{1}{2}(1-r)\alpha_{+}+\frac{1}{2}(1-s)\alpha_{-},\quad h_{r,s}=\frac{(r\kappa-4s)^{2}-(\kappa-4)^{2}}{16\kappa}
+\end{equation}
+So holomorphic and full primary fields are denoted by $\psi_{r,s}(z)\sim V_{\alpha_{r,s}}(z)$ and
+$\psi_{r,s}(z,\bar z)\sim V^{(\alpha_{r,s})}(z,\bar z)$
+
+Theory on a domain with boundary is different, because we need to take into account boundary condition
+\begin{equation}
+  \label{eq:140}
+  \partial_{l}\varphi|_{\partial \mathcal{D}}=0.
+\end{equation}
+But we can map the domain $\mathcal{D}$ to upper half-plane $\mathbb{H}$, then we can take into
+account boundary conditions by analytic continuation to the whole plane and duplication of fields:
+\begin{equation}
+  \label{eq:141}
+  \bar\phi(\bar z)\to -\phi(z^{*})
+\end{equation}
+\begin{eqnarray}
+  \label{eq:142}
+  V_{e,0}\to e^{i\sqrt{2}e\phi(z)} e^{-i\sqrt{2} e \phi(z^{*})}\\
+  V_{0,m}\to e^{i\sqrt{2}m\phi(z)} e^{-i\sqrt{2} m \phi(z^{*})}
+\end{eqnarray}
+
+On the boundary vertex operators fuse with their images:
+\begin{equation}
+  \label{eq:144}
+    V_{e,m}(z,\bar z)\to V^{(2m)}(x) e^{i 2\sqrt{2}m \phi(x)}
+\end{equation}
+
+Critical curves are level lines of field $\varphi$, so by imposing boundary condition $\varphi=0$
+on one half of the boundary and $\varphi=\pi n R$ on another half we get $n$ curves growing from the
+origin. We now argue that curves are produced by a magnetic operator $V_{0,m}$ with properly chosen
+$m$. 
+
+\begin{equation}
+  \label{eq:145}
+  V_{e,0}(z,\bar z)V_{0,m}(z',\bar z')=\left(\frac{z-z'}{\bar z-\bar z'}\right)^{2em}
+  V_{e+m}(z')\bar V_{e-m}(\bar z')+\dots=e^{4i em \arg(z-z')} V_{e+m}(z')\bar V_{e-m}(\bar z')+\dots
+\end{equation}
+So when electric operator goes around magnetic operator we get a field jump of $4\sqrt{2}\pi m$.
+Magnetic operator is vortex operator. So
+\begin{equation}
+  \label{eq:146}
+  m=\frac{\sqrt{2}}{8}nR = \frac{n}{2\sqrt{\kappa}}=-\frac{n}{4} \alpha_{-}
+\end{equation}
+Since we want curve-creating operator to be spinless we have $e=\alpha_{0}$ and
+$\alpha=\alpha_{0}-\frac{n}{4}\alpha_{-}=\alpha_{0,\frac{n}{2}}$. So our curve-creating operator is
+$\psi_{0,n/2}(z,\bar z)$ with conformal weight
+\begin{equation}
+  \label{eq:147}
+  h_{0,n/2}=\frac{4n^{2}-(\kappa-4)^{2}}{16\kappa}
+\end{equation}
+
+Pinning operator creates one curve passing through the point in the bulk, so it is $\psi_{0,1}$. Its
+conformal weight is
+\begin{equation}
+  \label{eq:148}
+  h_{0,1}=\frac{8-\kappa}{16},
+\end{equation}
+and Hausdorff dimension is
+\begin{equation}
+  \label{eq:149}
+  d_{H}=2-2h_{0,1}
+\end{equation}
+
+
 To see it one can consider circle of small radius $\varepsilon$ centered at $z$. Put some conformal
 boundary condition on one half of the circle and another condition on the rest of the circle. Then
 critical curve would join the points of change in boundary conditions. The expectation values of
