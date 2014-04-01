@@ -230,7 +230,12 @@ moments of harmonic measure in small circle of radius $r$ scale as
   \label{eq:116}
   \mu(r)\sim |w(r)|\sim r |w'(r)|
 \end{equation}
-So scaling of the moments of $\mu(r)$ are determined by scaling of $|w'(r)|$:
+This scaling follows from electrostatic interpretation of harmonic measure, since $\mu(r)$ is charge
+inside the circle and by Gauss theorem it is equal to the flux of electric field through the
+boundary. Typical absolute value of electric field on the circle is $|w'(r)|$ and boundary length is
+$2\pi r$.
+
+So scaling of the moments of $\mu(r)$ is determined by scaling of $|w'(r)|$:
 \begin{equation}
   \label{eq:117}
   \prec |w'(r)|^{h}\succ \sim r^{\Delta(h)}, \quad r\to 0
@@ -266,7 +271,12 @@ defined as $ \prec \mu(z,r)^{h}\succ\sim r^{\tilde\tau(h)}$ and local anomalous 
 $\Delta_{bulk}(h)=\tilde\tau(h) -h$.
 
 Following relations hold for multifractal spectrum and anomalous exponents:
-$\tilde\tau(h)=\tau(h)-\tau(0)$, $\Delta_{bulk}(h)=\delta(h)-\delta(0)$, $d_{H}=1+\Delta_{bulk}(1)$
+$\tilde\tau(h)=\tau(h)-\tau(0)$, $\Delta_{bulk}(h)=\delta(h)-\delta(0)$. The most important for us
+here is the connection of Hausdorff dimension and local anomalous exponent 
+\begin{equation}
+  \label{eq:150}
+  d_{H}=1+\Delta_{bulk}(1)
+\end{equation}
 
 Multifractal spectrum and anomalous exponents were first obtained by Duplantier in paper
 \cite{duplantier2000conformally} using quantum gravity. The result is
@@ -376,6 +386,13 @@ Holomorphic and antiholomorphic vertex operators are
     \bar \phi(\bar z)}
 \end{equation}
 
+Correlation functions in Coulomb gas picture are easily calculated:
+\begin{equation}
+  \label{eq:157}
+  \left< V_{\alpha_{1}}(z_{1})\dots
+    V_{\alpha_{n}}(z_{n})\right>=\prod_{i<j}(z_{i}-z_{j})^{2\alpha_{i}\alpha_{j}}, \quad \mbox{if}\quad \sum_{i}\alpha_{i}=2\alpha_{0}
+\end{equation}
+
 Full vertex operator is a product of them
 \begin{equation}
   \label{eq:133}
@@ -472,39 +489,104 @@ conformal weight is
   \label{eq:148}
   h_{0,1}=\frac{8-\kappa}{16},
 \end{equation}
-and Hausdorff dimension is
+We want to show that Hausdorff dimension is
 \begin{equation}
   \label{eq:149}
   d_{H}=2-2h_{0,1}
 \end{equation}
 
+To do so we need to connect local anomalous scaling exponents with conformal weights of vertex
+operators. Local moments of harmonic measure $\mu(z,r)^{h}$ are connected with conformal maps.
+Consider conformal map $w$ of the exterior of critical curve $\gamma$ to upper half-plane or unit
+circle. Normalize this map such that $w(z)=z$ and $w(z'\to\infty)=z'+o(z')$. As we have seen the
+scaling of $w$ near $z$ is related to harmonic measure.
 
-To see it one can consider circle of small radius $\varepsilon$ centered at $z$. Put some conformal
-boundary condition on one half of the circle and another condition on the rest of the circle. Then
-critical curve would join the points of change in boundary conditions. The expectation values of
-observables in this geometry are given by CFT correlation functions with two boundary condition
-changing operators inserted:
+The partition function $Z(0,L)$ of configurations that contain a closed curve passing through the
+points $0$ and $L$ is given by the correlator of two pinning operators $\psi_{0,1}$:
 \begin{equation}
-  \label{eq:119}
-  \left< \Psi_{12}(z')\Psi_{12}(z'')\right>
+  \label{eq:151}
+  \frac{Z(0,L)}{Z}=\left<\psi_{0,1}(0)\psi_{0,1}(L)\right>,
 \end{equation}
-where $|z'-z|\leq \varepsilon$ and $|z''-z|\leq \varepsilon$. The boundary condition changing
-operators in Coulomb gas picture can be presented as the vertex operators
-$V_{\alpha_{12}}=e^{i\sqrt{2}\alpha_{12}\varphi(z)}$. When $\varepsilon\to 0$ we can fuse this two
-operators to single operator $V_{2\alpha_{12}}$. Note that $\alpha_{12}=-\frac{1}{2}\alpha_{-}$
-\eqref{eq:55}, so $V_{2\alpha_{12}}\sim V_{-\alpha_{-}}\sim V_{\alpha_{+}}$ (?)
+where $Z$ is partition function of all configurations. 
 
-
-The moments of harmonic measure are connected with the CFT correlation functions by
+The partition function $Z(0,L)$ can be calculated as the product of partition functions inside and
+outside of the curve averaged over all possible curves:
 \begin{equation}
-  \label{eq:118}
-  \left<O_{h}(r) \Psi_{10}(0)\Psi(\infty)\right>\sim r^{h'-2h}\prec |w'(r)|^{h}\succ
+  \label{eq:152}
+  Z(0,L)=\prec Z_{\gamma}^{\mathrm{int}} Z_{\gamma}^{\mathrm{ext}}\succ
+\end{equation}
+To get the moments of harmonic measure we need to insert some operator $\mathcal{O}(r)$ (product of
+operators), for charge neutrality we need to add another one at infinity $\mathcal{O}(\infty)$.
+Since we are interested in small $r<<L$ we can fuse $\mathcal{O}(\infty)$ with $\psi_{0,1}(L)$ into
+$\Psi(\infty)$. So we need to compute correlation function $\left<\psi_{0,1}(0) \mathcal{O}(r)
+  \Psi(\infty)\right>$. It can be done in two ways, directly and averaging
+$\left<\mathcal{O}(r)\mathcal{O}(\infty)\right>_{\gamma}$ over all curves:
+\begin{equation}
+  \label{eq:153}
+  \left<\psi_{0,1}(0) \mathcal{O}(r)\Psi(\infty)\right>= \prec
+  \left<\mathcal{O}(r)\mathcal{O}(\infty)\right>_{\gamma}^{\mathrm{ext}} Z_{\gamma}^{\mathrm{ext}} Z_{\gamma}^{\mathrm{int}}\succ
+\end{equation}
+The correlation function of operators $\mathcal{O}$ is statistically independent from other factors
+and has all the dependence on $r$. Apply to this correlation function conformal map $w$:
+\begin{equation}
+  \label{eq:154}
+  \left<\mathcal{O}(r)\mathcal{O}(\infty)\right>_{\gamma}^{\mathrm{ext}}=|w'(r)|^{h}\left<\mathcal{O}(w(r))\mathcal{O}(\infty)\right>,
+\end{equation}
+where $h$ is conformal weight of $\mathcal{O}$. So
+\begin{equation}
+  \label{eq:155}
+  \prec|w'(r)|^{h}\succ\sim\frac{ \left<\psi_{0,1}(0) \mathcal{O}(r)\Psi(\infty)\right>}{\left<\mathcal{O}(w(r))\mathcal{O}(\infty)\right>}
 \end{equation}
 
+To get Hausdorff dimension $d_{H}=1+\Delta(1)$ \eqref{eq:150} we need to insert operator
+$V_{\alpha(1)/2,\alpha(1)/2}$, since we consider system with boundary. Then it fuses with its image
+and produce vertex operator with conformal weight $h=1$. 
+\begin{equation}
+  \label{eq:156}
+  \prec|w'(r)|^{2h(\alpha(1)/2)}\succ\sim\frac{\left< V_{\alpha(1)/2}(z) V_{\alpha(1)/2}(z^{*}) \psi_{0,1}(0) \Psi(\infty)\right>}{\left<V_{\alpha(1)/2}(w(z)) V_{\alpha(1)/2}(w^{*}(z))\right>}
+\end{equation}
 
+Use the formula \eqref{eq:157} to calculate correlation functions on the right-hand side. The
+numerator gives us $r^{2\alpha_{0,1}\alpha(1)}$ for $z,z^{*}\to r,\; z-z^{*}\to 0$, the denominator
+$(w(z)-w^{*}(z))^{\alpha(1)^{2}/2}\sim (|z| |w'(z)|)^{\alpha(1)^{2}/2}$. So total power of $|w'(r)|$
+is 
+$2h(\alpha(1)/2)+\alpha(1)^{2}/2=\alpha(1)
+(\alpha(1)/2-2\alpha_{0})+\alpha(1)^{2}/2=\alpha(1)(\alpha(1)-2\alpha_{0})=1$, and total power of
+$r$ is $2\alpha_{0,1}\alpha(1)-\alpha(1)^{2}/2$
+\begin{equation}
+  \label{eq:158}
+  \prec |w'(r)|\succ \sim r^{\Delta(1)}=r^{2\alpha_{0,1}\alpha(1)-\alpha(1)^{2}/2}
+\end{equation}
 
+If we substitute $h_{0,1}=\frac{1}{2}-\frac{\kappa}{16}$ and
+$2\alpha_{0}=\frac{\sqrt{\kappa}}{2}-\frac{2}{\sqrt{\kappa}}$ we obtain $\Delta(1)=\frac{\kappa}{8}$.
 
-
+%%  To see it one can consider circle of small radius $\varepsilon$ centered at $z$. Put some conformal
+%%  boundary condition on one half of the circle and another condition on the rest of the circle. Then
+%%  critical curve would join the points of change in boundary conditions. The expectation values of
+%%  observables in this geometry are given by CFT correlation functions with two boundary condition
+%%  changing operators inserted:
+%%  \begin{equation}
+%%    \label{eq:119}
+%%    \left< \Psi_{12}(z')\Psi_{12}(z'')\right>
+%%  \end{equation}
+%%  where $|z'-z|\leq \varepsilon$ and $|z''-z|\leq \varepsilon$. The boundary condition changing
+%%  operators in Coulomb gas picture can be presented as the vertex operators
+%%  $V_{\alpha_{12}}=e^{i\sqrt{2}\alpha_{12}\varphi(z)}$. When $\varepsilon\to 0$ we can fuse this two
+%%  operators to single operator $V_{2\alpha_{12}}$. Note that $\alpha_{12}=-\frac{1}{2}\alpha_{-}$
+%%  \eqref{eq:55}, so $V_{2\alpha_{12}}\sim V_{-\alpha_{-}}\sim V_{\alpha_{+}}$ (?)
+%%  
+%%  
+%%  The moments of harmonic measure are connected with the CFT correlation functions by
+%%  \begin{equation}
+%%    \label{eq:118}
+%%    \left<O_{h}(r) \Psi_{10}(0)\Psi(\infty)\right>\sim r^{h'-2h}\prec |w'(r)|^{h}\succ
+%%  \end{equation}
+%%  
+%%  
+%%  
+%%  
+%%  
 
 
 Let $N^r(L)$ be number of rooted loops with a given length. By $N^r(L,A)$ we denote the number of
