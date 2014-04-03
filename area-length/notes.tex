@@ -685,9 +685,122 @@ Theory of quantum gravity in two dimensions, implemented as a matter CFT coupled
 describes the behavior of statistical models in fluctuating geometry. 
 While usually configurations of  Liouville field are interpreted as random curved Riemann surfaces,
 we need to consider random flat shapes. So functional integral in our case is over different space
-of functions. The matter is implemented as a minimal model in Coulomb gas picture with matter field $\varphi$.
+of functions. The matter is implemented as a minimal model in Coulomb gas picture with matter field
+$\chi$.
 
-KPZ-scaling. ``Wrong branch'' for $\mu_{B}$? 
+Full action of two-dimensional quantum gravity on world-sheet manifold $\mathcal{M}$ with boundary
+$\partial \mathcal{M}$ in background metric $\hat g$ is given by the formula \cite{kostov2004boundary}:
+\begin{multline}
+  \label{eq:160}
+  S[\chi,\varphi]=\int_{\mathcal{M}}\left(\frac{1}{4\pi}[(\nabla \varphi)^{2}+(\nabla
+    \chi)^{2}+(Q\varphi-ie_{0}\chi)\hat R]+\mu e^{2b\varphi}\right)d^{2}z +\\
+  +  \int_{\partial
+    \mathcal{M}}\left(\frac{1}{2\pi}(Q\varphi-ie_{0}\chi)\hat K + \mu_{B}e^{b\varphi}\right)dx+\mbox{ghosts}
+\end{multline}
+where $\hat R$ is curvature of background metric in the bulk, $\hat K$ -- curvature of background
+metric on the boundary, 
+\begin{equation}
+  \label{eq:161}
+  Q=\frac{1}{b}+b,\quad e_{0}=\frac{1}{b}-b
+\end{equation}
+and ghosts central charge is $-26$, so total central charge vanishes:
+\begin{equation}
+  \label{eq:162}
+  c_{tot}=c_{\varphi}+c_{\chi}+c_{\mathrm{ghosts}}=(1+6Q^{2})+(1-6e_{0}^{2})-26=0
+\end{equation}
+We can use conformal map to rewrite the action on the upper half-plane $\mathbb{H}$:
+\begin{equation}
+  \label{eq:159}
+  S[\varphi,\chi]=\int_{\mathbb{H}} d^{2}z \left(\frac{1}{4\pi}[(\nabla \varphi)^{2}+(\nabla
+    \chi)^{2}]+\mu e^{2b\varphi}\right) +\int_{-\infty}^{\infty} dx \mu_{B}e^{b\varphi} + \mbox{ghosts}
+\end{equation}
+where charges are now hidden in fields asymptotic at the infinity:
+\begin{equation}
+  \label{eq:163}
+  \varphi\sim Q\log|z|^{2},\quad \chi\sim-e_{0}\log|z|^{2}
+\end{equation}
+
+The partition function is defined as a functional integral over matter and Liouville field:
+\begin{equation}
+  \label{eq:164}
+  Z(\mu,\mu_{B})=\int \mathcal{D}\chi \mathcal{D}\varphi e^{-S[\chi,\varphi]}
+\end{equation}
+To define the measure one needs to fix the boundary conditions. Kostov et. al choose non-homogeneous
+Neumann boundary condition for the Liouville field:
+\begin{equation}
+  \label{eq:165}
+  i(\partial -\bar\partial)\varphi=4\pi\mu_{B}e^{b\varphi}
+\end{equation}
+
+There is a duality $b\to \frac{1}{b}$ in this theory. In particular, it is possible to choose
+boundary term as $e^{\frac{\varphi}{b}}$. This choice may be relevant to us since it corresponds to
+dual boundary cosmological constant $\tilde\mu_{B}$ which has scaling $\tilde\mu_{B}\sim
+\mu^{\frac{1}{2b^{2}}}$ and is related to fractal boundary. 
+
+We want to consider configurations with fractal boundaries but flat bulk. So the difference is in
+space of functions $\varphi$ we are integrating over in \eqref{eq:164}. 
+
+Note that self-avoiding walks is the model with $\kappa=\frac{8}{3}$, $c=0$,
+$e_{0}=\frac{1}{\sqrt{6}}$, $b=\sqrt{\frac{3}{2}}$ or $b=\sqrt{\frac{2}{3}}$. Since in paper
+\cite{kostov2004boundary} $b$ is assumed to be less than $1$, we will use
+\begin{equation}
+  \label{eq:166}
+  b=\sqrt{\frac{2}{3}}, \quad 0<b<1
+\end{equation}
+Matter theory is just a free boson, so primary fields are vertex electric and magnetic operators
+\eqref{eq:135} (with the change of notations $\alpha\to \sqrt{2} e$, $2\alpha_{0}\to  e_{0}$). In
+quantum gravity vertex operators are dressed by Liouville field
+\begin{equation}
+  \label{eq:167}
+  V_{e,\alpha}(z,\bar z)=e^{2ie\chi(z,\bar z)} e^{2\alpha\varphi(z,\bar z)}
+\end{equation}
+in such a way that conformal dimension $\Delta=1$:
+\begin{equation}
+  \label{eq:168}
+  e(e-e_{0})+\alpha(Q-\alpha)=1
+\end{equation}
+Similarly for magnetic (vortex) operators we have
+\begin{equation}
+  \label{eq:169}
+  \chi(z,\bar z)=\chi(z)+\bar\chi(\bar z),\quad \tilde\chi(z,\bar z)=\chi(z)-\bar\chi(\bar z)
+\end{equation}
+\begin{equation}
+  \label{eq:170}
+  V_{m,\alpha}(z,\bar z)=e^{2im\tilde\chi(z,\bar z)} e^{2\alpha\varphi(z,\bar z)}
+\end{equation}
+Since left and right conformal dimensions
+\begin{equation}
+  \label{eq:171}
+  \Delta_{m}=m(m-e_{0}), \quad \bar\Delta_{m}=m(m+e_{0})
+\end{equation}
+are not equal the field is not spinless. So we need to consider mixed operator $\mathcal{O}_{e,m}$
+with dimensions \eqref{eq:134}
+\begin{equation}
+  \label{eq:172}
+  \Delta_{e,m}=(e+m)(e+m-e_{0}), \quad \bar \Delta_{e,m}=(e-m)(e-m-e_{0})
+\end{equation}
+The spin $\Delta-\bar\Delta$ vanishes if $e=\frac{e_{0}}{2}$.
+\begin{equation}
+  \label{eq:173}
+  \Delta_{\frac{e_{0}}{2},m}=m^{2}-\frac{e_{0}^{2}}{4}
+\end{equation}
+
+Primary fields from Kac table with dimensions
+\begin{equation}
+  \label{eq:174}
+  \Delta_{rs}=\frac{1}{4}\left[\left(\frac{r}{b}-sb\right)^{2}-e_{0}^{2}\right]
+\end{equation}
+can be constructed as electric operators with charges
+\begin{equation}
+  \label{eq:175}
+  e_{rs}=\frac{1}{2}\left(e_{0}-\frac{r}{b}+sb\right)
+\end{equation}
+or as magnetic operators with electric charge $\frac{e_{0}}{2}$ and magnetic charge
+\begin{equation}
+  \label{eq:176}
+  m_{rs}=\frac{1}{2}\left(-\frac{r}{b}+sb\right)
+\end{equation}
+
 
 
 \section{Liouville theory}
