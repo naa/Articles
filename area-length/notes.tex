@@ -759,6 +759,9 @@ in such a way that conformal dimension $\Delta=1$:
   \label{eq:168}
   e(e-e_{0})+\alpha(Q-\alpha)=1
 \end{equation}
+Proper dressing corresponds to the choice of smaller value of $\alpha$ such that \eqref{eq:168}
+holds. 
+
 Similarly for magnetic (vortex) operators we have
 \begin{equation}
   \label{eq:169}
@@ -801,7 +804,74 @@ or as magnetic operators with electric charge $\frac{e_{0}}{2}$ and magnetic cha
   m_{rs}=\frac{1}{2}\left(-\frac{r}{b}+sb\right)
 \end{equation}
 
+Pinning operator corresponds to $r=0, s=1$, so $m=\frac{b}{2}$ and
+$\Delta=\frac{b^{2}}{4}-\frac{e_{0}^{2}}{4}=\frac{1}{2}-\frac{b^{2}}{4}$.
 
+Dressing dimension $\alpha$ is $\frac{b}{2}$ or $\frac{1}{b}+\frac{b}{2}$, dimension of Liouville
+vertex operator is $\Delta_{01}^{L}=\alpha(Q-\alpha)=\frac{1}{2}+\frac{b^{2}}{4}=\frac{1}{2}d_{H}$.
+
+Matter field $\chi$ should satisfy some boundary condition. In Coulomb gas approach there are two
+possible choices -- Dirichlet 
+\begin{equation}
+  \label{eq:177}
+  (\partial+\bar \partial)\chi=0
+\end{equation}
+and Neumann
+\begin{equation}
+  \label{eq:178}
+  (\partial-\bar \partial)\chi=0  
+\end{equation}
+If we want to interpret critical curves as the level lines of matter field $\chi$ we need to impose
+Dirichlet conditions \eqref{eq:140}. Dirichlet condition means that field on the boundary has
+constant value $\chi_{B}$. 
+
+Boundary matter fields are boundary condition changing operators between different boundary
+conditions. Neumann-Neumann operators are boundary vertex operators $B_{e}=e^{ie\chi(x)}$, with
+scaling dimension $\Delta^{B}_{e}=e(e-e_{0})$. Dirichlet-Dirichlet fields are boundary magnetic
+operators $\tilde B_{m}$ which introduce jump $\delta\chi=2\pi m$ of the boundary value of
+the field from $\chi_{B}$ to $\chi_{B}+\delta\chi_{B}=\chi_{B}+2\pi m n$. The dimension is
+$\Delta^{B}_{m}=m(m-e_{0})$. Unlike the bulk magnetic operator boundary operator does not have
+electric charge. Electric and magnetic charges for degenerate boundary operators are
+\begin{equation}
+  \label{eq:143}
+  e_{rs}=\frac{1}{2}\left( e_{0}-\frac{r}{b}+sb\right),\quad m_{rs}=\frac{1}{2}\left(e_{0}-\frac{r}{b}+sb\right)
+\end{equation}
+Dirichlet-Neumann and Neumann-Dirichlet operators are boundary twist operators. 
+
+Wrong dressing of the identity boundary operator is $e^{\frac{\varphi}{b}}$. In this case
+$\mu_{B}\sim \mu^{\frac{1}{2b^{2}}}$ and boundary is fractal. 
+Two dressings are dual to each other, so if fractal boundary $\mu_{B}\sim \mu^{\frac{1}{2b^{2}}}$ corresponds to
+Dirichlet boundary condition, then simple boundary $\mu_{B}\sim \mu^{\frac{1}{2}}$ corresponds to
+Neumann boundary condition. 
+
+For degenerate operator $0,1$ we have $m_{01}=\frac{1}{2}\left(e_{0}+b\right)=\frac{1}{2b}$,
+$\Delta^{B}_{m}=\frac{1}{2b}\left(\frac{1}{2b}-\frac{1}{b}+b\right)=\frac{1}{2}-\frac{1}{4b^{2}}$
+with dressing field $B_{\beta}=e^{\beta\varphi}$ with $\beta=\frac{1}{2b}$.
+
+The observables in two-dimensional quantum gravity are products of CFT correlation functions and
+correlation functions of dressed matter vertex operators. Coordinate-independent parts of these
+correlation functions are identified with restricted partition functions in microscopic models
+\cite{kostov2004boundary,kostov2003boundary}. Microscopic models for quantum gravity are integrable
+lattice models, such as Ising, Potts, $O(n)$ or SOS, considered on random lattices.
+
+Bulk one-point function
+\begin{equation}
+  \label{eq:179}
+  \left< V_{\alpha}(z,\bar z)\right>_{\sigma}=\frac{U_{\sigma}(\alpha)}{|z-\bar z|^{2\Delta_{\alpha}}}
+\end{equation}
+is given by the formula
+\begin{equation}
+  \label{eq:180}
+  U_{\sigma}(\alpha)=\frac{2}{b}\left(\pi\mu\gamma(b^{2})\right)^{\frac{Q-2\alpha}{2b}}
+  \Gamma(2b\alpha-b^{2})\Gamma\left(\frac{2\alpha}{b}-\frac{1}{b^{2}}-1\right) \cos[\pi(2\alpha-Q)(2\sigma-Q)]
+\end{equation}
+Microscopically this function is interpreted as the partition function of the loop gas on a
+punctured disk with a vertex operator $V_{\alpha}$ inserted at the puncture and Dirichlet boundary
+condition with the height $\sim \sigma$. 
+
+Supposedly we need to change theory by measuring length not with $e^{b\varphi}$ or
+$e^{\frac{\varphi}{b}}$ but by insertion of gravitational dressing for pinning operator
+$B_{m_{01}}$, which is $e^{\frac{\varphi}{2b}}$.
 
 \section{Liouville theory}
 \label{sec:liouville-theory}
