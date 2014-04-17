@@ -1,0 +1,321 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{ esint }
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Notes on non-abelian generalization of Benjamin-Ono equation}
+%\author{Anton Nazarov}%% $^{1,2}$}
+
+\maketitle
+
+\begin{abstract}
+Benjamin-Ono equation describes waves in deep ocean. This integrable equation is actively studied.
+Connection with conformal field theory and quantum Hall liquid was discovered in these studies. 
+We introduce non-abelian generalization of Benjamin-Ono equation and demonstrate the connection with
+Wess-Zumino-Novikov-Witten and coset models of conformal field theory.
+\end{abstract}
+
+\section{Introduction: Benjamin-Ono equation}
+\label{sec:introduction}
+
+There are several 1+1-dimensional partial differential equations describing waves. First consider
+Riemann equation on function $u(x,t)$:
+\begin{equation}
+  \label{eq:1}
+  u_{t}+ u u_{x} =0
+\end{equation}
+
+This equation can be linearized by setting
+\begin{equation}
+  \label{eq:2}
+  u=\bar u+u_{1} (x,t)
+\end{equation}
+and assuming $u_{1}$ to be small. Then we get chiral wave equation
+\begin{equation}
+  \label{eq:3}
+  u_{t}+\bar u u_{x}+\dots=0
+\end{equation}
+Solution of Cauchy problem is given by a retarded function
+\begin{equation}
+  \label{eq:4}
+  u(t,x)=u_{0}(x-\bar u t),
+\end{equation}
+where
+\begin{equation}
+  \label{eq:5}
+  u(x,t=0)=u_{0}(x)
+\end{equation}
+
+Solution to Riemann equation can be formally written as
+\begin{equation}
+  \label{eq:6}
+  u(t,x)=u_{0}(x-u(t,x)\cdot t)
+\end{equation}
+For bulged initial data this solution is unstable, shock waves are formed, then solution is multivalued and hydrodynamic
+instability occurs. Concave initial data on the other hand is getting smoother over time. 
+
+Corrections to Riemann equation (\ref{eq:1}) dramatically change behavior of solutions. For example
+dispersion term kills infinities. Equation with dispersion term $u_{xx}$
+\begin{equation}
+  \label{eq:7}
+  u_{t}+u u_{x}+\nu u_{xx}=0
+\end{equation}
+is called Burgers equation. Here $\nu$ is liquid viscosity. 
+The Hamiltonian
+\begin{equation}
+  \label{eq:8}
+  H=\frac{1}{2} \int u^{2} dx
+\end{equation}
+is not conserved, so the dynamic is non-Hamiltonian. In the limit $\nu\to 0$ bulged initial data
+tends over time to function with a step. It is so called ``weak solution'' of Riemann equation. 
+
+One way to obtain equation with conserved energy is to add third derivative:
+\begin{equation}
+  \label{eq:9}
+  u_{t}+u u_{x}+u_{xxx}=0.
+\end{equation}
+This is famous KdV (Korteweg–de Vries) equation. 
+
+Now the Hamiltonian is
+\begin{equation}
+  \label{eq:10}
+  H=\frac{1}{3}\int u^{2}+u u_{x} dx
+\end{equation}
+Soliton wave is given by the formula
+\begin{equation}
+  \label{eq:11}
+  u_{s}(x-ct)=\frac{1}{\cosh^{2}(x-ct)}
+\end{equation}
+These waves exist in shallow water when depth is less then wave length. 
+
+Appearance of solitons is a distinct property of integrable equations, which are always Hamiltonian
+since they have infinitely many conserved quantities
+\begin{equation}
+  \label{eq:12}
+  \left\{ H_{n},H\right\} =0\quad \Leftrightarrow \quad\partial_{t} H_{n}=0
+\end{equation}
+
+One of these conserved quantities for KdV equation is soliton mass (Check this expression)
+\begin{equation}
+  \label{eq:13}
+  I_{1}=\int \frac{1}{\cosh^{2}(x-ct)} dx
+\end{equation}
+It can take arbitrary values. 
+
+Solitons are separable, they are very stable and generate large time asymptotics in hydrodynamics. 
+
+Equations with even number of derivatives are non-Hamiltonian but we can amend it by making these
+terms non-local. E.g.
+\begin{equation}
+  \label{eq:14}
+  u_{t}+u u_{x}+u^{H}_{xx}=0,
+\end{equation}
+where $u^{H}$ is Hilbert transform
+\begin{equation}
+  \label{eq:15}
+  u^{H}(x)=\frac{1}{\pi} \fint \frac{u(x')}{x-x'}dx' 
+\end{equation}
+This is Benjamin-Ono equation which describes waves on boundary between two liquids of different
+densities in a deep ocean. Solitons for this equation have the form
+\begin{equation}
+  \label{eq:16}
+  u(x,t)=f(x-ct)=\frac{1}{\pi} \frac{A}{(x-A t)^{2}+\frac{1}{A^{2}}}
+\end{equation}
+Here $A$ is wave velocity and $\frac{1}{A^{2}}$ is width of the wave. Very peculiarly in this
+equation mass is quantized.
+\begin{equation}
+  \label{eq:17}
+  I_{1}=\int u(x,t) dx =1\quad \partial_{t} I_{1}=0
+\end{equation}
+Many-soliton solution have integer mass. For equation with some coefficient $\beta$
+\begin{equation}
+  \label{eq:18}
+   u_{t}+u u_{x}+\beta u^{H}_{xx}=0
+\end{equation}
+mass is $N\beta$, where $N\in \mathbb{Z}$. So we have quantization on classical level. 
+
+If the mass of initial data is not quantized, it decays into several solitons of integer mass moving
+in one direction and non-integer mass noise which moves in the opposite direction. 
+
+
+The equation can be quantized. Mass is then changed to $\beta-\hbar$, where $\beta=\beta' \hbar$ and
+$\beta-\hbar=(\beta'-1)\hbar$. (?)
+
+The Hamiltonian is
+\begin{equation}
+  \label{eq:19}
+  H=\frac{1}{2}\int \left(u^{2}+\frac{1}{3} u^{2} u^{H}_{x}\right) dx
+\end{equation}
+Now to quantize the equation we assume that function $u(x,t)$ is defined on the circle or radius
+$\frac{L}{2\pi}$. Then we can expand $u$ in modes
+\begin{equation}
+  \label{eq:20}
+  u(x)=\sum_{k} e^{i k x}a_{k}
+\end{equation}
+The coefficients $a_{k}$ satisfy commutation relation
+\begin{equation}
+  \label{eq:21}
+  \{a_{m},a_{n}\}=n\delta_{nm}
+\end{equation}
+
+Equation can be written in Hamiltonian form
+\begin{equation}
+  \label{eq:22}
+  u_{t}=\{H,u\},
+\end{equation}
+and
+\begin{equation}
+  \label{eq:23}
+  H=\sum_{k>0} a_{-k} L_{k},
+\end{equation}
+where
+\begin{equation}
+  \label{eq:24}
+  L_{k}=\sum_{n>0} a_{n+k} a_{n}+\beta\sum_{n>0} n a_{n+k}
+\end{equation}
+The functions $L_{k}$ satisfy commutation relations w.r.t. Poisson bracket of Virasoro algebra
+\begin{equation}
+  \label{eq:25}
+  \{L_{k},L_{l}\}=(k-l)L_{k+l}+\frac{c}{12} k(k^{2}-1) \delta_{k+l,0},
+\end{equation}
+where
+\begin{equation}
+  \label{eq:26}
+  c=-6\beta^{2}
+\end{equation}
+So this is Poisson-Lie realization of Virasoro algebra (classical Virasoro algebra). 
+
+Quantization is straightforward:
+\begin{equation}
+  \label{eq:27}
+  [a_{m}, a_{n}]=\hbar n \delta_{nm}
+\end{equation}
+\begin{equation}
+  \label{eq:28}
+  H=\sum_{k>0}:a_{-k}L_{k}:
+\end{equation}
+An we obtain commutation relations of Virasoro algebra
+\begin{equation}
+  \label{eq:29}
+   [L_{k},L_{l}]=(k-l)L_{k+l}+\frac{c}{12} k(k^{2}-1) \delta_{k+l,0},
+\end{equation}
+but now central charge is different
+\begin{equation}
+  \label{eq:30}
+  c=1-6\left( \sqrt{\beta} -\frac{1}{\sqrt{\beta}}\right)^{2}
+\end{equation}
+
+Benjamin-Ono equation is also connected to random matrices. Steady state equation $u_{t}=0$ is
+equivalent to loop equation for Hermitian matrices. 
+
+Quantization of solitons is somehow connected with conformal field theory. In fractional quantum
+Hall waves on the boundary are described by Benjamin-Ono equation \cite{?Wiegmann}. 
+
+In conformal field theory Virasoro symmetry can be extended to Lie groups. For example, if
+$u=\partial_{x} \varphi$ and $e^{i\varphi}$ is position of a particle on a ring, then $u$ is
+particle displacement. Since
+\begin{equation}
+  \label{eq:31}
+  e^{i\varphi_{1}}e^{i\varphi_{2}}=e^{i(\varphi_{1}+\varphi_{2})}
+\end{equation}
+we deal with $U(1)$ group. 
+
+The Benjamin-Ono equation for $\varphi$ is
+\begin{equation}
+  \label{eq:35}
+  \partial_{t} \varphi +\frac{1}{2} (\partial_{x}\varphi)^{2}+\partial_{x}^{2}\varphi^{H}=0
+\end{equation}
+
+Now consider $\varphi\in su(2)$. Then $g=e^{i\varphi}$ is Lie group element and
+\begin{equation}
+  \label{eq:32}
+  \hat u=-ig^{-1} \partial_{x} g\in su(2)
+\end{equation}
+is connection in line bundle. It is $su_{k}(2)$-current $\hat J$.
+\begin{equation}
+  \label{eq:33}
+  J(x)=\sum \hat J_{n} e^{inx}
+\end{equation}
+Elements $J_{n}$ generate Kac-Moody algebra
+\begin{equation}
+  \label{eq:34}
+  [J_{n},J_{m}]=(n-m)J_{n+m} + k n \delta_{n+m,0}
+\end{equation}
+
+The problem is to construct non-abelian extension of Benjamin-Ono equation. 
+
+If $g\leftrightarrow e^{i\varphi}$, then $\partial_{x}\varphi\leftrightarrow g^{-1}\partial_{x}g=J$.
+Using (\ref{eq:35}) we can conjecture form of the generalized equation
+\begin{equation}
+  \label{eq:36}
+  \partial_{t}J+\partial_{x}[J\cdot J]+\dots=0
+\end{equation}
+Such equation is supposed to have solutions with quantized mass. 
+
+Note also that Benjamin-Ono equation is a certain limit of intermediate long-wave equation (ILW).
+The term $u^{H}=\fint \frac{u}{x-x'}dx'$ is the limit $L\to\infty$ of
+\begin{equation}
+  \label{eq:37}
+  u^{H}=\fint u \coth \frac{x-x'}{L} dx'
+\end{equation}
+for $2L$-periodic ocean. Hilbert transform connects real and imaginary parts of complex function
+$(\Re f)^{H}\to \Im f$. For complex functions the equation should be like
+\begin{equation}
+  \label{eq:38}
+  f_{t}=f f_{z}+if_{zz}, \quad ix=z
+\end{equation}
+For $\varphi=\sum_{k}\frac{a_{k}}{k} e^{ikx}$ we have stress-energy tensor
+\begin{equation}
+  \label{eq:39}
+  T=\sum_{k}L_{k}z^{-k-2}=T_{xx}+T_{yy}-2i T_{xy}=(\partial \varphi)^{2} +i\alpha\partial^{2}\varphi,
+\end{equation}
+and
+\begin{equation}
+  \label{eq:40}
+  [a_{k},a_{n}]=\delta_{n+k,0},
+\end{equation}
+\begin{equation}
+  \label{eq:41}
+  L_{n}=\sum_{k}:a_{k}a_{n-k}:
+\end{equation}
+\begin{equation}
+  \label{eq:42}
+  H=\sum_{k}:a_{-k}L_{k}:
+\end{equation}
+
+Benjamin-Ono equation is equivalent to
+\begin{equation}
+  \label{eq:43}
+  \partial_{t}u=[H,u]
+\end{equation}
+But we have boundary condition $a^{\dagger}_{k}=a_{-k}$. For $su(2)$-generalization we have
+$a_{k}\to J_{k}, J=g \partial g$, but on the boundary we have coset $su(2)/u(1)\approx S^{2}$. And
+$J=J_{x}\sigma_{x}+J_{y}\sigma_{y}+J_{z}\sigma_{z}$ should be changed to $\sigma_{z}\cdot J$. So if
+we want to get Benjamin-Ono equation for spin waves we need to rewrite $H=\sum_{k}:J_{-k} L_{k}:$ on
+the boundary.  
+\end{document}

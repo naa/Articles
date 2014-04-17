@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Generating function for self-avoiding polygons and Liouville quantum gravity}
+\author{Anton Nazarov, Pavel Weigmann}%% $^{1,2}$}
+
+\maketitle
+
+\begin{abstract}
+  We show that scaling behaviour of generating function for self-avoiding polygons on conical
+  surface is described by correlation function of Liouville quantum gravity
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Self-avoiding polygons are popular objects for numerical simulations. Use of advanced algorithms
+allows to obtain very precise numeric results. 
+
+Guttman and coauthors \cite{richard2001scaling} were able to get numeric answer to the following
+question: ``what is the distribution with respect to length and area of self-avoiding polygons?''
+Moreover, they were able to fit numeric results with Airy function. There were several attempts to
+explain this peculiar development theoretically (see
+\cite{cardy2003crossover,cardy2003exact,cardy2001exact}), but they are not satisfactory from our
+point of view.
+
+In present paper we generalize the construction of self-avoiding polygons to arbitrary conformal
+measure on closed curves. Then we show that distribution in area and length is given by certain
+correlation function in two-dimensional Liouville theory of gravity. The paper is organized as
+follows. In this section we describe the results of Guttman \cite{richard2001scaling}. Next we
+introduce general conformal measure on closed discrete curves (sec. \ref{sec:meas-curv-renorm}).
+Then we argue that scaling limit is described by Liouville field theory (sec.
+\ref{sec:liouv-field-theory}) and conclude the paper with possible approach to strict proof of
+present results (sec. \ref{sec:conclusion}).
+
+Self-avoiding polygons in paper \cite{richard2001scaling} were generated using pivot algorithm.
+Maximal length on square lattice was 66. Generating function for polygons of given length and area
+is introduced as
+\begin{equation}
+  \label{eq:75}
+  G(x,q)=\sum_{m,n} p_{m,n} x^{m} q^{n},
+\end{equation}
+where $p_{m,n}$ is the number of polygons with perimeter $m$, enclosing an area $n$ passing through
+a given edge (or node). 
+
+Cardy \cite{cardy2001exact} use the following definition for generating function of rooted loops,
+with $g=-\ln q$:
+\begin{equation}
+  \label{eq:76}
+  G^{(r)}(x,g)=\sum_{l,A} p_{l,A}^{(r)} x^{l} e^{-gA}
+\end{equation}
+Generating function for rooted polygons $G^{(r)}(x,g)$ is related to $G(x,g)$ by
+\begin{equation}
+  \label{eq:81}
+  G^{(r)}(x,g)=x \frac{d}{dx} G(x,g),
+\end{equation}
+because root can be chosen in $l$ ways. 
+
+This model has critical point $(x_{c},0)$ and generating functions displays scaling behavior
+\begin{equation}
+  \label{eq:77}
+  G(x,g)\sim G(x,g)_{\mathrm{reg}}+g^{\theta} F\left((x_{c}-x)g^{-\phi}\right)
+\end{equation}
+Critical indices $\theta,\phi$ are related to conventional exponents $\nu,\alpha$:
+\begin{eqnarray}
+  \label{eq:78}
+  \phi=\frac{1}{2}\nu\\
+  \theta=\frac{1}{2}(1-\alpha) \nu
+\end{eqnarray}
+Hyperscaling hypothesis adds another relation
+\begin{equation}
+  \label{eq:79}
+  \alpha=2-2\nu
+\end{equation}
+Numerical results predict
+\begin{eqnarray}
+  \label{eq:80}
+  \nu=\frac{3}{4}\\
+  \theta=\frac{1}{3}\\
+  \phi=\frac{2}{3}
+\end{eqnarray}
+We want to find scaling function $F$.
+
+For an arbitrary polygon $P$ on a square lattice $L_{a}$ with lattice spacing $a$ we can use
+Schwarz–Christoffel mapping conformal map $z(w)$ from unit disk ${\cal D}$ to the interior of $P$.
+Self-avoiding polygons can be seen as a probability measure on polygons and on some subset ${\cal
+  Z}_{a}$ of conformal maps $z(w):{\cal D}\to \mathbb{C}$ from unit disk to regions on the complex
+plane. Precisely we define ${\cal Z}_{a}$ as ${\cal Z}_{a}=\{z(w):{\cal D}\to \mathbb{C}\; |\;
+z(\partial{\cal D}) - \mbox{polygon on }L_{a}\}$ and denote the measure on ${\cal Z}_{a}$ by $\mu_{SAP,a}$.
+
+Length of polygon boundary is then given by 
+\begin{equation}
+  \label{eq:2}
+  l(z)=\oint_{\partial{\cal D}} |z'(w)| dw
+\end{equation}
+and area by an integral
+\begin{equation}
+  \label{eq:3}
+  A(z)=\int_{{\cal D}} |z'(w)| d^{2}w
+\end{equation}
+
+Generating function for rooted polygons of given length and area can be seen as an observable given by the formula
+\begin{equation}
+  \label{eq:1}
+  G^{(r)}(\mu_{B},\mu)=\sum_{z\in{\cal Z}_{a}} e^{-\mu A(z)} e^{-\mu_{B} l(z)} d\mu_{SAP,a}(z)
+\end{equation}
+In the limit $a\to 0$ the set ${\cal Z}_{a}$ is dense in the space of conformal maps (analytic
+functions on unit disk). 
+
+In experiment we have sum over polygons of limited length and finite lattice spacing. If length is
+still finite but $a\to 0$ the subspace ${\cal Z}_{a}$ is dense in the Hardy space $H^{\infty}$. 
+
+Every simply-connected region on complex plane can be approximated by a polygon for sufficiently
+small $a$.
+
+We want to rewrite generating function as a functional integral over space of analytic functions on
+unit disk:
+\begin{equation}
+  \label{eq:4}
+   G^{(r)}(\mu_{B},\mu)=\int_{H^{\infty}({\cal D})} e^{-\mu A(z)} e^{-\mu_{B} l(z)} d\mu_{SAP}(z)
+\end{equation}
+
+In order to compute such an integral we need to write the measure explicitly. There are two
+approaches to this measure. First we can use conformal map $z(w)$ and introduce weight (Lagrangian).
+Second we can consider loop as an SLE trace and use that measure. Big problem that we do not address
+here is to prove the equivalence of these approaches. 
+
+\section{Measure on curves and renormalization}
+\label{sec:meas-curv-renorm}
+
+We can use Bose field action to introduce measure. Field $\chi(w)=\ln |z'(w)|$
+\begin{equation}
+  \label{eq:5}
+  S=\frac{g}{4\pi} \int_{{\cal D}}|\nabla \chi|^{2} +i\frac{e_{0}}{2\pi} \int_{\partial {\cal D}}
+  R\chi
+\end{equation}
+To get rid of curvature  term one can rewrite this matter action on upper half-plane:
+\begin{equation}
+  \label{eq:7}
+  S=\frac{g}{4\pi} \int_{\Im z\geq 0}(\nabla \chi)^{2} 
+\end{equation}
+We need to impose boundary condition instead of the curvature term: $\chi=-e_{0}\log (z\bar z)$ for
+$z\to \infty$.
+
+SLE measure on the curves is represented by conformal field theory with this action. Local
+observables are given by correlation functions of boundary and bulk vertex operators built from the
+field $\chi$. To produce the curve connecting two points on the boundary one needs to insert two
+boundary condition changing operators. Then use conformal map to make boundary a circle of radius
+$r$:
+\begin{equation}
+  \label{eq:9}
+  z=i r \frac{w-i}{w+i}
+\end{equation}
+and take a limit $r\to 0$. In this limit two boundary condition changing operators fuse to one
+``pinning'' operator \cite{bettelheim2005harmonic} and curve becomes closed. 
+
+While matter field $\chi$ is used to introduce measure on critical curves, we need another field
+$\varphi$ to take into account area and length of closed curve. 
+
+To take into account weights of area and length we should add to the action two terms
+\begin{equation}
+  \label{eq:8}
+  \tilde S=S + \mu \int_{\Im z\geq 0} e^{2\chi} + \mu_{B}\int_{-\infty}^{+\infty} e^{\chi}
+\end{equation}
+
+\begin{equation}
+  \label{eq:6}
+  A[\chi,\varphi]= \int_{\Im z\geq 0} d^{2}z \left(\frac{1}{4\pi} \left[(\nabla \varphi)^{2} +
+      (\nabla \chi)^{2}\right] +\mu e^{2b\varphi}\right) +\int_{-\infty}^{+\infty}dx \mu_{B}e^{b\varphi}
+\end{equation}
+
+
+\section{Liouville field theory}
+\label{sec:liouv-field-theory}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\bibliography{bibliography}{} 
+\bibliographystyle{utphys}
+
+\end{document}
