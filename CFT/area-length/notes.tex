@@ -1,0 +1,1848 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Notes on area-length problem for CLE}
+%\author{Anton Nazarov}%% $^{1,2}$}
+
+\maketitle
+
+\begin{abstract}
+%  Here I document staff related to my work on area-length problem.
+
+  We consider conformal loop ensemble. The ratio
+  of loop area to certain power of loop length exhibit universal
+  scaling behavior. Scaling function is proportional to Bessel's
+  function. We show it using boundary Liouville field theory fusion rules for degenerate field.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+
+One can ask simple question: how many loops is there?
+
+To make this question more precise consider conformal loop ensemble \cite{sheffield2010conformal}. It is critical limit of
+lattice different models for different values of $\kappa$. Loops can be interpreted as a critical
+limits of domain walls in lattice models. 
+We are interested in distribution of loops by length and area. 
+
+Though several publications exist
+\cite{cardy2003exact,cardy2003crossover,cardy2001exact,cardy1994geometrical}
+on this problem and the answer is
+obtained from computer simulation \cite{ richard2001scaling}, good understanding was not
+obtained. 
+
+
+Some results exist in literature for particular case of self-avoiding walks ($\kappa=\frac{8}{3}$). We start
+with the description of these results \ref{sec:self-avoid-polyg} and show that general problem
+leads to Liouville field theory and obtain our result using Liouville
+field theory fusion rules \ref{sec:liouville-theory}. 
+
+
+
+
+v\subsection{Self-avoiding polygons}
+\label{sec:self-avoid-polyg}
+
+The model of self-avoiding polygons was numerically studied in the paper \cite{richard2001scaling}.
+The simplest case is the generating function for polygons of given length. It can be introduced as
+\begin{equation}
+  \label{eq:86}
+  G(x)=\sum_l p_l x^l,
+\end{equation}
+where  $p_l$ is the number of different polygons on square lattice of length $l$. Different are
+polygons that can not be superposed by a lattice translation.
+If we know generating function we can obtain number of polygons of given length differentiating
+w.r.t. $x$. 
+
+We can also introduce generating function for polygons of given length and area:
+\begin{equation}
+  \label{eq:75}
+  G(x,q)=\sum_{m,n} p_{m,n} x^{m} q^{n},
+\end{equation}
+where $p_{m,n}$ is the number of polygons with perimeter $m$, enclosing an area $n$ passing through
+a given edge (or node). 
+Cardy \cite{cardy2001exact} use following definition for generating function of rooted loops, using
+$g=-\ln q$:
+\begin{equation}
+  \label{eq:76}
+  G^{(r)}(x,g)=\sum_{l,A} p_{l,A}^{(r)} x^{l} e^{-gA}
+\end{equation}
+Generating function for rooted polygons $G^{(r)}(x,g)$ is related to $G(x,g)$ by
+\begin{equation}
+  \label{eq:81}
+  G^{(r)}(x,g)=x \frac{d}{dx} G(x,g),
+\end{equation}
+because root can be chosen in $l$ ways. 
+
+
+This model has critical point $(x_{c},0)$ and generating functions displays scaling behavior
+\begin{equation}
+  \label{eq:77}
+  G(x,g)\sim G(x,g)_{\mathrm{reg}}+g^{\theta} F\left((x_{c}-x)g^{-\phi}\right)
+\end{equation}
+Critical indices $\theta,\phi$ are related to conventional exponents $\nu,\alpha$:
+\begin{eqnarray}
+  \label{eq:78}
+  \phi=\frac{1}{2}\nu\\
+  \theta=\frac{1}{2}(1-\alpha) \nu
+\end{eqnarray}
+Hyperscaling hypothesis adds another relation
+\begin{equation}
+  \label{eq:79}
+  \alpha=2-2\nu
+\end{equation}
+Numerical results predict
+\begin{eqnarray}
+  \label{eq:80}
+  \nu=\frac{3}{4}\\
+  \theta=\frac{1}{3}\\
+  \phi=\frac{2}{3}
+\end{eqnarray}
+We want to find scaling function $F$.
+
+Using their numeric results, authors of the paper \cite{richard2001scaling} were able to come with
+the following scaling for rooted generating function:
+\begin{equation}
+  \label{eq:112}
+  G^{(r)}(\mu,\mu_B)\sim \mu^{\frac{1}{3}} \frac{\mathrm{Ai}'(s)}{\mathrm{Ai}(s)},\quad \mbox{where}\; s=\left(\frac{\mu_{B}^{2}}{\mu}\right)^{\phi}
+\end{equation}
+We want to get physical and geometrical understanding of this result and its generalization to
+different measures on closed curves.
+
+Let us reformulate this problem a bit so that it could be generalized. Consider self-avoiding
+polygons of length not greater than $n$ on a square lattice. This implies uniform measure on
+polygons. The scaling limit of self-avoiding walk when lattice mesh size $a\to 0$ and length $l\to
+\infty$ is conjectured to be described by Schramm-Loewner evolution with parameter
+$\kappa=\frac{8}{3}$. Since we consider closed loops the limit is loops of conformal loop ensemble
+with $\kappa=\frac{8}{3}$.
+The natural question is how to generalize the definition of functions $G$ and $F$ to CLE with
+arbitrary value of $\kappa$?
+
+If we consider self-avoiding polygons of length up to $n$ the generating function $G_{n}(x)$ can be
+introduced as non-local observable. Denote by $N_{n}$ total number of polygons of length up to $n$.
+Since we have uniform measure, the probability for polygon to have length $l$ is
+$\frac{p_{l}}{N_{n}}$. Then the generating function $G_{n}(x)$ is the expectation value of $x^{l}=e^{-\mu_{B}l}$
+\begin{equation}
+  \label{eq:102}
+  G_{n}(x)=\sum_{l<n} p_{l} x^{l} = N_{n} \sum_{l<n} \frac{p_{l}}{N_{n}} x^{l} = N_{n}\mathbb{E}[x^{l}]
+\end{equation}
+Generating function for polygons of given area can be written in similar way as
+\begin{equation}
+  \label{eq:103}
+   G_{n}(x,\mu)=\sum_{l<n} p_{l,A} x^{l} e^{-\mu A} = N_{n} \sum_{l<n} \frac{p_{l,A}}{N_{n}} x^{l} =
+   N_{n}\mathbb{E}[x^{l} e^{-\mu A}]
+\end{equation}
+Note that the  observables $\mathbb{E}[e^{-\mu_{B}l}]$ ,$\mathbb{E}[e^{-\mu_{B}l -\mu A}]$ are
+non-local. So while the generalization from self-avoiding walk to arbitrary SLE is natural it is not
+clear how one can compute such observables.
+
+\subsection{CFT and local SLE geometry}
+\label{sec:cft-local-sle}
+
+Local observables w.r.t. SLE can be described by correlation functions of boundary conformal field
+theory. So we need a theory which reproduces CFT in the limit $\mu,\mu_{B}\to 0$ and has non-local
+observables such as area and length. Note also that the parameter $\kappa$ is connected with the
+central charge of conformal field theory by the relation
+\begin{equation}
+  \label{eq:113}
+  c=\frac{(8-3\kappa)(\kappa-6)}{2\kappa}
+\end{equation}
+
+
+Liouville theory of two-dimensional gravity is a natural choice, but first we need to discuss
+how CFT is used to study local geometry of SLE curves. 
+
+Parameter $\kappa$ of SLE and CLE is connected with Hausdorff dimension of the curve. 
+
+
+Define Hausdorff dimension as follows.
+\begin{definition}
+  {\it Hausdorff content} of the set $S$ is
+  \begin{equation}
+    \label{eq:3}
+    C^d_H = \mathrm{inf} \sum_i r_i^d,
+  \end{equation}
+  where $\{r_i\}$ are such that there exists cover of $S$ by balls of
+  radii $r_i>0$. 
+
+  {\it Hausdorff dimension}
+  \begin{equation}
+    \label{eq:4}
+    d_H\equiv\mathrm{dim}_H(S) = \mathrm{inf}\{ d\geq 0: C^d_H(S)=0\}
+  \end{equation}
+\end{definition}
+
+
+Consider loop of length $L$. The radius of the loop is connected with
+the length as $L\sim R^{d_H}$. The area is related to radius $A\sim
+R^2$, so $A\sim L^{\frac{2}{d_H}}$.
+(It is proved or almost proved in papers by Lawler).
+
+For CLE the connection of Hausdorff dimension and parameter $\kappa$
+is known:
+\begin{equation}
+  \label{eq:5}
+  d_H=1+\frac{\kappa}{8}
+\end{equation}
+
+($\nu^{-1}=d_H$)
+
+Note that number of rooted loops of given area scales as the area to
+the power minus one. 
+
+Hausdorff dimension in CFT is calculated by the insertion of certain primary field called ``pinning
+operator'' \cite{bettelheim2005harmonic}. Expanded presentation can be found in the paper
+\cite{gruzberg2006stochastic}. The argument is as follows. 
+
+Consider a closed curve. Harmonic measure of some part of the curve can be understood as a charge of
+that part if the curve is made of conducting material and its total charge is equal to one. 
+Closed curve can be covered by small circles of radius $r$ centered at points
+$z_{i}$. Consider one such circle. The curve divides the circle into two parts, inner and outer
+w.r.t. to curve. Outer part can be conformally mapped to the unit disk. Denote this map by $w(z)$.
+With the normalization such that one point is fixed and derivative at infinity is equal to one the
+moments of harmonic measure in small circle of radius $r$ scale as
+\begin{equation}
+  \label{eq:116}
+  \mu(r)\sim |w(r)|\sim r |w'(r)|
+\end{equation}
+This scaling follows from electrostatic interpretation of harmonic measure, since $\mu(r)$ is charge
+inside the circle and by Gauss theorem it is equal to the flux of electric field through the
+boundary. Typical absolute value of electric field on the circle is $|w'(r)|$ and boundary length is
+$2\pi r$.
+
+So scaling of the moments of $\mu(r)$ is determined by scaling of $|w'(r)|$:
+\begin{equation}
+  \label{eq:117}
+  \prec |w'(r)|^{h}\succ \sim r^{\Delta(h)}, \quad r\to 0
+\end{equation}
+
+The moments of harmonic measure for the whole curve can be written as a sum over small circles:
+\begin{equation}
+  \label{eq:120}
+  M_{h}=\sum_{i=1}^{N} \mu(z_{i},r)^{h}
+\end{equation}
+
+In the limit $r\to 0$ number of circles grows and moments scale as
+\begin{equation}
+  \label{eq:121}
+  M_{h}\sim r^{\tau(h)}
+\end{equation}
+The function $\tau(h)$ is called multifractal spectrum. For simple curve $\tau(h)=h-1$, so anomalous
+exponents $\delta(h)$ are defined as $\delta(h)=\tau(h)-h+1$. 
+
+Note that $M_{0}$ is a total number of circles and $\tau(0)=-d_{H}$ by definition of Hausdorff
+dimension. For $h=1$ the sum is equal to the total charge of the curve so it does not scale and
+$\tau(1)=0$. 
+
+To calculate multifractal spectrum we need to average over the values at points $z_{i}$. One can
+assume the ergodicity and rewrite $M_{h}$ as
+\begin{equation}
+  \label{eq:122}
+  M_{h}=N \prec \mu(z,r)^{h}\succ
+\end{equation}
+for some point $z$. The total number of circles $N$ is equal to zeroth momentum $M_{0}$, so
+$M_{h}\sim r^{\tau(0)} \prec \mu(z,r)^{h}\succ$. Local multifractal spectrum $\tilde\tau(h)$ is
+defined as $ \prec \mu(z,r)^{h}\succ\sim r^{\tilde\tau(h)}$ and local anomalous exponents are
+$\Delta_{bulk}(h)=\tilde\tau(h) -h$.
+
+Following relations hold for multifractal spectrum and anomalous exponents:
+$\tilde\tau(h)=\tau(h)-\tau(0)$, $\Delta_{bulk}(h)=\delta(h)-\delta(0)$. The most important for us
+here is the connection of Hausdorff dimension and local anomalous exponent 
+\begin{equation}
+  \label{eq:150}
+  d_{H}=1+\Delta_{bulk}(1)
+\end{equation}
+
+Multifractal spectrum and anomalous exponents were first obtained by Duplantier in paper
+\cite{duplantier2000conformally} using quantum gravity. The result is
+\begin{equation}
+  \label{eq:123}
+  \Delta_{bulk}(h)=-\frac{h}{2}+\left(\frac{1}{16}+\frac{1}{4\kappa}\right)
+  (\kappa-4+\sqrt{(\kappa-4)^{2}+16\kappa h})
+\end{equation}
+\begin{equation}
+  \label{eq:124}
+  \tau(h)=\frac{1}{2}(h-1) +\frac{25-c}{24}\left(\sqrt{\frac{24 h +1-c}{25-c}}-1\right), 
+\end{equation}
+where $c$ and $\kappa$ are connected by \eqref{eq:113}.
+
+So we have following result for Hausdorff dimension (eq \eqref{eq:5}):
+\begin{equation}
+  \label{eq:125}
+  d_{H}=1+\frac{\kappa}{8}
+\end{equation}
+
+
+
+The stochastic averages for (local) moments of harmonic measure are represented by different CFT
+correlation functions depending upon the position of point of interest. If we are interested in a
+bulk point lying on a curve, we need to put at this point a special operator. It is $\Psi_{10}$
+which has an interpretation as an operator that creates two lines coming from the point in the bulk.
+
+Identification of this operator is based upon the model of compactified boson field. Level lines of
+such a field are critical curves described by Schramm-Loewner evolution. Vertex operators of the
+model are either ``electric'' or ``magnetic''. Magnetic operators are interpreted as discontinuities
+in field value. 
+
+This interpretation is based on the following analogy. Consider $O(n)$ model on the domain
+$\mathcal{D}$ on the honeycomb lattice. It's configurations can be seen as the configurations of
+oriented loops with arbitrary orientation. Then each site has weight $e^{\pm i e_{0}\pi/6}$ if loop
+is turning right or left at the site. The parameter $e_{0}$ is connected with $n$ by $n=2\cos \pi
+e_{0}$. Then we need to introduce height function that will give us field in critical limit. Choose
+an arbitrary site of dual lattice as a reference point $H=0$ and increase or decrease $H$ by $\pi$
+when crossing loop depending upon its orientation.
+
+Since the choice of loop orientations is arbitrary field $H$ should be compactified $H\simeq
+H+2\pi$.
+ In critical limit this gives us free boson theory:
+\begin{equation}
+  \label{eq:126}
+  S=\frac{g}{4\pi} \int_{\mathcal{D}} d^{2}x (\nabla H)^{2} +\frac{i e_{0}}{2\pi}
+  \int_{\partial\mathcal{D}} dl KH +\frac{i e_{0}}{8\pi} \int_{\mathcal{D}} d^{2}x
+  RH+\lambda\int_{\mathcal{D}} d^{2}x V(H)
+\end{equation}
+Boundary loops has different weights. To take this into account we need to add second term to the
+action. Third term comes from the curvature of surface which can be realized microscopically by
+insertion of lattice faces with number of edges not equal to 6. The last term is locking potential
+which is needed for field compactification. In the limit $\lambda\to\infty$ field $H=k\pi$, so the
+potential is
+\begin{equation}
+  \label{eq:127}
+  V(H)=\sum_{k\in\mathbb{Z}\setminus \{0\}}v_{k}e^{2ikH}
+\end{equation}
+Each term in this expansion is vertex operator with scaling dimension $x_{k}=\frac{2}{g}k(k-e_{0})$,
+so for $e_{0}\in [0,1]$ the operator with $k=1$ is most relevant and it is strictly marginal if
+$x_{k}=2$, which is required for conformal invariance. This fixes us the parameter $g$:
+\begin{equation}
+  \label{eq:128}
+  e_{0}=1-g\quad n=-2\cos \pi g
+\end{equation}
+Dense phase is for $e_{0}\in [0,1], g\in [0,1]$ and dilute phase of $O(n)$ model corresponds to
+$e_{0}\in [-1,0], g\in [1,2]$.
+Now critical curves can be identified with the level lines of field $H$ and $g=\frac{4}{\kappa}$. 
+
+Following notation is more conventional:
+$\varphi=\sqrt{2g}H$ with new coupling constant in action equal to $\frac{1}{2}$. Compactification
+radius for this choice is $\mathcal{R}=\sqrt{\frac{8}{\kappa}}$ and action reads
+\begin{equation}
+  \label{eq:129}
+  S[\varphi]=\frac{1}{8\pi}\int_{\mathcal{D}}d^{2}x ((\nabla \varphi)^{2} + i2\sqrt{2} \alpha_{0}
+  R\varphi)+i\frac{\sqrt{2}\alpha_{0}}{2\pi} \int_{\partial\mathcal{D}} dl
+  K\varphi+\int_{\mathcal{D}}d^{2}x e^{i\sqrt{2}\alpha_{+}\varphi}
+\end{equation}
+where $2\alpha_{0}=\frac{\sqrt{\kappa}}{2}e_{0}=\frac{\sqrt{\kappa}}{2}-\frac{2}{\sqrt{\kappa}}$,
+$\alpha_{\pm}=\alpha_{0}\pm\sqrt{\alpha_{0}^{2}+1}$, $\alpha_{+}=\frac{\sqrt{\kappa}}{2}$,
+$\alpha_{-}=-\frac{2}{\sqrt{\kappa}}$. 
+
+Central charge of this theory is
+\begin{equation}
+  \label{eq:130}
+  c=1-24\alpha_{0}^{2}=1-3\frac{(\kappa-4)^{2}}{2\kappa}
+\end{equation}
+In computations of correlation functions the last term in action is treated perturbatively. Due to
+neutrality condition at most first order terms survive. 
+
+We now describe theory on a full plane which has the following primary fields and local operators. 
+
+By choosing coordinates we can make space locally flat with the curvature at infinity. Then instead
+of term with the curvature $R$ we get vertex operator $V_{-2\alpha_{0},-2\alpha_{0}}(\infty)$.
+
+We can decompose field $\varphi(z,\bar z)$ into holomorphic and antiholomorphic part and introduce a
+dual field $\tilde\varphi$ as
+\begin{equation}
+  \label{eq:131}
+  \varphi(z,\bar z)=\phi(z)+\bar\phi(\bar z),\quad \tilde\varphi=-i\phi(z)+i\bar\phi(z)
+\end{equation}
+
+Holomorphic and antiholomorphic vertex operators are
+\begin{equation}
+  \label{eq:132}
+  V_{\alpha}(z)=e^{i\sqrt{2}\alpha \phi(z)},\quad \bar V_{\bar\alpha}(\bar z)=e^{i\sqrt{2}\bar\alpha
+    \bar \phi(\bar z)}
+\end{equation}
+
+Correlation functions in Coulomb gas picture are easily calculated:
+\begin{equation}
+  \label{eq:157}
+  \left< V_{\alpha_{1}}(z_{1})\dots
+    V_{\alpha_{n}}(z_{n})\right>=\prod_{i<j}(z_{i}-z_{j})^{2\alpha_{i}\alpha_{j}}, \quad \mbox{if}\quad \sum_{i}\alpha_{i}=2\alpha_{0}
+\end{equation}
+
+Full vertex operator is a product of them
+\begin{equation}
+  \label{eq:133}
+  V_{\alpha,\bar\alpha}(z,\bar z)=V_{\alpha}(z)\bar V_{\bar \alpha}(\bar z)
+\end{equation}
+There is another possible decomposition with physical interpretation of electric and magnetic operators:
+\begin{equation}
+  \label{eq:134}
+  \alpha=e+m\quad \bar\alpha=e-m
+\end{equation}
+\begin{equation}
+  \label{eq:135}
+  V_{e,0}(z,\bar z)=e^{i\sqrt{2} e\varphi(z,\bar z)},\quad   V_{0,m}(z,\bar z)=e^{-\sqrt{2} m\tilde\varphi(z,\bar z)}
+\end{equation}
+
+Conformal weights of these operators are 
+\begin{equation}
+  \label{eq:136}
+  h(\alpha)=\alpha(\alpha-2\alpha_{0})=(e+m)(e+m-2\alpha_{0})
+\end{equation}
+\begin{equation}
+  \label{eq:137}
+  \bar h(\bar\alpha)=\bar\alpha(\bar\alpha-2\alpha_{0})=(e-m)(e-m-2\alpha_{0})
+\end{equation}
+
+Spinless operators with $h=\bar h$ are possible when $\alpha=\bar\alpha$ or
+$\bar\alpha=2\alpha_{0}-\alpha$. These two cases correspond to pure electric operators with $m=0$ or
+magnetic operators with arbitrary $m$ and electric charge $e=\alpha_{0}$. 
+
+The following notation is used in \cite{gruzberg2006stochastic} for spinless vertex operators:
+\begin{equation}
+  \label{eq:138}
+  V^{(\alpha)}=V_{\alpha,2\alpha_{0}-\alpha}=V_{\alpha}\bar V_{2\alpha_{0}-\alpha}
+\end{equation}
+
+Charges and conformal weights of degenerate fields from Kac table are
+\begin{equation}
+  \label{eq:139}
+  \alpha_{r,s}=\frac{1}{2}(1-r)\alpha_{+}+\frac{1}{2}(1-s)\alpha_{-},\quad h_{r,s}=\frac{(r\kappa-4s)^{2}-(\kappa-4)^{2}}{16\kappa}
+\end{equation}
+So holomorphic and full primary fields are denoted by $\psi_{r,s}(z)\sim V_{\alpha_{r,s}}(z)$ and
+$\psi_{r,s}(z,\bar z)\sim V^{(\alpha_{r,s})}(z,\bar z)$
+
+Theory on a domain with boundary is different, because we need to take into account boundary condition
+\begin{equation}
+  \label{eq:140}
+  \partial_{l}\varphi|_{\partial \mathcal{D}}=0.
+\end{equation}
+But we can map the domain $\mathcal{D}$ to upper half-plane $\mathbb{H}$, then we can take into
+account boundary conditions by analytic continuation to the whole plane and duplication of fields:
+\begin{equation}
+  \label{eq:141}
+  \bar\phi(\bar z)\to -\phi(z^{*})
+\end{equation}
+\begin{eqnarray}
+  \label{eq:142}
+  V_{e,0}\to e^{i\sqrt{2}e\phi(z)} e^{-i\sqrt{2} e \phi(z^{*})}\\
+  V_{0,m}\to e^{i\sqrt{2}m\phi(z)} e^{-i\sqrt{2} m \phi(z^{*})}
+\end{eqnarray}
+
+On the boundary vertex operators fuse with their images:
+\begin{equation}
+  \label{eq:144}
+    V_{e,m}(z,\bar z)\to V^{(2m)}(x) e^{i 2\sqrt{2}m \phi(x)}
+\end{equation}
+
+Critical curves are level lines of field $\varphi$, so by imposing boundary condition $\varphi=0$
+on one half of the boundary and $\varphi=\pi n R$ on another half we get $n$ curves growing from the
+origin. We now argue that curves are produced by a magnetic operator $V_{0,m}$ with properly chosen
+$m$. 
+
+\begin{equation}
+  \label{eq:145}
+  V_{e,0}(z,\bar z)V_{0,m}(z',\bar z')=\left(\frac{z-z'}{\bar z-\bar z'}\right)^{2em}
+  V_{e+m}(z')\bar V_{e-m}(\bar z')+\dots=e^{4i em \arg(z-z')} V_{e+m}(z')\bar V_{e-m}(\bar z')+\dots
+\end{equation}
+So when electric operator goes around magnetic operator we get a field jump of $4\sqrt{2}\pi m$.
+Magnetic operator is vortex operator. So
+\begin{equation}
+  \label{eq:146}
+  m=\frac{\sqrt{2}}{8}nR = \frac{n}{2\sqrt{\kappa}}=-\frac{n}{4} \alpha_{-}
+\end{equation}
+Since we want curve-creating operator to be spinless we have $e=\alpha_{0}$ and
+$\alpha=\alpha_{0}-\frac{n}{4}\alpha_{-}=\alpha_{0,\frac{n}{2}}$. So our curve-creating operator is
+$\psi_{0,n/2}(z,\bar z)$ with conformal weight
+\begin{equation}
+  \label{eq:147}
+  h_{0,n/2}=\frac{4n^{2}-(\kappa-4)^{2}}{16\kappa}
+\end{equation}
+
+Pinning operator creates one curve passing through the point in the bulk, so it is $\psi_{0,1}$. Its
+conformal weight is
+\begin{equation}
+  \label{eq:148}
+  h_{0,1}=\frac{8-\kappa}{16},
+\end{equation}
+We want to show that Hausdorff dimension is
+\begin{equation}
+  \label{eq:149}
+  d_{H}=2-2h_{0,1}
+\end{equation}
+
+To do so we need to connect local anomalous scaling exponents with conformal weights of vertex
+operators. Local moments of harmonic measure $\mu(z,r)^{h}$ are connected with conformal maps.
+Consider conformal map $w$ of the exterior of critical curve $\gamma$ to upper half-plane or unit
+circle. Normalize this map such that $w(z)=z$ and $w(z'\to\infty)=z'+o(z')$. As we have seen the
+scaling of $w$ near $z$ is related to harmonic measure.
+
+The partition function $Z(0,L)$ of configurations that contain a closed curve passing through the
+points $0$ and $L$ is given by the correlator of two pinning operators $\psi_{0,1}$:
+\begin{equation}
+  \label{eq:151}
+  \frac{Z(0,L)}{Z}=\left<\psi_{0,1}(0)\psi_{0,1}(L)\right>,
+\end{equation}
+where $Z$ is partition function of all configurations. 
+
+The partition function $Z(0,L)$ can be calculated as the product of partition functions inside and
+outside of the curve averaged over all possible curves:
+\begin{equation}
+  \label{eq:152}
+  Z(0,L)=\prec Z_{\gamma}^{\mathrm{int}} Z_{\gamma}^{\mathrm{ext}}\succ
+\end{equation}
+To get the moments of harmonic measure we need to insert some operator $\mathcal{O}(r)$ (product of
+operators), for charge neutrality we need to add another one at infinity $\mathcal{O}(\infty)$.
+Since we are interested in small $r<<L$ we can fuse $\mathcal{O}(\infty)$ with $\psi_{0,1}(L)$ into
+$\Psi(\infty)$. So we need to compute correlation function $\left<\psi_{0,1}(0) \mathcal{O}(r)
+  \Psi(\infty)\right>$. It can be done in two ways, directly and averaging
+$\left<\mathcal{O}(r)\mathcal{O}(\infty)\right>_{\gamma}$ over all curves:
+\begin{equation}
+  \label{eq:153}
+  \left<\psi_{0,1}(0) \mathcal{O}(r)\Psi(\infty)\right>= \prec
+  \left<\mathcal{O}(r)\mathcal{O}(\infty)\right>_{\gamma}^{\mathrm{ext}} Z_{\gamma}^{\mathrm{ext}} Z_{\gamma}^{\mathrm{int}}\succ
+\end{equation}
+The correlation function of operators $\mathcal{O}$ is statistically independent from other factors
+and has all the dependence on $r$. Apply to this correlation function conformal map $w$:
+\begin{equation}
+  \label{eq:154}
+  \left<\mathcal{O}(r)\mathcal{O}(\infty)\right>_{\gamma}^{\mathrm{ext}}=|w'(r)|^{h}\left<\mathcal{O}(w(r))\mathcal{O}(\infty)\right>,
+\end{equation}
+where $h$ is conformal weight of $\mathcal{O}$. So
+\begin{equation}
+  \label{eq:155}
+  \prec|w'(r)|^{h}\succ\sim\frac{ \left<\psi_{0,1}(0) \mathcal{O}(r)\Psi(\infty)\right>}{\left<\mathcal{O}(w(r))\mathcal{O}(\infty)\right>}
+\end{equation}
+
+To get Hausdorff dimension $d_{H}=1+\Delta(1)$ \eqref{eq:150} we need to insert operator
+$V_{\alpha(1)/2,\alpha(1)/2}$, since we consider system with boundary. Then it fuses with its image
+and produce vertex operator with conformal weight $h=1$. 
+\begin{equation}
+  \label{eq:156}
+  \prec|w'(r)|^{2h(\alpha(1)/2)}\succ\sim\frac{\left< V_{\alpha(1)/2}(z) V_{\alpha(1)/2}(z^{*}) \psi_{0,1}(0) \Psi(\infty)\right>}{\left<V_{\alpha(1)/2}(w(z)) V_{\alpha(1)/2}(w^{*}(z))\right>}
+\end{equation}
+
+Use the formula \eqref{eq:157} to calculate correlation functions on the right-hand side. The
+numerator gives us $r^{2\alpha_{0,1}\alpha(1)}$ for $z,z^{*}\to r,\; z-z^{*}\to 0$, the denominator
+$(w(z)-w^{*}(z))^{\alpha(1)^{2}/2}\sim (|z| |w'(z)|)^{\alpha(1)^{2}/2}$. So total power of $|w'(r)|$
+is 
+$2h(\alpha(1)/2)+\alpha(1)^{2}/2=\alpha(1)
+(\alpha(1)/2-2\alpha_{0})+\alpha(1)^{2}/2=\alpha(1)(\alpha(1)-2\alpha_{0})=1$, and total power of
+$r$ is $2\alpha_{0,1}\alpha(1)-\alpha(1)^{2}/2$
+\begin{equation}
+  \label{eq:158}
+  \prec |w'(r)|\succ \sim r^{\Delta(1)}=r^{2\alpha_{0,1}\alpha(1)-\alpha(1)^{2}/2}
+\end{equation}
+
+If we substitute $h_{0,1}=\frac{1}{2}-\frac{\kappa}{16}$ and
+$2\alpha_{0}=\frac{\sqrt{\kappa}}{2}-\frac{2}{\sqrt{\kappa}}$ we obtain $\Delta(1)=\frac{\kappa}{8}$.
+
+%%  To see it one can consider circle of small radius $\varepsilon$ centered at $z$. Put some conformal
+%%  boundary condition on one half of the circle and another condition on the rest of the circle. Then
+%%  critical curve would join the points of change in boundary conditions. The expectation values of
+%%  observables in this geometry are given by CFT correlation functions with two boundary condition
+%%  changing operators inserted:
+%%  \begin{equation}
+%%    \label{eq:119}
+%%    \left< \Psi_{12}(z')\Psi_{12}(z'')\right>
+%%  \end{equation}
+%%  where $|z'-z|\leq \varepsilon$ and $|z''-z|\leq \varepsilon$. The boundary condition changing
+%%  operators in Coulomb gas picture can be presented as the vertex operators
+%%  $V_{\alpha_{12}}=e^{i\sqrt{2}\alpha_{12}\varphi(z)}$. When $\varepsilon\to 0$ we can fuse this two
+%%  operators to single operator $V_{2\alpha_{12}}$. Note that $\alpha_{12}=-\frac{1}{2}\alpha_{-}$
+%%  \eqref{eq:55}, so $V_{2\alpha_{12}}\sim V_{-\alpha_{-}}\sim V_{\alpha_{+}}$ (?)
+%%  
+%%  
+%%  The moments of harmonic measure are connected with the CFT correlation functions by
+%%  \begin{equation}
+%%    \label{eq:118}
+%%    \left<O_{h}(r) \Psi_{10}(0)\Psi(\infty)\right>\sim r^{h'-2h}\prec |w'(r)|^{h}\succ
+%%  \end{equation}
+%%  
+%%  
+%%  
+%%  
+%%  
+
+
+%%  Let $N^r(L)$ be number of rooted loops with a given length. By $N^r(L,A)$ we denote the number of
+%%  loops of given length and area. $N^r(L)=\int_0^{\infty} N^r(L,A) dA$. Area weighted number of loops
+%%  is denoted by $G^r(L,\mu)$. (Here $\mu$ is bulk coupling constant ).
+%%  \begin{equation}
+%%    \label{eq:2}
+%%    G^r(L,\mu)=\int e^{\mu A} N^r(L,A) dA
+%%  \end{equation}
+%%  
+%%  \begin{equation}
+%%    \label{eq:1}
+%%    G^r (\mu,x) = \sum_{\mathrm{clusters}} N^r (L,A) x^L e^{-\mu A}
+%%  \end{equation}
+%%  
+%%  At $x\to x_c$
+%%  \begin{equation}
+%%    \label{eq:6}
+%%    G^r(\mu,x)= \mu^{\theta} F\left(\frac{x-x_c}{\mu^{\phi}}\right)
+%%  \end{equation}
+%%  
+
+
+%% 
+%% \subsection{$O(n)$ model}
+%% \label{sec:introduction-1}
+%% 
+%% Self-avoiding polygons can be thought as the limit $n\to 0$ of loops in $O(n)$ model.
+%% 
+%% Partition function for $O(n)$ model is
+%% \begin{equation}
+%%   \label{eq:9}
+%%   Z_{O(n)} = \sum_{\mbox{loop conf}} x^{\mbox{total length}}
+%%   n^{\mbox{number of loops}}
+%% \end{equation}
+%% Critical point is $x=\frac{1}{\sqrt{2+\sqrt{2-n}}}$, the continuum
+%% limit in this point is described by minimal model $(p,p')$ with
+%% $n=-2\cos\left(\frac{\pi p}{p'}\right)$. $c=1-6\frac{(p-p')^2}{pp'}$, $b=\sqrt{\frac{3}{2}}$.
+%% 
+%% Self-avoiding walk is obtained in the limit $n\to 0$. Then $c=0$ and
+%% we have logarithmic conformal field theory. 
+%% 
+%% Logarithmic CFT $\sim$ Liouville theory ???
+%% 
+%% \section{Scaling of random loops}
+%% \label{sec:scaling-random-loops}
+%% 
+%% Cardy \cite{cardy2001exact} argues that generating function $G^{(r)}$ for rooted self-avoiding loops is given by a derivative w.r.t. $x$
+%% of expectation value of $e^{-gA}$ (eq.6):
+%% \begin{equation}
+%%   \label{eq:82}
+%%   Z=\left<e^{-gA}\right>_{\mathrm{SAL}}=\left<e^{-\sqrt{g}\int J_{\lambda}A_{\lambda}d^{2}x}\right>_{\mathrm{SAL}.A}
+%% \end{equation}
+%% But reasoning is quite strange and unsound. Due to the need to use $g$ for metric in later sections
+%% we will denote area coupling constant by $\mu$ and loop length coupling constant by $\mu_{B}=-\ln x$
+%% (boundary). 
+%% 
+%% 
+%% In this section we introduce scaling function for random loops. 
+%% 
+%% Consider rooted loops in $O(n)$ model.
+%% 
+%% The idea is to write $G$ as a correlation function in Liouville
+%% theory.
+%% 
+%% 
+%% Partition function is product over loops of different length
+%% \begin{equation}
+%%   \label{eq:10}
+%%   Z_{O(n)} = \sum_{\mbox{loop conf}} \prod_L x^{L N(L)} n^{N(L)} = \sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}
+%% \end{equation}
+%% 
+%% 
+%% We can rewrite $G^r(\mu,x)$ as the derivative of generating function
+%% \begin{equation}
+%%   \label{eq:7}
+%%   G^r(\mu,x)=\mu\partial_x \log Z(\mu,\mu_B)
+%% \end{equation}
+%% 
+%% Here
+%% \begin{equation}
+%%   \label{eq:8}
+%%   Z(\mu,\mu_B) = \left< e^{-\mu A} \right> = \frac{\sum_{\mbox{loop conf}}
+%%   \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)} e^{-\mu A}}{\sum_{\mbox{loop conf}} \prod_L\prod_A x^{L N(L,A)} n^{N(L,A)}}
+%% \end{equation}
+%% 
+%% 
+
+\subsection{Quantum gravity and global geometry of critical curves}
+\label{sec:quant-grav-glob}
+
+Theory of quantum gravity in two dimensions, implemented as a matter CFT coupled to Liouville field
+describes the behavior of statistical models in fluctuating geometry. 
+While usually configurations of  Liouville field are interpreted as random curved Riemann surfaces,
+we need to consider random flat shapes. So functional integral in our case is over different space
+of functions. The matter is implemented as a minimal model in Coulomb gas picture with matter field
+$\chi$.
+
+Full action of two-dimensional quantum gravity on world-sheet manifold $\mathcal{M}$ with boundary
+$\partial \mathcal{M}$ in background metric $\hat g$ is given by the formula \cite{kostov2004boundary}:
+\begin{multline}
+  \label{eq:160}
+  S[\chi,\varphi]=\int_{\mathcal{M}}\left(\frac{1}{4\pi}[(\nabla \varphi)^{2}+(\nabla
+    \chi)^{2}+(Q\varphi-ie_{0}\chi)\hat R]+\mu e^{2b\varphi}\right)d^{2}z +\\
+  +  \int_{\partial
+    \mathcal{M}}\left(\frac{1}{2\pi}(Q\varphi-ie_{0}\chi)\hat K + \mu_{B}e^{b\varphi}\right)dx+\mbox{ghosts}
+\end{multline}
+where $\hat R$ is curvature of background metric in the bulk, $\hat K$ -- curvature of background
+metric on the boundary, 
+\begin{equation}
+  \label{eq:161}
+  Q=\frac{1}{b}+b,\quad e_{0}=\frac{1}{b}-b
+\end{equation}
+and ghosts central charge is $-26$, so total central charge vanishes:
+\begin{equation}
+  \label{eq:162}
+  c_{tot}=c_{\varphi}+c_{\chi}+c_{\mathrm{ghosts}}=(1+6Q^{2})+(1-6e_{0}^{2})-26=0
+\end{equation}
+We can use conformal map to rewrite the action on the upper half-plane $\mathbb{H}$:
+\begin{equation}
+  \label{eq:159}
+  S[\varphi,\chi]=\int_{\mathbb{H}} d^{2}z \left(\frac{1}{4\pi}[(\nabla \varphi)^{2}+(\nabla
+    \chi)^{2}]+\mu e^{2b\varphi}\right) +\int_{-\infty}^{\infty} dx \mu_{B}e^{b\varphi} + \mbox{ghosts}
+\end{equation}
+where charges are now hidden in fields asymptotic at the infinity:
+\begin{equation}
+  \label{eq:163}
+  \varphi\sim Q\log|z|^{2},\quad \chi\sim-e_{0}\log|z|^{2}
+\end{equation}
+
+The partition function is defined as a functional integral over matter and Liouville field:
+\begin{equation}
+  \label{eq:164}
+  Z(\mu,\mu_{B})=\int \mathcal{D}\chi \mathcal{D}\varphi e^{-S[\chi,\varphi]}
+\end{equation}
+To define the measure one needs to fix the boundary conditions. Kostov et. al choose non-homogeneous
+Neumann boundary condition for the Liouville field:
+\begin{equation}
+  \label{eq:165}
+  i(\partial -\bar\partial)\varphi=4\pi\mu_{B}e^{b\varphi}
+\end{equation}
+
+There is a duality $b\to \frac{1}{b}$ in this theory. In particular, it is possible to choose
+boundary term as $e^{\frac{\varphi}{b}}$. This choice may be relevant to us since it corresponds to
+dual boundary cosmological constant $\tilde\mu_{B}$ which has scaling $\tilde\mu_{B}\sim
+\mu^{\frac{1}{2b^{2}}}$ and is related to fractal boundary. 
+
+We want to consider configurations with fractal boundaries but flat bulk. So the difference is in
+space of functions $\varphi$ we are integrating over in \eqref{eq:164}. 
+
+Note that self-avoiding walks is the model with $\kappa=\frac{8}{3}$, $c=0$,
+$e_{0}=\frac{1}{\sqrt{6}}$, $b=\sqrt{\frac{3}{2}}$ or $b=\sqrt{\frac{2}{3}}$. Since in paper
+\cite{kostov2004boundary} $b$ is assumed to be less than $1$, we will use
+\begin{equation}
+  \label{eq:166}
+  b=\sqrt{\frac{2}{3}}, \quad 0<b<1
+\end{equation}
+Matter theory is just a free boson, so primary fields are vertex electric and magnetic operators
+\eqref{eq:135} (with the change of notations $\alpha\to \sqrt{2} e$, $2\alpha_{0}\to  e_{0}$). In
+quantum gravity vertex operators are dressed by Liouville field
+\begin{equation}
+  \label{eq:167}
+  V_{e,\alpha}(z,\bar z)=e^{2ie\chi(z,\bar z)} e^{2\alpha\varphi(z,\bar z)}
+\end{equation}
+in such a way that conformal dimension $\Delta=1$:
+\begin{equation}
+  \label{eq:168}
+  e(e-e_{0})+\alpha(Q-\alpha)=1
+\end{equation}
+Proper dressing corresponds to the choice of smaller value of $\alpha$ such that \eqref{eq:168}
+holds. 
+
+Similarly for magnetic (vortex) operators we have
+\begin{equation}
+  \label{eq:169}
+  \chi(z,\bar z)=\chi(z)+\bar\chi(\bar z),\quad \tilde\chi(z,\bar z)=\chi(z)-\bar\chi(\bar z)
+\end{equation}
+\begin{equation}
+  \label{eq:170}
+  V_{m,\alpha}(z,\bar z)=e^{2im\tilde\chi(z,\bar z)} e^{2\alpha\varphi(z,\bar z)}
+\end{equation}
+Since left and right conformal dimensions
+\begin{equation}
+  \label{eq:171}
+  \Delta_{m}=m(m-e_{0}), \quad \bar\Delta_{m}=m(m+e_{0})
+\end{equation}
+are not equal the field is not spinless. So we need to consider mixed operator $\mathcal{O}_{e,m}$
+with dimensions \eqref{eq:134}
+\begin{equation}
+  \label{eq:172}
+  \Delta_{e,m}=(e+m)(e+m-e_{0}), \quad \bar \Delta_{e,m}=(e-m)(e-m-e_{0})
+\end{equation}
+The spin $\Delta-\bar\Delta$ vanishes if $e=\frac{e_{0}}{2}$.
+\begin{equation}
+  \label{eq:173}
+  \Delta_{\frac{e_{0}}{2},m}=m^{2}-\frac{e_{0}^{2}}{4}
+\end{equation}
+
+Primary fields from Kac table with dimensions
+\begin{equation}
+  \label{eq:174}
+  \Delta_{rs}=\frac{1}{4}\left[\left(\frac{r}{b}-sb\right)^{2}-e_{0}^{2}\right]
+\end{equation}
+can be constructed as electric operators with charges
+\begin{equation}
+  \label{eq:175}
+  e_{rs}=\frac{1}{2}\left(e_{0}-\frac{r}{b}+sb\right)
+\end{equation}
+or as magnetic operators with electric charge $\frac{e_{0}}{2}$ and magnetic charge
+\begin{equation}
+  \label{eq:176}
+  m_{rs}=\frac{1}{2}\left(-\frac{r}{b}+sb\right)
+\end{equation}
+
+Pinning operator corresponds to $r=0, s=1$, so $m=\frac{b}{2}$ and
+$\Delta=\frac{b^{2}}{4}-\frac{e_{0}^{2}}{4}=\frac{1}{2}-\frac{b^{2}}{4}$.
+
+Dressing dimension $\alpha$ is $\frac{b}{2}$ or $\frac{1}{b}+\frac{b}{2}$, dimension of Liouville
+vertex operator is $\Delta_{01}^{L}=\alpha(Q-\alpha)=\frac{1}{2}+\frac{b^{2}}{4}=\frac{1}{2}d_{H}$.
+
+Matter field $\chi$ should satisfy some boundary condition. In Coulomb gas approach there are two
+possible choices -- Dirichlet 
+\begin{equation}
+  \label{eq:177}
+  (\partial+\bar \partial)\chi=0
+\end{equation}
+and Neumann
+\begin{equation}
+  \label{eq:178}
+  (\partial-\bar \partial)\chi=0  
+\end{equation}
+If we want to interpret critical curves as the level lines of matter field $\chi$ we need to impose
+Dirichlet conditions \eqref{eq:140}. Dirichlet condition means that field on the boundary has
+constant value $\chi_{B}$. 
+
+Boundary matter fields are boundary condition changing operators between different boundary
+conditions. Neumann-Neumann operators are boundary vertex operators $B_{e}=e^{ie\chi(x)}$, with
+scaling dimension $\Delta^{B}_{e}=e(e-e_{0})$. Dirichlet-Dirichlet fields are boundary magnetic
+operators $\tilde B_{m}$ which introduce jump $\delta\chi=2\pi m$ of the boundary value of
+the field from $\chi_{B}$ to $\chi_{B}+\delta\chi_{B}=\chi_{B}+2\pi m n$. The dimension is
+$\Delta^{B}_{m}=m(m-e_{0})$. Unlike the bulk magnetic operator boundary operator does not have
+electric charge. Electric and magnetic charges for degenerate boundary operators are
+\begin{equation}
+  \label{eq:143}
+  e_{rs}=\frac{1}{2}\left( e_{0}-\frac{r}{b}+sb\right),\quad m_{rs}=\frac{1}{2}\left(e_{0}-\frac{r}{b}+sb\right)
+\end{equation}
+Dirichlet-Neumann and Neumann-Dirichlet operators are boundary twist operators. 
+
+Wrong dressing of the identity boundary operator is $e^{\frac{\varphi}{b}}$. In this case
+$\mu_{B}\sim \mu^{\frac{1}{2b^{2}}}$ and boundary is fractal. 
+Two dressings are dual to each other, so if fractal boundary $\mu_{B}\sim \mu^{\frac{1}{2b^{2}}}$ corresponds to
+Dirichlet boundary condition, then simple boundary $\mu_{B}\sim \mu^{\frac{1}{2}}$ corresponds to
+Neumann boundary condition. 
+
+For degenerate operator $0,1$ we have $m_{01}=\frac{1}{2}\left(e_{0}+b\right)=\frac{1}{2b}$,
+$\Delta^{B}_{m}=\frac{1}{2b}\left(\frac{1}{2b}-\frac{1}{b}+b\right)=\frac{1}{2}-\frac{1}{4b^{2}}$
+with dressing field $B_{\beta}=e^{\beta\varphi}$ with $\beta=\frac{1}{2b}$.
+
+The observables in two-dimensional quantum gravity are products of CFT correlation functions and
+correlation functions of dressed matter vertex operators. Coordinate-independent parts of these
+correlation functions are identified with restricted partition functions in microscopic models
+\cite{kostov2004boundary,kostov2003boundary}. Microscopic models for quantum gravity are integrable
+lattice models, such as Ising, Potts, $O(n)$ or SOS, considered on random lattices.
+
+Bulk one-point function
+\begin{equation}
+  \label{eq:179}
+  \left< V_{\alpha}(z,\bar z)\right>_{\sigma}=\frac{U_{\sigma}(\alpha)}{|z-\bar z|^{2\Delta_{\alpha}}}
+\end{equation}
+is given by the formula
+\begin{equation}
+  \label{eq:180}
+  U_{\sigma}(\alpha)=\frac{2}{b}\left(\pi\mu\gamma(b^{2})\right)^{\frac{Q-2\alpha}{2b}}
+  \Gamma(2b\alpha-b^{2})\Gamma\left(\frac{2\alpha}{b}-\frac{1}{b^{2}}-1\right) \cos[\pi(2\alpha-Q)(2\sigma-Q)]
+\end{equation}
+Microscopically this function is interpreted as the partition function of the loop gas on a
+punctured disk with a vertex operator $V_{\alpha}$ inserted at the puncture and Dirichlet boundary
+condition with the height $\sim \sigma$. 
+
+Supposedly we need to change theory by measuring length not with $e^{b\varphi}$ or
+$e^{\frac{\varphi}{b}}$ but by insertion of gravitational dressing for pinning operator
+$B_{m_{01}}$, which is $e^{\frac{\varphi}{2b}}$.
+
+\section{Liouville theory}
+\label{sec:liouville-theory}
+
+
+%%  Liouville theory, flat metric, asymptotic for field, Coulomb gas formalism.
+%%  \cite{nakayama2004liouville,ponsot2002boundary,teschner2001liouville,fateev2000boundary,teschner2000remarks,zamolodchikov1996conformal} 
+%%  
+%%  Liouville theory describes internal metric of surface. It is possible to obtain length of boundary
+%%  and area of surface with such a metric. To get the answer for flat loops we need to impose some
+%%  condition on metric in the bulk. 
+%%  
+
+In last 30 years great progress was made in study of quantum Liouville theory made in papers
+\cite{fateev2000boundary,zamolodchikov1996conformal,knizhnik1988fractal} and in study of matter on
+random discrete surfaces
+\cite{kazakov1986ising,duplantier1990geometrical,gaudin1989n,duplantier1988conformal}. These two
+approaches to two-dimensional quantum gravity are in agreement
+\cite{kostov2004boundary,kostov2003boundary}. In recent years strict mathematical definitions and proofs for some
+field-theoretic results were obtained \cite{duplantier2011liouville,garban2012quantum}. All these
+solid developments allow us to use Liouville theory as a theory of random surfaces and apply its
+methods to the geometry of random loops. Our approach is similar to the application of Liouville
+theory to harmonic measure problems \cite{duplantier2000conformally}. 
+
+In present text we do not try to be mathematically strict and do not use the definition of Liouville
+measure from \cite{duplantier2011liouville} but we suppose that our result can be proven using
+methods of that paper.
+
+Before moving to quantum Liouville theory and scaling limit of generating functions of self-avoiding
+polygons we need to discuss the geometry of Riemann surfaces and polygons on complex plane and its
+connection with Liouville equation. 
+
+\subsection{Uniformization of Riemann surfaces and Liouville equation}
+\label{sec:unif-riem-surf}
+
+The problem of uniformization of Riemann surfaces was of central importance in mathematics at the
+end of 19th -- beginning of 20th century. Great mathematicians such as Riemann, Klein and Poincare
+proposed different approaches to its solution and the uniformization theorem was finally proven by
+Koebe in 1907. 
+
+\begin{definition}
+  A Riemann surface is a connected Hausdorff space $M$ (distinct points have disjoint neighbourhoods) together with a collection
+  of charts ${U_{\alpha} , z_{\alpha} }$ with the following properties:
+  \begin{itemize}
+  \item The $U_{\alpha}$ form an open covering of $M$ .
+  \item Each $z_{\alpha}$ is a homeomorphic mapping ($\exists$ continuous inverse) of $U_{\alpha}$ onto an open subset of the complex plane $\mathbb{C}$.
+  \item If $U_{\alpha}\cap  U_{\beta} \neq \emptyset$, then $f_{\alpha\beta} = z_{\beta}\circ  z_{\alpha}^{-1}$ is complex analytic on $z_{\alpha} (U_{\alpha} \cap U_{\beta} )$.
+  \end{itemize}  
+\end{definition}
+
+The statement of the theorem is 
+\begin{theorem}
+  Every simply connected Riemann surface is conformally equivalent to one of the three domains: the
+  open unit disk, the complex plane, or the Riemann sphere. In particular it admits a Riemannian
+  metric of constant curvature.
+\end{theorem} 
+
+This classifies Riemannian surfaces as elliptic (positively curved -- rather, admitting a constant
+positively curved metric), parabolic (flat), and hyperbolic (negatively curved) according to their
+universal cover.
+
+Proof is based upon existence and properties of Green function for the surface $M$.
+
+ We can
+ compose each $z_{\alpha}$ with a Mobius transformation of the disk onto itself so that we can
+assume that for each coordinate disk $U_{\alpha}$ and each $p_{0}\in  U_{\alpha}$ there is a coordinate function
+$z$ with $z (p_{0} ) = 0$.
+
+     Suppose $M$ is a Riemann surface. Fix $p_{0}\in  M$ and let $z : U\to  \mathbb{D}$ be a coordinate
+function such that $z(p_{0} ) = 0$. Let $\mathcal{F}_{p_{0}}$ be the collection of subharmonic
+functions $v$ on $M \setminus p_{0}$ satisfying
+\begin{itemize}
+\item $v = 0$ on $M \setminus K$, for some compact $K\subset M$ with $K \neq M$, and
+\item $\limsup_{p\to p_{0}} (v(p) + log |z(p)|) < \infty$
+\end{itemize}
+
+Set
+\begin{equation}
+  \label{eq:104}
+  g_{M} (p, p_{0} ) = \sup\{v(p) : v\in \mathcal{F}_{p_{0}} \}
+\end{equation}
+  
+Second condition does not depend on the choice of the coordinate function $z_{\alpha}$ , provided
+$z_{\alpha} (p_{0} ) = 0$. The collection $\mathcal{F}_{p_{0}}$ is a Perron family, so by Harnack's
+Theorem      $g_M (p, p_{0} )$ is either harmonic in  $M \setminus \{p_{0} \}$, or  is equal to $+\infty$  for
+all $p\in M \setminus \{p_{0} \}$.
+In the first case, $g_{M} (p, p_{0} )$ is called Green's function with pole (or logarithmic singularity)
+at $p_{0}$ . In the second case we say that Green's function does not exist.
+
+The Uniformization Theorem can be reformulated as follows (Koebe[1907]):
+
+\begin{theorem}
+  Suppose $M$ is a simply connected Riemann surface. If Green's function exists for $M$ , then there
+  is a one-to-one analytic map of $M$ onto $\mathbb{D}$. If $M$ is compact, then there is a
+  one-to-one analytic map of $M$ onto $\mathbb{C}^{*}$ . If $M$ is not compact and if Green's
+  function does not exist for $M$ , then there is a one-to-one analytic map of $M$ onto
+  $\mathbb{C}$.
+\end{theorem}
+
+Note that uniformization theorem does not give a construction of uniformization map. 
+
+More modern formulation of uniformization principle operates with quotient of universal cover of
+Riemann surface by the action of some Fuchsian group. This group is monodromy group of Liouville
+equation (?)
+
+Let $D$ denote $\mathbb{C}$, $\mathbb{C}^{*}$ or $\mathbb{D}$.
+\begin{theorem}
+Every Riemann surface $M$ is conformally equivalent to the quotient $D/\Gamma$ with $\Gamma$  a freely acting
+discontinuous group of fractional transformations preserving $D$.
+\end{theorem}
+
+Let us consider the case of Riemann surfaces with universal covering $\mathbb{H}\sim \mathbb{D}$ and
+denote by $J_{H}$ the complex analytic covering $J_{H} : \mathbb{H}\to M$ . In this case $\Gamma$
+(the automorphism group of $J_{H}$ ) is a finitely generated Fuchsian 
+group $\Gamma\subset PSL(2,
+\mathbb{R}) = SL(2, \mathbb{R})/{I, -I}$ acting on $\mathbb{H}$ by linear fractional transformations
+\begin{equation}
+  \label{eq:106}
+  w\in \mathbb{H}\quad \gamma\cdot w=\frac{aw+b}{cw+d}\in\mathbb{H},\quad
+  \gamma=\begin{pmatrix} a & b\\ c & d\end{pmatrix} \in\Gamma\subset PSL(2,\mathbb{R})
+\end{equation}
+
+By the fixed point equation
+\begin{equation}
+  \label{eq:107}
+  w_{\pm}=\frac{a-d\pm\sqrt{(a+d)^{2}-4}}{2c}
+\end{equation}
+it follows that $\gamma\neq I$ can be classified according to the value of $|\mathrm{tr} \gamma|$:
+\begin{enumerate}
+\item Elliptic case: $|\mathrm{tr} \gamma|<2$, $\gamma$ has one fixed point on $\mathbb{H}$:
+  $w_{-}=\bar w_{+}\not\in\mathbb{R}$ and $M$ has branch point
+\item Parabolic case: $|\mathrm{tr}\gamma|=2$, $w_{-}=w_{+}\in\mathbb{R}$ and Riemann surface $M$
+  has a puncture.
+\item Hyperbolic case: $|\mathrm{tr}\gamma|>2$, Riemann surface has handles. 
+\end{enumerate}
+
+   A Riemann surface $M$ isomorphic to the quotient $\mathbb{H}/\Gamma$ has the Poincar\'e metric $\hat g$ as the
+unique metric with scalar curvature $R_{\hat g} = -1$ compatible with its complex structure. This
+implies the uniqueness of the solution of the Liouville equation on $M$. The Poincar\'e metric
+on $\mathbb{H}$ is
+\begin{equation}
+  \label{eq:108}
+  ds^{2}=\frac{|dw|^{2}}{(\Im w)^{2}}
+\end{equation}
+Note that $P SL(2, \mathbb{R})$ transformations are isometries of $\mathbb{H}$ endowed with the Poincar\'e metric.
+   An important property of $\Gamma$ is that it is isomorphic to the fundamental group $\pi_{1}(M)$.
+
+Substitute $w=J_{H}^{-1}(z)$ in \eqref{eq:108} and get Poincar\'e metric on $M$:
+\begin{equation}
+  \label{eq:109}
+  ds^{2}=2\hat g_{z\bar z}|dz|^{2}=e^{\varphi(z,\bar z)} |dz|^{2}=\frac{|J_{H}^{-1}(z)'|^{2}}{(\Im
+    J_{H}^{-1}(z))^{2}} |dz|^{2}
+\end{equation}
+
+The curvature in complex coordinates is given by
+\begin{equation}
+  \label{eq:110}
+  R_{\hat g}=-\hat g^{z\bar z}\partial \bar \partial \ln \hat g_{z\bar z}, \quad \hat g^{z\bar z}=2e^{-\varphi}
+\end{equation}
+The condition $R_{\hat g}=-1$ is equivalent to Liouville equation
+\begin{equation}
+  \label{eq:111}
+  \partial \bar \partial \varphi(z,\bar z)=\frac{1}{2} e^{\varphi(z,\bar z)}
+\end{equation}
+The field $\tilde\varphi=\varphi+\ln \mu, \; \mu>0$ defines a metric of constant curvature $-\mu$. 
+
+\subsection{Classical theory}
+\label{sec:classical-theory}
+
+The action for Liouville theory on a surface $\Gamma$ in arbitrary background metric $g$ is
+\begin{equation}
+  \label{eq:13}
+  S=\frac{1}{4\pi} \int_{\Gamma} \sqrt{g} \left( g^{ab} \partial_{a}\varphi \partial_{b}\varphi + Q R \varphi +4\pi \mu e^{2b\varphi}\right) d^{2}x
+\end{equation}
+
+This theory gives internal metric $\tilde g^{ab}=e^{\varphi(x)}g^{ab}(x)$
+
+
+Classical equations of motion are
+\begin{equation}
+  \label{eq:16}
+  \Delta \varphi(x) = \frac{1}{2} \left(b+\frac{1}{b}\right) R (x) + 4\pi \mu e^{2 b \varphi}
+\end{equation}
+Here $\Delta$ is Laplace-Beltrami operator
+\begin{equation}
+  \label{eq:17}
+  \Delta=\frac{1}{\sqrt{g}}\partial_{\mu} \left(\sqrt{g} g^{\mu\nu} \partial_{\nu}\right)
+\end{equation}
+
+Since
+\begin{equation}
+  \label{eq:93}
+  \sqrt{g}(R-\Delta \varphi)=\sqrt{\tilde g} \tilde R, 
+\end{equation}
+for metric $\tilde g= e^{2b\varphi} g$, equation of motion can be written as
+\begin{equation}
+  \label{eq:94}
+  \tilde R(x) + 4\pi \mu=0
+\end{equation}
+So classical configurations have constant curvature $-4\pi\mu$.
+
+In most cases it is possible to use flat background metric, but one needs to be careful with
+singularities. For example, consider a manifold with the topology of a sphere. We can use flat
+background metric but we need to introduce singularity at infinity \cite{zamolodchikovlectures}. 
+
+In flat background metric $g: ds^{2}=dz d\bar z$ equations of motions are
+\begin{equation}
+  \label{eq:90}
+  4\partial\bar \partial \varphi = 4\pi\mu e^{2b\varphi}
+\end{equation}
+To solve it we consider auxiliary equation:
+\begin{equation}
+  \label{eq:91}
+  4\partial^{2} \psi + t\psi=0
+\end{equation}
+Function $t$ here is $zz$ component of energy-momentum tensor. Denote by $\psi$  vector
+$\psi=(\psi_{1},\psi_{2})$ of linearly independent solutions. Then solution of equation
+\eqref{eq:90} is given by the expression
+\begin{equation}
+  \label{eq:92}
+  \varphi=-\frac{1}{b} \log \left(\bar \psi(\bar z) \lambda \psi(z)\right),
+\end{equation}
+where $\lambda$ is some matrix that is invariant w.r.t. to the action of monodromy group around the
+singularity. 
+
+\begin{equation}
+  \label{eq:89}
+  g=
+\end{equation}
+
+**** More on classical solutions here *****
+
+\subsection{Functional integral formulation}
+\label{sec:funct-integr-form}
+
+To have quantum theory of gravity we need to define somehow functional integral. It can symbolically
+written as
+\begin{equation}
+  \label{eq:101}
+  \int [\mathcal{D}\varphi] e^{-S[\varphi]}
+\end{equation}
+Actual definition is tricky, because we need to quantize metric $e^{2b\varphi}g^{\mu\nu}$ and this
+metric takes part not only in action for field $\varphi$, but also in action for matter field and
+even functional integral measure \cite{david1988conformal,distler1989conformal,polyakov1987gauge}. 
+
+In theory with the action
+$$S=\frac{1}{4\pi} \int \sqrt{g}\left( \frac{1}{2} g^{\mu\nu} \partial_{\mu} \varphi \partial_{\nu}
+  \varphi + Q R\varphi + 4\pi\mu e^{2b\varphi}\right) d^{2}x,$$ 
+where $g$ is a background metric, we need to assume some regularization procedure to define a
+functional integral, because we want to integrate over measure that does not depend upon metric
+\begin{equation}
+  \label{eq:114}
+  ||\delta\varphi||^{2}=\int \sqrt{g} e^{\varphi(x)}(\delta\varphi)^{2} d^{2}x
+\end{equation}
+This measure is non-linear and non translation-invariant and we need to substitute it with the
+measure
+\begin{equation}
+  \label{eq:115}
+    ||\delta\varphi||^{2}=\int \sqrt{g}(\delta\varphi)^{2} d^{2}x,
+\end{equation}
+that is  w.r.t. to change $\varphi(x)\to \varphi(x) +C(x)$ for arbitrary fixed function $C(x)$. 
+
+There is for now no way to do it, so 
+the idea is that the form of the action after regularization is the same but parameters are changed.
+The parameters are then obtained from consistency condition, which is background-independence of the
+theory. 
+
+So now $\mu$ is not a classical cosmological constant and $\mu,b,Q$ are connected through
+consistency requirements for the theory. 
+The consistency requirement is background-independence. The action should not change when we choose
+another background metric and shift field $\varphi$ accordingly. 
+Let $\tilde g = e^{\sigma} g$ and redefine $\varphi$ as $\tilde \varphi=\varphi +
+\frac{Q}{2}\sigma$. 
+
+Consider first the case $\mu=0$.
+then all the terms with $\sigma$ are cancelled if we take into account contributions from matter
+partition function. But it is possible only if 
+$$Q=\frac{25-c_{M}}{6}$$. 
+To make exponential term background-independent we need to have $Q=\frac{1}{b}+b$. 
+
+If we consider correlation functions of fields $V_{\alpha}=e^{2\alpha\varphi}$ and impose
+background-independence conditions we obtain relation on conformal weights
+$$\Delta_{\alpha}=\alpha(Q-\alpha)$$
+So for theory to be background-independent we need to have these relations. 
+
+Conformal transformation $z\to w(z)$ can be presented as a change in background metric, so 
+$$\varphi(w,\bar w) = \varphi(z,\bar z) -\frac{Q}{2}\log \left|\frac{dw}{dz}\right|^{2}$$
+If we consider flat background metric, we need to have asymptotic $\varphi(z,\bar z)\sim -Q \log
+|z|^{2}$ at infinity to have smooth metric $e^{2b\varphi}$. 
+
+
+Now if we consider flat theory with $\mu=0$ everything is good, but when we introduce the observable
+$e^{-\mu A}=e^{-\mu \int d^{2}x e^{2b\varphi}}$ we need to regularize exponential field, impose
+consistency conditions and we get ordinary Liouville theory as the result! 
+So Liouville theory seems to be unique in this way. 
+
+My understanding is that averaging over flat configurations weighted by $e^{-\mu A}$ is equivalent
+to averaging over configurations with cosmological constant $\mu$ which introduces non-zero
+curvature of singularity at infinity in flat background. 
+
+By the way, it is also written that they consider unnormalized correlation functions (without the
+division by $Z$) because there are difficulties with the definition of functional integral $\int
+D\varphi e^{-S[\varphi]}$. 
+So we need to impose some normalization on their results. 
+
+We can select locally flat metric $g^{ab}=\delta^{ab}$ on some sheet, then the action takes the form
+\begin{equation}
+  \label{eq:14}
+  S= \int d^{2}x \frac{1}{4\pi} (\partial_{a} \varphi)^{2}+\mu e^{2b\varphi}
+\end{equation}
+Since we rewrote the action in this form we need to take into account the curvature. We do it by
+supposing the existence of conical singularity at infinity.
+\begin{equation}
+  \label{eq:15}
+  \varphi(z)=-Q \log (z\bar z)+O(1) \quad z\to\infty
+\end{equation}
+The equations of motion take the from
+\begin{equation}
+  \label{eq:18}
+  \Delta \varphi = 4\pi b e^{2b\varphi}
+\end{equation}
+The background charge is connected with the parameter $b$ by equation
+\begin{equation}
+  \label{eq:20}
+  Q=b+\frac{1}{b}
+\end{equation}
+
+Liouville field theory is a conformal field theory with central charge
+\begin{equation}
+  \label{eq:19}
+  c=1+6\left(b+\frac{1}{b}\right)^{2}
+\end{equation}
+and primary fields are given by vertex operators $V_{\alpha}=e^{2\alpha\varphi}$. But primary fields
+$V_{\alpha}$ and $V_{Q-\alpha}$ are to be identified. 
+Reflection amplitudes are used for this identification:
+\begin{equation}
+  \label{eq:87}
+  V_{\alpha}(z,\bar z)=S(\alpha) V_{Q-\alpha}(z,\bar z),
+\end{equation}
+where
+\begin{equation}
+  \label{eq:88}
+  S(\alpha)=\frac{\left(\pi\mu\gamma(b^{2})\right)^{\frac{Q-2\alpha}{b}}}{b^{2}}
+  \frac{\gamma(2\alpha b -b^{2})}{\gamma\left(2-\frac{2\alpha}{b}+\frac{1}{b^{2}}\right)}
+\end{equation}
+
+
+For $\alpha=\frac{Q}{2}+i P, P\in \mathbb{R}$
+fields $V_{\alpha}$ are non-local. Conformal dimension of primary field $V_{\alpha}$ is
+\begin{equation}
+  \label{eq:32}
+  \Delta_{\alpha}=\alpha(Q-\alpha)
+\end{equation}
+
+Fields $V_{-\frac{nb}{2}}, \; n\in \mathbb{N}$ are degenerate, correlation functions of these fields
+satisfy differential equations of order $n+1$. 
+
+\subsubsection{KPZ-scaling}
+\label{sec:kpz-scaling}
+
+Knizhnik-Polyakov-Zamolodchikov (KPZ \cite{knizhnik1988fractal}) scaling relation gives behavior of
+Liouville correlation functions w.r.t. to change in coupling constants $\mu, \mu_{B}$. This relation
+is easy to obtain. Consider reparametrisation $\varphi=\tilde\varphi-\frac{1}{2b}\ln\mu$. The action
+$S[\mu,\mu_{B}]$ is then
+\begin{equation}
+  \label{eq:84}
+  S[\mu,\mu_{B}]=-\frac{1}{4\pi}\int d^{2}x \frac{1}{2b}QR\ln\mu+S\left[1,\frac{\mu_{B}}{\sqrt{\mu}}\right]
+\end{equation}
+Since
+\begin{equation}
+  \label{eq:85}
+  \int d^{2}x R =4\pi\chi,
+\end{equation}
+where $\chi=2-2\#handles-\#boundaries$ is Euler characteristic of the surface, we get
+\begin{equation}
+  \label{eq:99}
+    S[\mu,\mu_{B}]=-\frac{1}{2b}Q\chi\ln\mu+S\left[1,\frac{\mu_{B}}{\sqrt{\mu}}\right]
+\end{equation}
+Substitute it into functional integral for correlation function of arbitrary bulk and boundary
+vertex operators:
+\begin{multline}
+  \label{eq:100}
+  \langle V_{\alpha_{1}}(z_{1})\dots V_{\alpha_{n}}(z_{n}) B_{\beta_{1}}(x_{1})\dots
+  B_{\beta_{m}}(x_{m})\rangle=\\
+  \int \mathcal{D}\tilde\varphi e^{2\alpha_{1}\tilde\varphi(z_{1}}\dots
+  e^{2\alpha_{n}\tilde\varphi(z_{n})} \mu^{-\frac{1}{b} \sum_{i}\alpha_{i}} 
+  e^{\beta_{1}\tilde\varphi(x_{1}}\dots
+  e^{\beta_{m}\tilde\varphi(x_{m})} \mu^{-\frac{1}{2b} \sum_{i}\beta_{i}} e^{-S[\tilde\varphi]}
+  \mu^{\frac{Q\chi}{2b}}\\
+  \sim \mu^{\frac{Q\chi-2\sum_{i}\alpha_{i}-\sum_{j}\beta_{j}}{2b}}
+\end{multline}
+
+
+
+Computation of correlation functions in Liouville field theory relies on screening operators and
+recurrent relations that appear from OPE for auxiliary correlation functions.
+\subsection{Coulomb gas representation and screening operators}
+\label{sec:coul-gas-repr}
+
+Calculation of correlation functions in Liouville field theory can be done as follows. 
+Consider correlation some function with operator $V_{-\frac{b}{2}}$, it satisfies second order
+differential equation:
+\begin{equation}
+  \label{eq:33}
+  \left(\frac{1}{b^{2}}\partial^{2}+T(z)\right)\left<V_{-\frac{b}{2}}(z) \dots \right>=0
+\end{equation}
+Now to find some correlation function $\left<V_{\alpha_{1}}(z_{1})\dots
+  V_{\alpha_{k}}(z_{k})\right>$ we consider auxiliary correlation function with additional
+operator $V_{-\frac{b}{2}}(z)$, find a solution to differential equation and fix the integration
+constants using fusion rules for field $V_{-\frac{b}{2}}$.
+
+It can be shown (add reference here? \cite{nakayama2004liouville},\cite{teschner2001liouville}) that 
+\begin{equation}
+  \label{eq:34}
+  V_{-\frac{b}{2}}\times V_{\alpha}= [V_{\alpha-\frac{b}{2}}]+[V_{\alpha+\frac{b}{2}}]
+\end{equation}
+
+
+Full form of the operator product expansion is
+\begin{equation}
+  \label{eq:39}
+  A(z)B(w)\underset{z\to w}{\longrightarrow} \sum_{C} \frac{f_{AB}^{C}}{(z-w)^{h_{A}+h_{B}-h_{C}}} C(w)
+\end{equation}
+
+We use auxiliary correlation function that can be computed using Coulomb gas picture. The
+computation relies on following ideas.
+
+
+\subsubsection{Coulomb gas picture. Free boson theory. Minimal models}
+\label{sec:free-boson-minimal-models}
+
+
+\begin{equation}
+  \label{eq:40}
+  S=\int d^{2}z b (\partial \varphi)^{2},\quad \left<\varphi(z,\bar z)\varphi(w,\bar
+    w)\right>=-\frac{1}{2b}\left(\ln (z-w) + \ln (\bar z - \bar w)\right)+const
+\end{equation}
+
+\begin{equation}
+  \label{eq:42}
+  T(z)=-\frac{1}{2}:\partial \varphi \partial \varphi:, \quad c=1
+\end{equation}
+In holomorphic sector primary fields are $\partial \varphi$ with $h=1$ and
+$V_{\alpha}(z)=e^{i \alpha \varphi(z)}$ with dimension $h_{\alpha}=\frac{\alpha^{2}}{2}$.
+
+Field $\varphi(z)$ is not purely holomorphic, it contains zero mode
+\begin{equation}
+  \label{eq:43}
+  \varphi(z)=\varphi_{0}-ia_{0}\ln z+\sum_{n\neq 0}\frac{1}{n}a_{n} z^{-n},\quad
+  [a_{n},a_{m}]=n\delta_{n+m,0}, \quad [\varphi_{0},a_{0}]=i
+\end{equation}
+But we can limit ourselves to chiral operators.
+
+If $\alpha_{1}+\dots+\alpha_{n}=0$ then 
+\begin{equation}
+  \label{eq:41}
+  \left<e^{\alpha_{1}\varphi}(z_{1})\dots e^{\alpha_{n}\varphi}(z_{n})\right> = \prod_{i<j}(z_{i}-z_{j})^{-\alpha_{i}\alpha_{j}}
+\end{equation}
+Since $\left< :e^{A_{1}}::e^{A_{2}}:\dots :A^{A_{n}}:\right> =
+\exp\sum_{i<j}\left<A_{i}A_{j}\right>$, we can take $A_{i}=\alpha_{i}\varphi(z_{i})$ and use the
+fact that $\left<A_{i}A_{j}\right>=\ln |z_{i}-z_{j}|^{-\alpha_{i}\alpha_{j}}$. 
+
+Neutrality condition can be seen from the invariance of the action w.r.t. $\varphi\to\varphi+a$,
+then the correlator obtains factor $e^{\sum \alpha_{i}}$ which is 1 if $\sum \alpha_{i}=0$.
+
+Vacuum expectation value of operator with non-zero charge $\alpha$ should be zero. 
+
+To obtain models with $c\neq 1$ one needs to introduce the background charge:
+\begin{equation}
+  \label{eq:44}
+  S=\frac{1}{8\pi} \int d^{2}x \sqrt{g} (\partial_{\mu}\varphi\partial^{\mu}\varphi+2\gamma\varphi R)
+\end{equation}
+Here $R$ is scalar curvature, $\gamma$ - constant. 
+
+(Gauss-Bonnet theorem: $\int d^{2}x \sqrt{g} R = 8\pi(1-h)$, $h$-number of handles).
+
+After introducing interaction with the curvature Ward identities are changed and now neutrality
+condition is $\sum \alpha_{i}=2\alpha_{0}$, where $i\sqrt{2}\alpha_{0}=\gamma$. 
+Stress-energy tensor now takes the form
+\begin{equation}
+  \label{eq:45}
+  T_{\mu\nu}=T^{(0)}_{\mu\nu}-\frac{\gamma}{2\pi}\left(\partial_{\mu}\partial_{\nu}\varphi-\frac{1}{2}\eta_{\mu\nu}\partial^{\rho}\partial_{\rho}\varphi\right)
+\end{equation}
+and
+\begin{equation}
+  \label{eq:46}
+  T(z)=-\frac{1}{2}:\partial \varphi\partial\varphi:+i\sqrt{2}\alpha_{0}\partial^{2}\varphi
+\end{equation}
+If we calculate OPE of $T$ we see that $\partial\varphi$ is not primary any more \cite{difrancesco1997cft}:
+\begin{equation}
+  \label{eq:47}
+  T(z)\partial\varphi(w)\sim
+  \frac{i2\sqrt{2}\alpha_{0}}{(z-w)^{3}}+\frac{\partial\varphi(w)}{(z-w)^{2}} +\frac{\partial^{2}\varphi(w)}{z-w}
+\end{equation}
+Vertex operators are still primary, but conformal dimensions are now
+\begin{equation}
+  \label{eq:48}
+  h_{\alpha}=\alpha^{2}-2\alpha_{0}\alpha
+\end{equation}
+and central charge is
+\begin{equation}
+  \label{eq:49}
+  c=1-24\alpha_{0}^{2}
+\end{equation}
+The correlator \eqref{eq:41} is preserved. Now vertex operators $V_{\alpha}$ and
+$V_{2\alpha_{0}-\alpha}$ are equivalent, so two-point function
+$\left<V_{\alpha}(z)V_{\alpha}(w)\right>$  is not zero, but it should be represented as
+$\left<V_{\alpha}(z)V_{2\alpha_{0}-\alpha}(w)\right>=\frac{1}{(z-w)^{h_{\alpha}}}$. 
+
+In general we insert non-local screening operator with zero conformal dimension but nonzero charge.
+If $\psi$ is primary field with $h_{\psi}=1$ its integral $  A=\oint dz \psi(z) $ is a nonlocal
+operator of conformal dimension zero (invariant under conformal mapping $z\to w$ 
+\begin{equation}
+  \label{eq:50}
+  A\to \oint dz \psi(z) \left(\frac{\partial w}{\partial z}\right)=\oint dw \psi(w)
+\end{equation}
+Then
+\begin{multline}
+  \label{eq:51}
+  [L_{n},A]=\oint dz [L_{n},\psi(z)]=\\\oint dz  (n+1) z^{n}\psi(z)+z^{n+1}\partial \psi(z)=\\
+  \oint dz \partial (z^{n+1}\psi (z))=0
+\end{multline}
+Screening operators are constructed from vertex operators
+\begin{equation}
+  \label{eq:52}
+  V_{\pm}=V_{\alpha_{\pm}}, \quad \alpha_{\pm}=\alpha_{0}\pm \sqrt{\alpha_{0}^{2}+1}, \quad
+  \alpha_{+}\alpha_{-}=-1,\quad \alpha_{+}+\alpha_{-}=2\alpha_{0}
+\end{equation}
+\begin{equation}
+  \label{eq:53}
+  Q_{\pm}=\oint dz V_{\pm}(z)=\oint dz e^{i\sqrt{2}\alpha_{\pm}\varphi(z)}
+\end{equation}
+Now for two-point function we can write
+\begin{equation}
+  \label{eq:54}
+  \left<V_{\alpha}(z)V_{\alpha}(w)Q_{-}^{m}Q_{+}^{n}\right>,
+\end{equation}
+with neutrality condition $2\alpha+n\alpha_{+}+m\alpha_{-}=2\alpha_{0}$,  so $2\alpha$ is an integer
+combination of $\alpha_{-}$ and $\alpha_{+}$.
+So we obtain Kac formula for conformal weights of fields in minimal models
+\begin{equation}
+  \label{eq:55}
+  \alpha_{r,s}=\frac{1}{2}(1-r)\alpha_{+}+\frac{1}{2}(1-s)\alpha_{-}\quad 
+  h_{r,s}(c)=\frac{1}{4}(r\alpha_{+}+s\alpha_{-})^{2}-\alpha_{0}^{2}
+\end{equation}
+
+If we calculate three-point function and require operator algebra to be closed we can obtain
+conditions on possible values of central charge or background charge $\alpha_{0}$. 
+
+Computation of three-point function relies on following trick: find four-point function as a
+solution of differential equation following from null-vector condition and then recover structure
+constants for three-point function from the limit $z\to 0$, where $z$ is cross-ratio. 
+
+Structure constants in three-point function are equal to fusion coefficients for corresponding
+fields, for example substitute fusion rule \eqref{eq:39} to three-point function
+
+  \begin{equation}
+    \label{eq:56}
+    \langle
+    \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{\Delta_{1}+\Delta_{2}-\Delta_{3}}
+      x_{23}^{\Delta_{2}+\Delta_{3}-\Delta_{1}}x_{13}^{\Delta_{3}+\Delta_{1}-\Delta_{2}}}.     
+  \end{equation}
+
+
+Assume that we know four-point function
+$\left<\varphi_{1}(z_{1})\varphi_{2}(z_{2})\varphi_{3}(z_{3})\varphi_{4}(z_{4})\right>$, then we
+take limits $z_{1}\to z_{2}$ and $z_{3}\to z_{4}$ and obtain product of structure constants
+$C_{12}^{r}C_{34}^{r}$ as a coefficient before $\frac{1}{z_{24}^{r}}$.
+
+To compute four-point function we use conformal invariance to send $z_{1}\to 0$, $z_{2}\to z$
+$z_{3}\to 1$ and $z_{4}\to \infty$:
+\begin{equation}
+  \label{eq:58}
+  \left<\varphi_{1}(z_{1})\varphi_{2}(z_{2})\varphi_{3}(z_{3})\varphi_{4}(z_{4})\right>=\left<
+    V_{r_{1},s_{1}}(z_{1}) V_{r_{2},s_{2}}(z_{2}) V_{r_{3},s_{3}}(z_{3}) V_{-r_{4},-s_{4}}(z_{4})
+    Q_{+}^{r} Q_{-}^{s}\right>,
+\end{equation}
+where neutrality condition gives us
+\begin{equation}
+  \label{eq:59}
+  \begin{array}{c}
+    r_{4}=r_{1}+r_{2}+r_{3}-2r-2\\
+    s_{4}=s_{1}+s_{2}+s_{3}-2s-2
+  \end{array}
+\end{equation}
+then 
+\begin{multline}
+  \label{eq:58}
+  \left<\varphi_{1}(0)\varphi_{2}(z)\varphi_{3}(1)\varphi_{4}(\infty)\right>=\left<
+    V_{r_{1},s_{1}}(0) V_{r_{2},s_{2}}(z) V_{r_{3},s_{3}}(1) V_{-r_{4},-s_{4}}(\infty)
+    Q_{+}^{r} Q_{-}^{s}\right>=\\
+  z^{\frac{1}{3}\sum h_{i}-h_{1}-h_{2}}(1-z)^{\frac{1}{3}\sum h_{i}-h_{2}-h_{3}} G(z)
+\end{multline}
+
+The simplest case is when $\varphi_{2}=\varphi_{(2,1)}$, then we need to compute integral
+\begin{multline}
+  \label{eq:60}
+  \left<
+    V_{r_{1},s_{1}}(0) V_{2,1}(z) V_{r_{3},s_{3}}(1) V_{-r_{4},-s_{4}}(\infty)
+    Q_{+}\right>=\\
+  \oint dw \left<     V_{r_{1},s_{1}}(0) V_{2,1}(z) V_{r_{3},s_{3}}(1) V_{-r_{4},-s_{4}}(\infty)
+    V_{+}(w)\right>=\\
+  z^{2\alpha_{2,1}\alpha_{r_{1},s_{1}}}  (1-z)^{2\alpha_{2,1}\alpha_{r_{3},s_{3}}} G(z)
+\end{multline}
+Substitute \eqref{eq:41} and in holomorphic sector we obtain
+\begin{equation}
+  \label{eq:61}
+  \oint dw w^{a}(w-1)^{b}(w-z)^{c},
+\end{equation}
+where
+\begin{equation}
+  \label{eq:62}
+  a=2\alpha_{+}\alpha_{r_{1},s_{1}},\quad b=2\alpha_{+}\alpha_{r_{3},s_{3}}, c=2\alpha_{+}\alpha_{2,1}
+\end{equation}
+
+The difficulty is in choice of integration contour, we need to choose two independent contours which
+will give us two independent solutions of differential equation \eqref{eq:33}. 
+
+Two choices of contour \cite{difrancesco1997cft} give integrals
+\begin{equation}
+  \label{eq:63}
+  \begin{array}{ll}
+    I_{1}(a,b,c; z) &= \int_{1}^{\infty} dw w^{a} (w-1)^{b} (w-z)^{c}\\
+    I_{1}(a,b,c; z) &= \int_{0}^{z} dw w^{a} (1-w)^{b} (w-z)^{c}\\
+    &=z^{1+a+b+c}\int_{0}^{1}dw  w^{a}(1-w)^{b}(1-zw)^{c}
+  \end{array}
+\end{equation}
+These integrals can be calculated by power series expansion of terms with $z$, use of integral
+formula for beta-function 
+\begin{equation}
+  \label{eq:64}
+    B(x,y)=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)} = \int_{0}^{1} t^{x-1} (1-t)^{y-1} dt =
+    \int_{0}^{\infty} t^{x-1} (1+t)^{-x-y} dt
+  \end{equation}
+then convert power series to hypergeometric function definition using $\Gamma(t+1)=t\Gamma(t)$
+\begin{equation}  
+  F(\lambda,\mu,\nu; z)=\sum_{k=0}^{\infty}\frac{1}{k!}\frac{(\lambda)_{k}(\mu)_{k}}{(\nu)_{k}}
+  z^{k}, \;\mbox{where}\; (x)_{k}=x(x-1)\dots (x-k+1)
+\end{equation}
+Final result for conformal block is
+\begin{eqnarray}
+  \label{eq:65}
+  I_{1}(a,b,c;z)=\frac{\Gamma(-a-b-c-1)\Gamma(b+1)}{\Gamma(-a-c)} F(-c,-a-b-c-1,-a-c; z)\\
+  I_{2}(a,b,c;z)=z^{1+a+b+c}\frac{\Gamma(a+1)\Gamma(c+1)}{\Gamma(a+c+2)} F(-b,a+1,a+c+2; z)\\
+  G(z,\bar z)=\sum_{i,j=1,2}X_{ij} I_{i}(z) \bar I_{j}(\bar z)
+\end{eqnarray}
+Calculation of coefficients $X_{ij}$ can be made using monodromy properties of correlation function
+around singularities. It is equivalent to operator product expansion of primary fields. Functions
+$I_{1}, I_{2}$ are in correspondence with intermediate fields in OPE for pairs of primary fields in
+four-point function. Different ways to calculate using OPE correspond to different conformal blocks:
+\begin{equation}
+  \label{eq:66}
+  \mathcal{G}(z,\bar z) =
+  \left<\varphi_{1}(z_{1})\varphi_{2}(z_{2})\varphi_{3}(z_{3})\varphi_{4}(z_{4})\right> =
+  \sum_{r,s;\bar r, \bar s}\mathcal{F}_{r,s}(z) \bar{\mathcal{F}}_{\bar r,\bar s}(\bar z)
+\end{equation}
+where $\mathcal{F}_{r,s}$ corresponds to a field $\varphi_{(r,s)}$ in OPE
+\begin{equation}
+  \label{eq:67}
+  \varphi_{(r,s)}\in \varphi_{(r_{1},s_{1})}\times \varphi_{(r_{2},s_{2})}
+\end{equation}
+
+Complete results for four-point functions in minimal model with Coulomb gas representation are
+presented in paper \cite{dotsenko1985four}. 
+
+\subsubsection{Liouville theory}
+\label{sec:liouville-theory-1}
+
+Liouville theory is very similar to Coulomb gas picture for minimal models. Scalar curvature at
+infinity is $4\pi b$. 
+
+Stress-energy tensor is
+\begin{equation}
+  \label{eq:68}
+  T(z)=-(\partial \varphi)^{2}+Q \partial^{2}\varphi
+\end{equation}
+Central charge is related to $Q$ by formula \eqref{eq:19}, similarly to minimal models
+\eqref{eq:49}. 
+
+It can be shown (add reference here? \cite{nakayama2004liouville},\cite{teschner2001liouville}) that 
+\begin{equation}
+  \label{eq:34}
+  V_{-\frac{b}{2}}\times V_{\alpha}= [V_{\alpha-\frac{b}{2}}]+[V_{\alpha+\frac{b}{2}}]
+\end{equation}
+
+We can introduce structure constants of this operator product expansion \cite{fateev2000boundary}
+\begin{equation}
+  \label{eq:35}
+   V_{-\frac{b}{2}} V_{\alpha}= C_{+}[V_{\alpha-\frac{b}{2}}]+C_{-}[V_{\alpha+\frac{b}{2}}]
+\end{equation}
+
+This structure constants are equal to constants in three-point functions and can be computed by
+screening integrals. For $C_{+}$ we have neutrality condition
+$\alpha-\frac{b}{2}+Q-\alpha+\frac{b}{2}=Q$, so we do not need screening integrals and $C_{+}=1$.
+For $C_{-}$ we screen by first order of Liouville interaction $-\mu\int e^{2b\varphi} d^{2}x$ 
+(Add notes from Zamolodchikov lectures p.131,141 \cite{zamolodchikovlectures}): 
+\begin{multline}
+  \label{eq:36}
+  C_{-}=-\mu\int d^{2}x \left<V_{\alpha}(0)V_{-\frac{b}{2}}(1) e^{2b\varphi(x)}
+    V_{Q-\alpha-\frac{b}{2}}(\infty)\right>=\\
+  \int d^{2}x x^{2\alpha b} (x-1)^{-b^{2}}=\\
+  -\mu\frac{\pi\gamma(2b\alpha-1-b^{2})}{\gamma(-b^{2})\gamma(2b\alpha)},
+\end{multline}
+where
+\begin{equation}
+  \label{eq:37}
+  \gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)}
+\end{equation}
+
+To calculate two-point function
+$\left<V_{\alpha}(x)V_{\alpha}(0)\right>=\frac{D(\alpha)}{|x|^{2\Delta_{\alpha}}}$ we consider
+auxiliary three-point function
+\begin{equation}
+  \label{eq:38}
+  \left<V_{\alpha}(x_{1})V_{\alpha+\frac{b}{2}}(x_{2})V_{-\frac{b}{2}}(z)\right>
+\end{equation}
+Then we consider two operator product expansions when $z\to x_{1}$ and when $z\to x_{2}$. In the
+first case only the term $C_{-} V_{\alpha+\frac{b}{2}}$ survives and we get
+$C_{-}D\left(\alpha+\frac{b}{2}\right)$. In the second case we get $C_{+}D(\alpha)$. Since $C_{+}=1$
+we get functional equation on $D$:
+\begin{equation}
+  \label{eq:57}
+  \frac{D\left(\alpha+\frac{b}{2}\right)}{D(\alpha)}=\frac{1}{C_{-}(\alpha)}
+\end{equation}
+The solution of this equation is
+\begin{equation}
+  \label{eq:69}
+  D(\alpha)=(\pi\mu\gamma(b^{2}))^{\frac{Q-2\alpha}{b}} \frac{\gamma(2b\alpha-b^{2})}{b^{2}\gamma\left(2-\frac{2\alpha}{b}+\frac{1}{b^{2}}\right)}
+\end{equation}
+
+Result for three-point function can be obtained in the same way by considering auxiliary four-point
+function that satisfy second order differential equation due to degeneracy of the field $V_{-\frac{b}{2}}$.
+
+\subsection{Boundary Liouville theory}
+\label{sec:bound-liouv-theory}
+
+
+
+Boundary Liouville theory:
+\begin{equation}
+  \label{eq:12}
+  S=\oint_{S^{1}} \phi \mathcal{N} \phi |dw| + \oint_{S^{1}} \mu_{B} e^{b\phi} + \mu\int_{D} e^{2b\phi} dw d\bar{w}
+\end{equation}
+
+\begin{equation}
+  \label{eq:11}
+  G^{r}(\mu,\mu_{B}) = \mu \frac{\left<V_{\frac{b}{2}} B_{-\frac{1}{b}}\right>}{\left<V_{\frac{b}{2}}\right>}
+\end{equation}
+
+In paper \cite{fateev2000boundary} following expression was obtained for one-point boundary
+correlation function
+\begin{equation}
+  \label{eq:22}
+  \left<V_{\alpha}(x)\right>=\frac{U(\alpha|\mu_{B})}{|z-\bar z|^{2\Delta_{\alpha}}}
+\end{equation}
+
+\begin{equation}
+  \label{eq:21}
+  U(\alpha)=\frac{2}{b}\left(\pi\mu\gamma( b^{2})\right)^{\frac{Q-2\alpha}{2b}} \Gamma(2b\alpha-b^{2})
+  \Gamma\left(\frac{2\alpha}{b}-\frac{1}{b^{2}}-1\right) \cosh (2\alpha-Q)\pi s
+\end{equation}
+where $s$ is determined from the equation
+\begin{equation}
+  \label{eq:23}
+  \cosh^{2} \pi b s=\frac{\mu_{B}^{2}}{\mu}\sin \pi b^{2}
+\end{equation}
+and $\gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)}$.
+
+
+This one point function is related to generating function of surfaces with a conic singularity of given length and area in
+two-dimensional gravity theory. 
+Partition function for  surfaces with a conic singularity of given length and area in
+two-dimensional gravity theory is denoted by $Z_{\alpha}(A,l)$. Canonical transformation gives us
+\begin{equation}
+  \label{eq:24}
+  W_{\alpha}(l,\mu)=\int_{0}^{\infty} \frac{dA}{A} e^{-\mu A}Z_{\alpha}(A,l)
+\end{equation}
+
+For the partition function of surfaces with given area $A$ and length $l$ and conical singularity
+with angle $a(\alpha)$ following expression is obtained:
+\begin{equation}
+  \label{eq:29}
+  Z_{\alpha}(A,l)=\frac{1}{b}\frac{\Gamma(2\alpha b
+    -b^{2})}{\Gamma\left(1+\frac{1}{b^{2}}-\frac{2\alpha}{b}\right)} \left(\frac{l\Gamma(b^{2})}{2
+      A}\right)^{\frac{(Q-2\alpha)}{b}} \exp\left(-\frac{l^{2}}{4 A \sin \pi b^{2}}\right)
+\end{equation}
+
+How is it connected with the equation \eqref{eq:21}?
+
+Note that number of surfaces of given area $A$ and length $l$ is given by a canonical ensemble
+(parameters $N$, $E$)
+\begin{equation}
+  \label{eq:25}
+  N(l,A) = \sum_{\mbox{surfaces}} \delta(\mbox{Area}-A)\delta(\mbox{Length}-l)
+\end{equation}
+\begin{equation}
+  \label{eq:26}
+  F=\log Z
+\end{equation}
+Using Legendre transformation ($f^{*}(p)=\sup_{x\in I} (xp - f(x))$ $x\to \mbox{tangent}$) we move
+to the description with bulk and boundary interaction constants. 
+\begin{equation}
+  \label{eq:27}
+  \min_{\mu}(F(\mu)-\mu A) = S = \log N(A) \quad \mbox{Enthropy}
+\end{equation}
+Thus we obtain grand canonical ensemble (number of particles is not fixed, $w_{n}=\frac{1}{Z}
+e^{\frac{-(E_{n}-\mu N)}{kT}}$)
+
+$Z(\mu_{B},\mu) = \sum_{\mbox{surfaces}} e^{-\mu_{B}l -\mu A}=\int D\varphi e^{-S[\varphi]}$
+\begin{equation}
+  \label{eq:28}
+  \int D\varphi = \int dA dl \int D\phi \quad \mbox{but} \quad \int D\phi = N(A,l)
+\end{equation}
+It is useful to note different definition of integration measure in \cite{fateev2000boundary}: $\int
+\frac{d A}{A}\frac{d l }{l} N(A,l)$
+
+\begin{multline}
+  \label{eq:30}
+  \left< 1 \right>_{\alpha}=\int \left< V_{\alpha}(z)\right> dz = \int dz \sum_{\mbox{surfaces with cone
+    }\alpha\mbox{ at }z} e^{-S[\mbox{surface}]}=\\
+  \int \frac{dl}{l} \int dz  \sum_{\mbox{surfaces with cone
+    }\alpha\mbox{ at }z \mbox{ of length }l}e^{-S[\mbox{surface}]}=\\
+  \int\frac{dl}{l} W_{a}(l) e^{-\mu_{B}l}
+\end{multline}
+
+
+\begin{multline}
+  \label{eq:31}
+  Z_{\alpha}(\mu,\mu_{B}) = \int \left< V_{\alpha}(z)\right> dz=\\\int D\varphi\int d^{2}z \exp\left(-\frac{1}{4\pi} \int d^{2}z
+    b(\nabla\varphi)^{2}-\mu_{B}\oint e^{b\varphi}dx -\mu\int d^{2}z e^{2b\varphi}\right.\\
+  \left.-\alpha\int
+  d^{2}w \varphi(w) \delta(z-w)\right)
+\end{multline}
+So we see that one point boundary correlation function gives us partition function for surfaces of
+given length and area. 
+
+
+\subsection{Computation of one-point function}
+\label{sec:comp-one-point}
+
+To actually compute bulk one-point function \eqref{eq:22} in boundary Liouville field theory  we
+consider auxiliary bulk two-point function
+\begin{equation}
+  \label{eq:70}
+  G_{\alpha,-\frac{b}{2}}=\left<V_{\alpha}(x)V_{-\frac{b}{2}}(z)\right>
+\end{equation}
+Since we consider theory on upper half-plane, this two-point function satisfy the same equation as
+four-point function $\left<V_{\alpha}(x)V_{-\frac{b}{2}}(z)V_{\alpha}(\bar x)V_{-\frac{b}{2}}(\bar
+  z)\right>$ in the whole plane. (Zero mode?) 
+(Note: $\left<\phi(z,\bar z)\right>_{b}\sim\left<\phi(z)\phi(\bar z)\right>=\frac{1}{(z-\bar
+  z)^{2h}}$, then $\left<\phi(y)\right>\sim \frac{1}{y^{2h}}$)
+
+Since our four-point function satisfy second order ODE, it can be presented as a linear combination
+of two independent solutions -- conformal blocks. Change of variables allows to rewrite the equation
+as a hypergeometric equation, so conformal blocks are given by hypergeometric functions:
+\begin{equation}
+  \label{eq:71}
+  \mathcal{G}_{\pm}(x,z)=\frac{|x-\bar x|^{2\Delta_{\alpha}-2\Delta_{-\frac{b}{2}}}}{|z-\bar
+    x|^{4\Delta_{\alpha}}} \mathcal{F}_{\pm}(\eta),
+\end{equation}
+where $\Delta_{-\frac{b}{2}}=-\frac{1}{2}-\frac{3b^{2}}{4}$ and 
+\begin{equation}
+  \label{eq:72}
+  \eta=\frac{(z-x)(\bar z-\bar x)}{(z-\bar x)(\bar z - x)}
+\end{equation}
+\begin{eqnarray}
+  \label{eq:73}
+  F_{+}(\eta)=\eta^{\alpha b}(1-\eta)^{-\frac{b^{2}}{2}} F(2\alpha b -1-2b^{2},-b^{2},2\alpha
+  b-b^{2};\eta)\\
+  F_{-}(\eta)=\eta^{1+b^{2}-\alpha b}(1-\eta)^{-\frac{b^{2}}{2}} F(-b^{2},1-2\alpha b,2+b^{2}-2\alpha
+  b;\eta)
+\end{eqnarray}
+Coefficients before independent solutions $\mathcal{G}_{\pm}$ are fixed by substituting OPE
+\eqref{eq:35} (substitute it to equation?):
+\begin{equation}
+  \label{eq:74}
+  G_{\alpha,-\frac{b}{2}}=C_{+}(\alpha) U\left(\alpha-\frac{b}{2}\right) \mathcal{G}_{+}(x,z)+
+  C_{-}(\alpha) U\left(\alpha+\frac{b}{2}\right) \mathcal{G}_{-}(x,z)
+\end{equation}
+Next we need to consider OPE when both operators $V_{\alpha}(x), V_{-\frac{b}{2}}(z)$ approach the
+boundary. 
+
+Bulk operator $V_{-\frac{b}{2}}$ near the boundary gives rise to two boundary families $B_{0}$ and
+$B_{-b}$. The fusion of $B_{0}=I$ to $V_{\alpha}$ is $\left<V_{\alpha}(x)
+  B_{0}(0)\right>=\frac{R(\alpha,0|\mu_{B})}{|z-\bar z|^{2\Delta_{\alpha}}}$, and the fusion of
+$V_{-\frac{b}{2}}$ 
+
+\section{Quantum gravity from random graphs}
+\label{sec:quantum-gravity-from}
+
+There is another approach to quantum gravity. Instead of field theory on a surface one can consider
+random discrete surfaces and statistical models on them. Random triangulations or quadrangulations
+of a surface can be represented by dual random graphs \cite{kazakov1986ising}.  The matter is
+introduced as a lattice statistical model on such random graph. Then computation of partition
+function (or correlation functions) for matter on random surface is equivalent to summation over
+random planar Feynman diagrams for certain matrix model. 
+
+Using this approach Ivan Kostov was able to obtain disk partition function
+\cite{kostov2004boundary,kostov2003boundary}. His results are as follows. 
+
+\begin{equation}
+  \label{eq:95}
+  W(\tau) = -\frac{M^{g}}{2\sin \pi g} \cosh g\tau,
+\end{equation}
+where parameters $M$, $\tau$ are defined by
+\begin{equation}
+  \label{eq:96}
+  \mu=\frac{1}{\pi} \frac{\Gamma\left(1-\frac{1}{g}\right)}{\Gamma\left(\frac{1}{g}\right)} M^{2}
+\end{equation}
+\begin{equation}
+  \label{eq:97}
+  \mu_{B}=\frac{\Gamma\left(1-\frac{1}{g}\right)}{\pi} M\cosh \tau
+\end{equation}
+
+Here $g=\frac{1}{b^{2}}$. The result \eqref{eq:95} is supposed to coincide with the results of
+\cite{fateev2000boundary} \eqref{eq:21} in the following sense:
+\begin{equation}
+  \label{eq:98}
+  \partial_{\mu} W = \partial_{\mu_{B}} U
+\end{equation}
+for $\alpha=b$ (?)
+
+Substitute $  M^{2}=\mu\frac{\pi}{1}
+\frac{\Gamma\left(\frac{1}{g}\right)}{\Gamma\left(1-\frac{1}{g}\right)}$ to \eqref{eq:95}:
+\begin{equation}
+  \label{eq:83}
+  W(\tau) = -\frac{\left(\mu\frac{\pi}{1}
+\frac{\Gamma\left(\frac{1}{g}\right)}{\Gamma\left(1-\frac{1}{g}\right)}\right)^{g/2}}{2\sin \pi g} \cosh g\tau,
+\end{equation}
+
+and compare with \eqref{eq:21} for $\alpha=b$: 
+
+\begin{equation}
+  U(b)=\frac{2}{b} \left(\pi\mu\gamma( b^{2})\right)^{\frac{-b+1/b}{2b}} \Gamma(b^{2})
+  \Gamma\left(1-\frac{1}{b^{2}}\right) \cosh (b-1/b)\pi s
+\end{equation}
+where $s$ is determined from the equation
+\begin{equation}
+  \cosh^{2} \pi b s=\frac{\mu_{B}^{2}}{\mu}\sin \pi b^{2}
+\end{equation}
+
+
+\section{Scaling limit and CFT on a cone}
+\label{sec:scaling-limit-cft}
+
+Here we argue that scaling limit is connected with correlation
+functions of CFT on a cone. Then we introduce recurrence relations on
+the angle of the cone. We show that this recurrent relation is
+equivalent to fusion rules of degenerate field in CFT. 
+
+
+\section{CFT fusion coefficients and Bessel's functions}
+\label{sec:cft-fusi-coeff}
+
+In this section we solve recurrent relation using fusion rules and
+show that scaling function is equal to Bessel's function. 
+
+\section{Scaling of generating function for polygons}
+\label{sec:scal-gener-funct}
+
+The solution is
+\begin{equation}
+  \label{eq:105}
+  \left< V_{\alpha_{01}} B_{\beta_{10}}\right>
+\end{equation}
+
+\section{Conclusion}
+\label{sec:conclusion}
+Some concluding remarks are here. 
+
+\bibliography{bibliography}{} 
+\bibliographystyle{utphys}
+
+\end{document}
