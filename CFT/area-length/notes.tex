@@ -698,7 +698,7 @@ $\partial \mathcal{M}$ in background metric $\hat g$ is given by the formula \ci
     \mathcal{M}}\left(\frac{1}{2\pi}(Q\varphi-ie_{0}\chi)\hat K + \mu_{B}e^{b\varphi}\right)dx+\mbox{ghosts}
 \end{multline}
 where $\hat R$ is curvature of background metric in the bulk, $\hat K$ -- curvature of background
-metric on the boundary, 
+metric on the boundary,
 \begin{equation}
   \label{eq:161}
   Q=\frac{1}{b}+b,\quad e_{0}=\frac{1}{b}-b
@@ -872,6 +872,47 @@ condition with the height $\sim \sigma$.
 Supposedly we need to change theory by measuring length not with $e^{b\varphi}$ or
 $e^{\frac{\varphi}{b}}$ but by insertion of gravitational dressing for pinning operator
 $B_{m_{01}}$, which is $e^{\frac{\varphi}{2b}}$.
+
+\section{Liouville theory for flat surfaces}
+\label{sec:liouv-theory-flat}
+
+Now we will introduce Liouville theory for flat surfaces. We want to study closed loops in complex
+plane. The interior of such a loop can be mapped to unit disk or upper half-plane. Since the loops
+are on a flat plane and disk is in complex plane too we do not need to consider metrics with
+non-zero curvature. But curvature on the boundary is non-zero. So we write the action in terms of
+flat background metric $\hat g_{\mu\nu}$ with $\hat R=0$, but we on the boundary curvature $\hat
+K\neq 0$.
+
+We assume background-independence in the following sense. If $\hat g$ is flat metric then
+$e^{\sigma}\hat g$ is also flat if $\Delta\sigma=0$ inside the domain $\mathcal{M}$. On the boundary
+$\sigma$ is $2\pi$-periodic function. (The space of functions ${\varphi}$ is Hardy space). 
+
+Since the connection of parameters $b$, $Q$ and asymptotic of the fields $\chi, \varphi$ at infinity
+for the theory on the upper half-plane is established from background-independence, we do not yet
+know if $Q=b+\frac{1}{b}$. Also the choice of area and length terms $e^{2b\varphi}$ and
+$e^{b\varphi}$ is not fixed,  even in usual Liouville theory it is possible to write boundary length
+as $e^{\frac{\varphi}{b}}$ for fractal boundary with fractal dimension $2b^{2}$. So in our action we
+leave parameters $b,a,Q$ free:
+\begin{multline}
+\label{eq:181}
+  S[\chi,\varphi]=\int_{\mathcal{M}}\left(\frac{1}{4\pi}[(\nabla \varphi)^{2}+(\nabla
+    \chi)^{2}]+\mu e^{2b\varphi}\right)d^{2}z +\\
+  +  \int_{\partial
+    \mathcal{M}}\left(\frac{1}{2\pi}(Q\varphi-ie_{0}\chi)\hat K + \mu_{B}e^{a\varphi}\right)dx+\mbox{ghosts}
+\end{multline}
+Let $\mathcal{M}=\mathbb{D}$ and $g_{\mu\nu}=\delta_{\mu\nu}$. Then the action is
+\begin{equation}
+  \label{eq:182}
+   S[\chi,\varphi]=\int_{\mathbb{D}}\left(\frac{1}{4\pi}[(\nabla \varphi)^{2}+(\nabla
+    \chi)^{2}]+\mu e^{2b\varphi}\right)d^{2}z +
+    \int_{S^{1}} \left(\frac{1}{2\pi}(Q\varphi-ie_{0}\chi) + \mu_{B}e^{a\varphi}\right)dx+\mbox{ghosts}
+\end{equation}
+Let us change background metric to $\tilde g_{\mu\nu}=e^{\sigma}g_{\mu\nu}$, then the action is
+\begin{equation}
+  \label{eq:183}
+  S_{\tilde g}[\chi,\varphi]=\int_{\mathbb{D}} \left( \frac{1}{4\pi} e^{2\sigma}\left[ (\nabla
+      \varphi)^{2}+(\nabla \chi)^{2}\right] +\mu e^{2b\varphi}\right)d^{2}z +\int_{S^{1}} \left( \frac{1}{2\pi}
+\end{equation}
 
 \section{Liouville theory}
 \label{sec:liouville-theory}
