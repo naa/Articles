@@ -350,9 +350,11 @@ $\af$-root system $\Delta_{\af}$ from $\Delta'$ we obtain weight diagram of repr
 
 We want to classify all the cases when branching coefficients coincide with weight multiplicities of
 some other algebra representations. Such a coincidence is possible when the projection $\Delta'$ of
-$\gf$ root system admits a splint $\Delta=\Delta_{\af}\cup \Delta_{\sfr}$. Projection of the root
-system $\Delta'$ coincides with the projection of weight diagram of the adjoint representation of
-algebra $\gf$ with the exception of zero weight. Adjoint representation of $\gf$ contains adjoint
+$\gf$ root system admits a splint $\Delta'=\varphi_{\af}(\Delta_{\af})\cup
+\varphi_{\sfr}(\Delta_{\sfr})$, where $\varphi_{\af}$ and $\varphi_{\sfr}$ are the embeddings of
+corresponding root systems. The embedding $\varphi_{\af}$ is metric and trivial. Projection of the
+root system $\Delta'$ coincides with the projection of weight diagram of the adjoint representation
+of algebra $\gf$ with the exception of zero weight. Adjoint representation of $\gf$ contains adjoint
 representation of $\af$ and can be decomposed as
 \begin{equation}
   \label{eq:3}
@@ -378,10 +380,6 @@ The list of strongly multiplicity free representations consists of (first) funda
 for series $A_{r}, B_{r}, C_{r}$, exceptional Lie algebra $G_{2}$ (7-dimensional representation) and
 all $A_{1}$ representations. 
 
-First fundamental representation of $B_{r}$ immediately gives us the splint $\Delta'=\pi_{B_{r}}\left(
-\Delta_{D_{r+1}}\right) = \Delta_{B_{r}}\cup \Delta_{A_{1}+\dots+A_{1}}$ corresponding to Gelfand-Tsetlin
-multiplicity-free branching for the embedding $so(2r+1)\to so(2r+2)$. 
-
 Fundamental weights of the algebra $A_{r}$ are shorter than its roots, but the projections of $\gf$
 weights must be given by linear combinations of roots of special subalgebra $\af$ with integer
 coefficients, so the first class of strongly multiplicity free representations does not produce such
@@ -393,23 +391,53 @@ $\Delta_{G_{2}}=\varphi_{1}( \Delta_{A_{2}})\cup \varphi_{2}(\Delta_{A_{2}})$ wh
 with regular subalgebra $A_{2}\subset G_{2}$ (see Section \ref{sec:splints-root-systems}).
 
 
+First fundamental representation of $B_{r}$ immediately gives us the splint $\Delta'=\pi_{B_{r}}\left(
+\Delta_{D_{r+1}}\right) = \Delta_{B_{r}}\cup \Delta_{A_{1}+\dots+A_{1}}$ corresponding to Gelfand-Tsetlin
+multiplicity-free branching for the embedding $so(2r+1)\to so(2r+2)$. 
+
+First fundamental representation of $C_{r}$ -?
+
+Projection $\Delta'$ on the subalgebra $A_{1}$ is never multiplicity free, so $\Delta_{\sfr}$ always
+contain parallel roots. The simplest case is special embedding $A_{1}\to A_{2}$ where
+$\Delta_{\sfr}$ is the root system $BC_{1}$. Such systems do not correspond to semisimple Lie
+algebras, so we can not speak of a coincidence of branching coefficients for the reduction
+$\gf\downarrow \af$ with weight multiplicities of $\sfr$-representations. 
+
+Weight diagram of of seven-dimensional representation of $G_{2}$ together with $G_{2}$ root system
+form the projection of root system $B_{3}$ which appears in special embedding of simple Lie algebra
+$G_{2}\to B_{3}$. Branching coefficients in this case coincide with weight multiplicities of
+representations of algebra $\sfr=A_{2}$ with image of root system consisting of short roots of
+$G_{2}$. 
+
 The complete classification of multiplicity-free irreducible representations was obtained in
-\cite{howe1995perspectives} (see also \cite{stembridge2003multiplicity}). 
+\cite{howe1995perspectives} (see also \cite{stembridge2003multiplicity}).
+
+
+The weight $\mu$ is minuscule if $\left<\mu,\alpha^{\vee}\right>\leq 1$ for all $\alpha\in
+\Delta^{+}$. 
+
+Classification of multiplicity-free irreducible highest weight modules $L^{\mu}$ in
+\cite{howe1995perspectives,stembridge2003multiplicity} consists of the following classes:
+\begin{itemize}
+\item (1) $\mu$ is minuscule,
+\item (2) $\mu$ is quasi-minuscule and Lie algebra has only one short simple root,
+\item (3) Lie algebra is $sp(6)$ and $\mu=\omega_{1}$, or
+\item (4) Lie algebra is $sl(n + 1)$ and  $\mu= m\omega_{1}$ or $\mu  = m\omega_{n}$ 
+\end{itemize}
+
+We see that case (1) contains strongly multiplicity free modules of series $A_{r}, B_{r}, C_{r}$ and
+exceptional Lie algebra $G_{2}$, strongly multiplicity free modules of $A_{1}$ are included in class
+(4). 
+
+
 
 
 What we really need is the classification of all the representations where multiplicities of all
 non-zero weights are equal to one. Fortunately, such a classification was obtained in
 \cite{plotkin1998visual}. It consists of multiplicity-free representations and adjoint
-representations of algebras $B_{r}$. 
-
- (Possibly, strongly multiplicity-free:
-).
+representations of algebras $B_{r}, C_{r}$ and $F_{4}$. 
 
 
- Classification of strongly multiplicity-free representations is simple:
-$A_{n}$ first fundamental representation, $B_{n}$ first fundamental representation, $C_{n}$ first
-fundamental representation, $G_{2}$ first fundamental representation (7) and
-all irreducible $A_{1}$-representations. 
 
 (See also https://projecteuclid.org/euclid.jmsj/1180135505 for multiplicity-free branching rules)
 
