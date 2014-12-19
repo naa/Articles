@@ -431,7 +431,7 @@ We see that case (1) contains strongly multiplicity free modules of series $A_{r
 Lie algebra $G_{2}$, class (2) contains strongly multiplicity free modules of $ B_{r}, C_{r}$ ,
 strongly multiplicity free modules of $A_{1}$ are included in class (4).
 
-(From wiki:http://en.wikipedia.org/wiki/Minuscule_representation)
+(From wiki:\url{http://en.wikipedia.org/wiki/Minuscule_representation})
 Each simple Lie algebra has a unique quasi-minuscule representation that is not minuscule, and the
 multiplicity of the zero weight is the number of short nodes of the Dynkin diagram.
 
@@ -462,45 +462,55 @@ no root systems that coincide with weight diagram of $L^{2\omega_{1}}_{A_{r}}$.
 What we really need is the classification of all the representations where multiplicities of all
 non-zero weights are equal to one. Fortunately, such a classification was obtained in
 \cite{plotkin1998visual}. It consists of multiplicity-free representations and adjoint
-representations of algebras $B_{r}, C_{r}$ and $F_{4}$.  (? check with
+representations of algebras $A_{r}, B_{r}, C_{r}$ and $F_{4}$.  (? check with
 \cite{berenshtein1990multiplicity}). 
 
-
+For adjoint representation of algebra $A_{r}$ we see that projection $\Delta'$ of root system
+$\Delta_{\gf}$ should consist of roots of subalgebra $\af=A_{r}$ with multiplicity 2. This is the
+case for $\gf=A_{r+1}$, so for the special embedding $A_{r}\to A_{r+1} (su(r+1)\to su(r+2))$ we get
+a splint. 
 
 (See also https://projecteuclid.org/euclid.jmsj/1180135505 for multiplicity-free branching rules)
+%% 
+%% Having obtained this classification we need to check which weight diagrams can be obtained as the
+%% projections of $\gf$ root system. It is the case for $B_{n}\to D_{n+1}$ or $A_{1}\oplus\dots\oplus
+%% A_{1}\to D_{n+1}$.
+%% 
+%% 
+%% 
+%% Projection of $\gf$ root system to the root space of $\af$ in many cases can be
+%% encoded by augmented Dynkin diagram with simple root multiplicities not greater or equal than 1.
+%% Number of roots in projection is equal to the number of roots in $\gf$ root system (We do
+%% not consider the case of orthogonal roots here). The rank of augmented Dynkin diagram is the same as
+%% the rank of subalgebra $\af$. Having Lie algebra $\af$ and augmented Dynkin
+%% diagram of the same rank it should be possible to reconstruct the embedding $\af\to
+%% \gf$, though not always in a unique way. 
+%% 
+%% We must also account for the case of roots of parallel roots of different length. $BC_{1} $ is the
+%% simplest system with parallel roots, one of its two parallel is twice longer than another. Such a
+%% system appear in study of affine 
+%% 
+%% 
+%%  The simplest
+%% system with parallel roots have roots of two different length and Such a systems
+%% appear  $BC_{1} $ and its generalization. (We have the dimension of representation of $\af$ and
+%% projection of roots of $\gf$. It's not enough since in general there are different non-equivalent
+%% representations of $\af$. But the number of simple root systems with given number of roots is
+%% finite, so it's possible to check which one has given projection).
+%% 
+%% Classification of all splints for special embeddings of a given algebra $\af$ is given by
+%% the augmented Dynkin diagrams of the same rank. (!)
+%% 
+%% Case of diagrams with multiplicities is not particularly interesting since we have just multiple
+%% copies of the same stem (?).
+%% 
 
-Having obtained this classification we need to check which weight diagrams can be obtained as the
-projections of $\gf$ root system. It is the case for $B_{n}\to D_{n+1}$ or $A_{1}\oplus\dots\oplus
-A_{1}\to D_{n+1}$.
-
-
-
-Projection of $\gf$ root system to the root space of $\af$ in many cases can be
-encoded by augmented Dynkin diagram with simple root multiplicities not greater or equal than 1.
-Number of roots in projection is equal to the number of roots in $\gf$ root system (We do
-not consider the case of orthogonal roots here). The rank of augmented Dynkin diagram is the same as
-the rank of subalgebra $\af$. Having Lie algebra $\af$ and augmented Dynkin
-diagram of the same rank it should be possible to reconstruct the embedding $\af\to
-\gf$, though not always in a unique way. 
-
-We must also account for the case of roots of parallel roots of different length. $BC_{1} $ is the
-simplest system with parallel roots, one of its two parallel is twice longer than another. Such a
-system appear in study of affine 
-
-
- The simplest
-system with parallel roots have roots of two different length and Such a systems
-appear  $BC_{1} $ and its generalization. (We have the dimension of representation of $\af$ and
-projection of roots of $\gf$. It's not enough since in general there are different non-equivalent
-representations of $\af$. But the number of simple root systems with given number of roots is
-finite, so it's possible to check which one has given projection).
-
-Classification of all splints for special embeddings of a given algebra $\af$ is given by
-the augmented Dynkin diagrams of the same rank. (!)
-
-Case of diagrams with multiplicities is not particularly interesting since we have just multiple
-copies of the same stem (?).
-
+Having obtained the complete classification of splints of projections of root system for special
+embeddings, we need to check when such splints lead to the coincidence of branching coefficients
+with weight multiplicities in modules of algebra $\sfr$. This depends on the decomposition of
+projection of singular element $\pi_{\af}\left(\Psi^{\mu}_{\gf}\right)$ into the combination of
+singular elements of subalgebra $\sfr$. Relation between Weyl groups of $\af$ and $\sfr$ is crucial
+here. 
 
 \begin{table}[h]
 \begin{tabular}[t]{|p{2em}|p{6em}|p{5em}|p{5em}|p{2em}|p{6em}|}
@@ -524,10 +534,19 @@ copies of the same stem (?).
 \label {spsp}
 \end{table}
 
+As the result we see that branching coefficients coincide with weight multiplicities for
+the embeddings $something\to something$ and do not coincide for $something else\to something else$. 
 
 \section*{Conclusion}
 \label{sec:conclusion}
 
+Computation of branching coefficients is important for different physical models with symmetry
+breaking. This computation is drastically simplified if branching coefficients coincide with weight
+multiplicities, since efficient Freudental formula can be used \cite{moody1982fast}. Classification
+of splints for regular and special embeddings gives us all the cases when this coincidence takes
+place. Aside from computational importance, this coincidence is very interesting from
+representation-theoretic point of view, because it follows from new unexpected connection between
+different simple Lie algebras. 
 
 \bibliography{special-bibliography}{} 
 \bibliographystyle{apalike}
