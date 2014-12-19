@@ -414,7 +414,9 @@ The complete classification of multiplicity-free irreducible representations was
 
 
 The weight $\mu$ is minuscule if $\left<\mu,\alpha^{\vee}\right>\leq 1$ for all $\alpha\in
-\Delta^{+}$. 
+\Delta^{+}$. Equivalently, all the weights of the irreducible representation $L^{\mu}$ lie on Weyl
+group orbit of $\mu$.  Weight is quasi-minuscule if  $\left<\mu,\alpha^{\vee}\right>\leq 2$ for all $\alpha\in
+\Delta^{+}$, this means that all non-zero weights lie on single Weyl group orbit. 
 
 Classification of multiplicity-free irreducible highest weight modules $L^{\mu}$ in
 \cite{howe1995perspectives,stembridge2003multiplicity} consists of the following classes:
@@ -425,17 +427,43 @@ Classification of multiplicity-free irreducible highest weight modules $L^{\mu}$
 \item (4) Lie algebra is $sl(n + 1)$ and  $\mu= m\omega_{1}$ or $\mu  = m\omega_{n}$ 
 \end{itemize}
 
-We see that case (1) contains strongly multiplicity free modules of series $A_{r}, B_{r}, C_{r}$ and
-exceptional Lie algebra $G_{2}$, strongly multiplicity free modules of $A_{1}$ are included in class
-(4). 
+We see that case (1) contains strongly multiplicity free modules of series $A_{r}$ and exceptional
+Lie algebra $G_{2}$, class (2) contains strongly multiplicity free modules of $ B_{r}, C_{r}$ ,
+strongly multiplicity free modules of $A_{1}$ are included in class (4).
+
+(From wiki:http://en.wikipedia.org/wiki/Minuscule_representation)
+Each simple Lie algebra has a unique quasi-minuscule representation that is not minuscule, and the
+multiplicity of the zero weight is the number of short nodes of the Dynkin diagram.
+
+The minuscule representations are indexed by the weight lattice modulo the root lattice, or
+equivalently by irreducible representations of the center of the simply connected compact group. For
+the simple Lie algebras, the dimensions of the minuscule representations are given as follows.
+
+    An (n+1
+    k) for 0 ≤ k ≤ n (exterior powers of vector representation). Quasi-minuscule: n2+2n (adjoint)
+    Bn 1 (trivial), 2n (spin). Quasi-minuscule: 2n+1 (vector)
+    Cn 1 (trivial), 2n (vector). Quasi-minuscule: 2n2–n–1 if n>1
+    Dn 1 (trivial), 2n (vector), 2n−1 (half spin), 2n−1 (half spin). Quasi-minuscule: 2n2–n (adjoint)
+    E6 1 , 27, 27. Quasi-minuscule: 78 (adjoint)
+    E7 1, 56. Quasi-minuscule: 133 (adjoint)
+    E8 1. Quasi-minuscule: 248 (adjoint)
+    F4 1. Quasi-minuscule: 26
+    G2 1. Quasi-minuscule: 7
 
 
+We need to consider representations of class (4) only for $m=1,2$ since root system $\Delta_{\sfr}$
+can have roots of at most two different lengths. In the case $m=1$ we get strongly multiplicity free
+modules of $A_{r}$ which were discussed above. And for algebra $A_{2}$ and $m=2$ the weight diagram
+of representation $L^{2\omega_{1}}_{A_{2}}$ coincides with root system of exceptional Lie algebra
+$G_{2}$. This case appears in the special embedding $A_{2}\to B_{3}$. But for $A_{r}, r>2$ there are
+no root systems that coincide with weight diagram of $L^{2\omega_{1}}_{A_{r}}$. 
 
 
 What we really need is the classification of all the representations where multiplicities of all
 non-zero weights are equal to one. Fortunately, such a classification was obtained in
 \cite{plotkin1998visual}. It consists of multiplicity-free representations and adjoint
-representations of algebras $B_{r}, C_{r}$ and $F_{4}$. 
+representations of algebras $B_{r}, C_{r}$ and $F_{4}$.  (? check with
+\cite{berenshtein1990multiplicity}). 
 
 
 
