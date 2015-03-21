@@ -1,9 +1,19 @@
-\documentclass[12pt]{iopart}
+\documentclass[12pt]{article}
 
-%\usepackage{amsfonts}
+\baselineskip=20pt
+\hsize=340pt
+\vsize=490pt
+
+\usepackage{amssymb}
+
+\usepackage{color,graphicx}
+
+\usepackage{amsmath}
+
+
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{pb-diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\usepackage{iopams,setstack}
 \usepackage{multicol}
 \usepackage{color}
 \usepackage{hyperref}
@@ -41,13 +51,17 @@
 
 \begin{document}
 
-\ftc{Splints of root systems for special Lie subalgebras}
+\title{Splints of root systems for special Lie subalgebras}
 
-\author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$, P.I.~Kakin$^{1}$}
-\address{ $^1$ Department of High-energy and elementary particle physics,  St Petersburg State University, 198904, Saint-Petersburg, Russia}
-\ead{ $^{2}$ e-mail: antonnaz@gmail.com}
+\author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$, P.I.~Kakin$^{1}$\\
+  {\small $^1$ Department of High-energy and elementary particle physics,}\\ {\small St Petersburg State University}\\
+  {\small 198904, Saint-Petersburg, Russia,}\\
+  {\small $^{2}$ e-mail: antonnaz@gmail.com}}
+%\date{}
+%\address{ $^1$ Department of High-energy and elementary particle physics,  St Petersburg State University, 198904, Saint-Petersburg, Russia}
+%\address{ $^{2}$ e-mail: anton.nazarov@hep.phys.spbu.ru}
 
-
+\maketitle
 
 \begin{abstract}
   Splint is a decomposition of root system into a union of root systems. Splint of root system for a
@@ -61,7 +75,6 @@
 \noindent{\it Keywords\/}: Lie algebra, special subalgebra, branching, weight multiplicity, splint
 \end{abstract}
 
-\submitto{\jpa}
 
 \section{Introduction}
 \label{sec:introduction}
@@ -135,83 +148,9 @@ Lie algebra $\sfr$. Then branching coefficients $b^{(\mu)}_{\nu}$ for the reduct
 $L^{(\mu)}_{\gf\downarrow \af}$ coincide with the weight multiplicities $m^{(\tilde \mu)}_{\nu}$ in the $\sfr$-representations provided certain technical condition holds \cite{2011arXiv1111.6787L}.
 The highest weight $\tilde\mu$ of the $\sfr$-representation is calculated from the Dynkin labels of the highest
 weight $\mu$ of the $\gf$-module.
-
-
-In the next section \ref{sec:splints-root-systems} we review the classification of splints for simple
-root systems and the results for branching coefficients. Then we move to the study of special embeddings
-which is the main subject of the present paper. We consider special embeddings of Lie subalgebras
-into a Lie algebra. In this case the root system of the subalgebra is not contained in the root system of
-the algebra. So the original motivation for splints is not applicable. But we can consider the
-projection of the root system of the algebra on the root space of the subalgebra. Such a projection is not a
-root system anymore, but it satisfies milder conditions (Section \ref{sec:spec-embedd-proj}). It is
-possible to classify the splints of the projection using the fact that the adjoint representation of the algebra is decomposed into the direct sum of representations of the subalgebra. We show that if there is a splint then branching coefficients coincide with weight multiplicities of representations of another Lie algebra (Section \ref{sec:splints-spec-embedd}). Thus in this case branching coefficients are very easy to compute.
-
-The use of representation theory of the subalgebra allows us to classify all the splints for the projections
-of the algebra root system. We also apply this method to metric splints and regular subalgebras and get
-a unified treatment. We obtain the Gelfand-Tsetlin rules for regular and special embeddings this way.
-
-In conclusion \ref{sec:conclusion} we discuss the cases when the projection of the root system does
-not fall into the classification mentioned above.
-
-\section{Splints of root systems and regular subalgebras}
-\label{sec:splints-root-systems}
-The notion and the classification of
-splints for simple root systems were introduced in the paper \cite{richter2008splints}.
-
-Consider a simple Lie algebra $\mathfrak{g}$ and its regular subalgebra $%
-\mathfrak{a}\hookrightarrow \mathfrak{g}$ such that $\mathfrak{a}$
-is a
-reductive subalgebra $\mathfrak{a \subset g}$ with correlated root spaces: $%
-\mathfrak{h}_{\mathfrak{a}}^{\ast }\subset \mathfrak{h}_{\mathfrak{g }%
-}^{\ast }$. Let $\mathfrak{a}^{\mathfrak{s}}$ be a semisimple summand of
-$\mathfrak{a}$,
-this means that $\mathfrak{a}=\mathfrak{a}^{\mathfrak{s}} \oplus \mathfrak{u}(1)\oplus %
-\mathfrak{u}(1)\oplus \dots$. We shall consider $\mathfrak{a}^{\mathfrak{s}}$
-to be a proper regular subalgebra and $\mathfrak{a}$ to be the
-maximal subalgebra with $\mathfrak{a}^{\mathfrak{s}}$ fixed, so that the rank
-$r$ of $\af$ is equal to that of $\mathfrak{g}$.
-
-The computation of branching coefficients relies on the roots $\Delta_{\gf}\setminus \Delta_{\af}$
-\cite{2010arXiv1007.0318L} so splint  is naturally connected to branching coefficients for regular
-subalgebras.
-
-
-Only three types of splints are
-injective and thus are naturally connected to branching \cite{richter2008splints}:
-\begin{equation}
-\label{tab:1}
-\begin{array}{cc||c|c}
-\hbox{type} & \hspace{0.25in}\Delta \hspace{0.25in} & \hspace{0.25in}\Delta
-_{\frak{a}}\hspace{0.25in} & \hspace{0.25in}\Delta _{\sfr}\hspace{0.25in}
-\\ \hline\hline
-\hbox{(i)} & G_{2} & A_{2} & A_{2} \\
-& F_{4} & D_{4} & D_{4} \\ \hline
-\hbox{(ii)} & B_{r}(r\geq 2) & D_{r} & \oplus ^{r}A_{1} \\
-(*)& C_{r}(r\geq 3) & \oplus ^{r}A_{1} &  D_{r} \\ \hline
-\hbox{(iii)} & A_{r}(r\geq 2) & A_{r-1}\oplus u\left( 1\right)  & \oplus
-^{r}A_{1} \\
-& B_{2} & A_{1}\oplus u\left( 1\right)  & A_{2}
-\end{array}
-\end{equation}
-
-Each row in the table gives a splint $(\Delta _{\frak{a}},\Delta _{\sfr})
-$ of the simple root system $\Delta $. In the first two types both $\Delta _{%
-\frak{a}}$ and $\Delta _{\sfr}$ are embedded metrically. Stems in the
-first type splints are equivalent and in the second are not. In the third
-type splints only $\Delta _{\frak{a}}$ is embedded metrically. The summands $%
-u\left( 1\right) $ are added to keep $r_{\frak{a}}=r$. This does not change
-the principle properties of branching but makes it possible to use the
-multiplicities of $\sfr$ -modules without further projecting their
-weights.
-
-Note that in the case of $C_{r}$-series (marked with the star in table \ref{tab:1}) the metrical
-embedding $\Delta_{D_{r}}\to \Delta_{C_{r}}$ does not lead to the appearance of the regular subalgebra
-$\mathfrak{a}$ (See \cite{dynkin1952semisimple}).
-
-In the paper \cite{2011arXiv1102.1702L} it was shown that
-
-\begin{Prop}
-There is a decomposition of a singular element of the algebra $\gf$ into singular elements of the subalgebra $\sfr$:
+The proof of the coincidence of the branching coefficients with the weight multiplicities of
+$\sfr$-module is based upon the decomposition of singular element of the algebra $\gf$ into singular
+elements for $\sfr$:
 \begin{equation}
  \Phi ^{\mu }_{\gf} = \sum_{w\in W_{\frak{a}}}\epsilon\left( w\right)w\left( e^{\mu +\rho _{\gf}}\phi\left( e^{-\widetilde{\mu }}\Psi^{\widetilde{\mu }}_{\sfr}\right)\right),
 \end{equation}
@@ -227,9 +166,24 @@ b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 }^{(\mu )}=M_{\left( \sfr\right) \widetilde{\nu }}^{\widetilde{\mu }}. 
 \label{bran1}
 \end{equation}
-\end{Prop} 
-%% Rewrite this property informally
 
+We use similar approach to study special embeddings. We consider special embeddings of Lie
+subalgebras into a Lie algebra. In this case the root system of the subalgebra is not contained in
+the root system of the algebra. So the original motivation for splints is not applicable. But we can
+consider the projection of the root system of the algebra on the root space of the subalgebra. Such
+a projection is not a root system anymore, but it satisfies milder conditions (Section
+\ref{sec:spec-embedd-proj}). It is possible to classify the splints of the projection using the fact
+that the adjoint representation of the algebra is decomposed into the direct sum of representations
+of the subalgebra. We show that if there is a splint then branching coefficients coincide with
+weight multiplicities of representations of another Lie algebra (Section
+\ref{sec:splints-spec-embedd}). Thus in this case branching coefficients are very easy to compute.
+
+The use of representation theory of the subalgebra allows us to classify all the splints for the projections
+of the algebra root system. We also apply this method to metric splints and regular subalgebras and get
+a unified treatment. We obtain the Gelfand-Tsetlin rules for regular and special embeddings this way.
+
+In conclusion \ref{sec:conclusion} we discuss the cases when the projection of the root system does
+not fall into the classification mentioned above.
 
 
 \section{Special embeddings and projections of root system}
@@ -306,17 +260,8 @@ From these theorems we see that the root system $\Delta_{\af}$ is metrically emb
 of splint) into the projection $\Delta'$. Moreover, the multiplicities of some roots
 $\alpha\in\Delta_{\af}$ in this projection $\Delta'$ are greater than one. 
 
-As an example we present a projection $\Delta'$ of the root system of $D_{4}$ to the root system of the special
-subalgebra $A_{2}$ (Fig. \ref{fig:d4-a2_splint}).
-
-\begin{figure}[h!bt]
-  \noindent\centering{
-   \includegraphics[width=40mm]{Special-A2-D4-all-2}
-  }
-  \caption{Projection of $D_{4}$ ($so(8)$)-root system onto the root space of the special subalgebra $A_{2}$
-    ($su(3)$). Note that this root system is $G_{2}$ but with non-trivial multiplicities. }
- \label{fig:d4-a2_splint}
-\end{figure}
+For example the projection of the root system of $D_{4}$($so(8)$) to the root system of the special
+subalgebra $A_{2}$($su(3)$) coincides with the root system $G_{2}$, but the short roots have the multiplicity $3$.
 
 
 %% Relying on these theorems we can encode the projections of root system by Dynkin diagrams. We need
@@ -398,7 +343,7 @@ projection.
 Nevertheless, the union of diagrams of the two fundamental representations of $A_{2}$ with the root
 system of $A_{2}$ produces a weight diagram of $G_{2}$. This case corresponds to splint
 $\Delta_{G_{2}}=\varphi_{1}( \Delta_{A_{2}})\cup \varphi_{2}(\Delta_{A_{2}})$ which is connected
-with the regular subalgebra $A_{2}\subset G_{2}$ (see Section \ref{sec:splints-root-systems}).
+with the regular subalgebra $A_{2}\subset G_{2}$ (see \cite{2011arXiv1111.6787L}).
 
 
 The first fundamental representation of $B_{r}$ immediately gives us the splint $\Delta'=\pi_{B_{r}}\left(
@@ -719,7 +664,7 @@ _{\frak{a}}\hspace{0.25in} & \hspace{0.25in}\Delta _{\sfr}\hspace{0.25in}
 here the splints marked with (*) are special splints.
 
 
-\section*{Conclusion}
+\section{Conclusion}
 \label{sec:conclusion}
 
 The computation of branching coefficients is important for different physical models with a symmetry
@@ -737,6 +682,6 @@ can be obtained with little difficulty.
 
 
 \bibliography{special-bibliography}{} 
-\bibliographystyle{iopart-num}
+\bibliographystyle{utphys}
 
 \end{document}
