@@ -189,24 +189,25 @@ b_{\left( \mu -\phi \left( \widetilde{\mu }-\widetilde{\nu }\right) \right)
 \section{Специальные вложения и проекции корневой системы}
 \label{sec:spec-embedd-proj}
 
-The study of specialy embedded subalgebras traces back to the fundamental papers by Eugene Dynkin
-\cite{dynkin1952semisimple,dynkin1952maximal} where he called such subalgebras ``S-subalgebras'' to
-distinguish from regular or ``R-subalgebras'' that have root systems obtained by dropping some roots
-of the algebra root system. Thus regular subalgebras are easy to construct by dropping nodes from
-the extended Dynkin diagram of the algebra, while the case of special subalgebras is more difficult. The complete
-classification for exceptional Lie algebras was obtained recently in \cite{minchenko2006semisimple}.
-The algorithm of the special subalgebras construction is available in GAP package but still requires
-a manual intervention \cite{de2011constructing}.  
+Специальные вложения подалгебр детально рассматривались в фундаментальных работах Евгения
+Борисовича Дынкина \cite{dynkin1952semisimple,dynkin1952maximal}, где для них использовалось
+название ``S-подалгебры'' чтобы отличить от регулярных или ``R-подалгебр'', полученных путем
+исключения некоторых корней из корневой системы алгебры. Все регулярные подалгебры нетрудно построить
+путем исключения вершин из расширенной диаграммы Дынкина для алгебры, но для специальных подалгебр
+такого простого метода нет. Полная классификация для исключительных алгебр Ли была построена недавно
+в работе \cite{minchenko2006semisimple}. Алгоритм построения специальных подалгебр реализован в виде
+пакета для системы GAP, но построение все равно требует участия человека \cite{de2011constructing}.  
 
-Assume that the Lie algebra $\gf$ is simple. Let's denote a subalgebra by
-$\af$. We denote corresponding Cartan subalgebras by $\hfg$ and $\hfa$ and identify them with the dual
-spaces $\hfg^{*}$, $\hfa^{*}$ using the Killing forms of $\gf$ and $\af$.
+Будем предполагать, что алгебра Ли $\gf$ простая. Обозначим подалгебру через $\af$. Соответствующие
+подалгебры Картана будем обозначать через $\hfg$ и $\hfa$, и отождествим их с дуальными
+пространствами $\hfg^{*}$, $\hfa^{*}$ используя формы Киллинга алгебр  $\gf$ и $\af$.
 
-To construct an embedding $\af\to\gf$ consider some representation $L^{\nu}_{\af}$ as a subspace of
-Lie algebra $\gf$. Then one needs to check that the generators of $\af$ can be presented as
-linear combinations of generators of $\gf$. We can identify the Cartan subalgebra $\hfa\subset \af$ with
-the dual space $\hfa^{*}$ using the Killing form. Then the root system $\Delta_{\gf}$ of $\gf$ can be
-projected to $\hfa^{*}$ using the expression of $\hfa$-generators through $\hfg$-generators.
+Для построения вложения  $\af\to\gf$ надо отождествить некоторое представление  $L^{\nu}_{\af}$ с
+подпространством в алгебре Ли $\gf$. Затем необходимо проверить, что генераторы  $\af$ могут быть
+представлены в виде линейных комбинаций генераторов  $\gf$. После отождествления подалгебры Картана
+$\hfa\subset \af$ с дуальным пространством $\hfa^{*}$ при помощи формы Киллинга, корневую систему
+$\Delta_{\gf}$ алгебры $\gf$ можно спроектировать на  $\hfa^{*}$ используя выражение
+генераторов подалгебры $\hfa$ через генераторы  $\hfg$.
 
 %%  To reduce $\gf$-representations project $\gf$ root system to Cartan subalgebra of $\af$. 
 %% 
@@ -219,56 +220,58 @@ projected to $\hfa^{*}$ using the expression of $\hfa$-generators through $\hfg$
 %% representation of the algebra to
 %% 
 
-This projection is described in the classical papers \cite{dynkin1952semisimple,dynkin1952maximal} by the following theorem:
+Свойства этой проекции описаны в классических работах  \cite{dynkin1952semisimple,dynkin1952maximal} в
+следующих теоремах:
 
 \begin{theorem}\label{dyn0}
-  If a representation $L^{\mu}_{\gf}$ of the algebra $\gf$ induces a representation
-  $L^{\tilde\mu}_{\af}$ on the subalgebra $\af$ then the weight system of $L^{\tilde\mu}_{\af}$ can
-  be obtained from $L^{\mu}_{\gf}$ by an orthogonal projection of $\hfg^{*}$ on $\hfa^{*}$.
-
+  Если представление  $L^{\mu}_{\gf}$ алгебры $\gf$ индуцирует представление $L^{\tilde\mu}_{\af}$
+  подалегбры $\af$, то весовая диаграмма $L^{\tilde\mu}_{\af}$ получается из диаграммы
+  $L^{\mu}_{\gf}$ ортогональной проекцией $\hfg^{*}$ на $\hfa^{*}$.
   \cite{dynkin1952maximal}. 
 \end{theorem} 
 
-In relation to the adjoint representation of $\gf$ this theorem means that the projection of the root system $\Delta_{\gf}$ to $\hfa^{*}$ is a weight system of some
-finite-dimensional but not irreducible representation of $\af$. Moreover this reducible representation contains the adjoint representation of $\af$. And if we denote such a projection by
+Применяя эту теорему к присоединенному представлению  $\gf$, видим, что проекция корневой
+системы  $\Delta_{\gf}$ на $\hfa^{*}$ оказывается весовой системой некоторого конечномерного но не
+обязательно неприводимого представления $\af$. Более того, это приводимое представление должно
+содержать присоединенное представление $\af$. Если обозначить проекцию корневой системы через
 \begin{equation}
   \label{eq:2}
   \Delta'=\pia\left(\Delta_{\gf}\right),
 \end{equation}
-then the roots of $\af$ will be contained in $\Delta'$. Thus the system $\Delta'$ can be a root
-system but it might not be reduced and might contain some vectors with multiplicities greater than
-one.
+то все корни $\af$ будут содержаться в $\Delta'$. То есть система  $\Delta'$ может быть корневой
+системой, но она не обязательно является приведенной и может содержать некоторые векторы с
+кратностью больше единицы.
 
-The following theorems \cite{dynkin1952semisimple} also concern the properties of $\Delta'$. 
+Следующие теоремы \cite{dynkin1952semisimple} также описывают свойства  $\Delta'$. 
 
 \begin{theorem}\label{dyn1}
-  Every special subalgebra $\af$ of a semisimple Lie algebra $\gf$ is integer, i.e. the projections of
-  the roots of $\gf$ to $\hfa^{*}$ are linear combinations of the simple roots of $\af$ with integer
-  coefficients \cite{dynkin1952semisimple}
+  Каждая специальная подалгебра  $\af$ полупростой алгебры Ли  $\gf$ -- целочисленная, то есть
+  проекции корней  $\gf$ на $\hfa^{*}$ являются линейными комбинациями простых корней  $\af$ с
+  целочисленными коэффициентами \cite{dynkin1952semisimple}
 \end{theorem}
 
 \begin{theorem}\label{dyn2}
-  If $\af$  is a semisimple subalgebra of a semisimple Lie algebra $\gf$ and the generator $e_{\alpha}$ corresponding to
-  the root $\alpha$ of $\af$ is presented as a linear combination $e_{\alpha}=\sum_{\beta}
-  e_{\beta}$ of $\gf$-generators
-  corresponding to the roots $\beta$ of $\gf$, then the roots $\beta$ are projected into $\alpha$,
+  Если $\af$  -- полупростая подалгебра полупростой алгебры Ли $\gf$ и генератор $e_{\alpha}$,
+  соответствующий корню $\alpha$ алгебры $\af$, представляется в виде линейной комбинации  $e_{\alpha}=\sum_{\beta}
+  e_{\beta}$ генераторов $\gf$ соответствующих корням  $\beta$ алгебры $\gf$, тогда все эти корни
+  $\beta$ проектируются в  $\alpha$,
   $\pia(\beta)=\alpha$. 
   \cite{dynkin1972semisimple,dynkin1952semisimple}. 
 \end{theorem}
 
-From these theorems we see that the root system $\Delta_{\af}$ is metrically embedded (in the sense
-of splint) into the projection $\Delta'$. Moreover, the multiplicities of some roots
-$\alpha\in\Delta_{\af}$ in this projection $\Delta'$ are greater than one. 
+Из этих теорем мы видим, что  корневая система $\Delta_{\af}$ вложена метрически (в смысле
+определения сплинта) в проекцию  $\Delta'$. Более того, кратности некоторых корней 
+$\alpha\in\Delta_{\af}$ в этой проекции  $\Delta'$ больше единицы. 
 
-For example the projection of the root system of $D_{4}$($so(8)$) to the root system of the special
-subalgebra $A_{2}$($su(3)$) coincides with the root system $G_{2}$, but the short roots have the multiplicity $3$.
+Например, проекция корневой системы $D_{4}$($so(8)$) на корневую систему специальной подалгебры
+$A_{2}$($su(3)$) совпадает с корневой системой $G_{2}$, но кратность коротких корней равна $3$.
 
 
 %% Relying on these theorems we can encode the projections of root system by Dynkin diagrams. We need
 %% to allow simple roots to have non-trivial multiplicities. 
 %% 
 
-\section{Splints for special embeddings}
+\section{Сплинты для специальных вложений}
 \label{sec:splints-spec-embedd}
 
 %Since roots are weights of the adjoint representation, such a projection produces the weight diagram
@@ -278,121 +281,124 @@ subalgebra $A_{2}$($su(3)$) coincides with the root system $G_{2}$, but the shor
 %``characteristic representation of subalgebra $\af$'' by Dynkin in the seminal paper
 %\cite{dynkin1952semisimple}.
 
-We want to classify all the cases when branching coefficients coincide with weight multiplicities of
-some other algebra representations. Such a coincidence is possible when the projection $\Delta'$ of
-the $\gf$ root system admits a splint $\Delta'=\varphi_{\af}(\Delta_{\af})\cup
-\varphi_{\sfr}(\Delta_{\sfr})$, where $\varphi_{\af}$ and $\varphi_{\sfr}$ are the embeddings of
-the corresponding root systems. The embedding $\varphi_{\af}$ is metric and trivial. Moreover, the
-projection of the singular element $\pia\left(\Psi^{\mu}_{\gf}\right)$ should admit a decomposition into
-a linear combination of singular elements of irreducible representations of $\sfr$:
+Мы хотим перечислить все случаи совпадения коэффициентов ветвления с кратностями весов в
+представлении некоторой другой алгебры. Такое совпадение возможно, если проекция $\Delta'$ корневой
+системы алгебры $\gf$ допускает сплинт $\Delta'=\varphi_{\af}(\Delta_{\af})\cup
+\varphi_{\sfr}(\Delta_{\sfr})$, где  $\varphi_{\af}$ и $\varphi_{\sfr}$ -- вложения соответствующих
+корневых систем. Вложение  $\varphi_{\af}$ метрическое и тривиальное. Кроме этого, проекция
+сингулярного элемента  $\pia\left(\Psi^{\mu}_{\gf}\right)$ должна раскладываться в линейную
+комбинацию сингулярных элементов неприводимых представлений $\sfr$:
 \begin{equation}
   \label{eq:4}
   \pia\left(\Psi^{\mu}_{\gf}\right)=\sum_{\nu} \varkappa_{\nu}e^{\nu}\Psi^{\tilde\mu}_{\sfr},
 \end{equation}
-with integer coefficients $\varkappa_{\nu}$, where the sum is over the set of weights $\nu$ that
-will be determined later. Such a decomposition of the singular element is very similar to the branching of Weyl group orbits considered in the papers \cite{larouche2011branching,larouche2009branching}. First we classify all the splints of the projection of a root system into
-a union of simple root systems for special embeddings, and then discuss the decomposition of singular
-elements.
+с целыми коэффициентами  $\varkappa_{\nu}$, где  множество весов  $\nu$, по которому ведется
+суммирование, будет определено ниже. Это разложение сингулярного элемента очень похоже на ветвления
+орбит группы Вейля, рассмотренные в работах  \cite{larouche2011branching,larouche2009branching}.
+Сперва мы перечислим все расщепления проекций корневой системы в объединение простых корневых систем
+при специальных вложениях, а затем обсудим разложение сингулярного элемента. 
 
-Projection of the $\gf$ root system $\Delta'$ coincides with the projection of the weight diagram of the
-adjoint representation of the algebra $\gf$ with the exception of zero weight. The adjoint representation of
-$\gf$ contains the adjoint representation of $\af$ and can be decomposed as
+Проекция  $\Delta'$ корневой системы  $\gf$ совпадает с проекцией весовой диаграммы присоединенного
+представления алгебры  $\gf$, за исключением нулевого веса. Присоединенное представление  $\gf$
+содержит присоединенное представление  $\af$ и раскладывается в прямую сумму
 \begin{equation}
   \label{eq:3}
   \mathrm{ad}_{\gf}=\mathrm{ad}_{\af}\oplus M_{\af}^{\chi},
 \end{equation}
-where $M^{\chi}_{\af}$ is not necessary irreducible representation of $\af$ called
-``characteristic'' in \cite{dynkin1952semisimple}. 
+где  $M^{\chi}_{\af}$ -- не обязательно неприводимое представление $\af$, названное 
+``характеристическим'' в работе \cite{dynkin1952semisimple}. 
 
-The weight diagram of $M^{\chi}_{\af}$ coincides with the root system $\Delta_{\sfr}$ with the exception of
-zero weight. So we need to find all the representations for all simple Lie algebras $\af$, such that
-their weight diagrams are root systems after the exclusion of zero weight. In order to do so we must
-note, that all the weights of $M^{\chi}_{\af}$ should have a length not less than the length of the shortest
-root of $\af$, since $\af$ is an integer subalgebra of $\gf$ \ref{dyn1}. Moreover, $M^{\chi}_{\af}$
-should contain weights of at most two different lengths. 
 
-If the root system $\Delta_{\gf}$ contains roots $\alpha: \alpha\perp \beta,\; \forall \beta\in
-\Delta_{\af},$ orthogonal to the root system of the subalgebra, one cannot proceed with the decomposition
-of the singular element \ref{eq:4}. The elements $e^{\nu}$ of $\pia\left(\Psi^{\mu}_{\gf}\right)$
-should be augmented with the dimensions of representations of the algebra $\afb$ spanned by generators
-corresponding to the orthogonal roots \cite{2010arXiv1007.0318L}. Then there will be non-trivial
-multiplicities in the right hand side of \ref{eq:4} and no coincidence of branching coefficients
-with the weight multiplicities of $\sfr$-representations. One can write more cumbersome relation between
-the multiplicities and branching coefficients, but it is out of scope for the present paper.
+Весовая диаграмма $M^{\chi}_{\af}$ совпадает с корневой системой  $\Delta_{\sfr}$, за исключением
+нулевого веса. То есть нам достаточно найти все представления для всех простых алгебр Ли $\af$
+такие, что их весовая диаграмма совпадает с некоторой корневой системой после исключения нулевого
+веса. Во-первых, заметим, что все веса  $M^{\chi}_{\af}$ должны быть  не меньшей длины чем
+кратчайший корень $\af$, так как $\af$ -- целочисленная подалгебра $\gf$ \ref{dyn1}. Во-вторых,
+$M^{\chi}_{\af}$ должна содержать веса не более, чем двух разных длин. 
 
-The multiplicity of zero weight in the adjoint representation is equal to the rank of the algebra. So if
-$\mathrm{rank}\gf-\mathrm{rank}\af=1$, the representation in question $M^{\chi}_{\af}$ must be
-multiplicity-free. If $\mathrm{rank}\gf-\mathrm{rank}\af>1$ only zero weight can have non-trivial
-multiplicities. 
+Если в корневой системе  $\Delta_{\gf}$ есть корни $\alpha: \alpha\perp \beta,\; \forall \beta\in
+\Delta_{\af},$ ортогональные корневой системе подалгебры, то сингулярный элемент не допускает
+разложения \ref{eq:4}.  В этом случае элементы формальной алгебры $e^{\nu}$ проекции
+$\pia\left(\Psi^{\mu}_{\gf}\right)$ надо снабдить размерностями представлений алгебры $\afb$,
+порожденной генераторами, соответствующими ортогональным корням \cite{2010arXiv1007.0318L}. Тогда
+правая часть разложения  \ref{eq:4} будет содержать нетривиальные кратности и совпадение
+коэффициентов ветвления с кратностями весов в представлениях  $\sfr$ не будет иметь места. В
+этом случае можно вывести более сложное соотношение между кратностями весов и коэффициентами
+ветвления, но этот вывод лежит за рамками данной работы. 
 
-The simplest class of multiplicity-free representations is called ``strongly multiplicity free''
-\cite{lehrer2006strongly} and consists of multiplicity free representations with weight systems
-admitting strict ordering $\nu_{1}<\nu_{2} \Leftrightarrow \nu_{1}=\nu_{2}+n \alpha$, where $n\in
-\mathbb{N}, \alpha\in \Delta^{+}_{\af}$ and for all $\nu_{1},\nu_{2}$ either $\nu_{1}<\nu_{2}$ or
+Кратность нулевого веса в присоединенном представлении равна рангу алгебры. Так что при 
+$\mathrm{rank}\gf-\mathrm{rank}\af=1$, характеристическое представление  $M^{\chi}_{\af}$ должно
+быть свободно от нетривиальных кратностей.  При $\mathrm{rank}\gf-\mathrm{rank}\af>1$ только нулевой
+вес может иметь нетривиальную кратность. 
+
+Простейшие свободные от кратностей представления называется ``строго свободными от кратностей''
+ (``strongly multiplicity free'') \cite{lehrer2006strongly} и представляют собой представления с
+ весовыми системами, допускающими строгое упорядочение $\nu_{1}<\nu_{2} \Leftrightarrow
+ \nu_{1}=\nu_{2}+n \alpha$, где $n\in
+\mathbb{N}, \alpha\in \Delta^{+}_{\af}$ и для всех $\nu_{1},\nu_{2}$ либо $\nu_{1}<\nu_{2}$, либо
 $\nu_{2}<\nu_{1}$.
 
-The list of strongly multiplicity free representations consists of (first) fundamental representations
-for the series $A_{r}, B_{r}, C_{r}$, the exceptional Lie algebra $G_{2}$ (7-dimensional representation) and
-all $A_{1}$ representations. 
+Список строго свободных от кратностей представлений состоит из (первых) фундаментальных
+представлений в сериях $A_{r}, B_{r}, C_{r}$, представления исключительной алгебры Ли $G_{2}$
+(7-мерного) и всех представлений $A_{1}$. 
 
-Fundamental weights of the algebra $A_{r}$ are shorter than its roots, but the projections of $\gf$
-weights must be given by linear combinations of the roots of the  special subalgebra $\af$ with integer
-coefficients, so the first class of strongly multiplicity free representations does not produce such a
-projection. 
+Фундаментальные веса алгебры $A_{r}$ короче, чем ее корни, но проекции весов $\gf$ должны даваться
+линейными комбинациями корней специальной подалгебры  $\af$ с целыми коэффициентами, так что первый
+класс строго свободных от кратностей представлений не порождает проекции корневой системы,
+допускающей расщепление.
 
-Nevertheless, the union of diagrams of the two fundamental representations of $A_{2}$ with the root
-system of $A_{2}$ produces a weight diagram of $G_{2}$. This case corresponds to splint
-$\Delta_{G_{2}}=\varphi_{1}( \Delta_{A_{2}})\cup \varphi_{2}(\Delta_{A_{2}})$ which is connected
-with the regular subalgebra $A_{2}\subset G_{2}$ (see \cite{2011arXiv1111.6787L}).
+Тем не менее, объединение диаграмм двух фундаментальных представлений  $A_{2}$ с корневой системой
+$A_{2}$ образует корневую систему $G_{2}$. Этот случай соответствуют сплинту
+$\Delta_{G_{2}}=\varphi_{1}( \Delta_{A_{2}})\cup \varphi_{2}(\Delta_{A_{2}})$, связанному с
+регулярной подалгеброй $A_{2}\subset G_{2}$ (подробнее см. \cite{2011arXiv1111.6787L}).
 
+Первое фундаментальное представление  $B_{r}$ немедленно дает сплинт $\Delta'=\pi_{B_{r}}\left(
+\Delta_{D_{r+1}}\right) = \Delta_{B_{r}}\cup \Delta_{A_{1}+\dots+A_{1}}$, соответствующий правилу
+ветвления Гельфанда-Цетлина с тривиальными коэффициентами для специального вложения
+$\mathfrak{so}(2r+1)\to \mathfrak{so}(2r+2)$.
 
-The first fundamental representation of $B_{r}$ immediately gives us the splint $\Delta'=\pi_{B_{r}}\left(
-\Delta_{D_{r+1}}\right) = \Delta_{B_{r}}\cup \Delta_{A_{1}+\dots+A_{1}}$ corresponding to the Gelfand-Tsetlin
-multiplicity-free branching for the special embedding $\mathfrak{so}(2r+1)\to \mathfrak{so}(2r+2)$. 
+Длина первого фундаментального веса алгебры   $C_{r}$ меньше, чем длина ее короткого корня, так что
+этот случай не может порождать сплинт для целочисленной подалгебры. 
 
-The length of the first fundamental weight of  $C_{r}$ is less than the length of its short root, so
-this case can not correspond to an integer subalgebra. 
-
-If there are vectors of a different length in the projection $\Delta'$ on the subalgebra $A_{1}$, such a
-projection is not multiplicity free, and $\Delta_{\sfr}$ contains parallel roots. The simplest case
-is the special embedding $A_{1}\to A_{2}$ with index 4 where $\Delta_{\sfr}$ is the root system
-$BC_{1}$. Such systems do not correspond to semisimple Lie algebras, so we can not speak of a
-coincidence of branching coefficients for the reduction $\gf\downarrow \af$ with weight
-multiplicities of $\sfr$-representations.
+Далее, если в проекции  $\Delta'$ на подалгебру  $A_{1}$ есть векторы разной длины, то в такой
+проекции есть нетривиальные кратности и система $\Delta_{\sfr}$ должна содержать сонаправленные
+корни. Простейший пример -- это специальное вложение $A_{1}\to A_{2}$ с индексом 4, где
+$\Delta_{\sfr}$ -- это корневая система $BC_{1}$. Такие системы не соответствуют полупростым
+алгебрам Ли, так что мы не можем говорить о совпадении коэффициентов ветвления для редукции
+$\gf\downarrow \af$ с кратностями весов в представлениях $\sfr$.
 
 %% The only case of the projection $\Delta'$ to $A_{1}$ with root multiplicities not greater than 2 is
 %% special embedding $A_{1}\to A_{2}$ with index 1 given by 
 %% 
-The weight diagram of the seven-dimensional representation of $G_{2}$ together with the $G_{2}$ root system
-form the projection of the root system $B_{3}$ which corresponds to the special embedding 
-$G_{2}\to B_{3}$. The branching coefficients in this case coincide with the weight multiplicities of
-representations of algebra $\sfr=A_{2}$ with the image of the root system consisting of the short roots of
-$G_{2}$. 
 
-The complete classification of multiplicity-free irreducible representations was obtained in
-\cite{howe1995perspectives} (see also \cite{stembridge2003multiplicity}). It consists of minuscule
-and quasi-minuscule representations.
+Наконец, весовая диаграмма семимерного представления $G_{2}$ вместе с корневой системой $G_{2}$
+образует проекцию корневой системы $B_{3}$, возникающую при специальном вложении $G_{2}\to B_{3}$.
+Коэффициенты ветвления в этом случае совпадают с кратностями весов в представлениях алгебры $G_{2}$.
 
-The weight $\mu$ is minuscule if $\left<\mu,\alpha^{\vee}\right>\leq 1$ for all $\alpha\in
-\Delta^{+}$ and all the weights of the irreducible representation $L^{\mu}$ lie on the Weyl
-group orbit of $\mu$. A weight is quasi-minuscule if $\left<\mu,\alpha^{\vee}\right>\leq 2$ for all
-$\alpha\in \Delta^{+}$ and all non-zero weights lie on the single Weyl group orbit.
+Полная классификация представлений, свободных от кратностей, получена в работе
+\cite{howe1995perspectives} (см. также \cite{stembridge2003multiplicity}). Она состоит из
+микровесовых и квазимикровесовых представлений.
 
-Minuscule representations are well-studied and very useful in the computations of e.g. tensor products
-\cite{stembridge2003multiplicity,stembridge2001computational}. The minuscule representations are
-indexed by the weight lattice modulo the root lattice. There is a unique quasi-minuscule
-representation that is not minuscule for each simple Lie algebra. The multiplicity of the zero 
-weight in quasi-minuscule representation is the number of the short nodes of the Dynkin diagram.
+Вес  $\mu$ называется микровесом, если  $\left<\mu,\alpha^{\vee}\right>\leq 1$ для всех $\alpha\in
+\Delta^{+}$ и все веса неприводимого представления  $L^{\mu}$ лежат на той же орбите группы Вейля,
+что и $\mu$. Вес называется квазимикровесом, если $\left<\mu,\alpha^{\vee}\right>\leq 2$ для всех
+$\alpha\in \Delta^{+}$ и все ненулевые веса представления лежат на одной орбите группы Вейля.
 
-The list of the minuscule representations consists of tensor powers of the vector
-representation for the series $A_{r}$; spin representations for the series
-$B_{r}$; vector representations for $C_{r}$; vector and two half-spin for $D_{r}$; two
-27-dimensional representations for $E_{6}$ and the 56-dimensional representation of $E_{7}$. 
+Микровесовые представления хорошо изучены и очень полезны при вычислениях, например, тензорных произведений
+\cite{stembridge2003multiplicity,stembridge2001computational}. Микровесовые представления нумеруются
+элементами весовой решетки, факторизованной по корневой решетке. Для каждой простой алгебры Ли
+существует единственное квазимикровесовое представление, не являющееся микровесовым.  Кратность
+нулевого веса в квазимикровесовом представлении равна числу коротких вершин в диаграмме Дынкина.
 
-Quasi-minuscule representations that are not minuscule are: the adjoint representation of $A_{r}$,
-the vector representation for $B_{r}$, the $2r^{2}-r-1$-dimensional representation for $C_{r}$, the adjoint
-representations for $D_{r}, E_{6}, E_{7}, E_{8}$, the 26-dimensional representation for $F_{4}$ and
-the 7-dimensional of $G_{2}$.
+Полный список микровесовых представлений состоит из тензорных степеней векторного представления
+алгебр серии $A_{r}$; спинорных представлений алгебр серии $B_{r}$; векторных представлений $C_{r}$;
+векторных и полуспиновых представлений $D_{r}$; двух 
+27-мерных представлений алгебры $E_{6}$ и  56-мерного представления $E_{7}$. 
+
+Квазимикровесовые представления, не являющиеся микровесовыми -- это присоединенное представление
+$A_{r}$, векторное представление $B_{r}$, представление размерности $2r^{2}-r-1$ алгебры $C_{r}$,
+присоединенные представления алгебр $D_{r}, E_{6}, E_{7}, E_{8}$, 26-мерное представление $F_{4}$ и
+7-мерное представление $G_{2}$.
 
 %% 
 %%     An (n+1
@@ -408,67 +414,69 @@ the 7-dimensional of $G_{2}$.
 %% 
 %% 
 
-The classification of the multiplicity-free irreducible highest weight modules $L^{\mu}$ in
-\cite{howe1995perspectives,stembridge2003multiplicity} consists of the following classes:
+Классификация неприводимых представлений  $L^{\mu}$, свободных от кратностей, в работе
+\cite{howe1995perspectives,stembridge2003multiplicity} состоит из следующих классов:
 \begin{itemize}
-\item (1) $\mu$ is minuscule,
-\item (2) $\mu$ is quasi-minuscule and Lie algebra has only one short simple root,
-\item (3) Lie algebra is $\mathfrak{sp}(6)$ and $\mu=\omega_{1}$, or
-\item (4) Lie algebra is $\mathfrak{sl}(n + 1)$ and  $\mu= m\omega_{1}$ or $\mu  = m\omega_{n}$ 
+\item (1) $\mu$ -- микровес
+\item (2) $\mu$ -- квазимикровес и в алгебре Ли только один короткий простой корень,
+\item (3) алгебра Ли $\mathfrak{sp}(6)$ и $\mu=\omega_{1}$, и
+\item (4) алгебра Ли $\mathfrak{sl}(n + 1)$ и  $\mu= m\omega_{1}$ или $\mu  = m\omega_{n}$ 
 \end{itemize}
 
-We see that the case (1) contains strongly multiplicity free modules of the series $A_{r}$ and the exceptional
-Lie algebra $G_{2}$, the class (2) contains strongly multiplicity free modules of $ B_{r}$ and $C_{r}$ ,
-strongly multiplicity free modules of $A_{1}$ are included in the class (4).
+Как видно, класс (1) содержит строго свободные от кратностей представления серии  $A_{r}$ и
+исключительной алгебры Ли $G_{2}$, класс  (2) содержит строго свободные от кратностей представления
+$ B_{r}$ и $C_{r}$ , а строго свободные от кратностей представления $A_{1}$ входят в класс (4).
 
-We do not need to consider the minuscule representations for the simply-laced Lie algebras, since in this
-case the length of the weights of the representation $M^{\chi}_{\af}$ is less than the length of the $\af$ roots,
-that contradicts to $\af$ being an integer subalgebra. For the series $B_{r}$ we have already
-discussed the minuscule spin representation, since it is strongly multiplicity free. The last case in
-(1) is the vector representation for $C_{r}$. It is $2r$-dimensional, but the length of its highest weight $\omega_{1}$ is less
-than the length of the short root of algebra $C_{r}$. So it can not be a characteristic representation
-for the special subalgebra. 
+Нам не надо рассматривать микровесовые представления алгебр $A$, $D$, $E$, так как в этом случае
+длина весов представления  $M^{\chi}_{\af}$ меньше длины корней подалгебры  $\af$, что противоречит
+целочисленности подалгебры  $\af$. Микровесовые спиновые представления алгебры серии $B_{r}$ уже
+обсуждались, так как они являются строго свободными от кратностей. Последний случай в классе (1) --
+это векторное представление  $C_{r}$. Оно  $2r$-мерно, но длина старшего веса $\omega_{1}$ меньше
+длины короткого корня алгебры $C_{r}$, так что это представление не может быть характеристическим
+для специальной подалгебры. 
 
 %% , so with the dimension of the
 %% adjoint representation we get $2r+2r^{2}=2r(r+1)$ which is exactly the dimension of the adjoint
 %% representation for the algebra $D_{r+1}$.  
 %% But there is no such embedding (?).
 %% 
-The case (2) consists of the series $B_{r}$ and the exceptional root system $G_{2}$. The embedding $G_{2}\to
-B_{3}$ was already discussed. 
- The dimension of the adjoint representation for the series $B_{r}$
-is $2r^{2}+r$ and of the quasi-minuscule representation it is $2r+1$, so the dimension of the algebra
-$\gf$ should be $(r+1)(2r+1)$ with the $\mathrm{rank}\gf=r+1$. The only solution is $\gf=D_{r+1}$
-and we have already seen that this case corresponds to the strongly multiplicity free module and
-the Gelfand-Tsetlin basis.
 
-In the case (3) the diagram of the representation contains weights with the length smaller than the
-length of the short root, so it cannot be a projection of $\Delta_{\gf}$ to an integer subalgebra. 
+Класс (2) состоит из серии  $B_{r}$ и исключительной корневой системы $G_{2}$. Вложение  $G_{2}\to
+B_{3}$ уже описано выше. Размерность присоединенного представления для серии $B_{r}$ равна
+$2r^{2}+r$, а размерность квазимикровесового представления равна $2r+1$, таким образом размерность
+алгебры 
+$\gf$ должна быть $(r+1)(2r+1)$ при ранге $\mathrm{rank}\gf=r+1$. Единственное решение,
+удовлетворяющее этим условиям -- это  $\gf=D_{r+1}$ и мы уже видели, что этот случай соответствует
+строго свободным от кратностей представлениям и базису Гельфанда-Цетлина.
 
-We need to consider representations of the class (4) only for $m=1,2$ since the root system $\Delta_{\sfr}$
-can have roots of at most two different lengths. In the case $m=1$ we get strongly multiplicity free
-modules of $A_{r}$ which were discussed above. And for algebra $A_{2}$ and $m=2$ the weight diagram
-of the representation $L^{2\omega_{1}}_{A_{2}}$ coincides with the root system of the exceptional Lie algebra
-$G_{2}$. This case appears in the special embedding $A_{2}\to B_{3}$. But for $A_{r}, r>2$ there are
-no root systems that coincide with the weight diagram of $L^{2\omega_{1}}_{A_{r}}$. 
+В классе  (3) диаграмма представления содержит веса с длиной меньше длины короткого корня, так что
+она не может быть проекцией  $\Delta_{\gf}$ на целочисленную подалгебру.
 
-So far we've considered all the cases when $\mathrm{rank}\gf-\mathrm{rank}\af=1$. To complete our
-classification of splints we need the classification of all the representations where multiplicities
-of all non-zero weights are equal to one. Fortunately, such a classification was obtained in
-\cite{plotkin1998visual}. It consists of multiplicity-free representations and adjoint
-representations of algebras $A_{r}, B_{r}, C_{r}$, $F_{4}$ and $G_{2}$. 
+Нам следует рассмотреть представления класса  (4) только при $m=1,2$, так как корневая система
+$\Delta_{\sfr}$ может содержать корни не более чем двух разных длин. В случае case $m=1$ мы снова
+получаем строго свободные от кратностей модули $A_{r}$, которые уже обсуждались выше. А для алгебры
+$A_{2}$ и $m=2$ весовая диаграмма представления $L^{2\omega_{1}}_{A_{2}}$ совпадает с корневой
+системой исключительной алгебры Ли
+$G_{2}$. Этот случай возникает в специальном вложении  $A_{2}\to B_{3}$. Для $A_{r}, r>2$ не
+существует корневых систем, которые совпадают с весовой диаграммой $L^{2\omega_{1}}_{A_{r}}$. 
 
-In order to have the embedding $\af\to \gf$ such that the adjoint representation of $\gf$ is
-decomposed into two adjoint representations of $\af$ (and possibly several trivial
-representations) we need to satisfy the following conditions:
+Мы рассмотрели все случаи, когда $\mathrm{rank}\gf-\mathrm{rank}\af=1$. Чтобы завершить нашу
+классификацию сплинтов, нам нужна классификация всех представлений, в которых кратности ненулевых
+весов равны единице. Такая классификация была представлена в работе
+\cite{plotkin1998visual}. Она состоит из свободных от кратностей представлений и присоединенных
+представлений алгебр  $A_{r}, B_{r}, C_{r}$, $F_{4}$ и $G_{2}$. 
+
+Чтобы существовало вложение $\af\to \gf$, такое что присоединенное представление  $\gf$
+раскладывается в два присоединенных представления $\af$ (и, возможно, несколько тривиальных
+представлений), должны быть выполнены следующие условия:
 \begin{itemize}
-\item Denote by $n_{\gf}$ the total number of roots in $\Delta_{\gf}$ and the projection $\Delta'$.
-  Then
+\item Обозначим через $n_{\gf}$ общее число корней в  $\Delta_{\gf}$ и проекции $\Delta'$.
+  Тогда
   \begin{equation}
     \label{eq:5}
     n_{\gf}=2n_{\af}.
   \end{equation}
-\item Denote rank of $\gf$ by shorthand notation $r_{\gf}$. Then the dimension
+\item Обозначим ранг $\gf$ для краткости через $r_{\gf}$. Тогда размерность
   \begin{equation}
     \label{eq:6}
     \mathrm{dim}\gf=n_{\gf}+r_{\gf}\geq 2\mathrm{dim}\af=2n_{\af}+2r_{\af}
