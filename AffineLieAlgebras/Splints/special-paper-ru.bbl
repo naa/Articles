@@ -1,0 +1,85 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{richter2008splints}
+D.~Richter, ``Splints of classical root systems,'' {\em Journal of Geometry}
+  {\bf 103} (2012)  103--117, \href{http://arxiv.org/abs/0807.0640}{{\tt
+  arXiv:0807.0640}}.
+
+\bibitem{2011arXiv1111.6787L}
+V.~{Laykhovsky} and A.~{Nazarov}, ``{Fan, splint and branching rules},'' {\em
+  Zapiski Nauchnykh Seminarov POMI} {\bf 398} (2012)  162--179,
+  \href{http://arxiv.org/abs/1111.6787}{{\tt arXiv:1111.6787 [math.RT]}}.
+
+\bibitem{dynkin1952semisimpleru}
+Е.~Б. Дынкин, ``Полупростые подалгебры
+  полупростых алгебр Ли,'' {\em Математический
+  сборник} {\bf 30} (1952) no.~2, 349--462.
+
+\bibitem{dynkin1952maximalru}
+Е.~Б. Дынкин, ``Максимальные подгруппы
+  классических групп,'' {\em Труды Московского
+  математического общества} {\bf 1} (1952) no.~0,
+  39--166.
+
+\bibitem{minchenko2006semisimple}
+A.~Minchenko, ``The semisimple subalgebras of exceptional lie algebras,'' {\em
+  Transactions of the Moscow Mathematical Society} {\bf 67} (2006)  225--259.
+
+\bibitem{de2011constructing}
+W.~A. de~Graaf, ``Constructing semisimple subalgebras of semisimple lie
+  algebras,'' {\em Journal of Algebra} {\bf 325} (2011) no.~1, 416--430.
+
+\bibitem{dynkin1972semisimple}
+E.~Dynkin, ``Semisimple subalgebras of semisimple lie algebras,'' {\em Selected
+  Papers} (1972)  175--308.
+
+\bibitem{larouche2011branching}
+M.~Larouche and J.~Patera, ``Branching rules for weyl group orbits of simple
+  lie algebras bn, cn and dn,'' {\em Journal of Physics A: Mathematical and
+  Theoretical} {\bf 44} (2011) no.~11, 115203.
+
+\bibitem{larouche2009branching}
+M.~Larouche, M.~Nesterenko, and J.~Patera, ``Branching rules for the weyl group
+  orbits of the lie algebra an,'' {\em Journal of Physics A: Mathematical and
+  Theoretical} {\bf 42} (2009) no.~48, 485203.
+
+\bibitem{2010arXiv1007.0318L}
+V.~{Lyakhovsky} and A.~{Nazarov}, ``{Recursive algorithm and branching for
+  nonmaximal embeddings},''
+  \href{http://dx.doi.org/10.1088/1751-8113/44/7/075205}{{\em Journal of
+  Physics A: Mathematical and Theoretical} {\bf 44} (2011) no.~7, 075205(20)},
+  \href{http://arxiv.org/abs/1007.0318}{{\tt arXiv:1007.0318 [math.RT]}}.
+
+\bibitem{lehrer2006strongly}
+G.~Lehrer and R.~Zhang, ``Strongly multiplicity free modules for lie algebras
+  and quantum groups,'' {\em Journal of Algebra} {\bf 306} (2006) no.~1,
+  138--174.
+
+\bibitem{howe1995perspectives}
+R.~Howe, ``Perspectives on invariant theory: Schur duality, multiplicity-free
+  actions and beyond,'' {\em The Schur lectures (1992)(Tel Aviv)} (1995)
+  1--182.
+
+\bibitem{stembridge2003multiplicity}
+J.~R. Stembridge, ``Multiplicity-free products and restrictions of weyl
+  characters,'' {\em Represent. Theory} {\bf 7} (2003)  404--439.
+
+\bibitem{stembridge2001computational}
+J.~Stembridge, ``{Computational aspects of root systems, Coxeter groups, and
+  Weyl characters, Interaction of combinatorics and representation theory, MSJ
+  Mem., vol. 11},'' {\em Math. Soc. Japan, Tokyo} (2001)  1--38.
+
+\bibitem{plotkin1998visual}
+E.~Plotkin, A.~Semenov, and N.~Vavilov, ``Visual basic representations: an
+  atlas,'' {\em International Journal of Algebra and Computation} {\bf 8}
+  (1998) no.~01, 61--95.
+
+\bibitem{bourbaki2002lie}
+N.~Bourbaki, {\em {Lie groups and Lie algebras}}.
+\newblock Springer Verlag, 2002.
+
+\bibitem{moody1982fast}
+R.~Moody and J.~Patera, ``{Fast recursion formula for weight multiplicities},''
+  {\em AMERICAN MATHEMATICAL SOCIETY} {\bf 7} (1982) no.~1, .
+
+\end{thebibliography}\endgroup
