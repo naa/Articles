@@ -19,14 +19,14 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[utf8x]{inputenc}
-\usepackage[english,russian]{babel}
+\usepackage[russian]{babel}
 
-\newtheorem{Def}{Definition}[section]
-\newtheorem{theorem}{Theorem}
-\newtheorem{statement}{Statement}
-\newtheorem{Cnj}[Def]{Conjecture}
-\newtheorem{Prop}[Def]{Property}
-\newtheorem{example}{Example}[section]
+\newtheorem{Def}{Определение}[section]
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}{Утверждение}
+\newtheorem{Cnj}[Def]{Гипотеза}
+\newtheorem{Prop}[Def]{Свойство}
+\newtheorem{example}{Пример}[section]
 
 
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
@@ -57,7 +57,7 @@
   {\small $^1$ Кафедра физики высоких энергий и элементарных частиц,}\\ {\small Санкт-Петербургский государственный университет}\\
   {\small 198904, Санкт-Петербург, Россия}\\
   {\small $^{2}$ e-mail: antonnaz@gmail.com}}
-%\date{}
+\date{}
 %\address{ $^1$ Department of High-energy and elementary particle physics,  St Petersburg State University, 198904, Saint-Petersburg, Russia}
 %\address{ $^{2}$ e-mail: anton.nazarov@hep.phys.spbu.ru}
 
@@ -100,7 +100,9 @@ $\phi_2$ расщепляют корневую систему $\Delta$, если
 Чем же интересны отображения корневых систем, не сохраняющие углов между корнями? Аддитивные
 свойства корневой системы определяют структуру модуля Верма:
     \begin{equation*}
-      M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes} D^{\mu}(\bff_{+})=\{(E^{-\alpha_{1}})^{n_{1}}\dots (E^{-\alpha_{s}})^{n_{s}} \left|v_{\mu}\right>\}_{\alpha_{i}\in\Delta^{+}}^{n_{i}=0,1,\dots}
+      M^{\mu}=U(\gf)\underset{U(\bff_{+})}{\otimes}
+      D^{\mu}(\bff_{+})=\{(E^{-\alpha_{1}})^{n_{1}}\dots (E^{-\alpha_{s}})^{n_{s}}
+      \left|v_{\mu}\right>\}_{\alpha_{i}\in\Delta^{+}}^{n_{i}=0,1,\dots} 
     \end{equation*}
 Здесь $\bff_{+}$ -- подалгебра Бореля алгебры $\gf$, $D^{\mu}$ -- одномерное представление
 подалгебры Бореля, $\left|v_{\mu}\right>$ -- вектор старшего веса, а  $E^{-\alpha_{j}}$ --
@@ -115,7 +117,7 @@ $\phi_2$ расщепляют корневую систему $\Delta$, если
 представив элементы группы Вейля в виде произведений отражений $s_{\alpha}, \alpha \in S$ в
 гиперплоскостях, ортогональных простым корням: $w=s_{\alpha_{1}}\cdot s_{\alpha_{2}}\dots$.
 Отражения действуют на корневую систему перестановками, так что композицию такого действия с
-вложением $\phi$ нетрудно вычислить. Орбиту группы Вейля $w\triangleright \mu, w\in W$ можно
+вложением $\phi$ нетрудно вычислить. Орбиту группы Вейля ${w\triangleright \mu, w\in W}$ можно
 построить последовательными вычитаниями корней из старшего веса $\mu$. Для этого обозначим индексы
 Дынкина веса $\mu$ через $(\mu_{1},\dots \mu_{r})$. Тогда $\mu-\mu_{1}\alpha_{1},
 \mu-\mu_{2}\alpha_{2},\dots, \mu-\mu_{r}\alpha_{r}, \alpha_{i}\in S$ -- это веса орбиты, которые
@@ -255,7 +257,7 @@ $\Delta_{\gf}$ алгебры $\gf$ можно спроектировать на
   e_{\beta}$ генераторов $\gf$, соответствующих корням  $\beta$ алгебры $\gf$, тогда все эти корни
   $\beta$ проектируются в  $\alpha$,
   $\pia(\beta)=\alpha$. 
-  \cite{dynkin1972semisimple,dynkin1952semisimpleru}. 
+  \cite{dynkin1952semisimpleru}. 
 \end{theorem}
 
 Из этих теорем мы видим, что  корневая система $\Delta_{\af}$ вложена метрически (в смысле

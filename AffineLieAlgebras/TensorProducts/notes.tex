@@ -1,0 +1,793 @@
+\documentclass[12pt]{article}
+
+\usepackage{latexsym,amsmath,amssymb}
+%\usepackage{amsfonts}
+\usepackage{pb-diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\usepackage{setstack}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\usepackage{ucs} \usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+
+
+\newtheorem{Def}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{statement}{Statement}
+\newtheorem{Cnj}[Def]{Conjecture}
+\newtheorem{Prop}[Def]{Property}
+\newtheorem{example}{Example}[section]
+
+
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfg}{\hf_{\gf}}
+\newcommand{\hfa}{\hf_{\af}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\sfr}{\mathfrak{s}}
+
+\newcommand{\cR}{\check{R}}
+
+%%%%%%%%%% Young tableaux %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newdimen\tableauside\tableauside=1.0ex
+\newdimen\tableaurule\tableaurule=0.4pt
+\newdimen\tableaustep
+\def\phantomhrule#1{\hbox{\vbox to0pt{\hrule height\tableaurule width#1\vss}}}
+\def\phantomvrule#1{\vbox{\hbox to0pt{\vrule width\tableaurule height#1\hss}}}
+\def\sqr{\vbox{%
+  \phantomhrule\tableaustep
+  \hbox{\phantomvrule\tableaustep\kern\tableaustep\phantomvrule\tableaustep}%
+  \hbox{\vbox{\phantomhrule\tableauside}\kern-\tableaurule}}}
+\def\squares#1{\hbox{\count0=#1\noindent\loop\sqr
+  \advance\count0 by-1 \ifnum\count0>0\repeat}}
+\def\tableau#1{\vcenter{\offinterlineskip
+  \tableaustep=\tableauside\advance\tableaustep by-\tableaurule
+  \kern\normallineskip\hbox
+    {\kern\normallineskip\vbox
+      {\gettableau#1 0 }%
+     \kern\normallineskip\kern\tableaurule}%
+  \kern\normallineskip\kern\tableaurule}}
+\def\gettableau#1 {\ifnum#1=0\let\next=\null\else
+  \squares{#1}\let\next=\gettableau\fi\next}
+
+\begin{document}
+
+\title{Заметки про квантовые группы, интегрируемые системы и все такое}
+
+%% \author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$, O.V.~Postnova$^{1}$}
+%% \address{ $^1$ Department of High-energy and elementary particle physics,  St Petersburg State University, 198904, Saint-Petersburg, Russia}
+%% \ead{ $^{2}$ e-mail: antonnaz@gmail.com}
+%% 
+
+
+\begin{abstract}
+
+  We show the connection of formulae for tensor product multiplicities with cluster algebras. 
+  \noindent{\it Keywords\/}: Lie algebra, tensor product, multiplicity, cluster algebra, grading
+\end{abstract}
+
+
+
+\section{Introduction}
+\label{sec:introduction}
+\cite{di2013quantum}
+\bibliography{bibliography}{} 
+\bibliographystyle{iopart-num}
+
+\subsection{Алгебры Хопфа}
+\label{sec:hopf}
+\begin{Def}
+  {\it Алгебра Хопфа $(H,\mu,1_H,\Delta,\epsilon,S)$} - это
+  векторное пространство$H$ над полем $k$, наделенное
+  структурой алгебры с умножением $\mu:H\otimes H\to H$ и
+  единицей $1_H$, коалгебры с коумножением $\Delta:H\to
+  H\otimes H$ и коединицей $\epsilon:H\to k$, а так же
+  антиподом $S$ - линейным отображением $S:H\to H$. Причем все
+  эти структуры должны быть согласованы друг с другом.
+
+  чтобы следующие диаграммы были коммутативны:
+  \[
+  \begin{diagram}
+    \node{H\otimes H} \arrow{e,t}{\mu}
+    \arrow{s,r}{\Delta\otimes \Delta} \node{H}
+    \arrow{e,t}{\Delta}
+    \node{H\otimes H} \\
+    \node{H\otimes H\otimes H\otimes H}
+    \arrow[2]{e,t}{id\otimes \tau\otimes id}
+    \node[2]{H\otimes H\otimes H\otimes H}
+    \arrow{n,r}{\mu\otimes \mu}
+  \end{diagram}
+  \]
+  \[
+  \begin{diagram}
+    \node{H} \arrow{e,t}{\epsilon} \node{k} \node{k}
+    \arrow{e,r}{\eta} \arrow{se,r}{\eta\otimes\eta}
+    \node{H}\\
+    \node{H\otimes H} \arrow{n,r}{\mu}
+    \arrow{ne,r}{\epsilon\otimes\epsilon} \node[3]{H\otimes
+      H} \arrow{n,r}{\Delta}
+  \end{diagram}
+  \]
+  \[
+  \begin{diagram}
+    \node{H} \arrow{e,t}{\epsilon} \arrow{s,r}{\Delta}
+    \node{k} \arrow{e,t}{\eta}
+    \node{H}\\
+    \node{H\otimes H} \arrow[2]{e,t}{id\otimes S,\ S\otimes
+      id} \node[2]{H\otimes H} \arrow{n,r}{\mu}
+  \end{diagram}
+  \]
+  , где $\eta$ - отображение $k\to H,\quad \eta(a)=a\ 1_{H}$
+
+  Подробное определение есть, например, в книге Маджида
+  \cite{Majid}.
+\end{Def}
+Универсальную обертывающую алгебру $U(g)$ любой алгебры Ли $g$ можно наделить структурой
+(тривиальной) алгебры Хопфа следующим образом: $\Delta(f)=f\otimes 1 + 1 \otimes f,\
+\epsilon(f)=0,\ S(f)=-f,\ f\in g$
+
+На векторных пространствах алгебры Хопфа действуют так же, как
+и обычные алгебры. Однако если векторное пространство само
+наделено структурой алгебры, то действие алгебры Хопфа должно
+быть согласовано со структурой алгебры на векторном
+пространстве, чтобы оно могло называться модуль-алгеброй.
+\begin{Def}
+  \label{ModuleAlgebra}
+  {\it $H$-модуль-алгеброй} называется алгебра $A$, на которой
+  действие алгебры Хопфа $H$ согласовано с алгебраической
+  структурой:
+  \begin{eqnarray}
+    h\triangleright (a\cdot b) = \sum (h_{(1)}\triangleright a) \cdot (h_{(2)}\triangleright b) \\
+    h\triangleright 1 = \epsilon(h)1
+  \end{eqnarray} 
+  , где $a,b\in A,\ h\in H,\ \Delta(h)=\sum h_{(1)}\otimes
+  h_{(2)}$
+
+  Наглядно определение можно представить следующими
+  диаграммами:
+  \[
+  \begin{diagram}
+    \node{H\otimes A \otimes A} \arrow{e,t}{\cdot}
+    \arrow{s,r}{\Delta\otimes id\otimes id} \node{H\otimes A}
+    \arrow{e,t}{\triangleright} \node{A} \node{A\otimes A}
+    \arrow{w,t}{\cdot}
+    \\
+    \node{H\otimes H \otimes A \otimes A} \arrow[3]{e,t}{id
+      \otimes \tau \otimes id} \node[3]{H\otimes A \otimes H
+      \otimes A} \arrow{n,l}{\triangleright \otimes
+      \triangleright}
+  \end{diagram}
+  \]
+
+  \[
+  \begin{diagram}
+    \node{H} \arrow{e,t}{\epsilon} \arrow{s,l}{\eta} \node{k}
+    \arrow{e,t}{\eta} \node{A}
+    \\
+    \node{H\otimes A} \arrow{ene,r}{\triangleright}
+  \end{diagram}
+  \]
+
+\end{Def}
+
+Если $H$ действует на пространствах $V$ и $W$, то на тензорном
+произведении $V\otimes W$ действие $h\in H$ дается формулой
+\begin{equation}
+  \label{HopfAlgebraActionOnTensorProduct}
+  h\triangleright (v\otimes w) = \sum (h_{(1)}\triangleright v) \otimes (h_{(2)} \triangleright w)
+\end{equation}
+, где $\Delta(h)=\sum h_{(1)}\otimes h_{(2)}$
+
+
+\subsection{$U_q(\mathfrak{sl}_2)$}
+\label{sec:u_q_sl_2}
+
+\subsection{Yangians}
+\label{sec:yangians}
+
+For any finite-dimensional semisimple Lie algebra $\af$, Drinfeld defined an infinite-dimensional
+Hopf algebra $Y(\af)$, called the Yangian of $\af$. This Hopf algebra is a deformation
+of the universal enveloping algebra $U(\af[z])$ of the Lie algebra of polynomial loops
+of $\af$ given by explicit generators and relations. The relations can be encoded by identities
+involving a rational $R$-matrix. Replacing it with a trigonometric $R$-matrix, one
+arrives at affine quantum groups, defined in the same paper of Drinfeld.
+
+In the case of the $\mathfrak{gl}_{N}$, the Yangian admits a simpler description in terms of a single ``ternary'' (or ``RTT'') relation on the matrix generators due to Faddeev and coauthors. 
+The Yangian $Y(\mathfrak{gl}_{N})$ is defined to be the algebra generated by elements $t_{ij}^{(p)}$ with $1 \leq i, j \leq N$ and $p \geq 0$, subject to the relations:
+
+\begin{equation}
+  \label{eq:1}
+ [t_{ij}^{(p+1)}, t_{kl}^{(q)}] -  [t_{ij}^{(p)}, t_{kl}^{(q+1)}]= -(t_{kj}^{(p)}t_{il}^{(q)} - t_{kj}^{(q)} t_{il}^{(p)}).
+\end{equation}
+
+
+Defining $t_{ij}^{(-1)}=\delta_{ij}$, setting $ T(z) = \sum_{p\ge -1} t_{ij}^{(p)} z^{-p+1}$
+
+and introducing the $R$-matrix $R(z) = I + z^{-1} P$ on $\mathbb{C}^{N}\otimes \mathbb{C}^{N}$,
+where $P$ is the operator permuting the tensor factors, the above relations can be written more
+simply as the ternary relation:
+
+$\displaystyle{ R_{12}(z-w) T_{1}(z)T_{2}(w) = T_{2}(w) T_{1}(z) R_{12}(z-w).}$
+
+The Yangian becomes a Hopf algebra with comultiplication $\Delta$, counit $\epsilon$ and antipode $S$ given by
+\begin{equation}
+  \label{eq:2}
+  (\Delta \otimes \mathrm{id})T(z)=T_{12}(z)T_{13}(z), \,\, (\varepsilon\otimes \mathrm{id})T(z)= I, \,\, (s\otimes \mathrm{id})T(z)=T(z)^{-1}.
+\end{equation}
+
+
+At special values of the spectral parameter $(z-w) $, the $R$-matrix degenerates to a rank one
+projection. This can be used to define the quantum determinant of $T(z) $, which generates the
+center of the Yangian.
+
+The {\it twisted Yangian} $Y^{-}(\mathfrak{gl}_{2N})$, introduced by G. I. Olshansky, is the sub-Hopf algebra generated by the coefficients of
+
+$\displaystyle{ S(z)=T(z)\sigma T(-z),}$
+
+where $\sigma$ is the involution of $\mathfrak{gl}_{2N}$ given by
+
+$\displaystyle{\sigma(E_{ij}) = (-1)^{i+j}E_{2N-j+1,2N-i+1}.}$
+Quantum determinant is the center of Yangian.
+
+
+\section{Yangians and their representations}
+
+\subsection{Yangians}
+
+\subsubsection{Definition of $Y(\gf)$: algebra and co-algebra}
+
+Let the simple Lie algebra $\gf$  be generated\footnote{To avoid
+becoming mired in detail, we have used anti-Hermitian generators
+(hence no `$i$'), and, more importantly, compactness (hence an
+inner product proportional to $\delta_{ab}$, so that we won't have
+to distinguish `up' from `down' indices).} by $\{I_a\}$,
+$a=1,\ldots,$dim$\,\gf$, with structure constants $f_{abc}$,
+\begin{equation}\label{Y1}\left[ I_a , I_b \right] = f_{abc} I_c \,,\end{equation}
+ and (trivial) coproduct\footnote{The enveloping algebra $U\gf$ of $\gf$
+consists of (powers, polynomials and) series in the $I_a$ subject
+to the Lie bracket, regarded as a commutator.} $\Delta:
+U\gf\rightarrow U\gf\otimes U\gf$, \begin{equation}\label{Y1del}
+ \Delta(I_a) = I_a \otimes 1
++ 1 \otimes I_a \,. \end{equation}
+ For those new to it, the
+coproduct is a generalization of the usual rule for addition of
+spin. As such, the principal constraints on $\Delta$ are that it
+be coassociative, \begin{equation}\label{coassoc} (\Delta\otimes
+1)\Delta(x)=(1\otimes\Delta)\Delta(x)\end{equation} for all $x\in\gf$ (so that
+the action of $x$ on a 3-particle state is unique), and that it
+ be a homomorphism, \begin{equation}\label{hom} \Delta([x,y])=[\Delta(x),\Delta(y)]
+  \end{equation} for all $x,y\in\gf$ (so that multiparticle states carry
+ representations of the symmetry algebra). As we shall see below,
+ there are non-trivial ways in which this can be achieved.
+
+The Yangian \cite{drinf1,drinf2} $Y(\gf)$ is the enveloping algebra
+generated by these and a second set of generators $\{J_a\}$, in
+the adjoint representation of $\gf$ so that \begin{equation}\label{Y2} \left[
+I_a , J_b \right] =   f_{abc} J_c \,, \end{equation} but with a non-trivial
+coproduct \begin{equation}\label{Y2del} \Delta:Y(\gf)\rightarrow Y(\gf)\otimes
+Y(\gf)\,,\qquad \Delta(J_a) = J_a \otimes 1 + 1 \otimes J_a +
+{\alpha\over 2}f_{abc} I_c \otimes I_b\, \end{equation} for a parameter
+$\alpha\in{\mathbb C}$. Note that (\ref{coassoc},\,\ref{hom}) hold
+for all the $I_a,J_a$.
+
+The commutator $[J_{a},J_{b}]$ is not fully specified, but is
+constrained by the requirement that $\Delta$ be a homomorphism (as
+explained in the next subsection): \begin{equation}\label{Y3}
+[J_a,[J_b,I_c]]-[I_a,[J_b,J_c]] = \alpha^2
+a_{abcdeg}\{I_d,I_e,I_g\} \,, \end{equation} where \begin{equation}
+ a_{abcdeg}={1\over{24}}
+ f_{adi} f_{bej}f_{cgk}f_{ijk}
+ \hspace{0.1in},\hspace{0.15in}\{x_1,x_2,x_3\}=
+ \sum_{i\neq j\neq k}x_{i}x_{j}x_{k} \,,
+\end{equation} and \begin{equation}\label{Y4} [[J_a,J_b],[I_l,J_m]] +
+[[J_l,J_m],[I_a,J_b]] = \alpha^2 \left( a_{abcdeg}f_{lmc} +
+a_{lmcdeg}f_{abc} \right) \left\{ I_d,I_e,J_g \right\} \,. \end{equation} For
+$\gf=a_1$,  (\ref{Y3}) is trivial, while for $\gf\neq a_1$,
+(\ref{Y3}) implies (\ref{Y4}), which is thus
+redundant\footnote{Throughout these lectures, we write specific
+$\gf$ as $a_n={\mathfrak{su}}_{n+1}$, $b_n={\mathfrak{so}}_{2n+1}$,
+$c_n={\mathfrak{sp}}_n$, $d_n={\mathfrak{so}}_{2n}$, along with
+$e_6,e_7,e_8,f_4,g_2$.}.
+
+In the original sense of the word `quantum' in `quantum group',
+the parameter $\alpha$ is proportional to $\hbar$: it measures the
+deformation of the `auxiliary' Lie algebra required to make the
+quantum inverse scattering method work. In the next lecture, by
+contrast, we shall see $Y(\gf)$ appearing explicitly as a charge
+algebra, with $\alpha=1$ and $\hbar$ making a conventional
+appearance on the right-hand side of each commutator.
+
+Finally, there are also other structures on which we place less
+emphasis but which make $Y(\gf)$ a Hopf algebra and which we give
+for completeness: a co-unit \begin{equation} \epsilon: Y(\gf)\rightarrow
+{\mathbb C}\,,\qquad \epsilon (I_a)=0,\quad\epsilon(J_a)=0\end{equation}
+(physically a one-dimensional vacuum representation, trivial for
+$Y(\gf)$), and an antipode \begin{equation} \label{antipode}s:Y(\gf)\rightarrow
+Y(\gf)\,,\qquad s(I_a)=-I_a,\quad s(J_a)=-J_a+{1\over 2}f_{abc}I_c
+I_b\,,\end{equation} an anti-automorphism (and physically a
+$PT$-transformation).
+
+\subsubsection{Drinfeld's `terrific' relation}
+
+ Drinfeld
+called the relations (\ref{Y3}) and (\ref{Y4}) `terrific'
+\cite{drinf2}, and it is worth explaining their origin and
+significance further (see also \cite{gron}). First, the left-hand
+side of (\ref{Y3}) is a little more intuitive if we instead write
+it as \begin{equation}\label{Y3'} [J_a,[J_b,I_c]]-[I_a,[J_b,J_c]] =
+f_{d(ab}[J_{c)},J_d], \end{equation} where $(abc)$ means `the sum of $abc$
+and cycles thereof'. One way of viewing $Y(\gf)$ is as a
+deformation of the polynomial algebra $\gf[z]$: if $\alpha=0$, then
+the algebra reduces to that of $I_a$ and $J_a\equiv z I_a$,
+whereupon (\ref{Y3}) is just the Jacobi identity
+$f_{d(ab}f_{c)de}=0$. So a natural way to think about $Y(\gf)$ is
+as a graded algebra, in which $I_a$ has grade zero and $J_a$ and
+$\alpha$ each grade one, and (\ref{Y3}) and (\ref{Y4}) are viewed
+as constraints on the construction of higher-grade elements. For
+example, suppose we define a grade-two element \begin{equation} K_a \equiv
+{1\over c_A} f_{abc}[J_c,J_b] \qquad{\rm (where\;\;}
+f_{abc}f_{dcb}=c_A \delta_{ad}\;). \end{equation} Then if we write\begin{equation}
+[J_b,J_c]=f_{bcd}K_d + X_{bc}\,, \end{equation} (\ref{Y3}) fixes $X_{bc}$:
+for suppose not, that there exists another possible $X'_{bc}$.
+Then, setting $Y_{bc}=X'_{bc}-X_{bc}$, (\ref{Y3}) implies that
+$f_{d(ab}Y_{c)d}=0$, and thus (equivalent to the statement
+ that the second cohomology $H^2(\gf)=0$) that $Y_{cd}=f_{cde}Z_e$
+ for some $Z_e$. But then
+$c_A Z_a = f_{abc} f_{cbd}Z_d = f_{abc}Y_{cb}=c_A(K_a-K_a)=0$, so
+$Z_a=0$ and so $X'_{bc}=X_{bc}$.
+
+The origin of (\ref{Y3}) lies in first postulating $\Delta(J_a)$
+in (\ref{Y2del}) and then requiring that this be a homomorphism.
+To see this, first let $u_{ab}$ be such that $u_{ab}=-u_{ba}$ and
+\begin{equation}\label{u1} u_{ab} [ I_a,I_b ] = 0 \,. \end{equation} Now compute \begin{equation}
+u_{ab}\left(\Delta \left( [J_{a},J_{b}] \right) - 1\otimes
+[J_a,J_b] - [J_a,J_b] \otimes 1 \right) \,. \end{equation} The parts of this
+expression involving $J$ disappear because of (\ref{u1}), whilst
+the remainder is
+\begin{equation}gin{equation}\label{u2}
+{1\over 2}u_{ab}f_{ade}f_{bgh}f_{dgk} \left( I_k \otimes I_e I_h +
+I_e I_h\otimes I_k \right) \,.
+\end{equation}
+Because of (\ref{u1}), or $f_{abc}u_{ab}=0$, we may write \begin{equation}
+u_{ab}= v_{dea} f_{deb} - v_{deb} f_{dea}   \end{equation} (equivalent to the
+second homology $H_2(\gf)=0$). Requiring $\Delta$ to be a
+homomorphism for all $v$, and using the Jacobi identity twice, we
+obtain (\ref{Y3}).
+
+
+
+
+\subsubsection{The $R$-matrix}
+
+$Y(\gf)$ is closely related to the Yang-Baxter equation, which has
+a rich literature in its own right (see \cite{jimbo}). A nice way
+to see this, of which we give a sketch here, is to define a new
+object, the monodromy matrix, \begin{equation} T(\lambda) \equiv \exp\left(
+-{1\over \lambda}t^aI_a + {1\over \lambda^2}t^aJ_a-{1\over
+\lambda^3}t^aK_a+\ldots\right), \end{equation} where $\lambda\in{\mathbb C}$
+is a new, `spectral' parameter. The $\ldots$ denote higher terms,
+of an appropriate-grade element constructed by repeated
+commutation of $J$s, and the $t^a$ are a second set of generators
+of $\gf$ (commuting with $Y(\gf)$), to be thought of as matrices
+(perhaps in the defining representation of $\gf$, where this
+exists) with elements $t^a_{ij}$. Thus, overall, $T$ is a matrix,
+with entries which are elements of $Y(\gf)$.
+
+The significance of $T$ lies in the fact that \begin{equation}\label{Tdel}
+\Delta(T_{ij}(\lambda))=T_{ik}(\lambda) \otimes
+T_{kj}(\lambda)\,.\end{equation} The first few terms are easily checked using
+(\ref{Y1del},\,\ref{Y2del}): at order $\lambda^{-2}$, for example,
+the non-trivial terms in the $\Delta(J_a)$ on the left are matched
+on the right not only with the order-$\lambda^{-2}$ terms in each
+exponential but also with the cross-terms from multiplying the
+order-$\lambda^{-1}$ term in each $T$.
+
+Now, $Y(\gf)$ has an (outer) automorphism \begin{equation}\label{auto}
+L_\mu\,:\quad I_a\mapsto I_a\,,\qquad J_a\mapsto J_a+\mu I_a
+\qquad(\mu\in{\mathbb C})\end{equation} (equivalent to $z\mapsto z+\mu$ in
+the polynomial algebra if $\alpha=0$), whose action on $T$ is \begin{equation}
+T(\lambda)\mapsto T(\lambda+\mu)\,.\end{equation} Let us consider the
+intertwiners $\cR$, which are required to satisfy \begin{equation}\label{R}
+\cR(\nu-\mu)\,. \;L_\mu\!\times\! L_\nu\left(\Delta(x)\right)
+=L_\nu\!\times\! L_\mu\left(\Delta(x)\right) .\,\cR(\nu-\mu)\end{equation}
+for any $x\in Y(\gf)$. (Strictly, we should only take
+representations of this, and our intertwiner, conventionally
+written $\cR$, and then an `$R$-matrix', is often written
+$\cR={\bf P}R$ where ${\bf P}$ permutes the two module elements in
+the tensor product---but we wish to defer all discussion of
+representations to the next section.)
+
+Thus \begin{equation} \label{RTT}\cR(\nu-\mu)\, T_{ik}(\mu)\otimes T_{kj}(\nu)
+= T_{ik}(\nu)\otimes T_{kj}(\mu) \,\cR(\nu-\mu)\,.\end{equation}  There are
+then two maps \begin{equation} T_{ik}(\mu)\otimes T_{kl}(\nu)\otimes
+T_{lj}(\lambda) \mapsto T_{ik}(\lambda)\otimes T_{kl}(\nu)\otimes
+T_{lj}(\mu)\,,\end{equation} and their equivalence \begin{equation}\label{YBE}
+\cR(\lambda-\nu)\otimes 1\,.\, 1\otimes \cR(\lambda-\mu)\,.\,
+\cR(\nu-\mu)\otimes 1 = 1\otimes\cR(\nu-\mu)\,.\,
+\cR(\lambda-\mu)\otimes 1\,.\,1\otimes \cR(\lambda-\nu)\end{equation} is the
+Yang-Baxter equation (YBE), illustrated schematically in fig.1.
+
+This equation is familiar from 1+1D $S$-matrix theory, where it is
+the condition for consistent factorization of the multiparticle
+$S$-matrix into two-particle factors.
+\begin{figure}[htb]
+\hspace{32mm} \setlength{\unitlength}{1mm}
+\begin{picture}(120,30)(15,15)
+\put(8,-6){\line(1,3){17}} \put(98,-6){\line(1,3){17}}
+\put(44,-6){\line(-2,3){34}} \put(114,-6){\line(-2,3){34}}
+\put(-3,-2){\line(5,3){43}} \put(127,38){\line(-5,-3){43}}
+\put(60,20){\makebox(0,0){=}}
+\put(19,5){\makebox(0,0){\footnotesize $\cR(\nu\!-\!\mu)$}}
+\put(37,16){\makebox(0,0){\footnotesize$\cR(\lambda\!-\!\mu)$}}
+\put(28,31){\makebox(0,0){\footnotesize$\cR(\lambda\!-\!\nu)$}}
+\put(111,10){\makebox(0,0){\footnotesize$\cR(\lambda\!-\!\nu)$}}
+\put(88,21){\makebox(0,0){\footnotesize$\cR(\lambda\!-\!\mu)$}}
+\put(116,25){\makebox(0,0){\footnotesize$\cR(\nu\!-\!\mu)$}}
+\end{picture}\vspace{20mm}
+\caption{The Yang-Baxter equation}
+\end{figure}
+Each line in the figure will carry a representation of $Y(\gf)$.
+The simplest case, in which this is ${\mathbb C}^2$, yielded the
+first solution of this equation, due to Yang \cite{Yang},
+\begin{equation}\label{firstR}
+\cR(\mu) = \left(\begin{array}{cccc} 1+\mu &  0 & 0 & 0\\
+                      0 & 1 & \mu & 0\\
+                       0& \mu & 1 & 0\\
+                  0  &0 & 0& 1+\mu
+\end{array}\right) \,.
+\end{equation} $Y({\frak sl}_2)$ can be built from it, and it was in honour
+of this that Drinfeld named the Yangian.
+
+ A theorem of Belavin and Drinfeld \cite{beldr} is that
+(subject to certain technical conditions) as
+$\mu\rightarrow\infty$ all YBE solutions which are rational
+functions of $\mu$ (and we shall see that this is so for the
+Yangian $\cR(\mu)$ in the next section) are of the asymptotic form
+\begin{equation} \cR(\mu) = {\bf P}\left( 1\otimes 1 + {1\over \mu} I_a\otimes
+I_a + {\cal O}(\mu^{-2})\right),\end{equation} This leads not only to the
+uniqueness of $Y(\gf)$, but also to the possibility of
+rediscovering much about Lie algebras and their representations
+purely by studying YBE solutions \cite{cher2}.
+
+\subsection{Representations of Yangians}
+
+Since $Y(\gf)\supset \gf$, and representations (`reps') of $Y(\gf)$
+will also be reps of $\gf$, the representation theory of $\gf$ is a
+good starting point. Recall that, for a Lie algebra $\gf$ of rank
+$r$, there are $r$ distinguished, `fundamental' irreducible
+representations (`irreps'). The story is similar for $Y(\gf)$,
+which also has $r$ fundamental (and finite-dimensional) irreps
+\cite{gron,drinf88}.
+
+However, a rep which is  $Y(\gf)$-irreducible may be
+$\gf$-reducible, and this is typically the case for the fundamental
+irreps of $Y(\gf)$, whose $\gf$-components are the corresponding
+fundamental irrep of $\gf$ and (generally) some others. These
+decompositions appeared incrementally in the literature
+\cite{ogiev86,chari91,KR}; for a full enumeration for simply-laced
+$\gf$ see \cite{kleber96}.
+
+\subsubsection{$Y(\gf)$-reps which are $\gf$-irreps}
+
+The simplest situation is clearly when a $\gf$-irrep is extensible
+to a $Y(\gf)$-irrep, and there are no other components. Drinfeld
+enumerated the cases for which this occurs \cite{drinf1}. Starting
+from an irrep $\rho$ of $\gf$, he constructed a rep $\tilde{\rho}$
+of $Y(\gf)$ by setting
+\begin{equation}\label{rep}
+\tilde\rho(I_a) = \rho(I_a) \,, \qquad \tilde\rho(J_a) = 0 \,.
+\end{equation}
+Now, although $\tilde\rho$ is clearly consistent with
+(\ref{Y1},\,\ref{Y2}), it is not, in general, consistent with
+(\ref{Y3}) (we specialize here to $\gf\neq a_1$, and so do not
+consider (\ref{Y4}) separately). Consistency is only possible for
+irreps in which the right hand side of (\ref{Y3}) vanishes. This
+is the case for the following irreps.
+
+ Let $n_i$ be the coefficient of the simple
+root ${\alpha}_i\in{\mathbb R}^r$ ($i=1,\ldots,r$) in the
+expansion of the highest root ${\alpha}_{\rm max}$ of $\gf$, and
+let $k_i = ({\alpha}_{\rm max},{\alpha}_{\rm
+max})/({\alpha}_i,{\alpha}_i)$. Let the corresponding fundamental
+weight be ${\omega}_i$. The irrep of $\gf$ with highest weight
+${\Omega}$ may then be extended to an irrep of $Y(\gf)$ using
+(\ref{rep}) for \begin{equation}
+\begin{array}{rcl}
+ & (i) & {\Omega}={\omega}_i \quad {\rm when } \quad
+ n_i=k_i\\[0.2in]
+
+ {\rm and} & (ii) &
+  {\Omega}=t{\omega}_i\quad {\rm when }
+ \quad n_i=1
+ \qquad (t\in{\mathbb Z}).\end{array}\label{irreps} \end{equation}
+These include all the fundamental irreps of $a_n$ and $c_n$, and
+the vector and spinor irreps of $b_n$ and $d_n$. Only for one
+algebra, $e_8$, is there no such rep.
+
+A sketch of the proof of this is as follows. First, we need to
+know the $\gf$-rep $X$ in which the right-hand side of (\ref{Y3})
+acts. Since the $J_a$ form an adjoint representation of $\gf$, it
+is clear from (\ref{Y3'}) that the left-hand side of (\ref{Y3}) is
+contained in $\Lambda^2(\gf)$, the antisymmetric part of $\gf\otimes
+\gf$. Further (and, as we saw above, equivalent to $H^2(\gf)=0$),
+\begin{equation} f_{d(ab}u_{c)d}=0 \hspace{0.2in} \Rightarrow \hspace{0.2in}
+u_{ab} = f_{abc}v_c \,, \end{equation} so that $X\oplus \gf=\Lambda^2(\gf)$,
+and it turns out that $X$ is irreducible for all $\gf$. The image
+of the right-hand side of (\ref{Y3}) in $End(V)$ is zero if
+$X\otimes V\not\supset V$  by the Wigner-Eckhart theorem. Knowing
+$X$, Drinfeld was then able to find the $V$, listed above, for
+which this is true.
+
+\subsubsection{The $Y(\gf)$-rep $\gf\oplus{\mathbb C}$}
+
+The more general case, in which the $Y(\gf)$-irrep is
+$\gf$-reducible, is much harder. Indeed, the only explicitly known
+such rep is again due to Drinfeld, with $V=\gf\oplus{\mathbb C}$
+(that is, {\em adjoint}$\oplus${\em singlet}). (Note that there
+can be no rep of $Y(\gf)$ based on the adjoint rep of $\gf$ alone,
+since $X \subset \gf\otimes \gf$.) The action of $Y(\gf)$ is
+\begin{eqnarray}
+\nonumber \rho(I_a) x = [I_a,x] &  & \rho(J_a) x = <x,I_a> \\
+\label{gplusC}\label{adj} \rho(I_a) \lambda = 0 &  & \rho(J_a)
+\lambda = d \lambda I_a
+\end{eqnarray}
+on $(x,\lambda) \in \gf \oplus {\mathbb C}$, where $<,>$ is an
+inner product on $\gf$, and $d \in {\mathbb C}$  is dependent on
+$\gf$ and on the choice of inner product. In fact, it is rather
+intriguing that, for the exceptional algebras, $d$ depends only on
+dim$\,\gf$, and that there is a uniform formula for the whole of
+the exceptional series $a_2,g_2,d_4,f_4,e_6,e_7,e_8$, including
+its classical elements. This, alongside the appearance of $X$ in
+\cite{deligne,cvitanovic} and the unified $\cR$-matrix structure
+of \cite{westbury}, suggests that it might be interesting to
+investigate the connection between Yangians and the `magic square'
+construction of the exceptional $\gf$.
+
+\subsubsection{The tensor product graph}\label{TPG}
+
+There are no explicit constructions of $Y(\gf)$ actions on more
+general $\gf$-reducible $Y(\gf)$-irreps. However, we can construct
+tensor products of the reps above, and some conclusions may be
+drawn. Let us denote $\gf$-reps with upper-case letters
+$V,W,\ldots$, and $L_\mu\left(Y(\gf)\right)$-reps ({\em i.e.\
+}acted on by the automorphism (\ref{auto}), and thus carrying a
+parameter $\mu$) with lower-case letters $v(\mu),w(\mu),\ldots$.
+The essential point which will emerge is this: suppose we first
+decompose $v(\mu)$ into $\gf$-irreps; of course we then know the
+action of the $I_a$ on each. But we also know that the $J_a$ act
+in the adjoint rep, and this limits the $\gf$-irreps between which
+it may have non-trivial action.
+
+Suppose we wish to construct the tensor product $u(\mu/2)\otimes
+u(-\mu/2)$ where $u=U$ is an irrep $\rho$ of the form
+(\ref{irreps}). The action on $U$ is \begin{equation}\label{irreps2}
+\tilde\rho^{u(\pm \mu/2)}(I_a) = \rho(I_a) \,, \qquad
+\tilde\rho^{u(\pm \mu/2)}(J_a) = \pm {\mu\over 2}\rho(I_a) \,, \end{equation}
+ so that the action on the tensor product,
+constructed using the coproduct (\ref{Y1del},\,\ref{Y2del}), is
+\begin{eqnarray} \tilde\rho^{u(\mu/2)\otimes u(-\mu/2)}(I_a) & = &\quad
+\rho(I_a)\otimes 1
++ 1 \otimes \rho(I_a)\label{act1}\\[0.1in]
+\tilde\rho^{u(\mu/2)\otimes u(-\mu/2)}(J_a) & = & -{\mu\over
+2}\left(
+ 1 \otimes \rho(I_a) - \rho(I_a)\otimes 1\right) + {1\over 4}
+\left[\rho\otimes\rho(C),1\otimes \rho(I_a) - \rho(I_a)\otimes
+1\right],\qquad\quad\label{act2}\end{eqnarray} where we have used the fact
+that \begin{equation} {1\over 2} f_{abc} I_c\otimes I_b = {1\over 4} \left[ C,
+1\otimes I_a-I_a\otimes 1\right]\,,\qquad {\rm with} \quad C\equiv
+I_d\otimes I_d\,.\end{equation} It is clear from (\ref{act2}) that the $J_a$
+act in the adjoint rep of (and which we shall write as) $\gf$, and
+that they reverse parity. Further, \begin{equation} C={1\over 2}
+\left(\Delta(I_d)^2 - I_d I_d\otimes 1 - 1 \otimes I_d
+I_d\right)\,,\end{equation} so that $C$ takes the numerical value ${1\over
+2}\left(C_2(W)-2C_2(U)\right)$ on a component $W$ of $U\otimes U$,
+where $C_2=I_dI_d$ is the quadratic Casimir operator of $\gf$. Thus
+the action of $J_a$ from $W$ to $W'$ may be non-trivial only if
+$W'\subset \gf\otimes W$, if $W'$ and $W$ have opposite parity, and
+if $\mu\neq {1\over 4} \left(C_2(W')-C_2(W)\right)$ (for if this
+last equality is satisfied the right-hand side of (\ref{act2})
+vanishes). However, the action from $W'$ to $W$ will not then
+vanish -- and the $Y(\gf)$-rep $u(\mu/2)\otimes u(-\mu/2)$,
+irreducible for general $\mu$, will be reducible, but not fully
+reducible.
+
+Let us look at an example, with $U=\tableau{1}$ the vector rep of
+$SO(N)$. Then \begin{equation}\tableau{1}\otimes \tableau{1} = \tableau{2}
+\oplus \tableau{1 1} \oplus 1\,,\end{equation} where we have denoted by
+$\tableau{2}$ the traceless rank-two symmetric tensor, by
+$\tableau{1 1}$ the rank-two antisymmetric tensor (the adjoint),
+and by $1$ the one-dimensional representation. The $Y(\gf)$ action
+on $u(\mu/2)\otimes u(-\mu/2)$ is most easily described by forming
+these components into a graph, \begin{equation} \tableau{2}
+\;\stackrel{1}{\longrightarrow}\; \tableau{1 1}
+\;\stackrel{N/2-1}{\longrightarrow}\; 1\,,\end{equation} with a directed edge
+from $W$ to $W'$ labelled with ${1\over
+4}\left(C_2(W)-C_2(W')\right)$. We see that this is general
+irreducible, but, at $\mu=\pm 1$, for example, is reducible (and
+note also that both these possibilities, $\tableau{2}$ and
+$\tableau{1 1}\,\oplus 1$, are irreps described earlier, in
+(\ref{irreps}) and (\ref{gplusC}) respectively). This `tensor
+product graph' (TPG) method \cite{TPG} is generally applicable
+provided $U\otimes U$ (or indeed $U\otimes V$, with $V\neq U$) has
+no multiplicities.
+
+Via (\ref{R}), it also enables us to determine $\cR(\mu)$, which,
+since it commutes with $\tilde\rho(I_a)$, (\ref{act1}), must be of
+the form \begin{equation} \cR(\mu) = \sum_{W \subset U \otimes U} \tau_W(\mu)
+P_W \end{equation} (where $P_W$ is the projector onto $W\subset U\otimes U$).
+Then its commutation with $\tilde\rho(J_a)$, (\ref{act2}), implies
+that, for each pair $W,W'$ of connected nodes of the TPG,
+\begin{equation}\label{taus} \tau_{W'} = {\delta-\mu\over \delta+\mu}\,
+\tau_W\,,\qquad{\rm where} \quad\delta = {1\over 4}\left(
+C_2(W)-C_2(W')\right)\,.\end{equation} For the admissible $U$ of (\ref{rep}),
+this system of equations proves to be consistent and determines
+$\cR(\mu)$ up to an overall scalar factor; while for all other $U$
+the equations are inconsistent. In our $SO(N)$ example above, the
+$\cR(\mu)$ is that found in \cite{zams}. We also see that the
+$\cR(\mu)$ constructed this way are rational in $\mu$, justifying
+to some extent the claim at the end of the last section.
+
+The above technique, applied to solutions of the YBE (the $\cR$),
+is known as the `fusion procedure' \cite{KSR}, and may be used
+even if the TPG fails. For example: suppose we wish, in the above
+example, to calculate the $\cR$ acting in $W\otimes W$ where
+$W=\tableau{1 1}\oplus 1$. Now $W\otimes W$ has various
+multiplicities, and the TPG fails, but we can use the fact that
+$u(1/2)\otimes u(-1/2)$ is reducible --- that $\cR(-1)$ does not
+contain $P_{\tableau{2}}$ --- to construct $\cR$ on $W\otimes
+W\subset U^{\otimes 4}$; it is \begin{equation}\label{R4} \cR(-1)\otimes
+\cR(-1)\,.\, 1\otimes \cR(\mu-1)\otimes 1\,.\, \cR(\mu)\otimes
+\cR(\mu)\,.\, 1\otimes \cR(\mu+1)\otimes 1\,.\end{equation} The essential
+point is that the YBE allows the $\cR(-1)\otimes\cR(-1)$ term,
+similar to the projector onto $(\tableau{1 1}\oplus 1)^{\otimes
+2}\subset \tableau{1}^{\otimes 4}$, to be moved through to the
+right of this expression, which can therefore consistently be
+restricted to act on $W\otimes W$. (Incidentally, the resulting
+$\cR$ \cite{mack91} can also be calculated directly \cite{chari91}
+from the $Y(\gf)$ action (\ref{gplusC}) on $\gf\oplus{\mathbb C}$.)
+
+
+\subsection{Yangians and Dorey's rule}
+
+As promised, we finish with an aspect of the representation theory
+which is rather nicer for $Y(\gf)$ than for $\gf$.
+
+We denote by $V_i$ the $i$th fundamental $\gf$-irrep, with highest
+weight $\omega_i$, and by $v_i(\mu)$ the $i$th fundamental
+$L_\mu(Y(\gf))$-irrep, which, we recall, has $V_i$ as its `top'
+component\footnote{That is, `top' according to a partial ordering
+of highest weights in terms of the fundamental weights.}.
+
+\subsubsection{Tensor products of fundamental $\gf$-irreps}
+
+For representations of $\gf$, the Clebsch-Gordan decomposition
+tells us when $V_i\otimes V_j \supset \bar{V}_k$, or, better to
+say, when \begin{equation} V_i \otimes V_j \otimes V_k \supset 1\label{CG}\end{equation}
+(where we again denote the one-dimensional rep as $1$). The
+solutions to this were characterized in terms of weights in a
+longstanding conjecture \cite{PRV}, proved relatively recently
+\cite{kumar}. When specialized to the fundamental reps this states
+that (\ref{CG}) holds if there exists an element $\sigma$ in the
+Weyl group (of transformations of the root lattice generated by
+the reflections $w_i$ through planes perpendicular to the simple
+roots) $W$ of $\gf$ such that the dominant weight\footnote{A
+dominant weight is one whose coefficients, when it is expressed in
+terms of the simple weights, are all positive. They are also,
+therefore, the highest weights.} conjugate to $-\omega_j-\sigma
+\omega_k$ is $\omega_i$.
+
+
+\subsubsection{Dorey's rule}\label{Dorey's rule}
+
+A rule due to Dorey \cite{dorey}, and shown by Braden
+\cite{braden} to be a restricted case of the above, was originally
+discovered in the context of purely elastic scattering theories
+(PESTs, indeed) in 1+1D integrable models, where it described
+particle fusings (and thereby $S$-matrix pole structure and
+perturbative three-point couplings in affine Toda field theory, at
+least when $\gf$ is simply-laced \cite{BCDS}). It states that a
+fusing $ijk$ occurs iff there exist integers $r$ and $s$ such that
+\begin{equation} \omega_i + c^r \omega_j + c^s \omega_k=0\,,\label{dorey}\end{equation}
+where $c=\prod_{i=1}^rw_i$ is a Coxeter element of the Weyl group.
+(The ordering of the simple roots does not matter.) The simplest
+case in which (\ref{dorey}) is satisfied but (\ref{CG}) is not is
+the self-coupling of the second fundamental rep (the rank-two
+antisymmetric tensor) of $d_5$.
+
+Coxeter elements have many nice properties which make
+(\ref{dorey}) more attractive than (\ref{CG}). Their action
+partitions the roots of $\gf$ into $r$ orbits, each of size $h$,
+where $h$ is the Coxeter number of $\gf$ (which therefore satisfies
+$r(h+1)=$dim$\,\gf$). Further, $c$ acts very simply on $r$ planes
+through the root lattice, in each of which it is a rotation by
+$s\pi/h$, where $s$ is an exponent of $\gf$. In PESTs this yields a
+beautiful\footnote{To be convinced of this one only need look at
+the illustrations in \cite{coxeter}.} geometric interpretation of
+the conservation in three-point couplings of a set of local
+charges, with spins equal to the exponents: instead of $r$
+conservation equations, one has a single equation in ${\mathbb
+R}^r$, projected onto $r$ planes \cite{dorey}.
+
+\subsubsection{Tensor products of fundamental $Y(\gf)$-irreps}
+
+Various results from integrable models suggested that Dorey's rule
+might apply to the fusion of fundamental $Y(\gf)$ reps
+\cite{nankai}, and it was proved in 1995 \cite{chari95} that there
+exist $\mu,\nu,\lambda$ such that \begin{equation} v_i(\mu)\otimes v_j(\nu)
+\otimes v_k(\lambda) \supset 1\,,\label{CGY}\end{equation} precisely when
+(\ref{dorey}) holds --- the values of  $\mu,\nu,\lambda$ are
+related to the angles of the rotations described in the last
+paragraph. (This is strictly true only for simply-laced $\gf$; for
+nonsimply-laced $\gf$ there is a correspondence, but it is much
+more subtle.) The proof, however, was case-by-case, and it is an
+open question whether there is a more natural way to access the
+hidden geometry of Yangian representations.
+
+
+
+\subsection{Some further reading}
+
+An alternative way to present the Yangian story is to begin with
+(\ref{RTT})\footnote{Albeit with `quantum' and `auxiliary' spaces
+exchanging roles --- see sect.\ref{qq}.} and an explicit
+$R$-matrix and proceed from there to construct
+$Y({\mathfrak{gl}}_n)$ and, via an appropriate `quantum
+determinant', $Y({\mathfrak{sl}}_n)$ (see \cite{molev} and
+references therein). Drinfeld also provided another realization of
+$Y(\gf)$ in \cite{drinf87}, analogous to a Cartan-Weyl basis, which
+is often used to study $Y(\gf)$ representation theory, and a set of
+polynomials in correspondence with (finite-dimensional) $Y(\gf)$
+reps which can be used to classify them (allowing one, for
+example, to deduce the existence of the fundamental $Y(\gf)$ irreps
+discussed in this chapter). For connections between these two
+approaches see \cite{crampe}; for that between $Y(\gf)$ and the
+Bethe ansatz see \cite{KR,KS}; for that with Hecke algebras see
+\cite{cher,drinf86}; for that with separation-of-variables
+techniques see \cite{skly}. We noted earlier that $Y(\gf)$ may be
+thought of as a deformation of a polynomial algebra, with
+parameter $z$: the analogue of the full loop algebra, with powers
+of $z^{-1}$ as well, is the `quantum double' of $Y(\gf)$
+\cite{Ydouble1,Ydouble2}. Super-Yangians have their origins in
+\cite{nazsuper}; some representations were studied in
+\cite{RBZhang}. Finally, $Y(\gf)$ can also be obtained in the
+$q\rightarrow 1$ limit of a $q$-deformed untwisted affine algebra
+$U_q(\hat{g})$ in the `spin gradation' (equivalent for
+simply-laced $\gf$ to the principal gradation), as remarked in
+\cite{drinf1,CPbook} and detailed for $\gf=a_1$ in \cite{BL2} -- we
+give further details in an appendix. Indeed, the structure of the
+representation ring of $U_q(\hat{g})$, for $q$ not a root of
+unity, is the same as that of $Y(\gf)$.
+
+\section{Y-,T- and Q-systems}
+\label{sec:y-t-q}
+
+\section{Kirillov-Reshetikhin formula}
+\label{sec:kirill-resh-form}
+
+\section{Graded tensor product decomposition and cluster algebras }
+\label{sec:grad-tens-prod}
+
+Klimyk's formula: \url{http://mathoverflow.net/questions/85593/decompose-tensor-product-of-type-g-2-lie-algebras}
+
+\section{AdS/CFT}
+\label{sec:adscft}
+
+
+
+\end{document}

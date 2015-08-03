@@ -1,5 +1,7 @@
 t={{0,1,0,0},{1,0,1,0},{0,1,0,1},{0,0,1,0}};
 
+[Calculating...]
+
 RSOSModel[adjMatrix__List]:=
 	  Module[{es,ev,lm,W},
 		 es=Sort[Transpose[Eigensystem[adjMatrix]],#1[[1]]>#2[[1]]&][[1]];
@@ -11,6 +13,10 @@ RSOSModel[adjMatrix__List]:=
 		 W[#1,#2,#3,#4,lm/2]&]
 
 w=RSOSModel[t]
+
+                             lm$81
+Out[3]= W$81[#1, #2, #3, #4, -----] & 
+                               2
 
 w1=RSOSModel[{{0,1,0},{1,0,1},{0,1,0}}]
 
@@ -633,6 +639,277 @@ Out[101]= -------------------
 proj[x_,u_]:=1/2*(x+ Conjugate[x]*u^2/Abs[u]^2)
 
 Simplify[proj[1,Exp[-3*Pi*I/8]]-proj[(Sqrt[2]-1)*Exp[-Pi*I/4],Exp[-3*Pi*I/8]]]
+
+Simplify[proj[1,Exp[-3*Pi*I/4*s]]-proj[(Exp[2*J]*Exp[-mu]+1-Exp[-mu])*Exp[-Pi*I/2*s],Exp[-3*Pi*I/4*s]]]
+
+NSolve[N[Simplify[proj[1,Exp[-3*Pi*I/4*s]]-proj[(1/0.15*0.593+1-0.593)*Exp[-Pi*I/2*s],Exp[-3*Pi*I/4*s]]]]==0,{s}]
+
+Solve[proj[1,x^3]-proj[(1/0.15*0.593+1-0.593)*x^2,x^3]==0,x]
+
+N[Exp[-Pi*I*s/4]/.{s->1/10}]
+
+Out[30]= 0.996917 - 0.0784591 I
+
+Out[29]= 0.891007 - 0.45399 I
+
+
+N[proj[1,x^3]-proj[(1/0.15*0.593+1-0.593)*x^2,x^3]/.{x->Exp[-Pi*I*s/4]/.{s->7/16}}]
+
+Out[33]= -1.84632 + 3.0804 I
+
+Out[32]= -0.58329 + 3.68275 I
+
+Out[31]= -3.28128 + 0.787767 I
+    
+Reduce[proj[1,x^3]-proj[(1/0.15*0.593+1-0.593)*x^2,x^3]==0]
+
+Reduce::ratnz: Reduce was unable to solve the system with inexact
+    coefficients. The answer was obtained by solving a corresponding exact
+    system and numericizing the result.
+
+Out[28]= (Im[x] < -0.119724 && Re[x] == 0) || 
+ 
+>    (Im[x] == -0.119724 && (Re[x] == 
+ 
+                          2               4                         2    2
+>         Root[9000. Im[x]  + 13081. Im[x]  + (-3000. + 26162. Im[x] ) #1  + 
+ 
+                      4
+>            13081. #1  & , 1] || Re[x] == 0 || 
+ 
+                                  2               4
+>        Re[x] == Root[9000. Im[x]  + 13081. Im[x]  + 
+ 
+                                   2    2            4
+>            (-3000. + 26162. Im[x] ) #1  + 13081. #1  & , 3])) || 
+ 
+>    (-0.119724 < Im[x] < 0 && (Re[x] == 
+ 
+                          2               4                         2    2
+>         Root[9000. Im[x]  + 13081. Im[x]  + (-3000. + 26162. Im[x] ) #1  + 
+ 
+                      4
+>            13081. #1  & , 1] || 
+ 
+                                  2               4
+>        Re[x] == Root[9000. Im[x]  + 13081. Im[x]  + 
+ 
+                                   2    2            4
+>            (-3000. + 26162. Im[x] ) #1  + 13081. #1  & , 2] || 
+ 
+>        Re[x] == 0 || Re[x] == 
+ 
+                          2               4                         2    2
+>         Root[9000. Im[x]  + 13081. Im[x]  + (-3000. + 26162. Im[x] ) #1  + 
+ 
+                      4
+>            13081. #1  & , 3] || 
+ 
+                                  2               4
+>        Re[x] == Root[9000. Im[x]  + 13081. Im[x]  + 
+ 
+                                   2    2            4
+>            (-3000. + 26162. Im[x] ) #1  + 13081. #1  & , 4])) || 
+ 
+>    (Im[x] == 0 && (Re[x] == -0.478895 || Re[x] == 0.478895)) || 
+ 
+>    (0 < Im[x] < 0.119724 && (Re[x] == 
+ 
+                          2               4                         2    2
+>         Root[9000. Im[x]  + 13081. Im[x]  + (-3000. + 26162. Im[x] ) #1  + 
+ 
+                      4
+>            13081. #1  & , 1] || 
+ 
+                                  2               4
+>        Re[x] == Root[9000. Im[x]  + 13081. Im[x]  + 
+ 
+                                   2    2            4
+>            (-3000. + 26162. Im[x] ) #1  + 13081. #1  & , 2] || 
+ 
+>        Re[x] == 0 || Re[x] == 
+ 
+                          2               4                         2    2
+>         Root[9000. Im[x]  + 13081. Im[x]  + (-3000. + 26162. Im[x] ) #1  + 
+ 
+                      4
+>            13081. #1  & , 3] || 
+ 
+                                  2               4
+>        Re[x] == Root[9000. Im[x]  + 13081. Im[x]  + 
+ 
+                                   2    2            4
+>            (-3000. + 26162. Im[x] ) #1  + 13081. #1  & , 4])) || 
+ 
+>    (Im[x] == 0.119724 && (Re[x] == 
+ 
+                          2               4                         2    2
+>         Root[9000. Im[x]  + 13081. Im[x]  + (-3000. + 26162. Im[x] ) #1  + 
+ 
+                      4
+>            13081. #1  & , 1] || Re[x] == 0 || 
+ 
+                                  2               4
+>        Re[x] == Root[9000. Im[x]  + 13081. Im[x]  + 
+ 
+                                   2    2            4
+>            (-3000. + 26162. Im[x] ) #1  + 13081. #1  & , 3])) || 
+ 
+>    (Im[x] > 0.119724 && Re[x] == 0)
+
+Solve::fulldim: 
+   The solution set contains a full-dimensional component; use Reduce for
+    complete solution information.
+
+Solve::ratnz: Solve was unable to solve the system with inexact coefficients.
+    The answer was obtained by solving a corresponding exact system and
+    numericizing the result.
+
+Out[27]= {{}}
+
+NSolve::fulldim: 
+   The solution set contains a full-dimensional component; use Reduce for
+    complete solution information.
+
+NSolve::ratnz: NSolve was unable to solve the system with inexact
+    coefficients. The answer was obtained by solving a corresponding exact
+    system and numericizing the result.
+
+Out[26]= {{}}
+
+NSolve::ratnz: NSolve was unable to solve the system with inexact
+    coefficients. The answer was obtained by solving a corresponding exact
+    system and numericizing the result.
+
+Out[23]= {{x -> -0.478895}, {x -> 0.478895}}
+
+Solve[Exp[-Pi*I*s/4]==-0.479,s]
+
+Solve::ifun: Inverse functions are being used by Solve, so some solutions may
+     not be found; use Reduce for complete solution information.
+
+Out[25]= {{s -> -4. - 0.937174 I}}
+
+Solve::ifun: Inverse functions are being used by Solve, so some solutions may
+     not be found; use Reduce for complete solution information.
+
+Out[24]= {{s -> 0. - 0.937174 I}}
+    
+
+                      6                                   6             2
+                     x                       2   4.36033 x  Conjugate[x]
+Out[22]= 0.5 (1. + -------) + 0.5 (-4.36033 x  - ------------------------) == 
+                         6                                     6
+                   Abs[x]                                Abs[x]
+ 
+>    0
+
+NSolve::fulldim: 
+   The solution set contains a full-dimensional component; use Reduce for
+    complete solution information.
+
+NSolve::ratnz: NSolve was unable to solve the system with inexact
+    coefficients. The answer was obtained by solving a corresponding exact
+    system and numericizing the result.
+
+Out[21]= {{}}
+
+?NDSolve
+
+
+DiscreteLyapunovSolve LinearSolve           NSolve
+DiscreteRiccatiSolve  LyapunovSolve         RiccatiSolve
+DSolve                MainSolve             RSolve
+FrobeniusSolve        NDSolve               Solve
+
+                                      (0. + 1.5708 I) Conjugate[s]
+Out[18]= NSolve[(0.5 - 2.18017 2.71828                             + 
+ 
+                    4.71239 ((0. + 1. I) s + Im[s])
+>        0.5 2.71828                                - 
+ 
+                        (0. + 3.14159 I) s + 4.71239 Im[s]
+>        2.18017 2.71828                                  ) / 
+ 
+              4.71239 ((0. + 1. I) s + Im[s])
+>      2.71828                                == 0, {s}]
+
+NSolve::nddc: The system <<1>> contains a nonreal constant 0. + 1. I
+    . With the domain Reals specified, all constants should be real.
+
+                                      (0. + 1.5708 I) Conjugate[s]
+Out[17]= NSolve[(0.5 - 2.18017 2.71828                             + 
+ 
+                    4.71239 ((0. + 1. I) s + Im[s])
+>        0.5 2.71828                                - 
+ 
+                        (0. + 3.14159 I) s + 4.71239 Im[s]
+>        2.18017 2.71828                                  ) / 
+ 
+              4.71239 ((0. + 1. I) s + Im[s])
+>      2.71828                                == 0, {s}, Reals]
+
+                                      (0. + 1.5708 I) Conjugate[s]
+Out[16]= NSolve[(0.5 - 2.18017 2.71828                             + 
+ 
+                    4.71239 ((0. + 1. I) s + Im[s])
+>        0.5 2.71828                                - 
+ 
+                        (0. + 3.14159 I) s + 4.71239 Im[s]
+>        2.18017 2.71828                                  ) / 
+ 
+              4.71239 ((0. + 1. I) s + Im[s])
+>      2.71828                                == 0, s]
+
+?NSolve
+
+NSolve[expr, vars] attempts to find numerical approximations to the solutions
+     of the system expr of equations or inequalities for the variables vars
+     . NSolve[expr, vars, Reals]
+
+       finds solutions over the domain of real numbers.
+
+Solve::inex: Solve was unable to solve the system with inexact coefficients or
+    the system obtained by direct rationalization of inexact numbers present
+    in the system. Since many of the methods used by Solve require exact
+    input, providing Solve with an exact version of the system may help.
+
+                                     (0. + 1.5708 I) Conjugate[s]
+Out[14]= Solve[(0.5 - 2.18017 2.71828                             + 
+ 
+                    4.71239 ((0. + 1. I) s + Im[s])
+>        0.5 2.71828                                - 
+ 
+                        (0. + 3.14159 I) s + 4.71239 Im[s]
+>        2.18017 2.71828                                  ) / 
+ 
+              4.71239 ((0. + 1. I) s + Im[s])
+>      2.71828                                == 0, s]
+
+Out[13]= -0.58329 + 3.68275 I
+
+Out[12]= -3.28128 + 0.787767 I
+
+                         I/2 Pi Conjugate[s]        (3 Pi (I s + Im[s]))/2
+Out[11]= (0.5 - 2.18017 E                    + 0.5 E                       - 
+ 
+                I Pi s + (3 Pi Im[s])/2     (3 Pi (I s + Im[s]))/2
+>      2.18017 E                       ) / E
+    
+
+               (-3 I)/2 Pi (s - I Im[s])
+Out[10]= (1 + E                          - 
+ 
+        -mu - I/2 Pi s        2 J    mu
+>      E               (-1 + E    + E  ) - 
+ 
+        -Conjugate[mu] + (Pi ((-3 I) s + I Conjugate[s] - 3 Im[s]))/2
+>      E                                                              
+ 
+               2 Conjugate[J]    Conjugate[mu]
+>       (-1 + E               + E             )) / 2
+
+Out[9]= 0
 
 al
 
@@ -1483,4 +1760,12 @@ Out[107]= ------------------------------- + ----------------
           1 + E
 Out[106]= ----------------
                  2
+
+
+Simplify[w[3,4,3,4]/w[3,2,3,4]]
+
+             3 + Sqrt[5]
+Out[7]= ---------------------
+         3/4              1/4
+        2    (1 + Sqrt[5])
 
