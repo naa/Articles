@@ -1,0 +1,278 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage{graphicx}
+\pagestyle{plain}
+
+
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{mynote}{Замечание}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\theoremstyle{definition}
+\newtheorem{exercise}{Упражнение}
+\newtheorem{example}{Пример}
+
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+
+%% \topmargin=-3.5cm
+%% \oddsidemargin=-1.5cm
+%% \evensidemargin=-1.5cm
+%% \textwidth=19cm
+%% \textheight=28cm
+%% 
+\title{Методы теории групп в квантовой теории поля\\
+\small{Кафедра физики высоких энергий и элементарных частиц СПбГУ}
+}
+\author{Антон Назаров\\
+  \small{СПбГУ, физический факультет, кафедра физики высоких энергий и элементарных частиц;}\\
+  \texttt{antonnaz@gmail.com}
+}
+\date{Осенний семестр 2014 года}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+  Текст представляет собой конспект лекций курса ``Методы теории групп в квантовой теории поля'' (Теория представлений-2). Лекции читались в осеннем семестре 2014 года в СПбГУ для магистрантов 5 курса (кафедра физики высоких энергий и элементарных частиц). 
+\end{abstract}
+\tableofcontents
+
+\section{Лекция 1}
+\label{sec:lecture-1}
+
+\subsection{Программа курса}
+\label{sec:program}
+\begin{enumerate}
+\item Представления группы Лоренца
+\item Метод индуцированных представлений, представления группы Пуанкаре
+\item Алгебраический анализ представлений
+\item Представления групп Ли
+\item Метод орбит, геометрическое квантование
+\end{enumerate}
+
+\subsection{Литература}
+\bibliographystyle{gost780}
+\bibliography{groups}{}
+
+
+Книга автора курса: \cite{book:10358}, \cite{book:1244385}, книга, с подробным разъяснением
+материала первой части курса: \cite{book:855864}, подробный двухтомник для физиков:
+\cite{book:130300,book:130301}, хорошая обзорная книга, охватывающая дополнительные разделы:
+\cite{book:872634}.
+
+\subsection{Группы и Представления групп}
+\label{sec:intro}
+
+\begin{equation}
+  \label{eq:1}
+  (U\psi,U\varphi)=(\psi,\varphi)
+\end{equation}
+$U$ -- унитарный линейный оператор. Если же $ (U\psi,U\varphi)=(\psi,\varphi)^{*}$, то $U$ --
+антиунитарный, антилинейный.
+
+Пусть $T_{1},T_{2}$ -- преобразования, тогда или
+\begin{equation}
+  \label{eq:2}
+  U(T_{2})U(T_{1})=U(T_{2}T_{1})
+\end{equation}
+или
+\begin{equation}
+  \label{eq:2}
+  U(T_{2})U(T_{1})=e^{i\varphi(T_{1},T_{2})} U(T_{2}T_{1}).
+\end{equation}
+Во втором случае представление называется проективным.
+
+Пусть $G$ -- группа, элемент $g\in G$. Обозначим через $D(G,V)$ представление группы $G$ линейными
+операторами в линейном пространстве $V$, $D(g)\in GL(V)$. Действие группы на каком-то множестве,
+не являющемся линейным пространством будем называть ``реализацией''. 
+
+\begin{definition}
+  {\it Топологическая группа} -- группа, являющаяся топологическим пространством. 
+\end{definition}
+\begin{definition}
+  {\it Группа Ли} -- группа, являющаяся гладким (аналитическим) многообразием
+\end{definition}
+
+{\it Определяющим} называется представление, использующееся для задания группы. 
+
+Рассмотрим множество $M$ и отображение $g\in G\to O(g)\in Aut(M)$, т.ч. $O(g_{1}g_{2}^{-1})=O(g_{1})
+O^{-1}(g_{2})$. Тогда для функций $f\in Fun(M,k)$, где $k$ -- поле, $k=\mathbb{R}, \mathbb{C}$ --
+характеристики 0 (характеристика $p$ -- числа по модулю простого числа $p$), отображения
+\begin{equation}
+  \label{eq:3}
+  \begin{array}{l}
+  f(\cdot)\to f(\cdot\; g)\\
+  f(\cdot)\to f(g\; \cdot)    
+  \end{array}
+\end{equation}
+задают представления $G$. 
+\begin{exercise}
+  Проверить, что это действительно представление
+\end{exercise}
+
+Пусть $V_{1},V_{2}$ -- линейные пространства и существует отображение $\zeta$:
+\begin{equation}
+  \label{eq:4}
+    \begin{diagram}
+    \node{V_{1}}\arrow{s,r}{D_{1}} \arrow{e,t}{\zeta} \node{V_{2}}\arrow{s,r}{D_{2}}\\
+    \node{V_{1}}\arrow{e,t}{\zeta} \node{V_{2}}
+  \end{diagram}
+\end{equation}
+Если диаграмма коммутативна, то есть $\forall g, v$ верно $D_{2}(g)\zeta v=\zeta D_{1}(g) v$, тогда
+$\zeta$ называется сплетающим оператором представлений $D_{1}, D_{2}$. Если существует обратное
+отображение $\zeta^{-1}$, то $\zeta D_{1} \zeta^{-1}=D_{2}$ и представления $D_{1}$ и $D_{2}$
+эквивалентны.
+
+\begin{definition}
+  {\it Категория} $C$ состоит из объектов категории $Ob(C)$ и отображений -- морфизмов $f\in
+  Hom(C)$, $f:a\to b$. Морфизмы должны быть определена композиция $f\cdot g$ и для любого $a\in
+  Ob(C)$ должно существовать тождественное отображение $1_{a}:a\to a$, причем $1_{b}\cdot f=f\cdot
+  1_{a}$.
+\end{definition}
+
+Представления группы образуют категорию, а сплетающие операторы являются морфизмами в ней. 
+
+Прямая сумма представлений $D_{1}, D_{2}$:
+\begin{equation}
+  \label{eq:5}
+  \begin{pmatrix}
+    D_{1}(g) & 0 \\
+    0 & D_{2}(g)
+  \end{pmatrix} 
+  \begin{pmatrix}
+    v_{1}\\ v_{2}
+  \end{pmatrix}
+\end{equation}
+Если
+\begin{equation}
+  \label{eq:6}
+  D(g)=
+  \begin{pmatrix}
+    D_{1}(g) & C(g) \\
+    0 & D_{2}(g)
+  \end{pmatrix} 
+  \begin{pmatrix}
+    v_{1}\\ v_{2}
+  \end{pmatrix},
+\end{equation}
+то $V_{2}$ является инвариантным подпространством, $D_{2}$ -- подпредставлением $D$, а
+$D_{\downarrow V_{2}}=D_{2}$ -- ограничение представления $D$ на $V_{2}$. Представление $D$
+называется приводимым, так как есть инвариантное подпространство. В случае топологических групп
+инвариантное подпространство должно быть замкнутым. Если дополнение инвариантного подпространства
+инвариантно, то представление называется вполне приводимым и $D=D_{1}\oplus \dots\oplus D_{n}$ (в
+случае конечномерных представлений).
+
+\begin{theorem}
+  Всякое унитарное представление вполне приводимо
+\end{theorem}
+
+Какие задачи нужно уметь решать в теории представлений:
+\begin{enumerate}
+\item Находить спектр унитарных представлений группы
+\item Раскладывать представления на неприводимые
+\item Раскладывать представления группы на представления подгруппы
+  $H\subset G,\quad D_{G\downarrow H}=D_{1}(H)\oplus \dots D_{n}(H)$
+\item Строить индуцированные представления $D_{H\uparrow G}$
+\item Раскладывать тензорное произведение на неприводимые
+  $D_{1}\otimes D_{2}=D_{1}'\oplus\dots \oplus D_{n}'$, в теории поля такое разложение описывает
+  возможные каналы распада после столкновения двух частиц. 
+\end{enumerate}
+\begin{definition}
+  Алгебра Ли $\gf$ группы Ли $G$ -- это касательное пространство к групповому многообразию. В
+  алгебре Ли определена скобка $[\;,\;]$, экспоненциальное отображение задает локальные координаты
+  на группе в окрестности единицы: $X\in \gf, \; e^{tX}\in G$, $t$ -- координаты. 
+\end{definition}
+\begin{definition}
+  Присоединенное представление группы $G$ -- это представление на алгебре Ли $\gf$, для $g\in G, \;
+  X\in \gf$ задающееся формулой
+  \begin{equation}
+    \label{eq:7}
+    Ad_{g} X=\left.\frac{d}{dt}g e^{tX} g^{-1}\right|_{t=0}
+  \end{equation}
+
+\end{definition}
+
+\begin{exercise}
+  Проверить, что это -- представление
+\end{exercise}
+
+Введем на алгебре $\gf$ скалярное произведение, тогда $\gf^{*}$ -- пространство линейных
+функционалов над $\gf$, -- можно отождествить с $\gf$: $(v,\cdot)\equiv v^{*}$. Соответственно,
+можно определить коприсоединенное представление по правилу
+\begin{equation}
+  \label{eq:8}
+  (Ad^{*} Y,X)=(Y,Ad^{-1}X)
+\end{equation}
+
+\begin{theorem}
+  Унитарные представления группы $G$ находятся в однозначном соответствии с орбитами
+  коприсоединенного представления $\gf^{*}/G$.
+\end{theorem}
+
+\begin{example}
+  $G=\mathbb{R}^{n}$ -- группа Ли, $\gf=(\mathbb{R}^{n},[\;,\;]=0)$; орбиты -- точки в
+  $\mathbb{R}^{n}$. Пусть $g_{1}\in G,\quad r\in \mathbb{R}^{n}$, тогда
+  $D^{r}(g_{1})=e^{i(r,g_{1})}$. Существует представление $\tilde D(g_{1}): e^{i(r,g')}\to
+  e^{i(r,g'-g_{1})}$. 
+Левое действие $G$ на функциях $f:\mathbb{R}^{n}\to k,\quad D:f(\cdot)\to
+  f(g^{-1}\cdot)$ раскладывается на неприводимые представления вида $\tilde D$, что соответствует
+  разложению функции $f$ в ряд Фурье. Спектр представлений -- это орбиты коприсоединенного
+  представления, то есть каждая точка пространства $\mathbb{R}^{n}$ задает неприводимое представление.
+\end{example}
+
+\subsubsection{Индуцированные представления}
+\label{sec:induced-reps}
+
+Рассмотрим $f\in Fun(G,k)$. По отношению к действию тривиальной подгруппы ${e}\subset G$ все функции
+инвариантны.
+
+Пусть $H\subset G,\; h\in H, g\in G$, рассмотрим функции $f:G\to V$, для которых выполняется
+$f(gh)=D(h^{-1})\cdot f(g),\; D(h^{-1})\in D(H,V)$. Назовем пространство таких функций $f\in
+Fun(G,H,V)$. Наша задача по $Fun(G,H,V)$ восстанавливать представление группы $G$. 
+
+Обозначим через $D^{L}(g)\cdot f=f(g^{-1}\cdot)$ левый сдвиг, а через  $D^{R}(g)\cdot f=f(\cdot
+g^{-1})$ -- правый. Тогда
+\begin{equation}
+  \label{eq:9}
+  D^{L}(g)f(g'h)=f(g^{-1}g' h)=D(h^{-1}) f(g^{-1} g')=D(h^{-1})D^{L}(g)f(g')
+\end{equation}
+
+Покажем, что $Fun(G,H,V)$ инвариантно по отношению к $D^{L}$. Действие $D^{L}$ на $Fun(G,H,V)$ --
+индуцированное представление $D_{H\uparrow G}$. Введем классы эквивалентности $H\backslash
+G=\{H\}\cdot g_{x}$, $G/H=\{g_{x}\{H\}\}=X$, $x$ -- класс, $g_{x}$ -- представитель класса.
+Рассмотрим функции на классах $\varphi(x)=f(g_{x})$, $f(g\cdot g_{x}h)=D(h^{-1})f(g_{x})$. То есть
+если мы определим действие на факторпространстве $D(H)$ на $\varphi$ на $X$, то затем его можно
+поднять до представления всей группы. 
+
+\section{Лекция 2}
+\label{sec:lecture-2}
+
+
+От функций на группе переходим к функциям на классах смежности. 
+\end{document}

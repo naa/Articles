@@ -1,0 +1,124 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage{graphicx}
+\pagestyle{plain}
+
+%\usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{mynote}{Замечание}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+
+\title{Конформная теория поля и критические явления\\
+\small{Академический университет, кафедра теоретической физики}
+}
+\author{Антон Назаров\\
+  \small{СПбГУ, физический факультет,}\\
+  \small{ кафедра физики высоких энергий и элементарных частиц;}\\
+  \texttt{antonnaz@gmail.com}
+}
+\date{Весенний семестр 2015 года}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+Программа курса
+\end{abstract}
+\tableofcontents
+
+\section{Программа курса}
+\label{sec:program}
+
+\begin{enumerate}
+\item Лекция 1
+  \begin{itemize}
+  \item Программа курса
+  \item Литература
+  \item Фазовые переходы. Основные понятия
+  \item Классические статистические модели. Связь с теорией поля. Квантовые статистические модели.
+    Классическая и квантовая теория поля. Симметрии. Теорема Нётер
+  \item Критические явления
+  \end{itemize}
+
+\item Лекция 2. Двумерная модель Изинга
+  \begin{itemize}
+  \item Низкотемпературное и высокотемпературное разложение
+  \item Дуальность Крамерса-Ванье
+  \item Решение Вдовиченко
+  \end{itemize}
+\item Лекция 3. Скейлинг в критических моделях
+  \begin{itemize}
+  \item Процедура Каданова
+  \item Ренормгруппа в решеточных моделях
+  \item Ренормгруппа в непрерывных моделях
+  \item Уравнение Каллана-Симанчика
+  \item Ренормгруппа в двух измерениях
+  \end{itemize}
+\item Лекция 4. Конформная группа.
+\item Лекция 5
+  \begin{itemize}
+  \item Инварианты конформных преобразований
+  \item Явный вид конформных преобразований полей в $d\geq 3$.
+  \end{itemize}
+\item Лекция 6
+  \begin{itemize}
+  \item Корреляторы квазипримарных полей
+  \item Тождества Уорда
+  \end{itemize}
+\item Лекция 7. Конформная инвариантность в двумерной теории.
+  \begin{itemize}
+  \item Глобальные конформные преобразования
+  \item Тождества Уорда в двумерной конформной теории
+  \end{itemize}
+\item Лекция 8. Алгебраическая конструкция двумерной конформной теории поля
+  \begin{itemize}
+  \item Алгебра локальных полей. Операторное разложение
+  \item Свободный бозон
+  \item Центральный заряд. Алгебра Вирасоро
+  \end{itemize}
+\item Лекция 9. Классификация минимальных моделей
+  \begin{itemize}
+  \item Детерминант Каца
+  \item Значения центрального заряда и соответствие с решеточными моделями
+  \end{itemize}
+\item Лекция 10. Представление кулоновского газа для минимальных моделей
+\item Лекция 11. Уравнения на корреляционные функции в минимальных моделях
+  \begin{itemize}
+  \item Конформный предел модели Изинга
+  \item Свободный фермион
+  \item Выражение для четырехточечной функции в модели Изинга
+  \end{itemize}
+\item Лекция 12. Модели с дополнительной симметрией
+  \begin{itemize}
+  \item Модели Весса-Зумино-Новикова-Виттена
+  \item Алгебры Каца-Муди
+  \item $Z_{N}$-парафермионы
+  \end{itemize}
+\item Лекция 13. Поправки от конечного размера системы и теория с границей
+\end{enumerate}
+\end{document}
