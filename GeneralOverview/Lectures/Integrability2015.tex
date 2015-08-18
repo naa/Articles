@@ -1,0 +1,2650 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{ucs}
+\usepackage[unicode,verbose]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{pb-diagram}
+\usepackage{multicol}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage{graphicx}
+\pagestyle{plain}
+
+% \usepackage{verbatim} 
+\newenvironment{comment}
+{\par\noindent{\bf TODO}\\}
+{\\\hfill$\scriptstyle\blacksquare$\par}
+
+\newtheorem{statement}{Statement}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{corollary}{Corollary}[theorem]
+\theoremstyle{definition}
+\newtheorem{mynote}{Замечание}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+
+\title{Конформная инвариантность и интегрируемость в теории поля\\
+  \small{СПбГУ, физический факультет университет, кафедра ФВЭиЭЧ}
+}
+\author{Антон Назаров\\
+  \small{СПбГУ, физический факультет,}\\
+  \small{ кафедра физики высоких энергий и элементарных частиц;}\\
+  \texttt{antonnaz@gmail.com}
+}
+\date{Осенний семестр 2015 года}
+
+\def\barr{\left(\begin{array}}
+\def\earr{\end{array}\right)}
+\def\beq#1{\begin{equation}\label{#1}}
+\def\eeq{\end{equation}}
+\def\ber#1{\begin{eqnarray}\label{#1} &&\nqq}%   left alignment
+\def\eer{\end{eqnarray}}
+
+\newcommand{\bear}[1]{\begin{eqnarray}\label{#1}}
+\newcommand{\ear}{\end{eqnarray}}
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\catcode`\@=11 \@addtoreset{equation}{section}\catcode`\@=12
+\newcommand{\N}{ {\mathbb N} }
+\newcommand{\R}{ {\mathbb R} }
+\newcommand{\SL}{\mathop{\rm sl}\nolimits}
+\newcommand{\SO}{\mathop{\rm so}\nolimits}
+\newcommand{\SP}{\mathop{\rm sp}\nolimits}
+\newcommand{\ts}{\textstyle}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\fn}{\footnote}
+\newcommand{\fnm}{\footnotemark}
+\newcommand{\fnt}{\footnotetext}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+  Программа курса
+\end{abstract}
+\tableofcontents
+
+\section{Программа курса}
+\label{sec:program}
+
+  \begin{itemize}
+  \item  Скейлинг и конформная инвариантность, критическое поведение, ренормгруппа
+  \item Напоминание про классические статистические модели, связь с теорией поля, квантовые
+    статистические модели, симметрии, теорему Нётер
+  \item Классические интегрируемые системы, L-M пара
+  \item Глобальная конформная инвариантность в произвольном числе измерений
+  \item Тождества Уорда для конформных преобразований
+  \item Двухточечная и трехточечная функции
+  \item Общий вид четырехточечной функции в конформной теории, формфактор, конформные блоки
+  \item Конформная инвариантность в двух измерениях
+  \item Локальная конформная инвариантность
+  \item Алгебра Вирасоро.
+  \item Конформный бутстрап
+  \item Правила слияния, алгебра
+  \item Интегрируемость и интегриуемые деформации двумерной конформной теории поля
+  \item Способ получать интегрируемые системы: анзац Бете
+  \item Конформная инвариантность и конформный бутстрап в теории поля с размерностью больше двух
+  \item Конформная инвариантность в теории Янга-Миллса
+  \item N=4 SYM: конформная инвариантность и другие симметрии
+  \item аномальные размерности в N=4 SYM и интегрируемость
+  \item интегрируемость и AdS/CFT соответствие
+  \end{itemize}
+
+
+
+\section{Лекция 1}
+\label{sec:-1}
+
+  \begin{itemize}
+  \item Программа курса
+  \item Литература
+  \item Скейлинг и конформная инвариантность, критическое поведение, ренормгруппа
+  \item Напоминание про классические статистические модели, связь с теорией поля, квантовые
+    статистические модели, симметрии, теорему Нётер
+  \item Классический интегрируемые системы, L-M пара
+  \end{itemize}
+
+\subsection{Литература}
+\label{sec:literature}
+
+По двумерной конформной теории поля есть толстая книга \cite{difrancesco1997cft}, первые лекции
+следуют ей. Дополнительно можно посмотреть лекции Гинспарга \cite{Ginsparg:1988ui} и книгу
+Замолодчиковых \cite{zamolodchikov1989rus,zamolodchikov1989conformal}. Более кратко основные моменты
+описаны в основополагающей статье \cite{belavin1984ics}. Некоторые алгебраические сведения о
+представлениях алгебры Вирасоро могут быть найдены в книге \cite{golod2001}.
+
+Кое-что об интегрируемых моделях, в том числе, о решении модели Изинга в двух измерениях, можно
+почитать в лекциях Белавина \cite{belavin2001lect}.
+
+Применение ренормгруппы к описанию критического поведения подробно и достаточно педагогически
+рассматривается в книге \cite{ma1980} (\cite{ma2000modern}). Исчерпывающую информацию содержит
+моногорафия \cite{vasiliev1998} (английский вариант \cite{Vasilev:1027193}). 
+
+Интегрируемым деформациям двумерной конформной теории поля посвящены лекции Ravanini
+\cite{Ravanini:2000st}.
+
+Дополнительные сведения о приложениях конформной теории поля и ее связи с теорией суперструн можно
+найти в подробных лекциях \cite{springerlink:10.1134/S1063778810050108} и обзорах
+\cite{Walton:1999xc}, \cite{gaberdiel2000icf}.
+
+Анзац Бете рассмотрен в лекциях \cite{faddeev1996algebraic}. 
+
+Обзор применения интегрируемых систем в соответствии между N=4 теорий суперсимметричной теорией
+Янга-Миллса (N=4 SYM) и теорией суперструн типа IIB содержится в коллективной работе \cite{ReviewAdSCFT}.
+
+\subsection{Введение}
+\label{sec:intro}
+Чем интересны двумерные системы?
+
+Во-первых, они существуют в природе. Например, критическое поведение на поверхности металлов
+напоминает поведение модели Изинга в двух измерениях \cite{campuzano1985110}.
+
+Во-вторых, в двух измерениях даже в простых моделях есть критическая точка. Это не так, например, в
+одномерной модели Изинга. В простых двумерных моделях можно вычислить критические индексы и изучать
+поведение системы при фазовых переходах.
+
+Гипотеза универсальности утверждает, что все системы в критической точке разбиваются на небольшое
+число классов. Системы из одного класса ведут себя одинаково, имеют одинаковые критические индексы.
+Благодаря гипотезе универсальности существует лишь небольшое число типов критического поведения,
+поэтому значения индексов, вычисленные теоретически в простых моделях соответствуют гораздо более
+сложным реальным системам.
+
+В критической точке наблюдается масштабная инвариантность, что ведет к конформной инвариантности
+\cite{Polyakov:1970xd}. В двух измерениях конформная инвариантность дает очень много сведений о
+системе, так как алгебра конформных преобразований бесконечномерна. В результате поведение системы
+может быть описано строго математически методами двумерной конформной теории поля.
+
+Двумерная конформная теория поля имеет и другое применение, не связанное с описанием фазовых
+переходов --- это теория струн, которая считается перспективным кандидатом на роль квантовой теории
+гравитации.
+
+В данных лекциях мы займемся проблемой описания фазовых переходов в двумерных системах. Основной для
+нас будет двумерная модель Изинга. Мы обсудим обоснование гипотез подобия и универсальности в рамках
+ренормгруппового подхода, покажем наличие конформной инвариантности в критической точке и
+продемонстрируем на примере применение конформной теории поля для вычисления критических индексов и
+корреляторов.
+
+\subsection{Фазовые переходы. Основные понятия}
+\label{sec:phase-transitions}
+
+Напомним некоторые основные понятия теории фазовых переходов на примере двумерной модели Изинга.
+
+Мы рассматриваем статистические системы. Все макроскопические характеристики таких систем
+вычисляются из статсуммы, которая связана с микроскопическим описанием системы. Для больцмановского
+распределения вероятность системы находиться в состоянии с номером $i$ с энергией $E_i$
+\begin{equation}
+  \label{eq:2}
+  P_i=\frac{1}{Z}e^{-\beta E_i}, \quad \beta=\frac{1}{T}
+\end{equation}
+Мы используем систему единиц, в которой постоянная Больцмана равна единице $k_B=1$, введем
+$\beta=\frac{1}{T}$. Статсумма:
+\begin{equation}
+  \label{eq:3}
+  Z=\sum_i e^{-\beta E_i}.
+\end{equation}
+Свободная энергия
+\begin{equation}
+  \label{eq:4}
+  F=-T\ln Z
+\end{equation}
+Внутренняя энергия
+\begin{equation}
+  \label{eq:5}
+  U=-\frac{1}{Z}\frac{\partial Z}{\partial \beta}=-T^2 \frac{\partial}{\partial T}\left(\frac{F}{T}\right)
+\end{equation}
+Телоемкость равна производной внутренней энергии по температуре при заданном объеме
+\begin{equation}
+  \label{eq:6}
+  C=\left(\frac{\partial U}{\partial T}\right)_V=-T\frac{\partial^2 F}{\partial T^2}
+\end{equation}
+Таким образом статсумма является производящей функцией всех термодинамических величин. Вычисление
+статсуммы в реальных системах --- это сложная задача. Макроскопическое описание имеет смысл только в
+термодинамическом пределе, когда число частиц стремится к бесконечности $N\to \infty$.
+
+Двумерная модель Изинга --- это простейшая модель магнетика. Она формулируется на решетке, которую
+мы будем, для простоты, считать прямоугольной. Вершины решетки нумеруются латинскими индексами
+$i,j$. В вершинах решетки находятся частицы со спинами $\sigma_j$ равными $\pm 1$ (вверх или вниз).
+Взаимодействуют только ближайшие соседи, константу взаимодействия обозначим через $J$. Для энергии
+системы имеем
+\begin{equation}
+  \label{eq:1}
+  E=J\sum_{\left<i,j\right>} \sigma_i\cdot \sigma_j-h\sum_i \sigma_i
+\end{equation}
+Суммирование в первом члене ведется только по парам ближайших соседей, второй член --- это
+взаимодействие со внешним полем $h$. Пусть система состоит из $N$ вершин. Она имеет $2^N$ различных
+конфигураций. Случай $J>0$ соответствует ферромагнетику, $J<0$ --- антиферромагнетику. При $h=0$
+низшее энергетическое состояние двукратно вырождено --- это состояние, в котором все спины
+направлены вверх или вниз.
+
+Существует несколько точных решений двумерной модели Изинга в отсутствие внешнего поля. Решений со
+внешним полем и в большем числе измерений пока не известно. Недавнее достижение Станислава Смирнова,
+за которое он получил в 2010 году премию Филдса, непосредственно связано с темой наших лекций. В
+своих работах Станислав Смирнов впервые строго доказал наличие конформной инвариантности в
+критической точке двумерной модели Изинга
+\cite{smirnov2007conformal,smirnov2006towards,smirnov2001critical}.
+
+Фазовые переходы в модели Изинга наблюдаются только в термодинамическом пределе, при конечных
+размерах системы никаких переходов нет.
+
+При исследовании магнетиков нас интересуют следующие термодинамически величины.
+Намагниченность, которая равна среднему значению спина по всем конфигурациям $[\sigma]$:
+\begin{equation}
+  \label{eq:7}
+  M=\left<\sigma_j\right>=\frac{1}{NZ}\sum_{[\sigma]}\left(\sum_i\sigma_i\right)e^{-\beta E[\sigma]}=-\frac{1}{N}\frac{\partial F}{\partial h}.
+\end{equation}
+Намагниченность является параметром порядка --- в упорядоченной (анти)ферромагнитной фазе она отлична от нуля. 
+
+Магнитная восприимчивость
+\begin{equation}
+  \label{eq:8}
+  \chi=\left.\frac{\partial M}{\partial h}\right|_{h=0}=\frac{1}{N}\frac{\partial}{\partial h}\left(\frac{1}{Z}\sum_{[\sigma]}\left(\sum_i \sigma_i\right)e^{-\beta E[\sigma]}\right)=\frac{1}{NT}\left(\left<\sigma_{\mathrm{tot}}^2\right>-\left<\sigma_{\mathrm{tot}}\right>^2\right)
+\end{equation}
+Здесь мы ввели обозначение $\sigma_{\mathrm{tot}}=\sum_i \sigma_i$. Видно, что магнитная
+восприимчивость пропорциональна дисперсии полного спина. Введем парную корреляционную функцию
+\begin{equation}
+  \label{eq:9}
+  \Gamma(i-j)=\left<\sigma_i\sigma_j\right>.
+\end{equation}
+Из-за вращательной и трансляционной инвариантности $\Gamma$ зависит только от расстояния между
+вершинами $\left|i-j\right|$. Связная корреляционная функция
+\begin{equation}
+  \label{eq:10}
+  \Gamma_c(i-j)=\left<\sigma_i-\sigma_j\right>_c=\left<\sigma_i\sigma_j\right>-\left<\sigma_i\right>\left<\sigma_j\right>.
+\end{equation}
+Можно показать, что
+\begin{equation}
+  \label{eq:11}
+  \chi=\beta\sum_i\Gamma(i)_c.
+\end{equation}
+То есть магнитная восприимчивость --- это мера статистической когерентности системы, она растет с
+ростом зависимости спинов между собой.
+
+\subsection{Классические статистические модели. Связь с теорией поля.}
+\label{sec:statistical-models-qft}
+
+Распределение Больцмана инвариантно относительно сдвига энергии на константу, поэтому можно
+переписать гамильтониан в более удобном для обобщения виде:
+\begin{equation}
+  \label{eq:12}
+  \begin{array}{l}
+    \sigma_i\sigma_j=2\delta_{\sigma_i\sigma_j}-1\\
+    E[\sigma]=-2J\sum_{\left<ij\right>}\delta_{\sigma_i\sigma_j}-h\sum_i \sigma_i
+  \end{array}
+\end{equation}
+Обсудим некоторые обобщения модели Изинга и проиллюстрируем сходство статистической механики с теорией поля.
+
+Если $\sigma_i$ может принимать значения не $-1,1$, а $1,2\dots,q$, то мы получаем модель Поттса с $q$ состояниями.
+Подобным образом получаются и модели Ашкина-Теллера \cite{difrancesco1997cft}.
+
+Другой класс дискретных моделей отличается более существенно. Если в модели Изинга переменные
+(спины) живут в вершинах, а энергия --- на ребрах, то в вершинных моделях все наоборот. В качестве
+переменных берутся направленные ребра (стрелки), а энергия в вершине зависит от числа входящих и
+выходящих из нее стрелок. Пусть ребра, входящие в вершину имеют значения $0,1$ в зависимости от
+направления стрелки. Тогда энергия вершины обозначается через $R_{\alpha\mu}^{\beta\nu},\;
+\alpha,\beta,\mu,\nu=0,1$. Бывает 16 таких членов. В зависимости от того, сколько из них не равны
+нулю, выделяют 6-вершинную и 8-вершинную модели. 8-вершинная модель --- ненулевой вклад только когда
+входит четное число стрелок (0 входит, 4 выходит; 4 входит, 0 выходит; 6 способов выбрать две
+входящие стрелки -- итого 8 отличных от нуля членов $R_{\alpha\mu}^{\beta\nu}$).
+
+Еще один класс статистических моделей --- это модели с непрерывными степенями свободы. Например,
+заменим спины $\sigma_i$ в \eqref{eq:1} на единичные вектора в $m$-мерном пространстве $\vec n_i$.
+\begin{equation}
+  \label{eq:14}
+  \left|\vec n\right|^2=1
+\end{equation}
+В результате получим гамильтониан
+\begin{equation}
+  \label{eq:13}
+  E[\vec n]=J\sum_{\left<ij\right>}\vec n_i\cdot \vec n_j-\sum_i \vec h\cdot \vec n_i
+\end{equation}
+Это гамильтониан классической $O(m)$-модели Гейзенберга. 
+
+В критической точке наблюдается корреляция спинов на больших расстояниях, кроме того, фазовый переход
+в дискретных моделях наблюдается только в пределе числа вершин стремящегося к бесконечности ($N\to
+\infty$). Такой предел называется термодинамическим. Поэтому при описании фазового перехода имеет
+смысл перейти от модели с дискретным пространством к непрерывному $d$-мерному пространству. В
+дальнейшем $d$ будет равно двум, но сейчас мы пишем в самом общем виде, чтобы указать аналогию с
+теорией поля. При переходе к непрерывному пространству гамильтониан \eqref{eq:13} принимает вид
+\begin{equation}
+  \label{eq:15}
+  E[\vec n]=\int d^d x \left(J\partial_kn_i\partial_k  n_i-h_i\cdot n_i\right)
+\end{equation}
+Здесь подразумевается суммирование по повторяющимся индексам. (Легко понять обратный переход, если
+заменить производные разностями по ближайшим соседям, а потом отбросить в энергии постоянный член
+$J\sum_i \left|\vec n_i\right|^2=JN$).
+
+Условие $\vec n^2(x)=1$ сложно использовать, поэтому мы заменим его на другое аналогичное. Первый
+вариант такой замены --- это наложить требование $\frac{1}{V}\int d^dx\; \vec n^2=1$. В результате
+получается так называемая сферическая модель. Другая возможность --- добавить в гамильтониан
+\eqref{eq:15} потенциал $V(\left|\vec n\right|)$ с минимумом в $\left|\vec n\right|=1$ и устремить
+константу связи к бесконечности. Простейший вид такого потенциала --- $V(\left|\vec n\right|)=a\vec
+n^2+b\left(\vec n^2\right)^2$. Добавим его в гамильтониан и изменим нормировку $\vec n$ так, чтобы
+константа $J$ ушла. Получим
+\begin{equation}
+  \label{eq:16}
+  E[\vec n]=\int d^d x \left(\frac{1}{2}\partial_k n_i\cdot \partial_k n_i-\frac{1}{2}\mu^2 \vec n^2+\frac{1}{4}u\left(\vec n^2\right)^2\right)
+\end{equation}
+Если у $\vec n$ всего одна компонента $\varphi$, то мы получаем скалярную модели $\varphi^4$. Если
+$u=0$, то такая модель называется Гауссовой и допускает точное решение. 
+\begin{equation}
+  \label{eq:17}
+  E[\varphi]=\int d^d x (\frac{1}{2}(\nabla \varphi)^2+\frac{1}{2}\mu^2 \varphi^2)
+\end{equation}
+Статсумма --- это сумма $e^{-\beta E[\varphi]}$ по всем конфигурациям поля $\varphi$, то есть она
+записывается при помощи функционального интеграла: 
+\begin{equation}
+  \label{eq:18}
+  Z=\int \mathcal{D}\varphi e^{-\beta E[\varphi]}
+\end{equation}
+В гауссовой модели функциональный интеграл имеет гауссовский вид, поэтому он хорошо определен и
+легко вычисляется. Значит можно вычислить статсумму и все корреляционные функции. Величины в модели
+$\varphi^4$ можно получать по теории возмущений вокруг решения гауссовой модели. Это и есть
+вычисление функционального интеграла как суммы по фейнмановским диаграммам.  
+
+\subsection*{Квантовые статистические модели}
+\label{sec:quantum-statistical-models}
+
+Микросостояния квантовых статистических систем описываются при помощи матрицы плотности
+\begin{equation}
+  \label{eq:19}
+  \rho=e^{-\beta H}
+\end{equation}
+Статсумма дается суммой по собственным состояниям гамильтониана или следом матрицы плотности:
+\begin{equation}
+  \label{eq:20}
+  Z=\sum_n e^{-\beta E_n}=\mathrm{Tr} \rho
+\end{equation}
+Значение физической величины определим как среднее по состояниям:
+\begin{equation}
+  \label{eq:21}
+  \left< A\right>=\sum_n \left< n\right| e^{-\beta H}A\left| n \right>=\mathrm{Tr}(\rho A)
+\end{equation}
+$e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$, то есть его тоже можно записать через
+функциональный интеграл. Покажем, как это делается на примере системы с одной степенью свободы. В
+этом случае ядро оператора плотности имеет вид 
+\begin{equation}
+  \label{eq:22}
+  \rho(x_f,x_i)=\left<x_f\right|e^{-\beta H} \left|x_i\right>
+\end{equation}
+Вспомним, что в квантовой механике оператор эволюции имеет вид $U(t)=e^{-i H t}$, а его ядро ---
+амплитуда перехода из состояния $\left|x_i\right>$ в $\left<x_f\right|$ дается интегралом по
+траекториям 
+\begin{equation}
+  \label{eq:23}
+  \left<x_f\right| U(t)\left| x_i\right>=\int_{(x_i,0)}^{(x_f,t)} [dx] e^{i S[x]}
+\end{equation}
+Заменой $t\to i\tau, \; \tau\in [0,\beta]$ (виковским поворотом) переходим к евклидову действию
+$S[x(t)]\to iS_E[x(\tau)]$. Для ядра оператора плотности получаем 
+\begin{equation}
+  \label{eq:24}
+  \rho(x_f,x_i)=\int_{(x_i,0)}^{(x_f,\beta)} [dx] e^{-S_E[x]}
+\end{equation}
+Статсумма
+\begin{equation}
+  \label{eq:25}
+  Z=\int dx \rho(x,x)=\int [dx] e^{-S_E[x]}
+\end{equation}
+Среднее значение $A$
+\begin{equation}
+  \label{eq:26}
+  \begin{array}{l}
+    \left<A\right>=\frac{1}{Z}\int dx \left<x\right|\rho A\left|x\right>=\frac{1}{Z}\int dx\; dy \left<x\right|\rho\left|y\right>\left<y\right|A\left|x\right>=    \\
+    =\frac{1}{Z}\int dx\; dy \int_{(x,0)}^{(y,\beta)} [dx] \left<y\right| A\left| x\right> e^{-S_E[x]}=\frac{1}{Z}\int dx\; dy\int_{(x,0)}^{(y,\beta)} [dx] A(x) \delta(x-y) e^{-S_E[x]}=\\
+    =\frac{1}{Z}\int [dx] A(x(0))e^{-S_E[x]}
+  \end{array}
+\end{equation}
+Здесь мы предположили, что $A$ зависит только от $x$, то есть $\left<y\right|
+A\left|x\right>=A(x)\delta(x-y)$. Мы видим, что значение $A$ дается функциональным интегралом, но
+$A$ вычисляется в точке $\tau=0$.  
+
+Обобщение на систему с континуумом степеней свободы и многочастичные функции естественно. Статсумма
+квантовой системы получается из обычного интеграла по траекториям путем викова поворота и
+ограничения евклидова времени на конечный промежуток $[0,\beta]$. При нулевой температуре ($\beta\to
+\infty$) мы получаем обычный производящий функционал в евклидовом времени, то есть теорию поля. При
+конечных температурах статсумма квантовой $d$-мерной системы соответствует статсумме $d+1$-мерной
+классической системы на полосе шириной $\beta$. 
+
+\subsection*{Классическая и квантовая теория поля}
+\label{sec:qft}
+Напоминание про теорию поля.
+
+Лагранжева формулировка классической теории поля.
+
+ Действие
+\begin{equation}
+  S=\int d^dx \mathcal{L}
+\end{equation}
+зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$.
+Например:
+\begin{equation}
+  S[\varphi]=\int d^d x\left( -\frac{(\partial \varphi)^2}{2}-\frac{\mu \varphi^2}{2}-\frac{u\varphi^4}{24}+h\varphi\right),
+\end{equation}
+
+Классическое уравнение движения получается из принципа экстремальности действия (равенства нулю
+вариации действия). 
+
+\subsubsection*{Симметрии}
+\label{sec:symmetry}
+
+При преобразованиях координат
+\begin{equation}
+  \label{eq:303}
+  x\to x'
+\end{equation}
+поля тоже преобразуются, то есть у них не только меняется аргумент, но и само поле. Тип поля
+(скалярное, векторное, спинорное) -- это вид такого преобразования. 
+\begin{equation}
+  \label{eq:304}
+  \varphi(x)\to \varphi'(x')=F(\varphi(x))
+\end{equation}
+
+При этом действие тоже преобразуется:
+\begin{equation}
+  \label{eq:305}
+  S'=\int d^{d}x' \mathcal{L}(\varphi'(x'),\partial_{\mu} \varphi'(x'))=\int d^{d}x \left|\frac{\partial x'}{\partial x}\right| \mathcal{L}(F(\varphi(x)),\frac{\partial x^{\nu}}{\partial x'^{\mu}} \partial_{\nu}F(\varphi(x)))
+\end{equation}
+{\bf Примеры.}
+
+Трансляции:
+
+\begin{equation*}
+  \label{eq:306}
+  x'^{\mu}=x^{\mu}+a^{\mu},\quad \varphi'(x+a)=\varphi(x),\quad S'=S
+\end{equation*}
+
+Поворот (преобразования Лоренца):
+\begin{equation*}
+  x'^{\mu}=m^{\mu}_{\nu} x^{\nu}, \quad \varphi'(m x)=\Lambda \varphi(x),\quad \Lambda \mbox{--представление группы} 
+\end{equation*}
+
+Теперь рассмотрим инфинитезимальные преобразования.
+Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть
+симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным
+преобразованиям. 
+
+\begin{equation}
+  \label{eq:165}
+  x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
+\end{equation}
+($\omega_{a}$ -- бесконечно малые параметры).
+
+Наше поле преобразуется так:
+\begin{equation}
+  \label{eq:166}
+  \varphi'(x')=\varphi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
+\end{equation}
+Генератор преобразования определяется следующим равенством:
+\begin{equation}
+  \label{eq:167}
+  \delta_{\omega} \varphi(x)=\varphi'(x)-\varphi(x)\equiv -i\omega_a G_a \varphi(x)
+\end{equation}
+(здесь нет суммирования по $a$). Действие генератора на поле:
+\begin{equation}
+  \label{eq:168}
+  iG_a \varphi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\varphi-\frac{\delta F}{\delta \omega_a}
+\end{equation}
+
+Примеры генераторов:
+Если мы предположим, что поле $\varphi$ -- такое поле, которое не меняется при конформных
+преобразованиях, то есть $F(\varphi)=\varphi$, то мы получим следующий вид для генераторов: 
+\begin{eqnarray}
+  \label{eq:169}
+  \mbox{трансляция}  & x'^{\mu}=x^{\mu}+\omega^{\mu}& \quad P_{\mu}=-i\partial_{\mu}\\
+  \mbox{поворот} & x'^{\mu}=x^{\mu}+\omega^{\mu}_{\nu}x^{\nu} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})
+\end{eqnarray}
+Если же при поворотах поле преобразуется $\varphi'(x')=\Lambda\varphi(x)$, то при инфинитезимальных
+преобразованиях $\varphi'(x')=\varphi(x)-\frac{i}{2}\omega_{\mu\nu}S^{\mu\nu}$ и генератор принимает
+вид 
+\begin{equation*}
+  L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})+S_{\mu\nu}
+\end{equation*}
+
+\subsubsection*{Теорема Нётер}
+\label{sec:noether}
+
+Теперь рассмотрим произвольные инфинитезимальные преобразования, при которых действие не меняется.
+Якобиан такого преобразования
+\begin{eqnarray*}
+  \frac{\partial x'^{\nu}}{\partial x^{\mu}} = \delta^{\mu}_{\nu}+\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)\\
+  \frac{\partial x^{\nu}}{\partial x'^{\mu}} = \delta^{\mu}_{\nu}-\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)
+\end{eqnarray*}
+\begin{equation*}
+  \left|\frac{\partial x'^{\nu}}{\partial x^{\mu}}\right| = 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)
+\end{equation*}
+Вариация действия
+\begin{multline*}
+  0=\delta_{\omega} S=\int \mathcal{L}(\varphi',\partial_{\mu}\varphi',x'^{\mu})dx'-\int \mathcal{L}(\varphi,\partial_{\mu}\varphi,x)dx=\\
+  \int d^{d}x\left[ \left( 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\right) \mathcal{L} \left(\varphi+\delta_{\omega}\varphi,
+    \partial_{\mu}\varphi+\partial_{\mu}\delta_{\omega}\varphi\right)\right]-\mathcal{L}(\varphi,\partial_{\mu}\varphi)=
+\end{multline*}
+\begin{multline*}
+      \int d^{d}x\left( \frac{\partial \mathcal{L}}{\partial \varphi} \delta_{\omega}\varphi +\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi +\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\mathcal{L}\right)
+\end{multline*}
+Первые два члена переписываются с использованием уравнений Эйлера-Лагранжа и интегрирования по частям:
+\begin{equation*}
+  \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\right)\delta_{\omega}\varphi+\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi=
+    \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi\right)
+\end{equation*}
+В итоге имеем:
+\begin{equation*}
+  0=\int d^{d}x \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi +\delta^{\mu}_{\nu}\mathcal{L} \frac{\delta x^{\nu}}{\delta \omega_{a}}\right)
+\end{equation*}
+Если подставить явный вид вариации поля и ввести обозначение
+\begin{equation*}
+  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\partial_{\nu}\varphi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}}-\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\frac{\delta F}{\delta w_{a}},
+\end{equation*}
+то для вариации действия выходит:
+\begin{equation*}
+  \delta_{\omega}S=-\int d^{d}x j^{\mu}_{a}\partial_{\mu}\omega_{a}
+\end{equation*}
+$j^{\mu}_{a}$ называется нётеровским током, соответствующим данной симметрии. 
+Если $\delta_{\omega} S=0$, то
+\begin{equation*}
+  \partial_{\mu}j^{\mu}_{a}=0
+\end{equation*}
+Сохраняющийся заряд:
+\begin{equation*}
+  Q_{a}=\int d^{d-1}x\; j^{0}_{a}
+\end{equation*}
+
+ Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация
+ $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$.  При инфинитезимальных преобразованиях
+ $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током: 
+\begin{equation}
+  \label{eq:74}
+  \delta\mathcal{L}=\partial_{\mu}J^{\mu}dl
+\end{equation}
+\begin{equation}
+  \label{eq:75}
+  J^{\mu}=x_{\nu}T^{\mu\nu}
+\end{equation}
+Здесь $T^{\mu\nu}$ - тензор энергии-импульса.  Через $\Theta$ мы обозначим след тензора
+энергии-импульса $\Theta=\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}$. Он задает вариацию действия 
+\begin{equation}
+  \label{eq:87}
+  \delta S=dl \int d^d x \Theta(x)
+\end{equation}
+Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В
+масштабно-инвариантной теории тензор энергии-импульса бесследовый. 
+
+\subsection{Критические явления}
+\label{sec:critical-phenomena}
+
+Фазовые переходы характеризуются скачком в макроскопических характеристиках системы. При переходах
+первого рода скачком меняется внутренняя энергия (например, при переходе жидкость-газ). При
+переходах второго рода наблюдается скачок производных макроскопических термодинамических величин
+(теплоемкость, магнитная восприимчивость).  Эта классификация несколько условна (см.
+\cite{ma2000modern,ma1980}), бывают и другие виды фазовых переходов, например, переход
+Костерлица-Таулесса \cite{0022-3719-6-7-010}.  
+
+Строго говоря, фазовые переходы бывают только в термодинамическом пределе. Это легко понять для
+систем типа модели Изинга в нулевом поле, где энергия любой конфигурации кратна энергетическому
+масштабу $\epsilon=-J$, а статсумма представляет собой полином от $z=e^{-\beta\epsilon}$. В модели
+Изинга наибольшая энергия $E=2N\epsilon$, $Z$- полином степени $2N$ от $z$ с единичными
+коэффициентами. Корни этого полинома лежат вне положительной вещественной оси и комплексно
+сопряжены. Сингулярности свободной энергии или ее производных могут быть только в корнях, которые
+находятся вне физической области при $N<\infty$. При $N\to \infty$ число корней становится
+бесконечным, они лежат на дугах, которые могут касаться положительной вещественной оси. В этих
+точках поведение термодинамических величин и становится сингулярным. 
+
+Нас будут интересовать переходы второго рода. Именно в них имеет место конформная инвариантность. 
+Перечислим основные результаты для модели Изинга в двух измерениях.
+
+Здесь есть один фазовый переход при конечной температуре. 
+Критическая температура
+\begin{equation}
+  \label{eq:27}
+  T_c:\quad \sh \frac{2J}{T_c}=1
+\end{equation}
+При $T>T_c$ спонтанная намагниченность \eqref{eq:7} исчезает. При $T<T_c$ она не равна нулю и
+стремится к $1$ при $T\to 0$ и к $0$ при $T\to T_c$. Это упорядоченная ферромагнитная фаза. Около
+критической точки спонтанная намагниченность ведет себя как 
+\begin{equation}
+  \label{eq:28}
+  M\sim \left|T_c-T\right|^{\frac{1}{8}}
+\end{equation}
+Направление намагниченности определяется тем, куда было направлено внешнее поле до того, как его устремили к $0$. 
+
+При подходе к критической точке магнитная восприимчивость \eqref{eq:8} расходится
+\begin{equation}
+  \label{eq:29}
+  \chi=\frac{\partial M}{\partial h}\sim \left|T-T_c \right|^{-\frac{7}{4}}.
+\end{equation}
+Вдали от критической точки корреляторы $\Gamma_c(i)$ убывают экспоненциально с расстоянием.
+Характерная длина убывания $\xi$ называется корреляционной длиной 
+\begin{equation}
+  \label{eq:30}
+  \left<\sigma_i\sigma_j\right>_c\sim e^{-\frac{\left|i-j\right|}{\xi(T)}}\quad \left|i-j\right|>>1.
+\end{equation}
+При $T\to T_c$ корреляционная длина расходится
+\begin{equation}
+  \label{eq:31}
+  \xi(T)\sim \frac{1}{\left|T-T_c\right|}.
+\end{equation}
+Такое поведение характеризует переходы второго рода и наблюдается в критических точках фазовой диаграммы.
+
+Около критической точки система состоит из доменов разной намагниченности. Существуют домены
+всевозможных размеров от шага решетки до корреляционной длины $\xi$. Свободная энергия $F$ получает
+вклады от доменных стенок. Сингулярное поведение возникает из-за вкладов доменов большого размера,
+оно определяется флуктуациями и не может быть правильно учтено в теории среднего поля. Вблизи
+критической температуры $\xi$ больше физических размеров системы. Свободная энергия перестает
+зависеть от $\xi$.  
+
+Парная корреляционная функция ведет себя как
+\begin{equation}
+  \label{eq:32}
+  \Gamma(\vec n)\sim \frac{1}{\left|\vec n\right|^{d-2+\eta}}
+\end{equation}
+Поведение термодинамических величин определяется критическими индексами. Перечислим их вместе со
+значениями в двумерной модели Изинга. Эти значения получены из точных решений модели. 
+\begin{table}[h!tb]
+\label{tab:diagrams}
+\noindent  \centering{
+\begin{tabular}{|l|l|l|}
+  \hline
+  Критический  & Термодинамическая & Значение индекса в \\
+  индекс &  величина  & двумерной модели Изинга\\
+  \hline
+  $\alpha$ & $C\sim \frac{1}{\left|T-T_c\right|^{\alpha}}$ & $0$\\
+  $\beta$ & $M\sim \left|T-T_c\right|^{\beta}$ & $\frac{1}{8}$\\
+  $\gamma$ & $\chi\sim \frac{1}{\left|T-T_c\right|^{\gamma}}$ & $\frac{7}{4}$\\
+  $\delta$ & $M\sim h^{\frac{1}{\delta}}$ & $15$ \\
+  $\nu$ & $\xi\sim \frac{1}{\left|T-T_c\right|^{\nu}}$ & $1$\\
+  $\eta$ & $\Gamma(\vec n)\sim \left|\vec n\right|^{2-d-\eta}$ & $\frac{1}{4}$\\
+  \hline
+\end{tabular}
+\caption{Критические индексы и их значения в модели Изинга в 2 измерениях}
+}
+\end{table}
+
+Заметим, что систему можно описывать классической статистической механикой (обычной квантовой
+теорией поля с неограниченным временем) когда корреляционная длина больше характерной длины волны де
+Бройля. Если характерная скорость $v$ (скорость света, скорость Ферми или скорость какого-либо
+возбуждения), то $\lambda_T=\frac{v\hbar}{k_B T}\sim \beta$. То есть классическая статистика
+применима при больших температурах или вблизи критической точки. %, если $T_c\neq 0$. 
+
+\subsection{Лекция 1. Что такое интегрируемая система?}
+
+Гамильтонова система в $\R^{2n}(p,q)$.\\
+$H = H(p,q)$ - гамильтониан.
+\bear{canon_var}
+\dot{p}_{i} = - \frac{\partial H}{\partial q_{i}}, \quad \dot{q}_{i} = \frac{\partial H}{\partial p_{i}}, \quad i=1,\ldots,n.
+\ear
+\bear{F}
+\dot{F} = \sum^{n}_{i=1} \frac{\partial F}{\partial p_{i}}\dot{p}_{i} + \sum^{n}_{i=1} \frac{\partial F}{\partial q_{i}}\dot{q}_{i} = \sum^{n}_{i=1}\Bigl(\frac{\partial F}{\partial p_{i}}\left( - \frac{H}{\partial q_{i}}\right) + \frac{\partial{F}}{\partial q_{i}}\frac{\partial H}{\partial p_{i}} \Bigr)
+\ear
+Скобка Пуассона определена как:
+\bear{Pois_br}
+\{H,F\} = -\{F,H\}.
+\ear
+Для скобки выполняется тождество Якоби
+\bear{Yakobi_eq}
+\{\{F,H\},G\} + \{\{H,G\},F\} + \{\{G,F\},H\} =0.
+\ear
+$F$ - интеграл движения системы (\ref{canon_var}), если $\{F,H\} \equiv 0$.\\
+$\dot{F} \equiv 0$ - закон сохранения.\\
+
+\textit{Пример.} $\{H,H\}$ = -\{H,H\} = 0 - энергия.\\
+
+Тождество Якоби $\rightarrow$ теорема Пуассона: скобка двух интегралов - интеграл. Интегралы образуют алгебру Ли относительно скобки.\\
+
+Принцип Нетер : интеграл $\leftrightarrow$  симметрия системы.\\
+поток $p^{'}_{i} = -\displaystyle\frac{\partial F}{\partial q_{i}}$, $q^{'}_{i} = \displaystyle\frac{\partial F}{\partial p_{i}}$, $q^{'}_{i} = \displaystyle\frac{\partial q_{i}}{d \tau}$ коммутирует с (\ref{canon_var}).\\
+
+
+\textit{Определение:}\\
+Гамильтонова система называется интегрируемой по Лиувиллю, если у нее есть $n$ $\left( = \frac 12 \dim \R^{2n} \right)$ независимых интегралов в инволюции (т.е. $\{F_{i}, F_{j}\} =0$, для $\forall i,j$).\\
+
+
+\textit{Пример.} Задача Кеплера
+\[H = \frac12 |p|^{2} - \frac{k}{|q|},\quad p,q \in \R^{3}.\]
+
+Цепочка Тоды (М. Тода $1967$) -  $n$ частиц на прямой
+\bear{Toda_ham}
+H = \frac12 \sum^{n}_{i=1}p^{2}_{i} + \sum^{n-1}_{i=1}e^{q_{i} - q_{i+1}},
+\ear
+где $U(q) = \displaystyle{\sum^{n-1}_{i=1}e^{q_{i} - q_{i+1}}}$ - потенциальная энергия.\\
+Конечная цепочка Тоды: $q_{i} = -\infty$, $q_{n+1} = +\infty$.\\
+Случай $q_{n+1} = q_{1}$ мы не рассматриваем.\\
+
+
+Введем новые переменные:
+\bear{Flaschka_var}
+a_{j} = -\frac12 p_{j},\quad b_{k} = \frac12 e^{\frac 12 (q_{k} - q_{k+1})}, \quad k = 1,\ldots,n-1,\quad j = 1,\ldots n.
+\ear \textbf{Flasсhka, 1974}.\\
+Тогда уравнения движения
+\bear{eq_motion}
+\dot{q}_{j} =  p_{j}, \quad \dot{p}_{j} = -\frac{\partial U}{\partial q_{j}} = e^{q_{j-1} - q_{j}} - e^{q_{j} - q_{j+1}}
+\ear
+перепишутся как
+\bear{eq_motion_new}
+\dot{a}_{j} = 2(b^{2}_{j} - b^{2}_{j-1}), \quad \dot{b}_{k} = b_{k}(a_{k+1} - a_{k}).
+\ear
+Представление Лакса для цепочки Тоды (Flashka, Мананов 1974):\\
+(\ref{eq_motion_new}) $\Longleftrightarrow$ $\dot{L} = [B, L]$, где
+\bear{matrices}
+B =
+\left( \begin{array}{cccc}
+a_{1}& b_{1} &\ldots & 0\\
+b_{1}& a_{2} &\ddots & \vdots\\
+\vdots & \ddots &\ddots & b_{n-1}\\
+0& \ldots & b_{n-1}  & a_{n}
+\end{array}
+\right), \quad
+L =
+\left( \begin{array}{cccc}
+0 & b_{1} &\ldots & 0\\
+- b_{1} & 0 &\ddots & \vdots\\
+\vdots & \ddots &\ddots & b_{n-1}\\
+0 & \ldots & -b_{n-1}  & 0
+\end{array}
+\right),
+\ear
+Если $b_{i}>0 $, то матрица $B$ - матрица Якоби.\\
+Упражнение: проверить.
+\[[B,L] = BL - LB.\]
+
+\textit{Предложение.}\\
+
+Поток $\dot{L} = [B,L]$ сохраняет спектр  (набор собственных чисел) матрицы $L$
+и, наоборот, изоспектральная деформация $L \rightarrow C(t)LC^{-1}(t)$ описывается $\dot{L} = [B,L]$ для подходящей $B = B(t)$.\\
+
+\textit{Доказательство:}\\
+$C(t)$ - решение уравнения $\dot{C}(t) =  B(t)C(t)$  с начальным условием $C(0) = I$.\\
+$X = C^{-1}(t)L(t)C(t)$,\\
+$\dot{X} = \dot{(C^{-1})}LC + C^{-1}\dot{L}C + C^{-1}L\dot{C} = $
+
+\[\circledast \dot{\left(C^{-1}C\right)} = \dot{C^{-1}}C + C^{-1}\dot{C} = 0 \quad  \Rightarrow \dot{\left(C^{-1}\right)}  = -C^{-1}\dot{C}C^{-1} \circledast\]
+
+$= -C^{-1}\underbrace{\dot{C}C^{-1}}_{B}LC + C^{-1}\dot{L}C + C^{-1}L\underbrace{\dot{C}C^{-1}}_{B}C = C^{-1}\left(\dot{L} + LB -BL\right)C = $\\
+$C^{-1}\underbrace{\left(\dot{L} - [B,L]\right)}_{0}C = 0$ $\Rightarrow$ $\dot{x} = 0$ $\rightarrow$ $L = C(t)L_{0}C^{-1}(t)$, где $L_{0} = const$.\\
+\[\det{(L - \lambda E)} = \det{\left(CL_{0}C^{-1} - \lambda C C^{-1}\right)} = \det{C(L_{0} - \lambda E)C^{-1}} = \det{L_{0} - \lambda E} \]
+- не зависит от  $t$.\\
+
+
+\textit{Следствие:}\\
+
+
+$F_{k} = \frac{1}{k} tr{L}^{k}$, при $k=1,2, \ldots, n$, являются интегралами движения цепочки Тоды,\\
+$F_{k} = \displaystyle{frac{1}{k}\sum^{n}_{i=1}\lambda^{k}_{i}}$ - сохраняется.\\
+$F_{1} = a_{1} + \ldots + a_{n} = -\displaystyle\frac12 (p_{1} + \ldots + p_{n})$, где $(p_{1} + \ldots + p_{n})$ - полный импульс.\\
+$F_{2} = \frac12 tr L^{2} = \displaystyle{\frac12 \left(\sum^{n}_{i=1} a^{2}_{i} + \sum^{n-1}_{j=1}b^{k}_{j}\right)} = \displaystyle{\frac12 \left( \frac14 \sum^{n}_{i=1}p^{2}_{i} + 2 \sum^{n-1}_{j=1}\frac14 e^{q_{j} - q_{j+1}}\right)} = \frac14 M$.\\
+$F_{3} = \frac13 L^{3}$,\\
+$F_{4} = \ldots $  - не имеет естественной механической интерпретации.\\
+
+\textit{Теорема.}
+\bear{inv_int}
+\{F_{i},F_{j}\}\equiv 0,
+\ear
+то есть цепочка Тоды интегрируема по Лиувиллю.\\
+
+\textit{Лемма 1.}\\
+
+Матрицы Якоби имеют простой (невырожденный) спектр (собственные значения различны)
+\[\left(L - \lambda E\right)x = 0 \quad \exists !x \quad \Leftrightarrow \qquad\Bigl\{
+                                                                    \begin{array}{ll}
+                                                                      (a_{1} -\lambda)x_{1} + b_{1}x_{1} = 0 \textrm{,} & \Rightarrow x_{2}\textrm{;} \\
+                                                                      b_{1}x_{1} + (a_{2} - \lambda)x_{2} + b_{2}x_{3} = 0 \textrm{,} & \Rightarrow x_{3}\textrm{.}
+                                                                    \end{array} 
+\]
+$x_{2}\ldots x_{n}$ задано однозначно при данном $x_{1}$.\\
+Нормируем собственный вектор $(L - \lambda E)x = 0$, $(x,x) = 1$ и положим $x_{0}$ и $x_{n+1} = 0$.\\
+
+\textit{Лемма 2.}
+
+\bear{lemma2}
+\frac{\partial \lambda}{\partial a_{k}} = x^{2}_{k}, \qquad \frac{\partial \lambda}{\partial b_{j}} = 2x_{j}x_{j+1}.
+\ear
+
+
+\textit{Доказательство:}\\
+
+
+Проварьируем $(L - \lambda E)x = 0$:\\
+\[(\delta L - \delta \lambda E)x + (L - \lambda E)\delta x = 0.\]
+Умножим скалярно на $x$ :
+\[\left((\delta L - \delta \lambda E)x,x\right) + \left((L-\lambda E)\delta x,x \right) = 0\]
+\[\left((\delta L - \delta \lambda E)x,x\right) + \left(\delta x, (L-\lambda E)x \right) = 0\]
+$\left(\delta L x,x\right) = \delta \lambda \underbrace{(x,x)}_{1} = \delta \lambda$ $\Rightarrow$ $\delta\lambda = (\delta L x,x)$ $\Rightarrow$ (\ref{lemma2}).\\
+
+Скобка Пуассона в переменных Flaschka.
+\[\{F,G\} = \frac 14 \sum \left(b_{j}\frac{\partial F}{\partial b_{j}} - b_{j-1}\frac{\partial F}{\partial b_{j-1}}\right)\frac{\partial G}{\partial a_{j}} - \ldots (F\leftrightarrow G)\]
+$\lambda$, $\mu$ - два собственных числа $L$, а $x$, $y$ - соответствующие  нормированные собственные вектора.
+\[\{\lambda, \mu\} = \frac 12  \sum^{n}_{j=1}\left(b_{j}x_{j}x_{j+1} - b_{j-1}x_{j-1}x_{j}\right)y^{2}_{j} - (x\leftrightarrow y) =\]
+\[\frac12 \sum^{n}_{j=1} \left(b_{j}(x_{j+1}y_{j} - y_{j+1}x_{j}) + b_{j-1}(x_{j}y_{j-1} - x_{j-1}y_{j}) \right) x_{j}y_{j},\]
+где $W(x,y) = b_{j}(x_{j+1}y_{j} - y_{j+1}x_{j}) $ - дискретный Вронскиан.
+Получим систему разностных дифференциальных уравнений:
+\bear{sys_eqs}\Bigl\{
+    \begin{array}{ll}
+      b_{j-1}x_{j-1} + (a_{j} - \lambda)x_{j} + b_{j}x_{j+1} = 0 \textrm{,} & \Leftarrow (L-\lambda E)x =0\textrm{;} \\
+      b_{j-1}y_{j-1} + (a_{j} - \mu)y_{j} + b_{j}y_{j+1} = 0 \textrm{,} & \Leftarrow (L-\mu E)x =0 \textrm{.}
+    \end{array}
+\ear
+Домножим первое уравнение системы (\ref{sys_eqs}) на $y_{i}$, а второе - на $x_{j}$ и вычтем второе из первого, получим:\\
+$W_{j} - W_{j-1} = (\lambda - \mu)x_{j}y_{j}$, $\lambda = \mu$ $\Rightarrow$ $W_{j} = W_{j-1} = const$.\\
+\[\Rightarrow \{\lambda, \mu\} = \frac 12 \sum^{n}_{j=1} \left(W_{j} + W_{j-1}\right)\left(W_{j}  - W_{j-1}\right) = \frac{1}{2(\lambda - \mu)}\sum^{n}_{j=1}\left(W^{2}_{j} - W^{2}_{j-1}\right) =0.\]
+$\Rightarrow$ $\{F_{k}, F_{l}\} \equiv 0$ $\Rightarrow$  интегрируемость цепочки Тоды.\\
+
+\subsection{Лекция 2.}
+\bear{LP}
+\dot{L} = [B,L]
+\ear
+
+\bear{matrice_L}
+B =
+\left( \begin{array}{cccc}
+a_{1}& b_{1} &\ldots & 0\\
+b_{1}& a_{2} &\ddots & \vdots\\
+\vdots & \ddots &\ddots & b_{n-1}\\
+0& \ldots & b_{n-1}  & a_{n}
+\end{array}
+\right)  - \textrm{матрица Якоби при} b_{i}>0.
+\ear
+
+\textit{Метод обратной задачи (рассеяния).}\\
+
+Идея: Начальные данные $p(0)$ $q(0)$ $\longrightarrow$ $p(t),q(t)$\\
+спектральная задача для $L$ $\longrightarrow$ $\longleftarrow$ обратная спектральная задача\\
+спектральные данные при $t = 0$ $\longrightarrow$ спектральные данные в момент $t$\\
+простая  эволюция спектральных данных.\\
+
+Спектральные данные матриц Якоби.\\
+
+$\lambda_{1},\ldots ,\lambda_{n}$ - спектр $L$, $Lx=\lambda x$, собственные значения нормированных $x$.\\
+Дополнительные спектральные данные - первые компоненты собственных векторов $\xi_{1},\ldots,\xi_{n}>0$.\\
+Матрица $C = \left(
+               \begin{array}{ccc}
+                 \xi_{1} & \ldots & \xi_{n} \\
+                 \ldots & \ldots & \ldots \\
+                 \ldots & \ldots & \ldots \\
+               \end{array}
+             \right)$ - ортогональная (и самосопряженная ?).\\
+
+\[\Rightarrow\quad \xi^{2}_{1} + \ldots + \xi^{2}_{n} = 1,\quad \xi_{i} >0.\]
+
+\bear{Spectr}
+Spec = \{(\lambda,\xi): \quad \lambda_{1}<\lambda_{2}<\ldots<\lambda_{n} \quad \xi^{2}_{1} + \ldots + \xi^{2}_{n} = 1, \xi_{i} >0\}
+\ear
+
+\textit{Теорема.}\\
+
+
+$S : L(a,b) \rightarrow (\lambda, \xi)$ задает диффеоморфизм  (взаимно однозначное гладкое отображение) между матрицей Якоби и множеством Spec.\\
+
+Обратная задача заключается в восстановлении $L(a,b)$ по $(\lambda, \xi)$.\\
+Есть два решения. \textbf{Мозер 1974}.\\
+
+Функцию Вейля и цепные дроби. Идея восходит к Стильтьетсу.\\
+В резольвенту $R(z) = (zE-L)^{-1}$ и её первый диагональный элемент \\$W(z) = \left(\left(z E- L \right)^{-1} e_{1}, e_{1}\right)$ -  функция Вейля, где $e_{1} = \left(
+                                                                                                                                                     \begin{array}{c}
+                                                                                                                                                       1 \\
+                                                                                                                                                       0 \\
+                                                                                                                                                       \vdots \\
+                                                                                                                                                       0 \\
+                                                                                                                                                     \end{array}
+                                                                                                                                                   \right)$.\\
+\textit{Лемма 1.}
+\bear{Lemma_W}
+W(z) = \sum^{n}_{i=1}\frac {\xi^{2}_{i}}{z - \lambda_{i}}
+\ear
+\textit{Доказательство.}\\
+$LC = C\Lambda$, $\Lambda = \left(
+                                   \begin{array}{ccc}
+                                     \lambda_{1} & \ldots & 0 \\
+                                     \vdots & \vdots & \vdots \\
+                                     0 & \ldots & \lambda_{n} \\
+                                   \end{array}
+                                 \right)$, $C = \left(
+                                             \begin{array}{ccc}
+                                               \xi_{1} & \ldots & \xi_{1} \\
+                                               \vdots & \vdots & \vdots \\
+                                               \ldots & \ldots & \ldots \\
+                                             \end{array}
+                                           \right)$, $C^{T} = C^{-1} = \left(
+                                             \begin{array}{ccc}
+                                               \xi_{1} & \ldots & \ldots \\
+                                               \vdots & \vdots & \vdots \\
+                                               \xi_{n} & \ldots & \ldots \\
+                                             \end{array}
+                                           \right)$,  $L = C\Lambda C^{-1}$.\\
+                                           
+\[W(z) = \left( \left(zCC^{-1}- C\Lambda C^{-1}\right)^{-1}e_{1},e_{1}\right) = \left(C\left( zE- \Lambda\right)^{-1}C^{-1}e_{1},e_{1}\right) =\]
+
+\[= \left(\left(zE- \Lambda\right)^{-1}C^{T}e_{1},C^{T} e_{1}\right) = \sum^{n}_{i=1} \frac{\xi^{2}_{i}}{z- \lambda_{i}}.\]
+
+Так как $(zE - \Lambda)^{-1} = \left(\begin{array}{ccc} (z -\lambda_{1})^{-1} & \ldots & 0 \\
+                                     \vdots & \ddots & \vdots \\
+                                     0 & \ldots & (z -\lambda_{n})^{-1} \\
+\end{array} \right).$\\
+\\
+\textit{Лемма 2. Цепная дробь.}\\
+\bear{fraction}
+W(z) = \frac{1}{z - a_{1} -
+\displaystyle\frac{b^{2}_{1}}{z - a_{2} -
+\displaystyle\frac{b^{2}_{2}}{
+\displaystyle\frac{\cdots}{\displaystyle{\cdots -\frac{b^{2}_{n-1}}{z-a_{n}}}}}}},
+\ear
+здесь $a_{i}$, $b_{j}$ - те же, что и в $L(a,b)$.
+если есть решение для $\xi$ и $\lambda$, то оно находится из этой формулы.\\
+
+\textit{Доказательство.}\\
+
+\bear{Delta_Z}
+\Delta_{j}(z) = \det{\left(\begin{array}{cccc}
+z - a_{j+1}& -b_{j+1} &\ldots & 0\\
+-b_{j+1}& \ddots &\ddots & \vdots\\
+\vdots & \ddots &\ddots & -b_{n-1}\\
+0& \ldots & -b_{n-1}  & z - a_{n}
+\end{array} 
+\right),}
+\ear
+где $j=1,\ldots, n-1$, $\Delta_{n}:=1$, $\Delta_{1} = 0$.\\
+
+Рекуррентное соотношение:
+\[\Delta_{j-1}(z) = (z-a_{j})\Delta_{j}(z) - b^{2}_{j}\Delta_{j+1}(z), \qquad W=\frac{\Delta_{1}}{\Delta_{0}} = \frac{1}{\frac{\Delta_{0}}{\Delta_{1}}}.\]
+\[\displaystyle\frac{\Delta_{j-1}(z)}{\Delta_{j-1}(z)} = z - a_{j} - \displaystyle\frac{b^{2}_{j}}{\Bigl(\frac{\Delta_{j}}{\Delta_{j+1}}\Bigr)}.\]
+(\ref{Delta_Z}) показывает связь цепочки Тоды с ортогональными многочленами и процессом  ортогонализации Грама-Шмидта.\\
+Ортогональные многочлены - результат ортогонализации Грама-Шмидтаю базиса $1$, $z$, $z^{2}$, $\ldots$  по отношению к скалярному произведению
+$\langle f,g \rangle = l(f,g)$.\\
+\[p_{0} = 1, \quad p_{1}(z), \ldots, \quad \langle p_{i},p_{j}\rangle = 0, \quad i\neq j.\]
+Обычно $\langle f,g,\rangle = \int {f(x),g(x)}d\mu(x)$, $\langle x f,g \rangle = \langle f,x g \rangle$.\\
+Ортогональные многочлены удовлетворяют рекуррентному соотношению: 
+\[zp_{i} = p_{i+1} + \alpha_{i}p_{i} + \beta_{i}p_{i-1},\]
+где $\alpha_{i} = \displaystyle\frac{\langle z p_{i}, p_{i}\rangle}{\langle p_{i}, p_{i} \rangle}$, $\beta_{i} = \displaystyle\frac{|p_{i}|^{2}}{|p_{i-1}|^{2}}$.\\
+
+Действительно, $zp_{i} = p_{i+1} + \alpha_{i}p_{i} + \beta_{i}p_{i-1} + \gamma_{i}p_{i-2} + \ldots$\\
+
+Утверждается, что $\gamma_{i} = \delta_{i} = \ldots = 0$\\
+\[\gamma_{i} \langle p_{i-2}, p_{i-2}\rangle = \langle z p_{i}, p_{i-2}\rangle = \langle p_{i}, z p_{i-2}\rangle =0\]
+\[\langle z p_{i}, p_{i}\rangle = \alpha_{i}\langle p_{i},p_{i}\rangle\]
+\[\langle z \underbrace{p_{i}}_{\beta_{i}\langle p_{i-1},p_{i-1}\rangle},p_{i-1}\rangle = \langle p_{i}, zp_{i-1}\rangle = \langle p_{i},p_{i}\rangle   = |p_{i}|^{2}\]
+
+Пусть теперь $(\lambda,\xi) \in Spec$, пространство $V = \R[z] \mod \prod (z - \lambda_{i})$ со скалярным произведением
+$\langle f,g \rangle = \displaystyle\sum^{n}_{i=1}f(\lambda_{i})g(\lambda_{j}) \xi^{2}_{i}$ - интеграл по дискретной мере\\
+Г.-Ш. $P_{0} = 1$, $P_{1},\ldots,P_{n_1}$, $P_{n} = \displaystyle\prod^{n}_{i=1}(z-\lambda_{i}) =0$\\
+
+\textit{Предложение.} \\
+\bear{def_a_b}
+a_{i+1} = \displaystyle\frac{\langle zp_{i},p_{i}\rangle}{\langle p_{i},p_{i} \rangle},\quad b_{j} = \frac{P_{j}}{P_{j-1}},
+\ear 
+где $i=0,\ldots,n-1$, $j=1,\ldots,n-1$, дает решение обратной задачи $(\lambda, \xi)$ $\rightarrow$ $L(z,b)$.\\
+
+\textit{Доказательство.}\\
+
+\textit{Лемма.}\\
+Пусть $a$, $b$ определены (\ref{def_a_b}), тогда $\Rightarrow$ $P_{k} = \det{\left( \begin{array}{cccc}
+z - a_{1}& -b_{1} &\ldots & 0\\
+b_{1}& \ddots &\ddots & \vdots\\
+\vdots & \ddots &\ddots & -b_{k-1}\\
+0& \ldots & -b_{k-1}  & z-a_{k}
+\end{array}\right)} = D_{k}$, \\
+действительно, $D_{a}$ удовлетворяют тому же рекуррентному соотношению
+\[D_{k+1} = (z - a_{k+1})D_{k} - b^{2}_{k}D_{k-1}\]
+из разложения по последнему столбцу с теми же начальными условиями $D_{0} = P_{0} = 1$, $D_{1} = P_{1} = z -a_{1}$.
+В частности,
+\[D_{n} = \det{\left(zE - L\right)} = \prod(z - \lambda_{i}) = P_{n}\]
+$\Rightarrow$ $\lambda_{1},\ldots, \lambda_{k}$  - собственные числа $L(a,b)$.\\
+
+Дополнительный спектр.\\
+
+Нормированные ортогональные многочлены $Q_{i} = \displaystyle\frac{P_{i}}{|P_{i}|} = \left(b_{1}\ldots b_{i}\right)^{-1}P_{i}$.\\
+Рекуррентное соотношение
+\bear{req_pol}
+\frac{b_{i+1}}{b_{i+1}}\frac{P_{i+1}}{b_{1}\ldots b_{i}} + \frac{(a_{i+1} -z)P_{i}}{b_{1}\ldots b_{i}} + \frac{b^{2}_{i}P_{i-1}}{b_{1}\ldots b_{i}} \equiv 0,
+\ear
+учитывая, что $\displaystyle\frac{P_{i+1}}{b_{1}\ldots b_{i}b_{i+1}} = Q_{i+1}$, $\displaystyle\frac{P_{i}}{b_{1}\ldots b_{i}} = Q_{i}$, $\displaystyle\frac{P_{i-1}}{b_{1}\ldots b_{i}} = Q_{i-1}$,
+перепишем  (\ref{req_pol})  как
+\bear{repol2}
+b_{i+1}Q_{i+1} + \left(a_{i+1} -z\right)Q_{i} + b_{i}Q_{i-1} \equiv 0.
+\ear
+Подставим $z= \lambda_{k}$:
+\bear{rec_pol3}
+b_{i+1}Q_{i+1}(\lambda_{k}) + (a_{i+1} - \lambda_{k})Q_{i}(\lambda_{k}) + b_{i}Q_{i-1}(\lambda_{k}) = 0.
+\ear
+$\Rightarrow$ вектор $v_{k} = \xi_{k}\left(Q_{0}(\lambda_{k}),Q_{1}(\lambda_{k}),\ldots,Q_{n-1}(\lambda_{k})\right)$ является собственным нормированным вектором для
+$\lambda = \lambda_{k}$ для $L(a,b)$.
+\bear{Q0}
+Q_{0}(z) =  \frac{1}{\xi^{2}_{1} + \ldots + \xi^{2}_{n}} =1, \qquad v_{k} = (\xi_{k},*,\ldots,*),
+\ear
+то есть $\xi_{k}$ являются первыми компонентами собственного вектора.
+
+\section{Лекция 2}
+\label{sec:-2}
+
+
+ Лекция 2. Скейлинг в критических моделях
+  \begin{itemize}
+  \item Процедура Каданова (?)
+  \item Ренормгруппа в решеточных моделях
+  \item Ренормгруппа в непрерывных моделях
+  \item Уравнение Каллана-Симанчика
+  \item Ренормгруппа в двух измерениях
+  \end{itemize}
+
+
+
+\subsection{Скейлинг или масштабная инвариантность}
+\label{sec:scaling}
+
+Гипотеза подобия связывает между собой критические индексы. Ее можно сформулировать так: плотность свободной энергии $f(t,h)=\frac{F}{N}$ около критической точки является однородной функцией $h$ и безразмерной температуры $t=\frac{T}{T_c}-1$. То есть существуют $a,b$:
+\begin{equation}
+  \label{eq:33}
+  f(\lambda^a t,\lambda^b h)=\lambda f(t,h)
+\end{equation}
+В следующих лекциях мы обоснуем эту гипотезу при помощи ренормгруппы.
+
+Покажем теперь, какие условия накладывает гипотеза подобия на критические индексы. Заметим, что $t^{-\frac{1}{a}}f$ инвариантна при преобразовании $t\to \lambda^a t, h\to \lambda^b h$. Введем
+\begin{equation}
+  \label{eq:34}
+  y=\frac{h}{t^{\frac{b}{a}}}
+\end{equation}
+Тогда
+\begin{equation}
+  \label{eq:35}
+  f(t,h)=t^{\frac{1}{a}}g(y).
+\end{equation}
+Для спонтанной намагниченности имеем
+\begin{equation}
+  \label{eq:36}
+  M=-\left.\frac{\partial f}{\partial h}\right|_{h=0}=t^{\frac{1-b}{a}}g'(0),
+\end{equation}
+а для  магнитной восприимчивости
+\begin{equation}
+  \label{eq:37}
+  \chi=\left.\frac{\partial^2 f}{\partial h^2}\right|_{h=0}=t^{\frac{1-2b}{a}}g''(0).
+\end{equation}
+Аналогично для удельной теплоемкости получаем
+\begin{equation}
+  \label{eq:38}
+  c=-T\left.\frac{\partial^2 f}{\partial T^2}\right|_{h=0}=-\frac{1}{T_c}t^{\frac{1}{a}-2}g''(0)
+\end{equation}
+В пределе $t\to 0$ $M\sim h^{\frac{1}{\delta}}$, поэтому $g'(y)\sim y^{\frac{1}{\delta}}$ при $y\to \infty$. А значит, если в критической точке намагниченность $M$ конечна и не равна нулю, должно выполняться равенство $1-b-\frac{b}{\delta}=0$. Подставляя выражение для $\delta$ через $b$ в (\ref{eq:36},\ref{eq:37},\ref{eq:38}), мы получаем связь критических индексов
+  \begin{eqnarray}
+    \label{eq:39}
+    \alpha=2-\frac{1}{a}\\
+    \beta=\frac{1-b}{a}\\
+    \gamma=-\frac{1-2b}{a}\\
+    \delta=\frac{b}{1-b}
+  \end{eqnarray}
+\subsection{Процедура Каданова}
+\label{sec:kadanoff-procedure}
+Теперь обоснуем гипотезу подобия в модели Изинга при помощи процедуры Каданова и свяжем индексы $a,b$ с $\nu,\eta$.
+Рассмотрим кубическую $d$-мерную модель Изинга.
+\begin{equation}
+  \label{eq:40}
+  H=-J\sum_{\left<ij\right>}\sigma_i \sigma_j-h\sum_i \sigma_i
+\end{equation}
+Разбиваем решетку на блоки со стороной в $r$ ячеек. Будем нумеровать блоки большими латинскими буквами $I,J$ и понимать под записью $i\in I$ перечисление вершин в $I$-том блоке.
+Сумма спинов в блоке принимает значения от $r^{-d}$ до $r^d$. Введем блочный спин
+\begin{equation}
+  \label{eq:41}
+  \Sigma_I=\frac{1}{R}\sum_{i\in I}\sigma_i
+\end{equation}
+Здесь $R$ - некоторый нормировочный множитель, который мы скоро вычислим.
+% выбирается так, чтобы блочный спин мог принимать значения $\pm 1$. Если бы спины были всегда в одном направлении, то $R$ имел бы значение $r^d$. 
+
+Основной вклад в статсумму вблизи критической точки вносят большие кластеры, так как корреляционная длина $\xi>>r$. Поэтому мы предполагаем, что поведение вблизи критической точки описывается в терминах блочных спинов. Гамильтониан для блочных спинов имеет вид
+\begin{equation}
+  \label{eq:42}
+  H'=-J' \sum_{\left<IJ\right>} \Sigma_I \Sigma_J-h' \sum_I \Sigma_I
+\end{equation}
+Так как корреляционная длина для блоков
+\begin{equation}
+  \label{eq:43}
+  \xi'=\frac{\xi}{r},
+\end{equation}
+то из (\ref{eq:31}) для температуры имеем
+\begin{equation}
+  \label{eq:44}
+  t'=r^{\frac{1}{\nu}} t.
+\end{equation}
+Суммарная энергия взаимодействия со внешним полем должна оставаться неизменной, то есть
+\begin{equation}
+  \label{eq:45}
+  h\sum_i \sigma_i=h' \sum_I \Sigma_I=\frac{h'}{R}\sum_i \sigma_i\quad\Longrightarrow\quad h'= Rh
+\end{equation}
+Так как общая свободная энергия тоже не должна меняться, то свободная энергия на блок $\sim r^d f$, то есть
+\begin{equation}
+  \label{eq:46}
+  f(t',h')=r^d f(t,h)
+\end{equation}
+или
+\begin{equation}
+  \label{eq:47}
+  f(t,h)=r^{-d} f(r^{\frac{1}{\nu}} t, Rh)
+\end{equation}
+Осталось вычислить $R$ как функцию от $r$, чтобы оправдать гипотезу подобия. Смотрим на парный коррелятор в критической точке
+\begin{multline}
+  \label{eq:48}
+  \Gamma'(\vec n)=\left< \Sigma_I\Sigma_J\right>-\left< \Sigma_I\right>\left<\Sigma_J\right>=\frac{1}{R^2}\sum_{i\in I}\sum_{j\in J}\left(\left<\sigma_i \sigma_j\right>-\left<\sigma_i\right>\left<\sigma_j\right>\right) =\\
+  = \frac{r^{2d}}{R^2}\Gamma(r\vec n)=\frac{R^{-2}r^{2d}}{\left|r\vec n\right|^{d-2+\eta}}=\frac{R^{-2}r^{d+2-\eta}}{\left|\vec n\right|^{d-2+\eta}}
+\end{multline}
+Отсюда
+\begin{equation}
+  \label{eq:49}
+  R=r^{\frac{d+2-\eta}{2}}, \quad h'=r^{\frac{d+2-\eta}{2}}h
+\end{equation}
+Подставляя в (\ref{eq:33}) $r=\lambda^{\frac{1}{d}}$ получаем выражение для скейлинговых параметров $a,b$:
+\begin{eqnarray}
+  \label{eq:50}
+  a=\frac{1}{\nu d}\\
+  b=\frac{d+2-\eta}{2d}
+\end{eqnarray}
+Для критических индексов имеем
+\begin{eqnarray}
+  \label{eq:51}
+  \alpha=2-\nu d\\
+  \beta=\frac{1}{2}\nu (d-2+\eta)\\
+  \gamma=\nu (2-\eta)\\
+  \delta=\frac{d+2-\eta}{d-2+\eta}
+\end{eqnarray}
+
+
+
+\subsection{Ренормгруппа в решеточных моделях}
+\label{sec:renormgroup-lattice-models}
+Мы обосновали гипотезу подобия при помощи рассмотрения блочных спинов и введения эффективного гамильтониана, имеющего ту же форму, но другие константы связи. Эта процедура является перенормировкой в координатном пространстве, она определяет отображение гамильтониана $H\to H'$. Последовательное применение такой процедуры порождает так называемую ренормгруппу. Строго говоря, ренормгруппа является не группой, а полугруппой, так как у преобразования нет обратного, ведь при переходе к блокам большего размера мы теряем информацию. 
+Опишем ренормгруппу для решеточных моделей.
+
+Рассматриваем решеточную модель, состоящую из $N$ спинов $\sigma_i$ на $d$-мерной решетке. Общий вид гамильтониана таких моделей
+\begin{equation}
+  \label{eq:55}
+  H(\vec J,[\sigma],N)=J_0 + J_1\sum_i \sigma_i +J_2\overset{(1)}{\sum_{\left<ij\right>}}\sigma_i \sigma_j+J_3\overset{(2)}{\sum_{\left<ij\right>}}\sigma_i \sigma_j + \dots
+\end{equation}
+Здесь мы явно указали зависимость гамильтониана от констант связи, которые собраны в вектор $\vec J=(J_0,J_1,J_2,J_3,\dots)$. Сумма $\overset{(1)}{\sum_{\left<ij\right>}}$ - это сумма по ближайшим соседям, $\overset{(2)}{\sum_{\left<ij\right>}}$ - сумма по вершинам, разделенным двумя ребрами (через одного) и так далее. 
+Статсумма
+\begin{equation}
+  \label{eq:56}
+  Z(\vec J,N)=\sum_{[\sigma]}e^{-H(\vec J,[\sigma],N)}
+\end{equation}
+Мы так переопределили константы связи, чтобы избавиться от множителя $\beta$.
+
+Теперь мы вводим блочные переменные с блоком со стороной в $r$ ячеек решетки, содержащим $r^d$ вершин. $\Sigma_I$ - блочные спины, $\xi_i$ - переменные внутри блока. В таких переменных статсумма переписывается так:
+\begin{equation}
+  \label{eq:57}
+  Z(\vec J,N)=\sum_{[\Sigma][\sigma]}e^{-H(\vec J,[\Sigma],[\sigma],N)}
+\end{equation}
+Если мы просуммируем по внутриблочным степеням свободы $\xi$, то получится перенормированный гамильтониан $H'(\vec J,[\Sigma],Nr^{-d})$.
+\begin{equation}
+  \label{eq:58}
+  e^{-H'(\vec J',[\Sigma],Nr^{-d})}=\sum_{[\xi]}e^{-H(\vec J,[\Sigma],[\xi],N)}
+\end{equation}
+Вблизи критической точки можно предполагать что у $H'$ такой же вид, как и у $H$, так как параметр порядка расходится и поведение определяется дальними корреляциями. Описания поведения системы в терминах $H'$ и $H$ эквивалентны, поэтому соответствующие выражения для статсуммы должны совпадать (с точностью до умножения на константу):
+\begin{equation}
+\label{eq:52}
+  Z(\vec J,N)=\sum_{[\Sigma]}e^{-H'(\vec J',[\Sigma],Nr^{-d})}=Z(\vec J',Nr^{-d})
+\end{equation}
+Удельная свободная энергия отображается так: $f(\vec J)=r^{-d} f(\vec J')$.
+
+Отображение констант связи $\vec J\to\vec J'$ и порождает ренормгруппу. Будем его записывать как
+\begin{equation}
+  \label{eq:53}
+  \vec J'=T(\vec J)
+\end{equation}
+Последовательное применение таких преобразований порождает в пространстве констант связи некоторый набор точек, который называется траекторией ренормгруппы.
+
+На каждом шаге корреляционная длина уменьшается в $r$ раз, поэтому траектория уводит систему из окрестности критической точки. Но в самой критической точке корреляционная длина бесконечна, поэтому эта точка неподвижна относительно действия ренормгруппы. 
+
+В общем случае критическое поведение наблюдается на некоторой критической поверхности в пространстве $\vec J$. Под действием ренормгруппы точки двигаются по ней. Стационарная точка
+\begin{equation}
+  \label{eq:54}
+  \vec J_c=T(\vec J_c)
+\end{equation}
+называется фиксированной точной ренормгруппы.
+
+Вообще говоря, преобразование $T$ нелинейно, однако в окрестности фиксированной точки его можно линеаризовать. Вводим переменную $\delta\vec J=\vec J-\vec J_c$ и раскладываем $T$ в ряд Тейлора по $\delta\vec J$. Тогда
+\begin{equation}
+  \label{eq:59}
+  \delta\vec J'=A\delta\vec J,
+\end{equation}
+где $A$ - матрица, $A_{ij}=\frac{\partial T_i}{\partial J_j}$. Мы можем диагонализовать матрицу $A$, ее собственные значения мы обозначим через $\lambda_i$, собственные векторы через $\vec u_i$. Тогда для точки в пространстве констант связи мы можем написать (в окрестности  критической точки):
+\begin{equation}
+  \label{eq:60}
+  \vec J=\vec J_c+\sum_i t_i \vec u_i
+\end{equation}
+Переменные $t_i$ под действием ренормгруппы преобразуются так:
+\begin{equation}
+  \label{eq:61}
+  t'_i=\lambda_i t_i=r^{y_i} t_i
+\end{equation}
+Здесь мы ввели обозначение $y_i$ для критических индексов. В примере из раздела \ref{sec:kadanoff-procedure} такими индексами были $a$ и $b$. 
+Для свободной энергии имеем
+\begin{equation}
+  \label{eq:62}
+  f(t_1,t_2,\dots)=r^{-d} f(r^{y_1}t_1,r^{y_2}t_2,\dots)
+\end{equation}
+Таким образом, критические индексы получаются из собственных значений линеаризованной ренормгруппы в фиксированной точке.
+
+Если часть собственных значений $\lambda_i$ положительна, а часть - отрицательная, то фиксированная точка называется гиперболической. 
+Критической поверхностью называются такие точки $\vec J$, что
+\begin{equation}
+  \label{eq:63}
+  \lim_{n\to \infty}T^n (\vec J)=\vec J_c
+\end{equation}
+Около точки $\vec J_c$ она представляет собой векторное пространство, натянутое на те векторы $\vec u_i$, для которых соответствующие собственные значения $\lambda_i<1$. 
+
+Параметры $t_i$, которые соответствуют $\lambda_i>1$ называются релевантными, так как они растут под действием ренормгруппы. Параметры с $y_i<0 \; (\lambda_i<1)$ --- иррелевантные, с $y_i=0$ --- маргинальные.
+
+Существование критической поверхности объясняет универсальность критических индексов в разных моделях. Статистические системы разбиваются на классы универсальности, члены которых имеют одинаковое критическое поведение. Это так, если разные системы живут на подмногообразиях в пространстве констант связи, которые пересекают одну и ту же критическую поверхность. Тогда критическая точка у них общая.
+
+\subsection{Ренормгруппа в непрерывных моделях}
+\label{sec:renormgroup-general}
+В непрерывных моделях перенормировка осуществляется в импульсном пространстве. Рассмотрим скалярное поле $\varphi(\vec x)$, где $\vec x\in \mathbb{R}^d$. Проведем преобразование Фурье
+\begin{equation}
+  \label{eq:64}
+  \varphi(\vec x)=\int \frac{d^d \vec k}{(2\pi)^d}\tilde \varphi(\vec k) e^{i\vec k\cdot \vec x}
+\end{equation}
+Функционал действия может быть переписан в виде, зависящем только от $\tilde\varphi$: $S[\varphi]\to S[\tilde\varphi]$. Например, для модели $\varphi^4$ \eqref{eq:16} получается
+\begin{multline}
+  \label{eq:65}
+  S[\varphi,r,u]=\int  \frac{d^d \vec k}{(2\pi)^d} \frac{1}{2} \tilde\varphi(-\vec k)\tilde\varphi(\vec k)(\vec k^2+r)+\\
+  \frac{1}{4}u\int  \frac{d^d \vec k_1}{(2\pi)^d} \frac{d^d \vec k_2}{(2\pi)^d} \frac{d^d \vec k_3}{(2\pi)^d} \tilde\varphi(-\vec k_1-\vec k_2 -\vec k_3)\tilde \varphi(\vec k_1)\tilde\varphi (\vec k_2)\tilde\varphi(\vec k_3).
+\end{multline}
+В общем случае функционал действия зависит от поля $\varphi$ и параметров $u_i$ в плотности Лагранжиана (констант связи).
+
+Квантовая теория поля всегда содержит расходящиеся интегралы, поэтому нужна регуляризация. Будем считать, что в качестве такой регуляризации используется обрезание по импульсам $\left|\vec k\right|<\Lambda$. После преобразования Фурье мера в функциональном интеграле переписывается как
+\begin{equation}
+  \label{eq:66}
+  [d\varphi]_{\Lambda}=\prod_x d\varphi(x)=\prod_{\left|\vec k\right|<\Lambda}d\tilde\varphi(\vec k)
+\end{equation}
+Теперь опишем перенормировку Вильсона-Каданова. Она проводится в два этапа. Сначала мы интегрируем по $\tilde\varphi(\vec k): \Lambda/s<\left|k\right|<\Lambda$. То есть мы исключаем быстрые моды, так как критическое поведение описывается медленными модами.  $s$-масштабный фактор. В результате мы получаем новое обрезание $\Lambda/s$ и действие $S'[\varphi,\{u_i\}]$.
+\begin{equation}
+  \label{eq:67}
+  e^{-S'[\varphi,\{u_i\}]}=\int \prod_{\Lambda/s<\left|\vec k\right|<\Lambda}d\varphi(\vec k)e^{-S[\varphi,\{u_i\}]}
+\end{equation}
+Пока нас интересую только медленные моды, действие $S'$ эквивалентно $S$. Вторым шагом осуществим масштабное преобразование
+\begin{eqnarray}
+  \label{eq:68}
+  \vec k \to \vec k'=s \vec k\\
+  \vec x\to \vec x'=\vec x/s
+\end{eqnarray}
+При этом поле преобразуется так:
+\begin{eqnarray}
+  \label{eq:69}
+  \varphi(\vec x)\to \varphi'(\vec x/s)=s^{\Delta}\varphi (\vec x)\\
+  \tilde\varphi'(s\vec k)=s^{\Delta-d}\tilde\varphi (\vec k)
+\end{eqnarray}
+Здесь $\Delta$- скейлинговая размерность поля $\varphi$, она связана с индексом $\eta$: $\Delta=\eta/2$. Мера в функциональном интеграле при масштабном преобразовании умножится на константу. Теперь можно сравнить $S'$ и $S$, так как масштаб обрезания и там и там равен $\Lambda$ и те же степени свободы. Эти два действия описывают одинаковое поведение на больших расстояниях. Поэтому вид действия $S'$ должен быть тот же, что и у $S$, но с другими константами связи $u_i'$.
+\begin{equation}
+  \label{eq:70}
+  S'[\varphi,\{u_i\}]=S[\varphi,\{u_i'\}]
+\end{equation}
+Последовательным действием таких преборазований мы получаем кривую $u_i(s)$ в пространстве параметров лагранжиана.  Мы можем записать уравнение этой кривой как
+\begin{equation}
+  \label{eq:71}
+  \frac{du_i}{d(\ln s)}=\beta_i(\{u_i\})
+\end{equation}
+$\beta_i$ называется $\beta$-функцией параметра $u_i$. 
+Фиксированная точка $u_j^{*}$:
+\begin{equation}
+  \label{eq:72}
+  \beta_i(\{u^{*}_j\})=0
+\end{equation}
+Эта точка неподвижна относительно преобразований ренормгруппы. В фиксированной точке теория масштабно-инвариантна на квантовом уровне.
+
+
+\subsection{Уравнение Каллана-Симанчика}
+
+Вообще говоря, квантовая теория поля может быть не масштабно-инвариантна из-за наличия размерных параметров на классическом уровне или возникающих при перенормировке. Действие
+\begin{equation}
+  \label{eq:73}
+  S=\int d^dx \mathcal{L}
+\end{equation}
+зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$. Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$. Такое преобразование, в соответствии с предыдущей лекцией,  можно рассматривать как преобразование констант связи $\vec u\to \vec u'$. При наличии масштабной инвариантности $\vec u = \vec u'$. При инфинитезимальных преобразованиях $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током:
+\begin{equation}
+  \label{eq:74}
+  \delta\mathcal{L}=\partial_{\mu}J^{\mu}dl
+\end{equation}
+\begin{equation}
+  \label{eq:75}
+  J^{\mu}=x_{\nu}T^{\mu\nu}
+\end{equation}
+Здесь $T^{\mu\nu}$ - тензор энергии-импульса.  Через $\Theta$ мы обозначим след тензора энергии-импульса $\Theta=\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}$. Он задает вариацию действия
+\begin{equation}
+  \label{eq:87}
+  \delta S=dl \int d^d x \Theta(x)
+\end{equation}
+Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В масштабно-инвариантной теории тензор энергии-импульса бесследовый.
+
+В классической теории вид преобразований полей при масштабных преобразованиях легко получаются из анализа размерностей. Напомним, что достаточно иметь одну единицу измерения - длины (или обратной длины). Если теория масштабно-инвариантна, то действие должно быть безразмерным. Канонические (классические) размерности полей легко определить из требования безразмерности слагаемых в функционале действия, если ввести соглашение, определяющее размерность координат или импульсов.
+
+Будем обозначать каноническую размерность произвольно величины $F$ через $d[F]$.
+Положим $d[p]=-d[x]=1$. Тогда $d[d^d x]=-d,\; d[\partial]=1$. Теперь легко найти размерности полей. Например, для модели $\varphi^4$
+\begin{equation}
+  \label{eq:83}
+  S[\varphi]=\int d^d x\left( -\frac{(\partial \varphi)^2}{2}-\frac{\mu \varphi^2}{2}-\frac{u\varphi^4}{24}+h\varphi\right),
+\end{equation}
+рассмотрим первое слагаемое. Оно должно быть безразмерным. При этом его размерность $d[\int d^d x (\partial \varphi)^2]=2d[\varphi]+2-d=0$. Отсюда $d[\varphi]=d/2-1$. Для общего действия
+\begin{equation}
+  \label{eq:84}
+  S[\varphi]=-\int d^d x\left( \frac{(\partial \varphi)^2}{2}+\sum_n u_n \frac{\varphi^n}{n!}\right)
+\end{equation}
+размерности констант связи следующие:
+\begin{equation}
+  \label{eq:85}
+  d[h=-u_1]=d/2+1,\quad d[\mu=u_2]=2,\quad d[g_4]=4-d,\quad d[g_6]=6-2d,\quad d[g_n]=n-\frac{d(n-2)}{2}
+\end{equation}
+При масштабных преобразованиях поля и константы связи ведут себя так:
+\begin{equation}
+  \label{eq:86}
+  \varphi'(x)=s^{-d[\varphi]}\varphi(x/s),\quad u_i'=s^{-d[u_i]}u_i
+\end{equation}
+
+Напомним, что
+\begin{equation}
+  \label{eq:76}
+  \beta_{i}(\vec u)=\frac{du_i}{d\ln s}
+\end{equation}
+Параметр ренормгруппы $s$ связан с параметром масштабного преобразования $l$ соотношением $l=\ln s$, при этом
+\begin{equation}
+  \label{eq:79}
+   \beta_{i}(\vec u)=\frac{du_i}{dl}
+\end{equation}
+Если в точке $u$ $\beta_i(\vec u)>0$, то $u_i(l)$ растет, $\beta_i (\vec u)<0$ - убывает. В фиксированной точке $u^*$ $\beta_i(\vec u^*)=0$. Пространство действий делится фиксированной точкой на регионы. Константы связи ``заперты'' в одном из этих регионов. Фиксированная точка может достигаться при $l\to \pm \infty$. Если $u(l)\to u^*$ при $l\to +\infty$, то такая точка называется инфракрасной, если $u(l)\to u^*$ при $l\to -\infty$, то ультрафиолетовой. Введем функции $\Phi_i$:
+\begin{equation}
+  \label{eq:77}
+  \Phi_i=\frac{\partial \mathcal{L}}{\partial u_i}
+\end{equation}
+Вариация $\delta \mathcal{L}$ дается их линейной комбинацией.
+\begin{equation}
+  \label{eq:78}
+  \Theta(x)=\frac{\partial \mathcal{L}}{\partial l}=\sum_i \frac{\partial \mathcal{L}}{\partial u_i}\frac{d u_i}{dl}=\sum_i\beta_i(\vec u)\Phi_i(\vec u)
+\end{equation}
+$\Theta=0$ тогда и только тогда, когда $\beta_i(\vec u)=0$, значит в фиксированной точке ренормгруппы есть масштабная инвариантность.
+
+Рассмотрим $N$-точечную корреляционную функцию --- среднее значение некоторого $N$-точечного локального оператора
+\begin{equation}
+  \label{eq:81}
+  \langle X\rangle =\langle A_1 (x_1)\dots A_N (x_N)\rangle
+\end{equation}
+
+Мы хотим получить уравнение для его преобразования под действием ренормгруппы. Такое уравнение называется уравнением Каллана-Симанчика. 
+
+Вариация корреляционных функций при масштабных преобразованиях может описываться двумя способами.
+
+Во-первых, мы можем вычислить вариацию всех полей:
+\begin{multline}
+  \label{eq:82}
+  \delta \langle X\rangle=\delta \langle A_1(x_1)\dots A_N (x_N)\rangle = \delta \int {\cal D}\varphi A_1 \dots A_N e^{-S[\varphi]} = \\
+  \delta \int {\cal D} \varphi\; \left( \sum_k A_1 \dots \delta A_k \dots A_N e^{-S[\varphi]} -A_1\dots A_N e^{-S[\varphi]}\delta S\right)
+\end{multline}
+Вариация $A_k$ дается глобальной дилатацией координат и внутренней вариацией поля в соответствии с его канонической размерностью:
+\begin{equation}
+  \label{eq:88}
+  \delta A_k=dl (x^{\mu}_k\partial^k_{\mu}+d[A_k]) A_k
+\end{equation}
+Вариация действия определяется следом тензора энергии-импульса (\ref{eq:87}). Поэтому
+\begin{equation}
+  \label{eq:89}
+  \delta\langle X\rangle=dl \left(\sum_k (x_k^{\mu}\partial_{\mu}^k+d[A_k])\langle X\rangle-\int d^d y \langle\Theta(y)X\rangle\right)
+\end{equation}
+
+Другой способ вычисления состоит в вариации полей и действия по константам связи $u_i$:
+\begin{equation}
+  \label{eq:90}
+  \delta\langle X\rangle=dl\sum_i \beta_i(\vec u)\frac{\partial}{\partial u_i}\langle X\rangle,
+\end{equation}
+но
+\begin{equation}
+  \label{eq:91}
+  \frac{\partial}{\partial u_i}\langle X\rangle=\sum_k \langle A_1\dots \frac{\partial A_k}{\partial u_i}\dots A_N\rangle-\int d^d y \langle X \Phi_i(y)\rangle.
+\end{equation}
+Отсюда
+\begin{equation}
+  \label{eq:92}
+  \delta\langle X\rangle=dl \sum_i \sum_k\langle A_1\dots \frac{\partial A_k}{\partial u_i}\dots A_N\rangle-\int d^d y \langle X \Theta(y)\rangle
+\end{equation}
+Сравнивая это уравнение с (\ref{eq:89}) получаем уравнение Каллана-Симанчика:
+\begin{equation}
+  \label{eq:93}
+  \left[ \sum_k\left( x^{\mu}_k \frac{\partial}{\partial x^{\mu}_k}+\Gamma_k(\vec u)\right) -\sum_i \beta_i(\vec u)\frac{\partial }{\partial u_i}\right]\langle X\rangle=0,
+\end{equation}
+где $\Gamma_k$ - аномальная размерность поля $A_k(x_k)$, определяющаяся выражением
+\begin{equation}
+  \label{eq:94}
+  \Gamma_k A_k(x_k)=\left( d[A_k]+\sum_i \beta_i(\vec u) \frac{\partial }{\partial u_i}\right) A_k(x_k).
+\end{equation}
+В частности, для следа тензора энергии-импульса $\Gamma \Theta=2 \Theta$, то есть аномальная размерность равна классической. Это верно и для других компонент тензора энергии-импульса в силу Лоренц-инвариантности.
+
+\subsection{Ренормгруппа в двух измерениях}
+\label{sec:renormgroup-in-2d}
+
+Реноргрупповой анализ квантовой теории поля в двух измерениях дает следующий результат, известный как $c$-теорема Замолодчикова \cite{zamolodchikov1986irreversibility}.
+
+\begin{theorem}
+  Для любой унитарной квантовой теории поля в двух измерениях существует функция $c(\vec u)$ такая, что
+  \label{c-theorem}
+  \begin{itemize}
+  \item $c(\vec u)$ убывает, как функция параметра ренормгруппы
+    \begin{equation}
+      \label{eq:95}
+      \frac{dc}{dl}\leq 0
+    \end{equation}
+  \item $c(\vec u)$ стационарна в фиксированной точке $\vec u^*$ ренормгруппы, то есть
+    \begin{equation}
+      \label{eq:96}
+      \frac{dc({\vec u^*})}{dl}=0 \Leftrightarrow \beta_i(\vec u^*)=0
+    \end{equation}
+  \item 2-точечные корреляторы в фиксированной точке полностью определяются значением $c=c(\vec u^*)$.
+    Если ввести комплексные координаты $z=x_1+ix_2,\quad \bar z=x_1-ix_2$ и обозначить компоненты тензора энергии импульса через $T=T_{zz}$, $\bar T=T_{\bar z\bar z}$, $\Theta=T_{z\bar z}=T_{\bar z z}=T_{\mu\mu}=0$, то для корреляторов верно следующее выражение
+    \begin{eqnarray}
+      \label{eq:97}
+      \langle T(z,\bar z)T(0,0)\rangle=\frac{c/2}{z^4}\\
+      \langle \bar T(z,\bar z)\bar T(0,0)\rangle=\frac{c/2}{\bar z^4}\\
+      \langle T(z,\bar z) \bar T(0,0)\rangle=0
+    \end{eqnarray}
+    Число $c=\lim_{\vec u\to \vec u^*} c(\vec u)$ называется центральным зарядом. 
+  \end{itemize}
+\end{theorem}
+Для унитарных теорий из этой теоремы следует, что $c_{UV}\geq c_{IR}$.
+
+В фиксированной точке ренормгруппы имеет место масштабная инвариантность. Вместе с трансляционной и
+лоренц-инвариантностью она порождает конформную инвариантность, то есть инвариантность относительно
+преобразований, сохраняющих углы. 
+
+\section{Лекция 3}
+\label{sec:-3}
+
+
+  \begin{itemize}
+  \item Конформная группа.
+  \item Инварианты конформных преобразований
+  \item Явный вид конформных преобразований полей в $d\geq 3$.
+  \end{itemize}
+
+
+Построение Каданова-Вильсона (см. лекцию \ref{sec:kadanoff-procedure}) обосновало нам масштабную
+инвариантность модели Изинга. Сейчас мы обсудим, какие ограничения накладывает на теорию конформная
+инвариантность.  
+
+Сперва рассмотрим конформную группу в произвольном числе измерений $d$. Метрический тензор обозначим
+через $g_{\mu\nu},\; \mu,\nu=1,\dots,d$. Конформными называются преобразования $x\to x'$,
+сохраняющие метрический тензор с точностью до масштаба: 
+\begin{equation}
+  \label{eq:123}
+  g'_{\mu\nu}(x')=\Lambda(x) g_{\mu\nu}(x).
+\end{equation}
+Заметим, что группа Пуанкаре является подгруппой конформной группы с $\Lambda(x)=1$, а также что
+конформные преобразования сохраняют углы.  
+
+Рассмотрим инфинитезимальные преобразования
+\begin{equation}
+  \label{eq:144}
+  x^{\mu}\to x'^{\mu}=x^{\mu}+\epsilon^{\mu}.
+\end{equation}
+Метрический тензор преобразуется следующим образом:
+\begin{equation}
+  \label{eq:145}
+  g'_{\mu\nu}=\frac{\partial x^{\alpha}}{\partial x'^{\mu}}\frac{\partial x^{\beta}}{\partial
+    x'^{\nu}}
+  g_{\alpha\beta}=(\delta^{\alpha}_{\mu}-\partial_{\mu}\epsilon^{\alpha})(\delta^{\beta}_{\nu}-\partial_{\nu}
+  \epsilon^{\beta})g_{\alpha\beta}=g_{\mu\nu}-(\partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu}) 
+\end{equation}
+Перепишем условие (\ref{eq:123})в таком виде:
+\begin{equation}
+  \label{eq:146}
+  g'_{\mu\nu}(x')=g_{\mu\nu}(x)-f(x)g_{\mu\nu}(x)
+\end{equation}
+Отсюда вытекает условие на вид преобразований:
+\begin{equation}
+  \label{eq:147}
+  \partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu}=f(x)g_{\mu\nu}(x).
+\end{equation}
+Для простоты рассмотрим преобразования, действующие на плоскую метрику
+$g_{\mu\nu}(x)=\eta_{\mu\nu}$, кроме того, с учетом приложений к статистической физике, будем
+работать в евклидовом пространстве, а не в пространстве Минковского. Так что
+$\eta=\mathrm{diag}(1,1,\dots,1),\quad \eta_{\mu\nu}=\delta_{\mu\nu}$. В этом случае условие
+\eqref{eq:147} перепишется в простом виде 
+\begin{equation}
+  \label{eq:148}
+  f(x)=\frac{2}{d}\partial_{\rho}\epsilon^{\rho}.
+\end{equation}
+Теперь подставим $g_{\mu\nu}=\eta_{\mu\nu}$ в уравнение \eqref{eq:147} и продиффернцируем:
+\begin{equation}
+  \label{eq:149}
+  \partial_{\rho} \partial_{\mu}\epsilon_{\nu}+\partial_{\rho}\partial_{\nu}\epsilon_{\mu}=\eta_{\mu\nu}\partial_{\rho} f.
+\end{equation}
+Переставим два раза значки и скомбинируем три уравнения в одно:
+\begin{equation}
+  \label{eq:150}
+  2\partial_{\mu}\partial_{\nu}\epsilon_{\rho}=\eta_{\mu\rho}\partial_{\nu} f+\eta_{\nu\rho}\partial_{\mu}f-\eta_{\mu\nu}\partial_{\rho}f
+\end{equation}
+Свернем это уравнение с $\eta^{\mu\nu}$ и получим
+\begin{equation}
+  \label{eq:151}
+  2\partial^2 \epsilon_{\rho}=(2-d)\partial_{\rho}f
+\end{equation}
+Теперь продифференцируем его по $x^{\nu}$ и поменяем значок $\rho$ на $\mu$:
+\begin{equation}
+  \label{eq:152}
+  2\partial^2 \partial_{\nu} \epsilon_{\mu}=(2-d)\partial_{\mu}\partial_{\nu} f
+\end{equation}
+Сравним полученное равенство с результатом применения оператора $\partial^{\rho}$ к уравнению
+\eqref{eq:149}: 
+\begin{equation}
+  \label{eq:153}
+  \partial^2 \partial_{\mu}\epsilon_{\nu}+\partial^2 \partial_{\nu}\epsilon_{\mu}=\eta_{\mu\nu}\partial^2 f
+\end{equation}
+Из равенств \eqref{eq:152}, \eqref{eq:153} следует, что
+\begin{equation}
+  \label{eq:154}
+  (2-d)\partial_{\mu}\partial_{\nu}f=\eta_{\mu\nu}\partial^2 f.
+\end{equation}
+Свернув с $\eta^{\mu\nu}$ получим
+\begin{equation}
+  \label{eq:155}
+  (d-1)\partial^2 f =0.
+\end{equation}
+Сразу можно отметить, что при $d=1$ любое гладкое преобразование будет конформным. Рассмотрим случай
+$d\geq 3$. Функция $f(x)$ должна иметь вид 
+\begin{equation}
+  \label{eq:156}
+  f(x)=A+B_{\mu}x^{\mu}.
+\end{equation}
+Тогда из \eqref{eq:148} получаем для $\epsilon$
+\begin{equation}
+  \label{eq:157}
+  \epsilon_{\mu}=a_{\mu}+b_{\mu\nu}x^{\nu} +c_{\mu\nu\rho}x^{\nu}x^{\rho},\quad c_{\mu\nu\rho}=c_{\mu\rho\nu}
+\end{equation}
+Так как равенства \eqref{eq:147}, \eqref{eq:148}, \eqref{eq:150} должны выполняться для любых
+$x^{\mu}$, то мономы в $\epsilon$ можно рассматривать независимо. На $a_{\mu}$ не возникает никаких
+ограничений. Этот член соответствует трансляциям. Теперь подставляем линейный член в \eqref{eq:147},
+\eqref{eq:148} и получаем условие 
+\begin{equation}
+  \label{eq:158}
+  b_{\mu\nu}+b_{\nu\mu}=\frac{2}{d}b^{\lambda}_{\lambda}\eta_{\mu\nu}
+\end{equation}
+То есть $b_{\mu\nu}$ можно записать в виде
+\begin{equation}
+  \label{eq:159}
+  b_{\mu\nu}=\alpha \eta_{\mu\nu} +m_{\mu\nu},\quad m_{\mu\nu}=-m_{\nu\mu}
+\end{equation}
+Первый член соответствует масштабному преобразованию, а второй - повороту. 
+В результате подстановки квадратичного члена $\epsilon$ в \eqref{eq:148}, \eqref{eq:150} получаем
+следующее условие на $c_{\mu\nu\rho}$: 
+\begin{equation}
+  \label{eq:160}
+  c_{\mu\nu\rho}=\eta_{\mu\rho} h_{\nu} +\eta_{\mu\nu}h_{\rho}-\eta_{\nu\rho}h_{\mu}, \quad h_{\mu}=\frac{1}{d} c^{\alpha}_{\alpha\mu}
+\end{equation}
+Ему соответствует преобразование
+\begin{equation}
+  \label{eq:161}
+  x'^{\mu}=x^{\mu}+2 (x^{\nu}h_{\nu})x^{\mu} -h^{\mu} x^{\nu}x_{\nu}
+\end{equation}
+Такое преобразование называется специальным конформным преобразованием.
+Это преобразование можно естественно интерпретировать, если переписать в виде
+\begin{equation}
+  \label{eq:162}
+  \frac{x'^{\mu}}{x'^2}=\frac{x^{\mu}}{x^2}-h^{\mu}.
+\end{equation}
+Видно, что специальное конформное преобразование --- это инверсия, трансляция и обратная инверсия.  
+
+Соответствующие конченые конформные преобразования имеют вид
+\begin{eqnarray}
+  \label{eq:163}
+  x'^{\mu}=x^{\mu}+a^{\mu}&\quad \mbox{--- трансляция}\\
+  x'^{\mu}=\alpha x^{\mu} &\quad \mbox{--- растяжение}\\
+  x'^{\mu}=m^{\mu}_{\nu} x^{\nu} &\quad \mbox{--- поворот}\\
+  x'^{\mu}=\frac{x^{\mu}-h^{\mu}x^2}{1-2h_{\mu}x^{\mu}+h^2 x^2}  & \quad \begin{array}{c}\mbox{--- специальное конформное}\\ \mbox{ преобразование}\end{array}
+\end{eqnarray}
+
+Теперь выпишем вид генераторов конформных преобразований для скалярного поля. 
+Напомним, что при произвольном конечном преобразовании скалярное поле преобразуется как
+\begin{equation}
+  \label{eq:164}
+  \Phi'(x')=F(\Phi(x)).
+\end{equation}
+При соответствующем инфинитезимальном преобразовании
+\begin{equation}
+  \label{eq:165}
+  x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
+\end{equation}
+скалярное поле преобразуется так:
+\begin{equation}
+  \label{eq:166}
+  \Phi'(x')=\Phi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
+\end{equation}
+Генератор преобразования определяется следующим равенством:
+\begin{equation}
+  \label{eq:167}
+  \delta_{\omega} \Phi(x)=\Phi'(x)-\Phi(x)\equiv -i\omega_a G_a \Phi(x)
+\end{equation}
+(здесь нет суммирования по $a$). Из \eqref{eq:166} получаем действие генератора на скалярное поле:
+\begin{equation}
+  \label{eq:168}
+  iG_a \Phi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\Phi-\frac{\delta F}{\delta \omega_a}
+\end{equation}
+
+Если мы предположим, что поле $\Phi$ такое поле, которое не меняется при конформных преобразованиях, то есть $F(\Phi)=\Phi$, то мы получим следующий вид для генераторов:
+\begin{eqnarray}
+  \label{eq:169}
+  \mbox{трансляция} & \quad P_{\mu}=-i\partial_{\mu}\\
+  \mbox{поворот} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})\\
+  \mbox{растяжение}& \quad D=-ix^{\mu}\partial_{\mu}\\
+  \begin{array}{r}
+  \mbox{специальное конформное}    \\
+  \mbox{преобразование}
+  \end{array}
+  & \quad K_{\mu}=-i(2x_{\mu}x^{\nu}\partial_{\nu}-x^2\partial_{\mu})
+\end{eqnarray}
+Отсюда легко найти коммутационные соотношения алгебры конформных преобразований в случае $d\geq 3$:
+\begin{eqnarray}
+  \label{eq:170}
+  \left[D,P_{\mu}\right]=i P_{\mu}\\
+  \left[D,K_{\mu}\right]=-i K_{\mu}\\
+  \left[K_{\mu},P_{\nu}\right]=2i (\eta_{\mu\nu}D - L_{\mu\nu})\\
+  \left[K_{\rho},L_{\mu\nu}\right]=i(\eta_{\rho\mu}P_{\nu}-\eta_{\rho\nu}P_{\mu})\\
+ \left[L_{\mu\nu},L_{\rho\sigma}\right]=i(\eta_{\nu\rho}L_{\mu\sigma}+\eta_{\mu\sigma}L_{\nu\rho}-\eta_{\mu\rho}L_{\nu\sigma}-\eta_{\nu\sigma}L_{\mu\rho})
+\end{eqnarray}
+Остальные коммутаторы равны нулю.
+Чтобы понять, о какой алгебре идет речь, переопределим генераторы следующим образом. Введем генераторы $J_{ab}, \; a,b=-1,0,\dots,d, J_{ab}=-J_{ba}$:
+\begin{eqnarray}
+  \label{eq:171}
+  J_{\mu\nu}=L_{\mu\nu}\\
+  J_{-1,0}=D\\
+  J_{-1,\mu}=\frac{1}{2}(P_{\mu}-K_{\mu})\\
+  J_{0,\mu}=\frac{1}{2}(P_{\mu}+K_{\mu})
+\end{eqnarray}
+Коммутационные соотношения для таких генераторов запишутся в виде
+\begin{equation}
+  \label{eq:172}
+  \left[J_{ab},J_{cd}\right]=i(\eta_{ad}J_{bc}+\eta_{bc}J_{ad}-\eta_{ac}J_{bd}-\eta_{bd}J_{ac}),
+\end{equation}
+где $\eta_{ab}=\mathrm{diag}(-1,1,\dots,1)$. Видно, что мы получили алгебру $so(d+1,1)$. В случае пространства Минковского была бы $so(d,2)$.
+
+\subsection{Инварианты}
+\label{sec:invariants}
+
+Обсудим, какой вид могут иметь простейшие инварианты --- $N$-точечные функции
+$\Gamma(x_1,\dots,x_N)$. В силу трансляционной инвариантности они могут зависеть только от модуля
+разности $|\vec x_i-\vec x_j|$.  Масштабная инвариантность может сохраняться только отношениями 
+\begin{equation}
+  \label{eq:173}
+  \frac{|\vec x_i-\vec x_j|}{|\vec x_k -\vec x_l|}
+\end{equation}
+Но при специальных конформных преобразованиях
+\begin{equation}
+  \label{eq:174}
+  |\vec x'_i-\vec x'_j|=\frac{|\vec x_i-\vec x_j|}{(1-2(\vec h,\vec x_i)+h^2x_i^2)^{1/2} (1-2(\vec h,\vec x_j)+h^2 x_j^2)^{1/2}}
+\end{equation}
+Поэтому не обойтись двумя или тремя точками и простейшие инварианты имеют вид
+\begin{eqnarray}
+  \label{eq:175}
+  \frac{|\vec x_1-\vec x_2||\vec x_3-\vec x_4|}{|\vec x_1-\vec x_3||\vec x_{2}-\vec x_{4}|}\\
+  \frac{|\vec x_1-\vec x_2||\vec x_3-\vec x_4|}{|\vec x_2-\vec x_3||\vec x_{1}-\vec x_{4}|}
+\end{eqnarray}
+Всего $N(N-3)/2$ вариантов для $N$ точек.
+
+\subsection{Явный вид конформных преобразований полей в $d\geq 3$.}
+\label{sec:conformal-transforms-explicit}
+
+Покажем теперь, как преобразуются поля при конформных преобразованиях. Для этого используем метод
+индуцированных представлений, который можно легко объяснить на примере алгебры Пуанкаре. Сначала
+рассматриваем подалгебру, которая оставляет точку $x=0$ неподвижной. Это алгебра группы Лоренца или
+группы вращений в случае евклидова пространства. На поля в точке $x=0$ она действует своими
+матричными представлениями: 
+\begin{equation}
+  \label{eq:176}
+  L_{\mu\nu}\Phi(0)=S_{\mu\nu}\Phi(0)
+\end{equation}
+Затем мы пользуемся коммутационными соотношениями алгебры Пуанкаре и формулой Хаусдорфа
+\begin{equation}
+  \label{eq:177}
+  e^{-A}B e^{A}=B+[B,A]+\frac{1}{2!}[[B,A],A]+\frac{1}{3!}[[[B,A],A],A]+\dots
+\end{equation}
+чтобы вычислить результат переноса в точку $x$:
+\begin{multline}
+  \label{eq:178}
+  L_{\mu\nu}\Phi(x)=e^{ix^{\rho}P_{\rho}}L_{\mu\nu}e^{-i x^{\rho}P_{\rho}}\Phi(x)=\\
+  (S_{\mu\nu}-x_{\mu}P_{\nu}+x_{\nu}P_{\mu})\Phi(x)=\\
+  i(x_{\mu}\partial_{\nu}-x_{\nu}\partial_{\mu})\Phi(x)+S_{\mu\nu}\Phi(x)
+\end{multline}
+Для полной конформной группы подгруппа стабильности точки $x=0$ порождается поворотами, растяжениями
+и специальными конформными преобразованиями. Обозначим представление генераторов через $S_{\mu\nu},
+\tilde \Delta, k_{\mu}$ соответственно. Они порождают матричное представление усеченной алгебры с
+коммутационными соотношениями 
+\begin{eqnarray}
+  \label{eq:179}
+  \left[\tilde\Delta,S_{\mu\nu}\right]=0\\
+  \left[\tilde \Delta,k_{\mu}\right]=-i k_{\mu}\\
+  \left[k_{\mu},k_{\nu}\right]=0\\
+  \left[k_{\rho},S_{\mu\nu}\right]=i(\eta_{\rho\mu}k_{\nu}-\eta_{\rho\nu}k_{\mu})\\
+  \left[S_{\mu\nu},S_{\rho\sigma}\right]=i(\eta_{\nu\rho}S_{\mu\sigma}+\eta_{\mu\sigma}S_{\nu\rho}-\eta_{\mu\rho}S_{\nu\sigma}-\eta_{\nu\sigma}S_{\mu\rho})
+\end{eqnarray}
+Трансляция генераторов дилатации и специальных конформных преобразований дается равенствами
+\begin{eqnarray}
+  \label{eq:180}
+  e^{i x^{\rho}P_{\rho}}D e^{-i x^{\rho}P_{\rho}}=D+x^{\nu}P_{\nu}\\
+  e^{i x^{\rho}P_{\rho}}K_{\mu} e^{-i x^{\rho}P_{\rho}}=K_{\mu}+2x_{\mu}D -2 x^{\nu}L_{\mu\nu}+2x_{\mu}(x^{\nu}P_{\nu})-x^{2} P_{\mu}
+\end{eqnarray}
+В результате действие этих генераторов на поле имеет вид
+\begin{eqnarray}
+  \label{eq:181}
+  D\Phi(x)=(-ix^{\nu}\partial_{\nu}+\tilde \Delta)\Phi(x)\\
+  K_{\mu}\Phi(x)=(k_{\mu}+2x_{\mu}\tilde\Delta -x^{\nu}S_{\mu\nu}-2ix_{\mu}x^{\nu}\partial_{\nu}+ix^{2} \partial_{\mu})\Phi(x)
+\end{eqnarray}
+Если требовать, чтобы поле $\Phi(x)$ преобразовывалось по неприводимому представлению группы
+Лоренца, то по лемме Шура любая матрица, коммутирующая со всеми генераторами $S_{\mu\nu}$
+пропорциональна единичной.   
+\begin{mynote}
+  
+  {\it Лемма Шура}. Оператор, сплетающий неприводимые конечномерные представления группы Ли либо нулевой, либо обратим. Эта лемма доказывается в любом учебнике по теории групп Ли, например \cite{golod2001}. 
+
+  {\it Следствие}. Оператор $B$, коммутирующий со всеми операторами конечномерного неприводимого представления, кратен единичному.
+
+  {\it Доказательство}: рассмотрим оператор $B-\lambda I$, он тоже коммутирует со всеми операторами представления. Возьмем $\lambda=\lambda_1$, являющееся решением уравнения $\det (B-\lambda I)=0$. Тогда оператор $B-\lambda I$ вырожден, и по лемме Шура равен нулю. Следовательно $B\propto I$.
+\end{mynote}
+
+То есть $\tilde \Delta\propto I$ и $k_{\mu}=0$. Тогда $\tilde \Delta =-i \Delta I$, где $\Delta$ --
+скейлинговая размерность поля $\Phi$, $\Phi'(\lambda x)=\lambda^{-\Delta}\Phi(x)$. Закон
+преобразования бесспинового поля $\varphi$ при конечных конформных преобразованиях 
+\begin{eqnarray}
+  \label{eq:182}
+  x\to x'\\
+  \varphi(x)\to \varphi'(x')=\left|\frac{\partial x'}{\partial x}\right|^{-\Delta/d}\varphi(x)\\
+  \left|\frac{\partial x'}{\partial x}\right|=\Lambda(x)^{-d/2}    \quad\mbox{--- якобиан преобразования}
+\end{eqnarray}
+Поля, которые так преобразуются, называются {\it квазипримарными}.
+
+Заметим, что  вариация действия при конформных преобразованиях определяется тензором энергии импульса:
+\begin{equation}
+  \label{eq:183}
+  \delta S=\int d^{d}x T^{\mu\nu}\partial_{\mu}\epsilon_{\nu}=\frac{1}{2} \int d^{d}x T^{\mu\nu}(\partial_{\mu}\epsilon_{\nu}-\partial_{\nu}\epsilon_{\mu})=\frac{1}{d}\int d^{d}x T^{\mu}_{\mu}\partial_{\rho}\epsilon^{\rho},
+\end{equation}
+где мы использовали равенства \eqref{eq:147}, \eqref{eq:148}. То есть бесследовость тензора
+энергии-импульса ведет к конформной инвариантности классической теории поля. В классической теории
+поля при наличии трансляционной, вращательной и масштабной инвариантности  тензор энергии-импульса
+часто можно переопределить так, чтобы он был бесследовым. То есть конформная инвариантность следует
+из трансляционной, вращательной и масштабной. В случае двумерной квантовой теории поля общего
+доказательства нет, но конформная инвариантность наблюдается во множестве моделей.  
+
+\section{Лекция 4}
+\label{sec:-4}
+
+  \begin{itemize}
+  \item Корреляторы квазипримарных полей
+  \item Тождества Уорда
+  \end{itemize}
+
+
+\subsection{Корреляторы квазипримарных полей}
+\label{sec:quasiprimary-correlators}
+
+Теперь перейдем к квантовой теории поля. Рассмотрим коррелятор квазипримарных полей.
+\begin{equation}
+  \label{eq:184}
+  \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = \frac{1}{Z} \int \mathcal{D} \Phi \varphi_{1}(x_{1})\varphi_{2}(x_{2}) e^{-S[\Phi]}
+\end{equation}
+Мы знаем, как преобразуется поле при конформных преобразованиях \eqref{eq:182}, поэтому коррелятор должен вести себя так:
+\begin{equation}
+  \label{eq:185}
+  \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\rangle = \left|\frac{\partial x'_{1}}{\partial x_{1}}\right|^{\frac{\Delta_{1}}{d}}\left| \frac{\partial x'_{2}}{\partial x_{2}}\right|^{\frac{\Delta_{1}}{d}} \langle \varphi_{1}(x'_{1})\varphi_{2}(x'_{2})\rangle .
+\end{equation}
+Из требования инвариантности коррелятора при поворотах и трансляциях получаем, что коррелятор может зависеть только от модуля разности $\left|x_{1}-x_{2}\right|$:
+\begin{equation}
+  \label{eq:186}
+  \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = f(\left|x_{1}-x_{2}\right|)
+\end{equation}
+При масштабных преобразованиях $x\to \lambda x$ из \eqref{eq:185} получаем
+\begin{equation}
+  \label{eq:187}
+   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle=\lambda^{\Delta_{1}+\Delta_{2}}  \langle \varphi_{1}(\lambda x_{1}) \varphi_{2}(\lambda x_{2})\rangle .
+\end{equation}
+То есть мы видим, что $ \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle$ - однородная функция, $f(x)=\lambda^{\Delta_{1}+\Delta_{2}} f(\lambda x)$. Отсюда
+\begin{equation}
+  \label{eq:188}
+   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle = \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}.
+\end{equation}
+Однако мы ещё не воспользовались инвариантностью коррелятора относительно специальных конформных преобразований. Подставим явный вид преобразований $\left|x_{1}-x_{2}\right|$ из \eqref{eq:174} и введем обозначение $\gamma_{i}=\left(1-2(h,x_{i})+h^{2}x_{i}^{2}\right)$, тогда
+\begin{equation}
+  \label{eq:189}
+  \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{\Delta_{1}+\Delta_{2}}}=\frac{C_{12}(\gamma_{1}\gamma_{2})^{(\Delta_{1}+\Delta_{2})/2}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}} \left|x_{1}-x_{2}\right|^{\Delta_1+\Delta_2}}.
+\end{equation}
+Это равенство может выполняться только при $\Delta_{1}=\Delta_{2}$. В итоге для коррелятора
+\begin{equation}
+  \label{eq:190}
+   \langle \varphi_{1}(x_{1}) \varphi_{2}(x_{2})\rangle =
+   \begin{cases}
+     \frac{C_{12}}{\left|x_{1}-x_{2}\right|^{2\Delta_{1}}} & \Delta_{1}=\Delta_{2}\\
+     0 & \Delta_{1}\neq \Delta_{2}
+   \end{cases}
+\end{equation}
+Вспомним, что для парной корреляционной функции мы вводили критический индекс $\eta$: $\Gamma(\vec n)\sim |\vec n|^{2-d-\eta}$. То есть для коррелятора квазипримарых полей
+\begin{equation}
+  \label{eq:191}
+  \eta=2\Delta +2 -d.
+\end{equation}
+
+Аналогичный анализ можно провести для трехточечных функций. Из требований трансляционной и вращательной инвариантности имеем
+\begin{equation}
+  \label{eq:192}
+  \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}},\quad a+b+c=\Delta_{1}+\Delta_{2}+\Delta_{3}.
+\end{equation}
+Здесь введено обозначение $x_{ij}=|x_{i}-x_{j}|$.
+Из требования инвариантности при специальных конформных преобразованиях получаем
+\begin{equation}
+  \label{eq:193}
+  \frac{C^{abc}_{123}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}}=\frac{C^{abc}_{123}}{\gamma_{1}^{\Delta_{1}}\gamma_{2}^{\Delta_{2}}\gamma_{3}^{\Delta_{3}}}\frac{(\gamma_{1}\gamma_{2})^{a/2}(\gamma_{2}\gamma_{3})^{b/2}(\gamma_{1}\gamma_{3})^{c/2}}{x_{12}^{a} x_{23}^{b}x_{13}^{c}}
+\end{equation}
+Это равенство может выполняться только при
+\begin{equation}
+  \label{eq:194}
+  \begin{array}{l}
+    a+c=2\Delta_{1}\\
+    a+b=2\Delta_{2}\\
+    b+c=2\Delta_{3}
+  \end{array}
+\end{equation}
+Отсюда сразу получаем, что
+\begin{equation}
+  \label{eq:195}
+  \begin{array}{l}
+    a=\Delta_{1}+\Delta_{2}-\Delta_{3}\\
+    b=\Delta_{2}+\Delta_{3}-\Delta_{1}\\
+    c=\Delta_{3}+\Delta_{1}-\Delta_{2}.
+  \end{array}
+\end{equation}
+В итоге для трехточечных функций имеем:
+\begin{equation}
+  \label{eq:196}
+   \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\rangle=\frac{C^{abc}_{123}}{x_{12}^{\Delta_{1}+\Delta_{2}-\Delta_{3}} x_{23}^{\Delta_{2}+\Delta_{3}-\Delta_{1}}x_{13}^{\Delta_{3}+\Delta_{1}-\Delta_{2}}}.
+\end{equation}
+Из четырех точек уже можно собрать инварианты \eqref{eq:175}, поэтому из требований конформной
+инвариантности для четырехточечной функции можно написать только 
+\begin{equation}
+  \label{eq:197}
+  \langle \varphi_{1}(x_{1})\varphi_{2}(x_{2})\varphi_{3}(x_{3})\varphi_{4}(x_{4})\rangle=f\left(\frac{x_{12}x_{34}}{x_{13}x_{24}}; \frac{x_{12}x_{34}}{x_{23}x_{14}}\right) \prod_{i<j}^{4}x_{ij}^{\Delta/3-\Delta_{i}-\Delta_{j}},\quad \Delta=\sum_{i=1}^{4}\Delta_{i}.
+\end{equation}
+
+\subsection{Тождества Уорда}
+\label{sec:ward-identities}
+
+Напомним, о чем идет речь. В произвольной теории поля с полями $\Phi(x)$ инфинитезимальное
+преобразование может быть записано при помощи генераторов 
+\begin{equation}
+  \label{eq:198}
+  \Phi'(x)=\Phi(x)-i\omega_{a} G_{a} \Phi(x)
+\end{equation}
+Вариация действия вычисляется через ток, соответствующий данному преобразовании:
+\begin{equation}
+  \label{eq:199}
+  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L} }{\partial (\partial_{\mu}\Phi)} \partial_{\nu}\Phi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}} - \frac{\partial \mathcal{L} }{\partial (\partial_{\mu} \Phi)}\frac{\delta F}{\delta \omega_{a}}
+\end{equation}
+\begin{equation}
+  \label{eq:200}
+  \delta S =\int d^{d}x \partial_{\mu}j^{\mu}_{a} \omega_{a}
+\end{equation}
+Обозначим через $X$ произведение локальных полей, входящих в коррелятор
+\begin{equation}
+  \label{eq:201}
+  X=\Phi(x_{1})\dots \Phi(x_{n}).
+\end{equation}
+Коррелятор дается функциональным интегралом
+\begin{equation}
+  \label{eq:202}
+  \langle X\rangle = \frac{1}{Z}\int \mathcal{D} \Phi X e^{-S[\Phi]}
+\end{equation}
+Сделаем замену переменных $\Phi\to \Phi'$ в функциональном интеграле. При этом можно предполагать,
+что ``мера интегрирования'' не меняется $\mathcal{D}\Phi'=\mathcal{D}\Phi$
+\cite{difrancesco1997cft}: 
+\begin{equation}
+  \label{eq:203}
+  \langle X\rangle = \frac{1}{Z} \int \mathcal{D} \Phi' (X+\delta X)e^{-S[\Phi]-\int d^{d}x \partial_{\mu}j^{\mu}_{a}\omega_{a}(x)}
+\end{equation}
+Раскладываем выражение в ряд до первого порядка по $\omega_{a}(x)$:
+\begin{equation}
+  \label{eq:204}
+  \langle X\rangle=\frac{1}{Z} \left( \int \mathcal{D} \Phi X e^{-S[\Phi]}+\int \mathcal{D} \Phi \delta X e^{-S[\Phi]} -\int \mathcal{D}\Phi \int d^{d}x \partial_{\mu}j^{\mu}_{a}\omega_{a}(x) X e^{-S[\Phi]}\right)
+\end{equation}
+В результате имеем
+\begin{equation}
+  \label{eq:205}
+  \langle \delta X\rangle=\int d^{d}x \partial_{\mu}\langle j^{\mu}_{a}(x) X\rangle \omega_{a}(x)
+\end{equation}
+С другой стороны, мы можем вычислить $\langle\delta X\rangle$ используя \eqref{eq:198}:
+\begin{multline}
+  \label{eq:206}
+  \langle\delta X\rangle=-i\sum_{i=1}^{n}\langle \Phi(x_{1})\dots G_{a} \Phi(x_{i}) \dots \Phi(x_{n})\rangle \omega_{a}(x_{i})=\\
+  -i \int d^{d}x \omega_{a}(x) \sum_{i=1}^{n} \langle \Phi(x_{1}) \dots G_{a} \Phi(x_{i}) \dots \Phi(x_{n})\rangle \delta (x-x_{i})
+\end{multline}
+Окончательно общий вид тождеств Уорда выглядит следующим образом:
+\begin{equation}
+  \label{eq:207}
+  \partial_{\mu}\langle j^{\mu}_{a}\Phi(x_{1}) \dots \Phi(x_{n})\rangle=-i\sum_{i=1}^{n}\delta (x-x_{i}) \langle\Phi(x_{1})\dots G_{a} \Phi(x_{i})\dots \Phi(x_{n})\rangle
+\end{equation}
+Рассмотрим некоторые примеры, которые понадобятся нам для конформной теории. Мы используем
+полученный нами явный вид генераторов \eqref{eq:169}. 
+
+Тождество Уорда для трансляций:
+\begin{equation}
+  \label{eq:208}
+  \partial_{\mu}\langle T^{\mu}_{\nu} X\rangle =-i \sum_{i} \delta(x-x_{i}) \frac{\partial}{\partial x_{i}^{\nu}} \langle X \rangle
+\end{equation}
+Теперь рассмотрим вращения. Если тензор энергии-импульса симметризован (это можно сделать в
+большинстве случаев), то отвечающий вращениям ток дается выражением 
+\begin{equation}
+  \label{eq:209}
+  j^{\mu\nu\rho}=T^{\mu\nu}x^{\rho}-T^{\mu\rho}x^{\nu}.
+\end{equation}
+Тогда тождество Уорда может быть записано в виде
+\begin{equation}
+  \label{eq:210}
+  \partial_{\mu}\langle (T^{\mu\nu}x^{\rho}-T^{\mu\rho}x^{\nu}) X\rangle=\sum_{i }\delta(x-x_{i}) \left( (x^{\nu}_{i}\partial^{\rho}_{i}-x^{\rho}_{i}\partial^{\nu}_{i})\langle X\rangle-i S^{\nu\rho}_{i}\langle X\rangle\right).
+\end{equation}
+Его можно упростить с использованием тождества для трансляций \eqref{eq:208}:
+\begin{equation}
+  \label{eq:211}
+  \langle (T^{\rho\nu}-T^{\nu\rho}) X\rangle=-i \sum_{i} \delta(x-x_{i}) S^{\nu\rho}_{i}\langle X\rangle.
+\end{equation}
+Тензор энергии-импульса в квантовой теории симметричен в корреляционных функциях, если его положение
+не совпадает с положениями других полей в корреляторе.  
+
+Наконец, для масштабных преобразований ток имеет вид $T^{\mu}_{\nu}x^{\nu}$, действие генератора
+дается выражением \eqref{eq:181} и тождества Уорда выглядят так: 
+\begin{equation}
+  \label{eq:212}
+  \partial_{\mu}\langle T^{\mu}_{\nu} x^{\nu} X\rangle=-\sum_{i} \delta(x-x_{i}) \left( x^{\nu}_{i}\frac{\partial}{\partial x^{\nu}_{i}} \langle X\rangle+\Delta_{i} \langle X\rangle\right) 
+\end{equation}
+Его тоже можно упростить:
+\begin{equation}
+  \label{eq:213}
+  \langle T^{\mu}_{\mu} X \rangle = -i \sum_{i} \delta(x-x_{i}) \Delta_{i}\langle X\rangle
+\end{equation}
+
+\subsection{О бесследовости тензора энергии-импульса.}
+\label{sec:tracelessness}
+
+В некоторых теориях из масштабной, вращательной и трансляционной инвариантности автоматически
+следует конформная инвариантность. Как мы знаем, конформная инвариантность соответствует
+бесследовости тензора энергии-импульса. Общего доказательства конформной инвариантности для
+масштабно-, трансляционно- и вращательно-инвариантных теорий не существует даже для двумерного
+случая, однако мы можем показать, что вакуумное среднее квадрата следа тензора энергии-импульса в
+этом случае равно нулю. 
+
+Для этого рассмотрим функцию Швингера
+\begin{equation}
+  \label{eq:214}
+  S_{\mu\nu\rho\sigma}=\langle T_{\mu\nu}(x) T_{\rho\sigma}(0)\rangle.
+\end{equation}
+Из симметричности тензора энергии-импульса
+\begin{equation}
+  \label{eq:215}
+  S_{\mu\nu\rho\sigma}=S_{\nu\mu\rho\sigma}=S_{\mu\nu\sigma\rho}=S_{\nu\mu\sigma\rho}
+\end{equation}
+Теперь воспользуемся трансляционной инвариантностью:
+\begin{equation}
+  \label{eq:216}
+  S_{\mu\nu\rho\sigma}=\langle T_{\mu\nu}(0)T_{\rho\sigma}(-x)\rangle =\langle T_{\rho\sigma}(-x) T_{\mu\nu}(0)\rangle = S_{\rho\sigma\mu\nu}(-x).
+\end{equation}
+Если в теории сохраняется четность, то $S_{\mu\nu\rho\sigma}(x)=S_{\rho\sigma\mu\nu}(x)$. В силу
+масштабной инвариантности $T_{\mu\nu}$ имеет скейлинговую размерность 2, так как является
+плотностью. Следовательно функция Швингера при масштабных преобразованиях ведет себя так: 
+\begin{equation}
+  \label{eq:217}
+  S_{\mu\nu\rho\sigma}(\lambda x)=\lambda^{-4} S_{\mu\nu\rho\sigma}(x)
+\end{equation}
+Теперь можно записать общий вид функции Швингера:
+\begin{multline}
+  \label{eq:218}
+  S_{\mu\nu\rho\sigma}(x)=(x^{2})^{-4} \left( A_{1}g_{\mu\nu} g_{\rho\sigma} (x^{2})^{2} + A_{2} (g_{\mu\rho}g_{\nu\sigma}\right. +\\
+  \left. g_{\mu\sigma}g_{\nu\rho}) (x^{2})^{2} +A_{3} (g_{\mu\nu} x_{\rho}x_{\sigma} +g_{\rho\sigma}x_{\mu}x_{\nu})x^{2} +A_{4} x_{\mu}x_{\nu}x_{\rho}x_{\sigma}\right)
+\end{multline}
+Кроме того, у нас имеется закон сохранения $\partial^{\mu} T_{\mu\nu}=0$, поэтому
+\begin{multline}
+  \label{eq:219}
+  \partial^{\mu}  S_{\mu\nu\rho\sigma}(x)=-(x^{2})^{-4} \left( 3(A_{4}+2 A_{3}) x_{\nu}x_{\rho}x_{\sigma}\right. +\\
+  \left. (4 A_{1}+3 A_{3}) g_{\rho\sigma} x_{\nu} x^{2} +(4 A_{2} - A_{3}) (g_{\rho\nu}x_{\sigma}+g_{\nu\sigma}x_{\rho}) x^{2}\right)=0
+\end{multline}
+Это равенство может выполняться для любого $x$ только если все коэффициенты в скобках равны нулю. То есть
+\begin{eqnarray}
+  \label{eq:220}
+  A_{1}=3 A\\
+  A_{2}=-A\\
+  A_{3}=-4 A\\
+  A_{4}=8 A
+\end{eqnarray}
+Окончательно получаем для функции Швингера
+\begin{multline}
+  \label{eq:221}
+  S_{\mu\nu\rho\sigma}(x)=\frac{A}{(x^{2})^{4}} \left( (3g_{\mu\nu} g_{\rho\sigma}-g_{\mu\rho}g_{\nu\sigma}-g_{\mu\sigma}g_{\nu\rho}) (x^{2})^{2} 
+  \right. \\
+  \left.-4 x^{2} (g_{\mu\nu} x_{\rho}x_{\sigma} +g_{\rho\sigma}x_{\mu}x_{\nu}) +8 x_{\mu}x_{\nu}x_{\rho}x_{\sigma}\right)
+\end{multline}
+Теперь прямой подстановкой можно проверить, что
+\begin{equation}
+  \label{eq:222}
+  S^{\mu\sigma}_{\mu\sigma}=\langle T^{\mu}_{\mu}(x) T^{\sigma}_{\sigma}(0)\rangle=0
+\end{equation}
+при любых значениях $x$. В частности $\langle T^{\mu}_{\mu}(0)\rangle=0$, то есть у оператора следа
+тензора энергии-импульса нулевое матожидание и среднеквадратичное отклонение в основном состоянии. 
+
+\section{Лекция 5}
+\label{sec:-5}
+
+
+  \begin{itemize}
+  \item Конформная инвариантность в двумерной теории.
+  \item Глобальные конформные преобразования
+  \item Тождества Уорда в двумерной конформной теории
+  \end{itemize}
+
+
+В лекции \ref{sec:lecture-4} мы получили общее условие на вид инфинитезимальных конформных преобразований:
+\begin{equation}
+  \label{eq:223}
+  \partial_{\mu}\epsilon_{\nu}+\partial_{\nu}\epsilon_{\mu}=\frac{2}{d} \partial_{\rho}\epsilon^{\rho} \eta_{\mu\nu}.
+\end{equation}
+Теперь у нас $d=2$, $\mu,\nu=0,1$ и $\eta_{\mu\nu}=\delta_{\mu\nu}$, так как мы работаем в
+евклидовой теории. Расписывая компоненты уравнения \eqref{eq:223}, получаем 
+\begin{eqnarray}
+  \label{eq:224}
+  \partial_{0} \epsilon_{1}+ \partial_{1}\epsilon_{0}=0& \Rightarrow & \quad\partial_{0} \epsilon_{1}=- \partial_{1}\epsilon_{0}\\
+  2\partial_{0}\epsilon_{0}=\partial_{0}\epsilon_{0}+\partial_{1}\epsilon_{1}& \Rightarrow& \quad \partial_{0} \epsilon_{0}= \partial_{1}\epsilon_{1}
+\end{eqnarray}
+То есть мы получили уравнения Коши-Римана. Введем комплексные координаты
+\begin{eqnarray}
+  \label{eq:225}
+  z=x_{0}+i x_{1}\\
+  \bar z = x_{0}-i x_{1}\\
+  \partial = \partial_{z}=\frac{1}{2}(\partial_{0}-i\partial_{1}) \\
+  \bar \partial=\partial_{\bar z}=\frac{1}{2} (\partial_{0}+i \partial_{1})\\
+  \epsilon=\epsilon_{0}+i \epsilon_{1}\\
+  \bar \epsilon=\epsilon_{0}-i \epsilon_{1}, 
+\end{eqnarray}
+тогда уравнения \eqref{eq:224} можно переписать в виде
+\begin{eqnarray}
+  \label{eq:226}
+ \bar \partial \epsilon=0\\
+  \partial \bar \epsilon=0.
+\end{eqnarray}
+Решениями будут любые голоморфные и антиголоморфные функции: $\epsilon=\epsilon(z)$ -- голоморфная
+функция и $\bar \epsilon=\bar \epsilon(\bar z)$ -- антиголоморфная. Таким образом мы видим, что
+алгебра локальных конформных преобразований в двумерном случае оказывается бесконечномерной алгеброй
+преобразований 
+\begin{eqnarray}
+  \label{eq:227}
+  z\to f(z)\\
+  \bar z \to \bar f(\bar z)
+\end{eqnarray}
+Введем в алгебре конформых преобразований следующий базис:
+\begin{eqnarray}
+  \label{eq:228}
+  z'=z+\epsilon_{n}(z)\\
+  \bar z'=\bar z+\bar \epsilon_{n}(\bar z)\\
+  \epsilon_{n}(z)= -z^{n+1}\\
+  \bar \epsilon_{n}(\bar z)=-\bar z^{n+1}
+\end{eqnarray}
+Тогда соответствующие генераторы будут равны
+\begin{eqnarray}
+  \label{eq:229}
+  l_{n}=-z^{n+1}\partial\\
+  \bar l_{n}=-\bar z^{n+1}\bar \partial 
+\end{eqnarray}
+Легко видеть, что коммутационные соотношения имеют вид
+\begin{eqnarray}
+  \label{eq:230}
+  \left[l_{m},l_{n}\right]=(m-n) l_{m+n}\\
+  \left[\bar l_{m},\bar l_{n}\right]=(m-n) \bar l_{m+n}\\  
+  \left[l_{n},\bar l_{m}\right]=0
+\end{eqnarray}
+Мы видим, что алгебра распадается в прямую сумму $\mathcal{A} \oplus \bar{\mathcal{A}}$, каждая
+компонента --- это алгебра Витта (Witt algebra). Оказывается удобно продолжить теорию на случай
+независимых $z,\bar z$. Тогда теория распадется на два независимых сектора. Условие же $z^{*}=\bar
+z$ можно наложить в самом конце. 
+Такая процедура соответствует комплексному продолжению всех функций
+от $x_{0},x_{1}$ на $x_{0},x_{1}\in \mathbb{C}^{2}$. Заметим, что вещественная плоскость сохраняется
+подалгеброй, натянутой на генераторы $l_{n}+\bar l_{n}$ и $i(l_{n}-\bar l_{n})$. 
+
+\subsection{Глобальные конформные преобразования}
+\label{sec:global-conformal}
+
+Глобальными называются те преобразования, которые определены на всей сфере Римана
+$S^{2}=\mathbb{C}^{2}\cup \{\infty\}$. Понятно, что это может быть только при $n\geq -1$. Кроме
+того, чтобы рассмотреть окрестность точки $z=\infty$ можно сделать преобразование координат
+$z=-\frac{1}{w}$. Тогда 
+\begin{equation}
+  \label{eq:231}
+  l_{n}=-z^{n+1}\partial = - \left(-\frac{1}{w}\right)^{n+1}\left(\frac{\partial z}{\partial w}\right) \partial_{w}=-\left(-\frac{1}{w}\right)^{n-1}\partial_{w}.
+\end{equation}
+Это выражение должно быть хорошо определено при $w\to 0$, то есть $n\leq 1$. Значит глобальные
+конформные преобразования генерируются $l_{\pm 1},l_{0},\bar l_{\pm 1},\bar l_{0}$. Заметим, что
+генераторы $l_{-1},\bar l_{-1}$ порождают трансляции, $i(l_{0}-\bar l_{0})$ -- вращения, $l_{0}+\bar
+l_{0}$ -- масштабные преобразования. 
+Конечные глобальные преобразования имеют вид 
+\begin{equation}
+  \label{eq:232}
+  z\to \frac{az+b}{cz+d}, \quad ad-bc=1,\quad a,b,c,d\in \mathbb{C}
+\end{equation}
+(И аналогично для $\bar z$).
+Если собрать коэффициенты $a,b,c,d$ в матрицу $A=
+\begin{pmatrix}
+  a & b\\
+  c & d
+\end{pmatrix}$, 
+то ясно, что мы имеем дело с группой $SL_{2}(\mathbb{C})/Z_{2}\approx SO(3,1)$. Факторизация по
+$Z_{2}$ соответствует тому, что изменение знака у $a,b,c,d$ разом не меняет преобразования. Эта
+группа называется также группой проективных конформных преобразований.  
+
+Трансляции, дилатации и вращения в матричном виде записываются следующим образом:
+\begin{eqnarray}
+  \label{eq:233}
+  &\mbox{трансляции} \quad x\to x+a, B=a^{0}+i a^{1},\quad &
+  \begin{pmatrix}
+    1 & B\\
+    0 & 1
+  \end{pmatrix}\\
+  &\mbox{вращения}\quad &
+  \begin{pmatrix}
+    e^{i \Theta/2} & 0\\
+    0 & e^{-i \Theta/2}
+  \end{pmatrix}\\
+  & \mbox{дилатации}\quad &
+  \begin{pmatrix}
+    \lambda & 0\\
+    0 & \lambda^{-1}
+  \end{pmatrix}\\
+  &\begin{array}{r}
+  \mbox{специальные конформные}    \\
+  \mbox{преобразования}
+  \end{array} 
+  \quad
+  C=h_{0}-i h_{1}\quad &
+  \begin{pmatrix}
+    1 & 0\\
+    C & 1
+  \end{pmatrix}
+\end{eqnarray}
+
+Глобальные конформные преобразования образуют группу, локальные же преобразования не обратимы,
+поэтому по отношению к ним говорят только об алгебре. 
+
+Глобальные преобразования полезны для описания физических состояний. Допустим, мы работаем в базисе
+собственных состояний операторов $l_{0}, \bar l_{0}$, соответствующие собственные значения $h,\bar
+h$ -- независимые, вещественные, называются конформными весами или голоморфной и антиголоморфной
+размерностями. Так как $l_{0}+\bar l_{0}$ -- генератор дилатации, то скейлинговая размерность
+$\Delta=h+\bar h$, а поскольку $i(l_{0}-\bar l_{0})$ порождает вращения, то спин $s=h-\bar h$. 
+
+Квазипримарное поле $\varphi(z,\bar z)$ \eqref{eq:182} со спином $s$ при преобразованиях $z\to w(z), \bar z\to \bar w(\bar z)$ преобразуется так:
+\begin{equation}
+  \label{eq:234}
+  \varphi'(w,\bar w)=\left( \frac{d w}{d z}\right)^{-h}\left( \frac{d \bar w}{d \bar z}\right)^{-\bar h} \varphi(z,\bar z)
+\end{equation}
+Вариация квазипримарного поля при инфинитезимальных преобразованиях $w=z+\epsilon, \bar w =\bar z +\bar \epsilon$ имеет вид
+\begin{equation}
+  \label{eq:235}
+  \delta_{\epsilon,\bar \epsilon} \varphi=\varphi'(z,\bar z)-\varphi(z,\bar z)=-(h\varphi \partial \epsilon +\epsilon \partial \varphi) - (\bar h \varphi\bar \partial \bar \epsilon+\bar \epsilon \bar \partial \varphi)
+\end{equation}
+Если поле ведет себя так не только при глобальных, но и при локальных преобразованиях, то оно называется {\it примарным}.
+
+\subsection{Тождества Уорда в двумерной конформной теории}
+\label{sec:ward-2d-cft}
+В прошлой лекции мы получили общий вид тождеств Уорда для трансляций, поворотов и масштабных преобразований. Выпишем их здесь.
+\begin{eqnarray}
+  \label{eq:236}
+  \partial_{\mu}\langle T^{\mu}_{\nu} X\rangle = -\sum_{i} \delta(x-x_{i}) \partial_{\nu}^{(i)}\langle X\rangle\\
+  \langle (T^{\mu\nu}-T^{\nu\mu}) X\rangle =i\sum_{i}\delta(x-x_{i}) S^{\mu\nu}_{(i)}\langle X\rangle\\
+  \langle T^{\mu}_{\mu} X\rangle=-\sum_{i}\delta(x-x_{i}) \Delta_{(i)} \langle X\rangle
+\end{eqnarray}
+Прежде, чем мы начнем переписывать тождества в комплексных координатах, обсудим следующий
+вспомогательный математический факт: для голоморфных (антиголоморфных) функций можно использовать
+следующее представление для $\delta$-функции: 
+\begin{equation}
+  \label{eq:237}
+  \delta(x)=\frac{1}{\pi} \bar \partial \frac{1}{z} = \frac{1}{\pi}\partial \frac{1}{\bar z}
+\end{equation}
+Заметим, что
+\begin{equation}
+  \label{eq:238}
+  \int_{M} d^{2}x \partial_{\mu}F^{\mu}=\int_{\partial M} d\xi_{\mu} F^{\mu}=\frac{1}{2i} \oint_{\partial M} (-dz F^{\bar z}+d\bar z F^{z})
+\end{equation}
+Для голоморфной функции
+\begin{equation}
+  \label{eq:239}
+  \frac{1}{\pi}\int_{M} d^{2}x \bar \partial\left( \frac{f(z)}{z}\right)=\frac{1}{2\pi i} \int_{\partial M} dz \frac{f(z)}{z}=f(0)=\int_{M} d^{2}x \delta(x) f(z)
+\end{equation}
+Теперь перепишем тождества Уорда \eqref{eq:236} в комплексных координатах:
+\begin{eqnarray}
+  \label{eq:240}
+  2\pi \partial \langle T_{\bar z z } X\rangle +2\pi \bar \partial \langle T_{zz}X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X \rangle\\
+  2\pi \partial \langle T_{\bar z \bar z } X\rangle +2\pi \bar \partial \langle T_{z\bar z}X\rangle = -\sum_{i} \bar \partial \frac{1}{\bar z-\bar w_{i}} \partial_{\bar w_{i}} \langle X \rangle\\
+  2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) \Delta_{i} \langle X\rangle\\
+  -2 \langle T_{z\bar z} X\rangle +2 \langle T_{\bar z z }X\rangle =- \sum_{i}\delta(x-x_{i}) s_{i} \langle X\rangle
+\end{eqnarray}
+Если сложить и вычесть два последних равенства и вспомнить определение $h, \bar h$, то получим
+\begin{eqnarray}
+  \label{eq:241}
+  2\pi \langle T_{\bar z z} X\rangle = -\sum_{i} \bar \partial \frac{1}{z-w_{i}} h_{i} \langle X\rangle\\
+  2\pi \langle T_{z \bar z} X\rangle = -\sum_{i}  \partial \frac{1}{\bar z-\bar w_{i}} \bar h_{i} \langle X\rangle
+\end{eqnarray}
+Введем обозачения
+\begin{eqnarray}
+  \label{eq:242}
+  T=-2\pi T_{zz}\\
+  \bar T = -2 \pi T_{\bar z \bar z},
+\end{eqnarray}
+и подставим уравнения \eqref{eq:241} в первые два уравнения \eqref{eq:240}:
+\begin{eqnarray}
+  \label{eq:243}
+  \bar \partial \left( \langle T X\rangle -\sum_{i} \left( \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X\rangle + \frac{h_{i}}{(z-w_{i})^{2}} \langle X\rangle \right) \right) =0\\
+  \partial \left( \langle \bar T X\rangle -\sum_{i} \left( \frac{1}{\bar z-\bar w_{i}} \partial_{\bar w_{i}} \langle X\rangle + \frac{\bar h_{i}}{(\bar z-\bar w_{i})^{2}} \langle X\rangle \right) \right) =0
+\end{eqnarray}
+То есть выражения в скобках (анти)голоморфны. Следовательно
+\begin{equation}
+  \label{eq:244}
+  \langle T X\rangle =\sum_{i} \left( \frac{1}{z-w_{i}} \partial_{w_{i}} \langle X\rangle + \frac{h_{i}}{(z-w_{i})^{2}} \langle X\rangle \right) +\mbox{регулярные члены}
+\end{equation}
+Это пример операторного разложения, которое мы будем обсуждать далее. 
+
+Заметим, что вариация коррелятора при конформных преобразованиях дается тензором энергии-импульса:
+\begin{equation}
+  \label{eq:245}
+  \delta_{\epsilon}\langle X\rangle =\int_{M} d^{2}x \partial_{\mu} \langle T^{\mu\nu}(x)\epsilon_{\nu}(x) X \rangle
+\end{equation}
+В комплексных координатах она перепишется так:
+\begin{equation}
+  \label{eq:246}
+  \delta_{\epsilon,\bar \epsilon} \langle X\rangle = \frac{1}{2\pi i} \oint_{C} dz \epsilon(z) \langle T(z) X\rangle +\frac{1}{2\pi i} \oint_{C}  d\bar z \bar \epsilon(\bar z) \langle \bar T(\bar z) X\rangle
+\end{equation}
+Здесь интеграл берется по контуру, внутри которого находятся все аргументы $X$.
+Вообще говоря, это выражение для вариации верно для коррелятора любых полей, не только примарных.
+
+Применимость тождеств Уорда основывается на регулярности тензора энергии-импульса. Он должен быть везде хорошо определен. В частности, $T(0)$ должен быть конечен. Кроме того, если вычислить вариацию постоянного поля в точке $z=\infty$:
+\begin{equation}
+  \label{eq:247}
+  \delta_{\epsilon} \langle 1\rangle =-\frac{1}{2\pi i} \oint_{C}dz \epsilon(z) \langle T(z)\rangle =0
+\end{equation}
+где контур обходит точку $\infty$. Для специальных конформных преобразований $\epsilon(z)\sim z^{2}$, поэтому $T(z)\sim z^{-4},\quad z\to \infty$.
+
+\section{Лекция 6}
+\label{sec:-6}
+
+
+  \begin{itemize}
+  \item Алгебраическая конструкция двумерной конформной теории поля
+  \item Алгебра локальных полей. Операторное разложение
+  \item Свободный бозон
+  \item Центральный заряд. Алгебра Вирасоро
+  \end{itemize}
+
+
+\subsection{Алгебра локальных полей. Операторное разложение}
+\label{sec:ope}
+
+В набор локальных полей теории входят не только те поля, которые входят в плотность лагранжиана, но и их производные, произведения и так далее.
+Мы предполагаем, что набор локальных полей $A$ является полным, то есть существует некий базис $\{ A_{j}\}$, по которому можно разложить любое поле. Локальные поля образуют линейное пространство.
+
+Кроме того, мы предполагаем, что имеет место операторное разложение
+\begin{equation}
+  \label{eq:248}
+  A_{i}(x)A_{j}(y) =\sum_{k} C^{k}_{ij} (x,y) A_{k}(y),
+\end{equation}
+здесь $C_{ij}^{k}(x,y)$ -- функция. Равенство \eqref{eq:248} надо понимать в смысле корреляционных функций
+\begin{equation}
+  \label{eq:249}
+  \langle A_{i}(x) A_{j}(y) X\rangle = \sum_{k} C^{k}_{ij} (x,y) \langle A_{k}(y) X\rangle.
+\end{equation}
+Тогда набор локальных полей образует алгебру. 
+
+Рассмотрим четырехточечную функцию и воспользуемся операторным разложением \eqref{eq:248}:
+\begin{equation}
+  \label{eq:250}
+  \langle A_{1}(x_{1}) A_{2}(x_{2}) A_{3}(x_{3}) A_{4}(x_{4}) \rangle =\sum_{k,l} C^{k}_{12} (x_{1}-x_{2}) D_{kl}(x_{2}-x_{4}) C^{l}_{34}(x_{3}-x_{4}) 
+\end{equation}
+Здесь мы воспользовались трансляционной инвариантностью, а также ввели обозначение для пропагатора
+\begin{equation}
+  \label{eq:251}
+  \langle A_{i}(x_{i}) A_{j}(x_{j}) \rangle =D_{ij}(x_{i}-x_{j}).
+\end{equation}
+Однако операторным разложением можно воспользоваться и в другом порядке, тогда для четырехточечной функции получим:
+\begin{equation}
+  \label{eq:252}
+  \langle A_{1}(x_{1}) A_{2}(x_{2}) A_{3}(x_{3}) A_{4}(x_{4}) \rangle =\sum_{k,l} C^{k}_{13} (x_{1}-x_{3}) D_{kl}(x_{3}-x_{4}) C^{l}_{24}(x_{2}-x_{4})   
+\end{equation}
+Приравняв правые части уравнений \eqref{eq:252},\eqref{eq:250} можно получить систему уравнений на коэффициенты $C^{k}_{ij}$. Если решить эти уравнения, то в принципе можно вычислять любые корреляторы, если известен набор полей и их конформных размерностей. Такой подход называется конформным бутстрапом. 
+
+Корреляционные функции имеют особенности при совпадении положений полей. Именно характер этих особенностей важен при описании критического поведения (критические индексы и т.п.).
+Для произведения $T$ и примарного поля $\varphi$ с конформными размерностями $h,\bar h$ имеет место операторное разложение \eqref{eq:244}:
+\begin{eqnarray}
+  \label{eq:253}
+  T(z) \varphi(w,\bar w)\sim \frac{h}{(z-w)^{2}} \varphi(w,\bar w)+\frac{1}{z-w} \partial_{w} \varphi(w,\bar w)\\
+  \bar T(\bar z) \varphi(w,\bar w)\sim \frac{\bar h}{(\bar z-\bar w)^{2}} \varphi(w,\bar w)+\frac{1}{\bar z-\bar w} \partial_{\bar w} \varphi(w,\bar w)  
+\end{eqnarray}
+
+\subsection{Свободный бозон}
+\label{sec:free-boson}
+
+В качестве примера конформной теории рассмотрим свободное бозонное поле $\varphi$. Действие имеет вид
+\begin{equation}
+  \label{eq:254}
+  S=\frac{1}{2} g \int d^{2}x \partial_{\mu}\varphi \partial^{\mu}\varphi,
+\end{equation}
+а пропагатор дается равенством
+\begin{equation}
+  \label{eq:255}
+  \langle\varphi(x) \varphi(y)\rangle =-\frac{1}{4\pi g} \ln (x-y)^{2}+\text{const}
+\end{equation}
+В комплексных координатах пропагатор запишется следующим образом:
+\begin{equation}
+  \label{eq:256}
+  \langle \varphi(z,\bar z) \varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \left( \ln(z-w) + \ln(\bar z -\bar w)\right) +\text{const}
+\end{equation}
+Дифференцируя получаем
+\begin{eqnarray}
+  \label{eq:257}
+  \langle\partial_{z} \varphi(z,\bar z) \partial_{w}\varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \frac{1}{(z-w)^{2}}\\
+  \langle\partial_{\bar z} \varphi(z,\bar z) \partial_{\bar w}\varphi(w,\bar w)\rangle =-\frac{1}{4\pi g} \frac{1}{(\bar z-\bar w)^{2}}  
+\end{eqnarray}
+То есть имеет место операторное разложение полей $\partial \varphi$:
+\begin{equation}
+  \label{eq:259}
+  \partial \varphi(z) \partial \varphi(w) \sim -\frac{1}{4 \pi g} \frac{1}{(z-w)^{2}}
+\end{equation}
+
+Тензор энергии-импульса:
+\begin{equation}
+  \label{eq:258}
+  T_{\mu\nu}=g \left(\partial_{\mu}\varphi \partial_{\nu} \varphi -\frac{1}{2} \eta_{\mu\nu}\partial_{\rho}\varphi \partial^{\rho} \varphi \right)
+\end{equation}
+После квантования получаем для оператора $T(z)$ следующее выражение:
+\begin{equation}
+  \label{eq:260}
+  T(z) =-2\pi g :\partial \varphi \partial \varphi : =-2\pi g \lim_{w\to z} \left(\partial \varphi(z) \partial \varphi(w) -\langle\partial \varphi(z) \partial \varphi(w)\rangle\right)
+\end{equation}
+Теперь мы можем вычислить операторное разложение тензора энергии-импульса и локального поля $\partial \varphi$:
+\begin{equation}
+  \label{eq:261}
+  T(z)\partial \varphi(w)=-2\pi g :\partial \varphi(z) \partial \varphi(z): \partial \varphi(w) \sim -4\pi g:\partial \varphi(z)  \partial \overbracket{ \varphi(z): \partial \varphi } (w) \sim \frac{\partial \varphi (z)}{(z-w)^{2}}
+\end{equation}
+Для вычисления мы использовали теорему Вика (см. \cite{vasiliev1998}, \cite{difrancesco1997cft}). Раскладывая в ряд по $(z-w)$ получаем окончательно для сингулярной части операторного разложения
+\begin{equation}
+  \label{eq:262}
+  T(z) \partial \varphi(w) \sim \frac{\partial \varphi(w) }{(z-w)^{2}} +\frac{\partial_{w}^{2} \varphi(w)}{z-w}
+\end{equation}
+Теперь мы видим, что поле $\partial \varphi$ -- примарное, с конформной размерностью $h=1$. 
+
+
+Аналогично вычислим операторное разложение $T$  с самим собой.
+\begin{multline}
+  \label{eq:263}
+  T(z) T(w) =4 \pi^{2}g^{2}:\partial \varphi(z) \partial \varphi(z): :\partial \varphi(w)\partial \varphi(w): \\
+  \sim \frac{1/2}{(z-w)^{4}} -\frac{4\pi g:\partial \varphi(z) \partial \varphi(w):}{(z-w)^{2}} \\
+  \sim \frac{1/2}{(z-w)^{4}}+ \frac{2T(w)}{(z-w)^{2}} +\frac{\partial T(w)}{z-w}
+\end{multline}
+
+\subsection{Центральный заряд. Алгебра Вирасоро}
+\label{sec:virasoro}
+
+В силу обсуждения после формулы \eqref{eq:247}, ренормгруппового анализа \ref{c-theorem} и вычисления функции Швингера  \eqref{eq:221} мы имеем следующий общий вид операторного разложения для $T(z)T(w)$:
+\begin{equation}
+  \label{eq:264}
+  T(z)T(w) \sim \frac{c/2}{(z-w)^{4}}+ \frac{2T(w)}{(z-w)^{2}} +\frac{\partial T(w)}{z-w}
+\end{equation}
+Здесь $c$ -- параметр теории, называемый центральным зарядом. Он зависит от физической природы теории и не определяется из соображений конформной инвариантности. В теории свободного бозона $c=1$, для фермиона $c=1/2$. Член $\frac{c/2}{(z-w)^{4}}$ называется аномальным. Если этого члена нет, то $T$--квазипримарное поле c $h=2$. 
+
+Сравнивая выражение \eqref{eq:264} и \eqref{eq:221} мы видим, что константа $A$ в функции Швингера
+\begin{equation}
+  \label{eq:265}
+  A=\frac{c}{4\pi^{2}}
+\end{equation}
+Покажем, как преобразуется тензор энергии-импульса при конформных преобразованиях. Используем формулу \eqref{eq:246}:
+\begin{multline}
+  \label{eq:266}
+  \delta_{\epsilon} T(w) =-\frac{1}{2\pi i} \oint_{C} dz \epsilon(z) T(z) T(w) =-\frac{1}{12} c \partial_{w}^{3}\epsilon(w) -2 T(w) \partial_{w} \epsilon(w) -\epsilon(w) \partial_{w}T(w) 
+\end{multline}
+Соответствующее конечное преобразование $z\to w(z)$ имеет вид
+\begin{eqnarray}
+  \label{eq:267}
+  T\to T'(w) =\left(\frac{dw}{dz}\right)^{-2} \left(T(z) -\frac{c}{12} \left\{ w,z\right\}\right)\\
+  \left\{ w,z\right\}=\frac{\left(\frac{d^{3}w}{dz^{3}}\right) } {\frac{dw}{dz}} -\frac{3}{2}\left(\frac{\frac{d^{2}w}{dz^{2}}}{\frac{dw}{dz}}\right)^{2}
+\end{eqnarray}
+В качестве упражнения предлагаем проверить это выражение обратным переходом к инфинитезимальному преобразованию.
+
+Разложим $T(z)$ в ряд Лорана.
+\begin{eqnarray}
+  \label{eq:268}
+  T(z)=\sum_{n\in \mathbb{z}}z^{-n-2}L_{n}\\
+  T(z)=\sum_{n\in \mathbb{z}}\bar z^{-n-2}\bar L_{n}
+\end{eqnarray}
+При масштабном преобразовании $z\to z/\lambda$ оператор $T(z)\to \lambda^{2}T(z/\lambda)$, соответственно компоненты $L_{-n}\to \lambda^{n}L_{-n}$.
+\begin{equation}
+  \label{eq:269}
+  L_{n}=\oint \frac{dz}{2\pi i} z^{n+1} T(z)
+\end{equation}
+Выведем коммутационные соотношения для операторов $L_{n}$:
+\begin{equation}
+  \label{eq:270}
+  [L_{n},L_{m}]=\left( \oint \frac{dz}{2\pi i}\oint \frac{dw}{2\pi i}-\oint \frac{dw}{2\pi i}\oint \frac{dz}{2\pi i}\right) z^{n+1} T(z)w^{m+1}T(w)
+\end{equation}
+Используем операторное разложение \eqref{eq:264}:
+\begin{multline}
+  \label{eq:271}
+  [L_{n},L_{m}]=\oint \frac{dz}{2\pi i} \oint \frac{dw}{2\pi i} z^{n+1} w^{m+1}\left( \frac{c/2}{(z-w)^{4}} +\frac{2T(w)}{(z-w)^{2}}+\frac{\partial T(w) }{z-w} +\mbox{рег. члены}\right) =\\
+  \oint \frac{dw}{2\pi i} \left(\frac{c}{12} (n+1)n(n-1)w^{n-2}w^{m+1} + 2(n+1)w^{n}w^{m+1}T(w)+w^{n+1}w^{m+1}\partial T(w)\right)
+\end{multline}
+Интегрируем последний член по частям, внеинтегральный член зануляется, а под интегралом остается $(n-m)w^{n+m+1}T(w)$:
+\begin{equation}
+  \label{eq:272}
+    [L_{n},L_{m}]=\oint \frac{dw}{2\pi i} \left(\frac{c}{12} (n+1)n(n-1)w^{m+n-1}+ (n-m)w^{n+m+1}T(w)\right)
+\end{equation}
+Используя определение \eqref{eq:269} и вычисляя вычет подинтегрального выражения при $n=-m$, в итоге получаем коммутационное соотношение
+\begin{equation}
+  \label{eq:273}
+    [L_{n},L_{m}]=(n-m)L_{m+n}+\frac{c}{12}(n^{3}-n)\delta_{m+n,0}
+\end{equation}
+Это коммутационные соотношения алгебры Вирасоро.
+
+Легко показать, что в результате действия оператора $L_{-n}$ на поле $\varphi$  с конформной размерностью $(h,\bar h)$ получается поле с размерностью $(h-n,\bar h)$. Все поля в теории разбиваются на конформные семейства, соответствующие примарным полям:
+\begin{equation}
+  \label{eq:274}
+  [\varphi]=\{L_{-n_{1}}L_{-n_{2}}\dots L_{-n_{N}}\bar L_{-m_{1}}\dots \bar L_{-m_{M}}\varphi\}
+\end{equation}
+Вычисление корреляторов вторичных полей сводится к корреляторам примарных. Алгебра локальных полей оказывается прямой суммой конформных семейств
+\begin{equation}
+  \label{eq:275}
+  \mathcal{A} =\bigoplus_{\alpha}[\varphi_{\alpha}]
+\end{equation}
+{\it Минимальными} называются теории с конечным числом примарных полей. Чтобы полностью задать такую теорию нужно определить примарные поля и их конформные размерности.
+
+\section{Лекция 7}
+\label{sec:-7}
+
+
+  \begin{itemize}
+  \item Классификация минимальных моделей
+  \item Детерминант Каца
+  \item Значения центрального заряда и соответствие с решеточными моделями
+  \end{itemize}
+
+
+\subsection{Уравнения на корреляционные функции в минимальных моделях}
+\label{sec:null-fields}
+
+Чтобы окончательно зафиксировать структуру двумерной конформной теории поля введем два
+дополнительных предположения. Во-первых, мы предполагаем, что локальные поля образуют алгебру
+$\mathcal{A}$ по отношению к операторному разложению \eqref{eq:248}\eqref{eq:249}.
+
+
+Ненулевые операторные разложения между членами конформных семейств определяются разложениями примарных полей. Поэтому можно писать сразу для семейств
+\begin{equation}
+  \label{eq:300}
+  [\varphi_i][\varphi_j]=\sum_k C_{ijk} [\varphi_k]
+\end{equation}
+
+При этом в минимальных моделях, где число примарных полей конечно, сумма \eqref{eq:300} оказывается конечной.
+Например, в модели Изинга у нас есть три семейства $[1], [\sigma], [\varepsilon]$. Из наличия симметрий ($\sigma\to - \sigma$ и $\varepsilon\to -\varepsilon$ (дуальность Крамерса-Ванье)) имеем:
+\begin{eqnarray}
+  \label{eq:301}
+  \left[\sigma\right]\left[\sigma\right]=1+\left[\varepsilon\right]\\
+  \left[\sigma\right]\left[\varepsilon\right]=\left[\sigma\right]\\
+  \left[\varepsilon\right]\left[\varepsilon\right]=1
+\end{eqnarray}
+
+Кроме того, потребуем, чтобы все состояния в гильбертовом пространстве порождались полями из алгебры локальных полей $\mathcal{A}$ из вакуума (state-field correspondence):
+\begin{equation}
+  \label{eq:307}
+  \forall \left| a\right> \in \mathbb{H}\quad \exists \varphi\in\mathcal{A}:\quad \lim_{z\to 0}\varphi(z)\left|0\right>=\left|a\right>
+\end{equation}
+Для примарного поля $\varphi$ с размерностью $h$ соответствующее состояние будем обозначать через $\left|h\right>$. 
+Из определения \eqref{eq:307} и операторного разложения \eqref{eq:253} легко видеть, что $L_{0}\left|h\right>=h\left|h\right>$.
+Заметим, что $L_{0} L_{n}\left|h\right> = L_{n} L_{0}\left|h\right> + [L_{0},L_{n}]\left|h\right> = (h-n) L_{n}\left|h\right>$. 
+Гамильтониан $H=L_{0}+\bar L_{0}$ должен иметь спектр, ограниченный снизу, поэтому для любого состояния $\left|h\right>$ должно существовать $n>0$, такое что $L_{n}\left|h\right> =0 $.
+Так как все состояния порождаются полями, а все поля получаются из примарных действием понижающих операторов $L_{-n}$, то все состояния должны разбиваться на модули старшего веса алгебры Вирасоро -- так называемые модули Верма. В минимальных моделях число таких модулей конечно. 
+
+Рассмотрим действие $L_{n}$ на состояние $\left|h\right>$ и получим ограничение на значения конформного веса. Возьмем свертку с сопряженным состоянием $\left<h\right|$, $L^{+}_{m}=L_{-m}$:
+\begin{equation}
+  \label{eq:308}
+  \left<h\right|L^{+}_{-n}L_{n}\left|h\right>=\left<h\right| [L_{n},L_{-n}]\left|h\right> = \left(2nh +\frac{c}{12}(n^{3}-n)\right) \left<h|h\right>
+\end{equation}
+Норма состояний должна быть положительна. Устремим $n$ к бесконечности. Отсюда сразу получаем ограничение $c\geq 0$. Если положить $n=1$, то $h\geq 0$. При $h=0$ имеем $L_{1}\left|0\right>=0$, то есть вакуум $sl_{2}$-инвариантен, так как комбинации генераторов $L_{0,\pm_{1}}$ образуют подалгебру $sl_{2}$.
+
+Теперь опишем структуру модуля Верма со старшим весом $h$ (Таблица \ref{tab:verma}).
+
+\begin{table}[tbh]
+\label{tab:verma} \noindent \centering{\
+\begin{tabular}{|l|l|l|l|}
+\hline
+уровень & конформный вес & поле & состояние   \\ \hline
+0 & h & $\varphi$ & $\left|h\right>$  \\
+1 & h+1 & $L_{-1}\varphi$ & $L_{-1}\left|h\right>$  \\
+2 & h+2 & $L_{-2}\varphi$, $L_{-1}^{2}\varphi$ & $L_{-2}\left|h\right>$, $L_{-1}^{2}\left|h\right>$  \\
+3 & h+3 & $L_{-3}\varphi$,$L_{-1}L_{-2}\varphi$, $L_{-1}^{3}\varphi$ & $L_{-3}\left|h\right>$, $L_{-1}L_{-2}\left|h\right>$, $L_{-1}^{3}\left|h\right>$  \\
+\dots & \dots & \dots & \dots  \\
+N & h+N & $P(N)$ полей & $P(N)$ состояний  \\ \hline
+\end{tabular}
+}
+\caption{Структура модуля Верма}
+\end{table}
+
+Здесь $P(N)$ -- число разбиений числа $N$, для него имеет место следующая производящая функция:
+\begin{equation}
+  \label{eq:309}
+  \frac{1}{\prod_{n=1}^{\infty} (1-q^{n})} = \sum_{n=0}^{\infty} P(n) q^{n}
+\end{equation}
+
+В модуле Верма может оказаться такое состояние $\left|\omega\right>$, что $L_{n}\left|\omega\right>=0, \quad \forall n>0$. Действие понижающих операторов на такие состояния порождает инвариантное подпространство, то есть модуль Верма оказывается приводимым. Такие состояния обладают нулевой нормой и исключаются. Их иногда называют нулевыми состояниями (null-state).  Как искать такие состояния?
+
+На уровне один  $L_{1}\left(L_{-1}\left|h\right>\right)=0\Longrightarrow h=0$, то есть все состояния, полученные из вакуума понижающим оператором являются нефизическими состояниями с нулевой нормой, как и должно быть. 
+
+На уровне два будем искать нулевое состояние в виде $\left|\omega\right>=(L_{-2}+a L_{-1}^{2})\left| h \right> $. Из $L_{1}\left|\omega\right>=0$ получаем
+\begin{equation}
+  \label{eq:310}
+  0=([L_{1},L_{-2}] +a [L_{1},L_{-1}^{2}])\left|h\right> = (3+2a(2h+1))L_{-1}\left|h\right>
+\end{equation}
+То есть
+\begin{equation}
+  \label{eq:311}
+  a=-\frac{3}{2(2h+1)}
+\end{equation}
+Аналогично, действуя $L_{2}$ получаем условие
+\begin{equation}
+  \label{eq:312}
+  c=2h\frac{5-8h}{2h+1}
+\end{equation}
+Так как состояние $(L_{-2}-\frac{3}{2(2h+1)} L_{-1}^{2})\left|h\right>$ имеет нулевую норму, для корреляторов получаем $\left<(L_{-2}+aL_{1}^{2})\phi_{1}(w_{1}) \dots \phi_{n}(w_{n}) \right>=0$. 
+Используем тождества Уорда \eqref{eq:243}, \eqref{eq:244} и определение $L_{n}$ \eqref{eq:269} и перепишем это условие в виде дифференциального уравнения:
+\begin{equation}
+  \label{eq:313}
+\left[  a \frac{\partial^{2}}{\partial w_{1}^{2}} +\sum_{j\neq 1} \left(\frac{h_{j}}{(w_{1}-w_{j})^{2}}+\frac{1}{w_{1}-w_{j}} \frac{\partial}{\partial w_{j}}\right)\right] \left< \phi_{1}(w_{1}) \dots \phi_{n}(w_{n}) \right> =0
+\end{equation}
+То есть мы получили дифференциальные уравнения на корреляционные функции. 
+
+Рассмотрим в качестве примера модель Изинга. Ей соответствует конформная теория поля с тремя примарными полями \eqref{eq:276} и центральным зарядом $1/2$. Заметим, что для поля спина $\Phi_{3}$ с конформной размерностью $h=1/16$ выполнено условие \eqref{eq:312}. То есть мы можем записать уравнение \eqref{eq:313} для корреляционных функций спинов. Рассмотрим для примера четырехточечную функцию
+\begin{equation}
+  \label{eq:314}
+   G^{(4)} =\langle \sigma(z_1,\bar z_1)\dots \sigma(z_4,\bar z_4)\rangle
+\end{equation}
+Из лекции \ref{sec:lecture-9} и формулы \eqref{eq:197} можно переписать $G^{(4)}$ в виде
+\begin{equation}
+  \label{eq:315}
+   G^{(4)} = \mathrm{const}\cdot \left(\frac{z_{13}z_{24}}{z_{12} z_{23}z_{34}z_{41}}\right)^{\frac{1}{8}} \overline{ \left(\frac{z_{13}z_{24}}{z_{12} z_{23}z_{34}z_{41}}\right)}^{\frac{1}{8}}F(x,\bar x),
+\end{equation}
+где $x=\frac{z_{12}z_{34}}{z_{13}z_{24}}, z_{ij}=\left| z_{i}-z_{j}\right|$. Тогда дифференциальное уравнение на $F$ примет вид
+\begin{equation}
+  \label{eq:316}
+  \left( x(1-x) \frac{\partial^{2}}{\partial x^{2}} +(\frac{1}{2}-x)\frac{\partial}{\partial x}+\frac{1}{16}\right) F(x,\bar x)=0
+\end{equation}
+и аналогично для $\bar x$.
+Решение этого уравнения дается гипергеометрической функцией. В данном случае она упрощается до $f_{1,2}(x)=(1\pm \sqrt{1-x})^{\frac{1}{2}}$. Тогда  четырехточечную функцию можно записать в виде комбинации решений
+\begin{equation}
+  \label{eq:317}
+  G^{(4)} =  \left|\frac{z_{13}z_{24}}{z_{12} z_{23}z_{34}z_{41}}\right|^{\frac{1}{4}}\sum_{i,j=1}^{2}a_{ij}f_{i}(x)f_{j}(\bar x)
+\end{equation}
+Возвращаясь к физической системе мы должны положить $\bar x= x^{*}$, тогда из однозначности четырехточечной функции комбинация может быть только $a(|f_{1}(x)|^{2}+|f_{2}(x)|^{2})$. Из сравнения с операторным разложением для $\sigma(z)\sigma(w)$ нетрудно получить, что $a=1/2$.
+
+В итоге для четырехточечной функции получается следующее выражение:
+\begin{equation}
+  \label{eq:302}
+  G^{(4)} =\langle \sigma(z_1,\bar z_1)\dots \sigma(z_4,\bar z_4)\rangle = \frac{1}{2} \left|\frac{z_{13}z_{24}}{z_{12} z_{23}z_{34}z_{41}}\right|^{\frac{1}{4}}\left(\left|1+\sqrt{1-x}\right| + \left|1-\sqrt{1-x}\right|\right)
+\end{equation}
+
+Таким образом конформная теория поля позволяет не только находить критические индексы, но и получать явные выражения для корреляционных функций статистических моделей в критической точке. 
+
+
+
+  \begin{itemize}
+  \item Детерминант Каца
+  \item Значения центрального заряда и соответствие с решеточными моделями
+  \end{itemize}
+
+Charges and conformal weights of degenerate fields from Kac table are
+\begin{equation}
+  \label{eq:139}
+  \alpha_{r,s}=\frac{1}{2}(1-r)\alpha_{+}+\frac{1}{2}(1-s)\alpha_{-},\quad h_{r,s}=\frac{(r\kappa-4s)^{2}-(\kappa-4)^{2}}{16\kappa}
+\end{equation}
+So holomorphic and full primary fields are denoted by $\psi_{r,s}(z)\sim V_{\alpha_{r,s}}(z)$ and
+$\psi_{r,s}(z,\bar z)\sim V^{(\alpha_{r,s})}(z,\bar z)$
+
+\section{Лекция 8}
+\label{sec:-8}
+
+  \begin{itemize}
+  \item Интегрируемость и интегриуемые деформации двумерной конформной теории поля
+  \end{itemize}
+
+\section{Лекция 9}
+  \begin{itemize}
+  \item Способ получать интегрируемые системы: анзац Бете
+  \end{itemize}
+\section{Лекция 10}
+  \begin{itemize}
+  \item Анзац Бете: спектр
+  \end{itemize}
+
+\section{Лекция 11}
+  \begin{itemize}
+  \item  Конформная инвариантность и конформный бутстрап в теории поля с размерностью больше двух
+  \end{itemize}
+
+\section{Лекция 12}
+  \begin{itemize}
+  \item Конформная инвариантность в теории Янга-Миллса
+  \end{itemize}
+\section{Лекция 13}
+  \begin{itemize}
+  \item N=4 SYM: конформная инвариантность и другие симметрии
+  \end{itemize}
+\section{Лекция 14}
+  \begin{itemize}
+  \item аномальные размерности в N=4 SYM и интегрируемость
+  \end{itemize}
+
+\section{Лекция 15}
+  \begin{itemize}
+  \item интегрируемость и AdS/CFT соответствие
+  \end{itemize}
+
+\bibliography{integrability}{}
+\bibliographystyle{utphys}
+
+\end{document}
