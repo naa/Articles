@@ -103,16 +103,14 @@
 
 
 
-\section{Лекция 1}
+\section{Лекция 1.  11 сентября 2015}
 \label{sec:-1}
 
   \begin{itemize}
   \item Программа курса
   \item Литература
-  \item Скейлинг и конформная инвариантность, критическое поведение, ренормгруппа
-  \item Напоминание про классические статистические модели, связь с теорией поля, квантовые
-    статистические модели, симметрии, теорему Нётер
-  \item Классический интегрируемые системы, L-M пара
+  \item Критические явления
+  \item Решение Вдовиченко двумерной модели Изинга
   \end{itemize}
 
 \subsection{Литература}
@@ -270,313 +268,6 @@ $i,j$. В вершинах решетки находятся частицы со
 То есть магнитная восприимчивость --- это мера статистической когерентности системы, она растет с
 ростом зависимости спинов между собой.
 
-\subsection{Классические статистические модели. Связь с теорией поля.}
-\label{sec:statistical-models-qft}
-
-Распределение Больцмана инвариантно относительно сдвига энергии на константу, поэтому можно
-переписать гамильтониан в более удобном для обобщения виде:
-\begin{equation}
-  \label{eq:12}
-  \begin{array}{l}
-    \sigma_i\sigma_j=2\delta_{\sigma_i\sigma_j}-1\\
-    E[\sigma]=-2J\sum_{\left<ij\right>}\delta_{\sigma_i\sigma_j}-h\sum_i \sigma_i
-  \end{array}
-\end{equation}
-Обсудим некоторые обобщения модели Изинга и проиллюстрируем сходство статистической механики с теорией поля.
-
-Если $\sigma_i$ может принимать значения не $-1,1$, а $1,2\dots,q$, то мы получаем модель Поттса с $q$ состояниями.
-Подобным образом получаются и модели Ашкина-Теллера \cite{difrancesco1997cft}.
-
-Другой класс дискретных моделей отличается более существенно. Если в модели Изинга переменные
-(спины) живут в вершинах, а энергия --- на ребрах, то в вершинных моделях все наоборот. В качестве
-переменных берутся направленные ребра (стрелки), а энергия в вершине зависит от числа входящих и
-выходящих из нее стрелок. Пусть ребра, входящие в вершину имеют значения $0,1$ в зависимости от
-направления стрелки. Тогда энергия вершины обозначается через $R_{\alpha\mu}^{\beta\nu},\;
-\alpha,\beta,\mu,\nu=0,1$. Бывает 16 таких членов. В зависимости от того, сколько из них не равны
-нулю, выделяют 6-вершинную и 8-вершинную модели. 8-вершинная модель --- ненулевой вклад только когда
-входит четное число стрелок (0 входит, 4 выходит; 4 входит, 0 выходит; 6 способов выбрать две
-входящие стрелки -- итого 8 отличных от нуля членов $R_{\alpha\mu}^{\beta\nu}$).
-
-Еще один класс статистических моделей --- это модели с непрерывными степенями свободы. Например,
-заменим спины $\sigma_i$ в \eqref{eq:1} на единичные вектора в $m$-мерном пространстве $\vec n_i$.
-\begin{equation}
-  \label{eq:14}
-  \left|\vec n\right|^2=1
-\end{equation}
-В результате получим гамильтониан
-\begin{equation}
-  \label{eq:13}
-  E[\vec n]=J\sum_{\left<ij\right>}\vec n_i\cdot \vec n_j-\sum_i \vec h\cdot \vec n_i
-\end{equation}
-Это гамильтониан классической $O(m)$-модели Гейзенберга. 
-
-В критической точке наблюдается корреляция спинов на больших расстояниях, кроме того, фазовый переход
-в дискретных моделях наблюдается только в пределе числа вершин стремящегося к бесконечности ($N\to
-\infty$). Такой предел называется термодинамическим. Поэтому при описании фазового перехода имеет
-смысл перейти от модели с дискретным пространством к непрерывному $d$-мерному пространству. В
-дальнейшем $d$ будет равно двум, но сейчас мы пишем в самом общем виде, чтобы указать аналогию с
-теорией поля. При переходе к непрерывному пространству гамильтониан \eqref{eq:13} принимает вид
-\begin{equation}
-  \label{eq:15}
-  E[\vec n]=\int d^d x \left(J\partial_kn_i\partial_k  n_i-h_i\cdot n_i\right)
-\end{equation}
-Здесь подразумевается суммирование по повторяющимся индексам. (Легко понять обратный переход, если
-заменить производные разностями по ближайшим соседям, а потом отбросить в энергии постоянный член
-$J\sum_i \left|\vec n_i\right|^2=JN$).
-
-Условие $\vec n^2(x)=1$ сложно использовать, поэтому мы заменим его на другое аналогичное. Первый
-вариант такой замены --- это наложить требование $\frac{1}{V}\int d^dx\; \vec n^2=1$. В результате
-получается так называемая сферическая модель. Другая возможность --- добавить в гамильтониан
-\eqref{eq:15} потенциал $V(\left|\vec n\right|)$ с минимумом в $\left|\vec n\right|=1$ и устремить
-константу связи к бесконечности. Простейший вид такого потенциала --- $V(\left|\vec n\right|)=a\vec
-n^2+b\left(\vec n^2\right)^2$. Добавим его в гамильтониан и изменим нормировку $\vec n$ так, чтобы
-константа $J$ ушла. Получим
-\begin{equation}
-  \label{eq:16}
-  E[\vec n]=\int d^d x \left(\frac{1}{2}\partial_k n_i\cdot \partial_k n_i-\frac{1}{2}\mu^2 \vec n^2+\frac{1}{4}u\left(\vec n^2\right)^2\right)
-\end{equation}
-Если у $\vec n$ всего одна компонента $\varphi$, то мы получаем скалярную модели $\varphi^4$. Если
-$u=0$, то такая модель называется Гауссовой и допускает точное решение. 
-\begin{equation}
-  \label{eq:17}
-  E[\varphi]=\int d^d x (\frac{1}{2}(\nabla \varphi)^2+\frac{1}{2}\mu^2 \varphi^2)
-\end{equation}
-Статсумма --- это сумма $e^{-\beta E[\varphi]}$ по всем конфигурациям поля $\varphi$, то есть она
-записывается при помощи функционального интеграла: 
-\begin{equation}
-  \label{eq:18}
-  Z=\int \mathcal{D}\varphi e^{-\beta E[\varphi]}
-\end{equation}
-В гауссовой модели функциональный интеграл имеет гауссовский вид, поэтому он хорошо определен и
-легко вычисляется. Значит можно вычислить статсумму и все корреляционные функции. Величины в модели
-$\varphi^4$ можно получать по теории возмущений вокруг решения гауссовой модели. Это и есть
-вычисление функционального интеграла как суммы по фейнмановским диаграммам.  
-
-\subsection*{Квантовые статистические модели}
-\label{sec:quantum-statistical-models}
-
-Микросостояния квантовых статистических систем описываются при помощи матрицы плотности
-\begin{equation}
-  \label{eq:19}
-  \rho=e^{-\beta H}
-\end{equation}
-Статсумма дается суммой по собственным состояниям гамильтониана или следом матрицы плотности:
-\begin{equation}
-  \label{eq:20}
-  Z=\sum_n e^{-\beta E_n}=\mathrm{Tr} \rho
-\end{equation}
-Значение физической величины определим как среднее по состояниям:
-\begin{equation}
-  \label{eq:21}
-  \left< A\right>=\sum_n \left< n\right| e^{-\beta H}A\left| n \right>=\mathrm{Tr}(\rho A)
-\end{equation}
-$e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$, то есть его тоже можно записать через
-функциональный интеграл. Покажем, как это делается на примере системы с одной степенью свободы. В
-этом случае ядро оператора плотности имеет вид 
-\begin{equation}
-  \label{eq:22}
-  \rho(x_f,x_i)=\left<x_f\right|e^{-\beta H} \left|x_i\right>
-\end{equation}
-Вспомним, что в квантовой механике оператор эволюции имеет вид $U(t)=e^{-i H t}$, а его ядро ---
-амплитуда перехода из состояния $\left|x_i\right>$ в $\left<x_f\right|$ дается интегралом по
-траекториям 
-\begin{equation}
-  \label{eq:23}
-  \left<x_f\right| U(t)\left| x_i\right>=\int_{(x_i,0)}^{(x_f,t)} [dx] e^{i S[x]}
-\end{equation}
-Заменой $t\to i\tau, \; \tau\in [0,\beta]$ (виковским поворотом) переходим к евклидову действию
-$S[x(t)]\to iS_E[x(\tau)]$. Для ядра оператора плотности получаем 
-\begin{equation}
-  \label{eq:24}
-  \rho(x_f,x_i)=\int_{(x_i,0)}^{(x_f,\beta)} [dx] e^{-S_E[x]}
-\end{equation}
-Статсумма
-\begin{equation}
-  \label{eq:25}
-  Z=\int dx \rho(x,x)=\int [dx] e^{-S_E[x]}
-\end{equation}
-Среднее значение $A$
-\begin{equation}
-  \label{eq:26}
-  \begin{array}{l}
-    \left<A\right>=\frac{1}{Z}\int dx \left<x\right|\rho A\left|x\right>=\frac{1}{Z}\int dx\; dy \left<x\right|\rho\left|y\right>\left<y\right|A\left|x\right>=    \\
-    =\frac{1}{Z}\int dx\; dy \int_{(x,0)}^{(y,\beta)} [dx] \left<y\right| A\left| x\right> e^{-S_E[x]}=\frac{1}{Z}\int dx\; dy\int_{(x,0)}^{(y,\beta)} [dx] A(x) \delta(x-y) e^{-S_E[x]}=\\
-    =\frac{1}{Z}\int [dx] A(x(0))e^{-S_E[x]}
-  \end{array}
-\end{equation}
-Здесь мы предположили, что $A$ зависит только от $x$, то есть $\left<y\right|
-A\left|x\right>=A(x)\delta(x-y)$. Мы видим, что значение $A$ дается функциональным интегралом, но
-$A$ вычисляется в точке $\tau=0$.  
-
-Обобщение на систему с континуумом степеней свободы и многочастичные функции естественно. Статсумма
-квантовой системы получается из обычного интеграла по траекториям путем викова поворота и
-ограничения евклидова времени на конечный промежуток $[0,\beta]$. При нулевой температуре ($\beta\to
-\infty$) мы получаем обычный производящий функционал в евклидовом времени, то есть теорию поля. При
-конечных температурах статсумма квантовой $d$-мерной системы соответствует статсумме $d+1$-мерной
-классической системы на полосе шириной $\beta$. 
-
-\subsection*{Классическая и квантовая теория поля}
-\label{sec:qft}
-Напоминание про теорию поля.
-
-Лагранжева формулировка классической теории поля.
-
- Действие
-\begin{equation}
-  S=\int d^dx \mathcal{L}
-\end{equation}
-зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$.
-Например:
-\begin{equation}
-  S[\varphi]=\int d^d x\left( -\frac{(\partial \varphi)^2}{2}-\frac{\mu \varphi^2}{2}-\frac{u\varphi^4}{24}+h\varphi\right),
-\end{equation}
-
-Классическое уравнение движения получается из принципа экстремальности действия (равенства нулю
-вариации действия). 
-
-\subsubsection*{Симметрии}
-\label{sec:symmetry}
-
-При преобразованиях координат
-\begin{equation}
-  \label{eq:303}
-  x\to x'
-\end{equation}
-поля тоже преобразуются, то есть у них не только меняется аргумент, но и само поле. Тип поля
-(скалярное, векторное, спинорное) -- это вид такого преобразования. 
-\begin{equation}
-  \label{eq:304}
-  \varphi(x)\to \varphi'(x')=F(\varphi(x))
-\end{equation}
-
-При этом действие тоже преобразуется:
-\begin{equation}
-  \label{eq:305}
-  S'=\int d^{d}x' \mathcal{L}(\varphi'(x'),\partial_{\mu} \varphi'(x'))=\int d^{d}x \left|\frac{\partial x'}{\partial x}\right| \mathcal{L}(F(\varphi(x)),\frac{\partial x^{\nu}}{\partial x'^{\mu}} \partial_{\nu}F(\varphi(x)))
-\end{equation}
-{\bf Примеры.}
-
-Трансляции:
-
-\begin{equation*}
-  \label{eq:306}
-  x'^{\mu}=x^{\mu}+a^{\mu},\quad \varphi'(x+a)=\varphi(x),\quad S'=S
-\end{equation*}
-
-Поворот (преобразования Лоренца):
-\begin{equation*}
-  x'^{\mu}=m^{\mu}_{\nu} x^{\nu}, \quad \varphi'(m x)=\Lambda \varphi(x),\quad \Lambda \mbox{--представление группы} 
-\end{equation*}
-
-Теперь рассмотрим инфинитезимальные преобразования.
-Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть
-симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным
-преобразованиям. 
-
-\begin{equation}
-  \label{eq:165}
-  x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
-\end{equation}
-($\omega_{a}$ -- бесконечно малые параметры).
-
-Наше поле преобразуется так:
-\begin{equation}
-  \label{eq:166}
-  \varphi'(x')=\varphi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
-\end{equation}
-Генератор преобразования определяется следующим равенством:
-\begin{equation}
-  \label{eq:167}
-  \delta_{\omega} \varphi(x)=\varphi'(x)-\varphi(x)\equiv -i\omega_a G_a \varphi(x)
-\end{equation}
-(здесь нет суммирования по $a$). Действие генератора на поле:
-\begin{equation}
-  \label{eq:168}
-  iG_a \varphi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\varphi-\frac{\delta F}{\delta \omega_a}
-\end{equation}
-
-Примеры генераторов:
-Если мы предположим, что поле $\varphi$ -- такое поле, которое не меняется при конформных
-преобразованиях, то есть $F(\varphi)=\varphi$, то мы получим следующий вид для генераторов: 
-\begin{eqnarray}
-  \label{eq:169}
-  \mbox{трансляция}  & x'^{\mu}=x^{\mu}+\omega^{\mu}& \quad P_{\mu}=-i\partial_{\mu}\\
-  \mbox{поворот} & x'^{\mu}=x^{\mu}+\omega^{\mu}_{\nu}x^{\nu} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})
-\end{eqnarray}
-Если же при поворотах поле преобразуется $\varphi'(x')=\Lambda\varphi(x)$, то при инфинитезимальных
-преобразованиях $\varphi'(x')=\varphi(x)-\frac{i}{2}\omega_{\mu\nu}S^{\mu\nu}$ и генератор принимает
-вид 
-\begin{equation*}
-  L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})+S_{\mu\nu}
-\end{equation*}
-
-\subsubsection*{Теорема Нётер}
-\label{sec:noether}
-
-Теперь рассмотрим произвольные инфинитезимальные преобразования, при которых действие не меняется.
-Якобиан такого преобразования
-\begin{eqnarray*}
-  \frac{\partial x'^{\nu}}{\partial x^{\mu}} = \delta^{\mu}_{\nu}+\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)\\
-  \frac{\partial x^{\nu}}{\partial x'^{\mu}} = \delta^{\mu}_{\nu}-\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)
-\end{eqnarray*}
-\begin{equation*}
-  \left|\frac{\partial x'^{\nu}}{\partial x^{\mu}}\right| = 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)
-\end{equation*}
-Вариация действия
-\begin{multline*}
-  0=\delta_{\omega} S=\int \mathcal{L}(\varphi',\partial_{\mu}\varphi',x'^{\mu})dx'-\int \mathcal{L}(\varphi,\partial_{\mu}\varphi,x)dx=\\
-  \int d^{d}x\left[ \left( 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\right) \mathcal{L} \left(\varphi+\delta_{\omega}\varphi,
-    \partial_{\mu}\varphi+\partial_{\mu}\delta_{\omega}\varphi\right)\right]-\mathcal{L}(\varphi,\partial_{\mu}\varphi)=
-\end{multline*}
-\begin{multline*}
-      \int d^{d}x\left( \frac{\partial \mathcal{L}}{\partial \varphi} \delta_{\omega}\varphi +\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi +\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\mathcal{L}\right)
-\end{multline*}
-Первые два члена переписываются с использованием уравнений Эйлера-Лагранжа и интегрирования по частям:
-\begin{equation*}
-  \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\right)\delta_{\omega}\varphi+\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi=
-    \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi\right)
-\end{equation*}
-В итоге имеем:
-\begin{equation*}
-  0=\int d^{d}x \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi +\delta^{\mu}_{\nu}\mathcal{L} \frac{\delta x^{\nu}}{\delta \omega_{a}}\right)
-\end{equation*}
-Если подставить явный вид вариации поля и ввести обозначение
-\begin{equation*}
-  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\partial_{\nu}\varphi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}}-\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\frac{\delta F}{\delta w_{a}},
-\end{equation*}
-то для вариации действия выходит:
-\begin{equation*}
-  \delta_{\omega}S=-\int d^{d}x j^{\mu}_{a}\partial_{\mu}\omega_{a}
-\end{equation*}
-$j^{\mu}_{a}$ называется нётеровским током, соответствующим данной симметрии. 
-Если $\delta_{\omega} S=0$, то
-\begin{equation*}
-  \partial_{\mu}j^{\mu}_{a}=0
-\end{equation*}
-Сохраняющийся заряд:
-\begin{equation*}
-  Q_{a}=\int d^{d-1}x\; j^{0}_{a}
-\end{equation*}
-
- Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация
- $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$.  При инфинитезимальных преобразованиях
- $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током: 
-\begin{equation}
-  \label{eq:74}
-  \delta\mathcal{L}=\partial_{\mu}J^{\mu}dl
-\end{equation}
-\begin{equation}
-  \label{eq:75}
-  J^{\mu}=x_{\nu}T^{\mu\nu}
-\end{equation}
-Здесь $T^{\mu\nu}$ - тензор энергии-импульса.  Через $\Theta$ мы обозначим след тензора
-энергии-импульса $\Theta=\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}$. Он задает вариацию действия 
-\begin{equation}
-  \label{eq:87}
-  \delta S=dl \int d^d x \Theta(x)
-\end{equation}
-Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В
-масштабно-инвариантной теории тензор энергии-импульса бесследовый. 
 
 \subsection{Критические явления}
 \label{sec:critical-phenomena}
@@ -673,6 +364,349 @@ $j^{\mu}_{a}$ называется нётеровским током, соотв
 Бройля. Если характерная скорость $v$ (скорость света, скорость Ферми или скорость какого-либо
 возбуждения), то $\lambda_T=\frac{v\hbar}{k_B T}\sim \beta$. То есть классическая статистика
 применима при больших температурах или вблизи критической точки. %, если $T_c\neq 0$. 
+
+\subsection{Двумерная модель Изинга}
+\label{sec:ising2d}
+
+Займемся решением модели Изинга в двух измерениях \eqref{eq:1}. Точного решения для модели с внешним
+полем до сих пор не найдено. Решение же для $h=0$ впервые было получено Онзагером в 1944 году. В
+этой и следующей лекциях излагается решение Вдовиченко, как наиболее короткое и простое. Изложение
+взято из книги \cite{belavin2001lect}. 
+Энергия системы в отсутствие внешнего поля дается выражением
+\begin{equation}
+  \label{eq:98}
+  E[\sigma]=-J\sum_{\left<i,j\right>}\sigma_i \sigma_j .
+\end{equation}
+Введем обозначение
+\begin{equation}
+  \label{eq:99}
+  K=J/T.
+\end{equation}
+Статсумма имеет вид
+\begin{equation}
+  \label{eq:100}
+  Z=\sum_{[\sigma]}e^{K\sum_{\left<i,j\right>}\sigma_i\sigma_j}
+\end{equation}
+Будем считать, что в наша решетка $\mathcal{L}$ состоит из $N=mn$ узлов. Обозначим через $M$ число
+пар $\left<i,j\right>$. $M=2N-n-m$. Для простоты будем накладывать тороидальные граничные условия.
+Тогда $M=2N$. Введем {\it дуальную решетку $\mathcal{L}^*$}, вершинами которой будут центры граней
+исходной решетки.  
+Нам удобно будет использовать действие в следующем виде:
+\begin{equation}
+  \label{eq:101}
+  Z=\sum_{[\sigma]}e^{K\sum_{\left<i,j\right>}(\sigma_i\sigma_j-1+1)}=e^{KM} \sum_{[\sigma]}e^{K\sum_{\left<i,j\right>}(\sigma_i\sigma_j-1)}.
+\end{equation}
+
+\subsubsection{Низкотемпературное и высокотемпературное разложение}
+\label{sec:low-high-temp}
+
+Обозначим выражения, входящие в сумму в последнем уравнении, через $X[\sigma]$: 
+\begin{equation}
+  \label{eq:102}
+  X[\sigma]=e^{K\sum_{\left<i,j\right>}(\sigma_i\sigma_j-1)}.
+\end{equation}
+Заметим, что все состояния можно упорядочить следующим образом:
+\begin{itemize}
+\item Основное состояние, все спины направлены в одну сторону, $X[\sigma]=1$
+\item Все спины в одну сторону, один в противоположную. Такому состоянию можно сопоставить контур на
+  дуальной решетке вокруг этого спина. Тогда каждая сторона контура даст вклад $e^{-2K}$ в
+  $X[\sigma]$. 
+  \begin{equation}
+    \label{eq:103}
+    X[\sigma]=\left(e^{-2K}\right)^4
+  \end{equation}
+\item Два спина направлены в противоположную сторону, здесь есть два варианта контура на дуально
+  решетке - если спины рядом, то его длина равна шести, если не рядом - то восьми. То есть вклады
+  $\left(e^{-2K}\right)^6$ и $\left(e^{-2K}\right)^8$. 
+\item И так далее.
+\end{itemize}
+В итоге мы можем записать все вклады $X[\sigma]$ в виде суммы по всевозможным замкнутым контурам на
+дуальной решетке. Если ввести обозначение 
+\begin{equation}
+  \label{eq:104}
+  \kappa=e^{-2K},
+\end{equation}
+то
+\begin{equation}
+  \label{eq:105}
+  X[\sigma]=\kappa^{l[c]}.
+\end{equation}
+Здесь $l[c]$ --- длина контура $c$ на дуальной решетке, соответствующего состоянию $\sigma$. Тогда
+для $Z$ получаем 
+\begin{equation}
+  \label{eq:106}
+  Z=e^{MK}\sum_c \kappa^{l[c]}. 
+\end{equation}
+Такое выражение называется низкотемпературным разложением, так как оно хорошо сходится при малых
+температурах ($K>>1$). 
+
+Чтобы получить высокотемпературное разложение, воспользуемся тем, что $e^{K\sigma_i\sigma_j}=\ch
+K+\sigma_i\sigma_j\sh K=\ch K \left(1+\sigma_i\sigma_j \th K\right)$. Тогда статсумма записывается в
+виде 
+\begin{equation}
+  \label{eq:80}
+  Z=(\ch K)^M\sum_{[\sigma]}\prod_{\left<i,j\right>}\left(1+\sigma_i \sigma_j \th K\right)
+\end{equation}
+Будем раскрывать скобки в произведении, сопоставляя каждому множителю $\sigma_i\sigma_j \th K$ ребро
+на решетке $\mathcal{L}$, соединяющее вершины $i,j$. Заметим, что вклад непрерывного пути,
+соединяющего вершины $i$ и $k$ пропорционален $(\sigma_i \sigma_{i+1}) (\sigma_{i+1}\sigma_{i+2})
+(\sigma_{i+2}\sigma_{i+3})\dots (\sigma_{k-1}\sigma_k)=\sigma_{i}\sigma_k$, где мы пронумеровали
+вершины вдоль пути. То есть вклад от незамкнутого пути дается его концами, а вклад от замкнутого
+контура всегда равен 1.  Тогда произведение запишется в виде 
+\begin{equation}
+  \label{eq:107}
+  \prod_{\left<i,j\right>}\left(1+\sigma_i \sigma_j \th K\right)=1+a_1 \th K +a_2 \th^2 K+\dots,
+\end{equation}
+где $a_k$ дается суммой по всем контурам $c$ (не обязательно замкнутым или односвязным) длины $k$. 
+Чтобы вычислить статсумму, нам надо просуммировать такие выражения по всем возможным конфигурациям
+спинов. Заметим, что для любого незамкнутого контура и любой конфигурации найдется другая
+конфигурация, куда вклад этого контура входит с противоположным знаком (так как спины направлены в
+другую сторону). А вклад замкнутого контура равен $\th^{l[c]}K$ в любой конфигурации, то есть входит
+в статсумму $2^N$ раз. В результате получаем высокотемпературное разложение статсуммы в виде суммы
+по всем замкнутым контурам на решетке $\mathcal{L}$: 
+\begin{equation}
+  \label{eq:108}
+  Z=(\ch K)^M 2^N \sum_c (\th K)^{l[c]}=(\ch K)^M 2^N \sum_c \kappa^{l[c]}.
+\end{equation}
+Здесь мы ввели обозначение $\kappa=\th K$. Это разложение хорошо сходится при $K<<1$. 
+
+\subsubsection{Дуальность Крамерса-Ванье}
+\label{sec:duality}
+
+У нас есть два точных разложения для статсуммы. Сравним их в термодинамическом пределе.
+\begin{equation}
+  \label{eq:109}
+  f=-\lim_{N\to \infty}\frac{\ln Z_N}{N}.
+\end{equation}
+Решетки $\mathcal{L}$ и $\mathcal{L}^*$ отличаются только на границе, поэтому в термодинамическом
+пределе $M/N\to 2$ и выражения для удельной свободной энергии из высокотемпературного и
+низкотемпературного разложений должны совпадать. Если ввести функцию $\Phi(\kappa)=\lim_{N\to
+  \infty}\frac{1}{N} \ln \left(\sum_c \kappa^{l[c]}\right)$, то свободная энергия запишется в
+высокотемпературном и низкотемпературном разложениях следующим образом: 
+\begin{equation}
+  \label{eq:110}
+  -f(K)=2K+\Phi(e^{-2K})=\ln(2\ch^2 K)+\Phi(\th K)
+\end{equation}
+Это и есть соотношение дуальности {\it Крамерса-Ванье}. Если ввести $K^*$ так, что $\th K^*=e^{-2K}$
+или $\sh 2K^* \sh 2K=1$, то соотношение дуальности будет связывать теорию при температуре $K$ и
+$K^*$: 
+\begin{equation}
+  \label{eq:111}
+  f(K^*)=f(K)+2K-\ln(2\ch^2 K^*).
+\end{equation}
+Рассмотрим теперь поведение теории в критической точке $K_c$. В ней свободная энергия $f(K_c)$ не
+аналитична. Тогда $f$ должна быть не аналитична и при $K^*=K_c$. Если предположить, что критическая
+точка единственна, то мы можем найти ее из требования $K=K^*$, то есть $2K=\ln(2\ch^2 K)$ или 
+\begin{equation}
+  \label{eq:112}
+  \sh^2 2K_c=1.
+\end{equation}
+Теперь перейдем к точному решению модели Изинга.
+
+\subsubsection{Решение Вдовиченко.}
+\label{sec:ising-solution}
+Суть состоит в сведении вычисления статсуммы в высокотемпературном разложении к решению некоторого
+рекуррентного соотношения. Это соотношение записывается в матричном виде и его решение дается следом
+матрицы, который можно вычислить после преобразования Фурье. 
+
+Заметим, что суммирование по замкнутым контурам обозначает, что в каждой вершине сходится четное
+число ребер. Поэтому мы можем перейти от суммирования по замкнутым контурам к суммированию по
+``траекториям чернильной точки'' --- замкнутым путям, состоящим из компонент, которые можно
+нарисовать, не отрывая ручку от бумаги. При этом в случае контура с самопересечениями существует
+несколько способов нарисовать его. Например, ``восьмерку'' можно представить как два пути, путь без
+самопересечения и путь с самопересечением (Смотри рисунок \ref{fig:ising-1}). 
+\begin{figure}[h!tb]
+  \centering
+    \includegraphics[width=80mm]{ising1}
+  \caption{Переход от контуров к замкнутым путям}
+  \label{fig:ising-1}
+\end{figure}
+Поэтому такие вклады надо брать с множителем $(-1)^{\nu(\Gamma)}$, где $\nu(\Gamma)$ - число
+самопересечений пути $\Gamma$. 
+Статсумма в высокотемпературном разложении \eqref{eq:108} дается выражением 
+\begin{equation}
+  \label{eq:113}
+  Z=(\ch K)^M 2^N\sum_c \kappa^{l[c]}.
+\end{equation}
+Обозначим сумму через $\Sigma=\sum_c \kappa^{l[c]}$. Перепишем её через сумму по путям 
+\begin{equation}
+  \label{eq:114}
+  \Sigma=\sum_{\Gamma}(-1)^{\nu(\Gamma)} \kappa^{l[\Gamma]}
+\end{equation}
+Воспользуемся следующим утверждением, доказательство которого оставляется в качестве упражнения. Для
+любой связной замкнутой петли на плоскости с $\nu$ самоперечечениями и полным углом поворота
+$2\pi(n+1)$ (при ее обходе) верно равенство 
+\begin{equation}
+  \label{eq:115}
+  (-1)^{\nu}=(-1)^n.
+\end{equation}
+Сопоставим каждому узлу в пути $\Gamma$ с углом поворота $\varphi$ в нем ($0,\pm \pi/2$) множитель $e^{\frac{i\varphi}{2}}$. Тогда после обхода петли полный множитель будет равен $(-1)^{\nu+1}$. Для несвязного пути, состоящего из $s$ компонент --- $(-1)^{m+s}$, где $m=\sum \nu$. То есть если ввести для пути $\Gamma$ общий множитель $s(\Gamma)$, то $\Sigma$ можно переписать в виде
+\begin{equation}
+  \label{eq:116}
+  \Sigma=\sum_{\Gamma}(-1)^{s(\Gamma)}\prod_{j\in \Gamma} e^{\frac{i\varphi_j}{2}}\kappa^{l[\Gamma]}
+\end{equation}
+Обозначим через $F^{(1)}_l$ сумму по всем однокомпонентным петлям длины $l$, через $F^{(2)}_l$ --- двухкомпонентным и так далее.
+\begin{equation}
+  \label{eq:117}
+  F^{(1)}_l=\sum_{\Gamma:l[\Gamma]=l} \prod_{j\in \Gamma} e^{\frac{i\varphi_j}{2}}.
+\end{equation}
+Тогда $F_l^{(2)}$ можно вычислить через $F^{(1)}$:
+\begin{equation}
+  \label{eq:118}
+  F^{(2)}_l=\frac{1}{2!}\sum_{l_1,l_2:l_1+l_2=l} F^{(1)}_{l_1} F^{(1)}_{l_2}
+\end{equation}
+Аналогично
+\begin{equation}
+  \label{eq:119}
+  F^{(s)}_l=\frac{1}{s!}\sum_{l_1,\dots l_s:l_1+\dots+l_s=l} F^{(1)}_{l_1}\dots F^{(1)}_{l_s}
+\end{equation}
+Теперь мы можем выразить $\Sigma$ через $F^{(1)}$:
+\begin{equation}
+  \label{eq:120}
+  \Sigma=\sum_{s=0}^{\infty}\frac{(-1)^s}{s!}\sum_{l_1\dots l_s=1}^{\infty} \kappa^{l_1+\dots+l_s}F^{(1)}_{l_1} \dots F^{(1)}_{l_s}=
+  \sum_{s=0}^{\infty}\frac{(-1)^s}{s!}\left(\sum_{l=1}^{\infty} \kappa^{l}F^{(1)}_{l} \right)^s =\exp\left(-\sum_{l=1}^{\infty} \kappa^l F_l\right)
+\end{equation}
+Петли с числом узлов больше $N$ не дают вклада, так как содержат повторяющиеся ребра и поэтому сократятся (Смотри рисунок \ref{fig:ising-2}).
+\begin{figure}[h!tb]
+  \centering
+  \includegraphics[width=40mm]{ising2}
+  \caption{Сокращение путей с повторяющимися ребрами}
+  \label{fig:ising-2}
+\end{figure}
+Наша задача свелась к вычислению $F_l$. Рассмотрим произвольную вершину с координатами $(n,m)$. Пронумеруем направления выхода из нее индексом $\nu=1,2,3,4$ против часовой стрелки. Обозначим через $W_l (n,m,\nu|n_0,m_0,\nu_0)$ сумму по всем путям длины $l$, соединяющим вершины $(n_0,m_0)$ и $(n,m)$. Первый шаг пути в направлении $\nu_0$. Учитываются множители $e^{\frac{i\varphi}{2}}$ начиная с узла, следующего за $(n_0,m_0)$ и заканчивая узлом $(n,m)$. Последний шаг пути не должен быть в направлении, противоположном $\nu$. Тогда $F_l$ можно записать как сумму $W_l(n,m,\nu|n,m,\nu)$ по всем вершинам решетки. Каждая петля при этом будет учтена $2l$ раз, так как у нее $l$ возможных вершин начала и два возможных направления.
+\begin{equation}
+  \label{eq:121}
+  F_l=\frac{1}{2l}\sum_{(n,m)\in \mathcal{L}} \sum_{\nu=1,2,3,4} W_l(n,m,\nu|n,m,\nu)
+\end{equation}
+Если мы зафиксируем начальную вершину путей $(n_0,m_0,\nu_0)$, то сумму по путям длины $l+1$ можно выразить через сумму по путям длины $l$. В вершину $(n,m,1)$ пути могут входить с направлений $2,3,4$, то есть последний шаг может быть из вершины $(n-1,m)$ в направлении $1$, из вершины $(n,m-1)$ в направлении $2$ и из вершины $(n,m-1)$ в направлении $4$.
+Аналогично для других направлений. Тогда
+\begin{equation}
+  \label{eq:122}
+\begin{array}{l}
+W_{l+1}(n,m,1)=W_l(n-1,m,1)+e^{-i\pi/4} W_l(n,m-1,2)+e^{i\pi/4}W_l(n,m+1,4)\\
+W_{l+1}(n,m,2)=e^{i\pi/4}W_l(n-1,m,1)+W_l(n,m-1,2)+e^{-i\pi/4}W_l(n+1,m,3)\\
+W_{l+1}(n,m,3)=e^{i\pi/4}W_l(n,m-1,2)+W_l(n+1,m,3)+e^{-i\pi/4}W_l(n,m+1,4)\\
+W_{l+1}(n,m,4)=e^{-i\pi/4}W_l(n-1,m,1)+e^{i\pi/4}W_l(n+1,m,3)+W_l(n,m+1,4)\\
+\end{array}
+\end{equation}
+Эти рекуррентные соотношения можно переписать в матричном виде, если ввести матрицу коэффициентов $\Lambda$:
+\begin{equation}
+  \label{eq:124}
+  W_{l+1}(n,m,\nu)=\sum_{p,q,\mu}\Lambda(n,m,\nu|t,u,\mu) W_l(t,u,\mu)
+\end{equation}
+Если вершины $(t,u)$ и $(n,m)$ не являются соседними, то $\Lambda(n,m,\nu|p,q,\mu)=0$. Матрица $\Lambda$ не зависит от начала пути. $W_{l+1}=\Lambda W_l$, поэтому мы $F_l$ дается следом $l$-той степени $\Lambda$:
+\begin{equation}
+  \label{eq:125}
+  F_l=\frac{1}{2l}\mathrm{Tr} W_l=\frac{1}{2l}\mathrm{Tr} \Lambda^l W_0
+\end{equation}
+Но матрица $W_0=I$ (единичной матрице), поэтому
+\begin{equation}
+  \label{eq:126}
+  F_l=\frac{1}{2l}\mathrm{Tr} \Lambda^l =\frac{1}{2l} \sum_k (\lambda_k)^l,
+\end{equation}
+где $\lambda_k$ - собственные значения матрицы $\Lambda$. Подставим выражение \eqref{eq:126} в формулу \eqref{eq:120}:
+\begin{multline}
+  \label{eq:127}
+  \Sigma=\exp\left(-\sum_{l=0}^{\infty} \frac{\kappa^l}{2l}\mathrm{Tr}\Lambda^l\right)=\exp\left(-\frac{1}{2}\sum_k \sum_{l=0}^{\infty} \frac{(\kappa\lambda_k)^l}{l}\right)=\\
+  \exp\left(\frac{1}{2}\sum_k \ln(1-\kappa\lambda_k)\right)=\prod_k(1-\kappa\lambda_k)^{1/2}=(\det(I-\kappa\Lambda))^{1/2}
+\end{multline}
+Чтобы вычислить детерминант сделаем дискретное преобразование Фурье:
+\begin{equation}
+  \label{eq:128}
+  W_{l}(n,m,\nu)=\sum_{p_1,p_2} \tilde{W}_l(p_1,p_2,\nu) e^{\frac{2\pi i (p_1n+p_2m)}{\sqrt N}}
+\end{equation}
+В импульсном представлении матрица $\Lambda$ будет иметь блочно-диагональный вид
+\begin{equation}
+  \label{eq:129}
+  \Lambda(p_1,p_2,\mu|q_1,q_2,\nu)=\delta_{p,q}\Lambda_p (\mu,\nu),
+\end{equation}
+где
+\begin{equation}
+  \label{eq:130}
+  \Lambda_p(\mu,\nu)=
+  \begin{pmatrix}
+    e^{\frac{2\pi i p_1}{\sqrt N}} & e^{\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & e^{\frac{2\pi i p_2}{\sqrt N}} & e^{-\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 \\
+    0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} & e^{-\frac{2\pi i p_1}{\sqrt N}} & e^{-\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & e^{-\frac{2\pi i p_2}{\sqrt N}}
+  \end{pmatrix}
+\end{equation}
+Матрица $I-\kappa\Lambda$ тоже имеет блочный вид с блоками
+\begin{equation}
+  \label{eq:131}
+  \begin{pmatrix}
+    1-\kappa e^{\frac{2\pi i p_1}{\sqrt N}} & e^{\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & 1-\kappa e^{\frac{2\pi i p_2}{\sqrt N}} & e^{-\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 \\
+    0 & e^{\frac{2\pi i p_2}{\sqrt N}} e^{\frac{i\pi}{4}} & 1-\kappa e^{-\frac{2\pi i p_1}{\sqrt N}} & e^{-\frac{2\pi i p_2}{\sqrt N}} e^{-\frac{i\pi}{4}} \\
+    e^{\frac{2\pi i p_1}{\sqrt N}} e^{-\frac{i\pi}{4}} & 0 & e^{\frac{2\pi i p_1}{\sqrt N}} e^{\frac{i\pi}{4}} & 1- \kappa e^{-\frac{2\pi i p_2}{\sqrt N}}
+  \end{pmatrix}.
+\end{equation}
+В результате вычисления детерминанта получаем
+\begin{eqnarray}
+  \label{eq:132}
+  \Sigma=\prod_{p_1,p_2} D^{1/2}_{p}\\
+  D_p=(1+\kappa^2)^2 -2\kappa (1-\kappa^2)\left( \cos \frac{2\pi p_1}{\sqrt N} +\cos \frac{2\pi p_2}{\sqrt N}\right)
+\end{eqnarray}
+В результате выражение для статсуммы имеет вид
+\begin{equation}
+  \label{eq:133}
+  Z_N=(2\ch^2 K)^N \prod_{p_1,p_2}D_p^{1/2}.
+\end{equation}
+Исследуем критическое поведение. Вычислим для этого удельную свободную энергию:
+\begin{equation}
+  \label{eq:134}
+  f=-T \lim_{N\to \infty}\frac{\ln Z_N}{N}=-T \lim_{N\to \infty} \left(\ln (2\ch^2 K)+\frac{1}{2N}\sum_p \ln D_p\right)
+\end{equation}
+В термодинамическом пределе $N\to \infty$ значения импульса покрывают всю ось, поэтому сумма переходит в интеграл. Мы сделаем замену переменных
+\begin{eqnarray}
+  \label{eq:135}
+  w_1=\frac{2\pi p_1}{\sqrt N}\quad  w_2=\frac{2\pi p_2}{\sqrt N},\quad w_{1,2}\in [0;2\pi]\\
+  dp_1 dp_2=\frac{N}{(2\pi)^2} dw_1 dw_2
+\end{eqnarray}
+Вспомним, что $\kappa=\th K$, поэтому
+\begin{equation}
+  \label{eq:136}
+  -\ln(2\ch^2 K)=\ln\left(\frac{1-\kappa^2}{2}\right)
+\end{equation}
+Нам будет удобно переписать $D_p$  в виде
+\begin{equation}
+  \label{eq:137}
+  D_p=(\kappa^2+2\kappa -1)^2 +4\kappa (1-\kappa^2) \left(\sin^2 \frac{w_1}{2} +\sin^2 \frac{w_2}{2}\right)
+\end{equation}
+Тогда свободная энергия дается интегралом
+\begin{multline}
+  \label{eq:138}
+  f=T\ln\left(\frac{1-\kappa^2}{2}\right)-\\
+  -\frac{T}{8\pi^2}\int_0^{2\pi}\int_0^{2\pi}\ln\left((\kappa^2 +2\kappa-1)^2 +4\kappa (1-\kappa^2)\left(\sin^2 \frac{w_1}{2}+\sin^2\frac{w_2}{2}\right)\right) dw_1 \;dw_2
+\end{multline}
+В критической точке должна быть расходимость. Интеграл может иметь особую точку только при $(\kappa^2 +2\kappa-1)^2 +4\kappa (1-\kappa^2)\left(\sin^2 \frac{w_1}{2}+\sin^2\frac{w_2}{2}\right)=0$. Это выражение имеет минимум при $w_1=w_2=0$. Тогда при $\kappa^2+2\kappa-1=0$ интеграл расходится, что соответствует критической точке.
+\begin{equation}
+  \label{eq:139}
+  \kappa_c=\sqrt 2 -1
+\end{equation}
+В критической точке основной вклад в интеграл дает окрестность $w_1=w_2=0$, введем
+\begin{equation}
+  \label{eq:140}
+  \epsilon=\kappa-\kappa_c
+\end{equation}
+Тогда около критической точки свободная энергия ведет себя как
+\begin{equation}
+  \label{eq:141}
+  f=g(\epsilon)-\frac{T}{8\pi^2}\int_{0}^{2\pi}\int_0^{2\pi}\ln \left( c\epsilon^2 +A(\epsilon)(w_1^2+w_2^2)\right)dw_1\;dw_2.
+\end{equation}
+Здесь $g(\epsilon), A(\epsilon)$ - регулярные функции. Если взять интеграл, то
+\begin{equation}
+  \label{eq:142}
+  f\approx g_1 (\epsilon)+c\epsilon^2 \ln(\epsilon)
+\end{equation}
+Тогда для теплоемкости имеем
+\begin{equation}
+  \label{eq:143}
+  c\propto \ln|T-T_c|
+\end{equation}
+То есть мы подтвердили, что критический индекс $\alpha=0$ (см. таблицу \ref{tab:diagrams}). Вычисление других критических индексов также возможно, но сопряжено с техническими трудностями. Мы не будем его проделывать, так как в следующих лекциях мы легко сможем вычислить корреляторы из конформной теории поля.
+
+
 
 \subsection{Лекция 1. Что такое интегрируемая система?}
 
@@ -1032,6 +1066,313 @@ Q_{0}(z) =  \frac{1}{\xi^{2}_{1} + \ldots + \xi^{2}_{n}} =1, \qquad v_{k} = (\xi
   \item Ренормгруппа в двух измерениях
   \end{itemize}
 
+\subsection{Классические статистические модели. Связь с теорией поля.}
+\label{sec:statistical-models-qft}
+
+Распределение Больцмана инвариантно относительно сдвига энергии на константу, поэтому можно
+переписать гамильтониан в более удобном для обобщения виде:
+\begin{equation}
+  \label{eq:12}
+  \begin{array}{l}
+    \sigma_i\sigma_j=2\delta_{\sigma_i\sigma_j}-1\\
+    E[\sigma]=-2J\sum_{\left<ij\right>}\delta_{\sigma_i\sigma_j}-h\sum_i \sigma_i
+  \end{array}
+\end{equation}
+Обсудим некоторые обобщения модели Изинга и проиллюстрируем сходство статистической механики с теорией поля.
+
+Если $\sigma_i$ может принимать значения не $-1,1$, а $1,2\dots,q$, то мы получаем модель Поттса с $q$ состояниями.
+Подобным образом получаются и модели Ашкина-Теллера \cite{difrancesco1997cft}.
+
+Другой класс дискретных моделей отличается более существенно. Если в модели Изинга переменные
+(спины) живут в вершинах, а энергия --- на ребрах, то в вершинных моделях все наоборот. В качестве
+переменных берутся направленные ребра (стрелки), а энергия в вершине зависит от числа входящих и
+выходящих из нее стрелок. Пусть ребра, входящие в вершину имеют значения $0,1$ в зависимости от
+направления стрелки. Тогда энергия вершины обозначается через $R_{\alpha\mu}^{\beta\nu},\;
+\alpha,\beta,\mu,\nu=0,1$. Бывает 16 таких членов. В зависимости от того, сколько из них не равны
+нулю, выделяют 6-вершинную и 8-вершинную модели. 8-вершинная модель --- ненулевой вклад только когда
+входит четное число стрелок (0 входит, 4 выходит; 4 входит, 0 выходит; 6 способов выбрать две
+входящие стрелки -- итого 8 отличных от нуля членов $R_{\alpha\mu}^{\beta\nu}$).
+
+Еще один класс статистических моделей --- это модели с непрерывными степенями свободы. Например,
+заменим спины $\sigma_i$ в \eqref{eq:1} на единичные вектора в $m$-мерном пространстве $\vec n_i$.
+\begin{equation}
+  \label{eq:14}
+  \left|\vec n\right|^2=1
+\end{equation}
+В результате получим гамильтониан
+\begin{equation}
+  \label{eq:13}
+  E[\vec n]=J\sum_{\left<ij\right>}\vec n_i\cdot \vec n_j-\sum_i \vec h\cdot \vec n_i
+\end{equation}
+Это гамильтониан классической $O(m)$-модели Гейзенберга. 
+
+В критической точке наблюдается корреляция спинов на больших расстояниях, кроме того, фазовый переход
+в дискретных моделях наблюдается только в пределе числа вершин стремящегося к бесконечности ($N\to
+\infty$). Такой предел называется термодинамическим. Поэтому при описании фазового перехода имеет
+смысл перейти от модели с дискретным пространством к непрерывному $d$-мерному пространству. В
+дальнейшем $d$ будет равно двум, но сейчас мы пишем в самом общем виде, чтобы указать аналогию с
+теорией поля. При переходе к непрерывному пространству гамильтониан \eqref{eq:13} принимает вид
+\begin{equation}
+  \label{eq:15}
+  E[\vec n]=\int d^d x \left(J\partial_kn_i\partial_k  n_i-h_i\cdot n_i\right)
+\end{equation}
+Здесь подразумевается суммирование по повторяющимся индексам. (Легко понять обратный переход, если
+заменить производные разностями по ближайшим соседям, а потом отбросить в энергии постоянный член
+$J\sum_i \left|\vec n_i\right|^2=JN$).
+
+Условие $\vec n^2(x)=1$ сложно использовать, поэтому мы заменим его на другое аналогичное. Первый
+вариант такой замены --- это наложить требование $\frac{1}{V}\int d^dx\; \vec n^2=1$. В результате
+получается так называемая сферическая модель. Другая возможность --- добавить в гамильтониан
+\eqref{eq:15} потенциал $V(\left|\vec n\right|)$ с минимумом в $\left|\vec n\right|=1$ и устремить
+константу связи к бесконечности. Простейший вид такого потенциала --- $V(\left|\vec n\right|)=a\vec
+n^2+b\left(\vec n^2\right)^2$. Добавим его в гамильтониан и изменим нормировку $\vec n$ так, чтобы
+константа $J$ ушла. Получим
+\begin{equation}
+  \label{eq:16}
+  E[\vec n]=\int d^d x \left(\frac{1}{2}\partial_k n_i\cdot \partial_k n_i-\frac{1}{2}\mu^2 \vec n^2+\frac{1}{4}u\left(\vec n^2\right)^2\right)
+\end{equation}
+Если у $\vec n$ всего одна компонента $\varphi$, то мы получаем скалярную модели $\varphi^4$. Если
+$u=0$, то такая модель называется Гауссовой и допускает точное решение. 
+\begin{equation}
+  \label{eq:17}
+  E[\varphi]=\int d^d x (\frac{1}{2}(\nabla \varphi)^2+\frac{1}{2}\mu^2 \varphi^2)
+\end{equation}
+Статсумма --- это сумма $e^{-\beta E[\varphi]}$ по всем конфигурациям поля $\varphi$, то есть она
+записывается при помощи функционального интеграла: 
+\begin{equation}
+  \label{eq:18}
+  Z=\int \mathcal{D}\varphi e^{-\beta E[\varphi]}
+\end{equation}
+В гауссовой модели функциональный интеграл имеет гауссовский вид, поэтому он хорошо определен и
+легко вычисляется. Значит можно вычислить статсумму и все корреляционные функции. Величины в модели
+$\varphi^4$ можно получать по теории возмущений вокруг решения гауссовой модели. Это и есть
+вычисление функционального интеграла как суммы по фейнмановским диаграммам.  
+
+\subsection*{Квантовые статистические модели}
+\label{sec:quantum-statistical-models}
+
+Микросостояния квантовых статистических систем описываются при помощи матрицы плотности
+\begin{equation}
+  \label{eq:19}
+  \rho=e^{-\beta H}
+\end{equation}
+Статсумма дается суммой по собственным состояниям гамильтониана или следом матрицы плотности:
+\begin{equation}
+  \label{eq:20}
+  Z=\sum_n e^{-\beta E_n}=\mathrm{Tr} \rho
+\end{equation}
+Значение физической величины определим как среднее по состояниям:
+\begin{equation}
+  \label{eq:21}
+  \left< A\right>=\sum_n \left< n\right| e^{-\beta H}A\left| n \right>=\mathrm{Tr}(\rho A)
+\end{equation}
+$e^{-\beta H}$ похоже на оператор эволюции $e^{-i H t}$, то есть его тоже можно записать через
+функциональный интеграл. Покажем, как это делается на примере системы с одной степенью свободы. В
+этом случае ядро оператора плотности имеет вид 
+\begin{equation}
+  \label{eq:22}
+  \rho(x_f,x_i)=\left<x_f\right|e^{-\beta H} \left|x_i\right>
+\end{equation}
+Вспомним, что в квантовой механике оператор эволюции имеет вид $U(t)=e^{-i H t}$, а его ядро ---
+амплитуда перехода из состояния $\left|x_i\right>$ в $\left<x_f\right|$ дается интегралом по
+траекториям 
+\begin{equation}
+  \label{eq:23}
+  \left<x_f\right| U(t)\left| x_i\right>=\int_{(x_i,0)}^{(x_f,t)} [dx] e^{i S[x]}
+\end{equation}
+Заменой $t\to i\tau, \; \tau\in [0,\beta]$ (виковским поворотом) переходим к евклидову действию
+$S[x(t)]\to iS_E[x(\tau)]$. Для ядра оператора плотности получаем 
+\begin{equation}
+  \label{eq:24}
+  \rho(x_f,x_i)=\int_{(x_i,0)}^{(x_f,\beta)} [dx] e^{-S_E[x]}
+\end{equation}
+Статсумма
+\begin{equation}
+  \label{eq:25}
+  Z=\int dx \rho(x,x)=\int [dx] e^{-S_E[x]}
+\end{equation}
+Среднее значение $A$
+\begin{equation}
+  \label{eq:26}
+  \begin{array}{l}
+    \left<A\right>=\frac{1}{Z}\int dx \left<x\right|\rho A\left|x\right>=\frac{1}{Z}\int dx\; dy \left<x\right|\rho\left|y\right>\left<y\right|A\left|x\right>=    \\
+    =\frac{1}{Z}\int dx\; dy \int_{(x,0)}^{(y,\beta)} [dx] \left<y\right| A\left| x\right> e^{-S_E[x]}=\frac{1}{Z}\int dx\; dy\int_{(x,0)}^{(y,\beta)} [dx] A(x) \delta(x-y) e^{-S_E[x]}=\\
+    =\frac{1}{Z}\int [dx] A(x(0))e^{-S_E[x]}
+  \end{array}
+\end{equation}
+Здесь мы предположили, что $A$ зависит только от $x$, то есть $\left<y\right|
+A\left|x\right>=A(x)\delta(x-y)$. Мы видим, что значение $A$ дается функциональным интегралом, но
+$A$ вычисляется в точке $\tau=0$.  
+
+Обобщение на систему с континуумом степеней свободы и многочастичные функции естественно. Статсумма
+квантовой системы получается из обычного интеграла по траекториям путем викова поворота и
+ограничения евклидова времени на конечный промежуток $[0,\beta]$. При нулевой температуре ($\beta\to
+\infty$) мы получаем обычный производящий функционал в евклидовом времени, то есть теорию поля. При
+конечных температурах статсумма квантовой $d$-мерной системы соответствует статсумме $d+1$-мерной
+классической системы на полосе шириной $\beta$. 
+
+\subsection*{Классическая и квантовая теория поля}
+\label{sec:qft}
+Напоминание про теорию поля.
+
+Лагранжева формулировка классической теории поля.
+
+ Действие
+\begin{equation}
+  S=\int d^dx \mathcal{L}
+\end{equation}
+зависит от полей $\varphi$ и констант связи $\vec u=(u_1,\dots,u_n)$.
+Например:
+\begin{equation}
+  S[\varphi]=\int d^d x\left( -\frac{(\partial \varphi)^2}{2}-\frac{\mu \varphi^2}{2}-\frac{u\varphi^4}{24}+h\varphi\right),
+\end{equation}
+
+Классическое уравнение движения получается из принципа экстремальности действия (равенства нулю
+вариации действия). 
+
+\subsubsection*{Симметрии}
+\label{sec:symmetry}
+
+При преобразованиях координат
+\begin{equation}
+  \label{eq:303}
+  x\to x'
+\end{equation}
+поля тоже преобразуются, то есть у них не только меняется аргумент, но и само поле. Тип поля
+(скалярное, векторное, спинорное) -- это вид такого преобразования. 
+\begin{equation}
+  \label{eq:304}
+  \varphi(x)\to \varphi'(x')=F(\varphi(x))
+\end{equation}
+
+При этом действие тоже преобразуется:
+\begin{equation}
+  \label{eq:305}
+  S'=\int d^{d}x' \mathcal{L}(\varphi'(x'),\partial_{\mu} \varphi'(x'))=\int d^{d}x \left|\frac{\partial x'}{\partial x}\right| \mathcal{L}(F(\varphi(x)),\frac{\partial x^{\nu}}{\partial x'^{\mu}} \partial_{\nu}F(\varphi(x)))
+\end{equation}
+{\bf Примеры.}
+
+Трансляции:
+
+\begin{equation*}
+  \label{eq:306}
+  x'^{\mu}=x^{\mu}+a^{\mu},\quad \varphi'(x+a)=\varphi(x),\quad S'=S
+\end{equation*}
+
+Поворот (преобразования Лоренца):
+\begin{equation*}
+  x'^{\mu}=m^{\mu}_{\nu} x^{\nu}, \quad \varphi'(m x)=\Lambda \varphi(x),\quad \Lambda \mbox{--представление группы} 
+\end{equation*}
+
+Теперь рассмотрим инфинитезимальные преобразования.
+Если действие инвариантно относительно каких-либо преобразований, то говорят, что в теории есть
+симметрия. В этом случае действие должно быть стационарно по отношению к инфинитезимальным
+преобразованиям. 
+
+\begin{equation}
+  \label{eq:165}
+  x'^{\mu}=x^{\mu}+\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}
+\end{equation}
+($\omega_{a}$ -- бесконечно малые параметры).
+
+Наше поле преобразуется так:
+\begin{equation}
+  \label{eq:166}
+  \varphi'(x')=\varphi(x)+\omega_a \frac{\delta F}{\delta \omega_a} (x).
+\end{equation}
+Генератор преобразования определяется следующим равенством:
+\begin{equation}
+  \label{eq:167}
+  \delta_{\omega} \varphi(x)=\varphi'(x)-\varphi(x)\equiv -i\omega_a G_a \varphi(x)
+\end{equation}
+(здесь нет суммирования по $a$). Действие генератора на поле:
+\begin{equation}
+  \label{eq:168}
+  iG_a \varphi=\frac{\delta x^{\mu}}{\delta\omega_a} \partial_{\mu}\varphi-\frac{\delta F}{\delta \omega_a}
+\end{equation}
+
+Примеры генераторов:
+Если мы предположим, что поле $\varphi$ -- такое поле, которое не меняется при конформных
+преобразованиях, то есть $F(\varphi)=\varphi$, то мы получим следующий вид для генераторов: 
+\begin{eqnarray}
+  \label{eq:169}
+  \mbox{трансляция}  & x'^{\mu}=x^{\mu}+\omega^{\mu}& \quad P_{\mu}=-i\partial_{\mu}\\
+  \mbox{поворот} & x'^{\mu}=x^{\mu}+\omega^{\mu}_{\nu}x^{\nu} & \quad L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})
+\end{eqnarray}
+Если же при поворотах поле преобразуется $\varphi'(x')=\Lambda\varphi(x)$, то при инфинитезимальных
+преобразованиях $\varphi'(x')=\varphi(x)-\frac{i}{2}\omega_{\mu\nu}S^{\mu\nu}$ и генератор принимает
+вид 
+\begin{equation*}
+  L_{\mu\nu}=i(x_{\mu}\partial_{\nu}-x_{\nu}\partial{\mu})+S_{\mu\nu}
+\end{equation*}
+
+\subsubsection*{Теорема Нётер}
+\label{sec:noether}
+
+Теперь рассмотрим произвольные инфинитезимальные преобразования, при которых действие не меняется.
+Якобиан такого преобразования
+\begin{eqnarray*}
+  \frac{\partial x'^{\nu}}{\partial x^{\mu}} = \delta^{\mu}_{\nu}+\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)\\
+  \frac{\partial x^{\nu}}{\partial x'^{\mu}} = \delta^{\mu}_{\nu}-\partial_{\mu}\left(\omega_a \frac{\delta x^{\nu}}{\delta \omega_a}\right)
+\end{eqnarray*}
+\begin{equation*}
+  \left|\frac{\partial x'^{\nu}}{\partial x^{\mu}}\right| = 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)
+\end{equation*}
+Вариация действия
+\begin{multline*}
+  0=\delta_{\omega} S=\int \mathcal{L}(\varphi',\partial_{\mu}\varphi',x'^{\mu})dx'-\int \mathcal{L}(\varphi,\partial_{\mu}\varphi,x)dx=\\
+  \int d^{d}x\left[ \left( 1+\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\right) \mathcal{L} \left(\varphi+\delta_{\omega}\varphi,
+    \partial_{\mu}\varphi+\partial_{\mu}\delta_{\omega}\varphi\right)\right]-\mathcal{L}(\varphi,\partial_{\mu}\varphi)=
+\end{multline*}
+\begin{multline*}
+      \int d^{d}x\left( \frac{\partial \mathcal{L}}{\partial \varphi} \delta_{\omega}\varphi +\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi +\partial_{\mu}\left(\omega_a \frac{\delta x^{\mu}}{\delta \omega_a}\right)\mathcal{L}\right)
+\end{multline*}
+Первые два члена переписываются с использованием уравнений Эйлера-Лагранжа и интегрирования по частям:
+\begin{equation*}
+  \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\right)\delta_{\omega}\varphi+\frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\varphi)}\delta_{\omega}\partial_{\mu}\varphi=
+    \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi\right)
+\end{equation*}
+В итоге имеем:
+\begin{equation*}
+  0=\int d^{d}x \partial_{\mu}\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\delta_{\omega}\varphi +\delta^{\mu}_{\nu}\mathcal{L} \frac{\delta x^{\nu}}{\delta \omega_{a}}\right)
+\end{equation*}
+Если подставить явный вид вариации поля и ввести обозначение
+\begin{equation*}
+  j^{\mu}_{a}=\left(\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\partial_{\nu}\varphi -\delta^{\mu}_{\nu}\mathcal{L}\right) \frac{\delta x^{\nu}}{\delta \omega_{a}}-\frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\varphi)}\frac{\delta F}{\delta w_{a}},
+\end{equation*}
+то для вариации действия выходит:
+\begin{equation*}
+  \delta_{\omega}S=-\int d^{d}x j^{\mu}_{a}\partial_{\mu}\omega_{a}
+\end{equation*}
+$j^{\mu}_{a}$ называется нётеровским током, соответствующим данной симметрии. 
+Если $\delta_{\omega} S=0$, то
+\begin{equation*}
+  \partial_{\mu}j^{\mu}_{a}=0
+\end{equation*}
+Сохраняющийся заряд:
+\begin{equation*}
+  Q_{a}=\int d^{d-1}x\; j^{0}_{a}
+\end{equation*}
+
+ Рассмотрим инфинитезимальное масштабное преобразование $\lambda=1+\omega$. При этом вариация
+ $x_{\nu}$ будет $\delta_{\omega}x_{\nu}=\omega x_{\nu}$.  При инфинитезимальных преобразованиях
+ $x\to x+dl x$ вариация плотности лагранжиана дается Нётеровским током: 
+\begin{equation}
+  \label{eq:74}
+  \delta\mathcal{L}=\partial_{\mu}J^{\mu}dl
+\end{equation}
+\begin{equation}
+  \label{eq:75}
+  J^{\mu}=x_{\nu}T^{\mu\nu}
+\end{equation}
+Здесь $T^{\mu\nu}$ - тензор энергии-импульса.  Через $\Theta$ мы обозначим след тензора
+энергии-импульса $\Theta=\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}$. Он задает вариацию действия 
+\begin{equation}
+  \label{eq:87}
+  \delta S=dl \int d^d x \Theta(x)
+\end{equation}
+Если теория масштабно-инвариантна, то $\partial_{\mu}J^{\mu}=T_{\mu}^{\mu}=\Theta=0$. В
+масштабно-инвариантной теории тензор энергии-импульса бесследовый. 
 
 
 \subsection{Скейлинг или масштабная инвариантность}
