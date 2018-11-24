@@ -1,0 +1,283 @@
+\documentclass[aps,prl,reprint]{revtex4-1}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+%\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}2
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nfp}{\mathfrak{n}^{+}}
+\newcommand{\nfm}{\mathfrak{n}^{-}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\uf}{\mathfrak{u}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\sfh}{\hat{\mathfrak{s}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\hfg}{\hf_{\gf}}
+
+\begin{document}
+\title{Determination of CFT central charge from computer simulations using Wang-Landau algorithm}
+\author{Pavel Belov}
+\affiliation{Saint-Petersburg state university}
+\author{Anton Nazarov}
+\affiliation{Saint-Petersburg state university}
+\author{Alexander Sorokin}
+\affiliation{Saint-Petersburg Nuclear Physics Institute}
+
+
+
+\begin{abstract}
+  We propose a new way to determine a central charge of conformal field theory models corresponding
+  to the 2d lattice models. The idea is to use Wang-Landau algorithm to determine free energy of the
+  lattice model on the torus and then calculate central charge from free energy scaling w.r.t. torus
+  radii. In this way central charge is directly obtained with a good precision while fit of data is
+  relatively easy. We illustrate the method using Ising, tricritical Ising (Blume-Capel), Potts and
+  site-diluted Ising models.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+Quantum field theory is an excellent framework to understand the influence of geometry on the
+systems behavior in solid state physics. This is especially true in case of critical behavior of
+two-dimensional systems, where conformal invariance plays crucial role. 
+
+Conformal field theory in two dimensions is especially powerful since it possess an
+infinite-dimensional Virasoro symmetry. The Hilbert space is a union of Virasoro algebra modules. If
+the number of these modules is finite the theory is called a minimal model of CFT. Conformal field
+theories have small number of parameters -- central charge and conformal weights of primary fields.
+It is possible to compute analytically or numerically a lot of observables such as multi-point
+correlation functions. Also it is possible to study a lot of different boundary conditions, behavior
+in different geometries and various perturbations of conformal field theories. All these properties
+make CFT very useful for the description of various experiments and numerical simulations. But the
+problem is that often there are no suitable counterparts to the CFT fields in the lattice models or
+experiments. So it is apriori not known which CFT describes the critical behavior of a given lattice
+model. The most important task is to find value of CFT central charge. Several methods were proposed
+by different authors \cite{feiguin2007interacting}, \cite{bastiaansen1998monte},
+\cite{lauwers1991estimation} (?). First of these methods is only applicable to the one-dimensional
+integrable models and the second requires careful simulations and precise multi-parametric numerical
+fitting of conformal weights. We propose more direct approach based on the newer Wang-Landau
+simulation algorithm \cite{wang2001efficient}.
+
+\section{Theory}
+\label{sec:theory}
+
+Wang-Landau algorithm simulates the energy distribution $\rho(E)=e^{g(E)}$. Energy range is split
+in some number of intervals (which can coincide with the number of discrete energies). The algorithm starts with random
+lattice configuration, empty array of logarithms of energy densities $g(E_{1}),\dots,g(E_{n})$,
+empty visitation histogram $h(E_{1}),\dots,h(E_{n})$ and some initial value (usually
+1) of constant $a$. Then one lattice site and new value of
+lattice variable at this site are chosen at
+random. New state with the changed value at site is accepted with the probability
+$e^{g(E_{new})-g(E_{old})}$, visitation number $h(E)$ is increased by 1 and $g(E)$ is increased by
+$a$. This procedure is repeated until the visitation histogram is relatively flat. Then the value of
+$a$ is divided by 2, the histogram is emptied and next step of algorithm begins. Usually about 20-30
+such steps are done in simulations. Having the energy distribution $\rho(E)$ the partition function
+is given by
+\begin{equation}
+  \label{eq:8}
+  Z=\sum_{E_{i}} \rho(E_{i}) e^{-\frac{E_{i}}{T}}
+\end{equation}
+
+Availability of the partition function in simulations is the crucial difference between Wang-Landau and
+other Monte-Carlo methods, such as Metropolis or Wolf algorithms. Having the partition function we
+can consider free energy density
+\begin{equation}
+  \label{eq:10}
+  f(T)=-\frac{T}{Volume}\log Z(T)
+\end{equation}
+In conformal field theory there is a well-known relation connecting free energy on an infinite
+cylinder of circumference $N$ with the free energy on a plane (see, for example
+\cite{difrancesco1997cft}, Chapter 5):
+\begin{equation}
+  \label{eq:11}
+  f_{cyl}(N)=f_{plane}-\frac{\pi c}{6 N^{2}}.
+\end{equation}
+Central charge appears in this relation so it could be used to extract central charge value from the
+simulation data. In order to do so we simulate a model on a torus of circumferences $N$ and $M$
+to obtain free energy density $f_{tor}(N,M)$. Then we extrapolate free energy value when $M\to\infty$
+to get free energy on a cylinder $f_{cyl}(N)=\lim_{M\to\infty} f_{tor}(N,M)$. Central charge can be
+obtained by fitting $f_{cyl}(N)$ data into the equation~\eqref{eq:11}. 
+
+For this program to work we need to study the behavior  of $f_{tor}(N,M)$ when $M\to\infty$.
+To do so we consider CFT partition function on the torus of circumferences $M$ and $N$.
+  Bastiaansen and Knops \cite{bastiaansen1998monte} had to consider a skewed torus since at
+that time there was no Monte-Carlo method for the free energy computation, but for us straight torus is
+enough. Modular parameter of the torus is given by the quotient of two periods:
+\begin{equation}
+  \label{eq:2}
+  \tau=i\frac{M}{N}
+\end{equation}
+In the usual CFT quantization one needs to chose time direction. We take it to be along the
+period $M$ of the torus. The Hamiltonian is the generator of time translation and is given by a sum
+of Virasoro generators $L_{0}, \bar L_{0}$:
+\begin{equation}
+  \label{eq:3}
+  H=\frac{2\pi}{N} (L_{0}+\bar L_{0})-\frac{\pi c}{6 N},
+\end{equation}
+the additional term with the central charge $c$ appears from the conformal mapping from plane. 
+
+We can consider the exponent of the Hamiltonian as a row-to-row transfer matrix. Then translating
+from row to row along the time direction $M$ times we get a partition function  on the torus
+\begin{equation}
+  \label{eq:1}
+  Z=\sum_{j} \left<j\right|e^{-M H} \left|j\right>
+\end{equation}
+The sum here is over the states in Hilbert space. 
+The Hilbert space of a conformal field theory is a direct sum of Virasoro algebra modules $V_{i}$ generated
+by primary fields $\varphi_{i}$ and parametrised by conformal weights $h_{i}, \bar h_{i}$. Conformal
+field theory always contains the identity operator with the conformal weight $h_{0}=0$. The
+conformal weights of primary fields are between zero and one:  $0\leq h_{i},\bar h_{\bar i}\leq 1$. We can
+choose the basis of Virasoro eigenstates $\left|h_{i}+m_{i},\bar h_{i}+\bar m_{i}\right>$, where
+$m_{i},\bar m_{i}$ are positive integers:
+\begin{equation}
+  \label{eq:4}
+  \begin{array}{l}
+    L_{0}\left|h_{i}+m_{i},\bar h_{i}+\bar m_{i}\right>=(h_{i}+m_{i})\left|h_{i}+m_{i},\bar h_{i}+\bar
+    m_{i}\right>\\
+  \bar L_{0}\left|h_{i}+m_{i},\bar h_{i}+\bar m_{i}\right>=(\bar h_{i}+\bar m_{i})\left|h_{i}+m_{i},\bar h_{i}+\bar
+    m_{i}\right>    
+  \end{array}
+\end{equation}
+
+It is customary to use the parameter $q=\exp(2\pi i \tau)$.  In our case of straight torus the parameter $q$ is real, $q=\bar q=e^{-\frac{2\pi M}{N}}$.
+Then for the partition function we get
+\begin{multline}
+  \label{eq:5}
+  \frac{Z(q)}{Z_{0}}=q^{-\frac{c}{24}} \bar q^{-\frac{c}{24}}\sum_{j} n_{j} q^{h_{j}+m_{j}}\bar q^{\bar h_{j}+\bar
+    m_{j}}=\\=\sum_{i,\bar i} {\cal M}_{i,\bar i}\chi_{i}(q) \bar\chi_{\bar i}(\bar q),
+\end{multline}
+where $j$ runs over all states and $i, \bar i$ run over primary states,
+$\chi_{i}(q)=q^{h_{i}-\frac{c}{24}}\sum_{n\geq 0}d_{i}(n)q^{n}$ is the character of the Virasoro algebra module, $n_{j}$ the multiplicity of
+the secondary state and ${\cal M}_{i,\bar i}$ is the multiplicity of the representation $V_{i}\otimes\bar
+V_{\bar i}$. The partition function is defined up to normalization $Z_{0}$ that is interpreted as a
+partition function on a plane. The multiplicities $\mathcal{M}_{i,\bar i}$ are constrained by  the
+modular invariance of the partition function.  We do not need to know them and we also can obtain
+conformal weights $h_{i}$ from the simulation data due to the following considerations. First it is important to note that CFT always contains the
+identity field with $h_{0}=\bar h_{0}=0$ with the multiplicity $\mathcal{M}_{0,0}=1$.
+
+The partition function in conformal field theory does not depend on temperature since CFT is
+applicable only in thermodynamic limit in critical point. To connect CFT computation with the
+simulation data we need to insert critical temperature in the expression for the free energy
+$  f(N,M)=-\frac{T_{c}}{MN}\log Z(q)$. Let's denote by $f_{0}$ the limit
+$\lim_{N\to\infty,M\to\infty}f(N,M)$, this term corresponds to the partition function on the plane.
+Then we have
+\begin{multline}
+  \label{eq:13}
+  f(N,M)=f_{0} - \frac{T_{c}\pi c}{6
+    N^{2}}\\-\frac{T_{c}}{MN}\log\left[1+\sum_{i\neq 0,\bar i\neq 0} \mathcal{M}_{i,\bar i} q^{h_{i}+\bar h_{\bar
+        i}} \left(\sum_{n\geq 0} d_{i}(n) q^{n}\right)\left(\sum_{m\geq 0} d_{\bar i}(m)
+      q^{m}\right)\right.\\ +\left.\sum_{n\geq 1}d_{0,0}(n)q^{n}\right]
+\end{multline}
+One in the last logarithm is due to the identity field and we've moved the  contributions from the  secondary states of
+the identity field $\sum_{n\geq 1}d_{0,0}(n)q^{n}$ to the right. Note that if $M\geq N$ the
+parameter $q=e^{-\frac{2\pi M}{N}}$ is very small, so we can expand the logarithm holding only
+leading contributions with $q^{h_{i}}$:
+\begin{multline}
+  \label{eq:14}
+  f(N,M)=f_{0} - \frac{T_{c}\pi c}{6
+    N^{2}}-\frac{T_{c}}{MN}\left[\sum_{i\neq 0,\bar i\neq 0} \mathcal{M}_{i,\bar i} q^{h_{i}+\bar h_{\bar i}} \right].
+\end{multline}
+If $M>N$ the third term is much smaller than the second one, so in principle we can use measures for
+$f(N,M)$ for $M>>N$ (e.g. $M=10 N$) as values of $f(N)$. As the measure of inaccuracy we can take
+the difference between $f(N, M)$ and $f(N, M-N)$. 
+
+From  the exact value of CFT partition
+function for the Ising model on the torus we see that this gives reasonable precision.
+CFT partition function for the critical Ising model on the torus is given by the formula
+\begin{equation}
+  \label{eq:15}
+  Z_{Ising}(q)=\frac{1}{2}\left(\left|\frac{\theta_{2}(0|\tau)}{\eta(\tau)}\right|+\left|\frac{\theta_{3}(0|\tau)}{\eta(\tau)}\right|+\left|\frac{\theta_{4}(0|\tau)}{\eta(\tau)}\right|\right),
+\end{equation}
+where $\theta_{2},\theta_{3},\theta_{4}$ are Jacobi theta functions. Computing $f(N,M)$ numerically from this
+expression it is easy to see that there is no difference in 8 digits after dot between $f(N,10 N)$
+and $f(N)$. 
+
+On other hand fitting with the just the smallest conformal weight $h+\bar h$ also gives very good
+precision. One can even extract conformal weights $h_{i}$ from such a fit. 
+
+If it is not known what conformal field theory describes critical behavior of the model
+under consideration one can also take mean value between fits with $h_{min}=0$ and $h_{min}=1$ . We
+show the difference in precision for all three methods in the following table. The value for $f(10)$
+is obtained in three ways from the same simulation data for $f(10,n\cdot 10)$, where we took
+$n=1\dots 10$ and used 25-steps Wang-Landau algorithm with flatness level $0.8$. 
+\begin{equation}
+  \label{eq:16}
+  \begin{array}{c||c|c|c}
+    \mbox{method} & f(10,100) & \mbox{fit}\; h+\bar h=\frac{1}{8} & \mbox{mean of fits} \;0,1\\
+    \hline
+    f(10) & 2.11568 & 2.11577 & 2.115 \\
+    \mbox{inaccuracy} & 0.00009 & 0.00009 & 0.002
+  \end{array}
+\end{equation}
+Taking into account the measure of inaccuracy for all three methods we obtain following values for
+central charge. We used the following set of $N$-values:
+$N=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,24,30,40$. 
+
+\begin{equation}
+  \label{eq:17}
+  \begin{array}{c||c|c|c}
+    \mbox{method} & f(10,100) & \mbox{fit}\; h+\bar h=\frac{1}{8} & \mbox{mean of fits} \;0,1\\
+    \hline
+    c &  0.507\pm 0.001 & 0.506\pm 0.001 & 0.46\pm 0.06 
+  \end{array}
+\end{equation}
+Note that we have not estimated the imprecision from the finite lattice size. If we use only bigger
+lattices with $N\geq 15$  from the same data set,  we get a bit different results for central
+charge: $c=0.509\pm 0.002, c=0.505\pm 0.002, c=0.46\pm 0.13$. We see that the inaccuracy from using
+the finite lattices is of the same order as the difference between first and second methods. 
+
+In the next section we present detailed results of our simulations of different lattice models. 
+
+\section{Simulation}
+\label{sec:simulation}
+
+We did the
+simulation as follows. First we simulated the system on the lattices with periodic boundary
+conditions for different values of $M/N$ and different values of circumference $N$. The partition
+function and free energy are available in simulations subject to proper normalization. We used the
+fact that for lattice models vacuum degeneracy is known to normalize the partition function. Then we
+fit the dependence on $M/N$ of our data for free energy with the decreasing exponent $-b e^{-a
+  \frac{M}{N}}$ to account for the third and other terms in formula \eqref{eq:7}. In the limit
+$\frac{M}{N}\to\infty$ only first two terms survive, so with this fit we have obtained limit values
+of $f(N)$. Now from the fit with $\frac{1}{N^{2}}$ we determine the value of central charge $c$. 
+
+Let us illustrate our method on the simplest example of the Ising model. The vacuum is twice
+degenerate so we normalize the obtained energy distribution  ... 
+
+Pics here
+
+q-state Potts
+
+Tricritical Ising
+
+Site-diluted Ising model
+
+In recent study \cite{najafi2016monte} of the domain wall geometry of site-dilute Ising model it was
+suggested that the central charge of the theory depends on dilution parameter $p$. We see in our
+simulations that to the contrary the central charge is universal. 
+
+
+\section*{Conclusion}
+\label{sec:conclusion}
+
+
+\bibliography{listing}{} 
+\bibliographystyle{apsrev4-1}
+
+\end{document}

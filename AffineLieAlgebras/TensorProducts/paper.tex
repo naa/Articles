@@ -9,7 +9,7 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[utf8x]{inputenc}
-\usepackage[english]{babel}
+\usepackage[english,russian]{babel}
 
 \newtheorem{Def}{Definition}[section]
 \newtheorem{theorem}{Theorem}
@@ -41,7 +41,7 @@
 
 \begin{document}
 
-\ftc{Recurrent formulae for graded tensor product multiplicities and cluster algebras}
+\ftc{Feigin-Loktev fusion product and formulas for graded tensor product multiplicities}
 
 \author{V.D.~Lyakhovsky$^1$, A.A.~Nazarov$^{1,2}$, O.V.~Postnova$^{1}$, A..~Komisartchuk$^{1}$}
 \address{ $^1$ Department of High-energy and elementary particle physics,  St Petersburg State University, 198904, Saint-Petersburg, Russia}
@@ -50,8 +50,13 @@
 
 
 \begin{abstract}
-
-We show the connection of formulae for tensor product multiplicities with cluster algebras. 
+  Feigin-Loktev fusion product appeared from the study of operator algebra of conformal field
+  theory. It generalizes tensor product of representations of simple Lie algebras by introducing
+  grading. Graded product multiplicities are generalized Kostka polynomials. We start with the
+  fermionic formulae for these multiplicities and derive closed explicit expressions that do not
+  contain summation over integer partitions. We present closed formulas for graded tensor product
+  multiplicities for the fundamental representations of simple Lie algebras of small rank. These
+  formulas can be regarded as q-analogue of multinomial coefficients. 
 \noindent{\it Keywords\/}: Lie algebra, tensor product, multiplicity, cluster algebra, grading
 \end{abstract}
 
@@ -70,7 +75,12 @@ decomposition can be calculated recursively with something like so-called Klimyk
 on the Weyl character formula. So far there is no such simple method for graded tensor product. In
 the present paper we provide a recurrent relations for the graded tensor product decomposition
 coefficients and compare recurrent computations with the Kirillov-Reshetikhin formula. Note that
-recurrent approach is not limited to any specific class of modules and is more general. 
+recurrent approach is not limited to any specific class of modules and is more general.
+
+In certain cases fusion modules are Weyl or Demazure modules of the current algebra
+\cite{chari2001weyl,chari2006weyl,chari2014modules,chari2015demazure}. Then formulas for graded
+tensor product multiplicities are known (see \cite{chari2006weyl,chari2015demazure}). Some of these
+cases involve non-symmetric Macdonald polynomials \cite{0803.1146v1}. 
 
 \begin{itemize}
 \item Di Francesco-Kedem's paper
@@ -97,8 +107,11 @@ recurrent approach is not limited to any specific class of modules and is more g
  and the algebra $U(\gf[[t]])$ is also graded. Then we have the induced filtration on $V$:
  \begin{equation}
    \label{eq:2}
-   F^{i}V=U^{\leq i}(\gf[[t]])v_{1}\otimes\dots\otimes v_{n}.
+   F^{i}V=U^{\leq i}(\gf[[t]])v_{1}\otimes\dots\otimes v_{n},\quad F^{0}V\subset F^{1}V\subset\dots
  \end{equation}
+
+One can show that the number of graded components $F_{j}=F^{j}V/F^{j-1}V$ is finite. 
+
  Note that $F^{0}V$ is the irreducible $\gf$-submodule corresponding to the highest weight in the
  tensor product decomposition
  \begin{equation}
@@ -106,17 +119,260 @@ recurrent approach is not limited to any specific class of modules and is more g
    L^{\mu_{1}}\otimes\dots \otimes L^{\mu_{n}}=L^{\nu_{1}}\oplus\dots\oplus L^{\nu_{k}}
  \end{equation}
 
+Having defined the filtration on $V$ one can introduce ``graded tensor product decomposition
+coefficients'' or Hilbert polynomials by the formula
+\begin{equation}
+  \label{eq:4}
+  M^{\mu_{1},\dots \mu_{n}}_{\lambda}(t)=\sum_{k\geq 0}t^{k} \mathrm{dim}\mathrm{Hom}_{\gf} (F_{k},L^{\lambda})
+\end{equation}
 
+If we set $t=1$ these coefficients coincide with tensor product decomposition coefficients:
+\begin{equation}
+  \label{eq:5}
+  M^{\mu_{1},\dots,\mu_{n}}_{\lambda}(1)=  M^{\mu_{1},\dots,\mu_{n}}_{\lambda}
+\end{equation}
+
+ \begin{example}
+   Consider tensor powers of fundamental representation of $sl_{2}$. 
+   
+ \end{example}
+
+Tensor product as affine Lie algebra module:   
+
+Klimyk rule:
+\begin{equation}
+  \label{eq:6}
+  \mathrm{ch}L^{\mu}\cdot\mathrm{ch}L^{\nu}=\sum_{\xi\in \mbox{weights}L^{\nu}}\mathrm{ch} L^{\mu+\xi}
+\end{equation}
 
 \item Fusion product of Virasoro modules, fusion in WZW models and Feigin-Loktev tensor product 
-\item KR-formula
+
+\item Use generalized Kirillov-Reshetikhin formula:\\
+    Tensor product of $n_{a,j}$ modules with highest weight $j\omega_{a}$
+    \begin{equation}
+      \label{eq:3}
+      M^{(\bf{n})}_{\lambda}(t)=\sum_{\{m_{a,j}\}}t^{\sum_{a,b,i,j}m_{a,j}C_{\gf}^{ab}\mathrm{min}(i,j)m_{b,j}}\prod_{a,j}\left[\begin{array}{c}p_{a,j}+m_{a,j}\\ m_{a,j}\end{array}\right]_{t},
+      \end{equation}
+      where $C_{\gf}$ -- Cartan matrix,  the sum is restricted:
+      \begin{equation}
+        \label{eq:6}
+        \sum_{a,j}j\omega_{a}(n_{a,j}-\sum_{b}C^{ab}m_{b,j})=\lambda
+      \end{equation}
+      \begin{equation}
+        \label{eq:7}
+        p_{a,j}=\sum_{j}\mathrm{min}(i,j) n_{a,j}-\sum_{b}\mathrm{min}(i,j)m_{b,j}
+      \end{equation}
+     $\left[\begin{array}{c}n\\ k\end{array}\right]_{t}=\frac{(n!)_{t}}{(k!)_{t}((n-k)!)_{t}}$, $(n)_{t}=1+t+\dots t^{n-1}$.
+
 \item Weyl character formula and formulas for tensor product
 \item Weyl character formula for graded tensor product
 \item Computations: examples, performance
 \item Cluster algebra perspective
 \end{itemize}
 
+\section{Simple example}
+\label{sec:simple-example}
+
+Let's remind the properties of $q$-binomial coefficients
+(http://mathworld.wolfram.com/q-BinomialCoefficient.html). Recurrent relation for binomial coefficients
+\begin{equation}
+  \label{eq:7}
+  \left(\begin{array}{c}n\\ k\end{array}\right)=\left(\begin{array}{c}n-1\\
+      k-1\end{array}\right)+\left(\begin{array}{c}n-1\\ k\end{array}\right) 
+\end{equation}
+is easy to prove:
+\begin{equation}
+  \label{eq:8}
+  \frac{n!}{k!(n-k)!}=\frac{(n-1)!}{(k-1)!(n-k)!}+\frac{(n-1)!}{k!(n-k-1)!}
+\end{equation}
+Multiply by $k!(n-k)!/(n-1)!$:
+\begin{equation}
+  \label{eq:9}
+  n=k+(n-k)
+\end{equation}
+
+Similarly for $q$-binomials we should get
+\begin{equation}
+  \label{eq:10}
+  (n)_{q}=(k)_{q}+(n-k)_{q},
+\end{equation}
+but this is not the case, so we need to multiply $(n-k)_{q}$ by $q^{k}$. The resulting recurrent
+relation is
+\begin{equation}
+  \label{eq:11}
+  \left[\begin{array}{c}n\\ k\end{array}\right]_{q}=\left[\begin{array}{c}n-1\\ k-1\end{array}\right]_{q}+q^{k}\left[\begin{array}{c}n-1\\ k\end{array}\right]_{q}
+\end{equation}
+
+For $sl_{2}$ tensor product decomposition coefficients we have
+\begin{equation}
+  \label{eq:12}
+  M^{n}_{k}(t)=\left[\begin{array}{c}n\\ k\end{array}\right]_{t}-\left[\begin{array}{c}n\\ k-1\end{array}\right]_{t}
+\end{equation}
+\begin{equation}
+  \label{eq:13}
+  M^{n}_{k}(t)=M^{n-1}_{k-1}(t)+t^{k-1}M^{n-1}_{k}+(t-1)t^{k-1}\left[\begin{array}{c}n-1\\ k\end{array}\right]_{t}
+\end{equation}
+
+$sl_2$ case here
+Формула Кириллова-Решетихина дает кратность неприводимого представления со старшим весом $\lambda$ в
+тензорном произведении  $n_{a,j}$ представлений со старшими весами $j\omega_{a}$, где $\omega_{a}$
+-- фундаментальный вес с номером $a=1\dots \mathrm{rank}\gf$. 
+\begin{equation}
+  \label{eq:3}
+  M^{(\bf{n})}_{\lambda}(t)=\sum_{\{m_{a,j}\}}t^{\sum_{a,b,i,j}m_{a,j}C_{\gf}^{ab}\mathrm{min}(i,j)m_{b,j}}\prod_{a,j}\left[\begin{array}{c}p_{a,j}+m_{a,j}\\ m_{a,j}\end{array}\right]_{t},
+\end{equation}
+здесь $C_{\gf}$ -- матрица Картана, а сумма ограничена условиями
+\begin{equation}
+  \label{eq:6}
+  \sum_{a,j}j\omega_{a}(n_{a,j}-\sum_{b}C^{ab}m_{b,j})=\lambda
+\end{equation}
+\begin{equation}
+  \label{eq:7}
+  p_{a,i}=\sum_{j}\mathrm{min}(i,j) \left(n_{a,j}-\sum_{b}C^{ab}m_{b,j}\right)
+\end{equation}
+$\left[\begin{array}{c}n\\ k\end{array}\right]_{t}=\frac{(n!)_{t}}{(k!)_{t}((n-k)!)_{t}}$, $(n)_{t}=1+t+\dots t^{n-1}$.
+
+Сперва рассмотрим простейший пример, $\gf=sl_{2}$, $t=1$. Формула Кириллова-Решетихина будет иметь вид
+\begin{equation}
+  \label{eq:1}
+  M_{\lambda}^{(n_{1},n_{2},\dots)}=\sum_{m_{j}}\prod_{j}\left(
+    \begin{array}{c}
+      p_{j}+m_{j}\\
+      m_{j}
+    \end{array}\right),
+\end{equation}
+\begin{equation}
+  \label{eq:2}
+  \sum_{j}j\omega (n_{j}-2m_{j})=\lambda
+\end{equation}
+\begin{equation}
+  \label{eq:4}
+  p_{j}=\sum_{i}\min(i,j)(n_{i}-2m_{i})\geq 0
+\end{equation}
+Попробуем вычислить что-нибудь по этой формуле. Например, кратность представления со старшим весом
+$1$ (индекс Дынкина) в произведении пяти фундаментальных представлений. $n_{1}=5, n_{2}=n_{3}=\dots=0$
+\begin{equation}
+  \label{eq:5}
+  (n_{1}-2m_{1})+2(-2m_{2})+3(-m_{3})+\dots=1
+\end{equation}
+\begin{equation}
+  \label{eq:9}
+  m_{j}\geq 0
+\end{equation}
+\begin{equation}
+  \label{eq:8}
+    (5-2m_{1})+2(-2m_{2})+3(-m_{3})+\dots=1
+\end{equation}
+Решения: $m_{1}=2, m_{j}=0$, $m_{1}=0, m_{2}=1$. 
+Для $p_{j}$ имеем в первом случае $p_{1}=1$, во втором $p_{1}=5-2=3$,$p_{2}= 5+2\cdot (-2)=1$ в итоге кратность
+\begin{equation}
+  \label{eq:10}
+   M_{1}^{(5)}=\left(
+    \begin{array}{c}
+      1+2\\
+      2
+    \end{array}\right)+
+\left(\begin{array}{c}
+      1+1\\
+      1
+    \end{array}\right)=5
+\end{equation}
+
+
+\section{Proof}
+\label{sec:proof}
+$sl_{3}, so_{5}$ here
+  \begin{itemize}
+  \item $t$-deformation for the tensor product formula for $\mathfrak{sl}_{2}$:
+    \begin{equation}
+      \label{eq:8}
+      m^{\otimes n}_{l}(t)=\left[\begin{array}{c}n-l\\n\end{array}\right]_{t}-      \left[\begin{array}{c}n-l-1\\n\end{array}\right]_{t}
+    \end{equation}
+  \item  $t$-deformation for the tensor product formula for $\mathfrak{sl}_{3}$:
+    \begin{equation}
+      \label{eq:9}
+      \begin{array}{l}
+      M^{n}_{p_{1},p_{2}}(t)=(n,p_{1},p_{2})_{t}-(n,p_{1}-1,p_{2})_{t}+(n,p_{1}-2,p_{2}-1)_{t}\\-(n,p_{1},p_{2}-1)_{t}+(n,p_{1}-1,p_{2}-2)_{t}-(n,p_{1}-2,p_{2}-2)_{t},        
+      \end{array}
+    \end{equation}
+    where $(n,p_{1},p_{2})_{t}=\frac{(n!)_{t}}{(p_{2}!)_{t}((n-p_{1})!)_{t}((p_{1}-p_{2})!)_{t}}$
+  \end{itemize}
+
+Compare to Kirillov-Reshetikhin formula:
+
+Рассмотрим теперь алгебру $sl_{3}$. Матрица Картана
+\begin{equation}
+  \label{eq:11}
+  C=\left(\begin{array}{cc}
+      2 & -1\\
+      -1 & 2
+    \end{array}\right)
+\end{equation}
+Вычислим кратность представления со старшим весом с индексами Дынкина $(1,2)$ в произведении пяти
+фундаментальных представлений $L^{\omega_{1}}$. $n_{1,1}=5, n_{ij}=0$. Уравнения на $m_{aj}$:
+\begin{eqnarray}
+  \label{eq:12}
+  (5-2m_{1,1}+m_{2,1})+2(-2m_{12}+m_{22})+3(-2m_{13}+m_{23})+4(-2m_{14}+m_{24})+\dots=1\\
+  (m_{1,1}-2m_{2,1})+2(m_{12}-2m_{22})+3(m_{13}-2m_{23})+4(m_{14}-2m_{24})+\dots=2
+\end{eqnarray}
+сложим:
+\begin{equation}
+  \label{eq:13}
+  (5-m_{1,1}-m_{2,1})-2(m_{12}+m_{22})-3(m_{13}+m_{23})-4(m_{14}+m_{24})+\dots=3
+\end{equation}
+или
+\begin{equation}
+  \label{eq:14}
+    -(m_{1,1}+m_{2,1})-2(m_{12}+m_{22})-3(m_{13}+m_{23})-4(m_{14}+m_{24})+\dots=-2
+\end{equation}
+решения:
+$m_{11}=2, m_{ij}=0$, $m_{12}=1, m_{ij}=0$
+Вычислим $p_{ij}$. 
+\begin{eqnarray}
+  \label{eq:15}
+  p_{11}=(n_{11}-2m_{11}+m_{21})+(-2m_{12}+m_{22})+\dots\\
+  p_{21}=(m_{11}-2m_{21})+(m_{12}-2m_{22})+\dots\\
+  p_{12}=(n_{11}-2m_{11}+m_{21})+2(-2m_{12}+m_{22})+\dots\\
+  p_{22}=(m_{11}-2m_{21})+2(m_{12}-2m_{22})+\dots
+\end{eqnarray}
+В первом случае $p_{11}=1$, а остальные не нужны. Во втором $p_{11}=3, p_{21}=1, p_{12}=1,
+p_{22}=2$, из которых нужно только $p_{12}$. Подставляем в формулу Кириллова-Решетихина:
+\begin{equation}
+  \label{eq:16}
+    M_{(2,1)}^{(5)}=\left(
+    \begin{array}{c}
+      1+2\\
+      2
+    \end{array}\right)+
+\left(\begin{array}{c}
+      1+1\\
+      1
+    \end{array}\right)=5
+\end{equation}
+Что совпадает с разложением тензорного произведения другими способами. 
+
+Заметим, что здесь, как и в случае $sl_{2}$, при поиске решений надо учитывать те $m_{ij}$, для
+которых $n_{ij}=0$. 
+
+
+\section*{Conlusion}
+\label{sec:conlusion}
+
+
+\begin{equation}
+  \label{eq:17}
+  \sum_{\nu=j}^{q-1} t^{(q-\nu)(q-\nu-1)} C_{q-j}^{\nu-j} C_{l-q-1}^{q-\nu-1} = 
+  \sum_{\nu=j}^{q-1} t^{(q-\nu)(q-\nu-1)} C_{q-j}^{q-\nu} C_{l-q-1}^{q-\nu-1} 
+\end{equation}
+обозначим $q-1-\nu$ через $k$, тогда $\nu=q-1-k$, суммирование идет по $k=0\dots q-j-1$ и мы имеем
+\begin{equation}
+  \label{eq:18}
+  \sum_{k=0}^{q-j-1} t^{(k+1)k} C_{q-j}^{k+1} C_{l-q-1}^{k} =   \sum_{k=0}^{q-j-1} t^{(k+1)k} C_{q-j}^{q-j-1-k} C_{l-q-1}^{k} = C_{l-j-1}^{q-j-1},
+\end{equation}
+где в последнем равенстве использовано тождество Ва
 \cite{di2013quantum} 
+
+Recurrent relation for fusion modules characters is here \cite{di2015difference}
 \bibliography{cluster}{} 
 \bibliographystyle{iopart-num}
 
