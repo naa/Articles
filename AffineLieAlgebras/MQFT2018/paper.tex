@@ -1,0 +1,430 @@
+
+
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[russian,english]{babel}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+
+
+
+\newtheorem{Def}{Definition}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{statement}{Statement}
+\newtheorem{Cnj}[Def]{Conjecture}
+\newtheorem{Prop}[Def]{Property}
+\newtheorem{example}{Example}[section]
+
+\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
+\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
+\newcommand{\co}[1]{\stackrel{\circ }{#1}}
+\newcommand{\pia}{\pi_{\mathfrak{a}}}
+\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\nf}{\mathfrak{g}}
+\newcommand{\gfh}{\hat{\mathfrak{g}}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\afh}{\hat{\mathfrak{a}}}
+\newcommand{\bff}{\mathfrak{b}}
+\newcommand{\slnn}{\mathfrak{sl}_{n}}
+\newcommand{\sln}[1]{\mathfrak{sl}_{#1}}
+\newcommand{\afb}{\mathfrak{a}_{\bot}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\hfg}{\hf_{\gf}}
+\newcommand{\hfa}{\hf_{\af}}
+\newcommand{\hfb}{\mathfrak{h}_{\bot}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\aft}{\widetilde{\mathfrak{a}}}
+\newcommand{\sfr}{\mathfrak{s}}
+%\newcommand{\dim}{\mathrm{dim} }
+
+\begin{document}
+\title{Finite-size scaling of free energy in dimer model on hexagonal domain}
+
+\author{A.A.~Nazarov$^{1}$\\
+{\small
+  $^{1}$Department of Physics, St. Petersburg State University,} \\
+{\small  Ulyanovskaya 1, 198504 St.~Petersburg, Russia}\\
+%\small{$^{2}$}\\
+%\small{$^{3}$}\\
+\small{email:antonnaz@gmail.com}
+}
+\date{}
+\maketitle
+
+\begin{abstract}
+    We consider dimer model on a hexagonal lattice. This model can be seen as a ``pile of cubes in the
+  corner''. The partition function is given by the determinant of Kasteleyn matrix. We use the
+  expression for the partition function to derive the scaling behavior of free energy in the limit
+  of lattice mesh tending to zero and temperature tending to infinity. We discuss the connection of
+  the expansion coefficients to the geometry of the domain.
+\end{abstract}
+
+
+\section*{Introduction}
+\label{sec:introduction}
+The dimer model appeared as a very simplified model of solutions \cite{Fowler-1937}. The molecules
+are represented by the rigid tiles on a lattice. The partition function was computed on various
+lattices and with different boundary conditions \cite{doi:10.1080/14786436108243366,
+  P.W-1961,kenyon2009lectures}.
+
+Dimer models are the integrable lattice models of statistical physics that are under an active
+theoretical~\cite{zj2000,ferrari} and numerical
+investigation~\cite{ks2018}. Particular dimer model appears for certain choice
+of parameters in the well-known six-vertex model  \cite{pronko2017thesis}. Dimer models are
+closely related to the theory of alternating matrices \cite{elkies1992alternating1,elkies1992alternating2}
+
+Specifically, the well-known limit shape phenomenon~\cite{vershik1977kerov} was discovered for dimer
+model~\cite{kenyon2006dimers} and a connection with the theory of random matrices was
+established~\cite{johansson2002non}.
+
+
+Study of dimer models on various lattices and domains leads to interesting connections with the
+geometry of curved manifolds and with spectra of discrete and continuous Dirac and Laplace operators
+\cite{kenyon2002laplacian,kenyon2000asymptotic}. Scaling limit of dimer model is proven to be
+described by a Gaussian free-field theory \cite{kenyon2001dominos}, but finite-size corrections were
+not considered previously. These corrections are important to close the gap between numerical
+simulations and theoretical results.
+
+We consider a particular case of the dimer model on a hexagonal domain of hexagonal lattice, that
+can be seen as a ``pile of cubes in the corner''. The energy of configuration is the total number of
+cubes. For this particular case we use an exact combinatorial formula for the partition function to
+derive the expressions for scaling limit of free energy and first three terms of the finite-size
+corrections. We show that the first term is identically zero. The second term has a universal part
+that is given by the Euler constant and a geometry-dependent part that is written explicitly in
+elementary functions. The third term which encapsulates logarithmic dependence on the mesh size is
+also shown to be universal.
+
+We than compare these results with our previous numeric simulations \cite{belov2018finite}. 
+\section{Model definition}
+\label{sec:model-definition}
+The configurations of the dimer model are perfect matchings (sets of non-touching edges, covering
+all the vertices) on some graph ${\cal G}$ with some choice of weights $\omega(e)$ on the edges. The
+model is solvable on the bipartite graphs, i.e. the partition function can be computed if the
+weights are introduced in such a way that each face with 0 mod 4 edges there is an odd number of
+negative edge weights and each face with 2 mod 4 edges has an even number of of negative edge
+weights. Then the signs of the edge weights form a so-called ``Kasteleyn orientation''on graph, the
+weighting is called ``Kasteleyn weighting'' \cite{kenyon2001dominos,kenyon2009lectures}.
+
+For a bipartite graph ${\cal G}$, color the vertices black and white in such a way that all the
+vertices adjacent to the black one are white. Denote by $W$,$B$ the sets of white and black
+vertices and by $w,b$ the elements of these sets. 
+
+The weights can be encoded as the ``Kasteleyn matrix'' -- weighted, signed adjacency matrix ${\cal K}$ with
+the matrix elements ${\cal K}(w,b)$ equal to the weight of the edge $w\to b$: ${\cal K}(w,b)=\omega(w\to b)$.
+
+Then the partition function is equal to the absolute value of the determinant of the Kasteleyn
+matrix\cite{P.W-1961,doi:10.1080/14786436108243366}: 
+\begin{equation}
+  \label{eq:15}
+  Z=\sum_{\mathrm{conf}}\prod_{e\in \mathrm{conf}}w(e)=|\det {\cal K}|
+\end{equation}
+
+Kasteleyn matrix defines a discrete Dirac operator $D$, in vertex $v$ we have:
+\begin{equation}
+  \label{eq:16}
+  (Df)(v)=\sum_{u}{\cal K}(v,u) f(u)
+\end{equation}
+
+Kenyon \cite{kenyon2002laplacian,kenyon2000asymptotic} and others \cite{sridhar2015asymptotic}
+considered asymptotics of the determinants of the discrete Dirac and Laplace operators, the problem
+that, as can be seen from the above, is very close to the scaling of the free energy. But the finite
+size corrections to the free energy scaling were not computed. 
+  
+We consider coverings of the hexagonal domain on the hexagonal lattice consisting of the subsets of
+lattice edges such that every vertex is the endpoint of exactly one edge.
+
+We can draw a rhombus on a dual lattice around each edge in the configuration. The picture of
+``cubes in the corner'' presented in the Fig.~\ref{dhf} is obtained. Let us write on the top of each
+uppermost cube the height of its column of cubes. Looking at this picture from the top, we obtain a
+height function defined on the rectangular domain of the square lattice. 
+
+\begin{figure}[htbp]
+\center{\scalebox{0.4}{\includegraphics{loz.eps}}}
+\caption{\label{dhf}A configuration of dimers on the hexagonal lattice and a corresponding picture
+  of ``cubes in the corner''.}
+\end{figure}
+
+Let us define the sizes $M$, $N$, and $K$ of the sides of the hexagon.
+The above description can be formalized by
+%set of configurations of the model can be defined all possible ways to write
+setting the non-negative numbers up to $K$ in the boxes of the rectangular $M\times N$ table so that a value in
+each box is not greater than values in the adjacent upper and left boxes
+\begin{equation}
+  \label{eq:1}
+  h_{ij}\leq h_{i-1,j},\quad h_{ij}\leq h_{i,j-1}.
+\end{equation}
+
+The weight of a particular configuration is given by the exponent of the volume of all cubes or by a
+sum of the height function values:
+\begin{equation*}
+  \label{eq:10}
+  E[conf]=\sum_{i,j} h_{ij}=\mathrm{Volume}
+\end{equation*}
+We set Boltzman constant equal to 1, then the partition function is 
+\begin{equation*}
+  \label{eq:14}
+  Z=\sum_{conf} e^{-\frac{E[conf]}{T}}=\sum_{conf}q^{\mathrm{Vol}[conf]}, 
+\end{equation*}
+where $q=\exp\left(-1/T\right)$ .
+
+For this particular case, the partition function is given by the classical Macmahon combinatorial
+formula~\cite{vuletic2009generalization}
+\begin{equation}
+  \label{eq:12}
+   Z[M,N,K,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\prod_{k=1}^{K}\frac{1-q^{i+j+k-1}}{1-q^{i+j+k-2}}
+\end{equation}
+
+
+MacMahon formula is obtained for the following definition of the Kasteleyn matrix. Embed the
+hexagonal lattice in the complex plane $\mathbb{C}$ in such a way that some edges are parallel to
+the real line. Then take
+\begin{eqnarray}
+  \label{eq:18}
+  {\cal K}(w,b)=q^{\Re w+\Im w} \quad \mathrm{if}\quad \Im w=\Im b\\
+  {\cal K}(w,b)=1 \quad \mathrm{if}\quad \Im w\neq\Im b
+\end{eqnarray}
+
+
+The scaling limit is achieved on the infinite lattice as $T\to\infty$. To study the scaling behavior
+using Monte-Carlo simulations on the finite lattices we will consider temperatures proportional to
+the lattice size and, then, extrapolate them to infinity.
+  
+%  \frametitle{Kasteleyn matrix and Dirac operator}
+%%  Consider infinite-dimensional graded algebra, e.g. $\gf[[t]]$ or $\hat\gf$
+  
+%  \frametitle{Free energy scaling}
+The   free energy per site is defined as$^{*}$
+\footnote{For convenience we omit the factor $\frac{1}{T}$ in the usual definition of the free energy.}
+\begin{equation*}
+  \label{eq:17}
+  % \frac{f}{T}
+  f=-\frac{1}{V}\ln Z(M,N,K,q)
+\end{equation*}
+Here $V$ is the number of vertices, it is twice the number of dimers and twice the number of  cube faces:
+\begin{equation*}
+  \label{eq:19}
+  V=2(MN+NK+MK)
+\end{equation*}
+
+%!!!! Kenyon uses $V=\#Dimers$.
+  
+We are interested in the scaling limit, combined with the thermodynamic limit, when
+$ T\to \infty, \quad M,N,K\to \infty$, such that ratios
+$\frac{M}{T}=a,\quad \frac{N}{T}=b, \quad \frac{K}{T}=c$ remain fixed. In what follows we use
+$\varepsilon=\frac{1}{T}$, which can be seen as the scale of the model, e.g. mesh size.
+
+In the next section we compute the asymptotic expansion of the free energy $f$ in $\varepsilon$ and
+derive $\varepsilon$-independent closed expressions for the first several coefficients in this
+expansion.
+  
+\section{The computation of the free energy asymptotic expansion}
+\label{sec:free-energy-scaling}
+First we substitute MacMahon formula \eqref{eq:12} into the free energy definition \eqref{eq:17} and
+obtain
+\begin{equation}
+  \label{eq:20}
+    %-\frac{f}{T}
+    f=-\frac{1}{V}\ln Z =- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}
+  \ln\left(\frac{1-e^{-\varepsilon (i+j+k)} e^{\varepsilon}}{1-e^{-\varepsilon (i+j+k)} e^{2\varepsilon}}\right)
+\end{equation}
+Expanding the exponents $e^{\varepsilon}, e^{2\varepsilon}$ and logarithms in powers of $\varepsilon$ we obtain
+
+%%series and split the
+%%logarithm of product into the sum of logarithms. Thus we get:
+%%\begin{multline}
+%%  \label{eq:2}
+%%   -\frac{f}{T}= \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
+%%    \ln\left(1-\frac{1}{e^{\varepsilon(i+j+k)}-1}\sum_{l=1}^{\infty} \frac{\varepsilon^{l}}{l!}\right)-\right.\\
+%%  -\left.\ln\left(1-\frac{1}{e^{\varepsilon(i+j+k)}-1}\sum_{l=1}^{\infty} \frac{2^{l}\varepsilon^{l}}{l!}\right)\right\}
+%%\end{multline}
+%%Then expand the logarithms up to $\varepsilon^{3}$:
+\begin{multline}
+  \label{eq:4}
+  %\frac{f}{T}
+  f=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
+    g(i\varepsilon,j\varepsilon,k\varepsilon)+
+    \frac{3}{2}\varepsilon\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right.\\
+  \left.+\frac{7}{6}\varepsilon^{2}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3 g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+
+      2 g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}  + \mathcal{O}(\varepsilon^{3})
+\end{multline}
+
+Here and below we will use the notation:
+%Denote by $g$ the expression that will appear multiple times:
+\begin{equation}
+  \label{eq:5}
+  g(x,y,z)=\frac{1}{e^{x+y+z}-1}
+\end{equation}
+
+This expression looks like a combination of Riemann sums for some integrals. Note that these sums
+are finite, but some of the corresponding integrals are divergent.
+
+%%But we need to obtain
+%%corrections in $\varepsilon$ to the integrals as $\varepsilon\to 0$.
+%%
+%%We can use the following approximation formula for integral of some function $\tilde{f}$ to take
+%%care of the corrections:
+
+Let $G$ be an analytic function in the cube $[0,a]\times[0,b]\times[0,c]$, then
+\begin{multline}
+  \label{eq:21}
+  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}G(x,y,z) dx\; dy\;
+  dz\approx\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\left\{\varepsilon^{3}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)-\right.\\
+  \left.-\left[\frac{\varepsilon^{4}}{2}\left((\partial_{x}+\partial_{y}+\partial_{z})G\right)(i\varepsilon,j\varepsilon,k\varepsilon)\right]+\right.\\
+  \left.\varepsilon^{5}\left(\frac{1}{6}(\partial_{x}^{2}+\partial_{y}^{2}+\partial_{z}^{2})+\frac{1}{4}(\partial_{x}\partial_{y}+\partial_{x}\partial_{z}+\partial_{y}\partial_{z})\right)G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)
+  \right\}+\mathcal{O}(\varepsilon^{6})
+\end{multline}
+This formula can be easily derived by dividing the volume of integration into cubes with side
+$\varepsilon$ and substituting Taylor series for $G$ into integrals.
+
+We can use this formula to approximate sums by integrals. Similar formula can be written for a
+function of two variables and double sums. We will not need higher order terms, but will use the
+approximation:
+\begin{equation}
+\label{eq:8}
+  \sum_{j=1}^{N}\sum_{k=1}^{K}\varepsilon^{2}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)\approx \int_{0}^{b}\int_{0}^{c}G(i\varepsilon,y,z) dy\; dz+\mathcal{O}(\varepsilon^{3}))
+\end{equation}
+
+%Now we can apply the integral representation.
+
+Note that
+\begin{equation}
+  \label{eq:6}
+  \begin{array}{c}
+    \partial_{x}g(x,y,z)=-g(x,y,z)-g(x,y,z)^{2}\\
+    \partial_{x}^{2}g(x,y,z)=g(x,y,z)+3g(x,y,z)^{2}+2g(x,y,z)^{3}
+  \end{array}
+\end{equation}
+
+Taking this into account and using the relation \eqref{eq:21} to express the triple sum
+$ \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}    g(i\varepsilon,j\varepsilon,k\varepsilon)$
+in \eqref{eq:4} as the integral plus corrections, we obtain
+\begin{multline}
+\label{eq:23}
+  \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{e^{x+y+z}-1}+\right.\\
+  \left.+\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\frac{\varepsilon^{5}}{12}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3
+      g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+2
+      g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}
+\end{multline}
+Due to the equations \eqref{eq:6}, the corrections are of the same form as the higher order terms in
+$\varepsilon$. The linear in $\varepsilon$ term in \eqref{eq:4} is cancelled by three partial
+derivatives in \eqref{eq:21}. The coefficient of the quadratic term is changed by the addition of
+second derivatives from \eqref{eq:21} to $\frac{1}{12}$.
+
+
+There is no singularity in the sum, but
+$\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{(\exp(x+y+z)-1)^{3}}$ diverges
+logarithmically. So we can not just apply the integral representation~\eqref{eq:21} directly.
+
+We apply the formula \eqref{eq:8} to the internal sums in the triple sum, since there is no
+singularity in $\frac{1}{\left((\exp(i\varepsilon+j\varepsilon+k\varepsilon)-1\right)^{3}}$ for
+$i\neq 0$:
+
+\begin{equation}
+  \label{eq:9}
+\sum_{i=1}^{M}\left(\sum_{j=1}^{N}\sum_{k=1}^{K}\frac{\varepsilon^{5}}{12}
+      \frac{e^{2(i\varepsilon+j\varepsilon+k\varepsilon)}+e^{i\varepsilon+j\varepsilon+k\varepsilon}}{\left(e^{i\varepsilon+j\varepsilon+k\varepsilon}-1\right)^{3}}  \right)\approx
+    \frac{\varepsilon^{3}}{12}\sum_{i=1}^{M} \int_{0}^{b}\int_{0}^{c}
+      \left(\frac{e^{2(i\varepsilon+y+z)}+e^{i\varepsilon+y+z}}{\left(e^{i\varepsilon+y+z}-1\right)^{3}}\right) dy dz+\mathcal{O}(\varepsilon^{3})
+\end{equation}
+
+The double integral can be taken explicitly, so we obtain
+\begin{equation}
+  \label{eq:11}
+  \frac{\varepsilon^{3}}{12}\sum_{i=1}^{M}\left(     \frac{1}{e^{b+c+i\varepsilon}-1}+
+  \frac{1}{1-e^{b+i\varepsilon}}+\frac{1}{1-e^{c+i\varepsilon}}+\frac{1}{e^{i\varepsilon}-1}\right)
+\end{equation}
+
+The function $\frac{1}{e^{x}-1}$ has a divergence, so we can not apply integral approximation directly. We first need to 
+subtract and add $\frac{1}{i\varepsilon}$. The sum over $i$ of this term can be approximated using Euler formula:
+  \begin{equation}
+    \label{eq:24}
+    \sum_{i=1}^{M}\frac{1}{i}=\frac{1}{M}\sum_{i=1}^{M}\frac{1}{i/M}=\int_{\frac{1}{M}}^{1}\frac{dx}{x}+\gamma+O(\varepsilon)=-\ln\varepsilon+\ln a+\gamma+O(\varepsilon)
+  \end{equation}
+Thus we get the integral
+\begin{multline}
+  \label{eq:13}
+    \frac{\varepsilon^{3}}{12}\left[\sum_{i=1}^{M}\left(     \frac{1}{e^{b+c+i\varepsilon}-1}+
+      \frac{1}{1-e^{b+i\varepsilon}}+\frac{1}{1-e^{c+i\varepsilon}}+\frac{1}{e^{i\varepsilon}-1}-\frac{1}{i\varepsilon}\right)-\ln\varepsilon+\ln a+\gamma+\mathcal{O}(\varepsilon^{3})\right]\approx\\
+   \frac{\varepsilon^{2}}{12}\left[\int_{0}^{a}\left(     \frac{1}{e^{b+c+x}-1}+
+      \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)dx-\ln\varepsilon+\ln a+\gamma\right]+\mathcal{O}(\varepsilon^{3})    
+\end{multline}
+The integral is now taken explicitly, it is equal to
+\begin{multline}
+  \label{eq:22}
+     \frac{\varepsilon^{2}}{12}\left[\int_{0}^{a}\left(     \frac{1}{e^{b+c+x}-1}+
+         \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)dx-\ln\varepsilon+\ln a+\gamma\right]=\\
+     \frac{\varepsilon^{2}}{12}\left[\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{a (e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\ln\varepsilon+\ln a+\gamma\right]
+\end{multline}
+
+  
+%%Substituting this approximation and using integral representation for the quadratic
+%%  term in $\varepsilon$, we obtain for the free energy:
+%%  \begin{multline*}
+%%    \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{e^{x+y+z}-1}+\right.\\
+%%    \left.+\frac{\varepsilon^{2}}{12}\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}
+%%      \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)dx dy dz+\right.\\
+%%    \left.+\frac{\varepsilon^{2}}{12}(\ln a-\gamma)+\frac{\varepsilon^{2}}{12}\ln \varepsilon\right\}    
+%%  \end{multline*}
+%%The integral can be taken explicitly, it is equal to
+%%\begin{multline}
+%%  \label{eq:7}
+%%  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}
+%%  \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)dx~dy~dz=\\
+%%  =\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{a (e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)=\\
+%%  =\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right) -\ln a.
+%%\end{multline}
+
+The term $\ln a$ is cancelled by the  and symmetry between $a,b,c$ is restored.
+Substituting this approximation into the expression \eqref{eq:23} we obtain 
+ the final expression:
+\begin{multline}
+  \label{eq:3}
+  \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{e^{x+y+z}-1}+\right.\\
+  \left.+\frac{\varepsilon^{2}}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
+      \gamma\right]+\frac{\varepsilon^{2}}{12}\ln \varepsilon\right\} +\mathcal{O}(\varepsilon^{3})
+\end{multline}
+
+The coefficient of the logarithmic term is connected to the central charge of the theory. In the
+paper \cite{cardy1988finite} it was shown, that this coefficient is $\frac{1}{6}c$. The scaling
+behavior of dimer model is described by free fermion theory with $c=\frac{1}{2}$.
+
+  \begin{figure}[h!tb]
+    \includegraphics{exact-vs-expansion.pdf}
+    \caption{Plot of the expression \eqref{eq:3} for $\varepsilon=\frac{1}{15}\dots\frac{1}{2}$, $a=3,b=2,c=1$
+      exact values. Note that difference between exact and approximate values decreases with
+      $\varepsilon$.}
+  \end{figure}
+
+%%\section{Scaling in the non-uniform model}
+%%\label{sec:scaling-non-uniform}
+%%
+%%Consider a skew 3D partition with the partition function
+%%\begin{equation}
+%%  \label{eq:25}
+%%  Z({q_{t}},\lambda)=\sum_{\lambda(t)}\prod_{t\in\mathbb{Z}}q_{t}^{|\lambda(t)|}
+%%\end{equation}
+%%
+\section*{Conclusion}
+\label{sec:conclusion}
+
+  \begin{itemize}
+  \item This free energy scaling formula is in agreement with numerical computations
+  \item There are Monte-Carlo simulation results that support this scaling
+  \item Form of our formula is similar to the asymptotics of discrete Dirac operator obtained by Kenyon
+  \end{itemize}
+
+\section*{Acknowledgments}
+\label{sec:acknowledgements}
+We are grateful to professor Nikolai Reshetikhin for his guidance in this work.
+We are thankful to the organizers and participants of the conference MQFT-2018.
+
+This research is supported by RFBR grant No. 18-01-00916.
+The calculations were carried out using the facilities of the SPbU Resource Center ``Computational Center of SPbU''.
+
+\bibliographystyle{utphys}
+\bibliography{listing,bibliography,dimers}{} 
+\end{document}
