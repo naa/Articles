@@ -18,6 +18,10 @@
 \newtheorem{Prop}[Def]{Property}
 \newtheorem{example}{Example}[section]
 
+\newcommand{\Li}{\mathrm{Li}}
+\newcommand{\dx}{\mathrm{dx}~}
+\newcommand{\dy}{\mathrm{dy}~}
+\newcommand{\dz}{\mathrm{dz}}
 \newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
 \newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
 \newcommand{\co}[1]{\stackrel{\circ }{#1}}
@@ -167,7 +171,7 @@ sum of the height function values:
 We set Boltzman constant equal to 1, then the partition function is 
 \begin{equation*}
   \label{eq:14}
-  Z=\sum_{conf} e^{-\frac{E[conf]}{T}}=\sum_{conf}q^{\mathrm{Vol}[conf]}, 
+  Z=\sum_{conf} e^{-\frac{E[conf]}{T}}=\sum_{conf}q^{\mathrm{Volume}[conf]}, 
 \end{equation*}
 where $q=\exp\left(-1/T\right)$ .
 
@@ -189,10 +193,10 @@ the real line. Then take
 \end{eqnarray}
 
 
-The scaling limit is achieved on the infinite lattice as $T\to\infty$. To study the scaling behavior
-using Monte-Carlo simulations on the finite lattices we will consider temperatures proportional to
-the lattice size and, then, extrapolate them to infinity.
-  
+%% The scaling limit is achieved on the infinite lattice as $T\to\infty$. To study the scaling behavior
+%% using Monte-Carlo simulations on the finite lattices one can consider temperatures proportional to
+%% the lattice size and, then, extrapolate them to infinity.
+%%   
 %  \frametitle{Kasteleyn matrix and Dirac operator}
 %%  Consider infinite-dimensional graded algebra, e.g. $\gf[[t]]$ or $\hat\gf$
   
@@ -271,8 +275,8 @@ are finite, but some of the corresponding integrals are divergent.
 Let $G$ be an analytic function in the cube $[0,a]\times[0,b]\times[0,c]$, then
 \begin{multline}
   \label{eq:21}
-  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}G(x,y,z) dx\; dy\;
-  dz\approx\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\left\{\varepsilon^{3}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)-\right.\\
+  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}G(x,y,z) \dx\; \dy\;
+  \dz\approx\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\left\{\varepsilon^{3}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)-\right.\\
   \left.-\left[\frac{\varepsilon^{4}}{2}\left((\partial_{x}+\partial_{y}+\partial_{z})G\right)(i\varepsilon,j\varepsilon,k\varepsilon)\right]+\right.\\
   \left.\varepsilon^{5}\left(\frac{1}{6}(\partial_{x}^{2}+\partial_{y}^{2}+\partial_{z}^{2})+\frac{1}{4}(\partial_{x}\partial_{y}+\partial_{x}\partial_{z}+\partial_{y}\partial_{z})\right)G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)
   \right\}+\mathcal{O}(\varepsilon^{6})
@@ -285,7 +289,7 @@ function of two variables and double sums. We will not need higher order terms, 
 approximation:
 \begin{equation}
 \label{eq:8}
-  \sum_{j=1}^{N}\sum_{k=1}^{K}\varepsilon^{2}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)\approx \int_{0}^{b}\int_{0}^{c}G(i\varepsilon,y,z) dy\; dz+\mathcal{O}(\varepsilon^{3}))
+  \sum_{j=1}^{N}\sum_{k=1}^{K}\varepsilon^{2}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)\approx \int_{0}^{b}\int_{0}^{c}G(i\varepsilon,y,z) \dy\; \dz+\mathcal{O}(\varepsilon^{3}))
 \end{equation}
 
 %Now we can apply the integral representation.
@@ -304,7 +308,7 @@ $ \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}    g(i\varepsilon,j\v
 in \eqref{eq:4} as the integral plus corrections, we obtain
 \begin{multline}
 \label{eq:23}
-  \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{e^{x+y+z}-1}+\right.\\
+ f=-\frac{1}{2(ab+bc+ca)}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1}+\right.\\
   \left.+\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\frac{\varepsilon^{5}}{12}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3
       g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+2
       g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}
@@ -316,7 +320,7 @@ second derivatives from \eqref{eq:21} to $\frac{1}{12}$.
 
 
 There is no singularity in the sum, but
-$\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{(\exp(x+y+z)-1)^{3}}$ diverges
+$\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{(\exp(x+y+z)-1)^{3}}$ diverges
 logarithmically. So we can not just apply the integral representation~\eqref{eq:21} directly.
 
 We apply the formula \eqref{eq:8} to the internal sums in the triple sum, since there is no
@@ -328,7 +332,7 @@ $i\neq 0$:
 \sum_{i=1}^{M}\left(\sum_{j=1}^{N}\sum_{k=1}^{K}\frac{\varepsilon^{5}}{12}
       \frac{e^{2(i\varepsilon+j\varepsilon+k\varepsilon)}+e^{i\varepsilon+j\varepsilon+k\varepsilon}}{\left(e^{i\varepsilon+j\varepsilon+k\varepsilon}-1\right)^{3}}  \right)\approx
     \frac{\varepsilon^{3}}{12}\sum_{i=1}^{M} \int_{0}^{b}\int_{0}^{c}
-      \left(\frac{e^{2(i\varepsilon+y+z)}+e^{i\varepsilon+y+z}}{\left(e^{i\varepsilon+y+z}-1\right)^{3}}\right) dy dz+\mathcal{O}(\varepsilon^{3})
+      \left(\frac{e^{2(i\varepsilon+y+z)}+e^{i\varepsilon+y+z}}{\left(e^{i\varepsilon+y+z}-1\right)^{3}}\right) \dy \dz+\mathcal{O}(\varepsilon^{3})
 \end{equation}
 
 The double integral can be taken explicitly, so we obtain
@@ -340,9 +344,9 @@ The double integral can be taken explicitly, so we obtain
 
 The function $\frac{1}{e^{x}-1}$ has a divergence, so we can not apply integral approximation directly. We first need to 
 subtract and add $\frac{1}{i\varepsilon}$. The sum over $i$ of this term can be approximated using Euler formula:
-  \begin{equation}
+\begin{equation}
     \label{eq:24}
-    \sum_{i=1}^{M}\frac{1}{i}=\frac{1}{M}\sum_{i=1}^{M}\frac{1}{i/M}=\int_{\frac{1}{M}}^{1}\frac{dx}{x}+\gamma+O(\varepsilon)=-\ln\varepsilon+\ln a+\gamma+O(\varepsilon)
+    \sum_{i=1}^{M}\frac{1}{i}=\frac{1}{M}\sum_{i=1}^{M}\frac{1}{i/M}=\int_{\frac{1}{M}}^{1}\frac{\dx}{x}+\gamma+O(\varepsilon)=-\ln\varepsilon+\ln a+\gamma+O(\varepsilon)
   \end{equation}
 Thus we get the integral
 \begin{multline}
@@ -350,13 +354,13 @@ Thus we get the integral
     \frac{\varepsilon^{3}}{12}\left[\sum_{i=1}^{M}\left(     \frac{1}{e^{b+c+i\varepsilon}-1}+
       \frac{1}{1-e^{b+i\varepsilon}}+\frac{1}{1-e^{c+i\varepsilon}}+\frac{1}{e^{i\varepsilon}-1}-\frac{1}{i\varepsilon}\right)-\ln\varepsilon+\ln a+\gamma+\mathcal{O}(\varepsilon^{3})\right]\approx\\
    \frac{\varepsilon^{2}}{12}\left[\int_{0}^{a}\left(     \frac{1}{e^{b+c+x}-1}+
-      \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)dx-\ln\varepsilon+\ln a+\gamma\right]+\mathcal{O}(\varepsilon^{3})    
+      \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)\dx-\ln\varepsilon+\ln a+\gamma\right]+\mathcal{O}(\varepsilon^{3})    
 \end{multline}
 The integral is now taken explicitly, it is equal to
 \begin{multline}
   \label{eq:22}
      \frac{\varepsilon^{2}}{12}\left[\int_{0}^{a}\left(     \frac{1}{e^{b+c+x}-1}+
-         \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)dx-\ln\varepsilon+\ln a+\gamma\right]=\\
+         \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)\dx-\ln\varepsilon+\ln a+\gamma\right]=\\
      \frac{\varepsilon^{2}}{12}\left[\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{a (e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\ln\varepsilon+\ln a+\gamma\right]
 \end{multline}
 
@@ -364,16 +368,16 @@ The integral is now taken explicitly, it is equal to
 %%Substituting this approximation and using integral representation for the quadratic
 %%  term in $\varepsilon$, we obtain for the free energy:
 %%  \begin{multline*}
-%%    \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{e^{x+y+z}-1}+\right.\\
+%%    \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1}+\right.\\
 %%    \left.+\frac{\varepsilon^{2}}{12}\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}
-%%      \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)dx dy dz+\right.\\
+%%      \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)\dx \dy \dz+\right.\\
 %%    \left.+\frac{\varepsilon^{2}}{12}(\ln a-\gamma)+\frac{\varepsilon^{2}}{12}\ln \varepsilon\right\}    
 %%  \end{multline*}
 %%The integral can be taken explicitly, it is equal to
 %%\begin{multline}
 %%  \label{eq:7}
 %%  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}
-%%  \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)dx~dy~dz=\\
+%%  \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)\dx~\dy~\dz=\\
 %%  =\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{a (e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)=\\
 %%  =\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right) -\ln a.
 %%\end{multline}
@@ -383,22 +387,124 @@ Substituting this approximation into the expression \eqref{eq:23} we obtain
  the final expression:
 \begin{multline}
   \label{eq:3}
-  \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{dx dy dz}{e^{x+y+z}-1}+\right.\\
+ f=-\frac{1}{2(ab+bc+ca)}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1}+\right.\\
   \left.+\frac{\varepsilon^{2}}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
       \gamma\right]+\frac{\varepsilon^{2}}{12}\ln \varepsilon\right\} +\mathcal{O}(\varepsilon^{3})
 \end{multline}
 
-The coefficient of the logarithmic term is connected to the central charge of the theory. In the
-paper \cite{cardy1988finite} it was shown, that this coefficient is $\frac{1}{6}c$. The scaling
-behavior of dimer model is described by free fermion theory with $c=\frac{1}{2}$.
+\section{Physical meaning of the expansion coefficients}
+\label{sec:accur-expans-phys}
 
-  \begin{figure}[h!tb]
-    \includegraphics{exact-vs-expansion.pdf}
-    \caption{Plot of the expression \eqref{eq:3} for $\varepsilon=\frac{1}{15}\dots\frac{1}{2}$, $a=3,b=2,c=1$
-      exact values. Note that difference between exact and approximate values decreases with
-      $\varepsilon$.}
-  \end{figure}
+The expansion  (\ref{eq:3}) can be written as
+\begin{equation}
+  \label{eq:26}
+  f=f_{0}+f_{1}\varepsilon + f_{2}\varepsilon^{2} +f_{3}\varepsilon^{2}\ln\varepsilon,
+\end{equation}
+where the coefficients are
+\begin{equation}
+  \label{eq:27}
+  f_{0}=-\frac{1}{2(ab+bc+ca)}\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1},
+\end{equation}
+\begin{equation}
+  \label{eq:28}
+  f_{1}=0,
+\end{equation}
+\begin{equation}
+  \label{eq:29}
+  f_{2}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
+    \gamma\right],
+\end{equation}
+and
+\begin{equation}
+  \label{eq:30}
+  f_{3}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}
+\end{equation}
+In the scaling limit $\varepsilon\to 0$ so called ``limit shape phenomenon''~\cite{kenyon2006dimers}
+appears in the dimer model. The areas around the corners of the domain are ``frozen'' with height
+function values being fixed. An analytical ``Arctic curve'' delimits frozen regions from the region
+where the behavior is described by the effective free field theory
+\cite{kenyon2009lectures,kenyon2008height,kenyon2006dimers}.
 
+The behavior (\ref{eq:26}) of the logarithm of the partition function is generic in two-dimensional
+models \cite{cardy1988finite}.
+
+First two terms $f_{0}$ and $f_{1}$ are interpreted as a bulk and
+boundary free energies in the corresponding field theory. Since we have $f_{1}=0$, we can conclude
+that boundary tension is zero.
+The value of the first term $f_{0}$ can be rewritten using polylogarithm functions as
+\begin{multline}
+  \label{eq:34}
+  f_{0}=\frac{1}{2(ab+bc+ca)}\left[abc + \Li_{3}(e^{a})+\Li_{3}(e^{b})+\Li_{3}(e^{c})-
+    \Li_{3}(e^{a+b})\right.\\
+  \left.-\Li_{3}(e^{b+c})-    \Li_{3}(e^{a+c})+    \Li_{3}(e^{a+b+c})-\zeta(3)\right]
+\end{multline}
+
+
+The third term $f_{2}$ depends only on the shape of the domain through $a,b,c$ with a universal
+contribution that is equal to the Euler constant $\gamma$. We conjecture that Euler constant will
+appear even for a different choice of Kasteleyn weighting. In the future work we will consider
+coordinate dependent values of $q$, as was done in the paper \cite{okounkov2007random}. 
+
+The term proportional to the logarithm of the scale $\varepsilon$ is also universal
+\cite{cardy1988finite} and should appear in all two-dimensional theories with boundary. In the paper
+\cite{cardy1988finite} it was argued that on a manifold of a characteristic length $L$ with a smooth
+boundary such a term must have the following form:
+\begin{equation}
+  \label{eq:31}
+  \delta F = -\frac{1}{6}{\bf c} \chi \ln L,
+\end{equation}
+where ${\bf c}$ is central charge of the effective field theory and $\chi$ is the Euler characteristic of
+the manifold
+\begin{equation}
+  \label{eq:32}
+  \chi=2-2 h-b,
+\end{equation}
+where $h$ is the number of handles and $b$ is the number of boundaries. 
+
+Since the non-frozen domain is delimited by a smooth boundary, we have $\chi=1$ and
+\begin{equation}
+  \label{eq:33}
+  f_{3}=\frac{1}{2(ab+bc+ca)} \frac{{\bf c}}{6},
+\end{equation}
+which suggests the value of central charge ${\bf c}=\frac{1}{2}$. This value is in agreement with the
+identification of the dimer model with free fermions in the paper \cite{dijkgraaf2009dimer}. 
+
+%% In the table we present the results of computations of free energy for the case $a=b=c=1$ and
+%% various values of $\varepsilon$ using an exact formula and expansion (\ref{eq:3}). In the third column
+%% difference is presented. We see that the difference decays faster than $\varepsilon^{3}$. The expansion
+%% (\ref{eq:3}) has good precision for comparison with Monte-Carlo simulation results such as presented
+%% in
+%% \cite{belov2018finite}. 
+%% 
+%% \begin{table}[htpb]
+%% \begin{center}
+%% \begin{tabular}{c|ccc}
+%%   $\varepsilon$&Exact value of $f$&$f$ from expansion (\ref{eq:3})&Difference\\
+%%   \hline
+%%   0.2 & 0.06734815 & 0.06559065 & 0.00175751\\
+%%   0.1 & 0.06689788 & 0.06681834 & 0.00007954\\
+%%   0.05 & 0.06721738 & 0.06719747 & 0.00001992\\
+%%   0.02 & 0.06732867 & 0.06732549 & $3.18791\cdot 10^{-6}$\\
+%%   0.01 & 0.06734815 & 0.06734736 & $7.97026 \cdot 10^{-7}$
+%%   0.005 & 0.06735375 & 0.06735355 & $1.99259 \cdot 10^{-7}$
+%% \end{tabular}
+%% \caption{Values of the free energy for $a=b=c=1$ computed by the exact formula (\ref{eq:20}) and an
+%%   approximate formula (\ref{eq:3}). The difference decays faster than $\varepsilon^{3}$.
+%% }
+%% \label{tttt1}
+%% \end{center}
+%% \end{table}
+%% 
+%% 
+
+%%   \begin{figure}[h!tb]
+%% 
+%%     \includegraphics{exact-vs-expansion.pdf}
+%%     \caption{Plot of the expression \eqref{eq:3} for $\varepsilon=\frac{1}{15}\dots\frac{1}{2}$, $a=3,b=2,c=1$
+%%       exact values. Note that difference between exact and approximate values decreases with
+%%       $\varepsilon$.}
+%%   \end{figure}
+%% 
 %%\section{Scaling in the non-uniform model}
 %%\label{sec:scaling-non-uniform}
 %%
@@ -408,22 +514,29 @@ behavior of dimer model is described by free fermion theory with $c=\frac{1}{2}$
 %%  Z({q_{t}},\lambda)=\sum_{\lambda(t)}\prod_{t\in\mathbb{Z}}q_{t}^{|\lambda(t)|}
 %%\end{equation}
 %%
-\section*{Conclusion}
+\section*{Conclusion and outlook}
 \label{sec:conclusion}
 
-  \begin{itemize}
-  \item This free energy scaling formula is in agreement with numerical computations
-  \item There are Monte-Carlo simulation results that support this scaling
-  \item Form of our formula is similar to the asymptotics of discrete Dirac operator obtained by Kenyon
-  \end{itemize}
+In the present paper we computed the asymptotic expansion of the free energy in the dimer model on a
+hexagonal domain of the hexagonal lattice. We've discussed the physical meaning of the expansion
+coefficients and argued that our results support the identification of the scaling behavior of the
+dimer model with the free-fermion field theory.
+
+In further work we will show the connection of the expansion coefficients with the spectral
+properties of Dirac operator on the non-frozen domain and study the universality of the presented
+expressions by considering the model with the non-uniform Kasteleyn weighting with $q$ depending on
+the coordinate. 
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
-We are grateful to professor Nikolai Reshetikhin for his guidance in this work.
-We are thankful to the organizers and participants of the conference MQFT-2018.
+I am grateful to professor Nikolai Reshetikhin for his guidance in this work. I thank Pavel Belov
+for useful discussions and general support.
+
+I thank the organizers and participants of the conference MQFT-2018 for the opportunity
+to present our results and useful discussions.
 
 This research is supported by RFBR grant No. 18-01-00916.
-The calculations were carried out using the facilities of the SPbU Resource Center ``Computational Center of SPbU''.
+%The calculations were carried out using the facilities of the SPbU Resource Center ``Computational Center of SPbU''.
 
 \bibliographystyle{utphys}
 \bibliography{listing,bibliography,dimers}{} 
