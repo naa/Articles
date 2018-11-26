@@ -22,49 +22,26 @@
 \newcommand{\dx}{\mathrm{dx}~}
 \newcommand{\dy}{\mathrm{dy}~}
 \newcommand{\dz}{\mathrm{dz}}
-\newcommand{\go}{\stackrel{\circ }{\mathfrak{g}}}
-\newcommand{\ao}{\stackrel{\circ }{\mathfrak{a}}}
-\newcommand{\co}[1]{\stackrel{\circ }{#1}}
-\newcommand{\pia}{\pi_{\mathfrak{a}}}
-\newcommand{\piab}{\pi_{\mathfrak{a}_{\bot}}}
-\newcommand{\gf}{\mathfrak{g}}
-\newcommand{\nf}{\mathfrak{g}}
-\newcommand{\gfh}{\hat{\mathfrak{g}}}
-\newcommand{\af}{\mathfrak{a}}
-\newcommand{\afh}{\hat{\mathfrak{a}}}
-\newcommand{\bff}{\mathfrak{b}}
-\newcommand{\slnn}{\mathfrak{sl}_{n}}
-\newcommand{\sln}[1]{\mathfrak{sl}_{#1}}
-\newcommand{\afb}{\mathfrak{a}_{\bot}}
-\newcommand{\hf}{\mathfrak{h}}
-\newcommand{\hfg}{\hf_{\gf}}
-\newcommand{\hfa}{\hf_{\af}}
-\newcommand{\hfb}{\mathfrak{h}_{\bot}}
-\newcommand{\pf}{\mathfrak{p}}
-\newcommand{\aft}{\widetilde{\mathfrak{a}}}
-\newcommand{\sfr}{\mathfrak{s}}
-%\newcommand{\dim}{\mathrm{dim} }
 
 \begin{document}
-\title{Finite-size scaling of free energy in dimer model on hexagonal domain}
+\title{Finite-size scaling of free energy in the dimer model on a hexagonal domain}
 
 \author{A.A.~Nazarov$^{1}$\\
 {\small
   $^{1}$Department of Physics, St. Petersburg State University,} \\
 {\small  Ulyanovskaya 1, 198504 St.~Petersburg, Russia}\\
-%\small{$^{2}$}\\
-%\small{$^{3}$}\\
 \small{email:antonnaz@gmail.com}
 }
 \date{}
 \maketitle
 
 \begin{abstract}
-    We consider dimer model on a hexagonal lattice. This model can be seen as a ``pile of cubes in the
-  corner''. The partition function is given by the determinant of Kasteleyn matrix. We use the
-  expression for the partition function to derive the scaling behavior of free energy in the limit
-  of lattice mesh tending to zero and temperature tending to infinity. We discuss the connection of
-  the expansion coefficients to the geometry of the domain.
+  We consider dimer model on a hexagonal lattice. This model can be seen as a ``pile of cubes in the
+  corner''. The energy of configuration is given by the volume of the pile and the partition
+  function is computed by the classical MacMahon formula or, more formally, by the determinant of
+  Kasteleyn matrix. We use the expression for the partition function to derive the scaling behavior
+  of free energy in the limit of lattice mesh tending to zero and temperature tending to infinity.
+  We discuss the universality and physical meaning of expansion coefficients.
 \end{abstract}
 
 
@@ -99,23 +76,25 @@ cubes. For this particular case we use an exact combinatorial formula for the pa
 derive the expressions for scaling limit of free energy and first three terms of the finite-size
 corrections. We show that the first term is identically zero. The second term has a universal part
 that is given by the Euler constant and a geometry-dependent part that is written explicitly in
-elementary functions. The third term which encapsulates logarithmic dependence on the mesh size is
-also shown to be universal.
+terms of elementary functions. The third term which encapsulates logarithmic dependence on the mesh
+size is connected with the central charge of the effective field theory. 
 
-We than compare these results with our previous numeric simulations \cite{belov2018finite}. 
+This result is supported by numeric simulations presented in our previous publication
+\cite{belov2018finite}.
+
 \section{Model definition}
 \label{sec:model-definition}
 The configurations of the dimer model are perfect matchings (sets of non-touching edges, covering
 all the vertices) on some graph ${\cal G}$ with some choice of weights $\omega(e)$ on the edges. The
 model is solvable on the bipartite graphs, i.e. the partition function can be computed if the
-weights are introduced in such a way that each face with 0 mod 4 edges there is an odd number of
-negative edge weights and each face with 2 mod 4 edges has an even number of of negative edge
-weights. Then the signs of the edge weights form a so-called ``Kasteleyn orientation''on graph, the
-weighting is called ``Kasteleyn weighting'' \cite{kenyon2001dominos,kenyon2009lectures}.
+weights are introduced in such a way that for each face bounded by 0 mod 4 edges there is an odd
+number of negative edge weights and each face with 2 mod 4 edges has an even number of of negative
+edge weights. Then the signs of the edge weights form a so-called ``Kasteleyn orientation''on graph,
+the weighting is called ``Kasteleyn weighting'' \cite{kenyon2001dominos,kenyon2009lectures}.
 
 For a bipartite graph ${\cal G}$, color the vertices black and white in such a way that all the
-vertices adjacent to the black one are white. Denote by $W$,$B$ the sets of white and black
-vertices and by $w,b$ the elements of these sets. 
+vertices adjacent to the black one are white. Denote by $B, W$ the sets of black and white
+vertices and by $b,w$ the elements of these sets. 
 
 The weights can be encoded as the ``Kasteleyn matrix'' -- weighted, signed adjacency matrix ${\cal K}$ with
 the matrix elements ${\cal K}(w,b)$ equal to the weight of the edge $w\to b$: ${\cal K}(w,b)=\omega(w\to b)$.
@@ -127,7 +106,8 @@ matrix\cite{P.W-1961,doi:10.1080/14786436108243366}:
   Z=\sum_{\mathrm{conf}}\prod_{e\in \mathrm{conf}}w(e)=|\det {\cal K}|
 \end{equation}
 
-Kasteleyn matrix defines a discrete Dirac operator $D$, in vertex $v$ we have:
+Kasteleyn matrix defines a discrete Dirac operator $D$, the action of $D$ on a function $f$ defined
+on vertices is given by:
 \begin{equation}
   \label{eq:16}
   (Df)(v)=\sum_{u}{\cal K}(v,u) f(u)
@@ -185,7 +165,8 @@ formula~\cite{vuletic2009generalization}
 
 MacMahon formula is obtained for the following definition of the Kasteleyn matrix. Embed the
 hexagonal lattice in the complex plane $\mathbb{C}$ in such a way that some edges are parallel to
-the real line. Then take
+the real line with and corresponding vertices have coordinates with integer real and imaginary
+parts. Then take
 \begin{eqnarray}
   \label{eq:18}
   {\cal K}(w,b)=q^{\Re w+\Im w} \quad \mathrm{if}\quad \Im w=\Im b\\
@@ -193,14 +174,6 @@ the real line. Then take
 \end{eqnarray}
 
 
-%% The scaling limit is achieved on the infinite lattice as $T\to\infty$. To study the scaling behavior
-%% using Monte-Carlo simulations on the finite lattices one can consider temperatures proportional to
-%% the lattice size and, then, extrapolate them to infinity.
-%%   
-%  \frametitle{Kasteleyn matrix and Dirac operator}
-%%  Consider infinite-dimensional graded algebra, e.g. $\gf[[t]]$ or $\hat\gf$
-  
-%  \frametitle{Free energy scaling}
 The   free energy per site is defined as$^{*}$
 \footnote{For convenience we omit the factor $\frac{1}{T}$ in the usual definition of the free energy.}
 \begin{equation*}
@@ -214,12 +187,10 @@ Here $V$ is the number of vertices, it is twice the number of dimers and twice t
   V=2(MN+NK+MK)
 \end{equation*}
 
-%!!!! Kenyon uses $V=\#Dimers$.
-  
-We are interested in the scaling limit, combined with the thermodynamic limit, when
-$ T\to \infty, \quad M,N,K\to \infty$, such that ratios
-$\frac{M}{T}=a,\quad \frac{N}{T}=b, \quad \frac{K}{T}=c$ remain fixed. In what follows we use
-$\varepsilon=\frac{1}{T}$, which can be seen as the scale of the model, e.g. mesh size.
+We are interested in the scaling limit, combined with the thermodynamic limit, when $ T\to \infty,$
+and $M,N,K\to \infty$, such that ratios $\frac{M}{T}=a,\quad \frac{N}{T}=b, \quad \frac{K}{T}=c$
+remain fixed. In what follows we use $\varepsilon=\frac{1}{T}$, which can be seen as the scale of
+the model, e.g. mesh size.
 
 In the next section we compute the asymptotic expansion of the free energy $f$ in $\varepsilon$ and
 derive $\varepsilon$-independent closed expressions for the first several coefficients in this
@@ -237,15 +208,7 @@ obtain
 \end{equation}
 Expanding the exponents $e^{\varepsilon}, e^{2\varepsilon}$ and logarithms in powers of $\varepsilon$ we obtain
 
-%%series and split the
-%%logarithm of product into the sum of logarithms. Thus we get:
-%%\begin{multline}
-%%  \label{eq:2}
-%%   -\frac{f}{T}= \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
-%%    \ln\left(1-\frac{1}{e^{\varepsilon(i+j+k)}-1}\sum_{l=1}^{\infty} \frac{\varepsilon^{l}}{l!}\right)-\right.\\
-%%  -\left.\ln\left(1-\frac{1}{e^{\varepsilon(i+j+k)}-1}\sum_{l=1}^{\infty} \frac{2^{l}\varepsilon^{l}}{l!}\right)\right\}
-%%\end{multline}
-%%Then expand the logarithms up to $\varepsilon^{3}$:
+
 \begin{multline}
   \label{eq:4}
   %\frac{f}{T}
@@ -257,7 +220,6 @@ Expanding the exponents $e^{\varepsilon}, e^{2\varepsilon}$ and logarithms in po
 \end{multline}
 
 Here and below we will use the notation:
-%Denote by $g$ the expression that will appear multiple times:
 \begin{equation}
   \label{eq:5}
   g(x,y,z)=\frac{1}{e^{x+y+z}-1}
@@ -266,11 +228,6 @@ Here and below we will use the notation:
 This expression looks like a combination of Riemann sums for some integrals. Note that these sums
 are finite, but some of the corresponding integrals are divergent.
 
-%%But we need to obtain
-%%corrections in $\varepsilon$ to the integrals as $\varepsilon\to 0$.
-%%
-%%We can use the following approximation formula for integral of some function $\tilde{f}$ to take
-%%care of the corrections:
 
 Let $G$ be an analytic function in the cube $[0,a]\times[0,b]\times[0,c]$, then
 \begin{multline}
@@ -292,7 +249,7 @@ approximation:
   \sum_{j=1}^{N}\sum_{k=1}^{K}\varepsilon^{2}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)\approx \int_{0}^{b}\int_{0}^{c}G(i\varepsilon,y,z) \dy\; \dz+\mathcal{O}(\varepsilon^{3}))
 \end{equation}
 
-%Now we can apply the integral representation.
+
 
 Note that
 \begin{equation}
@@ -365,22 +322,6 @@ The integral is now taken explicitly, it is equal to
 \end{multline}
 
   
-%%Substituting this approximation and using integral representation for the quadratic
-%%  term in $\varepsilon$, we obtain for the free energy:
-%%  \begin{multline*}
-%%    \frac{f}{T}=-\frac{1}{ab+bc+ca}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1}+\right.\\
-%%    \left.+\frac{\varepsilon^{2}}{12}\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}
-%%      \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)\dx \dy \dz+\right.\\
-%%    \left.+\frac{\varepsilon^{2}}{12}(\ln a-\gamma)+\frac{\varepsilon^{2}}{12}\ln \varepsilon\right\}    
-%%  \end{multline*}
-%%The integral can be taken explicitly, it is equal to
-%%\begin{multline}
-%%  \label{eq:7}
-%%  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}
-%%  \left(\frac{e^{2(x+y+z)}+e^{x+y+z}}{\left(e^{x+y+z}-1\right)^{3}}-\frac{1}{bc}\frac{1}{x}\right)\dx~\dy~\dz=\\
-%%  =\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{a (e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)=\\
-%%  =\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right) -\ln a.
-%%\end{multline}
 
 The term $\ln a$ is cancelled by the  and symmetry between $a,b,c$ is restored.
 Substituting this approximation into the expression \eqref{eq:23} we obtain 
@@ -419,6 +360,10 @@ and
   \label{eq:30}
   f_{3}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}
 \end{equation}
+In the paper \cite{belov2018finite} we have presented results of Monte Carlo simulations using
+Metropolis and Wang-Landau algorithms that support the form of expansion (\ref{eq:26}). In
+particular we got $f_{1}=0.04\pm 0.04$ which is consistent with $f_{1}=0$. 
+
 In the scaling limit $\varepsilon\to 0$ so called ``limit shape phenomenon''~\cite{kenyon2006dimers}
 appears in the dimer model. The areas around the corners of the domain are ``frozen'' with height
 function values being fixed. An analytical ``Arctic curve'' delimits frozen regions from the region
@@ -438,12 +383,13 @@ The value of the first term $f_{0}$ can be rewritten using polylogarithm functio
     \Li_{3}(e^{a+b})\right.\\
   \left.-\Li_{3}(e^{b+c})-    \Li_{3}(e^{a+c})+    \Li_{3}(e^{a+b+c})-\zeta(3)\right]
 \end{multline}
-
+Here Riemann zeta function appears as a particular value of polylogarithm $\Li_{3}(1)=\zeta(3)$. 
 
 The third term $f_{2}$ depends only on the shape of the domain through $a,b,c$ with a universal
 contribution that is equal to the Euler constant $\gamma$. We conjecture that Euler constant will
-appear even for a different choice of Kasteleyn weighting. In the future work we will consider
-coordinate dependent values of $q$, as was done in the paper \cite{okounkov2007random}. 
+appear even for a different choice of Kasteleyn weighting, due to the treatment of logarithmic
+divergency. In the future work we will consider coordinate dependent values of $q$ and more complex
+geometries, as was done in the paper \cite{okounkov2007random}, to check this suggestion. 
 
 The term proportional to the logarithm of the scale $\varepsilon$ is also universal
 \cite{cardy1988finite} and should appear in all two-dimensional theories with boundary. In the paper
@@ -469,51 +415,7 @@ Since the non-frozen domain is delimited by a smooth boundary, we have $\chi=1$ 
 which suggests the value of central charge ${\bf c}=\frac{1}{2}$. This value is in agreement with the
 identification of the dimer model with free fermions in the paper \cite{dijkgraaf2009dimer}. 
 
-%% In the table we present the results of computations of free energy for the case $a=b=c=1$ and
-%% various values of $\varepsilon$ using an exact formula and expansion (\ref{eq:3}). In the third column
-%% difference is presented. We see that the difference decays faster than $\varepsilon^{3}$. The expansion
-%% (\ref{eq:3}) has good precision for comparison with Monte-Carlo simulation results such as presented
-%% in
-%% \cite{belov2018finite}. 
-%% 
-%% \begin{table}[htpb]
-%% \begin{center}
-%% \begin{tabular}{c|ccc}
-%%   $\varepsilon$&Exact value of $f$&$f$ from expansion (\ref{eq:3})&Difference\\
-%%   \hline
-%%   0.2 & 0.06734815 & 0.06559065 & 0.00175751\\
-%%   0.1 & 0.06689788 & 0.06681834 & 0.00007954\\
-%%   0.05 & 0.06721738 & 0.06719747 & 0.00001992\\
-%%   0.02 & 0.06732867 & 0.06732549 & $3.18791\cdot 10^{-6}$\\
-%%   0.01 & 0.06734815 & 0.06734736 & $7.97026 \cdot 10^{-7}$
-%%   0.005 & 0.06735375 & 0.06735355 & $1.99259 \cdot 10^{-7}$
-%% \end{tabular}
-%% \caption{Values of the free energy for $a=b=c=1$ computed by the exact formula (\ref{eq:20}) and an
-%%   approximate formula (\ref{eq:3}). The difference decays faster than $\varepsilon^{3}$.
-%% }
-%% \label{tttt1}
-%% \end{center}
-%% \end{table}
-%% 
-%% 
 
-%%   \begin{figure}[h!tb]
-%% 
-%%     \includegraphics{exact-vs-expansion.pdf}
-%%     \caption{Plot of the expression \eqref{eq:3} for $\varepsilon=\frac{1}{15}\dots\frac{1}{2}$, $a=3,b=2,c=1$
-%%       exact values. Note that difference between exact and approximate values decreases with
-%%       $\varepsilon$.}
-%%   \end{figure}
-%% 
-%%\section{Scaling in the non-uniform model}
-%%\label{sec:scaling-non-uniform}
-%%
-%%Consider a skew 3D partition with the partition function
-%%\begin{equation}
-%%  \label{eq:25}
-%%  Z({q_{t}},\lambda)=\sum_{\lambda(t)}\prod_{t\in\mathbb{Z}}q_{t}^{|\lambda(t)|}
-%%\end{equation}
-%%
 \section*{Conclusion and outlook}
 \label{sec:conclusion}
 
@@ -524,8 +426,8 @@ dimer model with the free-fermion field theory.
 
 In further work we will show the connection of the expansion coefficients with the spectral
 properties of Dirac operator on the non-frozen domain and study the universality of the presented
-expressions by considering the model with the non-uniform Kasteleyn weighting with $q$ depending on
-the coordinate. 
+expressions by considering the model on more generic domain geometries with the non-uniform
+Kasteleyn weighting with $q$ depending on the coordinate.
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
@@ -536,7 +438,6 @@ I thank the organizers and participants of the conference MQFT-2018 for the oppo
 to present our results and useful discussions.
 
 This research is supported by RFBR grant No. 18-01-00916.
-%The calculations were carried out using the facilities of the SPbU Resource Center ``Computational Center of SPbU''.
 
 \bibliographystyle{utphys}
 \bibliography{listing,bibliography,dimers}{} 
