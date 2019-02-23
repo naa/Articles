@@ -47,23 +47,38 @@
 
 \section*{Introduction}
 \label{sec:introduction}
-The dimer model appeared as a very simplified model of solutions \cite{Fowler-1937}. The molecules
-are represented by the rigid tiles on a lattice. The partition function was computed on various
-lattices and with different boundary conditions \cite{doi:10.1080/14786436108243366,
-  P.W-1961,kenyon2009lectures}.
+The dimer model appeared in attempt to extend a statistical theory of perfect solutions in chemistry
+to the case of liquid mixtures with molecules of two very distinct sizes \cite{Fowler-1937}. The
+molecules were represented by the rigid tiles on a lattice and the number of tilings was
+approximately estimated. But an exact computation was not accessible at the time.
 
-Dimer models are the integrable lattice models of statistical physics that are under an active
-theoretical~\cite{zj2000,ferrari} and numerical
-investigation~\cite{ks2018}. Particular dimer model appears for certain choice
-of parameters in the well-known six-vertex model  \cite{pronko2017thesis}. Dimer models are
-closely related to the theory of alternating matrices \cite{elkies1992alternating1,elkies1992alternating2}
+In 1961, Kasteleyn \cite{P.W-1961}, Temperley and Fisher \cite{doi:10.1080/14786436108243366}
+represented the partition function of the dimer model as a Pfaffian of the signed adjacency matrix
+(``Kasteleyn matrix'') thus allowing the computation of the number of tilings and of free energy scaling limit.
+This result was very elegantly used by Fisher to solve Ising model \cite{fisher1966dimer} and by Fan
+and Wu \cite{Fan-1970} to compute free energy for a certain case of eight-vertex model.
 
-Specifically, the well-known limit shape phenomenon~\cite{vershik1977kerov} was discovered for dimer
-model~\cite{kenyon2006dimers} and a connection with the theory of random matrices was
-established~\cite{johansson2002non}.
+Further studies of dimer models revealed the connection to the theory of alternating matrices
+\cite{elkies1992alternating1,elkies1992alternating2}. Later, the well-known limit shape
+phenomenon~\cite{vershik1977kerov} was discovered for dimer models. First, the ``Arctic circle''
+theorem was proven for domino tilings of the domain in the form of ``Aztec diamond''
+~\cite{1998math......1068J}. Then similar result was obtained for a hexagonal domain on the
+hexagonal lattice~\cite{cohn1998shape}. Soon the connection of these results with the theory of
+random matrices was established~\cite{johansson2002non}. The papers
+\cite{kenyon2006dimers,kenyon2009lectures} present a detailed exposition of the limit shape
+phenomenon in the dimer models.
 
+Dimer models are the integrable lattice models of statistical physics that are now under an active
+theoretical~\cite{zj2000,ferrari} and numerical investigation~\cite{ks2018}. Computation of
+correlation functions is a common problem for all vertex models \cite{colomo2012approach} as well as
+for dimer models. Another problem of great interest is the study of limit shapes in various cases
+\cite{borodin2010q,di2018tangent}.
 
-Study of dimer models on various lattices and domains leads to interesting connections with the
+Configurations of dimer model on a hexagonal lattice are in one-to-one correspondence with the
+configurations of five-vertex model that appears for certain choice of parameters in the well-known
+six-vertex model \cite{kapitonov2012weighted,kapitonov2008five}.
+
+Study of dimer models on various lattices and domains led to interesting connections with the
 geometry of curved manifolds and with spectra of discrete and continuous Dirac and Laplace operators
 \cite{kenyon2002laplacian,kenyon2000asymptotic}. Scaling limit of dimer model is proven to be
 described by a Gaussian free-field theory \cite{kenyon2001dominos}, but finite-size corrections were
@@ -74,13 +89,13 @@ We consider a particular case of the dimer model on a hexagonal domain of hexago
 can be seen as a ``pile of cubes in the corner''. The energy of configuration is the total number of
 cubes. For this particular case we use an exact combinatorial formula for the partition function to
 derive the expressions for scaling limit of free energy and first three terms of the finite-size
-corrections. We show that the first term is identically zero. The second term has a universal part
-that is given by the Euler constant and a geometry-dependent part that is written explicitly in
-terms of elementary functions. The third term which encapsulates logarithmic dependence on the mesh
-size is connected with the central charge of the effective field theory. 
+corrections. We show that the first term is identically zero. The second term is geometry-dependent
+and is written explicitly in terms of elementary functions. The third term which encapsulates
+logarithmic dependence on the mesh size is connected with the central charge of the effective field
+theory.
 
 This result is supported by numeric simulations presented in our previous publication
-\cite{belov2018finite}.
+\cite{1742-6596-1135-1-012024}.
 
 \section{Model definition}
 \label{sec:model-definition}
@@ -148,7 +163,8 @@ sum of the height function values:
   \label{eq:10}
   E[conf]=\sum_{i,j} h_{ij}=\mathrm{Volume}
 \end{equation*}
-We set Boltzman constant equal to 1, then the partition function is 
+We set Boltzman constant equal to 1 and choose system of units in such a way that there is no
+coupling constant in the expression for energy. Then the partition function is
 \begin{equation*}
   \label{eq:14}
   Z=\sum_{conf} e^{-\frac{E[conf]}{T}}=\sum_{conf}q^{\mathrm{Volume}[conf]}, 
@@ -190,7 +206,7 @@ Here $V$ is the number of vertices, it is twice the number of dimers and twice t
 We are interested in the scaling limit, combined with the thermodynamic limit, when $ T\to \infty,$
 and $M,N,K\to \infty$, such that ratios $\frac{M}{T}=a,\quad \frac{N}{T}=b, \quad \frac{K}{T}=c$
 remain fixed. In what follows we use $\varepsilon=\frac{1}{T}$, which can be seen as the scale of
-the model, e.g. mesh size.
+the model, e.g. mesh size due to our choice of the system of units.
 
 In the next section we compute the asymptotic expansion of the free energy $f$ in $\varepsilon$ and
 derive $\varepsilon$-independent closed expressions for the first several coefficients in this
@@ -213,11 +229,12 @@ Expanding the exponents $e^{\varepsilon}, e^{2\varepsilon}$ and logarithms in po
   \label{eq:4}
   %\frac{f}{T}
   f=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
-    g(i\varepsilon,j\varepsilon,k\varepsilon)+
-    \frac{3}{2}\varepsilon\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right.\\
-  \left.+\frac{7}{6}\varepsilon^{2}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3 g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+
-      2 g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}  + \mathcal{O}(\varepsilon^{3})
+    \varepsilon g(i\varepsilon,j\varepsilon,k\varepsilon)+
+    \frac{3}{2}\varepsilon^{2}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right.\\
+  \left.+\frac{7}{6}\varepsilon^{3}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3 g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+
+      2 g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}  + \mathcal{O}(\varepsilon^{4})
 \end{multline}
+%% Wrong power of $\varepsilon$ below!!
 
 Here and below we will use the notation:
 \begin{equation}
@@ -261,7 +278,7 @@ Note that
 \end{equation}
 
 Taking this into account and using the relation \eqref{eq:21} to express the triple sum
-$ \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}    g(i\varepsilon,j\varepsilon,k\varepsilon)$
+$ \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}    \varepsilon g(i\varepsilon,j\varepsilon,k\varepsilon)$
 in \eqref{eq:4} as the integral plus corrections, we obtain
 \begin{multline}
 \label{eq:23}
@@ -305,7 +322,7 @@ subtract and add $\frac{1}{i\varepsilon}$. The sum over $i$ of this term can be 
     \label{eq:24}
     \sum_{i=1}^{M}\frac{1}{i}=\frac{1}{M}\sum_{i=1}^{M}\frac{1}{i/M}=\int_{\frac{1}{M}}^{1}\frac{\dx}{x}+\gamma+O(\varepsilon)=-\ln\varepsilon+\ln a+\gamma+O(\varepsilon)
   \end{equation}
-Thus we get the integral
+Thus we get the integral %%!!!!!
 \begin{multline}
   \label{eq:13}
     \frac{\varepsilon^{3}}{12}\left[\sum_{i=1}^{M}\left(     \frac{1}{e^{b+c+i\varepsilon}-1}+
@@ -339,7 +356,7 @@ Substituting this approximation into the expression \eqref{eq:23} we obtain
 The expansion  (\ref{eq:3}) can be written as
 \begin{equation}
   \label{eq:26}
-  f=f_{0}+f_{1}\varepsilon + f_{2}\varepsilon^{2} +f_{3}\varepsilon^{2}\ln\varepsilon,
+  f=f_{0}+f_{1}\varepsilon +f_{2}\varepsilon^{2}\ln\varepsilon+ f_{3}\varepsilon^{2},
 \end{equation}
 where the coefficients are
 \begin{equation}
@@ -351,20 +368,21 @@ where the coefficients are
   f_{1}=0,
 \end{equation}
 \begin{equation}
-  \label{eq:29}
-  f_{2}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
-    \gamma\right],
+  \label{eq:30}
+  f_{2}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12},
 \end{equation}
 and
 \begin{equation}
-  \label{eq:30}
-  f_{3}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}
+  \label{eq:29}
+  f_{3}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
+    \gamma\right].
 \end{equation}
-In the paper \cite{belov2018finite} we have presented results of Monte Carlo simulations using
+
+In the paper \cite{1742-6596-1135-1-012024} we have presented results of Monte Carlo simulations using
 Metropolis and Wang-Landau algorithms that support the form of expansion (\ref{eq:26}). In
 particular we got $f_{1}=0.04\pm 0.04$ which is consistent with $f_{1}=0$. 
 
-In the scaling limit $\varepsilon\to 0$ so called ``limit shape phenomenon''~\cite{kenyon2006dimers}
+In the scaling limit $\varepsilon\to 0$ so called ``limit shape phenomenon''~\cite{1998math......1068J,cohn1998shape}
 appears in the dimer model. The areas around the corners of the domain are ``frozen'' with height
 function values being fixed. An analytical ``Arctic curve'' delimits frozen regions from the region
 where the behavior is described by the effective free field theory
@@ -385,12 +403,6 @@ The value of the first term $f_{0}$ can be rewritten using polylogarithm functio
 \end{multline}
 Here Riemann zeta function appears as a particular value of polylogarithm $\Li_{3}(1)=\zeta(3)$. 
 
-The third term $f_{2}$ depends only on the shape of the domain through $a,b,c$ with a universal
-contribution that is equal to the Euler constant $\gamma$. We conjecture that Euler constant will
-appear even for a different choice of Kasteleyn weighting, due to the treatment of logarithmic
-divergency. In the future work we will consider coordinate dependent values of $q$ and more complex
-geometries, as was done in the paper \cite{okounkov2007random}, to check this suggestion. 
-
 The term proportional to the logarithm of the scale $\varepsilon$ is also universal
 \cite{cardy1988finite} and should appear in all two-dimensional theories with boundary. In the paper
 \cite{cardy1988finite} it was argued that on a manifold of a characteristic length $L$ with a smooth
@@ -407,13 +419,21 @@ the manifold
 \end{equation}
 where $h$ is the number of handles and $b$ is the number of boundaries. 
 
-Since the non-frozen domain is delimited by a smooth boundary, we have $\chi=1$ and
+Since the non-frozen domain is delimited by a smooth boundary, we have $\chi=1$ and we interpret
+$2(ab+bc+ca)$ as a volume of the domain, thus
 \begin{equation}
   \label{eq:33}
-  f_{3}=\frac{1}{2(ab+bc+ca)} \frac{{\bf c}}{6},
+  \delta F = \left(2(ab+bc+ca)\right) f_{2}\ln\varepsilon,
 \end{equation}
-which suggests the value of central charge ${\bf c}=\frac{1}{2}$. This value is in agreement with the
-identification of the dimer model with free fermions in the paper \cite{dijkgraaf2009dimer}. 
+which together with formula \eqref{eq:30} suggests the value of central charge
+${\bf c}=\frac{1}{2}$. This value is in agreement with the identification of the dimer model with
+free fermions in the paper \cite{dijkgraaf2009dimer}.
+
+The last term $f_{3}$ depends only on the shape of the domain through $a,b,c$ with a universal
+contribution that is equal to the Euler constant $\gamma$. We conjecture that Euler constant will
+appear even for a different choice of Kasteleyn weighting, due to the treatment of logarithmic
+divergency. In the future work we will consider coordinate dependent values of $q$ and more complex
+geometries, as was done in the paper \cite{okounkov2007random}, to check this suggestion. 
 
 
 \section*{Conclusion and outlook}
