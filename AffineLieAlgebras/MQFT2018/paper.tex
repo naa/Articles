@@ -222,28 +222,60 @@ obtain
     f=-\frac{1}{V}\ln Z =- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}
   \ln\left(\frac{1-e^{-\varepsilon (i+j+k)} e^{\varepsilon}}{1-e^{-\varepsilon (i+j+k)} e^{2\varepsilon}}\right)
 \end{equation}
-Expanding the exponents $e^{\varepsilon}, e^{2\varepsilon}$ and logarithms in powers of $\varepsilon$ we obtain
-
-
-\begin{multline}
-  \label{eq:4}
-  %\frac{f}{T}
-  f=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
-    \varepsilon g(i\varepsilon,j\varepsilon,k\varepsilon)+
-    \frac{3}{2}\varepsilon^{2}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right.\\
-  \left.+\frac{7}{6}\varepsilon^{3}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3 g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+
-      2 g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}  + \mathcal{O}(\varepsilon^{4})
-\end{multline}
-%% Wrong power of $\varepsilon$ below!!
-
 Here and below we will use the notation:
 \begin{equation}
   \label{eq:5}
   g(x,y,z)=\frac{1}{e^{x+y+z}-1}
 \end{equation}
 
+Omitting the arguments of $g(i\varepsilon,j\varepsilon,k\varepsilon)$ we thus can rewrite the free energy as
+\begin{equation}
+  \label{eq:2}
+  f=-\frac{1}{V}\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \left[\ln\left(1+g-g e^{\varepsilon}\right)-\ln\left(1+g-g e^{2\varepsilon}\right)\right]
+\end{equation}
+We have $V=2(MN+MK+NK)=2(ab+bc+ca)\varepsilon^{-2}$ and $g\sim \varepsilon^{-1}$ as
+$\varepsilon\to 0$. Let us rewrite the logarithms as a series in $\varepsilon, g$:
+\begin{equation}
+  \label{eq:25}
+  f=-\frac{1}{2(ab+bc+ca)}\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \varepsilon^{2}
+  \left[-\sum_{l=1}^{\infty}\frac{1}{l}\left(\sum_{m=1}^{\infty}\frac{g\varepsilon^{m}}{m!}\right)^{l}+
+    \sum_{l=1}^{\infty}\frac{1}{l}\left(\sum_{m=1}^{\infty}\frac{2^{m} g\varepsilon^{m}}{m!}\right)^{l}\right]
+\end{equation}
+We are interested in the leading contributions in $\varepsilon$. Since $g\sim \varepsilon^{-1}$,
+they come from the terms $g^{l}\varepsilon^{l}$ in the square brackets. The coefficients before
+these terms are $\frac{2^{l}-1}{l}$:
+\begin{equation}
+  \label{eq:36}
+  f\approx-\frac{1}{2(ab+bc+ca)}\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \varepsilon^{2} \left[g+\sum_{l=2}^{\infty}\frac{2^{l}-1}{l}g^{l}\varepsilon^{l}\right]
+\end{equation}
+We separated the first term since it plays a major role in the following computations. 
+
+%% Since $g\sim \varepsilon^{-1}$, the first two terms in $\varepsilon$ are
+%% \begin{multline}
+%% \label{eq:35}
+%%   %\frac{f}{T}
+%%   f\approx-\frac{1}{2(ab+bc+ca)} \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K}\left\{
+%%     \varepsilon^{3} g(i\varepsilon,j\varepsilon,k\varepsilon)+
+%%     \frac{3}{2}\varepsilon^{4}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right\}\\
+%%   +\mathcal{O}(\varepsilon^{2})
+%% \end{multline}
+%% Contribution of the order $\varepsilon^{2}$ come from the terms $g^{l}\varepsilon^{l}$ from the square brackets of the equation \eqref{eq:25}. The coefficients before these terms are $\frac{2^{l}-1}{l}$
+%% 
+%% 
+%% \begin{multline}
+%%   \label{eq:4}
+%%   %\frac{f}{T}
+%%   f=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
+%%     \varepsilon g(i\varepsilon,j\varepsilon,k\varepsilon)+
+%%     \frac{3}{2}\varepsilon^{2}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right.\\
+%%   \left.+\frac{7}{6}\varepsilon^{3}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3 g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+
+%%       2 g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}  + \mathcal{O}(\varepsilon^{4})
+%% \end{multline}
+%% %% Wrong power of $\varepsilon$ below!!
+%% 
+%% 
 This expression looks like a combination of Riemann sums for some integrals. Note that these sums
-are finite, but some of the corresponding integrals are divergent.
+are finite for each $l$, but some of the corresponding integrals are divergent.
 
 
 Let $G$ be an analytic function in the cube $[0,a]\times[0,b]\times[0,c]$, then
