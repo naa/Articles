@@ -26,11 +26,11 @@
 \begin{document}
 \title{Finite-size scaling of free energy in the dimer model on a hexagonal domain}
 
-\author{A.A.~Nazarov$^{1}$\\
+\author{A.A.~Nazarov$^{1,2}$, S.A.~Paston$^{1}$\\
 {\small
   $^{1}$Department of Physics, St. Petersburg State University,} \\
 {\small  Ulyanovskaya 1, 198504 St.~Petersburg, Russia}\\
-\small{email:antonnaz@gmail.com}
+\small{$^{2}$email:antonnaz@gmail.com}
 }
 \date{}
 \maketitle
@@ -198,10 +198,10 @@ The   free energy per site is defined as$^{*}$
   f=-\frac{1}{V}\ln Z(M,N,K,q)
 \end{equation*}
 Here $V$ is the number of vertices, it is twice the number of dimers and twice the number of  cube faces:
-\begin{equation*}
+\begin{equation}
   \label{eq:19}
-  V=2(MN+NK+MK)
-\end{equation*}
+  V=2(MN+NK+MK)=2(ab+bc+ca) \varepsilon^{-2}
+\end{equation}
 
 We are interested in the scaling limit, combined with the thermodynamic limit, when $ T\to \infty,$
 and $M,N,K\to \infty$, such that ratios $\frac{M}{T}=a,\quad \frac{N}{T}=b, \quad \frac{K}{T}=c$
@@ -216,12 +216,64 @@ expansion.
 \label{sec:free-energy-scaling}
 First we substitute MacMahon formula \eqref{eq:12} into the free energy definition \eqref{eq:17} and
 obtain
-\begin{equation}
+\begin{multline}
   \label{eq:20}
     %-\frac{f}{T}
-    f=-\frac{1}{V}\ln Z =- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}
-  \ln\left(\frac{1-e^{-\varepsilon (i+j+k)} e^{\varepsilon}}{1-e^{-\varepsilon (i+j+k)} e^{2\varepsilon}}\right)
+    f=-\frac{1}{V}\ln Z =\\=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left[
+  \ln\left(1-e^{-\varepsilon (i+j+k-3)} e^{-2\varepsilon}\right) -\ln\left(1-e^{-\varepsilon
+      (i+j+k-3)} e^{-\varepsilon}\right)\right] 
+\end{multline}
+We need to notice that for a finite $\varepsilon$ and each value of $i,j,k$ the logarithms have the
+form $\ln(1-x)$, where $0<x<1$. Thus we can represent the logarithms as a power series of $x$ and
+obtain
+\begin{equation}
+  \label{eq:7}
+  f=-\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K}\sum_{n=1}^{\infty}
+  \frac{1}{V}\frac{1}{n}\left[-e^{-n\varepsilon (i+j+k-3)} e^{-2n\varepsilon}+e^{-n\varepsilon
+      (i+j+k-3)} e^{-n\varepsilon}\right] 
 \end{equation}
+Here we have an absolutely convergent series, so we can change the order of summation and rewrite
+the free energy as
+\begin{equation}
+  \label{eq:37}
+  f=-\sum_{n=1}^{\infty}
+  \frac{1}{V}\frac{1}{n}e^{-n\varepsilon}\left(1-e^{-n\varepsilon}\right)\sum_{i=1}^{M}
+  \sum_{j=1}^{N} \sum_{k=1}^{K}e^{-n\varepsilon (i+j+k-3)} 
+\end{equation}
+The triple sum factorizes into the product of three sums of the type $\sum_{i=1}^{M}e^{-n\varepsilon
+  i}$, that are just the
+ sums of geometric progression. So we have $\sum_{i=1}^{M}e^{-n\varepsilon
+  i}=\frac{1-e^{-Mn\varepsilon}}{1-e^{-n\varepsilon}}$, and obtain
+\begin{equation}
+  \label{eq:38}
+  f=-\sum_{n=1}^{\infty}
+  \frac{1}{V}\frac{1}{n}\frac{e^{-n\varepsilon}}{\left(1-e^{-n\varepsilon}\right)^{2}}
+  \left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nb}\right) 
+\end{equation}
+Denote by $\chi(z)$ the function
+\begin{equation}
+  \label{eq:39}
+  \chi(z)=e^{-z}\left(\frac{z}{1-e^{-z}}\right)^{2}, 
+\end{equation}
+and by $H_{n}$ the product of $\varepsilon$-independent exponents
+\begin{equation}
+  \label{eq:40}
+  H_{n}=\left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nb}\right).
+\end{equation}
+
+Using the definition of the volume \eqref{eq:19} the free energy is written as
+\begin{equation}
+  \label{eq:41}
+  f=-\frac{1}{2(ab+bc+ca)} \sum _{n=1}^{\infty} \frac{\chi(n\varepsilon)}{n^{3}} H_{n}
+\end{equation}
+We are interested in the scaling behavior in $\varepsilon$ when $\varepsilon\to 0$. The function $f$
+is regular in $\varepsilon$ for $\varepsilon>0$. So we need to
+compute  $\left.f\right|_{\varepsilon\to 0}$ and the derivatives $\left.\frac{\partial f}{\partial
+  \varepsilon}\right|_{\varepsilon\to 0}$, $\left.\frac{\partial^{2} f}{\partial
+    \varepsilon^{2}}\right|_{\varepsilon\to 0}$. In general, the behavior of the form
+$f=f_{0}+f_{1}\varepsilon+f_{2} \varepsilon^{2}\ln \varepsilon+f_{3}\varepsilon^{2}$ is expected in
+two-dimensional critical systems \cite{cardy1988finite}. 
+
 Here and below we will use the notation:
 \begin{equation}
   \label{eq:5}
