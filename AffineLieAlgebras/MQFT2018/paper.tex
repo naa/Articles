@@ -281,12 +281,14 @@ compute  $\left.f\right|_{\varepsilon\to 0}$ and the derivatives $\left.\frac{\p
 For $\left.f\right|_{\varepsilon\to 0}$ we have $\chi(0)=1$ and the sum $\sum_{n=1}^{\infty}
 \frac{H_{n}}{n^{3}}$ is just a sum of  polylogarithms
 $\mathrm{Li}_{s}(z)=\sum_{n=1}^{\infty}\frac{z^{n}}{n^{s}}$ of third order:
-\begin{equation}
+\begin{multline}
   \label{eq:42}
   \left.f\right|_{\varepsilon\to 0} =\frac{1}{2(ab+bc+ca)}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})+\Li_{3}(e^{-c})-
     \Li_{3}(e^{-a-b})\right.\\
   \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right]
-\end{equation}
+\end{multline}
+Here Riemann zeta function appears as a particular value of polylogarithm $\Li_{3}(1)=\zeta(3)$.
+
 The derivative of the function $\chi(z)$ is zero, $\chi'(0)=0$, and the series
 $\sum_{n=1}^{\infty} \frac{\chi'(n\varepsilon)}{n^{2}}H_{n}$ are convergent for a finite
 $\varepsilon$, thus we have for a derivative
@@ -342,7 +344,7 @@ The sum is then rewritten
   \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(n\varepsilon) =
   \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(0)+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}   
 \end{equation}
-The first term is series for the logarithm $\ln\left(1-e^{-\varepsilon}}\right)\approx \ln
+The first term is series for the logarithm $\ln\left(1-e^{-\varepsilon}\right)\approx \ln
 \varepsilon$,
 the second term can approximated by the integral:
 \begin{equation}
@@ -350,186 +352,31 @@ the second term can approximated by the integral:
   \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}\approx
   \int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz
 \end{equation}
-
-Thus we arrive to the following asymptotic behavior of the free energy:
-
-In general, the behavior of the form
-$f=f_{0}+f_{1}\varepsilon+f_{2} \varepsilon^{2}\ln \varepsilon+f_{3}\varepsilon^{2}$ is expected in
-two-dimensional critical systems \cite{cardy1988finite}. 
-
-Here and below we will use the notation:
 \begin{equation}
-  \label{eq:5}
-  g(x,y,z)=\frac{1}{e^{x+y+z}-1}
+  \label{eq:51}
+  \frac{\partial^{2} f}{\partial
+  \varepsilon^{2}}\approx-\frac{1}{2(ab+bc+ca)}
+\left[\frac{1}{6}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\frac{1}{6}\ln \varepsilon+\int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz\right]
 \end{equation}
-
-Omitting the arguments of $g(i\varepsilon,j\varepsilon,k\varepsilon)$ we thus can rewrite the free energy as
-\begin{equation}
-  \label{eq:2}
-  f=-\frac{1}{V}\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \left[\ln\left(1+g-g e^{\varepsilon}\right)-\ln\left(1+g-g e^{2\varepsilon}\right)\right]
-\end{equation}
-We have $V=2(MN+MK+NK)=2(ab+bc+ca)\varepsilon^{-2}$ and $g\sim \varepsilon^{-1}$ as
-$\varepsilon\to 0$. Let us rewrite the logarithms as a series in $\varepsilon, g$:
-\begin{equation}
-  \label{eq:25}
-  f=-\frac{1}{2(ab+bc+ca)}\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \varepsilon^{2}
-  \left[-\sum_{l=1}^{\infty}\frac{1}{l}\left(\sum_{m=1}^{\infty}\frac{g\varepsilon^{m}}{m!}\right)^{l}+
-    \sum_{l=1}^{\infty}\frac{1}{l}\left(\sum_{m=1}^{\infty}\frac{2^{m} g\varepsilon^{m}}{m!}\right)^{l}\right]
-\end{equation}
-We are interested in the leading contributions in $\varepsilon$. Since $g\sim \varepsilon^{-1}$,
-they come from the terms $g^{l}\varepsilon^{l}$ in the square brackets. The coefficients before
-these terms are $\frac{2^{l}-1}{l}$:
-\begin{equation}
-  \label{eq:36}
-  f\approx-\frac{1}{2(ab+bc+ca)}\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \varepsilon^{2} \left[g+\sum_{l=2}^{\infty}\frac{2^{l}-1}{l}g^{l}\varepsilon^{l}\right]
-\end{equation}
-We separated the first term since it plays a major role in the following computations. 
-
-%% Since $g\sim \varepsilon^{-1}$, the first two terms in $\varepsilon$ are
-%% \begin{multline}
-%% \label{eq:35}
-%%   %\frac{f}{T}
-%%   f\approx-\frac{1}{2(ab+bc+ca)} \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K}\left\{
-%%     \varepsilon^{3} g(i\varepsilon,j\varepsilon,k\varepsilon)+
-%%     \frac{3}{2}\varepsilon^{4}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right\}\\
-%%   +\mathcal{O}(\varepsilon^{2})
-%% \end{multline}
-%% Contribution of the order $\varepsilon^{2}$ come from the terms $g^{l}\varepsilon^{l}$ from the square brackets of the equation \eqref{eq:25}. The coefficients before these terms are $\frac{2^{l}-1}{l}$
-%% 
-%% 
-%% \begin{multline}
-%%   \label{eq:4}
-%%   %\frac{f}{T}
-%%   f=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left\{
-%%     \varepsilon g(i\varepsilon,j\varepsilon,k\varepsilon)+
-%%     \frac{3}{2}\varepsilon^{2}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}\right]\right.\\
-%%   \left.+\frac{7}{6}\varepsilon^{3}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3 g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+
-%%       2 g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}  + \mathcal{O}(\varepsilon^{4})
-%% \end{multline}
-%% %% Wrong power of $\varepsilon$ below!!
-%% 
-%% 
-This expression looks like a combination of Riemann sums for some integrals. Note that these sums
-are finite for each $l$, but some of the corresponding integrals are divergent.
-
-
-Let $G$ be an analytic function in the cube $[0,a]\times[0,b]\times[0,c]$, then
-\begin{multline}
-  \label{eq:21}
-  \int_{0}^{a} \int_{0}^{b}\int_{0}^{c}G(x,y,z) \dx\; \dy\;
-  \dz\approx\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\left\{\varepsilon^{3}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)-\right.\\
-  \left.-\left[\frac{\varepsilon^{4}}{2}\left((\partial_{x}+\partial_{y}+\partial_{z})G\right)(i\varepsilon,j\varepsilon,k\varepsilon)\right]+\right.\\
-  \left.\varepsilon^{5}\left(\frac{1}{6}(\partial_{x}^{2}+\partial_{y}^{2}+\partial_{z}^{2})+\frac{1}{4}(\partial_{x}\partial_{y}+\partial_{x}\partial_{z}+\partial_{y}\partial_{z})\right)G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)
-  \right\}+\mathcal{O}(\varepsilon^{6})
-\end{multline}
-This formula can be easily derived by dividing the volume of integration into cubes with side
-$\varepsilon$ and substituting Taylor series for $G$ into integrals.
-
-We can use this formula to approximate sums by integrals. Similar formula can be written for a
-function of two variables and double sums. We will not need higher order terms, but will use the
-approximation:
-\begin{equation}
-\label{eq:8}
-  \sum_{j=1}^{N}\sum_{k=1}^{K}\varepsilon^{2}G\left(i\varepsilon,j\varepsilon,k\varepsilon\right)\approx \int_{0}^{b}\int_{0}^{c}G(i\varepsilon,y,z) \dy\; \dz+\mathcal{O}(\varepsilon^{3}))
-\end{equation}
-
-
-
-Note that
-\begin{equation}
-  \label{eq:6}
-  \begin{array}{c}
-    \partial_{x}g(x,y,z)=-g(x,y,z)-g(x,y,z)^{2}\\
-    \partial_{x}^{2}g(x,y,z)=g(x,y,z)+3g(x,y,z)^{2}+2g(x,y,z)^{3}
-  \end{array}
-\end{equation}
-
-Taking this into account and using the relation \eqref{eq:21} to express the triple sum
-$ \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}    \varepsilon g(i\varepsilon,j\varepsilon,k\varepsilon)$
-in \eqref{eq:4} as the integral plus corrections, we obtain
-\begin{multline}
-\label{eq:23}
- f=-\frac{1}{2(ab+bc+ca)}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1}+\right.\\
-  \left.+\sum_{i=1}^{M}\sum_{j=1}^{N}\sum_{k=1}^{K}\frac{\varepsilon^{5}}{12}\left[g(i\varepsilon,j\varepsilon,k\varepsilon)+3
-      g(i\varepsilon,j\varepsilon,k\varepsilon)^{2}+2
-      g(i\varepsilon,j\varepsilon,k\varepsilon)^{3}\right]\right\}
-\end{multline}
-Due to the equations \eqref{eq:6}, the corrections are of the same form as the higher order terms in
-$\varepsilon$. The linear in $\varepsilon$ term in \eqref{eq:4} is cancelled by three partial
-derivatives in \eqref{eq:21}. The coefficient of the quadratic term is changed by the addition of
-second derivatives from \eqref{eq:21} to $\frac{1}{12}$.
-
-
-There is no singularity in the sum, but
-$\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{(\exp(x+y+z)-1)^{3}}$ diverges
-logarithmically. So we can not just apply the integral representation~\eqref{eq:21} directly.
-
-We apply the formula \eqref{eq:8} to the internal sums in the triple sum, since there is no
-singularity in $\frac{1}{\left((\exp(i\varepsilon+j\varepsilon+k\varepsilon)-1\right)^{3}}$ for
-$i\neq 0$:
-
-\begin{equation}
-  \label{eq:9}
-\sum_{i=1}^{M}\left(\sum_{j=1}^{N}\sum_{k=1}^{K}\frac{\varepsilon^{5}}{12}
-      \frac{e^{2(i\varepsilon+j\varepsilon+k\varepsilon)}+e^{i\varepsilon+j\varepsilon+k\varepsilon}}{\left(e^{i\varepsilon+j\varepsilon+k\varepsilon}-1\right)^{3}}  \right)\approx
-    \frac{\varepsilon^{3}}{12}\sum_{i=1}^{M} \int_{0}^{b}\int_{0}^{c}
-      \left(\frac{e^{2(i\varepsilon+y+z)}+e^{i\varepsilon+y+z}}{\left(e^{i\varepsilon+y+z}-1\right)^{3}}\right) \dy \dz+\mathcal{O}(\varepsilon^{3})
-\end{equation}
-
-The double integral can be taken explicitly, so we obtain
-\begin{equation}
-  \label{eq:11}
-  \frac{\varepsilon^{3}}{12}\sum_{i=1}^{M}\left(     \frac{1}{e^{b+c+i\varepsilon}-1}+
-  \frac{1}{1-e^{b+i\varepsilon}}+\frac{1}{1-e^{c+i\varepsilon}}+\frac{1}{e^{i\varepsilon}-1}\right)
-\end{equation}
-
-The function $\frac{1}{e^{x}-1}$ has a divergence, so we can not apply integral approximation directly. We first need to 
-subtract and add $\frac{1}{i\varepsilon}$. The sum over $i$ of this term can be approximated using Euler formula:
-\begin{equation}
-    \label{eq:24}
-    \sum_{i=1}^{M}\frac{1}{i}=\frac{1}{M}\sum_{i=1}^{M}\frac{1}{i/M}=\int_{\frac{1}{M}}^{1}\frac{\dx}{x}+\gamma+O(\varepsilon)=-\ln\varepsilon+\ln a+\gamma+O(\varepsilon)
-  \end{equation}
-Thus we get the integral %%!!!!!
-\begin{multline}
-  \label{eq:13}
-    \frac{\varepsilon^{3}}{12}\left[\sum_{i=1}^{M}\left(     \frac{1}{e^{b+c+i\varepsilon}-1}+
-      \frac{1}{1-e^{b+i\varepsilon}}+\frac{1}{1-e^{c+i\varepsilon}}+\frac{1}{e^{i\varepsilon}-1}-\frac{1}{i\varepsilon}\right)-\ln\varepsilon+\ln a+\gamma+\mathcal{O}(\varepsilon^{3})\right]\approx\\
-   \frac{\varepsilon^{2}}{12}\left[\int_{0}^{a}\left(     \frac{1}{e^{b+c+x}-1}+
-      \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)\dx-\ln\varepsilon+\ln a+\gamma\right]+\mathcal{O}(\varepsilon^{3})    
-\end{multline}
-The integral is now taken explicitly, it is equal to
-\begin{multline}
-  \label{eq:22}
-     \frac{\varepsilon^{2}}{12}\left[\int_{0}^{a}\left(     \frac{1}{e^{b+c+x}-1}+
-         \frac{1}{1-e^{b+x}}+\frac{1}{1-e^{c+x}}+\frac{1}{e^{x}-1}-\frac{1}{x}\right)\dx-\ln\varepsilon+\ln a+\gamma\right]=\\
-     \frac{\varepsilon^{2}}{12}\left[\ln \left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{a (e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\ln\varepsilon+\ln a+\gamma\right]
-\end{multline}
-
-  
-
-The term $\ln a$ is cancelled by the  and symmetry between $a,b,c$ is restored.
-Substituting this approximation into the expression \eqref{eq:23} we obtain 
- the final expression:
-\begin{multline}
-  \label{eq:3}
- f=-\frac{1}{2(ab+bc+ca)}\left\{\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1}+\right.\\
-  \left.+\frac{\varepsilon^{2}}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
-      \gamma\right]+\frac{\varepsilon^{2}}{12}\ln \varepsilon\right\} +\mathcal{O}(\varepsilon^{3})
-\end{multline}
-
-\section{Physical meaning of the expansion coefficients}
-\label{sec:accur-expans-phys}
-
-The expansion  (\ref{eq:3}) can be written as
+Since we have logarithmic term in the second derivative, we have the behavior of free energy of the form
 \begin{equation}
   \label{eq:26}
-  f=f_{0}+f_{1}\varepsilon +f_{2}\varepsilon^{2}\ln\varepsilon+ f_{3}\varepsilon^{2},
+  f\approx f_{0}+f_{1}\varepsilon +f_{2}\varepsilon^{2}\ln\varepsilon+ f_{3}\varepsilon^{2}+\mathcal{O}(\varepsilon^{3}),
 \end{equation}
-where the coefficients are
-\begin{equation}
+as expected in general in two-dimensional critical systems \cite{cardy1988finite}. Taking the
+derivatives of such expression by $\varepsilon$, we get $f_{0}=f(0)$,
+$f_{1}=\left.\frac{\partial f}{\partial \varepsilon}\right|_{\varepsilon\to 0}$,
+$\frac{\partial^{2} f}{\partial \varepsilon^{2}}=f_{2}(2\ln\varepsilon+3)+f_{3}$. 
+
+Thus we have the coefficients
+\begin{multline}
   \label{eq:27}
-  f_{0}=-\frac{1}{2(ab+bc+ca)}\int_{0}^{a} \int_{0}^{b}\int_{0}^{c}\frac{\dx \dy \dz}{e^{x+y+z}-1},
-\end{equation}
+  f_{0}=\frac{1}{2(ab+bc+ca)}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})+\Li_{3}(e^{-c})-
+    \Li_{3}(e^{-a-b})\right.\\
+  \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right]
+\end{multline}
+
+
 \begin{equation}
   \label{eq:28}
   f_{1}=0,
@@ -541,9 +388,14 @@ where the coefficients are
 and
 \begin{equation}
   \label{eq:29}
-  f_{3}=-\frac{1}{2(ab+bc+ca)}\frac{1}{12}\left[\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-
-    \gamma\right].
+  f_{3}=-\frac{1}{2(ab+bc+ca)}\left[\frac{1}{12}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\frac{1}{8}+ \frac{1}{2}\int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz
+    \right].
 \end{equation}
+
+
+
+\section{Physical meaning of the expansion coefficients}
+\label{sec:accur-expans-phys}
 
 In the paper \cite{1742-6596-1135-1-012024} we have presented results of Monte Carlo simulations using
 Metropolis and Wang-Landau algorithms that support the form of expansion (\ref{eq:26}). In
@@ -562,13 +414,6 @@ First two terms $f_{0}$ and $f_{1}$ are interpreted as a bulk and
 boundary free energies in the corresponding field theory. Since we have $f_{1}=0$, we can conclude
 that boundary tension is zero.
 The value of the first term $f_{0}$ can be rewritten using polylogarithm functions as
-\begin{multline}
-  \label{eq:34}
-  f_{0}=\frac{1}{2(ab+bc+ca)}\left[abc + \Li_{3}(e^{a})+\Li_{3}(e^{b})+\Li_{3}(e^{c})-
-    \Li_{3}(e^{a+b})\right.\\
-  \left.-\Li_{3}(e^{b+c})-    \Li_{3}(e^{a+c})+    \Li_{3}(e^{a+b+c})-\zeta(3)\right]
-\end{multline}
-Here Riemann zeta function appears as a particular value of polylogarithm $\Li_{3}(1)=\zeta(3)$. 
 
 The term proportional to the logarithm of the scale $\varepsilon$ is also universal
 \cite{cardy1988finite} and should appear in all two-dimensional theories with boundary. In the paper
@@ -597,10 +442,15 @@ ${\bf c}=\frac{1}{2}$. This value is in agreement with the identification of the
 free fermions in the paper \cite{dijkgraaf2009dimer}.
 
 The last term $f_{3}$ depends only on the shape of the domain through $a,b,c$ with a universal
-contribution that is equal to the Euler constant $\gamma$. We conjecture that Euler constant will
-appear even for a different choice of Kasteleyn weighting, due to the treatment of logarithmic
-divergency. In the future work we will consider coordinate dependent values of $q$ and more complex
-geometries, as was done in the paper \cite{okounkov2007random}, to check this suggestion. 
+contribution that is equal to the integral of a function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$. We conjecture
+this constant will appear even for a different choice of Kasteleyn weighting, due to the treatment
+of logarithmic divergency. In the future work we will consider coordinate dependent values of $q$
+and more complex geometries, as was done in the paper \cite{okounkov2007random}, to check this
+suggestion.
+
+\section{Numeric checks}
+\label{sec:numeric-checks}
+
 
 
 \section*{Conclusion and outlook}
