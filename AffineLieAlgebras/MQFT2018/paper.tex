@@ -261,6 +261,12 @@ and by $H_{n}$ the product of $\varepsilon$-independent exponents
   H_{n}=\left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nb}\right).
 \end{equation}
 
+The function $\chi(z)$ is smooth in 0, even and has the following Taylor series:
+\begin{equation}
+  \label{eq:45}
+  \chi(z)=1 - \frac{z^2}{12} + \frac{z^4}{240}+\mathcal{O}(z^{6})
+\end{equation}
+
 Using the definition of the volume \eqref{eq:19} the free energy is written as
 \begin{equation}
   \label{eq:41}
@@ -270,7 +276,84 @@ We are interested in the scaling behavior in $\varepsilon$ when $\varepsilon\to 
 is regular in $\varepsilon$ for $\varepsilon>0$. So we need to
 compute  $\left.f\right|_{\varepsilon\to 0}$ and the derivatives $\left.\frac{\partial f}{\partial
   \varepsilon}\right|_{\varepsilon\to 0}$, $\left.\frac{\partial^{2} f}{\partial
-    \varepsilon^{2}}\right|_{\varepsilon\to 0}$. In general, the behavior of the form
+  \varepsilon^{2}}\right|_{\varepsilon\to 0}$.
+
+For $\left.f\right|_{\varepsilon\to 0}$ we have $\chi(0)=1$ and the sum $\sum_{n=1}^{\infty}
+\frac{H_{n}}{n^{3}}$ is just a sum of  polylogarithms
+$\mathrm{Li}_{s}(z)=\sum_{n=1}^{\infty}\frac{z^{n}}{n^{s}}$ of third order:
+\begin{equation}
+  \label{eq:42}
+  \left.f\right|_{\varepsilon\to 0} =\frac{1}{2(ab+bc+ca)}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})+\Li_{3}(e^{-c})-
+    \Li_{3}(e^{-a-b})\right.\\
+  \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right]
+\end{equation}
+The derivative of the function $\chi(z)$ is zero, $\chi'(0)=0$, and the series
+$\sum_{n=1}^{\infty} \frac{\chi'(n\varepsilon)}{n^{2}}H_{n}$ are convergent for a finite
+$\varepsilon$, thus we have for a derivative
+\begin{equation}
+  \label{eq:43}
+\left.\frac{\partial f}{\partial \varepsilon}\right|_{\varepsilon\to 0}=0
+\end{equation}
+
+Now let us compute the second derivative
+\begin{equation}
+  \label{eq:44}
+\frac{\partial^{2} f}{\partial
+  \varepsilon^{2}}=-\frac{1}{2(ab+bc+ca)} \sum _{n=1}^{\infty} \frac{\chi''(n\varepsilon)}{n} H_{n}.  
+\end{equation}
+Second derivative of $\chi$ is finite $\chi''(0)=-\frac{1}{6}$. But there is a difficulty with the
+limit $\varepsilon\to 0$ in this expression due to the poor convergence of the series. Let us
+rewrite the second derivative as a sum of two series:
+\begin{equation}
+  \label{eq:46}
+\frac{\partial^{2} f}{\partial
+  \varepsilon^{2}}=-\frac{1}{2(ab+bc+ca)} \left(\sum _{n=1}^{\infty} \frac{\chi''(n\varepsilon)}{n}+
+  \sum_{n=1}^{\infty} \frac{\chi''(n\varepsilon)}{n}(H_{n}-1)\right).    
+\end{equation}
+The second sum is now convergent, since $H_{n}-1$ decays exponentially in $n$. It can be presented
+as a combinations of series for logarithms:
+\begin{multline}
+  \label{eq:47}
+  \chi''(0)\sum_{n=1}^{\infty} \frac{H_{n}-1}{n}=\\=\chi''(0)\sum_{n=1}^{\infty}\frac{1}{n}\left(-e^{-a
+      n-b n-c n}+e^{-a n-b n}+e^{-a n-c n}+e^{-b n-c n} - e^{-a n}-e^{-b n}-e^{-c n}\right)=\\
+  =\frac{1}{6}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)
+%%  =\frac{1}{6} \left(-\log \left(1-e^{-a-b-c}\right)+\log
+%%   \left(1-e^{-a-b}\right)+\log
+%%   \left(1-e^{-a-c}\right)+\log
+%%   \left(1-e^{-b-c}\right)-\log
+%%   \left(1-e^{-a}\right)-\log
+%%   \left(1-e^{-b}\right)-\log
+%%   \left(1-e^{-c}\right)\right)
+\end{multline}
+
+First sum in the expression \eqref{eq:46} can be expressed as follows. First, consider second
+derivative of $\chi(z)$, separate an exponent and denote what is left by $\xi(z)$:
+\begin{equation}
+  \label{eq:48}
+  \chi''(z)=e^{-z}\frac{e^{2 z} \left(z^2+4 e^z
+   \left(z^2-1\right)+e^{2 z} \left(z^2-4
+   z+2\right)+4
+   z+2\right)}{\left(e^z-1\right)^4}=e^{-z}\xi(z)
+\end{equation}
+The sum is then rewritten
+\begin{equation}
+  \label{eq:49}
+  \sum _{n=1}^{\infty} \frac{\chi''(n\varepsilon)}{n}=
+  \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(n\varepsilon) =
+  \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(0)+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}   
+\end{equation}
+The first term is series for the logarithm $\ln\left(1-e^{-\varepsilon}}\right)\approx \ln
+\varepsilon$,
+the second term can approximated by the integral:
+\begin{equation}
+  \label{eq:50}
+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}\approx
+  \int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz
+\end{equation}
+
+Thus we arrive to the following asymptotic behavior of the free energy:
+
+In general, the behavior of the form
 $f=f_{0}+f_{1}\varepsilon+f_{2} \varepsilon^{2}\ln \varepsilon+f_{3}\varepsilon^{2}$ is expected in
 two-dimensional critical systems \cite{cardy1988finite}. 
 
