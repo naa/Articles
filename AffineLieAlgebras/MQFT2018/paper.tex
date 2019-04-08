@@ -240,9 +240,9 @@ the free energy as
   \frac{1}{V}\frac{1}{n}e^{-n\varepsilon}\left(1-e^{-n\varepsilon}\right)\sum_{i=1}^{M}
   \sum_{j=1}^{N} \sum_{k=1}^{K}e^{-n\varepsilon (i+j+k-3)} 
 \end{equation}
-The triple sum factorizes into the product of three sums of the type $\sum_{i=1}^{M}e^{-n\varepsilon
+The triple sum factorizes into the product of three sums of the type $\sum_{i=0}^{M-1}e^{-n\varepsilon
   i}$, that are just the
- sums of geometric progression. So we have $\sum_{i=1}^{M}e^{-n\varepsilon
+ sums of geometric progression. So we have $\sum_{i=0}^{M-1}e^{-n\varepsilon
   i}=\frac{1-e^{-Mn\varepsilon}}{1-e^{-n\varepsilon}}$, and obtain
 \begin{equation}
   \label{eq:38}
@@ -450,8 +450,89 @@ suggestion.
 
 \section{Numeric checks}
 \label{sec:numeric-checks}
+To check our result \eqref{eq:26} numerically, we first need to evaluate the integral in $f_{3}$.
+The function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$ is smooth and but some care is required when taking the
+limit $z\to 0$ numerically. Evaluating the integral numerically with Mathematica we get
+\begin{equation}
+  \label{eq:2}
+  \int_{0}^{\infty}e^{-z}\frac{\xi(z)-\xi(0)}{z} dz = -0.08084228607897521
+\end{equation}
 
+The asymptotic expansion \eqref{eq:26} gives very good approximation for free energy. In Figure
+\ref{fig:approx-acc} we present exact and approximate values for $f$ and, on the right panel,
+demonstrate that inaccuracy is actually $\mathcal{O}(\varepsilon^{4})$. 
 
+\begin{figure}[htbp]
+  \includegraphics[scale=0.9]{exact-vs-approximation}
+  \includegraphics{error-1}
+  \caption{\label{fig:approx-acc} {\it On the left:} Dependence of free energy on $1/\varepsilon$,
+    top -- $a=b=c=1$, bottom -- $a=3, b=2, c=1$. Exact values are shown by solid dots.
+    Approximations with formula \eqref{eq:26} are shown as blue dashed and red dotted lines. {\it On
+      the right:} Dependence of approximation inaccuracy on $\varepsilon$, solid line is fit by $b\varepsilon^{4}$.}
+\end{figure}
+
+\section{Generalization to other domains and particular cases}
+\label{sec:gener-other-doma}
+
+Consider the case of cubes in the box of infinite height. In this case $K=\infty$ and $M,N$ are
+finite. Now the hexagonal domain of dimer configurations has side of infinite length and total
+number of dimers is infinite, so it is more natural to set the volume of the system $V=MN$.  
+
+Putting $K=\infty$ in the partition function, we see that all terms with $k$ are cancelled and we have
+\begin{equation}
+  \label{eq:3}
+  Z[M,N,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\frac{1}{1-q^{i+j-1}}
+\end{equation}
+
+The computation of free energy is almost exactly the same as in finite box case. We expand the
+logarithm in the free energy and then factorize the sum:
+\begin{multline}
+  \label{eq:4}
+  f=-\frac{1}{MN}\sum_{i=1}^{M}\sum_{j=1}^{N}\ln\left(1-e^{-\varepsilon(i+j-2)}e^{-\varepsilon}\right)=\\
+  =\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{-n\varepsilon}\left(\sum_{i=1}^{M}e^{-n\varepsilon(i-1)}\right)
+  \left(\sum_{j=1}^{N}e^{-n\varepsilon(j-1)}\right)
+\end{multline}
+Computing the sums of geometric progressions we obtain almost the same expression as \eqref{eq:38},
+except that $H_{n}$ now has two multipliers $H_{n} =\left(1-e^{-na}\right)\left(1-e^{-nb}\right)$:
+\begin{equation}
+  \label{eq:5}
+  f=-\frac{1}{ab} \sum_{n=1}^{\infty}\frac{\chi(n\varepsilon)}{n^{3}} H_{n}.
+\end{equation}
+The function $\chi{z}$ is the same \eqref{eq:39}.
+
+Doing the same computations as in section \ref{sec:free-energy-scaling}, we obtain following results
+for the coefficients $f_{0}, f_{1}, f_{2}, f_{3}$:
+\begin{equation}
+  \label{eq:6}
+  f_{0}=\frac{1}{ab}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})-
+    \Li_{3}(e^{-a-b})-\zeta(3)\right]
+\end{equation}
+\begin{equation}
+  \label{eq:8}
+  f_{0}=0
+\end{equation}
+\begin{equation}
+  \label{eq:9}
+  f_{2}=\frac{1}{ab}\frac{1}{12}
+\end{equation}
+\begin{equation}
+  \label{eq:11}
+  f_{3}=-\frac{1}{ab}\left[\frac{1}{12}\ln\left(\frac{(e^{a}-1)(e^{b}-1)}{(e^{a+b}-1)}\right)-\frac{1}{8}+ \frac{1}{2}\int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz
+    \right].
+\end{equation}
+
+Again in the Fig. \ref{fig:approx-acc-2d} we see good numerical agreement between the asymptotic
+expansion \eqref{eq:26} and the exact formula \eqref{eq:4}.
+
+\begin{figure}[htbp]
+  \includegraphics[scale=0.8]{exact-vs-approximation-2d}
+  \includegraphics[scale=0.9]{error-2d}
+  \caption{\label{fig:approx-acc-2d} {\it On the left:} Dependence of free energy on $1/\varepsilon$
+    in the infinite height box,
+    top -- $a=b=1$, bottom -- $a=2, b=1$. Exact values are shown by solid dots.
+    Approximations with formula \eqref{eq:26} are shown as blue dashed and red dotted lines. {\it On
+      the right:} Dependence of approximation inaccuracy on $\varepsilon$, solid line is fit by $b\varepsilon^{4}$.}
+\end{figure}
 
 \section*{Conclusion and outlook}
 \label{sec:conclusion}
