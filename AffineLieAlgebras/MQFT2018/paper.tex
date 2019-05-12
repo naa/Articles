@@ -258,7 +258,7 @@ Denote by $\chi(z)$ the function
 and by $H_{n}$ the product of $\varepsilon$-independent exponents
 \begin{equation}
   \label{eq:40}
-  H_{n}=\left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nb}\right).
+  H_{n}=\left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nc}\right).
 \end{equation}
 
 The function $\chi(z)$ is smooth in 0, even and has the following Taylor series:
@@ -313,7 +313,7 @@ rewrite the second derivative as a sum of two series:
   \sum_{n=1}^{\infty} \frac{\chi''(n\varepsilon)}{n}(H_{n}-1)\right).    
 \end{equation}
 The second sum is now convergent, since $H_{n}-1$ decays exponentially in $n$. It can be presented
-as a combinations of series for logarithms:
+as a combination of series for logarithms:
 \begin{multline}
   \label{eq:47}
   \chi''(0)\sum_{n=1}^{\infty} \frac{H_{n}-1}{n}=\\=\chi''(0)\sum_{n=1}^{\infty}\frac{1}{n}\left(-e^{-a
@@ -498,7 +498,7 @@ except that $H_{n}$ now has two multipliers $H_{n} =\left(1-e^{-na}\right)\left(
   \label{eq:5}
   f=-\frac{1}{ab} \sum_{n=1}^{\infty}\frac{\chi(n\varepsilon)}{n^{3}} H_{n}.
 \end{equation}
-The function $\chi{z}$ is the same \eqref{eq:39}.
+The function $\chi(z)=e^{-z}\left(\frac{z}{1-e^{-z}}\right)^{2}$ is the same as in \eqref{eq:39}.
 
 Doing the same computations as in section \ref{sec:free-energy-scaling}, we obtain following results
 for the coefficients $f_{0}, f_{1}, f_{2}, f_{3}$:
@@ -533,6 +533,104 @@ expansion \eqref{eq:26} and the exact formula \eqref{eq:4}.
     Approximations with formula \eqref{eq:26} are shown as blue dashed and red dotted lines. {\it On
       the right:} Dependence of approximation inaccuracy on $\varepsilon$, solid line is fit by $b\varepsilon^{4}$.}
 \end{figure}
+
+Let us consider the generalization to the case when $q$ depends upon the coordinate. It's usually
+done by varying $q$ on diagonal slices numbered by $t$. We need proper setup to consider the scaling
+limit. Let $\varphi(t)$ be a continuous bounded smooth function for $t\in\left[-a,b\right]$. Denote by
+$q_{i}=e^{-\varepsilon \varphi\left(i\varepsilon\right)}$ for $i=(-M+1)\dots N-1$. We index diagonal slices in
+such a way, that top left corner of the $M\times N$ box has index $N-M$, top right corner -- $N$,
+bottom left -- $-M$ and bottom right -- $0$. (See Fig. \ref{fig:box-t-coords} ). The slices with the
+indexes $N$ and $-M$ are empty so we set $q_{N}=q_{-M}=0$. There can be at most $N+M-1$ non-empty
+slices. 
+
+\begin{figure}[htbp]
+  \includegraphics[scale=0.5]{box-t-coords}
+  \caption{\label{fig:box-t-coords} Coordinates of slices.}
+\end{figure}
+
+The partition function for this and more general case of arbitrary inner shape of the box was
+presented in the paper \cite{okounkov2007random}. In this case it contains products of weights
+$q_{i}$ for slices with negative and positive indexes:
+\begin{equation}
+  \label{eq:13}
+  Z=\prod_{i=0}^{N-1}\prod_{j=0}^{M-1} \frac{1}{1-q_{N-M}^{-1}\left(\prod_{k=0}^{i}q_{N-M-k}\right)\left(\prod_{l=0}^{j}q_{N-M+l}\right)}
+\end{equation}
+(see Theorem 2 in \cite{okounkov2007random}).
+If we set $q_{i}=q$, we recover formula \eqref{eq:3}.
+
+Now let us again consider free energy dependence on $\varepsilon$:
+\begin{equation}
+  \label{eq:21}
+  f=-\frac{\varepsilon^{2}}{ab}\sum_{i=0}^{N-1}\sum_{j=0}^{M-1}\ln
+  \left(1-e^{\varepsilon \varphi(b-a)}e^{-\varepsilon\sum_{k=0}^{i}\varphi\left(b-a-k\varepsilon\right)}
+    e^{-\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)} \right)
+\end{equation}
+Expand the logarithm, change the order of summation and rewrite the free energy in the same way as
+we did before:
+\begin{equation}
+  \label{eq:22}
+   f=\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{n\varepsilon
+     \varphi(b-a)}\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} e^{-n\varepsilon\sum_{k=0}^{i}\varphi\left(b-a-k\varepsilon\right)}
+    e^{-n\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)}
+\end{equation}
+Now we again can factorize double sum into product of two sums:
+\begin{equation}
+  \label{eq:23}
+    f=\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{-n\varepsilon
+     \varphi(b-a)}\left(1+\sum_{i=1}^{N-1}
+     e^{-n\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)}\right)
+   \left(1+\sum_{j=1}^{M-1}e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\right)
+\end{equation}
+Note that for $\varphi(t)\equiv 1$ we recover formula \eqref{eq:4}. 
+%%  
+%%  If we assume that $\varphi(b-a)\neq 0$, we can again obtain function $\chi(z)$:
+%%  \begin{multline}
+%%    \label{eq:24}
+%%     f=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{\chi\left(n\varepsilon\varphi(b-a)\right)}{n^{3}}\left(1-e^{-n\varepsilon
+%%         \varphi(b-a)}\right)^{2}\frac{1}{\varphi^{2}(b-a)}\cdot\\
+%%     \cdot\left(1+\sum_{i=1}^{N-1}
+%%       e^{-n\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)}\right)
+%%     \left(1+\sum_{j=1}^{M-1}e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\right)  
+%%  \end{multline}
+%%
+
+We need to separate contributions of different orders in $\varepsilon$ and keep only the terms up to
+$\varepsilon^{2}$. To do so we expand the exponent
+\begin{equation}
+  \label{eq:35}
+e^{-n\varepsilon\varphi(b-a)}\approx
+1-n\varepsilon\varphi(b-a)+\frac{1}{2}n^{2}\varepsilon^{2}\varphi^{2}(b-a)+\mathcal{O}(\varepsilon^{3})  ,
+\end{equation}
+and approximate the sums by integrals using Euler-Maclaurin formula.
+
+The sum $\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)$ can be approximated using
+Euler-Maclaurin formula:
+\begin{multline}
+  \label{eq:25}
+  \varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)=\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx
+  +\frac{\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)+\\
+  +\frac{1}{12}\varepsilon^{2}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)+\mathcal{O}(\varepsilon^{3})
+\end{multline}
+
+Substituting into the exponent and expanding we get:
+\begin{multline}
+  \label{eq:34}
+  e^{-n\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)}\approx e^{-n\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx
+  -n\frac{\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)
+  -n\frac{1}{12}\varepsilon^{2}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)}\approx\\
+\approx e^{-n\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx}\left[1-\frac{n\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)+\right.\\\left.
+  +\varepsilon^{2}\left(\frac{n^{2}}{8} \left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)^{2}-\frac{n}{12}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)\right)+\mathcal{O}(\varepsilon^{3})\right]
+\end{multline}
+Similarly, the expression for the second exponent is
+\begin{multline}
+  \label{eq:36}
+ e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\approx e^{-n\int_{0}^{j\varepsilon}\varphi(b-a+x)\dx}\left[1-\frac{n\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a+j\varepsilon)\right)+\right.\\\left.
+  +\varepsilon^{2}\left(\frac{n^{2}}{8} \left(\varphi(b-a)+\varphi(b-a+j\varepsilon)\right)^{2}-\frac{n}{12}\left(\varphi'(b-a+j\varepsilon)-\varphi'(b-a)\right)\right)+\mathcal{O}(\varepsilon^{3})\right]  
+\end{multline}
+
+Now we need to substitute this expansion and formula \eqref{eq:35} into our formula for free energy
+\eqref{eq:23}. 
+
 
 \section*{Conclusion and outlook}
 \label{sec:conclusion}
