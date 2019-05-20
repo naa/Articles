@@ -471,7 +471,7 @@ demonstrate that inaccuracy is actually $\mathcal{O}(\varepsilon^{4})$.
       the right:} Dependence of approximation inaccuracy on $\varepsilon$, solid line is fit by $b\varepsilon^{4}$.}
 \end{figure}
 
-\section{Generalization to other domains and particular cases}
+\section{Box of infinite height}
 \label{sec:gener-other-doma}
 
 Consider the case of cubes in the box of infinite height. In this case $K=\infty$ and $M,N$ are
@@ -534,7 +534,11 @@ expansion \eqref{eq:26} and the exact formula \eqref{eq:4}.
       the right:} Dependence of approximation inaccuracy on $\varepsilon$, solid line is fit by $b\varepsilon^{4}$.}
 \end{figure}
 
-Let us consider the generalization to the case when $q$ depends upon the coordinate. It's usually
+\section{Box of infinite height with coordinate-dependent weight}
+\label{sec:box-infinite-height}
+
+
+Now let us consider the generalization to the case when $q$ depends upon the coordinate. It's usually
 done by varying $q$ on diagonal slices numbered by $t$. We need proper setup to consider the scaling
 limit. Let $\varphi(t)$ be a continuous bounded smooth function for $t\in\left[-a,b\right]$. Denote by
 $q_{i}=e^{-\varepsilon \varphi\left(i\varepsilon\right)}$ for $i=(-M+1)\dots N-1$. We index diagonal slices in
@@ -577,11 +581,188 @@ Now we again can factorize double sum into product of two sums:
 \begin{equation}
   \label{eq:23}
     f=\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{-n\varepsilon
-     \varphi(b-a)}\left(1+\sum_{i=1}^{N-1}
+     \varphi(b-a)}\left(\sum_{i=0}^{N-1}
      e^{-n\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)}\right)
-   \left(1+\sum_{j=1}^{M-1}e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\right)
+   \left(\sum_{j=0}^{M-1}e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\right),
+ \end{equation}
+where we assume that $\sum_{k=1}^{0}\varphi(b-a-k\varepsilon)=0$ and
+$\sum_{l=1}^{0}\varphi(b-a+l\varepsilon)=0$. Note that for $\varphi(t)\equiv 1$ we recover formula
+\eqref{eq:4}.
+
+Introduce following notations:
+\begin{equation}
+  \label{eq:52}
+  r_{\mp}(i\varepsilon)\equiv\varepsilon\sum_{k=1}^{i}\varphi(b-a\mp k\varepsilon)
 \end{equation}
-Note that for $\varphi(t)\equiv 1$ we recover formula \eqref{eq:4}. 
+The functions $r_{\mp}$ can be approximated using Euler-Maclaurin formula as:
+\begin{equation}
+  \label{eq:53}
+  r_{\mp}(x)\approx\int_{0}^{x}\varphi(b-a\mp y) \dy +\frac{\varepsilon}{2}\left(\varphi(b-a\mp
+    x)-\varphi(b-a)\right)\mp \frac{\varepsilon^{2}}{12}\left(\varphi'(b-a\mp x)-\varphi'(b-a)\right)
+\end{equation}
+Denote by $\Psi$ the following functions:
+\begin{equation}
+  \label{eq:54}
+  \Psi^{\mp}_{n}(x)\equiv e^{-nr_{\mp}(x)}-e^{-nxr_{\mp}'(0)}
+\end{equation}
+With these notations we can write the free energy as
+\begin{multline}
+  \label{eq:55}
+  f=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n}e^{-n\varepsilon\varphi(b-a)}\left[\varepsilon^{2}\sum_{i=0}^{N-1}e^{-n\varepsilon
+    i r_{-}'(0)}\sum_{j=0}^{M-1}e^{-n\varepsilon j
+    r_{+}'(0)}+\varepsilon\sum_{i=0}^{N-1}e^{-n\varepsilon i
+    r_{-}'(0)}\varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon)+\right.\\
+\left. +\varepsilon\sum_{i=0}^{N-1}\Psi^{-}_{n}(i\varepsilon) \cdot\varepsilon\sum_{j=0}^{M-1}e^{-n\varepsilon
+  j r_{+}'(0)}+\varepsilon\sum_{i=0}^{N-1}\Psi^{-}_{n}(i\varepsilon)
+\cdot\varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon)\right]=\\
+=f^{(0)}+f^{+}+f^{-}+f^{\times}
+\end{multline}
+The first term $f^{(0)}$ can be computed explicitly as
+\begin{equation}
+  \label{eq:56}
+  f^{(0)}=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n} e^{-n\varepsilon
+    \varphi(b-a)}\varepsilon^{2}\frac{\left(1-e^{-n b r_{-}'(0)}\right)\left(1-e^{-n a
+        r_{+}'(0)}\right)}{\left(1-e^{-n\varepsilon r_{-}'(0)}\right)\left(1-e^{-n\varepsilon r_{+}'(0)}\right)}
+\end{equation}
+
+Denote by $H_{n}(\varepsilon)$ the numerator of this expression:
+\begin{equation}
+  \label{eq:57}
+  H_{n}(\varepsilon)=\left(1-e^{-n b r_{-}'(0)}\right)\left(1-e^{-n a r_{+}'(0)}\right)
+\end{equation}
+Note that
+\begin{equation}
+  \label{eq:58}
+  r_{\mp}'(0)=\varphi(b-a)\mp \frac{\varepsilon}{2} \varphi'(b-a)+\frac{\varepsilon^{2}}{12} \varphi''(b-a)+\mathcal{O}(\varepsilon^{3})
+\end{equation}
+can be rewritten as
+\begin{equation}
+  \label{eq:59}
+  r_{\mp}'(0)=\varphi(b-a)\left(1+\alpha_{\mp}(\varepsilon)\right), 
+\end{equation}
+where
+\begin{equation}
+  \label{eq:60}
+  \alpha_{\mp}(\varepsilon)=\mp
+  \frac{\varepsilon}{2}\frac{\varphi'(b-a)}{\varphi(b-a)}+\frac{\varepsilon^{2}}{12} \frac{\varphi''(b-a)}{\varphi(b-a)}+\mathcal{O}(\varepsilon^{3})
+\end{equation}
+
+Now for $f^{(0)}$ we have
+\begin{equation}
+  \label{eq:61}
+  f^{(0)}=\frac{1}{ab}\sum_{n=1}^{\infty} \frac{\tilde{\chi}\left(n\varepsilon
+      \varphi(b-a),\varepsilon\right) }{n^{3}\varphi(b-a)^{2}},
+\end{equation}
+where $\tilde{\chi}(z,\varepsilon)$  is defined as
+\begin{equation}
+  \label{eq:62}
+  \tilde{\chi}(z,\varepsilon)\equiv \frac{z^{2} e^{-z}
+    H_{n}(\varepsilon)}{\left(1-e^{-z\left(1+\alpha_{-}(\varepsilon)\right)}\right)
+    \left(1-e^{-z\left(1+\alpha_{+}(\varepsilon)\right)}\right)} 
+\end{equation}
+It is important to include $H_{n}(\varepsilon)$ since $H_{n}(\varepsilon)$ contains decaying
+exponents in $n$.
+
+Taking the derivatives of $f^{(0)}$ in $\varepsilon$ we get
+\begin{multline}
+  \label{eq:63}
+  \left(\frac{d}{d\varepsilon}\right)^{2} f^{(0)}=\frac{1}{ab\varphi(b-a)} \sum_{n=1}^{\infty}
+  \frac{1}{n^{3}}\left[
+    \left.\tilde{\chi}''_{\varepsilon\varepsilon}\left(n\varepsilon\varphi(b-a),\varepsilon\right)\right|_{\varepsilon=0}+
+    2n\varphi(b-a)\left.\tilde{\chi}''_{z\varepsilon}\left(n\varepsilon\varphi(b-a),\varepsilon\right)\right|_{\varepsilon=0}+\right.\\\left.
+      n^{2}\left(\varphi(b-a)\right)^{2}\tilde{\chi}''_{zz}\left(n\varepsilon\varphi(b-a),\varepsilon\right)  \right]+
+    \mathcal{O}(\varepsilon \ln \varepsilon)=\\
+    =\frac{1}{ab\varphi(b-a)}\left[\sum_{n=1}^{\infty} \frac{1}{n^{3}}
+      \tilde{\chi}''_{\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\tilde{\chi}''_{z\varepsilon}(0,0)\right]+
+    \\
+    +\frac{1}{ab}\sum_{n=1}^{\infty}\frac{H_{n}}{n}\chi''\left(n\varepsilon\varphi(b-a)\right)+\mathcal{O}(\varepsilon\ln \varepsilon),
+\end{multline}
+where
+\begin{equation}
+  \label{eq:64}
+  \chi(z)=\frac{z^{2} e^{-z}}{\left(1-e^{-z}\right)^{2}}
+\end{equation}
+and
+\begin{equation}
+  \label{eq:65}
+  H_{n}=\left(1-e^{-nb\varphi(b-a)}\right) \left(1-e^{-na\varphi(b-a)}\right)
+\end{equation}
+
+The last sum in the last line of the equation \eqref{eq:63} is the same as in the section
+\ref{sec:gener-other-doma}, thus we can compute it:
+\begin{equation}
+  \label{eq:66}
+  \frac{1}{ab}\sum_{n=1}^{\infty}\frac{H_{n}}{n}\chi''\left(n\varepsilon \varphi(b-a)\right)=
+  \frac{1}{ab}\left(\frac{1}{6}\ln \varepsilon +\frac{1}{6}\ln \varphi(b-a)+ \int_{0}^{\infty}
+    e^{-z}q(z) \dz+\chi''(0)\sum_{n=1}^{\infty}\frac{H_{n}-1}{n}\right),
+\end{equation}
+where $q(z)$ was defined in the equation
+
+Now we need to consider other terms in the expression \eqref{eq:55}. For $f^{+}$ we have
+\begin{equation}
+  \label{eq:67}
+  f^{+}=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n} e^{-n\varepsilon\varphi(b-a)} \varepsilon
+  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}\varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon)
+\end{equation}
+The sum over $j$ can be approximated by an integral using Euler-Maclaurin formula as
+\begin{equation}
+  \label{eq:68}
+  \varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon) = \int_{0}^{a}\Psi^{+}_{n}(x) \dx -
+  \frac{\varepsilon}{2}\left(\Psi^{+}_{n}(a)-\Psi^{+}_{n}(0)\right)+
+  \frac{\varepsilon^{2}}{12}\left(\Psi^{+'}_{n}(a)-\Psi^{+}_{n}(0)\right)+
+  \mathcal{O}\left(\varepsilon^{m}\Psi^{+(m-1)}_{n}\right)
+\end{equation}
+Since
+$\Psi_{n}(x)=e^{-nr'(0)x}\left(e^{-n\left(r(x)-xr'(0)\right)}-1\right)=e^{-nxr'(0)}\left(e^{-nx^{2}\zeta(x)}-1\right)$
+we see that $\Psi_{n}(0)=0$ and $\Psi_{n}'(0)=0$.
+Than in the limit $n\to\infty$ we have
+\begin{equation}
+  \label{eq:69}
+  \int_{0}^{c}\Psi_{n}(x)
+  \dx \xrightarrow[n\to\infty]{}\int_{0}^{c}e^{-nxr'(0)}\left(-nx^{2}\zeta(x)+\dots\right)\sim \frac{1}{n^{2}}
+\end{equation}
+The derivatives of $\Psi$ behave as $\Psi_{n}^{(m)}(0)\sim n^{m-1}$ so the contribution from
+$\varepsilon^{m}\Psi_{n}^{(m-1)}(0)$ to $f^{+}$ gives us
+\begin{equation}
+  \label{eq:70}
+  \sum_{n=1}^{\infty} \frac{1}{n} e^{-n\varepsilon\varphi(b-a)}
+  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}} \varepsilon^{m+1}\Psi_{n}^{(m-1)}(0)\sim
+  \sum_{n=1}^{\infty} \frac{1}{n^{4}} e^{-n\varepsilon\varphi(b-a)}
+  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}} (\varepsilon n )^{m+1}
+\end{equation}
+For the second derivative in $\varepsilon$ we thus see that main contribution behaves as
+$\sum_{n=1}\frac{1}{n^{2}}e^{-n\varepsilon\varphi(b-a)}
+  (n\varepsilon)^{m+1}\xrightarrow[\varepsilon\to 0]{}0$
+if $m\geq 3$. For the terms with $m=0,1,2$ we need to
+take the limit $\varepsilon\to 0$. Doing so, we obtain
+\begin{equation}
+  \label{eq:71}
+  \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =
+  \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
+  e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}
+  \left(\varphi\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon^{2} \Psi_{n}^{+}(a) +\varepsilon^{3}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}
+\end{equation}
+
+The contribution of $f^{-}$ is computed in exactly the same way:
+\begin{equation}
+  \label{eq:72}
+  \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =
+  \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
+  e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nar_{+}'(0)}}{1-e^{-n\varepsilon r_{+}'(0)}}
+  \left(\varphi\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon^{2} \Psi_{n}^{-}(a) +\varepsilon^{3}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}
+\end{equation}
+At last, we need to consider $f^{\times}$. In this term we can just take a limit $\varepsilon\to 0$
+and obtain
+\begin{multline}
+  \label{eq:73}
+  \left.\left(\frac{d}{d\varepsilon}\right)^{2}
+    f^{\times}\right|_{\varepsilon=0}=\left.\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n}
+  \left(\frac{d}{d\varepsilon^{2}}\right)^{2}\left(\int_{0}^{b}\Psi^{-}_{n}(x)\dx
+    -\frac{\varepsilon}{2}\Psi^{-}_{n}(b)+\frac{\varepsilon^{2}}{12}\Psi^{-'}_{n}(b)\right)\cdot\right.\\
+\cdot\left.\left(\int_{0}^{a}\Psi^{+}_{n}(x)\dx-\frac{\varepsilon}{2}\Psi^{+}_{n}(a)+
+    \frac{\varepsilon^{2}}{12}\Psi^{+}_{n}(a)\right)\right|_{\varepsilon=0} 
+\end{multline}
+This expression is easily computed explicitly, but is too cumbersome to present it here. 
 %%  
 %%  If we assume that $\varphi(b-a)\neq 0$, we can again obtain function $\chi(z)$:
 %%  \begin{multline}
