@@ -1,5 +1,3 @@
-
-
 \documentclass{article}
 \usepackage{hyperref}
 \usepackage{graphicx}
@@ -10,7 +8,7 @@
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
 
 
-
+\newtheorem{lemma}{Lemma}
 \newtheorem{Def}{Definition}[section]
 \newtheorem{theorem}{Theorem}
 \newtheorem{statement}{Statement}
@@ -20,6 +18,7 @@
 
 \newcommand{\Li}{\mathrm{Li}}
 \newcommand{\dx}{\mathrm{dx}~}
+\newcommand{\dxb}{\mathrm{d\bar x}~}
 \newcommand{\dy}{\mathrm{dy}~}
 \newcommand{\dz}{\mathrm{dz}}
 
@@ -509,7 +508,7 @@ for the coefficients $f_{0}, f_{1}, f_{2}, f_{3}$:
 \end{equation}
 \begin{equation}
   \label{eq:8}
-  f_{0}=0
+  f_{1}=0
 \end{equation}
 \begin{equation}
   \label{eq:9}
@@ -569,8 +568,39 @@ Now let us again consider free energy dependence on $\varepsilon$:
   \left(1-e^{\varepsilon \varphi(b-a)}e^{-\varepsilon\sum_{k=0}^{i}\varphi\left(b-a-k\varepsilon\right)}
     e^{-\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)} \right)
 \end{equation}
-Expand the logarithm, change the order of summation and rewrite the free energy in the same way as
-we did before:
+
+The terms $f_{0}$  in the asymptotic expansion \eqref{eq:26} can be easily obtained from
+this expression. To do so we need to approximate the sums by the integrals, using
+$\sum_{k=0}^{i}\varepsilon\varphi(b-a-k\varepsilon)\approx
+\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx$%%!!!!! Write more here
+and similar approximation for the outer sums:
+\begin{multline}
+  \label{eq:74}
+  f_{0}=-\frac{1}{ab}\int_{0}^{b}\int_{0}^{a}\ln
+  \left(1-e^{-\int_{0}^{y}\varphi\left(b-a-x\right)\dx}
+    e^{-\int_{0}^{z}\varphi\left(b-a+\bar x\right)\dxb} \right)\dz\dy=\\
+  =-\frac{1}{ab}\int_{0}^{b}\int_{0}^{a}\ln
+  \left(1-e^{-\int_{-y}^{z}\varphi\left(b-a+x\right)\dx} \right)\dz\dy
+\end{multline}
+Substituting in this expression $\varphi(x)\equiv 1$ we immediately get formula \eqref{eq:6}, since
+polylogarithms are integrals of logarithms. Although the logarithm has a divergency in the point
+$y=z=0$, it disappears after double integration.
+
+To compute the term $f_{1}$ we can use the following simple Lemma:
+\begin{lemma}
+  For an integrable function $f$ and smooth analytic function $\varphi$ the sum is approximated by
+  an integral with corrections  of order $\mathcal{o}(\varepsilon)$:
+  \begin{equation}
+    \label{eq:75}
+    \sum_{i=0}^{M}\sum_{j=0}^{N}\varepsilon^{2}f\left(\varepsilon\sum_{k=-i}^{j}\varphi(k\varepsilon)\right)=
+    \int_{0}^{a}\int_{0}^{b}f\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\dy+o(\varepsilon)
+  \end{equation}
+
+\end{lemma}
+
+To derive the expressions for higher order terms of the expansion \eqref{eq:26} we need to expand
+the logarithm, change the order of summation and rewrite the free energy in the same way as we did
+before:
 \begin{equation}
   \label{eq:22}
    f=\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{n\varepsilon
@@ -588,6 +618,8 @@ Now we again can factorize double sum into product of two sums:
 where we assume that $\sum_{k=1}^{0}\varphi(b-a-k\varepsilon)=0$ and
 $\sum_{l=1}^{0}\varphi(b-a+l\varepsilon)=0$. Note that for $\varphi(t)\equiv 1$ we recover formula
 \eqref{eq:4}.
+
+
 
 Introduce following notations:
 \begin{equation}
