@@ -588,19 +588,80 @@ $y=z=0$, it disappears after double integration.
 
 To compute the term $f_{1}$ we can use the following simple Lemma:
 \begin{lemma}
-  For an integrable function $f$ and smooth analytic function $\varphi$ the sum is approximated by
-  an integral with corrections  of order $\mathcal{o}(\varepsilon)$:
+  Let $a=M\varepsilon$ and $b=N\varepsilon$.
+  For an integrable almost everywhere analytic function $f$ and analytic function $\varphi$ the sum is approximated by
+  an integral with the corrections  of order $o(\varepsilon)$:
   \begin{equation}
     \label{eq:75}
-    \sum_{i=0}^{M}\sum_{j=0}^{N}\varepsilon^{2}f\left(\varepsilon\sum_{k=-i}^{j}\varphi(k\varepsilon)\right)=
-    \int_{0}^{a}\int_{0}^{b}f\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\dy+o(\varepsilon)
+    \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\varepsilon\sum_{k=-i}^{j}\varphi(k\varepsilon)\right)=
+    \int_{0}^{a}\int_{0}^{b}f\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\;\dy+o(\varepsilon)
   \end{equation}
+\begin{proof}
+  Use Euler-Maclaurin formula to approximate the sums by the integrals with corrections. It is
+  enough to consider linear in $\varepsilon$ terms. First use
+  it for the sum in the argument of function $f$:
+  \begin{equation}
+    \label{eq:76}
+    \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\varepsilon\sum_{k=-i}^{j}\varphi(k\varepsilon)\right)=
+    \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\int_{-i\varepsilon}^{j\varepsilon}\varphi(x)\dx+\frac{\varepsilon}{2}\left(\varphi(j\varepsilon)-\varphi(-i\varepsilon)\right)+\mathcal{O}(\varepsilon^{2})\right)\dz\dy
+  \end{equation}
+  For a double sum the following simple analogue of Euler-Maclaurin formula can be used. 
+Let $G$ be an analytic function in the rectangle $[0,a]\times[0,b]$, then
+\begin{equation}
+  \label{eq:77}
+  \int_{0}^{a} \int_{0}^{b}G(y,z) \dz\; \dy\;
+  \approx\sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\left\{\varepsilon^{2}G\left(i\varepsilon,j\varepsilon\right)+
+    \frac{\varepsilon^{3}}{2}\left((\partial_{y}+\partial_{z})G\right)(i\varepsilon,j\varepsilon)\right\}+o(\varepsilon^{2})
+\end{equation}
+This formula can be easily derived by dividing the volume of integration into squares with side
+$\varepsilon$ and substituting Taylor series for $G$ into integrals.
 
+Denote by $G_{\varepsilon}(y,z)$ the function of two arguments that appear in the double sum in \eqref{eq:76}:
+\begin{equation}
+  \label{eq:78}
+  G_{\varepsilon}(y,z)=f\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)
+\end{equation}
+Use formula \eqref{eq:77} to express the double sum in \eqref{eq:76} as the integral plus correction:
+\begin{equation}
+  \label{eq:79}
+  \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}G_{\varepsilon}(i\varepsilon,j\varepsilon)=\int_{0}^{a}\int_{0}^{b}
+  G_{\varepsilon}(y,z)\dz\;\dy-
+  \frac{\varepsilon^{3}}{2}
+  \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\left((\partial_{y}+\partial_{z})G_{\varepsilon}\right)(i\varepsilon,j\varepsilon)+o(\varepsilon^{3}) 
+\end{equation}
+Now expand the function $G_{\varepsilon}(y,z)$ under integral into Taylor series in $\varepsilon$:
+\begin{equation}
+  \label{eq:80}
+  \int_{0}^{a}\int_{0}^{b}G_{\varepsilon}(y,z)\dz\;\dy=
+  \int_{0}^{a}\int_{0}^{b}G_{0}(y,z)\dz\;\dy+\int_{0}^{a}\int_{0}^{b}\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))\cdot f'\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\;\dy+o(\varepsilon)
+\end{equation}
+On the other hand, the derivatives of $G_{\varepsilon}$ in $y,z$ are computed as
+\begin{eqnarray}
+  \label{eq:81}
+  \partial_{z}G_{\varepsilon}(y,z)=f'\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)\varphi(z)+o(\varepsilon)\\
+  \partial_{y}G_{\varepsilon}(y,z)=-f'\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)\varphi(-y)+o(\varepsilon)
+\end{eqnarray}
+Substituting equations \eqref{eq:80},\eqref{eq:81} into \eqref{eq:79} and using formula
+\eqref{eq:77} to change the double sum of the derivatives of $G_{\varepsilon}$ into double integral,
+we see that the linear correction in $\varepsilon$ is cancelled. 
+
+\end{proof}
 \end{lemma}
 
-To derive the expressions for higher order terms of the expansion \eqref{eq:26} we need to expand
-the logarithm, change the order of summation and rewrite the free energy in the same way as we did
-before:
+
+Using this lemma for our free energy density $f$, which is analytic and $\varphi$ which is smooth,
+we instantly see that 
+\begin{equation}
+  \label{eq:82}
+  f_{1}=0  
+\end{equation}
+
+Next terms in the asymptotic expansion require more care, since we need to single out the
+contribution of the order $\varepsilon^{2}\ln\varepsilon$.
+
+Thus, to derive the expressions for higher order terms of the expansion \eqref{eq:26} we need to
+expand the logarithm, change the order of summation and rewrite the free energy in the same way as
+we did before:
 \begin{equation}
   \label{eq:22}
    f=\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{n\varepsilon
@@ -632,11 +693,15 @@ The functions $r_{\mp}$ can be approximated using Euler-Maclaurin formula as:
   r_{\mp}(x)\approx\int_{0}^{x}\varphi(b-a\mp y) \dy +\frac{\varepsilon}{2}\left(\varphi(b-a\mp
     x)-\varphi(b-a)\right)\mp \frac{\varepsilon^{2}}{12}\left(\varphi'(b-a\mp x)-\varphi'(b-a)\right)
 \end{equation}
-Denote by $\Psi$ the following functions:
+Denote by $\Psi_{n}^{\mp}$ the following functions:
 \begin{equation}
   \label{eq:54}
-  \Psi^{\mp}_{n}(x)\equiv e^{-nr_{\mp}(x)}-e^{-nxr_{\mp}'(0)}
+  \Psi^{\mp}_{n}(x)\equiv e^{-nr_{\mp}(x)}-e^{-nxr_{\mp}'(0)}.
 \end{equation}
+These functions are analytic in $\varepsilon$, moreover, the higher derivatives of $\Psi^{\mp}_{n}$
+grow in $n$ not too rapidly. Thus, the sums of the series written in terms of these functions and
+their derivatives converge, as we will see below.
+
 With these notations we can write the free energy as
 \begin{multline}
   \label{eq:55}
@@ -745,7 +810,10 @@ The sum over $j$ can be approximated by an integral using Euler-Maclaurin formul
   \mathcal{O}\left(\varepsilon^{m}\Psi^{+(m-1)}_{n}\right)
 \end{equation}
 Since
-$\Psi_{n}(x)=e^{-nr'(0)x}\left(e^{-n\left(r(x)-xr'(0)\right)}-1\right)=e^{-nxr'(0)}\left(e^{-nx^{2}\zeta(x)}-1\right)$
+\begin{equation}
+  \label{eq:83}
+\Psi_{n}(x)=e^{-nr'(0)x}\left(e^{-n\left(r(x)-xr'(0)\right)}-1\right)=e^{-nxr'(0)}\left(e^{-nx^{2}\zeta(x)}-1\right)  
+\end{equation}
 we see that $\Psi_{n}(0)=0$ and $\Psi_{n}'(0)=0$.
 Than in the limit $n\to\infty$ we have
 \begin{equation}
@@ -753,7 +821,9 @@ Than in the limit $n\to\infty$ we have
   \int_{0}^{c}\Psi_{n}(x)
   \dx \xrightarrow[n\to\infty]{}\int_{0}^{c}e^{-nxr'(0)}\left(-nx^{2}\zeta(x)+\dots\right)\sim \frac{1}{n^{2}}
 \end{equation}
-The derivatives of $\Psi$ behave as $\Psi_{n}^{(m)}(0)\sim n^{m-1}$ so the contribution from
+The derivatives of $\Psi$ behave as $\Psi_{n}^{(m)}(0)\sim n^{m-1}$, since the derivatives should
+fall on the bracket in the expression \eqref{eq:83} for the value to be non-zero, and then extra
+power of $x$ is produced, which in turn should be differentiated. So the contribution from
 $\varepsilon^{m}\Psi_{n}^{(m-1)}(0)$ to $f^{+}$ gives us
 \begin{equation}
   \label{eq:70}
@@ -772,8 +842,10 @@ take the limit $\varepsilon\to 0$. Doing so, we obtain
   \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}
-  \left(\varphi\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon^{2} \Psi_{n}^{+}(a) +\varepsilon^{3}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}
+  \left(\varepsilon\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon^{2} \Psi_{n}^{+}(a) +\varepsilon^{3}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}
 \end{equation}
+Note that $\frac{\varepsilon}{1-\exp(-n\varepsilon r'_{-}(0))}$ is analytic in $\varepsilon$. 
+The derivative can be computed explicitly, but the expression is too long to present it here.
 
 The contribution of $f^{-}$ is computed in exactly the same way:
 \begin{equation}
@@ -781,7 +853,7 @@ The contribution of $f^{-}$ is computed in exactly the same way:
   \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nar_{+}'(0)}}{1-e^{-n\varepsilon r_{+}'(0)}}
-  \left(\varphi\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon^{2} \Psi_{n}^{-}(a) +\varepsilon^{3}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}
+ \left(\varepsilon\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon^{2} \Psi_{n}^{-}(a) +\varepsilon^{3}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}
 \end{equation}
 At last, we need to consider $f^{\times}$. In this term we can just take a limit $\varepsilon\to 0$
 and obtain
@@ -794,7 +866,7 @@ and obtain
 \cdot\left.\left(\int_{0}^{a}\Psi^{+}_{n}(x)\dx-\frac{\varepsilon}{2}\Psi^{+}_{n}(a)+
     \frac{\varepsilon^{2}}{12}\Psi^{+}_{n}(a)\right)\right|_{\varepsilon=0} 
 \end{multline}
-This expression is easily computed explicitly, but is too cumbersome to present it here. 
+Again, this expression is easily computed explicitly, but is too cumbersome to present it here. 
 %%  
 %%  If we assume that $\varphi(b-a)\neq 0$, we can again obtain function $\chi(z)$:
 %%  \begin{multline}
@@ -807,43 +879,43 @@ This expression is easily computed explicitly, but is too cumbersome to present 
 %%  \end{multline}
 %%
 
-We need to separate contributions of different orders in $\varepsilon$ and keep only the terms up to
-$\varepsilon^{2}$. To do so we expand the exponent
-\begin{equation}
-  \label{eq:35}
-e^{-n\varepsilon\varphi(b-a)}\approx
-1-n\varepsilon\varphi(b-a)+\frac{1}{2}n^{2}\varepsilon^{2}\varphi^{2}(b-a)+\mathcal{O}(\varepsilon^{3})  ,
-\end{equation}
-and approximate the sums by integrals using Euler-Maclaurin formula.
-
-The sum $\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)$ can be approximated using
-Euler-Maclaurin formula:
-\begin{multline}
-  \label{eq:25}
-  \varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)=\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx
-  +\frac{\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)+\\
-  +\frac{1}{12}\varepsilon^{2}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)+\mathcal{O}(\varepsilon^{3})
-\end{multline}
-
-Substituting into the exponent and expanding we get:
-\begin{multline}
-  \label{eq:34}
-  e^{-n\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)}\approx e^{-n\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx
-  -n\frac{\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)
-  -n\frac{1}{12}\varepsilon^{2}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)}\approx\\
-\approx e^{-n\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx}\left[1-\frac{n\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)+\right.\\\left.
-  +\varepsilon^{2}\left(\frac{n^{2}}{8} \left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)^{2}-\frac{n}{12}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)\right)+\mathcal{O}(\varepsilon^{3})\right]
-\end{multline}
-Similarly, the expression for the second exponent is
-\begin{multline}
-  \label{eq:36}
- e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\approx e^{-n\int_{0}^{j\varepsilon}\varphi(b-a+x)\dx}\left[1-\frac{n\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a+j\varepsilon)\right)+\right.\\\left.
-  +\varepsilon^{2}\left(\frac{n^{2}}{8} \left(\varphi(b-a)+\varphi(b-a+j\varepsilon)\right)^{2}-\frac{n}{12}\left(\varphi'(b-a+j\varepsilon)-\varphi'(b-a)\right)\right)+\mathcal{O}(\varepsilon^{3})\right]  
-\end{multline}
-
-Now we need to substitute this expansion and formula \eqref{eq:35} into our formula for free energy
-\eqref{eq:23}. 
-
+%% We need to separate contributions of different orders in $\varepsilon$ and keep only the terms up to
+%% $\varepsilon^{2}$. To do so we expand the exponent
+%% \begin{equation}
+%%   \label{eq:35}
+%% e^{-n\varepsilon\varphi(b-a)}\approx
+%% 1-n\varepsilon\varphi(b-a)+\frac{1}{2}n^{2}\varepsilon^{2}\varphi^{2}(b-a)+\mathcal{O}(\varepsilon^{3})  ,
+%% \end{equation}
+%% and approximate the sums by integrals using Euler-Maclaurin formula.
+%% 
+%% The sum $\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)$ can be approximated using
+%% Euler-Maclaurin formula:
+%% \begin{multline}
+%%   \label{eq:25}
+%%   \varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)=\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx
+%%   +\frac{\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)+\\
+%%   +\frac{1}{12}\varepsilon^{2}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)+\mathcal{O}(\varepsilon^{3})
+%% \end{multline}
+%% 
+%% Substituting into the exponent and expanding we get:
+%% \begin{multline}
+%%   \label{eq:34}
+%%   e^{-n\varepsilon\sum_{k=1}^{i}\varphi\left(b-a-k\varepsilon\right)}\approx e^{-n\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx
+%%   -n\frac{\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)
+%%   -n\frac{1}{12}\varepsilon^{2}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)}\approx\\
+%% \approx e^{-n\int_{0}^{i\varepsilon}\varphi(b-a-x)\dx}\left[1-\frac{n\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)+\right.\\\left.
+%%   +\varepsilon^{2}\left(\frac{n^{2}}{8} \left(\varphi(b-a)+\varphi(b-a-i\varepsilon)\right)^{2}-\frac{n}{12}\left(\varphi'(b-a-i\varepsilon)-\varphi'(b-a)\right)\right)+\mathcal{O}(\varepsilon^{3})\right]
+%% \end{multline}
+%% Similarly, the expression for the second exponent is
+%% \begin{multline}
+%%   \label{eq:36}
+%%  e^{-n\varepsilon\sum_{l=1}^{j}\varphi\left(b-a+l\varepsilon\right)}\approx e^{-n\int_{0}^{j\varepsilon}\varphi(b-a+x)\dx}\left[1-\frac{n\varepsilon}{2}\left(\varphi(b-a)+\varphi(b-a+j\varepsilon)\right)+\right.\\\left.
+%%   +\varepsilon^{2}\left(\frac{n^{2}}{8} \left(\varphi(b-a)+\varphi(b-a+j\varepsilon)\right)^{2}-\frac{n}{12}\left(\varphi'(b-a+j\varepsilon)-\varphi'(b-a)\right)\right)+\mathcal{O}(\varepsilon^{3})\right]  
+%% \end{multline}
+%% 
+%% Now we need to substitute this expansion and formula \eqref{eq:35} into our formula for free energy
+%% \eqref{eq:23}. 
+%% 
 
 \section*{Conclusion and outlook}
 \label{sec:conclusion}
