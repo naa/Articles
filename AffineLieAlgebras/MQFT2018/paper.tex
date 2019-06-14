@@ -344,12 +344,19 @@ The sum is then rewritten
   \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(0)+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}   
 \end{equation}
 The first term is series for the logarithm $\ln\left(1-e^{-\varepsilon}\right)\approx \ln
-\varepsilon$,
-the second term can approximated by the integral:
+\varepsilon$. 
+Denote by $Q(z)$ the difference of the function $\xi$ value in $z$ and zero, divided by z:
+\begin{equation}
+  \label{eq:85}
+  Q(z)=\frac{\xi(z)-\xi(0)}{z}.
+\end{equation}
+The function $Q(z)$ is analytic in $z$.
+
+Then the second term can approximated by the integral:
 \begin{equation}
   \label{eq:50}
-  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}\approx
-  \int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz
+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}Q(n\varepsilon)=\varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}\approx
+  \int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz=\int_{0}^{\infty}e^{-z}Q(z)\dz
 \end{equation}
 \begin{equation}
   \label{eq:51}
@@ -387,7 +394,7 @@ Thus we have the coefficients
 and
 \begin{equation}
   \label{eq:29}
-  f_{3}=-\frac{1}{2(ab+bc+ca)}\left[\frac{1}{12}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\frac{1}{8}+ \frac{1}{2}\int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz
+  f_{3}=-\frac{1}{2(ab+bc+ca)}\left[\frac{1}{12}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\frac{1}{8}+ \frac{1}{2}\int_{0}^{\infty} e^{-z}Q(z) dz
     \right].
 \end{equation}
 
@@ -454,7 +461,7 @@ The function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$ is smooth and but some care is requ
 limit $z\to 0$ numerically. Evaluating the integral numerically with Mathematica we get
 \begin{equation}
   \label{eq:2}
-  \int_{0}^{\infty}e^{-z}\frac{\xi(z)-\xi(0)}{z} dz = -0.08084228607897521
+  \int_{0}^{\infty}e^{-z}Q(z)\dz=\int_{0}^{\infty}e^{-z}\frac{\xi(z)-\xi(0)}{z} dz = -0.080842%0.08084228607897521
 \end{equation}
 
 The asymptotic expansion \eqref{eq:26} gives very good approximation for free energy. In Figure
@@ -770,11 +777,11 @@ Taking the derivatives of $f^{(0)}$ in $\varepsilon$ we get
       n^{2}\left(\varphi(b-a)\right)^{2}\tilde{\chi}''_{zz}\left(n\varepsilon\varphi(b-a),\varepsilon\right)  \right]+
     \mathcal{O}(\varepsilon \ln \varepsilon)=\\
     =\frac{1}{ab\varphi(b-a)}\left[\sum_{n=1}^{\infty} \frac{1}{n^{3}}
-      \tilde{\chi}''_{\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\tilde{\chi}''_{z\varepsilon}(0,0)\right]+
+      \tilde{\chi}''_{\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\frac{1}{n^{2}}\tilde{\chi}''_{z\varepsilon}(0,0)\right]+
     \\
     +\frac{1}{ab}\sum_{n=1}^{\infty}\frac{H_{n}}{n}\chi''\left(n\varepsilon\varphi(b-a)\right)+\mathcal{O}(\varepsilon\ln \varepsilon),
 \end{multline}
-where
+where the function $\chi(z)$ is the same as in the equation \eqref{eq:39}
 \begin{equation}
   \label{eq:64}
   \chi(z)=\frac{z^{2} e^{-z}}{\left(1-e^{-z}\right)^{2}}
@@ -787,13 +794,24 @@ and
 
 The last sum in the last line of the equation \eqref{eq:63} is the same as in the section
 \ref{sec:gener-other-doma}, thus we can compute it:
-\begin{equation}
+\begin{multline}
   \label{eq:66}
   \frac{1}{ab}\sum_{n=1}^{\infty}\frac{H_{n}}{n}\chi''\left(n\varepsilon \varphi(b-a)\right)=
   \frac{1}{ab}\left(\frac{1}{6}\ln \varepsilon +\frac{1}{6}\ln \varphi(b-a)+ \int_{0}^{\infty}
-    e^{-z}q(z) \dz+\chi''(0)\sum_{n=1}^{\infty}\frac{H_{n}-1}{n}\right),
+    e^{-z}Q(z) \dz+\chi''(0)\sum_{n=1}^{\infty}\frac{H_{n}-1}{n}\right)=\\
+  =\frac{1}{ab}\left(\frac{1}{6}\ln \varepsilon +\frac{1}{6}\ln \varphi(b-a)+ \int_{0}^{\infty}
+    e^{-z}Q(z) \dz+\frac{1}{6}\ln\left(\frac{\left(1-e^{a\varphi(b-a)}\right)\left(1-e^{a\varphi(b-a)}\right)}{1-e^{(a+b)\varphi(b-a)}}\right)\right),
+\end{multline}
+where $Q(z)$ was defined in the equation \eqref{eq:85}.
+
+Thus the contribution of $f^{(0)}$ to the asymptotic expansion \eqref{eq:26} consists of the term 
+\begin{equation}
+  \label{eq:87}
+f^{(0)}_{3}=\frac{1}{ab\varphi(b-a)}\left[\sum_{n=1}^{\infty} \frac{1}{n^{3}}
+  \tilde{\chi}''_{\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\frac{1}{n^{2}}\tilde{\chi}''_{z\varepsilon}(0,0)\right],
 \end{equation}
-where $q(z)$ was defined in the equation
+that is cumbersome but does not depend on $\varepsilon$ and can be computed explicitly and the
+expression \eqref{eq:66}, which gives us logarithmic behavior in $\varepsilon$.
 
 Now we need to consider other terms in the expression \eqref{eq:55}. For $f^{+}$ we have
 \begin{equation}
@@ -839,7 +857,7 @@ if $m\geq 3$. For the terms with $m=0,1,2$ we need to
 take the limit $\varepsilon\to 0$. Doing so, we obtain
 \begin{equation}
   \label{eq:71}
-  \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =
+  f^{+}_{3}\equiv\left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}
   \left(\varepsilon\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon^{2} \Psi_{n}^{+}(a) +\varepsilon^{3}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}
@@ -850,7 +868,7 @@ The derivative can be computed explicitly, but the expression is too long to pre
 The contribution of $f^{-}$ is computed in exactly the same way:
 \begin{equation}
   \label{eq:72}
-  \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =
+   f^{-}_{3}\equiv \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nar_{+}'(0)}}{1-e^{-n\varepsilon r_{+}'(0)}}
  \left(\varepsilon\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon^{2} \Psi_{n}^{-}(a) +\varepsilon^{3}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}
@@ -859,14 +877,78 @@ At last, we need to consider $f^{\times}$. In this term we can just take a limit
 and obtain
 \begin{multline}
   \label{eq:73}
-  \left.\left(\frac{d}{d\varepsilon}\right)^{2}
+   f^{\times}_{3}\equiv \left.\left(\frac{d}{d\varepsilon}\right)^{2}
     f^{\times}\right|_{\varepsilon=0}=\left.\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n}
   \left(\frac{d}{d\varepsilon^{2}}\right)^{2}\left(\int_{0}^{b}\Psi^{-}_{n}(x)\dx
     -\frac{\varepsilon}{2}\Psi^{-}_{n}(b)+\frac{\varepsilon^{2}}{12}\Psi^{-'}_{n}(b)\right)\cdot\right.\\
 \cdot\left.\left(\int_{0}^{a}\Psi^{+}_{n}(x)\dx-\frac{\varepsilon}{2}\Psi^{+}_{n}(a)+
     \frac{\varepsilon^{2}}{12}\Psi^{+}_{n}(a)\right)\right|_{\varepsilon=0} 
 \end{multline}
-Again, this expression is easily computed explicitly, but is too cumbersome to present it here. 
+Again, this expression is easily computed explicitly, but is too cumbersome to present it here.
+
+At last we can write the asymptotic expansion coefficients in the present case:
+\begin{equation}
+  \label{eq:84}
+  f_{0}= -\frac{1}{ab}\int_{0}^{b}\int_{0}^{a}\ln
+  \left(1-e^{-\int_{-y}^{z}\varphi\left(b-a+x\right)\dx} \right)\dz\dy
+\end{equation}
+\begin{equation}
+  \label{eq:88}
+  f_{1}=0
+\end{equation}
+\begin{equation}
+  \label{eq:89}
+  f_{2}=\frac{1}{ab}\frac{1}{12}    
+\end{equation}
+\begin{multline}
+  \label{eq:90}
+  f_{3}=f^{(0)}_{3}+f^{+}_{3}+f^{-}_{3}+f^{\times}_{3}+
+  \frac{1}{ab}\frac{1}{12}\ln\left(\frac{\varphi(b-a)\left(1-e^{a\varphi(b-a)}\right)\left(1-e^{a\varphi(b-a)}\right)}{1-e^{(a+b)\varphi(b-a)}}\right)+\\
+  +\frac{1}{ab}\left(\frac{1}{8} +\frac{1}{2} \int_{0}^{\infty}
+    e^{-z}q(z) \dz\right),
+\end{multline}
+Here in the first line we have the contributions that depend on the choice of the weight function
+$\varphi$ and in the second line -- the universal contribution that appears in the case
+$\varphi\equiv 1$ and in the box of finite height.
+
+\subsection{Numerical checks}
+\label{sec:numerical-checks-nonuniform}
+Here we present results of comparison of numerical values of the expansion coefficients
+$f_{0},f_{1},f_{2},f_{3}$ that were obtained from analytical formulas
+\eqref{eq:84},\eqref{eq:88},\eqref{eq:89},\eqref{eq:90} using Mathematica computer algebra system
+with the results of fitting exact numeric values of free energy for $\frac{1}{\varepsilon}=2\dots
+200$
+by the formula $f=f_{0}+
+f_{1}\varepsilon+
+f_{2}\varepsilon^{2}\ln\varepsilon+f_{3}\varepsilon^{2}+f_{4}\varepsilon^{3}+f_{5}\varepsilon^{4}$. 
+
+In the table we present results for various functions $\varphi(z)$ and values of $a,b$.
+\begin{table}[htpb]
+\begin{center}
+\begin{tabular}{c|cccccc}
+  & $\varphi(z)$ & $a,b$ & $f_{0}$ &  $f_{1}$ &  $12ab f_{2}$ &  $f_{3}$ \\
+ \hline
+ analytic & $\frac{1}{3}(2+\cos(z))$ & 1,3 & $0.472206688$ & $0$ & $1$&$-0.043883000$\\
+ numeric & $\frac{1}{3}(2+\cos(z))$ & 1,3 &  $0.472206693$ & $0.000000730$ & $1.000730689$&$-0.043827958$\\
+  \hline
+ analytic & $\frac{1}{3}(2+\cos(z))$ & 2,3 & $0.235922467$ & $0$ & $1$&$-0.030398000$\\
+ numeric & $\frac{1}{3}(2+\cos(z))$ & 2,3 &  $0.235922467$ & $0.000000044$ & $1.000088528$&$-0.030394694$\\
+\hline                                                
+ analytic & $a+z/2$ & 1,3 & $0.097288596$ & $0$ & $1$&$-0.033688300$\\
+ numeric & $a+z/2$ & 1,3 &  $0.097288593$ & $0.000000848$ & $1.000848267$&$-0.033624441$\\
+\hline                                                
+ analytic & $a+z/2$ & 2,3 & $0.032804447$ & $0$ & $1$&$-0.015094000$\\
+ numeric & $a+z/2$ & 2,3 &  $0.032804447$ & $-0.000000002$ & $0.999996808$&$-0.015094162$\\
+\end{tabular}
+\caption{Values of the fitted parameters and analytically computed expansion coefficients for
+  various weight functions $\varphi$ and values of $a,b$.
+}
+\label{tttt1}
+\end{center}
+\end{table}
+
+We see very good coincidence between values, obtained numerically and analytically. 
+
 %%  
 %%  If we assume that $\varphi(b-a)\neq 0$, we can again obtain function $\chi(z)$:
 %%  \begin{multline}
@@ -925,17 +1007,16 @@ hexagonal domain of the hexagonal lattice. We've discussed the physical meaning 
 coefficients and argued that our results support the identification of the scaling behavior of the
 dimer model with the free-fermion field theory.
 
-In further work we will show the connection of the expansion coefficients with the spectral
-properties of Dirac operator on the non-frozen domain and study the universality of the presented
-expressions by considering the model on more generic domain geometries with the non-uniform
-Kasteleyn weighting with $q$ depending on the coordinate.
+In further work we will study the connection of the expansion coefficients with the spectral
+properties of Dirac operator on the non-frozen domain and study the universality of our results. We
+will also further discuss the description of the model by boundary conformal field theory.
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
-I am grateful to professor Nikolai Reshetikhin for his guidance in this work. I thank Pavel Belov
+We are grateful to professor Nikolai Reshetikhin for his attention to this work. We thank Pavel Belov
 for useful discussions and general support.
 
-I thank the organizers and participants of the conference MQFT-2018 for the opportunity
+We thank the organizers and participants of the conference MQFT-2018 for the opportunity
 to present our results and useful discussions.
 
 This research is supported by RFBR grant No. 18-01-00916.
