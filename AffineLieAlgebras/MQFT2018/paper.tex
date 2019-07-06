@@ -46,10 +46,10 @@
 
 \section*{Introduction}
 \label{sec:introduction}
-The dimer model appeared in attempt to extend a statistical theory of perfect solutions in chemistry
-to the case of liquid mixtures with molecules of two very distinct sizes \cite{Fowler-1937}. The
-molecules were represented by the rigid tiles on a lattice and the number of tilings was
-approximately estimated. But an exact computation was not accessible at the time.
+The dimer model appeared in 1937 in an attempt to extend a statistical theory of perfect solutions
+in chemistry to the case of liquid mixtures with molecules of two very distinct sizes
+\cite{Fowler-1937}. The molecules were represented by the rigid tiles on a lattice and the number of
+tilings was approximately estimated. But an exact computation was not accessible at the time.
 
 In 1961, Kasteleyn \cite{P.W-1961}, Temperley and Fisher \cite{doi:10.1080/14786436108243366}
 represented the partition function of the dimer model as a Pfaffian of the signed adjacency matrix
@@ -85,16 +85,20 @@ not considered previously. These corrections are important to close the gap betw
 simulations and theoretical results.
 
 We consider a particular case of the dimer model on a hexagonal domain of hexagonal lattice, that
-can be seen as a ``pile of cubes in the corner''. The energy of configuration is the total number of
-cubes. For this particular case we use an exact combinatorial formula for the partition function to
-derive the expressions for scaling limit of free energy and first three terms of the finite-size
-corrections. We show that the first term is identically zero. The second term is geometry-dependent
-and is written explicitly in terms of elementary functions. The third term which encapsulates
-logarithmic dependence on the mesh size is connected with the central charge of the effective field
-theory.
+can be seen as a ``pile of cubes in the corner of the box''. The energy of configuration is the
+total number of cubes. For this particular case we use an exact combinatorial formula for the
+partition function to derive the expressions for scaling limit of free energy and first three terms
+of the finite-size corrections. We show that the first term is identically zero. The second term
+which encapsulates logarithmic dependence on the mesh size is connected with the central charge of
+the effective field theory and with the geometry of limit shape. The third term is
+geometry-dependent and is written explicitly in terms of elementary functions.
 
-This result is supported by numeric simulations presented in our previous publication
-\cite{1742-6596-1135-1-012024}.
+We then consider the box of infinite height and the case of coordinate-dependent Boltzmann weights.
+In these cases we are also able to write explicit expressions for finite-size corrections. We
+demonstrate the universality of the logarithmic term. 
+
+Our results are supported by numeric checks and Monte-Carlo simulations presented in our previous
+publication \cite{1742-6596-1135-1-012024}.
 
 \section{Model definition}
 \label{sec:model-definition}
@@ -117,14 +121,14 @@ Then the partition function is equal to the absolute value of the determinant of
 matrix\cite{P.W-1961,doi:10.1080/14786436108243366}: 
 \begin{equation}
   \label{eq:15}
-  Z=\sum_{\mathrm{conf}}\prod_{e\in \mathrm{conf}}w(e)=|\det {\cal K}|
+  Z=\sum_{\mathrm{conf}}\prod_{e\in \mathrm{conf}}w(e)=|\det {\cal K}|.
 \end{equation}
 
 Kasteleyn matrix defines a discrete Dirac operator $D$, the action of $D$ on a function $f$ defined
 on vertices is given by:
 \begin{equation}
   \label{eq:16}
-  (Df)(v)=\sum_{u}{\cal K}(v,u) f(u)
+  (Df)(v)=\sum_{u}{\cal K}(v,u) f(u).
 \end{equation}
 
 Kenyon \cite{kenyon2002laplacian,kenyon2000asymptotic} and others \cite{sridhar2015asymptotic}
@@ -174,7 +178,7 @@ For this particular case, the partition function is given by the classical Macma
 formula~\cite{vuletic2009generalization}
 \begin{equation}
   \label{eq:12}
-   Z[M,N,K,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\prod_{k=1}^{K}\frac{1-q^{i+j+k-1}}{1-q^{i+j+k-2}}
+   Z[M,N,K,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\prod_{k=1}^{K}\frac{1-q^{i+j+k-1}}{1-q^{i+j+k-2}}.
 \end{equation}
 
 
@@ -185,7 +189,7 @@ parts. Then take
 \begin{eqnarray}
   \label{eq:18}
   {\cal K}(w,b)=q^{\Re w+\Im w} \quad \mathrm{if}\quad \Im w=\Im b\\
-  {\cal K}(w,b)=1 \quad \mathrm{if}\quad \Im w\neq\Im b
+  {\cal K}(w,b)=1 \quad \mathrm{if}\quad \Im w\neq\Im b.
 \end{eqnarray}
 
 
@@ -194,12 +198,12 @@ The   free energy per site is defined as$^{*}$
 \begin{equation*}
   \label{eq:17}
   % \frac{f}{T}
-  f=-\frac{1}{V}\ln Z(M,N,K,q)
+  f=-\frac{1}{V}\ln Z(M,N,K,q).
 \end{equation*}
 Here $V$ is the number of vertices, it is twice the number of dimers and twice the number of  cube faces:
 \begin{equation}
   \label{eq:19}
-  V=2(MN+NK+MK)=2(ab+bc+ca) \varepsilon^{-2}
+  V=2(MN+NK+MK)=2(ab+bc+ca) \varepsilon^{-2}.
 \end{equation}
 
 We are interested in the scaling limit, combined with the thermodynamic limit, when $ T\to \infty,$
@@ -220,7 +224,7 @@ obtain
     %-\frac{f}{T}
     f=-\frac{1}{V}\ln Z =\\=- \sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K} \frac{1}{V}\left[
   \ln\left(1-e^{-\varepsilon (i+j+k-3)} e^{-2\varepsilon}\right) -\ln\left(1-e^{-\varepsilon
-      (i+j+k-3)} e^{-\varepsilon}\right)\right] 
+      (i+j+k-3)} e^{-\varepsilon}\right)\right].
 \end{multline}
 We need to notice that for a finite $\varepsilon$ and each value of $i,j,k$ the logarithms have the
 form $\ln(1-x)$, where $0<x<1$. Thus we can represent the logarithms as a power series of $x$ and
@@ -229,7 +233,7 @@ obtain
   \label{eq:7}
   f=-\sum_{i=1}^{M} \sum_{j=1}^{N} \sum_{k=1}^{K}\sum_{n=1}^{\infty}
   \frac{1}{V}\frac{1}{n}\left[-e^{-n\varepsilon (i+j+k-3)} e^{-2n\varepsilon}+e^{-n\varepsilon
-      (i+j+k-3)} e^{-n\varepsilon}\right] 
+      (i+j+k-3)} e^{-n\varepsilon}\right]. 
 \end{equation}
 Here we have an absolutely convergent series, so we can change the order of summation and rewrite
 the free energy as
@@ -237,7 +241,7 @@ the free energy as
   \label{eq:37}
   f=-\sum_{n=1}^{\infty}
   \frac{1}{V}\frac{1}{n}e^{-n\varepsilon}\left(1-e^{-n\varepsilon}\right)\sum_{i=1}^{M}
-  \sum_{j=1}^{N} \sum_{k=1}^{K}e^{-n\varepsilon (i+j+k-3)} 
+  \sum_{j=1}^{N} \sum_{k=1}^{K}e^{-n\varepsilon (i+j+k-3)} .
 \end{equation}
 The triple sum factorizes into the product of three sums of the type $\sum_{i=0}^{M-1}e^{-n\varepsilon
   i}$, that are just the
@@ -247,7 +251,7 @@ The triple sum factorizes into the product of three sums of the type $\sum_{i=0}
   \label{eq:38}
   f=-\sum_{n=1}^{\infty}
   \frac{1}{V}\frac{1}{n}\frac{e^{-n\varepsilon}}{\left(1-e^{-n\varepsilon}\right)^{2}}
-  \left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nb}\right) 
+  \left(1-e^{-na}\right)\left(1-e^{-nb}\right)\left(1-e^{-nb}\right).
 \end{equation}
 Denote by $\chi(z)$ the function
 \begin{equation}
@@ -263,13 +267,13 @@ and by $H_{n}$ the product of $\varepsilon$-independent exponents
 The function $\chi(z)$ is smooth in 0, even and has the following Taylor series:
 \begin{equation}
   \label{eq:45}
-  \chi(z)=1 - \frac{z^2}{12} + \frac{z^4}{240}+\mathcal{O}(z^{6})
+  \chi(z)=1 - \frac{z^2}{12} + \frac{z^4}{240}+\mathcal{O}(z^{6}).
 \end{equation}
 
 Using the definition of the volume \eqref{eq:19} the free energy is written as
 \begin{equation}
   \label{eq:41}
-  f=-\frac{1}{2(ab+bc+ca)} \sum _{n=1}^{\infty} \frac{\chi(n\varepsilon)}{n^{3}} H_{n}
+  f=-\frac{1}{2(ab+bc+ca)} \sum _{n=1}^{\infty} \frac{\chi(n\varepsilon)}{n^{3}} H_{n}.
 \end{equation}
 We are interested in the scaling behavior in $\varepsilon$ when $\varepsilon\to 0$. The function $f$
 is regular in $\varepsilon$ for $\varepsilon>0$. So we need to
@@ -284,7 +288,7 @@ $\mathrm{Li}_{s}(z)=\sum_{n=1}^{\infty}\frac{z^{n}}{n^{s}}$ of third order:
   \label{eq:42}
   \left.f\right|_{\varepsilon\to 0} =\frac{1}{2(ab+bc+ca)}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})+\Li_{3}(e^{-c})-
     \Li_{3}(e^{-a-b})\right.\\
-  \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right]
+  \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right].
 \end{multline}
 Here Riemann zeta function appears as a particular value of polylogarithm $\Li_{3}(1)=\zeta(3)$.
 
@@ -293,7 +297,7 @@ $\sum_{n=1}^{\infty} \frac{\chi'(n\varepsilon)}{n^{2}}H_{n}$ are convergent for 
 $\varepsilon$, thus we have for a derivative
 \begin{equation}
   \label{eq:43}
-\left.\frac{\partial f}{\partial \varepsilon}\right|_{\varepsilon\to 0}=0
+\left.\frac{\partial f}{\partial \varepsilon}\right|_{\varepsilon\to 0}=0.
 \end{equation}
 
 Now let us compute the second derivative
@@ -317,7 +321,7 @@ as a combination of series for logarithms:
   \label{eq:47}
   \chi''(0)\sum_{n=1}^{\infty} \frac{H_{n}-1}{n}=\\=\chi''(0)\sum_{n=1}^{\infty}\frac{1}{n}\left(-e^{-a
       n-b n-c n}+e^{-a n-b n}+e^{-a n-c n}+e^{-b n-c n} - e^{-a n}-e^{-b n}-e^{-c n}\right)=\\
-  =\frac{1}{6}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)
+  =\frac{1}{6}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right).
 %%  =\frac{1}{6} \left(-\log \left(1-e^{-a-b-c}\right)+\log
 %%   \left(1-e^{-a-b}\right)+\log
 %%   \left(1-e^{-a-c}\right)+\log
@@ -334,14 +338,14 @@ derivative of $\chi(z)$, separate an exponent and denote what is left by $\xi(z)
   \chi''(z)=e^{-z}\frac{e^{2 z} \left(z^2+4 e^z
    \left(z^2-1\right)+e^{2 z} \left(z^2-4
    z+2\right)+4
-   z+2\right)}{\left(e^z-1\right)^4}=e^{-z}\xi(z)
+   z+2\right)}{\left(e^z-1\right)^4}=e^{-z}\xi(z).
 \end{equation}
 The sum is then rewritten
 \begin{equation}
   \label{eq:49}
   \sum _{n=1}^{\infty} \frac{\chi''(n\varepsilon)}{n}=
   \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(n\varepsilon) =
-  \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(0)+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}   
+  \sum_{n=1}^{\infty}\frac{e^{-n\varepsilon}}{n}\xi(0)+  \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}.
 \end{equation}
 The first term is series for the logarithm $\ln\left(1-e^{-\varepsilon}\right)\approx \ln
 \varepsilon$. 
@@ -356,13 +360,13 @@ Then the second term can approximated by the integral:
 \begin{equation}
   \label{eq:50}
   \varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}Q(n\varepsilon)=\varepsilon\sum_{n=1}^{\infty}e^{-n\varepsilon}\frac{\xi(n\varepsilon)-\xi(0)}{n\varepsilon}\approx
-  \int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz=\int_{0}^{\infty}e^{-z}Q(z)\dz
+  \int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz=\int_{0}^{\infty}e^{-z}Q(z)\dz.
 \end{equation}
 \begin{equation}
   \label{eq:51}
   \frac{\partial^{2} f}{\partial
   \varepsilon^{2}}\approx-\frac{1}{2(ab+bc+ca)}
-\left[\frac{1}{6}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\frac{1}{6}\ln \varepsilon+\int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz\right]
+\left[\frac{1}{6}\ln\left(\frac{(e^{a}-1)(e^{b}-1)(e^{c}-1)(e^{a+b+c}-1)}{(e^{a+b}-1)(e^{b+c}-1)(e^{a+c}-1)}\right)-\frac{1}{6}\ln \varepsilon+\int_{0}^{\infty} e^{-z}\frac{\xi(z)-\xi(0)}{z} dz\right].
 \end{equation}
 Since we have logarithmic term in the second derivative, we have the behavior of free energy of the form
 \begin{equation}
@@ -379,10 +383,8 @@ Thus we have the coefficients
   \label{eq:27}
   f_{0}=\frac{1}{2(ab+bc+ca)}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})+\Li_{3}(e^{-c})-
     \Li_{3}(e^{-a-b})\right.\\
-  \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right]
+  \left.-\Li_{3}(e^{-b-c})-    \Li_{3}(e^{-a-c})+    \Li_{3}(e^{-a-b-c})-\zeta(3)\right],
 \end{multline}
-
-
 \begin{equation}
   \label{eq:28}
   f_{1}=0,
@@ -448,11 +450,11 @@ ${\bf c}=\frac{1}{2}$. This value is in agreement with the identification of the
 free fermions in the paper \cite{dijkgraaf2009dimer}.
 
 The last term $f_{3}$ depends only on the shape of the domain through $a,b,c$ with a universal
-contribution that is equal to the integral of a function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$. We conjecture
-this constant will appear even for a different choice of Kasteleyn weighting, due to the treatment
-of logarithmic divergency. In the future work we will consider coordinate dependent values of $q$
-and more complex geometries, as was done in the paper \cite{okounkov2007random}, to check this
-suggestion.
+contribution that is equal to the integral of a function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$. In the
+next sections we show that this constant appear even for a different choice of Kasteleyn weighting,
+due to the treatment of logarithmic divergency. In the last section work we consider coordinate
+dependent values of $q$ and more complex geometries can be treated similarly as was done in the
+paper \cite{okounkov2007random}.
 
 \section{Numeric checks}
 \label{sec:numeric-checks}
@@ -461,7 +463,7 @@ The function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$ is smooth and but some care is requ
 limit $z\to 0$ numerically. Evaluating the integral numerically with Mathematica we get
 \begin{equation}
   \label{eq:2}
-  \int_{0}^{\infty}e^{-z}Q(z)\dz=\int_{0}^{\infty}e^{-z}\frac{\xi(z)-\xi(0)}{z} dz = -0.080842%0.08084228607897521
+  \int_{0}^{\infty}e^{-z}Q(z)\dz=\int_{0}^{\infty}e^{-z}\frac{\xi(z)-\xi(0)}{z} dz = -0.080842.%0.08084228607897521
 \end{equation}
 
 The asymptotic expansion \eqref{eq:26} gives very good approximation for free energy. In Figure
@@ -487,7 +489,7 @@ number of dimers is infinite, so it is more natural to set the volume of the sys
 Putting $K=\infty$ in the partition function, we see that all terms with $k$ are cancelled and we have
 \begin{equation}
   \label{eq:3}
-  Z[M,N,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\frac{1}{1-q^{i+j-1}}
+  Z[M,N,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\frac{1}{1-q^{i+j-1}}.
 \end{equation}
 
 The computation of free energy is almost exactly the same as in finite box case. We expand the
@@ -496,7 +498,7 @@ logarithm in the free energy and then factorize the sum:
   \label{eq:4}
   f=-\frac{1}{MN}\sum_{i=1}^{M}\sum_{j=1}^{N}\ln\left(1-e^{-\varepsilon(i+j-2)}e^{-\varepsilon}\right)=\\
   =\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{-n\varepsilon}\left(\sum_{i=1}^{M}e^{-n\varepsilon(i-1)}\right)
-  \left(\sum_{j=1}^{N}e^{-n\varepsilon(j-1)}\right)
+  \left(\sum_{j=1}^{N}e^{-n\varepsilon(j-1)}\right).
 \end{multline}
 Computing the sums of geometric progressions we obtain almost the same expression as \eqref{eq:38},
 except that $H_{n}$ now has two multipliers $H_{n} =\left(1-e^{-na}\right)\left(1-e^{-nb}\right)$:
@@ -511,15 +513,15 @@ for the coefficients $f_{0}, f_{1}, f_{2}, f_{3}$:
 \begin{equation}
   \label{eq:6}
   f_{0}=\frac{1}{ab}\left[\Li_{3}(e^{-a})+\Li_{3}(e^{-b})-
-    \Li_{3}(e^{-a-b})-\zeta(3)\right]
+    \Li_{3}(e^{-a-b})-\zeta(3)\right],
 \end{equation}
 \begin{equation}
   \label{eq:8}
-  f_{1}=0
+  f_{1}=0,
 \end{equation}
 \begin{equation}
   \label{eq:9}
-  f_{2}=\frac{1}{ab}\frac{1}{12}
+  f_{2}=\frac{1}{ab}\frac{1}{12},
 \end{equation}
 \begin{equation}
   \label{eq:11}
@@ -563,7 +565,7 @@ presented in the paper \cite{okounkov2007random}. In this case it contains produ
 $q_{i}$ for slices with negative and positive indexes:
 \begin{equation}
   \label{eq:13}
-  Z=\prod_{i=0}^{N-1}\prod_{j=0}^{M-1} \frac{1}{1-q_{N-M}^{-1}\left(\prod_{k=0}^{i}q_{N-M-k}\right)\left(\prod_{l=0}^{j}q_{N-M+l}\right)}
+  Z=\prod_{i=0}^{N-1}\prod_{j=0}^{M-1} \frac{1}{1-q_{N-M}^{-1}\left(\prod_{k=0}^{i}q_{N-M-k}\right)\left(\prod_{l=0}^{j}q_{N-M+l}\right)}.
 \end{equation}
 (see Theorem 2 in \cite{okounkov2007random}).
 If we set $q_{i}=q$, we recover formula \eqref{eq:3}.
@@ -573,7 +575,7 @@ Now let us again consider free energy dependence on $\varepsilon$:
   \label{eq:21}
   f=-\frac{\varepsilon^{2}}{ab}\sum_{i=0}^{N-1}\sum_{j=0}^{M-1}\ln
   \left(1-e^{\varepsilon \varphi(b-a)}e^{-\varepsilon\sum_{k=0}^{i}\varphi\left(b-a-k\varepsilon\right)}
-    e^{-\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)} \right)
+    e^{-\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)} \right).
 \end{equation}
 
 The terms $f_{0}$  in the asymptotic expansion \eqref{eq:26} can be easily obtained from
@@ -587,7 +589,7 @@ and similar approximation for the outer sums:
   \left(1-e^{-\int_{0}^{y}\varphi\left(b-a-x\right)\dx}
     e^{-\int_{0}^{z}\varphi\left(b-a+\bar x\right)\dxb} \right)\dz\dy=\\
   =-\frac{1}{ab}\int_{0}^{b}\int_{0}^{a}\ln
-  \left(1-e^{-\int_{-y}^{z}\varphi\left(b-a+x\right)\dx} \right)\dz\dy
+  \left(1-e^{-\int_{-y}^{z}\varphi\left(b-a+x\right)\dx} \right)\dz\dy.
 \end{multline}
 Substituting in this expression $\varphi(x)\equiv 1$ we immediately get formula \eqref{eq:6}, since
 polylogarithms are integrals of logarithms. Although the logarithm has a divergency in the point
@@ -601,7 +603,7 @@ To compute the term $f_{1}$ we can use the following simple Lemma:
   \begin{equation}
     \label{eq:75}
     \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\varepsilon\sum_{k=-i}^{j}\varphi(k\varepsilon)\right)=
-    \int_{0}^{a}\int_{0}^{b}f\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\;\dy+o(\varepsilon)
+    \int_{0}^{a}\int_{0}^{b}f\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\;\dy+o(\varepsilon).
   \end{equation}
 \begin{proof}
   Use Euler-Maclaurin formula to approximate the sums by the integrals with corrections. It is
@@ -610,7 +612,7 @@ To compute the term $f_{1}$ we can use the following simple Lemma:
   \begin{equation}
     \label{eq:76}
     \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\varepsilon\sum_{k=-i}^{j}\varphi(k\varepsilon)\right)=
-    \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\int_{-i\varepsilon}^{j\varepsilon}\varphi(x)\dx+\frac{\varepsilon}{2}\left(\varphi(j\varepsilon)-\varphi(-i\varepsilon)\right)+\mathcal{O}(\varepsilon^{2})\right)\dz\dy
+    \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}f\left(\int_{-i\varepsilon}^{j\varepsilon}\varphi(x)\dx+\frac{\varepsilon}{2}\left(\varphi(j\varepsilon)-\varphi(-i\varepsilon)\right)+\mathcal{O}(\varepsilon^{2})\right).
   \end{equation}
   For a double sum the following simple analogue of Euler-Maclaurin formula can be used. 
 Let $G$ be an analytic function in the rectangle $[0,a]\times[0,b]$, then
@@ -618,7 +620,7 @@ Let $G$ be an analytic function in the rectangle $[0,a]\times[0,b]$, then
   \label{eq:77}
   \int_{0}^{a} \int_{0}^{b}G(y,z) \dz\; \dy\;
   \approx\sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\left\{\varepsilon^{2}G\left(i\varepsilon,j\varepsilon\right)+
-    \frac{\varepsilon^{3}}{2}\left((\partial_{y}+\partial_{z})G\right)(i\varepsilon,j\varepsilon)\right\}+o(\varepsilon^{2})
+    \frac{\varepsilon^{3}}{2}\left((\partial_{y}+\partial_{z})G\right)(i\varepsilon,j\varepsilon)\right\}+o(\varepsilon^{2}).
 \end{equation}
 This formula can be easily derived by dividing the volume of integration into squares with side
 $\varepsilon$ and substituting Taylor series for $G$ into integrals.
@@ -626,7 +628,7 @@ $\varepsilon$ and substituting Taylor series for $G$ into integrals.
 Denote by $G_{\varepsilon}(y,z)$ the function of two arguments that appear in the double sum in \eqref{eq:76}:
 \begin{equation}
   \label{eq:78}
-  G_{\varepsilon}(y,z)=f\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)
+  G_{\varepsilon}(y,z)=f\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right).
 \end{equation}
 Use formula \eqref{eq:77} to express the double sum in \eqref{eq:76} as the integral plus correction:
 \begin{equation}
@@ -634,19 +636,20 @@ Use formula \eqref{eq:77} to express the double sum in \eqref{eq:76} as the inte
   \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\varepsilon^{2}G_{\varepsilon}(i\varepsilon,j\varepsilon)=\int_{0}^{a}\int_{0}^{b}
   G_{\varepsilon}(y,z)\dz\;\dy-
   \frac{\varepsilon^{3}}{2}
-  \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\left((\partial_{y}+\partial_{z})G_{\varepsilon}\right)(i\varepsilon,j\varepsilon)+o(\varepsilon^{3}) 
+  \sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\left((\partial_{y}+\partial_{z})G_{\varepsilon}\right)(i\varepsilon,j\varepsilon)+o(\varepsilon^{3}).
 \end{equation}
 Now expand the function $G_{\varepsilon}(y,z)$ under integral into Taylor series in $\varepsilon$:
 \begin{equation}
   \label{eq:80}
   \int_{0}^{a}\int_{0}^{b}G_{\varepsilon}(y,z)\dz\;\dy=
-  \int_{0}^{a}\int_{0}^{b}G_{0}(y,z)\dz\;\dy+\int_{0}^{a}\int_{0}^{b}\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))\cdot f'\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\;\dy+o(\varepsilon)
+  \int_{0}^{a}\int_{0}^{b}G_{0}(y,z)\dz\;\dy+\int_{0}^{a}\int_{0}^{b}\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))\cdot
+  f'\left(\int_{-y}^{z}\varphi(x)\dx\right)\dz\;\dy+o(\varepsilon). 
 \end{equation}
 On the other hand, the derivatives of $G_{\varepsilon}$ in $y,z$ are computed as
 \begin{eqnarray}
   \label{eq:81}
-  \partial_{z}G_{\varepsilon}(y,z)=f'\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)\varphi(z)+o(\varepsilon)\\
-  \partial_{y}G_{\varepsilon}(y,z)=-f'\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)\varphi(-y)+o(\varepsilon)
+  \partial_{z}G_{\varepsilon}(y,z)=f'\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)\varphi(z)+o(\varepsilon)\\ 
+  \partial_{y}G_{\varepsilon}(y,z)=-f'\left(\int_{-y}^{z}\varphi(x)\dx+\frac{\varepsilon}{2}(\varphi(z)-\varphi(-y))+o(\varepsilon)\right)\varphi(-y)+o(\varepsilon).
 \end{eqnarray}
 Substituting equations \eqref{eq:80},\eqref{eq:81} into \eqref{eq:79} and using formula
 \eqref{eq:77} to change the double sum of the derivatives of $G_{\varepsilon}$ into double integral,
@@ -660,7 +663,7 @@ Using this lemma for our free energy density $f$, which is analytic and $\varphi
 we instantly see that 
 \begin{equation}
   \label{eq:82}
-  f_{1}=0  
+  f_{1}=0.
 \end{equation}
 
 Next terms in the asymptotic expansion require more care, since we need to single out the
@@ -673,7 +676,7 @@ we did before:
   \label{eq:22}
    f=\sum_{n=1}^{\infty}\frac{\varepsilon^{2}}{ab}\frac{1}{n}e^{n\varepsilon
      \varphi(b-a)}\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} e^{-n\varepsilon\sum_{k=0}^{i}\varphi\left(b-a-k\varepsilon\right)}
-    e^{-n\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)}
+    e^{-n\varepsilon\sum_{l=0}^{j}\varphi\left(b-a+l\varepsilon\right)}.
 \end{equation}
 Now we again can factorize double sum into product of two sums:
 \begin{equation}
@@ -692,13 +695,13 @@ $\sum_{l=1}^{0}\varphi(b-a+l\varepsilon)=0$. Note that for $\varphi(t)\equiv 1$ 
 Introduce following notations:
 \begin{equation}
   \label{eq:52}
-  r_{\mp}(i\varepsilon)\equiv\varepsilon\sum_{k=1}^{i}\varphi(b-a\mp k\varepsilon)
+  r_{\mp}(i\varepsilon)\equiv\varepsilon\sum_{k=1}^{i}\varphi(b-a\mp k\varepsilon).
 \end{equation}
 The functions $r_{\mp}$ can be approximated using Euler-Maclaurin formula as:
 \begin{equation}
   \label{eq:53}
   r_{\mp}(x)\approx\int_{0}^{x}\varphi(b-a\mp y) \dy +\frac{\varepsilon}{2}\left(\varphi(b-a\mp
-    x)-\varphi(b-a)\right)\mp \frac{\varepsilon^{2}}{12}\left(\varphi'(b-a\mp x)-\varphi'(b-a)\right)
+    x)-\varphi(b-a)\right)\mp \frac{\varepsilon^{2}}{12}\left(\varphi'(b-a\mp x)-\varphi'(b-a)\right).
 \end{equation}
 Denote by $\Psi_{n}^{\mp}$ the following functions:
 \begin{equation}
@@ -719,25 +722,25 @@ With these notations we can write the free energy as
 \left. +\varepsilon\sum_{i=0}^{N-1}\Psi^{-}_{n}(i\varepsilon) \cdot\varepsilon\sum_{j=0}^{M-1}e^{-n\varepsilon
   j r_{+}'(0)}+\varepsilon\sum_{i=0}^{N-1}\Psi^{-}_{n}(i\varepsilon)
 \cdot\varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon)\right]=\\
-=f^{(0)}+f^{+}+f^{-}+f^{\times}
+=f^{(0)}+f^{+}+f^{-}+f^{\times}.
 \end{multline}
 The first term $f^{(0)}$ can be computed explicitly as
 \begin{equation}
   \label{eq:56}
   f^{(0)}=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n} e^{-n\varepsilon
     \varphi(b-a)}\varepsilon^{2}\frac{\left(1-e^{-n b r_{-}'(0)}\right)\left(1-e^{-n a
-        r_{+}'(0)}\right)}{\left(1-e^{-n\varepsilon r_{-}'(0)}\right)\left(1-e^{-n\varepsilon r_{+}'(0)}\right)}
+        r_{+}'(0)}\right)}{\left(1-e^{-n\varepsilon r_{-}'(0)}\right)\left(1-e^{-n\varepsilon r_{+}'(0)}\right)}.
 \end{equation}
 
 Denote by $H_{n}(\varepsilon)$ the numerator of this expression:
 \begin{equation}
   \label{eq:57}
-  H_{n}(\varepsilon)=\left(1-e^{-n b r_{-}'(0)}\right)\left(1-e^{-n a r_{+}'(0)}\right)
+  H_{n}(\varepsilon)=\left(1-e^{-n b r_{-}'(0)}\right)\left(1-e^{-n a r_{+}'(0)}\right).
 \end{equation}
 Note that
 \begin{equation}
   \label{eq:58}
-  r_{\mp}'(0)=\varphi(b-a)\mp \frac{\varepsilon}{2} \varphi'(b-a)+\frac{\varepsilon^{2}}{12} \varphi''(b-a)+\mathcal{O}(\varepsilon^{3})
+  r_{\mp}'(0)=\varphi(b-a)\mp \frac{\varepsilon}{2} \varphi'(b-a)+\frac{\varepsilon^{2}}{12} \varphi''(b-a)+\mathcal{O}(\varepsilon^{3}).
 \end{equation}
 can be rewritten as
 \begin{equation}
@@ -748,23 +751,23 @@ where
 \begin{equation}
   \label{eq:60}
   \alpha_{\mp}(\varepsilon)=\mp
-  \frac{\varepsilon}{2}\frac{\varphi'(b-a)}{\varphi(b-a)}+\frac{\varepsilon^{2}}{12} \frac{\varphi''(b-a)}{\varphi(b-a)}+\mathcal{O}(\varepsilon^{3})
+  \frac{\varepsilon}{2}\frac{\varphi'(b-a)}{\varphi(b-a)}+\frac{\varepsilon^{2}}{12} \frac{\varphi''(b-a)}{\varphi(b-a)}+\mathcal{O}(\varepsilon^{3}).
 \end{equation}
 
 Now for $f^{(0)}$ we have
 \begin{equation}
   \label{eq:61}
-  f^{(0)}=\frac{1}{ab}\sum_{n=1}^{\infty} \frac{\tilde{\chi}\left(n\varepsilon
+  f^{(0)}=\frac{1}{ab}\sum_{n=1}^{\infty} \frac{\tilde{\chi}_{n}\left(n\varepsilon
       \varphi(b-a),\varepsilon\right) }{n^{3}\varphi(b-a)^{2}},
 \end{equation}
-where $\tilde{\chi}(z,\varepsilon)$  is defined as
+where $\tilde{\chi}_{n}(z,\varepsilon)$  is defined as
 \begin{equation}
   \label{eq:62}
-  \tilde{\chi}(z,\varepsilon)\equiv \frac{z^{2} e^{-z}
+  \tilde{\chi}_{n}(z,\varepsilon)\equiv \frac{z^{2} e^{-z}
     H_{n}(\varepsilon)}{\left(1-e^{-z\left(1+\alpha_{-}(\varepsilon)\right)}\right)
-    \left(1-e^{-z\left(1+\alpha_{+}(\varepsilon)\right)}\right)} 
+    \left(1-e^{-z\left(1+\alpha_{+}(\varepsilon)\right)}\right)}.
 \end{equation}
-It is important to include $H_{n}(\varepsilon)$ since $H_{n}(\varepsilon)$ contains decaying
+It is important to include $H_{n}(\varepsilon)$, since $H_{n}(\varepsilon)$ contains decaying
 exponents in $n$.
 
 Taking the derivatives of $f^{(0)}$ in $\varepsilon$ we get
@@ -772,12 +775,12 @@ Taking the derivatives of $f^{(0)}$ in $\varepsilon$ we get
   \label{eq:63}
   \left(\frac{d}{d\varepsilon}\right)^{2} f^{(0)}=\frac{1}{ab\varphi(b-a)} \sum_{n=1}^{\infty}
   \frac{1}{n^{3}}\left[
-    \left.\tilde{\chi}''_{\varepsilon\varepsilon}\left(n\varepsilon\varphi(b-a),\varepsilon\right)\right|_{\varepsilon=0}+
-    2n\varphi(b-a)\left.\tilde{\chi}''_{z\varepsilon}\left(n\varepsilon\varphi(b-a),\varepsilon\right)\right|_{\varepsilon=0}+\right.\\\left.
-      n^{2}\left(\varphi(b-a)\right)^{2}\tilde{\chi}''_{zz}\left(n\varepsilon\varphi(b-a),\varepsilon\right)  \right]+
+    \left.\tilde{\chi}''_{n,\varepsilon\varepsilon}\left(n\varepsilon\varphi(b-a),\varepsilon\right)\right|_{\varepsilon=0}+
+    2n\varphi(b-a)\left.\tilde{\chi}''_{n,z\varepsilon}\left(n\varepsilon\varphi(b-a),\varepsilon\right)\right|_{\varepsilon=0}+\right.\\\left.
+      n^{2}\left(\varphi(b-a)\right)^{2}\tilde{\chi}''_{n,zz}\left(n\varepsilon\varphi(b-a),\varepsilon\right)  \right]+
     \mathcal{O}(\varepsilon \ln \varepsilon)=\\
     =\frac{1}{ab\varphi(b-a)}\left[\sum_{n=1}^{\infty} \frac{1}{n^{3}}
-      \tilde{\chi}''_{\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\frac{1}{n^{2}}\tilde{\chi}''_{z\varepsilon}(0,0)\right]+
+      \tilde{\chi}''_{n,\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\frac{1}{n^{2}}\tilde{\chi}''_{n,z\varepsilon}(0,0)\right]+
     \\
     +\frac{1}{ab}\sum_{n=1}^{\infty}\frac{H_{n}}{n}\chi''\left(n\varepsilon\varphi(b-a)\right)+\mathcal{O}(\varepsilon\ln \varepsilon),
 \end{multline}
@@ -789,7 +792,7 @@ where the function $\chi(z)$ is the same as in the equation \eqref{eq:39}
 and
 \begin{equation}
   \label{eq:65}
-  H_{n}=\left(1-e^{-nb\varphi(b-a)}\right) \left(1-e^{-na\varphi(b-a)}\right)
+  H_{n}=\left(1-e^{-nb\varphi(b-a)}\right) \left(1-e^{-na\varphi(b-a)}\right).
 \end{equation}
 
 The last sum in the last line of the equation \eqref{eq:63} is the same as in the section
@@ -808,7 +811,7 @@ Thus the contribution of $f^{(0)}$ to the asymptotic expansion \eqref{eq:26} con
 \begin{equation}
   \label{eq:87}
 f^{(0)}_{3}=\frac{1}{ab\varphi(b-a)}\left[\sum_{n=1}^{\infty} \frac{1}{n^{3}}
-  \tilde{\chi}''_{\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\frac{1}{n^{2}}\tilde{\chi}''_{z\varepsilon}(0,0)\right],
+  \tilde{\chi}''_{n,\varepsilon\varepsilon}(0,0)+2\varphi(b-a)\sum_{n=1}^{\infty}\frac{1}{n^{2}}\tilde{\chi}''_{n,z\varepsilon}(0,0)\right],
 \end{equation}
 that is cumbersome but does not depend on $\varepsilon$ and can be computed explicitly and the
 expression \eqref{eq:66}, which gives us logarithmic behavior in $\varepsilon$.
@@ -817,7 +820,7 @@ Now we need to consider other terms in the expression \eqref{eq:55}. For $f^{+}$
 \begin{equation}
   \label{eq:67}
   f^{+}=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n} e^{-n\varepsilon\varphi(b-a)} \varepsilon
-  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}\varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon)
+  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}\varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon).
 \end{equation}
 The sum over $j$ can be approximated by an integral using Euler-Maclaurin formula as
 \begin{equation}
@@ -825,19 +828,19 @@ The sum over $j$ can be approximated by an integral using Euler-Maclaurin formul
   \varepsilon\sum_{j=0}^{M-1}\Psi^{+}_{n}(j\varepsilon) = \int_{0}^{a}\Psi^{+}_{n}(x) \dx -
   \frac{\varepsilon}{2}\left(\Psi^{+}_{n}(a)-\Psi^{+}_{n}(0)\right)+
   \frac{\varepsilon^{2}}{12}\left(\Psi^{+'}_{n}(a)-\Psi^{+}_{n}(0)\right)+
-  \mathcal{O}\left(\varepsilon^{m}\Psi^{+(m-1)}_{n}\right)
+  \mathcal{O}\left(\varepsilon^{m}\Psi^{+(m-1)}_{n}\right).
 \end{equation}
-Since
+Since $r(x)$ is an analytic function and $r(0)=0$ we can write $r(x)=xr'(0)+x^{2}\zeta(x)$, so 
 \begin{equation}
   \label{eq:83}
 \Psi_{n}(x)=e^{-nr'(0)x}\left(e^{-n\left(r(x)-xr'(0)\right)}-1\right)=e^{-nxr'(0)}\left(e^{-nx^{2}\zeta(x)}-1\right)  
 \end{equation}
-we see that $\Psi_{n}(0)=0$ and $\Psi_{n}'(0)=0$.
+and we see that $\Psi_{n}(0)=0$ and $\Psi_{n}'(0)=0$.
 Than in the limit $n\to\infty$ we have
 \begin{equation}
   \label{eq:69}
   \int_{0}^{c}\Psi_{n}(x)
-  \dx \xrightarrow[n\to\infty]{}\int_{0}^{c}e^{-nxr'(0)}\left(-nx^{2}\zeta(x)+\dots\right)\sim \frac{1}{n^{2}}
+  \dx \xrightarrow[n\to\infty]{}\int_{0}^{c}e^{-nxr'(0)}\left(-nx^{2}\zeta(x)+\dots\right)\dx\sim \frac{1}{n^{2}}.
 \end{equation}
 The derivatives of $\Psi$ behave as $\Psi_{n}^{(m)}(0)\sim n^{m-1}$, since the derivatives should
 fall on the bracket in the expression \eqref{eq:83} for the value to be non-zero, and then extra
@@ -848,7 +851,7 @@ $\varepsilon^{m}\Psi_{n}^{(m-1)}(0)$ to $f^{+}$ gives us
   \sum_{n=1}^{\infty} \frac{1}{n} e^{-n\varepsilon\varphi(b-a)}
   \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}} \varepsilon^{m+1}\Psi_{n}^{(m-1)}(0)\sim
   \sum_{n=1}^{\infty} \frac{1}{n^{4}} e^{-n\varepsilon\varphi(b-a)}
-  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}} (\varepsilon n )^{m+1}
+  \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}} (\varepsilon n )^{m+1}.
 \end{equation}
 For the second derivative in $\varepsilon$ we thus see that main contribution behaves as
 $\sum_{n=1}\frac{1}{n^{2}}e^{-n\varepsilon\varphi(b-a)}
@@ -860,7 +863,7 @@ take the limit $\varepsilon\to 0$. Doing so, we obtain
   f^{+}_{3}\equiv\left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}
-  \left(\varepsilon\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon^{2} \Psi_{n}^{+}(a) +\varepsilon^{3}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}
+  \varepsilon\left(\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon \Psi_{n}^{+}(a) +\varepsilon^{2}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}.
 \end{equation}
 Note that $\frac{\varepsilon}{1-\exp(-n\varepsilon r'_{-}(0))}$ is analytic in $\varepsilon$. 
 The derivative can be computed explicitly, but the expression is too long to present it here.
@@ -871,10 +874,19 @@ The contribution of $f^{-}$ is computed in exactly the same way:
    f^{-}_{3}\equiv \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nar_{+}'(0)}}{1-e^{-n\varepsilon r_{+}'(0)}}
- \left(\varepsilon\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon^{2} \Psi_{n}^{-}(a) +\varepsilon^{3}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}
+ \varepsilon\left(\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon \Psi_{n}^{-}(a) +\varepsilon^{2}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}.
 \end{equation}
-At last, we need to consider $f^{\times}$. In this term we can just take a limit $\varepsilon\to 0$
-and obtain
+At last, we need to consider
+$f^{\times}=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n}e^{-n\varepsilon\varphi(b-a)}\varepsilon\sum_{i=0}^{N-1}\Psi_{n}^{-}(i\varepsilon)
+\sum_{j=0}^{M-1}\Psi_{n}^{+}(j\varepsilon)$. Analyzing the contributions of the derivatives
+$\Psi_{n}^{(m)}(0)$, similarly to the discussion before the formula \eqref{eq:70}, we see that
+$\varepsilon^{m}\Psi_{n}^{(m-1)}(0)\sim \frac{1}{n^{2}}$. Thus
+\[\sum_{n=1}^{\infty}\frac{1}{n}e^{-n\varepsilon\varphi(b-a)}\frac{1}{n^{2}}\varepsilon^{m}\Psi_{n}^{(m-1)}(0)\sim
+\sum_{n=1}^{\infty}\frac{1}{n^{5}}e^{-n\varepsilon\varphi(b-a)}(\varepsilon n)^{m},\] and these terms
+give zero contribution after the derivative $\left(\frac{d}{d\varepsilon}\right)^{2}$ for
+$\varepsilon\to 0 $ and $m\geq 3$. The same holds for all the contributions with the derivatives of
+$\Psi$ in the both sums. In the terms with $m<3$ we can just take a double derivative over
+$\varepsilon$ and limit $\varepsilon\to 0$ and obtain
 \begin{multline}
   \label{eq:73}
    f^{\times}_{3}\equiv \left.\left(\frac{d}{d\varepsilon}\right)^{2}
@@ -882,7 +894,7 @@ and obtain
   \left(\frac{d}{d\varepsilon^{2}}\right)^{2}\left(\int_{0}^{b}\Psi^{-}_{n}(x)\dx
     -\frac{\varepsilon}{2}\Psi^{-}_{n}(b)+\frac{\varepsilon^{2}}{12}\Psi^{-'}_{n}(b)\right)\cdot\right.\\
 \cdot\left.\left(\int_{0}^{a}\Psi^{+}_{n}(x)\dx-\frac{\varepsilon}{2}\Psi^{+}_{n}(a)+
-    \frac{\varepsilon^{2}}{12}\Psi^{+}_{n}(a)\right)\right|_{\varepsilon=0} 
+    \frac{\varepsilon^{2}}{12}\Psi^{+}_{n}(a)\right)\right|_{\varepsilon=0}.
 \end{multline}
 Again, this expression is easily computed explicitly, but is too cumbersome to present it here.
 
@@ -890,16 +902,17 @@ At last we can write the asymptotic expansion coefficients in the present case:
 \begin{equation}
   \label{eq:84}
   f_{0}= -\frac{1}{ab}\int_{0}^{b}\int_{0}^{a}\ln
-  \left(1-e^{-\int_{-y}^{z}\varphi\left(b-a+x\right)\dx} \right)\dz\dy
+  \left(1-e^{-\int_{-y}^{z}\varphi\left(b-a+x\right)\dx} \right)\dz\dy,
 \end{equation}
 \begin{equation}
   \label{eq:88}
-  f_{1}=0
+  f_{1}=0,
 \end{equation}
 \begin{equation}
   \label{eq:89}
-  f_{2}=\frac{1}{ab}\frac{1}{12}    
+  f_{2}=\frac{1}{ab}\frac{1}{12}
 \end{equation}
+and
 \begin{multline}
   \label{eq:90}
   f_{3}=f^{(0)}_{3}+f^{+}_{3}+f^{-}_{3}+f^{\times}_{3}+
@@ -907,7 +920,7 @@ At last we can write the asymptotic expansion coefficients in the present case:
   +\frac{1}{ab}\left(\frac{1}{8} +\frac{1}{2} \int_{0}^{\infty}
     e^{-z}q(z) \dz\right),
 \end{multline}
-Here in the first line we have the contributions that depend on the choice of the weight function
+where in the first line we have the contributions that depend on the choice of the weight function
 $\varphi$ and in the second line -- the universal contribution that appears in the case
 $\varphi\equiv 1$ and in the box of finite height.
 
@@ -928,11 +941,11 @@ In the table we present results for various functions $\varphi(z)$ and values of
 \begin{tabular}{c|cccccc}
   & $\varphi(z)$ & $a,b$ & $f_{0}$ &  $f_{1}$ &  $12ab f_{2}$ &  $f_{3}$ \\
  \hline
- analytic & $\frac{1}{3}(2+\cos(z))$ & 1,3 & $0.472206688$ & $0$ & $1$&$-0.043883000$\\
- numeric & $\frac{1}{3}(2+\cos(z))$ & 1,3 &  $0.472206693$ & $0.000000730$ & $1.000730689$&$-0.043827958$\\
+ analytic & $(2+\cos(z))/3$ & 1,3 & $0.472206688$ & $0$ & $1$&$-0.043883000$\\
+ numeric & $(2+\cos(z))/3$ & 1,3 &  $0.472206693$ & $0.000000730$ & $1.000730689$&$-0.043827958$\\
   \hline
- analytic & $\frac{1}{3}(2+\cos(z))$ & 2,3 & $0.235922467$ & $0$ & $1$&$-0.030398000$\\
- numeric & $\frac{1}{3}(2+\cos(z))$ & 2,3 &  $0.235922467$ & $0.000000044$ & $1.000088528$&$-0.030394694$\\
+ analytic & $(2+\cos(z))/3$ & 2,3 & $0.235922467$ & $0$ & $1$&$-0.030398000$\\
+ numeric & $(2+\cos(z))/3$ & 2,3 &  $0.235922467$ & $0.000000044$ & $1.000088528$&$-0.030394694$\\
 \hline                                                
  analytic & $a+z/2$ & 1,3 & $0.097288596$ & $0$ & $1$&$-0.033688300$\\
  numeric & $a+z/2$ & 1,3 &  $0.097288593$ & $0.000000848$ & $1.000848267$&$-0.033624441$\\
@@ -1014,7 +1027,8 @@ will also further discuss the description of the model by boundary conformal fie
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
 We are grateful to professor Nikolai Reshetikhin for his attention to this work. We thank Pavel Belov
-for useful discussions and general support.
+for useful discussions and general support. We thank Mikhail Vyazovsky for pointing out a mistake in
+the first version of the paper. 
 
 We thank the organizers and participants of the conference MQFT-2018 for the opportunity
 to present our results and useful discussions.
