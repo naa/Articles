@@ -6,7 +6,7 @@
 \usepackage[russian,english]{babel}
 
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
-
+%\synctex=1
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{Def}{Definition}[section]
@@ -84,21 +84,29 @@ described by a Gaussian free-field theory \cite{kenyon2001dominos}, but finite-s
 not considered previously. These corrections are important to close the gap between numerical
 simulations and theoretical results.
 
-We consider a particular case of the dimer model on a hexagonal domain of hexagonal lattice, that
-can be seen as a ``pile of cubes in the corner of the box''. The energy of configuration is the
-total number of cubes. For this particular case we use an exact combinatorial formula for the
-partition function to derive the expressions for scaling limit of free energy and first three terms
-of the finite-size corrections. We show that the first term is identically zero. The second term
-which encapsulates logarithmic dependence on the mesh size is connected with the central charge of
-the effective field theory and with the geometry of limit shape. The third term is
-geometry-dependent and is written explicitly in terms of elementary functions.
+We consider a particular case of the dimer model on a hexagonal domain
+of hexagonal lattice, that can be seen as a ``pile of cubes in the
+corner of the box''. The energy of configuration is the total number
+of cubes. For this particular case we use an exact combinatorial
+formula for the partition function to derive the expressions for
+scaling limit of free energy and first three terms of the finite-size
+corrections. We show that the first term is identically zero. The
+second term which encapsulates logarithmic dependence on the mesh size
+is connected with the central charge of the effective field theory and
+with the geometry of limit shape. The third term has a
+geometry-dependent contribution that is written explicitly in terms of
+elementary functions and a universal contribution, which is constant
+in all the cases that we consider.
 
-We then consider the box of infinite height and the case of coordinate-dependent Boltzmann weights.
-In these cases we are also able to write explicit expressions for finite-size corrections. We
-demonstrate the universality of the logarithmic term. 
+We then consider the box of infinite height and the case of
+coordinate-dependent Boltzmann weights. In these cases we are also
+able to write explicit expressions for finite-size corrections. We
+demonstrate the universality of the logarithmic term and the constant
+contribution to the third term.
 
-Our results are supported by numeric checks and Monte-Carlo simulations presented in our previous
-publication \cite{1742-6596-1135-1-012024}.
+Our results are supported by numeric checks and Monte-Carlo
+simulations presented in our previous publication
+\cite{1742-6596-1135-1-012024}.
 
 \section{Model definition}
 \label{sec:model-definition}
@@ -107,7 +115,7 @@ all the vertices) on some graph ${\cal G}$ with some choice of weights $\omega(e
 model is solvable on the bipartite graphs, i.e. the partition function can be computed if the
 weights are introduced in such a way that for each face bounded by 0 mod 4 edges there is an odd
 number of negative edge weights and each face with 2 mod 4 edges has an even number of of negative
-edge weights. Then the signs of the edge weights form a so-called ``Kasteleyn orientation''on graph,
+edge weights. Then the signs of the edge weights form a so-called ``Kasteleyn orientation'' on graph,
 the weighting is called ``Kasteleyn weighting'' \cite{kenyon2001dominos,kenyon2009lectures}.
 
 For a bipartite graph ${\cal G}$, color the vertices black and white in such a way that all the
@@ -166,7 +174,7 @@ sum of the height function values:
   \label{eq:10}
   E[conf]=\sum_{i,j} h_{ij}=\mathrm{Volume}
 \end{equation*}
-We set Boltzman constant equal to 1 and choose system of units in such a way that there is no
+We set Boltzmann constant equal to 1 and choose system of units in such a way that there is no
 coupling constant in the expression for energy. Then the partition function is
 \begin{equation*}
   \label{eq:14}
@@ -402,59 +410,94 @@ and
 
 
 
-\section{Physical meaning of the expansion coefficients}
+\section{Limit shape and physical meaning of the expansion coefficients}
 \label{sec:accur-expans-phys}
 
 In the paper \cite{1742-6596-1135-1-012024} we have presented results of Monte Carlo simulations using
 Metropolis and Wang-Landau algorithms that support the form of expansion (\ref{eq:26}). In
 particular we got $f_{1}=0.04\pm 0.04$ which is consistent with $f_{1}=0$. 
 
-In the scaling limit $\varepsilon\to 0$ so called ``limit shape phenomenon''~\cite{1998math......1068J,cohn1998shape}
-appears in the dimer model. The areas around the corners of the domain are ``frozen'' with height
-function values being fixed. An analytical ``Arctic curve'' delimits frozen regions from the region
-where the behavior is described by the effective free field theory
-\cite{kenyon2009lectures,kenyon2008height,kenyon2006dimers}.
+The dimers in the scaling limit are in general described by a
+free-fermion theory \cite{dijkgraaf2009dimer}, but on a hexagonal
+lattice (and on the graphs that admit Kasteleyn orientation) the model
+is reformulated in terms of height function, that can be seen as a
+bosonization of the theory \cite{gogolin2004bosonization}.
 
-The behavior (\ref{eq:26}) of the logarithm of the partition function is generic in two-dimensional
+In the scaling limit $\varepsilon\to 0$ so called ``limit shape
+phenomenon''~\cite{1998math......1068J,cohn1998shape} appears in the
+dimer model. The areas around the corners of the domain are ``frozen''
+with height function values being fixed. An analytical ``Arctic
+curve'' delimits frozen regions from the region where the behavior is
+described by the effective free field theory
+\cite{kenyon2009lectures,kenyon2008height,kenyon2006dimers}. Moreover,
+the height function in the scaling limit tends to certain analytical
+surface and fluctuations around this ``limit shape'' are described by
+a gaussian free field theory in a curved background of ``limit
+shape''. A confomal map can be used to send the internal region of the
+``Arctic curve'' onto the upper half-plane.
+
+The scaling behavior (\ref{eq:26}) of the logarithm of the partition function is generic in two-dimensional
 models \cite{cardy1988finite}.
 
-First two terms $f_{0}$ and $f_{1}$ are interpreted as a bulk and
-boundary free energies in the corresponding field theory. Since we have $f_{1}=0$, we can conclude
-that boundary tension is zero.
-The value of the first term $f_{0}$ can be rewritten using polylogarithm functions as
+Thus we can interpret first two terms $f_{0}$ and $f_{1}$ as a bulk
+and boundary free energies in the corresponding field theory. The term
+$f_1$ corresponds to the contribution of the ``limit shape''. Since we
+have a deterministic frozen boundary, we naturally have $f_{1}=0$.
+%The value of the first term $f_{0}$ can be rewritten using polylogarithm functions as
 
 The term proportional to the logarithm of the scale $\varepsilon$ is also universal
 \cite{cardy1988finite} and should appear in all two-dimensional theories with boundary. In the paper
-\cite{cardy1988finite} it was argued that on a manifold of a characteristic length $L$ with a smooth
+\cite{cardy1988finite} Cardy and Peschel argued that on a smooth manifold of a characteristic length $L$ with a smooth
 boundary such a term must have the following form:
 \begin{equation}
   \label{eq:31}
   \delta F = -\frac{1}{6}{\bf c} \chi \ln L,
 \end{equation}
-where ${\bf c}$ is central charge of the effective field theory and $\chi$ is the Euler characteristic of
-the manifold
-\begin{equation}
-  \label{eq:32}
-  \chi=2-2 h-b,
-\end{equation}
-where $h$ is the number of handles and $b$ is the number of boundaries. 
+where ${\bf c}$ is central charge of the effective field theory and
+$\chi$ is the Euler characteristic of the manifold $\chi=2-2 h-b$,
+where $h$ is the number of handles and $b$ is the number of
+boundaries. Naive use of the formula \eqref{eq:31} with our result
+$\delta F=\frac{1}{12}$ would give ${\bf c}=\frac{1}{2}$, but it is
+not correct, since we need to consider the field theory in the curved
+background.
 
-Since the non-frozen domain is delimited by a smooth boundary, we have $\chi=1$ and we interpret
-$2(ab+bc+ca)$ as a volume of the domain, thus
+In the case of a corner singularity on the boundary with the angle
+$\Theta$ the logarithmic contribution to the free energy is changed to
+\begin{equation}
+  \label{eq:86}
+  \delta F = \frac{{\bf c}}{24}\left(\frac{\Theta}{\pi}-\frac{\pi}{\Theta}\right) \ln L.
+\end{equation}
+This formula was recently used by N. Allegra \cite{allegra2015exact} to show that the central charge
+in the dimer model on the square lattice with a corner monomer is ${\bf c}=1$, contrary to some
+previous claims of ${\bf c}=-2$.
+
+In the case of manifold with conic singularity with the semi-angle
+$\Theta$, the logarithmic contribution presented in \cite{cardy1988finite} is:
+\begin{equation}
+  \label{eq:91}
+  \delta F = \frac{{\bf c}}{24}\left(\frac{\Theta}{\pi}-\frac{4\pi}{\Theta}\right) \ln L.
+\end{equation}
+
+
+In our case we interpret $2(ab+bc+ca)$ as a volume of the domain, thus
 \begin{equation}
   \label{eq:33}
-  \delta F = \left(2(ab+bc+ca)\right) f_{2}\ln\varepsilon,
+  \delta F = \left(2(ab+bc+ca)\right) f_{2}\ln\varepsilon.
 \end{equation}
-which together with formula \eqref{eq:30} suggests the value of central charge
-${\bf c}=\frac{1}{2}$. This value is in agreement with the identification of the dimer model with
-free fermions in the paper \cite{dijkgraaf2009dimer}.
 
-The last term $f_{3}$ depends only on the shape of the domain through $a,b,c$ with a universal
-contribution that is equal to the integral of a function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$. In the
-next sections we show that this constant appear even for a different choice of Kasteleyn weighting,
-due to the treatment of logarithmic divergency. In the last section work we consider coordinate
-dependent values of $q$ and more complex geometries can be treated similarly as was done in the
-paper \cite{okounkov2007random}.
+Using Cardy-Peschel formulas, presented above, $\delta F$ can be
+computed from value of the central charge for Gaussian free field
+${\bf c}=1$, the curvature of metric, induced by the limit shape and
+conformal map from the internal region of the ``Arctic curve'' to the
+upper half-plane. Such a computation can be used to check our result
+on $f_2$ but is quite lengthy and will be presented in a separate
+publication.
+
+The last term $f_{3}$ depends only on the shape of the domain through
+$a,b,c$ with a universal contribution that is equal to the integral of
+a function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$. In the next sections we
+show that this constant appears due to the treatment of logarithmic
+divergency even for the coordinate-dependent Boltzmann weights. 
 
 \section{Numeric checks}
 \label{sec:numeric-checks}
@@ -858,24 +901,24 @@ $\sum_{n=1}\frac{1}{n^{2}}e^{-n\varepsilon\varphi(b-a)}
   (n\varepsilon)^{m+1}\xrightarrow[\varepsilon\to 0]{}0$
 if $m\geq 3$. For the terms with $m=0,1,2$ we need to
 take the limit $\varepsilon\to 0$. Doing so, we obtain
-\begin{equation}
+\begin{multline}
   \label{eq:71}
-  f^{+}_{3}\equiv\left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =
+  f^{+}_{3}\equiv\left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{+}\right|_{\varepsilon=0} =\\
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nbr_{-}'(0)}}{1-e^{-n\varepsilon r_{-}'(0)}}
   \varepsilon\left(\int_{0}^{a} \Psi_{n}^{+}(x) \dx -\varepsilon \Psi_{n}^{+}(a) +\varepsilon^{2}\Psi^{+'}_{n}(0)\right)\right|_{\varepsilon=0}.
-\end{equation}
+\end{multline}
 Note that $\frac{\varepsilon}{1-\exp(-n\varepsilon r'_{-}(0))}$ is analytic in $\varepsilon$. 
 The derivative can be computed explicitly, but the expression is too long to present it here.
 
 The contribution of $f^{-}$ is computed in exactly the same way:
-\begin{equation}
+\begin{multline}
   \label{eq:72}
-   f^{-}_{3}\equiv \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =
+   f^{-}_{3}\equiv \left.\left(\frac{d}{d\varepsilon}\right)^{2} f^{-}\right|_{\varepsilon=0} =\\
   \left.\left(\frac{d}{d\varepsilon}\right)^{2}\frac{1}{ab}\sum_{n=1}^{\infty} \frac{1}{n}
   e^{-n\varepsilon\varphi(b-a)} \frac{1-e^{-nar_{+}'(0)}}{1-e^{-n\varepsilon r_{+}'(0)}}
  \varepsilon\left(\int_{0}^{b} \Psi_{n}^{-}(x) \dx -\varepsilon \Psi_{n}^{-}(a) +\varepsilon^{2}\Psi^{-'}_{n}(0)\right)\right|_{\varepsilon=0}.
-\end{equation}
+\end{multline}
 At last, we need to consider
 $f^{\times}=\frac{1}{ab}\sum_{n=1}^{\infty}\frac{1}{n}e^{-n\varepsilon\varphi(b-a)}\varepsilon\sum_{i=0}^{N-1}\Psi_{n}^{-}(i\varepsilon)
 \sum_{j=0}^{M-1}\Psi_{n}^{+}(j\varepsilon)$. Analyzing the contributions of the derivatives
@@ -1015,23 +1058,32 @@ We see very good coincidence between values, obtained numerically and analytical
 \section*{Conclusion and outlook}
 \label{sec:conclusion}
 
-In the present paper we computed the asymptotic expansion of the free energy in the dimer model on a
-hexagonal domain of the hexagonal lattice. We've discussed the physical meaning of the expansion
-coefficients and argued that our results support the identification of the scaling behavior of the
-dimer model with the free-fermion field theory.
+In the present paper we computed the asymptotic expansion of the free
+energy in the dimer model on a hexagonal domain of the hexagonal
+lattice, on a hexagon with a side of infinite length and in the model
+with coordinate-dependent Boltzmann weights. We presented numerical
+results supporting our computations. We've discussed the physical
+meaning of the expansion coefficients and argued that our results
+support the identification of the scaling behavior of the dimer model
+with the Gaussian free field theory.
 
-In further work we will study the connection of the expansion coefficients with the spectral
-properties of Dirac operator on the non-frozen domain and study the universality of our results. We
-will also further discuss the description of the model by boundary conformal field theory.
+In further work we will study the connection of the expansion
+coefficients with the spectral properties of Dirac operator on the
+non-frozen domain and study the universality of our results. We will
+also present the computations of the logarithmic correction to the free
+energy from the geometry of the ``limit shape''.
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
-We are grateful to professor Nikolai Reshetikhin for his attention to this work. We thank Pavel Belov
-for useful discussions and general support. We thank Mikhail Vyazovsky for pointing out a mistake in
-the first version of the paper. 
+We are grateful to professor Nikolai Reshetikhin for his attention to
+this work. We thank Pavel Belov for useful discussions and general
+support. We thank Mikhail Vyazovsky for pointing out a mistake in the
+first version of the paper. We thank Istvan Prause for the reference
+\cite{allegra2015exact} and Vadim Gorin for a discussion on geometry
+of the limit shape.
 
-We thank the organizers and participants of the conference MQFT-2018 for the opportunity
-to present our results and useful discussions.
+We thank the organizers and participants of the conference MQFT-2018
+for the opportunity to present our results and useful discussions.
 
 This research is supported by RFBR grant No. 18-01-00916.
 
