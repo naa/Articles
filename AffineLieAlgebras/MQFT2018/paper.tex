@@ -85,9 +85,28 @@ six-vertex model \cite{kapitonov2012weighted,kapitonov2008five}.
 Study of dimer models on various lattices and domains led to interesting connections with the
 geometry of curved manifolds and with spectra of discrete and continuous Dirac and Laplace operators
 \cite{kenyon2002laplacian,kenyon2000asymptotic}. Scaling limit of dimer model is proven to be
-described by a Gaussian free-field theory \cite{kenyon2001dominos}, but finite-size corrections were
-not considered previously. These corrections are important to close the gap between numerical
-simulations and theoretical results.
+described by a Gaussian free-field theory \cite{kenyon2001dominos}, but finite-size corrections to
+the scaling of free energy were previously considered mostly in the absence of the limit shape
+\cite{Sh_Izmailian_2019,izmailian2016finite,izmailian2011dimer,izmailian2007non,izmailian2005logarithmic}.
+
+Finite size corrections are important to close the gap between numerical simulations and
+theoretical results. Moreover, they can be used to choose the proper field-theoretic description of
+the scaling limit. For example, logarithmic term is supposed to be universal and dependent on the
+value of central charge ${\bf c}$ of conformal field theory \cite{cardy1988finite}.
+
+Computation of finite-size corrections to the scaling of free energy in dimer model on a rectangular
+region on the square lattice led to a series of publications and even controversy about the proper CFT
+description of the scaling limit, when some publications claimed ${\bf c}=-2$, while others -- ${\bf c}=1$. 
+\cite{allegra2015exact,morin2016integrability,Sh_Izmailian_2019,izmailian2016finite,izmailian2005logarithmic}. 
+Note that in this case limit shape does not appear due to the choice of boundary conditions. 
+
+The case of limit shape is even more complicated. While the fluctuations the limit shape can be
+computed from the variational minimization problem for surface tension and fluctuations are
+described by the Gaussian Free Field, the behavior on the boundary of the frozen region is not well
+understood. Surface tension becomes singular near the boundary of frozen domain, thus boundary
+contribution to the logarithmic correction to free energy scaling cannot be easily obtained from
+field-theoretic point of view. Because of this, the computation of finite size corrections from the
+exact solution of the model, especially of the logarithmic term, is very interesting. 
 
 We consider a particular case of the dimer model on a hexagonal domain
 of hexagonal lattice, that can be seen as a ``pile of cubes in the
@@ -473,8 +492,8 @@ $\Theta$ the logarithmic contribution to the free energy is changed to
   \delta F = \frac{{\bf c}}{24}\left(\frac{\Theta}{\pi}-\frac{\pi}{\Theta}\right) \ln L.
 \end{equation}
 This formula was recently used by N. Allegra \cite{allegra2015exact} to show that the central charge
-in the dimer model on the square lattice with a corner monomer is ${\bf c}=1$, contrary to some
-previous claims of ${\bf c}=-2$.
+in the height-function description of the dimer model on the square lattice with a corner monomer is
+${\bf c}=1$, contrary to some previous claims of ${\bf c}=-2$ \cite{morin2016integrability}.
 
 In the case of manifold with conic singularity with the semi-angle
 $\Theta$, the logarithmic contribution presented in \cite{cardy1988finite} is:
@@ -490,13 +509,13 @@ In our case we interpret $2(ab+bc+ca)$ as a volume of the domain, thus
   \delta F = \left(2(ab+bc+ca)\right) f_{2}\ln\varepsilon.
 \end{equation}
 
-Using Cardy-Peschel formulas, presented above, $\delta F$ can be
-computed from value of the central charge for Gaussian free field
-${\bf c}=1$, the curvature of metric, induced by the limit shape and
-conformal map from the internal region of the ``Arctic curve'' to the
-upper half-plane. Such a computation can be used to check our result
-on $f_2$ but is quite lengthy and will be presented in a separate
-publication.
+Using Cardy-Peschel formulas, presented above, it should be possible to compute $\delta F$ from
+value of the central charge for Gaussian free field ${\bf c}=1$, the curvature of metric, induced by
+the limit shape and conformal map from the internal region of the ``Arctic curve'' to the upper
+half-plane.
+But the metric is singular near the boundary of the internal region and singularities are not
+explicitly studied yet \cite{Astala}. Thus our result for value of $f_2$ should be useful in such a
+study, which we will attempt to do in a separate publication.
 
 The last term $f_{3}$ depends only on the shape of the domain through
 $a,b,c$ with a universal contribution that is equal to the integral of
@@ -1063,20 +1082,17 @@ We see very good coincidence between values, obtained numerically and analytical
 \section*{Conclusion and outlook}
 \label{sec:conclusion}
 
-In the present paper we computed the asymptotic expansion of the free
-energy in the dimer model on a hexagonal domain of the hexagonal
-lattice, on a hexagon with a side of infinite length and in the model
-with coordinate-dependent Boltzmann weights. We presented numerical
-results supporting our computations. We've discussed the physical
-meaning of the expansion coefficients and argued that our results
-support the identification of the scaling behavior of the dimer model
-with the Gaussian free field theory.
+In the present paper we computed the asymptotic expansion of the free energy in the dimer model on a
+hexagonal domain of the hexagonal lattice, on a hexagon with a side of infinite length and in the
+model with coordinate-dependent Boltzmann weights. We presented numerical results supporting our
+computations. We've discussed the physical meaning of the expansion coefficients and argued that our
+results support the universal character of the logarithmic correction and can be used to study the
+behavior on the boundary of frozen region.
 
-In further work we will study the connection of the expansion
-coefficients with the spectral properties of Dirac operator on the
-non-frozen domain and study the universality of our results. We will
-also present the computations of the logarithmic correction to the free
-energy from the geometry of the ``limit shape''.
+In further work we will study the connection of the expansion coefficients with the spectral
+properties of Dirac operator on the non-frozen domain and study the universality of our results. We
+will also present the computations of the logarithmic correction to the free energy from the
+geometry of the ``limit shape''.
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
