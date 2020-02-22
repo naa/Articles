@@ -35,17 +35,14 @@
 \maketitle
 
 \begin{abstract}
-  We consider dimer model on a hexagonal lattice. This model can be
-  seen as a ``pile of cubes in the box''. The energy of configuration
-  is given by the volume of the pile and the partition function is
-  computed by the classical MacMahon formula or, more formally, by the
-  determinant of Kasteleyn matrix. We use the expression for the
-  partition function to derive the scaling behavior of free energy in
-  the limit of lattice mesh tending to zero and temperature tending to
-  infinity. We consider the cases of finite hexagonal domain, of
-  infinite height box and coordinate-dependent Boltzmann weights. We
-  obtain asymptotic expansion of free energy and discuss the
-  universality and physical meaning of the expansion coefficients.
+  We consider the dimer model on a hexagonal lattice. A model can be seen as a ``pile of cubes in
+  the box''. The energy of configuration is given by the volume of the pile. The partition function
+  is computed by the classical MacMahon formula or by the determinant of the Kasteleyn matrix. We
+  use MacMahon formula to derive the scaling behavior of free energy in the limit when the lattice
+  spacing goes to zero and temperature goes to infinity. We consider the cases of a finite hexagonal
+  domain, the case when one side of the hexagonal box is infinite and the case when Boltzmann
+  weights are inhomogeneous. We obtain asymptotic expansion of free energy, that is known as finite
+  size corrections, and discuss the universality and physical meaning of the expansion coefficients.
 \end{abstract}
 
 
@@ -58,57 +55,73 @@ tilings was approximately estimated. But an exact computation was not accessible
 
 In 1961, Kasteleyn \cite{P.W-1961}, Temperley and Fisher \cite{doi:10.1080/14786436108243366}
 represented the partition function of the dimer model as a Pfaffian of the signed adjacency matrix
-(``Kasteleyn matrix'') thus allowing the computation of the number of tilings and of free energy scaling limit.
+(``Kasteleyn matrix'') thus allowing the computation of the number of tilings and of the free energy
+in the scaling limit.
 This result was very elegantly used by Fisher to solve Ising model \cite{fisher1966dimer} and by Fan
-and Wu \cite{Fan-1970} to compute free energy for a certain case of eight-vertex model.
+and Wu \cite{Fan-1970} to compute the free energy for a certain case of the eight-vertex model.
 
-Further studies of dimer models revealed the connection to the theory of alternating matrices
-\cite{elkies1992alternating1,elkies1992alternating2}. Later, the well-known limit shape
+Further studies of dimer models revealed the connection to the theory of alternating sign matrices
+\cite{elkies1992alternating1,elkies1992alternating2}. Later, the limit shape
 phenomenon~\cite{vershik1977kerov} was discovered for dimer models. First, the ``Arctic circle''
 theorem was proven for domino tilings of the domain in the form of ``Aztec diamond''
-~\cite{1998math......1068J}. Then similar result was obtained for a hexagonal domain on the
+~\cite{1998math......1068J}. Then a similar result was obtained for a hexagonal domain on the
 hexagonal lattice~\cite{cohn1998shape}. Soon the connection of these results with the theory of
 random matrices was established~\cite{johansson2002non}. The papers
 \cite{kenyon2006dimers,kenyon2009lectures} present a detailed exposition of the limit shape
-phenomenon in the dimer models.
-
-Dimer models are the integrable lattice models of statistical physics that are now under an active
-theoretical~\cite{zj2000,ferrari} and numerical investigation~\cite{ks2018}. Computation of
-correlation functions is a common problem for all vertex models \cite{colomo2012approach} as well as
-for dimer models. Another problem of great interest is the study of limit shapes in various cases
+phenomenon in the dimer models. The study of limit shapes remains an important problem
 \cite{borodin2010q,di2018tangent}.
 
-Configurations of dimer model on a hexagonal lattice are in one-to-one correspondence with the
-configurations of five-vertex model that appears for certain choice of parameters in the well-known
-six-vertex model \cite{kapitonov2012weighted,kapitonov2008five}.
+Dimer models are now under an active
+theoretical~\cite{zj2000,ferrari} and numerical investigation~\cite{ks2018}. Computation of
+correlation functions is an important problem in vertex models \cite{colomo2012approach} and in dimer models.
+
+Dimer configurations on a hexagonal lattice are in one-to-one correspondence with configurations of
+the five-vertex model that appears for certain choice of parameters in the six-vertex model
+\cite{kapitonov2012weighted,kapitonov2008five}.
 
 Study of dimer models on various lattices and domains led to interesting connections with the
 geometry of curved manifolds and with spectra of discrete and continuous Dirac and Laplace operators
 \cite{kenyon2002laplacian,kenyon2000asymptotic}. Scaling limit of dimer model is proven to be
-described by a Gaussian free-field theory \cite{kenyon2001dominos}, but finite-size corrections to
+described by a Gaussian free-field theory \cite{kenyon2001dominos}, which is also conformal, but finite-size corrections to
 the scaling of free energy were previously considered mostly in the absence of the limit shape
 \cite{Sh_Izmailian_2019,izmailian2016finite,izmailian2011dimer,izmailian2007non,izmailian2005logarithmic}.
 
-Finite-size corrections are important to fill the gap between numerical simulations and
-theoretical results. Moreover, they can be used to choose the proper field-theoretic description of
-the scaling limit. For example, the logarithmic term is supposed to be universal and dependent on a
-value of the central charge ${\bf c}$ of conformal field theory \cite{cardy1988finite}.
 
-Computation of finite-size corrections to the scaling of free energy in the dimer model on a rectangular
-region of the square lattice led to a series of publications and even controversy about the proper CFT
-description of the scaling limit. Some publications claimed ${\bf c}=-2$, while others -- ${\bf c}=1$ 
-\cite{allegra2015exact,morin2016integrability,Sh_Izmailian_2019,izmailian2016finite,izmailian2005logarithmic}. 
-Note that in this case the limit shape does not appear due to the choice of boundary conditions. 
+In general, finite-size corrections to free energy in the critical
+systems with a characteristic length $\varepsilon$ are supposed to
+have the form
+\begin{equation*}
+  f\approx f_{0}+f_{1}\varepsilon +f_{2}\varepsilon^{2}\ln\varepsilon+ f_{3}\varepsilon^{2}+\mathcal{O}(\varepsilon^{3}),
+\end{equation*}
+according to the paper by Cardy and Peschel \cite{cardy1988finite}.
+The coefficients can be used to choose the proper field-theoretic
+description of the scaling limit. For example, the logarithmic term is
+supposed to be universal and dependent on a value of the central
+charge ${\bf c}$ of conformal field theory.
 
-The case of the limit shape is even more complicated. While the limit shape can be computed from the
-variational minimization problem for surface tension \cite{kenyon2007limit,kenyon2006dimers} and
+
+Computation of finite-size corrections to the scaling of free energy
+in the dimer model on a rectangular region of the square lattice led
+to a series of publications and even controversy about the proper CFT
+description of the scaling limit. Some publications claimed
+${\bf c}=-2$\cite{Rasmussen_2012}, while others -- ${\bf c}=1$
+\cite{allegra2015exact,morin2016integrability,Sh_Izmailian_2019,izmailian2016finite,izmailian2005logarithmic}.
+Note that in this case the limit shape does not appear due to the
+choice of boundary conditions.
+
+The case of the limit shape is even more complicated. While the limit
+shape can be computed from the variational minimization problem for
+surface tension \cite{kenyon2007limit,kenyon2006dimers} and
 fluctuations are described by the Gaussian Free Field
-\cite{kenyon2001dominos,kenyon2008height,kenyon2009lectures}, the behavior on the boundary of the
-frozen region is not well understood. Surface tension becomes singular near the boundary of the frozen
-domain \cite{kenyon2007limit}, thus boundary contribution to the logarithmic correction to free
-energy scaling cannot be easily obtained from field-theoretic point of view. As a result, the
-computation of finite-size corrections from the exact solution of the model, especially of the
-logarithmic term, is important.
+\cite{kenyon2001dominos,kenyon2008height,kenyon2009lectures}, the
+behavior of the field near the boundary of the frozen region is not
+easy to understand. Surface tension becomes singular near the boundary
+of the frozen domain \cite{kenyon2007limit}, thus boundary
+contribution to the logarithmic correction to free energy scaling
+cannot be easily obtained from field-theoretic point of view. As a
+result, the computation of finite-size corrections from the exact
+solution of the model, especially of the logarithmic term, is
+important.
 
 We consider a particular case of the dimer model on a hexagonal domain
 of hexagonal lattice, that can be seen as a ``pile of cubes in the
