@@ -149,13 +149,37 @@ simulations presented in our previous publication
 
 \section{Model definition}
 \label{sec:model-definition}
-The configurations of the dimer model are perfect matchings (sets of non-touching edges, covering
-all the vertices) on some graph ${\cal G}$ with some choice of weights $\omega(e)$ on the edges. The
-model is solvable on the bipartite graphs, i.e. the partition function can be computed if the
-weights are introduced in such a way that for each face bounded by 0 mod 4 edges there is an odd
-number of negative edge weights and each face with 2 mod 4 edges has an even number of of negative
-edge weights. Then the signs of the edge weights form a so-called ``Kasteleyn orientation'' on graph,
-the weighting is called ``Kasteleyn weighting'' \cite{kenyon2001dominos,kenyon2009lectures}.
+The configurations of the dimer model are perfect matchings (sets of
+non-touching edges, covering all the vertices) on some graph
+${\cal G}$. Boltzmann weight of a configuration is given by the
+product of edge weights $\omega(e)$ for some choice of edge weights. The
+partition function is given by the sum of Boltzmann weights over all
+configurations: $Z=\sum_{\mathrm{conf}}\prod_{e\in\mathrm{conf}}\omega(e).$
+
+We consider dimer model on a hexagonal lattice. There are three
+possible directions of the edges. First we consider the following
+choice of Bolzmann weights. Take positive number $q$ and embed the
+hexagonal lattice in the complex plane $\mathbb{C}$ in such a way that
+some edges $e$ are parallel to the real line and corresponding
+vertices $w,b$ have coordinates with half-integer imaginary part (See left pane of the Fig.~\ref{dhf}). Then take
+\begin{equation}
+  \label{eq:18}
+  \begin{array}{lll}
+ \omega(e_{w\to b})=q^{\Im w}&  \mathrm{if} & \Im w=\Im b\\
+  \omega(e_{w\to b})=1 & \mathrm{if}& \Im w\neq\Im b.
+  \end{array}
+\end{equation}
+
+In the section \ref{sec:box-infinite-height} we will consider the case when $q=q(\Re w)$ is an arbitrary smooth function of the real part of coordinate. 
+
+In general the model is solvable on the bipartite graphs, i.e.
+the partition function can be computed if the weights are introduced
+in such a way that for each face bounded by 0 mod 4 edges there is an
+odd number of negative edge weights and each face with 2 mod 4 edges
+has an even number of of negative edge weights. Then the signs of the
+edge weights form a so-called ``Kasteleyn orientation'' on graph, the
+weighting is called ``Kasteleyn weighting''
+\cite{kenyon2001dominos,kenyon2009lectures}.
 
 For a bipartite graph ${\cal G}$, color the vertices black and white in such a way that all the
 vertices adjacent to the black one are white. Denote by $B, W$ the sets of black and white
@@ -189,16 +213,16 @@ lattice edges such that every vertex is the endpoint of exactly one edge.
 We can draw a rhombus on a dual lattice around each edge in the configuration. The picture of
 ``cubes in the corner'' presented in the Fig.~\ref{dhf} is obtained. Let us write on the top of each
 uppermost cube the height of its column of cubes. Looking at this picture from the top, we obtain a
-height function defined on the rectangular domain of the square lattice. 
+height function that is defined on the rectangular domain of the square lattice. 
 
 \begin{figure}[htbp]
 \center{\scalebox{0.4}{\includegraphics{my-loz}}}
-\caption{\label{dhf}A configuration of dimers on the hexagonal lattice and a corresponding picture
-  of ``cubes in the corner''.}
+\caption{\label{dhf}On the left: a configuration of dimers on the hexagonal lattice and the choice of coordinates for the definition of weights (\ref{eq:18}). On the right: corresponding picture
+  of ``cubes in the corner'' for the height function $h$.}
 \end{figure}
 
 Let us define the sizes $M$, $N$, and $K$ of the sides of the hexagon.
-The above description can be formalized by
+The above description of height function can be formalized by
 %set of configurations of the model can be defined all possible ways to write
 setting the non-negative numbers up to $K$ in the boxes of the rectangular $M\times N$ table so that a value in
 each box is not greater than values in the adjacent upper and left boxes
@@ -227,18 +251,6 @@ formula~\cite{vuletic2009generalization}
   \label{eq:12}
    Z[M,N,K,q]=\prod_{i=1}^{M}\prod_{j=1}^{N}\prod_{k=1}^{K}\frac{1-q^{i+j+k-1}}{1-q^{i+j+k-2}}.
 \end{equation}
-
-
-MacMahon formula is obtained for the following definition of the Kasteleyn matrix. Embed the
-hexagonal lattice in the complex plane $\mathbb{C}$ in such a way that some edges are parallel to
-the real line with and corresponding vertices have coordinates with integer real and imaginary
-parts. Then take
-\begin{eqnarray}
-  \label{eq:18}
-  {\cal K}(w,b)=q^{\Re w+\Im w} \quad \mathrm{if}\quad \Im w=\Im b\\
-  {\cal K}(w,b)=1 \quad \mathrm{if}\quad \Im w\neq\Im b.
-\end{eqnarray}
-
 
 The   free energy per site is defined as$^{*}$
 \footnote{For convenience we omit the factor $\frac{1}{T}$ in the usual definition of the free energy.}
@@ -541,7 +553,7 @@ divergency even for the coordinate-dependent Boltzmann weights.
 \section{Numeric checks}
 \label{sec:numeric-checks}
 To check our result \eqref{eq:26} numerically, we first need to evaluate the integral in $f_{3}$.
-The function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$ is smooth and but some care is required when taking the
+The function $e^{-z}\frac{\xi(z)-\xi(0)}{z}$ is smooth and continuous, but some care is required when taking the
 limit $z\to 0$ numerically. Evaluating the integral numerically with Mathematica we get
 \begin{equation}
   \label{eq:2}
@@ -613,6 +625,34 @@ for the coefficients $f_{0}, f_{1}, f_{2}, f_{3}$:
 
 Again in the Fig. \ref{fig:approx-acc-2d} we see good numerical agreement between the asymptotic
 expansion \eqref{eq:26} and the exact formula \eqref{eq:4}.
+
+Since a hexagon with an infinite side is similar to an infinite strip,
+it is natural to compare our result with the results for finite size
+corrections to the scaling of free energy for dimer model on a square
+lattice on a strip, cylinder and Möbius strip. These results were
+recently nicely summarized in the paper \cite{izmailian2017finite} and
+further investigated in the paper \cite{Sh_Izmailian_2019}. There the
+following general expansion for the free energy on $M\times N$ square
+lattice was presented ($S=M\times N$ here):
+\begin{equation}
+  \label{eq:32}
+  f=f_{\mathrm{bulk}}+\frac{2}{M}f_{s1}+\frac{2}{N}f_{s2}
+  +f_{\mathrm{corn}}\frac{\ln S}{S} +\frac{1}{S} (f_{\mathrm{univ}}+f_{\mathrm{nonuniv}})
+\end{equation}
+In particular, on a strip the bulk term is
+$f_{\mathrm{bulk}}=\frac{G}{\pi}$, where $G$ is the Catalan constant,
+surface free energy is nonzero, $f_{s1}=-\frac{1}{4}\ln(1+\sqrt{2})$ 
+and the coefficient of $\frac{1}{S}$ is equal to $\frac{\pi}{24}$. In
+the case of cylinder and  Möbius strip logarithmic term also appears.
+
+Comparing our results (\ref{eq:6}), (\ref{eq:8}), (\ref{eq:9}),
+(\ref{eq:11}) with these expressions, we see that behavior on
+hexagonal lattice in the presence of limit shape is different. In
+particular, bulk term $f_{0}$ depends on the geometric parameters $a$
+and $b$, boundary is
+tension free, so no boundary term $f_{1}$ is zero, and geometric
+parameters of the domain appear again in the coefficient of
+$\varepsilon^{2}$. 
 
 \begin{figure}[htbp]
   \includegraphics[scale=0.8]{exact-vs-approximation-2d}
